@@ -1,0 +1,65 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 22:48:31 GMT
+Content-Type: text/html
+Content-Length: 3278
+Last-Modified: Wednesday, 30-Oct-96 21:53:06 GMT
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Dissertation Research Overview</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (X11; I; SunOS 5.5 sun4c) [Netscape]">
+</HEAD>
+<BODY>
+
+<H1>Dissertation Research Overview</H1>
+
+<H2>THIS PAGE IS CURRENTLY UNDER CONSTRUCTION!!! </H2>
+
+<P>The overall theme of my research is reasoning with and refining imprecise
+models of physical processes. Because we cannot know the world precisely,
+imprecision is implicit in any modeling task. However, it is often the
+case that imprecision is simply ignored since it has no place in many existing
+modeling and simulation methodologies. Sometimes, this is of no consequence,
+but in other cases, the mismatch between prediction and true behavior may
+lead to erroneous conclusions. In fields where imprecision is addressed
+(for example, in robust control), the methods are often resticted in terms
+of the types of imprecision allowed or are not guaranteed to produce all
+the predictions inherent in the model or produce predictions that are too
+weak to provide useful guidance. What is needed is a general method for
+representing and reasoning with imprecison that can capture the typical
+types of imprecision inherent in modeling tasks and can produce predictions
+that maintain precision consistent with the model imprecision. In the <!WA0><A HREF="http://www.cs.utexas.edu/users/bert/sqsim.html">next
+section</A>, I describe SQSim, a representation and simulation method that
+meets these goals. </P>
+
+<P>While imprecision is inherent in any modeling task, it is also true
+that a model's precision can be improved with experience with the underlying
+physical process. Learning a model from a combination of prior knowledge
+and empirical data is the task of system identification. Typically, identification
+methods work under the assumption that a parametric model of the process
+exists and searches the model space for the precise model that best matches
+the empirical data. Confidence bounds on the parameters (and hence the
+prediction) can also be determined to represent the uncertainty inherent
+in using a finite amount of data. This method can be quite efficient in
+cases where the search space has good properties (such as an easily computable
+gradient). For cases where this does not hold, however, (for example, if
+we allow functional as well as parametric uncertainty), finding an optimal
+model may be very difficult. In addition, identification methods require
+that empirical data be informative enough to provide complete experience
+with the system over the desired operating range. If such conditions cannot
+be met, the resulting model may differ greatly from the true model. In
+the <!WA1><A HREF="http://www.cs.utexas.edu/users/bert/squid.html">third section</A>,
+I describe SQUID, a method for refining an existing model by using possibly
+uninformative data. </P>
+
+<P>SQSim and SQUID provide two key technologies for automating the model-building
+task. By combining them with a method for postulating initial qualitative
+models from data, one could construct a system that can automatically construct
+models using a combination of empirical and prior knowledge.</P>
+
+<P><!WA2><A HREF="http://www.cs.utexas.edu/users/bert/index.html">BKay </A></P>
+
+</BODY>
+</HTML>

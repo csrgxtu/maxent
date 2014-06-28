@@ -1,0 +1,129 @@
+Date: Wed, 20 Nov 1996 19:41:24 GMT
+Server: Apache-SSL/0.4.3b
+Content-type: text/html
+Content-length: 4121
+Last-modified: Mon, 25 Sep 1995 16:10:40 GMT
+
+<HTML>
+<HEAD>
+<TITLE>
+The Tower of Pizzas
+</TITLE>
+
+<!-- This is a comment -->
+<!-- if you have problems, mail webmaster@cs.umd.edu -->
+</HEAD>
+
+
+<BODY BACKGROUND="brick.jpg" BGCOLOR="#ffffff" TEXT="#000000" 
+LINK="#008000" VLINK="#FF0080" ALINK="#FFFFFF">
+
+
+<H1>The Tower of Pizzas </H1>
+<hr>
+
+<H2>Researchers</H2>
+
+<UL>
+<LI><b><!WA0><a href="http://www.cs.umd.edu/users/nick/">Dr. Nick Roussopoulos</a></b><i>, Principal Investigator</i>
+
+<LI><b><!WA1><a href="http://www.cs.umd.edu/users/mdtanx/">Michael Tan</a></b><i>, Graduate Student</i>
+
+<LI><b>Stephen Kelley</a></b><i>, Research Associate</i>
+</UL>
+
+<H2>Description</H2>
+
+
+We have constructed the Tower of Pizzas (TOPs), a multi-user, striped
+storage system.  The main goals of TOPs are 1) to provide access to
+data striped across workstations, 2) to exploit caching and
+prefetching at the client and server, 3) to implement the system at a
+high-level for portability, 4) to explore data layout.
+
+<p> The system is implemented in software on top of general UNIX This
+allows workstations of heterogeneous flavors of UNIX to work together
+as clients and servers.  Server workstations run a single server
+process, and clients talk to remote servers through a local server
+process or through a linked library.  The local and remote server
+process are identical, which allows TOPS to be run as a peer-to-peer
+collection of workstations (rather than just a partitioned set of
+clients and servers).  The local and remote server processes provide
+buffer management, striping (configurable per file) over the network,
+and disk services (including asynchronous read/write).  Local clients
+access buffers of the local server through shared memory.
+Asynchronous read/write disk I/O is provided through the server
+threads and aio calls.  File meta-data is centralized at a server
+process accessed only on open() or close().
+
+<p>
+
+TOPs has been implemented over the past year and we have now run it on
+a variety of hardware clusters: SPARCs and an Alpha connected by
+Ethernet, and our 16-node SP2 (using TCP over the high-speed switch).
+On the SP2 we can demonstrate linear scalability of global throughput
+as servers and clients are added.
+
+<p>
+
+At this point we are now starting more detailed investigation in
+caching and prefetching strategies.  We are also examining new data
+placement techniques.
+
+<p>
+
+
+<H2>Performance</H2>
+
+In the three tests below, 1 to 10 clients are run using 1 to 8 servers
+(srvs).  The y-axis gives the total system throughput (the sum of the
+throughput delivered to each client).  Note that the filesystem and
+disks used for these tests can transfer data at 3.5 MB/s for
+sequential reads and about 1 MB/s for random reads.  
+
+
+<dl> 
+<dt> <b>Reading cached server data.</b> In this test, clients
+read from a small file (8 MB/server).  The file is completely cached
+at the server, so no disk I/O (other than the initial load from disk)
+is incurred.  The test shows the overhead of TOPs and indicates the
+maximum performance possible on this platform.<p> 
+<dd><!WA2><IMG ALIGN=top SRC="http://www.cs.umd.edu/~mdtanx/readsmall.gif"> <p> <p>
+<dt> <b>Group sequential read with a prefetch/ordering strategy.</b>
+In this test, each client read sequentially through a large file.
+The portions of the file read by each client was disjoint from one
+another.  We used a prefetching strategy to maintain sequential access
+to the disk (the requests from the clients were not synchronized).<p>
+
+
+<dd><!WA3><IMG ALIGN=top SRC="http://www.cs.umd.edu/~mdtanx/readpref.gif">
+<p>
+<p>
+<dt> <b>Reading from large disk files.</b> In these tests, each client
+continually requested a small contiguous portion of the data file.
+Each request started at some random point in the file.  The data file
+was relatively large (160 MB per server, and could not be entirely
+cached.<p>
+
+
+<dd><!WA4><IMG ALIGN=top SRC="http://www.cs.umd.edu/~mdtanx/readlarge.gif">
+<p>
+<p>
+
+</dl>
+
+<H2>Publications</H2>
+
+A <!WA5><a href="http://www.cs.umd.edu/users/mdtanx/tops.ps.Z">technical report</a> (submitted for publication) and brief <!WA6><a href="http://www.cs.umd.edu/users/mdtanx/gc2.ps">set of slides about TOPs</a> is available.  
+
+
+
+<HR>
+<I>Last updated on Fri September 21 12:01 1995</I>
+<HR>
+
+</BODY>
+
+</HTML>
+
+

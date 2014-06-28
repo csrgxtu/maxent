@@ -1,0 +1,129 @@
+Date: Tue, 26 Nov 1996 02:52:42 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+Content-length: 3082
+Last-modified: Thu, 14 Nov 1996 22:23:04 GMT
+
+<html>
+<head>
+<title>Shu-Wie F Chen (swfc@cs.columbia.edu)</title>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Beginning of JavaScript Applet -------------------
+
+function scrollit_r2l(seed)
+{
+        var msg = "Welcome to Shu-Wie's Home Page!";        
+	var out = " ";
+        var c   = 1;
+
+        if (seed > 100) {
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                timerTwo=window.setTimeout(cmd,50);
+        }
+        else if (seed <= 100 && seed > 0) {
+                for (c=0 ; c < seed ; c++) {
+                        out+=" ";
+                }
+                out+=msg;
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                    window.status=out;
+                timerTwo=window.setTimeout(cmd,50);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;
+                        var cmd="scrollit_r2l(" + seed + ")";
+                        window.status=out;
+                        timerTwo=window.setTimeout(cmd,50);
+                }
+                else {
+                        window.status=" ";
+                        timerTwo=window.setTimeout("scrollit_r2l(100)",45);
+                }
+        }
+}
+//-- End of JavaScript code -------------- -->
+
+</SCRIPT>
+
+</HEAD>
+
+<body background="http://www.cs.columbia.edu/~swfc/gif/white_paper_bground.gif" text="#000000" link="#0000FF" vlink="#000000" alink="#FF0000" onLoad="timerONE=window.setTimeout('scrollit_r2l(100)',500);">
+
+<h3>Welcome to the home page of </h3> <h2> Shu-Wie Chen</h2>
+
+<!WA0><img src="http://www.cs.columbia.edu/~swfc/clr-line2.gif"><br>
+<p><!WA1><img align=left src="http://www.cs.columbia.edu/~swfc/swfc.gif"></a>
+
+<dd>
+
+<dl>
+<dd>Shu-Wie F Chen
+<dd><br>
+<dd><!WA2><a href="http://www.cs.columbia.edu/database/">Database Research Group</a>
+<dd><!WA3><a href="http://www.cs.columbia.edu/"><!WA4><a href="http://www.cs.columbia.edu/">Department of Computer Science</a>
+<dd><!WA5><a href="http://www.cc.columbia.edu/">Columbia University</a>
+<dd><br>
+<dd><!WA6><a href="mailto:swfc@cs.columbia.edu">email</a> swfc@cs.columbia.edu</a> 
+<dd><!WA7><a href="http://www.cs.columbia.edu/~swfc/cgi-bin/finger-swfc.cgi">finger</a> swfc@cs.columbia.edu
+<dd><br>
+<dd>tel: (212) 939-7051
+<dd>fax: (212) 666-0140
+<dd><br>
+<dd>
+<dd>
+<dd><br><br>
+<dd><br><br>
+<dd><br><br>
+<dd>
+</dl>
+</p>
+
+<br><br><br>
+
+<!WA8><img src="http://www.cs.columbia.edu/~swfc/clr-line2.gif"><br>
+
+Primary Research Interests
+<dl>
+
+<dd> Transactions (reliability)
+<dd> Replication (availability)
+<dd> Distributed Systems
+<dd> Database Systems
+
+</dl>
+
+Other Research Interests
+<dl>
+
+<dd> Systems Programming
+
+<dd> Operating Systems
+
+<dd> Networks
+
+</dl>
+
+<!WA9><img src="http://www.cs.columbia.edu/~swfc/clr-line2.gif"><br>
+
+<br>
+<!WA10><a href="http://www.cs.columbia.edu/~swfc/nyc-weather.html">New York City Weather</a>
+<br>
+<br>
+<!WA11><img src="http://www.cs.columbia.edu/~swfc/clr-line2.gif"><br>
+<br>
+
+<address>
+Shu-Wie F Chen<br>
+Department of Computer Science<br>
+Columbia University<br>
+1214 Amsterdam Avenue<br>
+New York, NY 10027-7003<br>
+</address>
+
+</body>
+</html>

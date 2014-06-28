@@ -1,0 +1,100 @@
+Date: Wednesday, 15-Jan-97 02:08:39 GMT
+Server: NCSA/1.3
+MIME-version: 1.0
+Content-type: text/html
+Last-modified: Wednesday, 22-Mar-95 16:48:03 GMT
+Content-length: 4784
+
+<title>Design-to-time Real-time Scheduling</title>
+<h1>Design-to-time Real-time Scheduling</h1>
+
+  Design-to-time is an approach to real-time problem solving in situations
+where multiple methods exist for many tasks that a system needs to solve.
+Design-to-time involves designing a solution to a problem that uses all
+available resources to maximize the solution quality within the available
+time.  One important area of research has focused on interdependencies that
+may exist between methods, such as the execution of one method enabling the
+execution of another, or the use of a rough approximation by one method
+negatively affecting the performance of a method that uses its result.<p>
+
+The methodology is known as design-to-time because it advocates the use
+of all available time to generate the best solutions possible.  It is a
+problem-solving method of the type described by D'Ambrosio as
+those which <i>"given a time bound, dynamically construct and execute a
+problem solving procedure which will (probably) produce a reasonable
+answer within (approximately) the time available."</i><p>
+
+If design-to-time is to be generally useful, it must be possible to
+embed design-to-time schedulers in larger application systems.  There
+are many reasons why a distinct separation should exist between a
+design-to-time scheduler and its invoker, including at least
+modularity and efficiency.  Modularity suggests that separate
+functionality should be kept in separate modules with clearly defined
+interfaces.  In general it is difficult for all current problem
+solving criteria to be encapsulated into an evaluation function and
+transmitted to the scheduler, because deciding what to do is a
+evolving computational process.  Another reason why a separation might
+exist between a decision maker and a design-to-time scheduler is that
+they work at different levels of abstraction.  One of the roles of the
+decision maker is to constrain the search done by the design-to-time
+scheduler, for example, by using commitments to tell the scheduler
+what parts of the task structure to focus on.  While it is possible
+for the scheduler to use all available information to make such
+decisions itself, for efficiency reasons it is useful to have the
+decision maker constrain the search space for the scheduler.  More
+details on this aspect of design-to-time scheduling can be found in
+our page on <!WA0><a href="http://dis.cs.umass.edu/research/integ.html">integrating scheduling and
+decision-making</a>.<p>
+
+To date we have <!WA1><a
+href="ftp://ftp.cs.umass.edu/pub/lesser/garvey-dtt-smc.ps">examined
+design-to-time scheduling in the Distributed Vehicle Monitoring
+Testbed (DVMT)</a>, <!WA2><a
+href="ftp://ftp.cs.umass.edu/pub/lesser/garvey-aaai93.ps">looked at
+simplified DVMT-like tasks with limited subtask interactions</a>, <!WA3><a
+href="ftp://ftp.cs.umass.edu/pub/lesser/garvey-94-08.ps">explored the
+interaction between a design-to-time scheduler and a
+decision-maker</a>, <!WA4><a
+href="ftp://ftp.cs.umass.edu/pub/lesser/garvey-95-03.ps">briefly
+described extensions to design-to-time for uncertainty</a>, and
+experimented with an optimal design-to-time scheduling algorithm.
+
+<p>
+<ul>
+<li>Garvey, A., Decker, K., and Lesser, V. <!WA5><a
+href="ftp://ftp.cs.umass.edu/pub/lesser/garvey-94-08.ps">"A
+Negotiation-based Interface Between a Real-time Scheduler and a
+Decision-maker,"</a> UMass CS Technical Report 94-08.
+
+<li>Garvey, A., Humphrey, M., and Lesser, V. <!WA6><a href="ftp://ftp.cs.umass.edu/pub/lesser/garvey-aaai93.ps">"Task Interdependencies in
+Design-to-time Real-time Scheduling,"</a> Proceedings of the Eleventh National
+Conference on Artificial Intelligence, 1993. 
+
+<li>Garvey, A. and Lesser, V., <!WA7><a href="ftp://ftp.cs.umass.edu/pub/lesser/garvey-dtt-smc.ps">"Design-to-time Real-Time Scheduling,"</a> IEEE
+Transactions on Systems, Man and Cybernetics - Special Issue on Planning,
+Scheduling and Control, Vol. 23, No. 6, 1993. 
+
+<li>Garvey, A. and Lesser, V. <!WA8><a
+href="ftp://ftp.cs.umass.edu/pub/lesser/garvey-95-03.ps">"Design-to-time
+Scheduling with Uncertainty,"</a> UMass CS Technical Report 95-03.
+
+<li> Decker, K., Garvey, A., Humphrey, M. and Lesser, V.,<!WA9><a href="ftp://ftp.cs.umass.edu/pub/lesser/decker-91-50.ps">"Real-Time Control of
+Approximate Processing,"</a> International Journal of Pattern Recognition and
+Artificial Intelligence, Vol 7, No. 2, 1993.
+
+<li> Decker, K., Lesser, V.  and Whitehair, R., <!WA10><a href="ftp://ftp.cs.umass.edu/pub/lesser/decker-89-115.ps">"Extending a Blackboard
+Architecture for Approximate Processing,"</a> The Journal of Real-Time Systems, Vol
+2, No.  1/2, 1990.
+</ul>
+
+<hr>
+
+<p> <!WA11><a href="http://dis.cs.umass.edu/dis.html"><!WA12><img src="http://dis.cs.umass.edu/images/small-dis-logo.gif"> Back to the DIS Lab Home Page</a>
+<p>
+
+<address>
+If you have questions, problems or suggestions send mail to 
+www@dis.cs.umass.edu
+</address>
+<i>Last Update: 3/22/95</i>
+

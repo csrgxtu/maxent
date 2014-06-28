@@ -1,0 +1,82 @@
+Date: Tue, 14 Jan 1997 22:49:31 GMT
+Server: NCSA/1.4.1
+Content-type: text/html
+Last-modified: Fri, 09 Feb 1996 23:42:58 GMT
+Content-length: 2058
+
+<HTML>
+
+<HEAD>
+<TITLE>How To</TITLE>
+</HEAD>
+
+<body bgcolor="#ffffff" text="#000070">
+<HR SIZE=3>
+<CENTER>
+<H2>G22.3033.03 Object Oriented Programming</H2>
+<H2>Professor <!WA0><A HREF="http://cs.nyu.edu/cs/faculty/schonber/index.html">
+Edmond Schonberg</A></H2>
+<H3>Wed. 5-7,  WWH 109</H3>
+</CENTER>
+<P>
+<FONT SIZE+=2>
+<HR SIZE=3>
+<H2>How to use Java:</H2>
+<P>
+
+Java is installed on squeegee running Solaris 2.4 (or SunOS 5.4).
+The UNIX environment on Solaris machines is a little bit different from that on
+SunOS machines. Bin's .cshrc figures out whether the machine is 
+running SunOS or Solaris and runs the appropriate .cshrc (.cshrc.4 
+on SunOS machines and .cshrc.5 on Solaris machines) at login.
+<p>
+So, make the following changes to adapt to the Solaris environment
+and to enable yourself to use javac and appletviewer:
+
+<blockquote>
+0. cd ~ <br>
+1. cp .cshrc .cshrc.4 <br>
+2. mv .cshrc .cshrc.5 <br>
+3. cp /slinky.a/csphd/binli/.cshrc . <br>
+4. in .cshrc.5, add /opt/java/bin in the PATH and add this line: <p>
+<blockquote>
+	setenv CLASSPATH .:/opt/java/classes <br>
+</blockquote>
+</blockquote>
+
+<strong>Note:</strong> For people who have access to machines in the 
+<em>lang</em> domain (7th floor of 715/719 Broadway), Java is also installed on 
+the new Sparc 5's that are running Solaris (bird, satchmo, monk, ...).
+<p>
+<!WA1><A HREF="http://www.sun.com">Sun</A> has a nice 
+<!WA2><A HREF="http://java.sun.com/tutorial/index.html">tutorial</A>
+on writing and running simple Java applications and applets.
+But since that site is normally quite busy, we made a 
+<!WA3><A HREF="http://cs.nyu.edu/cs/dept_info/course_home_pages/spr96/G3033.03/tutorial.html">local copy</A> of it.
+
+<HR SIZE=3>
+<H2>How to use C++:</H2>
+<P>
+To use g++ on squeegee:
+
+<blockquote>
+add /opt/gnu/bin in the PATH in .cshrc.5.
+
+</blockquote>
+To use g++ on other machines:
+
+<blockquote>
+make sure /usr/local/bin is in your PATH in .cshrc.4.
+
+</blockquote>
+<HR SIZE=3>
+</FONT>
+<ADDRESS>
+Please contact 
+<!WA4><A HREF="mailto:binli@cs.nyu.edu,been@cs.nyu.edu">TAs</A>
+for additional help.<br>
+Back to <!WA5><a href="http://cs.nyu.edu/cs/dept_info/course_home_pages/spr96/G3033.03/index.html">course home page</a>.
+</ADDRESS>
+ 
+</BODY>
+</HTML>

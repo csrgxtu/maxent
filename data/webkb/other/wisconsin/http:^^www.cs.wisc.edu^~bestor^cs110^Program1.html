@@ -1,0 +1,99 @@
+Date: Mon, 11 Nov 1996 17:57:42 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 04 Apr 1996 23:51:50 GMT
+Content-length: 5336
+
+<HTML>
+
+<HEAD>
+<TITLE>CS 110 Section 1, Program #1</TITLE>
+</HEAD>
+
+<BODY>
+
+<H2><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~bestor/cs110/cs110.html#assignments" ><!WA1><!WA1><!WA1><IMG SRC="http://www.cs.wisc.edu/~bestor/icons/arrowleft.gif" WIDTH=15 HEIGHT=15></A> Program #1 - Wind-Chill Factor</H2>
+
+<HR>
+
+<DL>
+   <DT>Due Date:
+   <DD>Monday 4/8/96, 8:50 am<P>
+
+   <DT>Grade:
+   <DD>25% of your final grade.<P>
+
+   <DT>Text Covered:
+   <DD>Chp. 1, 2 and 3.<P>
+
+   <DT>Problem Description:
+   <DD>As you have already probably noticed, winters in Wisconsin can get <STRONG>very</STRONG> cold, especially when it is windy outside.  For this assignment you are to write a program to compute the <EM>wind-chill factor</EM> (WCF) from the current <EM>temperature</EM> and <EM>wind speed</EM>.  The WCF indicates how cold it will feel if you are outside on a windy day.  Your program will ask the user to enter the current temperature in degrees Fahrenheit followed by the wind speed in mph.  Both values should be read in as <TT>INTEGER</TT>s.  Your program will then compute and print the WCF in degrees Fahrenheit given by the formula<P>
+
+<CENTER>
+<!WA2><!WA2><!WA2><IMG SRC="http://www.cs.wisc.edu/~bestor/cs110/wcf.jpg">
+</CENTER>
+
+where <EM>Vel</EM> is the wind speed and <EM>Temp</EM> is the temperature.  After you print the WCF in degrees Fahrenheit convert this temperature to degrees Celsius and print it using the formula<P>
+
+<CENTER>
+<!WA3><!WA3><!WA3><IMG SRC="http://www.cs.wisc.edu/~bestor/cs110/celsius.jpg">
+</CENTER>
+
+The values you compute for the WCF in deg. F and deg. C will be <TT>REAL</TT> numbers, however print these values as <TT>INTEGER</TT>'s <STRONG>rounded</STRONG> to the nearest whole degree.  Finally, print an English description of the current weather.  In particular, if the wind speed is less than 10 mph then it is "calm", less than 20 mph then it is "windy", or greater than or equal to 20 mph then it is "very windy".  Similarly, if the WCF is less than -20 deg. F then it is "bitterly cold", less than 10 deg. F then it is "cold", or greater than or equal to 10 deg. F then it is "cool".  This description must be printed on a single line.<P>
+
+   <DT>Example:
+   <DD>If the current temperature is 11 deg. F and the wind speed is 17 mph then your program should display (hint: use this to check your results)<P>
+<LISTING>
+	The wind-chill factor is          -21 deg. F
+	The wind-chill factor is          -30 deg. C
+	The weather is windy      and bitterly cold
+</LISTING>
+   Do worry if you get extra spaces in your output as shown above.  Later we will see how to get rid of these spaces using <EM>formatted</EM> output.<P>
+
+   <DT>What to Hand In:
+   <DD>Hand in your assignment online by copying your FORTRAN <EM>source code</EM> file "program1.for" and the <EM>compiled executable</EM> file "program1.exe" to your handin directory.<P>
+
+   Your files are timestamped with the current time when you copy them to your handin directory.  This will be used to check they were handed in on time or whether late day penalties apply. <STRONG>Important</STRONG> - Make sure you copy the correct versions of your program files because these are what will be graded.<P>
+
+   You also have to hand in a printed copy of your FORTRAN <EM>source code</EM> file and a printed copy of the <EM>output</EM> when your program is run with the five sets of test data given in the gradesheet.<P>
+
+   <DT>Gradesheet:
+   <DD>The following gradesheet will be used to grade this assignment.  Please take a close look at it to make sure you do everything that is required.  Note that you will be graded on correct output for the input values given below, so before handing it in you <STRONG>must</STRONG> run your program with these values and manually check that your program gives the correct results in every case (e.g. use a calculator).<P>
+   <PRE>
+Correct Output                                                  [20]
+   temperature = 5 deg. F, wind speed = 7 mph            [4]
+   temperature = 32 deg. F, wind speed = 10 mph          [4]
+   temperature = -16 deg. F, wind speed = 20 mph         [4]
+   temperature = -6 deg. F, wind speed = 12 mph          [4]
+   temperature = -16 deg. F, wind speed = 5 mph          [4]
+
+User Interface                                                  [8]
+   Useful prompts for the temperature and wind speed     [4]
+   Meaningful display of the WCF and weather description [4]
+
+Implementation                                                  [14]
+   Correct implementation of formulas                    [4]
+   Correct use of IF/THEN/ELSE/END IF statement          [4]
+   Correct use of other FORTRAN statements               [2] 
+   Meaningful variable names                             [2]
+   Indenting and neatness                                [2]
+
+Documentation                                                   [8]
+   Program description                                   [4]
+   Variable definitions and section comments             [4]
+____________________________________________________________________
+
+Total (25%)                                                     [50]
+   </PRE>
+   <P>
+</DL>
+
+</BODY>
+
+<HR>
+
+<ADDRESS>
+<H5>Copyright &copy 1996 <!WA4><!WA4><!WA4><A HREF="http://www.cs.wisc.edu/~bestor/bestor.html">Gareth S. Bestor</A> (<!WA5><!WA5><!WA5><A HREF="mailto:bestor@cs.wisc.edu">bestor@cs.wisc.edu</A>).  Last modified April 4, 1996.</H5>
+</ADDRESS>
+
+</HTML>

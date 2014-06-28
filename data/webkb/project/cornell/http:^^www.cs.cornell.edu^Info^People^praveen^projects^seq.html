@@ -1,0 +1,335 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 24-Nov-96 22:06:18 GMT
+Content-Type: text/html
+Content-Length: 12061
+Last-Modified: Monday, 12-Aug-96 19:50:24 GMT
+
+<HTML>
+<HEAD>
+<TITLE>SEQ Home Page</TITLE>
+
+<H1>The SEQ Project: Querying Sequence Data</H1>
+
+<H5>(Document under construction)</H5>
+<HR>
+</HEADER>
+<BODY background="background.gif" TEXT="#000001">
+
+<!-- <img src="control.gif" align=middle> -->
+<H3>
+<em>
+<img src="../pics/redball.gif">Time to put Order in the Database!<img src="../pics/redball.gif">
+<p>
+<img src="../pics/blueball.gif">Order Time put in the Database!<img src="../pics/blueball.gif">
+<p>
+<img src="../pics/greenball.gif">Time to put the Database in Order!<img src="../pics/greenball.gif">
+</em>
+</H3>
+<HR>
+
+<H2>Document Contents:</H2>
+<H4>
+<UL>
+<LI><A href="#Objective">Project Objectives</A>
+<LI><A href="#Status">Current Status</A>
+<LI><A href="#Example">Motivating Example</A>
+<LI><A href="#Data Model">SEQ Data Model</A>
+<LI><A href="#Language"><em> Sequin </em> Query Language</A>
+<LI><A href="#Optimization">Optimization Techniques</A>
+<LI><A href="#System">SEQ System Development</A>
+<LI><A href="#Publications">Publications</A>
+<LI><A href="#Related">Related Work</A>
+<LI><A href="#Contacts">Contact Information</A>
+</H4>
+</UL>
+
+<hr>
+<A name="Objective"><H2>Project Objectives</H2></A>
+<BLOCKQUOTE>
+<H4> A number of important database applications require the processing
+of large amounts of ordered <em> sequence </em> data. The domains of these
+applications include financial management, historical analysis,
+economic and social sciences, metereology, medical sciences and
+biological sciences. Existing relational databases are inadequate in 
+this regard; data collections are treated as sets, not sequences. 
+Consequently, expressing sequence queries is tedious, and evaluating 
+them is inefficient.</H4>
+</BLOCKQUOTE>
+
+<H4>
+<BLOCKQUOTE>
+Databases should 
+<UL>
+<LI>model the data using the abstraction of <em> sequences </em>,
+<LI>allow data sequences to be queried in a <em> declarative manner </em>,
+utilizing the ordered semantics
+<LI>take advantage of the unique opportunities available for query 
+optimization and evaluation
+<LI>integrate sequence data with relational data, so that users can
+store and query a combination of relation and sequences
+</UL>
+These requirements serve as the goals of the SEQ project.
+Various kinds of sequences need to be supported, temporal sequences being the
+most important kind. Queries should be expressible using notions like
+"next" and "previous" which are natural when considering sequences.
+These queries should be optimized so that they can be evaluated efficiently.
+These issues need to be studied in theory, and then a database system needs 
+to be built that demonstrates the feasibility of the theoretical ideas.
+
+</BLOCKQUOTE>
+</H4>
+
+<hr>
+<a name="Status"><H2>Project Status</H2></A>
+<H4>
+<BLOCKQUOTE>
+The current status of the project is:
+<ul>
+<li>We have defined the <em> SEQ </em> data model that can support 
+most important kinds of sequence data. We have also defined algebraic
+query operators that can be composed to form sequence queries (analogous
+to the composition of relational algebra operators to form relation queries).
+<li>We have described how sequence queries can be efficiently processed,
+and have identified various optimization techniques.
+<li>We use a sequence query language <em> Sequin </em> that can
+declaratively express queries over sequences. A <em> Sequin </em>
+query can include embedded expressions in a relational query language like
+SQL, or vice-versa.
+<li>We are building a disk-based database system to demonstrate the 
+feasibility of our proposals. The system implements the <em> SEQ </em> 
+model using a nested complex object architecture. It is built over the 
+SHORE storage manager and can process several megabytes of data.
+Relations and sequences are supported in an integrated and extensible 
+manner.
+</ul>
+</BLOCKQUOTE>
+</H4>
+
+<hr>
+<a name="Example"><H2>Motivating Example of a Sequence Query</H2></A>
+<p>
+<H4>
+<BLOCKQUOTE>
+A weather monitoring system records information about various meteorological 
+phenomena. There is a sequentiality in the occurrence of these phenomena; the 
+various meteorological events are sequenced by the time at which they are 
+recorded. A scientist asks the query: 
+<p>
+<img src="../pics/redball.gif"> <em> "For which volcano eruptions did
+the most recent earthquake have a strength greater than 7.0 on the Richter 
+scale?"</em>. 
+<p>
+If this query is to be expressed in a relational query language like SQL, 
+complex features like groupby clauses, correlated subqueries and aggregate
+functions are required. Further, a conventional relational query optimizer 
+would not find an efficient query execution plan, even given the knowledge 
+that the Earthquakes and Volcano relations are sorted by time.
+<p>
+However a very efficient plan exists, if one models the data as sequences
+ordered by time. The two sequences can be scanned in lock step 
+(similar to a sort merge join). The most recent earthquake record scanned 
+can be stored in a temporary buffer. Whenever a volcano record is 
+processed, the value of the most recent earthquake record stored in the 
+buffer is checked to see if its strength was greater than 7.0, possibly 
+generating an answer. This query can therefore be processed with a single 
+scan of the two sequences, and using very little memory. The key to such 
+optimization is the sequentiality of the data and the query. 
+</BLOCKQUOTE>
+</H4>
+
+<hr>
+<A NAME="Data Model"><H2>Data Model</H2></A>
+<H4>
+<BLOCKQUOTE>
+The details of the <em> SEQ </em> data model are
+described in a published paper (click <a href="../papers/seq.de95.ps">here </a>
+for postscript version). Here we present the gist of it.
+
+The basic model of a sequence is a set of records mapped to an ordered
+domain of ``positions''.
+This many-to-many relationship between records and
+positions can be viewed in two dual but distinct ways: as a set of records
+mapped to each position, or as a set of positions mapped to each record.
+These two views are called ``Positional'' and ``Record-Oriented'' respectively,
+and each gives rise to a set of query operators based on that view.
+Queries on sequences could require operators of either or both flavors. 
+The Record-Oriented operators are similar to relational
+operators and include various kinds of joins (overlap, containment, etc) and
+aggregates. Such operators have been extensively explored by researchers
+in the temporal database community.
+<p>
+<img src="sequence.gif" ALT="(Picture of Sequence Mapping)">
+<p>
+The Positional operators include Next, Previous, Offset, Moving
+Aggregates, etc.  Further operators allow ``zooming'' operations on 
+sequences by means of collapsing and expanding the ordering domains 
+associated with the sequence. For instance, a daily sequence could be 
+``zoomed out'' (i.e.collapsed) to a weekly sequence, or ``zoomed in'' 
+(i.e. expanded) to an hourly sequence. 
+
+The last part of the model deals with operations on groups (i.e. sets) of 
+sequences. The advantage is that this makes it easy to model queries 
+involving sequence collections (which is the case in many real-world
+situations). All the sequence operators are extended to work with groups 
+of similar sequences, instead of with single sequences. This extension
+of the SEQ model indicates that a practical implementation of
+SEQ would probably involve a nested complex object system.
+</BLOCKQUOTE>
+</H4>
+
+<hr>
+<A NAME="Language"><H2><em> Sequin </em> Query Language</H2></A>
+<H4>
+<BLOCKQUOTE>
+We have devised a query language called <em> Sequin </em> using
+which declarative sequence queries can be specified. The language
+is similar in flavor to SQL, except that the inputs to queries
+as well as the results of queries are sequences. Click 
+<a href="sequin.doc"> here </a> for a description of the <em> Sequin </em>
+language with examples.
+</BLOCKQUOTE>
+</H4>
+
+<hr>
+<A NAME="Optimization"><H2>Optimization Techniques</H2></A>
+<H4>
+<BLOCKQUOTE>
+We have proposed new optimization techniques for sequence queries 
+involving Positional operators. There are existing techniques that
+have been proposed for queries with Record-Oriented operators.
+Our optimizations use query transformations, meta--data, and caching of 
+intermediate results to efficiently evaluate a query. An optimal query 
+evaluation plan can be generated using an algorithm that relies on cost 
+estimates. One of the important observations is that accessing sequence data 
+in a single stream is probably very efficient, and evaluation strategies 
+should take this into account.
+<p>
+The details of the optimization techniques are
+described in a published paper (click <a href="../papers/seq.sigmod94.ps">here </a>
+for postscript version).
+</BLOCKQUOTE>
+</H4>
+
+<hr>
+<A NAME="System"><H2>System Development</H2></A>
+<H4>
+<BLOCKQUOTE>
+The SEQ database system has a client-server
+architecture, supporting multiple clients via
+a multi-threaded server. The server is built on
+top of the <a href="http://www.cs.wisc.edu/shore/">SHORE </a> 
+storage manager. Both <em> Sequin </em>
+and a subset of SQL are supported as query languages
+which can be embedded inside each other. The data model
+is a nested complex object model that allows arbitrary
+levels of nesting of relations inside sequences and vice
+versa. The system is also extensible, providing support
+for new data types, new ordering domains, user-defined functions, 
+new storage implementations and new query languages. For more details
+on the SEQ system, click <a href="seqsys.html">here</a>.
+</BLOCKQUOTE>
+</H4>
+
+<hr>
+<A NAME="Publications"><H2>Publications</H2></A>
+<BLOCKQUOTE>
+<H4>
+<a href="../papers/seq.sigmod94.ps">
+<img src="../pics/redball.gif">
+Sequence Query Processing </a>
+
+Praveen Seshadri, Miron Livny and Raghu Ramakrishnan.
+
+Proceedings of the <em> ACM SIGMOD Conference on Data Management</em>, May 1994.
+<p>
+
+<p>
+<a href="../papers/seq.de95.ps">
+<img src="../pics/redball.gif">
+SEQ: A Framework for Sequence Data</a>
+
+Praveen Seshadri, Miron Livny and Raghu Ramakrishnan.
+
+Proceedings of the <em> IEEE Conference on Data Engineering</em>, March 1995.
+<p>
+
+<p>
+<a href="../papers/seq.sigmod96.ps">
+<img src="../pics/redball.gif">
+The Design and Implementation of a Sequence Database System</a>
+
+Praveen Seshadri, Miron Livny and Raghu Ramakrishnan.
+
+Submitted to VLDB 96.
+<p>
+
+<p>
+<a href="http://www.cs.wisc.edu/~mcheng/devise/paper2.ps">
+<img src="../pics/redball.gif">
+What's Next? Sequence Queries</a>
+
+Raghu Ramakrishnan, Michael Cheng, Miron Livny, and Praveen Seshadri.
+
+In Proceedings of the <em> International Conference on the Management of Data (COMAD)</em>, 
+December, 1994.
+<p>
+</BLOCKQUOTE>
+</H4>
+
+<hr>
+<A NAME="Related"><H2>Related Work</H2></A>
+<H4>
+<BLOCKQUOTE>
+The
+<A HREF="http://www.cs.wisc.edu/~mcheng/devise/devise.html"><B>DEVise</B></A> 
+project is complementary to SEQ. It provides a visualization
+environment that can be used to explore sequence data. DEVise can act as
+a front-end through which queries can be posed against a SEQ database server,
+and the answers can be examined graphically.
+<p>
+Also see:
+<UL>
+  <LI> <A HREF="http://www.cs.wisc.edu/shore/">SHORE Project: Storage Manager used for SEQ</A>
+  <LI> <A HREF="people.html">People working on SEQ and related projects</A>
+  <LI> <A HREF="http://www.cs.wisc.edu/~kristint/dbmshome.html">UW-Madison, Database Research Group</A>
+  <LI> <A HREF="http://www.cs.wisc.edu/">UW-Madison, CS Department Server</A>
+</UL>
+
+</BLOCKQUOTE>
+</H4>
+
+<hr>
+<A NAME="Contacts"><H2>Contact Information</H2></A>
+<H4>
+<BLOCKQUOTE>
+
+For more information, contact 
+<p>
+<A HREF="http://www.cs.wisc.edu/~praveen/praveen.html">Praveen Seshadri</A>,
+praveen@cs.wisc.edu
+<p>
+<A HREF="http://www.cs.wisc.edu/~raghu/raghu.html">Raghu Ramakrishnan</A>,
+raghu@cs.wisc.edu
+<p>
+<A HREF="http://www.cs.wisc.edu/~miron/miron.html">Miron Livny</A>,
+miron@cs.wisc.edu
+<p>
+<ADDRESS>
+Computer Sciences Department, <br>
+University of Wisconsin, <br>
+1210, W.Dayton Street, <br>
+Madison, WI 53706.
+</ADDRESS>
+</BLOCKQUOTE>
+</H4>
+
+<HR>
+Last modified: Fri Sep 15 1995 by Praveen Seshadri
+<ADDRESS>
+Praveen Seshadri / praveen@cs.wisc.edu
+</ADDRESS>
+
+
+</BODY>
+</HTML>

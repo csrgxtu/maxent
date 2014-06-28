@@ -1,0 +1,157 @@
+Date: Mon, 11 Nov 1996 17:01:17 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Tue, 01 Oct 1996 20:08:43 GMT
+Content-length: 4065
+
+<html>
+<head>
+<title> Printing Output from Outside the Lab </title>
+</head>
+<body>
+
+<h2> Printing Output from Outside the Lab </h2>
+
+I've had several people ask me about printing the output for their program
+on a compiler that doesn't support the handy "Print" option in the
+Output Window.  If you're trying to do the homeworks from someplace other
+than the lab, and you can't get the output to go the printer, here's my
+advice:
+
+<h3> Printing from a Unix System </h3>
+
+If you're on a Unix system (probably using g++ or CC), use the "script"
+command if you have it.  It copies all input and output of the program
+to a file called "typescript" ... then you can simply print the file.
+Here is an example:
+
+<p>
+
+<pre>
+/usr/home/jdoe# g++ -o prog1 prog1.cpp
+/usr/home/jdoe# script
+Script started, file is typescript
+/usr/home/jdoe# prog1
+Welcome to John Doe's program ...
+ ... etc ...
+/usr/home/jdoe# exit
+Script done, file is typescript
+/usr/home/jdoe# lpr -Pmylaser typescript
+</pre>
+
+<p>
+
+Warning: If you use the script command, don't forget to type exit when you
+are done!  And don't "nest" script commands.
+
+<h3> Printing from a DOS (non-Windows) System </h3>
+
+If you're on a DOS system (not running Windows), you can redirect the output
+of your program to a file.  For example, if you've compiled your program
+into an executable called PROG1.EXE, you can redirect the output to
+a file "output.txt" using the following DOS command:
+
+<pre>
+   prog1 >output.txt
+</pre>
+
+Also, you can "append" the output of your program to a previous run with
+two greater-than signs:
+
+<pre>
+   prog1 >>output.txt
+</pre>
+
+<p>
+
+This has two disadvantages, however.  First, since the output is going to
+a file, you can't see it on the screen!  So you have to "know" what the
+expected input is beforehand.  Second, the input you type is not redirected
+to the file.  Thus you need to modify your program to "echo" the input
+so that it appears in the file too.  For example:
+
+<p>
+
+<pre>
+#include &lt;iostream.h&gt;
+
+int main ()
+{
+   int num_apples;
+   cout &lt;&lt; "How many apples do you want?";
+   cin &gt;&gt; num_apples;
+   cout &lt;&lt; num_apples &lt;&lt; endl; // ECHO INPUT FOR REDIRECTION
+   return 0;
+}
+</pre>
+
+<h3> Printing on Any System </h3>
+
+If you're printing from any other system that doesn't have a "Print Output"
+command or doesn't support redirection, you can use the following techinque.
+This should work on any system: Windows, Mac, Unix, etc.
+
+<p>
+
+The idea is to modify the program so that all the output goes to a file
+instead of a screen.  Thus this method suffers the same problems as the
+DOS method above: output is not displayed on the screen (i.e. you can't
+see the prompts) and input is not redirected to the file (thus you have
+to echo the input in your program).  For example, consider the following
+program:
+
+<p>
+
+<pre>
+#include &lt;iostream.h&gt;
+
+int main ()
+{
+   int num_apples;
+   cout &lt;&lt; "How many apples do you want?";
+   cin &gt;&gt; num_apples;
+   return 0;
+}
+</pre>
+
+<p>
+
+To make this program's input and output go to a file named "output.txt",
+we could modify it like this (note the extra <tt>#include</tt> directive):
+
+<pre>
+#include &lt;iostream.h&gt;
+#include &lt;fstream.h&gt;
+
+int main ()
+{
+   ofstream fout = "output.txt";  // Open a file for writing
+   cout = fout;                   // Redirect cout to the file
+
+   int num_apples;
+   cout &lt;&lt; "How many apples do you want?";
+   cin &gt;&gt; num_apples;
+   cout &lt;&lt; num_apples &lt;&lt; endl;    // Echo input for redirection
+   return 0;
+}
+</pre>
+
+<p>
+
+Once you have the program's output saved in a file, you can use almost
+any means to print that file out.  Under Windows you can use the Notepad,
+for example.
+
+<h3> If All Else Fails </h3>
+
+If, for some reason, all of the above methods fail for you (the last one
+_should_ work), you will have to print the output from the Vectra lab.
+Put the source code on a floppy disk, go to the lab, compile the program,
+and print the output.
+
+<hr>
+
+<i><a href="mailto:mbirk@cs.wisc.edu">mbirk@cs.wisc.edu</a></i>
+
+</body>
+</html>

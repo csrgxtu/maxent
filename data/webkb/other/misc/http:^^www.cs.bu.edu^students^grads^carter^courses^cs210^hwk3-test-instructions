@@ -1,0 +1,36 @@
+Date: Tue, 14 Jan 1997 23:02:22 GMT
+Server: NCSA/1.5
+Content-type: text/plain
+Last-modified: Tue, 16 Apr 1996 16:16:06 GMT
+Content-length: 1178
+
+Here's what to hand in for homework 3.
+I'll assume your assembler is called "assem" and your linker is called
+"linker".   You will need to run these examples on CSA.
+
+0) Your name and SSN.
+
+1) A listing of the source code for your Assembler, and the source code
+for your Linker.
+
+2) A script file that shows you executing the following commands, with
+their results:
+----------------------------------------
+assem < /home/grad/carter/teaching/public/case1a.s > case1a.ao
+assem < /home/grad/carter/teaching/public/case1b.s > case1b.ao
+linker case1a.ao case1b.ao > case1.ao
+/home/grad/carter/teaching/public/runner case1.ao 23
+od -X case1.ao
+
+assem < /home/grad/carter/teaching/public/case2a.s > case2a.ao
+assem < /home/grad/carter/teaching/public/case2b.s > case2b.ao
+assem < /home/grad/carter/teaching/public/case2c.s > case2c.ao
+linker case2a.ao case2b.ao case2c.ao > case2.ao
+/home/grad/carter/teaching/public/runner case2.ao 17
+od -X case2.ao
+
+assem < /home/grad/carter/teaching/public/case3a.s > case3a.ao
+assem < /home/grad/carter/teaching/public/case3b.s > case3b.ao
+linker case3a.ao case3b.ao > case3.ao
+/home/grad/carter/teaching/public/runner case3.ao 13
+od -X case3.ao

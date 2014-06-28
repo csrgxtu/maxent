@@ -1,0 +1,94 @@
+Date: Mon, 25 Nov 1996 22:41:56 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 29 Sep 1995 15:00:09 GMT
+Content-length: 3612
+
+<TITLE>Art Bernstein</TITLE>
+
+<DL>
+<!WA0><img align=left src="http://www.cs.sunysb.edu/csdept/Faculty/art/art.jpg"><hr>
+<h1>Art Bernstein</h1>
+
+<h2>Professor, <!WA1><a href="http://www.cs.sunysb.edu">Department of
+	Computer Science</a></h2>
+<h2>Ph.D.  1962,  Columbia University</h2>
+<hr>
+
+<h3> 	My interest centers on concurrent and distributed
+	algorithms, database systems, and transaction processing.
+</h3>
+	I am a member of the <!WA2><a href =
+	"http://www.cs.sunysb.edu/~gerstl/group/hptp.html">High Performance Transaction
+	Processing Group
+</a> </DL>
+
+
+<P><!WA3><IMG SRC="http://www.cs.sunysb.edu/csdept/Faculty/art/line.crumpled.gif" ALT="-------"><P>
+
+<P>Traditional algorithms for controlling concurrent access to shared data,
+by requiring serializable execution, may unduly restrict concurrency, and hence
+performance, in situations where data is accessed heavily or distributed or
+where transactions run for long periods of time.  We have explored a variety
+of techniques for dealing with these problems, including the use of optimistic
+algorithms, multi-version data, and replication.
+
+<P>Recently we developed algorithms for improving concurrency by
+allowing limited violations of database integrity constraints.
+Synchronization can be relaxed if integrity constraints are not
+strictly enforced.  By controlling synchronization, perhaps in a
+state-dependent way, the extent of the violation can be controlled.
+Violations can be corrected through appropriate compensation.
+
+<P>We are currently investigating the extent to which the semantics of 
+transactions (expressed as proofs in a formal system) can be exploited to
+improve performance.  We use semantics in several ways: to define a new
+correctness criterion for concurrent (non-serializable)
+transaction execution, to decompose
+transactions into smaller units so that locks can be released early, and
+to design a new concurrency control that guarantees correct execution
+when these units are interleaved.  We are taking two approaches to transaction
+decomposition.  In the first we decompose a transaction into a sequence of
+steps.  Steps are atomic and isolated and release all conventional locks
+when they complete.  A new concurrency control and lock mode is required to 
+implement this approach.  The second approach guarantees correctness using
+only conventional locks, but in a non-two-phase fashion.  The algorithms 
+are being implemented and a test bed constructed to evaluate the ideas.
+
+<P>We are also interested in the use of transaction semantics to better 
+understand problems associated with federated databases and compensation.
+
+<h2> Selected Recent Publications</h2>
+<UL> <LI> A Non-blocking Quorum Consensus Protocol for Replicated
+Data, with D. Agrawal, <I>IEEE Trans. on Parallel and Distributed
+      Computing</I>, vol. 2, Apr. 1991
+
+<LI> A Framework for Parallel Composition of Protocols, with
+G. Singh,<I> PARLE '92</I>, Paris, June 1992.  
+
+<LI> High Throughput Escrow Algorithms for Replicated Databases, with
+N. Krishnakumar,<I> 18th Int'l. Conf. on Very Large Databases,</I>
+       Vancouver, Canada, Aug. 1992
+
+<LI>Bounded Ignorance: A Technique for Increasing Concurrency in a Replicated
+System, with N. Krishnakumar, <I>ACM Trans. on Database Systems,</I> vol 19, Dec. 1994.
+
+<LI> High Performance Transaction Systems Using Transaction Semantics,
+with <!WA4><a href="http://www.cs.sunysb.edu/~pml">P.M. Lewis</a>, <I>
+Distributed and Parallel Databases, </I> to appear
+</ul>
+<br>
+<br>
+<!WA5><a href="http://www.cs.sunysb.edu">Return to the department home page</a>
+<hr>
+If you have problems with this page, please send E-mail to:
+<address><!WA6><a href="mailto:gerstl@cs.sunysb.edu">gerstl@cs.sunysb.edu</a></address>
+</BODY>
+</html>
+
+
+
+
+
+
+

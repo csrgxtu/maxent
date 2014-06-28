@@ -1,0 +1,363 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 19:02:40 GMT
+Content-Type: text/html
+Content-Length: 14148
+Last-Modified: Tuesday, 07-May-96 20:54:22 GMT
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!-- cs514 Final Annotated Bibilography 4/26/96 -->
+<!-- Alfred Hong -->
+<!------------------------------------------------------------>
+
+<head>
+
+<title>CORBA: The Essentials</title>
+
+</head>
+
+<body>
+
+<!------------------------------------------------------------>
+
+<p align=center>
+
+<h2 align=center>
+CORBA:  The Essentials<br>
+An Annotated Bibliography<br>
+</h2>
+
+<h4 align=center>
+<small>COM S 514 Final - Spring 1996 </small><br><p>
+Alfred Hong<br>
+April 26, 1996<br></h4>
+
+<hr>
+
+<!------------------------------------------------------------>
+
+<h3><a name="Contents">Table of Contents </a><br></h3>
+This bibliography intends to provide an essentials reference guide to 
+understanding CORBA from various perspectives.  Bibliography entries are 
+ranked in the order in the following categories:<p>
+
+<ul>
+<li><a href ="#standards">The CORBA Standards Documentation;</a>
+<li><a href ="#tutorials">Tutorials;</a>
+<li><a href ="#problems">Shortfalls and Problems;</a>
+<li><a href ="#comparison">Different Perspectives, Comparison to Options;</a>
+<li><a href ="#examples">Real-world CORBA Applications.</a>
+</ul>
+
+<hr>
+
+<!------------------------------------------------------------>
+
+<h3><a name="standards">The CORBA Standards Documentation</a></h3><p>
+
+<dl>
+<dt>
+Soley, Richard and Stone, Christopher, eds.  <i>The Object Management 
+	Architecture Guide</i>.  Rev. 3.0.  John Wiley & Sons and Object 
+	Management Group, Framingham, MA, 1995.<p>
+<dd>
+	This is the definitive, overview guide to the terminology, objectives,
+ 	and the specification of CORBA.  It introduces the Object Management 
+	Group (OMG) Core Object Model, the OMG Reference Model, the 
+	standardization procedures, the proposal procedures, and specification 
+	guidelines of OMG.  The OMG Reference Model consists of the four 
+	layers:  the Object Request Broker (ORB), CORBAservices, 
+	CORBAfacilities, and Application Objects of which the first three are 
+	described in detail in their own specification texts.<p>
+
+<dt>
+Object Management Group.  <i>The Common Object Request Broker:  Architecture 
+	and Specification</i>.  Rev. 2.0.  Object Management Group, 
+	Framingham, MA, 1995.<p>
+<dd>
+	The Object Request Broker (ORB) is the foundation of CORBA.  ORBs are
+	essentially agents that transparently service data requests/responses 
+	from CORBA objects and clients through object adaptors (OA) via an 
+	object-oriented version of an RPC mechanism.  The interfacing between 
+	ORBs and CORBA objects via the Interface Definition Language (IDL) and 
+	the Dynamic Invocation Interface (DII) are also specified.  Revision 
+	2.0 also defines interoperability and portability guidelines for ORBs 
+	from different vendors.<p>
+
+<dt>
+Object Management Group.  <i>CORBAservices:  Common Object Services 
+	Specifications</i>.  Object Management Group, Framingham, MA, 1995.<p>
+<dd>
+	CORBAservices (better known as COSS for Common Object Services 
+	Specification in literature) is the layer directly above ORBs that 
+	provide a recognized set of essential services available to CORBA 
+	objects.  This is a "growing" document in that not all envisioned 
+	services have been defined yet.  Some of the specified ones include 
+	naming, events, transactions, and persistence.<p>
+
+<dt>
+Object Management Group.  <i>CORBAfacilities:  Common Facilities</i>. Object 
+	Management Group, Framingham, MA, 1995.<p>
+<dd>
+	CORBAfacilities is the layer above CORBAservices that defines higher-
+	level services and functions for the fourth layer -- end-user 
+	applications -- of the OMG Reference Model.  It includes both 
+	horizontal and vertical CORBAfacilities which are mostly introduced 
+	but have yet to be specified as of this writing.  This is a "growing" 
+	document as well.<p>
+
+
+</dl>
+
+<a href="#Contents"><i>-->Table of Contents </i></a><p>
+
+<hr>
+
+<!------------------------------------------------------------>
+
+<h3><a name="tutorials">Tutorials</a></h3><p>
+
+<dl>
+<dt>
+Minton, Gabriel.  "Programming with CORBA."  <i>Unix Review</i> 14, 4 (April 
+	1996), 29-39.<p>
+<dd>
+	This is an up-to-date and easy-to-read tutorial on CORBA.  It provides 
+	background history on OMG, summarizes the information in the defining 
+	specifications on CORBA (first four entries of this bibliography), and 
+	presents an Interface Definition Language (IDL) and C++ coding example 
+	using SunSoft's NEO CORBA environment. <p>
+
+<dt>
+Vinoski, Steve.  "Distributed Object Computing with CORBA."  <i>C++ Report</i>
+	5, 6 (July/Aug. 1993), 32-38.<p>
+<dd>
+	This technical overview of the CORBA foundations explains how CORBA 
+	makes sense from the perspective of distributed object-oriented 
+	application development with C++.  It describes the CORBA components 
+	-- the Object Request Broker (ORB) Core, the Interface Definition 
+	Language (IDL), the Dynamic Inovation Interface (DII), the Interface 
+	Repository (IR), and the Object Adapter (OA) -- individually as well 
+	as how they work together.<p>
+
+<dt>
+Betz, Mark.  "Building a CORBA Object Server."  <i>Software Development</i> 3, 
+	10 (Oct. 1995), 53-61.<p>
+<dd>
+	It is straightforward for proficient C++ programmers to develop a 
+	CORBA object server using C++ and Orbix -- IONA Technologies' CORBA 
+	implementation.  The process is demonstrated in a detailed step-by-step
+	manner, from IDL interface specification to compilation of the example.
+	<p>
+
+<dt>
+Mowbray, Thomas J. and Zahavi, R.  <i>The Essential CORBA: Systems Integration 
+	Using Distributed Objects</i>.  John Wiley & Sons and Object 
+	Management Group, Framingham, MA, 1995.<p>
+<dd>
+	This book is geared towards systems integrators who are building 
+	systems based on CORBA.  The book examines overall integration issues 
+	and techniques; includes a good tutorial on the CORBA architecture; 
+	discusses security issues and implementations; and introduces example 
+	ORBs available on the market so that successful CORBA systems can be 
+	implemented.<p>
+
+
+</dl>
+
+<a href="#Contents"><i>-->Table of Contents </i></a><p>
+
+<hr>
+
+<!------------------------------------------------------------>
+
+<h3><a name="problems">Shortfalls and Problems</a></h3><p>
+
+<dl>
+<dt>
+Maffeis, Silvano.  "Adding Group Communication and Fault-Tolerance to 
+	CORBA."  <i>In Proceedings of the 1995 USENIX Conference on 
+	Object-Oriented Technologies.  (Monterey, CA, June 1995)</i>.  USENIX 
+	Asso., Berkeley, CA, pp. 203, 135-146.<p>
+<dd>
+	Although CORBA is meant for distributed systems, one shortfall is its 
+	lack of dealing with fault-tolerance, which could be implemented in 
+	software as groups of replicated objects that utilize reliable 
+	multicast communication.  Recognizing this limitation, the author 
+	presents and discusses Electra -- "the best of both worlds," a generic 
+	object request broker (ORB) that adds the reliable group multicast 
+	capabilities of systems such as Horus and Isis to a CORBA 
+	implementation.<p>
+
+<dt>
+Schmidt, D. C., Harrison, T., and Al-Shaer, E.  "Object-Oriented Components 
+	for High-speed Network Programming."  In <i>Proceedings of the USENIX 
+	Conference on Object-Oriented Technologies.  (Monterey, CA, June 
+	1995)</i>.  USENIX Asso., Berkeley, CA, pp. 203, 21-38.<p>
+<dd>
+	This paper presents another problem with CORBA.  It evaluates 
+	performance problems of "communication middleware" on high-speed 
+	networks; CORBA-based mechanisms (like Orbix and ORBeline), which 
+	are considerably slower, are compared against C/C++-based sockets.  
+	The authors also devised a middleground Adaptive Communications 
+	Environment (ACE) object-oriented programming toolkit that improves 
+	the performance problems they have encountered.<p>
+
+<dt>
+Orfali, R., Harkey, D., and Edwards, J.  "Client/Server Components: CORBA 
+	Meets OpenDoc."  <i>Object Magazine</i> 5, 4 (May 1995), 55-59.<p>
+<dd>
+	CORBAfacilities specifies higher-level services and functions for the 
+	Application Objects layer of the OMG Reference Model; however, most of 
+	these have been introduced but have yet to be specified.  OpenDoc, 
+	which essentially provides what CORBAfacilities requires, is mature 
+	and is anticipated to be merged into or adopted by the CORBAfacilities 
+	specification (this has occurred as of the writing of this bibliography
+ 	and has been named Distributed Document Component Facility).  OpenDoc 
+	enables the creation of multiple "live data," or live object, compound 
+	documents.  <p>
+
+<dt>
+Tisaranni, John V.  "IONA's Orbix:  Object Request Broker."  <i>Object 
+	Magazine</i> 5, 5 (July/Aug. 1995), 82+.<p>
+<dd>
+	IONA Technologies' Orbix is one of the most popular, commercially 
+	available, full implementations of CORBA.  The author reviews versions 
+	of Orbix that adheres to the CORBA 1.2 spec but focuses on Orbix
+ 	extensions that are not defined in CORBA, such as object binding, 
+	smart proxies, IDL-C++ binding, and more; some of these have become 
+	part of the CORBA 2.0 spec.  Work with other companies to further 
+	address shortfalls of CORBA are also briefly mentioned.  For instance,
+	Orbix+Isis provides fault-tolerance functionality.<p>
+
+</dl>
+
+<a href="#Contents"><i>-->Table of Contents </i></a><p>
+
+<hr>
+
+<!------------------------------------------------------------>
+
+<h3><a name="comparison">Different Perspectives, Comparison to Options
+</a></h3><p>
+
+<dl>
+<dt>
+Bernstein, Philip A.  "Middleware:  A Model for Distributed System 
+	Services."  <i>Communications of the ACM</i> 29, 2 (February 1996), 
+	86-98.<p>
+<dd>
+	CORBA is not the only mechanism/middleware that is intended to 
+	support	distributed computing; various competing models exist.  This 
+	paper provides an educational look at how the heterogeneity and 
+	distributed nature of industry needs and requirements gave birth to 
+	middleware; classifies middleware; and discusses services that 
+	middleware should provide.  Middleware integration issues and its 
+	future are examined as well.  <p>
+
+<dt>
+Schmidt, Douglas C. and Vinoski, Steve.  "Modeling Distributed Object 
+	Applications."  <i>C++ Report</i> 7, 2 (Feb. 1995), 64-68.<p>
+<dd>
+	This is second in a series of columns on distributed object computing 
+	(DOC).  It outlines an approach to DOC implementation by discussing the
+	application environment and requirements (hardware, network, etc.) and 
+	examining key functionalities to look for in competing DOC frameworks 
+	(CORBA, Network OLE, and OODCE).  For example, CORBA does not have 
+	security measures or multithreading capability; however, some of these 
+	have become part of the latest specification.<p>
+
+<dt>
+Brando, Thom.  "Comparing CORBA & DCE."  <i>Object Magazine</i> 6, 1 (March 
+	1996), 52-57.<p>
+<dd>
+	This is an informative guide to CORBA through comparison with DCE 
+	Because of their numerous similarities, the author dispels confusion 
+	by explaining CORBA through contrasting the differences between 
+	CORBA and DCE.  The paper includes a clear diagram showing the OMG 
+	Reference Model and depicting specified and yet to be specified 
+	CORBA components.  <p>
+
+<dt>
+Foody, Michael A.  "OLE and COM vs. CORBA."  <i>Unix Review</i> 14, 4 (April 
+	1996), 43-45.<p>
+<dd>
+	Microsoft's Component Object Model (COM) is the defining object model 
+	for the popular Object Linking and Embedding (OLE) for desktop 
+	applications.  COM's object model is quite different from CORBA's, 
+	which makes interoperability between the two difficult.  OMG has 
+	completed the COM-CORBA interoperability specification; however, 
+	distributed COM, contained in Network OLE (see next entry), is still 
+	being defined and may pose a greater challenge for interoperability 
+	specification between the two.<p>
+
+<dt>
+Halfhill, Tom R. and Salamone, Salvatore.  "Components Everywhere."  
+	<i>BYTE</i> 21, 1 (Jan. 1996), 97+.<p>
+<dd>
+	Network Object Linking and Embedding (Network OLE) from Microsoft and 
+	CORBA 2.0 from the Object Management Group are compared.  CORBA 2.0 
+	is already available with years of refinement; especially the new 2.0 
+	specification has added additional portability and distributed 
+	computing enhancements.  Although Network OLE is not available yet, 
+	Microsoft's strategies and OLE 2.0 availability make Network OLE a 
+	formidable opponent.<p>
+
+
+
+</dl>
+
+<a href="#Contents"><i>-->Table of Contents </i></a><p>
+
+<hr>
+
+<!------------------------------------------------------------>
+
+<h3><a name="examples">Real-World CORBA Applications</a></h3><p>
+
+<dl>
+<dt>
+Pompeii, John.  "The Design and Construction of LISA."  <i>DBMS Magazine</i>
+	 8, 13 (Dec. 1995), 68-82.<p>
+<dd>
+	This is a case study of a real-world property management system that 
+	is completely object-oriented.  It was built with IBM's distributed 
+	systems object model (DSOM), a CORBA-compliant framework, and runs on 
+	a heterogeneous TCP/IP network with over 60 Oracle7 database servers.  
+	The fruits of OMG and the Object Database Management Group (ODMG) 
+	are impressively displayed by the variety of DSOM services (hence 
+	CORBAservices) utilized: naming service, persistence, event 
+	notification, concurrency control, and more.  <p>
+
+<dt>
+Almasi, G., et al.  Web* -- A Technology to Make Information Available on the 
+	Web."  In <i>Proceedings of the Fourth Workshop on Enabling 
+	Technologies: Infrastructure for Collaborative Enterprises (WET ICE 
+	'95) (Apr. 20-22, 1995, Berkeley Springs, West Virginia)</i>.  IEEE 
+	Computer Society Press, Los Alamitos, CA, pp. 147-153.<p>
+<dd>
+	Web* is an enhanced common gateway interface (CGI) script that 
+	includes a Tcl-based Orbix dynamic invocation interface (DII), allowing
+	it to act as an Orbix client to CORBA-compliant servers.  The authors 
+	briefly describe the use of the static interface definition language 
+	(IDL) versus DII in Web*.  Although CORBA is not the major focus of 
+	the paper, nevertheless, Web* is a freely available working example 
+	of a CORBA client.  The authors also mention a May 1995 trial of Web* 
+	for dynamic generation of medical patient records using an Orbix 
+	interface to Oracle databases.<p>
+
+
+</dl>
+
+<a href="#Contents"><i>-->Table of Contents </i></a><p>
+
+<hr>
+
+
+<!------------------------------------------------------------>
+
+</body>
+</html>
+
+
+

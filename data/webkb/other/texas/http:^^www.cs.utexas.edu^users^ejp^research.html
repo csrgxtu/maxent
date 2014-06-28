@@ -1,0 +1,112 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 21:37:41 GMT
+Content-Type: text/html
+Content-Length: 6549
+Last-Modified: Wednesday, 28-Feb-96 00:40:59 GMT
+
+<TITLE> Research Summary for Ed Posnak</TITLE>
+<H1> Supporting Adaptive Multimedia Applications in Internetworks </H1>
+
+Recent advances in computing and communication technologies have made
+it economically viable to design and implement distributed multimedia
+information management systems that promise to enhance users' ability
+to access a rich variety of audio, video, and textual information over
+globally inter-connected networks. These advances have also resulted
+in a networked infrastructure where inter-operating components
+frequently differ in capacity by orders of magnitude. Consequently,
+multimedia information management systems of the future will be
+required to provide services to clients in highly heterogeneous
+environments. Traditionally, since functional interoperability has
+been the dominant issue, heterogeneity has been sufficiently managed
+using black box abstractions (e.g. IP, POSIX).  However, since
+differences in performance cannot be hidden by such abstractions, they
+are inadequate for meeting the real-time requirements of
+resource-intensive multimedia applications.  To address this
+performance heterogeneity, there is a trend toward designing
+configurable applications that can adapt to the current environment as
+well as to the changes in resource availability over time. Mechanisms
+for enabling the development of such adaptive multimedia applications
+constitute the focus of my doctoral research. <P>
+
+The resource requirements of multimedia applications can vary
+significantly depending on presentation processing mechanisms such as
+compression and image processing.  Consequently, we have begun
+investigating adaptive mechanisms for controlling the cost/performance
+tradeoffs of presentation processing.  Specifically, we have developed
+the Presentation Processing Engine (PPE), which provides applications
+with a compression-independent means for accessing, manipulating, and
+changing the quality of media objects.  The PPE is composed of modules
+that implement primitive compression components (e.g. Huffman coding,
+Discrete Cosine Transform, etc.) and media processing operations
+(e.g. scale, clip, etc.).  By allowing basic codec building blocks to
+be dynamically configured, the PPE can support different codecs,
+switch between resolution levels, and provide flexible control over
+QoS parameters such as frame rate, spatial resolution, and Signal to
+Noise Ratio (SNR).  The PPE implementation is bound to a scalable
+codec at run time based on the media object's compression format and
+the application's QoS requirements (expressed in terms of frame rate,
+resolution, and SNR).  The implementation can later be dynamically
+reconfigured to accommodate dynamic changes in resource availability
+as well as the QoS requirements of applications.  The fine-grained
+modular architecture allows modules from existing codec
+implementations to be suitably extended or reused to implement new
+codecs, thereby simplifying software development.  Moreover, support
+for media processing operations can be added by plugging in modules
+that implement these operations to any codec's internal
+implementation.  An advantage of fine-grained configurability is that
+it enables such operations to be performed on semi-compressed, as
+opposed to uncompressed data, which often yields a significant
+performance gain. <P>
+
+Experience developing the PPE toolkit, and using it to implement a
+number of codecs has provided some insights into how adaptive
+multimedia applications should be built.  Whereas object-oriented
+design techniques are powerful tools for building dynamically
+configurable implementations, they carry an associated efficiency cost
+due to the procedure call overhead of dynamically dispatched method
+invocations.  The development of modular, configurable, and efficient
+presentation processing mechanisms requires a carefully engineered
+balance between the use of static and dynamic composition of modules.
+Static composition, implemented in the PPE using parameterized types
+and inline methods, minimizes the efficiency cost while maintaining a
+reusable and extensible architecture.  For instance, in image and
+video compression, the operations to filter a bit stream, get some
+number of bits, and decode Huffman symbols should be statically
+composed because they are invoked with high frequency, but have
+minimal use for reconfigurability.  On the other hand, modules that
+perform dithering and the inverse discrete cosine transform are good
+candidates for dynamic configurability because they have multiple
+implementations with different cost/performance tradeoffs.  By
+effectively balancing static and dynamic binding, the PPE
+implementations of JPEG and MPEG decoders have achieved performance
+that is within 5 percent of the fastest, public domain, monolithic
+implementations. <P>
+
+The power of such a dynamically configurable presentation processing
+environment depends on the ability to express the configurations as
+well as the cost/performance tradeoffs.  We propose to develop an
+abstract language for specifying protocol configurations via algebraic
+expressions, in which the operators represent modules and the operands
+represent data.  These representations will be used by an automatic
+configurator to compute appropriate configurations when triggered by a
+change in user QoS requirements or by notifications of changes in
+resource availability.  The language can also be used to specify
+protocol configurations that can be downloaded to the client site
+along with the multimedia data.  A key challenge will be to make the
+language flexible enough to allow the configuration to be altered to
+support media processing operations, while maintaining consistency with
+the encode side specification. <P>
+
+The presentation processing environment is an integral component of
+the end-to-end systems architecture for distributed multimedia
+applications being designed at the Distributed Multimedia Computing
+Laboratory at the University of Texas at Austin. Specifically, we
+propose to extend our configurable programming environment to support
+the QoS-aware transport protocols, and thereby obtain a completely
+integrated, configurable protocol stack.  This stack will support
+efficient streaming of data from the application to the network
+adapter and vice versa, as well as methods for accessing multimedia
+objects from our multiresolution file server.  We expect that the
+results of this work will substantially advance the state of the art
+in building adaptive distributed multimedia applications. <P>

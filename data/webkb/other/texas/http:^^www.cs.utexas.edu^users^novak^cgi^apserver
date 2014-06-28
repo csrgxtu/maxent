@@ -1,0 +1,69 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 07-Jan-97 15:26:07 GMT
+Content-Type: text/html
+Content-Length: 2655
+
+<HTML><HEAD><TITLE>Automatic Programming Server</TITLE></HEAD><BODY>
+<H2>Automatic Programming Server</H2>
+
+This is an experimental offering of an Automatic Programming Server
+that will write computer programs for you.
+<P>
+It is currently UNDER CONSTRUCTION, so some things may not work.
+The user interface could use some improvement.
+<P>
+You are free to use the programs that are created for
+any legitimate purpose.  However, these programs are furnished "as is"
+and with NO WARRANTY of any kind, expressed or implied, including
+warranties of merchantability or fitness for any purpose.
+<P>
+In most programming languages, a procedure specifies argument types,
+and any call to that procedure must use the same types.  Therefore, to
+reuse someone else's procedure, you must understand and conform to
+their data types.
+<P>
+In our approach, a <I>view</I> describes how your data matches the
+abstract data used by the system.  <I>Generic procedures</I> can be
+specialized by compilation through the view to yield versions of the
+programs that operate on your data.
+<P>
+To obtain programs from this Automatic Programming Server, you must:
+<OL>
+<LI> <A href="/users/novak/datastr.html">Describe your data structures.</A>
+<LI> <A href="/users/novak/views.html">
+     Make one or more views of your data as abstract data.</A>
+<LI> <A href="/users/novak/programs.html">
+     Request programs that you would like to be written.</A>
+</OL>
+The programs are served to you at the end of a file that appears after
+the demo is finished.  You can select the programming language desired
+(Lisp or C).
+<P>
+Programs are available for data structures (e.g. linked lists, binary trees,
+AVL trees) and for mathematical structures (e.g. line segment, cone).
+<P>
+When the program is started, a window is created with a command menu
+and input and output areas.  Click the appropriate menu items to perform
+the three steps listed above.
+
+<HR>
+
+<H2>Instructions</H2>
+<FORM METHOD=GET ACTION="nph-ap-action">
+<OL>
+<LI>	You must be logged in to a host running X windows.
+<LI>	Type <CODE>  xhost + www.cs.utexas.edu  </CODE> (exactly as shown
+        at left) in a window on that host
+	to allow this server to write to your display.
+<LI>	Enter your X display name here if needed; you may need to change
+        what is shown in the box to your X display name.  For example,
+        <CODE> myterminal.cs.utexas.edu:0.0 </CODE> <BR>
+	<INPUT TYPE=text SIZE=40 VALUE="128.2.209.145:0.0" NAME=xdspname>
+<LI>	Click <INPUT TYPE=submit VALUE="here"> to start the demo.
+</OL>
+</BODY>
+<address><a href="http://www.cs.utexas.edu/users/novak/index.html">
+Gordon S. Novak Jr.</a></address>
+</HTML>
+

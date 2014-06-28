@@ -1,0 +1,79 @@
+Date: Tue, 10 Dec 1996 03:22:51 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+<title>"Converting Thread-Level Parallelism to Instruction-Level Parallelism via Simultaneous Multithreading"
+</title>
+</head>
+
+<body>
+<h2>Converting Thread-Level Parallelism to Instruction-Level Parallelism via Simultaneous Multithreading
+</h2>
+<hr>
+
+<!WA0><!WA0><!WA0><!WA0><a href="http://www.cs.washington.edu/homes/jlo">Jack L. Lo</a>,
+<!WA1><!WA1><!WA1><!WA1><a href="http://www.cs.washington.edu/homes/eggers">Susan J. Eggers</a>, 
+Joel S. Emer, 
+<!WA2><!WA2><!WA2><!WA2><a href="http://www.cs.washington.edu/homes/levy">Henry M. Levy</a>,
+Rebecca L. Stamm, and
+<!WA3><!WA3><!WA3><!WA3><a href="http://www.cs.washington.edu/homes/tullsen">Dean M. Tullsen</a>
+<hr>
+<p>
+To achieve high performance, contemporary computer systems rely on 
+two forms of parallelism: <i>instruction-level</i> parallelism (ILP) and
+<i>thread-level</i> parallelism (TLP).  Wide-issue superscalar processors 
+exploit ILP by executing multiple instruction from a signel program
+in a single cycle.  Multiprocessors (MP) exploit TLP by executing different
+threads in parallel on different processors.  Unfortunately, both parallel-
+processing styles statically partition processor resources, thus preventing
+them from adapting to dynamically-changing levels of TLP and ILP in a 
+program.  With insufficient TLP, processors in an MP will be idle; with 
+insufficient ILP, multiple-issue hardware on a superscalar is wasted.
+<br>
+This paper explores parallel processing on an alternative architecture, 
+<i>simultaneous multithreading</i> (SMT), which allows multiple threads
+to compete for and share all of the processor's resources <i>every</i> cycle.
+The most compelling reason for running parallel applications on an SMT
+processor is its ability to use thread-level parallelism and instruction-
+level parallelism interchangeably.  By permitting multiple threads to share
+the processor's functional units simultaneously, the processor can use both
+ILP and TLP to tolerate variations in parallelism.  When a program has only
+a single thread, all of the SMT processor's resources can be dedicated to 
+that thread; when more TLP exists, this parallelism can compensate for a
+lack of per-thread ILP.
+<br>
+In this work, we examine two alternative on-chip parallel architectures enabled
+by the greatly-increased chip densities expected in the near future.  We
+compare SMT and small-scale, on-chip multiprocessors (MP) in their ability
+to exploit both ILP and TLP.  First, we identify the hardware bottlenecks
+that prevent multiprocessors from efficiently exploiting ILP. Then, we 
+show that because of its dynamic resource sharing, SMT avoids these
+inefficiencies and benefits from being able to run more threads on a single
+processor.  The use of TLP is especially advantageous when per-thread ILP
+is limited.  The ease of adding additional thread contexts on an SMT (relative
+to addition additional processors on an MP) allows simultaneous multithreading
+to expose more parallelism, further increasing processor utilization and
+attaining a 52% average speedup (versus a four-processor, single-chip 
+multiprocessor with comparable execution resources).
+<br>
+We also assess how the memory hierarchy is affected by the use of additional
+thread-level parallelism. We show that inter-thread interference and the
+increased memory requirements have small impacts on total program performance
+and do not inhibit significant program speedups.
+
+<i></i>
+<p>
+<hr>
+<i><br>Submitted for publication, July 1996.</i>
+<p>
+To get the PostScript file, click
+<!WA4><!WA4><!WA4><!WA4><a href="http://www.cs.washington.edu/research/smt/papers/tlp2ilp.ps">here</a>.
+
+<hr>
+<address>
+<em>jlo@cs.washington.edu </em> <br>
+</address>
+</body>
+</html>

@@ -1,0 +1,182 @@
+Date: Mon, 11 Nov 1996 17:00:42 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Tue, 15 Oct 1996 13:48:57 GMT
+Content-length: 5080
+
+<html>
+<head>
+<title> Program 4 </title>
+<center> <h2> Program 4 </h2> </center>
+</head>
+<body>
+
+<ul>
+<li> CS302 Section 12
+<li> TA: Michael Birk
+<li> <strong> Assigned: </strong> Tue 10/15/96
+<li> <strong> Due: </strong> Tue 10/22/96
+</ul>
+
+<p> For this assignment, you will write a program that is capable
+of drawing a variety of shapes.  The shapes supported by your program
+include a square, a rectable, an isoscoles triangle, and a diamond.
+Each shape can be printed "solid" or "hollow" using any desired
+character.
+
+<p> Your program should be menu-driven, so that the user is repeatedly
+presented with a menu of their options - the various shapes to print,
+and the current settings of the options (solid or hollow and printing
+character).
+
+<p> You should also check for invalid input.  If the user enters 
+invalid input, you should display an error message and promt the user
+to re-enter the information.
+
+<p> Note: In general, code "duplication" is bad - you don't want to
+have identical or very similar code repeated throughout your program
+if it isn't necessary.  Instead, you should try writing one function
+which does the job.  Often it is necessary to generalize that function
+by adding more parameters.  For this program, you <strong>don't</strong>
+need separate hollow and solid printing functions for each of the
+different shapes!  In addition, it is possible to put the
+valid-input-checking code in one function and avoid duplicating it all
+over the place.
+
+<h3> What to Hand In </h3>
+
+<p> You should hand in your source code, and the program's output showing
+<b>all</b> four shapes being printed in <b>both</b> solid and hollow mode.
+The overall format of the output should be very similar to the sample output
+below.
+
+<h3> Notes and Hints </h3>
+
+<ul>
+  <li> Your menu should display the current <b>printing character</b>
+       and whether you are in <b>hollow or solid mode</b>.
+  <li> You <b>must</b> document all of the functions in your program with
+       comments; this documentation should explain what the function does,
+       what the meanings of the inputs and outputs are, and what side
+       effects the function has.
+  <li> Do <b>not</b> use any global variables in your program; all variables
+       should be local to a function.  Use function parameters to pass
+       information into a function.
+  <li> For each shape, choose minimum and maximum values for the number
+       of rows, width, etc.  Use a loop to check that the value given by
+       the user is in the correct range.
+  <li> The square is just a special case of the rectangle with the same
+       width and height.
+</ul>
+
+<h3> Sample Output </h3>
+
+<pre>
+Welcome to John Q. Doe's shape-printing program!  Here are your
+options:
+
+D - Print a diamond shape   C - Change character (currently *)
+Q - Print a square          H - Switch between hollow/solid
+R - Print a rectangle           (currently solid)
+T - Print a triangle        X - Exit program
+
+What is your selection? Q
+How many rows? 3
+
+   ***
+   ***
+   ***
+
+
+D - Print a diamond shape   C - Change character (currently *)
+Q - Print a square          H - Switch between hollow/solid
+R - Print a rectangle           (currently solid)
+T - Print a triangle        X - Exit program
+
+What is your selection? r
+How many rows? 2
+How many columns? 12
+
+   ************
+   ************
+
+
+D - Print a diamond shape   C - Change character (currently *)
+Q - Print a square          H - Switch between hollow/solid
+R - Print a rectangle           (currently solid)
+T - Print a triangle        X - Exit program
+
+What is your selection? C
+What character to print with? &
+
+What is your selection? D
+What size diamond? 3
+
+     &
+    &&&
+   &&&&&
+    &&&
+     &
+
+
+D - Print a diamond shape   C - Change character (currently &)
+Q - Print a square          H - Switch between hollow/solid
+R - Print a rectangle           (currently solid)
+T - Print a triangle        X - Exit program
+
+What is your selection? h
+Now in hollow mode.
+
+
+D - Print a diamond shape   C - Change character (currently &)
+Q - Print a square          H - Switch between hollow/solid
+R - Print a rectangle           (currently hollow)
+T - Print a triangle        X - Exit program
+
+What is your selection? T
+How many rows? -1
+
+-1 is not a valid size.  Please try again.
+
+How many rows? 5
+
+       &
+      & &
+     &   &
+    &     &
+   &&&&&&&&&
+
+
+D - Print a diamond shape   C - Change character (currently &)
+Q - Print a square          H - Switch between hollow/solid
+R - Print a rectangle           (currently solid)
+T - Print a triangle        X - Exit program
+
+What is your selection? Z
+
+Z is not a valid menu choice!
+
+What is your selection? c
+What character to print with? %
+
+What is your selection? R
+How many rows? 4
+How many columns? 8
+
+   %%%%%%%%
+   %      %
+   %      %
+   %%%%%%%%
+
+
+D - Print a diamond shape   C - Change character (currently %)
+Q - Print a square          H - Switch between hollow/solid
+R - Print a rectangle           (currently solid)
+T - Print a triangle        X - Exit program
+
+What is your selection? x
+Goodbye!
+</pre>
+
+</body>
+</html>

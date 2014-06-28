@@ -1,0 +1,529 @@
+Date: Tue, 05 Nov 1996 00:33:19 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 28 Aug 1996 05:46:10 GMT
+Content-length: 19759
+
+<HTML>
+<HEAD>
+<TITLE>CS 302 Frequently Asked Questions (FAQ)</TITLE>
+</HEAD>
+<BODY>
+
+<H1 ALIGN=CENTER>CS 302 Frequently Asked Questions (FAQ)</H1>
+
+This FAQ came about because of problems that many students were encountering.
+It is not comprehensive, and it will probably be constantly evolving.
+It is grouped by which language is being used, and there is a list of non-
+language-specific problems at the end.  If you don't find what you want here,
+ask a consultant.  If you are a consultant, you can e-mail me at <EM>
+<!WA0><A HREF="http://www.cs.wisc.edu/~cs302/email.html">perkinst@cs.wisc.edu</A></EM>.
+
+<UL>
+<LI> <!WA1><A HREF="#C++QUESTIONS"> C++ Common Problems: </A> Using the Borland IDE and the C++ Language </LI>
+
+<ul>
+<li> <!WA2><a href="#Compiler_Linker_Errors"> Compiler and Linker Errors </a> : When Borland
+refuses to run your program. </li>
+<li> <!WA3><a href="#Runtime_Errors"> Runtime Errors</a> : Crashes, floating point errors,
+protection faults -- errors that occur while your program is running. </li>
+<li> <!WA4><a href="#IDE_Errors"> Borland IDE problems </a>: Difficulties with your program
+files or project files, windows, the screen editor.  In general, problems with the 
+mechanics of using the Borland IDE. </li>
+<li> <!WA5><a href="#IO_Errors"> Input/Output Errors </a>: Problems with reading in input, 
+sending output to files, etc. </li>
+<li> <!WA6><a href="#Frustration"> It's just not working!! </a> </li>
+</ul>
+
+<LI> <!WA7><A HREF="#FORTRAN"> A FORTRAN hint: </A> How to write and run programs efficiently</LI>
+<LI> <!WA8><A HREF="#MISC"> Miscellaneous Problems: </A> Printing, E-mail, Disk Quotas... </LI>
+</UL>
+
+<HR>
+<A NAME="C++QUESTIONS">
+<H2 ALIGN=CENTER>C++</H2>
+
+<a name="Compiler_Linker_Errors">
+<h2> Compiler and Linker Errors </h2>
+
+<ul>
+<LI><B>Error: Statement missing ;</B> 
+<BR> 
+<BR> 
+
+Fix: Click on this message, and will get the highlighted line in your
+source file. This line or the line immediately before it is not ended
+with a ; (semicolon).  All lines of <B>C</B> code except statements
+which can be followed by compound statements ( <B>if</B> ,
+<B>else</B>, <B>do</B>, etc.) should have a ; to mark the end of the
+statement.  </LI> 
+<BR> 
+<BR>
+
+<LI><B>Error: Declaration syntax error</B>
+<BR>
+<BR>
+
+Fix: If this line isn't declaring a variable, then the problem
+is definitely that some variable declaration immediately before it is
+missing a ; (semicolon).  Otherwise, this may still be the problem,
+but you may have also done something else like missed a , (comma) in
+between variable names, or put a space in a variable name. (variables
+must be one word)
+</LI> 
+<BR>
+<BR>
+
+<LI>
+<B>Error: Unable to assign char* to char</B>
+<BR>
+<BR>
+
+Fix: A char variable is a single keystroke like 's' or
+'\n'. (note the single quotes) A char* variable is an array of
+characters (a string) like "hello there!" (note the double quotes).
+For beginner's purposes, view them as entirely different animals.  In
+particular, 's' is not the same as "s".  ('s' takes up 1 byte of
+memory whereas "s" is stored as a byte containing 's' followed by a
+byte containing the end of string message.)
+</LI>
+<BR>
+<BR>
+
+<LI>
+<B> The program seemed to be (nearly) working before, but now it gets all sorts of 	errors involving i/ostreams when I run it. </B> <BR> <BR>
+
+It is linking the program without compiling the source code. 
+Click inside the .cpp window, and select Project,Compile.  Then try running
+it again.
+</LI>
+
+<LI><STRONG>Why do I get that annoying "linker error in OwlMain"?</STRONG>
+<BR>
+<BR>
+Chances are that you have not created/opened a project.  You must do this
+through the Project menu...you cannot do it through the File menu.  Once you
+have created/opened a project, make sure that you choose the Build All option
+under the Project menu.  If you don't, chances are that you will get many more
+linker errors.
+<BR>
+<BR>
+</LI>
+
+<LI><STRONG>My program source file has a ".c" extension and the Borland compiler
+complains when I attempt to compile it.  How do I make it a C++ file?</STRONG>
+<BR>
+<BR>
+This is caused by forgetting to choose the "Advanced" option when creating a
+project file.  The easiest way to fix this problem is to select the source
+code file name in the project window (you will know it is selected because it
+will be highlighted).  Press the right mouse button and a menu will pop up.
+Choose "Edit Node Attributes" from this menu.  It will produce a window that
+will allow you to change the default extension for the file...choose ".cpp".
+If you have saved the program source file with the ".c" extension, you will 
+want to resave the file with a ".cpp" extension.  Use the "Save As" option
+under the "File" menu.
+<BR>
+<BR>
+</LI>
+</ul>
+<a name="Runtime_Errors">
+<h2> Run-time Errors </h2>
+
+<ul>
+<LI><STRONG>My program gives me some weird Windows error message when I run it.
+What can I do?</STRONG></li>
+<BR>
+<BR>
+Unfortunately, this is a very wide open problem and can be caused by numerous
+things.  Common problems are the following:  trying to use a pointer that
+points to NULL, accessing elements beyond the bounds of an array, creating
+large data structures (like 2-dimensional integer arrays) as local variables
+to functions, running out of disk space, etc.  Unfortunately, some of these
+problems don't exhibit consistent behavior, but most times you can use the
+interactive debugger to figure out what the problem is.
+<BR>
+<BR>
+</LI>
+
+<LI><strong>My program starts to run, but then it stops, and I get a
+window that tells me "General Protection Exception".</strong><br><br>
+
+This error is caused by access memory outside of legal bounds for your
+program.  If often means you used an array, and tried to access or set
+elements outside of the array bounds.  For instance, if you have an
+array X[10], you may have asked for X[-2] or X[14].  Another possible
+cause for this error is that you are using pointers, and you attempted
+to access a pointer that had not yet been initialized.  To find such an
+error, it is often easiest to use the debugger to trace down the line of
+code that causes the memory error.<br><br></li>
+
+<li> <strong> While the programming is running I get a "floating point
+underflow" or "floating point:division by zero", and the program stops. </strong> <p>
+
+A floating point underflow can be caused by uninitialized variables.  If
+you declare some floats or doubles and don't set them to some value before
+you use them, they may start out with huge or tiny values that cause errors
+in calculations.  The simple fix is to initialize all your floats to zero. <p>
+
+A division by zero error may not be obvious to look at the code, but can
+occur when variables have unexpected values.  Often you will be performing
+some calculation inside a loop, and the loop goes one place too far or the
+very first or very last iterations form special cases, resulting in a 
+division by zero.  Unless you can spot it right away, the best way to find
+such an error is probably to use the debugger to track down the offending
+line of code. Then you can run the program again and
+use the <b>watch</b> feature to view the variables involved, and see what causes
+things to run afoul. <br><br></li>
+
+</ul>
+
+<a name="IDE_Errors">
+<h2> Borland IDE Errors </h2>
+
+<ul>
+<LI><STRONG>Why do I see nothing when I open a project?</STRONG>
+<BR>
+<BR>
+If you open an existing project and all you see is the background of the
+Borland IDE, choose the Project option under the View menu.  This will show
+you the project window.
+<BR>
+<BR>
+</LI>
+
+<LI><STRONG>Why is there nothing in my project window?</STRONG>
+<BR>
+<BR>
+Good question...could be an accidental thing or a fluke.  The way to fix this
+is to select the Target option under the Project menu.  The easy thing to do
+is to use the same name as the project (minus the .ide extension).  Then you
+go through the same process as creating a project.
+<BR>
+<BR>
+</LI>
+
+<LI><STRONG>When I try to open my program file (.cpp extension), I get some 
+weird message about truncating lines.  What's up with that?</STRONG>
+<BR>
+<BR>
+Another good question...more than likely, you named your project with a ".cpp"
+extension.  The default extension for a project file is ".ide" and should be
+left this way.  Unfortunately, it is questionable if you will be able to get
+your source program back.  Ask a consultant to attempt to salvage your code
+from network backups.
+<BR>
+<BR>
+</LI>
+
+<LI><STRONG>My program source file has a ".c" extension and the Borland compiler
+complains when I attempt to compile it.  How do I make it a C++ file?</STRONG>
+<BR>
+<BR>
+This is caused by forgetting to choose the "Advanced" option when creating a
+project file.  The easiest way to fix this problem is to select the source
+code file name in the project window (you will know it is selected because it
+will be highlighted).  Press the right mouse button and a menu will pop up.
+Choose "Edit Node Attributes" from this menu.  It will produce a window that
+will allow you to change the default extension for the file...choose ".cpp".
+If you have saved the program source file with the ".c" extension, you will 
+want to resave the file with a ".cpp" extension.  Use the "Save As" option
+under the "File" menu.
+<BR>
+<BR>
+</LI>
+
+<LI><STRONG>Borland C++ always crashes when I attempt to run it.  How can I fix
+this?</STRONG>
+<BR>
+<BR>
+
+I would recommend that you ask a consultant to do this.  There are Borland
+configuration files that have apparently been corrupted.
+<BR>
+<BR>
+</LI>
+</ul>
+
+
+<a name="IO_Errors">
+<h2> Input/Output Errors </h2>
+
+
+<ul>
+
+<li><strong>I'm trying to do a "cin.getline", but it's not working.  When I
+run the program, it just goes right by the getline as if it weren't there.</strong><p>
+
+This is a very common problem.  There can be problems when you mix "cin >>"
+and "cin.getline" input statements in a program.  The "cin >>" function will
+take input, but it leaves a newline character in the input buffer.  If a
+getline call follow a "cin >>", then the getline will read this single newline
+character and stop.  It will appear as if the getline read nothing at all.
+So whenever you have a getline following a "cin >>" you must clear the
+newline character from the buffer either with a "cin.ignore" or another
+"cin.getline".  This should, of course, be placed between the "cin >>" and
+the "cin.getline" that really takes input.  Here's an example that suffers
+from this error: <br>
+<pre>
+	cin >> GolfScore;
+	cin.getline( PlayerName, MAX_STR, '\n' );
+</pre>
+In this case the PlayerName would just get the null string because of the
+newline character left in the input buffer by the "cin >>".  Here are the
+two ways to problem can be fixed.
+<pre>
+	cin >> GolfScore;
+	cin.ignore( MAX_STR, '\n' );
+	cin.getline( PlayerName, MAX_STR, '\n' );
+</pre>
+or
+<pre>
+	cin >> GolfScore;
+	cin.getline( dummy_buffer, MAX_STR, '\n' );
+	cin.getline( PlayerName, MAX_STR, '\n' );
+</pre>
+</li>
+
+<LI><STRONG>My program runs correctly and now I am redirecting the output to a 
+file.  When I ran the program the first time, it worked great, but now when I 
+run it I get the same output as the first time, no matter how I change the 
+input.  What's the problem?</STRONG>
+<BR>
+<BR>
+Chance are that you still have the output file open from the first time you
+ran the program.  Windows basically will lock files that are in open windows
+so that you cannot overwrite the contents of the file.  To remedy this, just
+close the output file after you have printed it.  To find out if you do have
+the output file open, choose the Window menu.  It will tell you exactly what
+you have open.
+<BR>
+<BR>
+</LI>
+
+<LI><STRONG>When I run my program and redirect the output to a file, the output
+file is always empty.  Why?</STRONG>
+<BR>
+<BR>
+If you are also redirecting the input, you want to check to make sure that
+you have the path name to the file typed in correctly.  If you have the path
+name hard coded in your program, you want to make sure that you have used two
+backslashes "\" for every one in your path.  For example, the following file
+r:\public\jjason\myfile.in would be coded as follows in your program:
+
+<PRE>ifstream input("r:\\public\\jjason\\myfile.in");</PRE>
+
+Also, make sure that if you copied the input file from an instructor, that you
+copied to the correct directory.
+<BR>
+<BR>
+</LI>
+
+
+<li> <strong> I'm trying to output with "cout", but a get a compiler error telling
+me, "Illegal structure operation." </strong> <br> <br>
+
+<b>cout</b> is used to print strings and numbers and such, but if you want to print
+out some more complex object, you must use other means.  For instance, if
+you have defined a class <b>foo</b>, you may have given it an output method
+with prints some of its internal variables or other messages: <br>
+<pre>
+class foo {
+	...
+	public:
+	void Output();
+	...
+};
+</pre>
+When you want to print out such an object, students sometimes make the mistake
+of making the call to the Output member part of a cout: <br>
+<pre>
+	foo FooA;
+
+	cout << "The object is " << FooA.Output() << ".  Cool, eh?" << endl;
+</pre>
+The Output function works on its own, and should not be a part of a cout.
+Despite the odd notation, "cout <<" is a function call, and the function is
+only able to print out numbers, strings, and characters.  The correct way
+to achieve the intention above is:
+<pre>
+	cout << "The object is ";
+	FooA.Output();
+	cout << ".  Cool, eh?" << endl;
+</pre>
+</li>
+</ul>
+
+<a name="Frustration">
+<h2> It's Just Not Working!! </h2>
+
+<ul>
+If you're really having difficulties, remember that there are consultants
+in the lab to help you most hours of the day.  They keep a "consultant" sign
+on top of the computer at which they are working and wear nametags, so they
+are easy to spot. <p>
+
+<LI><STRONG>My program doesn't give me the results I had hoped for.  Or, my 
+program runs, but it does some really strange things.  Help!</STRONG>
+<BR>
+<BR>
+Your best bet is to run the interactive debugger.  Consultants are also able
+to help you, but chances are they will run the debugger themselves.  Since
+you are the one most familiar with your program, you would be the one most
+likely to spot errors quickly using the debugger.  I recommend learning the
+basic features of the debugger - stepping through a program and viewing the
+contents of variables.
+<BR>
+<BR>
+</LI>
+
+</ul>
+
+
+<HR>
+<A NAME="FORTRAN">
+<H2 ALIGN=CENTER>FORTRAN</H2>
+<UL>
+<LI><STRONG>A little suggestion to make you more productive</STRONG>
+<BR>
+<BR>
+When going through the program development cycle, it helps immensely if you
+have two windows open with the MS-DOS prompt.  In one window, you can use the 
+editor to work on your program.  The other one you can leave at the DOS prompt
+so that you can compile and run the program.  This alleviates the need to
+exit the editor every time you want to compile your program.  <STRONG>Note:
+make sure that you save your program in the editor before attempting to compile
+it in the other window.</STRONG>
+<BR>
+<BR>
+</LI>
+</UL>
+<HR>
+<A NAME="MISC">
+<H2 ALIGN=CENTER>Miscellaneous</H2>
+<UL>
+<LI><STRONG>I have run out of disk space.  How do I get more?</STRONG>
+<BR>
+<BR>
+You will want to use the File Manager to delete files from your user directory
+(drive U:\).  First of all, don't delete the files that start with the 
+letters "bc" as these are used by the Borland C++ compiler.  Likely candidates 
+are files with the following extensions:  ".exe", ".obj", ".csm" and ".bak".  
+These files are easy to reproduce.  <STRONG>A word of warning, only get rid of 
+files that you know you created (or were created on your behalf, for instance by
+compiling your program).</STRONG>  If you are not sure what you can delete, ask
+a consultant.
+<BR>
+<BR>
+</LI>
+
+<LI><STRONG>I have been "locked out" of my account.  How do I gain access?
+</STRONG>
+<BR>
+<BR>
+If you type your login password wrong enough times, you will be locked out of
+the network for around 15 minutes.  You will have to wait until that time has
+expired before you can log in again.
+<BR>
+<BR>
+</LI>
+
+<LI><STRONG>I get a message that I have "exceeded maximum logins" and I am
+refused access.  How can I log in?
+</STRONG>
+<BR>
+<BR>
+This is caused by you being logged in to more than one computer.  Make sure
+that you are not logged into any other machines...this includes machines in
+other places in which you have logged into the Computer Science network.  Also,
+if you were working on a machine that crashed, and you immediately attempted
+to log into another computer, you need to log into the machine that crashed
+and log out before you can log into another machine.
+<BR>
+<BR>
+</LI>
+
+<LI><STRONG>I have been "locked out" of my email.  How do I gain access?
+</STRONG>
+<BR>
+<BR>
+(From D. Parter)  If you type your email password wrong enough times, kerberos 
+locks the entry.  You should go to the systems lab (2350 CS&ST) to get it
+unlocked.
+<BR>
+<BR>
+</LI>
+
+<LI><STRONG>There are no free computers in the 1370 lab.  Are there others we
+can use? </STRONG>
+<BR>
+<BR>
+Try the computers in the DoIT lab in the basement of the Computer Sciences
+building.  There should be information outside of the 1370 lab on how to get
+to the DoIT lab.
+<BR>
+<BR>
+</LI>
+
+<LI><STRONG>I send a job to the printer, but it never prints out.  What is
+wrong?</STRONG>
+<BR>
+<BR>
+There are two likely causes of this.  The first is that the print server is not
+working.  The second is that you have exceeded your printer quota.  Whatever
+the problem, don't continue sending your files to the printer until you know
+the cause of the problem.  Use the Check Print Queues program in the
+Administration group to view.  Run this program and make sure all the laser
+printers are selected (the box next to the printer names should have an 'X';
+if not, click in the box and one will appear).  Clicking the "check queues"
+button will show you a list of all the printers, and the documents waiting
+to be printed on each.  You can spot your print jobs because they are labelled
+with your username.  If the queue are exceedingly long and not moving, inform
+a consultant or the UNIX TA in 1359; there may be a problem with the printers.
+The Check Print Queues program also allows you to check your paper quota by
+clicking on the "check quota" button.  If you have already printed as many 
+pages as you are allowed, you must go to the Computer Systems Lab in
+2350, and pay for more paper to be credited to your account.
+
+<BR>
+<BR>
+</LI>
+
+<LI><STRONG>I would like to forward my CS e-mail to my student e-mail account.
+Is that possible?</STRONG>
+<BR>
+<BR>
+Of course.  You will want to use the User Util program mentioned above.  After
+you log in (using your login ID and your e-mail password), from the menu you
+can select to forward your e-mail.  Just follow the directions...of course
+this assumes that you have memorized your student e-mail address.  You can also
+use this program to stop any forwarding of e-mail.
+<BR>
+<BR>
+</LI>
+
+<LI><STRONG>I have forwarded my e-mail and I would like to be able to check
+it from the 1370 lab.  Is that possible?</STRONG>
+<BR>
+<BR>
+What you need to do is go into the e-mail program (Eudora).  Select the Special
+menu and from there, select the Configuration option.  In the box labeled POP
+Account, type in the e-mail account which you would like to check.  This next
+part is <STRONG>VERY</STRONG> important.  Again select the Special menu and
+this time select the Switches option.  Make sure that the box marked "Leave
+Mail on Server" has an "X" in it.  If you don't have this box selected, when
+you check your e-mail from the 1370 lab, it will download all of the mail in
+the mailbox to your user directory.  This means that you will not be able to
+check that e-mail from anywhere else.  Trust me...I learned this one the hard
+way.
+<BR>
+<BR>
+</LI>
+</uL>
+
+<HR>
+<EM>Last Modified February 12, 1996<BR>
+<!WA9><A HREF="http://www.cs.wisc.edu/~perkinst/">Ted Perkins</A> / 
+perkinst@cs.wisc.edu
+</BODY>
+</HTML>

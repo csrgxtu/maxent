@@ -1,0 +1,58 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 19:27:38 GMT
+Content-Type: text/html
+Content-Length: 1876
+Last-Modified: Friday, 03-May-96 22:56:53 GMT
+
+<HTML><HEAD><title> White Paper - CS418 Final Project</title>
+</head><body BGCOLOR="#FFFFFF"><img src="human_plane.gif" border=0 align=left>
+<h2><CENTER>CS418 Final Project<br>
+</br>The magic<br>
+Nobuhiko Mukai<br>
+Cornell, CS418<br>
+Copyright 1996<br>
+</CENTER></h2>
+<CENTER><h2>
+</h2></CENTER>
+<a href="magic.mpg"> animation </a>
+<pre>
+<h2> 1. Story </h2><h3><UL>
+This animation tells a magic story, where a funny man appears. 
+He gets on an airplane and takes off. During the flight, he flies 
+over a mountainous area and drops a ball into a body of water, 
+which causes a wave.
+Then, he flies near a clock tower and his airplane explodes.
+However, when we look at the clock tower, the clock disk opens 
+and he appears inside of the clock tower.
+<br></UL>
+<h2>2. Technique </h2><h3><UL>
+a. Physics-based Animation
+The ball falling and water wave are animated using physical 
+description. Euler integrator is used for the falling ball
+and Verlet integrator is used for the water wave.<br>
+b. Scientific Visualization
+The mountain and cloud are made by random function and
+the color of the mountain is mapped according to the height.
+The river color is mapped according to the magnitude of the
+gradient and trees are made by cones.<br>
+c. Texture Mapping
+The title flag is made by texture mapping. A two dimensional 
+image is used and changed to simulate the waving flag.<br>
+d. Volume Texture Mapping
+The two tone color of the airplane is made by volume texture 
+mapping.<br>
+e. Bump Mapping
+In order to simulate a real lawn, bump mapping is used.
+The normals of the lawn is changed a little bit by random
+function.<br>
+f. Image Techniques
+In the second scene, the first scene image fades out and
+the second scene image fades in gradually.<br>
+g. Fire work
+In order to simulate the bomb explosion, bomb size and color
+are changed as time passes.
+</h2></UL>
+
+</body>
+</HTML>

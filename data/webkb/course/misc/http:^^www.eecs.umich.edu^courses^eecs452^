@@ -1,0 +1,218 @@
+Date: Tue, 26 Nov 1996 19:10:56 GMT
+Server: Apache/1.1-dev
+Content-type: text/html
+Set-Cookie: Apache=gs359345849035456149; path=/
+
+<HTML>
+<HEAD>
+<TITLE> EECS452's Home Page </TITLE> 
+</HEAD>
+<BODY bgcolor=#ffffff text=#000000>
+
+<center>
+<!WA0><img src="http://www.eecs.umich.edu/courses/eecs452/eecs452.gif" border=2> <p><br>
+
+<B><H1> EECS 452. <br> 
+<font size=+4>D</font><font size=+3>IGITAL </font> 
+<font size=+4>S</font><font size=+3>IGNAL </font> 
+<font size=+4>P</font><font size=+3>ROCESSING </font> 
+<font size=+4>D</font><font size=+3>ESIGN </font>  
+<font size=+4>L</font><font size=+3>ABORATORY </font> 
+</H1></B></center><HR width=90% size=8>
+
+<P> 
+<i> Prerequisite: #316. Signals and Systems.</i></P>   
+
+<P>
+Architectural features of single-chip DSP processors will be introduced in
+lecture. Specifically, the arithmetic, memory organization, pipelining
+strategies, and the use of special on-chip hardware, e.g., multipliers,
+barrel shifters, will be emphasized.  Illustrative examples will be given 
+using representative DSP processors such as the 
+<!WA1><a href="http://www.ti.com/sc/docs/dsps/prodinfo/newc2x.htm"> TMS320C25 </a>, 
+the <!WA2><a href="http://www.ti.com/sc/docs/dsps/prodinfo/newc5x.htm"> TMS320C50 
+</a>, the AT&T DSP16, the <!WA3><a href="http://www.motorola.com/"> Motorola </a> 
+DSP56001, the <!WA4><a href="http://www.ti.com/sc/docs/dsps/prodinfo/newc3x.htm"> 
+TMS320C30 </a>, the AT&T DSP32, the <!WA5><a href="http://www.motorola.com/"> 
+Motorola </a> DSP96002, etc. <!WA6><a href="http://www.eecs.umich.edu/courses/eecs452/labex.html"> Laboratory experiments </a>
+using both the TMS320C25 and the DSP56001 will incluse A/D and D/A conversion 
+sampling, real-time FIR and IIR digital filter implementations, and a 
+twelve-week real-time <!WA7><a href="#projlnk"> DSP project </a> of the student's 
+choice.  The laboratory will also introduce the students to the 
+state-of-the-art equipment for DSP design and verification. Specifically, the
+Tektronix 2642 Analyzer and the DSP Technology SigLabs are versatile 
+multi-domain (time and frequency) instruments capable of spectrum, network, 
+and transient analysis of real-time DSP systems working in the audio 
+frequency range.</P>
+
+<P>
+In the remainder of this page, we provide an introduction to the course and the
+laboratory.  A copy of the introductory handout to the course and the course 
+syllabus can be obtained in postscript format by clicking <!WA8><a href="http://www.eecs.umich.edu/courses/eecs452/intro.ps"> 
+here </a>. </P>
+
+<HR>
+
+<H2> Instructor </H2>
+<UL>
+<P> Professor David J. Anderson <br>
+    <i> Room: 4112 EECS Building <br>
+        Phone: 763-4367 <br>
+        e-mail: dja@umich.edu</i></P></UL>
+<H2> Teaching Assistant </H2>
+<UL>
+<P>     Ketan Patel </a><br>
+   <i>  xxx EECS Building<br>
+        Phone: 76xxx <br>
+        e-mail: xxxxx </i></P></UL>
+<HR>
+
+<center><fonts size=+3><H2> INTRODUCTORY REMARKS </H2></fonts></CENTER>
+<HR width=40% size=4><br>
+
+<P> <font size=+1><b> Grading </b></font>:<UL><P><pre>
+Laboratory     25% 
+Lab Reports    20% 
+Exam           20%  
+Final Project  35% 
+</pre></P></UL></P>
+
+<P> <font size=+1><b> Laboratory </b></font>:
+The structured laboratory segment will count for 25% of the total
+grade, based on participation and successful completion of the weekly
+exercises.  Each group will be asked some general questions on each 
+experiment.  The intent is to examine the students' understanding of the
+current experiment and if they have developed an adequate understanding
+of the assembly code.</P>
+
+<P> <font size=+1><b> Lab Reports </b></font>:
+A report on each experiment is required by each group of two students.
+The lab reports will count for 15% of the total grade.  These reports 
+should contain a title page with a brief summary, an introduction, a 
+description of the experimental setup, a results section, and a discussion 
+and conclusion section.  The reports need not be lengthy and need not be 
+typed.  However, try to be complete and professional in your presentation.</P>
+
+<P> <font size=+1><b> Exams </b></font>:
+The midterm exam will cover fundamental topics introduced in lecture and
+experiments.  The Exam will be open book, notes and lab reports.</P>
+
+<P> <font size=+1><b> Final Project </b></font>:
+You will be given a list of suggested project topics by the end of the second
+week of class.  The projects emphasize real-time DSP applications in, for example,
+speech, music, medical, etc.  The project will typically be a design of a 
+software or hardware algorithm for a real-time DSP system.  You are encouraged
+to form teams of 4 to 5 students for each project (with a balanced distribution
+of SW/HW design skills in addition to the DSP algorithm expertise).  Smaller 
+teams are also acceptable if the scope of the project of interest so demands, or
+if there are difficulties in forming larger teams.  Each group is required to 
+submit a one-page <b> Pre-Proposal </b> by the end of the fourth week of class.
+A form will be provided for filling out the pre-proposal.  A <b> Final Project
+Proposal </b>, based on the instructors feedback to the pre-proposal, will be
+due by the beginning of the sixth week of class.  A <b> Task Timeline </b> should
+be included in the final project proposal.  A one-page <b> Progress Report </b>
+is required from each group weekly after the <b> Final Project Report </b> has
+been approved.  You will have free access to the laboratory while you are
+working on your project.  However, you are expected to show up during the regular
+laboratory time to demonstrate the current status of your project to the 
+instructor or the TA.  This will, hopefully, allow you to keep track of your
+progress towards your final goal.  Successful completion of the project is very
+important.  However, your effort to solve unforeseen problems and your engineering
+approach will be rewarded.  A final project report will be due by the end of the
+semester and a technical presentation will be scheduled shortly afterwards.
+</P><HR>
+
+<center><fonts size=+3><H2> LABORATORY EXERCISES </H2></fonts></CENTER>
+<HR width=35% size=4><br>
+
+<UL>
+<LI> <!WA9><a href="http://www.eecs.umich.edu/courses/eecs452/labex.html#lab1lnk"> Lab 1: Introduction to the TMS320C25 and
+the AIB </a>
+<LI> <!WA10><a href="http://www.eecs.umich.edu/courses/eecs452/labex.html#lab2lnk"> Lab 2: Introduction to the DSP56001 </a> 
+<LI> <!WA11><a href="http://www.eecs.umich.edu/courses/eecs452/labex.html#lab3lnk"> Lab 3: Finite Impulse Response 
+Filtering </a> 
+<LI> <!WA12><a href="http://www.eecs.umich.edu/courses/eecs452/labex.html#lab4lnk"> Lab 4: Infinite Impulse Response 
+Filtering </a>
+<LI> <!WA13><a href="http://www.eecs.umich.edu/courses/eecs452/labex.html#lab5lnk"> Lab 5: Special Considerations in IIR 
+Filters </a> 
+<LI> <!WA14><a href="http://www.eecs.umich.edu/courses/eecs452/labex.html#lab6lnk"> Lab 6: Fast Fourier Transforms </a>
+</UL>
+<HR>
+
+<a name="projlnk"> </a>
+<center><fonts size=+3><H2> FINAL PROJECTS </H2></fonts></CENTER>
+<HR width=25% size=4><br>
+
+<UL>
+<LI> <!WA15><a href="http://www.eecs.umich.edu/courses/eecs452/project1.html"><!WA16><img align=middle src="http://www.eecs.umich.edu/courses/eecs452/fig571th.gif" border=0>
+ Self-Steering Microphone Array System<p></a>
+<LI> <!WA17><a href="http://www.eecs.umich.edu/courses/eecs452/project2.html"><!WA18><img align=middle src="http://www.eecs.umich.edu/courses/eecs452/fig591th.gif" border=0>
+ Voice Encoding and Synthesis System<p></a>
+<LI> <!WA19><a href="http://www.eecs.umich.edu/courses/eecs452/project3.html"> HMM-Based Speaker-Independent Limited-Vocabulary
+ Speech Recognition System<p></a>
+</UL>
+<br><HR>
+
+<center><fonts size=+3><H2> LABORATORY EQUIPMENT </H2></fonts></CENTER>
+<HR width=37% size=4><br>
+
+<P>A complete discussion of the lab facilities is presented in the report,
+<!WA20><a href="http://www.eecs.umich.edu/courses/eecs452/report.ps"> <em> Digital Signal Processing in EECS 452 </em></a>.  
+A postscript copy of it can be obtained by clicking on the title.  The list 
+below shows the major components of that lab:</P>
+<UL>
+<P><LI> <!WA21><a href="http://www.ti.com/">
+<font size=+1><b> Texas Instruments </b></font></a>
+   <UL><P> 
+   <LI> <!WA22><a href="http://www.ti.com/sc/docs/dsps/prodinfo/newc2x.htm"> 
+   TMS320C25</a> Fixed-Point DSP Software Developmeny System
+   <LI> <!WA23><a href="http://www.ti.com/sc/docs/dsps/prodinfo/newc5x.htm"> 
+   TMS320C50</a> Fixed-Point DSP Evaluation Module
+   <LI> <!WA24><a href="http://www.ti.com/sc/docs/dsps/prodinfo/newc5x.htm">
+   TMS320C50</a> Fixed-Point DSP Starter Kit
+   <LI> <!WA25><a href="http://www.ti.com/sc/docs/dsps/prodinfo/newc3x.htm">
+   TMS320C30</a> Floating-Point DSP Eevaluation Module
+   <LI> <!WA26><a href="http://www.ti.com/sc/docs/dsps/prodinfo/newc4x.htm">
+   TMS320C40</a> Floating-Point DSP Parallel Processing System
+</P></UL></P>
+<P><LI> <!WA27><a href="http://www.motorola.com/">
+<font size=+1><b> Motorola </b></font></a>
+   <UL><P> 
+   <LI> DSP56001 Fixed-Point DSP Application Development System
+   <LI> DSP56002 Fixed-Point DSP Application Development System
+   <LI> DSP96000 Floating-Point DSP Application Development System
+   <LI> DSP16ADC Evaluation Board
+</P></UL></P>
+<P><LI><font size=+1><b> DSP Technology </b></font>
+   <UL><P>
+   <LI> SigLab
+</P></UL></P>
+<P><LI><!WA28><a href="http://www.tek.com/">
+<font size=+1><b> Tektronix </b></font></a>
+<UL><P>
+<LI> <!WA29><a href="http://www.tek.com/Measurement/Products/catalog/ca-TDS310.html">
+TDS 310 Digital Oscilloscope </a>
+<LI> <!WA30><a href="http://www.tek.com/Measurement/Products/catalog/ca-TDS400A.html">
+TDS 410 Digital Oscilloscope </a>
+<LI> Tektronix 2642A Analyzer
+</P></UL></P>
+</UL>  
+<HR>
+
+<center><fonts size=+3><H2> RELATED WWW SITES </H2></fonts></CENTER>
+<HR width=30% size=4><br>
+
+<UL>
+<LI><!WA31><a href="http://www.ariel.com"> Ariel </a>
+<LI><!WA32><a href="http://www.dspnet.com/dspnet/whitem/wtmh.html"> White Mountain DSP </a>
+<LI><!WA33><a href="http://www.ti.com/sc/docs/dsps/dsphome.htm"> Texas Instruments DSP Solutions </a>
+<LI><!WA34><a href="http://www.ti.com/sc/docs/dsps/dsphome.htm"> TI TMS320 DSP Family </a>
+<LI><!WA35><a href="http://www.ti.com/sc/dsp_challenge"> 1997 TI DSP Solutions Challenge </a>
+<LI><!WA36><a href="http://www.dspnet.com/"> DSPnet </a>
+<LI><!WA37><a href="http://www.innovative-dsp.com"> Innovative Integration </a>
+<LI><!WA38><a href="http://www.spectron.com"> Spectron </a>
+<LI><!WA39><a href="http://www.spectrumdigital.com"> Spectrum Digital, INC. </a>
+</UL><HR>
+
+</HTML>
+

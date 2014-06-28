@@ -1,0 +1,482 @@
+Date: Tue, 05 Nov 1996 20:52:02 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Tue, 10 Sep 1996 15:52:24 GMT
+Content-length: 32411
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+
+<html>
+
+<head>
+<title>Debugging Using GDB</title>
+<!-- Changed by: James Larus, 10-Sep-1996 -->
+<meta name="GENERATOR" content="Microsoft FrontPage 1.1">
+</head>
+
+<body>
+<!-- Changed by: James Larus, 10-Sep-1996 --><h1 align=center>Debugging Using GDB</h1>
+<h4 align=center>(http://www.cs.wisc.edu/~cs367-3/gdb.html)</h4>
+<h2 align=center>Authors: Charles Fischer, Tom Reps, James Larus, ....</h2>
+<p>Look <!WA0><a href="http://www.cs.wisc.edu/~cs367-3/gdb">here</a> for the example programs that accompany this document. </p>
+<hr>
+<h2>Contents</h2>
+<ul>
+<li><!WA1><a href="#introduction">Introduction</a></li>
+<li><!WA2><a href="#whatis">GDB and Debugging</a></li>
+<li><!WA3><a href="#using_crashed">Using GDB on a Program that Crashed</a> </li>
+<li><!WA4><a href="#incorrect_output">Using Gdb on a Program that Produces Incorrect Output</a> </li>
+<li><!WA5><a href="#additional_commands">Additional Gdb Commands</a> </li>
+<li><!WA6><a href="#command_summary">Summary of Gdb Commands</a> </li>
+</ul>
+<hr>
+<h2><a name="introduction">Introduction</a></h2>
+<p>Once you've written your program and it correctly compiles, you must thoroughly test it. Most newly written programs contain errors (or &quot;bugs&quot;) that must be 
+discovered and corrected. This process is debugging. While testing your program, you can encounter two forms of bugs: (1) the program fails to terminate as 
+expected and &quot;crashes&quot; instead, or (2) the program doesn't crash, but it produces unexpected or incorrect output. <tt>gdb</tt> is a debugger that can save large 
+amounts of your time and frustration by helping you find both types of bugs quickly and easily.</p>
+<p>When a program crashes, if you run the program under the control of <code>gdb</code>, you will get a chance to inspect the state of the program at the moment it crashed. 
+When a program doesn't crash, but instead produces unexpected or incorrect output, again, you can run the program under the control of <code>gdb</code> to find the 
+errors that cause the incorrect output. </p>
+<p>Sometimes a program produces incorrect output that is wrong in rather subtle ways. For example a numeric result may differ only slightly from the correct 
+answer. Sometimes a program may fail only rarely, usually giving correct output. It is the job of a programmer to thoroughly test a program before releasing it 
+to users. This may involve creating a &quot;suite&quot; of standard tests that the program must handle flawlessly. If you are not sure that you can always recognize 
+correct output, you may need to write additional code that verifies that the program really produces correct output. For example, if you were computing 
+square roots, you might square the root and compare it against the original value. For complex calculations, it is sometimes a good idea to code a second 
+independent solution of the problem in the test code, and compare the results the two solutions produce. If both produce the same answers over all tests, it is 
+usually reasonable to assume that the answers are correct. </p>
+<h2><a name="whatis">GDB and Debugging</a></h2>
+<p><code>Gdb</code> is a programming tool available in most Unix systems for debugging C and C++ programs. If you plan to use <code>gdb</code> to debug your programs, you must 
+compile all source files using the <code>&quot;-g&quot;</code> option (for debu<b>g</b>). This option produces tables that the debugger needs.</p>
+<p>Moreover, there is an X-windows version of <tt>gdb</tt> called <tt>xxgdb</tt>, which has a window interface that you may find to be a lot easier and more pleasent to use. 
+However, this program is difficult to describe in words, so this document explains the plain version of <tt>gdb</tt>. All commands also work in <tt>xxgdb</tt>; you just click 
+a button instead of typing them in.</p>
+<p>However, let's first note that the fastest and best way to use a debugger is to not use it at all! In many cases, careful examination of a program's output gives a 
+great deal of information about what went wrong. For example, if the program crashed, it must have been in that portion of the program between the last 
+output that was produced and the first expected output that <em>wasn't</em> produced. (However, note that many systems &quot;buffer&quot; output, so it sometimes happens 
+that a program may produce part of an output line that was never printed because of the program crashed. <code>cout.flush()</code> forces buffered output to be 
+immediately printed.) </p>
+<p>Even if a program doesn't crash, careful examination of a program's output can reveal patterns of correct and incorrect values that may well indicate likely 
+errors. When you get incorrect outputs don't panic. Calmly look at what was produced, and try to reason about what went wrong. Use an editor to examine 
+the parts of your program that are most likely to be responsible for the errors. If you still can't explain what went wrong, it may be time to use <code><tt>gdb</tt></code> or <tt>xxgdb</tt> 
+to gather more information. </p>
+<h2><a name="using_crashed">Using GDB on a Program that Crashed </a></h2>
+<p>A program crashes when it encounters an error so severe that further execution is impossible. The Unix operating system prints a message saying what 
+caused the program to terminate and then kills the program. The termination message is rarely specific or helpful. Common messages are: <code>segmentation 
+fault</code> and <code>bus error</code>, which usually indicate that an invalid array access or pointer reference occurred. </p>
+<p>In this section we'll show how <code>gdb</code> can be used to discover the reason why a program has crashed. To illustrate using <code>gdb</code> after a crash, we'll use the 
+following simple C++ program, <!WA7><a href="http://www.cs.wisc.edu/~cs367-3/gdb/bug1.C"><code>bug1.C</code></a>, which tries to allocate, initialize, and print an array of strings (the line numbers are for reference purposes): </p>
+<pre><code><samp>1   # include &lt;iostream.h&gt;
+2   
+3   /* Allocate, initialize, and print an array of strings */
+4   void init (char *str)
+5   {
+6     int i;
+7   
+8     for (i = 1; i &lt;= i++)
+9       {
+10         *(str++) = 'x';
+11      }
+12    *str = '\0';
+13   }
+14
+15  int main()
+16  {
+17    int j, i;
+18    char strs[4];
+19
+20    for (i= 1; i &lt;= 4; i++)
+21      {
+22        strs[i] = new char[11];
+23      }
+24
+25    for (i= 1; i &lt;= 4; i++)
+26      {
+27        init(strs[i]);
+28      }
+29
+30    for (i= 1; i &lt;= 4; i++)
+31      {
+32        cout &lt;&lt; strs[j] &lt;&lt; endl;
+33      }
+34
+35    return 0;
+36  }</samp></code></pre>
+<p><samp>When we compile and execute </samp><code><samp>bug1.C</samp></code><samp>, the program crashes before printing any output, and we get the following message: </samp></p>
+<p><code><samp>Segmentation fault (core dumped)</samp></code><samp> </samp></p>
+<p><samp>We have no idea of what went wrong, so it's time to use </samp><code><samp>gdb</samp></code><samp>. We need to re-run the program under the control of </samp><code><samp>gdb</samp></code><samp>: </samp></p>
+<pre><code><samp>&gt; gdb bug1
+GDB is free software and you are welcome to distribute copies of it
+ under certain conditions; type &quot;show copying&quot; to see the conditions.
+There is absolutely no warranty for GDB; type &quot;show warranty&quot; for details.
+GDB 4.13 (sparc-sun-sunos4.1.3), 
+Copyright 1994 Free Software Foundation, Inc...
+(gdb) run
+Starting program: /afs/cs.wisc.edu/p/course/cs367-reps/private/GDB/bug1
+
+Program received signal SIGSEGV, Segmentation fault.
+0x15664 in init (str=0x5 &lt;Address 0x5 out of bounds&gt;) at bug1.C:10
+10	    *(str++) = 'x';
+(gdb)</samp></code></pre>
+<p><code>Gdb</code> tells us that execution terminated in function <code>init</code> at line 10 of file <code>bug1.C</code>. It also shows us that source line (the number at the extreme left is a line 
+number). The line </p>
+<p><code>(gdb)</code> </p>
+<p>is a prompt; <code>gdb</code> is waiting for us to give a command. A good start is the <code>where</code> command, which will tell us more about the context in which the crash 
+occurred: </p>
+<pre><code><samp>(gdb) where
+#0  0x15664 in init (str=0x5 &lt;Address 0x5 out of bounds&gt;) at bug1.C:10
+#1  0x15730 in main () at bug1.C:27
+(gdb)</samp></code></pre>
+<p>This shows the <em>call stack</em>, the sequence of function calls in progress at the point of termination. The top of the list is the most recent call; the bottom is the 
+original call. (Hexadecimal numbers, like 0x15664, are addresses that you'll normally ignore). Execution terminated in <code>init</code> (at line 10 of <code>bug1.C</code>), which 
+was called by <code>main</code> at line 27 of <code>bug1.C</code>. </p>
+<p>At this point we'll want to look at that part of our program around lines 10 and 27 of file <code>bug1.C</code>. <code>Gdb</code> has a command to list files (named <code>list</code>): </p>
+<pre><code><samp>(gdb) list
+5       {
+6         int i;
+7       
+8     for (i = 1; i &lt;= i++)
+9       {
+10         *(str++) = 'x';
+</samp></code></pre>
+<p>(Sometimes you will want to create a new window and look at the file in question using your favorite editor -- after all, you'll probably want to correct the 
+bugs once you find them!) </p>
+<p>Looking at line 10 (in the listing of <code>bug1.C</code> shown above), we see there is an assignment to a character pointed to by variable <code>str</code>. Let's print out the values 
+of <code>str</code> and <code>*str</code> to see if they seem reasonable.	The command to print a value is <code>print</code>, which can be abbreviated as <code>p</code>. </p>
+<pre><code><samp>(gdb) p str
+$1 = 0x5 </samp></code></pre>
+<pre>&lt;address x5 out of bounds&gt;<code><samp>
+(gdb) p *str Cannot access memory at address 0x5. </samp></code></pre>
+<p>Pointer variable <code>str</code> has the value <code>0x5</code>. This address (which <code>gdb</code> has reported to us in hexadecimal format) looks suspicious because pointers are usually 
+very large values. In fact, when we look at the value <code>*str</code> this confirms our suspicion: <code>gdb</code> tells us we cannot access memory at that address. (The symbols 
+on the left of the equal sign, starting with a $, are internal variables <code>gdb</code> stores with the values that were printed). Now we know why execution was 
+terminated -- we tried to assign a value through a bad pointer. </p>
+<p>Our problem now is to figure out why <code>str</code> was assigned a bad address. </p>
+<p>We look at the value of <code>i</code> to see how far the loop has progressed: </p>
+<pre><code><samp>(gdb) p i
+$2 = 1</samp></code></pre>
+<p>The value of <code>i</code> is only <code>1</code>, so the loop just started. <code>Init</code> was probably passed a bad pointer by its caller. To find out information about the caller, we must tell 
+<code>gdb</code> to focus on another point in the call stack -- the caller of <code>init</code>. The command <code>up</code> will take us up one call (<code>down</code> takes us back down the call stack): </p>
+<pre><code><samp>(gdb) up
+#1  0x23a4 in main () at bug1.C:27
+27          init(strs[i]);</samp></code></pre>
+<p>Because we've moved up the call stack, the <em>current procedure</em> is now <code>main</code>, and the current position in the code is now line 27 of function <code>main</code>: </p>
+<pre><code><samp>(gdb) list
+22          strs[i] = new char [11];
+23        }
+24              
+25    for (i= 1; i &lt;= 4; i++)
+26      {
+27        init(strs[i]);
+28      }
+29
+30    for (i= 1; i &lt;= 4; i++)
+31      {</samp></code></pre>
+<p>We can now look at the values of variables visible in <code>main</code>. In particular, let's look at the values of <code>i</code>, <code>strs[i]</code>, and <code>*strs[i]</code>: </p>
+<pre><code><samp>(gdb) p i
+$3 = 4
+(gdb) p strs[i]
+$4 = 0x4 </samp></code></pre>
+<address x4 out of bounds><code><samp>(gdb) p *strs[i] Cannot access memory at address 0x4. </samp></code><p>The value of <code>i</code> is <code>4</code>, which is reasonable. The value of <code>strs[4]</code> is a very small address, which we find cannot be accessed in memory. An illegal pointer value 
+in <code>strs[4]</code> is what caused the crash. </p>
+<p>We now know that <code>strs[4]</code> is invalid, but let's also look at the other values of <code>strs</code>. We ask to see the value of the entire array: </p>
+</address>
+<pre><code><samp>(gdb) p strs
+$5 = {0x0, 0x18a60 &quot;xxxxxxxxxx&quot;, 0x18a78 &quot;xxxxxxxxxx&quot;, 0x18a90 &quot;xxxxxxxxxx&quot;}</samp></code></pre>
+<p><code>Gdb</code> shows us each address in the array and, when possible, the value of the string an address points to. </p>
+<p>Now we realize that the last element shown for <code>strs</code> is <em>not</em> the value we were shown for <code>strs[4]</code> (i.e., <code>0x4</code>). Moreover, the last element of <code>strs</code> seems to 
+be properly initialized! This gives us the final clue. In C++, all arrays are 0-based, so the valid subscripts of <code>strs</code> are 0 to 3; 4 is out of range. </p>
+<p>Where did that crazy value for <code>strs[4]</code> come from? When we use a subscript that is too big, we actually access variables declared just after the array. 
+Looking at our program, that is variable <code>i</code>, which currently has a value of <code>4</code>. If we know how to convert hexadecimal to decimal, we know that 0x4 is in fact 
+4. </p>
+<p>Summarizing, what we were able to find out by using <code>gdb</code> was the following: <em>The program incorrectly went beyond the end of </em><code><em>strs</em></code><em> and tried to use the 
+value of </em><code><em>i</em></code><em> as a string pointer.</em> </p>
+<p>We exit <code>gdb</code> using the command <code>quit</code>. When we change the example program to use subscripts in the range 0 to 3, the program will work correctly. </p>
+<p>At this point you should copy the program <code>bug1.C</code> (from <!WA8><a href="http://www.cs.wisc.edu/~cs367-3/gdb/bug1.C">here</a>) and compile it with <code>g++</code>. (Remember to use the <code>-g</code> option.) When you run the executable, 
+you should get a segmentation fault. Enter <code>gdb</code>, re-run the program, and try out the <code>where</code>, <code>up</code>, <code>down</code>, and <code>print</code> commands. </p>
+<p>We'll discuss more commands shortly. If you wish, you can use <code>gdb</code>'s <code>help</code> command to find out the categories of commands available: </p>
+<pre><code><samp>(gdb) help
+List of classes of commands:
+
+running -- Running the program
+stack -- Examining the stack
+data -- Examining data
+breakpoints -- Making program stop at certain points
+files -- Specifying and examining files
+status -- Status inquiries
+support -- Support facilities
+user-defined -- User-defined commands
+aliases -- Aliases of other commands
+obscure -- Obscure features
+internals -- Maintenance commands
+
+Type &quot;help&quot; followed by a class name for a list of commands in that class.
+Type &quot;help&quot; followed by command name for full documentation.
+Command name abbreviations are allowed if unambiguous.</samp></code></pre>
+<p>You can also make a help request to find out about a class of commands, for example: </p>
+<pre><code><samp>(gdb) help breakpoints
+Making program stop at certain points.
+
+List of commands:
+
+awatch -- Set a watchpoint for an expression
+rwatch -- Set a read watchpoint for an expression
+watch -- Set a watchpoint for an expression
+catch -- Set breakpoints to catch exceptions that are raised
+break -- Set breakpoint at specified line or function
+clear -- Clear breakpoint at specified line or function
+delete -- Delete some breakpoints or auto-display expressions
+disable -- Disable some breakpoints
+enable -- Enable some breakpoints
+thbreak -- Set a temporary hardware assisted breakpoint
+hbreak -- Set a hardware assisted  breakpoint
+tbreak -- Set a temporary breakpoint
+condition -- Specify breakpoint number N to break only if COND is true
+commands -- Set commands to be executed when a breakpoint is hit
+ignore -- Set ignore-count of breakpoint number N to COUNT
+
+Type &quot;help&quot; followed by command name for full documentation.
+Command name abbreviations are allowed if unambiguous.</samp></code></pre>
+<p>Finally, you can make a help request to find out about individual commands, for example: </p>
+<pre><code><samp>(gdb) help break
+Set breakpoint at specified line or function.
+Argument may be line number, function name, or &quot;*&quot; and an address.
+If line number is specified, break at start of code for that line.
+If function is specified, break at start of code for that function.
+If an address is specified, break at that exact address.
+With no arg, uses current execution address of selected stack frame.
+This is useful for breaking on return to a stack frame.
+
+Multiple breakpoints at one place are permitted, and useful if conditional.
+
+Do &quot;help breakpoints&quot; for info on other commands dealing with breakpoints.</samp></code></pre>
+<h2><a name="incorrect_output">Using Gdb on a Program that Produces Incorrect Output </a></h2>
+<p>When a program crashes, at least you have a starting point at which to begin the debugging process: You look at the line that was about to be executed when 
+the crash occurred and try to determine why the program misbehaved. However, if your program terminates cleanly, but produces incorrect or unexpected 
+output, things can be harder. </p>
+<p>One way to debug a program is to insert print statements at selected points in the program, recompile the program, and rerun it. Hopefully, the additional 
+data will provide clues as to what went wrong. An alternative -- and usually more efficient -- way to debug is to use <code>gdb</code>, which allows you to supervise and 
+control the execution of your program interactively. </p>
+<p>Some of the things that <code>gdb</code> permits you to do are: (1) Set (and clear) <em>breakpoints</em> at specific functions and line numbers. (A breakpoint stops execution at a 
+particular point, allowing you to issue additional debugger commands.) (2) Look at the value of variables; (3) <em>Single-step</em> your program, running one source 
+line at a time; and (4) Resume execution until the next breakpoint is encountered (or the end of the program is reached). </p>
+<p>To illustrate how we debug a misbehaving program, consider <!WA9><a href="http://www.cs.wisc.edu/~cs367-3/gdb/bug2.C"><code>bug2.C</code></a>: </p>
+<pre><code><samp>1   # include &lt;iostream.h&gt;
+2   
+3   /* Count number of adjacent array elements that are equal */
+4   int main()
+5   {
+6     int a[10] = {1,8,5,3,3,9,8,4,4,10};
+7     int cnt = 0; /* how many adjacent elems are equal ? */
+8     int i;
+9   
+10  for (i = 0; i &lt; 9; i++)
+11  {
+12    if (a[i] = a[i+1])
+13    {
+14      cnt++;
+15    }
+16  }
+17
+18  cout &lt;&lt; &quot;The number of adjacent values that are equal is &quot; &lt;&lt; cnt &lt;&lt; endl;
+19
+20  return(0);
+}</samp></code></pre>
+<p>This program is designed to step through an array, counting pairs of adjacent elements that are equal. When we compile and run we get the following: </p>
+<pre><code><samp>&gt; g++ -g -Wall -o bug2 bug2.C
+&gt; bug2
+The number of adjacent values that are equal is 9</samp></code></pre>
+<p>The program terminates cleanly (i.e., no run-time error is reported), but when we look at the values that array <code>a</code> was given in line 3, we see that the answer 
+computed -- 9 -- is plainly wrong! It should have been 2. We could explicitly add some print statements and recompile the program, but using <code>gdb</code> is easier 
+and far more flexible. (Every print statement that you add must eventually be removed or disabled.) </p>
+<pre><code><samp>&gt; gdb bug2
+GDB is free software and you are welcome to distribute copies of it
+ under certain conditions; type &quot;show copying&quot; to see the conditions.
+There is absolutely no warranty for GDB; type &quot;show warranty&quot; for details.
+GDB 4.13 (sparc-sun-sunos4.1.3), 
+Copyright 1994 Free Software Foundation, Inc...
+(gdb) run
+Starting program: /afs/cs.wisc.edu/p/course/cs367-reps/private/GDB/bug2 
+The number of adjacent values that are equal is 9
+
+Program exited normally.
+(gdb)</samp></code></pre>
+<p>We get the same output as before, with normal termination. </p>
+<h3>Remark</h3>
+<p>As we saw with <code>bug1</code>, the <code>gdb</code> command<code> run</code> lets us start execution of the program from within <code>gdb</code>. If the program has arguments, these are included in the 
+<code>run</code> command. For example, a program usually called as</p>
+<p><code><samp>testprog -f file1</samp></code></p>
+<p>would be run from within <code>gdb</code> by issuing the command </p>
+<pre><code><samp>run -f file1</samp></code></pre>
+<p>Standard input is entered from the keyboard; standard output appears on the screen, possibly intermixed with the output from <code>gdb</code> commands. </p>
+<h3>End Remark</h3>
+<p>To get <code>gdb</code> to stop while running a program (so that we can look at values, for example), we use the <code>break</code> command (which can be abbreviated <code>b</code>). We 
+give either the name of a function or a line number. Each time that function or line number is reached, <code>gdb</code> stops and waits for additional commands (such as a 
+command to print the value of some variable, or a command to resume execution). </p>
+<p>To have execution resume until the next breakpoint is encountered (or the end of the program is reached), we enter <code>continue</code>. To execute just one more line 
+of the program (known as &quot;single-stepping&quot;) we enter <code>next</code> (abbreviated <code>n</code>) or <code>step</code> (abbreviated <code>s</code>). The difference between <code>next</code> and <code>step</code> is that <code>next</code> 
+takes you to the next source line <em>in the current function</em>, whereas <code>step</code> takes you to the next source line (which may be in another function if the current line 
+calls a function). </p>
+<p>Hitting the <code><b>return</b></code> key reexecutes the most recent command. Thus entering one <code>s</code> or <code>n</code> command, followed by a number of <code>return</code>s, allows you to step 
+through a program, one line at a time. For long programs, this would be very tedious, but you don't need to start stepping at the very beginning. </p>
+<p>For this simple program, we will set a breakpoint at function <code>main</code> and then step through the first few lines of the program. This will give us a sense of how 
+the program is executing. </p>
+<pre><code><samp>
+(gdb) b main
+Breakpoint 1 at 0x22f8: file bug2.C, line 6.
+(gdb) run
+Starting program: /afs/cs.wisc.edu/p/course/cs367-reps/private/GDB/bug2 
+
+Breakpoint 1, main () at bug2.C:6
+6         int a[10] = {1,8,5,3,3,9,8,4,4,10};
+(gdb) n
+7         int cnt = 0; /* how many adjacent elems are equal ? */
+(gdb) 
+10  for (i = 0; i &lt; 9; i++)</samp></code></pre>
+<p>The numbers as the extreme left are line numbers. It looks like the program is incrementing variable <code>cnt</code> during each iteration, but why? Let's print out the 
+value of <code>i</code>, <code>a[i]</code>, and <code>a[i+1]</code>. </p>
+<pre><code><samp>(gdb) p i
+$1 = 2
+(gdb) p a[i]
+$2 = 5
+(gdb) p a[i+1]
+$3 = 3</samp></code></pre>
+<p>These values look ok. </p>
+<p>At a breakpoint, the line that <code>gdb</code> shows you is the <em>next</em> line to be executed, so we are just about to execute &quot;<code>if (a[i] = a[i+1])</code>&quot;. We'll let the if 
+execute and then we'll look at the values again: </p>
+<pre><code><samp>(gdb) n
+14            cnt++;
+(gdb) p i
+$4 = 2
+(gdb) p a[i]
+$5 = 3
+(gdb) p a[i+1]
+$6 = 3</samp></code></pre>
+<p>Our intention was that the true-branch of the if, which increments variable <code>cnt</code>, should execute only if <code>a[i]</code> equals <code>a[i+1]</code>; however, as a result of executing 
+just the condition <code>a[i]</code> changed value! </p>
+<p>That is the clue. The equality operator in C++ is <code>==</code>, not <code>=</code>; the operator <code>=</code> is the assignment operator! Now we understand what has been happening: Each 
+time the test has been performed, we have been assigning the value of <code>a[i+1]</code> to <code>a[i]</code> and then treating that value (<code>a[i+1]</code>) as a boolean value for the test! 
+Since none of the values in <code>a</code> are <code>0</code>, they are all treated as true. </p>
+<p>The way to correct the program is to change <code>=</code> to <code>==</code> in line 12. </p>
+<h2><a name="additional_commands">Additional Gdb Commands </a></h2>
+<p>Single-stepping a large program can be very tedious. Another strategy is to set breakpoints at key statements that modify critical data. At these points, we 
+can look at values, or single-step a bit to see where the program is going. In our example program <code>bug2.C</code>, line 14 would be a good place to set a 
+breakpoint, since it is where variable <code>cnt</code> is incremented. In this case, we would have seen that <code>cnt</code> was being incremented on each iteration, and looking at 
+the values of <code>i</code> and <code>a</code> would soon have showed us the unintentional assignment in the condition of the if statement. </p>
+<p>A breakpoint can be cleared with the <code>clear</code> command, naming the line or function from which a breakpoint is to be cleared. </p>
+<p>In our example, it was obvious that line 14 was the only place where the value of <code>cnt</code> was being changed (and hence it was a good place to put a 
+breakpoint). In large programs, it is sometimes not obvious where a given variable is being set. The command &quot;<code>watch</code> <i>expr</i>&quot; -- where <i>expr</i> is a C++ 
+expression -- allows you to ask <code>gdb</code> to stop whenever <i>expr</i> changes value. Thus, the command </p>
+<pre><code><samp>watch cnt
+</samp></code></pre>
+<p>would have instructed <code>gdb</code> to stop whenever <code>cnt</code> changed value; execution would have stopped at the statement just after the change, and <code>gdb</code> would have 
+showed us both the old and new values. </p>
+<p><code>Watch</code> commands slow <code>gdb</code> down a lot, so use them judiciously. Note that to watch a variable <code>v</code>, you must be within the scope that contains <code>v</code>. You can set a 
+breakpoint at the start of <code>main</code> or some other function, then set a watch involving variables in the function. Here is how we might have used <code>watch</code> on 
+program <code>bug2</code>: </p>
+<pre><code><samp>&gt; gdb bug2
+   . . .
+(gdb) b main
+Breakpoint 1 at 0x22f8: file bug2.C, line 6.
+(gdb) run
+Starting program: /afs/cs.wisc.edu/p/course/cs367-reps/private/GDB/bug2 
+
+Breakpoint 1, main () at bug2.C:6
+6         int a[10] = {1,8,5,3,3,9,8,4,4,10};
+(gdb) watch cnt
+Watchpoint 2: cnt
+(gdb) continue
+Continuing.
+Watchpoint 2: cnt
+
+Old value = 0
+New value = 1
+main () at bug2.C:16
+16        }</samp></code></pre>
+<p>Another useful <code>gdb</code> command is &quot;<code>commands</code>&quot;. This allows you to give a collection of <code>gdb</code> commands that are executed (by <code>gdb</code>) each time a certain 
+breakpoint is encountered. This is especially useful when you are trying to keep an eye on a number of variables; you just tell <code>gdb</code> to print <em>all</em> their values at 
+the breakpoint, rather than typing in <code>print</code> commands by hand every time <code>gdb</code> stops at the breakpoint. For instance, in our example of debugging program 
+<code>bug2</code>, we could have had the values of <code>cnt</code>, <code>a[i]</code>, and <code>a[i+1]</code> printed out each time the breakpoint at line 14 was encountered: </p>
+<pre><code><samp>&gt; gdb bug2
+   . . .
+(gdb) b main
+Breakpoint 1 at 0x22f8: file bug2.C, line 6.
+(gdb) run
+Starting program: /afs/cs.wisc.edu/p/course/cs367-reps/private/GDB/bug2 
+
+Breakpoint 1, main () at bug2.C:6
+6         int a[10] = {1,8,5,3,3,9,8,4,4,10};
+(gdb) b 14
+Breakpoint 2 at 0x2438: file bug2.C, line 14.
+(gdb) commands 2
+Type commands for when breakpoint 2 is hit, one per line.
+End with a line saying just &quot;end&quot;.
+p cnt
+p a[i]
+p a[i+1]
+end
+(gdb) continue
+Continuing.
+
+Breakpoint 2, main () at bug2.C:14
+14            cnt++;
+$1 = 0
+$2 = 8
+$3 = 8
+(gdb) continue
+Continuing.
+
+Breakpoint 2, main () at bug2.C:14
+14            cnt++;
+$4 = 1
+$5 = 5
+$6 = 5</samp></code></pre>
+<p>Another feature of <code>gdb</code> that cuts down on how much you have to type is the <em>command editing</em> feature: You can scroll through past commands using the 
+<code><b>up-arrow</b></code> and <code><b>down-arrow</b></code> keys; once you've found a similar command to the one you want to issue, you can edit the text of the command using 
+<code><b>left-arrow</b></code>, <code><b>right-arrow</b></code>, <code><b>backspace</b></code>, etc. </p>
+<p>At this point you should copy the program <code>bug2.C</code> (from <!WA10><a href="http://www.cs.wisc.edu/~cs367-3/gdb/bug2.C">here</a>) and compile it with <code>g++</code> (remember the <code>-g</code> option). Enter <code>gdb</code> and experiment with 
+breakpoints, single-stepping, watches, and other commands. Remember that if you forget the details of a command, you should say <code>help command</code> and <code>gdb</code> 
+will give you some information about the command. </p>
+<h2><a name="command_summary">Summary of Gdb Commands </a></h2>
+<p><code>Gdb</code> has many commands we have not discussed. The document <i>Using GDB</i> details all that's available. This document is long (almost 200 pages) and very 
+detailed. Fortunately with just the commands we've discussed you can make very effective use of <code>gdb</code>. Let's review the commands we've seen and their 
+effect: </p>
+<pre><samp>Command          Effect
+
+quit             Terminate gdb
+where            Show the call stack where execution has been halted
+p                Print the value of a variable or expression
+up               Refocus gdb up one function in the call stack
+down             Refocus gdb down one function in the call stack
+help             Get help for a command
+run              Start execution of a program
+b                Set a breakpoint at a line or function
+clear            Clear a breakpoint from a line or function
+commands         Set commands to be executed when a breakpoint is hit
+s                Execute one more line (possibly in a subroutine)
+n                Execute to next line of current function
+continue         Continue execution to next breakpoint
+watch            Watch for a change in an expression (this can be slow)
+list             List source lines of a function
+</samp></pre>
+<p>Here are some other commands that we did not discuss but which are very useful: </p>
+<pre><samp>Command          Effect
+
+info b           Show what breakpoints are set
+delete </samp><samp><i>breakpoint-#</i></samp><samp>
+                 Remove a single breakpoint (use &quot;info b&quot; to find breakpoint numbers)
+cond </samp><samp><i>#</i></samp><samp> </samp><samp><i>condition</i></samp><samp>
+                 Convert a breakpoint into a conditional breakpoint;
+                 # is the breakpoint number and [cond] is any C++ expression.
+                 For example:  cond 1 (x == 0)
+set </samp><samp><i>var</i></samp><samp> = </samp><samp><i>expr</i></samp><samp>
+                 Set the given variable to have the value of the given expression
+until            Execute until the program reaches a source line greater than
+                 a specified line or function.  Execution will also stop upon
+                 exit from the current stack frame.
+</samp></pre>
+<p>Learning a new tool like <code>gdb</code> can be tedious. However, once you've mastered <code>gdb</code>, it will greatly ease debugging. You'll soon wonder how you ever got by 
+without it. </p>
+</body>
+
+</html>

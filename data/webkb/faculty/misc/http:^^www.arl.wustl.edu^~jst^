@@ -1,0 +1,228 @@
+Date: Thu, 21 Nov 1996 21:32:50 GMT
+Server: NCSA/1.5.2
+Content-type: text/html
+
+<html>
+<head>
+<title> Jonathan Turner - home page </title>
+</head>
+
+<!-- <body background="tan_paper.gif"> -->
+<body bgcolor=ffffff>
+<h1>Jonathan Turner - Home Page</h1>
+<!WA0><img align=left vspace=10 hspace=20 src="http://www.arl.wustl.edu/~jst/gif/jst.gif">
+<p>
+<address>Jonathan S. Turner</address>
+<address>Computer Science Department</address>
+<address>Campus Box 1045</address>
+<address>Washington University</address>
+<address>St. Louis, Missouri 63130-4899</address>
+<address>jst@cs.wustl.edu</address>
+<address>314-935-6132 (office)</address>
+<address>314-935-7302 (fax)</address>
+<br clear=left>
+
+<p> 
+Click <!WA1><a href="http://www.arl.wustl.edu/~jst/gigatech/cfp.html"> here </a> to find out about 
+Washington University's Gigabit Network Technology Distribution Program.
+<p>
+
+<h1>Selected Current Research Projects</h1>
+<i>Extending ATM Networks for Reliable Multicast</i>.
+This project involves extending ATM switches to assist in the provision of
+end-to-end reliable multicast in which the amount of work that must be done
+by senders and receivers is essentially independent of the size of the
+multicast. It involves the addition of several mechanisms to ATM switches.
+One mechanism provides <i>redundant acknowledgement suppression</i>
+so that senders receive only a single acknowledgement for every packet sent.
+A second mechanism allows multiple senders on a many-to-many multicast to
+send multi-cell packets on a single virtual circuit without losing the
+ability to properly demultiplex them at the receiver. This is done using
+a <i>dynamic virtual circuit subchannel mechanism</i>.
+Details can be found in
+in a recently completed
+<!WA2><a href="http://www.cs.wustl.edu/cs/techreports/1996/wucs-96-16.ps.Z">technical report</a> and
+<!WA3><a href="http://www.arl.wustl.edu/~jst/talks/relmulti/">set of slides</a>.
+<p>
+<i>Gigabit ATM Switching.</i>
+We're nearing completion of a set of three chips and
+associated hardware and software that implements a uniquely scalable and
+flexible
+<!WA4><a href=http://www.arl.wustl.edu/~jst/gigatech/gigatech.html>ATM switch</a>.
+supporting link speeds from 150 Mb/s to 2.4 Gb/s and
+capable of supporting configurations with total throughputs from 10 Gb/s
+to more than 10 Tb/s.
+This system uses a unique cell recycling technique for multicast
+switching which has optimal scaling properties, allowing large
+switches to be implemented for a fraction of the cost of competing
+architectures
+[<!WA5><a href="http://www.arl.wustl.edu/~jst/pubs/allerton93.ps.Z">TU93c</a>,<!WA6><a href="http://www.arl.wustl.edu/~jst/pubs/infocom94.ps.Z">TU94</a>,<!WA7><a href="http://www.cs.wustl.edu/cs/techreports/1996/wucs-96-07.ps.Z">TU96</a>].
+This work is part of a major ARPA-funded project on
+<!WA8><a href=http://www.arl.wustl.edu/arl/projects/csto/intro.html>gigabit
+network technology</a>.
+<p>
+<i>ATM Network Design</i>.
+Classical network design techniques are not well-equipped to cope with
+the design of ATM networks, which are characterized by statistically
+unpredictable traffic and a wide range of different application types
+with diverse requirements, including multicast. Network design methods
+that allow network managers to define traffic requirements at a fairly
+gross level and adopt a worst-case approach to network design appear
+to be more appropriate.
+See the following reports for recent results
+[<!WA9><a href=http://www.arl.wustl.edu/~jaf/jaf-dissertation.ps.Z>FI94</a>,<!WA10><a href="http://www.cs.wustl.edu/cs/techreports/1996/wucs-96-03.ps.Z">FI96a</a>,<!WA11><a href="http://www.cs.wustl.edu/cs/techreports/1996/wucs-96-06.ps.Z">FI96b</a>].
+<p>
+<i>Distributed Control of ATM Networks</i>
+The design of ATM switching hardware is now fairly well-understood.
+However, distributed control systems for effectively managing large scale networks (with thousands or millions of terminals) remain unavailable.
+While a number of proposals have been put forward in the ATM Forum,
+there is a limited understanding of how competing approaches compare
+with respect to performance, use of network resources and even correctness.
+We are developing a framework for precisely defining and analyzing
+network control systems that allows the essential issues to be separated
+from the welter of protocol and implementation details that often make
+it difficult to make meaningful
+comparisons [<!WA12><a href="ftp://wuarchive.wustl.edu/doc/techreports/wustl.edu/cs/1995/wucs-95-12.ps.Z">TU95b</a>]
+and using this framework to develop precise characterizations
+of new approaches to distributed network control
+[<!WA13><a href="ftp://wuarchive.wustl.edu/doc/techreports/wustl.edu/cs/1995/wucs-95-09.ps.Z">WU95</a>]. In addition, we have designed and are implementing a particular
+network control system details of which can be found in
+[<!WA14><a href="ftp://wuarchive.wustl.edu/doc/techreports/wustl.edu/arl/CMAP_spec_v3.0.ps.Z">DH94</a>,<!WA15><a href="ftp://wuarchive.wustl.edu/doc/techreports/wustl.edu/arl/CMNP_spec_DRAFT.ps.Z">DH95</a>].
+Copies of slides from a recent presentation (keynote talk for ATM workshop
+at Georgetown University, 10/30--11/1/95) can be found
+<!WA16><a href="http://www.arl.wustl.edu/~jst/talks/netcont.ps.gz"> here</a>.
+
+<h1>Project Ideas</h1>
+Here is a list of project ideas for graduate students.
+They range in difficulty from senior or masters design project ideas through
+doctoral research.
+<p>
+<ol>
+<li>    <!WA17><a href="http://www.arl.wustl.edu/~jst/projects/dualspeed.html"> Double speed port processor
+        for a gigabit ATM switch</a>.
+<li>    <!WA18><a href="http://www.arl.wustl.edu/~jst/projects/epdiscard.html"> ATM congestion control
+        mechanism using frame level discarding</a>.
+<li>    <!WA19><a href="http://www.arl.wustl.edu/~jst/projects/relmulti.html"> ATM switch support for reliable
+        multicast communication</a>.
+<li>    <!WA20><a href="http://www.arl.wustl.edu/~jst/projects/adreseq.html"> Adaptive resequencing in an ATM
+        switching system</a>.
+</ol>
+
+<h1>Selected Past Research Activities</h1>
+<i>Queueing Analysis of Multistage Switching Networks</i>. Multistage
+switching networks are among the simplest and most cost-effective
+architectures for large ATM switching systems. This work developed
+new methods for analyzing queueing performance for these systems,
+in order to improve accuracy and extend them to handle shared-buffer
+switch elements and alternative flow control strategies
+[<!WA21><a href="http://www.arl.wustl.edu/~jst/pubs/ieee293.ps.Z">TU93a</a>,<!WA22><a href="http://www.arl.wustl.edu/~jst/pubs/ieee893.ps.Z">TU93b</a>].
+<p>
+<i>Nonblocking Multirate Switching</i>. This work extends the classical
+theory of nonblocking networks to apply to switching systems supporting
+communication channels with different rates that can share the capacity
+of both external links and internal switch data paths. It applies directly
+to multirate circuit switching and ATM switching systems that use static
+routing. We've obtained results generalizing classical results for
+both point-to-point [<!WA23><a href="http://www.arl.wustl.edu/~jst/pubs/infocom89.ps.Z">ME89a</a>,<!WA24><a href="http://www.arl.wustl.edu/~jst/pubs/siamjc89.ps.Z">ME89b</a>] and
+multipoint [<!WA25><a href="http://www.arl.wustl.edu/~jst/pubs/ieee293a.ps.Z">ME93a</a>] switching systems.
+<p>
+<i>Analysis of Algorithms for Hard Combinatorial Problems</i>.
+This research centers on methods for analyzing the performance of
+algorithms for hard combinatorial problems. We are interested in both
+worst-case analysis and probabilistic analysis. The probabilistic analyses
+make use of problem-specific probability distributions selected to
+help clarify real differences among competing algorithms
+[<!WA26><a href="http://www.arl.wustl.edu/~jst/pubs/siamjc86.ps.Z">TU86</a>,<!WA27><a href="http://www.arl.wustl.edu/~jst/pubs/joa88.ps.Z">TU88</a>].
+<p>
+<!WA28><a href="http://www.arl.wustl.edu/~jst/publist.html"><i>Publication List</i></a>
+
+<h1>Current Students</h1>
+<ol>
+<li>	<!WA29><a href=http://www.arl.wustl.edu/~kamal/>Kamal Bhatia</a> --- Image Space Navigator.
+<li>	Qiyong Bian --- Dynamic Flow Switching.
+<li>	<!WA30><a href=http://siesta.wustl.edu/~engel>Robert Engel</a> --- ATM connection admission control.
+<li>	Hongzhou Ma --- network design.
+<li>	<!WA31><a href=http://dworkin.wustl.edu/~inder>Inderjeet Singh</a> --- network design.
+<li>	<!WA32><a href=http://arl.wustl.edu/~dw1/>Dakang Wu</a> --- connection management in ATM networks.
+</ol>
+
+<h1>Graduated Students</h1>
+<ol>
+<li>
+Nader Mirfakhraei, DSc (EE),
+``Design and Analysis of High Performance ATM Switch Architectures,''
+1/95.
+<li>
+Seyyed Mahdavian, DSc (EE),
+``Resource Management and Bandwidth Allocation in ATM Networks,'' 12/94.
+<li>
+Einir Valdimarsson, DSc (EE),
+``General Tools for Switching System Evaluation,''
+5/94.
+<li>
+<!WA33><a href="http://www.arl.wustl.edu/~jaf/">Andy Fingerhut</a>, DSc (CS),
+``<!WA34><a href=http://www.arl.wustl.edu/~jaf/jaf-dissertation.ps.Z>Approximation Algorithms for Configuring Nonblocking Communication Networks</a>,''
+5/94.
+<li>
+Ellen Zegura, DSc (CS),
+``Design and Analysis of Practical Switching Systems,''
+6/93.
+<li>
+Rex Hill, MS (EE),
+``Design Analysis of ATM Access Switch Architectures,''
+ 5/93.
+<li>
+Victor Griswold, DSc (CS),
+``Core Algorithms for Autonomous Monitoring of Distributed Systems,''
+ 1/91.
+<li>
+Haifeng Bi, MS (EE),
+``Queueing Analysis of Buffered Packet Switching Networks,''
+8/90.
+<li>
+Einir Valdimarsson, MS (EE), ``Blocking in Multirate Networks,'' 5/90.
+<li>
+ Gwangsoo Rhee, DSc (CS),
+``The DNA Mapping Problem,'' 12/89.
+<li>
+Bernard Waxman, DSc (CS),
+``Algorithms for Multicast Routing in Broadcast Packet Networks,''
+8/89.
+<li>
+Shabbir Khakoo, MS (EE),
+``Improved Algorithms for Block Matching in Video Codecs,''
+June 1988.
+<li>
+George Robbert, MS (CS),
+``Automatic Generation of Synchronous Streams Processors,''
+May 1988.
+<li>
+Shahid Akhtar, MS (EE), 
+``Congestion Control in Fast Packet Networks,''
+12/87.
+<li>
+Richard Bubenik, MS (CS),
+``Performance Evaluation of a Broadcast Packet Switch,''
+8/85.
+</ol>
+
+<h1>Course Notes</h1>
+<!WA35><a href="http://arl.wustl.edu/~jst/cs/577/intro.html">CS/EE 577 Design and Analysis of Switching Systems</a>
+
+<h1> Affiliated Organizations </h1>
+<ul>
+<li>	<!WA36><a href="http://www.cs.wustl.edu/cs/">CS Department</a>	
+<li>	<!WA37><a href="http://www.arl.wustl.edu/arl/">Applied Research Lab</a>	
+<li>	<!WA38><a href="http://www.ccrc.wustl.edu/">Computer and Communications Research Center</a>	
+</ul>
+<p>
+<!WA39><a href="http://www.cs.wustl.edu/stats.html">CS department server statistics</a>
+<!WA40><a href="http://www.arl.wustl.edu/stats.html">ARL server statistics</a>
+<p>
+<hr>
+<p>
+<i>Prepared by 
+<!WA41><a href="http://arl.wustl.edu/~jst/">Jonathan Turner</a>: jst@cs.wustl.edu. Last updated 2/6/96.
+1371 visits since March 6, 1996. </i>
+</body>
+</html>

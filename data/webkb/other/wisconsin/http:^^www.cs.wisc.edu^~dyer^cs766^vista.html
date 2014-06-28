@@ -1,0 +1,68 @@
+Date: Mon, 11 Nov 1996 17:31:02 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 15 Sep 1995 17:57:40 GMT
+Content-length: 1800
+
+<HTML>
+<HEAD>
+<TITLE>Using Vista</TITLE>
+</HEAD>
+
+<BODY>
+
+<H2>Getting Started with Vista</H2>
+<HR SIZE=3>
+<BR>
+<ul> 
+<li>   
+Before using Vista add<p>
+
+<B>/p/vision/ip-tools/vista/bin</B><p>
+
+to your <I>path</I> variable (in .cshrc or .cshrc.local), and do:<p>
+
+<B>setenv MANPATH /usr/man/sunos-4.1.3-overlay:/p/vision/ip-tools/vista/man</B>
+
+<p>
+to make the man pages available.<p>
+
+<li>
+Next, read the two man pages: <B>Vista</B>(7Vi) and <B>Vtutorial</B>(7Vi) (simply do a
+<B>man Vista</B> and <B>man Vtutorial</B>.  If in doubt, look at the directory
+<B>/p/vision/ip-tools/vista/man/man7</B>).  There will
+be a document, <CITE>Introduction to Vista Programming</CITE>, available at
+DOIT Documentation.  
+Try out the examples given in <B>Vtutorial</B>.<p>
+
+<li>
+There are a few basic operations to learn right away:<p>
+
+<ol>
+    <li><B>Display an image</B><br>
+    Examples may be found in <B>/p/vision/ip-tools/vista/src/data</B>. 
+    Vista files have <B>.v</B> extensions.  To display an image, use
+    <B>vxview</B> <I>filename</I>.  Try to convert your own image into a <B>.v</B>
+    file by using <B>tifftopnm</B> and <B>pnmtov</B>.<p>
+
+    <li><B>Create an image</B><br>
+    The directory <B>/p/vision/ip-tools/vista/src/examples/ramp</B> has
+    a sample program which does just that.  The Intro to Vista document
+    mentioned above explains how to read this program.<p>
+
+    <li><B>Open an existing image and access its contents</B><br>
+    The binarize directory in the same src directory has a simple
+    program to do that.  Read the intro document.<p>
+
+    <li><B>Print an image</B><br>
+    Pipe the results of the <B>votps</B> program on an image to 
+    your favorite postscript printer: <p>
+
+    <B>vtops einstein.v | lpr -Plaser1</B><p>
+
+</ol>
+</ul>
+
+<HR SIZE=3>
+</BODY>
+</HTML>

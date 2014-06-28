@@ -1,0 +1,134 @@
+Date: Wed, 08 Jan 1997 21:29:43 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+<title>Bad Programming</title>
+</head>
+
+<body>
+
+<h1>Programming Practices to Avoid</h1>
+<hr>
+
+<b>Executive Summary:</b> Dave Grove will do bad things 
+to you if any of your turned-in homework has any of 
+the following features
+
+<hr>
+
+<DL>
+<DT> <h3>Unmarked global variables</h3>
+<DD> Global variables must be clearly "declared" at the top of 
+a file, and must have names that begin and end with asterisks.
+Also there must be a comment explaining why this variables 
+should/must be global.
+
+
+<DT> <h3>Mixing parameter passing styles</h3>
+<DD> Lisp allows positional,  keyword, <tt>&REST</tt>, <tt>&OPTIONAL</tt>, 
+and various combinations of options for passing parameters to a function.  
+You should use positional function parameters 
+unless you want/need to sometimes omit a parameter, in which 
+case use (all) keyword parameters.  Do not mix parameter
+passing conventions within a function.  Do not use <tt>&REST</tt>
+unless you have an extremely good reason.  Do not use 
+<tt>&OPTIONAL</tt> at all.
+
+
+<DT> <h3>Nested defuns</h3>
+<DD> Lisp allows you to define one function inside another. For example,
+<pre>
+(defun main-function (args) 
+  (let ((local-variable (process-args args)))
+    (defun helper-function (x)
+      -- some function of local-variable --)
+    -- do some more processing --))
+</pre>
+This creates a <i>global</i> binding for <tt>helper-function</tt>
+and therefore is a case of a global side effect that is not 
+well documented.  Never put a <tt>DEFUN</tt> inside a <tt>DEFUN</tt>.
+The <tt>LAMBDA</tt> macro allows you to create local, unnamed functions
+"on the fly."
+
+
+<DT> <h3> "Declaring before initializing" </h3>
+<DD> Those of us accustomed to programming in C or PASCAL are used to
+the idea of declaring our variables at the beginning of a function,
+then initializint them later on.   So for example we might write:
+
+<pre>
+
+;;;  UGLY UGLY UGLY UGLY UGLY
+
+(defun count-symbols (nested-list)
+  (let ((the-car NIL)             ;;  "Declarations" only
+        (the-cdr NIL)             ;; 
+        (symbols-in-car NIL)      ;;
+        (symbols-in-cdr NIL))     ;; 
+    (cond
+      ((null nested-list)  0)
+      (T (setf symbols-in-car 0)
+         (setf the-car (car nested-list))
+         (if (symbolp the-car) (setf symbols-in-car 1))
+         (if (listp the-car)   (setf symbols-in-car (count-symbols the-car)))
+         (setf symbols-in-cdr  (count-symbols (cdr nested-list)))
+         (+ symbols-in-car symbols-in-cdr)))))
+</pre>
+This is <i>really bad</i> Lisp style because there is no need to 
+"pre-declare" then set these variables. <p>
+Here's a better way to write it:  we let the different clauses of the COND
+separate the cases for us.  In many cases doing that carefully 
+allows fewer conditionals and local variables.
+
+<pre>
+(defun count-symbols (nested-list)
+  (cond
+   ((null nested-list)  0)
+   (T (let ((the-car (car nested-list))
+            (symbols-in-rest (count-symbols (cdr nested-list))))
+        (cond
+         ((symbolp the-car) (+ 1 symbols-in-rest))
+         ((listp the-car)   (+ (count-symbols the-car) symbols-in-rest))
+         (T symbols-in-rest))))))
+</pre>
+
+Here's another version that uses a conditional assignment to a variable.
+It's open to debate whether this is good style or not.  It's the 
+most purely "Lisp-like" of the three, but I personally find it a little 
+hard to read. 
+
+<pre>
+(defun count-symbols (nested-list)
+  (cond
+   ((null nested-list)  0)
+   (T (let* ((the-car (car nested-list))
+             (symbols-in-car 
+               (cond
+                 ((symbolp the-car) 1)
+                 ((listp the-car) (count-symbols the-car))
+                 (T 0))))
+        (+ symbols-in-car (count-symbols (cdr nested-list)))))))
+</pre>
+
+
+<DT> <h3> Mixing Side-effects and Computation </h3>
+<DD> Functions should be written either to compute a result, or to
+perform a side-effect (like I/O).  You should avoid writing functions
+that both do substantial ammounts of computation to produce a result
+and have interesting side-efftects.
+
+</dl>
+
+<hr>
+<address>
+cse341-webmaster@cs.washington.edu
+</i>(Last update:
+	
+	<!-- see man strftime for full formatting options-->
+	04/16/96 at 01PM
+)<i>
+</address>
+</body>
+</html>

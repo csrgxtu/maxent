@@ -1,0 +1,36 @@
+Date: Tue, 14 Jan 1997 22:48:32 GMT
+Server: NCSA/1.4.1
+Content-type: text/html
+Last-modified: Mon, 21 Oct 1996 00:18:13 GMT
+Content-length: 915
+
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Mac">
+  <TITLE>shift and add = multiply</TITLE>
+</HEAD>
+<BODY BGCOLOR="#fee7cb">
+
+<PRE>; code to demonstrate the shift &amp; add method of multiplication
+;
+;
+;  presume the input is in two bytes named fact1 and fact2
+;   and the output is going into a Word (unsigned) called PRODUCT
+;
+;
+        mov     bl, fact1       ; grab input
+        mov     al, fact2       
+        mov     bh, 0           ;zero out high byte of bx
+        mov     dx, 0           ;zero accum (product)
+lp:     cmp     al, 0           ;check for end
+        je      fini
+        shr     al, 1           ;grab rightmost bit
+        jnc     nextbit           ;don't add it -bit was zero
+        add     dx, bx          ;add next shift into accum
+nextbit: shl    bx, 1           ;shift first fact to left
+        jmp     lp
+fini:   mov     product, dx 
+
+</PRE>
+</BODY>
+</HTML>

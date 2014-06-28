@@ -1,0 +1,244 @@
+Date: Sun, 01 Dec 1996 19:08:01 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 22 May 1995 12:38:50 GMT
+Content-length: 11448
+
+<html>
+<title>Blobby Modeler</title>
+<body>
+<h1>
+<img src="hole.gif" align=left>   Blobby Modeler
+</h1>
+Version 1.0  May 18, 1995<br>
+Szu-Wen Huang
+<p><hr>
+<h3>Acknowledgements</h3>
+<dl>
+<dd>Anu, for lending me the Tcl/Tk book;
+<dd>Asif, for giving me good ideas every now and then;
+<dd>Dr. Bruce Land, for the guidance and patience;
+<dd>Mom and Dad, for the money it cost to come here and so much more; and
+<dd>Mabs, for making everything worthwhile.
+</dl>
+My most heartfelt gratitude.
+<p><hr>
+This document contains information relevant to the development of <b>Blobby
+Modeler</b>, including a summary of previous research leading to the
+actual project.  Instructions on the installation and operation of the
+software are likewise provided.<p>
+<img src="ball.gif">  An <a href="#intro">Introduction</a> to <b>Blobby
+Modeler</b>:  What it is, what it does, and some theoretical foundation on
+how it came to be.
+<p>
+<img src="ball.gif">  <a href="#goals">Goals</a> I hope to achieve in the
+development of this software.
+<p>
+<img src="ball.gif">  <a href="#design">Design</a> methodologies and
+implementation stages.
+<p>
+<img src="ball.gif">  <a href="using.html">Installing and using</a> <b>Blobby
+Modeler</b>
+<p>
+<img src="ball.gif">  <a href="#concl">Conclusion</a> and a summary of
+features accomplished, and perhaps some future directions.
+<p>
+<img src="ball.gif">  <a href="#refs">References</a> to some relevant
+publications.
+</h3>
+<hr>
+
+<a name="intro"></a>
+<h3>Introduction:</h3>
+<blockquote><em>
+"Established geometric modeling techniques exist to handle most engineering
+components, including `free form' shapes such as car bodies and telephones.
+More recently, there has been a lot of interest in modeling natural phenomena
+such as smoke, clouds, mountains, and coastlines where the shapes are
+described stochastically, or as fractals.  None of these techniques lends
+itself to the description of <em>soft</em> objects.  This class of objects
+includes fabrics, cushions, living forms, mud, and water."<p>
+- <a href="#refs">Geoff Wyvill, Craig McPheeters, and Brian Wyvill</a> 1986
+</em></blockquote>
+As early as 1982, <a href="#refs">James Blinn</a> began exploring methods to
+model molecular structures, which was often done with ball-and-stick or
+space-filling-sphere models.  In the interest of both artistic variety and
+scientific accuracy, a new model that can appear more like a real electron
+density cloud for a covalent bond.<p>
+The conventional approaches to model such a shape via the familiar bicubic
+or quadric surfaces is difficult for elaborate molecules.  For this reason,
+we seek to simulate an actual electron map with quantum mechanic representation
+of atoms as a density function of the spatial location.  For example, a
+hydrogen atom might be represented as:<br>
+<dl><dd>[1]  <em>D(x, y, z) = exp(-ar)</em></dl>
+where <em>r</em> is the distance from a location to the center of the atom.
+If several atoms are present in the scene, the effects of their density field
+are simply added.  Extracting a surface of constant value across the field,
+the molecular density cloud can be formed.  Blinn named this the <em>blobby
+model</em>.<p>
+Years later, Wyvill, McPheeters, and Wyvill decided to apply the technique 
+more generally to the modeling of <em>soft</em> objects, which are
+traditionally awkward at best to render.  They presented a modification to
+Blinn's exponential function with one which is computationally cheaper.
+Additionally, their function has the desirable quality of being able to
+ignore an atom which is too far from the point in question.  They first
+defined a bicubic function:
+<dl><dd>[2]  <em>C(r) = 2r&#179;/R&#179; - 3r&#178;/R&#178; + 1</em></dl>
+where <em>C</em> is the intensity of influence, <em>r</em> is the distance
+between the point in question and the atom, and <em>R</em> is the radius
+of influence of the atom.  An almost equivalent but more efficient version
+of the function is:
+<dl><dd>[3]  <em>C(r) = ar^6/R^6 + br^4/R^4 + cr&#178;/R&#178; + 1</em></dl>
+where the values of <em>a</em>, <em>b</em>, and <em>c</em> are found by
+solving with the following constraints:
+<dl><em>
+<dd>C(0.0) = 1.0
+<dd>C(R) = 0.0
+<dd>C'(0.0) = 0.0
+<dd>C'(R) = 0.0
+<dd>C(R/2) = 0.5
+</em></dl>
+yielding:
+<dl><em>
+<dd>a = -0.444444
+<dd>b = 1.888889
+<dd>c = -2.444444
+</em></dl>
+In 1991, <a href="#refs">Shigeru Muraki</a> took it one step further, and
+applied blobby models on range data to visualize very interesting objects
+such as human faces.  Immediately obvious from his research is that to
+achieve a reasonable degree of realism modeling anything other than simple
+molecules, a blobby model should be composed of a large number (typically
+hundreds) of atoms.
+<p>
+<b>IBM DataExplorer (DX)</b> provides primitive modules that can be used to
+create blobby models.  However, since the creation of the model involves the
+placement of many atoms, manual design ceases to be a good option quickly. The
+<b>Blobby Modeler</b> was designed to ease the task of the creation of models,
+as well as compute the resulting density field off-line to prevent overloading
+<b>DX</b>.
+<p>
+Blobby Modeler was written in C and Tcl/Tk in the spring semester of 1995 as
+partial fulfillment of requirements toward CS 790 (Master of Engineering
+Project) under the supervision of Dr. Bruce Land, Cornell University Department
+of Computer Science.
+<p><hr>
+
+<a name="goals"></a>
+<h3>Goals:</h3>
+The following are design goals of <b>Blobby Modeler</b>:
+<ul>
+<li><b>Ease of use</b> - the software should adhere to familiar user interface
+conventions to minimize the learning curve and increase productivity quickly.
+<li><b>Simplicity</b> - the software should be easy to use and maintain,
+because it should run alongside <b>DX</b>.  It should fit in a modest amount of
+memory.
+<li><b>Speed</b> - the software should be fast enough to increase productivity
+rather than decrease it.
+<li><b>Portability</b> - the software should be portable across Unix platforms,
+and should be usable in the Cornell Theory Center <b>IBM AIX</b>, Computer
+Science Department Undergraduate Laboratory <b>HP-UX</b>, and on <b>SunOS</b>. 
+I will attempt porting to <b>Linux</b> as a test of <b>System V</b>-based
+machines.
+</ul>
+<p><hr>
+
+<a name="design"></a>
+<h3>Designing <b>Blobby Modeler</b>:</h3>
+A three-dimensional modeler running on a conventional computer has the
+difficulty of unsuitable input devices.  Some attempts were made to allow
+for the mouse to control two of the dimensions and the keyboard the third,
+but I personally think that is clumsy and awkward to use.  Instead, I
+adapted the approach taken by many personal computer graphics tools as well
+as graphics workstation software.  I provided three editing windows, through
+which all degrees of freedom can be encompassed.  <b>Blobby Modeler</b>
+hosts 3 editable windows fixed with the <em>xy</em>, <em>yz</em>, and
+<em>xz</em> views.  In addition, it provides a <em>free window</em> in which
+a camera can be placed in 3-space and the model previewed.  The rendering
+in the free window is simplistic and in fact, crude.  However, a complicated
+preview window can slow down the response of the software considerably, and
+defeats our goal to be lean and mean.
+<p>
+By virtue of proximity, <b>Blobby Modeler</b> was written on a SunOS platform,
+specifically one running SunOS 4.1.1.  The target platform would ideally be
+any platform that <b>DX</b> would support.  Though I have not been able to
+test over many operating systems and versions, I'm fairly confident that the
+code should port quite easily.
+<p>
+To facilitate the development of the user interface, I selected the <b>Tcl/Tk
+Toolkit</b> versions 7.3 and 3.6, respectively.  Since this is an interpreted
+language and offers only a complicated link to C, I also selected an add-on
+called <b>Embedded Tk (ET)</b> version 1.1 by D. Richard Hipp
+<samp>(drh@world.std.com)</samp>.  <b>Tcl/Tk</b> is available at various sites
+including <samp>ftp.cs.berkeley.edu</samp>, <samp>ftp.x.org</samp> among
+others.  <b>ET</b> is available at <samp> ftp.std.com</samp>.
+<p>
+Roughly speaking, I divided the tasks among <b>Tcl/Tk</b> and C by writing in
+<b>Tcl/Tk</b> code that isn't very CPU intensive.  The C portion turned out
+to include only the functions that generate the field (including a horrible
+quadruple-nested loop) and those that manage the free window (which implement
+the 3-D transforms and 2-D projections).
+<p>
+In the C portion, a notable feature is the liberal use of global variables
+to store partial results.  This is done to improve performance by reducing
+redundant recomputations.  Most values involving trigonometric functions
+are cached in these variables, and recomputed only as necessary.  All in all,
+the C fragments are simple and straightforward, composing only some one-fourth
+of the total number of lines of code.
+<p>
+The <b>Tcl/Tk</b> portion of the software handles most of the user-machine
+interactions, handling drawing, selecting, windows, refreshes, and others.
+About three-fourths of the program is involved here.  Since this was my
+first <b>Tcl/Tk</b> program, it's performance can likely be improved by
+rewriting some routines.
+<p>
+The <a href="using.html">help</a> text is worth mentioning, though.  I
+implemented a small widget in <b>Tcl</b> that can display a very small subset
+of HTML.  There are subtle differences between my implementation and HTML. 
+Unlike HTML, carriage returns are significant in the help text; nested formats
+don't work; and formats cannot span different lines.  Despite that, conversion
+between the two formats should not be difficult.
+<p><hr>
+
+<a name="concl"></a>
+<h3>Conclusions and Future Directions:</h3>
+At its present state, <b>Blobby Modeler</b> is a complete 3-D editing platform
+ready for beta-testing.  Undoubtedly as it undergoes actual usage, problems
+will arise and enhancements will be made.  Glaringly absent, however, is the
+ability to move the atoms in an animation.  With that capability, <b>Blobby
+Modeler</b> can probably be used to model scenes such as boiling water.
+Animation will definitely be a desirable addition.
+<p>
+Aside from spherical atoms, it will also be interesting to incorporate atoms
+of other shapes to aid in the construction of the scene.  Cubes will certainly
+be easy to work with, for instance.
+<p>
+The free window can of course be vastly improved to include its own renderer.
+It will prevent the small trouble of having to go over the <b>DX</b> in order
+to render the scene.
+<p>
+Despite the possibilities, this project has achieved its goal of providing
+a fast, easy-to-use interface for the designer of 3-D blobby models.  It is
+my hope that actual users will determine the usefulness of the program.
+<p><hr>
+
+<a name="refs"></a>
+<h3>References:</h3>
+<ol>
+<li>J. Blinn.  <em>A Generalization of Algebraic Surface Drawing.</em>,
+ACM Transactions on Graphics.  1982.
+<li>G. Wyvill, C. McPheeters, B. Wyvill.  <em>Data Structure for soft
+objects.</em>  Visual Computer.  1986
+<li>G. Wyvill, C. McPheeters, B. Wyvill.  <em>Animating soft objects.</em> 
+Visual Computer.  1986
+<li>S. Muraki.  <em>Volumetric Shape Description of Range Data using
+"Blobby Model".</em>  ACM SIGGRAPH.  1991.
+<li>J. Ousterhout.  <em>Tcl and the Tk Toolkit</em>.  1994.
+<li>A. Watt.  <em>3D Computer Graphics.</em>  1993.
+</ol>
+
+<p><hr>
+<address>
+Last Modified:  May 18, 1995<br>
+<a href="mailto:szuwen@cs.cornell.edu">Szu-Wen (Steven) Huang</a>
+</address>

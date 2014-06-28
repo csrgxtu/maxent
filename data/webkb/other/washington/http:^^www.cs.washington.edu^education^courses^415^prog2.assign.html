@@ -1,0 +1,75 @@
+Date: Mon, 02 Dec 1996 14:42:40 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<HEADER>
+<TITLE>
+CSE 415  Prog. Assignment 2
+</TITLE>
+</HEADER>
+<BODY>
+<pre>
+CSE 415      Programming Project #2     due noon, Friday, April 26.
+                                        (Use "Turnin" as directed).
+
+
+        We discussed the following lisp program in class:
+
+(defun D (E x)
+        (cond (( atom E) (cond  ((equal E x)  1 )  ( T  0) ))
+
+                ((or (equal (op E)  '+ ) (equal (op E) '-))
+                `( ,(op E) ,(D  (arg1 E) x)  ,(D  (arg2 E) x)))
+
+                ((equal (op E )  '*)
+                        `(+ (* ,(arg1 E) ,(D (arg2 E) x) )
+                           (* ,(arg2 E) ,(D (arg1 E) x )))
+                                                        )))
+
+        This function allows only the operators, +, -, and *
+
+        Add to the function, so that the operators, / and exp will be
+        included. Note that exp is restricted so that the exponent is
+        an integer.
+
+        Run the function, with the call:
+
+                (D  '(/  (+  (exp  x  2)  2)  (*  5  x) )    'x  )        
+
+	Then write a function,  simplify ( E ) which will operate on
+	the output of the D function and simplify the result, using only
+	the following simplifications (where U is any expression or
+	subexpression in the output of D).  :
+
+	(*  U  0)  ->  0	(*  0  U)  ->  0
+
+	(exp  U  1)  ->  U	(*  U  1)  ->  U
+
+	(*  1  U)  ->  U	(+  0  U)  ->  U
+
+	(+  U  0)  ->  U	(-  U  0)  ->  U
+
+	(exp  U  1)  ->  U	(exp  U  0)  ->  1
+
+	[Note that more obvious simplifications could be made, but
+	you should deal only with those above. eg Do not include 
+	the case, (-  0  U)  or (+  1  3)  -> 4, etc. ]
+
+
+	Run your functions with the call, (simplify (D  E)),
+	where E is the expression given in the above call of D.
+
+	Use trace for both the D and simplify functions, so that your
+	output will show the arguments passed and the values returned
+	on each recursive call.
+
+	Note: here are the handy functions to extract the operator and
+	arguements from an expression:
+
+	(defun op (E)
+  	  (first E))
+	(defun arg1 (E)
+  	  (second E))
+	(defun arg2 (E)
+  	  (third E))
+</body>

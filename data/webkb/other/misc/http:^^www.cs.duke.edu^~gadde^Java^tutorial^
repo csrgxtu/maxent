@@ -1,0 +1,232 @@
+Date: Tue, 14 Jan 1997 19:14:47 GMT
+Server: NCSA/1.5.2
+Last-modified: Wed, 10 Jul 1996 02:42:13 GMT
+Content-type: text/html
+Content-length: 6386
+
+<!--NewPage-->
+<html>
+<head>
+<title>The Java Tutorial</title>
+</head>
+<body>
+<table width=100%>
+<tr>
+<td align=left>
+<!WA0><img src=http://www.cs.duke.edu/~gadde/Java/tutorial/images/dim.PreviousArrow.gif width=26 height=26 align= border=0><!WA1><a
+href=http://www.cs.duke.edu/~gadde/Java/tutorial/getStarted/application/index.html><!WA2><img src=http://www.cs.duke.edu/~gadde/Java/tutorial/images/NextArrow.gif width=26 height=26 align= border=0></a><!WA3><img
+src=http://www.cs.duke.edu/~gadde/Java/tutorial/images/dim.WayUpArrow.gif width=26 height=26 align= border=0>
+<td>
+<td align=right>
+<!WA4><a href="http://www.cs.duke.edu/~gadde/Java/tutorial/TOC.html"><strong><em>Table of Contents</em></strong></a>
+</td>
+</tr>
+</table>
+<p>
+<hr size=4>
+
+<blockquote>
+
+<center>Welcome to</center><br>
+<center><h1>The Java Tutorial</h1></center><br>
+<center><strong>Object-Oriented Programming for the Internet</strong></center><br>
+<p>
+<center>a practical, online guide<br>
+to writing programs in the Java language</center>
+<p>
+This is an online version of <b><em>The Java Tutorial</em></b> by
+Mary Campione and Kathy Walrath. This is the fifth book in
+<!WA5><a href="http://www.aw.com/cp/javaseries.html"><b>The Java Series</b></a>,
+to be published by Addison-Wesley this summer.
+<p>
+
+<hr>
+<strong>Notes:</strong>
+<ul>
+<li>
+This document was last updated <em>9 July 96</em>.
+<li>
+<!WA6><a href="http://www.cs.duke.edu/~gadde/Java/tutorial/copyright.html">Copyright.</a>
+<li>
+This version reflects the API
+distributed in the 1.0.2 Java Developers Kit (JDK).
+For information on how the API has changed and how to get the JDK,
+see the <!WA7><a href="http://java.sun.com/products/JDK/CurrentRelease/">JDK home page.</a>
+<li>
+For the change history of the tutorial,
+how to <!WA8><a href="http://www.cs.duke.edu/~gadde/Java/tutorial/intro.html#DOWNLOADING">download</a>
+the tutorial in PostScript and HTML formats,
+and other information about this document,
+see <!WA9><a href=http://www.cs.duke.edu/~gadde/Java/tutorial/intro.html>About This Draft</a>.
+<li>
+For information about the structure and organization of this tutorial
+please refer to <!WA10><a href="http://www.cs.duke.edu/~gadde/Java/tutorial/aboutThisDoc.html">How to Use the Tutorial</a>.
+</ul>
+
+<hr>
+
+<h2>Getting Started</h2>
+
+The most common Java programs are applications and applets.
+<em>Applications</em> are standalone programs,
+such as the HotJava browser.
+<em>Applets</em> are similar to applications,
+but they don't run standalone. 
+Instead, applets adhere to a set of conventions
+that lets them run within a Java-compatible browser.
+If you're using a browser that can view applets,
+you should see an animation just below this paragraph --
+that's an applet embedded in this HTML page.
+<p>
+
+<applet code=Animator.class codebase="example" width=55 height=68>
+        <param name="imagesource" value="images/duke">
+        <param name=endimage value=10>
+        <param name=pause value=100>
+        <param name=pauses value=2500|100|100|100|100|100|100|100|100|100>
+</applet>
+<p>
+
+
+<!--    JAVA APPLICATIONS    -->
+<table>
+<tr>
+    <td>
+        <!WA11><a href=http://www.cs.duke.edu/~gadde/Java/tutorial/getStarted/application/index.html><!WA12><img src=http://www.cs.duke.edu/~gadde/Java/tutorial/images/getStartedIcon.gif width=20 height=20 border=0></a>
+    </td>
+    <td>
+        <!WA13><a href=http://www.cs.duke.edu/~gadde/Java/tutorial/getStarted/application/index.html>The "Hello World" Application</a> --
+        Start here if you want to create standalone Java applications.
+    </td>
+</tr>
+<p>
+
+<!--    HOTJAVA APPLETS    -->
+<tr>
+    <td>
+        <!WA14><a href=http://www.cs.duke.edu/~gadde/Java/tutorial/getStarted/applet/index.html><!WA15><img src=http://www.cs.duke.edu/~gadde/Java/tutorial/images/getStartedIcon.gif width=20 height=20 border=0></a>
+    </td>
+    <td>
+        <!WA16><a href=http://www.cs.duke.edu/~gadde/Java/tutorial/getStarted/applet/index.html>The "Hello World" Applet</a> --
+        Start here if you are interested in writing applets only.
+    </td>
+</tr>
+<p>
+</table>
+<p>
+
+<hr>
+<h2>What Next?</h2>
+
+Now that you've seen how to write a Java program,
+you can proceed with any of the topics below.
+<p>
+
+<!--    WRITING JAVA PROGRAMS    -->
+<table>
+<tr>
+    <td>
+	<!WA17><a href=http://www.cs.duke.edu/~gadde/Java/tutorial/java/index.html><!WA18><img src=http://www.cs.duke.edu/~gadde/Java/tutorial/images/javaTrail.gif width=40 height=40 border=0></a>
+    </td>
+    <td>
+	<!WA19><a href=http://www.cs.duke.edu/~gadde/Java/tutorial/java/index.html>Writing Java Programs</a> --
+	These lessons discuss techniques and concepts
+	that any Java programmer can use.
+	The book version of this tutorial breaks this trail in two:
+	<ul>
+	<li>
+	<!WA20><a href=http://www.cs.duke.edu/~gadde/Java/tutorial/java/index.html#LANGUAGE>Writing Java Programs</a>,
+	which contains the first three lessons shown on the index page
+	for the trail.
+	<li>
+	<!WA21><a href=http://www.cs.duke.edu/~gadde/Java/tutorial/java/index.html#CORE>Using the Core Java Classes</a>,
+	which contains the remaining six lessons.
+	</ul>
+
+    </td>
+</tr>
+<p>
+
+<!--    APPLETS    -->
+<tr>
+    <td>
+        <!WA22><a href=http://www.cs.duke.edu/~gadde/Java/tutorial/applet/index.html><!WA23><img src=http://www.cs.duke.edu/~gadde/Java/tutorial/images/appletTrail.gif width=40 height=40 border=0></a>
+    </td>
+    <td>
+        <!WA24><a href=http://www.cs.duke.edu/~gadde/Java/tutorial/applet/index.html>Writing Applets</a> --
+        These lessons discuss techniques and concepts
+        that are specific to writing Java applets.
+    </td>
+</tr>
+<p>
+
+<!--    USER INTERFACES    -->
+    
+<tr>
+    <td>
+	<!WA25><a href=http://www.cs.duke.edu/~gadde/Java/tutorial/ui/index.html><!WA26><img src=http://www.cs.duke.edu/~gadde/Java/tutorial/images/uiTrail.gif width=40 height=40 border=0></a>
+    </td>
+    <td>
+	<!WA27><a href=http://www.cs.duke.edu/~gadde/Java/tutorial/ui/index.html>Creating a User Interface</a> --
+	Here's the information you need
+	to create the user interface of your applet or application.
+    </td>
+</tr>
+<p>
+
+<!--    NETWORKING    -->
+    
+<tr>
+    <td>
+	<!WA28><a href=http://www.cs.duke.edu/~gadde/Java/tutorial/networking/index.html><!WA29><img src=http://www.cs.duke.edu/~gadde/Java/tutorial/images/networkingTrail.gif width=40 height=40 border=0></a>
+    </td>
+    <td>
+	<!WA30><a href=http://www.cs.duke.edu/~gadde/Java/tutorial/networking/index.html>Custom Networking and Security</a> --
+	The lessons on this trail
+	teach you how to connect your applications and applets
+	to the information on the Internet! Also, this trail contains
+	a lesson that shows you how you can create an install your own
+	security manager which can help to protect your computer and data
+	from violation.
+    </td>
+</tr>
+<p>
+
+
+<!--    INTEGRATING C FUNCTIONS INTO JAVA PROGRAMS    -->
+    
+<tr>
+    <td>
+	<!WA31><a href=http://www.cs.duke.edu/~gadde/Java/tutorial/native/index.html><!WA32><img src=http://www.cs.duke.edu/~gadde/Java/tutorial/images/nativeTrail.gif width=40 height=40 border=0></a>
+    </td>
+    <td>
+	<!WA33><a href=http://www.cs.duke.edu/~gadde/Java/tutorial/native/index.html>Integrating Native Methods into Java Programs</a> --
+	These lessons show you everything you need to know to
+	write native methods in the Java language. A native method is a Java method
+	whose implementation is provided in another programming language such as C.
+	This lesson includes step-by-step instructions
+	and a comprehensive example program.
+	<!-- You can't load libraries into HJ. -->
+    </td>
+</tr>
+
+</table>
+
+</blockquote>
+<p>
+<hr size=4>
+<p>
+<table width=100%>
+<tr>
+<td align=left>
+<!WA34><img src=http://www.cs.duke.edu/~gadde/Java/tutorial/images/dim.PreviousArrow.gif width=26 height=26 align= border=0><!WA35><a
+href=http://www.cs.duke.edu/~gadde/Java/tutorial/getStarted/application/index.html><!WA36><img src=http://www.cs.duke.edu/~gadde/Java/tutorial/images/NextArrow.gif width=26 height=26 align= border=0></a><!WA37><img
+src=http://www.cs.duke.edu/~gadde/Java/tutorial/images/dim.WayUpArrow.gif width=26 height=26 align= border=0>
+<td>
+<td align=right>
+<!WA38><a href="http://www.cs.duke.edu/~gadde/Java/tutorial/TOC.html"><strong><em>Table of Contents</em></strong></a>
+</td>
+</tr>
+</table>
+</body>
+</html>

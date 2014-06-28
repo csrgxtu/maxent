@@ -1,0 +1,621 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 07-Jan-97 15:56:47 GMT
+Content-Type: text/html
+Content-Length: 27721
+Last-Modified: Wednesday, 16-Oct-96 15:34:59 GMT
+
+<title>Inductive Logic Programming</title>
+
+<h1>Inductive Logic Programming</h1>
+
+To view a paper, click on the open book image. <br> 
+<br>
+
+
+<ol>
+
+<! ===========================================================================>
+
+<a name="chill-ilp-96.ps.Z"</a>
+
+<b><li>Inductive Logic Programming for Natural Language Processing</b>
+Raymond J. Mooney<br>
+
+<cite>Proceedings of the 6th International Inductive Logic Programming Workshop</cite>, pp. 205-224, Stockholm, Sweden, August 1996. <p>
+
+<blockquote>
+This paper reviews our recent work on applying inductive logic
+programming to the construction of natural language processing
+systems. We have developed a system, CHILL, that learns a parser from
+a training corpus of parsed sentences by inducing heuristics that
+control an initial overly-general shift-reduce parser.  CHILL learns
+syntactic parsers as well as ones that translate English database
+queries directly into executable logical form.  The ATIS corpus of
+airline information queries was used to test the acquisition of
+syntactic parsers, and CHILL performed competitively with recent
+statistical methods.  English queries to a small database on
+U.S. geography were used to test the acquisition of a complete natural
+language interface, and the parser that CHILL acquired was more
+accurate than an existing hand-coded system.  The paper also includes
+a discussion of several issues this work has raised regarding the
+capabilities and testing of ILP systems as well as a summary of our
+current research directions.
+</blockquote>
+
+<!WA0><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/chill-ilp-96.ps.Z">
+<!WA1><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+<! ===========================================================================>
+
+<a name="scope-proposal-96.ps.Z"</a>
+
+<b><li> Integrating Explanation-Based and Inductive Learning Techniques
+to Acquire Search-Control for Planning<br></b>
+Tara A. Estlin<br>
+
+Ph.D. proposal, Department of Computer Sciences, University of Texas
+at Austin, 1996. <p>
+
+<blockquote>
+Planning systems have become an important tool for automating
+a wide variety of tasks. Control knowledge guides a planner to find
+solutions quickly and is crucial for efficient planning in most
+domains.  Machine learning techniques enable a planning system to 
+automatically acquire domain-specific search-control knowledge for
+different applications.  Past approaches to learning control
+information have usually employed explanation-based learning
+(EBL) to generate control rules.  Unfortunately, EBL alone often
+produces overly complex rules that actually decrease rather than
+improve overall planning efficiency.  This paper presents a novel
+learning approach for control knowledge acquisition that integrates
+explanation-based learning with techniques from inductive logic
+programming. In our learning system SCOPE, EBL is used to constrain
+an inductive search for control heuristics that help a planner choose
+between competing plan refinements. SCOPE is one of the few systems
+to address learning control information for newer, partial-order
+planners.  Specifically, this proposal describes how SCOPE learns
+domain-specific control rules for the UCPOP planning algorithm. The
+resulting system is shown to produce significant speedup in two
+different planning domains, and to be more effective than a pure EBL
+approach.  <p>
+
+Future research will be performed in three main areas.
+First, SCOPE's learning algorithm will be extended to include
+additional techniques such as constructive induction and rule utility
+analysis.  Second, SCOPE will be more thoroughly tested; several
+real-world planning domains have been identified as possible testbeds,
+and more in-depth comparisons will be drawn between SCOPE and other
+competing approaches.  Third, SCOPE will be implemented in a
+different planning system in order to test its portability to other
+planning algorithms.  This work should demonstrate that
+machine-learning techniques can be a powerful tool in the quest for
+tractable real-world planning.<p>
+</blockquote>
+
+<!WA2><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/scope-proposal-96.ps.Z">
+<!WA3><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+<! ===========================================================================>
+
+<a name="scope-msl-96.ps.Z"</a>
+
+<b><li> Integrating EBL and ILP to Acquire Control Rules for Planning<br></b>
+Tara A. Estlin and Raymond J. Mooney<br>
+
+<cite>Proceedings of the Third International Workshop on
+Multi-Strategy Learning</cite>, pp. 271-279, Harpers Ferry, WV, May
+1996. (MSL-96).<p>
+
+<blockquote>
+Most approaches to learning control information in planning systems
+use explanation-based learning to generate control rules.
+Unfortunately, EBL alone often produces overly complex rules that
+actually decrease planning efficiency.  This paper presents a novel
+learning approach for control knowledge acquisition that integrates
+explanation-based learning with techniques from inductive logic
+programming. EBL is used to constrain an inductive search for
+selection heuristics that help a planner choose between competing plan
+refinements. SCOPE is one of the few systems to address learning
+control information in the newer partial-order planners.
+Specifically, SCOPE learns domain-specific control rules for a version
+of the UCPOP planning algorithm. The resulting system is shown to
+produce significant speedup in two different planning domains.
+</blockquote>
+
+<!WA4><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/scope-msl-96.ps.Z">
+<!WA5><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+<! ===========================================================================>
+
+<a name="chill-aaai-96.ps.Z"</a>
+
+<b><li>Learning to Parse Database Queries using Inductive Logic Programming<br></b>
+John M. Zelle and Raymond J. Mooney<br>
+
+<cite>Proceedings of the Thirteenth National Conference on Aritificial Intelligence</cite>,
+pp. 1050-1055, Portland, OR, August, 1996. (AAAI-96)<p>
+
+
+<blockquote>
+This paper presents recent work using the CHILL parser acquisition
+system to automate the construction of a natural-language interface
+for database queries.  CHILL treats parser acquisition as the learning
+of search-control rules within a logic program representing a
+shift-reduce parser and uses techniques from Inductive Logic
+Programming to learn relational control knowledge.  Starting with a
+general framework for constructing a suitable logical form, CHILL is
+able to train on a corpus comprising sentences paired with database
+queries and induce parsers that map subsequent sentences directly into
+executable queries.  Experimental results with a complete
+database-query application for U.S. geography show that CHILL is able
+to learn parsers that outperform a pre-existing, hand-crafted
+counterpart.  These results demonstrate the ability of a corpus-based
+system to produce more than purely syntactic representations.  They
+also provide direct evidence of the utility of an empirical approach
+at the level of a complete natural language application.
+</blockquote>
+
+<!WA6><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/chill-aaai-96.ps.Z">
+<!WA7><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+<! ===========================================================================>
+
+<a name="foidl-ml-96.ps.Z"</a>
+
+<b><li>Advantages of Decision Lists and Implicit Negative in Inductive Logic
+Programming<br></b>
+Mary Elaine Califf and Raymond J. Mooney<br>
+
+Technical Report, Artificial Intelligence Lab, 
+University of Texas at Austin, 1996. <p>
+
+<blockquote> This paper demonstrates the capabilities of FOIDL, an
+inductive logic programming (ILP) system whose distinguishing
+characteristics are the ability to produce first-order decision lists,
+the use of an output completeness assumption to provide implicit
+negative examples, and the use of intensional background knowledge.
+The development of FOIDL was originally motivated by the problem of
+learning to generate the past tense of English verbs; however, this
+paper demonstrates its superior performance on two different sets of
+benchmark ILP problems.  Tests on the finite element mesh design
+problem show that FOIDL's decision lists enable it to produce better
+results than all other ILP systems whose results on this problem have
+been reported.  Tests with a selection of list-processing problems
+from Bratko's introductory Prolog text demonstrate that the
+combination of implicit negatives and intensionality allow FOIDL to
+learn correct programs from far fewer examples than FOIL.
+</blockquote>
+
+<!WA8><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/foidl-ml-96.ps.Z">
+<!WA9><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+<! ===========================================================================>
+
+<a name="chill-bkchapter-95.ps.Z"</a>
+
+<b><li>Comparative Results on Using Inductive Logic Programming
+for Corpus-based Parser Construction<br></b>
+John M. Zelle and Raymond J. Mooney<br>
+
+<cite>Symbolic, Connectionist, and Statistical Approaches to Learning for Natural
+Language Processing</cite>, S. Wermter, E. Riloff and G. Scheler, Eds,
+Spring Verlag, 1995. <p> 
+
+<blockquote>
+This paper presents results from recent experimenets with CHILL, a
+corpus-based parser acquisition system.  CHILL treats language
+acquisition as the learning of search-control rules within a logic
+program.  Unlike many current corpus-based approaches that use
+statistical learning algorithms, CHILL uses techniques from inductive
+logic programming (ILP) to learn relational representations.  CHILL is
+a very flexible system and has been used to learn parsers that produce
+syntactic parse trees, case-role analyses, and executable database
+queries.  The reported experiments compare CHILL's performance to that
+of a more naive application of ILP to parser acquisition.  The results
+show that ILP techniques, as employed in CHILL, are a viable
+alternative to statistical methods and that the control-rule framework
+is fundamental to CHILL's success.
+</blockquote>
+
+<!WA10><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/chill-bkchapter-95.ps.Z">
+<!WA11><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+<! ===========================================================================>
+
+<a name="foidl-bkchapter-95.ps.Z"</a>
+
+<b><li>Learning the Past Tense of English Verbs Using Inductive Logic 
+Programming<br></b>
+Raymond J. Mooney and Mary Elaine Califf<br>
+
+<cite>Symbolic, Connectionist, and Statistical Approaches to Learning for Natural
+Language Processing</cite>, S. Wermter, E. Riloff and G. Scheler, Eds,
+Spring Verlag, 1995. <p> 
+
+<blockquote> 
+
+This paper presents results on using a new inductive logic programming
+method called FOIDL to learn the past tense of English verbs. The past
+tense task has been widely studied in the context of the
+symbolic/connectionist debate.  Previous papers have presented results
+using various neural-network and decision-tree learning methods.  We
+have developed a technique for learning a special type of Prolog
+program called a <em>first-order decision list</em>, defined as an
+ordered list of clauses each ending in a cut.  FOIDL is based on FOIL
+(Quinlan, 1990) but employs intensional background knowledge and
+avoids the need for explicit negative examples.  It is particularly
+useful for problems that involve rules with specific exceptions, such
+as the past-tense task.  We present results showing that FOIDL learns
+a more accurate past-tense generator from significantly fewer examples
+than all other previous methods.
+</blockquote>
+
+<!WA12><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/foidl-bkchapter-95.ps.Z">
+<!WA13><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+<! ===========================================================================>
+
+<a name="chill-dissertation-95.ps.Z"</a>
+
+<b><li>Using Inductive Logic Programming to Automate the Construction of 
+Natural Language Parsers<br></b>
+
+John M. Zelle<br>
+
+Ph.D. Thesis, Department of Computer Sciences, University of Texas at Austin, August, 1995.<p>
+
+<blockquote>
+Designing computer systems to understand natural language input is a
+difficult task.  In recent years there has been considerable interest
+in corpus-based methods for constructing natural language parsers.
+These empirical approaches replace hand-crafted grammars with
+linguistic models acquired through automated training over language
+corpora.  A common thread among such methods to date is the use of
+propositional or probablistic representations for the learned
+knowledge.  This dissertation presents an alternative approach based
+on techniques from a subfield of machine learning known as inductive
+logic programming (ILP).  ILP, which investigates the learning of
+relational (first-order) rules, provides an empirical method for
+acquiring knowledge within traditional, symbolic parsing frameworks.<p>
+
+This dissertation details the architecture, implementation and
+evaluation of CHILL a computer system for acquiring natural
+language parsers by training over corpora of parsed text.  CHILL
+treats language acquisition as the learning of search-control rules
+within a logic program that implements a shift-reduce parser.  Control
+rules are induced using a novel ILP algorithm which handles difficult
+issues arising in the induction of search-control heuristics.  Both
+the control-rule framework and the induction algorithm are crucial to
+CHILL's success.<p>
+
+The main advantage of CHILL over propositional counterparts is
+its flexibility in handling varied representations.  CHILL has
+produced parsers for various analyses including case-role mapping,
+detailed syntactic parse trees, and a logical form suitable for
+expressing first-order database queries.  All of these tasks are
+accomplished within the same framework, using a single, general
+learning method that can acquire new syntactic and semantic categories
+for resolving ambiguities.<p>
+
+Experimental evidence from both aritificial and real-world corpora
+demonstrate that CHILL learns parsers as well or better than
+previous artificial neural network or probablistic approaches on
+comparable tasks.  In the database query domain, which goes beyond the
+scope of previous empirical approaches, the learned parser outperforms
+an existing hand-crafted system.  These results support the claim that
+ILP techniques as implemented in CHILL represent a viable
+alternative with significant potential advantages over neural-network,
+propositional, and probablistic approaches to empirical parser
+construction.<p>
+</blockquote>
+
+<!WA14><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/chill-dissertation-95.ps.Z">
+<!WA15><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+<! ===========================================================================>
+
+<a name="chill-compling-95.ps.Z"</a>
+
+<b><li>An Inductive Logic Programming Method for Corpus-based Parser
+Construction<br></b>
+
+John M. Zelle and Raymond J. Mooney<br>
+
+Submitted to Computational Linguistics<p>
+
+<blockquote>
+In recent years there has been considerable research into corpus-based
+methods for parser construction.  A common thread in this research has
+been the use of propositional representations for learned knowledge.
+This paper presents an alternative approach based on techniques from a
+subfield of machine learning known as inductive logic programming
+(ILP).  ILP, which investigates the learning of relational
+(first-order) rules, provides a way of using empricial methods to
+acquire knowledge within traditional, symbolic parsing frameworks.  We
+describe a novel method for constructing deterministic Prolog parsers
+from corpora of parsed sentences.  We also discuss several advantages
+of this approach compared to propositional alternatives and present
+experimental results on learning complete parsers using several
+corpora including the ATIS corpus from the Penn Treebank.
+</blockquote>
+
+<!WA16><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/chill-compling-95.ps.Z">
+<!WA17><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+<! ===========================================================================>
+
+<a name="chill-ijcai-nll-95.ps.Z"</a>
+
+<b><li>A Comparison of Two Methods Employing Inductive Logic Programming for
+Corpus-based Parser Constuction<br></b>
+
+John M. Zelle and Raymond J. Mooney<br>
+
+<cite>Working Notes of the IJCAI-95 Workshop on New Approaches to
+Learning for Natural Language Processing</cite>, pp.79-86, Montreal,
+Quebec, August, 1995.<p>
+
+<blockquote> 
+This paper presents results from recent experiments with CHILL,
+a corpus-based parser acquisition system.  CHILL treats grammar
+acquisition as the learning of search-control rules within a logic
+program.  Unlike many current corpus-based approaches that use
+propositional or probabilistic learning algorithms, CHILL uses
+techniques from inductive logic programming (ILP) to learn relational
+representations.  The reported experiments compare CHILL's
+performance to that of a more naive application of ILP to parser
+acquisition.  The results show that ILP techniques, as employed in
+CHILL, are a viable alternative to propositional methods and
+that the control-rule framework is fundamental to CHILL's
+success.
+</blockquote>
+
+<!WA18><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/chill-ijcai-nll-95.ps.Z">
+<!WA19><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+
+<! ===========================================================================>
+
+<a name="chill-ifoil-ml-95.ps.Z"</a>
+
+<b><li>Inducing Logic Programs without Explicit Negative Examples<br></b>
+
+John M. Zelle, Cynthia A. Thompson, Mary Elaine Califf, and Raymond J. Mooney<br>
+
+<cite>Proceedings of the Fifth International Workshop on Inductive Logic
+Programming</cite>, Leuven, Belguim, Sepetember 1995.<p>
+
+
+<blockquote> This paper presents a method for learning logic programs
+without explicit negative examples by exploiting an assumption of
+<i>output completeness</i>. A mode declaration is supplied for the
+target predicate and each training input is assumed to be accompanied
+by all of its legal outputs.  Any other outputs generated by an
+incomplete program implicitly represent negative examples; however,
+large numbers of ground negative examples never need to be generated.
+This method has been incorporated into two ILP systems, CHILLIN and
+IFOIL, both of which use intensional background knowledge.  Tests on
+two natural language acquisition tasks, case-role mapping and
+past-tense learning, illustrate the advantages of the approach.
+</blockquote>
+
+<!WA20><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/chill-ifoil-ml-95.ps.Z">
+<!WA21><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+<! ===========================================================================>
+
+<a name="foidl-jair-95.ps.Z"</a>
+
+<b><li>Induction of First-Order Decision Lists: Results on Learning the Past Tense of English Verbs<br></b>
+
+Raymond J. Mooney and Mary Elaine Califf <br>
+
+<cite>Journal of Artificial Intelligence Research</cite>, 3 (1995) pp. 1-24.
+
+<blockquote>
+This paper presents a method for inducing logic programs from examples that
+learns a new class of concepts called first-order decision lists, defined
+as ordered lists of clauses each ending in a cut.  The method, called FOIDL, 
+is based on FOIL but employs intensional background knowledge and avoids 
+the need for explicit negative examples.  It is particularly useful for 
+problems that involve rules with specific exceptions, such as learning the 
+past-tense of English verbs, a task widely studied in the context of the 
+symbolic/connectionist debate.  FOIDL is able to learn concise, accurate 
+programs for this problem from significantly fewer examples than previous 
+methods (both connectionist and symbolic).
+</blockquote>
+
+<!WA22><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/foidl-jair-95.ps.Z">
+<!WA23><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+<! ===========================================================================>
+
+<a name="chill-ml-94.ps.Z" </a>
+
+<li> <b> Combining Top-Down And Bottom-Up Techniques In Inductive Logic Programming
+</b> <br>
+John M. Zelle, Raymond J. Mooney and Joshua B. Konvisser <br>
+
+<cite> Proceedings of the Eleventh International Workshop
+on Machine Learning</cite>, pp. 343-351, Rutgers, NJ, July 1994. (ML-94) <p>
+
+<blockquote>
+This paper describes a new method for inducing logic programs from
+examples which attempts to integrate the best aspects of existing ILP
+methods into a single coherent framework.  In particular, it combines
+a bottom-up method similar to GOLEM with a top-down method similar to
+FOIL.  It also includes a method for predicate invention similar to
+CHAMP and an elegant solution to the ``noisy oracle'' problem which
+allows the system to learn recursive programs without requiring a
+complete set of positive examples.  Systematic experimental
+comparisons to both GOLEM and FOIL on a range of problems are used to
+clearly demonstrate the advantages of the approach.
+</blockquote>
+
+<!WA24><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/chill-ml-94.ps.Z">
+<!WA25><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+<! ===========================================================================>
+
+<a name="chill-aaai-94.ps.Z" </a>
+
+<b> <li> Inducing Deterministic Prolog Parsers From Treebanks:
+A Machine Learning Approach </b> <br>  
+
+John M. Zelle and Raymond J. Mooney <br> 
+<cite> Proceedings of the Twelfth National Conference on
+AI</cite>, pp. 748-753, Seattle, WA, July 1994. (AAAI-94) <p>
+ 
+<blockquote>
+This paper presents a method for constructing deterministic, context-sensitive,
+Prolog parsers from corpora of parsed sentences. Our approach uses recent
+machine learning methods for inducing Prolog rules from examples (inductive
+logic programming).  We discuss several advantages of this method compared to
+recent statistical methods and present results on learning complete parsers
+from portions of the ATIS corpus.
+</blockquote>
+
+<!WA26><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/chill-aaai-94.ps.Z">
+<!WA27><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+
+<! ===========================================================================>
+
+<a name="ilp-ebl-sigart-94.ps.Z" </a>
+
+<b> <li> Integrating ILP and EBL </b> <br>  
+
+Raymond J. Mooney and John M. Zelle <br> 
+
+<cite> SIGART Bulletin</cite>, Volume 5, number 1, Jan. 1994, pp 12-21. <p>
+
+<blockquote>
+This paper presents a review of recent work that integrates methods from
+Inductive Logic Programming (ILP) and Explanation-Based Learning (EBL).  ILP
+and EBL methods have complementary strengths and weaknesses and a number of
+recent projects have effectively combined them into systems with better
+performance than either of the individual approaches. In particular, integrated
+systems have been developed for guiding induction with prior knowledge
+(ML-SMART, FOCL, GRENDEL) refining imperfect domain theories
+(FORTE, AUDREY, Rx), and learning effective search-control
+knowledge (AxA-EBL, DOLPHIN).
+</blockquote>
+
+<!WA28><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/ilp-ebl-sigart-94.ps.Z">
+<!WA29><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+
+<! ===========================================================================>
+
+<a name="dolphin-ijcai-93.ps.Z" </a>
+
+<b> <li> Combining FOIL and EBG to Speed-Up Logic Programs </b> <br> 
+
+John M. Zelle and Raymond J. Mooney <br> 
+
+<cite> Proceedings of the Thirteenth International Joint Conference on Artificial
+Intelligence</cite>, pp. 1106-1111, Chambery, France, 1993. (IJCAI-93) <p>
+
+<blockquote>
+This paper presents an algorithm that combines traditional EBL
+techniques and recent developments in inductive logic programming to
+learn effective clause selection rules for Prolog programs.  When
+these control rules are incorporated into the original program,
+significant speed-up may be achieved.  The algorithm is shown to be an
+improvement over competing EBL approaches in several domains.
+Additionally, the algorithm is capable of automatically transforming
+some intractable algorithms into ones that run in polynomial time.
+</blockquote>
+
+<!WA30><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/dolphin-ijcai-93.ps.Z">
+<!WA31><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+<! ===========================================================================>
+
+<a name="chill-aaai-93.ps.Z" </a>
+
+<b> <li> Learning Semantic Grammars With Constructive Inductive Logic Programming </b> <br> 
+
+John M. Zelle  and Raymond J. Mooney <br> 
+
+<cite> Proceedings of the Eleventh National Conference of the American
+Association for Artificial Intelligence</cite>, pp. 817-822,
+Washington, D.C. July 1993 (AAAI-93). <p>
+
+<blockquote>
+Automating the construction of semantic grammars is a difficult and
+interesting problem for machine learning.  This paper shows how the
+semantic-grammar acquisition problem can be viewed as the learning of
+search-control heuristics in a logic program.  Appropriate control
+rules are learned using a new first-order induction algorithm that
+automatically invents useful syntactic and semantic categories.
+Empirical results show that the learned parsers generalize well to
+novel sentences and out-perform previous approaches based on
+connectionist techniques.
+</blockquote>
+
+<!WA32><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/chill-aaai-93.ps.Z">
+<!WA33><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+<! ===========================================================================>
+
+<a name="dolphin-mlw-92.ps.Z" </a>
+ 
+<b> <li> Speeding-up Logic Programs by Combining EBG and FOIL </b> <br> 
+ 
+John M. Zelle and Raymond J. Mooney <br> 
+
+<cite> Proceedings of the 1992 Machine Learning Workshop on Knowledge
+Compilation and Speedup Learning</cite>, Aberdeen Scotland, July 1992. <p>
+
+<blockquote>
+This paper presents an algorithm that combines traditional EBL
+techniques and recent developments in inductive logic programming to
+learn effective clause selection rules for Prolog programs.  When these
+control rules are incorporated into the original program, significant
+speed-up may be achieved.  The algorithm produces not only EBL-like
+speed up of problem solvers, but is capable of automatically
+transforming some intractable algorithms into ones that run in
+polynomial time.
+</blockquote>
+
+<!WA34><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/dolphin-mlw-92.ps.Z">
+<!WA35><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+<! ===========================================================================>
+
+<a name="forte-mlj-94.ps.Z" </a>
+
+<b> <li> Refinement of First-Order Horn-Clause Domain Theories </b> <br>
+
+Bradley L. Richards and Raymond J. Mooney <br>
+
+<cite> Machine Learning</cite> 19,2 (1995), pp. 95-131. <p>
+
+<blockquote> Knowledge acquisition is a difficult and time-consuming
+task, and as error-prone as any human activity.  The task of
+automatically improving an existing knowledge base using learning
+methods is addressed by a new class of systems performing <i> theory
+refinement</i>.  Until recently, such systems were limited to
+propositional theories.  This paper presents a system, FORTE
+(First-Order Revision of Theories from Examples), for refining
+first-order Horn-clause theories.  Moving to a first-order
+representation opens many new problem areas, such as logic program
+debugging and qualitative modelling, that are beyond the reach of
+propositional systems.  FORTE uses a hill-climbing approach to revise
+theories.  It identifies possible errors in the theory and calls on a
+library of operators to develop possible revisions.  The best revision
+is implemented, and the process repeats until no further revisions are
+possible.  Operators are drawn from a variety of sources, including
+propositional theory refinement, first-order induction, and inverse
+resolution.  FORTE has been tested in several domains including
+logic programming and qualitative modelling.  </blockquote>
+
+<!WA36><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/forte-mlj-94.ps.Z">
+<!WA37><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+<! ===========================================================================>
+
+<hr>
+<address><!WA38><a href="http://www.cs.utexas.edu/users/estlin/">estlin@cs.utexas.edu</a></address>

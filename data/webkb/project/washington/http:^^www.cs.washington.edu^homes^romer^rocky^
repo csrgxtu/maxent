@@ -1,0 +1,93 @@
+Date: Thu, 21 Nov 1996 20:30:47 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Sat, 02 Nov 1996 02:27:11 GMT
+Content-length: 3631
+
+<html>
+
+<Title> Project Rocky: The Architectural Performance of Interpreted 
+   Languages</Title>
+
+<body>
+<H1> Project Rocky: The Architectural Performance of Interpreted 
+   Languages </H1>
+
+<H2>Project Description</H2>
+
+  Interpreted languages have become increasingly popular over the last
+  several years, due in part to the demands for portability, safety,
+  and ease of use.  This project examines the performance of interpreted
+  languages and environments from several perspectives: interpretation
+  strategy, implementation, and processor/architecture utilization.
+  As a basis for our study, we have collected a set of benchmarks and
+  microbenchmarks which are implemented in several interpreted
+  languages -- Perl, Tcl, Java, and MIPSI.  Using various
+  instrumentation and tracing techniques, we evaluate the performance
+  characteristics of those benchmarks in order to gain insight into
+  the similarities and differences in these languages and their
+  execution environments.
+<!--
+  Our analysis shows that the performance of an interpreted program is
+  attributable to a large extent to the virtual machine model defined
+  by the interpreter.  Using trace-driven simulation, we show that the
+  CPU behavior of an interpreted program is largely independent of the
+  program being interpreted, but is closely tied to the interpreter
+  itself.  With this, we demonstrate that interpreter performance is
+  comparable to that of other complex programs found in contemporary
+  benchmarking suites. -->
+
+<H2>People</H2>
+
+
+Faculty:
+<UL>
+<LI> <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="http://www.cs.washington.edu/people/faculty/baer.html">Jean-Loup Baer</A> <EM>(baer@cs.washington.edu)</EM></LI>
+<LI> <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.washington.edu/homes/bershad/index.html">Brian Bershad</A> <EM>(bershad@cs.washington.edu)</EM></LI>
+<LI> <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="http://www.cs.washington.edu/homes/levy/index.html">Henry Levy</A> <EM>(levy@cs.washington.edu)</EM></LI>
+</UL>
+
+Students:
+<ul>
+<LI> <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="http://www.cs.washington.edu/homes/dlee/index.html">Dennis Lee</A> <EM>(dlee@cs.washington.edu)</EM></LI>
+<LI> <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="http://www.cs.washington.edu/homes/romer/index.html">Ted Romer</A> <EM>(romer@cs.washington.edu)</EM></LI>
+<LI> <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A HREF="http://www.cs.washington.edu/homes/voelker/index.html">Geoff Voelker</A> <EM>(voelker@cs.washington.edu)</EM></LI>
+<LI> <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><A HREF="http://www.cs.washington.edu/homes/wolman/index.html">Alec Wolman</A> <EM>(wolman@cs.washington.edu)</EM></LI>
+<LI> <!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><A HREF="http://www.cs.washington.edu/homes/waynew/index.html">Wayne Wong</A> <EM>(waynew@cs.washington.edu)</EM></LI>
+</ul>
+
+
+<H2>Papers</H2>
+<!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><img src="http://www.cs.washington.edu/homes/romer/rocky/rocky.jpg">
+Romer, Lee, Voelker, Wolman, Wong, Baer, Bershad, and Levy,
+<em>The Structure and Performance of Interpreters</em>, ASPLOS VII, to appear.
+<ul>
+<li><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><a href="http://www.cs.washington.edu/homes/romer/rocky/InterpreterS+P.abstract.html">Abstract</a>
+<li><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><a href="http://www.cs.washington.edu/homes/romer/rocky/InterpreterS+P.ps">postscript</a>
+<li><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><a href="http://www.cs.washington.edu/homes/romer/rocky/java-x86/java-x86.html">Java measurements on x86</a>
+<li><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><a href="http://www.cs.washington.edu/homes/romer/rocky/java-bench.html">Java source files for benchmarks</a>
+</ul>
+
+<H2>Tools</H2>
+
+To collect information on the performance of x86 applications, we've
+been building a binary rewriting tool called Etch.  Etch is not yet
+publicly available, but you can read about it on the <!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><a
+href="http://www.cs.washington.edu/homes/bershad/etch/index.html">Etch
+home page</a>.
+
+<H2>Internal Documentation</H2>
+<!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><a href="http://www.cs.washington.edu/homes/romer/interpret/index.html">
+Project internal documentation</a> (available only to people from UW CSE).
+
+
+</BODY>
+
+
+<hr>
+
+<address>
+Last updated July 24, 1996. <br>
+<!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><a href="mailto:romer@cs.washington.edu"><em>romer@cs.washington.edu</em></a>
+</address>
+</html>

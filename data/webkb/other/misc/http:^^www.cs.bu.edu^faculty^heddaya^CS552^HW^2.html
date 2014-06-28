@@ -1,0 +1,155 @@
+Date: Tue, 14 Jan 1997 23:00:30 GMT
+Server: NCSA/1.5
+Content-type: text/html
+
+		<HTML>
+		<HEAD><TITLE>
+BU CAS CS 552: Operating Systems---Homework
+		</TITLE></HEAD>
+
+		<BODY>
+		<H2>
+		<!WA0><A href="http://web.bu.edu/">
+BU</A>
+CAS
+		<!WA1><A href="http://www.cs.bu.edu/">
+CS</A> 552:
+		<!WA2><A href="http://www.cs.bu.edu/faculty/heddaya/CS552/">
+Operating Systems</A>---
+Fall'96---<!WA3><A href="http://www.cs.bu.edu/faculty/heddaya/">
+A. Heddaya</A>
+
+		</H2>
+		<H2>
+Homework 2---due Fri 96.09.20 (extended to Mon 09.23)
+		</H2>
+<!-- <!WA4><IMG SRC="http://www.cs.bu.edu/faculty/heddaya/Images/construction.gif"
+HEIGHT=40 ALIGN=bottom><BR> -->
+		[ As of
+1996.09.24
+		]
+		<HR>
+<!--------------------------------------------------------------------------->
+
+		<OL>
+		<P><LI>
+Read and review any paper on Operating Systems from the following list
+   of publications.
+Your review should be one page long, with one third of it being
+   devoted to a <EM>critique</EM> of the original paper.
+(See the <!WA5><A href="http://www.cs.bu.edu/faculty/heddaya/CS552/Notes/reviewing.html"> reviewing guidelines</A>.)
+
+		<P><UL><LI>
+   ACM Transactions on Computer Systems.
+		<LI>
+   Proceedings of the ACM Symposium on Operating Systems Principles
+   (available as special issues of <EM>Operating Systems Review</EM>).
+		<LI>
+   ACM Transactions on
+   Programming Languages and Systems.
+		<LI>
+   ACM Computing Surveys.
+		<LI>
+   IEEE Transactions on Software Engineering.
+		<LI>
+   IEEE Transactions on Computers.
+		<LI>
+   Proceedings of the IEEE International Conference on Distributed
+   Computing Systems.
+		</UL>
+
+		<P><LI><OL><LI>
+Tanenbaum 2.1. 
+
+		<LI>
+Tanenbaum 2.2.  (<STRONG>Note:</STRONG> the definition in [Tanenbaum 92,
+   p.34] is <EM>wrong</EM>, although the explanation is correct.)
+
+		</OL>
+
+
+		<P><LI>
+Design the OS for a special purpose computer that controls the various
+   components of a car.
+The system would consist of CPU, RAM, multiple sensors (speed, gas
+   pedal position, brake pedal position, proximity to other objects on
+   the road, etc.), multiple actuators (fuel flow, fuel/air mixture,
+   brakes, transmission, etc.), and multiple displays (gauges of
+   various kinds).
+Assume that you have a <EM>function</EM> <CODE>controlCar</CODE> that
+   implements one step of a successive approximation control
+   algorithm.
+Given a set of sensor values, <CODE>controlCar</CODE> returns an
+   approximation of the actuator parameter values, but, if it is also
+   (optionally) given a previous approximation of its output for the
+   same input, it returns a <EM>better approximation</EM>.
+Further assume that <CODE>controlCar</CODE> will be the only user
+   program running on your system, and that invoking it at the proper
+   times with the correct inputs will be the task of your special
+   purpose OS.
+<P>
+
+Your OS would have to observe the constraints imposed by the
+   <EM>physical properties</EM> of the various components of the car,
+   by <EM>driving convenience</EM>, and, most importantly, by the
+   necessity to maintain the <EM>safety</EM> of human passengers.
+The physical properties of the actuators dictate a maximum allowable
+   rate of change for the actuator values.
+(Some of the physical properties of the system are handled by the
+   function <CODE>controlCar</CODE>, however the OS still needs to
+   maintain basic constraints.)
+<EM>Driving convenience</EM> includes such issues as the delay between
+   pressing on the gas pedal and the beginning of acceleration being
+   imperceptible (say 100ms).
+<EM>Safety</EM> dictates that certain functions be more important than
+   others, and places time limits on the allowable response times.
+For example, when the driver depresses the brake pedal, the brakes
+   must be applied within 10ms, for example.
+
+<P>
+A general requirement is that the OS should use the best
+   approximations for the actuator values that can be obtained by
+   successive calls to <CODE>controlCar</CODE> without violating more
+   important requirements.
+
+<P>
+The main design decision for your OS will be whether to adopt a
+   software architecture based on polling or interrupts, or perhaps a
+   hybrid.
+<P>
+
+As part of your design, you should specify:
+		<OL>
+		<LI>
+	A hardware configuration for an example system that can run your
+	   OS.
+	You do not need to produce a full hardware design of a system,
+	  it suffices to draw a block diagram, and and point out any
+	  hardware features that your OS <EM>requires.</EM>
+	
+		<LI>
+	Formulate the constraints that your OS will deal with
+	   (<EM>e.g.,</EM> timing constraints and priority
+	   constraints), in terms of your system in (1).
+
+		<LI>
+	Sketch the software structure of your OS.
+	To do this you can use a variety of diagrams, such as block
+	   structure, control flow, data flow, and execution trace
+	   diagrams.
+	   
+		<LI>
+	<EM>Briefly</EM> explain how your OS works.
+	What would it take to substitute different implementations of
+	   <CODE>controlCar</CODE>?
+
+		</OL>
+		</OL>
+
+<!--------------------------------------------------------------------------->
+		<HR>[ Created
+1996.09
+		.  Maintained by <!WA6><A
+		href="mailto:heddaya@cs.bu.edu">Abdelsalam Heddaya</A>]
+		</BODY>
+		</HTML>

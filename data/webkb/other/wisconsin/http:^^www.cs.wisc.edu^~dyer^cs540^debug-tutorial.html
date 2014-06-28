@@ -1,0 +1,331 @@
+Date: Mon, 11 Nov 1996 16:54:22 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 30 Aug 1996 21:49:54 GMT
+Content-length: 8861
+
+<HTML>
+<HEAD>
+<TITLE> How to debug in GCL </TITLE>
+</HEAD>
+
+<body bgcolor="#ffffff" vlink="#0060f0" link="#FF3300">
+<HR>
+
+<H2> How to debug in GCL </H2>
+<P>
+There are several debugging facilities in GCL Common Lisp:
+<P>
+<MENU>
+ <LI> loading syntax checking;
+ <LI> step function;
+ <LI> interactive break package;
+ <LI> trace function;
+</MENU>
+<P>
+In this tutorial a simple piece of buggy lisp code is used 
+to show you how to use these debugging facilities.
+<P>
+Assume we have a file named "buggy.lisp" with the following
+function definitions.
+<pre>
+;;; File buggy.lisp begins
+;;; separate takes a list containing, at any level,
+;;; symbols and numbers, and returns a list of the form:
+;;; (all-numbers-in-the-list, all-symbols-in-the-list).
+
+(defun separate (alist)
+  (cond ((endp alist) nil)
+        ((endp (first alist)) (separate (rest alist)))
+        ((numberp (first alist))
+             (cons (first alist) (separate (rest alist))))
+        ((symbol (first alist))
+             (append (separate (rest alist)) (list (first alist))))
+        (t
+             (merge (separate (first alist)) (separate (rest alist))))
+
+(defun merge (list1 list2)
+   (let (result list2)
+      (dolist (anitom list1 result)
+          (cond ((numberp anitom)
+                     (setq result (cons anitom result))))
+                ((symbolp anitom)
+                     (setq result (append result (list anitom)))))))
+
+;;; File buggy.lisp ends.
+</pre>
+1) We try to load the code by (load "buggy.lisp") and we get:
+
+<pre>
+   Error: Unexpected end of #<input stream "buggy.lisp">.
+   Fast links are on: do (use-fast-links nil) for debugging
+   Error signaled by LOAD.
+   Broken at LOAD.  Type :H for Help.
+</pre>
+
+<p>
+This means that we have more ('s than )'s in the file. Here LOAD
+can detect the extra ('s,  but just ignores extra )'s, which may
+cause problems later in execution. 
+
+<p>
+To fix that, 
+<menu>
+<li> insert one "print" statement after each "defun" block to
+find out which "defun" block has the extra ('s. 
+<li> use "vi"'s commands
+"(" ")" and "{" "}" in that "defun" block to match up ('s and )'s. 
+</menu>
+
+<p>
+By doing that we find that I need 2 more )'s at the end of SEPARATE 
+function. The corrected SEPARATE function is as below:
+<pre>
+(defun separate (alist)
+  (cond ((endp alist) nil)
+        ((numberp (first alist)) 
+            (cons (first alist) (separate (rest alist))))
+        ((symbolp (first alist))
+            (append (separate (rest alist)) (list (first alist))))
+        (t 
+            (merge (separate (first alist)) (separate (rest alist))))))
+                                            ;;; *****> ERROR1 corrected
+</pre>                                                                  
+Run (load "buggy.lisp") again and get the following message:
+<pre>
+   Loading buggy.lisp
+   Warning: MERGE is being redefined.
+   Finished loading buggy.lisp
+   T
+</pre>
+
+<p>
+The warning means GCL already have a function named "merge", but your
+definition will have a higher priority to be used.
+
+<p>
+2) Now run (separate '(a ((1) b) (() 2))) and get:
+
+<pre>
+   Error: The function SYMBOL is undefined.
+   Fast links are on: do (use-fast-links nil) for debugging
+   Error signaled by COND.
+   Broken at COND.  Type :H for Help.
+   >>
+</pre>
+
+<p>
+The break package is invoked automatically. Now if we enter break 
+command <b>:h</b>, we will get a list of all break commands. 
+
+<p>
+For example <b>:m</b> prints last break message: 
+
+<pre>
+    The function SYMBOL is undefined. 
+</pre>
+
+<p>
+So we know that the error is related to SYMBOL.
+
+<p>
+<b>:b</b> prints full backtrace of all functions:
+
+<pre>
+    Backtrace: system:top-level > eval > separate > COND
+</pre>
+
+<p>
+So now we know where and when the error occurs.
+<p>
+So we look for SYMBOL in the COND statement inside SEPARATE function
+and find that we should use SYMBOLP instead of SYMBOL to do the type
+checking. 
+
+<pre>
+(defun separate (alist)
+  (cond ((endp alist) nil)
+        ((numberp (first alist))
+             (cons (first alist) (separate (rest alist))))
+        ((symbolp (first alist))
+        ;;; ******> ERROR2 corrected
+             (append (separate (rest alist)) (list (first alist))))
+        (t
+             (merge (separate (first alist)) (separate (rest alist))))))
+</pre>
+
+<p>
+3) We run (separate '(a ((1) b) (() 2))) again and get:
+
+<pre>
+   Error: (SYMBOLP ANITOM) is invalid as a function.
+   Fast links are on: do (use-fast-links nil) for debugging
+   Error signaled by DOLIST.
+   Broken at DOLIST.  Type :H for Help.
+   >>
+</pre>
+
+<p>
+Use <b>:m</b> and <b>:b</b> break commands again:
+
+<pre>
+    >>:m
+    (SYMBOLP ANITOM) is invalid as a function.
+</pre>
+
+<p>
+The problem is that GCL tries to interpret the result returned 
+from (symbolp anitom) as a function.
+
+<pre>
+    >>:b
+    Backtrace: system:top-level > eval > separate > cond > append >
+    separate > cond > merge > separate > cond > merge > let > DOLIST
+</pre>
+
+<p>
+The problem happens after several recursive calls of SEPARATE and 
+in the DOLIST statement in the MERGE function.
+
+<p>
+Originally, we intend that (SYMBOLP ANITOM) is a case of the COND 
+statement, but now it seems that COND finishes correctly and 
+the program returns from COND and breaks in the DOLIST. So it 
+implies that COND is ended too early by some extra )'s and
+(SYMBOLP ANITOM) is left out of COND and treated by GCL as 
+a function. 
+
+<p>
+We check all )'s in the COND statement and find there is a extra )
+for the case before (SYMBOLP ANITOM). We fix that by deleting that )
+and adding another ) at the end of (SYMBOLP ANITOM) case to include 
+it in the COND statement.
+
+<pre>
+(defun merge (list1 list2)
+   (let (result list2)
+      (dolist (anitom list1 result)
+          (cond ((numberp anitom)
+                    (setq result (cons anitom result)))
+                                      ;;; ******> ERROR3 corrected
+                ((symbolp anitom)
+                    (setq result (append result (list anitom))))))))
+                                      ;;; ******> ERROR3 corrected
+</pre>
+
+<p>
+4) Now we run  (separate '(a ((1) b) (() 2))) and get:
+
+<pre>
+    (1 A)
+</pre>
+
+<p>
+Although we do not get break error message, this result is not as we expect. 
+Now we can use TRACE to trace MERGE and SEPARATE to see if they are working
+correctly.
+
+<pre>
+    >(trace merge)
+    Warning: MERGE is being redefined.
+    (MERGE)
+</pre>
+
+<p>
+BTW, You can always turn off the trace on "merge" by (untrace merge) command.
+
+<pre>
+>(separate '(a ((1) b) (() 2)))
+(separate '(a ((1) b) (() 2)))
+1> (MERGE (1) (B))      ====> call with (1) and (B)
+  <1 (MERGE (1))        ====> should return (1 B) not just (1).
+  1> (MERGE (2 NIL) NIL)
+  <1 (MERGE (2 NIL))
+  1> (MERGE (1) (2 NIL))
+  <1 (MERGE (1))
+(1 A)
+</pre>
+
+<p>
+So we find that merge is not working as expected. For example:
+(merge (1) (B)) should return (1 B) instead of (1). So we decide
+to turn off the trace and use STEP to look through a simple case
+more closely.
+
+<pre>
+>(untrace merge)
+>(step (merge '(1) '(b)))
+Type ? and a newline for help.
+  (MERGE '(1) ...) 
+    '(1) 
+    '(B) 
+    (LET (RESULT LIST2) ...) 
+      NIL       <====== ERROR4
+      NIL       
+      (DOLIST (ANITOM LIST1 ...) ...) 
+        LIST1 
+        = (1)
+        (COND (# #) ...) 
+          (NUMBERP ANITOM) 
+            ANITOM 
+            = 1
+          = T
+          (SETQ RESULT ...) 
+            (CONS ANITOM ...) 
+              ANITOM 
+              = 1
+              RESULT 
+              = NIL
+            = (1)
+          = (1)
+        = (1)
+        RESULT     
+        = (1)
+      = (1)
+    = (1)
+  = (1)
+(1)
+</pre> 
+
+<p>
+Through the steps, we find that the problem is that we tried to 
+initialize RESULT by LIST2. But it turns out they are both NIL. 
+How could this happen? We look up LET statement and find that
+(LET ((RESULT LIST2)) ...) will initialize RESULT with LIST2 while
+(LET (RESULT LIST2) will treat RESULT and LIST2 as new local variables
+and initialize them to NIL.
+
+<p>
+We fix that and run (merge '(1) '(B)) and (separate '(a ((1) b) (() 2))) 
+again.
+
+<p>
+This time they are almost working the way we want:
+
+<pre>
+    >(merge '(1) '(B))
+    (1 B)
+    >(separate '(a ((1) b) (() 2)))
+    (1 2 NIL B A)
+</pre>
+
+<p>
+But not yet, the () or nil should not be accumulated. So you have to exclude 
+this specific case from your result by adding one more case in the COND statement
+in the SEPARATE function.
+
+<pre>
+(defun separate (alist)
+  (cond ((endp alist) nil)
+        ((null (first alist)) (separate (rest alist)))
+        ;;; *****> ERROR5 corrected
+        ((numberp (first alist))
+             (cons (first alist) (separate (rest alist))))
+        ((symbolp (first alist))
+             (append (separate (rest alist)) (list (first alist))))
+        (t
+             (merge (separate (first alist)) (separate (rest alist))))))
+</pre>
+
+<p>
+Now you will be ready to turn in and relax.

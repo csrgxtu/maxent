@@ -1,0 +1,274 @@
+Date: Mon, 11 Nov 1996 17:57:58 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Sat, 04 May 1996 04:22:28 GMT
+Content-length: 7609
+
+<HTML>
+
+<HEAD>
+<TITLE>CS 110 Section 2 Lecture Notes - Week 7</TITLE>
+</HEAD>
+
+<BODY>
+
+<H2><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~bestor/cs110/cs110.html#text" ><!WA1><!WA1><!WA1><IMG SRC="http://www.cs.wisc.edu/~bestor/icons/arrowleft.gif" WIDTH=15 HEIGHT=15></A> Lecture Notes - Week 7</H2>
+
+<HR>
+
+<DL>
+   <DT>Topic:
+   <DD>One-dimensional arrays. Passing arrays as arguments.<P>
+
+   <DT>Text:
+   <DD>7.1 - 7.4, 7.6, 7.9<P>
+
+   <DT>Notes:
+   <DD>
+
+   <HR>
+
+   <CENTER>
+   <H3>Arrays</H3>
+   </CENTER>
+
+   <H4>Simple Variables</H4>
+   <UL>
+      <LI>So far we have used <EM>simple variables</EM> to store values.
+      <LISTING>
+	INTEGER SCORE
+	REAL PRICE
+	LOGICAL ANSWER
+      </LISTING>
+      <LI>Simple variables can only store a <EM>single</EM> value; i.e one integer, one real number or one logical value.
+      <LI>To store another value we must declare a new variable with a different name.
+      <LISTING>
+	INTEGER SCORE1, SCORE2, SCORE3
+      </LISTING>
+   </UL>
+
+   <H4>Array Variables</H4>
+   <UL>
+      <LI>Arrays store several related values under a <EM>single</EM> variable name.
+      <LI>All values stored in an array are of the same type, called the <EM>base type</EM>.
+      <LI>Easier to store several values in an array than declaring separate variables for each.
+   </UL>
+
+   <H4>Declaring Array Variables</H4>
+   <UL>
+      <LI>Specify the <EM>name</EM> of the array, the <EM>base type</EM>, and the number of values to store - called the <EM>size</EM> of the array.
+      <LISTING>
+	basetype arrayname(arraysize)
+
+	INTEGER SCORES(3)
+	REAL PRICES(1000)
+	LOGICAL ANSWRS(10)
+      </LISTING>
+      <LI>Array variables are declared together with simple variables.
+      <LISTING>
+	PROGRAM FOO
+	REAL COST
+	INTEGER SCORES(3), SUM
+      </LISTING>
+      <LI>Commonly use a <EM>constant</EM> (i.e. Fortran <TT>PARAMETER</TT> statement) to declare the size of an array.
+      <LISTING>
+	INTEGER MAXSIZ
+	PARAMETER (MAXSIZ=3)
+	REAL SCORES(MAXSIZ)
+      </LISTING>
+      <LI><TT>SCORES</TT> array variable stores three <TT>INTEGER</TT>'s under a <EM>single</EM> variable name.
+   </UL>
+
+   <H4>Referencing Arrays</H4>
+   <UL>
+      <LI>To access a particular value in an array you specify the array <EM>name</EM> and the <EM>subscript</EM> of the value (i.e. its position in the array).
+      <LISTING>
+	arrayname(subscript)
+      </LISTING>
+      <LI>The first value in an array has subscript 1, the last has subscript <EM>arraysize</EM>.
+      <LISTING>
+	SCORES(1)  - first element
+	SCORES(2)  - second element
+	SCORES(3)  - last element
+      </LISTING>
+      <LI>Array variables can be used anywhere you would use a normal simple variable.
+      <LISTING>
+	PRINT *, 'Your score is ', SCORES(1)
+	BAR = SCORES(1)*10 + COS(SCORES(2))
+	READ(1, 100, END=150) SCORES(3)
+      </LISTING>
+      <LI>Store values in an array using the <EM>assignment statement</EM>, just like simple variables
+      <LISTING>
+	arrayname(subscript) = value
+
+	SCORES(1) = 3
+	SCORES(2) = SCORES(1)*6
+      </LISTING>
+   </UL>
+
+   <H4>Array Subscripts</H4>
+   <UL>
+      <LI>Array subscripts can be <EM>literals</EM>, <EM>variables</EM> or <EM>expressions</EM>.  The value of the expression determines which element is accessed.
+      <LISTING>
+	INTEGER N, SCORES(3)
+
+	N = 2
+	SCORES(N) = SCORES(N*4-5)-SCORES(1)
+      </LISTING>
+      <LI>Value of array subscript must be in the range 1 ... <EM>arraysize</EM>. 
+      <LI>Array subscript is an <TT>INTEGER</TT> expression enclosed by parentheses ().<P>
+	<STRONG>Right</STRONG>:	
+      <LISTING>
+	SCORES(N), SCORES(N*4-5)
+      </LISTING>
+	<STRONG>Wrong</STRONG>:
+      <LISTING>
+	SCORES(-13), SCORES(5), SCORES[2], SCORES(2.3)
+      </LISTING>
+      <LI><STRONG>Important</STRONG>: The type of the array variable, the base type, and the subscript are very different.
+      <LISTING>
+	REAL PRICES(1000)
+	PRICES(N) = ...
+
+	Variable        Type
+	--------------------------------------------------
+	PRICES          ARRAY (all of the prices together)
+	PRICES(N)       REAL
+	N               INTEGER
+      </LISTING>
+   </UL>
+
+   <H4>Arrays and DO Loops</H4>
+   <UL>
+      <LI>Arrays are commonly processed using a <TT>DO</TT> loop.
+      <LISTING>
+	      INTEGER MAXSIZ, TOTAL, COUNT
+	      PARAMETER (MAXSIZ=100)
+	      REAL SCORES(MAXSIZ)
+
+	C     Read in all the scores
+	      DO COUNT=1, MAXSIZ
+	         READ *, SCORES(COUNT)
+	      END DO
+			
+	C     Add up all the scores
+	      TOTAL = 0
+	      DO COUNT=1, MAXSIZ
+	         TOTAL = TOTAL + SCORES(COUNT)
+	      END DO
+	
+	C     Print out all the scores
+	      DO COUNT=1, MAXSIZ
+	         PRINT *, SCORES(COUNT)
+	      END DO
+
+	      STOP
+	      END
+      </LISTING>
+	Try doing this without arrays!
+      <LI>The <TT>DO</TT> loop counter <TT>COUNT</TT> is used as the array subscript to <EM>sequentially</EM> access the values one at a time.
+   </UL>
+
+   <HR>
+
+   <CENTER>
+   <H3>Reading and Writing Arrays</H3>
+   </CENTER>
+
+   <H4>DO Loop</H4>
+   <UL>
+      <LI>An array can be "filled up" by reading in the values in a <TT>DO</TT> loop.
+      <LISTING>
+	DO I=1, 100
+	   READ *, SCORES(I)
+	END DO
+      </LISTING>
+      <LI>Values <STRONG>must</STRONG> be typed in on different lines because the <TT>READ</TT> statement is re-executed each time.
+      <LI>The values in an array can be printed on different lines using a <TT>DO</TT> loop.
+      <LISTING>
+	DO I=1, 100
+	   PRINT *, SCORES(I)
+	END DO
+      </LISTING>
+   </UL>
+
+   <H4>Implied DO Loop</H4>
+   <UL>
+      <LI>Can read in any part of an array from the same line using an <EM>implied DO loop</EM>.
+      <LISTING>
+	READ *, (SCORES(I), I=50, 100)
+      </LISTING>
+      <LI>Equivalent to a <TT>DO</TT> loop inside the <TT>READ</TT> statement, so everything is read off the same line.
+      <LI>Can print in any part of an array on the same line using an <EM>implied DO loop</EM>.
+      <LISTING>
+	PRINT *, (SCORES(I), I=50, 100)
+      </LISTING>
+   </UL>
+
+   <HR>
+
+   <CENTER>
+   <H3>Array Arguments</H3>
+   </CENTER>
+
+   <UL>
+      <LI>Arrays can be passed into and out of user-defined functions and subroutines as <EM>array arguments</EM>.
+      <LI>As with passing simple variables as arguments, array variables must first be declared in the main program.
+      <LI><STRONG>Important</STRONG>: Pass both the array <EM>name</EM> and the array <EM>size</EM> as arguments.  Must re-declare array inside the function or subroutine.
+      <LISTING>
+	      PROGRAM TEST
+
+	      INTEGER MAXSIZ
+	      PARAMETER (MAXSIZ=10)
+	      INTEGER SCORES(MAXSIZ)
+	      ...
+	      PRINT *, GETMAX(SCORES, MAXSIZ)
+	      STOP
+	      END
+
+	      INTEGER FUNCTION GETMAX (LIST, SIZE)
+	C     Finds the highest value in the list
+
+	C     Declare arguments
+	      INTEGER SIZE, LIST(SIZE)
+	      ...
+	      RETURN
+	      END
+      </LISTING>
+   </UL>
+			
+   <H4>Input Array Arguments</H4>
+   <UL>
+      <LI>As with simple variable arguments, <EM>input</EM> array arguments should not be re-assigned.<P>
+
+      <STRONG>Right:</STRONG>
+      <LISTING>
+	MAX = LIST(1)
+	IF (MAX .GT. LIST(N)) ...
+      </LISTING>
+
+      <STRONG>Wrong:</STRONG>
+      <LISTING>
+	LIST(N) = ...
+      </LISTING>
+      <LI>Whole arrays can be passed in as input arguments
+      <LISTING>
+	PRINT *, GETMAX(SCORES, MAXSIZ)
+      </LISTING>
+	or individual values can be passed as input arguments, just like simple variables.
+      <LISTING>
+	PRINT *, FACT(SCORES(3))
+      </LISTING>
+   </UL>
+
+</DL>
+
+</BODY>
+
+<HR>
+
+<ADDRESS>
+<H5>Copyright &copy 1996 <!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~bestor/bestor.html">Gareth S. Bestor</A> (<!WA3><!WA3><!WA3><A HREF="mailto:bestor@cs.wisc.edu">bestor@cs.wisc.edu</A>).  Last modified May 3, 1996.</H5>
+</ADDRESS>
+
+			

@@ -1,0 +1,197 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 21:45:24 GMT
+Content-Type: text/html
+Content-Length: 8021
+Last-Modified: Thursday, 11-Apr-96 15:24:04 GMT
+
+<HTML>
+<HEAD>
+<TITLE>CS 380D : Distributed Computing I</TITLE>
+<!-- Changed by: Rajeev Joshi, 10-Apr-1996 -->
+</HEAD>
+
+<basefont size=4>
+<center>
+<H1>CS 380D : Distributed Computing I</H1>
+<H2>Spring 1996</H2>
+</center>
+<HR>
+<H3>Instructor : <b>Lorenzo Alvisi</b></H3>
+<H3>Teaching Assistant : <b>Rajeev Joshi</b></H3>
+<HR><br>
+<center><b>Contents</b></center>
+  <UL>
+    <LI> <a href="#Staff">Office Hours &amp; Locations</a>
+    <LI> <a href="#Mechanics">Mechanics</a>
+    <LI> <a href="#Textbook">Required Textbook</a>
+    <LI> <a href="#Content">Course Content</a>
+    <LI> <a href="#Grading">Grading</a>
+    <LI> <a href="#Assignments">Problem Sets</a>
+    <LI> <a href="#Final">Information pertaining to the final exam</a>
+    <LI> <a href="midterm-solutions.ps">Suggested Solutions to the Midterm Exam</a>
+    <LI> <a href="news:utexas.class.cs380d">Newsgroup
+	    <I>(utexas.class.cs380d)</I></a>
+  </UL>
+<HR>
+<center><H2><A NAME=Staff>Instructional Staff</A></H2></center>
+<b>Lorenzo Alvisi</b>, Taylor Hall 4.122, Phone: 471-9792 <BR>
+Office Hours: Tuesdays, 10:00-12:00
+<BR> <BR>
+<b>Rajeev Joshi</b>, UA-9 #4.108D , Phone: 471-9756<BR>
+Office Hours: Mondays and Thursdays, 2:00-4:00 pm.<BR>
+<P>
+Other meetings with Lorenzo and Rajeev can be arranged by appointment.
+<P>
+<HR>
+<center><H2><A NAME=Mechanics>Mechanics</A></H2></center>
+<P>
+I expect that 2/3 of the classes will cover material from the required
+textbook; the remainder will come from other sources (i.e. papers,
+other textbooks). References to such sources will be given in class
+at the appropriate time.
+<P>
+Lectures: 9:00-10:30 Monday and Wednesday, in Robert Lee Moore Hall
+5.124.
+<BR>
+The newsgroup for the class is
+<a href="news:utexas.class.cs380d">utexas.class.cs380d</a>.
+<P>
+<HR>
+<center><H2><A NAME=Textbook>Required Textbook</A></H2></center>
+<P>
+<em> Distributed Systems</em>, Second Edition, S. Mullender (editor), ACM
+Press, Addison-Wesley Publishing Company, Reading MA, 1994.
+<P>
+<HR>
+<center><H2><A NAME=Content>Course Content</A></H2></center>
+<P>
+CS380 covers abstractions that have proved useful or are expected to
+be useful for designing and building tomorrow's distributed
+systems. These include:
+<UL><LI> global states (cuts, logical and vector clocks, causal message
+delivery, global property detection)
+<LI> message logging and checkpointing
+<LI> replication management (state machine approach, primary backup
+approach)
+<LI> agreement protocols (Byzantine agreement, ordered multicast)
+<LI> group programming (techniques and applications)
+<LI> distributed file systems (caching, disconnected operations)
+<LI> time services (Byzantine clock synchronization, NTP)
+<LI> security (encryption, authentication, security in group programming)
+</UL>
+<P>
+We will integrate the discussion of the general principles with the
+presentation of case studies that exemplify how such principles
+have been used to design and implement  real systems.
+Other topics, depending on time and interest, will be presented by me
+or by some of you (the size of the class does not allow all of you to give a
+presentation). Such topics  may include:
+<UL><LI> distributed shared memory
+<LI> distributed objects
+<LI> kernel support for distributed systems
+<LI> weak consistency for replica management
+<LI> protocols for electronic commerce
+<LI> protocols for wide-area networks
+</UL>
+<HR>
+<center><H2><A NAME=Grading>Grading</A></H2></center>
+<P>
+There will be 4 or 5 written homework assignment. Solutions will be
+graded F, B, or A. Any solution that demonstrates a credible effort on
+behalf of its authors (whether the solution is right or wrong) will
+receive a B or better.
+<P>
+Collaboration on homework assignment by up to three students is
+permitted and encouraged, but not required. When there is such a
+collaboration, a single solution should be submitted for
+grading, with the names of the collaborators. Other collaborations
+will be considered violations of Academic Integrity.
+<P>
+There will be a written, take-home midterm examination, for which no
+collaboration will be allowed.
+<P>
+There will be no final exam. Each student however will be required to
+write a final paper (about 20 pages) that surveys one of the issues
+that we have discussed in class. A list of suggested topics will be
+distributed in class on Monday 4/8. The paper is due at the start of
+the last class, Wednesday 5/1: hence, you will have 4 weeks to
+complete the paper.
+<P>
+You can also team up with a colleague and prepare one or two
+lectures on a topic not previously covered in class. If you choose
+this option, you and your colleague will only be required to write a
+single survey paper of about 20 pages. I warmly encourage you to
+consider volunteering for a presentation: it will give you an excellent
+opportunity to improve your communication skills.
+<P>
+<HR>
+<center><H2><A NAME=Assignments>Problem Sets</A></H2></center>
+<P>
+In this and all subsequent problem sets, you should
+conform to the following general guidelines:
+<UL><LI> ``Prove'' and ``show'' are synonymous. A precise proof is
+required when you are asked to ``prove'' or ``show'' something.
+<LI> To show that something is impossible, you have to give a proof that
+makes it clear that the problem cannot be solved, no matter what the algorithm
+is. It is insufficient to show that a particular algorithm does not work.
+<LI> Any algorithm that you develop must be accompanied by a proof of
+correctness, unless you explicitly told otherwise.
+</UL>
+<P>
+<HR>
+<img src="images/hpoint-right.gif">  <b>Due: Mon, 5 Feb 1996</b><br>
+<DL ><DT>Problem 1
+<DD> The snapshot protocols discussed in class and in the
+textbook assume that communication channels are FIFO. Derive a
+snapshot protocol for an asynchronous system that does not depend on
+the FIFO assumption, and prove it correct (i.e. prove that the
+protocol produces a consistent global state). You may assume that at
+most one snapshot is being computed at any point during a run. <BR>
+<b> Note</b>: The book contains a reference to a paper by Mattern that
+contains a solution to the problem. I urge you to resist the
+temptation to solve the problem by visiting the library...
+<P>
+<DT>Problem 2
+<DD> Taking the snapshot of a distributed computation is a
+general technique for computing stable global predicates. More
+efficient protocols can be derived for computing specific predicates,
+that are often conceptually simpler and more efficient (in terms of
+the number of messages they exchange) than a snapshot-based solution.
+<P>
+In this problem you are required to derive such a ``specialized''
+protocol for detecting a deadlock in an asynchronous distributed
+system. Ideally, your protocol would not need a centralized monitor
+process, and would have a message cost of <em>O(n)</em>, where <em>n</em>
+is the number of processes in the distributed system (a monitor-based
+snapshot protocol for detecting deadlock has a cost of <em>O(n*n)</em>).
+</DL>
+The suggested solutions to these problems are now
+online.  <a href="solutions.ps">This link points to the postscript file.</a>
+<HR>
+<img src="images/hpoint-right.gif">  <b>Due: Wed, 28 Feb 1996, 0900</b><br>
+<a href="ProblemSet2.ps">This link points to the postscript file</a>
+describing the second homework assignment.
+<HR>
+<center><H2><A NAME=Final>The final exam</A></H2></center>
+The assignment constituting the final exam is due <b>by 5 p.m., Friday
+May 3, 1996. </b><br>
+<a href="final.ps">This link</a> points to the
+Postscript file describing the assignment.
+<HR>
+<img src="images/mail.gif" align=top border=0>If you have questions, feel free
+to send email to <a href="mailto:lorenzo@cs.utexas.edu">  Lorenzo</a> or to
+<a href="mailto:joshi@cs.utexas.edu">  Rajeev</a> .
+<HR>
+</BODY>
+<basefont size=3>
+<ADDRESS>
+<br><b>
+If you have ideas on improving this page, please send your
+suggestions to<br></b>
+<a href="mailto:joshi@cs.utexas.edu">
+<img src="images/mail.gif" align=top border=0><tt>  joshi@cs.utexas.edu</tt>
+<br><br></a>
+Rajeev Joshi, last updated 11 Apr 1996<br><br>
+</ADDRESS>
+</HTML>

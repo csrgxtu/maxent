@@ -1,0 +1,230 @@
+Date: Wed, 15 Jan 1997 01:43:07 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+Content-length: 8363
+Last-modified: Tue, 24 Dec 1996 20:12:32 GMT
+
+<HTML>
+
+<HEAD>
+<TITLE>GVU: PVaniM -- Visualization/Animation in Cluster Environments</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#ffffff" >
+
+<MAP NAME="MINI3MAP">
+<AREA SHAPE="RECT" COORDS="0,0,70,16" HREF="/gvu/lab">
+<AREA SHAPE="RECT" COORDS="71,0,140,16" HREF="/gvu/people">
+<AREA SHAPE="RECT" COORDS="141,0,210,16" HREF="/gvu/info/aboutthegvu.html">
+</MAP>
+
+<TABLE WIDTH=550 BORDER=0 CELLSPACING=0 CELLPADDING=0>
+
+<!- This looks horrible but it's necessary so that you don't get
+   extra spaces in the bars.  Please don't edit this section  -!>
+
+<TR>
+<TD COLSPAN=2 VALIGN=TOP HEIGHT=28 >
+   <!WA0><A HREF="http://www.gatech.edu/">
+   <!WA1><IMG SRC="http://www.cc.gatech.edu/gvu/images/titlebars/gt.gif"
+       WIDTH=29 HEIGHT=24 ALT="[Georgia Tech]" 
+       BORDER=0></A><!WA2><A HREF="http://www.cc.gatech.edu/gvu"><!WA3><IMG SRC="http://www.cc.gatech.edu/gvu/images/titlebars/gvu.gif"
+       WIDTH=310 HEIGHT=24 ALT="[GVU]" 
+       BORDER=0></A><!WA4><A HREF="http://www.cc.gatech.edu/gvu/research"><!WA5><IMG SRC="http://www.cc.gatech.edu/gvu/images/titlebars/research.gif"
+       WIDTH=182 HEIGHT=24 ALT="[Research]" 
+       BORDER=0></A><!WA6><A HREF="http://www.cc.gatech.edu/gvu/info/search.html"><!WA7><IMG SRC="http://www.cc.gatech.edu/gvu/images/titlebars/search.gif"
+       WIDTH=29 HEIGHT=24 ALT="[Search]" BORDER=0></A>
+</TD>
+</TR>
+
+<TR>
+<TD ALIGN=LEFT WIDTH=339 HEIGHT=93 ROWSPAN=2>
+
+<!- An image of your own can be placed here if you want  -!>
+
+</TD>
+
+<TD ALIGN=RIGHT VALIGN=TOP>
+  <!WA8><IMG ALIGN=RIGHT SRC="http://www.cc.gatech.edu/gvu/images/minibars/research.gif" 
+       USEMAP="#MINI3MAP" BORDER=0>
+</TD>
+</TR>
+
+<! You can start editing again  !>
+
+<TR>
+<TD COLSPAN=2 ALIGN=RIGHT VALIGN=CENTER>
+<H2>PVaniM -- Visualization/Animation<BR> in Cluster Environments</H2>
+</TD>
+</TR>
+</TABLE>
+
+<TABLE WIDTH=550 BORDER=0 CELLSPACING=0 CELLPADDING=0>
+
+<TR>
+<TD>
+
+<HR>
+
+PVaniM is an enhancement package for PVM 3.3 that produces
+animations of the execution of PVM applications.  This document
+describes the subsystem that shows fine-grained post-mortem
+visualizations of PVM applications.  Another subsystem, <!WA9><A
+HREF="http://www.cc.gatech.edu/gvu/softviz/parviz/pvanimOL/pvanimOL.html">PVaniM 2.0</A> provides on-line,
+low-overhead, minimal perturbation visualizations as well.
+
+<P>
+
+PVaniM provides a general purpose set of views that work with all PVM
+applications, and provides support for users to build custom
+application specific animations.  The two main components of PVaniM
+are a tracing library and a general purpose set of animations that
+work with all PVM applications.
+
+<P>
+
+The PVaniM system provides its own robust tracing package for PVM.  This
+package not only drives the general purpose animations, but also provides
+support for user trace events for use with custom application specific 
+animations.  The PVaniM tracing package provides comprehensive
+timestamping techniques.  PVaniM not only performs clock
+synchronization and tachyon removal for its ``wall clock'' timestamp,
+but it also provides a pure Lamport logical timestamp as an aid in
+determining the concurrency and causality of events that take place in
+the application.  
+
+<P>
+
+The second main component of PVaniM is a general purpose library of
+animations that work with all PVM applications.  This library was
+developed using the <!WA10><A HREF="http://www.cc.gatech.edu/gvu/softviz/parviz/polka.html">the POLKA Animation 
+Designer's Package</A>, and users may also use this package to develop
+their own application specific animations.
+Included below are snapshots from the PVaniM system.
+
+<P>
+
+All of the PVaniM system is available via anonymous FTP from 
+<!WA11><A HREF="ftp://ftp.cc.gatech.edu/pub/people/stasko"><CODE>ftp.cc.gatech.edu
+</CODE></A> under <CODE>pub/people/stasko</CODE>.
+The support platform required for this is a machine running the X
+Window System with Motif, and a C++ compiler. From the FTP site
+mentioned above, you will need to retrieve the files
+<CODE>pvanimtrace.tar.Z</CODE> and
+<CODE>pvanimviz.tar.Z</CODE>.
+
+
+
+
+
+
+<HR>
+
+<!WA12><A HREF="http://www.cc.gatech.edu/gvu/softviz/parviz/pvanim/pvanim3win.gif">
+<!WA13><IMG SRC="http://www.cc.gatech.edu/gvu/softviz/parviz/pvanim/pvanim3win.icon.gif"></A>
+When users begin a session with PVaniM, they are presented with the PVaniM
+Menu, an Information Box, and a Polka Control Panel.
+The PVaniM Information Box displays message communication information 
+that can be acquired by 
+clicking with the left mouse button on objects in some of the views.  The
+Polka Control panel allows you to change the speed of the animation, step 
+through it, or pause the animation.  The PVaniM Menu displays the general 
+purpose views that are currently available.
+<P>
+
+<!WA14><A HREF="http://www.cc.gatech.edu/gvu/softviz/parviz/pvanim/pvanimhist.gif">
+<!WA15><IMG SRC="http://www.cc.gatech.edu/gvu/softviz/parviz/pvanim/pvanimhist.icon.gif"></A>
+The History view is the first option available in the PVaniM menu. 
+This scrolling view maintains a history of messages
+that have been sent or received.  The Y-axis of this view is labeled with
+Lamport clock values with time proceeding from bottom to top.  
+The X-axis is labeled with process identifiers.  
+Squares that are associated with message
+sends are filled in with dark colors.  Lighter colors of the same hue 
+fill squares that are 
+associated with the corresponding message receives.  
+Message size is encoded by filling squares
+with various amounts of color.  This can be deciphered by using the
+History Legend view, the second option listed in the PVaniM Menu.
+
+
+<P>
+
+<!WA16><A HREF="http://www.cc.gatech.edu/gvu/softviz/parviz/pvanim/pvanimcaus.gif">
+<!WA17><IMG SRC="http://www.cc.gatech.edu/gvu/softviz/parviz/pvanim/pvanimcaus.icon.gif"></A>
+  The third option available in the PVaniM Menu is the Causality View.
+This view is a more complex version of a Feynman diagram, and is also
+known to many as a Lamport timeline view.
+In this view, the Y-axis 
+is labeled with process identifiers and the X-axis is labeled with Lamport
+clock values.  When a message is sent, a circle appears at the 
+appropriate logical time coordinate.    
+Varying circle radii are used to denote message size and the color of the
+circle is the same as that used in the history view.  When a message is 
+delivered, an arrow ``grows'' from the coordinate of where the message
+was sent to the correct Lamport delivery time on the receiver's timeline.
+Simultaneously, the circle representing the message moves along this path
+and then disappears.  Arrows may be clicked by the users with the left mouse
+button.  This will place in the PVaniM Information Box pertinent data
+regarding the arrow (which represents a message communication) such as who
+sent the message, who received it, its type and length.  This view is 
+similar to the history view in the  information it provides, but is 
+very useful when trying to distinguish communication patterns.
+
+<P>
+
+
+<!WA18><A HREF="http://www.cc.gatech.edu/gvu/softviz/parviz/pvanim/pvanimmp.gif">
+<!WA19><IMG SRC="http://www.cc.gatech.edu/gvu/softviz/parviz/pvanim/pvanimmp.icon.gif"></A>
+The fourth option available in the PVaniM Menu is the Message Passing view.
+In this view, all the processes are laid out around the outside circle.  
+Messages are represented as circles that smoothly move into the center of 
+the ring of processes
+when sent near and end up in the vicinity of the process that the message is
+intended to be received by.  At any time messages may be clicked by the 
+user with the left mouse button.  In the PVaniM Information Box will 
+appear data such as who sent the message, who received it, its type and length.
+When a process receives a message, the message moves from its
+position in the center of the ring to the process.  The color of the message
+is the same color as used in the history view.  Contrail lines are provided 
+so that it is clear where the message came from.  The user may turn these
+lines off if the view becomes too cluttered by clicking on the ``lines off''
+button provided in the inside of the Message Passing View.  
+Further,
+the radius of the circles representing messages is proportional
+to message size.   Messages that are never delivered conspicuously remain
+in the center.  Also, the smooth animation of message traffic helps portray 
+actions such as message broadcasts.
+
+
+<P>
+
+<!WA20><A HREF="http://www.cc.gatech.edu/gvu/softviz/parviz/pvanim/pvanimgt.gif">
+<!WA21><IMG SRC="http://www.cc.gatech.edu/gvu/softviz/parviz/pvanim/pvanimgt.icon.gif"></A>
+The fifth and final option available is the Gant view.  This is a famous
+ParaGraph view where each process is represented as being computing,
+sending a message, or receiving a message.  When a message is computing,
+a green line is drawn, when it is sending a message, a yellow line is drawn,
+and when it is receiving, a red line is drawn.  This is a simplistic version
+of the ParaGraph view as it automatically provides a time scaling such that
+the entire view fits in the Gant window.
+
+<HR>
+
+<!WA22><A HREF=http://www.cc.gatech.edu/gvu/softviz> Back to Software Visualization Home Page</A>
+
+<HR>
+
+
+
+
+<SMALL>Questions or comments?  Email 
+  <!WA23><A HREF="mailto:gvu-webmaster@cc.gatech.edu">gvu-webmaster@cc.gatech.edu</A>.
+</SMALL>
+
+</TD>
+</TR>
+</TABLE>
+
+</BODY>
+</HTML>

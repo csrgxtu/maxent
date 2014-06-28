@@ -1,0 +1,172 @@
+Date: Tue, 05 Nov 1996 00:04:09 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+
+<html>
+<head>
+<title>MetaCrawler Searching</title>
+</head>
+
+<body bgcolor="#EEFFFA" text="#0" link="#CC0000" alink="#FF3300" vlink="#000055">
+<center>
+<!WA0><!WA0><!WA0><!WA0><a href="http://www.fiesta.com"><!WA1><!WA1><!WA1><!WA1><img src="http://metacrawler.cs.washington.edu:8080/gif/mc-logo.gif" align=left border=none alt=""></a>
+<h2>
+<em>MetaCrawler Parallel Web Search Service</em>
+</h2>
+<h3>
+by <em><!WA2><!WA2><!WA2><!WA2><a href=http://www.cs.washington.edu/homes/selberg>Erik Selberg</a></em>
+and <em><!WA3><!WA3><!WA3><!WA3><a href=http://www.cs.washington.edu/homes/etzioni>Oren Etzioni</a></em>
+</h3>
+<br clear=all>
+</center>
+<center>
+<br><!WA4><!WA4><!WA4><!WA4><img src="http://metacrawler.cs.washington.edu:8080/gif/dot_clear.gif" vspace=3><br>
+Try the new <!WA5><!WA5><!WA5><!WA5><a href="http://beta.metacrawler.com">MetaCrawler Beta</a>!<br>
+If you're searching for a person's home page, try <!WA6><!WA6><!WA6><!WA6><a href=http://ahoy.cs.washington.edu:6060>Ahoy!</a>
+<br><!WA7><!WA7><!WA7><!WA7><img src="http://metacrawler.cs.washington.edu:8080/gif/dot_clear.gif" vspace=3><br>
+</center>
+<br>
+<center>
+<!WA8><!WA8><!WA8><!WA8><img src=http://metacrawler.cs.washington.edu:8080/gif/blueball.gif alt="[ ">
+<!WA9><!WA9><!WA9><!WA9><a href="http://metacrawler.cs.washington.edu:8080/help.html#examples">Examples</a>
+<!WA10><!WA10><!WA10><!WA10><img src=http://metacrawler.cs.washington.edu:8080/gif/redball.gif alt=" |&gt;">
+<!WA11><!WA11><!WA11><!WA11><a href="http://beta.metacrawler.com">Beta Site</a>
+<!--<!WA12><!WA12><!WA12><!WA12><img src=http://metacrawler.cs.washington.edu:8080/gif/redball.gif alt="&lt;| ">
+<!WA13><!WA13><!WA13><!WA13><a href="http://metacrawler.cs.washington.edu:8080/beta.html">CGI Beta</a>-->
+<!WA14><!WA14><!WA14><!WA14><img src=http://metacrawler.cs.washington.edu:8080/gif/redball.gif alt="&lt;| ">
+<!WA15><!WA15><!WA15><!WA15><a href="http://metacrawler.cs.washington.edu:8080/register.html">Add Site</a>
+<!WA16><!WA16><!WA16><!WA16><img src=http://metacrawler.cs.washington.edu:8080/gif/blueball.gif alt=" | ">
+<!WA17><!WA17><!WA17><!WA17><a href="http://metacrawler.cs.washington.edu:8080/home.html">About</a>
+<!WA18><!WA18><!WA18><!WA18><img src=http://metacrawler.cs.washington.edu:8080/gif/blueball.gif alt=" ]">
+</center>
+<br>
+<!WA19><!WA19><!WA19><!WA19><FORM METHOD=GET ACTION="http://metacrawler.cs.washington.edu:8080/cgi-bin/nph-metaquery.p">
+<center>
+Search for:
+<input name="general" size=56><br>
+<input type="radio" name="logic" value="2">
+as a <b>Phrase</b><!WA20><!WA20><!WA20><!WA20><img hspace=20 src="http://metacrawler.cs.washington.edu:8080/gif/dot_clear.gif" alt="   ">
+<input type="radio" name="logic" value="0" checked>
+<b>All</b> of these words<!WA21><!WA21><!WA21><!WA21><img hspace=20 src="http://metacrawler.cs.washington.edu:8080/gif/dot_clear.gif" alt="   ">
+<input type="radio" name="logic" value="1">
+<b>Any</b> of these words
+<br>
+<input type="submit" value="Fast Search" name="searchType">
+<!WA22><!WA22><!WA22><!WA22><img hspace=10 src="http://metacrawler.cs.washington.edu:8080/gif/dot_clear.gif" alt="   ">
+<input type="submit" value="Comprehensive Search" name="searchType">
+<p>
+
+<input type=hidden name="useCrawlers" value=AltaVista>
+<input type=hidden name="useCrawlers" value=Excite>
+<input type=hidden name="useCrawlers" value=Galaxy>
+<input type=hidden name="useCrawlers" value=InfoSeek>
+<!--<input type=hidden name="useCrawlers" value=Inktomi>
+<input type=hidden name="useCrawlers" value=OpenText>-->
+<input type=hidden name="useCrawlers" value=Lycos>
+<input type=hidden name="useCrawlers" value=WebCrawler>
+<input type=hidden name="useCrawlers" value=Yahoo>
+
+<table>
+<tr>
+<th colspan=4 valign=middle>
+<b>For better results, please specify:</b>
+</th>
+</tr>
+<tr>
+<th align=left>Search Region: </th>
+<td>
+<select name=region>
+<option selected>The World
+<option>Your Continent
+<option>Your Country
+<option>Your Domain
+<option>
+<option>North America
+<option>Europe
+<option>Asia
+<option>Australia
+<option>South America
+<option>Africa
+<option>Antarctica
+</select>
+<br>
+</td>
+
+<th align=left>
+Search Sites:
+</th>
+<td>
+<SELECT name=orgType>
+<OPTION selected>Any
+<OPTION>Company
+<OPTION>Educational
+<OPTION>Network (ISP)
+<OPTION>Organization
+<OPTION>Government (US)
+<OPTION>Military (US)
+<OPTION>Intl (.int)
+</select>
+</td>
+</tr>
+
+<tr>
+<th colspan=4>
+<br>
+<b>Performance parameters:</b>
+</th>
+</tr>
+
+<tr><br>
+<th align=left>
+Max wait:
+</th>
+<td>
+<select name="maxwait">
+<option>1
+<option>3
+<option>5
+<option>7
+<option>10
+</select>
+minutes
+</td>
+<th align=left>
+Match type:
+</th>
+<td>
+<select name=score>
+<option>Any
+<option selected>Loose
+<option>Medium
+<option>Strong
+</select>
+</td>
+
+</table>
+</center>
+</form>
+
+<!-- hr size=4 -->
+<center>
+[ 
+<!WA23><!WA23><!WA23><!WA23><a href="http://metacrawler.cs.washington.edu:8080/home.html">About</a>
+ | 	 
+<!WA24><!WA24><!WA24><!WA24><a href="http://metacrawler.cs.washington.edu:8080/help.html">Help </a>
+ | 	 
+<!WA25><!WA25><!WA25><!WA25><a href="http://metacrawler.cs.washington.edu:8080/bugs.html">Problems</a>
+ | 	 
+<!WA26><!WA26><!WA26><!WA26><a href="http://metacrawler.cs.washington.edu:8080/register.html">Add Site</a>
+ | 	 
+<!WA27><!WA27><!WA27><!WA27><a href="http://metacrawler.cs.washington.edu:8080/index.html">Search</a>
+ ]
+
+<address>
+<!WA28><!WA28><!WA28><!WA28><a href="mailto:webmaster@metacrawler.com">
+webmaster@metacrawler.com</a>
+</address>
+<font size=-3>&copy; Copyright 1995, 1996 Erik Selberg and Oren Etzioni</font>
+</center>
+</body>
+
+
+</html>

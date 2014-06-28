@@ -1,0 +1,76 @@
+Date: Mon, 02 Dec 1996 15:10:53 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+<title>CSE567 Homework Assignment #3</title>
+</head>
+
+<body bgcolor="#dddddd"  text="#000000"  link="#0000ee" vlink="501080" alink="ff0000">
+
+<h1>CSE 567: Principles of Digital Systems Design </h1>
+<h3>Carl Ebeling, Fall 1996 </h2>
+
+<hr>
+
+<h3>Homework 3</h3>
+<p>
+<b>Distributed: Friday Oct. 18 - Due Monday Oct. 28, in class</b>
+<hr>
+<p>
+For problems involving Verilog code, hand in your code and your
+simulation log (or at least part of it if it's really long).  For the
+synthesis problems, hand in a printout of the circuit schematic generated.
+<ol>
+<LI> Generate all the kernels of the following expression using the
+rectangle covering method:
+<P>
+<pre> f = ace + acg + bce + bcg + ade + adg + bde + bdg
+</pre>
+
+<li> Minimize the following expression using multi-level logic.  The
+cost of this expression implemented directly as gates is 7 gates and
+30 inputs (literals).  Minimize this circuit in terms of literals.
+<p>
+Use the rectangle method to find interesting kernel and cube divisors.
+Remember that as each time you factor the function, you create a new
+expression and new rectangle covering table.
+<pre>
+X = adeg + cdeg + afg + hi + bdeg + cfg + bfg
+</pre>
+
+<li> Look at the two Verilog implementations of a comparator in
+/projects/lis/cse567/verilog/examples/comparator/ and simulate each
+using the verilog simulator.  ("verilog.exe compare_TB.v" will do the
+trick)
+
+<li> Use the comparator Verilog module to construct a MIN/MAX
+circuit.  This MIN/MAX module has two 4-bit inputs, A and B, and two
+4-bit outputs, Large and Small, where Large is the larger of A and B
+and Small is the smaller.  Simulate your circuit to validate its
+behavior.
+
+<li> Use the MIN/MAX circuit to implement a sorting network that sorts
+four numbers.  Simulate and validate its behavior.
+
+<li> Synthesize the circuit for the expression in problem 2 using
+Synopsys.  (<a href="../misc/gate-syn.html">Directions for synthesis</a>)
+Does Synopsys give you the same circuit you found? 
+
+<li> Synthesize the 4-bit comparator module in compare2.v.  Try
+different opimization settings, including the defaults.  What's the
+"best" circuit you can come up with?
+
+<li> Try synthesizing a 32-bit comparator using Synopsys.  How well
+can you guide the results by fiddling different timing and cost
+constraints?
+
+</ol>
+</body>
+<address>
+<hr>
+ebeling@cs.washington.edu
+</address>
+<p>
+</html>

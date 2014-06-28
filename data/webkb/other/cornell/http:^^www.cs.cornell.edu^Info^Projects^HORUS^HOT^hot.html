@@ -1,0 +1,177 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 18:49:59 GMT
+Content-Type: text/html
+Content-Length: 3714
+Last-Modified: Monday, 02-Oct-95 19:02:09 GMT
+
+<!-- File: hot.html -->
+<!-- Author: Alexey Vaysburd -->
+<!-- Contents: The Horus Object Tools -->
+<!-- Created: September 1995 -->
+
+<html>
+
+<head>
+<title>The Horus Object Tools</title>
+<link rev="made" href="mailto:alexey@cs.cornell.edu (Alexey Vaysburd)">
+</head>
+
+<body>
+<h1>The Horus Object Tools</h1>
+
+<p>
+This document is a part of the online
+<a href="../index.html">Horus Documentation</a>,
+under
+<a href="../apis.html">Horus APIs</a>.
+<hr>
+
+<p>
+This document contains a description of the <em>Horus Object Tools</em> (HOT), 
+which implement Abstract Data Types for MUTS objects, Horus group 
+members, and clients/servers with intergated state transfer. 
+
+<p>
+<h2>Contents:</h2>
+
+<dir>
+<li>
+<a href="hot-wrappers.html">
+MUTS Wrapper Classes
+</a>
+	<dir>
+	<br>
+	<li><a href="hot-wrappers.html#HorusMUTS">HorusMUTS</a>
+	<li><a href="hot-wrappers.html#HorusErrorHandler">HorusErrorHandler</a>
+	<li><a href="hot-wrappers.html#HorusMemory">HorusMemory</a>
+	<li><a href="hot-wrappers.html#HorusBase">HorusBase</a>
+	<li><a href="hot-wrappers.html#HorusMessage">HorusMessage</a>
+	<li><a href="hot-wrappers.html#HorusSemaphore">HorusSemaphore</a>
+	<li><a href="hot-wrappers.html#HorusThread">HorusThread</a>
+	<li><a href="hot-wrappers.html#HorusLock">HorusLock</a>
+	<li><a href="hot-wrappers.html#HorusEventCounter">HorusEventCounter</a>
+	<li><a href="hot-wrappers.html#HorusEntity">HorusEntity</a>
+	<li><a href="hot-wrappers.html#HorusBarrier">HorusBarrier</a>
+	<li><a href="hot-wrappers.html#HorusString">HorusString</a>
+	<li><a href="hot-wrappers.html#HorusNameServer">HorusNameServer</a>
+	<li><a href="hot-wrappers.html#OrderedSet">OrderedSet</a>
+	</dir>
+	<br>
+
+<li>
+<a href="hot-hierarchy.html">
+Horus Group Members and Clients/Servers
+</a>
+	<dir>
+	<br>
+
+	<li>
+	<a href="hot-hierarchy.html#HorusGroupMember">
+	HorusGroupMember
+	</a>
+		<dir>
+		<br>
+
+		<li>	
+		<a href="hot-hierarchy.html#Creating_HorusGroupMember_Objects">
+		Creating HorusGroupMember Objects
+		</a>
+
+		<li>
+		<a href="hot-hierarchy.html#HorusGroupMember_Joining_Group">
+		Joining a Group
+		</a>
+
+		<li>
+		<a href="hot-hierarchy.html#HorusGroupMember_Sending_Messages">
+		Sending/Receiving Messages
+		</a>
+
+		<li>
+		<a href="hot-hierarchy.html#HorusGroupMember_Monitoring">
+		Monitoring Group Membership Changes
+		</a>
+
+		<li>	
+		<a href="hot-hierarchy.html#HorusGroupMember_Overloading">
+		Overloading Default Behavior
+		</a>
+
+		</dir>
+		<br>
+
+	<li>
+	<a href="hot-hierarchy.html#HorusClSv">
+	HorusClSv (clients/servers + state transfer protocol)
+	</a>
+		<dir>
+		<br>
+
+		<li>
+		<a href="hot-hierarchy.html#Creating_HorusClSv_Objects">
+		Creating HorusClSv Objects
+		</a>
+
+		<li>
+		<a href="hot-hierarchy.html#HorusClSv_Joining_Group">
+		Joining a Group
+		</a>
+
+		<li>
+		<a href="hot-hierarchy.html#HorusClSv_Sending_Messages">
+		Sending/Receiving Messages
+		</a>
+
+		<li>
+		<a href="hot-hierarchy.html#HorusClSv_Monitoring">
+		Monitoring Group Membership Changes
+		</a>
+
+		<li>
+		<a href="hot-hierarchy.html#HorusClSv_State_Transfer">
+		State Transfer
+		</a>
+
+		</dir>
+		<br>
+
+	<li>
+	<a href="hot-hierarchy.html#HorusCSX">
+	HorusCSX (clients/servers + higher-level state transfer)
+	</a>
+
+	</dir>
+	<br>
+
+<li><a href="hot-dirsvr.html">HOT Directory Server</a>
+
+<p>
+<li>
+<a href="hot-xfer.html">
+State Transfer in HOT
+</a>
+	<dir>
+	<br>
+	<li>	<a href="hot-xfer.html#Server_Joins">
+		State Transfer:  A Server Joins the Group
+		</a>
+	<li>	<a href="hot-xfer.html#Partitions_Merge">
+		State Transfer:  Two Group Partitions Merge
+		</a>
+	<li>	<a href="hot-xfer.html#Protocol">
+		State Transfer:  The Protocol
+		</a>
+	</dir>
+</dir>
+
+<hr>
+<address>
+send mail to
+<a href="mailto:alexey@cs.cornell.edu">
+alexey@cs.cornell.edu
+</a>
+</address>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 20:07:04 GMT
+Content-Type: text/html
+Content-Length: 9271
+Last-Modified: Thursday, 29-Feb-96 04:40:15 GMT
+
+<!DOCTYPE HTML SYSTEM "html.dtd">
+<HTML><HEAD><TITLE>Optimal Video Transmission</TITLE></HEAD>
+<BODY>
+<H1><A NAME="Title"><I>Optimal Video Transmission</I></A></H1>
+<P><I>By <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="http://www.cs.cornell.edu/Info/People/mishaal/home.html"
+>Mishaal Almashan</A></I></P>
+<P><I>Advised by <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.cornell.edu/Info/People/kozen/kozen.html"
+>Dexter Kozen</A></I></P>
+<P>MEng Project,  Fall 1995<BR>
+Computer Science Department<BR>
+Cornell University</P>
+<HR>
+<H2><A NAME="TOC"><B>Table of Contents</B></A></H2>
+<UL>
+<LI><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="#Title" TITLE="Project Title">Project Title</A></LI>
+<LI><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="#Introduction" TITLE="Introduction">Introduction</A></LI>
+<LI><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="#MPEG">Quick Overview of MPEG</A></LI>
+<UL>	<LI>History</LI>
+	<LI>Compression Algorithm</LI>
+	<LI>MPEG Frames</LI>
+	<LI>Motion Vectors</LI></UL>
+<LI><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A HREF="#Problem">Problem</A></LI>
+<LI><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><A HREF="#Aim">Aim of this Project</LI>
+<LI><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><A HREF="#Research" TITLE="Research">Research Sources/Notes</A></LI>
+<LI><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><A HREF="#Links" REL="#Links">Links to Relavent Topics</A></LI>
+<LI><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><A HREF="http://www.cs.cornell.edu/Info/People/mishaal/Optimal/Reds.panindex.ps" REL="#Links">Demo output</A> of current <TT>mpeg_weigh</TT> on RedsNightmare.mpg<BR>
+<TT>mpeg_weigh</TT> reads in an MPEG-1 video file and parses the frames to extract the motion vectors of blocks within the frames. It determines how much of a sweeping pan occured, by averaging out all the motion vectors into a single vector, and caculating how far is the referenced frame. The PanIndex then would be proportional to the motion vector and inversely proportional to the distance to the referenced frame (in frames). 
+</UL>
+<LI><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><A HREF="http://www.cs.cornell.edu/Info/People/mishaal/Optimal/CMT-extension/project.html"> CMT Extension</A>
+</UL>
+<HR>
+<H2>
+<A NAME="Introduction"><B>Introduction</B></A></H2>
+<P>	This project will improve upon an existing prioritization algorithm
+for bandwidth-constrained video transmission.  The object is to
+determine which frames of a video sequence to drop so as to optimize
+perceptual continuity of the received sequence.  The algorithm will be
+modified to take the rate of motion into account when prioritizing
+frames for transmission, so that frames with more motion are less likely
+to be dropped.  </P>
+<P>	An algorithm was developed that would drop the least critical
+frames in a video stream when the transmission bandwidth is narrow.   
+The algorithm, described in <!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><A HREF="http://www.cs.cornell.edu/Info/People/kozen/papers/video.ps   " TITLE="Optimal Video Transmission"
+> Efficient Algorithms for Optimal Video Transmission</A>,   was proved
+to be optimal for most video,  but when it comes to video with a lot of
+scenery motion (as in panning and scanning) it fails.  So the aim of
+this project is to account for the rate of motion and assign weights to
+the frames so as to drop the least weighted frames and still preserve
+perceptual continuity. It will explore and study the motion vectors in
+MPEG encoded video and try to determine from that how critical is the
+frame. 
+</P>
+<HR>
+<H2><A NAME="MPEG"><B>Quick Overview of MPEG-1</B></A></H2>
+<H4>History</H4>
+<P>
+The Moving Pricture Expert Group (MPEG) comitee, a group under the International
+Standards Organization (ISO),  started it's effort to draft a standard for digital
+video and audio compression in 1988. Eventhough a standard for video compression
+to be used in teleconferencing and telephony applications had existed (CCIT Recommendation 
+H.261),  MPEG realized that by relaxing the constraints on very low delay and focus
+on low bit rate it can achieve good quality video in the range of 1-1.5 Mbits/s.   
+</P>
+<H4>Compression Algorithms</H4>
+<P>
+So by September of 1990, a draft proposal was agreed upon by the members of the group.
+This draft describes a video compression that uses block-based motion compensation
+for temporal redundancy and transform domain (Discrete Cosine Transform) based 
+compression for spatial redundancy. Motion compensation occurs by predicting motion 
+between 16x16 macroblocks of frames in the temporal direction (motion-vectors), then the prediction 
+error in 8x8 macroblocks of the frames can be compresssed using the redundancy in the spatial direction 
+with DCT.  The resulting DCT coefficients are quantized to drop the unnecessary precision.
+This qautization often results in the coeffecients to be zero.  These coefficients, along
+with the motion vectors, DC components, quantization values, and other parameters are then
+Huffman coded using fixed tables.  The DCT coefficients have a special two dimentional Huffman
+table that would code the non-zero value and the run-length of zeros.  The motion vectors and DC
+components are also subtracted from the last one coded (DPCM).
+</P>
+<H4>MPEG Frames</H4>
+<P>The standards called for random access, fast forward and reverse searches, reverse playback, and 
+audio-visual synchronization.  This required reference frames, which are called Intraframes (I).
+These frames are sill images having no dependency on any other frames.  On the other hand, Predicted 
+frames (P) depend on past I or P frames to be reconstruct during decoding.  Each macroblock of these
+P frames can come with either a vector and difference DCT coefficients of the last I or P frame,  or it
+can be intra coded (just like I frames).</P>
+<P>The last type of frames is the Bidirectional frame (B),  which can depend on past and future I or P
+frames.  The macroblocks of B frames can be any of the following four types:</P>
+<UL>
+<LI>Intracoded, no dependency.</LI> 
+<LI>Backward dependency, in which a block is referenceing a block in the past</LI>
+<LI>Forward dependency, in which a block is referencing a block in the future</LI>
+<LI>Average, in which a block is the difference of the average of both a past and future block</LI>
+</UL>
+<CENTER><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><IMG BORDER=2 SRC="http://www.cs.cornell.edu/Info/People/mishaal/Optimal/MPEG-frames.gif">
+<BR>Figure O.1: MPEG Frames</CENTER>
+<P>These dependencies are better illustrated in Figure O.1</P>
+<P>One can see how P frames depend on past I or P frames while B frames can depend on both I or P in the
+future or past.  These dependencies mean that when decoding MPEG, B frames cannot be decoded until the
+depended opon I or P frames are decoded.  This might require the decoder to decode a future frame, in order
+to decode a current B frame.</P>
+<H4>Motion Vectors</H4>
+<P>(Motion Detection/Motion Estimation)</P>
+<HR>
+<H2><A NAME="Problem"><B>Problem with the Current Algorithm</B></A></H2>
+<P>As described before,  the current algorithm treats the frames equally.  The weighing 
+procedure used involves weighing frames according to the the frame type and the frame's
+ dependecies.  So, for example,  when a frame is used as a reference for multiple frames, it 
+would be weighted heavier than a frame with one frame dependence. </P>
+<P>Such an algorithm is optimal in the sense of data throughput,  but the aim is to have
+a transmission that is perceptually acceptable.  Currently, there is no way of knowing
+what information a frame contains;  Therefore, The maximum number of frames are sent not the most 
+perceptually-critical frames. This fault causes the video at reception to look jittery.  This is 
+especially true when there is panning in the scence.</P>
+<HR>
+<H2><A NAME="Aim"><B>Aim of this Project</B></A></H2>
+<P>Knowing that MPEG video frames carry motion vectors, and that frames with more motion are 
+perceptualy-ciritcal, we can use these vectors as motion detectors. This allows us to 
+distinguish these frames, and hence weigh them accordingly.</P>
+<P>The aim of this project is to extract the motion vectors and somehow use them to weigh the
+different frames.  The old algorithm would then take into account these new weights to produce a squence of frames that are more perceptually acceptable.
+</P> 
+<HR>
+<H2><A NAME="Research"><B>Research Sources/Notes</B></A></H2>
+<UL>
+<LI><CITE><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><A HREF="http://www.cs.cornell.edu/Info/People/kozen/papers/video.ps"> Dexter Kozen, Yaron Minsky, and Brian Smith. Efficient algorithms for optimal video transmission.Technical Report TR95-1517, Cornell University, May 1995.</A></CITE></LI>
+
+<LI><CITE>Le Gall, Didier MPEG: A Video Compression Standard for
+Multimedia Applications, Communications of the ACM, pp 47-58, April
+1991.</CITE>
+</LI>
+<LI><CITE>Patel, Ketan, Smith, Brian C., and Rowe, Lawrence A.
+Performance of a Software MPEG Video Decoder 
+</CITE></LI>
+<LI><CITE>Rowe, Lawrence A., Patel, Ketan, Smith, Brian C., and Liu Kim, MPEG
+Video in Software: Representation, transmission, and Playblack, University
+of California, Berkeley, CA, February 1994. 
+</CITE></LI>
+<LI><CITE>CCIR Recomendation 601-2
+</CITE></LI>
+</UL>
+<HR>
+<H2><A NAME="Links"><B>Links to Relavent Topics</B></A></H2>
+<UL>
+<LI> Usenet Frequently Asked Questions about <!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><A HREF="http://www.cis.ohio-state.edu/text/faq/usenet/mpeg-faq/top.html" TITLE="MPEG FAQ"
+>MPEG.</A></LI>
+<LI><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><A HREF="http://www.crs4.it/~luigi/MPEG/mpegfaq.html" TITLE="MPEG FAQ">MPEG Home Page.</A></LI></UL>
+</UL>
+<HR>
+<BR><BR>
+<center>
+<h5>
+[ <!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><A HREF="#TOC">Table of Contents</A>
+| <!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><A HREF="#Research">References</A>
+| <!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><A HREF="#Links">Links to other Topics</A>
+| <!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><A HREF="http://www.cs.cornell.edu">CS Home Page</A>
+]
+</h5>
+</center>
+<P>
+<CENTER>
+<EM>&#169; Oct, 15 1995  <!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><a href="mailto:mishaal@cs.cornell.edu">Mishaal Almashan</A><BR>
+Cornell University</EM>
+</CENTER>
+</BODY>
+</HTML>
+

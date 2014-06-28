@@ -1,0 +1,110 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 20:51:06 GMT
+Content-Type: text/html
+Content-Length: 3273
+Last-Modified: Wednesday, 27-Nov-96 22:42:30 GMT
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1 (Feb 5, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Programming in Prolog</TITLE>
+<META NAME="description" CONTENT="Programming in Prolog">
+<META NAME="keywords" CONTENT="prolog_handout">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="prolog_handout.css">
+</HEAD>
+<BODY LANG="EN">
+ <A NAME="tex2html12" HREF="how_to_run_prolog.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="/pub/icons/latex2html/next_motif.gif"></A> <BR> 
+<B> Next:</B> <A NAME="tex2html13" HREF="how_to_run_prolog.html">How to run Prolog </A>
+<BR> <P>
+<H1><A NAME="SECTION00010000000000000000">Programming in Prolog</A></H1>
+<P>
+   Logic programming works by defining a set of facts and rules. Facts are 
+simplest form of Prolog predicates. For example, suppose we want to express 
+the fact that it is raining. In Prolog, it will be expressed as
+<P>
+<PRE><TT> <code>raining.</code>
+<P>
+</TT></PRE>
+<P>
+Whereas in Pascal, we will declare a boolean variable <code>raining</code>, and then 
+assign it a value <B>true</B>.
+<P>
+<PRE><TT> <B>var</B> &#175;
+<P>
+		 <code>raining : </code> <B>boolean</B> <code>;</code>
+<P>
+		 
+<P>
+		 <code>raining := </code> <B>true</B> <code>;</code>
+<P>
+</TT></PRE>
+<P>
+Note the use of period (`.') after the statement. Each statement in Prolog must be 
+ended by a period. Note all the predicates like <code>raining</code> must start with
+small letters. The words starting with capital letters are assumed to be
+variables. A rule can be expressed using propositional logic taught in
+lecture. For example, the fact that `<EM>I'll get wet if it's raining</EM>', can
+be expressed as
+<P>
+<PRE><TT> <code>wet :- raining.</code>
+<P>
+</TT></PRE>
+<P>
+and its equivalent code in Pascal will look like
+<P>
+<PRE><TT> <code>if </code>&#175;<code>( raining ) then</code>
+<P>
+		<code>wet := </code> <B>true</B> <code>;</code>
+<P>
+</TT></PRE>
+<P>
+The symbol `:-' is read as <EM>if</EM>. The <EM>and</EM> and <EM>or</EM>
+operators can also be expressed in Prolog easily. For example,
+<P>
+<PRE><TT> <code>miserable :- cold, wet.</code>
+<P>
+</TT></PRE>
+<P>
+means that `<EM>I'll be miserable if it's cold <B>and</B> if I get wet</EM>'. The
+symbol `,' is read as <EM>and</EM>. Similarly,
+<P>
+<PRE><TT> <code>miserable :- cold.</code>
+<P>
+<code>miserable :- wet.</code>
+<P>
+</TT></PRE>
+<P>
+expresses the fact that '<EM>I'll be miserable if it's cold <B>or</B> if I get wet</EM>'.
+<P>
+<DL COMPACT><DT><STRONG>1)</STRONG>
+<DD> Write prolog statements for the following
+<DT><STRONG></STRONG>
+<DD>
+<OL><LI> I am mortal.<LI> A metal is gold if it is yellow and heavy.<LI> I will pass the course if I do well in the finals.
+</OL> 
+ </DL>
+<P>
+   Comments can we written in Prolog by putting a percent sign (%) at the 
+beginning of a line.
+<P>
+<PRE><TT> <code>% This is an example program</code>
+<P>
+<code>% It illustrates how to put comments</code>
+<P>
+<code>wet :- raining.</code>
+<P>
+<code>miserable :- cold.</code>
+<P>
+<code>miserable :- wet.</code>
+<P>
+</TT></PRE><BR> <HR>
+<P><ADDRESS>
+<I>Dwip Narayan Banerjee <BR>
+Wed Nov 27 16:24:30 CST 1996</I>
+</ADDRESS>
+</BODY>
+</HTML>

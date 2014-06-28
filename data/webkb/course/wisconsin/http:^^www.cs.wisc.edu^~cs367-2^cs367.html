@@ -1,0 +1,569 @@
+Date: Thu, 07 Nov 1996 19:23:52 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 31 Oct 1996 18:30:59 GMT
+Content-length: 20386
+
+<HEAD>
+<TITLE>
+CS 367 - Lecture 2
+</TITLE>
+</HEAD>
+<BODY>
+
+<H1>
+CS 367-2<br>Introduction to Data Structures<br>Fall 1996
+</H1>
+<P>
+Course email address:
+<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/cgi-bin/finger/m?cs367-2"> cs367-2@cs.wisc.edu </A><br>
+Course home page:
+<!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.wisc.edu/~cs367-2/cs367.html"> http://www.cs.wisc.edu/~cs367-2/cs367.html</A><br>
+
+<P>
+INSTRUCTOR:  <a name="yannis">
+<b>Yannis Ioannidis</b> <br>
+</a>
+
+Office:  7357 Computer Sciences<br>
+Office hours:  Tuesday 8:45-9:30 am / Thursday 8:45-9:30 am<br>
+Office phone:  263-7764<br>
+Email address:
+<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/cgi-bin/finger/m?yannis"> yannis@cs.wisc.edu </A><br>
+Home page:
+<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="http://www.cs.wisc.edu/~yannis/yannis.html"> http://www.cs.wisc.edu/~yannis/yannis.html </A><br>
+
+<hr>
+<hr>
+<h2>Contents</h2>
+<ul>
+<li> <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a href="#news"> News</a>
+<li> <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href="#tas"> Teaching Assistants</a>
+<li> <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a href="#lectures"> Lecture Information</a>
+<li> <!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><a href="#cnotes"> The C++ Language</a>
+<li> <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><a href="#text"> Text</a>
+<li> <!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><a href="#grading"> Grading</a>
+<li> <!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><a href="#exams"> Exams</a>
+<li> <!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><a href="#schedule"> Course Schedule</a>
+<li> <!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><a href="#photo"> Assignment 0</a>
+<li> <!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><a href="#assignments"> Programming Assignments</a>
+<ul>
+<li> <!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><a href="#late"> Late Policy</a>
+<li> <!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><a href="#cheating"> Cheating</a>
+<li> <!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><a href="#help"> Help</a>
+<li> <!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><a href="#criteria"> Program Grading</a>
+<li> <!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><a href="#style"> Style</a>
+<li> <!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><a href="#external"> External Documentation</a>
+<li> <!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><a href="#internal"> Internal Documentation</a>
+</ul>
+<li> <!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><a href="#misc"> Using Unix and Vi</a>
+<li> <!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><a href=#cycle"> The Program Development Cycle </a>
+</ul>
+
+<hr>
+
+<a name="news">
+<h2>News</h2>
+</a>
+
+<h3>Assignment 3</h3>
+<!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><A HREF="http://www.cs.wisc.edu/~cs367-2/assign3/assign3.html">Assignment 3 </A>
+is now ready.
+
+<h3>Midterm Statistics</h3>
+Some interesting exam statistics for Section 2: <b>max:</b> 98, <b>min:</b> 22,
+<b>median:</b> 78, <b>mean:</b> 77.92
+
+<h3>Old Midterm</h3>
+A sample <!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><A HREF="http://www.cs.wisc.edu/~cs367-2/oldmdtrm.ps">old
+midterm</A> is now available to help you in your preparation for our own
+midterm.
+
+<h3>Assignment 2</h3>
+<!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><A HREF="http://www.cs.wisc.edu/~cs367-2/assign2/assign2.html">Assignment 2 </A>
+is now ready.
+
+<h3>Notes on O-notation and Binary Search</h3>
+
+The notes on <!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><a href="http://www.cs.wisc.edu/~cs367-2/onot.ps"> O-notation </a>
+and <!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><a href="http://www.cs.wisc.edu/~cs367-2/bin.ps"> Binary Search </a>
+are now available.
+If you want to print either one of them, open the <i>File</i>
+menu from the (<i>Ghostview</i>) window that shows you the document, and
+choose the ``Print...'' menu item.
+
+<h3>Women In Computer Science</h3>
+
+Some female faculty, graduate students, and undergraduates have
+formed a group called WICS (Women In Computer Science).  One
+of the group's goals is to encourage more women to become
+computer science majors.  So if there are any women in this
+class who would like to talk to someone about majoring in
+computer science, or doing graduate studies in computer science,
+or if there are any women who would like some extra help with
+their classwork, they should see Suzan (a computer
+science grad student) during her office hours or email her to
+make an appointment.
+Suzan's e-mail address is: stodder@cs.wisc.edu
+and her office hours are Tuesday & Thursday 1:30-2:30 in room 1345.
+
+<h3>Assignment 1</h3>
+<!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><A HREF="http://www.cs.wisc.edu/~cs367-2/assign1/assign1.html">Assignment 1 </A>
+is now ready.
+
+<h3>Out of Town</h3>
+The first week of classes I will be out of town at the VLDB Conference.
+Jim Larus will give the lectures for me.  I will be in class
+September 10th.
+
+<a name="tas">
+<h2> Teaching Assistants </h2>
+</a>
+Both people listed below are teaching assistants (TAs) for the course.
+They will be grading your homework assigments and will be happy to answer
+questions about the assignments, or any other aspect of the course that
+is giving you trouble.
+Note that TAs are not assigned to specific sections.
+<p>
+
+<b>Chin Tang Chin</b> <br>
+Office:  3310 Computer Sciences<br>
+Office hours:  Monday 9:30-10:30am / Tuesday 2:30-3:30pm / Friday 9:30-10:30am<br>
+Office phone: 262-1721 <br>
+Email address:
+<!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><A HREF="http://www.cs.wisc.edu/cgi-bin/finger/m?cchin"> cchin@cs.wisc.edu </A><br>
+Home page:
+<!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><A HREF="http://www.cs.wisc.edu/~cchin/cchin.html"> http://www.cs.wisc.edu/~cchin/cchin.html </A><br>
+<p>
+
+<b>Wei Zhang</b> <br>
+Office:  1343 Computer Sciences<br>
+Office hours:  Wednesday 10:00-11:00am / Thursday 9:00-10:00am / Sunday 3:00-4:00pm<br>
+Office phone: 262-5596 <br>
+Email address:
+<!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><A HREF="http://www.cs.wisc.edu/cgi-bin/finger?weiz"> weiz@cs.wisc.edu </A><br>
+Home page:
+<!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><A HREF="http://www.cs.wisc.edu/~weiz/weiz.html"> http://www.cs.wisc.edu/~weiz/weiz.html </A><br>
+<p>
+
+<a name="lectures">
+<h2> Lecture Information </h2>
+</a>
+<b>Lecture:</b>  9:30 - 10:45 Tuesday and Thursday<br>
+1325 Computer Sciences and Statistics<p>
+
+<a name="cnotes">
+<h2> The C++ Language </h2>
+</a>
+CS 367 will be taught using the C++ programming
+language, and you will be required to do your programming assignments
+in C++.
+We didn't choose C++ just to make your life more difficult.
+Most people who become fluent in C++ think it is far superior to C or
+Pascal; the use of C++ is growing tremendously in the field and the
+odds are that if you ever have to write another program after this
+course ends, you will be able to write it in C++.  (The same statement
+is not true about Pascal.  C is also widely available, but after an
+initial startup period you will be more productive in C++ than in C.)
+If you go on to take more computer science courses, with few exceptions
+you will be required to use C++ in those courses.
+
+<a name="text">
+<h2>Text</h2>
+</a>
+The text book for this course is
+<i>
+Data Abstraction and Problem Solving with C++: Walls and Mirrors 
+</i>
+by Frank M. Carrano (ISBN # 0-8053-1226-9).
+This is a well-written text that covers most
+(but not all) of the material in this course.
+It also includes a lot about C++, so a separate text for the language is not
+necessary.
+For my lectures I will often (but not always) be following
+<i> 
+CS 367 Lecture Notes - Fall 1993
+</i>
+by David J. DeWitt.
+These notes are actually considerably more complete that simple lecture
+notes, but they are still short of a true text book (there is
+very little narrative text, no exercises, etc.)
+As a recommended additional source, you may want to purchase these notes, which
+are available from the DoIT documentation desk near the Dayton Street entrance
+of the Computer Sciences building (1210 W. Dayton St).
+<p>
+If this is the first experience with Unix for you, you will need
+some information about activating your account, logging in, creating, editing,
+and manipulating files, and compiling, running, and debugging programs.
+The handout
+<i>CS 1000</i>, available from the DoIT information desk (where the DeWitt notes
+are available), contains all the key information.
+You will find it invaluable.
+See also the <!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><a href="#help"> help</a> section below.
+<p>
+As I mentioned above, the lectures will often follow the DeWitt notes, although
+I may supplement them with a few handouts during the course
+of the semester.
+Nonetheless,
+<em>
+You are responsible for all material covered in lecture!
+</em>
+The exams will be based on
+the lecture material, reading assignments in the notes, and
+the course assignments.
+<a name="grading">
+<h2>Grading</h2>
+</a>
+There will be one or two evening exams during the course of the semester,
+a final exam and five programming assignments.
+The exams will determine 50% of the final grade
+(with approximately equal weight for each one), and the programming
+assignments will count for 10% each.
+
+<a name="exams">
+<h2> Exams </h2>
+</a>
+<dl compact>
+<dt> Exam 1
+<dd> Tuesday, October 22nd, 7:15pm-9:15pm, 1351 Chemistry.
+<dt> Exam 2
+<dd> TBA
+<dt> Final Exam 
+<dd> Wednesday, December 18th, 5:05pm-7:05pm, <i>place TBA</i>
+</dl>
+
+<a name="schedule">
+<h2> Course Schedule </h2>
+</a>
+The following is the list of topics that will be covered in this
+course.  A more detailed scheduled will be provided later.
+semester.
+<pre>
+TOPIC                           DEWITT'S        
+                                NOTES           WALLS AND MIRRORS
+===========================================================================
+
+Introduction, Administration                    1-42 (general familiarity)
+Basic stuff of C++              lecture #2      101-135, App A, App C
+---------------------------------------------------------------------------
+Functions                       lecture #3      App A
+Pointers                        lecture #4      141-150, App A
+---------------------------------------------------------------------------
+Records & dynamic storage       lecture #5      141-150, App A
+Lists                           lecture #6      150-177
+---------------------------------------------------------------------------
+Lists                           lecture #6      150-177
+Binary Search and O notation                     83- 86, 393-405
+---------------------------------------------------------------------------
+Advanced Lists                  lecture #7      177-189
+Advanced Lists                  lecture #7      177-189
+---------------------------------------------------------------------------
+Stacks                          lecture #8      249-295
+Queues                          lecture #9      307-344
+---------------------------------------------------------------------------
+Hashing                         lecture #10     591-608
+Hashing                         lecture #10     591-608
+---------------------------------------------------------------------------
+Recursion  (Evening Exam)       lecture #11      50- 93, 203-238
+Trees                           lecture #12     439-468, 501-502
+---------------------------------------------------------------------------
+Trees                           lecture #12     439-468, 501-502
+Binary Trees - Sort & Search    lecture #13     468-500
+---------------------------------------------------------------------------
+AVL Trees					587-590
+AVL Trees					587-590
+---------------------------------------------------------------------------
+Graphs                          lecture #16	620-646
+Graphs                          lecture #16	620-646
+---------------------------------------------------------------------------
+Graphs                          lecture #16	620-646
+Graphs                          lecture #16	620-646
+---------------------------------------------------------------------------
+Sorting                         lecture #17     405-432
+THANKSGIVING
+---------------------------------------------------------------------------
+Sorting                         lecture #17     405-432
+Sorting                         lecture #17     405-432
+---------------------------------------------------------------------------
+To be announced
+
+</pre>
+
+<a name="photo">
+<h2>Assignment 0</h2>
+</a>
+This is an
+<em>
+absolute necessity to get a grade other than F!
+</em>
+Bring in a photograph of you.
+It should not be your picture from your 1st birthday, nor
+should it be the one from that boy/girl scout trip in the summer
+of 1984.
+Other than that, it can be color or black-and-white, any size, etc.
+<em>
+No grade will be given without a photo!
+</em>
+
+<a name="assignments">
+<h2>Programming Assignments</h2>
+</a>
+Proficiency in a programming language (Pascal, C, C++, or FORTRAN)
+at the introductory level is assumed;  the equivalent UW-Madison prerequisite
+course is CS 302.  
+<p>
+Assignments must be done in C++ on the designated machines.  These
+are in the machine rooms on the first floor of the
+CS building.  I encourage you to use these machines.
+<p>
+If you prefer to use a home computer, you may do so, with certain
+restrictions: You must have a C++ compiler on your home machine; 
+you must log on to your university account often to read email
+and get copies of data files; finally, we will require that
+you turn in your C++ program electronically (via email) so if you
+work at home you must make provisions to download your programs to
+your university account and to make sure that they compile and run
+with the g++ compiler on the SPARCstations.
+<p>
+I often use electronic mail to notify students of changes in
+assignments, hints for programs, etc.
+<em>
+I assume that you will read all
+electronic mail that I send.
+</em>
+<a name="late">
+<h3>Late Policy</h3>
+</a>
+<i>No</i> late assignment will be accepted.
+Assignments <i>must</i> be turned in exactly when they are due.
+In order to avoid lateness caused by machine loads, coincident due
+dates for several classes, etc., simply be sure to get started right away on
+each assignment.
+Things are certain to go wrong now and then, so don't wait until the
+last minute to start.
+Any exceptions must be approved by me, and you will need a very good excuse.
+If you get into trouble, see me as soon as possible.
+
+<a name="cheating">
+<h3>Cheating</h3>
+</a>
+The Computer Science department takes a <em>very</em> hard line
+stance on cheating.
+You are welcome to
+communicate with each other on design of algorithms and data
+structures, but
+<em>
+there is to be no sharing of code.
+</em>
+<p>
+You are also expected to learn, understand, and obey the
+<!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><A HREF="http://www.cs.wisc.edu/csl/policies/">Computer Systems Lab Policies</A>
+governing your computer accounts.
+<a name="help">
+<h3>Help</h3>
+</a>
+If you are having problems with the course work or programs,
+please let me know as <em>early</em> in the semester as possible.  
+<h4>Office Hours Policies</h4>
+If you need help debugging a program, the best way to get help is to
+visit any one of the
+<!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><a href="#tas">CS 367 TA's </a>
+during his office hours, taking along a current
+hard copy of your program.
+My office hours are intended as a time for me to re-explain concepts
+that I have presented in class but about which you are still confused,
+or to answer your specific questions about course material.
+I encourage you to use email as
+a reliable way to contact me about any problems;  I read and respond to email
+several times daily, almost every day of the week.
+
+<a name="criteria">
+<h3>Program Grading</h3>
+</a>
+Programs are graded on all of the following criteria.
+<ol>
+<li>
+Correctness: The program should behave correctly/normally on typical
+input.  The program should behave as stated in the project
+specifications.
+<li>
+Clarity:  The program should be easy to read and understand.
+(See the notes on <!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><a href="#style"> style </a> below for more information
+about clarity).
+<li>
+Robustness:  Correct behavior in extreme or unusual situations.
+The program should handle such situations in a reasonable and
+logical manner (that is, it should not simply blow up).
+<li>
+Quality of test data:  The test data for the program should
+demonstrate all facets of the program's capabilities, including
+unusual cases.  
+<li>
+Efficiency:  Avoid unnecessarily inefficient algorithms or constructs.
+However, efficiency should never be pursued at the expense of clarity.
+<li>
+Modularity:  The program should be modular and should make effective use
+of parameters.
+<li>
+Completeness:  You should incorporate all information into your 
+program;  there should be no need for any sort of extra (paper)
+documentation.
+<li>
+Generality:
+The program should be as general as possible, subject to consideration
+of efficiency and clarity.
+You should avoid arbitrary limitations (such as a bound on the size or
+complexity of the input) whenever possible.
+When limitations are necessary, they should be expressed as defined
+constants near the top of the program so that they can be easily changed.
+The only numeric literals that should appear in your program are those
+values not very likely to change (such as 0, 1, or 3.1415926535).
+</ol>
+<a name="style">
+<h3>Style</h3>
+</a>
+<ol>
+<li>
+Use meaningful identifier names.
+<li>
+Use a consistent naming scheme for identifier names.
+A suggested convention is as follows
+<ul>
+<li>
+<samp> int variable_name; </samp>
+<li>
+<samp> int function_name(int argument); </samp>
+<li>
+<samp> const int DEFINED_CONSTANT = 1234; </samp>
+<li>
+<samp> enum EnumType { VALUE1, VALUE2 }; </samp>
+<li>
+<samp> class ClassName ... </samp>
+</ul>
+<li>
+Do not put multiple statements on a single line.
+<li>
+Skip lines between functional groups of code.
+<li>
+Use a clear and consistent indentation style (see the DeWitt notes
+for a suggested style).
+<ul>
+<li>
+Indent continued statements (if, loops, ... etc).
+<li>
+Line up {'s and }'s.
+<li>
+Label }'s meaningfully (e.g.  ``<samp>} // while (!done)</samp>'').
+</ul>
+</ol>
+<a name="external">
+<h3>External Documentation</h3>
+</a>
+This should be included as a long comment at the beginning of your
+program.  It is addressed to both the typical user and to someone
+who wants to know superficially how the program works:
+<ul>
+<li>
+<em>
+Include your full name and student ID at the beginning of the comment.
+</em>
+<li>
+Give a general description of what the program does.
+<li>
+Tell how to use the program: how to call it, format of data.
+<li>
+Give limitations, bugs, special features, and assumptions made.
+Describe negative as well as positive aspects of the program.
+If you don't include negatives we will assume you were unaware of them. 
+</ul>
+Information included in the assignment about the problem description
+need not be repeated, but may be briefly summarized for the first point above.
+A statement referring the user to the assignment document is then
+sufficient. Note that this only applies to the problem description!
+<a name="internal">
+<h3>Internal Documentation</h3>
+</a>
+There are four main types of internal documentation:
+<ul>
+<li>
+Headers:
+Comments at the headers of functions, classes, and major data structures
+should describe their purpose, assumptions about their parameters,
+and the main outline of any algorithms they use.
+<li>
+Declarations:  Comments next to a declaration of a variable or data member
+should provide extra information not conveyed by the identifier's
+name.
+The name of a variable should tell as much about it as is possible without
+making it too long;
+additional information can be supplied by a comment.  For example<br>
+<pre>
+   <samp>int top; // index of last element added to stack</samp>
+</pre>
+You should use comments to explain parameters as well as local variables. 
+<li>
+Within segments of code:  Tricky or opaque sections of code should be
+avoided, but sometimes they are necessary.  In such cases, a comment
+can help the reader understand what's going on.
+<li>
+Between segments of code:  These comments clarify the top-level outline
+of your algorithm.
+</ul>
+
+<a name="misc">
+<h2> Using Unix and Vi</h2>
+</a>
+Many people working with UNIX for the
+first time will find that it takes some time to become
+comfortable with it (this is particularly true if your
+only previous programming experience is with Pascal using 
+MacPascal on a MacIntosh.)  I strongly urge you to put in
+the time early in the semester to become comfortable with
+Unix.  While this time may be painful, it is time well
+spent.
+Also, you may wish to attend a UNIX tutorial.
+They will be held in rooms 1240 Comp Sci in two sessions on each of the
+following days: TBA
+You will want to pick up a copy of 
+<!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><a href="#text"> CS 1000</a> before you go.
+
+<a name="cycle">
+<h2> The Program Development Cycle </h2>
+</a>
+The program development cycle in a UNIX environment is:
+<pre>
+<samp>
+for (;;) {
+    edit your program             // %vi program.c
+    compile your program          // %g++ -Wall -g  program.c
+    if (there are compilation errors)
+        continue;
+    run your program              // %a.out &lt; inputfile &gt; outputfile
+    look at your output           // %vi outputfile
+                                  // or %more outputfile
+    if (there are no errors)
+        break;
+    if (you are too tired to continue) {
+	print a listing to take home
+                 // pr program.c inputfile outputfile | lpr
+	goto home
+    }
+    debug the program
+                                  // gdb a.out
+                                  // run
+                                  // ...
+                                  // quit
+}
+you're done!  turn in the result
+		 // submission instruction to be given out later
+</samp>
+</pre>
+
+</BODY>
+<ADDRESS>
+<I>
+<!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><A HREF="http://www.cs.wisc.edu/~yannis/yannis.html"> yannis@cs.wisc.edu </A>
+<BR>
+Mon Aug 19 17:28:14 CDT 1996
+</I>
+</ADDRESS>

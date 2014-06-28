@@ -1,0 +1,204 @@
+Date: Tue, 26 Nov 1996 18:51:54 GMT
+Server: NCSA/1.5
+MIME-version: 1.0
+Content-type: text/html
+Last-modified: Mon, 25 Nov 1996 06:34:07 GMT
+Content-length: 6102
+
+<HTML>
+<HEAD>
+    <TITLE>CSE513 Numerical Methods and Computations </TITLE>
+</HEAD>
+<BODY>
+
+<BODY onLoad="timerONE=window.setTimeout('scrollit_r2l(100)',500);">
+
+<!-- Beginning of JavaScript Applet -------------------!>
+<SCRIPT LANGUAGE="JavaScript">
+
+/* Copyright (C)1996 Web Integration Systems, Inc. DBA Websys, Inc.
+   Modified by Kevin S. Klenk (8 February 1996)
+*/
+
+function scrollit_r2l(seed)
+{
+        var m1  = "Welcome to CSE513 homepage! and Good Luck! ";
+
+        var msg=m1;
+        var out = " ";
+        var c   = 1;
+
+        if (seed > 100) {
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 100 && seed > 0) {
+                for (c=0 ; c < seed ; c++) {
+                        out+=" ";
+                }
+                out+=msg;
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                    window.status=out;
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;
+                        var cmd="scrollit_r2l(" + seed + ")";
+                        window.status=out;
+                        timerTwo=window.setTimeout(cmd,100);
+                }
+                else {
+                        window.status=" ";
+                        timerTwo=window.setTimeout("scrollit_r2l(100)",75);
+                }
+        }
+}
+
+</SCRIPT>
+<!-- End of JavaScript code ------------- !>
+
+
+<!WA0><IMG SRC="http://wizard.cse.nd.edu/class_data/cse322/www/Images/image1.gif" WIDTH="462" HEIGHT="90" ALIGN=bottom NATURALSIZEFLAG= "3">
+<H1>CSE 513: Numerical Methods and Computations<BR>
+<HR></H1>
+
+<HR>
+<H3>Instructor:</H3>
+<BLOCKQUOTE>
+Deyun Wu</A><BR>
+351 Fitzpatrick Hall<BR>
+phone: 631-8811<BR>
+email: <!WA1><A HREF="mailto:dwu@lsc.nd.edu">dwu@lsc.nd.edu</A><BR>
+office hours: Friday 3:00pm-5:00pm, or by appointment</BLOCKQUOTE>
+
+<HR>
+<H3>Text:</H3>
+<BLOCKQUOTE>
+D. Kincaid and W. Cheney, <I>Numerical Analysis,</I> 
+Second Edition, Brooks/Cole, 1996.
+</BLOCKQUOTE>
+
+<HR>
+
+<H3>Handouts:</H3>
+<BLOCKQUOTE>
+<DL> 
+<DT> <!WA2><img src="http://www.cse.nd.edu/icon_archive/balls/greenball.gif" alt="*">
+     <b><!WA3><a HREF="http://wizard.cse.nd.edu/class_data/cse513/www/policies.ps">Course Policies</a></b>
+
+<DT> <!WA4><img src="http://www.cse.nd.edu/icon_archive/balls/greenball.gif" alt="*">
+     <b><!WA5><a HREF="http://wizard.cse.nd.edu/class_data/cse513/www/syllabus.ps">Course Syllabus</a></b>
+ 
+<DT> <!WA6><img src="http://www.cse.nd.edu/icon_archive/balls/greenball.gif" alt="*">
+     <b><!WA7><a HREF="http://wizard.cse.nd.edu/class_data/cse513/www/objectives.ps">Course Objectives</a></b>
+</DL>
+</BLOCKQUOTE>
+
+
+<HR>
+
+<H3>Homeworks:</H3> 
+<BLOCKQUOTE>
+<DL> 
+<DT><!WA8><img src="http://www.cse.nd.edu/icon_archive/balls/whiteball.gif" alt="*">
+     <b><!WA9><a HREF="http://wizard.cse.nd.edu/class_data/cse513/www/homeworks/hw1.ps.gz">Homework 1</a></b>
+     
+     <!WA10><img src="http://www.cse.nd.edu/icon_archive/balls/whiteball.gif" alt="*">
+     <b><!WA11><a HREF="http://wizard.cse.nd.edu/class_data/cse513/www/homeworks/hw2.ps.gz">Homework 2</a></b>
+
+<DT> <!WA12><img src="http://www.cse.nd.edu/icon_archive/balls/whiteball.gif" alt="*">
+     <b><!WA13><a HREF="http://wizard.cse.nd.edu/class_data/cse513/www/homeworks/hw3.ps.gz">Homework 3</a></b>
+
+     <!WA14><img src="http://www.cse.nd.edu/icon_archive/balls/whiteball.gif" alt="*">
+     <b><!WA15><a HREF="http://wizard.cse.nd.edu/class_data/cse513/www/homeworks/hw4.ps.gz">Homework 4</a></b>
+
+<DT> <!WA16><img src="http://www.cse.nd.edu/icon_archive/balls/whiteball.gif" alt="*">
+     <b><!WA17><a HREF="http://wizard.cse.nd.edu/class_data/cse513/www/homeworks/hw5.ps.gz">Homework 5</a></b>
+
+     <!WA18><img src="http://www.cse.nd.edu/icon_archive/balls/whiteball.gif" alt="*">
+     <b><!WA19><a HREF="http://wizard.cse.nd.edu/class_data/cse513/www/homeworks/hw6.ps.gz">Homework 6</a></b>
+
+<DT> <!WA20><img src="http://www.cse.nd.edu/icon_archive/balls/whiteball.gif" alt="*">
+     <b><!WA21><a HREF="http://wizard.cse.nd.edu/class_data/cse513/www/homeworks/hw7.ps.gz">Homework 7</a></b>
+
+     <!WA22><img src="http://www.cse.nd.edu/icon_archive/balls/whiteball.gif" alt="*">
+     <b><!WA23><a HREF="http://wizard.cse.nd.edu/class_data/cse513/www/homeworks/hw8.ps.gz">Homework 8</a></b>
+
+<DT> <!WA24><img src="http://www.cse.nd.edu/icon_archive/balls/whiteball.gif" alt="*">
+     <b><!WA25><a HREF="http://wizard.cse.nd.edu/class_data/cse513/www/homeworks/hw9.ps.gz">Homework 9</a></b>
+
+     <!WA26><img src="http://www.cse.nd.edu/icon_archive/balls/whiteball.gif" alt="*">
+     <b><!WA27><a HREF="http://wizard.cse.nd.edu/class_data/cse513/www/homeworks/hw10.ps.gz">Homework 10</a></b>
+
+</DL>
+</BLOCKQUOTE>
+
+<HR>
+
+<H3>Programs:</H3>
+<BLOCKQUOTE>
+<DL> 
+<DT> <!WA28><img src="http://www.cse.nd.edu/icon_archive/balls/yellowball.gif" alt="*">
+     <b><!WA29><a HREF="http://wizard.cse.nd.edu/class_data/cse513/www/programs/ps1.ps.gz">Assignment 1 </a><b/>
+<DT> <!WA30><img src="http://www.cse.nd.edu/icon_archive/balls/yellowball.gif" alt="*">
+     <b><!WA31><a HREF="http://wizard.cse.nd.edu/class_data/cse513/www/programs/ps2.ps.gz">Assignment 2 </a><b/>
+<DT> <!WA32><img src="http://www.cse.nd.edu/icon_archive/balls/yellowball.gif" alt="*">
+     <b><!WA33><a HREF="http://wizard.cse.nd.edu/class_data/cse513/www/programs/ps3.ps.gz">Assignment 3 </a><b/>
+<DT> <!WA34><img src="http://www.cse.nd.edu/icon_archive/balls/yellowball.gif" alt="*">
+     <b><!WA35><a HREF="http://wizard.cse.nd.edu/class_data/cse513/www/programs/ps4.ps.gz">Assignment 4 </a><b/>
+<DT> <!WA36><img src="http://www.cse.nd.edu/icon_archive/balls/yellowball.gif" alt="*">
+     <b><!WA37><a HREF="http://wizard.cse.nd.edu/class_data/cse513/www/programs/ps5.ps.gz">Assignment 5 </a><b/>
+</DL>
+</BLOCKQUOTE>
+
+
+<HR>
+
+<H3>Useful Links</H3>
+<BLOCKQUOTE>
+<DL>
+<DT> <!WA38><img src="http://www.cse.nd.edu/icon_archive/balls/redball.gif" alt="*">
+    <b><!WA39><A HREF="http://java.sun.com/">
+       Java </A> </b>
+
+<DT> <!WA40><img src="http://www.cse.nd.edu/icon_archive/balls/redball.gif" alt="*">
+    <b><!WA41><A HREF="http://www.mathworks.com/">
+       Matlab</A> </b>
+
+<DT> <!WA42><img src="http://www.cse.nd.edu/icon_archive/balls/redball.gif" alt="*">
+    <b><!WA43><A HREF="http://www.maplesoft.com/">
+       Maple</A> </b>
+
+<DT> <!WA44><img src="http://www.cse.nd.edu/icon_archive/balls/redball.gif" alt="*">
+    <b><!WA45><A HREF="http://www.mathematica.com/">
+       Mathematica</A> </b>
+
+<DT> <!WA46><img src="http://www.cse.nd.edu/icon_archive/balls/redball.gif" alt="*">
+    <b><!WA47><A HREF="http://gams.nist.gov/">
+       CMLIB</A> </b>
+
+<DT> <!WA48><img src="http://www.cse.nd.edu/icon_archive/balls/redball.gif" alt="*">
+    <b><!WA49><A HREF="http://www.nag.com/">
+       NAG</A> </b>
+
+
+<DT> <!WA50><img src="http://www.cse.nd.edu/icon_archive/balls/redball.gif" alt="*">
+    <b><!WA51><A HREF="http://www.netlib.org/">
+       SLATEC</A> </b>
+
+</DL>
+</BLOCKQUOTE>
+
+
+<HR>
+
+<P> <!WA52><A HREF="http://www.cse.nd.edu">
+<!WA53><IMG ALIGN = top SRC = "http://wizard.cse.nd.edu/graphics/NDCSEHome.gif"
+ALT="[BACK TO ND CSE HOME PAGE]"></A>
+
+</BODY>
+</HTML>

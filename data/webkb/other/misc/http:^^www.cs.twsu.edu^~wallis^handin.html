@@ -1,0 +1,145 @@
+Date: Tue, 14 Jan 1997 21:24:16 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+Content-length: 4875
+Last-modified: Tue, 12 Nov 1996 16:40:53 GMT
+
+<Title>
+Hand In Program  
+</title>
+<center>
+<h1> 
+Hand In Program
+- by <!WA0><a href="http://www.cs.twsu.edu/~wallis/wallis.html"> Thomas Wallis </a>
+</h1>
+<hr>
+</center>
+Handin is an experimental program that I wrote, working from an idea in
+some source code <!WA1><a href="http://www.cs.twsu.edu/~gopal/gopal.html">Dr.
+Gopalakrishnan</a> gave me.  <strong> Make sure you have your terminal type set
+to vt100</strong> .  You can use the <strong> vt100 </strong> command to
+do this when you log in or you can use this command:  <p>
+<strong> setenv TERM 'vt100' </strong> <p>
+Handin has <strong> severe </strong> problems otherwise.  
+<p>
+Handin works in the following manner.  A special account is created on the
+system for your class.  Your grader and you both have the password 
+(the students don't).  A program called handin is installed in the bin
+directory of that account.  The student invokes the program like
+this:
+<p>
+ ~account/bin/handin class assign# file
+<p>
+<h3>
+Example:  
+</h3>
+ ~cs742/bin/handin cs742 1 myprog.c  
+<p>
+
+Handin checks several things that you or your grader need to set up.
+<ol>
+
+<li>  In the home directory for the class account , there should be a file
+called students.  This lists the student usernames for your class, one
+per line, no spaces, tabs, punctuation, etc...  You or your GTA must enter 
+this data into the file.  
+<p>
+<li>  A subdirectory, mode 700, must be created for each assignment number.  
+Ie.  1, 2, 3, etc.  
+Assignment numbers must be integers 0<i<100.  You or your GTA must do this. 
+<p>
+<li> handin must be installed setuid to the grading account in the
+bin subdirectory (I do that).  
+<p>
+<li> You may have an optional file called assignments.dat in the home
+directory of the class account.  It has the following format:
+<p>
+assignment#;due-date;comment
+</ol>
+<p>
+The assignment# must be an integer (see above).  Due date MUST be in
+the format:  DD-MMM-YYYY (ex.  25-FEB-1995).  Comment can be free-form
+(up to 60 columns or so (no special characters please)).  Semicolons are
+the delimiters in this file.  One assignment per line.  Syntax is important.
+the handin parser is very simple and will bomb on bad data in trusted files. 
+<p>
+If this file exists, DUE DATES will be ENFORCED on ALL assignments.  
+<h3>
+Here is how the program works (briefly).  
+</h3>
+The student runs the handin program:
+<p>
+ex: ~cs540/bin/handin cs540 2 aaa.c  
+<p>
+Note that the userid (~cs540) and the classID must match.  
+<ol>
+<li> handin looks in the subdirectory /usr/users/User3/classes/cs540 for
+the students file.  If the student is not in that file, handin won't let
+the student hand in anything.  
+
+<li> handin looks for a subdirectory for the assignment number.  If it doesn't
+exist, then handin won't let the student hand anything in.  
+
+<li> handin looks for the source files (sees if they are ordinary files
+that suit the syntax (filenames must consist of dots, [a-z], [0-9]).  
+No dashes, underscores, etc.  It also checks to see if the student 
+owns the file they are handing in (a very simple check for attempted
+cheating).
+Some versions of handin limit the number of files handed in on one
+command line to five, other versions increase this limit to twenty
+files per command line (watch out for wildcards :-( ).  
+
+<li> If the assignments.dat file exists, then due dates are enforced.  
+If the file lists a due date of 15-FEB-1995, when the 16th comes around, 
+students will not be able to hand in that particular assignment anymore.  
+
+<li> handin creates a subdirectory for that student in the assignment 
+subdirectory.  
+
+<p>
+<b>
+example:
+</b>
+<br>
+<ul>
+/usr/users/User3/classes/cs540  is the home directory for the grader account.
+<br>
+/usr/users/User3/classes/cs540/1 is the home dir. for assignment#1.
+<br>
+/usr/users/User3/classes/cs540/1/jones is where all of the files handed in by
+user jones go.  
+</ul>
+<p>
+</ul>
+The subdirectory and all the files in there are owned by the grader
+account (not jones (that is where the suid comes in)).  jones cannot
+access this directory or the files (they are chmoded to 700).  
+A file handin.log is created in /usr/users/User3/classes/cs540/1
+(also owned by cs540) showing when a student handed in each file.  
+<p>
+If a student hands in a file twice for the same assignment, the handin
+program will detect that the file has already been handed in and will
+ask the student if they want to overwrite it.  
+<p>
+This program is EXPERIMENTAL.  Some classes have used it already, with no
+trouble reports (I guess this is good news).  
+
+<p>
+<I><FONT SIZE=2>The information accessible from this server is provided
+in good
+faith, but neither
+the Wichita State University, nor the Computer Science Department takes
+any lega
+l responsiblity
+whatsoever for the accuracy or content of data displayed on this server.
+Please
+notify us if
+any error is dectected. Thank You !
+<BR><BR>
+</font>    
+
+
+
+
+
+

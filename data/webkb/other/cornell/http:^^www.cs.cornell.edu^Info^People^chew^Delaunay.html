@@ -1,0 +1,83 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sundacp: No match.
+2:58:48 GMT
+Content-Type: text/html
+Content-Length: 2936
+Last-Modified: Monday, 02-Sep-96 19:52:13 GMT
+
+<head> <title> Voronoi/Delaunay Applet </title> </head>
+<body>
+
+<h1> <font color=magenta> Voronoi Diagram </font> / <font color=green>
+Delaunay Triangulation </font> </h1>
+
+<applet code="geometry.Delaunay.class" width=550 height=400>
+
+If you were running a Java-compatible Web browser, such
+as Netscape 2, then you would see a Voronoi Diagram /
+Delaunay Triangulation here.  
+
+</applet>
+
+<p><ul>
+
+<li> <b> The mouse: </b> Click the mouse in the drawing region to add
+new sites to the Voronoi diagram or Delaunay triangulation.
+
+<li> <b> The Voronoi Diagram and Delaunay Triangulation checkboxes:
+</b> These toggle between the Voronoi diagram and the Delaunay
+triangulation.  Your current set of sites remains the same for both
+diagrams.
+
+<li> <b> The Clear button: </b> Press this to begin a new diagram with
+no sites.
+
+<li> <b> The Show Empty Circles button: </b> Press this to see the
+empty circles for your set of sites.  Each Voronoi vertex (or Delaunay
+triangle) has a corresponding empty circumcircle.
+
+</ul>
+
+<h3> What is it? </h3>
+
+<p> The <em> Voronoi diagram </em> has the property that for each site
+(clicked with the mouse) every point in the region around that site is
+closer to that site than to any of the other sites.
+
+<p> The <em> Delaunay triangulation </em> is the geometric dual of the
+Voronoi diagram.  Alternately, it can be defined as a triangulation of
+the sites with the additional property that for each triangle of the
+triangulation, the circumcircle of that triangle is empty of all other
+sites.
+
+<p> These closely related data structures have been found to be among
+the most useful data structures of the field of Computational Geometry.
+
+<h3> Additional Information </h3>
+
+<p> The actual data structure here is a Delaunay triangulation.  The
+Voronoi diagram is built on-the-fly from the Delaunay triangulation.
+
+<p> The Delaunay triangulation is built within a large triangle whose
+vertices are well off-screen.  That's why in the Delaunay
+triangulation there are lines heading off to the upper left, the upper
+right, and down.  This technique makes the code simpler, since
+otherwise additional code would be needed to handle new sites that are
+outside the convex hull of the previous sites.
+
+<p> <b> The algorithm: </b> To insert a new site, we walk across the
+triangulation, starting from the most recently created triangle, until
+we find the triangle that contains the new site.  This triangle and
+any adjacent triangles that contain this new site in their
+circumcircle are eliminated and the resulting empty spot is
+retriangulated.  This site-insertion technique is commonly called the
+Bowyer-Watson Algorithm.  The expected time to insert a new site is
+roughly O(n<sup>1/2</sup>) where n is the current number of sites.
+
+<p><address> Author: <!WA0><!WA0><!WA0><!WA0><a
+href="http://www.cs.cornell.edu/Info/People/chew/chew.html">Paul
+Chew</a>, <!WA1><!WA1><!WA1><!WA1><a href="mailto:chew@cs.cornell.edu">chew@cs.cornell.edu</a>
+</address>
+
+</body>

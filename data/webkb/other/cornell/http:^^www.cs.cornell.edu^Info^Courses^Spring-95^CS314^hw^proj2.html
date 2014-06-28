@@ -1,0 +1,142 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 16-Dec-96 23:18:18 GMT
+Content-Type: text/html
+Content-Length: 5480
+Last-Modified: Monday, 13-Mar-95 14:33:35 GMT
+
+<html>
+<head>
+<title>PS314 Instruction Set Simulator</title>
+</head>
+
+<body>
+[<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><a href="http://www.cs.cornell.edu/Info/Courses/Spring-95/CS314/home.html">Back to CS314 Home Page</a>]
+
+<h1> Project 2: PS314 Instruction Set Simulator </h1>
+
+<B>Date Assigned</B>:   March 2, 1995
+<p>
+<B>Date Due</B>:   March 16, 1995
+<p>
+Before a new processor is built, the architects usually implement an
+instruction-set simulator.  This simulator runs programs written for
+the new architecture so that the instruction set can be fine-tuned for
+usability and work on software can be started before the hardware is
+available.
+<p>
+This assignment involves the implementation of a PS314 instruction-set
+simulator in M68K assembly language.
+We will give you an <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href="http://www.cs.cornell.edu/Info/Courses/Spring-95/CS314/hw/proj2.asm">M68K assembly language program</a>
+which accomplishes
+part of this task, and you will add whatever assembly language code is necessary
+to make the simulator fully functional.
+<p>
+This project is due <b>Thursday, March 16</b> at the start of class.
+You are encouraged to work in groups of at most two in building this
+program.
+<p>
+The completed program should simulate PS314 machine language
+instructions stored in a simulated PS314 memory.  The simulator
+should:
+<ol>
+<li>
+Actually only implement PS314 physical memory address <i>0</i> through
+<i>2^8 - 1</i>.  An attempt by a (simulated) PS314 instruction to fetch or store
+a memory address in the range <i>2^8</i> through <i>2^15 - 1</i> should cause an
+exception.
+<li>
+Memory fetches and stores to addresses in the range <i>2^15</i> through
+<i>2^16 - 1</i> should cause input or output to occur.  A memory fetch to
+an address <i>A</i> in this range should cause <i>A</i> to be printed out in
+hexadecimal, followed by a question mark, "?".  The simulator should
+then accept a 16-bit hexadecimal constant to be input from the
+keyboard and should return that input as the fetched word.  A memory
+store to an address <i>A</i> in this range should cause <i>A</i> to be printed
+out in hexadecimal, followed by a colon, ":", and the value to be
+stored, also printed in hexadecimal.
+<li>
+When started, your PS314 simulator should enter an input loop
+which allows values to be entered into the simulated PS314 memory.
+The input loop should behave as follows:
+<blockquote>
+Read 2 16-bit hexadecimal constants, one per line.  The first will be
+a count <i>L</i> (in words), the second will be a legal PS314 memory
+address <i>A</i>.  Your simulator should then read <i>L</i> hexadecimal 16-bit
+constants---one per line---storing the first at memory location <i>A</i>,
+the second at <i>A + 1, ...</i> and the last at <i>A + ( L - 1 )</i>.
+</blockquote>
+This should be repeated until a count (<i>L</i>) of 0 is input.
+<li>
+The simulator should then start executing instructions from location <i>0</i>.
+<li>
+Once the simulated PS314 processor has executed a HALT instruction,
+the simulator should print, in hexadecimal, the contents of registers
+<i>D0, ..., D15, PC</i>, status register bits <i>N, Z, V, C</i>, and the 
+contents of its memory addresses <i>0</i> through <i>2^8 - 1</i>.
+<li>
+Since there is no mechanism for creating a reset or I/O device
+interrupt in the software simulator, these interrupts need not be
+addressed.
+</ol>
+
+<h2> What to Modify</h2>
+Make the following modifications to the PS314 instruction set simulator.
+<ol>
+<li> Remove any bugs which might be lurking in the top-level fetch/execute loop.
+<li> Complete the implementation of any PS314 opcodes which are missing
+  or not fully implemented.
+<li> Complete the implementation of any Bcc cases which are missing
+  or not fully implemented.
+<li> Implement the I/O cases in LOAD and STORE.
+<li> Make HALT compliant with the PS314 specification.
+<li> Make sure that the simulator reads from/writes to valid M68k memory locations
+  in all cases.  In particular, look at the implementation of RTI and at the
+  interruption handler.  When could these routines make invalid memory accesses?
+  Fix any problems that you find.  If a bad memory access of this sort
+  occurs in the interruption handler or in the RTI implementation, print an error message and
+  halt the simulator.
+<li> Make any other modifications necessary to bring the simulator into compliance
+  with the PS314 specification.
+</ol>
+Mark your modifications in the simulator source code with highly visible
+comments.  Rows of asterisks accompanied by a word or two explanation of the
+type of modification are recommended.  A reader should be able to easily distinguish
+your modifications from the original source code.  Examples:
+<quote>
+<pre>
+        move.l  a4,d4
+        ;***begin: insertion*************************************
+        move.l  d4,d5
+        ;***end: insertion***************************************
+        rts
+</pre>
+</quote>
+and
+<quote>
+<pre>
+        move.l  a4,d4
+        ;***deletion*********************************************
+</pre>
+</quote>
+
+<h2> What to Hand In</h2>
+Please hand in the following in a single envelope marked clearly with your
+name(s):
+<ol>
+<li> a hardcopy of the full source of the completed simulator program.
+<li>
+a hardcopy of the ouput produced by the <b>Listing/Run</b> option for the
+simulator run on the example given in the PS314 Specification.
+<li>
+a hardcopy of the output produced by the <b>Run</b> option for the simulator
+run on your own additional test cases.
+<li>
+a disk containing the assembly language for your PS314 instruction-set
+simulator (clearly named).
+</ol>
+
+[<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.cs.cornell.edu/Info/Courses/Spring-95/CS314/home.html">Back to CS314 Home Page</a>]
+</body>
+</html>
+

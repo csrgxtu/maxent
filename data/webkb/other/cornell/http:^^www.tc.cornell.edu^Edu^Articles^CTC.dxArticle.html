@@ -1,0 +1,282 @@
+Date: Sun, 24 Nov 1996 23:09:55 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 28 Oct 1994 20:37:32 GMT
+Content-length: 12230
+
+<TITLE>Forefronts Teaching Computer Graphics with DX article</TITLE>
+<H3>
+<IMG SRC="/Logos/ctc.logo.sm.gif"> 
+Cornell Theory Center
+<hr>
+</H3>
+
+<i>This article originally appeared in Cornell Theory Center's
+Forefronts newsletter.  </i>
+
+<H2> 
+<DL> 
+<DT> Teaching Computer Graphics and Scientific
+Visualization using the Dataflow Block Diagram Language DataExplorer
+</DL> 
+</H2>
+
+by Bruce Land, Visualization Project Leader, Cornell Theory Center  <P>
+
+<H3>Abstract</H3>
+
+The scientific visualization language DataExplorer (DX) from IBM has
+been found to be useful in undergraduate education as a vehicle for
+teaching computer graphics at an introductory level. Although it is
+designed for scientific data visualization, DX can be used to
+construct student lab exercises in computer graphics. DX has been used
+for two years as an environment which emphasizes graphics
+manipulations (e.g. rotation, perspective) while not requiring the
+programming overhead of traditional computer languages.  <P>
+
+<H3>Introduction</H3>
+
+Computer graphics is a topic that requires mathematical, programming,
+and artistic skills, among others. The content of the computer
+graphics fundamentals course at Cornell focuses on mathematical skills
+but must include programming to illuminate the math. The course covers
+the following topics:
+
+<UL>
+<LI>   Construction of surfaces by explicit polygon lists, by parametric
+operations, and by hierarchical grouping of simple objects to form complex
+surfaces
+
+<LI> 
+  Modification of objects by 3D geometric transforms in order to position
+them in space and animate them
+
+<LI> 
+  Viewing of a group of objects including clipping to a window and
+perspective or parallel projection into a 2D screen space
+
+<LI> 
+  Rendering of polygonal and parametric surfaces by hidden surface removal,
+shading/lighting, by anti-aliasing, as well as by surface property
+modifications such as texture- or bump-mapping 
+
+<LI> 
+  Use of global illumination models to render interactions between
+surfaces
+
+<LI>   Modeling of scientific data for scientific visualization.
+
+</UL>
+
+The programming aspect of the course attempts to give students practical
+experience with many of the techniques taught in lecture. Lab exercises
+written in DX cover nine computer graphics topics. These exercises include:
+<UL>
+<LI> 
+  construction of polyhedra from vertex and face descriptions;
+
+<LI>   construction of parametric surfaces including quadric surfaces (e.g.
+ellipsoids), figures of rotation, and tensor-product surfaces (e.g.
+bilinear);
+
+<LI>   hierarchical modeling and animation of complex objects; 
+
+<LI>   writing perspective viewing transforms;
+
+<LI>   comparing lighting techniques with wire frame, flat shaded, or Gouraud
+shaded objects illuminated with ambient and point illumination;
+
+<LI>   producing variations on the standard Phong lighting model, including
+spotlights and bump mapping of surfaces;
+
+<LI>   image techniques including production of texture mapped surfaces, image
+filtering and anti-aliasing;
+
+<LI>   visualization of a 2D scalar field (heights of a landscape) and a 3D
+vector field (a flow field); and
+
+<LI>   a design project to produce animation based on all the techniques
+learned.
+
+</UL>
+
+All exercises have example programs to introduce the concepts and
+descriptions of the manipulations required of the student.  <P>
+
+
+The first two exercises deal with construction of objects and are an
+introduction to DX. In the first exercise, students are introduced to the
+notion of polyhedron construction with vertex and face lists. They are
+expected to design a couple of polyhedra and perform a simple animation of
+one object. They experiment with determining the normals to the surface.
+The second exercise introduces parametric surfaces. Students design quadric
+surfaces, figures of rotation, and bilinear patches. After this lab they
+can design quite complex single objects.  <P>
+
+
+Exercise three teaches them how to hierarchically combine objects and how
+to concatenate 3D transforms to make complex motion. They design either:
+<UL>
+<LI> 
+  a wagon that rolls forward, stops, then turns its front axle (and
+wheels);
+
+<LI>   a helicopter with main and tail rotors that starts the rotors, takes off,
+and flies away; or
+
+<LI>   a prop aircraft that behaves like the helicopter.
+
+</UL>
+
+When done correctly, the exercise shows them how to design parts of a
+complicated object (e.g. props or wheels), move them, and duplicate them
+for re-use several times in the final construction.  <P>
+
+
+In exercise four,  students turn off perspective in DX and write their own pseudo-perspective transform for a simple scene.
+This introduces the use of homogeneous coordinates and matrix manipulation
+in DX. The calculation is complicated enough to introduce the various
+structuring aids of DX which make the code more readable.
+<P>
+
+Exercises five and six explore lighting. Students first design a landscape
+to be lit by two simulated suns, a white dwarf, and a red giant in two
+different orbits. Then they turn off the default lighting model in DX
+(Phong illumination with Gouraud shading) and design their own lighting.
+They code a lighting model based on light positions, viewer position, and
+object normals, and extend the model to produce a spotlight depth cueing
+based on intensity.
+  <P>
+
+Exercise seven introduces image manipulation and filtering. Students are
+asked to anti-alias a simple scene using postfiltering and to determine a
+"best" scheme based on available filters and system resource (i.e. memory,
+CPU time). They then edge-enhance an image. Finally they texture-map an
+image onto a quadric surface by parametrically modifying the image pixel
+coordinates. In DX, an image has extent in world space, with each pixel
+having a position.
+  <P>
+
+Exercise eight introduces scientific visualization by having the students
+make judgments based on graphical representation of fields. The first part
+of this exercise is to identify the geographic location of a landscape
+height field, then to enhance the slope and exposure by modifying the
+program. The second part is to identify the sources and sinks in a 3D
+vector flow field. They are shown how to draw flow lines, vector arrow
+icons, and isosurfaces of speed. They then combine these techniques to find
+the sources and sinks.
+  <P>
+
+The final design project is to produce an animation of hierarchically
+modeled objects. Typical projects have included:
+<UL>
+<LI> 
+  a robot that stands up out of an ocean, turns, and fires a projectile at
+a tower on the far shore; 
+
+<LI>   a seagull that flies down and plucks a fish from the water; 
+
+<LI>   a castle with waving flags and drawbridge;
+
+<LI>   a car driving through a town with rotating signs and street lights;
+
+<LI>   a human walking;
+
+<LI>   simulation of the deformation of tennis racket strings during a ball
+impact; and
+
+<LI>   morphing between faculty face images.
+</UL>
+
+The complexity and sophistication of many of the projects can be amazing.  <P>
+
+
+
+<H3>DX as a Programming Language</H3>
+
+At the introductory level, lack of programming tools often interferes with
+learning graphics operations. Typically, graphical operations are either
+provided as a large library of routines that students must learn, or derive
+from relatively simple programming projects that students must code from
+scratch. The block diagram interface of DX can be customized to make a
+"visual subroutine library" of often-used graphics routines. Students can
+construct very complex scenes including camera and lighting control in a
+short time. They can also "open up" various visual subroutines and modify
+or extend them. The graphical nature of the user interface and its easy
+extensibility make it possible for students to rapidly prototype a graphics
+operation, see the effects and modify the program. The structure of DX that
+allows such easy interaction is described next.  <P>
+
+
+DX is a block diagram, point and click programming language designed for
+producing high quality images based on 3D data which may represent objects
+(walls, stars) or fields (density, electric field). DX can easily be
+extended to construct the objects and perform the operations needed for an
+introductory graphics class. The block diagram program is built up of
+"modules" and "wires" connecting them. A module is a primitive program
+function that appears on the screen as a block with input and output tabs.
+Wires are dragged with the mouse from outputs to inputs. A group of modules
+can be hidden inside of another module to form a user "macro." System
+supplied DX modules include vector and scalar field rendering, and
+geometric operations (rotate, translate), in addition to x and y plotting.
+There is direct programming support for producing custom MOTIF control panels. The Theory Center has added modules to make parametric surfaces,
+texture maps, bumpmaps, spotlights, and a variety of other graphically
+oriented functions.  <P>
+
+
+Students are expected to design visual programs to perform some particular
+assigned task. They are expected to produce working programs that are
+readable and documented. A visual language has a different style of
+organization for readability than text-based code, but for programs bigger
+than one screen wide, organization is no less important. Any module can
+have a comment field and the Theory Center encourages a comment in all but
+the most obvious modules. Programs tend to build an object of some kind
+(e.g. house) by defining its parts, combining them, and then moving them to
+some position. Such a section of code tends to be small (perhaps 20
+modules) but cryptic unless the designer minimally labels the output of the
+code block. DX supports labeling of wires to document what is flowing
+through them. In many cases a small code block can be made into a macro,
+which then appears to be another module with a user-chosen name. At some
+point objects have to be combined to make higher order structures. Careful
+arrangement of the hierarchical structure (which is all visual) helps
+during program tracing and debugging. We have found that, as with all
+programming, providing a few examples and a programming manual is an
+effective way of introducing students to the subject matter.  <P>
+
+
+
+<H3>Conclusions</H3>
+
+DX allows students to concentrate on learning the graphics content of the
+course rather than investigating the details of a programming environment.
+Students can generate code to make images in a fraction of the time
+required of a C language environment, encouraging experimentation. At the
+time of writing, course evaluations are not yet available from students,
+but will be when this article appears in Forefronts. Preliminary student
+feedback indicates satisfaction with DX as a vehicle for learning graphics.
+The acquired background in computer graphics using DX is already being put
+to use in scientific visualization as students incorporate their class
+skills into research projects across campus. This year students in the
+course were mostly upper division computer science and engineering majors.
+It should be possible to construct a freshman-level course using DX which
+introduces computer graphics and visualization at an appropriate
+mathematical level and whets their appetites for further instruction. 
+A downside to DX use in the classroom is that it requires a graphics
+workstation such as an IRIS Indigo, SPARC station, HP workstation, or RISC
+System/6000, not a Mac or PC, which is the hardware most readily available
+to college and university students. Hopefully the trend of cheaper
+workstations and more powerful personal computers will continue to open new
+possibilities. Designing complex scenes in DX is easy enough that many
+projects put a large demand on the workstations for CPU and memory. During
+the final project many of the students ran out of memory while using 32
+MByte machines. In most cases, scaling down the resolution of texture maps
+solved the large size, but in a few cases the objects and motions became
+too complex.  <P>
+
+
+
+The lab exercise software plus student lab instructions are available
+on-line from an anonymous ftp site at Cornell University
+(info.tc.cornell.edu).  Contact Bruce Land (bruce@tc.cornell.edu) for more
+information.  <P>
+

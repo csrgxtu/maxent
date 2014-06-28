@@ -1,0 +1,300 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 19:27:41 GMT
+Content-Type: text/html
+Content-Length: 14748
+Last-Modified: Thursday, 18-Jan-96 18:26:34 GMT
+
+<HTML><head><title> JPEG Encoding Using Perceptual Quality </title> </head>
+<body BGCOLOR="#FFFFFF"><IMG SRC="Include/lena.gif" border=0 align=left>
+<h2><CENTER>Multimedia Systems<br>JPEG Encoding using Perceptual Quality<br></CENTER></h2> <center> 
+Nobuhiko Mukai (mukai@cs.cornell.edu)<br> 
+Lucy Y. Wu(yuwu@cs.cornell.edu)<br> 
+Mikio Sakurai (msakurai@sunlab.cit.cornell.edu)<br>
+</center> 
+<img src="Include/line_rain.gif">
+
+<h4>Abstract:<br>
+
+The key point of image compression is to achieve a low bit rate in the 
+digital representation of an input image or video signal with minimum 
+perceived loss of picture quality. Over the past several years there 
+have been many attempts to incorporate perceptual masking models into 
+image compression system. Based on the "pre-quantization", we 
+developed two new models. Compared to JPEG default setting, both of 
+our models significantly lower the bit-rate and keep the almost same
+image quality.<p></h4>
+<img src="Include/line_rain.gif">
+
+
+<h2>1. Introduction</h2>
+
+The key point of image compression is to achieve a low bit rate in 
+the digital representation of an input image or video signal with 
+minimum perceived loss of picture quality. Since the ultimate 
+criterion of quality is judged or measured by the human receiver, 
+it is important that the compression(or coding) algorithm minimizes 
+perceptually meaningful measures of signal distortion.<p>
+
+JPEG default quantization tables(QT) are based on psychovisual thresholding and
+are derived empirically. But because only one QT is available for every image,
+the default QT is image independent and can not be used to achieve the optimized
+compression result for each specific image.<p>
+
+Some perceptual models have been developed to calculate the image dependent QT. But
+because every block in the image contributes different properties to the total image,
+one QT that is best for the whole image is not always best for every block. If
+we can quantize every block using different QT specifically suitable for that
+block, we can get the most optimized compression result for every block.<p>
+
+Because JPEG allows only one QT for each image, pre-quantization is proposed by
+Johnston and Safranek(J&S)[1]. For every block, one specific masking threshold is
+calculated and used to zero out the perceptual irrelevant coefficients while the
+other coefficients passed unchanged. Then one base QT will be finally used to
+quantize for all the remaining coefficients in each block.<p>
+
+Despite the benefits of simple implementation, the J&S model has the disadvantage of
+computing a single masking elevation for each input block. This means that there
+is no information about the distribution of energy within the block.<p>This
+problem can be overcome by applying the contrast masking model for each DCT
+coefficient(model-1).<p>
+
+The computation for model-1 is somewhat complex. This led us to design a second
+one(model-2) based on the luminance ratio of block to total image to replace the J&S
+model. This second model has the same single masking elevation problem, but the calculation
+is more simple.<p>
+
+Our test result shows, compared to the JPEG default setting, both of our models
+reduced the bit rate 10% with little or no perceived loss in quality.<p>
+
+The rest of this paper is organized as follows. Section 2 describes algorithms to
+"prequantize" a JPEG image. Section 3 describes two perceptual models designed by us. Section 4 describes the detailed evaluation of our models, and
+section 5 reviews related work and future extensions.<p>
+
+
+<h2>2. Prequantization</h2>
+2.1 Quantization<br> 
+The Baseline JPEG encoder consists of three major components, a Forward DCT,
+Quantization, and Entropy Coding. The step of the quantization is to take the raw
+output of the DCT and quantize the coefficients by dividing it, coefficient by
+coefficient, by QT, and rounding to the nearest integer. The purpose of quantization
+is to achieve compression by representing DCT coefficients with no greater precision
+than is necessary to achieve the desired image quality. In other words , the goal of
+this processing step is to discard information which is not visually significant.<p>
+
+2.2 Perceptual Model<br>
+Many studies have attempted to derive a computational model of this visual masking
+level. For each block in the input image, the model attempts to determine to what
+degree the features present in that block inhibit the visual system from the
+distortion introduced by the compression/decompression process. From these points, 
+it is possible to determine a masking threshold for each DCT coefficient.<p>
+
+2.3 J&S's model<br> 
+Johnston and Safranek have developed a framework for computing a locally adaptive
+masking model based on an engineering framework. They assume that the total masking
+level for any block of the input can be represented as a base masking level, and
+other multiplicative elevation factors that represent the contribution of input
+dependent properties of the visual system to the total mask. This model may be
+expressed as:<p>
+
+M(u,v) = Global(u, v) x Local(u, v)   --- (1)<p>
+
+where M(u, v) is the masking level for frequency (u, v) of the input block,
+Global(u,v) is the base masking level which depends only on global properties, and
+Local(u, v) handles the image specific local variation in the masking threshold. The
+adaptation is derived as a function of the block standard deviation using the
+following formula:<p>
+
+<img src="Include/Fig1.xbm"> ---(2)<p>
+<h5>Figure 1. J&S's model</h5><p>
+
+This applies to all of the AC coefficients. The masking elevation for the DC
+coefficient is always set to unity. This model has the advantage of simple
+implementation, and works well in practice. It has the disadvantage of computing a
+single masking elevation for each input block.<p>
+
+Figure 2 illustrates the structure of such an encoder. The forward transformation is identical to the one in baseline JPEG. At this point, the DCT coefficients are 
+input to the perceptual model which generates the data dependent quantization table for that block. This table and the raw DCT coefficients are now input to a
+"pre-quantizer". The purpose of this module is to zero out the coefficients that
+have a magnitude less than the corresponding entry in the quantization table for
+that block, and pass the other coefficients through unchanged. Finally these
+prequantized coefficients are quantized and entropy coded as in standard
+JPEG.<br><p> 
+
+In the dequantization step, only the base QT is used.<p>
+<img src="Include/Fig2.xbm"><p>
+<h5>Figure 2. a structure of an encoder with prequantization</h5><p>
+
+
+<h2>3. Our Models</h2>
+
+Our models intends to take advantage of the above prequantization method.<p>
+
+<h4>3.1 Model-1</h4> The J&S's model uses the perceptual model but does not
+consider the distribution of the energy within the block when calculating the
+block-specific masking threshold. To overcome this problem, we employ a visual
+masking that has been widely used in vision models, based on work by Legge and
+Foley[2]. Given a DCT coefficient c(u,v) and a luminance threshold t(u,v), the
+masked threshold M(u,v) is <br><p>
+
+M(u,v)= MAX[t(u,v), |c(u,v)|^w(u,v) *t(u,v)^(1-w(u,v))] ---(3)<p>
+
+w is a constant that lies between 0 and 1. When w=0, no masking occurs, 
+and when w=1, we have "Weber's Law" behavior. For our experiment, an 
+empirical value of w =0.7 was used.<p> 
+
+In our implementation to calculate the masking threshold, we did not
+ calculate the luminance threshold by using Peterson's model[3] as 
+suggested by Watson[4]. In addition, as indicated in JPEG standard, 
+JPEG default quantization tables are based on psychovisual thresholding 
+and are derived empirically. If it is divided by 2, the almost 
+indistinguishable image can be reconstructed. That means the default QT 
+can be treated as a general luminance threshold. So, we replaced the 
+t(u, v) in equation(3) by "JPEG default QT value" / 2.<p>
+
+As a Global masking level, we used default JPEG QT.<p>
+
+<h4>3.2 Model-2</h4> 
+The masking threshold computation for model-1 is rather complex. This 
+led us to design the second model(model-2) based on the luminance ratio 
+of block to total image. This model has the same single masking elevation 
+problem, but the calculation is more simple.<p>
+
+Basically, model-2 follows the J&S masking model (equation 1). But for 
+the calculation of multiplicative elevation factors (Local(u,v)), we 
+use the luminance ratio of each block to the total image.<p>
+
+Well known "Weber's Law" is expressed as:<p>
+
+df / f = constant (0.02)  ---(4)<p>
+
+f is luminance and df is the just noticeable difference.<p>
+
+This equation means our perception is sensitive to luminance contrast 
+rather than the absolute luminance values themselves. At a given luminance 
+f, if the block's luminance is only a little bit differ from luminance f, 
+then the block is less visible and we can drop a lot of perceptually 
+unimportant information.<p>
+
+The adaptation is derived as a function of the ratio of the block's average 
+luminance to the luminance average of the total image using the following 
+formula:<p>
+
+<img src="Include/Fig3.xbm"> ---(5)<p>
+<h5>Figure 3. model 2: masking model based on luminance ratio</h5><p>
+
+Maximum threshold elevation "max_e" and Minimum Threshold (Minimum 
+luminance ratio) "min_t" are the parameters we need to experiment for.<br> 
+
+As a Global masking level, we used default JPEG QT.<p>
+
+
+<h2>4. Image Quality and Bitrate</h2>
+We compared the bitrate(bits/pixel) and Image quality of our model-1 
+and model-2 with those of the Baseline JPEG. For model-2, first we 
+need to optimize the parameter. We worked on several images and found that
+these two parameters(max_e, min_t) are not strongly sensitive to SNR.
+To the different value of luminance ratio parameter min_t, SNR is 
+almost constant.Threshold elevation parameter max_e has weak relation with 
+SNR and if it gets bigger, SNR becomes worse. This feature is common 
+to all images. Table 1 shows a result we got on image "Lena".<p>
+
+<img src="Include/Table1.xbm"><p>
+<h4>Table 1: Parameter(max_e,min_t) dependence of SNR</h4><p> 
+
+For the following experiment, we choose the preferable value max_e = 2 and 
+min_t = 0.01 for each parameter of model-2. 
+Five images were used in this experiment: a photo of human 
+face("Lena"), a flower scene("flowers"), a photo of animal face("baboon"), 
+two photo of airplane(F-18 and Pitts).<p>
+
+Bitrate is calculated after compressing the image file using the pack
+(huffman coding) program. For the evaluation of the image quality, we 
+used two evaluation method. The first is SNR(signal to noise ratio). In 
+order to provide further insight into the subjective quality of the 
+models, we used DCON metric[5]. This algorithm takes as input two images, 
+a reference and a test, compare the difference of luminance pixel by pixel. 
+The formula is as follows:<p>
+
+DCON = 1/N * sum((y1-y2)/(y1+y2) + 23) --- (6)<p>
+
+This method is simple but very competitive with other complicated human eye
+model metric.<p> 
+
+Table 2 summarize the results of these experiments.<p>
+
+<img src="Include/Table2.xbm"><p>
+<h4>Table 2: Image quality(SNR,DCON) vs Bitrate</h4><p> 
+
+Both our model-1 and model-2 compress 10% better than the Baseline JPEG
+with almost no perceptual loss in quality. Figure 4 shows one example 
+("flowers") of output image of our models in comparison with original 
+image and that of Baseline JPEG.<p>
+(1)<img src="Include/flowers_org.gif">
+(2)<img src="Include/flowers_jpg.gif"><p>
+(3)<img src="Include/flowers_model1.gif">
+(4)<img src="Include/flowers_model2.gif"><p>
+(1) original image (2) Baseline JPEG (3) model 1 (4) model 2 <br>
+<h5>Figure 4. a sample image comparison</h5><p>
+
+<h2>5. Related work and Conclusions</h2> 
+There have been many attempts to incorporate perceptual masking model into 
+image compression systems[6,7]. Johnston-Safranek model[1] and Watson[4] 
+model are perhaps the most well known perceptual model. J&S model has 
+investigated locally optimized prequantization table. Watson model has 
+investigated image dependent masking model which incorporates not only 
+global conditions but also accounts for local contrast masking.<p>
+
+Klein of U.C.Berkery optometry school has reported techniques for 
+improving the quality of JPEG with high compression rate in viewpoint 
+of vision community[8]. He suggests that with improved human vision 
+models the quantization step could be made more effective by 
+considering effects such as mean luminance, color, bandpass filters 
+in spatio-temporal frequency and orientation, contrast masking and 
+human contrast sensitivity.<p>
+
+The primary contribution of our work is that it details encoding-specific
+prequantization algorithms that compress images at high compression rate 
+with minimal artifact. Our future work will include extending this work to 
+include other human eye related factors such as spatio-temporal frequency 
+and orientation.<p>
+
+<img src="Include/line_rain.gif">
+
+<h3> References </h3>
+[1]Johnston, J. D. and Safranek, R. J., "A Perceptually Tuned Sub-band 
+Image Coder With Image Dependent Quantization and Post-quantization Data 
+Compression." Proc. ICASSP 89, Glasgow, Scotland, vol.MA, May 1989, pp. 
+1945-1948<p>
+
+[2]G.E.Legge and J.M.Foley, "Contrast masking in human vision", Journal 
+of the Optical Society of America. 70(12), 1458-1471(1980).<p>
+
+[3]A.J.Ahumada and H.A.Peterson, "Luminance-Model-Based DCT quantization 
+for color image compression", SPIE:Human Vision, Visual Processing, and 
+Digital Display III, Vol.1666,1992, PP365 - 374.<p>
+
+[4]Watson,A.B., "DCT quantization matrices visually optimized for 
+individual images", SPIE:Human Vision, Visual Processing, and Digital 
+Display IV, Vol 1913 Feb.1993, pp202 - 216.<p>
+
+[5]Daniel R. Fuhrmann, John A. Baro, and Jerome R. Cox
+Experimental evaluation of psychophysical distortion metrics for 
+JPEG-encoded images, SPIE:Human Vision, Visual Processing, and 
+Digital Display, Vol.1913, PP179 - 190.<p>
+
+[6]S.J.Daly, "The visible difference predictor: an algorithm for the 
+assessment of image fidelity",SPIE:Human Vision, Visual Processing, and 
+Digital Display III, Vol.1666,1992, PP2 - 15.<p>
+
+[7]J.L.Mannos and D.J.Sakrison, "The effects of a visual fidelity 
+criterion on the encoding of images", IEEE Transaction on Information 
+Theory IT-20, pp525 - 536<p>
+
+[8]Stanley A. Klein, Amnon D. Silverstein and Thom Carney, "Relevance of 
+human vision to JPEG-DCT compression", SPIE:Human Vision, Visual 
+Processing, and Digital Display III, Vol.1666,1992, PP200 - 215.<p>
+
+<br> <img src="Include/blueball.gif">
+<A HREF="paper.ps">postscript file<img src="Include/ps.gif"></A>
+<h5>File last modified - <EM> 4 December 1995</EM></h5> </body> </HTML>

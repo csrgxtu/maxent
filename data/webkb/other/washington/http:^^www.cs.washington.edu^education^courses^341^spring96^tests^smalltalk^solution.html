@@ -1,0 +1,212 @@
+Date: Wed, 08 Jan 1997 21:25:11 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+
+<head>
+<title>Smalltalk quiz sample solution</title>
+</head>
+
+<body>
+    For many of these questions, there were a number of reasonable
+solutions. I've tried to pick ones that are clean, somewhat efficient,
+but not overly tricky. <p>
+    I haven't actually typed this code in and tried to run it, so I
+apologize in advance for any typos. <P>
+
+<OL>
+
+<LI> 
+
+<DL>
+<DT> (a)
+<DD> 
+<pre>
+max: aNumber
+    ^ self > aNumber ifTrue: [^self] ifFalse: [^aNumber]
+</pre>
+
+<DT> (b)
+<DD> 
+<pre>
+isBigger: aCollection
+    ^ self size > aCollection size
+</pre>
+
+<DT> (c)
+<DD> 
+<pre>
+isNumeric
+    self do: [:elem| elem isNumber ifFalse: [^false]] .
+    ^true
+</pre>
+
+<DT> (d)
+<DD> 
+<pre>
+numOccurances: anObject
+    | counter |
+    counter := 0 .    
+    self do: [:elem | elem == anObject ifTrue: [ counter := counter + 1 ] .
+    ^ counter 
+</pre>
+
+<DT> (e)
+<DD> 
+<pre>
+sumSquares: aCollection
+    | sum |
+    sum := 0 .
+    self isNumeric ifFalse: [ self error: 'Non numeric collection' ] .
+    self do: [:elem| sum := sum + (elem * elem)].
+    ^sum
+</pre>
+</DL>
+
+<LI> 
+<DL> 
+<DT> (a)
+<DD> I was looking for a discussion that clearly articulated these
+two main points: 
+<UL>
+<LI> There is only one copy of the class variable, which is shared by
+all instances of the class. Each instance of the class gets its own,
+private, copy of the instance variable. This distinction between
+shared and non-shared variables was the big idea.
+<LI> A secondary idea was that class variables are accessible (may be
+read/written) from both 
+class and instance methods, while instance variables can only be
+accessed from instance methods, and thus have more limited visibility.
+</UL>
+
+
+<DT> (b)
+<DD> 
+
+<DL>
+<DT> Account instance methods
+<DD> 
+<pre>
+serviceAccount
+    self subclassResponsibility
+</pre>
+
+
+<DT> CheckingAccount instance methods
+<DD> 
+<pre>
+serviceAccount
+    self assessServiceCharge
+</pre>
+
+
+<DT> SavingsAccount instance methods
+<DD> 
+<pre>
+serviceAccount
+    self payInterest
+</pre>
+
+
+<DT> Collection instance methods
+<DD> 
+<pre>
+serviceAccounts
+    self do: [:acct| acct serviceAccount] .
+</pre>
+</DL>
+
+<DT> (c)
+<DD>
+<pre>
+showDifference
+    "Returns 5 if instance variables, 6 if class variable"
+    |a b|
+    a := SomeClass new: 2
+    b := SomeClass new: 3
+    ^ a access + b access
+</pre>
+ 
+</DL>
+
+
+<LI> 
+    To implement add:, I used an approach based on double dispatching,
+which is how this kind of thing is usually actually done in the
+Smalltalk standard library.  There were a number of other solutions
+that were perfectly fine (based on sending an isNumber, or isInteger,
+or isComplex message to the argument of add). <P>
+<DL>
+<DT> Class defintion
+<DD> 
+<pre>
+Number subclass: #ComplexNumber
+    instanceVariableName: 'real imaginary'
+    classVariableName: ''
+    category: 'Magnitude-Numbers'
+</pre>
+
+<DT> Complex Number Class Methods
+<DD> 
+<pre>
+new
+    ^self real: 0 imaginary: 0
+
+real: aNumber imaginary: anotherNumber
+    ^ super new real: aNumber imaginary: anotherNumber
+
+</pre>
+
+<DT> Complex Number Instance Methods
+<DD> 
+<pre>
+real: aNumber imaginary: anotherNumber
+    real := aNumber .
+    imaginary := anotherNumber .
+    ^self 
+
+real
+    ^ real
+
+imaginary
+    ^ imaginary
+
+add: aNumber
+    ^ aNumber addWithComplex self
+
+addWithComplex: aComplexNumber
+    "The first version of the add method looked like this"
+    |r i|
+    r := self real + aComplexNumber real .
+    i := self imaginary + aComplexNumber imaginary .
+    ^ self class real: r imaginary: i
+
+multiply: aComplexNumber
+    "If I was really doing this, I'd do double dispatching again"
+    |r i|
+    r := (self real * aComplexNumber real) -
+    	    (self imaginary + aComplexNumber imaginary) .
+    i := (self real * aComplexNumber imaginary) +
+    	    (self imaginary * aComplexNumber real) .
+    ^ self class real: r imaginary: i
+</pre>
+
+<DT> Number Instance Methods
+<DD> 
+<pre>
+addWithComplex aComplexNumber
+    ^ (ComplexNumber real: self imaginary: 0) add: aComplexNumber
+</pre>
+</DL>
+
+</OL>
+
+<hr>
+
+<address>
+cse341-webmaster@cs.washington.edu
+</address>
+
+</body>
+</html>

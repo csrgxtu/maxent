@@ -1,0 +1,1345 @@
+Date: Mon, 02 Dec 1996 16:09:37 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<title>CSE 457 libui documentation</title>
+<img src = "../../images/cse457.gif" align = left alt="CSE 457">
+<br>
+<hr noshade>
+<center>
+<img src = "../../images/title.gif" alt="Introduction to Computer Graphics">
+<hr noshade>
+<font size=-2>
+<b>1996 Autumn Quarter
+</b>
+</font>
+</center>
+<br clear=left>
+<blockquote>
+
+<h2>libui: The Interface Library</h2>
+<ul>
+  <li><a HREF="#Overview">Overview</a></li>
+       <!-- anchor href="#Tutorial" tutorial -->
+  <li><a HREF="#Reference">Reference</a></li>
+       <ul>
+	 <li><a HREF="#Reference-DataTypes">Data Types and Constants</a></li>
+	 <li><a href="#Macros">Macros</a></li>
+	 <li><a HREF="#Reference-Routines">Routines</a>
+	      <ul>
+		<li><a href="#Routines-Init">Initialization routines</a>
+		<li><a href="#Routines-Windows">Window routines</a>
+		<li><a href="#Routines-Controls">Control routines</a>
+		<li><a href="#Routines-Images">Image routines</a>
+		<li><a href="#Routines-Draw">Drawing Routines</a>
+		<li><a href="#Routines-Misc">Miscellaneous routines</a>
+	      </ul>
+	 <li><a HREF="#Reference-Glossary">Glossary</a></li>
+       </ul>
+  <li><h3><a HREF="#Index">Index</a></h3></li>
+</ul>
+
+<EM>
+This documentation still needs work.  If you find anything confusing
+or incomplete, <strong>please</strong> <a href=mailto:pighin@cs>
+let me know</a>. Any comments may you have will greatly facilitate
+ it's revision.<p>
+</EM>
+
+<hr>
+
+<h2><a NAME="Overview">Overview</a></h2>
+The user-interface library you will be using in 457 is designed to be
+powerful and simple to use. It provides you with buttons, toggle buttons, 
+sliders, rectangular drawing areas, file dialogs, and a text feedback area.
+<p>
+The main things that the libui library provides you with are:
+<ul>
+  <li><strong>A main application window</strong><br>
+       The application will have a main window which will hold all
+       the controls, the text area, drawing areas, etc. This window
+       is created when the application calls
+       <CODE><a HREF="#uiInitWindowsDef">uiInitWindow()</a></CODE>.</li>
+       
+  <li><strong>Buttons</strong><br>
+       You can add buttons to the control area in the upper-right part
+       of the main window which take some action when pressed. Buttons
+       are created and their actions specified by calling
+       <CODE><a HREF="#uiAddButtonDef">uiAddButton()</a></CODE>.</li>
+       
+  <li><strong>Toggle Buttons</strong><br>
+       You can add toggle buttons to the control area 
+       of the main window which can be set to either True or False
+       by the user. Toggle buttons are created by calling
+       <CODE><a HREF="#uiAddToggleButtonDef">uiAddToggleButton()</a></CODE>. 
+       The current state (True/False) of a toggle button can be queried
+       by calling <CODE><a HREF="#uiGetToggleButtonStateDef">
+       uiGetToggleButtonState()</a></CODE>.</li>
+       
+  <li><strong>Sliders</strong><br>
+       Sliders can be added to the control area to allow the user to
+       control a continuous parameter. Sliders are created with a call to
+       <CODE><a HREF="#uiAddSliderDef">uiAddSlider()</a></CODE>. 
+       The current value of the slider can be retrieved using
+       <CODE><a HREF="#uiGetSliderValueDef">uiGetSliderValue()</a></CODE>.
+       You can set the value of the slider by using 
+       <CODE><a HREF="#uiSetSliderValueDef">uiSetSliderValue()</a></CODE>.
+       </li>
+       
+  <li><strong>Menus</strong><br>
+       Menus can be added to control area to allow the user to select
+       the desired option.  Menus are created with a call to 
+       <CODE><a HREF = "#uiMakeMenuDef">uiMakeMenu()</a></CODE>.
+       Menu item can be added using <CODE><a HREF="#uiAddMenuItemDef">
+       uiAddMenuItem()</a></CODE>.</li>
+       
+       
+  <li><strong>Drawing areas</strong><br>
+       These are rectangular areas within the main application window
+       that can be rendered into using OpenGL.	These are created by
+       calling <CODE><a HREF="#uiAddWindowDef">uiAddWindow()</a></CODE>.
+       </li>
+       
+  <li><strong>Text area</strong><br>
+       There is an optional area at the bottom of the main window that
+       is used to do display text and/or allow the user to input text.
+       The text to be displayed can be set using <CODE>
+       <a HREF="#uiSetTextDef">uiSetText()</a></CODE> and can be examined
+       with <CODE><a HREF="#uiGetTextDef">uiGetText()</a></CODE>.</li>
+       
+  <li><strong>File-selection dialogs</strong><br>
+       Applications can present file-selection dialog boxes to let the
+       user specify a file. The dialog box is presented by calling
+       <CODE><a HREF="#uiPostFileDialogDef">uiPostFileDialog()</a></CODE>.
+       This call returns immediately after the dialog is put up - the
+       application is notified that the OK button has been pressed by
+       having a callback procedure invoked.</li>
+       
+  <li><strong>Event handling</strong><br>
+       Applications respond to user and systems actions such as buttons
+       being pressed and windows becoming visible through <em>event
+       callbacks</em>. These are routines that are called by the system
+       in response to these types of events. Callbacks are usually
+       specified when an interface element is created.
+       There is also a function call <CODE><a HREF="#uiBusyCursorDef">
+       uiBusyCursor()</a></CODE> to prevent all user interactions until
+       the program finishes executing a certain process.
+</ul>
+
+<hr>
+
+<h3>
+<!--a NAME="Tutorial"Tutorial/a-->
+</h3>
+<!-- maybe use serpinski as tutorial? -->
+<!-- This is a simple tutorial for the libui library -->
+<!-- [a HREF="http:source/"](source code is available)[/a]. -->
+<!-- It will show you how to create a simple interface including buttons, sliders, -->
+<!-- little areas to draw into and a text area.  It will then demonstrate how to -->
+<!-- get your program to respond to events such as: buttons being pushed and  -->
+<!-- drawing areas being meddled with. -->
+
+<!-- hr -->
+
+
+<h2><a NAME="Reference">Reference</a></h2>
+
+<h4><a NAME="Reference-DataTypes">Data types and Constants</a></h4>
+<dl>
+  <dt><a NAME="uiBoolDef"><strong>uiBool</strong></a></dt>
+  <dd>Boolean type:<br>
+       <samp>typedef enum {<strong>uiFalse</strong>, <strong>uiTrue</strong>}
+       <strong>uiBool</strong>;</samp></dd><p>
+
+  <dt><a NAME="uiColorRGBDef"><strong>uiColorRGB</strong></a></dt>
+  <dd>RGB color type:<br>
+       <samp>
+typedef struct
+{
+  float r;
+  float g;
+  float b;
+}<strong> uiColorRGB</strong>;</samp></dd><p>
+
+  <dt><a NAME="uiDrawingPlaneDef"><strong>uiDrawingPlane</strong></a></dt>
+  <dd>The different planes to draw into. Specified when calling
+       <samp><a HREF="#uiSetCurrentWindowDef">uiSetCurrentWindow()</a>
+       </samp>.<br>
+       <samp>typedef enum {<strong>uiNormal</strong>, <strong>
+       uiOverlayPlane</strong>} <strong>uiDrawingPlane</strong>;<p></samp>
+
+       <dl>
+	 <dt><strong>uiNormal</strong></dt>
+	 <dd>The normal drawing plane. This is a full-color drawing plane,
+	      where colors are specified using the <strong>glColor*</strong>
+	      calls. Most drawing will take place in this plane.</dd>
+	 <dt><strong>uiOverlayPlane</strong></dt>
+	 <dd>The overlay plane. This is a drawing plane that sits on top of
+	      the normal plane, which can be used to draw on top of things
+	      without disturbing them. This plane is an indexed-color plane,
+	      so colors are specified using <strong>glIndex()</strong>. Index
+	      0 is transparent.</dd>
+       </dl>
+       </dd><p>
+       
+  <dt><a NAME="uiAppOptionsDef"><strong>uiAppOptions</strong></a></dt>
+  <dd>Options for the <samp><a HREF="#uiInitWindowsDef">uiInitWindows()
+       </a></samp>call. The <VAR>options</VAR> parameter of this call should
+       be the logical <samp>OR</samp> of the desired options, or
+       <strong>uiNone</strong> for none of them.<br>
+       <samp>typedef enum {<strong>uiHasNone</strong> = 0, <strong>
+       uiHasControls</strong> = 1, <strong>uiHasText</strong> = 2, <strong>
+       uiHasDouble</strong> = 4 } <strong>uiAppOptions</strong>;</a></samp><p>
+       
+       <dl>
+	 <dt><strong>uiHasNone</strong></dt>
+	 <dd>none of the following.</dd>
+	 <dt><strong>uiHasControls</strong></dt>
+	 <dd>The control area in the upper-right of the main window is
+	      present.</dd>
+	 <dt><strong>uiHasText</strong></dt>
+	 <dd>The text area at the bottom of the main window is present.</dd>
+	 <dt><strong>uiHasDouble</strong></dt>
+	 <dd>Double-buffering is enabled for the application.</dd>
+	 <dt><strong>uiIndexedColorMode</strong></dt>
+	 <dd>Main windows use indexed color.
+       </dl><p>
+
+       Examples:<br>
+       <samp>uiInitWindows( 0, NULL, uiHasControls );</samp><br>
+       <samp>uiInitWindows( 0, NULL, uiHasControls | uiHasText);</samp><br>
+       </dd><p>
+
+
+  <dt><a NAME="uiMouseActionDef"><strong>uiMouseAction</strong></dt>
+  <dd>Enumerated type indicating what kind of mouse action has taken place.
+       <br>
+       <samp>typedef enum {<br>
+       <strong>uiLeftMouseDown</strong>, <strong>uiLeftMouseUp</strong>,<br>
+       <strong>uiLeftMouseDrag</strong>, <strong>uiLeftMouseClick</strong>,<br>
+       <strong>uiRightMouseDown</strong>, <strong>uiRightMouseUp</strong>,<br>
+       <strong>uiRightMouseDrag</strong>, <strong>uiRightMouseClick</strong>
+       <br>
+       } <strong>uiMouseAction</strong>;
+
+       <dl>
+	 <dt><strong>uiLeftMouseDown</strong>, <strong>uiRightMouseDown
+	      </strong></dt>
+	 <dd>The left or right mouse button was pressed.
+	 <dt><strong>uiLeftMouseUp</strong>, <strong>uiRightMouseUp
+	      </strong></dt>
+	 <dd>The left or right mouse button was released.</dd>
+	 <dt><strong>uiLeftMouseDrag</strong>, <strong>uiRightMouseDrag
+	      </strong></dt>
+	 <dd>The mouse was moved while a button was held down.  A drag action
+	      will always be preceeded by a corresponding <strong>uiMouseDown
+	      </strong> action.</dd>
+	 <dt><strong>uiLeftMouseClick</strong>, <strong>uiRightMouseClick
+	      </strong></dt>
+	 <dd>The mouse button has been briefly pressed and released without
+	      motion in between. When a <strong>uiMouseClick</strong>
+	      action is reported, the corresponding <strong>uiMouseDown
+	      </strong> and <strong>uiMouseUp</strong> actions are <em>not
+	      </em> reported.</dd>
+       </dl></dd><p>
+
+  <dt><a NAME="uiWindowDef"><strong>uiWindow</strong></a></dt>
+  <dd>Opaque type returned from <a HREF="#uiAddWindowDef">
+       <strong>uiAddWindow()</strong></a>.</dd><p>
+
+  <dt><a NAME="uiSliderDef"><strong>uiSlider</strong></a></dt>
+  <dd>Slider type returned from <a HREF="#uiAddSliderDef">
+       <strong>uiAddSlider()</strong></a>.</dd><p>
+
+  <dt><a NAME="uiToggleButtonDef"><strong>uiToggleButton</strong></a></dt>
+  <dd>Toggle button type returned from <a HREF="#uiAddToggleButtonDef">
+       <strong>uiToggleButton()</strong></a>.</dd><p>
+</dl>       
+<h4>Callback types</h4>
+<dl>
+  <dt><samp><a NAME="uiExposeCallbackDef">typedef void (* <strong>
+       uiExposeCallback</strong>)( <strong><a HREF="#uiWindowDef">uiWindow</a>
+       </strong> *<VAR>window</VAR>);</a></samp></dt>
+  <dd>Exposure callback routine. Called in response to a window being
+       exposed.<p>
+       <ul>
+	 <li><VAR>window</VAR>: the window which has been exposed</li>
+       </ul><p>
+
+       The application can force the exposure routine to be called by
+       calling <strong><a HREF="#uiDirtyWindowDef">uiDirtyWindow()</a>
+       </strong>.</dd><p>
+
+  <dt><samp><a NAME="uiIdleCallbackDef">typedef int (* <strong>
+       uiIdleCallback</strong>) (void);</a></samp></dt>
+  <dd><a HREF="#IdleProcedureDefinition">Idle procedure</a>. Called
+       periodically when the system has nothing better to do.  An idle
+       procedure is added to the work queue with
+       <a href="#uiSetIdleCallback">uiSetIdleCallback()</a>,
+       and removed depending upon
+       the return value of your idle procedure:<p>
+       <dl>
+	 <dt>TRUE
+	 <dd>The idle procedure is through with its task, and should be
+	      removed from the work queue.  (To put it back on the
+	      queue, you need to call uiSetIdleCallback again.)
+	 <dt>FALSE
+	 <dd>The idle procedure is <em>not</em> through with its task, and
+	      will remain on the event queue</em>
+       </dl></dd><p>
+       
+  <dt><samp><a name="uiTimerCallbackDef">typedef int (* <strong>
+       uiTimerCallback</strong>) (void);</a></samp></dt>
+  <dd>Similar to an IdleCallback, only also incorporates a pause
+       interval.  A timer procedure is added
+       with <a href="#uiSetTimerCallback">uiSetTimerCallback()</a>
+       where you define a pause interval (in milliseconds).  Like
+       an idle procedure, a timer procedure is added and removed
+       depending on its return value:
+       <dl>
+	 <dt>TRUE
+	 <dd>The timer procedure is through, remove this from
+	      the timer queue.  (To put it back on the queue, you
+	      need to call uiSetTimerCallback again.)
+	 <dt>FALSE
+	 <dd>The timer procedure is <em>not</em> through with its task,
+	      and will remain on the event queue.
+       </dl>
+       <p>
+       
+
+  <dt><samp><a NAME="uiCallbackDef">typedef void (* <strong>uiCallback</strong>
+       ) (void);</samp></a></dt>
+  <dd>Button or slider callback. Called in response to the user pressing
+       the button or moving the slider with which it is associated.  See 
+       <strong><a HREF="#uiAddButtonDef">uiAddButton()</a></strong>, 
+       <strong><a HREF="#uiAddToggleButtonDef">uiAddToggleButton()</a>
+       </strong> and <strong><a HREF="#uiAddSliderDef">uiAddSlider()</a>
+       </strong>.</dd><p>
+
+  <dt><samp><a NAME="uiMouseCallbackDef">typedef void (* <strong>
+       uiMouseCallback</strong>) (<a HREF="#uiWindowDef"><strong>uiWindow
+       </strong></a> *<VAR>window</VAR>, int <VAR>x</VAR>, int <VAR>y</VAR>,
+       <strong><a HREF="#uiMouseActionDef">uiMouseAction</a></strong>
+       <VAR>action</VAR>);</a></samp></dt>
+  <dd>Mouse action callback - called in response to mouse input in <VAR>
+       window</VAR>.<p>
+       <dl>
+	 <dt><VAR>window</VAR></dt>
+	 <dd>The window in which the mouse action took place.</dd>
+	 <dt><VAR>x</VAR>, <VAR>y</VAR></dt>
+	 <dd>The location of the mouse action.</dd>
+	 <dt><VAR>action</VAR></dt>
+	 <dd>The mouse action which caused the callback to be invoked.</dd>
+       </dl><p>
+
+       Applications specify the mouse callback routine in <strong>
+       <a HREF="#uiAddWindowDef">uiAddWindow()</a></strong>.</dd><p>
+
+  <dt><samp><a NAME="uiFileBoxCallbackDef">typedef void (* <strong>
+       uiFileBoxCallback</strong>) (char *<VAR>filename</VAR>);</a>
+       </samp></dt>
+  <dd>File-selection dialog callback routine.<p>
+       <dl>
+	 <dt><VAR>filename</VAR></dt>
+	 <dd>The name of the file that was selected when the OK button was
+	      pressed.</dd>
+       </dl></dd><p>
+
+       <dt><samp><a NAME="uiMenuCallbackDef">uiMenuCallback</samp>
+       <dd> !!!! <p>
+</dl>
+<h4>Image Library types</h4>
+<dl>
+
+  <dt><samp>typedef enum { <em>SCALAR</em>, <em>VECTOR</em> } <strong>
+       argType</strong>;</samp></dt>
+  <dd>Color depth of an <a href="#???">Image</a>.<p>
+       <dl>
+	 <dt><em>SCALAR</em></dt>
+	 <dd>Image is black and white</dd>
+	 <dt><em>VECTOR</em></dt>
+	 <dd>Image is color</dd>
+       </dl></dd><p>
+       
+  <dt><samp>typedef struct {<br>
+       <ul>       Real x, y, z;</br>
+       </ul>
+       } <strong>Vector</strong>;</samp></dt><p>
+  <dd>Vector type. For images, x is used as the red component, y is used
+       as green and z is used as blue.</dd><p>
+
+  <dt><samp>typedef struct {<br>
+       <ul>
+	 int _width, _height;<br>
+	 argType _type;<br>
+	 union { <br>
+	 <ul>
+	   Real *scal_image;<br>
+	   Vector *vec_image;<br>
+	 </ul>
+	 } _image;
+	 int _scale_pixel_values;<br>
+	 Real _pixel_scale_factor;<br>
+  </ul>
+  } <strong>Image</strong>;</samp></dt><p>
+  <dd>Image type. Routines are available for accessing all the fields of
+       this structure, so you shouldn't have to worry about them.
+</dl>
+<hr>
+
+<h2><a name = "Macros">Macros</h2>
+
+The following macros are defined by libui:
+<dl>
+  <dt><samp>#define <b>MIN(a,b)</b>
+       ((a)<(b)?(a):(b))</samp>
+  <dd>Fairly simple, expands to find the minimum of two items<p>
+  <dt><samp>#define <b>MAX(a,b)</b>
+       ((a)>(b)?(a):(b))</samp>
+  <dd>MIN's complement<p>
+  <dt><samp>#define <b>CLAMP(x,lo,hi)</b>
+       (MAX(MIN(x,hi),lo))</samp>
+  <dd>Clamps number specified by <var>x</var> to be between
+       <var>hi</var> and <var>lo</var>
+</dl>
+	 
+<br><br>
+<hr>
+
+<!--          -->
+<!-- Routines -->
+<!--          -->
+
+<h2><a NAME="Reference-Routines">Routines</a></h2>
+
+<h3><a name="Routines-Init">Initialization routines</a></h3>
+<dl>
+  <dt><samp><a NAME="uiSetControlWidthDef">void <strong>uiSetControlWidth
+       </strong>(int <VAR>width</VAR>);</a></samp><br>
+       <samp><a NAME="uiSetControlHeightDef">void <strong>uiSetControlHeight
+       </strong>(int <VAR>height</VAR>);</a></samp></dt>
+  <dd>Sets the width and height of the control area in which buttons and
+       sliders are placed. The control area is located in the upper-right
+       corner of the main application window.</dd><p>
+
+  <dt><samp><a NAME="uiSetTextHeightDef">void <strong>uiSetTextHeight</strong>
+       ( int <VAR>height</VAR> );</a></samp></dt>
+  <dd>Sets the height of the text area at the bottom of the application
+       window. The text displayed in this area can be changed and examined by
+       calling <strong><a HREF="#uiSetTextDef">uiSetText()</a></strong> and
+       <strong><a HREF="#uiGetTextDef">uiGetText()</a></strong>.</dd><p>
+
+  <dt><samp><a NAME="uiSetMainWindowWidthDef">void <strong>
+       uiSetMainWindowWidth</strong> (int <VAR>width</VAR>);</a></samp><br>
+       <samp><a NAME="uiSetMainWindowHeightDef">void <strong>
+       uiSetMainWindowHeight</strong> (int <VAR>height</VAR>);</a></samp></dt>
+  <dd>Sets the size of the main application window. This includes the
+       control area and the text area. It is up to the application to make
+       sure that this window is big enough to hold all of the things it wants
+       to place inside of it.</dd><p>
+
+  <dt><samp><a NAME="uiInitWindowsDef">uiBool <strong>uiInitWindows</strong>
+       (unsigned int <VAR>argc</VAR>, char **<VAR>argv</VAR>,
+       <a href="#uiAppOptionsDef">uiAppOptions</a> <var>options</var>);
+       </a></samp>
+  <dd>Initializes the interface library and creates the main application
+       window.<p>
+       <dl>
+	 <dt><VAR>argc</VAR>, <VAR>argv</VAR></dt>
+	 <dd>If you wish, you can pass the arguments from <samp>main</samp>
+	      to <samp>uiInitWindows()</samp>. <!!! -- help! -->
+	      Normally, you would just pass <samp>0</samp> and <samp>NULL
+	      </samp>.</dd>
+	 <dt><var>options</var>
+	 <dd>Sets what aspects of the application windows will be enabled.
+	      You may elect to have a text region, control region, double
+	      buffer, or more.  See the definition of
+	      <a href="#uiAppOptionsDef">uiAppOptions</a> for a complete
+	      list of options.  To select two or more options, pass in
+	      their logical OR.
+       </dl><p>
+
+       The application should call <samp>uiInitWindows</samp> to initialize
+       the ui Library. This call should be made after the sizes of the parts
+       of the application have been set.</dd><p>
+
+  <dt><samp><a NAME="uiMainLoopDef">void <strong>uiMainLoop</strong>();</a></samp>
+  <dd>This function starts the applications' main loop.  In this loop,
+       libui will process user interaction, and call the appropriate
+       callbacks where defined.  <em>NB:</em>  This function <em>never</em>
+       returns, so it should be the last statement in your <samp>main()</samp>
+       function.<p>
+
+
+</dl>
+
+<br>
+<hr>
+<br>
+
+<h3><a name="Routines-Windows">Window routines</a></h3>
+<dl>
+  <dt><samp><a NAME="uiAddWindowDef">uiWindow *<strong>uiAddWindow</strong>
+       (int <VAR>x</VAR>, int <VAR>y</VAR>, int <VAR>width</VAR>, int
+       <VAR>height</VAR>, <a HREF="#uiExposeCallbackDef">uiExposeCallback</a>
+       <VAR>expose</VAR>, <a HREF="#uiMouseCallbackDef">uiMouseCallback</a>
+       <VAR>mouse</VAR>, void *<VAR>userData</VAR> );</a></samp></dt>
+  <dd>Adds a drawing area inside the main window.<p>
+       <dl>
+	 <dt><VAR>x</VAR>, <VAR>y</VAR></dt>
+	 <dd>The (<VAR>x</VAR>, <VAR>y</VAR>) location of the upper-left
+	      corner of the new window relative to the upper-left corner of
+	      the main application window.  <em>Note:</em> the coordinate
+	      system used by this call (unfortunately) considers the origin
+	      to be at the upper-left, with <VAR>x</VAR> increasing going
+	      to the right and <VAR>y</VAR> increasing going down. This is 
+	      <STRONG>not</STRONG> the same coordinate system used by OpenGL,
+	      which considers the origin to be the lower-left corner, with
+	      <var>y</var> increasing going up.</dd>
+       
+	 <dt><VAR>width</VAR>, <VAR>height</VAR></dt>
+	 <dd>The width and height of the new window.</dd>
+	      
+	 <dt><VAR>expose</VAR></dt>
+	 <dd>A callback to be invoked when the window is exposed.  If no
+	      callback is to be invoked, pass NULL for the the <var>expose
+	      </var> paramater.</dd>
+	      
+	 <dt><VAR>mouse</VAR></dt>
+	 <dd>A callback to be invoked in response to mouse input for this
+	      window.  If no mouse callback is to be invoked, pass NULL
+	      for the <var>mouse</var> paramater.</dd>
+	      
+	 <dt><VAR>userData</VAR></dt>
+	 <dd>A pointer to some private data you wish to associate with this
+	      window.  If no private data is necessary, pass NULL for the
+	      <var>userData</var> paramater.</dd>
+       </dl>
+
+       Drawing areas are rectangular regions in which the application can do
+       drawing.  To specify which window is to be drawn into, the application
+       must call <strong><a HREF="#uiSetCurrentWindowDef">
+       uiSetCurrentWindow()</a></strong>.</dd><p>
+
+  <dt><samp><a NAME="uiSetUserDataDef">void <strong>uiSetUserData</strong>
+       ( <a HREF="#uiWindowDef">uiWindow</a> *<VAR>window</VAR>, void
+       *<VAR>data</VAR> );</a></samp></dt>
+  <dd>Sets <VAR>window</VAR>'s private data to point to <VAR>data</VAR>.
+       </dd><p>
+
+  <dt><samp><a NAME="uiGetUserDataDef">void *<strong>uiGetUserData</strong>
+       ( <a HREF="#uiWindowDef">uiWindow</a> *<VAR>window</VAR> );</a>
+       </samp></dt>
+  <dd>Retrieves <VAR>window</VAR>'s private data.</dd><p>
+
+  <dt><samp><a NAME="uiSetCurrentWindowDef">void <strong>uiSetCurrentWindow
+       </strong>(<a HREF="#uiWindowDef">uiWindow</a> *<VAR>window</VAR>, 
+       <a HREF="#uiDrawingPlaneDef">uiDrawingPlane</a> <VAR>plane</VAR>);
+       </a></samp>
+  <dd>Sets the current drawing window.<p>
+       <dl>
+	 <dt><VAR>window</VAR>
+	 <dd>The window into which drawing should be done.
+	 <dt><VAR>plane</VAR>
+	 <dd>The drawing layer onto which drawing should be done. If
+	      <VAR>plane</VAR> is <strong>uiNormal</strong>, drawing will
+	      take place in the normal drawing window. If <VAR>plane</VAR>
+	      is <strong>uiOverlayPlane</strong>, drawing will take place
+	      in the <a HREF="#OverlayPlaneDefinition">overlay plane</a>.
+       </dl>
+       Note that the normal drawing plane (<strong>uiNormal</strong>) is a
+       full-color RGB plane, while the overlay plane (<strong>uiOverlayPlane
+       </strong>) is an indexed plane.<p>
+
+  <dt><samp><a NAME="uiDirtyWindowDef">void <strong>uiDirtyWindow</strong>
+       (<a HREF="#uiWindowDef">uiWindow</a> *<VAR>window</VAR>);</a></samp>
+  <dd>Forces a window's <a HREF="#uiExposeCallbackDef">expose callback</a>
+       to be invoked.<p>
+       <dl>
+	 <dt><VAR>window</VAR>
+	 <dd>The window whose expose callback is to be invoked.
+       </dl>
+       This call is used to signal a window to redisplay it's contents.
+       This can be useful if the application is written in such a way that
+       drawing is done only (mostly?) inside of expose callbacks.  This
+       helps to concentrate the drawing code in one area, which in turn
+       helps to locate drawing-related bugs.<p>
+
+  <dt><samp><a NAME="uiGetWindowSizeDef">void <strong>uiGetWindowSize</strong>
+       (<a HREF="#uiWindowDef">uiWindow</a> *<VAR>window</VAR>, int
+       *<VAR>width</VAR>, int *<VAR>height</VAR>);</a></samp>
+  <dd>Returns the size of <VAR>window</VAR> in <VAR>width</VAR> and
+       <VAR>height</VAR>.  Pass <samp>NULL</samp> to either if you don't
+       care about their values.<p>
+
+  <dt><samp><a NAME="uiMapCoordinatesDef">void <strong>uiMapCoordinates
+       </strong> (<a HREF="#uiWindowDef">uiWindow</a> *<VAR>src</VAR>,
+       uiWindow *<VAR>dst</VAR>, int *<VAR>x</VAR>, int *<VAR>y</VAR>);
+       </a></samp>
+  <dd>Maps a location from the coordinate space of one window to the
+       coordinate space of another.  This is most often used when one
+       window is contained withing another.<p>
+       <dl>
+	 <dt><VAR>src</VAR>
+	 <dd>The source window, in which the coordinates are initially
+	      expressed.
+	 <dt><VAR>dst</VAR>
+	 <dd>The destination window, to which the coordinates are to be
+	      translated.
+	 <dt><VAR>x</VAR>, <VAR>y</VAR>
+	 <dd>The point in window <var>src</var> to be translated.  After
+	      the routine returns, they will be set to the transformed
+	      coordinates.
+       </dl><p>
+
+
+</dl>
+
+<br>
+<hr>
+<br>
+
+<h3><a name="Routines-Controls">Control routines</a></h3>
+<dl>
+  <dt><samp><a NAME="uiAddButtonDef">void <strong>uiAddButton</strong>
+       (char *<VAR>label</VAR>, <a HREF="#uiCallbackDef">uiCallback</a>
+       <VAR>pushCallback</VAR>);</a></samp></dt>
+  <dd>Adds a button control to the control area.<p>
+       <dl>
+	 <dt><VAR>label</VAR></dt>
+	 <dd>The text to be used as a label for the button.</dd>
+	 <dt><VAR>pushCallback</VAR></dt>
+	 <dd>The callback procedure to be invoked when the button is
+	      pushed.</dd>
+       </dl>
+
+       Controls (buttons, sliders, menus, etc.) are added one below another,
+       starting at the top of the control area.</dd><p>
+
+  <dt><samp><a NAME="uiAddToggleButtonDef">uiToggleButton <strong>
+       uiAddToggleButton</strong>( char *<VAR>label</VAR>, uiBool
+       <VAR>initialState</VAR>, <a HREF="#uiCallbackDef">uiCallback</a>
+       <VAR>valueChangedCallback</VAR>);</a></samp></dt>
+  <dd>Adds a toggle button to the control area.<p>
+       <dl>
+	 <dt><VAR>label</VAR></dt>
+	 <dd>The text to be used as a label for the button.</dd>
+	      
+	 <dt><VAR>initialState</VAR></dt>
+	 <dd>The initial state for the toggle button.</dd>
+	      
+	 <dt><VAR>valueChangedCallback</VAR></dt>
+	 <dd>The callback procedure to be invoked when the state of the toggle
+	      button changes.</dd>
+       </dl>
+       A toggle button (or checkbox) is a small button which can be set to
+       either True or False by the user.  Toggle buttons, like other
+       controls, are added one below another, starting at the top of the
+       control area. </dd><p>
+
+  <dt><samp><a NAME="uiGetToggleButtonStateDef">uiBool <strong>
+       uiGetToggleButtonState</strong> ( <a HREF="#uiToggleButtonDef">
+       uiToggleButton</a> <VAR>button</VAR> );</a></samp></dt>
+  <dd>Returns the current state of <VAR>button</VAR>.</dd><p>
+
+  <dt><samp><a NAME="uiSetToggleButtonStateDef">void <strong>
+       uiSetToggleButtonState</strong> ( <a href="#uiToggleButtonDef">
+       uiToggleButton</a> <var>button</var>, uiBool <var>state</var>);
+       </a></samp>
+  <dd>Sets the current state of toggle button <var>button</var> to be
+       <var>state</var>.<p>
+       
+  <dt><samp><a NAME="uiAddSliderDef">uiSlider <strong>uiAddSlider</strong>
+       ( char *<VAR>label</VAR>, double <VAR>value</VAR>, double
+       <VAR>min</VAR>, double <VAR>max</VAR>, int <var>decimals</var>,
+       <a HREF="#uiCallbackDef">
+       uiCallback</a> <VAR>valueChangedCallback</VAR> );</a></samp></dt>
+  <dd>Adds a slider control to the control area.<p>
+       <dl>
+	 <dt><VAR>label</VAR></dt>
+	 <dd>The name for the slider.</dd>
+	 <dt><VAR>value</VAR></dt>
+	 <dd>The initial value for the slider.</dd>
+	 <dt><VAR>min</VAR>, <VAR>max</VAR></dt>
+	 <dd>The minimum and maximum values that the slider can have.</dd>
+	 <dt><var>decimals</var>
+	 <dd>Number of decimals to use (eg, 10 is 0 decimals, 10.5 is 1, etc.)
+	 <dt><VAR>valueChangedCallback</VAR></dt>
+	 <dd>The callback procedure to be invoked when the slider's value is
+	      changed. Note that you can always get the value of a slider
+	      with <strong><a href="#uiGetSliderValueDef">uiGetSliderValue()
+	      </a></strong>, so you only really need to use the callback in
+	      cases where you want to take some immediate action in response
+	      to a slider being changed.  Additionally, the callback only
+	      occurs when the user has <em>released</em> the mouse, not while
+	      the user is <em>dragging</em> the slider.</dd>
+       </dl>
+
+       Sliders, like all other controls, are added one below another,
+       starting at the top of the control area.</dd><p>
+
+  <dt><samp><a NAME="uiGetSliderValueDef">double <strong>uiGetSliderValue
+       </strong>( uiSlider <VAR>slider</VAR> );</a></samp></dt>
+  <dd>Returns the current value of <VAR>slider</VAR>.</dd><p>
+
+  <dt><samp><a NAME="uiSetSliderValueDef">void <strong>uiSetSliderValue
+       </strong>( uiSlider <var>slider</var>, double <VAR>t</VAR>);</a>
+       </samp></dt>
+  <dd>Sets the value of the <VAR>slider</VAR>.</dd><p>
+
+  <dt><samp><a NAME="uiSetSliderParamsDef">void <strong>uiSetSliderParams
+       </strong>( uiSlider <var>slider</var>, double <var>min</var>,
+       double <var>max</var>, double <var>current</var>, int <var>
+       decimal_points</var>)</a></samp>
+  <dd>Sets the various paramaters of the <var>slider</var>.<p>
+       <dl>
+	 <dt><var>slider</var>
+	 <dd>The <a href="#uiSliderDef">uiSlider</a> that is being
+	      modified.
+	 <dt><var>min</var>
+	 <dd>The new minimum value for the slider.  The minimum value must
+	      be less than both the <var>current</var> and the <var>max</var>
+	      values.
+	 <dt><var>max</var>
+	 <dd>The maximum value for the slider.  The maximum value must
+	      be greater than both the <var>current</var> and the <var>min
+	      </var> values.
+	 <dt><var>current</var>
+	 <dd>The new &quot;current&quot; value that the slider will show.
+	      The current value must be between <var>min</var> and <var>
+	      max</var>, inclusive.
+	 <dt><var>decimal_points</var>
+	 <dd>The number of digits to the right of the decimal that will be
+	      displayed and reported.  Valid ranges are any non-negative
+	      integer.
+       </dl><p>
+       See also <strong>
+       <a href="#uiGetSliderParamsDef">uiGetSliderParams()</a></strong>
+       for obtaining the current parameter set for a slider.<p>
+
+  <dt><samp><a NAME="uiGetSliderParamsDef">void <strong>uiGetSliderParams
+       </strong>(uiSlider <var>slider</var>, double *<var>min</var>,
+       double *<var>max</var>, double *<var>current</var>, int *<var>
+       decimal_points</var>)</a></samp>
+  <dd>Get the various parameters for <var>slider</var>.<p>
+       <dl>
+	 <dt><var>slider</var>
+	 <dd>The <a href="#uiSliderDef">uiSlider</a> that is being read.
+	 <dt><var>min</var>
+	 <dd>A pointer to where the minimum value of the slider should
+	      be written.
+	 <dt><var>max</var>
+	 <dd>A pointer to where the maximum value of the slider should
+	      be written.
+	 <dt><var>current</var>
+	 <dd>A pointer to where the current value of the slider should
+	      be written.
+	 <dt><var>decimal_points</var>
+	 <dd>A pointer to where the current number of significant digits
+	      right of the decimal should be stored.
+       </dl>
+       See also <strong><a href="uiSetSliderParamsDef">uiSetSliderParams()</a>
+       </strong>.<p>
+       
+  <dt><samp><a NAME="uiMakeMenuDef">uiMenu <strong>uiMakeMenu</strong>
+       (char <VAR>*menuTitle</VAR>);</a></samp></dt>
+  <dd>This function creates the "menu button".  When the user clicks on this
+       button, a pop-up menu will appear.  To add items to this popup menu,
+       call <a href="#uiAddMenuItemDef"><strong>uiAddMenuItem()</strong></a>,
+       passing in the <samp>uiMenu</samp> type returned by this function.
+       </dd><p>
+       
+  <dt><samp><a NAME="uiAddMenuItemDef">void <strong>uiAddMenuItem</strong>
+       (uiMenu <VAR>menu</VAR>, char <VAR>*menuText</VAR>, <a
+       href="#uiMenuCallbackDef">uiMenuCallback</a> <VAR>callback</VAR>,
+       int <VAR>userData</VAR>);</a></samp>
+  <dd>Add a menu item to the menu <var>menu</var>, which was created with
+       <strong><a href="#uiMakeMenuDef">uiMakeMenu()</a></strong>.<p>
+
+       <dl>
+	 <dt><var>menu</var>
+	 <dd>The menu to which this menu item is to be appended.  <var>menu
+	      </var> is the value returned by <strong>
+	      <a href="#uiMakeMenuDef">uiMakeMenu</a></strong>.
+	      
+	 <dt><var>menuText</var></dt>
+	 <dd>This is the label to be associated with this menu item.  When
+	      the user clicks on the menu button to reveal the popup menu,
+	      it is this text that the user will see.
+	 <dt><var>callback</var></dt>
+	 <dd>The callback routine to be invoked when the user selects this
+	      menu item.  If no such callback routine is to be used, pass
+	      NULL for this argument.
+	 <dt><var>userData</var></dt>
+	 <dd>This is the optional user data associated with this menu item.
+	      When the callback is invoked in response to user activity,
+	      this data is passed to the callback routine.
+       </dl><p>
+
+       Although the <var>userData</var> is only an <samp>int</samp>, it can
+       still be useful.  Typically, the id of the menu item being created
+       is used for <var>userData</var>, so that one callback routine can be
+       used for the entire menu.  All that the callback routine would have
+       to do, then, is process its argument <var>userData</var> in a <samp>
+       switch ... case ... break</samp> block.<p>
+
+
+  <dt><samp><a NAME="uiSetTextDef">void <strong>uiSetText</strong>
+       ( char *<VAR>text</VAR> );</a></samp>
+  <dd>Sets the contents of the text field at the bottom of the window.<p>
+       <dl>
+	 <dt><VAR>text</VAR>
+	 <dd>The text to be displayed.  Pass NULL if no text is to be
+	      displayed.
+       </dl>
+       This function only has effect if
+       <a href="#uiInitWindowsDef">uiInitWindows()</a> was called with the
+       <strong>uiHasText</strong> option.<p>
+
+  <dt><samp><a NAME="uiGetTextDef">char *<strong>uiGetText</strong>
+       ( void );</a></samp>
+  <dd>Returns a pointer to the string in the text field at the bottom of the
+       window.  <em>This pointer points to memory allocated just for your
+       program.  If you don't call <a href="#uiFreeTextDef">uiFreeText()</a>,
+       that memory won't be freed, and you'll have a memory leak!</em><p>
+
+  <dt><samp><a NAME="uiFreeTextDef">void <strong>uiFreeText</strong>(char *
+       <var>s</var>);</samp>
+  <dd>Frees the memory allocated by libui when
+       <a href="#uiGetTextDef">uiGetText()</a> is called.  <em>Without this
+       freeing call, you will have a memory leak!</em><p>
+
+
+
+</dl>
+
+<br>
+<hr>
+<br>
+
+
+
+<h3><a name="Routines-Images">Image routines</a></h3>
+<dl>
+  <dt><samp><a NAME="uiNewImageDef">Image *<strong>uiNewImage</strong> (int
+       <VAR>width</VAR>, int <VAR>height</VAR>, argType <VAR>type</VAR> );</a>
+       </samp>
+  <dd>Returns a newly allocated image.<p>
+       <dl>
+	 <dt><VAR>width</VAR>
+	 <dd>The width of new image.
+	 <dt><VAR>height</VAR>
+	 <dd>The height of new image.
+	 <dt><VAR>type</VAR>
+	 <dd>The type of image - either <samp>SCALAR</samp>, for a grayscale
+	      image, or <samp>VECTOR</samp>, for a color image.
+       </dl><p>
+       Note that this routine allocates the memory for the image, so you need
+       to call <a HREF="#uiDeleteImageDef">uiDeleteImage()</a> to free up this
+       memory when you're done with the image.<p>
+
+  <dt><samp><a NAME="uiDeleteImageDef">void <strong>uiDeleteImage</strong>
+       ( Image *<VAR>im</VAR> );</a></samp>
+  <dd>Frees the memory that has been allocated for an image.<p>
+
+  <dt><samp><a NAME="uiOpenImageDef">Image *<strong>uiOpenImage</strong> (char
+       * <var>filename</var>, int <var>width</var>, int <var>height</var>);</a>
+       </samp>
+  <dd>Opens an RGB file, and reads it into memory.  Returns a pointer to the
+       new image.<p>
+       <dl>
+	 <dt><var>filename</var>
+	 <dd>Name of RGB file to be opened.
+	 <dt><var>width</var>
+	 <dd>Desired width of new image.  If the RGB image on disk has a
+	      different width, the image will be scaled.
+	 <dt><var>height</var>
+	 <dd>Desired height of new image.  If the RGB image on disk has a
+	      different height, the image will be scaled.
+       </dl><p>
+       If the file cannot be opened, or some other error occurs, <strong>
+       uiOpenImage()</strong> returns <em>NULL</em>.  All images that
+       are opened are created as <em>VECTOR</em> images.  When you are done
+       with this image, be sure to call
+       <a href="#uiCloseImageDef">uiCloseImage()</a> to properly free the memory
+       associated with the image.<p>
+
+  <dt><samp><a NAME="uiSaveImageDef">void <strong>uiSaveImage</strong>(Image
+       *<var>image</var>, char *<var>filename</var>);</a></samp>
+  <dd>Save an image to disk as an RGB file.<p>
+       <dl>
+	 <dt><var>image</var>
+	 <dd>Pointer to image to be saved.  This image can either be <em>VECTOR
+	      </em> or <em>scalar</em>.
+	 <dt><var>filename</var>
+	 <dd>Name of file to save image to.  This name should end with ".rgb"
+	      (no quotes).  If it does not, a .rgb extention will be added
+	      for you.
+       </dl><p>
+       Pixel scaling is <em>disabled</em> in <strong>uiSaveImage</strong>,
+       so you must call <a href="#uiScalePixelValuesDef">uiScalePixelValues()</a>
+       to reenable scaling, if desired.<p>
+       
+  <dt><samp><a NAME="uiCloseImageDef">void <strong>uiCloseImage</strong>
+       (Image *<var>im</var>);</a></samp>
+  <dd>Close the image <var>im</var> that was opened with
+       <a href="#uiOpenImageDef">uiOpenImage()</a>.<p>
+
+  <dt><samp><a NAME="uiImageWidthDef">int <strong>uiImageWidth</strong>
+       ( Image *<VAR>im</VAR> );</a></samp><br>
+       <samp><a NAME="uiImageHeightDef">int <strong>uiImageHeight</strong>
+       ( Image *<VAR>im</VAR> );</a></samp>
+  <dd>Returns the width or height of an image.<p>
+
+  <dt><samp><a NAME="uiImageTypeDef">argType <strong>uiImageType</strong> ( Image
+       *<VAR>im</VAR> );</a></samp>
+  <dd>Returns the type of an image, either <samp><em>SCALAR</em></samp>, for
+       a grayscale image, or <samp><em>VECTOR</em></samp> for a color image.<p>
+       
+  <dt><samp><a NAME="uiSetScalarValueDef">void <strong>uiSetScalarValue
+       </strong> ( Image *<VAR>im</VAR>, int <VAR>ix</VAR>, int <VAR>iy</VAR>,
+       Real <VAR>val</VAR> );</a></samp>
+  <dd>Sets the grayscale intensity of a pixel in an image.<p>
+       <dl>
+	 <dt><VAR>im</VAR>
+	 <dd>The image to modify.
+	 <dt><VAR>ix</VAR>, <VAR>iy</VAR>
+	 <dd>The coordinates of the pixel whose color is to be set.
+	 <dt><VAR>val</VAR>
+	 <dd>The grayscale value of the pixel.  This should be normalized to be
+	      between 0.0 and 1.0.
+       </dl><p>
+
+  <dt><samp><a NAME="uiSetVectorValueDef">void <strong>uiSetVectorValue</strong>
+       ( Image *<VAR>im</VAR>, int <VAR>ix</VAR>, int <VAR>iy</VAR>, Vector
+       <VAR>val</VAR> );</a></samp>
+  <dd>Sets the color of a pixel in an image.<p>
+       <dl>
+	 <dt><VAR>im</VAR>
+	 <dd>The image to modify.
+	 <dt><VAR>ix</VAR>, <VAR>iy</VAR>
+	 <dd>The coordinates of the pixel whose color is to be set.
+	 <dt><VAR>val</VAR>
+	 <dd>The color of the pixel.  This is a vector where the first (x)
+	      component is taken to be the red value, the second (y)
+	      component is taken to be the green value, and the the third (z)
+	      component is taken to be the blue value.  All values should be normalized
+	      to be between 0.0 and 1.0.
+       </dl><p>
+
+  <dt><samp><a NAME="uiGetScalarValueDef">Real <strong>uiGetScalarValue</strong>
+       ( Image *<VAR>im</VAR>, int <VAR>ix</VAR>, int <VAR>iy</VAR> );</a>
+       </samp>
+  <dd>Returns the gray value of a pixel.<p>
+       <dl>
+	 <dt><VAR>im</VAR>
+	 <dd>The image.
+	 <dt><VAR>ix</VAR>, <VAR>iy</VAR>
+	 <dd>The coordinates of the pixel.
+       </dl><p>
+
+  <dt><samp><a NAME="uiGetVectorValueDef">Vector <strong>uiGetVectorValue
+       </strong> ( Image *<VAR>im</VAR>, int <VAR>ix</VAR>, int <VAR>iy</VAR>
+       );</a></samp>
+  <dd>Returns the color value of a pixel.<p>
+       <dl>
+	 <dt><VAR>im</VAR>
+	 <dd>The image.
+	 <dt><VAR>ix</VAR>, <VAR>iy</VAR>
+	 <dd>The coordinates of the pixel.
+       </dl><p>
+
+  <dt><samp><a NAME="uiGetPixelValueDef">unsigned long <strong>uiGetPixelValue
+       </strong> ( Image *<VAR>im</VAR>, int <VAR>ix</VAR>, int <VAR>iy</VAR>
+       );</a></samp>
+  <dd>Returns the color value of a pixel in a packed representation that OpenGL
+       is familiar with.<p>
+       <dl>
+	 <dt><VAR>im</VAR>
+	 <dd>The image.
+	 <dt><VAR>ix</VAR>, <VAR>iy</VAR>
+	 <dd>The coordinates of the pixel.
+       </dl><p>
+       The return value of this function is a packed representation of the pixel
+       color. That is, the 32-bit unsigned long that is returned "looks like"
+       RRGGBBAA, where the red component is the upper 8 bits, the green is the
+       next 8, blue next, and alpha is the lowest 8 bits.  This value can be
+       used as the argument to a <strong>glColor4ub</strong> call.<p>
+       
+
+  <dt><samp><a NAME="uiGetPixelDataDef">unsigned long *<strong>uiGetPixelData
+       </strong> ( Image *<VAR>im</VAR> );</a></samp>
+  <dd>Returns an array of pixel values that the call <strong>glDrawPixels
+       </strong> can understand.<p>
+       <dl>
+	 <dt><VAR>im</VAR>
+	 <dd>The image to get the pixel data from.
+       </dl><p>
+       This is just like calling <a href="#uiGetPixelValueDef">uiGetPixelValue()
+       </a> for each pixel in the image.<p>
+
+  <dt><samp><a NAME="uiScalePixelValuesDef">void <strong>uiScalePixelValues
+       </strong> ( Image *<VAR>im</VAR>, uiBool <VAR>val</VAR> );</a></samp>
+  <dd>Specifies whether or not to scale the intensity values of an image when
+       retreiving pixel data from it (using
+       <a href="#uiGetPixelValue">uiGetPixelValue()</a> or
+       <a href="#uiGetPixelData">uiGetPixelData()</a>.<p>
+       <dl>
+	 <dt><VAR>im</VAR>
+	 <dd>The image.
+	 <dt><VAR>val</VAR>
+	 <dd><samp><em>uiTrue</em></samp> if you want to enable pixel value
+	      scaling, and <samp><em>uiFalse</em></samp> if you want to
+	      disable it.
+       </dl><p>
+
+  <dt><samp><a NAME="uiSetScaleFactorDef">void <strong>uiSetScaleFactor</strong>
+       ( Image *<VAR>im</VAR>, Real <VAR>val</VAR> );</a></samp>
+  <dd>Sets the pixel scaling factor for an image.<p>
+       <dl>
+	 <dt><VAR>im</VAR>
+	 <dd>The image to set the scaling factor of.
+	 <dt><VAR>val</VAR>
+	 <dd>The scale factor to use when generating pixel values for this
+	      image.
+       </dl><p>
+       This procedure sets a constant scaling factor to multiply the value of
+       each pixel with when querying pixel values.<p>
+</dl>
+
+<br><hr><br>
+<h3><a name="Routines-Draw">Drawing Routines</a></h3>
+<dl>
+  <dt><samp><a name="uiGetColorTableParamsDef">void
+       <b>uiGetColorTableParams</b> (int <var>*start</var>, int
+       <var>*size</var>);</samp>
+  <dd><i>Only valid when using <a href="#uiAddOptionsDef">indexed color
+       mode</a> in the main window(s).</i><br>
+       Sets <var>*start</var> to be the starting
+       index of the color table and <var>*size</var> to be the size of the
+       table.
+       <p>
+       
+  <dt><samp><a name="uiSetColorTableEntryDef">void
+       <b>uiSetColorTableEntry</b> (int <var>which</var>,
+       float <var>red</var>, float <var>green</var>,
+       float <var>blue</var>);</samp>
+  <dd><i>Only valid when using <a href="#uiAddOptionsDef">indexed color
+       mode</a> in the main window(s).</i><br>
+       Sets one entry of the color table.<p>
+       <dl>
+	 <dt><var>which</var>
+	 <dd>index # to set
+	 <dt><var>red, green, blue</var>
+	 <dd>floating-point values [0.0, 1.0] for red, green,
+	      and blue channels
+       </dl>
+       <p>
+       
+  <dt><samp><a name="uiSetColorTableDef">void
+       <b>uiSetColorTable</b> (int <var>start</var>, int
+       <var>length</var>, float <var>*data</var>);</samp>
+  <dd><i>Only valid when using <a href="#uiAddOptionsDef">indexed color
+       mode</a> in the main window(s).</i><br>
+       Sets a set of entries of the color table.<p>
+       <dl>
+	 <dt><var>start</var>
+	 <dd>starting index of the color table
+	 <dt><var>length</var>
+	 <dd>number of entries to set
+	 <dt><var>data</var>
+	 <dd>array of data containing floating-point values [0.0, 1.0]
+	      for red, green, and blue channels
+       </dl>
+       <p>
+		        
+  <dt><samp><a name="uiSetColorIndexDef">void <b>uiSetColorIndex</b>
+       (uiColorIndex <var>index</var>);</samp>
+  <dd>Set the current drawing color to an indexed-color.<p>
+       <dl>
+	 <dt><var>index</var>
+	 <dd>Index in color map to assign current color
+       </dl>
+       <p>
+       
+  <dt><samp><a name="uiSetColorRGBDef">void <b>uiSetColorRGB</b>
+       (uiColorRGB <var>color</var>); </samp>
+  <dd>Set the current drawing color to the RGB color specified.<p>
+       <dl>
+	 <dt><var>color</var>
+	 <dd>RGB Color to assign current color
+       </dl>
+       <p>
+
+  <dt><samp><a name="uiGetBlackPixelDef">int <strong>uiGetBlackPixel</strong>
+       (void);</a></samp>
+  <dd>Returns the color index that will produce black on the overlay
+       plane.<p>
+
+  <dt><samp><a name="uiGetWhitePixelDef">int <strong>uiGetWhitePixel</strong>
+       (void);</a></samp>
+  <dd>Returns the color index that will produce white on the overlay
+       plane.<p>
+
+  <dt><samp><a name="uiSetBackgroundDef">void <strong>uiSetBackground</strong>
+       ( void );</a></samp>
+  <dd>Sets the current drawing color to the window's background color.<p>
+       
+  <dt><samp><a name="uiDrawLineDef">void <b>uiDrawLine</b>
+       (int <var>x1</var>, int <var>y1</var>,
+       int <var>x2</var>, int <var>y2</var>);</samp>
+  <dd>Draws a line between two points.  This must be preceeded by a
+       <a href="#uiSetCurrentWindowDef">uiSetCurrentWindow</a>
+       call, and must be followed by a <a href = "#uiFlushDef">uiFlush</a>
+       call.<p>
+       <dl>
+	 <dt><var>x1</var>, <var>y1</var>
+	 <dd>first point
+	 <dt><var>x2</var>, <var>y2</var>
+	 <dd>second point
+       </dl>
+       <p>
+       
+  <dt><samp><a NAME="uiSetDrawModeDef">void <b>uiSetDrawMode</b>
+       (uiDrawMode <var>mode</var>);</samp>
+  <dd>Used to specify the drawing mode.  This can only be used
+       when drawing with indexed-color<p>
+       <dl>
+	 <dt><var>mode</var>
+	 <dd>Mode to do drawing<br>
+		<samp>UI_XOR</samp> : specifies drawing in XOR mode<br>
+		<samp>UI_COPY</samp> : specifies drawing in standard draw mode
+       </dl>
+       <p>
+       
+  <dt><samp><a name="uiDrawImageDef">void <b>uiDrawImage</b>
+       (Image * <var>im</var>, int <var>x</var>, int <var>y</var>);</samp>
+  <dd>Draws image to given coordinates<p>
+       <dl>
+	 <dt><var>im</var>
+	 <dd>Pointer to image in memory
+	 <dt><var>x</var>, <var>y</var>
+	 <dd>Coordinates to draw image
+       </dl>
+       <p>
+       
+  <dt><samp><a name="uiFlushDef">void <b>uiFlush</b>();</samp>
+  <dd>Signal to draw queued objects immediately.  The function
+       <a href = "#uiDrawLineDef>uiDrawLine</a> must be followed
+       by a call to uiFlush
+       
+</dl>
+<br><hr><br>
+
+<h3><a name="Routines-Misc">Miscellaneous routines</a></h3>
+<dl>
+  <dt><samp><a NAME="uiSetIdleCallbackDef">void
+       <strong>uiSetIdleCallback</strong>
+       (<a HREF="#uiIdleCallbackDef">uiIdleCallback</a> <VAR>idleProc</VAR>
+       );</a></samp>
+  <dd>Defines an idle procedure to be called periodically when the
+       program has nothing better to do.  You may call
+       <strong>uiSetIdleCallback()</strong>
+       anywhere in your program, just as long as
+       <a href="#uiInitWindows">uiInitWindows()</a> has already been called.
+       To disable an idle procedure, the procedure should return <em>
+       TRUE</em>; this will remove the procedure from the work
+       queue (you need to call uiSetIdleCallback again to replace it).
+       To leave an idle procedure on the work queue, the procedure
+       should return <em>FALSE</em>.  Because idle procedures,
+       even empty ones, consume large amounts of system resources, it is
+       best to leave them disabled until needed.<p>
+
+  <dt><samp><a name="uiSetTimerCallback">void
+       <strong>uiSetTimerCallback</strong>
+       (<a href="#uiTimerCallbackDef">uiTimerCallback</a>
+       <var>timerProc</var>, unsigned long <var>interval</var>);</a></samp>
+  <dd>Like an idle callback, only is called at a defined interval
+       (in milliseconds).  Will be continually called until the callback
+       procedure returns <em>TRUE</em> when it is removed from the
+       event queue.  To replace it, you must call uiSetTimerCallback
+       again.
+       <p>
+       
+  <dt><samp><a NAME="uiQuitDef">void <strong>uiQuit</strong>();</a></samp>
+  <dd>Shuts down the interface library.  This function never returns --
+       <strong>uiQuit()</strong> calls <samp>exit(1)</samp> as its last
+       statement.<p>
+
+  <dt><samp><a NAME="uiPostFileDialogDef">void <strong>uiPostFileDialog
+       </strong>(char *<var>title</var>, char *<var>filter</var>,
+       <a HREF="#uiFileBoxCallbackDef">uiFileBoxCallback</a> <var>okCallback
+       </var>);</a></samp>
+  <dd>Presents a file-selection dialog.<p>
+       <dl>
+	 <dt><VAR>title</VAR>
+	 <dd>The title of the dialog box.
+	 <dt><VAR>filter</VAR>
+	 <dd>An optional filter that filenames must satisfy in
+	      order to be shown. (for example, "*.c" to show files ending
+	      with ".c")
+	 <dt><VAR>okCallback</VAR>
+	 <dd>The callback procedure to be invoked when the user presses the
+	      OK button in the dialog. This is where the name of the selected
+	      file is made available.  If no callback is to be invoked, pass
+	      NULL for this argument.
+       </dl>
+       When the application calls <strong>uiPostFileDialog()</strong>, a
+       file-selection box is presented.  The <strong>uiPostFileDialog</strong>
+       call returns control to the application immediately (while the dialog
+       box is still up), and the application is notified when the OK button
+       has been pressed via the
+       <VAR><a href="#uiFileBoxCallbackDef">okCallback</a></VAR>.<p>
+
+  <dt><samp><a NAME="uiBusyCursorDef">void <strong>uiBusyCursor</strong>
+       (int <var>state</var>, int <var>interruptable</var>)</samp>
+  <dd>Sets the cursor the watch.  This is a useful user interface routine to
+       let the user know that the current operation could take some time.<p>
+       <dl>
+	 <dt><var>state</var>
+	 <dd>Determines whether the the cursor should be changed to the watch,
+	      or changed back.  To change to the watch, use <em>
+	      ENABLE_BUSY_CURSOR</em>.  To change back to the default icon,
+	      use <em>DISABLE_BUSY_CURSOR</em>.  When the cursor is set to
+	      the watch, no user interaction will be allowed.  Additionally,
+	      user interation will <em>not</em> be queued.
+	 <dt><var>interruptable</var>
+	 <dd>This variable is currently not used.  Always set it to 0.
+       </dl><p>
+
+
+
+
+</dl>
+
+
+
+<DL>
+</dl>
+
+<br><br>
+<hr>
+
+<!--          -->
+<!-- Glossary -->
+<!--          -->
+
+<h2><a NAME="Reference-Glossary">Glossary</a></h2>
+<dl>
+  <dt><a NAME="CallbackProcedureDefinition"><em>Callback Procedure</em></a>
+  <dd>A routine that is called by the interface library in response to some
+       action (the user presses a button, a window becomes visible, etc)
+       
+       <!-- dialog box-->
+       
+  <dt><a NAME="IdleProcedureDefinition"><em>Idle Procedure</em></a>
+  <dd>A routine that is called periodically by the interface library, when
+       there is nothing else to do.
+       
+  <dt><a NAME="OverlayPlaneDefinition"><em>Overlay plane</em></a>
+  <dd>A drawing plane which lies above another drawing area and whose image is
+       drawn on top of the image beneath it.  One color index (typically 0)
+       is specified to be transparent.
+</dl>
+
+<br><br>
+<hr>
+
+<!--         -->
+<!--  Index  -->
+<!--         -->
+
+<h2><a name="Index">Index</a></h2>
+<ul>
+  <li><a href="#Macros">CLAMP</a>
+  <li><a href="#Macros">MAX</a>
+  <li><a href="#Macros">MIN</a>
+  <li><a HREF="#uiAddMenuItemDef">uiAddMenuItem</a>
+  <li><a HREF="#uiAddSliderDef">uiAddSlider</a>
+  <li><a HREF="#uiAddToggleButtonDef">uiAddToggleButton</a>
+  <li><a HREF="#uiAddWindowDef">uiAddWindow</a>
+  <li><a HREF="#uiAppOptionsDef">uiAppOptions</a>
+  <li><a HREF="#uiBoolDef">uiBool</a>
+  <li><a HREF="#uiBusyCursorDef">uiBusyCursor</a>
+  <li><a HREF="#uiCallbackDef">uiCallback</a>
+  <li><a href="#uiCloseImageDef">uiCloseImage</a>
+  <li><a HREF="#uiDeleteImageDef">uiDeleteImage</a>
+  <li><a HREF="#uiDirtyWindowDef">uiDirtyWindow</a>
+  <li><a HREF="#uiDrawingPlaneDef">uiDrawingPlane</a>
+  <li><a href="#uiDrawImageDef">uiDrawImage</a>
+  <li><a href="#uiDrawLineDef">uiDrawLine</a>
+  <li><a HREF="#uiExposeCallbackDef">uiExposeCallback</a>
+  <li><a HREF="#uiFileBoxCallbackDef">uiFileBoxCallback</a>
+  <li><a href="#uiFlushDef">uiFlush</a>
+  <li><a HREF="#uiFreeTextDef">uiFreeText</a>
+  <li><a href="#uiGetBlackPixelDef">uiGetBlackPixel</a>
+  <li><a href="#uiGetColorTableParams">uiGetColorTableParams</a>
+  <li><a HREF="#uiGetPixelDataDef">uiGetPixelData</a>
+  <li><a HREF="#uiGetPixelValueDef">uiGetPixelValue</a>
+  <li><a href="#uiGetSliderParamsDef">uiGetSliderParams</a>
+  <li><a HREF="#uiGetScalarValueDef">uiGetScalarValue</a>
+  <li><a HREF="#uiGetSliderValueDef">uiGetSliderValue</a>
+  <li><a HREF="#uiGetTextDef">uiGetText</a>
+  <li><a HREF="#uiGetToggleButtonStateDef">uiGetToggleButtonState</a>
+  <li><a HREF="#uiGetUserDataDef">uiGetUserData</a>
+  <li><a HREF="#uiGetVectorValueDef">uiGetVectorValue</a>
+  <li><a href="#uiGetWhitePixelDef">uiGetWhitePixel</a>
+  <li><a HREF="#uiGetWindowSizeDef">uiGetWindowSize</a>
+  <li><a href="#uiIdleCallbackDef">uiIdleCallback</a>
+  <li><a HREF="#uiImageTypeDef">uiImageType</a>
+  <li><a HREF="#uiImageWidthDef">uiImageWidth</a>
+  <li><a HREF="#uiInitWindowsDef">uiInitWindows</a>
+  <li><a HREF="#uiMainLoopDef">uiMainLoop</a>
+  <li><a HREF="#uiMakeMenuDef">uiMakeMenu</a>
+  <li><a HREF="#uiMapCoordinatesDef">uiMapCoordinates</a>
+  <li><a HREF="#uiMouseActionDef">uiMouseAction</a>
+  <li><a HREF="#uiMouseCallbackDef">uiMouseCallback</a>
+  <li><a HREF="#uiNewImageDef">uiNewImage</a>
+  <li><a href="#uiOpenImageDef">uiOpenImage</a>
+  <li><a HREF="#uiPostFileDialogDef">uiPostFileDialog</a>
+  <li><a HREF="#uiQuitDef">uiQuit</a>
+  <li><a href="#uiSaveImageDef">uiSaveImage</a>
+  <li><a HREF="#uiScalePixelValuesDef">uiScalePixelValues</a>
+  <li><a href="#uiSetBackgroundDef">uiSetBackground</a>
+  <li><a href="#uiSetColorIndexDef">uiSetColorIndex</a>
+  <li><a href="#uiSetColorRGBDef">uiSetColorRGB</a>
+  <li><a href="#uiSetColorTableDef">uiSetColorTable</a>
+  <li><a href="#uiSetColorTableEntryDef">uiSetColorTableEntry</a>
+  <li><a HREF="#uiSetControlHeightDef">uiSetControlHeight</a>
+  <li><a HREF="#uiSetControlWidthDef">uiSetControlWidth</a>
+  <li><a HREF="#uiSetCurrentWindowDef">uiSetCurrentWindow</a>
+  <li><a href="#uiSetDrawModeDef">uiSetDrawMode</a>
+  <li><a href="#uiSetIdleCallbackDef">uiSetIdleCallback</a>
+  <li><a HREF="#uiSetMainWindowHeightDef">uiSetMainWindowHeight</a>
+  <li><a HREF="#uiSetMainWindowWidthDef">uiSetMainWindowWidth</a>
+  <li><a HREF="#uiSetScalarValueDef">uiSetScalarValue</a>
+  <li><a HREF="#uiSetScaleFactorDef">uiSetScaleFactor</a>
+  <li><a href="#uiSetSliderParamsDef">uiSetSliderParams</a>
+  <li><a HREF="#uiSetSliderValueDef">uiSetSliderValue
+  <li><a HREF="#uiSetTextHeightDef">uiSetTextHeight</a>
+  <li><a HREF="#uiSetTimerCallbackDef">uiSetTimerCallback</a>
+  <li><a href="#uiSetToggleButtonStateDef">uiSetToggleButtonState</a>
+  <li><a HREF="#uiSetUserDataDef">uiSetUserData</a>
+  <li><a HREF="#uiSetVectorValueDef">uiSetVectorValue</a>
+  <li><a HREF="#uiSliderDef">uiSlider</a>
+  <li><a HREF="#uiTimerCallbackDef">uiTimerCallback</a>
+  <li><a HREF="#uiToggleButtonDef">uiToggleButton</a>
+  <li><a HREF="#uiWindowDef">uiWindow</a>
+</ul>
+  
+<a HREF="http://www.cs.washington.edu/education/courses/457/index.html">
+<STRONG>
+Back to the CS457 Home Page
+</STRONG>
+</a>
+
+<hr>
+
+<address>
+mtwong@cs.washington.edu   (last modified: 19 Mar 1996)
+</address>
+</body>
+</html>
+

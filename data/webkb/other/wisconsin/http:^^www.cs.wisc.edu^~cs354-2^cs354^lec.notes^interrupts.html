@@ -1,0 +1,377 @@
+Date: Tue, 05 Nov 1996 00:32:46 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 30 Aug 1995 21:21:35 GMT
+Content-length: 10762
+
+<html>
+<head>
+<title> Lecture notes - Chapter 12 - Exception Handling</title>
+</head>
+
+<BODY>
+<h1> Chapter 12 -- Exception Handling</h1>
+
+<pre>
+
+
+EXCEPTION HANDLERS
+------------------
+
+The trouble with programmed I/O is that it both wastes CPU
+resources and it has potential for "incorrect" operation.
+
+What we really want:
+  (Since most I/O devices are slow), have I/O devices signal
+  the CPU when they have a change in status.
+
+  The I/O devices tell the CPU that they are "ready."
+
+In order to do this we need:
+  Hardware (wires) from devices to the CPU.
+  A way for special software to be invoked when the a device
+  signals on the wire.
+
+
+The modern solution bundles the software to deal with
+these signals (interrupts) and other situations  into
+an EXCEPTION HANDLER.  (Effectively part of the OS.)
+
+
+EXCEPTIONS
+----------
+ 1.  interrupts
+     --initiated outside the instruction stream
+     --arrive asynchronously (at no specific time)
+
+     examples:
+       I/O device status change
+       I/O device error condition
+       thermal override shutdown
+       internal error detection
+
+     when should the interrupt be dealt with?
+       as soon as possible
+
+ 2.  traps
+     --occur due to something in instruction stream
+     --arrive synchronously (while instruction is executing)
+         good test:  if program was re-run, the trap would
+	 occur in precisely the same place in the code.
+
+     examples:
+       unaligned address error
+       arithmetic overflow
+       syscall
+
+     when should the trap be dealt with?
+       right now!  The user program cannot continue until
+       whatever caused the trap is dealt with.
+
+
+
+exception handling
+------------------
+
+the mechanism for dealing with exceptions is simple; its
+implementation can get complex.  The implementation varies
+among computers (manufactures).
+
+  situation:  a user program is running (executing), and
+	      a device generates an interrupt request.
+  mechanism to respond:
+	      the hardware temporarily "suspends" the user
+	      program, and instead runs code called
+	      an EXCEPTION HANDLER.  After the handler
+	      is finished doing whatever it needs to,
+	      the hardware returns control to the user program.
+
+  limitations of exception handler:
+     since it is being invoked (potentially) in the middle
+     of a user program, the handler must take extra care
+     not to change the state of the user program.
+       -- it can't change register values
+       -- it can't change the stack
+     So, how can it do anything at all?
+       The key to this answer is that any portion of the
+       state that it does change, it must also restore
+       before returning to the user program.
+
+       The handler often uses the system stack to temporarily
+       store register values.
+
+
+WHEN to handle an interrupt -- 2 possiblilities:
+  1.  right now!  Note that this could be in the middle of
+      an instruction.  In order to do this, the hardware
+      must be able to know where the instruction is in
+      its execution and be able to "take up where it left off"
+
+      This is very difficult to do.
+      But, it has been done in simpler forms on a few machines.
+      Example:  arbitrary memory to memory copy
+
+  2.  wait until the currently executing instruction finishes,
+      then handle.  THIS IS THE METHOD OF CHOICE.
+
+      The instruction fetch/execute cycle must be expanded to
+
+       1. handle pending interrupts
+       2. instruction fetch
+       3. PC update
+       4. decode
+       5. operand load
+       6. operation
+       7. store results
+
+
+
+some terms
+----------
+
+interrupt request -- the activation of hardware somewhere that
+		     signals the initial request for an interrupt.
+pending interrupt --  an interrupt that hasn't been handled yet,
+		      but needs to be
+kernel-- the exception handler
+         In most minds, when people think of a kernel, they think
+	 of critical portions of an operating system.  The exception
+	 handler IS a critical portion of an operating system!
+handler --  the code of the exception handler.
+
+
+MIPS exception handling mechanism
+---------------------------------
+
+hardware does the following:
+ 1. sets state giving cause of exception 
+    Cause register -- coprocessor C0, register 13
+
+      32 bit register, bits 6..2 (5 bits) specify the type
+      of the exception, called the ExcCode.
+
+      Page 316 (text)  gives the mapping of encodings to causes
+      examples:
+	 00000  (0)  Interrupt
+	 00100  (4)  load from an illegal address
+	 01000  (8)  syscall instruction
+	 01100  (12) arithmetic overflow
+
+ 2. changes to kernel mode, saving the previous mode
+    in a hardware stack (3 levels deep)
+
+    The mode is saved in the Status register.
+    coprocessor C0, register 12
+
+    defined in the processor's architecture are 2 modes,
+       user -- the mode that user programs run under.
+	       certain instructions are not available
+       kernel -- the operating system mode.  Allows the OS
+	       to retain control over "vital" system aspects.
+	       All instructions are available.
+
+ 3. disables further interrupts
+ 4. saves current PC
+    
+    coprocessor C0, register 14, called Exception Program counter.
+
+    Gives return address in user program. Where to return to
+    when done handling the exception.
+
+ 5. jumps to hardwired address 0x8000 0080.
+    This is where the exception handler code is.
+
+
+
+
+Then, the code within the exception handler is run.
+It does the following:
+ 1.  save some registers (on system stack).
+
+     The handler needs to use registers too!  It may not
+     change (clobber) register contents of the user program.
+     So, it saves them (on stack or in memory).
+
+ 2.  Figure out exception type. (in ExcCode)
+
+     mfc0  $k0, $13        # get Cause register
+     andi  $k0, $k0, 0x3c  # Mask out all but ExcCode
+
+ 3.  use ExcCode in combination with a JUMP TABLE to jump to
+     the correct location within the exception handler.
+
+ 4.  handle the exception (whatever it is!)
+
+ 5.  restore registers saved in (1).
+
+ 6.  atomically:
+     (as if done in 1 step, not 3)
+	restore previous kernel/user mode (from Status register)
+	reenable interrupts
+	jump back to user program (using EPC)
+
+
+
+about Jump Tables
+-----------------
+
+A clever mechanism for doing something like a CASE (SWITCH) statement.
+A jump to one of many locations.
+
+
+   keep a table of addresses (case1, case2, and case3):
+
+   JumpTable:  .word case0
+	       .word case1
+	       .word case2
+ 
+    
+    sll  $8, $8, 2          # case number shifted left 2 bits
+			    # (need a word offset into table, not byte)
+    lw   $9, JumpTable($8)  # load address into $9
+    jr   $9                 # jump to address contained in $9
+
+    .
+    .
+    .
+
+ case0:   #code for case0 here
+    .
+    .
+    .
+ case1:   #code for case1 here
+    .
+    .
+    .
+ case2:   #code for case2 here
+
+
+  (Note that the cases don't have to go in any specific order.)
+
+
+
+Addressing mode:          label($rb)
+     Effective address is gotten by    label + ($rb)
+
+     label doesn't fit into 16 bit displacement field of load/store
+     instruction.
+
+
+     MAL->TAL synthesis of this must be something like:
+	 la  $1, label
+	 add $1, $1, $rb
+     then use 0($1) as addressing mode in load/store  instruction.
+
+
+
+
+some advanced topics
+--------------------
+
+PRIORITIES
+
+problem:  Multiple interrupt requests can arrive simultaneously.
+	  Which one should get handled first?
+
+possible solutions:
+     FCFS -- the first one to arrive gets handled first.
+
+         difficulty 1) This might allow a malicious/recalcitrant
+         device or program to gain control of the processor.
+
+         difficulty 2) There must be hardware that maintains
+         an ordering of pending exceptions.
+
+     prioritize all exceptions -- the one with the highest priority
+	 gets handled first.  This is a common method for solving
+	 the problem.
+
+	 Priorities for various exceptions are assigned either by
+	 the manufacturer, or by a system manager through software.
+	 The priorities are normally set when a machine is 
+	 booted (the OS is started up).
+
+         difficulty 1) Exceptions with the same priority must
+	 still be handled in some order.  Example of same priority
+	 exceptions might be all keyboard interrupts.  Consider
+	 a machine with many terminals hooked up.
+
+	 The instruction fetch/execute cycle becomes:
+	  1.  any interrupts with a higher priority than whatever
+	      is currently running pending?
+	  2.  fetch
+	  3.  decode
+	  4.  operands
+	  5.  operation
+	  6.  result
+
+	     NOTE:  This implies that there is some hardware
+	     notion of the priority for whatever is running
+	     (user program, keyboard interrupts, clock interrupt, etc.)
+
+
+
+
+	 What should get given the highest priority?
+	   clock? power failure?  thermal shutdown?  arithmetic overflow?
+	   keyboard?  I/O device ready?
+
+	   priorities are a matter of which is most urgent,
+	   and therefore cannot wait, and how long it takes
+	   to process the interrupt.
+	   -- clock is urgent, and takes little processing,
+	      maybe only a variable increment.
+	   -- power failure is very urgent, but takes a lot
+	      or processing, because the machine will be stopped.
+	   -- overflow is urgent to the program which caused it,
+	      because it cannot continue.
+	   -- keyboard is urgent because we don't want to lose
+	      a second key press before the first is handled.
+
+	      (story of what can happen if interrupt priorities set wrong)
+
+
+
+
+REENTRANT EXCEPTION HANDLERS
+
+The best solution combines priorities with an exception handler
+that can itself be interrupted.  There are many details to
+get right to make this possible.
+   The instruction fetch/execute cycle remains the same.  At
+   the beginning of EVERY instruction (even those within
+   the exception handler), a check is made if there are
+   pending interrupts.  Only those with higher priorities
+   than whatever is currently running will be processed. 
+
+   The exception handler must be modified so that it can
+   be interrupted.  Its own state must be saved (safely).
+
+   Within the handler:
+
+     1.  disable interrupts momentarily in order to save
+	 important state that cannot get clobbered.
+	 (EPC, current priority level, maybe registers
+	 $26 and $27).
+	 Question:  where do these things get saved?
+     2.  re-enable interrupts for higher priorities than
+	 current level.
+
+	 If the priority level checking is done in hardware,
+	 then all interrupts can be re-enabled.
+     3.  This invocation of the exception handler eventually
+	 finishes.
+
+
+      The instruction fetch/execute cycle must be expanded to
+
+       1. handle pending interrupts
+       2. instruction fetch
+       3. PC update
+       4. decode
+       5. operand load
+       6. operation
+       7. store results
+
+</pre>
+

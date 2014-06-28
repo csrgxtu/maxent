@@ -1,0 +1,151 @@
+Date: Tue, 26 Nov 1996 02:58:51 GMT
+Server: Apache/1.0.0
+Content-type: text/html
+Content-length: 4280
+Last-modified: Wed, 25 Sep 1996 16:56:59 GMT
+
+<HTML>
+<HEAD>
+<BASE HREF="http://www.cs.mcgill.ca/~kkhatib/public_html">
+<TITLE>Khalil's Home Page</TITLE>
+
+
+<script language="JavaScript">
+
+
+<!-- Beginning of JavaScript Applet -------------------
+
+/* Provided By Web Integration Systems, Inc. DBA Websys, Inc. All Rights Reserved.*/
+
+function scrollit_r2l(seed)
+{
+        var m1 = "heay.. Don't forget ";
+        var m2 = " to see the pictures!!!";
+        var m3 = " ";
+        var m4 = " ";
+
+        var m6 = "";
+
+        var msg= m1 + m2 + m3 + m4 +m6;
+        var out = " ";
+        var c = 1;
+
+        if (seed > 100) {
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                timerTwo=window.setTimeout(cmd,50);
+        }
+        else if (seed <= 100 && seed > 0) {
+                for (c=0 ; c < seed ; c++) {
+                        out+=" ";
+                }
+                out+=msg;
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                window.status=out;
+                timerTwo=window.setTimeout(cmd,50);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;
+                        var cmd="scrollit_r2l(" + seed + ")";
+                        window.status=out;
+                        timerTwo=window.setTimeout(cmd,50);
+                }
+
+                else {
+                        window.status=" ";
+                        timerTwo=window.setTimeout("scrollit_r2l(100)",45);
+                }
+        }
+}
+
+
+// -- End of JavaScript code -------------- -->
+
+
+
+</script>
+
+
+
+
+</HEAD>
+<BODY bgcolor="#42426f" text="#ffffff" link="#ff7c00" vlink="#f5a100"
+alink="#cc3232" onLoad="timerONE=window.setTimeout('scrollit_r2l(100)',500);">
+
+
+<CENTER> 
+<H1>Khalil M. El-Khatib</H1> 
+<!WA0><IMG SRC="http://www.cs.mcgill.ca/~kkhatib/pictures/Buzz_small.gif">
+</CENTER>
+<CENTER>
+<APPLET CODE="TickerTape.class" WIDTH=500 HEIGHT=22>
+     <PARAM NAME=count VALUE=2>
+     <PARAM NAME=text0 VALUE="Wfgfgfdgfd!!!...">
+     <PARAM NAME=text1 VALUE=".Click here to sign our guestbook..............">
+     <PARAM NAME=url1 VALUE="http://www-ccsl.cs.umass.edu/~kaplan/jobs/guestbook.html">
+     <PARAM NAME=delay VALUE=30>
+     <PARAM NAME=size  VALUE=18>
+     </APPLET>
+</CENTER>
+
+
+<P><P><BR><BR>
+
+<MENU>
+<LI><STRONG><BLINK>E-mail:</BLINK></STRONG>	
+	<EM><!WA1><A HREF="mailto:kkhatib@cs.mcgill.ca">kkhatib@cs.mcgill.ca</A></EM>
+<LI><STRONG>Office:</STRONG>
+	<EM>McConnell ENG. bld. Room 300N</EM>
+<LI><STRONG>Office Phone:</STRONG
+	><EM>(514) 398-8259</EM>
+<LI><STRONG>Office FAX:</STRONG>
+	<EM>(514) 398-3883 </EM>
+</MENU>	
+<P>
+
+
+Welcome to my home page, Abu Atmi on-line.<BR>
+<!WA2><IMG SRC="http://www.cs.mcgill.ca/public_gifs/line.dash.gif" ALT="-----">
+<BR>
+<center>
+<!WA3><IMG SRC="http://www.cs.mcgill.ca/public_gifs/icon.book.ques.gif" ALT="?">
+<H2>Research Interests</H2>		
+</center><br>
+<UL>
+<LI> <!WA4><A HREF="http://www.cs.mcgill.ca/~kkhatib/research1.html">Parallel Discrete Event Simulation. </A> 
+<LI> Visit my <!WA5><A HREF="http://www.cs.mcgill.ca/~kkhatib/carl/welcome.html">advisor</A>'s home page. 
+</UL>
+<P>
+<!WA6><IMG SRC="http://www.cs.mcgill.ca/public_gifs/line.dash.gif" ALT="-----">
+
+<center>
+<p>
+<!WA7><IMG SRC="http://www.cs.mcgill.ca/public_gifs/smile.gif" ALT=":-)">
+<H2>Favorite Links</H2>
+</center><br>			
+<UL>
+<LI><A ALIGN "MIDDLE" HREF="http://www-acaps.cs.mcgill.ca:80/~stoa/"> Arthur</A>'s  home page.
+<LI><A ALIGN "MIDDLE" HREF="http://www.cs.mcgill.ca/~jline/welcome.html"> Jacqueline</A>'s  home page.
+<LI><A ALIGN "MIDDLE" HREF="http://www.cs.mcgill.ca/~peter/"> Peter</A>'s  home page.
+<LI>School Of Computer Science, <!WA8><A HREF="http://www.cs.mcgill.ca/"> (SOCS)</A>, at McGill.
+<LI>My undergraduate university, the American University of Beirut(<!WA9><A HREF="http://www.aub.ac.lb/"> AUB</A>).
+<LI> <!WA10><A HREF="ftp://ftp.hiof.no/pub/levant/postcards/old_beirut/"> Post-cards</A>, from Old Beirut.
+<LI> Fayruz and Ziad, <!WA11><A HREF="http://www.mit.edu:8001/activities/lebanon/arts_link.html"> the rahabeneh</A>.
+<LI> <!WA12><A HREF="http://www.mcgill.ca"> McGill</A>
+<LI> See some<!WA13><A HREF="http://www.cs.mcgill.ca/~kkhatib/pict.html"> pictures</A>?
+<LI> Read <!WA14><A HREF="http://www.dm.net.lb/future/news.htm">news </A> about what is going on in the Lebanon ?
+<LI> <!WA15><A HREF="http://www.cs.mcgill.ca/~kkhatib/con_ed/welcome.html"> Continuing Education </A>
+
+
+
+</UL>
+<P>
+<P>
+<!WA16><IMG SRC="http://www.cs.mcgill.ca/public_gifs/line.dash.gif" ALT="-----">
+<I>April 4, 1995<I>
+<!WA17><IMG SRC="http://www.cs.mcgill.ca/public_gifs/line.ship.right.gif" ALT="-----">
+</BODY>
+</HTML>

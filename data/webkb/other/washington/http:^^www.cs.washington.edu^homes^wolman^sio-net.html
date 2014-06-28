@@ -1,0 +1,99 @@
+Date: Tue, 10 Dec 1996 21:54:50 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Fri, 19 Jan 1996 20:04:04 GMT
+Content-length: 4008
+
+<html>
+<head>
+<title>Protocol Service Decomposition for Scalable Multiprocessors</title>
+</head>
+<body>
+<h1>Protocol Service Decomposition for Scalable Multiprocessors</h1>
+
+<!WA0><!WA0><img src="http://www.cs.washington.edu/homes/wolman/mesh.gif">
+
+<h2>Overview</h2>
+<p>
+This project investigates the use of parallelism in high performance
+internetworking.
+In particular, our goal is to support low overhead
+scalable communication between a multiprocessor and remote hosts
+over Ethernet, FDDI, ATM, and HIPPI networks.  Our initial platform
+will be to support the BSD socket interface on top of the TCP/IP
+and UDP/IP protocol stacks.
+</p>
+<p>
+The key observation behind our strategy is that an application's interface
+to the network is distinct and separable from its interface to the
+operating system.  We take advantage of this observation by decomposing
+the protocol implementation into a protocol library and a privileged
+server process.
+</p>
+<p>
+We present a brief overview of this architecture here, and a detailed
+description can be found in 
+<!WA1><!WA1><a href="ftp://cs.cmu.edu/afs/cs/project/mach/public/doc/published/user.level.protocols.ps"> Protocol Service Decomposition for High Performance Networking
+</a> by Maeda and Bershad, SOSP 1993.
+<p>
+A protocol library resides within each application process and
+communicates directly with the network interface for the common case
+operations of send and receive.
+The library makes use of a privileged system server for all operations
+that either have non-critical performance requirements or that
+cannot be handled within the application while maintaining the
+original operating system semantics. This server (the <i>proxy server</i>)
+handles a variety of tasks such as connection establishment and teardown,
+routing, ARP, fork and select.      
+</p>
+<p>
+This architecture is particularly well-suited to parallel environments
+because each processor can maintain its own copy of the network
+protocol stack and protocol endpoint data structures.  Since the
+logically distinct endpoints are now structurally distinct, they
+can run in parallel with scalable performance.
+</p>
+<p>
+In addition to providing the basic socket interface, we plan to
+investigate providing a collective I/O interface for parallel
+applications.  We will explore different ways of mapping a collective
+I/O interface onto the abstractions provided by the socket interface
+combined with TCP and UDP.
+We also plan to leverage off of the parallel file system interfaces being
+designed as part of the <!WA2><!WA2><a href="http://www.ccsf.caltech.edu/~jpool/SIO/SIO.html">Scalable I/O Initiative</a>, modifying them where
+necessary to apply them to network communication.
+</p>
+<h2>Implementation</h2>
+<p>
+The initial implementation of this architecture on a uniprocessor
+is described in
+<!WA3><!WA3><a href="ftp://cs.cmu.edu/afs/cs/project/mach/public/doc/published/user.level.protocols.ps"> Protocol Service Decomposition for High Performance Networking
+</a>.
+We started by taking this implementation and porting it to the Intel
+Paragon running the OSF/1 operating system.  Porting the library is
+complete, and porting the proxy server is in progress.  The original
+implementation was done as part of the Mach project, where the microkernel
+provides the device management and the Unix server provides the traditional
+operating system functionality.  The proxy server was implemented as a
+set of modifications to the Unix server.  For better modularity and 
+stability, we are currently separating the proxy server functionality 
+from the OSF/1 server into a separate privileged process.
+</p>
+<h2>Participants</h2>
+Faculty:
+<ul>
+<li> <!WA4><!WA4><a href="http://www.cs.washington.edu/homes/bershad">Brian Bershad</a>
+</ul>
+Students:
+<ul>
+<li> <!WA5><!WA5><a href="http://www.cs.washington.edu/homes/wolman">Alec Wolman</a>
+</ul>
+<h2>Related Work</h2>
+This work is being done in the context of the 
+<!WA6><!WA6><a href="http://www.ccsf.caltech.edu/SIO/SIO.html">Scalable I/O Initiative</a>.
+
+<hr> 
+<address> Last updated Fri 19 Jan 1996 </address>
+<address> wolman@cs.washington.edu </address>
+</body>
+</html>

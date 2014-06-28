@@ -1,0 +1,51 @@
+Server: Dienst v4-1-6 
+MIME-version: 1.0
+Content-type: text/html
+
+<TITLE>Incorporating System Resource Information into Flow Control</TITLE>
+<H2>Incorporating System Resource Information into Flow Control</H2>
+ Takako M. Hickey and  Robbert Van Renesse<BR>
+TR95-1489<BR>
+February 27, 1995<BR>
+<p>
+ Upcall-based distributed systems have become widespread in recent years. While upcall-based systems provide some obvious advantages, experiences with these systems have exposed unanticipated problems of unpredictability and inefficiency. Incorporating system resources information into flow control is essential in solving these problems. Variants of window-based flow control suitable for distributed systems are investigated. Next, message packing, which improves network bandwidth usage efficiency, and, consequently, message throughput, is presented. Finally, a back pressure mechanism which controls admission of messages into the system by blocking applications at high load is presented. The combination of the window mechanism and the back pressure mechanism provides end-to-end management of system resources. The former manages network resources, while the latter manages operating system resources. The combination maintains good throughput even under high load.<P>
+<hr><p>
+<H2>How to view this document</H2>
+<P><UL>
+<LI>Display an <B>overview</B> of the document in one of the following formats.
+<P><UL>
+<A HREF="/Dienst/UI/2.0/Composite/ncstrl.cornell%2fTR95-1489/1?nsections=1"><LI>Overview of thumbnail pages</A></UL>
+<P>
+<LI>Display a <B>selected page</B> in one of the following formats (document has 14 pages).
+<FORM ACTION=/Dienst/UI/2.0/ShowPage/ncstrl.cornell%2fTR95-1489>
+<INPUT TYPE="hidden" NAME="npages" VALUE=14><SELECT name=format size=2>
+<OPTION value=xdoc>raw OCR output
+<OPTION value=inline selected>inline gif image
+</SELECT>
+<INPUT NAME="page" TYPE=INT SIZE=4 VALUE=1>
+<INPUT TYPE=submit Value="Display page">
+</FORM>
+<LI>Display the <B>whole</B> document in one of the following formats.
+<P><UL>
+<LI><A HREF="/Dienst/Repository/2.0/Body/ncstrl.cornell%2fTR95-1489/postscript">PostScript
+</A> 265293 bytes.
+</UL>
+<BR>
+<LI>
+<A HREF="/Dienst/UI/2.0/Print/ncstrl.cornell%2fTR95-1489">Print or download all or selected pages.
+</A></UL>
+<HR>
+<p>
+<BLOCKQUOTE> 
+You are granted permission for the non-commercial reproduction, distribution,
+display, and performance of this technical report in any format, BUT this
+permission is only for a period of 45 (forty-five) days from the most recent
+time that you verified that this technical report is still available from
+the Computer Science Department of Cornell University under terms that
+include this permission.  All other rights are reserved by the author(s).
+ </BLOCKQUOTE></p><HR><p>
+[ <A HREF="/Dienst/UI/2.0/Search">Search</A>
+ | <A HREF="http://www.ncstrl.org:8080">Home page</A>
+ ]
+<HR>
+<I><img align=left  src="/Dienst/htdocs/image_gif/sm_ncstrl.gif">NCSTRL</I><br><I>This server operates at Cornell University.</I> <BR><I>Send email to <A HREF="mailto: tech-reports@cs.cornell.edu">tech-reports@cs.cornell.edu</A> </I>

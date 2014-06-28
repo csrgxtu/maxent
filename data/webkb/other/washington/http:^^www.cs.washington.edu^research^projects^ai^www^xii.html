@@ -1,0 +1,105 @@
+Date: Tue, 10 Dec 1996 03:33:34 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+<title>The XII planner</title>
+<!-- Changed by: Keith Golden, 12-Jun-1996 -->
+
+
+</head>
+
+<body>
+<h1>The XII Planner</h1>
+
+<p>
+Classical planners presuppose correct and
+complete information about the world.  Although recent work has
+sketched a number of algorithms for planning with incomplete
+information, 
+substantial problems remain before these planners can be applied to
+real-world domains. Since the presence of incomplete information
+invalidates the Closed World Assumption, an agent cannot deduce that a
+fact is false based on its absence from the agent's world model. This
+leads to two challenges:
+
+<ul>
+<li> <b> Satisfying Universally Quantified Goals: </b> Goals of the form
+  ``Move all widgets to the warehouse'' or ``Make all files in  /tex
+  write protected'' are common in real world domains. Classical
+planners such as PRODIGY or <!WA0><!WA0><!WA0><!WA0><a
+href="http://www.cs.washington.edu/research/projects/ai/www/ucpop.html">UCPOP</a>
+satisfy universally quantified goals by computing the set of ground
+instances of the goal.  But how can a planner compute this set in the
+absence of complete information?  Sometimes it may have to sense
+<i>which</i> widgets or <i>which</i> files are present before
+generating its plan.
+
+<li> <b> Avoiding Redundant Sensing:</b> Should the planner insert a sensory
+  action (e.g., scan with the camera, or the UNIX command ls) into its
+  plan? Or is the action <i>redundant</i>, yielding information already
+  known to the planner?  Since satisfying the preconditions of a sensory
+  action can require arbitrary planning, the cost of redundant sensing is
+  potentially unbounded and quite large in practice.
+</ul>
+
+
+This paper reports on the fully-implemented XII planner (XII stands
+for ``eXecution and Incomplete Information'') which addresses these
+challenges.  We allow incomplete information, but assume the
+information that <i>is</i> known is correct. XII's planning algorithm
+is based on UCPOP, but XII interleaves planning and execution
+(following IPEM) and, unlike UCPOP, does not make the closed world
+assumption.  XII uses closed world reasoning to avoid redundant
+information gathering and to solve universally quantified goals in the
+presence of incomplete information.
+
+<P> <!WA1><!WA1><!WA1><!WA1><IMG ALIGN=TOP SRC=http://www.cs.washington.edu/research/projects/ai/www/xii-dudes.gif> The folks behind XII: 
+<!WA2><!WA2><!WA2><!WA2><A HREF = "http://www.cs.washington.edu/people/faculty/weld.html"> Dan Weld</A>,
+<!WA3><!WA3><!WA3><!WA3><A HREF = "http://www.cs.washington.edu/homes/kgolden"> Keith Golden</A>, 
+<!WA4><!WA4><!WA4><!WA4><A HREF = "http://www.cs.washington.edu/people/faculty/etzioni.html"> Oren Etzioni</A>.
+
+
+<P> <I> A <!WA5><!WA5><!WA5><!WA5><A
+HREF="file://cs.washington.edu/pub/ai/tr94-01-03.ps.Z"> short
+paper</A> (to appear at AAAI-94) describing XII, (also available in 
+<!WA6><!WA6><!WA6><!WA6><A HREF="http://www.cs.washington.edu/research/projects/ai/www/omnipotence/closed-world.html">html</A>) and a
+<!WA7><!WA7><!WA7><!WA7><A HREF="file://cs.washington.edu/pub/ai/tr94-01-02.ps.Z"> a more
+theoretical paper</A> (to appear at KR'94) describing <i>local
+closed world information</i>, a key contribution of this work.
+
+	</body>
+
+<P><HR>
+
+<table>
+<tr valign=center>
+  <td align=center>
+   <!WA8><!WA8><!WA8><!WA8><A HREF ="http://www.cs.washington.edu/research/projects/ai/www/homepage.html">
+   <!WA9><!WA9><!WA9><!WA9><IMG width=100 height=49 Align=top SRC="http://www.cs.washington.edu/research/projects/ai/www/homepage.icon.gif" 
+   alt="[homepage Button]"></A></td>
+  <th colspan=20> </th>
+  <td align=left>
+    Back to <!WA10><!WA10><!WA10><!WA10><A HREF = "http://www.cs.washington.edu/research/projects/ai/www/homepage.html">AI Home Page</A>
+  </td>
+</tr></table>
+
+<table>
+<tr valign=center>
+  <td align=center>
+   <!WA11><!WA11><!WA11><!WA11><A HREF ="http://www.cs.washington.edu">
+   <!WA12><!WA12><!WA12><!WA12><IMG width=100 height=49 Align=top  SRC="http://www.cs.washington.edu/general/sptm_s.gif"
+   alt="[CSE Button]"></A></td>
+  <th colspan=20> </th>
+  <td align=left>
+    Back to <!WA13><!WA13><!WA13><!WA13><A HREF = "http://www.cs.washington.edu">CSE Home Page</A>
+  </td>
+</tr></table>
+
+	<address>
+	For more information, send mail to "bug-ucpop@cs.washington.edu".
+	</address>
+	</html>
+
+

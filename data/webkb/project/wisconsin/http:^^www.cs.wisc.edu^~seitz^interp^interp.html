@@ -1,0 +1,94 @@
+Date: Thu, 07 Nov 1996 19:22:43 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 08 Apr 1996 19:47:19 GMT
+Content-length: 2866
+
+<HTML>
+<HEAD>
+<TITLE>Steve Seitz's View Interpolations</TITLE>
+</HEAD>
+
+<BODY>
+
+<H1> View Synthesis by Image Interpolation </H1>
+<H2>
+Investigators:
+<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~seitz/seitz.html">Steve Seitz</A>,
+<!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.wisc.edu/~dyer/dyer.html"> Chuck Dyer</A>
+</H2>
+<P>
+
+We have devised a provably-correct automated technique for creating new 
+views of a scene from two basis views of the same scene.  The technique 
+relies on geometric image interpolation, known as "morphing" in the graphics
+community, to produce intermediate images.  Although morphing techniques
+currently enjoy widespread use, their theoretical validity
+has not been established.  In particular, does 2D interpolation of two views
+of the same scene produce a sequence of physically valid in-between views of
+that scene?
+Surprisingly, the answer is yes, providing the images first undergo a simple
+rectification procedure and certain assumptions about visibility and the
+projection process are satisfied.
+The view synthesis work described here uses automated stereo techniques to
+determine image correspondences.  Our more recent work on 
+<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~seitz/interp/vmorph.html"> View Morphing </A>
+considers how user-interaction may be used to guide the interpolation.
+
+<P>
+Below are computed interpolations for three different image pairs.  The
+rectified original images are shown at left and right.  Click on the
+interpolated images (center) to see mpeg movies (~50K) showing the computed
+interpolations.
+
+<TABLE BORDER=1 CELLPADDING=2 CELLSPACING=1> 
+<CAPTION ALIGN=top> <FONT SIZE=4><b>View Interpolations</b></FONT></Caption>
+<TR ALIGN=center> 
+	<TD> <B> Original (1) </B> </TD>
+	<TD> <B> Interpolated (1.5)</B> </TD>
+	<TD> <B> Original (2)</B> </TD>
+</TR>
+<BR>
+<TR> 
+	<TD> <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><IMG ALIGN=BOTTOM SRC="http://www.cs.wisc.edu/~seitz/interp/icon.band1rect.gif"></A> </TD>
+	<TD> <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="http://www.cs.wisc.edu/~seitz/interp/band.mpg"> 
+		<!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><IMG ALIGN=BOTTOM SRC="http://www.cs.wisc.edu/~seitz/interp/icon.band1.5rect.gif"></A> </TD>
+	<TD> <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><IMG ALIGN=BOTTOM SRC="http://www.cs.wisc.edu/~seitz/interp/icon.band2rect.gif"></A> </TD>
+</TR>
+<BR>
+<TR> 
+	<TD> <!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><IMG ALIGN=BOTTOM SRC="http://www.cs.wisc.edu/~seitz/interp/icon.duo1rect.gif"></A> </TD>
+	<TD> <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><A HREF="http://www.cs.wisc.edu/~seitz/interp/duo.mpg"> 
+		<!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><IMG ALIGN=BOTTOM SRC="http://www.cs.wisc.edu/~seitz/interp/icon.duo1.5rect.gif"></A> </TD>
+	<TD> <!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><IMG ALIGN=BOTTOM SRC="http://www.cs.wisc.edu/~seitz/interp/icon.duo2rect.gif"></A> </TD>
+</TR>
+<TR> 
+	<TD> <!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><IMG ALIGN=BOTTOM SRC="http://www.cs.wisc.edu/~seitz/interp/icon.scrub1rect.gif"></A> </TD>
+	<TD> <!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><A HREF="http://www.cs.wisc.edu/~seitz/interp/scrub.mpg"> 
+		<!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><IMG ALIGN=BOTTOM SRC="http://www.cs.wisc.edu/~seitz/interp/icon.scrub1.5rect.gif"></A> </TD>
+	<TD> <!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><IMG ALIGN=BOTTOM SRC="http://www.cs.wisc.edu/~seitz/interp/icon.scrub2rect.gif"></A> </TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+
+<B>
+This work is described in: 
+<!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/abstracts.html#rvs95-seitz"> 
+Physically-Valid View Synthesis by Image Interpolation</A>,
+</B>
+<BR> 
+S. M. Seitz and C. R. Dyer, 
+<CITE>Proc. Workshop on Representation of Visual Scenes</CITE>, 
+1995.
+<BR><BR><BR>
+
+<HR>
+<ADDRESS> <!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><IMG ALT="o" SRC="http://www.cs.wisc.edu/~seitz/tinysteve.gif">
+Last Changed: June 30, 1995 </ADDRESS> 
+<HR>
+
+
+</BODY>
+</HTML>
+

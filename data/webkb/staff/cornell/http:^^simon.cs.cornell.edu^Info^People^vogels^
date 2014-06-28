@@ -1,0 +1,146 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 24-Nov-96 23:03:44 GMT
+Content-Type: text/html
+Content-Length: 5002
+Last-Modified: Monday, 20-May-96 20:03:27 GMT
+
+<head>
+<title>Werner Vogels</title>
+</head>
+<BODY BACKGROUND=/Info/Projects/HORUS/images/per.gif TEXT=#000000> 
+<p>
+<TABLE WIDTH=95% BORDER=0>
+<TR>
+<TD>
+<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><img border=0 hspace=10 align="left" src="http://simon.cs.cornell.edu/Info/People/vogels/werner.gif">
+</TD>
+<TD>
+<H1> Werner Vogels </H1>
+<I>researcher</I><BR>
+<P>
+4105a Upson Hall<BR>
+Dept. of Computer Science<BR>
+Cornell University, 
+Ithaca, NY, 14850
+</TD>
+<TD VALIGN=BOTTOM HALIGN=RIGHT>
+Phone: 607-255-9199<BR>
+Fax  : 607-255-4428<BR>
+Email: <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href="mailto:vogels@cs.cornell.edu">vogels@cs.cornell.edu</a>
+</TD>
+</TR>
+</TABLE>
+<BR>
+<p>
+<P>
+<CENTER>
+	<B><EM>
+	In protocol design, perfection has been reached not when there is nothing<BR>
+	left to add, but when there is nothing left to take away.
+	</EM></B>
+</CENTER>
+<P>
+<P>
+<P>
+I am involved with two of the major systems projects at the Cornell Computer Science Department: The
+<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.cs.cornell.edu/Info/Projects/HORUS">
+Horus</a>
+and the 
+<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a href="http://www.cs.cornell.edu/Info/Projects/ATM"> Cornell ATM Cluster</a> Projects. I think my
+research interests are best described by: 
+<P>
+<BLOCKQUOTE>
+	<EM>
+	Low latency and high bandwith communication support for 
+	highly reliable distributed systems with real time requirments.
+	</EM>
+</BLOCKQUOTE>
+<P>
+I focus on the system design and engineering issues. Some of the things I am
+working on:
+<UL><LI>
+A highly predictable execution environment for Horus. The integration of Horus
+with some Real-Time environments needs to lead to a situation where we can 
+reason about advanced operational guarantees.
+<LI>
+Mechanisms for efficient data transfers between high-speed 
+network devices and the application level. Low latency for all messages 
+and high bandwidth with small messages are two issues that 
+have fallen behind in the software design for high-speed network adapters.
+<LI>
+High-speed Cluster Communication protocols. Once you achieve the desired low-latency
+for your message passing system, you will see that your old protocols
+are not able to exploit this, and you will need to re-think their structure
+and interaction patterns.
+<LI>
+Methods for dealing with guarantee failures (aka <EM>
+missed deadline support</EM>). It is not bad to not be able to meet the 
+guarantes you gave, it is bad to not tell anyone about it.
+<LI>
+Acurate Failure Detection. If we want to take our distributed systems to a
+global scope, there is a need to find a generic mechanism to support
+failure suspision, detection and management of processes, nodes and networks.
+From our experience with group systems we can extract a mechanism that will work
+with any middleware package, regardless of its functionality.
+</UL>
+<P>
+Horus is the brainchild of  
+<!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a href="http://www.cs.cornell.edu/Info/People/rvr/rvr.html">
+Robbert van Renesse </a> and
+<!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href="http://www.cs.cornell.edu/Info/Faculty/Kenneth_Birman.html">
+Ken Birman</a>. The ATM Cluster work is done cooperation with
+<!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a href="http://www.cs.cornell.edu/Info/People/tve/tve.html">
+Thorsten von Eicken</a> and the Multimedia & Video-On-Demand Horus
+experiments are in concert with 
+<!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><a href="http://www.cs.cornell.edu/Info/Faculty/Brian_Smith.html">
+Brian Smith</a>.
+<P>
+I am responsible for 
+<!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><A HREF="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS515">CS 515</A>, 
+<I> a Practicum in Distributed Systems</I>, and teach a number of lectures
+on network protocols and high-speed network technology in 
+<!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><A HREF="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS514">CS 514</A>: 
+<I>Practical Distributed Systems</I>.
+<P>
+<HR>
+Recent publications:
+<ul>
+<LI>
+<!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><A HREF="ftp://www.cs.cornell.edu/pub/vogels/failure.ps.gz">
+World Wide Failures</A>, Werner Vogels, 
+To appear in the <I>Proceeding of the 1996 ACM SIGOPS Workshop</I>
+Connamoran, Ierland, 
+September 1996.
+<P>
+<LI>
+<B>Structured Virtual Synchrony: Exploring the Bounds of Virtually
+Synchronous Group Communication.</B>
+Katherine Guo, Werner Vogels, Robbert van Renesse, 
+To appear in the <I>Proceeding of the 1996 ACM SIGOPS Workshop</I>
+Connamoran, Ierland,
+September 1996.
+<P>
+<li>
+<!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><a href="http://www.cs.cornell.edu/Info/Projects/ATM/sosp.ps">
+U-Net: A User-Level Network Interface
+for Parallel and Distributed Computing</a>,
+Anindya Basu, Vineet Buch, Werner Vogels, Thorsten von Eicken,
+<i>Proceedings of the 15th ACM Symposium on Operating 
+Systems Princples</i>, Copper Mountain, December 1995.
+<p>
+<li>
+<!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><a href="http://www.cs.cornell.edu/Info/People/vogels/hpcs95.html">
+Delivering High-Performance Communication to the Application-Level.</a>
+Werner Vogels and Thorsten von Eicken, in <I>the Proceeding of 
+the Third IEEE Workshop on the Architecture and Implementation
+of High Performance Communication Subsystems (HPCS'95)</I>, August 1995.
+<p>
+<li><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><a href="http://cs-tr.cs.cornell.edu:80/TR/CORNELLCS:TR95-1500">
+Horus: A Flexible Group Communications System </a>,
+Robbert van Renesse, Kenneth P. Birman, Brad Glade, Katie Guo, Mark 
+Hayden, Takako Hickey, Dalia Malki, Alex Vaysburd and Werner Vogels, 
+<i>CS-TR 95-1500</i>, March 23, 1995.
+</UL>
+<HR>
+</BODY>

@@ -1,0 +1,187 @@
+Date: Wed, 08 Jan 1997 20:22:06 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Sun, 15 Dec 1996 20:55:57 GMT
+Content-length: 4841
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+
+
+
+<html>
+
+
+
+<head>
+
+<title>CSE 573 Project Page</title>
+
+</head>
+
+
+
+<body>
+
+<h1 align=center> CSE 573 PROJECT PAGE</h1>
+
+<h1 align=left]> Notes</h1>
+
+Please focus on the following problems: PRODIGY-BW.PRODIGY-SUSSMAN,
+INIT-FLAT-TIRE.FIXIT, D1S1.D1S1-1, D1S1.D1S1-3, D1S1.D1S1-5
+
+<p>
+Please prioritize as follows:
+<ol>
+<li> Most important: Getting some encoding working for the simplest subset of
+   the action language (i.e. the files in
+<pre>/projects/ai/planners/ucpop/domains/clean/files/simple-ucpop/</pre>
+   and getting some data showing how your system works on that one encoding
+</li>
+<li> Next: Testing one of your conjectures about the effect on speed of an
+encoding 
+   variation (i.e. kautz splitting vs overloaded splitting). 
+</li>
+
+<li>Lower priority: Going back and handling a more expressive action language. 
+
+</li>
+</ol>
+
+
+Your code should find <i>any</i> solution to the planning problem, not
+necessarily the shortest. I.e. optimize the speed of your planner, not the
+length of the plan. 
+
+<p>
+Constants may be specified in the problem goal as well as in the initial
+state. 
+
+<h1 align=left]> UCPOP results</h1>
+
+<pre>
+0 3 FIXIT -1 f 0 0 0 0 76320 0 0 0 12 12 23701 14878
+0 3 PRODIGY-SUSSMAN -1 T 0 0 0 0 850 0 0 0 6 6 515 272
+0 3 D1S1-1 -1 T 0 0 0 0 10 0 0 0 1 1 3 2
+0 3 D1S1-3 -1 T 0 0 0 0 10 0 0 0 3 3 11 8
+0 3 D1S1-5 -1 T 0 0 0 0 10 0 0 0 5 5 19 14
+</pre>
+
+The key to this gibberish is at the bottom of this page.  Find more results in 
+<pre> /projects/ai/573/project/results.</pre>
+
+<h1 align=left]> Team Pages</h1>
+
+<ol>
+
+
+<li> <a href="http://www.cs.washington.edu/homes/josh/cse573.html">Druken Masters</a>
+ (Linear)
+
+<li> <a
+href="http://www.cs.washington.edu/homes/mernst/573-medics.html">Medics</a>
+(Linear) 
+
+<li> <a 
+href="http://www.cs.washington.edu/homes/tian/ai/index.html">Wolverines</a> 
+(Parallel)
+
+<li> <a
+href="http://www.cs.washington.edu/homes/ori/AI-project.html">Kosher
+Sushi</a> (Parallel? Linear?)
+
+<li> <a href="http://www.cs.washington.edu/homes/lel/cse573.html">Lawrence of
+Arabia</a> (Graphplan?)
+
+<li> <A
+HREF="http://www.cs.washington.edu/homes/noth/causalists/index.html">Causalists</A>
+(Causal)
+
+<li> <a href="http://www.cs.washington.edu/homes/edhong/pHan/index.html">pHan</a> (Causal)
+
+</ol>
+
+
+<h1 align=left]> Input Language</h1>
+
+Your system should handle the following subset of UCPOP/ADL domain
+descriptions: goals and preconditions with conjunction, disjunction,
+negation and existential quantification; conditional effects. in addition
+to standard conjunctive effects, but no universal quantifiaction and no
+need to reason about side effects vs primary effects.  There is no need to
+handle universal quantification, side-effects/primary effects, procedural
+attachment (i.e. facts), domain axioms, or safety constraints.
+
+<p>
+CLick <a href="ebnf.ps">here</a> for the input language BNF. 
+
+<p>
+Look in <PRE>/projects/ai/planners/domains/ucpop/clean/files/{simple, partial}</PRE> for
+problems written in this format.
+
+<h1 align=left]> Output Specifications</h1>
+
+<p>
+
+The outputs of an experiment should be in two files, which should be
+understandable to a human, PERL, and LISP.
+
+<p>
+<PRE>
+Filenames: &lt;groupnumber&gt;-&lt;experimentnumber&gt;.info
+           &lt;groupnumber&gt;-&lt;experimentnumber&gt;.data
+</PRE>
+<p>
+The info file has the following items, with some white space after
+the colons. Blank fields are OK.
+
+<p>
+<PRE>
+Group: &lt;groupnumber&gt;
+Experiment: &lt;experimentnumber&gt;
+Encoder: &lt;switches for your encoder&gt;
+Solve: &lt;any switches you used for the solve program&gt;
+Decoder: &lt;switches for your decoder&gt;
+Machine: &lt;machine type&gt;
+Comment: &lt;whatever&gt;
+</PRE>
+
+<p> 
+The data file has one line per run, separated by whitespace.  When
+you fix the maximum number of timesteps, encode, solve, and decode,
+that's one run.  A planning problem may have numerous rows with
+different timesteps.
+
+<p>
+Please put a value (or zero) in every column.  No parentheses. No
+quotation marks.  The columns are:
+<p>
+<ul>
+<li> Group number
+<li> Experiment number
+<li> <Domain>.<Problem> (all caps)
+<li> Max of time steps (fixed in the encoding)
+<li> Success? (t or f)
+<li> Number of clauses
+<li> Number of variables
+<li> Number of literals
+<li> Elapsed time encoding (msec)
+<li> Elapsed time solving (msec)
+<li> Elapsed time decoding (msec) (zero if solve fails)
+<li> Mean flips until assign (part of solve output)
+<li> Mean restarts until assign (part of solve output)
+<li> Number of time steps in plan produced (ignores noops)
+<li> Number of steps in plan produced (may be > time steps if parallel)
+<li> Number of plans created (UCPOP only)
+<li> Number of plans visited (UCPOP only)
+</ul>
+
+<h1 align=left]> Results</h1>
+
+Results go in  <pre> /projects/ai/573/project/results. </pre>
+
+</body>
+
+
+
+</html>
+

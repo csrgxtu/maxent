@@ -1,0 +1,152 @@
+Date: Wed, 20 Nov 1996 19:14:49 GMT
+Server: Apache/1.0.3
+Content-type: text/html
+Content-length: 3903
+Last-modified: Thu, 30 May 1996 21:40:18 GMT
+
+<HTML><HEAD>
+<TITLE>Storage Management</TITLE>
+<LINK REV="made" HREF="mailto:dswise@cs.indiana.edu">
+</HEAD><BODY>
+
+<H2>Storage Management</H2>
+
+<STRONG>Description:</STRONG>
+<BLOCKQUOTE>
+Heap memory usually requires overhead for storage management,
+traditionally garbage collection.
+We  have built a
+reference-counting memory (
+        <!WA0><a href="ftp://ftp.cs.indiana.edu/pub/techreports/TR401ps.Z">
+RCM
+	</a>
+), to be installed as banks of ``smart memories''
+without incurring processor cycles for heap management,
+even on a multiprocessor.
+It would support languages that depend on a heap,
+e.g. Lisp, Scheme, Prolog, or Haskell;
+local use is in Scheme and C.
+A prototype
+	<!WA1><a href="ftp://ftp.cs.indiana.edu/pub/techreports/TR354.ps.Z">
+Applicative File System
+	</a>
+has been built over RCM, which
+provides essential files services---persistency and bulk---within
+a purely applicative environment.
+<BLOCKQUOTE>
+</BLOCKQUOTE>
+Other work is targeted at reusing nodes in place.
+Applicative style often asks us to copy structure with changes when,
+in fact, analogous structure is abandoned as the copy occurs.
+We want to recycle these uniquely referenced nodes,
+either at
+	<!WA2><a href="ftp://ftp.cs.indiana.edu/pub/techreports/TR360.ps.Z">
+run time
+	</a>
+or, better, at
+	<!WA3><a href="ftp://ftp.cs.indiana.edu/pub/techreports/TR437ps.Z">
+compile time
+	</a>
+by noticing the unique referencing.
+</BLOCKQUOTE>
+<BLOCKQUOTE>
+We have developed a
+<!WA4><a href="ftp://ftp.cs.indiana.edu/pub/techreports/TR400.ps.Z">generational
+storage management system</a>, incorporated into Chez Scheme, that employs
+a segmented memory model and a hybrid tagging system.  The hybrid tagging
+system uses typed
+pointers and typed objects for object-level typing and big bag of
+pages (BiBOP) for meta-level typing.  The system allows allocation to
+be performed in-line from a single register-based allocation pointer,
+results in virtually no tagging overhead, allows the Scheme
+heap to coexist gracefully with other languages' run-time systems,
+increases data locality, supports
+<!WA5><a href="http://www.cs.indiana.edu/hyplan/dyb/guardians-pldi93.ps.gz">weak
+pairs and finalization</a>, and supports large objects efficiently.  The
+system is used for ongoing research in storage management.
+</BLOCKQUOTE>
+<P>
+
+<STRONG>Associated Faculty:</STRONG>
+	<!WA6><a href="http://www.cs.indiana.edu/hyplan/dswise.html">
+David S. Wise
+	</a>
+(
+	<!WA7><a href="mailto:dswise@cs.indiana.edu">
+dswise
+	</a>
+),
+	<!WA8><a href="http://www.cs.indiana.edu/hyplan/dyb.html">
+R. Kent Dybvig
+	</a>
+(
+	<!WA9><a href="mailto:dyb@cs.indiana.edu">
+dyb
+	</a>
+).
+<P>
+
+<STRONG>Associated Graduate Students:</STRONG>
+	<!WA10><a href="http://www.cs.indiana.edu/hyplan/heckb.html">
+Brian Heck
+	</a>
+(
+	<!WA11><a href="mailto:heckb@cs.indiana.edu">
+heckb
+	</a>
+),
+	<!WA12><a href="http://www.cs.indiana.edu/hyplan/dmeadows.html">
+Diana Meadows
+	</a>
+(
+	<!WA13><a href="mailto:dmeadows@cs.indiana.edu">
+meadows
+	</a>
+), <br>
+	<!WA14><a href="http://bach.ucs.indiana.edu/hyplan/jwalgenb.html">
+Joshua Walgenbach
+	</a>
+(
+	<!WA15><a href="mailto:jwalgenb@indiana.edu">
+jwalgenb
+	</a>
+).
+
+<P>
+
+<!-- OPTIONAL
+<STRONG>Affiliated Projects:</STRONG>
+List any affiliated projects, here or elsewhere, or people at other
+places involved in the research.  Delete item if not applicable.
+<P>
+-->
+
+<!-- OPTIONAL
+<STRONG>Support:</STRONG>
+Supported in part by the
+        <!WA16><a href="http://www.nsf.gov">
+National Science Foundation
+        </a>
+under
+        <!WA17><a href="http://www.nsf.gov:80/cise/cda/in-infra.htm">
+a grant
+        </a>
+numbered
+        <!WA18><a href="http://www.cs.indiana.edu/hyplan/RI92.html">
+CDA93-03189
+        </a>
+.
+-->
+<P>
+
+<!-- OPTIONAL
+<STRONG><!WA19><A HREF="http://www.cs.indiana.edu/hyplan/dswise/your_link.html">More information</A></STRONG>
+<P>
+-->
+
+<!WA20><A HREF="http://www.cs.indiana.edu/l/www/research/index.html"><!WA21><IMG SRC="http://www.cs.indiana.edu/hyplan/back.gif">Return to IU Computer Science
+Research</A>
+<!-- or use HREF="http://www.cs.indiana.edu/research/index.html" if your
+     page isn't served by the CS Dept server -->
+
+</BODY></HTML>

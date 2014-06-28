@@ -1,0 +1,94 @@
+Date: Tue, 05 Nov 1996 20:52:56 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 09 Nov 1995 20:50:29 GMT
+Content-length: 2962
+
+<HTML>
+
+<HEAD>
+<TITLE>
+Garbler info
+</TITLE>
+</HEAD>
+
+<BODY>
+<H2 align=center>"Unix Datagram Sockets and the Network Garbler"</H2>
+<P>
+BSD datagram sockets provide unreliable message transmission.
+However, because of the local network environment,
+communication between the instructional machines is
+much more well-behaved than in a typical real-world environment.
+To simulate a more realistic setting,
+and provide a means for your team to thoroughly 
+test the project implementation,
+you will be required to use the ATM network garbler.
+
+<P>
+The ATM network garbler discards and corrupts (note that no byte in the ATM
+cell header is corrupted) datagrams
+according to parameters that are set at run-time. The object code
+for the garbler is in <TT>~cs640-1/public/garb/atm-garb.o</TT> in the
+instructional
+machines.  The header file is also in the same directory.  Note that it is
+compiled for the Sun SPARCstation 20 (sol1-40).  Your program
+must be compiled under the same environment in order to use the package.
+And your program should be linked with <TT>atm-garb.o</TT>.
+
+<P>
+To use the garbler, your program only needs to follow three steps .  Firstly,
+include the <TT>atm-garb.h</TT> header file.
+And instead of using <I>sendto(3)</I> to send datagrams,
+you must use the <I>garb_sendto()</I> routine provided by <TT>atm-garb.o</TT>.
+The parameters for the call remain the same, except that the len parameter
+must be 53, the ATM cell size.
+Lastly, when your program starts up,
+it should initialize the garbler by calling the routine
+<I>garb_init()</I>.
+
+<P>
+<I>Garb_init()</I> installs a handler for the signal SIGINT,
+and attempts to set the garbler's parameter values
+by reading the initialization file <TT>atm-garb.init</TT> in the process's
+current directory.
+
+<P>
+The parameter values must be listed one per line in the order shown below, 
+with no intervening blank lines.
+A comment can follow each value (on the same line).
+Suggested default values are listed in parentheses:
+<UL PLAIN>
+  <LI>Probability of discarding a packet. (3)
+  <LI>Probability of corrupting a packet. (2)
+  <LI>Probability of dropping an AAL6 trailer cell. (3)
+</UL>
+
+<P>
+A sample garbler initialization file,
+with the suggested default values,
+is provided in <TT>~cs640-1/public/garb/atm-garb.init</TT>.
+To cause the garbler to have no effect,
+set the values of the parameters to 0.
+
+<P>
+If the process using the garbler is interrupted during execution,
+control is transferred to a signal handler.
+The handler prints out the version number of the garbler,
+the current values of the garbler's parameters, and some simple statistics like
+number of cells garbled.
+It does NOT change any of the parameter values.
+
+<P>
+This is the <!WA0><a href="http://www.cs.wisc.edu/~lhl/cs740/garb/">source</a>
+of the garbler.
+
+<hr>
+<address>
+Last changed: November 11, 1994 by Kacheong Poon
+<br>
+<!WA1><a href="http://www.cs.wisc.edu/cgi-bin/finger?poon">poon@cs.wisc.edu</a>
+</address>
+
+</BODY>
+
+</HTML>

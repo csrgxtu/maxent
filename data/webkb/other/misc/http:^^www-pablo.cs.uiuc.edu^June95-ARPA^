@@ -1,0 +1,296 @@
+Date: Tue, 14 Jan 1997 21:51:03 GMT
+Server: NCSA/1.5.2
+Content-type: text/html
+
+
+
+
+
+
+
+			
+
+
+
+<HTML>
+<HEAD>
+<TITLE> Building Successful Performance Tools </TITLE>	
+</HEAD>
+<BODY>
+<H1> Building Successful Performance Tools </H1>
+
+<h2> July 1995 ARPA Principal Investigators Meeting</h2>
+<p>
+The
+<!WA0><a href="http://www-pablo.cs.uiuc.edu/June95-ARPA//">
+Pablo 
+</a>
+project is exploring tools and techniques for performance
+analysis and optimization of scalable parallel systems. 
+Major projects include
+<menu>
+<li>
+<!WA1><a href="http://www-pablo.cs.uiuc.edu/Projects/Pablo/pablo.html">
+Pablo Performance Analysis Environment
+</a>
+<li>
+<!WA2><a href="http://www-pablo.cs.uiuc.edu/Projects/HPF/hpf.html">
+High-Performance Fortran Integration (HPF)
+</a>
+<li>
+<!WA3><a href="http://www-pablo.cs.uiuc.edu/Projects/VR/vr.html">
+Virtual Reality for Performance Data Immersion
+</a>
+<li>
+<!WA4><a href="http://www-pablo.cs.uiuc.edu/Projects/Mosaic/mosaic.html">
+WWW Server Performance Analysis
+</a>
+<li>
+<!WA5><a href="http://www-pablo.cs.uiuc.edu/Projects/PPFS/ppfs.html">
+Portable Parallel File System (PPFS)
+</a>
+<li>
+<!WA6><a href="http://www-pablo.cs.uiuc.edu/Projects/IO/io.html">
+Input/Output Characterization
+</a>
+<li>
+<!WA7><a href="http://www-pablo.cs.uiuc.edu/Projects/IO/sio.html">
+Scalable I/O Initiative
+</a>
+</menu>
+
+<p>
+The slides below discuss the problems inherent in building portable,
+extensible performance tools for parallel systems.  You might find a 
+<!WA8><a href="http://www-pablo.cs.uiuc.edu/Projects/Test/index.html">
+white paper on the same topic
+</a>
+of possible interest.
+It was prepared for the recent forum on federal information and communications
+research and development held to discuss the
+</a>
+<!WA9><a href="http://www.whitehouse.gov/White_House/EOP/OSTP/NSTC/html/cic/cic-plan.
+html">
+Committee on Information and Communications (CIC) Strategic
+Implementation Plan 
+</a>.
+<p>
+
+		
+
+   			
+
+      <!WA10><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P001.html"> <!WA11><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T001.gif"> </A>
+		
+
+   			
+
+      <!WA12><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P002.html"> <!WA13><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T002.gif"> </A>
+		
+
+   			
+
+      <!WA14><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P003.html"> <!WA15><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T003.gif"> </A>
+		
+
+   			
+
+      <!WA16><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P004.html"> <!WA17><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T004.gif"> </A>
+		
+
+   			
+
+      <!WA18><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P005.html"> <!WA19><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T005.gif"> </A>
+		
+
+   			
+
+      <!WA20><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P006.html"> <!WA21><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T006.gif"> </A>
+		
+
+   			
+
+      <!WA22><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P007.html"> <!WA23><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T007.gif"> </A>
+		
+
+   			
+
+      <!WA24><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P008.html"> <!WA25><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T008.gif"> </A>
+		
+
+   			
+
+      <!WA26><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P009.html"> <!WA27><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T009.gif"> </A>
+		
+
+   			
+
+      <!WA28><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P010.html"> <!WA29><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T010.gif"> </A>
+		
+
+   			
+
+      <!WA30><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P011.html"> <!WA31><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T011.gif"> </A>
+		
+
+   			
+
+      <!WA32><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P012.html"> <!WA33><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T012.gif"> </A>
+		
+
+   			
+
+      <!WA34><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P013.html"> <!WA35><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T013.gif"> </A>
+		
+
+   			
+
+      <!WA36><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P014.html"> <!WA37><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T014.gif"> </A>
+		
+
+   			
+
+      <!WA38><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P015.html"> <!WA39><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T015.gif"> </A>
+		
+
+   			
+
+      <!WA40><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P016.html"> <!WA41><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T016.gif"> </A>
+		
+
+   			
+
+      <!WA42><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P017.html"> <!WA43><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T017.gif"> </A>
+		
+
+   			
+
+      <!WA44><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P018.html"> <!WA45><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T018.gif"> </A>
+		
+
+   			
+
+      <!WA46><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P019.html"> <!WA47><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T019.gif"> </A>
+		
+
+   			
+
+      <!WA48><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P020.html"> <!WA49><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T020.gif"> </A>
+		
+
+   			
+
+      <!WA50><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P021.html"> <!WA51><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T021.gif"> </A>
+		
+
+   			
+
+      <!WA52><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P022.html"> <!WA53><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T022.gif"> </A>
+		
+
+   			
+
+      <!WA54><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P023.html"> <!WA55><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T023.gif"> </A>
+		
+
+   			
+
+      <!WA56><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P024.html"> <!WA57><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T024.gif"> </A>
+		
+
+   			
+
+      <!WA58><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P025.html"> <!WA59><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T025.gif"> </A>
+		
+
+   			
+
+      <!WA60><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P026.html"> <!WA61><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T026.gif"> </A>
+		
+
+   			
+
+      <!WA62><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P027.html"> <!WA63><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T027.gif"> </A>
+		
+
+   			
+
+      <!WA64><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P028.html"> <!WA65><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T028.gif"> </A>
+		
+
+   			
+
+      <!WA66><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P029.html"> <!WA67><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T029.gif"> </A>
+		
+
+   			
+
+      <!WA68><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P030.html"> <!WA69><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T030.gif"> </A>
+		
+
+   			
+
+      <!WA70><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P031.html"> <!WA71><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T031.gif"> </A>
+		
+
+   			
+
+      <!WA72><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P032.html"> <!WA73><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T032.gif"> </A>
+		
+
+   			
+
+      <!WA74><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P033.html"> <!WA75><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T033.gif"> </A>
+		
+
+   			
+
+      <!WA76><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P034.html"> <!WA77><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T034.gif"> </A>
+		
+
+   			
+
+      <!WA78><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P035.html"> <!WA79><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T035.gif"> </A>
+		
+
+   			
+
+      <!WA80><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P036.html"> <!WA81><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T036.gif"> </A>
+		
+
+   			
+
+      <!WA82><A href="http://www-pablo.cs.uiuc.edu/June95-ARPA/P037.html"> <!WA83><IMG SRC="http://www-pablo.cs.uiuc.edu/June95-ARPA/T037.gif"> </A>
+	
+
+
+
+<hr>
+<p>
+By clicking on the thumbnail pages above, you can peruse the slides
+from this presentation.  Alternatively, you can retrieve a single
+<!WA84><a href="http://www-pablo.cs.uiuc.edu/June95-ARPA/Jul95-ARPA.ps.Z">
+postscript file
+</a>
+containing the entire presentation.
+
+<hr>
+<P>
+<strong>
+You are the
+<!WA85><a href="http://www-pablo.cs.uiuc.edu/Admin/wwwstats.html">399th</a>
+visitor since September 29, 1995.
+</strong>
+
+<p>
+<!WA86><A HREF="http://www-pablo.cs.uiuc.edu/June95-ARPA//">
+<!WA87><IMG ALIGN=TOP SRC="http://www-pablo.cs.uiuc.edu/Images/home.gif">
+Jump to the Pablo Group Home Page</A><P>
+
+<p>
+<ADDRESS>Last Change: 26 July 1995/
+<!WA88><a href="http://www-pablo.cs.uiuc.edu/People/reed/index.html">
+Dan Reed
+</a>(reed@cs.uiuc.edu)</ADDRESS>
+</BODY>
+</HTML>

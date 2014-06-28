@@ -1,0 +1,543 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 18:54:06 GMT
+Content-Type: text/html
+Content-Length: 28767
+Last-Modified: Monday, 06-May-96 23:26:29 GMT
+
+<html>
+<head>
+<title>Fine-Grain Parallel CM RIVL</title>
+
+<a name="home">
+<center><h1>Fine-Grain Parallel CM RIVL:  A Step 
+Towards Real-Time Multimedia Processing</h1>
+<p>
+
+<b><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><a href="http://www.cs.cornell.edu/Info/People/barber">Jonathan Barber</a> (<!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href=mailto:barber@cs.cornell.edu>barber@cs.cornell.edu</a>)<br>
+<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.cs.cornell.edu/Info/People/sugata/home.html">Sugata Mukhopadhyay</a> (<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a href=mailto:sugata@cs.cornell.edu>sugata@cs.cornell.edu</a>)<p> 
+
+<!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a href="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516">CS516</a> Final Project<br>
+<!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href="http://www.cs.cornell.edu/Info/People/tve/tve.html">Professor Thorsten von Eicken</a><br>
+<!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a href="http://www.cs.cornell.edu/">Department of Computer Science</a><br>
+<!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><a href="http://www.cornell.edu">Cornell University</a></h2></center></b><p>
+</head>
+
+<body>
+<hr>
+<hr>
+<h2>0.0 Table of Contents</h2>
+<ul><b>
+<li><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><a href="#1.0">1.0 Abstract</a>
+<li><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><a href="#2.0">2.0 Introduction</a>
+<li><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><a href="#3.0">3.0 RIVL and the Generic Parallel Paradigm</a>
+<ul><li><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><a href="#3.1">3.1 The RIVL Graph</a>
+    <li><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><a href="#3.2">3.2 Parallelizing RIVL</a>
+    <li><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><a href="#3.3">3.3 Continuous Media Parallel RIVL</a>
+</ul>
+<li><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><a href="#4.0">4.0 Implementations</a>
+<ul><li><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><a href="#4.1">4.1 Shared Memory Implementation</a>
+    <li><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><a href="#4.2">4.2 Networked Implementation</a>
+    <li><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><a href="#4.3">4.3 Implementation Caveats</a>
+</ul>
+<li><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><a href="#5.0">5.0 Performance Results</a>
+<li><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><a href="#6.0">6.0 Extensions and Robustness</a>
+<li><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><a href="#7.0">7.0 Conclusions</a>
+<li><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><a href="#8.0">8.0 References</a><p>
+</b></ul>
+<hr>
+<hr>
+
+<a name="1.0">
+<!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><a href="#home">Go Back</a>
+<h2>1.0  Abstract</h2> 
+
+Any form of multimedia processing is typically computationally expensive.  An even 
+harder problem is performing some form of multimedia processing on multiple real-time 
+continuous streams of data.  In such a paradigm, each frame in a sequence of images 
+incurs a very large computational expense.  An obvious yet difficult solution is to divide 
+up the problem, and compute the solution in parallel. This paper details the nature of the 
+problems and the solutions for dealing with parallel multimedia processing in both shared 
+memory and distributed environments.<p>
+
+<!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><a href="http://www.cs.cornell.edu/Info/People/barber/516fin/presen/index.htm">Click here to view a slide-show presentation of this paper</a><p>.
+<hr>
+
+<a name="2.0">
+<!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><a href="#home">Go Back</a>
+<h2>2.0  Introduction:  The Evolution of RIVL</h2>
+
+Over the course of the past two years, a large effort has been mounted to develop applications 
+that can efficiently and reliably process multimedia data.  The effort manifested itself 
+with the construction of <b><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><a href="http://www.cs.cornell.edu/Info/Projects/zeno/Projects/Rivl.html">RIVL (A Resolution Independent Video Language)</a></b>.  RIVL is a 
+multimedia processing package that given a set of images (or a set of a sequence of 
+images), can efficiently process these multimedia streams and generate an outgoing image 
+(or a sequence of images).  RIVL is implemented as a tcl extension that is capable of performing 
+common image operations such as overlay, smoothing, clipping, cropping, etc.  
+The tcl interface simplifies the process of coding an image processing script.<p>  
+
+Recently, RIVL has been extended to process continuous streams of multimedia data, and 
+generate a corresponding output stream of images.  The extended RIVL package, called 
+<b><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><a href="http://www.cs.cornell.edu/Info/Courses/Fall-95/CS631/final-projects/Integratig-Rivl-and-CMT/final.html">CM RIVL</a></b>, was made possible by treating RIVL evaluation as a midpoint in a continuous media object.  This work was facilitated by using <b><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><a href="http://www.bmrc.berkeley.edu/projects/cmt/">CMT (The Continuous Media Toolkit)</a></b>.<p>  
+
+Image processing continuous streams of media in real-time is a very hard problem, considering 
+today's current state of computer technology.  Performing even a simple image oper-
+ation over a single sequence of images, and outputting the resultant image[s] in real-time 
+requires on the order of a million CPU cycles.  To approach a real-time image-processing 
+frame-rate of 30 frames per second, which is the standard frame-rate for perceiving continuous 
+motion, would require one of the following items to be true:<p>
+
+<ul>
+<li>to be able to perform image processing operations in less than linear time on a single 
+processor<br>
+<li>to be able to utilize high-performance technology that does not yet exist<br>
+<li>to be able to divide up the work, and perform the image processing in parallel to 
+achieve less than linear time performance<p>  
+</ul>
+
+Since we have little or no control over the first two items, we have focused our efforts on 
+the third.  Most image processing routines can be performed in super-linear time if the 
+work is divided among an array[s] of parallel processors.  This is true for RIVL, and also 
+for CM RIVL.<p>  
+
+<b>Bearing this in mind, we established the project goal to develop an easy-to-use, fast, 
+and inexpensive, real-time multimedia processing application.</b><p>
+
+In Section 3.0, we describe a generic method for parallelizing most of the image operations 
+in RIVL, by exploiting the way that RIVL processes an inputted set of images.  In 
+Section 4.0, we describe two implementations of Parallel CM RIVL (PRIVL).  The first 
+version is designed to run on shared memory machines.  The second version is designed to 
+run over a cluster of Workstations.  In Section 5.0, we present an analysis of performance 
+results.  In Section 6.0, we describe some improvements to our implementations.   Finally, 
+in Section 7.0, we draw some conclusions and analyze our progress.<p>  
+<hr>
+
+<a name="3.0">
+<!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><a href="#home">Go Back</a>
+<h2>3.0  RIVL and the Generic Parallel Paradigm</h2>
+
+<a name="3.1">
+<!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><a href="#home">Go Back</a>
+<h3>3.1  The RIVL Graph</h3>
+
+We begin our discussion of RIVL by introducing the RIVL Evaluation Graph.<p>  
+
+<!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><img src = "http://www.cs.cornell.edu/Info/People/barber/516fin/presen/sld007.gif"><p>
+
+In order for RIVL to execute, it requires a set of multimedia input data, and a control 
+RIVL script.  The RIVL script is a sequence of tcl-rivl commands that specify what image 
+processing operations should occur on the input data.  Once RIVL is invoked, the RIVL 
+script is translated into the RIVL graph, as pictured above.  Each node corresponds to 
+some <b>image operator</b> (e.g. im_smooth, im_canny, etc.), and each edge or <b>signal</b> 
+corresponds to the actual image data.  Those nodes lying inside of the illustrated rectangle 
+above correspond to true image operators.  Those nodes lying outside of the rectangle are 
+the RIVL I/O nodes.  The nodes outside and to the left of the rectangle correspond to read 
+nodes (i.e. one read/node per image [or stream]), and the node to right of the rectangle 
+corresponds to the write node.<p>     
+
+We want to emphasize that construction of the RIVL graph <b>does not compute on any 
+multimedia data</b>.  The RIVL graph is merely the control-flow structure through which 
+each inputted sequence of data must propagate to generate the outputted, processed image.<p>  
+
+There are two phases in processing data using the RIVL graph once it has been constructed.  
+The first phase manifests itself in a graph traversal from <b>right-to-left</b>.  This is 
+what makes RIVL an efficient image processing mechanism.  The first node that is evaluated 
+is the <b>Write</b> node (the right-most node).  By traversing the graph in reverse-order, 
+RIVL decides at each node exactly how much data the output signal requires from the 
+input signal.  The evaluation is reverse-propagated from the write node, through the graph, 
+and back to every read node.  Once the reverse-propagation completes, every node in the 
+graph knows exactly how much data from each input signal is required to compute the 
+node's corresponding output signal.  The multimedia data is then processed on the second 
+traversal, which conforms to a <b>left-to-right</b> traversal of the RIVL graph, propagating the 
+input data forwards through the graph, only operating on data that is relevant to the final 
+output image.<p> 
+
+<a name="3.2">
+<!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><a href="#home">Go Back</a>
+<h3>3.2  Parallelizing RIVL</h3>
+
+We can summarize the preceding section into the statement that, the amount of data that is 
+fetched from each <b>Read</b> node is exactly a function of the output of the 
+<b>Write node</b>.  Combining 
+this notion with the fact that most of the image processing operations in RIVL do 
+not create dependencies from one pixel to another in a given input image, we can derive a 
+simple for mechanism for "dividing up the work", and parallelizing RIVL.<p>  
+
+Instead of running RIVL on a single processor, we spawn multiple RIVL processes on different 
+processors, and have each process work towards computing a different segment of 
+the output data.  We define the notion of a single <b>Master</b> RIVL process, and multiple 
+<b>slave</b> RIVL processes.  Each slave process is started on a different processor.  Once 
+started, the slave process sits idle, listening for instructions from a Master process.  After 
+the slave processes have been started, a Master process is created.  The Master Process 
+determines how many slaves are "available for work".  Once a control connection is established 
+between the Master and every Slave, the Master assigns each slave a logical ID# 
+(the Master ID# is 0, the Slave's ID# ranges from 1 to N slaves).  After each slave is 
+assigned an ID#, the Master sends each slave the total number of processes "available for 
+work", followed by a copy of the RIVL script.  Once each slave (and the master) receives 
+the RIVL script, they each generate a copy of the RIVL graph, and perform the right-to-
+left traversal independently.<p>
+
+The difference between the right-to-left traversal now, is that the logical ID# for the current 
+processor and the total number of processes becomes a factor in determining how 
+much computation gets done for each process.<p>
+
+<!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><img src="http://www.cs.cornell.edu/Info/People/barber/516fin/presen/sld010.gif"><p>
+
+According the figure above, the amount of data fetched from each read node is no longer a 
+function of the output of the write node, but is now a function of:<p>
+<ul>
+<li>the process's Logical ID#
+<li>the total number of processes
+<li>and, is a function of the write node's output<p>
+</ul>
+
+That is, each RIVL process  is responsible for computing a different, independent portion 
+of the final output data, which is based on the above parameters.  Hence the term "Fine-Grain 
+Parallel CM RIVL".  Our approach is fine-grained in that each RIVL process performs 
+the same set of computations, on different data.<p>
+
+Actual data computation (the left-to-right graph traversal) occurs when the master says 
+"go".  Each slave and the master process computes their appropriated portion of the output 
+image.<p>  
+
+<a name="3.3">
+<!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><a href="#home">Go Back</a>
+<h3>3.3  Continuous Media Parallel RIVL</h3>
+
+<!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><img src="http://www.cs.cornell.edu/Info/People/barber/516fin/presen/sld004.gif"><p>
+
+The model of parallelization for RIVL just described maps smoothly to CM RIVL.  With 
+CM RIVL, there is an initial setup phase for each slave process and the master process, as 
+previously described  (the Master process sends each slave its logical ID#, the total number 
+of processes, and a copy of the RIVL script.  Each RIVL process then computes the 
+RIVL graph and makes the  right-to-left traversal).<p>  
+
+The image processing for computing each output frame in a continuous media stream 
+occurs as follows:<p>
+<ul>
+<li>There is a <b>CMO (Continuous Media Object)</b>, which captures and manages continuous 
+streams of data, and resides as part of the Master Process.<p>  
+
+<li>When the CMO has captured all of its input data for a single output image, it contacts 
+the master's Parallel Synchronization Device, and tells each RIVL process (slaves and 
+the Master) that data is ready to be fetched, and that computation can begin ASAP.<p>
+  
+<li>Each RIVL process then fetches only the input data it needs to generate its segment of 
+the output data, and makes the left-to-right traversal through the graph.<p>
+  
+<li>The output data from each RIVL process is then written back to a buffer within the  
+CMO, where the data is re-assembled into a single data-output object.<p>
+  
+<li>Each RIVL process then blocks, listening for further instructions from the CMO as to 
+when another image will be ready for processing.<p>  
+</ul>
+
+Using this method, for a given stream of multimedia data, the construction of the RIVL 
+graph and a reverse-traversal of the graph are performed only once at setup-time.  The 
+actual image processing only requires one traversal of the graph on each RIVL process, 
+where the computation area is distributed among all of the RIVL processes.<p>
+<hr>
+
+<a name="4.0">
+<!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><a href="#home">Go Back</a>
+<h2>4.0   Implementations</h2>
+
+Based on the generic parallelization scheme described in the preceding section, we have 
+developed two implementations of Parallel CM RIVL.  Each implementation has its own 
+synchronization mechanism for parallelizing the independent RIVL processes, and its own 
+mechanism for transferring data.<p>  
+
+<a name="4.1">
+<!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><a href="#home">Go Back</a>
+<h3>4.1  Shared Memory Implementation</h3>
+
+<!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><img src="http://www.cs.cornell.edu/Info/People/barber/516fin/presen/sld005.gif"><p>
+
+The shared-memory implementation is illustrated above.  Each RIVL process resides on a 
+different processor, but each processor resides on the same machine, which has access to 
+the same shared memory segment.<p>  
+
+This implementation mirrors the generic parallel model  described in <b>Section 3</b>.<p>
+
+Implementation Details:<p>
+<ul>   
+<li>The initial setup is facilitated by using TCP-IP multi-cast via Tcl-DP.<p>
+
+<li>The Process synchronization is facilitated using UNIX semaphores.<p>
+
+<li>The Data Transfer is facilitated using shared-memory reads and writes via UNIX-IPC.<p>
+
+<li>The Program was compiled for a SparcStation running SunOS.<p>
+</ul>
+
+This model operates as follows:<p>  
+
+Following the initial setup phase, the CMO works at capturing all data necessary to compute 
+a single RIVL output frame.  Once the CMO captures all the necessary data, it tells 
+each RIVL process to begin processing by means of an <b>entry</b> semaphore.  Each RIVL process 
+then reads only the data relevant to its own output via a shared-memory read.  Once 
+the left-to-right evaluation of the RIVL graph completes, the RIVL process then performs 
+a shared-memory write to the memory region containing the output image that is accessible 
+by the CMO.  The RIVL process then blocks at an <b>exit</b> semaphore until all of the 
+RIVL processes complete computation for the same frame of data.  Once every RIVL process 
+blocks, the master RIVL process un-sets the exit semaphore, and each RIVL process 
+waits again at the entry semaphore, until the CMO again releases it.<p>
+
+<a name="4.2">
+<!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><a href="#home">Go Back</a>
+<h3>4.2  Networked Implementation</h3>
+
+<!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><img src="http://www.cs.cornell.edu/Info/People/barber/516fin/presen/sld006.gif"><p>
+
+The networked implementation is illustrated above.  Each RIVL process resides on a different 
+processor, and each processor resides on a different machine.<p>  
+
+This implementation also mirrors the generic parallel model described in <b>Section 3</b>.<p>
+
+Implementation Details:<p>
+<ul>
+<li>The initial setup is again facilitated by using TCP-IP multi-cast via <!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><a href="http://www.cs.cornell.edu/Info/Projects/zeno/Projects/Tcl-DP.html">Tcl-DP</a>.<p>
+
+<li>The Data Transfer is facilitated using <!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><a href="http://www.cs.cornell.edu/Info/Projects/CAM/">Active-Messages</a> over <!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><a href="http://www.cs.cornell.edu/Info/Projects/U-Net/">U-Net</a>.<p>   
+
+<li>The Synchronization Mechanism is implicit via the Active-Messages paradigm.<p>
+
+<li>The Program was compiled for a SparcStation running SunOS.<p>
+</ul>
+
+This model operates as follows:<p>
+
+Like its shared-memory counterpart, this model performs the initial setup using IP multicast 
+to establish the Active Message connections from the master to each slave RIVL process.  
+The CMO works at capturing all data necessary to compute a single RIVL output 
+frame.  This model differs from the generic-model in that the master process knows 
+exactly what portion of the input data each RIVL process needs to evaluate their RIVL 
+graph.  Once the CMO captures all the necessary data, it tells each RIVL process to begin 
+processing by issuing a <b>gam_store()</b> to each RIVL process.  Once the message is received 
+by each RIVL process, a handler is invoked which tells the RIVL process that it can begin 
+evaluating its RIVL graph on the transferred data.  Once the output data is computed, the 
+RIVL process then issues a <b>gam_store()</b> to the Master process, specifying exactly where 
+the sent data should be stored in the final output image buffer managed by the CMO.  
+Eventually, a handler routine in the Master process will update a "received-from list".   
+Once the Master receives data from each RIVL process, the CMO outputs the computed 
+frame, and begins processing the next multimedia frame.<p>
+
+The process synchronization mechanism is implicit with the actual data-transfer, in that, a 
+RIVL process cannot begin evaluating its graph on a given frame segment, until it receives 
+an Active-message from the Master process.  Similarly, the Master process cannot move 
+on to the next multimedia image until it receives an Active-message from each slave process.<p>
+
+Another subtle point is that by having the Master determine how much of the input data 
+each RIVL process requires, rather than having the RIVL process itself determine this 
+information, we reduce the round-trip communication rate from master to slave.  Having 
+each RIVL process compute its own region, would require a <b>gam_request()</b>, followed by 
+a <b>gam_reply()</b> by the Master process.  Instead, the Master decides how much data each 
+RIVL process needs and simply issues a single <b>gam_store()</b>.<p>  
+
+<a name="4.3">
+<!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><a href="#home">Go Back</a>
+<h3>4.3  Implementation Caveats</h3>
+
+Our actual executables are not SPMD.  There is a separate executable for the Master process, 
+and another executable for each Slave process.  This didn't cause any problems when 
+developing the shared-memory implementation.  However, since Active-Messages ver 1.1 
+assumes a SPMD model, we ran into problems when specifying AM handlers in both the 
+Master process and the Slave processes.<p>  
+
+When the Master process received active-messages from any slave process, the slave process 
+attempted to invoke an AM handler in the Master that existed in the slave, but not in 
+the handler.  The situation was the same when a slave process received an Active Message 
+from the Master.<p>  
+
+We overcame this shortcoming in  by modifying the Active-Message's source code.  The 
+modification allows an application  to register a handler with Active-Messages by calling<p>
+ 
+<center><b>hid uam_reg_handler(handler_t handler)</b></center><p>  
+
+"Handler_t handler" corresponds to the handler's 
+virtual address.  The process returns an "hid", which is an integer, but stands for 
+"handler ID#".   In our implementation, since only the Master executable and slave executable 
+are different, the Master and each slave must register their handlers with the Active-
+Message's library.  Now, when a process sends an Active Message (from slave to master 
+and vice versa), it no longer ships the processes's virtual address of the handler, but rather, 
+ships a logical ID#, corresponding to the handler to be invoked.  The Active-Message's 
+library maintains a look-up table that is indexed by the logical ID#.  The logical ID# corresponds 
+to a process handler's virtual address, which is then invoked from Active-Messages.<p> 
+<hr>
+
+<a name="5.0">
+<!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><a href="#home">Go Back</a>
+<h2>5.0  Performance Results</h2>
+
+We ran our shared-memory experiments on a Quad-Processor SparcStation 10 running SunOS.  
+Our Networked Implementation was tested by using 4 ATM-connected SparcStation 20s running SunOS.    
+
+We constructed two different test cases, named <b>Test 1</b> and <b>Test 2</b>.  The two 
+tests perform the following image operations:<p>
+
+<ul>
+<li><b>Test 1:</b>There are 2 input sequences of images.  The first image sequence (IM1) 
+is scaled, rotated, and copied four times.  The resulting output is then overlayed onto 
+the second image sequence (IM2), and then output.<p>
+
+<li><b>Test 2:</b>There are 2 input sequences of images.  IM1 is scaled, rotated, and copied
+four times.  IM2 is smoothed.  The output from IM1 is then overlayed ontop of the output for
+IM2.
+</ul>
+
+Overall, Test 2 is a more computationally expensive set of operations than Test 1.  
+This fact is illustrated by our experimental results.<p>
+
+<!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><img src = "http://www.cs.cornell.edu/Info/People/barber/516fin/presen/sld011.gif"><p>
+
+From our graphed results above, the shared-memory implementation performs
+somewhat better than our Networked implementation.  Both implementations, however, perform better 
+than their serial counterparts (the green bar graph). One observation was that the networked
+implementation exhibited a large spread of timings for different frames, and this we attributed
+to our process getting preempted. The behavior was not visible on the shared memory implementation
+as our process was sleeping, waiting for the semaphores to change, while the process in the network
+implementation busy-waits. Hopefully, an interrupt driven implementation of active messages
+would cure this.<p>
+
+<b>Note:  In all tests, the processor speed is relatively equal.</b>
+
+Results:<p>  
+<ul>
+<li><b>Shared Memory:</b>  In both tests 1 and 2, the performance gains exhibited the following
+patterns:<p>
+<ul>
+<li><i>From 1 to 2 Processors</i>:  Performance is nearly doubled.
+<li><i>From 2 to 3 Processors</i>:  Again, our performance is nearly doubled.
+<li><i>From 3 to 4 Processors</i>:  The performance increase is negligble.  
+Performance is not increasing either because the communication overhead exceeds 
+the performance gain, or because the processors are un-optimally load-balanced (probably the latter).
+</ul>
+<p>
+<li><b>Networked Implementation:</b> <p>
+<ul>
+<li><i>From 1 to 2 Processors</i>:  Performance is nearly doubled.
+<li><i>From 2 to 3 Processors</i>:  There is a small improvement in performance, however, the shared 
+memory implementation appears to do a little better.
+<li><i>From 3 to 4 Processors</i>:  The performance increase is again negligble.  The explanation for 
+this is probably the same as in the shared memory experiment.
+</ul> 
+<hr>
+
+<a name="6.0">
+<!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><a href="#home">Go Back</a>
+<h2>6.0  Extensions & Robustness</h2>
+
+There are a number of improvements that can and should be made to improve overall 
+performance and robustness of our parallelization scheme.<p>
+<ol>
+
+<li><b>Improve the Load-Balance:</b>  The largest improvement involves improving the 
+load-balance among all of the RIVL-processes by using a "Hungry Puppy Strategy" for 
+dividing up the work.  Our current implementations statically allocate work to each RIVL 
+process.  The location and the amount of data that is needed for each RIVL process is 
+determined as a function of the number of processes and the process ID.  As indicated 
+from our experimental results, there is no significant boost from 3 to 4 RIVL processes 
+using our shared-memory implementation.  We can partly attribute this problem to an 
+un-optimal load balance.<p>  
+
+Modifying the Networked implementation should prove more trouble-some, and while 
+improving the overall load-balance, will probably increase the communication overhead, 
+as more Active-Message will have to be sent and processed.<p>
+
+Modifying the Shared-Memory version should be easier.  The current synchronization 
+mechanism is implemented by using UNIX semaphores.  No RIVL process is allowed to 
+begin executing the next frame until all RIVL processes have completed execution of the 
+current frame.  The output-image is currently divided up by the number processes available 
+for work.  We could improve the load-balance for this implementation by doing two 
+things:  (1)  by dividing up the output-image work regions into more numerous smaller 
+segments; and (2) for a current frame, allow RIVL processes to complete executing their 
+output segment, and grab another segment from the Still-Need-to-be-Computed Queue 
+residing on the Master process.  This implementation will improve load-balance by allowing 
+less-busy processes to contribute equally to the entire output image, while giving 
+busier processors the time they need to compute their data without becoming a bottleneck 
+for the entire output image.<p>
+
+<li><b>Improve Reliability and Fault-Tolerance:</b>  In real-time systems, it is not uncommon 
+for things to go wrong.  Specifically, what should happen in the even that a slave RIVL 
+process crashes?  Our current implementations do not account for such mishaps.  If a process 
+were to malfunction, due to either hardware or communication failure, our implementation 
+would fail.<p>  
+
+<li><b>Port our ATM-Sparc Implementations over to Fast Ethernet PC:</b>  In designing any 
+system, cost is always an issue.  The purpose for implementing PRIVL over Active-Messages 
+was to utilize the lower cost of workstations and networks as compared to expensive 
+parallel machines.  The cost of higher performance PCs is rapidly on the decline.  Adapting 
+our implementations to Fast Ethernet is a natural step in reducing the cost of high-performance 
+CM PRIVL.  The actual transition from ATM-Sparc to Fast Ethernet-PC is 
+merely a matter of getting Active-Messages to work over Fast Ethernet.<p>
+</ul>  
+<hr>
+
+<a name="7.0">
+<!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><a href="#home">Go Back</a>
+<h2>7.0  Conclusions</h2>
+
+We were looking for significant speedups in Parallel CM RIVL as we moved from 1 to N 
+processors (N being no more than 4).  Our results are definitely encouraging.  In both our 
+shared-memory implementation and our networked implementation, we obtained good speedups
+up to four processors. In order to process real-time data, we need to approach a frame-processing
+rate of close to 30 frames per second, or rougly 33 ms per frame.  For the operations we have tested,
+we will require upwards of 30 similar processors to achieve the desired frame rate.<p>  
+
+We do not have results for more than four processors. However, by examining our results, we can
+determine that under the current implementations, the processes running Parallel CM RIVL
+will not be load-balanced.<p>  
+
+Unfortunately, we must conclude that our implemenations as they stand will not scale 
+to upwards of 30 processors to achieve the desired frame rate.  However, further work is under 
+way to address this load-balancing problem.  Furthermore, a "Hungry-Puppy" 
+object-tracking algorithm is currently being incorporated into PRIVL.  
+The experimental results from this should be available shortly.<p>
+
+We have however made significant progress in parallelizing CM RIVL.  CM RIVL is a non-trivial 
+application, and our parallelization scheme works for most of the standard RIVL image operations.<p>
+ 
+<hr>   
+
+<a name="8.0">
+<!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><a href="#home">Go Back</a>
+<h2>8.0  References</h2>
+<ul>
+<li> Jonathan Swartz, Brian C.  Smith
+    <!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><a href="http://www.cs.cornell.edu/Info/Projects/zeno/Rivl/Rivl-mm95/mm-95.html">
+    <i>A Resolution Independent Video Language</i> </A>
+    Proc. of the Third ACM International Conference on Multimedia, San
+    Francisco, CA, November 5-9, 1995. <p>
+
+<li> Lawrence A. Rowe, Brian C. Smith,
+	<I>Continuous Media Player</I>,
+	Third International Workshop on Network and Operating Systems Support
+	for Digital Audio and Video, Nov. 12-13, 1992, San Diego, CA.<p>
+
+<li> Brian C. Smith, Lawrence A. Rowe, Stephen C. Yen
+	<!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><a href="http://www.cs.cornell.edu/Info/Projects/zeno/Tcl-DP/tcl-dp.ps">
+ 	<I>Tcl Distributed Programming</I></a>,
+	Proc. of the 1993 Tcl/TK Workshop, Berkeley, CA, June 1993.<p>
+
+<li> von Eicken, T., D. E. Culler, S. C. Goldstein, and K. E. Schauser,
+	<!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><a href="http://www.cs.cornell.edu/Info/Projects/CAM/isca92.ps">
+	<i>Active Messages: a Mechanism for Integrated Communication and
+	Computation</i></a>.
+	Proceedings of the 19th Int'l Symp. on Computer Architecture,
+	May 1992, Gold Coast, Australia.<p>
+
+<li> Anindya Basu, Vineet Buch, Werner Vogels, Thorsten von Eicken,
+	<!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><a href="http://www.cs.cornell.edu/Info/Projects/U-Net/sosp.ps">
+	<i>U-Net: A User-Level Network Interface
+	for Parallel and Distributed Computing</i></a>,
+	Proc. of the 15th ACM Symposium on Operating Systems Principles,
+	Copper Mountain, Colorado, December 3-6, 1995.<p>
+
+<li> Sugata Mukhopadhyay, Arun Verma, 
+	<!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><a href="http://www.cs.cornell.edu/Info/Courses/Fall-95/CS631/final-projects/Integratig-Rivl-and-CMT/final.html">
+     <i>CMRivL - A Programmable Video Gateway</a></i>,
+	Cornell University, Spring '96<p> 
+
+</ul>
+</body>
+</html>

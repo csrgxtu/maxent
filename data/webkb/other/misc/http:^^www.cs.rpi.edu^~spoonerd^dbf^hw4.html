@@ -1,0 +1,60 @@
+Date: Tue, 14 Jan 1997 23:13:40 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+Content-length: 2367
+Last-modified: Wed, 09 Oct 1996 14:11:51 GMT
+
+<TITLE>66.438 Database Fundamentals</TITLE>
+<BODY BACKGROUND="http://www.cs.rpi.edu/~spoonerd/whtmarb.jpg"
+LINK="1111FF" VLINK="111166">
+<CENTER>
+<H1>66.438 Database Fundamentals</H1>
+<H2>Homework #4</H2>
+<H2>Due: Wednesday, November 6, 1996</H2>
+</CENTER>
+<P>
+<HR>
+<HR>
+<P>
+<OL>
+<LI>
+Consider an Extendible Hashing scheme where keys range from 0 to 255 and the hash function simply converts the key into its 8-bit binary equivalent.  Assume that the buckets can hold up to four records.  Suppose that the directory and buckets contain the following, initially.
+<P>
+<!WA0><IMG SRC="http://www.cs.rpi.edu/~spoonerd/dbf/HW4.GIF">
+<P>
+a) 	Show what the directory and buckets look like after key 30 is inserted.
+<P>
+b) 	Show what the directory and buckets look like after key 160 is inserted.
+<P>
+<LI>
+Consider the following B-Tree of order 2:
+<P>
+<!WA1><IMG SRC="http://www.cs.rpi.edu/~spoonerd/dbf/HW4p2.GIF">
+<P>
+a) Show the B-Tree that results from inserting the record with key 50
+into this B-Tree.
+<P>
+b) Show the B-Tree that results from inserting the record with key 500 into 
+the B-Tree that results after part a) above.
+<P>
+<LI>
+Show the B-Tree that results from deleting the record with key 120 from the 
+following B-Tree of order 2.
+<P>
+<!WA2><IMG SRC="http://www.cs.rpi.edu/~spoonerd/dbf/HW4p3.GIF">
+<P>
+<LI>
+Use Oracle and Pro*C to develop a C program with embedded SQL in it to print a nicely formatted report for the Presidents Database that you created in homework #3.  The report should list for each year of data in the database the year, the name of the winner, the winner's party, the winner's number of votes, the name of the loser, the loser's party, and the loser's number of votes.  Turn in a listing of your C program code (with the embedded SQL in it) and the formatted report that your program produces.  For details on how to do this, see the Oracle web pages that you can link to from the course home page.
+<P>
+	Note: Do not hardcode the years for the report into your program.  Your program should consult the database, determine for what years the database has data and then print the report for those years.  You can assume that if any data is present for a given year, then all data for that year is in the database.
+<P>
+	When you are done with this assignment, you can delete the Presidents Database, you will not need it again.
+
+</OL>
+<P>
+<HR>
+<P>
+<ADDRESS>
+Database Fundamentals - Fall 1996     /     David L. Spooner     /     
+spoonerd@cs.rpi.edu
+</ADDRESS>

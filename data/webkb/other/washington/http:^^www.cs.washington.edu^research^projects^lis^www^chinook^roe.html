@@ -1,0 +1,56 @@
+Date: Tue, 10 Dec 1996 03:39:02 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<TITLE> Chinook Specification </TITLE>
+
+<H1> Chinook, Version Roe </H1>
+June 1994.
+<P>
+Click <A HREF="ch-dac94.ps">here</A> for the block diagram.
+
+<H2>Tools</H2>
+
+<DL>
+<DT><B>vp</B>
+    <DD><I>vp</I> is the Verilog parser.  It takes a Verilog
+	    file and splits it into two parts.
+    <DD> The structural description is extracted and passed
+	    to the port allocator.
+    <DD> The behavioral description,
+	    which contains concurrent, time-driven and event-driven
+	    code, is translated into C and output to a compiler.
+<DT><B>ap</B>
+    <DD><I>ap</I> is the I/O port allocator.  The structural output
+	 of <I>vp</I> (<TT>.env</TT> and <TT>.bun</TT> files)
+	 specifies which microcontroller
+	 to use and the devices that need to be connected to it. 
+    <DD> It reads the definition of the devices from the device
+	 library and the controller library.
+	 (In the diagram they are shown as <TT>.dev</TT> and
+	 <TT>.proc</TT> files, but we actually use <TT>.lib</TT> for both).
+    <DD> After I/O port allocation, it generates two things:
+	<UL>
+	<LI> device driver routines in the <TT>.h</TT> file
+	<LI> schematic file in the <TT>.sch</TT> file.
+	</UL>
+    <DD> We have post-processing tools to convert the schematic
+       file to other formats.
+<DT><B>dd</B>
+    <DD><I>dd</I> is the pre-allocation device-driver synthesizer.
+    <DD> It is an optional phase, which converts a timing diagram
+       file (<TT>.td</TT>, in TimingDesigner format) into a <I>SEQ</I>
+       that we normally expect in the device library.
+</UL>
+
+<P>
+
+The input to the Chinook co-synthesis system consists of the following:
+
+<UL>
+<LI> <A HREF="verilog.html">user specification of the system in Verilog</A>.
+<LI> <A HREF="devlib.html">device library</A>
+<LI> <A HREF="conlib.html">controller library</A>
+</UL>
+
+

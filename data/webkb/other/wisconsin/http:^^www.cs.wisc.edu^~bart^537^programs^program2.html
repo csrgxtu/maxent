@@ -1,0 +1,151 @@
+Date: Mon, 11 Nov 1996 17:24:46 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 01 Mar 1996 17:52:01 GMT
+Content-length: 4486
+
+<html>
+<head>
+<title>CS 537 - Programming Assignment #2</title>
+</head>
+
+<body>
+<table border=0 width=100% align=center>
+<tr>
+<td width=25%><td width=50% align=center>
+<b>UNIVERSITY OF WISCONSIN-MADISON
+<br>
+Computer Sciences Department</b>
+<td width=25%>
+<tr>
+<tr>
+<td>
+<b>CS 537
+<br>
+Spring 1996 </b>
+<td><td align=right><b>Bart Miller</b>
+<tr>
+<td>
+<td align=center><b>Programming Assignment #2</b>
+<br>
+(Due Tuesday, March 5, at 5pm)
+<td>
+</table>
+
+<br>
+<h2>A Parallel Producer/Consumer Program</h2>
+<p>
+The goal of this assignment is to get experience in writing a program
+that actually runs in parallel.
+You will write a program with four processes, structure like:
+
+<CENTER>
+<BR>
+<IMG ALIGN=CENTER SRC="prog2.prodcons.gif" ALT="Producer/Consumer">
+<BR>
+</CENTER>
+
+<ul>
+<li>
+The <tt>Reader</tt> process will read an input file, one line at a time.
+<tt>Reader</tt> will take the each line of the input and pass it to process
+<tt>Munch1</tt>.
+<li>
+<tt>Munch1</tt> will scan the line and replace each blank character with
+an asterisk (``*'') character.
+It will then pass the line to process
+<tt>Munch2</tt>.
+<li>
+<tt>Munch2</tt> will scan the line and convert all lower case letters to
+upper case (e.g., convert "a" to "A").
+It will then pass the line to process
+<tt>Writer</tt>.
+<li>
+<tt>Writer</tt> will write the line to an output file.
+</ul>
+<h2> Synchronization and Communication</h2>
+<p>
+The processes will communicate through shared memory.
+Each of the three pairs of communicating processes will have a queue of
+buffers between.
+This queue will be represented by a C++ class that you will call
+<tt>SyncQueue</tt>.
+The <tt>SyncQueue</tt> class will be implemented as a fixed sized buffer;
+the constructor for the class will take a parameter (with a default) to set
+the size of the buffer.
+<p>
+You should use semaphores to make sure
+that processes do not insert or remove data from the
+same queue at the same time.
+You should also make sure that each buffer queue is locked separately,
+so that only the pair of processes using that buffer queue would block.
+The semaphores should be part of the <tt>SyncQueue</tt> class definition,
+so each instance of the class produces a new queue with new semaphores.
+<p>
+You will use the semaphore and thread operations supported by the Solaris
+operating system.
+<a href="sem-thread.html">
+We have prepared a summary of the functions that you will use, and special
+instructions for compiling your program.</a>
+<p>
+<b>For this assignment, you must use a Sun workstation running the Solaris
+operating system.</b>
+<p>
+For semaphore operations, you will use <tt>sema_init</tt>,
+<tt>sema_wait</tt> (the P operation), and <tt>sema_post</tt> (the V operation).
+In addition to the description that we provide, you can use the "man" command
+to find out more about these functions.
+<h2>Compiling Your Program</h2>
+<p>
+You must do a few special things to
+<a href="sem-thread.html#compile">compile</a>
+a program to use threads and synchronization.
+Follow the instructions carefully or you will get strange (and incorrect)
+results.
+<h2>Program Details</h2>
+<ol>
+<li>
+Your program will create four new threads.
+To do this, you will start your program and it will create four
+threads (using the <tt>thr_create</tt> function).
+<li>
+Thread <tt>Reader</tt> will read in each input line.
+If the line is longer than 63 characters, it will truncate it to 63
+characters (plus the null byte at the end).
+Just throw away any extra characters.
+<li>
+See the manual page entry for the function "index"
+to making writing <tt>Munch1</tt> easier.
+<li>
+See the manual page entries for
+"islower" and "toupper"
+to making writing <tt>Munch2</tt> easier.
+(Read these function names as
+"is lower" and "to upper".
+<li>
+Thread <tt>Writer</tt> will count the number of lines and print
+this number to <tt>cout</tt>.
+</ol>
+<h2>Deliverables</h2>
+<p>
+You should hand in a print-out of your program, including all .C (.cc) and
+.h files.
+Also hand in your Makefile.
+You should run your program on the data stored in
+<tt>~cs537-2/public/program2/DATA.test</tt>.
+<i>This file is not yet available</i>.
+Do
+<b>not</b>
+print the data file nor should you hand in the output of your program..
+<p>
+After your program is completed, you will meet with Muthiah to demonstrate
+your running program.
+Make sure that you do not modify your files after you turn in the program.
+<hr>
+<H4>
+Last modified:
+Tue Feb 20 09:27:57 CST 1996
+by
+<a href="http://www.cs.wisc.edu/~bart">bart</a></b>
+</H4>
+</body>

@@ -1,0 +1,74 @@
+Date: Tue, 26 Nov 1996 00:22:08 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Wed, 12 Jul 1995 21:57:26 GMT
+Content-length: 3143
+
+<html>
+<head>
+<title>eNVy</title> 
+</head>
+<body>
+<h1>eNVy</h1> 
+<hr><p>
+
+     eNVy is a design for a large solid state storage system built
+primarily with Flash memory.  Its main goal is to provide extremely
+fast and reliable access to persistent data.  The obvious applications
+that can benefit from such a system are databases since their performance
+is usually bound by the time it takes to retrieve and modify data.
+While all databases can obtain significant benefits when using eNVy,
+object oriented databases are especially well suited since the fast
+access time of solid state storage effectively eliminates the penalties
+caused by difficulties in optimizing for sequential disk access in
+current systems.
+
+<p>
+     In the eNVy storage system data is stored permanently in solid-state
+(Flash) memory, as
+opposed to traditional systems where data is stored on disk and reads
+are sped up by a volatile DRAM cache.  Flash technology's inherent
+non-volatility allows eNVy to serve as a permanent data repository
+rather than a volatile cache.  Flash's simple structure offers a cost
+advantage
+over all other forms of solid-state memory.  While this still doesn't
+allow Flash to compete with magnetic disks in terms of cost per bit 
+in the near future, it does provide a solid state storage alternative
+that can be used for performance enhancement when disks are too slow.
+
+<p>
+     eNVy differs from other Flash products in that its storage is 
+memory mapped.  Memory mapping allows much more efficient fine grained
+access than a disk interface but is made difficult by three basic
+problems with Flash memory, inability to update in-place, relatively
+large write latencies, and limited erasure cycling.  eNVy overcomes
+the update problem by using page mapping to implement a copy-on-write
+scheme with a small amount of battery-backed SRAM to make updates appear
+to be done in-place even though they actually are not.  The copy-on-write
+function also almost entirely hides the Flash write latency.  Wide busses
+provide high performance and an efficient cleaning algorithm that includes
+wear-leveling maximizes the life of the Flash array.
+
+     In effect, eNVy provides a solid state storage system similar in
+both image and performance to a large array of memory mapped, battery backed
+SRAM but at a greatly reduced cost.  Our simulations show that a typical 
+2 gigabyte store can support I/O rates corresponding to approximately
+30,000 transactions per second on the TPC-A database benchmark.
+Average read and write latencies for the simulations were 180ns for
+reads and 200ns for writes.
+<p>
+<hr>
+<h2> eNVy Papers </h2>
+
+<li> <!WA0><a href="http://www.cs.rice.edu/CS/Systems/papers/envy-asplos94.ps.gz">
+"eNVy, A Non-Volatile, Main Memory Storage System", M. Wu and W. Zwaenepoel,
+Proceedings of the 6th Symposium on Architectural Support for 
+Programming Languages and Operating Systems, pp. 86-97, October 1994.</a>
+<p>
+<li> <!WA1><a href="http://www.cs.rice.edu/CS/Systems/papers/envy-techrpt.ps.gz">
+"The Architecture of eNVy, A Non-Volatile, Main Memory Storage System",
+M. Wu, Rice Computer Science Tech Report #94-299, April, 1994.</a>
+
+<p>
+
+

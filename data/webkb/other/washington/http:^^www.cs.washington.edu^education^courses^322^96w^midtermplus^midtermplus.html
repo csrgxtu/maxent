@@ -1,0 +1,138 @@
+Date: Wed, 08 Jan 1997 20:51:55 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE>CSE 322  
+Remarks on Problem 5 from the Midterm
+Winter Quarter, 1996</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value="CSE 322  
+Remarks on Problem 5 from the Midterm
+Winter Quarter, 1996">
+<meta name="keywords" value="midtermplus">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ <BR> <HR><A NAME=tex2html1 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.washington.edu/general/latex2html_icons//next_motif.gif"></A>   <IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.washington.edu/general/latex2html_icons//up_motif_gr.gif">   <IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.washington.edu/general/latex2html_icons//previous_motif_gr.gif">         <BR>
+<B> Next:</B> <A NAME=tex2html2 HREF="node1.html">   About this document </A>
+<BR> <HR> <P>
+<P>
+<H1>CSE 322  
+Remarks on Problem 5 from the Midterm
+Winter Quarter, 1996</H1>
+<P><STRONG></STRONG><P>
+<P><STRONG></STRONG><P>
+<P>
+Consider the grammar <b>G</b> with start symbol <b>S</b> and productions
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img1.gif"><P>
+Suppose instead that we had asked you to prove that <IMG  ALIGN=MIDDLE ALT="" SRC="img2.gif"> has an equal number of <b>a</b>'s as <b>b</b>'s<IMG  ALIGN=MIDDLE ALT="" SRC="img3.gif">.  Applying the definition of 
+<IMG  ALIGN=MIDDLE ALT="" SRC="img4.gif">, this means we would like to prove the following two facts:
+<OL><LI> For all <IMG  ALIGN=MIDDLE ALT="" SRC="img5.gif">, if <b>x</b> has an equal number of <b>a</b>'s and <b>b</b>'s
+then <IMG  ALIGN=BOTTOM ALT="" SRC="img6.gif">.
+<LI> For all <IMG  ALIGN=MIDDLE ALT="" SRC="img7.gif">, if <IMG  ALIGN=BOTTOM ALT="" SRC="img8.gif"> then <b>x</b> has an equal 
+number of <b>a</b>'s and <b>b</b>'s.
+</OL>
+The first of these two statements is what you were asked to show in question 5
+from the midterm. To show the first statement, your proof needs to be structured as follows:
+<P>
+<b> Given:</b> any <IMG  ALIGN=MIDDLE ALT="" SRC="img9.gif"> where <b>x</b> has an equal number of <b>a</b>'s and <b>b</b>'s.
+<P>
+<b> Prove:</b> that there exists <em> some</em> derivation <IMG  ALIGN=BOTTOM ALT="" SRC="img10.gif">.
+<P>
+In your proof, you've been handed a string <b>x</b> and all that you know about it 
+is that it has an equal number of <b>a</b>'s and <b>b</b>'s.  That's why in this case, 
+we choose to do an induction on the length of <b>x</b>.  You can't do an induction
+on derivation length here because it is not known whether <b>x</b> can be derived
+from <b>S</b> (That's what you're attempting to prove).
+<P>
+The exam instructions noted one fact that we have about <b>x</b>: since <b>x</b> has
+an equal number of <b>a</b>'s and <b>b</b>'s, it must be of even length, that is, 
+<b>|x| = 2n</b> where <b>n</b> is the number of <b>a</b>'s (also, the number of <b>b</b>'s).
+So what we're really doing here is an induction on <b>n</b>.
+<P>
+The base case is when <b>n=0</b> and so <IMG  ALIGN=BOTTOM ALT="" SRC="img11.gif">.  Since there is a production
+<IMG  ALIGN=BOTTOM ALT="" SRC="img12.gif">, certainly <IMG  ALIGN=BOTTOM ALT="" SRC="img13.gif"> can be derived in one step, and
+so the base case holds.
+<P>
+For the inductive hypothesis, we only have two choices here: should we use
+normal induction or strong induction?  We don't really know which to use 
+until we do the rest of the proof, so I'll list them both:
+<UL><LI> (normal) For any <b>x</b> where <IMG  ALIGN=MIDDLE ALT="" SRC="img14.gif"> and <b>x</b> has an equal number of
+<b>a</b>'s and <b>b</b>'s, <IMG  ALIGN=BOTTOM ALT="" SRC="img15.gif">.
+<LI> (strong) For any <b>x</b> where <b>x &lt; 2n</b> and <b>x</b> has an equal number of
+<b>a</b>'s and <b>b</b>'s, <IMG  ALIGN=BOTTOM ALT="" SRC="img16.gif">.
+</UL>
+Assume the inductive hypothesis is true and that you have been given
+some string <IMG  ALIGN=MIDDLE ALT="" SRC="img17.gif"> that has an equal number of <b>a</b>'s and <b>b</b>'s
+where <b>|x| = 2n</b>.  What does <b>x</b> look like?  The hint given in the exam is
+to consider whether or not <b>x</b> has a non-trivial prefix (not <b>x</b> or <IMG  ALIGN=BOTTOM ALT="" SRC="img18.gif">)
+with an equal number of <b>a</b>'s and <b>b</b>'s.  The reason we do this, as we see in 
+the solutions, is that if it does have a non-trivial prefix with an equal 
+number of <b>a</b>'s and <b>b</b>'s, then <b>x</b> is a concatenation of two smaller strings 
+with equal numbers of <b>a</b>'s and <b>b</b>'s.  With that, we can invoke the 
+<em> strong</em> inductive hypothesis, to say that these two smaller strings
+can be derived from <b>S</b>.  Thus <b>x</b> can be derived from <b>S</b> using 
+<IMG  ALIGN=BOTTOM ALT="" SRC="img19.gif"> as the first production in the derivation.  We used strong
+induction here, so this means we should use the second hypothesis listed above 
+to answer 5b) on the exam.
+<P>
+So in the case  where <b>x</b> has a non-trivial prefix with an equal number of 
+<b>a</b>'s and <b>b</b>'s we have shown that <IMG  ALIGN=BOTTOM ALT="" SRC="img20.gif">.  We need to handle
+every <b>x</b>, though, so what about the case where <b>x</b> doesn't have any such 
+prefix?  There are two sub-cases to consider:
+<OL><LI> The string <b>x</b> begins with an <b>a</b>, but there is no matching <b>b</b> for this 
+<b>a</b> until the very last character <b>b</b>.  Thus, <b>x = awb</b> for some 
+string <b>w</b> of length <b>2n -2</b>.
+<LI> The string <b>x</b> begins with an <b>b</b>, but there is no matching <b>a</b> for this 
+<b>b</b> until the very last character <b>a</b>.  Thus, <b>x = bwa</b> for some 
+string <b>w</b> of length <b>2n -2</b>.
+</OL>
+In each of these cases, <b>w</b> is a string of length less than <b>2n</b> and
+has an equal number of <b>a</b>'s and <b>b</b>'s.  At this point, you should be able to
+complete the proof by invoking the induction hypothesis and reasoning about 
+the other two productions.
+<P>
+Notice how in the above arguments, we argued that <b>x</b> was derivable in the
+grammar based entirely on what we were given: the fact that <IMG  ALIGN=MIDDLE ALT="" SRC="img21.gif">
+and <b>x</b> had an equal number of <b>a</b>'s and <b>b</b>'s.  From this we reasoned about 
+what <b>x</b> might look like: it had some even length <b>2n</b>, and it may or may
+not have had a prefix with an equal number of <b>a</b>'s and <b>b</b>'s.  To handle all
+the possibilities of <b>n</b>, we did a proof by induction on <b>n</b>.  We handled 
+whether
+or not <b>x</b> had a prefix with an equal number of <b>a</b>'s and <b>b</b>'s as subcases
+within the induction.  This covered all the bases, so we proved it for all <b>x</b>.
+<P>
+What about if we wanted to prove statement 2)?  In this case the proof would 
+be structured as follows:
+<P>
+<b> Given:</b> any <IMG  ALIGN=MIDDLE ALT="" SRC="img22.gif"> where <IMG  ALIGN=BOTTOM ALT="" SRC="img23.gif">.
+<P>
+<b> Prove:</b> that <b>x</b> has an equal number of <b>a</b>'s and <b>b</b>'s.
+<P>
+Here, what you're given and what you're asked to prove are flipped.  You're
+told that <b>x</b> can be derived from <b>S</b> in some number of steps, that is,
+that <IMG  ALIGN=BOTTOM ALT="" SRC="img24.gif"> for some <IMG  ALIGN=MIDDLE ALT="" SRC="img25.gif">.  Since you're given 
+that <b>x</b> is derivable in <b>i</b> steps, it is perfectly legal to do an
+induction on <b>i</b>, the length of the derivation, to prove
+that <b>x</b> has an equal number of <b>a</b>'s and <b>b</b>'s.
+I'll leave this proof as an exercise.  What are the three derivation cases 
+you will use for this proof?  Do you need strong induction here?  What's
+the base case?
+<P>
+<BR> <HR>
+<UL> 
+<LI> <A NAME=tex2html3 HREF="node1.html#SECTION00010000000000000000">   About this document ... </A>
+</UL>
+<BR> <HR><A NAME=tex2html1 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.washington.edu/general/latex2html_icons//next_motif.gif"></A>   <IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.washington.edu/general/latex2html_icons//up_motif_gr.gif">   <IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.washington.edu/general/latex2html_icons//previous_motif_gr.gif">         <BR>
+<B> Next:</B> <A NAME=tex2html2 HREF="node1.html">   About this document </A>
+<BR> <HR> <P>
+<BR> <HR>
+<P><ADDRESS>
+<I>James Fix <BR>
+Wed Feb  7 14:58:33 PST 1996</I>
+</ADDRESS>
+</BODY>

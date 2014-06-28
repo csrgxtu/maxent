@@ -1,0 +1,52 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 07-Jan-97 15:25:58 GMT
+Content-Type: text/html
+Content-Length: 1778
+
+<HTML><HEAD><TITLE>Unit Conversion Demo</TITLE></HEAD><BODY>
+<H2>Conversion of Units of Measurement</H2>
+
+This is a demonstration of a program that converts between different units
+of measurement, or combinations of units.  It can also simplify
+expressions of units.
+<P>
+A units expression is a unit name, such as <CODE>meter</CODE>,
+a number such as <CODE>2.5</CODE>, a product of two or more unit expressions
+<CODE>(* expr1 ... exprn)</CODE>,
+or a quotient of two unit expressions <CODE>(/ expr1 expr2)</CODE>.
+Common abbreviations such as <CODE>ft</CODE> are allowed.
+<P>
+An example is <CODE>(/ (* atto parsec) (* micro fortnight))</CODE>.
+<P>
+When the program is started, a window is created containing a command menu
+and input and output areas.  Click the appropriate menu items to run
+the demo.
+
+ <ul>
+  <LI> <a href="file://ftp.cs.utexas.edu/pub/novak/units/">
+       FTP directory for software and documentation</a>.
+  <LI><a href="/users/novak/units95.html">
+       Conversion of Units of Measurement''</a> paper.
+ </ul>
+
+<HR>
+
+<H2>Instructions</H2>
+<FORM METHOD=GET ACTION="nph-units-action">
+<OL>
+<LI>	You must be logged in to a host running X windows.
+<LI>	Type <CODE>  xhost + www.cs.utexas.edu  </CODE> (exactly as shown
+        at left) in a window on that host
+	to allow this server to write to your display.
+<LI>	Enter your X display name here if needed; you may need to change
+        what is shown in the box to your X display name.  For example,
+        <CODE> myterminal.cs.utexas.edu:0.0 </CODE> <BR>
+	<INPUT TYPE=text SIZE=40 VALUE="128.2.209.145:0.0" NAME=xdspname>
+<LI>	Click <INPUT TYPE=submit VALUE="here"> to start the demo.
+</OL>
+</BODY>
+<address><a href="http://www.cs.utexas.edu/users/novak/index.html">
+Gordon S. Novak Jr.</a></address>
+</HTML>
+

@@ -1,0 +1,81 @@
+Date: Tue, 14 Jan 1997 19:54:46 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+
+<HTML>
+<HEAD><TITLE>Search CS Resum&eacute; Bank</TITLE></HEAD>
+<BODY BGCOLOR="#FFFFFF" LINK="#660033" VLINK="#856363" ALINK="#FF9900">
+
+<center>
+<!WA0><img src="http://www.cs.tamu.edu/Images/logos/cs2.gif" ALT="Dept. of Computer Science, Texas A&M University">
+</center>
+
+
+
+<H1>Search The Resum&eacute; Bank</H1>
+<HR>
+
+<P>Any Computer Science student with a listing on the
+Personal Pages is eligible to be listed in the Computer Science Resum&eacute; 
+Bank.  To add your resume, please <!WA1><A HREF="http://www.cs.tamu.edu/Resumes/access/">fill out the 
+Resum&eacute; Bank request form</A> (accessible only from CS machines).</P>
+
+<!WA2><FORM METHOD=POST ACTION="http://www.cs.tamu.edu/cgi-bin/Resumes/resume_search.pl">
+<H2><INPUT type=radio name="search_type" value="all" checked> View all resum&eacute;s in the Resum&eacute; Bank<BR></H2>
+<H2><INPUT type=radio name="search_type" value="some"> View resum&eacute;s with the following restrictions</H2>
+
+<UL>
+<LI><P><B>Graduation Date</B><BR>
+<B>Semester:</B>
+<INPUT type=checkbox name=spring>Spring (May)
+<INPUT type=checkbox name=summer>Summer(August)
+<INPUT type=checkbox name=fall>Fall (December)<BR>
+
+<B>Year:</B>
+<INPUT type=checkbox name=1996>1996
+<INPUT type=checkbox name=1997>1997
+<INPUT type=checkbox name=1998>1998</P>
+
+<LI><P><B>Major:</B>
+<INPUT type=checkbox name=cs>Computer Science
+<INPUT type=checkbox name=ce>Computer Engineering</P>
+
+<LI><P><B>Degree:</B>
+<INPUT type=checkbox name=bs>B.S.
+<INPUT type=checkbox name=ms>M.S.
+<INPUT type=checkbox name=phd>Ph.D.</P>
+
+<LI><P><B>Job Type:</B>
+<INPUT type=checkbox name=permanent>Permanent
+<INPUT type=checkbox name=co_op>Co-op
+<INPUT type=checkbox name=intern>Internship</P>
+
+<LI><P><B>Search Resum&eacute; Description:</B><BR>
+Please enter the list of keywords you would like to find, separated by spaces:<BR>
+<INPUT type=text name="key_words" size=60>
+<UL>
+<LI>Please indicate your preference:<BR>
+<INPUT type=radio name="separator" value="and" checked> all words in the list must appear<BR>
+<INPUT type=radio name="separator" value="or"> at least one word in the list must appear
+</UL>
+</UL>
+
+<P><INPUT type=submit><INPUT type=reset value="Reset the form"></P>
+</FORM>
+
+<hr>
+<!WA3><A HREF="http://www.cs.tamu.edu/Resumes//"><!WA4><IMG SRC="http://www.cs.tamu.edu/Images/small_buttons/home_btn_s.gif" ALT="[Home Button]">
+Computer Science Homepage</a><br>
+<HR>
+
+
+
+<ADDRESS>
+<!WA5><A HREF="http://www.cs.tamu.edu/ips/">Computer Science Internet Publishing Services</A> -- Wednesday, July 31, 1996</ADDRESS>
+
+
+
+</BODY>
+</HTML>
+
+

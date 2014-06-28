@@ -1,0 +1,161 @@
+Date: Wed, 20 Nov 1996 19:40:11 GMT
+Server: Apache-SSL/0.4.3b
+Content-type: text/html
+Content-length: 7185
+Last-modified: Tue, 22 Oct 1996 21:45:01 GMT
+
+<HTML>
+<HEAD>
+<TITLE> Frameworks and Algorithms for the Analysis and Transformation of Scientific Programs</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<!WA0><img src="http://www.cs.umd.edu/projects/omega/omega.gif" lowsrc="omega-small.gif" 
+	width=320 height=240 
+	align=left
+	hspace=5
+	alt=""
+	>
+<H1>
+ The Omega Project: </h1>
+<h2> Frameworks and Algorithms for the Analysis and Transformation of Scientific Programs</H2>
+<br clear=all>
+
+<p> Part of the <!WA1><a href = "http://www.cs.umd.edu/projects/hpssl">High Performance Software Systems Laboratory</a> at the <!WA2><a href = "http://www.cs.umd.edu"> Computer Science Department
+</a> of the <!WA3><a href="http://www.umcp.umd.edu"> 
+Univ. of Maryland, College Park </a>
+
+<p>
+<B>
+<!WA4><A HREF="http://www.cs.umd.edu/projects/omega/release-1.0.html">Release 1.00</A> of Petit, the Omega Library, and Omega calculator
+<B>
+</P>
+
+
+<P><b><!WA5><a href = "http://www.cs.umd.edu/faculty/pugh.html">William Pugh</a>
+and the entire
+<!WA6><a href = "http://www.cs.umd.edu/projects/omega/team.html">Omega Project Team</a></b></P>
+
+<P><b><!WA7><a href = "http://www.cs.umd.edu/TRs/groups/Omega.html">
+Omega Project Technical Reports</a></b></P>
+
+
+<p>
+The Omega project  has
+two major components.
+One component is the Omega test, a system
+for manipulating sets of affine constraints over integer variables.
+When we started work on the Omega test for dependence testing, 
+it was designed as a decision
+test for the existence of integer solutions to affine constraints.
+we found that by having the Omega test return symbolic answers, rather than
+yes/no answers, we could perform standard data dependence analysis quicker.
+As we have explored more difficult issues in analysis and transformation
+of scientific programs, we have extended the Omega test to the point where
+it is a complete system for simplifying and verifying Presburger formulas (Presburger
+formulas contain affine constraints, the usual logical connectives,
+and <!WA8><IMG ALIGN=BOTTOM ALT="existential" SRC="http://www.cs.umd.edu/projects/omega/_1736_tex2html_wrap396.xbm"> and <!WA9><IMG ALIGN=BOTTOM ALT="universal" SRC="http://www.cs.umd.edu/projects/omega/_1736_tex2html_wrap398.xbm"> quantifiers). Of course, the Omega test cannot
+simplify all Presburger formulas efficiently (there is a <!WA10><IMG ALIGN=BOTTOM ALT="2^(2^n)" SRC="http://www.cs.umd.edu/projects/omega/_1736_tex2html_wrap400.xbm"> nondeterministic
+lower bound and a <!WA11><IMG ALIGN=BOTTOM ALT="2^(2^(2^n))" 
+SRC="http://www.cs.umd.edu/projects/omega/_1736_tex2html_wrap402.xbm"> deterministic upper bound on the time required
+to verify Presburger formulas). However, in practice 
+the Omega test is reasonably efficient
+for the tasks for which we currently use it. </p>
+
+<P>
+The other component of my research is developing frameworks for analyzing and
+transforming programs. we have utilized the Omega test in research on asking 
+more sophisticated
+questions than are usually asked when analyzing programs; on using
+this information to pinpoint parallelism unexploited by conventional techniques;
+and on developing a unified framework for reordering transformations.
+These methods are described using simple cases of Presburger formulas.
+The descriptions and implementations of these techniques 
+can be simple and clear since they need not be
+concerned with the techniques used by the Omega test to simplify the formulas.
+</p>
+
+<P>
+As a general philosophy, we've tried to develop exact methods and frameworks
+that are efficient enough to be practical, as opposed to
+developing inexact methods that may be faster and accurate enough
+for practical use.
+we find that studying exact methods gives me a better insight into the problems
+we study, that 
+it is easier to extend exact methods to make them faster than it is to
+extend inexact methods to make them more exact, and 
+that exact methods can more easily
+be applied to new problems.
+</P>
+
+<P>
+My research group
+has done only very limited studies
+of the efficiency and 
+effectiveness of our methods on real FORTRAN codes.
+While these are important, doing such studies well requires
+a robust, optimizing FORTRAN compiler (which we do not have access to)
+and substantial effort. Also, applying our techniques to real codes
+requires extensions still under development 
+(for procedure calls and arbitrary control flow).
+As a number of other research groups
+incorporate the Omega test into their software, we 
+hope to get feedback from them and pursue collaborative research.</P>
+
+<HR>
+<UL> 
+<LI> <!WA12><A NAME=tex2html5 HREF="http://www.cs.umd.edu/projects/omega/sectionstar3_1.html#SECTION0001000000000000000"> Array Data Dependence Analysis</A>
+<UL> 
+<LI> <!WA13><A NAME=tex2html6 HREF="http://www.cs.umd.edu/projects/omega/subsectionstar3_1_1.html#SECTION0001100000000000000"> Value-based Dependence Analysis</A>
+<LI> <!WA14><A NAME=tex2html7 HREF="http://www.cs.umd.edu/projects/omega/subsectionstar3_1_2.html#SECTION0001200000000000000"> Static Analysis of Upper and Lower Bounds on Dependences and Parallelism</A>
+</UL> 
+<LI> <!WA15><A NAME=tex2html8 HREF="http://www.cs.umd.edu/projects/omega/sectionstar3_2.html#SECTION0002000000000000000"> The Omega Test</A>
+<UL> 
+<LI> <!WA16><A NAME=tex2html9 HREF="http://www.cs.umd.edu/projects/omega/paragraphstar3_2_0_0_1.html#SECTION0002001000000000000"> Eliminate Existentially Quantified Variables</A>
+<LI> <!WA17><A NAME=tex2html10 HREF="http://www.cs.umd.edu/projects/omega/paragraphstar3_2_0_0_2.html#SECTION0002002000000000000"> Verify the Existence of Solutions</A>
+<LI> <!WA18><A NAME=tex2html11 HREF="http://www.cs.umd.edu/projects/omega/paragraphstar3_2_0_0_3.html#SECTION0002003000000000000"> Remove Redundant Constraints</A>
+<LI> <!WA19><A NAME=tex2html12 HREF="http://www.cs.umd.edu/projects/omega/paragraphstar3_2_0_0_4.html#SECTION0002004000000000000"> Verify Implications</A>
+<LI> <!WA20><A NAME=tex2html13 HREF="http://www.cs.umd.edu/projects/omega/paragraphstar3_2_0_0_5.html#SECTION0002005000000000000"> Simplify Formulas Involving Negation</A>
+<LI> <!WA21><A NAME=tex2html14 HREF="http://www.cs.umd.edu/projects/omega/subsectionstar3_2_1.html#SECTION0002100000000000000"> Related Work</A>
+</UL> 
+<LI> <!WA22><A NAME=tex2html15 HREF="http://www.cs.umd.edu/projects/omega/sectionstar3_3.html#SECTION0003000000000000000"> A Framework for Unifying Reordering Transformations</A>
+<UL> 
+<LI> <!WA23><A NAME=tex2html16 HREF="http://www.cs.umd.edu/projects/omega/paragraphstar3_3_0_0_1.html#SECTION0003001000000000000"> Code generation</A>
+<LI> <!WA24><A NAME=tex2html17 HREF="http://www.cs.umd.edu/projects/omega/subsectionstar3_3_1.html#SECTION0003100000000000000"> Related work</A>
+</UL> 
+<LI> <!WA25><A NAME=tex2html18 HREF="http://www.cs.umd.edu/projects/omega/sectionstar3_4.html#SECTION0004000000000000000"> Implementation and Users</A>
+<LI> <!WA26><A NAME=tex2html19 HREF="http://www.cs.umd.edu/projects/omega/sectionstar3_5.html#SECTION0005000000000000000"> Future Directions</A>
+<LI> <!WA27><A NAME=tex2html20 HREF="http://www.cs.umd.edu/projects/omega/bibliography3_6.html#SECTION0006000000000000000">References</A>
+<LI> <!WA28><A NAME=tex2html21 HREF="http://www.cs.umd.edu/projects/omega/section3_7.html#SECTION0007000000000000000">  <em>About this document ...</em> </A>
+</UL>
+<HR> 
+<p><!WA29><A NAME=tex2html3 HREF="http://www.cs.umd.edu/projects/omega/sectionstar3_1.html"><!WA30><IMG ALIGN=MIDDLE SRC="http://www.cs.umd.edu/icons//next_motif.gif" alt="next"></A> 
+<!WA31><a href="http://www.cs.umd.edu/index.html"><!WA32><IMG ALIGN=MIDDLE SRC="http://www.cs.umd.edu/icons//up_motif.gif" alt="up"></a> <!WA33><IMG ALIGN=MIDDLE SRC="http://www.cs.umd.edu/icons//previous_motif_gr.gif" alt="prev">  </p>
+
+<p><B> Next:</B> <!WA34><A NAME=tex2html4 HREF="http://www.cs.umd.edu/projects/omega/sectionstar3_1.html"> Array Data Dependence </A></p>
+<HR> 
+<H2>Where to get Omega project software</H2>
+<p>
+Omega project software is available for anonymous FTP:
+</P>
+<UL> 
+
+<LI> 
+<!WA35><A HREF="http://www.cs.umd.edu/projects/omega/release-1.0.html">
+Version 1.00 of Petit, the Omega Calculator and Library</A> (binaries and sources).
+
+<LI> 
+Array dataflow benchmark programs in either
+<!WA36><A HREF="ftp://ftp.cs.umd.edu/pub/omega/benchmarks/benchmarks.f.tar.Z">
+FORTRAN</A> or
+<!WA37><A HREF="ftp://ftp.cs.umd.edu/pub/omega/benchmarks/benchmarks.t.tar.Z">
+tiny</A>.
+
+</UL>
+<HR>
+
+<ADDRESS>
+<!WA38><A HREF="mailto:omega@cs.umd.edu">omega@cs.umd.edu</A>
+</ADDRESS>
+</BODY>
+</HTML>

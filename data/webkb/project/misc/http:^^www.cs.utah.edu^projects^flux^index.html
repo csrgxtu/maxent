@@ -1,0 +1,147 @@
+Date: Wed, 20 Nov 1996 20:12:39 GMT
+Server: Apache/1.1.1+
+Content-type: text/html
+Content-length: 5126
+Last-modified: Fri, 01 Nov 1996 19:34:34 GMT
+
+<html>
+<head>
+<title>Flux Project Home Page</title>
+</head>
+
+<body>
+<h1>The Flux Operating System Project</h1>
+
+<!WA0><a href="http://www.cs.utah.edu/projects/flux/npm-arch.ps"><!WA1><img src="http://www.cs.utah.edu/projects/flux/npm-arch2-flat.gif"></a><br>
+<h2> The Fluke Nested Process Architecture</h2>
+<!-- <!WA2><a href="http://www.cs.utah.edu/projects/flux/pict-2h.ps"><!WA3><img src="http://www.cs.utah.edu/projects/flux/pict-2h-small.gif"></a><br>   -->
+<hr>
+
+The Flux Project's objectives are
+(i) to provide infrastructure (the "flux") for highly efficient
+component-based systems, with flexible degrees of inter-component
+trust, initially oriented to hardware-enforced protection;
+(ii) to provide transparent and flexible control of all the
+resources used by arbitrary subsystems; and
+(iii) to distribute free and usable versions of the developed software.
+<p>
+
+We have recently developed an entirely new kernel and OS
+structure on which future work will be based.  A new paper,
+<!WA4><a href = "ftp://mancos.cs.utah.edu/papers/fluke-rvm.ps.gz">
+"Microkernels Meet Recursive Virtual Machines"</a>
+describes how this system
+efficiently supports recursive virtual machines.  That paper
+as well as a paper on
+<!WA5><a href = "ftp://mancos.cs.utah.edu/papers/inherit-sched.ps.gz">"CPU Inheritance Scheduling"</a>
+appeared at
+<!WA6><A HREF="http://sandbox.xerox.com/osdi-96/">OSDI '96</A>.
+The draft API for Fluke, the new kernel, is available in
+<!WA7><a href="http://www.cs.utah.edu/projects/flux/fluke/html/sa-flukeref/">html format</a>,
+<!WA8><a href="ftp://mancos.cs.utah.edu/papers/sa-flukeref.ps.gz">1-up postscript</a> and
+<!WA9><a href="ftp://mancos.cs.utah.edu/papers/sa-flukeref.2-up.ps.gz">2-up postscript</a>.
+Beware: it's currently 110 pages long (but mostly white space).
+A design and rationale document will be forthcoming later this year.
+<p>
+
+One of the design features which should provide large performance gains
+is safely storing portions of normal kernel objects in user space, as
+outlined in these <!WA10><a href = "http://www.cs.utah.edu/projects/flux/flobs-wip-slides.ps.gz"> slides from a
+work-in-progress talk at December '95 SOSP</a>.  This avoids kernel
+entry/exit in many common cases.
+<p>
+
+Artist's renditions of
+the <!WA11><a href = "http://www.cs.utah.edu/projects/flux/npm-arch.ps">Fluke Nested Process Architecture</a>
+and of the <!WA12><a href = "http://www.cs.utah.edu/projects/flux/conf-flux.ps">Fluke OS providing
+encapsulated environments for untrusted applications</a>.
+<p>
+
+<!-- <!WA13><a href="http://www.cs.utah.edu/projects/flux/details.html#APPROACH">More written details</a>, somewhat dated, are available.   -->
+
+<h2><!WA14><a href="http://www.cs.utah.edu/projects/flux/people.html">Project Members</a></h2>
+
+<h2><!WA15><a href = "http://www.cs.utah.edu/projects/flux/papers.html">Papers</a></h2>
+<ul>
+<li><!WA16><a href = "http://www.cs.utah.edu/projects/flux/papers.html#OS">Core OS-related papers</a>
+<li><!WA17><a href = "http://www.cs.utah.edu/projects/flux/papers.html#MOD">Module management-related papers</a>
+<li><!WA18><a href = "http://www.cs.utah.edu/projects/flux/papers.html#DSM">DSM-related papers</a>
+</ul>
+
+<a name = "SOFTWARE">
+<h2>Available Software</h2></a>
+
+<ul>
+<li> <b><!WA19><a href = "http://www.cs.utah.edu/projects/flux/oskit/html/">Flux OS Toolkit</a>:</b>
+	a toolkit to provide infrastructure for constructing
+	operating systems.
+
+<li> <b><!WA20><a href = "http://www.cs.utah.edu/projects/flux/mach4/html/Mach4-proj.html"> Mach kernel</a>:</b>
+	a major component of the
+	overall project is an improved kernel.
+	<em>Kernel development has moved to Fluke;
+		major work on the Mach kernel has stopped.</em>
+
+<li> <b><!WA21><a href = "http://www.cs.utah.edu/projects/flux/lites/html/"> Lites Unix server</a>:</b>
+	we distribute a version of the Lites server.
+
+<li> <b><!WA22><a href = "http://www.cs.utah.edu/projects/flux/mach4-parisc/html/pamach.html"> PA Mach/Lites/4.4-lite system</a>:</b>
+	a snapshot of freely distributable PA-RISC source and
+	binaries, in the form of a bootable, self-hosting Mach4,
+	Lites, and 4.4-lite system for the hp700.
+
+<li> <b><!WA23><a href = "http://www.cs.utah.edu/projects/flux/quarks.html"> Quarks</a>:</b>
+	an Alpha release of
+	a portable and reasonably efficient distributed shared memory system.
+
+<li> <b><!WA24><a href = "http://www.cs.utah.edu/projects/flux/moss/"> MOSS</a>:</b>
+	a highly functional DOS extender based on part of the
+	<b>Flux OS toolkit</b>, before it was completely modularized.
+
+<li> <b><!WA25><a href = "http://www.cs.utah.edu/projects/mso/goofie/goofie.html"> Goofie</a>:</b>
+	developed by the Mach Shared Objects project,
+	<em>goofie</em> creates portable object descriptions from C++
+	class declarations.  In the future, Goofie may be used by the Flux
+	project to enable system-provided polymorphic functions.
+
+<li> <b><!WA26><a href = ftp://jaguar.cs.utah.edu/dist/pagnutools.html>
+	PA-RISC GNU tools</a>:</b>
+	we used to maintain the GNU language tools for HP's PA-RISC
+	architecture, and still provide recent versions, in both source and
+	HP-UX binary forms.
+
+</ul>
+
+
+<h3><!WA27><a href = http://www.cs.utah.edu/projects/flux/related-utah.html>Related Utah Projects</a></h3>
+<h3><!WA28><a href="http://www.cs.utah.edu/projects/flux/facilities.html">Computing Resources</a></h3>
+<h3>Support</h3>
+
+The group's research in operating systems and related language work is
+sponsored by grants from ARPA, NSF, Hewlett-Packard, and IBM.
+The Center for
+Software Science is a Utah State Center for Excellence.
+
+<h3>Job Openings</h3>
+<ul>
+<li> <!WA29><a href = "http://www.cs.utah.edu/projects/flux/jobs-staff.html">Research staff</a>.
+<li> <!WA30><a href = "http://www.cs.utah.edu/projects/flux/jobs-students.html">Student fellowships and research assistantships</a>.
+</ul>
+
+<h3>Directions and Hotel Information</h3>
+<p>
+<!WA31><a href = "http://www.cs.utah.edu/projects/flux/directions.html">Directions</a> from the Salt Lake Airport to
+the Computer Science Department at the University, and 
+<!WA32><a href = "http://www.cs.utah.edu/projects/flux/directions.html#hotels">
+information </a>
+on Salt Lake Hotels.
+<p>
+<!WA33><a href = "http://www.cs.utah.edu/projects/flux//">
+University of Utah Department of Computer Science home page</a>
+
+<hr>
+<address>lepreau@cs.utah.edu<br>
+Last modified on Fri Nov  1 1996</address>
+</body>
+
+</html>

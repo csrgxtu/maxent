@@ -1,0 +1,64 @@
+Date: Tue, 10 Dec 1996 21:10:50 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Mon, 18 Mar 1996 23:21:28 GMT
+Content-length: 2500
+
+<html>
+<head>
+<title>"Exploiting Choice: Instruction Fetch and Issue on an Implementable Simultaneous Multithreading Processor"
+</title>
+</head>
+
+<body>
+<h2>Exploiting Choice: Instruction Fetch and Issue on an Implementable Simultaneous Multithreading Processor
+</h2>
+<hr>
+
+<!WA0><!WA0><!WA0><!WA0><a href="http://www.cs.washington.edu/homes/tullsen">Dean M. Tullsen</a>,
+<!WA1><!WA1><!WA1><!WA1><a href="http://www.cs.washington.edu/homes/eggers">Susan J. Eggers</a>, 
+Joel S. Emer, 
+<!WA2><!WA2><!WA2><!WA2><a href="http://www.cs.washington.edu/homes/levy">Henry M. Levy</a>,
+<!WA3><!WA3><!WA3><!WA3><a href="http://www.cs.washington.edu/homes/jlo">Jack L. Lo</a>,
+and Rebecca L. Stamm
+<hr>
+<p>
+Simultaneous multithreading is a technique that permits multiple independent
+threads to issue multiple instructions each cycle.
+Previous work has demonstrated the performance potential of simultaneous
+multithreading,
+based on a somewhat idealized model.  In this paper we show that the throughput
+gains from
+simultaneous multithreading can be achieved <i>without</i> extensive changes
+to a conventional wide-issue superscalar, either in hardware structures or sizes.
+We present an architecture for simultaneous multithreading
+that achieves three goals:  (1) it minimizes the architectural impact on the
+conventional superscalar design, (2) it has minimal performance impact on
+a single thread executing alone, and (3) it achieves significant throughput 
+gains when running multiple threads.  Our simultaneous multithreading
+architecture achieves a throughput of 5.4 instructions per cycle,
+a 2.5-fold improvement
+over an unmodified superscalar with the same hardware resources.
+This speedup is enabled by an advantage of
+multithreading previously unexploited in other
+architectures:  the ability to favor for fetch and issue
+those threads most efficiently using the processor each cycle, thereby
+providing the "best" instructions to the processor.  We examine
+several heuristics that allow us to identify and use the best threads for fetch
+and issue, and show that such heuristics can increase throughput by
+as much as 37%.  Using the best fetch and issue
+alternatives, we then use bottleneck analysis to identify opportunities for
+further gains on the improved architecture.
+<p>
+<hr>
+<i><br>Proceedings of the 23rd Annual International Symposium on Computer Architecture, Philadelphia, PA, May 1996.</i>
+<p>
+To get the PostScript file, click
+<!WA4><!WA4><!WA4><!WA4><a href="http://www.cs.washington.edu/homes/jlo/papers/isca96.ps">here</a>.
+
+<hr>
+<address>
+<em>jlo@cs.washington.edu </em> <br>
+</address>
+</body>
+</html>

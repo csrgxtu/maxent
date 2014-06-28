@@ -1,0 +1,547 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Wednesday, 15-Jan-97 01:45:24 GMT
+Content-Type: text/html
+Content-Length: 12744
+Last-Modified: Sunday, 17-Nov-96 17:28:33 GMT
+
+<HTML>
+<HEAD>
+<TITLE>The evolution of a Programmer </TITLE>
+<!-- Created by: Binoy Samuel, 17-Nov-1996 -->
+<!-- Changed by: Binoy Samuel, 17-Nov-1996 -->
+
+
+</HEAD>
+<BODY  Text = "#0c0c00" bgcolor ="#ffffdd">
+<H1>The evolution of a Programmer</H1>
+
+
+
+<br>
+ ===================<br>
+ High School/Jr.High<br>
+ ===================<br>
+ 
+ 10 PRINT "HELLO WORLD"<br>
+ 20 END<br>
+ <br>
+ =====================<br>
+ First year in College<br>
+ =====================<br>
+ <br>
+ program Hello(input, output)<br>
+   begin7~<br>
+     writeln('Hello W7_}_Eorld');<br>
+   end.<br>
+ <br>
+ ======================<br>
+ Senior year in College<br>
+ ======================<br>
+ <br>
+ (defun hello<br>
+    (print<br>
+     (cons 'Hello (list 'World))))s <br>
+ ================{?}g<br>
+ New professional<br>
+ ================<br>
+ <br>
+ #include <stdio.h><br>
+ void main(void)<br>
+ {
+   char *message[] = {"Hello ", "World"};<br>
+   int i;<br>
+ <br>
+   for(i = 0; i < 2; ++i)<br>
+     printf("%s", message[i]);<br>
+   printf("\n");<br>
+ }<br>
+ <br>
+ ====================<br>
+ Seasoned professional<br>
+ =====================<br>
+ <br>
+ #include <iostream.h><br>
+ #include <string.h><br>
+ <br>
+   class string<br>
+   {<br>
+   private:<br>
+     int size;<br>
+     char *ptr;<br>
+ <br>
+   public:<br>
+     string() : size(0), ptr(new char('\0')) {}<br>
+ <br>
+     string(const string &s) : size(s.size)<br>
+     {<br>
+       ptr = new char[size + 1];<br>
+       strcpy(ptr, s.ptr);<br>
+     }<br>
+ <br>
+     ~string()<br>
+     {<br>
+       delete [] ptr;<br>
+     }<br>
+ <br>
+     friend ostream &operator <<(ostream &, const string &);<br>
+     string &operator=(const char *);<br>
+   };<br>
+ <br>
+   ostream &operator<<(ostream &stream, const string &s)<br>
+   {<br>
+     return(stream << s.ptr);<br>
+   }<br>
+ <br>
+   string &string::operator=(const char *chrs)<br>
+   {<br>
+     if (this != &chrs)<br>
+     {<br>
+       delete [] ptr;<br>
+      size = strlen(chrs);<br>
+       ptr = new char[size + 1];<br>
+       strcpy(ptr, chrs);<br>
+     }<br><br>
+     return(*this);<br>
+   }<br><br>
+ 
+   int main()<br>
+   {<br>
+     string str;<br>
+ <br>
+     str = "Hello World";<br>
+     cout << str << endl;<br>
+ <br>
+     return(0);<br>
+   }<br>
+ <br>
+ =================<br>
+ Master Programmer<br>
+ =================<br>
+ <br>
+   [<br>
+   uuid(2573F8F4-CFEE-101A-9A9F-00AA00342820)<br>
+   ]<br>
+   library LHello<br>
+   {<br>
+       // bring in the master library<br>
+       importlib("actimp.tlb");<br>
+       importlib("actexp.tlb");<br>
+ <br>
+       // bring in my interfaces<br>
+       #include "pshlo.idl"<br>
+ <br>
+       [<br>
+       uuid(2573F8F5-CFEE-101A-9A9F-00AA00342820)<br>
+       ]<br>
+       cotype THello<br>
+    {
+    interface IHello;<br>
+    interface IPersistFile;<br>
+    };<br>
+   };<br>
+ <br>
+   [<br>
+   exe,<br>
+   uuid(2573F890-CFEE-101A-9A9F-00AA00342820)<br>
+   ]<br>
+   module CHelloLib<br>
+   {<br>
+ <br>
+       // some code related header files<br>
+       importheader(<windows.h>);<br>
+       importheader(<ole2.h>);<br>
+       importheader(<except.hxx>);<br>
+       importheader("pshlo.h");<br>
+       importheader("shlo.hxx");<br>
+       importheader("mycls.hxx");<br>
+ <br>
+       // needed typelibs<br>
+       importlib("actimp.tlb");<br>
+       importlib("actexp.tlb");<br>
+       importlib("thlo.tlb");<br>
+ <br>
+       [<br>
+       uuid(2573F891-CFEE-101A-9A9F-00AA00342820),<br>
+       aggregatable<br>
+       ]<br>
+       coclass CHello<br>
+    {<br>
+    cotype THello;<br>
+    };<br>
+   };<br>
+ <br>
+   #include "ipfix.hxx"<br>
+   extern HANDLE hEvent;<br>
+   class CHello : public CHelloBase<br>
+   {<br>
+   public:<br>
+       IPFIX(CLSID_CHello);<br>
+ <br>
+       CHello(IUnknown *pUnk);<br>
+       ~CHello();<br>
+ <br>
+       HRESULT  __stdcall PrintSz(LPWSTR pwszString);<br>
+ <br><br>
+   private:<br>
+       static int cObjRef;<br>
+   };<br>
+ <br>
+   #include <windows.h><br>
+   #include <ole2.h><br>
+   #include <stdio.h><br>
+   #include <stdlib.h><br>
+   #include "thlo.h"<br>
+   #include "pshlo.h"<br>
+   #include "shlo.hxx"<br>
+   #include "mycls.hxx"<br>
+ <br>
+   int CHello:cObjRef = 0;<br>
+ <br>
+   CHello::CHello(IUnknown *pUnk) : CHelloBase(pUnk)<br>
+   {<br>
+       cObjRef++;<br>
+       return;<br>
+   }<br>
+ <br>
+   HRESULT  __stdcall  CHello::PrintSz(LPWSTR pwszString)<br>
+   {<br>
+       printf("%ws\n", pwszString);<br>
+       return(ResultFromScode(S_OK));<br>
+   }<br>
+ <br>
+ <br>
+   CHello::~CHello(void)<br>
+   {<br>
+ <br>
+   // when the object count goes to zero, stop the server<br>
+   cObjRef--;<br>
+   if( cObjRef == 0 )<br>
+       PulseEvent(hEvent);<br>
+ <br>
+   return;<br>
+   }<br>
+ 
+   #include <windows.h><br>
+   #include <ole2.h><br>
+   #include "pshlo.h"<br>
+   #include "shlo.hxx"<br>
+   #include "mycls.hxx"<br>
+ <br>
+   HANDLE hEvent;<br>
+ <br>
+    int _cdecl main(<br>
+   int argc,<br>
+   char * argv[]<br>
+   ) {<br>
+   ULONG ulRef;<br>
+   DWORD dwRegistration;<br>
+   CHelloCF *pCF = new CHelloCF();<br>
+ 
+   hEvent = CreateEvent(NULL, FALSE, FALSE, NULL);<br>
+ <br>
+   // Initialize the OLE libraries<br>
+   CoInitiali, NULL);<br>
+ 
+   // Initialize the OLE libraries<br>
+   CoInitializeEx(NULL, COINIT_MULTITHREADED);<br>
+ 
+   CoRegisterClassObject(CLSID_CHello, pCF, CLSCTX_LOCAL_SERVER,<br>
+       REGCLS_MULTIPLEUSE, &dwRegistration);<br>
+ 
+   // wait on an event to stop
+   WaitForSingleObject(hEvent, INFINITE);
+ 
+   // revoke and release the class object
+   CoRevokeClassObject(dwRegistration);<br>
+   ulRef = pCF->Release();<br>
+ <br>
+   // Tell OLE we are going away.<br>
+   CoUninitialize();<br>
+ <br>
+   return(0); }<br>
+ <br>
+   extern CLSID CLSID_CHello;<br>
+   extern UUID LIBID_CHelloLib;<br><br>
+ 
+   CLSID CLSID_CHello = { /* 2573F891-CFEE-101A-9A9F-00AA00342820 */<br>
+       0x2573F891,<br>
+       0xCFEE,<br>
+       0x101A,<br>
+       { 0x9A, 0x9F, 0x00, 0xAA, 0x00, 0x34, 0x28, 0x20 }<br>
+   };<br><br>
+ 
+   UUID LIBID_CHelloLib = { /* 2573F890-CFEE-101A-9A9F-00AA00342820 */<br>
+       0x2573F890,
+       0xCFEE,
+       0x101A,
+       { 0x9A, 0x9F, 0x00, 0xAA, 0x00, 0x34, 0x28, 0x20 }
+   };<br><br>
+ 
+   #include <windows.h><br>
+   #include <ole2.h><br>
+   #include <stdlib.h><br>
+   #include <string.h><br>
+   #include <stdio.h><br>
+   #include "pshlo.h"<br>
+   #include "shlo.hxx"<br>
+   #include "clsid.h"<br><br>
+ 
+   int _cdecl main(<br>
+   int argc,
+   char * argv[]
+   ) {
+   HRESULT  hRslt;<br>
+   IHello        *pHello;<br>
+   ULONG  ulCnt;<br>
+   IMoniker * pmk;<br>
+   WCHAR  wcsT[_MAX_PATH];<br>
+   WCHAR  wcsPath[2 * _MAX_PATH];<<br>br>
+ 
+   // get object path<br>
+   wcsPath[0] = '\0';<br>
+   wcsT[0] = '\0';<br>
+   if( argc > 1) {<br>
+       mbstowcs(wcsPath, argv[1], strlen(argv[1]) + 1);<br>
+       wcsupr(wcsPath);<br>
+       }<br>
+   else {<br>
+       fprintf(stderr, "Object path must be specified\n");<br>
+       return(1);<br>
+       }<br><br>
+ 
+   // get print string<br>
+   if(argc > 2)<br>
+       mbstowcs(wcsT, argv[2], strlen(argv[2]) + 1);<br>
+   else<br>
+       wcscpy(wcsT, L"Hello World");<br>
+ <br>
+   printf("Linking to object %ws\n", wcsPath);<br>
+   printf("Text String %ws\n", wcsT);<br>
+ <br><br>
+   // Initialize the OLE libraries<br>
+   hRslt = CoInitializeEx(NULL, COINIT_MULTITHREADED);<br><br>
+ 
+   if(SUCCEEDED(hRslt)) {<br>
+ <br>
+       hRslt = CreateFileMoniker(wcsPath, &pmk);<br>
+       if(SUCCEEDED(hRslt))<br>
+    hRslt = BindMoniker(pmk, 0, IID_IHello, (void **)&pHello);<br><br>
+ <br>
+       if(SUCCEEDED(hRslt)) {<br><br>
+ <br>
+    // print a string out<br>
+    pHello->PrintSz(wcsT);<br><br>
+ 
+    Sleep(2000);<br>
+    ulCnt = pHello->Release();<br>
+    }<br>
+       else<br>
+    printf("Failure to connect, status: %lx", hRslt);<br>
+ <br>
+       // Tell OLE we are going away.<br>
+       CoUninitialize();<br>
+       }<br><br>
+ 
+   return(0);<br>
+   }<br><br>
+ 
+ =================<br>
+ Apprentice Hacker<br>
+ =================<br><br>
+ 
+ #!/usr/local/bin/perl<br>
+ $msg="Hello, world.\n";<br>
+ if ($#ARGV >= 0) {<br>
+   while(defined($arg=shift(@ARGV))) {<br>
+     $outfilename = $arg;<br>
+     open(FILE, ">" . $outfilename) || die "Can't write $arg: $!\n";<br>
+     print (FILE $msg);<br>
+     close(FILE) || die "Can't close $arg: $!\n";<br>
+   }<br>
+ } else {<br>
+   print ($msg);<br>
+ }<br>
+ 1;<br>
+ 
+ ==================<br>
+ Experienced Hacker<br>
+ ==================<br><br>
+ 
+ #include <stdio.h><br>
+ #define S "Hello, World\n"<br>
+ main(){exit(printf(S) == strlen(S) ? 0 : 1);}<br><br>
+ 
+ ===============<br>
+ Seasoned Hacker<br>
+ ===============<br><br>
+ 
+ % cc -o a.out ~/src/misc/hw/hw.c<br>
+ % a.out<br><br>
+ 
+ ===========<br>
+ Guru Hacker<br>
+ ===========<br><br>
+ 
+ % cat<br>
+ Hello, world.<br><br>
+ ^D<br>
+ 
+ =====================<br>
+ AXE System programmer<br>
+ =====================<br<br>>
+ <br>
+ LL0:<br>
+         .seg    "data"<br>
+         .seg    "text"<br>
+         .proc 04<br>
+         .global _main<br>
+ _main:<br>
+         !#PROLOGUE# 0<br>
+         sethi   %hi(LF26),%g1<br>
+         add     %g1,%lo(LF26),%g1<br>
+         save    %sp,%g1,%sp<br>
+         !#PROLOGUE# 1<br>
+         .seg    "data1"<br>
+ L30:<br><br>
+         .ascii  "Hello, World\012\0"<br>
+         .seg    "text"<br>
+         .seg    "data1"<br>
+ L32:<br>
+         .ascii  "Hello, World\012\0"<br>
+         .seg    "text"<br>
+         set     L32,%o0<br>
+         call    _strlen,1<br>
+         nop<br>
+         mov     %o0,%i5<br>
+         set     L30,%o0<br>
+         call    _printf,1<br>
+         nop<br>
+         cmp     %o0,%i5<br>
+         bne     L2000000<br>
+         nop<br>
+         mov     0,%o0<br>
+         b       L2000001<br>
+         nop<br>
+ L2000000:<br>
+         mov     0x1,%o0<br>
+ L2000001:<br>
+         call    _exit,1<br>
+         nop<br>
+ LE26:<br>
+         ret<br>
+         restore<br>
+        LF26 = -96<br>
+         LP26 = 96<br>
+         LST26 = 96<br>
+         LT26 = 96<br>
+         .seg    "data"<br><br>
+ 
+ 0000000 0103 0107 0000 0060 0000 0020 0000 0000<br>
+ 0000020 0000 0030 0000 0000 0000 0054 0000 0000<br>
+ 0000040 033f ffff 8200 63a0 9de3 8001 1100 0000<br>
+ 0000060 9012 2000 4000 0000 0100 0000 ba10 0008<br>
+ 0000100 1100 0000 9012 2000 4000 0000 0100 00 ba10 0008<br>
+ 0000100 1100 0000 9012 2000 4000 0000 0100 0000<br>
+ 0000120 80a2 001d 1280 0005 0100 0000 9010 2000<br>
+ 0000140 1080 0003 0100 0000 9010 2001 4000 0000<br>
+ 0000160 0100 0000 81c7 e008 81e8 0000 0000 0000<br>
+ 0000200 4865 6c6c 6f2c 2057 6f72 6c64 0a00 4865<br>
+ 0000220 6c6c 6f2c 2057 6f72 6c64 0a00 0000 0000<br>
+ 0000240 0000 000c 0000 0608 0000 006e 0000 0010<br>
+ 0000260 0000 060b 0000 006e 0000 0014 0000 0286<br>
+ 0000300 ffff ffec 0000 0020 0000 0608 0000 0060<br>
+ 0000320 0000 0024 0000 060b 0000 0060 0000 0028<br>
+ 0000340 0000 0186 ffff ffd8 0000 004c 0000 0386<br>
+ 0000360 ffff ffb4 0000 0004 0500 0000 0000 0000<br>
+ 0000400 0000 000a 0100 0000 0000 0000 0000 0012<br>
+ 0000420 0100 0000 0000 0000 0000 001a 0100 0000<br>
+ 0000440 0000 0000 0000 0020 5f6d 6169 6e00 5f70<br>
+ 0000460 7269 6e74 6600 5f73 7472 6c65 6e00 5f65<br>
+ 0000500 7869 7400<br>
+ 0000504<br>
+ <br>
+ % axe_generate -f system.uhdl<br>
+ Application 'Exchange' generated<br>
+ 2324042350000000 source code lines<br>
+ No Errors detected.<br>
+ Hardware retrieval...done OK<br>
+ Certification Test...done OK<br>
+ Packing..............done OK<br>
+ Delivery.............done OK<br>
+ Application 'Exchange' delivered to customer<br>
+ 23456000 bytes/sec.<br>
+ End processing, 2345 seconds.<br>
+ <br>
+ ===========================<br>
+ Ultra high level programmer<br>
+ ===========================<br>
+ <br>
+ system.uhdl :<br>
+ <br>
+ SYSTEM<br>
+   CREATE ScreenWin<br>
+     SIZE 20000000/Unit=One<br>
+     DESTINATION Order.dest[One]<br>
+     OUTPUT CHARACTER['Hello world']<br>
+   END<br>
+ END<br>
+ <br>
+ ===========<br>
+ New Manager<br>
+ ===========<br>
+ <br>
+ 10 PRINT "HELLO WORLD"<br>
+ 20 END<br>
+ <br>
+ ==============<br>
+ Middle Manager<br>
+ ==============<b<br>r>
+ 
+ mail -s "Hello, world." bob@b12<br><br>
+ 
+  Bob, could you please write me a program that prints<br>
+  "Hello, world."? I need it by tomorrow.<br><br>
+ 
+ ^D<br><br>
+ 
+ ==============<br>
+ Senior Manager<br>
+ ==============<br<br>>
+ 
+ % zmail all<br><br>
+ 
+   I need a "Hello, world." program by this afternoon.<b<br>r>
+ 
+ ===============<br>
+ Chief Executive<br>
+ ===============<br><br>
+ 
+   % message<br>
+   message: Command not found<br>
+   % pm<br>
+   pm: Command not found<br>
+   % letter<br>
+   letter: Command not found.<br>
+   % mail<br>
+   To: ^X ^F ^C<br>
+   > help mail<br>
+   help: Command not found.<br>
+   >what<br>
+   what: Command not found<br>
+   >need help<br>
+   need: Command not found<br>
+   > damn!<br>
+   !: Event unrecognized<br>
+   >exit<br>
+   exit: Unknown<br>
+   >quit<br>
+   %<br>
+   % logout<br>
+
+
+
+
+
+</BODY>
+</HTML>

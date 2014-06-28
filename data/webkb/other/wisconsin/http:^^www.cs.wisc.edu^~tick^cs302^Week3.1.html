@@ -1,0 +1,286 @@
+Date: Wed, 11 Dec 1996 22:34:30 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 20 Sep 1996 19:03:08 GMT
+Content-length: 9650
+
+<HTML>
+
+<HEAD>
+<TITLE>CS 302 Section 70 - Lecture Notes: Week 3,Part 1</TITLE>
+</HEAD>
+
+<BODY>
+
+<H2><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~tick/cs302.html#text" ><!WA1><!WA1><!WA1><IMG SRC="http://www.cs.wisc.edu/~tick/icons/arrowleft.gif" WIDTH=15 HEIGHT=15></A> Lecture Notes - Week 3,Part 1</H2>
+
+<HR>
+
+<DL>
+   <DT>Topic:
+   <DD>Conditional execution and logical expressions. <TT>IF/THEN/ELSE/END IF</TT> statement.<P>
+
+   <DT>Text:
+   <DD>Chp. 3.2, 3.4, 3.5, 3.8, 3.9<P>
+
+   <DT>Notes:
+   <DD>
+
+   <HR>
+
+   <CENTER>
+   <H3>Conditional Execution</H3>
+   </CENTER>
+   <UL>
+      <LI>So far, all statements are <EM>unconditionally</EM> executed, starting with the first and proceeding sequentially to the last.
+      <LI>What if we don't want <EM>every</EM> statement to be executed <EM>every</EM> time we run the program?
+      <LI>Want to <EM>conditionally</EM> execute some statements, depending on a condition which may change every time the program is run.
+   </UL>
+
+   <H4>IF/THEN/END IF Statement</H4>
+   <UL>
+      <LI>Use the <TT>IF/THEN/END IF</TT> statement to conditionally execute one or more statements (Note: <TT>END IF</TT> is two words).
+      <LISTING>
+	unconditional statements
+
+	IF (condition) THEN
+	   conditional statements
+	END IF
+      </LISTING>
+      <LI>When the <STRONG>condition</STRONG> is <EM>true</EM> the conditional statements are executed; when it is <EM>false</EM> they are skipped.
+   </UL>
+
+   <H4>IF/THEN/ELSE/END IF Statement</H4>
+   <UL>
+      <LI>Optional <EM>ELSE</EM> specifies another set of statements to be executed when the <STRONG>condition</STRONG> is <EM>false</EM>.
+      <LISTING>
+	IF (condition) THEN
+	   true conditional statements
+	ELSE
+	   false conditional statements
+	END IF
+
+	IF (NUM . GE. 0) THEN
+	   PRINT *, 'Positive'
+	ELSE
+	   PRINT *, 'Negative'
+	END IF
+      </LISTING>
+      <LI><EM>Indent</EM> conditional statements three spaces (i.e. column 10).
+      <LI><TT>IF</TT>, <TT>ELSE</TT> and <TT>END IF</TT> are on separate lines.
+   </UL>
+
+   <H4>Logical IF Statement</H4>
+   <UL>
+      <LI>If only have <EM>one</EM> conditional statement and no <TT>ELSE</TT> part then can put everything on a single line.
+      <LISTING>
+	IF (DAY .EQ. 1) PRINT *, 'Monday'
+      </LISTING>
+      <LI>Note: there is no <TT>THEN</TT> or <TT>END IF</TT>.
+   </UL>
+
+   <H4>Nested IF Statements</H4>
+   <UL>
+      <LI>Can <EM>nest</EM> <TT>IF</TT> statements within the conditional sections of other <TT>IF</TT> statements.
+      <LISTING>
+	IF (YEAR .LE. 4) THEN
+	   STATUS = 'Undergraduate'
+	   Fee = 4547.75
+	ELSE
+	   STATUS = 'Graduate'
+	   IF (YEAR . LE. 8) THEN
+	      FEE = 5852.25
+	   ELSE
+	      FEE = 720.75
+	   END IF
+	END IF
+      </LISTING>
+      <LI>The second <TT>IF</TT> statement is itself conditionally executed depending on the condition of the first <TT>IF</TT> statement.
+      <LI>Indent each level another 3 spaces (i.e. 3, 6, 9, ... spaces).  Use indentation to line up statements so that they are easy to read and understand.
+   </UL>
+
+   <H4>General IF Statement</H4>
+   <UL>
+      <LI>Use the <EM>general IF statement</EM> when testing multiple conditions, each with their own set of statements to execute.
+      <LISTING>
+	IF (YEAR .EQ. 1) THEN
+	   PRINT *, 'Freshman'
+	ELSE IF (YEAR .EQ. 2) THEN
+	   PRINT *, 'Sophomore'
+	ELSE IF (YEAR .EQ. 3) THEN
+	   PRINT *, 'Junior'
+	ELSE IF (YEAR .EQ. 4) THEN
+	   PRINT *, 'Senior'
+	END IF
+      </LISTING>
+      <LI>The conditions are checked sequentially until one is found that is true.  The rest are skipped even if subsequent conditions are also true!
+      <LI>An optional <TT>ELSE</TT> clause is executed when none of the conditions listed are true.
+      <LISTING>
+	IF (LIGHT .EQ. 'R') THEN
+	   PRINT *, 'Stop'
+	ELSE IF (LIGHT  .EQ. 'O') THEN
+	   PRINT *, 'Prepare to stop'
+	ELSE
+	   PRINT *, 'Proceed'
+	END IF
+      </LISTING>
+      <LI>Use the general <TT>IF</TT> statement instead of multiple nested <TT>IF</TT> statements.
+   </UL>
+
+   <HR>
+
+   <CENTER>
+   <H3>Logical Expressions</H3>
+   </CENTER>
+   <UL>
+      <LI>The <STRONG>condition</STRONG> tested in <TT>IF</TT> statements is a <EM>logical expression</EM> surrounded by parentheses.
+      <LISTING>
+	IF (logical-expression-1) THEN
+	   ...
+	ELSE IF (logical-expression-2) THEN
+	   ...
+	END IF
+      </LISTING>
+      <LI>Logical expressions are similar to arithmetic expressions except the result has only two possible values: <TT>.TRUE.</TT> and <TT>.FALSE.</TT> (Note the dots before and after).
+   </UL>
+
+   <H4>LOGICAL Variables</H4>
+   <UL>
+      <LI>A variable can store <TT>.TRUE.</TT> and <TT>.FALSE.</TT> using the <TT>LOGICAL</TT> variable type.
+      <LISTING>
+	LOGICAL RENEW
+      </LISTING>
+      <LI>To assign a <TT>LOGICAL</TT> value  to a <TT>LOGICAL</TT> variable use the assignment statement, just like any other variable.
+      <LISTING>
+	logical-variable = logical-expression
+
+	RENEW = .FALSE.
+      </LISTING>
+   </UL>
+
+   <H4>Relational Operators</H4>
+   <UL>
+      <LI>Relational operators compare two <EM>numbers</EM> together to produce <TT>.TRUE.</TT> and <TT>.FALSE.</TT>  These can be used to create complex logical expressions.
+      <BLOCKQUOTE>
+	<TT>.LT.</TT> - less than?<BR>
+	<TT>.LE.</TT> - less than or equal to?<BR>
+	<TT>.GT.</TT> - greater than?<BR>
+	<TT>.GE.</TT> - greater than or equal to?<BR>
+	<TT>.EQ.</TT> - equal?<BR>
+	<TT>.NE.</TT> - not equal?<BR>
+      </BLOCKQUOTE>
+      <LISTING>
+	DAY = 52
+	RENEW = DAY .GT. 14    (= .TRUE.)
+      </LISTING>
+      <LI>Relational operator names also start and end with a dot.
+      <LI>Operands may be literals, variables or expressions of any type (except <TT>LOGICAL</TT>s).  e.g. <TT>INTEGER</TT>s, <TT>REAL</TT>s or <TT>CHARACTER</TT> strings.
+      <LISTING>
+	RENEW = EXP(X) .LT. (Y * 43.7 + Z)
+      </LISTING>
+      <LI>Both operands must be of comparable types; i.e. both numbers or both <TT>CHARACTER</TT> strings.  You can compare "apples to oranges"!
+   </UL>
+
+   <H4>Logical Operators</H4>
+   <UL>
+      <LI>Logical operators compare two <TT>LOGICAL</TT> values to produce <TT>.TRUE.</TT> or <TT>.FALSE.</TT>. 
+      <BLOCKQUOTE>
+	<TT>.AND.</TT> - are both operands <TT>.TRUE.</TT>?<BR>
+	<TT>.OR.</TT> - is either operand <TT>.TRUE.</TT>?<BR>
+	<TT>.NOT.</TT> - inverts <TT>.TRUE.</TT> and <TT>.FALSE.</TT><BR>
+      </BLOCKQUOTE>
+      <LI>Logical operator names also start and end with a dot.
+      <LI>The logical operators are defined using a <EM>truth table</EM> (see Pg. 98 for the definitions of <TT>.EQV.</TT> and <TT>.NEQV.</TT>).
+      <PRE>
+ Op-1      Op-2   |  (Op-1 .AND. Op-2)  |  (Op-1 .OR. Op-2)
+------------------+---------------------+------------------
+.TRUE.    .TRUE.  |       .TRUE.        |       .TRUE.
+.TRUE.    .FALSE. |       .FALSE.       |       .TRUE.
+.FALSE.   .TRUE.  |       .FALSE.       |       .TRUE.
+.FALSE.   .FALSE. |       .FALSE.       |       .FALSE.
+
+ Op-1   |   (.NOT. Op-1)
+--------+---------------
+.TRUE.  |     .FALSE.
+.FALSE. |     .TRUE.
+      </PRE>
+      <LI>Example: what is the definition of a bicycle?
+      <LISTING>
+	IF ((WHEEL .EQ. 2) .AND. (.NOT. POWRD)) THEN
+	   PRINT *, 'Bicycle'
+	ELSE
+	   PRINT *, 'Not a bicycle'
+	END IF
+      </LISTING>
+   </UL>
+
+   <H4>Operator Precedence</H4>
+   <UL>
+      <LI><STRONG>VERY IMPORTANT</STRONG> - You must remember the precedence order of the logical and relational operators.  This varies between different programming languages!
+      <UL>
+         <LI><EM>First</EM>: arithmetic operators
+         <LI><EM>Second</EM>: relational operators (all have the same precedence)
+         <LI><EM>Third</EM>: <TT>.NOT.</TT>
+         <LI><EM>Fourth</EM>: <TT>.AND.</TT>
+         <LI><EM>Fifth</EM>: <TT>.OR.</TT>
+         <LI><EM>Last</EM>: <TT>.EQV.</TT> and <TT>.NEQV.</TT>
+      </UL>
+      <LI>Note the order of <TT>.AND.</TT> and <TT>.OR.</TT> - it is <EM>very</EM> easy to get it wrong, with disasterous results!
+      <LI>Use parentheses to over-ride the default precedence if necessary.
+      <LI>Example: <EM>if x and y are both greater than min then ...</EM>
+      <LI><EM>Right:</EM>
+      <LISTING>
+	IF (X .GT. MIN .AND. Y .GT. MIN) THEN
+      </LISTING>
+      <LI><EM>Wrong:</EM>
+      <LISTING>
+	IF (X .AND. Y .GT. MIN) THEN
+      </LISTING>
+      <LI>When in doubt use parentheses.
+   </UL>
+
+   <H4>Comparing CHARACTER Strings</H4>
+   <UL>
+      <LI><TT>CHARACTER</TT> strings can also be compared using the relational operators.
+      <LISTING>
+	IF (STATUS .EQ. 'Graduate') THEN
+      </LISTING>
+      <LI>If the strings are the same length then they are compared character by character.  Both strings must have <EM>exactly</EM> the same characters.
+      <LI>If one string is shorter it is automatically <EM>padded</EM> with blanks before comparing.
+      <LI>Normally only use <TT>.EQ.</TT> and <TT>.NE.</TT> when comparing <TT>CHARACTER</TT> strings; using other relational operators can lead to unpredictable results.
+      <LI><EM>Right:</EM>
+      <LISTING>
+	ANSWER = 'No'
+	...
+	IF (ANSWER .EQ. 'Yes') THEN
+      </LISTING>
+      <LI><EM>Wrong:</EM>
+      <LISTING>
+	ANSWER = 'No'
+	...
+	IF (ANSWER .LT. 'Yes') THEN
+      </LISTING>
+      <LI>Comparisons are <EM>case sensitive</EM> - upper and lowercase characters are very different!
+      <LISTING>
+	CHARACTER *3 ANSWER
+
+	ANSWER = 'Yes'
+	...
+	IF (ANSWER .EQ. 'Yes') THEN          (.TRUE.)
+	...
+	IF (ANSWER .EQ. 'YES') THEN          (.FALSE.)
+	...
+      </LISTING>
+</DL>
+
+</BODY>
+
+<HR>
+
+<ADDRESS>
+<H5>Copyright &copy 1996 Modified From<!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~bestor/bestor.html">Gareth S. Bestor</A> (<!WA3><!WA3><!WA3><A HREF="mailto:bestor@cs.wisc.edu">bestor@cs.wisc.edu</A>).  Last modified September 19, 1996.</H5>
+</ADDRESS>
+
+</HTML>
+
+

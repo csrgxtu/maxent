@@ -1,0 +1,222 @@
+Date: Mon, 04 Nov 1996 23:45:11 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Tue, 11 Apr 1995 19:11:01 GMT
+Content-length: 9909
+
+<html>
+
+<head>
+<title>What Is Importance-Based Feature Extraction?</title>
+</head>
+
+<body>
+
+<a name="top">
+<h2>Outline</h2>
+</a>
+<ul>
+<li><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><a href="#idea">The main idea</a>
+<li><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href="#everyday">An example from real life</a>
+<li><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="#nnex">A neural net example, with Gaussian detector nodes</a>
+<li><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a href="#new">What's new about importance-based feature extraction?</a>
+</ul>
+
+
+<h2><a name="idea">The main idea</a></h2> 
+
+Suppose that an autonomous agent has feature detectors which identify
+its state, and that it uses reinforcement learning to learn to succeed
+in its environment.  Importance-based feature extraction aims to tune
+the agent's feature detectors to be most sensitive to states where the
+agent's choice of action is critical.  If the agent's action from this
+state will have little bearing on the agent's future success, we say
+that the state is <em>unimportant</em>; we define an
+<em>important</em> state as one having very different predictions of
+reinforcement for taking different actions.  In terms of Q-learning,
+this means that an important state is one from which the different
+actions have very different Q-values.
+
+<p> 
+
+Important states are not necessarily the most frequently seen.
+Frequency-based feature extraction can be misled by
+frequently-occurring "red herring" states, and may miss states which
+represent "rare opportunities."  For example, if the agent frequently
+finds itself in a particular state where almost any action is equally
+good, frequency-based feature tuning would cluster detectors around
+that state; however, those detectors will be of little use to the
+agent because its choice of action at this state has little bearing on
+its future reinforcement.  Or the agent may find itself in a
+rarely-seen state where its choice of action is critical for future
+success; such a state is important, though infrequent.  Of course,
+this view is based on the assumption that the agent's task is to
+<em>act</em> in a way which optimizes its reinforcement, regardless of
+its understanding of aspects of the world which have no bearing on its
+strategy selection.
+
+<p>
+
+Furthermore, important states need not be associated with the most
+extreme reinforcement values.  For example, there may be a state from
+which the agent will fail, no matter what action it takes.  Therefore,
+this state will be strongly associated with failure, and most likely,
+extremely negative reinforcement values.  But detecting this state is
+not very helpful to the agent, because when it is in this state there
+is nothing it can do to prevent failure.  The agent would be better
+off using detectors to identify the state from which it made some
+critical mistake.  That would be a state from which a correct action
+might have led to success instead of failure.  The Q-values at this
+state might not be as great in absolute magnitude as those associated
+with a state from which the agent always fails, or a state from which
+the agent always succeeds.  But since some actions from this state
+lead to success and some to failure, it has a greater <em>span</em> of
+Q-values associated with the actions; this makes it an important
+state.
+
+<p>
+
+<h2><a name="everyday">An example from real life</a></h2>
+
+Cognitive economy is one of the principles we use to cope with daily
+life.  People tend to use broad classifications whenever possible,
+because this allows them to apply information learned from a few
+samples to any of a large collection of objects; they avoid having to
+re-learn how to handle each new individual object.  But this kind of
+stereotyping is only of use if the classifications relate to our goals
+and the feedback we receive.  When our goals require us to respond to
+some particular features of an individual, we need to learn to
+recognize those features which make this individual a special case.
+
+<p>
+
+For example, consider the concept of "snow."  My concept of snow has
+to do with whether I can pack it into a snowball ("wet snow"), or not
+("fluffy snow").  Otherwise, snow is just something pretty that piles
+up and requires me to get out the shovel.  But skiers talk about more
+varieties of snow, and the distinctions are relevant to them because
+different kinds of snow will have different effects on their skiing.
+I may not remember all the varieties of snow which my skier friends
+have spoken of; this is not necessarily a comment on my memory, but is
+more likely due to the fact that I do not ski and I derive no benefit
+from knowing the distinctions.  Supposedly, Eskimos have words for
+many different kinds of snow.  But to someone who lived their whole
+life close to the equator, snow might simply be "snow," some form of
+white precipitation which they've never seen.  In each case, we are
+alloting cognitive resources for those distinctions which relate to
+our goals.  This is an example of importance-based feature extraction,
+since we are "tuning" our "feature detectors" to respond to those
+features which make a difference in the things we have to do, and
+otherwise falling back on broad stereotypes.
+
+<p>
+
+<h2><a name="nnex">A neural net example, with Gaussian detector 
+nodes</a></h2>
+
+A common architecture for a reinforcement-learning agent is a
+feed-forward connectionist network which has inputs, a layer of hidden
+nodes, and an output layer of nodes which control action selection.
+We can think of the hidden nodes as feature detectors, which provide a
+distributed representation of the current system state.
+Importance-based feature extraction attempts to tune the feature
+detectors according to their importance in selecting the agent's
+actions; a detector is considered important if the links from it to
+the outputs have very different weights.  If the weights were all the
+same, that detector would contribute the same impulse to each of the
+competing output nodes, and thus would have no influence on the
+agent's choice of action.  Since the link weights are used to
+calculate Q-values, a detector with a sizable spread of weights on its
+outgoing links represents a state from which different actions have
+very different expectations of reinforcement.  In other words, this
+detector is valuable because it detects a state from which the agent's
+choice of action will strongly affect the agent's liklihood of
+success.
+
+<p>
+
+In a system having Gaussian detector nodes, importance-based feature
+extraction tunes their centers in order to maximize each detector's
+estimate of its importance.  I have found it convenient to define
+the importance of detector <em>i</em> as the variance of the weights on
+its links to the output nodes;  however, alternative definitions are
+certainly possible.
+
+<p>
+
+<h2><a name="new">What's new about importance-based feature 
+extraction?</a></h2>
+
+In reinforcement learning problems the sparseness of the feedback
+increases the difficulty of feature extraction.  Importance-based
+feature extraction addresses this problem by relying on bottom-up
+feature extraction.  Other examples of this general approach include
+the use of bottom-up clustering methods such as Kohonen's
+Self-Organized Map, Chapman & Kaelbling's use of a "relevance"
+criterion, and statistical approaches built around principal component
+analysis.
+
+<p>
+
+Bottom-up clustering methods are based on the frequency of states.
+Kohonen's Self-Organized Map and related clustering methods attempt to
+distribute the feature detectors according to the probability density
+function of the states seen by the agent.  In contrast,
+importance-based feature extraction recognizes that, to an autonomous
+agent, the important states are not necessarily the most frequent, as
+noted above.  What the agent needs is not to detect commonly-seen
+states, but <em>important</em> states---states which matter in terms
+of the action decisions the agent must make.  The Self-Organized Map
+was designed for a different type of problem, that of
+<em>modelling</em> some feature domain and producing a brain-like
+mapping from inputs to common features.  Here, there is no
+reinforcement, and the topological structure of the feature space is
+what is important.  But in a <em>control</em> task, the
+frequency-based approach is blind toward the reinforcement, and the
+reinforcement is what makes some states more important than others to
+the agent.
+
+<p>
+
+Chapman & Kaelbling's concept of "relevance" biases feature extraction
+toward the detection of features which are associated with extreme
+reinforcement values.  As discussed above, extreme reinforcement
+values do not necessarily indicate an important state, from which the
+agent's choice of action really matters.  Relevance tuning produces
+feature detectors which are relevant to predicting the agent's future
+success, but which may not be relevant to choosing its next action.
+When the agent detects a feature, if all its actions will produce
+outcomes which are equally good, that feature doesn't make any
+difference in determining its strategy, even if the feature is
+relevant to predicting its future success.  Relevance tuning cannot
+tell that such features are unimportant. 
+
+
+<p>
+
+Rarely are developments in neural networks unanticipated by the field
+of statistics, although researchers may not recognize the common
+threads at first glance.  But I am not aware of a concept like
+importance-based feature extraction in statistics.  Principal
+component analysis can very efficiently give the structure of the
+feature space, but it is blind toward the reinforcement seen by the
+agent.  Therefore, like the other approaches, it cannot guide feature
+extraction according to the reinforcements the agent receives for
+various state/action combinations under its current performance task.
+
+<p>
+
+<h2>Return to:</h2>
+<ul>
+<li><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a href="#top">Top of this document<a>
+<li><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href="http://www.cs.wisc.edu/~finton/rlpage.html">DJF's Reinforcement Learning Page<a>
+</ul>
+<hr>
+
+<!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a href="http://www.cs.wisc.edu/~finton/finton.html">
+<em>finton@cs.wisc.edu</em></a>, November 30, 1994.
+
+</body>
+
+</html>
+

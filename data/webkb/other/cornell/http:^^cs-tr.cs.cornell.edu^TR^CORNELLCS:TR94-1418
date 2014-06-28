@@ -1,0 +1,54 @@
+Server: Dienst v4-1-6 
+MIME-version: 1.0
+Content-type: text/html
+
+<TITLE>A protocol and server for a distributed digital technical report library</TITLE>
+<H2>A protocol and server for a distributed digital technical report library</H2>
+ James R. Davis and  Carl Lagoze<BR>
+TR94-1418<BR>
+June 24, 1994<BR>
+<p>
+ This paper describes {\bf Dienst} -- a Distributed Interactive Extensible Network Server for Techreports. The Dienst protocol is based on the World Wide Web protocol HTTP, and provides an object-oriented interface to a document model. The document model allows one to access the document as a whole or by named sub-parts and it supports multiple formats for the document. We have also implemented a gateway from a Web server that supports the Dienst protocol. Using a World Wide Web client (e.g. Mosaic), a user may search for documents at distributed sites, browse ``thumbnail'' (very small page) images, view the full documents, and print them.<P>
+<hr><p>
+<H2>How to view this document</H2>
+<P><UL>
+<LI>Display an <B>overview</B> of the document in one of the following formats.
+<P><UL>
+<!WA0><!WA0><!WA0><!WA0><A HREF="http://cs-tr.cs.cornell.edu/Dienst/UI/2.0/Composite/ncstrl.cornell%2fTR94-1418/1?nsections=1"><LI>Overview of thumbnail pages</A><!WA1><!WA1><!WA1><!WA1><A HREF="http://cs-tr.cs.cornell.edu/Dienst/UI/2.0/Contents/ncstrl.cornell%2fTR94-1418"><LI>Structural overview</A></UL>
+<P>
+<LI>Display a <B>selected page</B> in one of the following formats (document has 9 pages).
+<!WA2><!WA2><!WA2><!WA2><FORM ACTION=http://cs-tr.cs.cornell.edu/Dienst/UI/2.0/ShowPage/ncstrl.cornell%2fTR94-1418>
+<INPUT TYPE="hidden" NAME="npages" VALUE=9><SELECT name=format size=3>
+<OPTION value=xdoc>raw OCR output
+<OPTION value=scanned>hi-resolution tiff image
+<OPTION value=inline selected>inline gif image
+</SELECT>
+<INPUT NAME="page" TYPE=INT SIZE=4 VALUE=1>
+<INPUT TYPE=submit Value="Display page">
+</FORM>
+<LI>Display the <B>whole</B> document in one of the following formats.
+<P><UL>
+<LI><!WA3><!WA3><!WA3><!WA3><A HREF="http://cs-tr.cs.cornell.edu/Dienst/Repository/2.0/Body/ncstrl.cornell%2fTR94-1418/ocr">OCR text
+</A> (produced by OCR, may have errors) 20925 bytes.
+<LI><!WA4><!WA4><!WA4><!WA4><A HREF="http://cs-tr.cs.cornell.edu/Dienst/Repository/2.0/Body/ncstrl.cornell%2fTR94-1418/postscript">PostScript
+</A> 274280 bytes.
+</UL>
+<BR>
+<LI>
+<!WA5><!WA5><!WA5><!WA5><A HREF="http://cs-tr.cs.cornell.edu/Dienst/UI/2.0/Print/ncstrl.cornell%2fTR94-1418">Print or download all or selected pages.
+</A></UL>
+<HR>
+<p>
+<BLOCKQUOTE> 
+You are granted permission for the non-commercial reproduction, distribution,
+display, and performance of this technical report in any format, BUT this
+permission is only for a period of 45 (forty-five) days from the most recent
+time that you verified that this technical report is still available from
+the Computer Science Department of Cornell University under terms that
+include this permission.  All other rights are reserved by the author(s).
+ </BLOCKQUOTE></p><HR><p>
+[ <!WA6><!WA6><!WA6><!WA6><A HREF="http://cs-tr.cs.cornell.edu/Dienst/UI/2.0/Search">Search</A>
+ | <!WA7><!WA7><!WA7><!WA7><A HREF="http://www.ncstrl.org:8080">Home page</A>
+ ]
+<HR>
+<I><!WA8><!WA8><!WA8><!WA8><img align=left  src="http://cs-tr.cs.cornell.edu/Dienst/htdocs/image_gif/sm_ncstrl.gif">NCSTRL</I><br><I>This server operates at Cornell University.</I> <BR><I>Send email to <!WA9><!WA9><!WA9><!WA9><A HREF="mailto: tech-reports@cs.cornell.edu">tech-reports@cs.cornell.edu</A> </I>

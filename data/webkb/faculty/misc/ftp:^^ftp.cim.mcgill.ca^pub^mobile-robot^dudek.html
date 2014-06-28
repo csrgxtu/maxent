@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE> Gregory Dudek </TITLE>
+   <META NAME="GENERATOR" CONTENT="User-Agent: Mozilla/3.01b1Gold (Macintosh; I; PPC)">
+</HEAD>
+<BODY onLoad="timerONE=window.setTimeout('scrollit_r2l(100)',500);">
+
+<P><SCRIPT LANGUAGE="JavaScript"><!-- Beginning of JavaScript Applet -------------------
+
+/* 
+   Original code (C)1996 Web Integration Systems, Inc. DBA Websys, Inc.
+   All Rights Reserved.  This code can be re-used or modified, if credit
+   is given in the source code.
+
+   Chris Skinner, January 30, 1996.
+ 
+   Modified by RD @ CNNfn, Jan. 31, 1996
+   Modified by Kurt Koller @ MTVOnline, Feb 4, 1996
+   MModified by Gregory Dudek, 1996.
+
+   Disclaimer:  We will not be held responsible for any unwanted effects
+   due to the usage of this applet or any derivative.  No warrantees for
+   usability for any specific application are given or implied.
+
+*/
+
+function scrollit_r2l(seed)
+{
+
+ 
+
+        var m1  = "... Check out the mobile robotics page.....      ..... More neat stuff on the graphics 557 page.....";
+        var m2  = "... The CIM pages discuss related research groups ....     .... Mobile robotics ahead ....";
+        var m3  = "...     Yes, I know the picture is awful";
+ 
+        var msg=m1+m2+m3+m2;
+        var out = " ";
+        var c   = 1;
+
+        var rate = 150;
+
+        if (seed > 100) {
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 100 && seed > 0) {
+                for (c=0 ; c < seed ; c++) {
+                        out+=" ";
+                }
+                out+=msg;
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                    window.status=out;
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;
+                        var cmd="scrollit_r2l(" + seed + ")";
+                        window.status=out;
+                        timerTwo=window.setTimeout(cmd,100);
+                }
+                else {
+                        window.status=" ";
+                        timerTwo=window.setTimeout("scrollit_r2l(100)",75);
+                }
+        }
+}
+// -- End of JavaScript code -------------- -->
+</SCRIPT>
+
+<IMG SRC="dudek.gif" ALT="Dudek: A low-quality picture" HEIGHT=120 WIDTH=160>
+</P>
+
+<H2>Professor G. Dudek </H2>
+
+<H3>Electronic mail:</H3>
+
+<H4>dudek@cim.mcgill.edu</H4>
+
+<PRE>
+
+<A HREF="http://www.cs.mcgill.ca/">School of Computer Science </A> 
+   and 
+Centre for Intelligent Machines (CIM)
+</PRE>
+
+<H3>Research areas: </H3>
+
+<PRE>
+   navigation, shape, mobile robotics,
+   vision, visualization, recognition.
+</PRE>
+
+<P>Runs the <A HREF="http://www.cim.mcgill.ca/~dudek/mobile.html">Autonomous
+Mobile Robotics Lab</A> at <A HREF="http://www.cim.mcgill.ca/">CIM</A>.
+</P>
+
+<H3>Address:</H3>
+
+<PRE>
+    Centre for Intelligent Machines
+    McGill University
+    McConnell Engineering Building, Room 420
+    3480 University Street
+    Montreal, Que, Canada H3A 2A7
+
+
+Telephone: (514)398-4325        FAX: 398-7348           Home: 935-1940   
+Secretary(CIM): x6018           Secretary(CS): x7071    Mobile Robot Lab: x2186
+</PRE>
+
+<P>
+<a href="/~dudek/mtl.html">
+I have some information on visiting us (CIM/McGill/Montreal).
+</a>
+
+<H3>Teaching</H3>
+
+<P><A HREF="http://www.cim.mcgill.ca/~dudek/557.html">308-557B Fundamentals
+of Computer Graphics </A></P>
+
+<P><A HREF="http://www.cim.mcgill.ca/~dudek/765.html">308-765B Mobile Robotics
+and Spatial Representation </A></P>
+
+<P><A HREF="http://www.cs.mcgill.ca/~dudek/273.html">308-273A (lecturer)
+308-273B (coordinator) Principles of Assembly Language Programming </A></P>
+
+</BODY>
+</HTML>
+Alarm clock

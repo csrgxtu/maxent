@@ -1,0 +1,428 @@
+Date: Fri, 13 Dec 1996 17:06:32 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 30 Oct 1996 19:02:00 GMT
+Content-length: 17333
+
+<HTML>
+<HEAD>
+<TITLE>DEVise Visual Query Interface</TITLE>
+</HEAD>
+<BODY>
+
+<H1>Visual Query Interface</H1>
+
+<P>This section discusses the Visual Query interface of DEVise:
+
+<UL>
+<LI><!WA0><!WA0><!WA0><a href="#Intro">Introduction</A>
+<LI><!WA1><!WA1><!WA1><a href="#Session">Session</A>
+<LI><!WA2><!WA2><!WA2><A href="#How">How</A> to represent data.
+<LI><!WA3><!WA3><!WA3><A href="#What">What</A> to visualize.
+<LI><!WA4><!WA4><!WA4><A href="#Where">Where</A> to place graphics.
+<LI>Command <!WA5><!WA5><!WA5><A href="#Summary">Summary</A>.
+</UL>
+
+<A name="Intro"><H2>Introduction</H2></A>
+
+In a database environment, users ask their questions by formulating
+queries over the underlying database. The query output are the
+answers to these questions. The same questions can be asked over and over 
+on different sets of input data. The same principle applies when graphics
+is used to represent data. The difference is that visual queries are
+formulated using a graphical user interface, against graphical data.
+
+<P>When formulating visual queries, users start with a set of input data.
+Graphical representations of the input data are generated, perhaps
+through extensive experimentations. Users would navigate the data to look for
+places of interest. Sometimes users might need additional help by looking
+at the original data represented by the graphics. The state
+of the visualization environment forms a visual query. Just like
+a database query, the visual query can be saved, and applied over and
+over to different sets of input data.
+
+<P>A visual query is constructed by manipulating the system components
+in DEVise to create component instances and interconnections.  These
+components are derived from a <!WA6><!WA6><!WA6><A href="http://www.cs.wisc.edu/~devise/devise/model.html">model of
+visualization</A>. The visual query interface manipulates these
+components to allow the user to specify what data is to be visualized,
+how data is to be visualized, and where to place the graphics on the
+display.
+
+<A name="Session"><H2>Session</H2></A>
+
+The state of each visual query is stored as a session. Sessions are
+accessed from the Session menu, with the following menu items:
+
+<UL>
+<LI>Open: restore a previously saved visual query to its original state.
+<LI>Open as template: Apply a previously saved visual query to a different
+set of input data. The user selects the new input data when session is
+restored.
+<LI>Close: close current session.
+<LI>Save: save visual query to file, to be restored later.
+<LI>Save as: save visual query under a different name.
+<LI>Save as Template: save visual query as a template.
+<LI>Print: print contents of window or save as Postscript.
+<LI>Quit: quit DEVise.
+</UL>
+
+<A name="How"><H2>How to represent data</H2></A>
+
+The following commands are used to specify what the user wants
+to visualize:
+<UL>
+<LI><!WA7><!WA7><!WA7><A href="#DefineMapping">Define Mapping</A>
+<LI><!WA8><!WA8><!WA8><A href="#EditMapping">Edit Mapping</A>
+<LI><!WA9><!WA9><!WA9><A href="#Size">Controlling Shape Size</A>
+</UL>
+
+<A name="DefineMapping"><H3>Define Mapping</H3></A>
+The ``Visualize/Define'' command lets the user define new data
+streams (TData) and new visualizations to the system. The steps
+required to create a new visualization are summarized here:
+<OL>
+<LI>Select a data stream by pulling down the Source selector, or select
+the Open... command at the bottom of the selector to define a new data
+stream.
+<LI>Click on Auto... to run the automatic mapping utility.
+<LI>Select the attributes of visualization from the dialog box, including
+the X attribute, one or more Y attributes, window name and layout, and
+other options.
+<LI>Click on OK to create the new visualization.
+</OL>
+
+<A name="EditMapping"><H3>Edit Mapping</H3></A>
+
+The ``View/Edit Mapping'' menu command allows the user to experiment
+with the mapping of a GData in the view. A dialog box appears,
+allowing the user to edit the mapping. The dynamic nature of editing
+the mapping is valuable during data exploration because the
+effectiveness of graphics may vary for different locations in the
+data, and for different zoom factors as well. The user can change all
+attributes of the visualization, including the X, Y, color, shape,
+size, pattern, and orientation attributes. Optional parameters, such
+as shape width and height, can also be defined.
+
+<A name="Size"><H3>Controlling Shape Pixel Size</H3></A>
+
+Sometimes the size of shapes are so small that they appear as single
+pixels when drawn inside a view:
+
+<P><!WA10><!WA10><!WA10><img src="http://www.cs.wisc.edu/~devise/devise/small.gif">
+
+<P>It is often desirable to accentuate these shapes by enlarging their
+sizes to be bigger than a single pixel:
+
+<P><!WA11><!WA11><!WA11><img src="http://www.cs.wisc.edu/~devise/devise/large.gif">
+
+<P>Controlling the actual size of pixel sized shapes is done via
+keyboard commands directed at a view. The '+' key increases the
+size of shapes, while the '-' key decreases the size of the shapes.
+
+<A name="What"><H2>What to Visualize</H2></A>
+
+There are many ways to specify what the user wants to look at:
+
+<UL>
+<LI><!WA12><!WA12><!WA12><A href="#Control">Control Panel widgets</A>
+<LI><!WA13><!WA13><!WA13><A href="#Mode">Layout versus Display mode</A>
+<LI><!WA14><!WA14><!WA14><A href="#Axes">Axes</A>
+<LI><!WA15><!WA15><!WA15><A href="#Mouse">Mouse and Keyboard Events</A>
+<LI><!WA16><!WA16><!WA16><A href="#History">History Window</A>
+<LI><!WA17><!WA17><!WA17><A href="#VisualLink">Visual Link</A>
+<LI><!WA18><!WA18><!WA18><A href="#Cursor">Cursor</A>
+<LI><!WA19><!WA19><!WA19><A href="#Switch">Switch TData</A>
+<LI><!WA20><!WA20><!WA20><A href="#Duplicate">Duplicate Window</A>
+<LI><!WA21><!WA21><!WA21><A href="#Query">Data Querying</A>
+</UL>
+
+<A name="Control"><H3>Control Panel Widgets</H3></A>
+<!WA22><!WA22><!WA22><img src="http://www.cs.wisc.edu/~devise/devise/control.gif" align=middle>
+
+<p>
+The widgets on the control panel are mainly used for navigating the
+data. The ``current view'' text widget
+
+<p><!WA23><!WA23><!WA23><img src="http://www.cs.wisc.edu/~devise/devise/current.gif">
+
+<p>displays the name of the view that the user wishes to
+navigate. User commands initiated from the control panel widgets are
+applied to the current view. The user selects a view as the current
+view by clicking inside its boundary with the left mouse button.
+
+Interactions with widgets for navigation are translated into changing
+the visual filter of the current view. The widgets used for navigation
+are as follows:
+
+<UL>
+<LI><!WA24><!WA24><!WA24><img src=http://www.cs.wisc.edu/~devise/devise/button.gif>The arrow widgets are used to scroll left, 
+right, up, and down. The 4 widgets around the arrows are for zooming in
+and out in the X or Y directions.
+<LI><!WA25><!WA25><!WA25><img src=http://www.cs.wisc.edu/~devise/devise/filter.gif>The text widgets are used for
+editing the new X and/or Y ranges. Clicking the `use' button
+changes the view's visual filter. The `undo-edit' button is used to undo
+the editing.
+<LI>The `back one' button goes back one step in the history of changes
+to the current view's visual filter. Clicking `use' moves back one step,
+while clicking `undo' cancels the change.
+<LI>Clicking the `history' widget brings up the history window.
+</UL>
+
+<A name="Mode"><H3>Layout vs. Display Modes</H3></A>
+
+DEVise has two modes of operation:layout and display modes. Users
+toggle between these two modes by clicking at the <!WA26><!WA26><!WA26><img src="http://www.cs.wisc.edu/~devise/devise/mode.gif">
+button. In the layout mode, the user constructs mappings and views and
+decides where to place views in windows without having the graphics
+update in the window. The windows are eventually updated when the user
+switches into display mode.
+
+<P>Placing DEVise in the layout mode is a time saver when large amounts
+of data are involved. The layout mode allows the user to construct a visual
+query without waiting for the graphics to be updated. Otherwise, adding a 
+view in a window may cause all other views already in the same window, 
+together with linked views in other windows, to be updated simultaneously.
+may take a long time.
+
+<A name="Axes"><H3>Axes</H3></A>
+
+The user can turn the display of view axes on/off. This is accessed
+through the ``View/Toggle X Axis'' and the ``View/Toggle Y Axis''
+menus.
+
+<A name="Mouse"><H3>Mouse and Keyboard Events</H3></A>
+
+The user can use the following mouse commands:
+
+<UL>
+<LI>Click anywhere in a view with the left button to select the view
+as the current view.
+<LI>Click in a view with the middle button to <!WA27><!WA27><!WA27><a href="#Query">query</A>
+the data that lies under the graphical object closest to the mouse
+location.
+<LI>Click on left, right, up, or down arrow in the control panel to
+scroll a view.
+<LI>Click on zoom in or out buttons in control panel to zoom in or
+out of a view in the X or Y direction.
+<LI>Draw a rectangle with the left mouse button pressed in a view to
+zoom only in the X axis (best for bar graphs).
+<LI>Draw a rectangle with the right mouse button pressed in a view to
+zoom in the X and Y axes (best for scatter plots).
+</UL>
+
+The following keyboard commands are available:
+
+<UL>
+<LI>Press number 4, 6, 8, or 2 to scroll view left, right, up, or down.
+Numbers correspond to arrows on a numeric keypad with NumLock on.
+<LI>Press number 7 or 9 to zoom in or out of a view in the X direction.
+<LI>Press number 1 or 3 to zoom in or out of a view in the Y direction.
+<LI>Press s to toggle symbol display on or off.
+<LI>Press v to toggle connector display on or off.
+</UL>
+
+<A name="History"><H3>History Window</H3></A>
+
+<!WA28><!WA28><!WA28><img src="http://www.cs.wisc.edu/~devise/devise/history.gif" align=middle>
+
+<P>The history window is accessed by clicking the `history' button
+on the control panel. A history of changes to the visual filter
+of the current view are displayed.
+
+<P>Users can go back to places previously visited by clicking in a
+history window entry, and then clicking the `use' button on the
+control panel.  Users can also mark or unmark places of interest by
+clicking in the `mark' column of the history window. The marked
+entries are preceded by an `*'. Because the history window has a
+finite size, old history entries are replaced by new ones after the
+size of the history window reaches it maximum. However, marked entries
+are never replaced.
+
+<A name="VisualLink"><H3>Visual Link</H3></A>
+
+Visual links are used to link the axes of multiple views, so that
+scrolling or zooming one synchronously scrolls or zooms all linked
+views. The ``View/Link'' menu brings up a dialog box that allows the
+user to select a link for the current view. The dialog box also allows
+the user to create new links, and to examine views that belong to
+existing links. The ``View/Unlink'' menu allows the user to dissociate
+a view from a link.
+
+<A name="Cursor"><H3>Cursor</H3></A>
+
+Click here for an <!WA29><!WA29><!WA29><A href="http://www.cs.wisc.edu/~devise/devise/soil.html">example</A>.
+
+<P>Cursors are used to display the boundaries of one view relative to
+another. Clicking in the destination view moves the cursor to the
+clicked region, at the same time changing the visual filter of the
+source view. The cursor menu is used to access cursors:
+
+<UL>
+<LI>Create: creates a cursor.
+<LI>Delete: deletes a cursor.
+<LI>Set source: Set the source view for the cursor.
+<LI>Set destination: Set the destination view for the cursor.
+</UL>
+
+<A name="Switch"><H3>Switch TData</H3></A>
+
+As the user experiments with the mapping of a GData, and navigates
+through scrolling or zooming, the user might come across a location of
+interest in the data. there are cases where the user wants to see what
+the same location looks like for a different set of input data. The is
+accomplished through the ``View/Switch TData'' menu command.  this is
+a time save by eliminating the need to use the <!WA30><!WA30><!WA30><a
+href="#DefineMapping">mapping definition</A> again, when the only
+difference is that a different input is being used.
+
+<A name="Duplicate"><H3>Duplicate Window</H3></A>
+
+Consider a window consisting of a set of linked views.  As the user
+navigates the views, he or she might come across a location of
+interest. One way to save this location is to mark it in the <!WA31><!WA31><!WA31><A
+href="#History">history window</A>. However, the user may also want to
+compare two separate locations. This is most easily accomplished by
+making a copy of the window so that the two may be placed side by side
+for comparison. This is done by choosing the ``Window/Duplicate
+Window'' menu command.
+
+<P>After duplicating the window, the user is provided with two
+identical windows. The user can use the first window as a reference
+point, while using the second window for further navigation to find
+other places of interest.
+
+<A name="Query"><H3>Data Querying</H3></A>
+
+As the user navigates the data, there might be places where
+information about the records used to generate the graphics becomes
+important for understanding. Pressing down on the middle button may be
+used to query the data that underly the mouse. As a result, a pop-up
+window appears, giving the user information about the data records,
+including attribute names and values. (Click for an <!WA32><!WA32><!WA32><A
+href="http://www.cs.wisc.edu/~devise/devise/program.html">example</A>) In the event that there is too much
+information to fit in a pop-up window, the information is displayed
+textually on the user's terminal.
+
+<A name="Where"><h2>Where to Place Graphics</H2></A>
+
+Views and windows are the means through which the user decides to
+place graphics. First, views can be removed from windows to reduce
+clutter, or be moved to other windows for side by side comparison with
+other views. These functions are accessed through the ``View/Remove
+from Window'' and ``View/Bring Back to window'' menus. When placed
+within the same window, the positions of views may also be swapped
+using the ``View/Swap Position'' menu.
+
+<P>Windows are responsible for arranging views inside their
+boundaries.  Different placement strategies may be
+implemented. Currently, DEVise offers three window layouts:
+tiled/automatic, vertical, and horizontal. In addition, DEVise relies
+on the window manager of particular implementations for moving a
+window to a different locations on the display, for changing the size
+of a window, or for turning the window into an icon.
+
+<A name="Summary"><H2>Command Summary</H2></A>
+
+<H3>Menus</H3>
+
+There are five groups of menus: Session, Visualize, View, Cursor, and
+Window. We now describe each one in turn, beginning with the Session
+menu. Recall that the state of each <!WA33><!WA33><!WA33><A href="#Intro">visual query</A>
+is a <!WA34><!WA34><!WA34><A href="#Session">session</A>. The session menu deals with
+saving and restoring visual queries:
+
+<UL>
+<LI>Open: restore a previously saved visual query to its original state.
+<LI>Open as template: Apply a previously saved visual query to a different
+set of input data. The user selects the new input data when session is
+restored.
+<LI>Close: close current session.
+<LI>Save: save session under the default name.
+<LI>Save as: save session under a different name.
+<LI>Save as Template: save visual query as a template.
+<LI>Print: print contents of window or save as Postscript.
+<LI>Quit: quit DEVise.
+</UL>
+
+<P>The ``Visualize'' Menu is used to manage data streams and define
+visualizations. See <!WA35><!WA35><!WA35><A href="#DefineMapping">here</A> for more
+information.
+
+<P>The ``View'' menu is used to operate on views. Most of the menu
+items require that the current view be specified by clicking in the
+view with the left mouse button. The menu items are:
+
+<UL>
+<LI>Edit Mapping:<!WA36><!WA36><!WA36><A href="#EditMapping">edit mapping</A> for current view.
+<LI><!WA37><!WA37><!WA37><A href="#Switch">Switch TData</A>: Apply the same mapping that 
+creates the current view to a different input data.
+<LI>Swap position: Swap the positions of the last two views selected as
+current view.
+<LI>Move to Window: Move current view to another window.
+<LI>Remove from Window: Remove current view from its window.
+<LI>Bring Back to Window: Bring back a view that was removed earlier.
+<LI>Link: Select a <!WA38><!WA38><!WA38><A href="#Link">visual link</A> for current view.
+<LI>Unlink: Remove current view from a <!WA39><!WA39><!WA39><A href="#Link">visual link</a>.
+<LI>Toggle X Axis: toggle X axis display on/off.
+<LI>Toggle Y Axis: toggle Y axis display on/off.
+<LI>Toggle Statistics: toggle statistics display (min/max/avg) on/off.
+<LI>Show KGraph: control Kiviat graph displays.
+<LI>Title: set, edit, or delete view titles.
+</UL>
+
+<P>The ``Cursor'' menu is used to operate on <!WA40><!WA40><!WA40><A
+href="#Cursor">cursors</A>:
+
+<UL>
+<LI>Create: create a cursor.
+<LI>Delete: delete a cursor.
+<LI>Set source: make the current view the source of the cursor.
+<LI>Set destination: make the current view the destination of the cursor.
+</UL>
+
+<P>The ``Window'' menu operates on windows:
+
+<UL>
+<LI>Layout: change the layout of a window.
+<LI>Remove: remove an empty window.
+<LI><!WA41><!WA41><!WA41><A href="#Duplicate">Duplicate</A>: Make a copy of current window.
+<LI>Help: Open up the help window to display online documentation.
+<LI>History: Open up the history window.
+</UL>
+
+<H3>Widgets</H3>
+
+<P>The <!WA42><!WA42><!WA42><A href="#Control">control panel</A> widgets are as follows:
+
+<UL>
+<LI>mode button: toggle between layout and display modes.
+Current View widget: displays the name of the current view.
+<LI>xlow, xhigh, ylow, and yhigh: Displays the boundaries
+	of the current view. The widgets may be edited.
+<LI>use: makes the edited xlow/xhigh/ylow/yhigh the new visual
+	filter for the current view.
+<LI>undo-edit: undo the editing of the xlow/xhigh/ylow/yhigh widgets.
+<LI>back one: move back to the previous visual filter by changing
+	xlow/xhigh/ylow/yhigh widgets. The user has to click `use' to
+	initiate the changes.
+<LI>history: bring up the history window.
+<LI>navigations buttons on the lower left: for scrolling
+	left, right, up, down, zoom in X, zoom in Y, zoom out X,
+	and zoom out Y.
+</UL>
+
+The <!WA43><!WA43><!WA43><A href="#History">history window</A> widgets are as follows:
+<UL>
+<LI>mark: toggles an entry between marked and unmarked state. In the
+	marked state, the entry is never thrown away as the history buffer
+	fills up.
+<LI>xlow/xhigh/ylow/yhigh: click here to transfer this
+	entry of the history window to the xlow/xhigh/ylow/yhigh
+	widgets on the control panel. Then Click `use' on the control panel to
+	go back to this history entry.
+<LI>close: close the history window.
+</UL>
+
+</BODY>
+</HTML>

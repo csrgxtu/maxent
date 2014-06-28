@@ -1,0 +1,54 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 07-Jan-97 15:26:12 GMT
+Content-Type: text/html
+Content-Length: 1125
+Last-Modified: Tuesday, 06-Jun-95 17:39:16 GMT
+
+<HTML>
+<!--  units.html          G. Novak           06 Jun 95    -->
+<HEAD>
+<TITLE>Unit Conversion Software</TITLE>
+</HEAD>
+
+<BODY>
+<H1>Unit Conversion Software</H1>
+<HR>
+
+This software, written in Common Lisp, can convert a given unit of
+measurement into an equivalent unit.  The input can be named units or
+expressions in terms of units.  The software can also simplify
+unit expressions.
+<PRE>
+(convert 'meters 'feet)
+3.280839895013123
+
+(convert '(/ (* atto parsec)
+             (* micro fortnight))
+         '(/ inch sec))
+1.0034552972545097
+
+(convert '(/ (* mega lbf) acre)
+         'kilopascals)
+1.0991794990738932
+
+(simplifyunit '(/ (* newton meter) (* ampere second)))
+VOLT
+
+(simplifyunit '(/ (* volt volt)
+                  (* lbf (/ (* atto parsec) hour))))
+(* 26250.801011041247 OHM)
+</PRE>
+<p>
+
+ <ul>
+  <LI><!WA0><a href="http://www.cs.utexas.edu/users/novak/cgi/unitsdemo">Unit Conversion: On-line
+      Demonstration</a>
+  <LI> <!WA1><a href="file://ftp.cs.utexas.edu/pub/novak/units/">
+       FTP directory for software and documentation</a>.
+  <LI><!WA2><a href="http://www.cs.utexas.edu/users/novak/units95.html">``Conversion of Units of Measurement''</a> paper.
+ </ul>
+
+</BODY>
+
+</HTML>

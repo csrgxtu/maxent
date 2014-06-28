@@ -1,0 +1,86 @@
+Date: Tue, 05 Nov 1996 20:54:53 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 11 Sep 1995 19:41:30 GMT
+Content-length: 1767
+
+<html>
+
+<head>
+  <title>Assignment 1: FAQ</title>
+</head>
+
+<body>
+
+<h1>Assignment 1: FAQ (and answers)</h1>
+<hr>
+
+<h2>FAQs</h2>
+<ul>
+<li> <!WA0><a href="#bin-files">"How do I create binary data files?"</a>
+<li> <!WA1><a href="#const-mem">
+	 "How do I initialize the <em>const</em> data members of my objects?"
+	 </a>
+<li> <!WA2><a href="#scope">
+	 "How do I pass the INT/STR argument to the RecSpec constructor?"
+	 </a>
+</ul>
+
+
+<hr>
+
+<a name="bin-files">
+<h3><!WA3><img src="http://www.cs.wisc.edu/~cs564-1/pics/ball-green.gif">
+    "How do I create binary data files?"</h3>
+</a>
+
+Sample ascii data files and an ascii->binary data file converter
+are provided in /u/course/cs564/assigns/assign1/data.
+Use this to create your own binary data files for testing.
+(Look at README in that directory for more info)
+<p>
+
+
+<a name="const-mem">
+<h3><!WA4><img src="http://www.cs.wisc.edu/~cs564-1/pics/ball-green.gif">
+    "How do I initialize the <em>const</em> data members of my objects?"</h3>
+</a>
+
+Here is an example:
+
+<pre>
+
+class PinkFloyd {
+public:
+    PinkFloyd(int the_world) : they_rule(the_world) {}
+
+private:
+    const int they_rule;
+};
+
+</pre>
+
+For more info, lookup "constant data members" in your favorite C++ book!
+
+
+<a name="scope">
+<h3><!WA5><img src="http://www.cs.wisc.edu/~cs564-1/pics/ball-green.gif">
+    "How do I pass the INT/STR argument to the RecSpec constructor?"</h3>
+</a>
+
+Field_type is defined within the scope of RecSpec.
+If you are outside this scope, you must specify to C++ that you want
+the field_type in the RecSpec scope (ie, RecSpec::INT, not INT).
+Lookup the scope operator (::) in your least disliked C++ book for
+more info.
+
+<a name="solution">
+<H3><!WA6><img src="http://www.cs.wisc.edu/~cs564-1/pics/ball-green.gif">
+"Where is the solution?"</H3>
+
+<PRE>~cs564-1/assigns/assign1/sample/</PRE>
+
+<P>(Note, the current TAs did not write the solution.)
+</body>
+
+</html>

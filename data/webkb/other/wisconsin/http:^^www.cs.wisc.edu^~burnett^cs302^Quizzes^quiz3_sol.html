@@ -1,0 +1,94 @@
+Date: Mon, 11 Nov 1996 17:40:53 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 31 Oct 1996 22:35:40 GMT
+Content-length: 1721
+
+<html><head><title>Solutions to Quiz Three</title></head>
+<body>
+<h3>
+<center>Solutions to Quiz Three<p>
+<a href="quiz3.html">The quiz itself</a><p></h3>
+<b>Disclaimer</b>: answer key code has <em>not</em> been tested.<p>
+</center>
+<ol> 
+<li> For Loops
+
+<pre>
+	int i, j;
+	for (i = 9; i >= 1; i--) {
+
+	   for (j = i; j <= 9; j++)
+	      cout << j << ' ';
+
+	   cout << endl;
+
+	   if (i != 5)
+	      cout << '*' << end;;
+	}
+
+</pre>
+
+<li>Working with Structures.<p>
+
+
+	<ul>
+	<li>Write a definition for a struct <b>ApptPage</b> (appointment page).
+	Each ApptPage should have a field for the date and a field
+	for the number of appointments. (<em>3 points</em>)<p>
+
+<pre>
+	struct ApptPage {
+	   Date date;
+	   int num_appts;
+	};
+</pre>
+<p>
+	<li>Write a code segment that declares an appointment page variable,
+	sets the date to October 31 and sets the number of appointments to 5.
+	<p>
+
+<pre>
+	ApptPage ap;
+	ap.date.month = OCT;
+	ap.date.day = 31;
+	ap.num_appts = 5;
+</pre>
+<p><b><em>or</em></b><p>
+<pre>
+	ApptPage ap = {{OCT, 31}, 5};
+</pre>
+<p>	
+	<li>Write a function that takes a date and returns a logical
+	value based on whether that date is valid or not.
+<p>
+<pre>
+	int validDate(Date d) {
+
+	   int valid;  // 1 if valid, 0 if invalid
+
+	   switch (d.month) {
+	      case JAN:
+	      case MAR:
+	      case MAY:
+	      case JUL:
+	      case AUG:
+	      case OCT:
+	      case DEC:
+	         valid = (d.day >= 1 && d.day <= 31); break;
+	      case APR:
+	      case JUN:
+	      case SEP:
+	      case NOV:
+		 valid = (d.day >= 1 && d.day <= 30); break;
+	      case FEB:
+ 	         valid = (d.day >= 1 && d.day <= 29); break;
+	      default:
+		 valid = 0;   // invalid Month!
+           }
+
+           return (valid);
+	}
+</ol>
+
+

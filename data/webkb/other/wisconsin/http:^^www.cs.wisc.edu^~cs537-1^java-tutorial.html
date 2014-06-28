@@ -1,0 +1,1381 @@
+Date: Tue, 05 Nov 1996 00:27:28 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 31 Oct 1996 21:38:52 GMT
+Content-length: 64410
+
+<html>
+<head>
+<title>Java for C++ Programmers</title>
+</head>
+
+<body bgcolor="#ffffff">
+
+<h1>
+Java for C++ Programmers
+</h1>
+
+
+<hr>
+
+<h2> Contents </h2>
+<ul>
+<li><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><a href="#intro"> Introduction </a>
+<li><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href="#sort"> A First Example </a>
+<li><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="#objects"> Values, Objects, and Pointers </a>
+<li><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a href="#garbage"> Garbage Collection </a>
+<li><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a href="#access"> Static, Final, Public, and Private </a>
+<li><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href="#arrays"> Arrays </a>
+<li><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a href="#strings"> Strings </a>
+<li><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><a href="#constructors"> Constructors and Overloading </a>
+<li><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><a href="#inheritance"> Inheritance, Interfaces, and Casts </a>
+<li><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><a href="#exceptions"> Exceptions </a>
+<li><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><a href="#threads"> Threads </a>
+<li><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><a href="#io"> Input and Output </a>
+<li><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><a href="#util"> Other Goodies </a>
+</ul>
+
+<a name="intro"><h2> Introduction </h2></a>
+
+<p>
+The purpose of these notes is to help 537 students learn enough about
+Java to do the course projects.
+All of the students have experience programming in C++,
+but practically none of whom have used Java.
+
+<h3> What is Java? </h3>
+<p>
+Before we turn to the details, it is worth considering why Java
+has created such a stir.
+Much of it has nothing to do with the language <em> per se </em>
+but with the way it is intended to be used.
+<p>
+To understand this point, you have to know a little bit about
+the World-Wide Web.
+The Web consists of a set of
+<em> servers </em>
+scattered around the Internet,
+each of which maintains a set of
+<em> pages. </em>
+Each page has a ``name'' called a
+<em> Universal Resource Locator </em> (URL)
+that uniquely distinguishes it from any other page in the world.
+The URL starts with the name of the server.
+For example, the URL of this document,
+<code>http://www.cs.wisc.edu/~cs537-1/java-tutorial.html</code>,
+says that it can be retrieved by using the HyperText Transfer Protocol
+(http) to connect to server <code>www.cs.wisc.edu</code> and ask it for
+the page it calls <code>/~cs537-1/java-tutorial.html</code>.
+<p>
+Each page is written in a combination of text and formatting directives called
+the
+<em> HyperText Markup Language </em> (HTML).
+A
+<em> browser </em>
+is a program that runs on a personal computer or workstation
+that knows how to display HTML documents
+(<em> Netscape Navigator </em> is currently
+the most popular browser by far, but Microsoft and others are trying
+to change that).
+HTML is fairly simple.
+For example, the directive <code>&lt;p&gt;</code> is used to start
+a paragraph, and text is set in <i>Italics</i> by surrounding it
+with <code>&lt;i&gt;</code>
+and  <code>&lt;/i&gt;</code>.
+The most important directive precedes some text with
+<code>&lt;a name="</code><em>URL</em><code>&gt;</code>
+and follows it with <code>&lt;/a&gt;</code>.
+The browser underlines the text, and when the user clicks on it with
+the mouse, the browser goes and gets the page named by the URL and
+displays it.
+To see more examples of HTML, take a look at this document.
+If you are using Netscape Navigator, select ``Document Source''
+from the ``View'' pull-down menu at the top of the window.
+
+<p>
+No sooner had HTML caught on that people wanted to extend it.
+Directives were added to show text in different
+<font color="#00ff00">colors</font>
+and
+<font size="+3">sizes</font>,
+or make it
+<blink>blink</blink>.
+A set of directives was added to display
+<!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><a href="http://www.cs.wisc.edu/~cs537-1/cs537.html#schedule">tables</a> and images
+<!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><IMG ALIGN=TOP SRC="http://www.cs.wisc.edu/pics/getstats.gif">.
+<p>
+Next came sound and movies.
+The possibilities seemed endless.
+<p>
+There was one big problem, however:
+If you created a document using a new feature, it couldn't be displayed
+by a browser that didn't ``understand'' that feature.
+Thus for a feature to be useful, it had to be implemented by 
+all (or at least a substantial fraction of) the millions
+of browsers ``out there''.
+<p>
+Then someone got a bright idea:
+How about including with each document a program capable of displaying it?
+The browser wouldn't have to ``understand'' the document.
+It could just run the executable code that came with it, and that code
+would know how to display the document.
+Unfortunately, this idea has two very serious problems.
+<p>
+The first problem is that browsers run on all sorts of computers,
+running all sorts of operating systems.
+If I include with my document a program designed to run on a SparcStation
+under Solaris, it will be useless on a Pentium running Windows 95.
+The second program concerns security.
+Running programs from random untrusted sources on your own computer is
+asking for trouble.
+That's what viruses are all about.
+Instead of displaying the document, the program may clear your disk or
+look for private information and send it back over
+the network to a bad guy.
+<p>
+Fortunately, there is another idea that solves both of these problems.
+Instead of including a machine-language program with a document,
+send a program written for a
+<em>virtual machine</em>
+that is simulated by a software interpreter.
+Arrange to have each browser include an interpreter for the virtual machine.
+In a sense, this just re-introduces the previous problem of requiring
+a new feature to be implemented by everyone's browser, but only one
+last time.
+Once you've convinced all the browser vendors to implement an interpreter
+for the virtual machine,
+they won't have to implement any more extensions.
+<p>
+The interpreter can also include security safeguards.
+For example, if it doesn't implement any operation to open files,
+you don't have to worry about a mischievous program stealing your data.
+It is very difficult, if not impossible, to build such safeguards around
+machine-language programs, because such programs can contain ``bugs''
+that are actually devious tricks to circumvent security restrictions.
+A subscript out of bounds may actually be an attempt
+to read some data stored outside the memory space allocated to
+the program.
+<p>
+The Java language was specially designed as a ``cleaned up'' version
+of C++ with these loopholes removed.
+If you assign random garbage to a C++ pointer variable and then dereference
+it, you will get whatever is stored in memory at that address.
+For example, the following fetches whatever happens to be store at
+location 1000 in memory:
+<pre><font color="0f0fff">
+    int *p = (int *)1000;
+    int x = *p;
+</font></pre>
+Java prevents you from doing this sort of thing, whether accidentally
+or on purpose, by a combination of strong type checking and runtime
+checks.
+A pointer variable is always initialized to <samp><font color="0f0fff">null</font></samp>,
+and you can only assign other pointer values (not integers or other
+data) to it.
+If you attempt to dereference a null pointer, you get a runtime exception.
+<p>
+Because Java was designed primarily to build active, multimedia, interactive
+documents, its standard runtime library has lots of features to aid in
+creating user interfaces.
+There are standard classes to create scrollbars, pop-up menus, etc.
+There are special facilities for manipulating URL's and network
+connections.
+We will not be using any of these features.
+On the other hand, there is one thing operating systems and user
+interfaces have in common:
+They both require multiple, cooperating threads of control.
+We will be using these features in this course.
+
+<h3> Applications <em>vs</em> Applets </h3>
+<p>
+The first thing you have to decide when writing a Java program is
+whether you are writing an
+<em>application</em> or an <em>applet</em>.
+An applet is piece of code designed to display a part of a document.
+It is run by a browser in response to an HTML directive in the document.
+We will not be writing any applets in this course.
+<p>
+An application is a stand-alone program.
+All of our programs will be applications.
+
+<a name="sort"><h2> A First Example </h2></a>
+<p>
+Large parts of Java are identical to C++.
+For example, the following procedure, which sorts an array of integers
+using insertion sort, is exactly the same in C++ or Java.
+<pre><font color="0f0fff">
+/** Sort the array a[] in ascending order using an insertion sort.  */
+void sort(int a[], int size) {
+    for (int i = 1; i &lt; size; i++) {
+        // a[0..i-1] is sorted; insert a[i] in the proper place
+        int x = a[i];
+        int j;
+        for (j = i-1; j &gt;=0; --j) {
+            if (a[j] &lt;= x)
+                break;
+            a[j+1] = a[j];
+        }
+        // now a[0..j] are all &lt;= x and a[j+2..i] are &gt; x
+        a[j+1] = x;
+    }
+}
+</font></pre>
+<p>
+Note that the syntax of control structures (such as <samp><font color="0f0fff">for</font></samp>
+and <samp><font color="0f0fff">if</font></samp>), assignment statements, variable declarations,
+and comments are all the same in Java as in C++.
+<p>
+To test this procedure in a C++ program, we might use a ``main program''
+like this:
+<pre><font color="0f0fff">
+#include &lt;iostream.h&gt;
+#include &lt;stdlib.h&gt;
+extern &quot;C&quot; int random();
+
+/** Test program to test sort */
+int main(int argc, char *argv[]) {
+    if (argc != 2) {
+        cerr &lt;&lt; &quot;usage: sort array-size&quot; &lt;&lt; endl;
+        exit(1);
+    }
+    int size = atoi(argv[1]);
+    int *test = new int[size];
+    for (int i = 0; i &lt; size; i++)
+        test[i] = random() % 100;
+    cout &lt;&lt; &quot;before&quot; &lt;&lt; endl;
+    for (int i = 0; i &lt; size; i++)
+        cout &lt;&lt; test[i] &lt;&lt; endl;
+
+    sort(test, size);
+
+    cout &lt;&lt; &quot;after&quot; &lt;&lt; endl;
+    for (int i = 0; i &lt; size; i++)
+        cout &lt;&lt; test[i] &lt;&lt; endl;
+    return 0;
+}
+</font></pre>
+<p>
+A Java program to test the sort procedure is different in a few ways.
+Here is a complete Java program using the <samp><font color="0f0fff">sort</font></samp> procedure.
+<pre><font color="0f0fff">
+import java.io.*;
+import java.util.Random;
+
+class SortTest {
+    /** Sort the array a[] in ascending order using an insertion sort.  */
+    static void sort(int a[], int size) {
+        for (int i = 1; i &lt; size; i++) {
+            // a[0..i-1] is sorted; insert a[i] in the proper place
+            int x = a[i];
+            int j;
+            for (j = i-1; j &gt;=0; --j) {
+                if (a[j] &lt;= x)
+                    break;
+                a[j+1] = a[j];
+            }
+            // now a[0..j] are all &lt;= x and a[j+2..i] are &gt; x
+            a[j+1] = x;
+        }
+    }
+
+    /** Test program to test sort */
+    public static void main(String argv[]) {
+        if (argv.length != 1) {
+            System.out.println(&quot;usage: sort array-size&quot;);
+            System.exit(1);
+        }
+        int size = Integer.parseInt(argv[0]);
+        int test[] = new int[size];
+        Random r = new Random();
+
+        System.out.println(&quot;&lt;&quot; + 4 * Math.atan(1) + &quot;&gt;&quot;);
+        for (int i = 0; i &lt; size; i++)
+            test[i] = (int)(r.nextFloat() * 100);
+        System.out.println(&quot;before&quot;);
+        for (int i = 0; i &lt; size; i++)
+            System.out.println(test[i]);
+
+        sort(test, size);
+
+        System.out.println(&quot;after&quot;);
+        for (int i = 0; i &lt; size; i++)
+            System.out.println(test[i]);
+
+        System.exit(0);
+    }
+}
+</font></pre>
+<p>
+A copy of this program is available in
+<!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><a href="http://www.cs.wisc.edu/~cs537-1/examples/SortTest.java">
+<samp>~cs537-1/public/examples/SortTest.java</samp>.
+</a>
+To try it out, create a new directory and copy the example to a file
+named <samp><font color="0f0fff">SortTest.java</font></samp> in that directory.  (The file <em>must</em>
+be called <samp><font color="0f0fff">SortTest.java</font></samp>!)
+<pre><font color="0f0fff">
+    mkdir test1
+    cd test1
+    cp ~cs537-1/public/examples/SortTest.java SortTest.java
+    javac SortTest.java
+    java SortTest 10
+</font></pre>
+(You can also grab a copy of the source with your net browser.
+Visit
+<!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><a href="http://www.cs.wisc.edu/~cs537-1/examples/SortTest.java">
+<samp>~cs537-1/public/examples/SortTest.java</samp>
+</a>
+and use the <em>Save As...</em> option from the <em>File</em> menu.)
+<p>
+The <samp><font color="0f0fff">javac</font></samp> command invokes the Java compiler on the source
+file <samp><font color="0f0fff">SortTest.java</font></samp>.
+If all goes well, it will create a file named <samp><font color="0f0fff">SortTest.class</font></samp>,
+which contains code for the Java virtual machine.
+The <samp><font color="0f0fff">java</font></samp> command invokes the Java interpreter to run the code
+for class <samp><font color="0f0fff">SortTest</font></samp>.  Note that the first parameter is
+<samp><font color="0f0fff">SortTest</font></samp>, not <samp><font color="0f0fff">SortTest.class</font></samp>
+or <samp><font color="0f0fff">SortTest.java</font></samp> because it is the name of a <em>class</em>,
+not a file.
+<p>
+There are several things to note about this program.
+First, Java has no ``top-level'' or ``global'' variables or functions.
+A Java program is <em>always</em> a set of <samp><font color="0f0fff">class</font></samp> definitions.
+Thus, we had to make <samp><font color="0f0fff">sort</font></samp> and <samp><font color="0f0fff">main</font></samp> member functions
+(called ``methods'' in Java) of a class, which we called
+<samp><font color="0f0fff">SortTest</font></samp>.
+<p>
+Second, the <samp><font color="0f0fff">main</font></samp> function is handled somewhat differently in
+Java from C++.
+In C++, the first function to be executed is always a function called
+<samp><font color="0f0fff">main</font></samp>, which has two arguments and return an integer value.
+The return value is the ``exit status'' of the program; by convention,
+a status of zero means ``normal termination'' and anything else means
+something went wrong.
+The first argument is the number of words on the command-line that invoked
+the program, and the second argument is a an array of character strings
+(denoted <samp><font color="0f0fff">char *argv[]</font></samp> in C++) containing those words.
+If we invoke the program by typing
+<pre><font color="0f0fff">
+    sort 10
+</font></pre>
+we will find that
+<samp><font color="0f0fff">argc==2</font></samp>,
+<samp><font color="0f0fff">argv[0]=="sort"</font></samp>, and
+<samp><font color="0f0fff">argv[1]=="10"</font></samp>.
+<p>
+In Java, the first thing executed is the method called <samp><font color="0f0fff">main</font></samp>
+of the indicated class (in this case <samp><font color="0f0fff">SortTest</font></samp>).
+The <samp><font color="0f0fff">main</font></samp> method does not return any value (it is of type
+<samp><font color="0f0fff">void</font></samp>).
+For now, ignore the words ``<samp><font color="0f0fff">public static</font></samp>'' preceding
+<samp><font color="0f0fff">void</font></samp>.  We will return to these later.
+The <samp><font color="0f0fff">main</font></samp> method takes only one parameter, an array of strings
+(denoted <samp><font color="0f0fff">String argv[]</font></samp> in Java).
+This array will have one element for each word on the command line
+<em>following</em> the name of the class being executed.
+Thus in our example call,
+<pre><font color="0f0fff">
+    java SortTest 10
+</font></pre>
+<samp><font color="0f0fff">argv[0] == "10"</font></samp>.
+There is no separate argument to tell you how many words there are,
+but in Java, you can tell how big <em>any</em> array is by using
+<samp><font color="0f0fff">length</font></samp>.
+In this case <samp><font color="0f0fff">argv.length == 1</font></samp>, meaning <samp><font color="0f0fff">argv</font></samp>
+contains only one word.
+<p>
+The third difference to note is the way I/O is done in Java.
+<samp><font color="0f0fff">System.out</font></samp> in Java is roughly equivalent to <samp><font color="0f0fff">cout</font></samp>
+in C++ (or <samp><font color="0f0fff">stdout</font></samp> in C), and
+<pre><font color="0f0fff">
+    System.out.println(whatever);
+</font></pre>
+is (even more) roughly equivalent to
+<pre><font color="0f0fff">
+    cout &lt;&lt; whatever &lt;&lt; endl;
+</font></pre>
+<p>
+Our C++ program used three functions from the standard library,
+<samp><font color="0f0fff">atoi</font></samp>, <samp><font color="0f0fff">random</font></samp>, and <samp><font color="0f0fff">exit</font></samp>.
+<samp><font color="0f0fff">Integer.parseInt</font></samp> does the same thing as <samp><font color="0f0fff">atoi</font></samp>:
+It converts the character-string "10" to the integer value ten,
+and <samp><font color="0f0fff">System.exit(1)</font></samp> does the same thing as <samp><font color="0f0fff">exit(1)</font></samp>:
+It immediately terminates the program, returning an exit status of 1
+(meaning something's wrong).
+The library class <samp><font color="0f0fff">Random</font></samp> defines random-number generators.
+The statement <samp><font color="0f0fff">Random r = new Random()</font></samp> create an instance of
+this class, and <samp><font color="0f0fff">r.nextFloat()</font></samp> uses it to generate a floating
+point number between 0 and 1.
+The <em>cast</em> <samp><font color="0f0fff">(int)</font></samp> means the same thing in Java as in C++.
+It converts its floating-point argument to an integer, throwing away
+the fraction.
+<p>
+Finally, note that the <samp><font color="0f0fff">#include</font></samp> directives from C++ have
+been replaced by <samp><font color="0f0fff">import</font></samp> declarations.
+Although they have roughly the same effect, the mechanisms are different.
+In C++, <samp><font color="0f0fff">#include &lt;iostream.h&gt;</font></samp> pulls in a source file
+called <samp><font color="0f0fff">iostream.h</font></samp> from a source library and compiles it along
+with the rest of the program.
+<samp><font color="0f0fff">#include</font></samp> is usually used to include files containing declarations
+of library functions and classes, but the file could contain any C++
+source code whatever.
+The Java declaration <samp><font color="0f0fff">import java.util.Random</font></samp> brings in
+the pre-compiled class <samp><font color="0f0fff">Random</font></samp> from a <em>package</em> called
+<samp><font color="0f0fff">java.util</font></samp>.  The declaration <samp><font color="0f0fff">import java.io.*</font></samp>
+bring in <em>all</em> of the classes defined in the package
+<samp><font color="0f0fff">java.util</font></samp>.  A package is sort of like a library.
+You won't have to worry much about packages for this course.
+
+<a name="objects"><h2> Values, Objects, and Pointers </h2></a>
+<p>
+It is sometimes said that Java doesn't have pointers.
+That is not true.
+In fact, objects can <em>only</em> be referenced with pointers.
+More precisely, variables can hold primitive values (such
+as integers or floating-point numbers) or <em>pointers</em>
+to objects.
+A variable cannot hold an object, and you cannot make a pointer to
+a primitive value.
+Since you don't have a choice, Java doesn't have a special notation
+like C++ does to indicate when you want to use a pointer.
+<p>
+There are exactly eight primitive types in Java,
+<samp><font color="0f0fff">boolean</font></samp>,
+<samp><font color="0f0fff">char</font></samp>,
+<samp><font color="0f0fff">byte</font></samp>,
+<samp><font color="0f0fff">short</font></samp>,
+<samp><font color="0f0fff">int</font></samp>,
+<samp><font color="0f0fff">long</font></samp>,
+<samp><font color="0f0fff">float</font></samp>, and
+<samp><font color="0f0fff">double</font></samp>.
+Most of these are similar to types with the same name in C++.
+We mention only the differences.
+<p>
+A <samp><font color="0f0fff">boolean</font></samp> value is either
+<samp><font color="0f0fff">true</font></samp> or
+<samp><font color="0f0fff">false</font></samp>.
+You cannot use an <samp><font color="0f0fff">integer</font></samp>
+where a <samp><font color="0f0fff">boolean</font></samp> is required
+(e.g. in an <samp><font color="0f0fff">if</font></samp> or
+<samp><font color="0f0fff">while</font></samp> statement)
+nor is there any automatic conversion between
+<samp><font color="0f0fff">boolean</font></samp>
+and
+<samp><font color="0f0fff">integer</font></samp>.
+<p>
+A <samp><font color="0f0fff">char</font></samp> value is 16 bits rather
+than 8 bits, as it is in C or C++, to allow for all sorts of international
+alphabets.
+As a practical matter, however, you are unlikely to notice the difference.
+The <samp><font color="0f0fff">byte</font></samp> type is 8 bits.
+<p>
+A <samp><font color="0f0fff">short</font></samp> is 16 bits and an
+<samp><font color="0f0fff">int</font></samp> is 32 bits, just as in C or
+C++ on most modern machines (in C++ the size is machine-dependent, but
+in Java it's guaranteed).
+A Java <samp><font color="0f0fff">long</font></samp> is <em>not</em>
+the same as in C++ -- it is 64 bits long.
+The types <samp><font color="0f0fff">float</font></samp>
+and <samp><font color="0f0fff">double</font></samp> are just like in C++:
+32-bit and 64-bit floating point.
+<p>
+As in C++, <em>objects</em> are <em>instances</em> of <em>classes</em>.
+There is no prefix <samp><font color="0f0fff">*</font></samp> or <samp><font color="0f0fff">&amp;</font></samp> operator or
+infix <samp><font color="0f0fff">-&gt;</font></samp> operator.
+<p>
+As an example, consider the class declaration (which is the same in
+C++ and in Java)
+<center>
+<pre><font color="0f0fff">
+class Point { int x, y; }
+</font></pre>
+<table frame="box"
+    bgcolor="#e0e0ff"
+    width="70%"
+    border=3
+    cellpadding=1
+    cellspacing=1>
+<tr><th>C++<th>Java
+<tr><td><samp><font color="0f0fff">Point origin;</font></samp><td><samp><font color="0f0fff">Point origin = new Point();</font></samp>
+<tr><td><samp><font color="0f0fff">Point *p, *q, *r;</font></samp><td><samp><font color="0f0fff">Point p, q, r;</font></samp>
+<tr><td><samp><font color="0f0fff">origin.x = 0;</font></samp><td><samp><font color="0f0fff">origin.x = 0;</font></samp>
+<tr><td><samp><font color="0f0fff">p = new Point;</font></samp><td><samp><font color="0f0fff">p = new Point();</font></samp>
+<tr><td><samp><font color="0f0fff">p -> y = 5;</font></samp><td><samp><font color="0f0fff">p.y = 5;</font></samp>
+<tr><td><samp><font color="0f0fff">q = p;</font></samp><td><samp><font color="0f0fff">q = p;</font></samp>
+<tr><td><samp><font color="0f0fff">r = &origin;</font></samp><td><i>not possible</i>
+</table>
+<p>
+<!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><IMG ALIGN=TOP SRC="http://www.cs.wisc.edu/~cs537-1/objects.gif">.
+</center>
+
+<a name="garbage"><h2> Garbage Collection </h2></a>
+<p>
+New objects are create by the <samp><font color="0f0fff">new</font></samp> operator in Java just like C++
+(except that an argument list is required after the class name, even
+if the constructor for the class doesn't take any arguments so the list
+is empty).
+However, there is no <samp><font color="0f0fff">delete</font></samp> operator.
+The Java system automatically deletes objects when no references to them
+remain.
+This is a much more important convenience than it may at first seem.
+<samp><font color="0f0fff">delete</font></samp> operator is extremely error-prone.
+Deleting objects too early can lead to <em>dangling</em> reference, as in
+<pre><font color="0f0fff">
+    p = new Point();
+    // ...
+    q = p;
+    // ... much later
+    delete p;
+    q -&gt; x  = 5; // oops!
+</font></pre>
+while deleting them too late (or not at all) can lead to <em>garbage</em>,
+also known as a <em>storage leak</em>.
+
+<a name="access"><h2> Static, Final, Public, and Private </h2></a>
+<p>
+Just as in C++, it is possible to restrict access to members of a class
+by declaring them <em>private</em>, but the syntax is different.
+<br>
+In C++:
+<pre><font color="0f0fff">
+    class C {
+        private:
+            int i;
+            double d;
+        public:
+            int j;
+            void f() { /*...*/ }
+    }
+</font></pre>
+In Java:
+<pre><font color="0f0fff">
+    class C {
+        private int i;
+        public int j;
+        private double d;
+        public void f() { /* ... */ }
+    }
+</font></pre>
+As in C++, private members can only be accessed from inside the bodies
+of methods (function members) of the class, not ``from the outside.''
+Thus if <samp><font color="0f0fff">x</font></samp> is an instance of <samp><font color="0f0fff">C</font></samp>, <samp><font color="0f0fff">x.i</font></samp> is not legal,
+but <samp><font color="0f0fff">i</font></samp> can be accessed from the body of <samp><font color="0f0fff">x.f()</font></samp>.
+(<samp><font color="0f0fff">protected</font></samp> is also supported; it means the same thing as it does
+in C++).
+The default (if neither <samp><font color="0f0fff">public</font></samp> nor <samp><font color="0f0fff">private</font></samp> is specified)
+is that a member can be accessed from anywhere in the same <em>package</em>,
+giving a facility rather like ``friends'' in C++.
+You will probably be putting all your classes in one package, so
+the default is essentially <samp><font color="0f0fff">public</font></samp>.
+<p>
+The keyword <samp><font color="0f0fff">static</font></samp> also means the same thing in Java as C++,
+which not what the word implies:
+Ordinary members have one copy per instance, while <samp><font color="0f0fff">static</font></samp> members
+have only one copy, shared by instances.
+In effect, a <samp><font color="0f0fff">static</font></samp> member lives in the class itself, rather than
+instances.
+<pre><font color="0f0fff">
+    class C {
+        int x = 1;  // by the way, this isn't legal in C++
+        static int y = 1;
+        void f(int n) { x += n; }
+        static int g() { return ++y; }
+    }
+    C p = new C();
+    C q = new C();
+    p.f(3);
+    q.f(5);
+    System.out.println(p.x);  // prints 4
+    System.out.println(q.x);  // prints 6
+    System.out.println(C.y);  // prints 1
+    System.out.println(p.y);  // means the same thing
+    System.out.println(C.g());// prints 2
+    System.out.println(q.g());// prints 3
+</font></pre>
+Static members are often used instead of global variables and functions,
+which do not exist in Java.
+For example,
+<pre><font color="0f0fff">
+    Math.tan(x);  // tan is a static method of class Math
+    Math.PI;      // a static &quot;field&quot; of class Math
+    Integer.parseInt(&quot;10&quot;); // used &lt;a href=&quot;#sort&quot;&gt;in the sorting example&lt;/a&gt;
+</font></pre>
+The keyword <samp><font color="0f0fff">final</font></samp> is roughly equivalent to <samp><font color="0f0fff">const</font></samp> in C++:
+<samp><font color="0f0fff">final</font></samp> fields cannot be changed.
+It is often used in conjunction with <samp><font color="0f0fff">static</font></samp> to defined named constants.
+<pre><font color="0f0fff">
+    class Card {
+        int suit = CLUBS;     // default
+        final static int CLUBS = 1;
+        final static int DIAMONDS = 2;
+        final static int HEARTS = 3;
+        final static int SPADES = 4;
+    }
+    Card c = new Card();
+    c.suit = Card.SPADES;
+</font></pre>
+Each <samp><font color="0f0fff">Card</font></samp> has its own suit.
+The value <samp><font color="0f0fff">CLUBS</font></samp> is shared by all instances of <samp><font color="0f0fff">Card</font></samp> so
+it only needs to be stored once, but since it's <samp><font color="0f0fff">final</font></samp>, it doesn't
+need to be stored at all!
+
+<a name="arrays"><h2> Arrays </h2></a>
+<p>
+In Java, arrays are objects.
+Like all objects in Java, you can only point to them, but unlike a C++
+variable, which is treated like a pointer to the first element
+of the array, a Java array variable points to the array object.
+There is no way to point to a particular member of an array.
+<p>
+Each array has a read-only (final) field <samp><font color="0f0fff">length</font></samp> that tells you how
+many elements it has.  The elements are numbered starting at zero as in C++:
+<samp><font color="0f0fff">a[0] ... a[a.length-1]</font></samp>.
+Once you create an array (using <samp><font color="0f0fff">new</font></samp>), you can't change its size.
+If you need more space, you have to create a new (larger) array and copy
+over the elements (but see the library class
+<a htref="#vectors">
+<samp><font color="0f0fff">Vector</font></samp>
+</a>below).
+<pre><font color="0f0fff">
+    int x = 3;   // a value 
+    int a[];     // a pointer to an array object; initially null
+    int[] a;     // means exactly the same thing
+    a = new int[10]; // now a points to an array object
+    a[3] = 17;   // accesses one of the slots in the array
+    a = new int[5]; // assigns a different array to a
+                 // the old array is inaccessible (and so
+                 // is garbage-collected)
+    int[] b = a; // a and b share the same array object
+    System.out.println(a.length); // prints 5
+</font></pre>
+<center>
+<!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><IMG ALIGN=TOP SRC="http://www.cs.wisc.edu/~cs537-1/arrays.gif">.
+</center>
+
+<a name="strings"><h2> Strings </h2></a>
+<p>
+Since you can make an array of anything, you can make an an array of
+<samp><font color="0f0fff">char</font></samp> or an an array of <samp><font color="0f0fff">byte</font></samp>, but Java has something much better:
+the type <samp><font color="0f0fff">String</font></samp>.
+The <samp><font color="0f0fff">+</font></samp> operator is <em>overloaded</em> on Strings to mean
+concatenation.  What's more, you can concatenate <em>anything</em> with
+a string; Java automatically converts it to a string.
+Built-in types such as numbers are converted in the obvious way.
+Objects are converted by calling their <samp><font color="0f0fff">toString()</font></samp> methods.
+Library classes all have <samp><font color="0f0fff">toString</font></samp> methods that do something reasonable.
+You can do likewise for classes you define.
+This is great for debugging.
+<pre><font color="0f0fff">
+    String s = &quot;hello&quot;;
+    String t = &quot;world&quot;;
+    System.out.println(s + &quot;, &quot; + t);       // prints &quot;hello, world&quot;
+    System.out.println(s + &quot;1234&quot;);         // &quot;hello1234&quot;
+    System.out.println(s + (12*100 + 34));  // &quot;hello1234&quot;
+    System.out.println(s + 12*100 + 34);    // &quot;hello120034&quot; (why?)
+    System.out.println(&quot;The value of x is &quot; + x);  // will work for any x
+    System.out.println(&quot;System.out = &quot; + System.out);
+                // &quot;System.out = java.io.PrintStream@80455198&quot;
+    String numbers = &quot;&quot;;
+    for (int i=0; i&lt;5; i++)
+        numbers += &quot; &quot; + i;
+    System.out.println(numbers);            // &quot; 1 2 3 4 5&quot;
+</font></pre>
+Strings have lots of other useful operations:
+<pre><font color="0f0fff">
+    String s = &quot;whatever&quot;, t = &quot;whatnow&quot;;
+    s.charAt(0);            // 'w'
+    s.charAt(3);            // 't'
+    t.substring(4);         // &quot;now&quot;
+    t.substring(4,6);       // &quot;no&quot;
+    s.substring(0,4);       // &quot;what&quot;
+    t.substring(0,4);       // &quot;what&quot;
+    s.compareTo(t);         // a value less than zero (s precedes t in &quot;lexicographic&quot;
+                            // (dictionary) order
+    t.compareTo(s);         // a value greater than zero (t follows s)
+    t.compareTo(&quot;whatnow&quot;); // zero
+    t.substring(0,4) == s.substring(0,4);
+                            // false (they are different String objects)
+    t.substring(0,4).equals(s.substring(0,4));
+                            // true (but they are both equal to &quot;what&quot;)
+    t.indexOf('w');         // 0
+    t.indexOf('t');         // 3
+    t.indexOf(&quot;now&quot;);       // 4
+    t.lastIndexOf('w');     // 6
+    t.endsWith(&quot;now&quot;);      // true
+</font></pre>
+and more.
+<p>
+You can't modify a string, but you can make a string variable point to
+a new string (as in <samp><font color="0f0fff">numbers += " " + i;</font></samp>).  See <samp><font color="0f0fff">StringBuffer</font></samp> if
+you want a string you can scribble on.
+
+<a name="constructors"><h2> Constructors and Overloading </h2></a>
+<p>
+A constructor is like in C++: a method with the same name as the class.
+If a constructor has arguments, you supply corresponding values when using
+<samp><font color="0f0fff">new</font></samp>.  Even if it has no arguments, you still need the parentheses
+(unlike C++).
+There can be multiple constructors, with different numbers or types of
+arguments.  The same is true for other methods.  This is called
+<em>overloading</em>.  Unlike C++, you cannot overload operators.
+The operator `+' is overloaded for strings and (various kinds of) numbers,
+but user-defined overloading is not allowed.
+<pre><font color="0f0fff">
+    class Point {
+        int x, y;
+        Point(int u, int v) {
+            x = u;  // the same as this.x = u
+            y = v;
+        }
+        Point(int x) {
+            this.x = x;  // not the same as x = x!
+            y = 0;
+        }
+        Point() {
+            x = 0;
+            y = 0;
+        }
+    }
+    class Test {
+        public static void main(String[] argv) {
+            Point p1 = new Point(3,4);
+            Point p2 = new Point();  // same as new Point(0,0)
+            Point p3 = new Point;    // error!
+        }
+    }
+</font></pre>
+<strong>NB:</strong>  The bodies of the methods have to be defined
+<em>in line</em> right after their headers as shown above.  You have to
+write
+<pre><font color="0f0fff">
+    class Foo {
+        double square(double d) { return d*d; }
+    };
+</font></pre>
+rather than
+<pre><font color="0f0fff">
+    class Foo {
+        double square(double);
+    };
+    double Foo::square(double d) { return d*d; }
+        // ok in C++ but not in Java
+</font></pre>
+        
+<a name="inheritance"><h2> Inheritance, Interfaces, and Casts </h2></a>
+<p>
+In C++, when we write
+<pre><font color="0f0fff">
+    class Derived : public Base { ... }
+</font></pre>
+we mean two things:
+<ul>
+<li> A <samp><font color="0f0fff">Derived</font></samp> can do anything a <samp><font color="0f0fff">Base</font></samp> can, and perhaps more.
+<li> A <samp><font color="0f0fff">Derived</font></samp> does things the way a <samp><font color="0f0fff">Base</font></samp> does them,
+unless specified otherwise.
+</ul>
+The first of these is called <em>interface inheritance</em> or
+<em>subtyping</em> and the second
+is called <em>method inheritance</em>.
+In Java, they are specified differently.
+<p>
+Method inheritance is specified with the keyword <samp><font color="0f0fff">extends</font></samp>.
+<pre><font color="0f0fff">
+    class Base {
+        int f() { /* ... */ }
+        void g(int x) { /* ... */ }
+    }
+    class Derived extends Base {
+        void g(int x) { /* ... */ }
+        double h() { /* ... */ }
+    }
+</font></pre>
+Class <samp><font color="0f0fff">Derived</font></samp> has three methods: <samp><font color="0f0fff">f</font></samp>, <samp><font color="0f0fff">g</font></samp>, and <samp><font color="0f0fff">h</font></samp>.  The
+method <samp><font color="0f0fff">Derived.f()</font></samp> is implemented in the same way (the same executable
+code) as <samp><font color="0f0fff">Base.f()</font></samp>, but <samp><font color="0f0fff">Derived.g()</font></samp> <em>overrides</em> the
+implementation of <samp><font color="0f0fff">Base.g()</font></samp>.
+We call <samp><font color="0f0fff">Base</font></samp> the <em>super class</em> of <samp><font color="0f0fff">Derived</font></samp> and
+<samp><font color="0f0fff">Derived</font></samp> a <em>subclass</em> of <samp><font color="0f0fff">Base</font></samp>.
+Every class (with one exception) has exactly one super class (single
+inheritance).  If you leave out the <samp><font color="0f0fff">extends</font></samp> specification, Java
+treats it like ``<samp><font color="0f0fff">extends Object</font></samp>''.
+The primordial class
+<samp><font color="0f0fff">Object</font></samp> is the lone exception -- it does not extend anything.  All other 
+classes extend <samp><font color="0f0fff">Object</font></samp> either directly or indirectly.
+<samp><font color="0f0fff">Object</font></samp> has a method <samp><font color="0f0fff">toString</font></samp>, so every class has a method
+<samp><font color="0f0fff">toString</font></samp>; either it inherits the method from its super class
+or it overrides it.
+<p>
+Interface inheritance is specified with <samp><font color="0f0fff">implements</font></samp>.
+A class implements an <em>Interface</em>, which is like a class, except that
+the methods don't have bodies.
+Two examples are given by the built-in interfaces
+<a name="runnable">
+<samp><font color="0f0fff">Runnable</font></samp>
+</a>
+and
+<samp><font color="0f0fff">DataInput</font></samp>.
+<pre><font color="0f0fff">
+    interface Runnable {
+        public void run();
+    }
+    interface Enumeration {
+        public boolean hasMoreElements();
+        public Object nextElement();
+    }
+</font></pre>
+An object is <samp><font color="0f0fff">Runnable</font></samp> if it has a method named <samp><font color="0f0fff">run</font></samp> that
+is public and has no arguments or results.
+To be an <samp><font color="0f0fff">Enumeration</font></samp>, it has to have a public member
+<samp><font color="0f0fff">hasMoreElements</font></samp>
+that returns a <samp><font color="0f0fff">boolean</font></samp> and a public member <samp><font color="0f0fff">nextElement</font></samp> that
+returns an <samp><font color="0f0fff">Object</font></samp>.
+A class that claims to <samp><font color="0f0fff">implement</font></samp> these interfaces has to either
+inherit them (via <samp><font color="0f0fff">extends</font></samp>) or define them itself.
+<pre><font color="0f0fff">
+    class Words extends StringTokenizer implements Enumeration, Runnable {
+        public void run() {
+            for (;;) {
+                String s = nextToken();
+                if (s == null) return;
+                System.out.println(s);
+            }
+        }
+        Words(String s) {
+            super(s);
+            // perhaps do something else with s as well
+        }
+    }
+</font></pre>
+The class <samp><font color="0f0fff">Words</font></samp> needs methods <samp><font color="0f0fff">run</font></samp>, <samp><font color="0f0fff">hasMoreElements</font></samp>, and
+<samp><font color="0f0fff">nextElement</font></samp> to meet its promise to implement interfaces
+<samp><font color="0f0fff">Runnable</font></samp> and <samp><font color="0f0fff">Enumeration</font></samp>.
+It inherits implementations of <samp><font color="0f0fff">hasMoreElements</font></samp> and
+<samp><font color="0f0fff">nextElement</font></samp> from
+<!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><a href="http://www.cs.wisc.edu/~cs537-1/java/api/java.util.StringTokenizer.html">
+<samp><font color="0f0fff">StringTokenizer</font></samp> 
+</a>, but it has to give its own implementation of <samp><font color="0f0fff">run</font></samp>.
+The <samp><font color="0f0fff">implements</font></samp> clause tells users of the class what they can
+expect from it.
+If <samp><font color="0f0fff">w</font></samp> is an instance of <samp><font color="0f0fff">Words</font></samp>, I know I can write
+<samp><font color="0f0fff">w.run();</font></samp> or <samp><font color="0f0fff">if (w.hasMoreElements()) then ...</font></samp>.
+A class can only extend one class, but it can implement any number of
+interfaces.
+<p>
+By the way, constructors are not inherited.
+The call <samp><font color="0f0fff">super(s)</font></samp> in class <samp><font color="0f0fff">Words</font></samp> calls the constructor of
+<samp><font color="0f0fff">StringTokenizer</font></samp> that takes one <samp><font color="0f0fff">String</font></samp> argument.
+If you don't explicitly call <samp><font color="0f0fff">super</font></samp>, Java automatically calls
+the super class constructor with no arguments (such a constructor
+must exist in this case).
+Note the call <samp><font color="0f0fff">nextToken()</font></samp> in <samp><font color="0f0fff">Words.run</font></samp>, which is short for
+<samp><font color="0f0fff">this.nextToken()</font></samp>.  Since <samp><font color="0f0fff">this</font></samp> is an instance of <samp><font color="0f0fff">Words</font></samp>,
+it has a <samp><font color="0f0fff">nextToken</font></samp> method -- the one it inherited from
+<samp><font color="0f0fff">StringTokenizer</font></samp>.
+<p>
+A <em>cast</em> in Java looks just like a cast in C++:  It is a type
+name in parentheses preceding an expression.
+We have
+<!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><a href="#sort">
+already seen
+</a>
+an example of a cast used to convert between primitive types.
+A cast can also be used to convert an object reference to a super class
+or subclass.
+For example,
+<pre><font color="0f0fff">
+    Words w = new Words(&quot;this is a test&quot;);
+    Object o = w.nextElement();
+    String s = (String)o;
+    System.out.println(&quot;The first word has length &quot; + s.length());
+</font></pre>
+We know that <samp><font color="0f0fff">w.nextElement()</font></samp> is ok, since <samp><font color="0f0fff">Words</font></samp> implements
+the interface <samp><font color="0f0fff">Enumeration</font></samp>, but all that tells us is that the value
+returned has type <samp><font color="0f0fff">Object</font></samp>.
+We cannot call <samp><font color="0f0fff">o.length()</font></samp> because class <samp><font color="0f0fff">Object</font></samp> does not
+have a <samp><font color="0f0fff">length</font></samp> method.
+In this case, however, we know that <samp><font color="0f0fff">o</font></samp> is not just any kind of
+<samp><font color="0f0fff">Object</font></samp>, but a <samp><font color="0f0fff">String</font></samp> in particular.
+Thus we <em>cast</em> <samp><font color="0f0fff">o</font></samp> to type <samp><font color="0f0fff">String</font></samp>.
+If we were wrong about the type of <samp><font color="0f0fff">o</font></samp> we would get a run-time error.
+If you are not sure of the type of an object, you can test it
+with <samp><font color="0f0fff">instanceof</font></samp> (note the lower case `o'), or find out more
+about it with the method <samp><font color="0f0fff">Object.getClass()</font></samp>
+<pre><font color="0f0fff">
+    if (o instanceof String)
+        n = ((String)o).length();
+    else
+        System.err.println(&quot;Bad type &quot; + o.getClass().getName());
+</font></pre>
+
+<a name="exceptions"><h2> Exceptions </h2></a>
+<p>
+A Java program should never ``core dump,'' no matter how buggy it is.
+If the compiler excepts it and something goes wrong at run time, Java
+throws an <em>exception</em>.
+By default, an exception causes the program to terminate with an error
+message, but you can also <em>catch</em> an exception.
+<pre><font color="0f0fff">
+    try {
+        // ...
+        foo.bar();
+        // ...
+        a[i] = 17;
+        // ...
+    }
+    catch (IndexOutOfBoundsException e) {
+        System.err.println(&quot;Oops: &quot; + e);
+    }
+</font></pre>
+The <samp><font color="0f0fff">try</font></samp> statement says you're interested in catching exceptions.
+The <samp><font color="0f0fff">catch</font></samp> clause (which can only appear after a <samp><font color="0f0fff">try</font></samp>) says what to
+do if an <samp><font color="0f0fff">IndexOutOfBoundsException</font></samp> occurs anywhere in the
+<samp><font color="0f0fff">try</font></samp> clause.
+In this case, we print an error message.
+The <samp><font color="0f0fff">toString()</font></samp> method of an exception generates a string containing
+information about what went wrong, as well as a call trace.
+Because we caught this exception, it will not terminate the program.
+If some other kind of exception occurs (such as divide by zero),
+the exception will be thrown back to the caller of this function and
+if that function doesn't catch it, it will be thrown to that function's
+caller, and
+so on back to the <samp><font color="0f0fff">main</font></samp> function, where it will terminate the
+program if it isn't caught.
+Similarly, if the function <samp><font color="0f0fff">foo.bar</font></samp> throws an
+<samp><font color="0f0fff">IndexOutOfBoundsException</font></samp> and doesn't catch it, we will catch it here.
+<p>
+The <samp><font color="0f0fff">catch</font></samp> clause actually catches <samp><font color="0f0fff">IndexOutOfBoundsException</font></samp>
+or any of its subclasses, including <samp><font color="0f0fff">ArrayIndexOutOfBoundsException</font></samp>,
+<samp><font color="0f0fff">StringIndexOutOfBoundsException</font></samp>, and others.
+An <samp><font color="0f0fff">Exception</font></samp> is just another kind of object, and the same rules
+for <!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><a href="#inheritance">inheritance</a> hold for exceptions as any
+other king of class.
+<p>
+You can define and throw your own exceptions.
+<pre><font color="0f0fff">
+    class SytaxError extends Exception {
+        int lineNumber;
+        SytaxError(String reason, int line) {
+            super(reason);
+            lineNumber = line;
+        }
+        public String toString() {
+            return &quot;Syntax error on line &quot; + lineNumber + &quot;: &quot; + getMessage();
+        }
+    }
+    class SomeOtherClass {
+        public void parse(String line) throws SyntaxError {
+            // ...
+            if (...)
+                throw new SyntaxError(&quot;missing comma&quot;, currentLine);
+            //...
+        }
+        public void parseFile(String fname) {
+            //...
+            try {
+                // ...
+                nextLine = in.readLine();
+                parse(nextLine);
+                // ...
+            }
+            catch (SyntaxError e) {
+                System.err.println(&quot;&quot; + e);
+            }
+        }
+    }
+</font></pre>
+Each function must declare in its header (with the keyword <samp><font color="0f0fff">throws</font></samp>)
+all the exceptions that may be thrown by it or any function it calls.
+It doesn't have to declare exceptions it catches.
+Some exceptions, such as <samp><font color="0f0fff">IndexOutOfBoundsException</font></samp>, are so common that
+Java makes an exception for them
+(sorry about that) and doesn't require that they be declared.
+This rule applies to <samp><font color="0f0fff">RuntimeException</font></samp> and its subclasses.
+You should never define new subclasses of <samp><font color="0f0fff">RuntimeException</font></samp>.
+<p>
+There can be several <samp><font color="0f0fff">catch</font></samp> clauses at the end of a <samp><font color="0f0fff">try</font></samp>
+statement, to catch various kinds of exceptions.
+The first one that ``matches'' the exception (i.e., is a super class of it)
+is executed.
+You can also add a <samp><font color="0f0fff">finally</font></samp> clause, which will <em>always</em>
+be executed, no matter how the program leaves the <samp><font color="0f0fff">try</font></samp> clause
+(whether by falling through the bottom, executing a <samp><font color="0f0fff">return</font></samp>,
+<samp><font color="0f0fff">break</font></samp>, or <samp><font color="0f0fff">continue</font></samp>, or throwing an exception).
+
+<a name="threads"><h2> Threads </h2></a>
+<p>
+Java lets you do several things at once by using <em>threads</em>.
+If your computer has more than one CPU, it may actually run two or more threads
+simultaneously.
+Otherwise, it will switch back and forth among the threads at times that
+are unpredictable unless you take special precautions to control it.
+<p>
+There are two different ways to create threads.  I will only describe
+one of them here.
+<pre><font color="0f0fff">
+    Thread t = new Thread(cmd); // 
+    t.start();  // t start running cmd, but we don't wait for it to finish
+    // ... do something else (perhaps start other threads?)
+    // ... later:
+    t.join();  // wait for t to finish running cmd
+</font></pre>
+The constructor for the built-in class <samp><font color="0f0fff">Thread</font></samp> takes one argument, which
+is any object that has a method called <samp><font color="0f0fff">run</font></samp>.
+This requirment is specified by requiring
+that <samp><font color="0f0fff">command</font></samp> <em>implement</em> the
+<!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><a href="#runnable"><samp><font color="0f0fff">Runnable</font></samp> </a> interface described earlier.
+The way a thread ``runs'' a command is simply by calling its <samp><font color="0f0fff">run()</font></samp>
+method.
+It's as simple as that!
+<p>
+In <!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><a href="http://www.cs.wisc.edu/~cs537-1/project1.html">project 1</a>, you are supposed to run each
+command in a separate thread.
+Thus you might declare something like this:
+<pre><font color="0f0fff">
+    class Command implements Runnable {
+        String theCommand;
+        Command(String c) {
+            theCommand = c;
+        }
+        public void run() {
+            // Do what the command says to do
+        }
+    }
+</font></pre>
+You can parse the command string either in the constructor or at
+the start of the <samp><font color="0f0fff">run()</font></samp> method.
+<p>
+The main program loop reads a command line, breaks it up into commands,
+runs all of the commands concurrently (each in a separate thread),
+and waits for them to all finish before issuing the next prompt.
+In outline, it may look like this.
+<pre><font color="0f0fff">
+    for (;;) {
+        System.out.print(&quot;% &quot;); System.out.flush();
+        String line = inputStream.readLine();
+        int numberOfCommands = // count how many comands there are on the line
+        Thread t[] = new Thread[numberOfCommands];
+        for (int i=0; i&lt;numberOfCommands; i++) {
+            String c = // next command on the line
+            t[i] = new Thread(new Command(c));
+            t[i].start();
+        }
+        for (int i=0; i&lt;numberOfCommands; i++) {
+            t[i].join();
+        }
+    }
+</font></pre>
+This main loop is in the <samp><font color="0f0fff">main()</font></samp> method of your main class.
+It is not necessary for that class to implement <samp><font color="0f0fff">Runnable</font></samp>.
+<p>
+Although you won't need it for 
+<!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><a href="http://www.cs.wisc.edu/~cs537-1/project1.html">project 1</a>, the next project will require
+to to synchronize thread with each other.
+There are two reasons why you need to do this:
+to prevent threads from interferring with each other, and to allow
+them to cooperate.
+You use <samp><font color="0f0fff">synchronized</font></samp> methods to prevent interference, and
+the built-in methods
+<samp><font color="0f0fff">Object.wait()</font></samp>,
+<samp><font color="0f0fff">Object.notify()</font></samp>,
+<samp><font color="0f0fff">Object.notifyAll()</font></samp>, and
+<samp><font color="0f0fff">Thread.yield()</font></samp>
+to support cooperation.
+<p>
+Any method can be preceded by the word <samp><font color="0f0fff">synchronized</font></samp> (as
+well as <samp><font color="0f0fff">public</font></samp>, <samp><font color="0f0fff">static</font></samp>, etc.).
+The rule is:
+<p>
+<center>
+<em>
+No two threads may be executing <samp><font color="0f0fff">synchronized</font></samp> methods of the
+same object at the same time.
+</em>
+</center>
+<p>
+The Java system enforces this rule by associating a <em>monitor lock</em>
+with each object.
+When a thread calls a <samp><font color="0f0fff">synchronized</font></samp> method of an object,
+it tries to grab the object's monitor lock.
+If another thread is holding the lock, it waits until that thread
+releases it.
+A thread releases the monitor lock when it leaves the <samp><font color="0f0fff">synchronized</font></samp>
+method.
+If one <samp><font color="0f0fff">synchronized</font></samp> method of a calls contains a call to another,
+a thread may have the same lock ``multiple times.''  Java keeps track
+of that correctly.  For example,
+<pre><font color="0f0fff">
+    class C {
+        public synchronized void f() {
+            // ...
+            g();
+            // ...
+        }
+        public synchronized void g() { /* ... */ }
+    }
+</font></pre>
+If a thread calls <samp><font color="0f0fff">C.g()</font></samp> ``from the outside'', it grabs the
+lock before executing the body of <samp><font color="0f0fff">g()</font></samp> and releases it when done.
+If it calls <samp><font color="0f0fff">C.f()</font></samp>, it grabs the lock on entry to <samp><font color="0f0fff">f()</font></samp>,
+calls <samp><font color="0f0fff">g()</font></samp> without waiting, and only releases the lock
+on returning from <samp><font color="0f0fff">f()</font></samp>.
+<p>
+Sometimes a thread needs to wait for another thread to do something
+before it can continue.
+The methods <samp><font color="0f0fff">wait()</font></samp> and <samp><font color="0f0fff">notify()</font></samp>, which are defined in class
+<samp><font color="0f0fff">Object</font></samp> and thus inherited by all classes, are made for this purpose.
+They can only be called from within <samp><font color="0f0fff">synchronized</font></samp> methods.
+A call to <samp><font color="0f0fff">wait()</font></samp> releases the monitor lock and puts the calling thread
+to sleep (i.e., it stops running).
+A subsequent call to <samp><font color="0f0fff">notify</font></samp> on the same object wakes up the thread
+that has been sleeping the longest time and lets it start running again.
+If no thread is sleeping in this object, <samp><font color="0f0fff">notify()</font></samp> does nothing.
+The awakened thread has to wait for the monitor lock before it starts, but it
+has precedence over any other thread trying to enter a <samp><font color="0f0fff">synchronized</font></samp>
+method ``from the outside''.
+The method <samp><font color="0f0fff">notifyAll</font></samp> is similar, but wakes up <em>all</em> threads
+sleeping in the object.
+<pre><font color="0f0fff">
+    class Buffer {
+        private Queue q;
+        public synchronized void put(Object o) {
+            q.enqueue(o);
+            notify();
+        }
+        public synchronized Object get() {
+            while (q.isEmpty())
+                wait();
+            return q.dequeue();
+        }
+    }
+</font></pre>
+This class solves the so-call ``producer-consumer'' problem (it assumes
+the <samp><font color="0f0fff">Queue</font></samp> class has been defined elsewhere).
+``Producer'' threads somehow create objects and put them into the buffer by
+calling <samp><font color="0f0fff">Buffer.put()</font></samp>, while ``consumer'' threads remove objects from
+the buffer (using <samp><font color="0f0fff">Buffer.get()</font></samp>) and do something with them.
+The problem is that a consumer thread may call <samp><font color="0f0fff">Buffer.get()</font></samp> only
+to discover that the queue is empty.
+By calling <samp><font color="0f0fff">wait()</font></samp> it releases the monitor lock so that producer threads
+can call <samp><font color="0f0fff">put()</font></samp> to add more objects, but it keeps its place in line
+so it will get an object before other consumer threads that arrive later.
+Each time a producer adds an object, it calls <samp><font color="0f0fff">notify()</font></samp> just in
+case there is some consumer waiting for the object.
+<p>
+This example is not correct as it stands (and the Java compiler will reject
+it).
+The <samp><font color="0f0fff">wait()</font></samp> method can throw an <samp><font color="0f0fff">InterruptedException</font></samp>
+exception, so the <samp><font color="0f0fff">get()</font></samp> method must either catch it or declare
+that it <samp><font color="0f0fff">throws InterruptedException</font></samp> as well.
+The simplest solution is just to catch the exception and ignore it:
+<pre><font color="0f0fff">
+    class Buffer {
+        private Queue q;
+        public synchronized void put(Object o) {
+            q.enqueue(o);
+            notify();
+        }
+        public synchronized Object get() {
+            while (q.isEmpty()) {
+                try { wait(); }
+                catch (InterruptedException e) {}
+            }
+            return q.dequeue();
+        }
+    }
+</font></pre>
+There is also a version of <samp><font color="0f0fff">Object.wait()</font></samp> that takes an integer
+parameter.
+The call
+<samp><font color="0f0fff">wait(n)</font></samp> will return after <samp><font color="0f0fff">n</font></samp> milliseconds if nobody wakes
+up the thread with <samp><font color="0f0fff">notify</font></samp> or <samp><font color="0f0fff">notifyAll</font></samp> sooner.
+<p>
+You may wonder why <samp><font color="0f0fff">Object.get()</font></samp> uses <samp><font color="0f0fff">while (q.isEmpty())</font></samp>
+rather than <samp><font color="0f0fff">if (q.isEmpty())</font></samp>.
+In this particular case, either would work.
+However, in more complicated situations, a sleeping thread might be
+awakened for the ``wrong'' reason.  Thus it is always a good idea
+when you wake up to recheck the condition that made to decide to go
+to sleep before you continue.
+
+<a name="io"><h2> Input and Output </h2></a>
+<p>
+Input/Output, as described in Chapter 11 of the Java book, is
+not as complicated as it looks.
+You can get pretty far just writing to <samp><font color="0f0fff">System.out</font></samp> (which is of
+type <samp><font color="0f0fff">PrintStream</font></samp>) with methods <samp><font color="0f0fff">println</font></samp> and <samp><font color="0f0fff">print</font></samp>.
+For input, you probably want to wrap the standard input <samp><font color="0f0fff">System.in</font></samp>
+in a <samp><font color="0f0fff">DataInputStream</font></samp>, which provides the handy method
+<samp><font color="0f0fff">readLine()</font></samp>
+<pre><font color="0f0fff">
+    DataInputStream in = new DataInputStream(System.in);
+    for (;;) {
+        String line = in.readLine();
+        if (line == null)
+            break;
+        // do something with the next line
+    }
+</font></pre>
+<samp><font color="0f0fff">DataInputStream</font></samp> has lots of other methods, but they probably
+don't do what you expect.
+For example <samp><font color="0f0fff">DataInputStream.readInt()</font></samp> reads four bytes of
+raw data and concatenates them to form a binary integer.
+If the next four bytes of input are the ASCII characters <samp>"1234"</samp>,
+<samp><font color="0f0fff">readInt()</font></samp> will return 825373492.
+<p>
+If you want to read from a file, rather than from the keyboard (standard
+input), you can use <samp><font color="0f0fff">FileInputStream</font></samp>, probably wrapped in
+a <samp><font color="0f0fff">DataInputStream</font></samp>.
+<pre><font color="0f0fff">
+    FileInputStream rawInput = new FileInputStream(&quot;somefile&quot;);
+    DataInputStream in = new DataInputStream(rawInput);
+    for (;;) {
+        String line = in.readLine();
+        if (line == null)
+            break;
+        // do something with the next line
+    }
+</font></pre>
+Similarly, you can use
+<samp><font color="0f0fff">new PrintStream(new FileOutputStream(<i>filename</i>))</font></samp>
+to write to a file.
+
+<a name="util"><h2> Other Goodies </h2></a>
+<p>
+The library of pre-defined classes has several other handy tools.
+See
+<!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><a href="http://www.cs.wisc.edu/~cs537-1/java/api">
+the online manual
+</a> for more details.
+<a name="wrappers"><h3>Integer, Character, etc.</h3></a>
+Java makes a big distinction between values (integers, characters, etc.)
+and objects.
+Sometimes you need an object when you have a value.
+The classes <samp><font color="0f0fff">Integer</font></samp>, <samp><font color="0f0fff">Character</font></samp>, etc. serve as
+convenient wrappers for this purpose.
+For example, <samp><font color="0f0fff">Integer i = new Integer(3)</font></samp> creates a version of
+the number 3 wrapped up as an object.
+The value can be retrieved as <samp><font color="0f0fff">i.intValue</font></samp>.
+These classes also serve as convenient places to define utility functions
+for manipulating value of the given types, often as <samp><font color="0f0fff">static</font></samp> methods
+or defined constants.
+<pre><font color="0f0fff">
+    Integer.MAX_VALUE           // 2147483648, the largest possible int
+    Integer.parseInt(&quot;123&quot;)     // the int value 123
+    Integer.toHexString(123)    // &quot;7b&quot;, 123 in hex
+    new Double(&quot;123e-2&quot;).doubleValue() // the double value 1.23
+                                // see also page 150 of the Java Book
+    Character.isDigit('3')      // true
+    Character.isUpperCase('a')  // false
+    Character.toUpperCase('a')  // 'A'
+</font></pre>
+<a name="vectors"><h3>Vector</h3></a>
+<p>
+A <samp><font color="0f0fff">Vector</font></samp> is like an array, but it grows as necessary to allow
+you to add as many elements as you like.
+Unfortunately, there is only one kind of <samp><font color="0f0fff">Vector</font></samp>--a vector of
+<samp><font color="0f0fff">Object</font></samp>.  Thus you can insert objects of any type into it,
+but when you take objects out, you have to use a cast to recover the
+original type.
+<pre><font color="0f0fff">
+    Vector v = new Vector();     // an empty vector
+    for (int i=0; i&lt;100; i++)
+        v.addElement(new Integer(i));
+    // now it contains 100 Integer objects
+
+    // print their squares
+    for (int i=0; i&lt;100; i++) {
+        Integer N = (Integer)(v.elementAt(i));
+        int n = N.intvalue();
+        System.out.println(n*n);
+    }
+    v.setElementAt(&quot;hello&quot;, 5);  // like v[5] = &quot;hello&quot;
+    Object o = v.elementAt(3);   // like o = v[3];
+    v.insertElement(&quot;world&quot;, 6); // set v[6] = &quot;world&quot; after first shifting
+                                 // element v[7], v[8], ... to the right to make room
+    v.removeElementAt(3);        // remove v[3] and shift v[4], ... to the
+                                 // left to fill in the gap
+</font></pre>
+The class <samp><font color="0f0fff">Vector</font></samp> is implemented using an ordinary array that is
+generally only partially filled.
+If <samp><font color="0f0fff">Vector</font></samp> runs out of space, it allocates a bigger array and copies over
+the elements.
+There are a variety of additional methods, not shown here, that
+let you give the implementation advice on how to manage the extra space
+more efficiently.
+For example, if you know that you are not gonig to add any more elements to
+<samp><font color="0f0fff">v</font></samp>, you can call <samp><font color="0f0fff">v.trimToSize()</font></samp> to tell the system to 
+repack the elements into an array just big enough to hold them.
+<p>
+Don't forget to <samp><font color="0f0fff">import java.util.Vector; </font></samp> (or 
+<samp><font color="0f0fff">import java.util.*; </font></samp>) if you are using <samp><font color="0f0fff">Vectors</font></samp>.
+<h3>Hashtable</h3>
+<p>
+A <samp><font color="0f0fff">Hashtable</font></samp> implements a mapping from objects called ``keys'' to
+objects called ``values.''
+<pre><font color="0f0fff">
+    Hashtable h = new Hashtable();    // an empty table
+    h.put(&quot;seven&quot;, new Integer(7));   // key is the String &quot;seven&quot;;
+                                      // value is an Integer object
+    Object o = h.put(&quot;seven&quot;, new Double(7.0));
+                                      // binds &quot;seven&quot; to a double object
+                                      // and returns the previous value
+    int n = ((Integer)o).intValue();  // n = 7
+    h.containsKey(&quot;seven&quot;)            // true
+    h.containsKey(&quot;twelve&quot;)           // false
+    o = h.get(&quot;seven&quot;);               // get current binding (a Double)
+    o = h.remove(&quot;seven&quot;);            // get current binding and remove it
+    h.clear();                        // remove all bindings
+</font></pre>
+
+<h3>StringTokenizer</h3>
+<p>
+A <samp><font color="0f0fff">StringTokenizer</font></samp> is handy in breaking up a string into words
+separated by white space (or other separator characters).
+The following example is from the Java book:
+<pre><font color="0f0fff">
+    String str = &quot;Gone, and forgotten&quot;;
+    StringTokenizer tokens = new StringTokenizer(str, &quot; ,&quot;);
+    while (tokens.hasMoreTokens())
+        System.out.println(tokens.nextToken());
+</font></pre>
+It prints out
+<pre><font color="0f0fff">
+    Gone
+    and
+    forgotten
+</font></pre>
+The second arguement to the constructor is a String containing the
+characters that such be considered separators (in this case, space and
+comma).  If it is omitted, it defaults to space, tab, return, and newline
+(the most common ``white-space'' characters).
+<p>
+There is a much more complicated class <samp><font color="0f0fff">StreamTokenizer</font></samp>
+for breaking up an
+<!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><a href="#io">input stream</a> into tokens.
+Many of its features seem to be designed to aid in parsing the Java
+langauge itself (which is not a surprise, considering that the Java
+compiler is written in Java).
+<h3>Other Utilities</h3>
+<p>
+The random-number generator <samp><font color="0f0fff">Random</font></samp> was presented
+<!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><a href="#sort">above</a>.
+See Chapter 12 of the Java book for information about other handy
+classes.
+
+<hr>
+
+<address>
+<i>
+<!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><a HREF="mailto:solomon@cs.wisc.edu">
+solomon@cs.wisc.edu
+</a>
+<br>
+Thu Oct 31 15:38:52 CST 1996
+</i>
+</address>
+<br>
+Copyright &#169; 1996 by Marvin Solomon.  All rights reserved.
+
+</body>
+
+</html>

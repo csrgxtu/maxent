@@ -1,0 +1,151 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 19:31:08 GMT
+Content-Type: text/html
+Content-Length: 2297
+Last-Modified: Thursday, 31-Oct-96 05:28:42 GMT
+
+<html>
+<head>
+<title>Transaction Server - Bart</title>
+</head>
+<body BACKGROUND="stucco.jpg">
+<body>
+<b>
+<h1 align=center>Transaction Server</h1>
+</b>
+<br>
+<h5 align=center>Libby Lin, Sunil Srivastava, Eric Vitrano</h5>
+<hr>
+<br>
+<h2 align=center>Write-Up:  1</h2>
+<br>
+<h3>Goal:</h3>
+<p>
+<ul>
+The goal of our project is to create a fault tolerant Transaction Server 
+for multiple clients using TCPIP as the basis for communication.    
+</p>
+</ul>
+<br>
+<h3>Interfaces:</h3>
+<p>
+<ul>
+We will be providing service to the ECash Application, who will be using our function
+stubs, and we will be using the services of Stable Storage, Encryption and possibly 
+Private Email.
+</p>
+</ul>
+<br>
+<h3>Schedule:</h3>
+<p>
+<ul>
+The schedule with appropriate methods for achieving the desired goals is as follows :
+</p>
+</ul>
+<br>
+<center><TABLE BORDER=2 WIDTH=480 CELLPADDING=0 CELLSPACING=0>
+
+<TR>
+<TD>
+<b>Week</b>
+</TD>
+<TD>
+<b>Goals</b>
+</TD>
+<td>
+<b>Methods</b>
+</td>
+</TR>
+
+
+<TR>
+<TD>
+1.
+</TD>
+<TD>
+Single Client and Single Server
+<br>
+Fault Tolerance.
+</TD>
+<td>
+2 or 3 Phase Commit.<br>
+TCPIP with encryption layered on top of it.
+</td>
+</TR>
+
+<TR>
+<TD>
+2.
+</TD>
+<TD>
+Multiple Client and Single Server
+
+</TD>
+<td>
+Forking on the Server side.
+</td>
+</TR>
+
+<TR>
+<TD>
+3.
+</TD>
+<TD>
+Multiple Client and Multiple Server
+
+</TD>
+<td>
+Randomized load balancing on the client's side.<br>
+i.e. Clients will randomly choose a Transaction Server.
+</td>
+</TR>
+
+<TR>
+<TD>
+4.
+</TD>
+<TD>
+Testing/Debugging.  *
+
+</TD>
+<td>
+</td>
+</TR>
+
+<TR>
+<TD>
+5.
+</TD>
+<TD>
+Preparation for Presentation.  *
+</TD>
+<td>
+</td>
+</TR>
+</TABLE>
+<br>
+* If time permits, we may implement a Private Email communication with
+ECash.
+</center>
+<br>
+<br>
+<h3>Design Decisions:</h3>
+<p>
+<ul>
+Communication Protocol - TCPIP was chosen to be the communication protocol between our
+function stubs and transaction servers because SSL is not fully standardized, and may have legal problems
+with RSA.  Privte Email is our secondary choice because of excessive overhead, but may be implemented
+later to provide a higher degree of service.
+</p>
+</ul>
+<br>
+<h3>References:</h3>
+<p>
+<ul>
+Dale Skeen and Michael Stonebraker.  A Formal Model Crash Recovery in a Distributed System. IEEE Transaction of Software Engineering, May 1983.
+</p>
+</ul>
+</body>
+</html>
+

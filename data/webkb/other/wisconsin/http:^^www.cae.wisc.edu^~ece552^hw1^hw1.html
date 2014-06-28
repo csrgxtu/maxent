@@ -1,0 +1,99 @@
+Server: Netscape-Enterprise/2.0a
+Date: Wed, 13 Nov 1996 23:15:10 GMT
+Content-type: text/html
+
+<HEAD>
+<TITLE>Homework #1</TITLE>
+</HEAD>
+<BODY>
+
+<P>
+<H3> <b> ECE/CS 552: INTRODUCTION TO COMPUTER ARCHITECTURE</H3></b> <BR>
+ 
+(Fall 1996-97)
+<P>
+<H4> <b> PROBLEM SET 1</H4></b> <BR>
+Date: September 12, 1996 Thursday <BR> 
+<b> Due Date: September 26, 1996 Thursday</b>
+<P>
+
+<OL><LI> (<b> 20 points</b>) Answer the questions 2.1, 2.2, 2.3 from pages
+81-82 of Chapter 2 of the text. You may want to read this chapter by
+yourself but you should be able to do this problem even without reading
+the text.  <P>
+
+<LI> (<b> 20 points</b>) Answer the questions  2.27 from page 87 of Chapter
+2 of the text. You may want to read this chapter by yourself but 
+you should be able to do this problem even without reading the text.
+<P>
+<LI> (<b> optional</b>)
+<em> Design Architect Training Workbook</em> is available on-line through
+<em> BOLD Browser</em>. From this workbook do the following lab exercises.
+<P>
+Lab exercises 1 to 5 in Module 2 -- pages 2-59 to 2-74 <BR> 
+Lab exercises 1 to 4 in Module 3 -- pages 3-59 to 3-82 <BR> 
+You need not submit this work.
+<P>
+<LI> (<b> optional</b>)
+<em> Quicksim II Training Workbook</em> is available on-line through
+<em> BOLD Browser</em>. From this workbook do the following lab exercises.
+<P>
+Lab exercises in Module 1 -- pages 1-32 to 1-45 <BR> 
+Lab exercises in Module 7 -- pages 7-30 to 7-42 <BR> 
+Lab exercises in Module 8 -- pages 8-30 to 8-41 <BR> 
+You need not submit this work.
+<P>
+<LI> (<b> 60 points</b>)
+      Design a fully synchronous sequential circuit <em> match</em>,
+      to detect a pattern 3201 in a sequence of digits ( 0, 1, 2, 3). 
+      This circuit has
+      two input lines (for the encoded input digits), a <em> clock</em> input,
+      and a <em> reset</em> input. The circuit has one output called <em> det</em>.
+      The <em> reset</em> input is used to initialize <em> match</em> to an all 
+      zero state.  Thus on application of <em> reset</em> = high, 
+      all the flip-flops in the circuit are set to zero states on occurrence 
+      of the appropriate edge of the <em> clock</em>.
+      If the <em> reset</em> is high the output <em> det</em> remains low 
+      irrespective of the input sequence.  
+      If <em> reset</em> is low, <em> det</em> goes high when the above pattern is 
+      found in  the input sequence and the circuit continues to look for
+      another occurrence the same pattern. The output <em> det</em> remains high  for
+      at least one-half (1/2) clock cycle 
+      (see more on this in the next paragraph) and then it reverts to look for
+      the next occurrence for the pattern 3201.
+<P>
+      The <em> clock</em> signal has a period of 100ns and it is low 
+      from 0 to 50ns and high from 50 to 100ns.
+      All input signals, namely the signals associated with the input digits
+      and the <em> reset</em> signal, change only in the window 
+      +/- 0.1ns of the rising edge of <em> clock</em>. 
+      The output <em> det</em> must go 
+      high as soon as the last 1 of the pattern arrives 
+      (i.e., well before the next falling edge of the <em> clock</em>) 
+      and remain high till
+      the falling edge of the clock.
+<P>
+      Design your circuit with appropriate state assignment. 
+      Use fewest number of states and state-variables to complete your design.
+      Remember that the circuit is fully synchronous and the <em> reset</em>
+      input does not reset the flip-flops asynchronously.
+<P>
+      Assume that the flip-flops have a small non-zero 
+      setup time and a zero hold time. In your submission include
+      the state table, provide the sate assignment, schematic, force files 
+      showing your test sequence, 
+      and a well commented Quicksim output for your test sequence. 
+      Also submit a clear documentation explaining the steps you used to
+      arrive at the design.
+<P>
+      Your work that is to be submitted for this problem should be 
+      <b> no more than five pages</b>. Thus provide all the necessary
+      information in reasonably compact manner with appropriate comments.
+<P>
+</OL><BR> <HR>
+
+<P><ADDRESS>
+<I>Course Account ece552 <BR>
+Wed Sep 11 11:14:00 CDT 1996</I>
+</ADDRESS>
+</BODY>

@@ -1,0 +1,347 @@
+Date: Wed, 11 Dec 1996 22:34:26 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 20 Sep 1996 20:37:26 GMT
+Content-length: 11312
+
+<HTML>
+
+<HEAD>
+<TITLE>CS 302 Section 70 Lecture Notes - Week 3,Part 2</TITLE>
+</HEAD>
+
+<BODY>
+
+<H2><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~tick/cs302.html#text" ><!WA1><!WA1><!WA1><IMG SRC="http://www.cs.wisc.edu/~tick/icons/arrowleft.gif" WIDTH=15 HEIGHT=15></A> Lecture Notes - Week 3,Part 2</H2>
+
+<HR>
+
+<DL>
+   <DT>Topic:
+   <DD>Repetition and loops. <TT>DO/END DO</TT>, <TT>DO WHILE/END DO</TT> and <TT>DO/CONTINUE</TT> statement.<P>
+
+   <DT>Text:
+   <DD>Chp. 4.1 - 4.4, 4.6, 4.7, 4.9, 4.10<P>
+
+   <DT>Notes:
+   <DD>
+
+   <HR>
+
+   <CENTER>
+   <H3>Repetition and Loops</H3>
+   </CENTER>
+   <UL>
+      <LI><EM>Conditional execution</EM> allows you to optionally execute <STRONG>different</STRONG> sections of code.
+      <LI><EM>Repetition</EM> or <EM>looping</EM> allows you to <STRONG>re-execute</STRONG> the same section of code several times.
+      <LI>Example: Add up 50 numbers entered one per line.
+      <LISTING>
+	SUM = 0
+	READ *, NUM
+	SUM = SUM + NUM
+	READ *, NUM
+	SUM = SUM + NUM
+	. . .
+	READ *, NUM
+	SUM = SUM + NUM
+	PRINT *, 'The total sum is', SUM
+      </LISTING>
+      or more simply
+      <LISTING>
+	SUM = 0
+
+	[re-execute the following 50 times:]
+	   READ *, NUM
+	   SUM = SUM + NUM
+
+	PRINT *, 'The total sum is', SUM
+      </LISTING>
+      <LI>Repetition is more <EM>efficient</EM> and <EM>flexible</EM>.
+   </UL>
+
+   <H4>DO/CONTINUE Statement (FORTRAN-77)</H4>
+   <UL>
+      <LI>To re-execute one or more statements use the <TT>DO/CONTINUE</TT> statement.
+      <LISTING>
+	        DO label count = start, end, inc
+	           statements to re-execute
+	 label  CONTINUE
+<BR>
+	12345678901234567890123456780
+	-----------------------------
+	      DO 10 CTR = 1, 50, 1
+	         READ *, NUM
+	         SUM = SUM + NUM
+	 10   CONTINUE
+      </LISTING>
+
+      <LI><STRONG>inc</STRONG> defaults to 1 if not specified.
+      <LISTING>
+	DO 10 CTR = 1, 50
+      </LISTING>
+      <LI>Use a negative value for <STRONG>inc</STRONG> to count down.
+      <LISTING>
+	DO 10 CTR = 50, 1, -1
+      </LISTING>
+      <LI><STRONG>count</STRONG> must be an <TT>INTEGER</TT> or <TT>REAL</TT> variable.
+  </UL>
+
+   <H4>How a DO Loops Work</H4>
+   <UL>
+      <LI><STRONG>count</STRONG> is initialized to start before the first iteration.  After each iteration <STRONG>count</STRONG> is incremented by <STRONG>inc</STRONG>.  The loop terminates when <STRONG>count</STRONG> >  <STRONG>end</STRONG> (Note: not  >=).
+      <LI>The <STRONG>start</STRONG>, <STRONG>end</STRONG> and <STRONG>inc</STRONG> may be literals, variables or expressions.
+      <LISTING>
+	MAX = 50
+	DO 10 CTR = 1, MAX, SQRT(9)-2
+      </LISTING>
+      <LI>Normally use <TT>INTEGER</TT> values for <STRONG>start</STRONG>, <STRONG>end</STRONG> and <STRONG>inc</STRONG>.
+      <LISTING>
+	                       end - start + inc
+	Number of iterations = -----------------
+	                              inc
+      </LISTING>
+      <LI>If <STRONG>start</STRONG> > <STRONG>end</STRONG> the loop isn't executed at all!
+      <LISTING>
+	MIN = 55
+	DO 10 CTR = MIN, 50, 1
+      </LISTING>
+      <LI>What if <STRONG>start</STRONG>, <STRONG>end</STRONG> or <STRONG>inc</STRONG> are changed inside the loop?
+      <LISTING>
+	     MIN = 1
+	     MAX = 50
+
+	     DO 10 CTR = MIN, MAX
+	        MAX = CTR + 5
+	        PRINT *, 'spam'
+	10   CONTINUE
+      </LISTING>
+      <LI>The <STRONG>start</STRONG>, <STRONG>end</STRONG> or <STRONG>inc</STRONG> are evaluated only once at the beginning.  Only their <EM>initial</EM> values are important.
+   </UL>
+
+   <H4>Labels</H4>
+   <UL>
+     <LI>The <STRONG>label</STRONG> is the line number of the <TT>CONTINUE</TT> statement to indicate the end of the loop.  Every statement up to the <TT>CONTINUE</TT> is re-executed.
+      <LISTING>
+	     DO 10 CTR = 1, 50
+	        ...
+	10   CONTINUE
+      </LISTING>
+      <LI>The <STRONG>label</STRONG> is written in columns 2 though 5.  The <TT>DO</TT> and <TT>CONTINUE</TT> statements start in column 7.
+      <LI>If you have multiple <TT>DO</TT> loops then keep the labels in ascending order and use multiples of 10 for the different numbers.
+      <LISTING>
+	     DO 10 FOO = 1, 50
+	        ...
+	10   CONTINUE
+		
+	     DO 20 BAR = 1, 10
+	        ...
+	20   CONTINUE
+      </LISTING>
+   </UL>
+
+   <HR>
+
+   <CENTER>
+   <H3>Conditional Loops</H3>
+   </CENTER>
+   <UL>
+      <LI><TT>DO</TT> statement re-executes the same statements a pre-determined number of times.
+      <LI>What if don't know the number of iterations ahead of time?
+      <LISTING>
+	SUM = 0
+	READ *, NUM
+	[do the following until NUM equals 99]
+	   SUM = SUM + NUM
+	READ *, NUM
+	PRINT *, 'The total sum is', SUM
+      </LISTING>
+   </UL>
+
+   <H4>DO WHILE Statement (FORTRAN-90)</H4>
+   <UL>
+      <LI>Tests a condition on each iteration.  If the condition is <TT>.TRUE.</TT> then re-execute the loop.
+      <LISTING>
+	DO WHILE (condition)
+	   statements to re-execute
+	END DO
+<BR>
+<BR>
+	DO WHILE (NUM .NE. 99)
+	   SUM = SUM + NUM
+	   READ *, NUM
+	END DO
+      </LISTING>
+      <LI>The <STRONG>condition</STRONG> is a <EM>logical expression</EM>, just like an <TT>IF</TT> statement.
+      <LI>Can re-write a <TT>DO/CONTINUE</TT> loop as a <TT>DO WHILE</TT> loop.
+      <LISTING>
+	     DO 10 COUNT = MIN, MAX, 2
+	        PRINT *, COUNT
+	10   CONTINUE
+      </LISTING>
+      is the functionally the same as
+      <LISTING>
+	     COUNT = MIN
+	     DO WHILE (COUNT .LE. MAX)
+	        PRINT *, COUNT
+	        COUNT = COUNT + 2
+	     END DO
+      </LISTING>
+      <LI>The <STRONG>condition</STRONG> must contain a variable who's value is changed inside the loop.  Otherwise the <STRONG>condition</STRONG> always remains <TT>.TRUE.</TT> (i.e. an <EM>infinite loop</EM>)
+      <LI>Right:
+      <LISTING>
+	DO WHILE (NUM .NE. 0)
+	   PRINT *, NUM
+	   READ *, NUM
+	END DO
+      </LISTING>
+      <LI>Wrong:
+      <LISTING>
+	DO WHILE (NUM .NE. 0)
+	   PRINT *, NUM
+	   SUM = SUM + NUM
+	END DO
+      </LISTING>
+   </UL>
+
+   <H4>FORTRAN-77 "DO WHILE" Loop</H4>
+   <UL>
+      <LI>The <TT>DO WHILE</TT> statement is not standard FORTRAN-77 and may not be available on all compilers. But sometimes we cannot use the FORTRAN-77 <TT>DO/CONTINUE</TT> loop.
+      <LI>To implement the equivalent of a <TT>DO WHILE</TT> loop in FORTRAN-77 we can use an <TT>IF</TT> statement and a <TT>GOTO</TT> statement.
+      <LISTING>
+	     DO WHILE (NUM .NE. 0)
+	        ...
+	     END DO
+      </LISTING>
+      can be written as
+      <LISTING>
+	10   IF (NUM .NE. 0) THEN
+	        ...
+	        GOTO 100
+	     END IF
+      </LISTING>
+      <LI>The <TT>GOTO</TT> statement "jumps" to resume executing the statement at the specified label.
+      <LI><STRONG>WARNING</STRONG>: <STRONG>Never</STRONG> use <TT>GOTO</TT> statements anywhere in your program <STRONG>except</STRONG> if you have a strict FORTRAN-77 compiler and then <STRONG>only</STRONG> to implement <TT>DO WHILE</TT> loops.
+      <LI><STRONG>SECOND WARNING</STRONG>: Anyone caught using <TT>GOTO</TT> statements in this class will automatically receive a mark of <STRONG>zero<STRONG> for that assignment.  Just say <STRONG>NO</STRONG> to <TT>GOTO</TT>s!
+   </UL>
+
+   <H4>Nested Loops</H4>
+   <UL>
+      <LI>Just as <TT>IF</TT> statements can be nested inside each other, so can <TT>DO/CONTINUE</TT> and <TT>DO WHILE</TT> loops.
+      <LISTING>
+	     DO 20 X = 1, 10
+	        FACT = 1
+
+	        DO 10 COUNT = 1, X
+	           FACT = FACT * COUNT
+	10      CONTINUE
+
+	        PRINT *, X, '! =', FACT
+	20   CONTINUE
+      </LISTING>
+      <LI>The outer loop is executed 10 times (X=1..10).  Inner loop is executed X number of times, depending on the current value of X.
+      <LI>Nested loops must use different counter variables.
+      <LI>Inner loop's <TT>CONTINUE</TT> statement comes before the outer loop's <TT>CONTINUE</TT> statement.
+   </UL>
+
+   <H4>Indenting</H4>
+   <UL>
+      <LI>As with <TT>IF</TT> statement, indent all re-executed statements 3 additional spaces.
+   </UL>
+
+   <HR>
+
+   <CENTER>
+   <H3>FORTRAN-90 Loops</H3>
+   </CENTER>
+   <UL>
+      <LI>Repitition and loops are vital for any programming languages to be useful.
+      <LI>Standard FORTRAN-77 only has the <TT>DO/CONTINUE</TT> loop.
+      <LI>FORTRAN-90 provides more powerful looping mechanisms (aside: the <TT>DO WHILE</TT> loop is also supported by many "non-standard" FORTRAN-77 compilers, such as Microsoft FORTRAN).
+   </UL>
+
+   <H4>DO/END DO Loop (FORTRAN-90)</H4>
+   <UL>
+      <LI>Same as the FORTRAN-77 <TT>DO/CONTINUE</TT> loop but without the <TT>CONTINUE</TT> statement and no label.
+      <LI>The end of the loop is indicated by the <TT>END DO</TT> statement.
+      <LISTING>
+	      DO 10 ADD = 1, 10
+	         READ *, NUM
+	         SUM = SUM + NUM
+	 10   CONTINUE
+      </LISTING>
+      is the same as
+      <LISTING>
+	      DO ADD = 1, 10
+	         READ *, NUM
+	         SUM = SUM + NUM
+	      END DO
+      </LISTING>
+      <LI>The <TT>DO/END DO</TT> can be nested like other loops.
+      <LI>The <STRONG>counter</STRONG> must be an <TT>INTEGER</TT> variable.
+      <LI><STRONG>Important</STRONG>: Always use the <TT>DO/END DO</TT> loop instead of the <TT>DO/CONTINUE</TT> loop in this class.  It is also supported by Microsoft FORTRAN.
+   </UL>
+
+   <H4>EXIT and CYCLE Statement (FORTRAN-90)</H4>
+   <UL>
+      <LI>The <TT>EXIT</TT> statement <EM>aborts</EM> the loop prematurely, jumping to the next statement after the end of the loop.
+      <LISTING>
+	     DO ADD = 1, 10
+	        READ *, NUM
+
+	C    Abort if a negative number is entered
+	        IF (NUM .LT. 0) EXIT
+
+	        SUM = SUM + NUM
+	     END DO
+	     PRINT *, SUM
+      </LISTING>
+      <LI>The <TT>CYCLE</TT> statement <EM>skips</EM> the rest of the loop and resumes the loop at the next iteration.
+      <LISTING>
+	     DO ADD = 1, 10
+                READ *, NUM
+
+	C       Ignore negative numbers
+	        IF (NUM .LT. 0) CYCLE
+
+	        SUM = SUM + NUM
+	     END DO
+	     PRINT *, SUM
+      </LISTING>
+   </UL>
+
+   <H4>DO/END DO Loop without Parameters (FORTRAN-90)</H4>
+   <UL>
+      <LI>The <STRONG>counter</STRONG>, <STRONG>start</STRONG>, <STRONG>end</STRONG> and <STRONG>inc</STRONG> in the <TT>DO/END DO</TT> loop are actually all optional.
+      <LI>The loop is terminated instead by using the <TT>EXIT</TT> statement.
+      <LISTING>
+	     DO
+	        READ *, NUM
+	        SUM = SUM + NUM
+
+	C       Stop when the user enters 0
+	        IF (NUM .EQ. 0) EXIT
+	     END DO
+	     PRINT *, SUM
+      </LISTING>
+      <LI>Warning: The <TT>EXIT</TT> statement must be executed eventually, otherwise you have an <EM>infinite loop</EM>.
+   </UL>
+
+   <H4>Which Loop Do I Use?</H4>
+   <UL>
+      <LI>Use the <TT>DO/END DO</TT> (FORTRAN-90) instead of the <TT>DO/CONTINUE</TT> (FORTRAN-77) if possible.
+      <LI>Use the <TT>DO WHILE/END DO</TT> (FORTRAN-90) instead of the <TT>IF/THEN/GOTO</TT> (FORTRAN-77) unless you have a strict FORTRAN-77 compiler.
+      <LI>Use the <TT>DO WHILE/END DO</TT> instead of the <TT>DO/EXIT/END DO</TT> whenever possible.
+      <LI>Don't use <TT>EXIT</TT> or <TT>CYCLE</TT> unless you have to. You do not not need to either for any assignment in this class.
+   </UL>
+</DL>
+
+</BODY>
+
+<HR>
+
+<ADDRESS>
+<H5>Copyright &copy 1996 Modified from<!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~bestor/bestor.html">Gareth S. Bestor</A> (<!WA3><!WA3><!WA3><A HREF="mailto:bestor@cs.wisc.edu">bestor@cs.wisc.edu</A>).  Last modified September 19, 1996.</H5>
+</ADDRESS>
+
+</HTML>
+

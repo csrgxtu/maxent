@@ -1,0 +1,179 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 25-Nov-96 00:16:25 GMT
+Content-Type: text/html
+Content-Length: 8872
+Last-Modified: Sunday, 11-Feb-96 21:13:14 GMT
+
+<HTML>
+<HEAD>
+<TITLE>Notes on moving to NT</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<CENTER>
+<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><IMG ALIGN=MIDDLE SRC="http://www.cs.cornell.edu/Info/People/voskuhl/image/NT.GIF">
+
+<H1>Notes on Moving the CSRVL to Windows NT</H1>
+
+</CENTER>
+
+<!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="mailto:voskuhl@cs.cornell.edu">Justin Voskuhl</A>, <I>voskuhl@cs.cornell.edu</I>
+
+<P>
+Last Updated 18 October 1995
+<P>
+<H2>CSRVL projects and Windows NT</H2>
+For a number of CSRVL research projects supervised by
+<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="http://www.cs.cornell.edu/Info/People/rdz/rdz.html">Ramin Zabih</a> will be moving to
+WindowsNT.  We are hopeful that this move will be supported by <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A
+HREF="http://www.microsoft.com/">Microsoft</A>.
+
+<H2>About Windows NT</H2>
+<H3>What <I>is</I> Windows NT?</H3>
+Windows NT is Microsoft's highly portable, next-generation 32-bit Windows operating system.
+Even with its radically different architecture, Windows NT provides backward compatibility
+with MS-DOS, Windows 3.1, OS/2, and POSIX applications, even on non-Intel processors.
+<P>
+Windows NT is designed to be as extensible as possible.  Borrowing from the design of CMU's
+Mach, Windows NT consists of priviledged executive, and a set of non-priviledged servers
+called protected subsystems.  NT's design is unique in that protected subsystems execute
+in user mode like applications do.  This structure allows protected subsystems to be modified
+or added without affecting the integrity of the executive.  In addition to protected
+subsystems, NT provides a modular executive that can be easily extended.  NT represents
+system resources as objects, that can only be modified through object-specific APIs.
+New system objects can be added without undermining existing objects.  NT supports drivers
+that can be changed while the system is running, and NT can support new file systems,
+devices, networks, or transport protocols simply by writing a new driver.  RPC is built
+into NT, so that an application can call remote services without regard to their location
+on the network.  New services can be added to any machine on the network and be made
+available immediately.
+<P>
+Windows NT is designed to be as portable as possible.  It is written primarily in C, with
+small portions written in C++.  The only parts that are written in assembler are those
+that must directly talk to the hardware, and are carefully isolated from the rest of
+the system.  This means there are a variety of CPUs that can run NT, including Intel x86,
+MIPS, PowerPC, and Alpha chips.  NT can run on systems with one or more processors.
+<P>
+Windows NT provides several machanisms to increase reliability.  NT responds predictably
+to error conditions, even those caused by hardware failures.  Structured exception handling
+is used to catch software errors.  Whenever an abnormal event occurs, exception handling
+code, which exists throughout the system, is automatically invoked in response to the
+condition, ensuring no undetected error wreaks havoc on user programs or the system itself.
+In addition NT implements a new file system, called NTFS, which can recover from all kinds
+of disk errors, including those in critical disk sectors.  It uses redundancy and a transaction
+based scheme for storing data to ensure recoverability.  NT security measures are C2 class
+government certified.
+<P>
+Finally, Windows NT is designed to be fast.  Each component was written with an eye towards
+performance, with each protected subsystem optimized to maximize the speed of frequently
+used system calls.  To increase speed of communication between protected subsystems, 
+Local Procedure Call facilities are provided as an integral part of the OS.  Finally, 
+networking is built into Windows NT to achieve the best possible performance.
+<P>
+In summary, Windows NT is a thoroughly modern, full-featured, highly compatible operating system for 90's and beyond.
+<P>
+<I>--(Mostly) Taken from Section 1.2 of Helen Custer's "Inside Windows NT" Microsoft Press</I>
+
+<H3>Why Windows NT?</H3>
+The gap between the performance of the typical PC and the SPARC
+machines has grown smaller and smaller.  At the same time,
+operating systems for the PC have grown more and more advanced.
+There are a number of reasons for moving to NT from current UNIX-based
+environment.  They include having the results of CSRVL work being
+immediately usable by the large and growing Win32 user base outside of
+Cornell.  Also, basic hardware to run NT has a higher performance/price
+ratio than many of the SPARC machines available.  Another advantage
+is using the same OS from our "low-end" Pentium PCs all the way up to SMP RISC machines.
+
+<H2>Moving to NT</H2>
+
+<H3>Notes on moving to NT</H3>
+There are a number of issues involved in moving some of the research
+in the CSRVL to Windows NT.  There are both software and hardware
+hurdles we need to leap before researchers can do productive work
+under NT.  Note we don't want to make anyone use NT who is more
+familiar with UNIX, or has reasons for doing work in UNIX.  This
+will just be another option for doing work in the CSRVL.  Interoperability
+with the existing UNIX investment is important.
+
+<H3>Hardware</H3>
+Right now the CSRVL is populated mostly with SPARC IPC/IPX systems, with a
+few SparcStation5 machines and PC clones.  Soon we'll have a dual processor Micron
+133Mhz Pentium system as well.  None of the SPARC systems will run NT, and
+as far as I'm aware, won't run NT in the near future.  We will therefore need a number of 
+NT workstations, which will probably be PC clones, and we're
+also interested in a multi-processor system, which may be Intel or
+RISC.  Microsoft maintains a 
+<!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="http://www.microsoft.com/ntserver/hcl/hclsystm.htm">
+list of the SMP hardware NT will run on</A>.
+
+<H3>Software</H3>
+Microsoft is going to provide software to completely outfit ten NT machines initially.
+We get to determine what "complete" means.
+To this end, I've put together a list of software of interest to the CSRVL.
+You can find descriptions of most of these products at the Microsoft web site.
+<UL>
+<LI>Visual C++ 4.0 (recently released to manufacturing at MS)
+<LI>Windows NT Workstation 3.51
+<LI>Windows NT Resource Kit
+<LI>Visual Basic Pro 4.0
+<LI>Fortran PowerStation
+<LI>Office '95 Pro Productivity Suite
+<LI>Subscription to MSDN Level Two for each researcher
+<LI>UNIX Interoperability tools, X11 emulator, NFS software
+</UL>
+
+<H2>Projects to Move to NT</H2> 
+The following are brief descriptions
+of projects that are ongoing in the CSRVL and could benefit from
+Windows NT.  
+
+<H3>Spatial Energy Histograms</H3> In many applications, color
+histograms are used to compare images.  Their advantages are their
+efficiency, and their insensitivity to small changes in camera
+viewpoint.  Their chief drawback is their lack of spatial information,
+which can lead images with very different appearances to have similar
+histograms.  We describe a histogram-based method for comparing images
+that incorporates spatial information.
+
+<H3><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A HREF="http://www.cs.cornell.edu/Info/People/rdz/browser.html">MPEG Browser and Scene
+Break Detector</A></H3> Until now we could view mpegs just like we
+could watch movies. Unfortunately, we were unable to take the
+advantage of digital format: I have not seen mpeg players allowing
+user to skip to arbitrary frame, fast forward, rewind, etc.
+
+Even more importantly, the video was basically a sequence of frames
+with no structure. But it is obvious that video higher structure than
+frames: we can partition video into shots, scenes and larger chunks,
+like movies, tv shows, etc. We can also partition the video accoding
+to the content, for example we might want to select a segment of video
+in which a particular actor appears.<BR> <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><IMG ALIGN=MIDDLE
+SRC="http://www.cs.cornell.edu/Info/People/rdz/browser_picture.gif"><BR>
+
+Mpeg_browse provides an interface for browsing video. User can play
+video, stop at arbitrary point, fast forward. What is the advantage of
+MPEG Browse over other video players? MPEG Browse adds a very limited,
+yet useful structure to the video: it partitions the video into
+shots. Based on these information, the browser can skip to the next
+shot, much like a CD player can skip to the next song. The scene break
+algorithm was developed by <!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><A HREF="http://www.cs.cornell.edu/Info/People/rdz/rdz.html">Ramin
+Zabih</A>, <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><A HREF="http://www.cs.cornell.edu/Info/People/jmiller/Home.html">Justin Miller</A>
+, and Kevin Mai. For more details about the algorithm see the web
+page.
+
+<H3>ATM Camera</H3>
+<!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><A HREF="http://www.cs.cornell.edu/Info/People/mdw/mdw.html">Matt Welsh</A>
+is designing a realtime video source for the Cornell/NYNET ATM
+Cluster which will allow machines on the cluster to capture and
+process images at high speeds. The video source employs a framegrabber
+and ATM interface card both over PCI. I am implementing kernel drivers
+for both cards, as well as some form of Active Messages and U-Net for
+this machine. The video source should be compatible with the Cornell
+IBM SP/2 as well.
+
+<P>
+<ADDRESS>voskuhl@cs.cornell.edu</ADDRESS>
+</BODY>
+</HTML>
+

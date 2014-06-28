@@ -1,0 +1,201 @@
+Date: Tue, 26 Nov 1996 00:30:33 GMT
+Server: NCSA/1.5.2
+Last-modified: Fri, 11 Oct 1996 19:40:13 GMT
+Content-type: text/html
+Content-length: 4233
+
+<!doctype html public "html.dtd" -->
+
+<HTML>
+
+<head>
+<TITLE> DATAMAN Laboratory - Mobile Wireless Computing at Rutgers </TITLE>
+<SCRIPT LANGUAGE="JavaScript">
+
+
+<!-- Beginning of JavaScript Applet -------------------
+
+/* Copyright (C)1996 Web Integration Systems, Inc. DBA Websys, Inc.
+   All Rights Reserved.
+
+   This applet can be re-used or modified, if credit is given in 
+   the source code.
+
+   We will not be held responsible for any unwanted effects due to the 
+   usage of this applet or any derivative.  No warrantees for usability 
+   for any specific application are given or implied.
+
+   Chris Skinner, January 30th, 1996.
+   
+   Hacked for CNNfn by RD, Jan. 31, 1996
+*/
+
+function scrollit_r2l(seed)
+{
+        var m1  = "Welcome to the DATAMAN Home Page.  ";
+        var m2  = "Select the 'What's New?' button to read about the "
+	var m3	= "new MOBILE COMPUTING book.  ";
+        var m4  = "Please look around and enjoy yourself!  Have Fun!";
+      
+        
+        var msg=m1+m2+m3+m4;
+        var out = " ";
+        var c   = 1;
+
+        if (seed > 100) {
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 100 && seed > 0) {
+                for (c=0 ; c < seed ; c++) {
+                        out+=" ";
+                }
+                out+=msg;
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                    window.status=out;
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;
+                        var cmd="scrollit_r2l(" + seed + ")";
+                        window.status=out;
+                        timerTwo=window.setTimeout(cmd,100);
+                }
+                else {
+                        window.status=" ";
+                        timerTwo=window.setTimeout("scrollit_r2l(100)",75);
+                }
+        }
+}
+// -- End of JavaScript code -------------- -->
+
+
+</SCRIPT>
+</head>
+
+<BODY 
+onLoad="timerONE=window.setTimeout('scrollit_r2l(100)',500);" 
+BGCOLOR="#FFFFFF" 
+BACKGROUND="backgrnd2.gif" >
+
+<center>
+<table border=4>
+<tr>
+<td>
+<!WA0><A HREF = "http://athos.rutgers.edu/~badri/dataman/projects.html">
+<!WA1><IMG SRC="http://athos.rutgers.edu/~badri/dataman/logo.gif" ALIGN="MIDDLE" ALT="DATAMAN: Mobile Computing
+Lab">
+</a>
+</td>
+</tr>
+</table> 
+<!-- <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0> -->
+<TABLE>
+
+<TR>
+<TD>
+<!-- <TABLE BORDER=0 CELLSPACING=0 CELLPADDING=0> -->
+<TABLE>
+<TR>
+<TD>
+<!WA2><A HREF = "http://athos.rutgers.edu/~badri/dataman/scope.html">
+<!WA3><IMG SRC="http://athos.rutgers.edu/~badri/dataman/button-scope.gif" ALIGN="MIDDLE" ALT="Scope of Research">
+</A>
+</TD>
+</TR>
+
+<TR>
+<TD>
+<!WA4><A HREF = "http://athos.rutgers.edu/~badri/dataman/projects.html">
+<!WA5><IMG SRC="http://athos.rutgers.edu/~badri/dataman/button-projects.gif" ALIGN="MIDDLE" ALT="Research Projects (GLOMO)">
+</A>
+</TD>
+</TR>
+
+<TR>
+<TD>
+<!WA6><A HREF = "http://athos.rutgers.edu/~badri/dataman/people.html">
+<!WA7><IMG SRC="http://athos.rutgers.edu/~badri/dataman/button-people.gif" ALIGN="MIDDLE" ALT="People">
+</A>
+</TD>
+</TR>
+
+
+<TR>
+<TD>
+<!WA8><A HREF = "http://athos.rutgers.edu/~badri/dataman/enviro.html">
+<!WA9><IMG SRC="http://athos.rutgers.edu/~badri/dataman/button-enviro.gif" ALIGN="MIDDLE" ALT="Research Environment">
+</A>
+</TD>
+</TR>
+
+
+<TR>
+<TD>
+<!WA10><A HREF = "http://athos.rutgers.edu/~badri/dataman/demo.html">
+<!WA11><IMG SRC="http://athos.rutgers.edu/~badri/dataman/button-demo.gif" ALIGN="MIDDLE" ALT="Project Demos">
+</A>
+</TD>
+</TR>
+
+<TR>
+<TD>
+<!WA12><A HREF = "http://athos.rutgers.edu/~badri/dataman/new.html">
+<!WA13><IMG SRC="http://athos.rutgers.edu/~badri/dataman/button-new.gif" ALIGN="MIDDLE" ALT="What's New?">
+</A>
+</TD>
+</TR>
+
+<TR>
+<TD>
+<!WA14><A HREF = "http://athos.rutgers.edu/~badri/dataman/other.html">
+<!WA15><IMG SRC="http://athos.rutgers.edu/~badri/dataman/button-other.gif" ALIGN="MIDDLE" ALT="Other Mobile Computing Links">
+</A>
+</TD>
+</TR>
+
+</TABLE>
+</TD>
+
+<td>
+<table>
+<!-- <tr>
+<td>
+<!WA16><A HREF = "http://athos.rutgers.edu/~badri/dataman/projects.html">
+<!WA17><IMG SRC="http://athos.rutgers.edu/~badri/dataman/logo2.gif" ALIGN="MIDDLE" ALT="DATAMAN: Mobile Computing
+Lab">
+</a>
+</td>
+</tr> -->
+<tr>
+<TD><center>
+<!WA18><A HREF = "http://athos.rutgers.edu/~badri/dataman/projects.html">
+<!WA19><IMG SRC="http://athos.rutgers.edu/~badri/dataman/faces4.gif" ALIGN="MIDDLE" 
+ALT=" The Dataman research project is sponsored in part by the
+Advanced Research Projects Agency under the GLOMO program, National
+Science Foundation, and Wireless Information Network Laboratory which
+is an NSF/Industry University Cooperative Research Center at Rutgers
+University and currently has 30 industrial sponsors. ">
+</a>
+</center>
+</TD>
+</tr>
+</table>
+</td>
+</TR>
+</TABLE>
+
+</center>
+<HR>
+<center>
+Last modified: August 1, 1996 <BR>
+<ADDRESS>Julio Cesar Navas 
+(<!WA20><a href=mailto:navas@cs.rutgers.edu>navas@cs.rutgers.edu</a>)</ADDRESS>
+</center>
+
+</body>
+</HTML>

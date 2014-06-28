@@ -1,0 +1,116 @@
+Date: Thu, 21 Nov 1996 20:30:57 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<HEAD>
+<META http-equiv="PICS-Label" content='(PICS-1.0 "http://www.classify.org/safesurf/" l r (SS~~000 1 SS~~100 1))'>
+<TITLE>UW Dynamic Compilation Project</TITLE>
+</HEAD>
+
+<frameset bordercolor="#11381A" rows="50,*">
+
+<base target="body">
+
+<frame name="title" src="title.html"  scrolling="no" marginheight=5>
+
+
+<noframe>
+<body background="background2.gif" bgcolor="#FFFFFF" TEXT="#11381A" LINK="#EE0000" VLINK="#952045" ALINK="#000000">
+
+<img src="dot-transp.gif" width=150 height=1 border=0>
+<applet code="Blink.class" width=400 height=40>
+<param name=lbl value="The UW Dynamic Compilation Project">
+<param name=speed value="2">
+<h1>The UW Dynamic Compilation Project</h1>
+</applet>
+
+<img width=580 height=5 border=0 src="http://www.cs.washington.edu/research/projects/unisw/DynComp/www/dot-green.gif">
+<a href="http://www.cs.washington.edu/research/projects/unisw/DynComp/"><!WA0><!WA0><!WA0><!WA0><!WA0><img align=right src="http://www.cs.washington.edu/research/projects/unisw/DynComp/www/back-arrow.gif" border=0></a>
+
+<table border=0><tr>
+
+<td width=170 align="left" valign="top">
+<br><h5>
+
+More Information
+
+<br><br> <!WA1><!WA1><!WA1><!WA1><!WA1><a href="http://www.cs.washington.edu/research/projects/unisw/DynComp/www/Prototype/">Our Dynamic <br> Compiler</a>
+
+<br><br> <!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.cs.washington.edu/research/projects/unisw/DynComp/www/people.html">Project Members</a>
+
+<br><br> <!WA3><!WA3><!WA3><!WA3><!WA3><a href="http://www.cs.washington.edu/research/projects/unisw/DynComp/www/Papers/">Papers</a>
+
+<br><br> <!WA4><!WA4><!WA4><!WA4><!WA4><a href="http://www.cs.washington.edu/research/projects/unisw/DynComp/www/Related/">Related Projects</a>
+
+<br><br><br><br><br>
+
+UW-Only Sections
+
+<br><br> <!WA5><!WA5><!WA5><!WA5><!WA5><a href="http://www.cs.washington.edu/research/projects/unisw/DynComp/www/Internal/Research/">Student Projects</a> 
+
+<br><br> <!WA6><!WA6><!WA6><!WA6><!WA6><a href="http://www.cs.washington.edu/research/projects/unisw/DynComp/www/Internal/">Group Web</a>
+
+</h5>
+</td>
+
+<td width=400>
+
+<br><br>
+
+Dynamic compilation enables optimizations based on the values of
+invariant data computed at run-time. Using the values of these
+run-time constants, a dynamic compiler can eliminate their memory
+loads, perform constant propagation and folding, remove branches they
+determine, and fully unroll loops they bound. However, the performance
+benefits of the more efficient, dynamically-compiled code are offset
+by the run-time cost of the dynamic compile. Our approach to dynamic
+compilation strives for both fast dynamic compilation and high-quality
+dynamically-compiled code: the programmer annotates regions of the
+programs that should be compiled dynamically; a static, optimizing
+compiler automatically produces pre-optimized machine-code templates,
+using a pair of dataflow analyses that identify which variables will
+be constant at run-time; and a simple, dynamic compiler copies the
+templates, patching in the computed values of the run-time constants,
+to produce optimized, executable code. Our work targets general-
+purpose, imperative programming languages, initially C. Initial
+experiments applying dynamic compilation to C programs have produced
+speedups ranging from 1.2 to 1.8.
+
+<p>We are part of the <!WA7><!WA7><!WA7><!WA7><!WA7><a
+href="http://www.cs.washington.edu/research/projects/spin/www/">SPIN
+project</a>.  Eventually, our system will be used to dynamically
+compile code in the SPIN kernel, for example the <!WA8><!WA8><!WA8><!WA8><!WA8><a
+href="http://www.cs.washington.edu/research/projects/unisw/DynComp/www/Papers/wcsss96.ps.Z">SPIN
+event dispatcher</a>.  However, we are also actively exploring other
+possible applications of dynamic compilation, such as in
+virtual-machine interpreters.
+
+<p>Our <!WA9><!WA9><!WA9><!WA9><!WA9><a href="http://www.cs.washington.edu/research/projects/unisw/DynComp/www/prototype.html">prototype dynamic-compilation system</a>
+is described in our <!WA10><!WA10><!WA10><!WA10><!WA10><a href="http://www.cs.washington.edu/research/projects/unisw/DynComp/www/Papers/pldi96.ps.Z">PLDI paper</a>.  We are
+now starting to design and build our second-generation system.  We
+will release more details on it soon.
+
+<h5><!WA11><!WA11><!WA11><!WA11><!WA11><img width=400 height=5 border=0 src="http://www.cs.washington.edu/research/projects/unisw/DynComp/www/dot-green.gif"><br>
+<!WA12><!WA12><!WA12><!WA12><!WA12><img align=right vspace=2
+src="http://www.cs.washington.edu/htbin-post/speed/nph-count?width=5&link=http://www.cs.washington.edu/research/projects/unisw/DynComp/www/">
+Last updated August 6, 1996.<br>
+<!WA13><!WA13><!WA13><!WA13><!WA13><a href="mailto:grant@cs.washington.edu"><em>grant@cs.washington.edu</em></a>
+</h5>
+</td>
+
+</tr></table>
+</body>
+</noframe>
+
+<frameset bordercolor="#11381A" cols="160,*">
+
+<frame name="menu" src="menu.html" noresize>
+
+<frame name="body" src="intro.html" noresize>
+
+</frameset>
+
+</frameset>
+
+</html>

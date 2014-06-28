@@ -1,0 +1,94 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 21:58:54 GMT
+Content-Type: text/html
+Content-Length: 2586
+Last-Modified: Friday, 28-Jun-96 18:59:45 GMT
+
+<html> <head>
+<TITLE>Fun testing 1 2 3 </TITLE>
+</head>
+<base href="http://www.cs.utexas.edu/users/tewari">
+<body background="/users/tewari/images/bck.gif">
+<center>
+
+<IMG align=bottom SRC="/users/tewari/images/fun.gif">
+
+
+<IMG align=bottom SRC="/users/tewari/images/color-line.gif">
+</CENTER>
+
+<H1>The Time  is </H1>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!-- 
+var Temp;
+var CurHour; var CurMinute; var CurMonth; var CurDate; var CurYear; var DayNight;
+
+function getData() {
+        var location = getPath();
+	var ImageOpen = '<IMG SRC="'+location+'images/'+'dg'
+        var ImageClose = '.gif" HEIGHT=21 WIDTH=16>'
+        var Copyr      = ''
+	Temp = ""
+        var now = new Date();
+	CurHour = now.getHours();
+        CurMinute = now.getMinutes();
+	CurMonth = now.getMonth();
+        CurDate = now.getDate();
+	CurYear = now.getYear();
+	now = null;
+	CheckData();
+	Temp += "The current time is: "
+	for (Count = 0; Count < CurHour.length; Count++) {
+                Temp += ImageOpen + CurHour.substring (Count, Count+1) + ImageClose
+        }
+	Temp += ImageOpen + "c" + '.gif" HEIGHT=21 WIDTH=9>'
+ 	for (Count = 0; Count < CurMinute.length; Count++) {
+                Temp += ImageOpen + CurMinute.substring (Count, Count+1) + ImageClose
+        }
+	Temp += ImageOpen + DayNight + ImageClose + '<p>'
+	Temp += "The current date is: "
+	for (Count = 0; Count < CurMonth.length; Count++) {
+                Temp += ImageOpen + CurMonth.substring (Count, Count+1) + ImageClose
+        }
+ 	Temp += ImageOpen + "p" + '.gif" HEIGHT=21 WIDTH=9>'
+ 	for (Count = 0; Count < CurDate.length; Count++) {
+                Temp += ImageOpen + CurDate.substring (Count, Count+1) + ImageClose
+        }
+	Temp += ImageOpen + "p" + '.gif" HEIGHT=21 WIDTH=9>'
+    	for (Count = 0; Count < CurYear.length; Count++) {
+                Temp += ImageOpen + CurYear.substring (Count, Count+1) + ImageClose
+        }
+	return(Temp);
+}
+
+function getPath() {
+        PathEnd=location.href.lastIndexOf('/', location.href.length-1);
+        FinalPath=location.href.substring(0, PathEnd+1);
+        return(FinalPath);     
+}
+
+function CheckData() {
+	if (CurHour >= 12) {
+                CurHour = CurHour - 12;
+                DayNight = "pm";
+        } else
+                DayNight = "am";
+        if (CurHour == 0) CurHour = "12"
+	if (CurMinute < 10) {CurMinute = "0" + CurMinute} else {CurMinute = "" + CurMinute}
+	CurHour = "" + CurHour;
+        CurMonth = ++ CurMonth;	CurMonth = "" + CurMonth;
+	CurDate = "" + CurDate;
+	CurYear = "" + CurYear;
+			
+}
+
+getData();
+ document.write(Temp);
+
+
+// -->
+</script>
+</body> </html>
+

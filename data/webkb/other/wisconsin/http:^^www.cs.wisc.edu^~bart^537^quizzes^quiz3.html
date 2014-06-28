@@ -1,0 +1,161 @@
+Date: Mon, 11 Nov 1996 17:25:18 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Tue, 27 Feb 1996 15:51:55 GMT
+Content-length: 3318
+
+<html>
+<head>
+<title>CS 537 - Quiz #3</title>
+</head>
+
+<body>
+<table border=0 width=100% align=center>
+<tr>
+<td width=25%><td width=50% align=center>
+<b>UNIVERSITY OF WISCONSIN-MADISON
+<br>
+Computer Sciences Department</b>
+<td width=25%>
+<tr>
+<tr>
+<td>
+<b>CS 537
+<br>
+Spring 1996 </b>
+<td><td align=right><b>Bart Miller</b>
+<tr>
+<td>
+<td align=center><b>Quiz #3</b>
+<br>
+Wednesday, February 21
+<td>
+</table>
+
+<h2>Using Monitors to Save Your Life</h2>
+
+You are to write the code to provide the synchronization to control
+access to a couple of pedestrian bridges.
+The bridges are used to cross a dangerous, shark-infested river.
+The picture below illustrates the problem.
+
+
+<CENTER>
+<BR>
+<IMG ALIGN=CENTER SRC="quiz3.river.gif" ALT="Bridges">
+<BR>
+</CENTER>
+
+<p>
+You have
+<b>provided to you</b> (already written)
+a procedure called
+<tt>CrossBridge(bridgenum)</tt>.
+You don't know how long this takes to execute.
+This procedure causes the person process to cross bridge
+<tt>bridgenum</tt> (which can have valid values of 1 or 2).
+A person starting on the east shore will end up on the west shore.
+A person starting on the west shore will end up on the east shore.
+This procedure returns when the action is completed.
+<p>
+Use
+<b>monitors</b>
+as the synchronization mechanism for your solution.
+Use the syntax that was presented in lecture: monitors are simply C++ classes
+with the extra "monitor" keyword.
+<p>
+Each person is a process and these processes arrive randomly.
+You will write a procedure called
+<tt>Person()</tt>
+that will be called by people wanting to cross the river.
+You will write any additional procedures that you need.
+<p>
+Your solution must obey the following rules:
+<ol>
+<li>
+Each bridge is strong enough to hold only 1 person at a time.
+Additional people will break the bridge and they all will fall in the
+river and be eaten.
+<li>
+If there is more than one person wanting to cross the river, both bridges
+should be in use at the same time.
+<li>
+People should get to use the bridge in approximately the same order in which
+they arrived.
+<li>
+Initially, both bridges are unoccupied.
+</ol>
+<p>
+Hint: the <tt>Person()</tt> procedure is probably <i>not</i> in the monitor.
+You might consider having this procedure call procedures in a "BridgeControl"
+monitor; this is similar to how we did the readers/writers problem.
+
+<p>
+
+<table width=100% border=1 align=center>
+<tr><td>
+
+<pre>
+BridgeControl river;
+
+void Person()
+{
+    int b = river.GetBridge();
+    CrossBridge(b);
+    river.Done(b);
+}
+</pre>
+<tr><td>
+<pre>
+monitor class BridgeControl {
+
+public:
+    BridgeControl();
+    int GetBridge();
+    void Done(int);
+
+private:
+    int busy[2];
+    cond waitList;
+};
+</pre>
+<tr><td>
+<pre>
+BridgeControl::BridgeControl() {
+    busy[0] = busy[1] = 0;
+}
+</pre>
+<tr><td>
+<pre>
+int
+BridgeControl::GetBridge();
+{
+    while (1) {         /* Note: this is NOT busy waiting. */
+        for (int i = 0; i < 2; i++) {
+            if (!busy[i]) {
+                busy[i] = 1;
+                return (i+1);
+            }
+        }
+        wait(waitList);
+    }
+}
+</pre>
+<tr><td>
+<pre>
+void BridgeControl::Done(int bridge)
+{
+        busy[bridge-1] = 0;
+        wakeup(waitList);
+}
+</pre>
+</table>
+
+<hr>
+<H4>
+Last modified:
+Wed Feb 21 10:59:47 CST 1996
+by
+<a href="http://www.cs.wisc.edu/~bart">bart</a></b>
+</H4>
+</body>

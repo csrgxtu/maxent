@@ -1,0 +1,83 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 21:20:59 GMT
+Content-Type: text/html
+Content-Length: 4310
+Last-Modified: Thursday, 28-Mar-96 20:17:09 GMT
+
+
+<TITLE>Transpose Case</TITLE>
+ 
+<CENTER><H1>John A. Gunnels</H1></CENTER>
+     <H4>
+        <i> Department of Computer Science <br>
+            University of Texas at Austin <br>
+            <a HREF="mailto:gunnels@cs.utexas.edu">gunnels@cs.utexas.edu </a>
+        </i>
+      </H4> 
+<CENTER><H1>Markus Dale</H1></CENTER>
+     <H4>
+        <i> Department of Computer Science <br>
+            University of Texas at Austin <br>
+            <a HREF="mailto:mdale@cs.utexas.edu">mdale@cs.utexas.edu </a>
+        </i>
+      </H4> 
+<H3>Notes : In a lesson on not putting off this stuff (waiting for llano or
+eureka to become available) I ran into a weird bug on Sunday (well, since we
+really started on Sunday I guess that is kind of redundant).  For some reason 
+the permutation routine "chokes" when the pieces being sent around climb above
+a certain size.  For example -- I can do a 1600 sq. mult on 16 processors
+with a block size of 10 but NOT 20.  I checked for malloc failures but that
+wasn't it(*).  So my results here are very sketchy.  Actually, I would rather
+get some timings on eureka or llano before I try to tune this thing.</H3>
+<HR>
+<H3>(*)Well, there is no problem on eureka in this respect.  Some preliminary
+data is also more encouraging as far as performance on eureka.  Although it
+is not what we are aiming for, a 4x4 grid on eureka achieves 35.xx MFLOPS 
+when the local size hits 400x400 or so.  <HR>
+(**)The problem has been fixed -- however, it was a matter of using Irecv instead
+of receive (basically) in implementing the collect (perhaps I should have just used 
+MPI_Allgather).  However, these messages were not very big -- I would need to read 
+about the SP2 architecture I guess but this seems pretty fragile to me.<HR>
+BTW -- the code does handle non-square matrices and meshes, I just need to
+collect timings for those cases.
+</H3>
+
+<IMG ALIGN="middle" SRC="trnspse.gif">
+<IMG ALIGN="middle" SRC="tchart.gif">
+<H3>NOTE : I have tweaked the code a little.  Basically, add 2 MFLOPS to
+everything here.  I will post the chart soon (3/27/96).<HR>
+<H3> The code enclosed does not perform accuracy testing -- it was removed to 
+make the runs because it creates the global matrix on each processor.  We do
+have a version (on both spice and eureka) that does the testing.</H3>
+<H3><A HREF="main.c">main.c</A></H3>
+<H3><A HREF="csmmult1.c">csmmult1.c</A></H3>
+<H3><A HREF="colrow1.c">colrow1.c</A></H3>
+<H3><A HREF="globals.h">globals.h</A></H3>
+<H3><A HREF="rand.c">rand.c</A></H3>
+<BR>
+Note : There are at least 4 simple things we could do to improve the performance
+of this code. <HR>
+1. Instead of scattering followed by permuting we could simply permute (from
+1-to-many).  That is send the blocks immediately to the processor that they
+will arrive at after both the scatter and the permute step.  To really make
+the code unreadable, we believe that you could use non-blocking sends to overlap
+the copying to the send buffer with the sending of blocks. (1 hour to recode and
+test)<HR>
+2. Using MPI_Allgather instead of our hand-written bucket-collect.  (30 minutes
+to re-code and test).<HR>
+3. There is a simple test to see if you are sending to yourself for all of these
+routines. This might improve performance a great deal on grids that are far
+from sqaure (although, this does partially void #2 -- or perhaps not, if MPI is
+"smart" enough to figure this out itself).  The only "drawback" would be that it really wouldn't be implementing the same code on the 1x1 mesh and on a small machine like eureka this MIGHT make the scalability appear either "bad" or hard to figure an alpha, beta, gamma equation for. <HR>
+4. On a square mesh there is a very simple trick that would REALLY speed things
+up (I think).   In the scatter step of A's rows simply send to the same row
+number that you are the col number of (that is if you are in column 0 you send
+to row 0 within column 0, 1->1 etc.).  Then perform a broadcast within columns.
+Then you do the analogous thing for the columns of B.  I am pretty sure that Prof. van de Geijn discussed this in class as one of the shortcuts.  I really mention it just to point out that that is NOT what we did (because we are presenting data for the square mesh case).
+
+
+<UL>
+
+<img src="/pub/cgi/Count.cgi?ft=0&dd=A|df=gunnels2.dat" align=absmiddle>
+

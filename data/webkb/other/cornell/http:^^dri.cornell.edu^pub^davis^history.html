@@ -1,0 +1,256 @@
+MIME-Version: 1.0
+Server: CERN/3.0pre6
+Date: Sunday, 24-Nov-96 23:12:42 GMT
+Content-Type: text/html
+Content-Length: 13824
+Last-Modified: Friday, 24-May-96 22:41:07 GMT
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN//2.0">
+<HTML>
+<HEAD>
+<TITLE>my life at the keyboard</TITLE>
+</HEAD>
+<BODY>
+
+Computers have been part of my culture all my life.  My father worked
+for IBM.  Every so often we'd visit him at work, and see the huge
+computer rooms.  Sometimes he'd bring home pieces of computers for us
+to see. But I had no idea what these things really did.  They were
+just cool looking.  Sometime when I was 16 or 17 my father brought
+home some IBM documentation on programming languages and flowcharting.
+I tried to read them, but they did not make any sense to me - but this
+is not surprising, since IBM isn't exactly famous for clearly written
+documentation.
+
+ <P> In 1973, I came to MIT.  During the first few weeks, I went on a
+tour of the MIT Artificial Intelligence Laboratory, which in those
+days included the Logo Lab.  I don't remember why I went on the tour,
+but I remember that I was with several other freshmen with whom I
+lived at my fraternity - but I can't recall if we were all together at
+the AI Lab because we were together as new members of the frat, or
+whether I came to join that frat because of liking the people I met at
+the AI Lab.  The former seems more likely, especially since the house
+had a strong representation at the AI Lab.  In any event, we were
+playing with Logo and were left pretty much alone - we had to figure
+it out by ourselves.  We had a lot of fun with it.
+
+ <P> So as an undergraduate I would sometimes come to the AI Lab to
+play (or "hack") with Logo, and I began to learn to program.  I don't
+remember anyone teaching me - I think we must have taught each other.
+Sometimes I would try to use Lisp on the PDP-10 but it was too
+mysterious for me to figure out.  That summer, I worked for IBM as an
+operator - a low-level position calling for about as much skill as an
+espresso maker.  But in my spare time at work I was allowed to use the
+computer language APL, and this time I found a textbook for the
+language so I was able to learn some of it.  I still had no idea how
+languages actually worked.  I just used them.
+
+ <P> In my sophomore year, I took the course 6.031 (which is the
+ancestor of the course now known as 6.001).  This course explained how
+a computer language could be designed using a simpler language as
+building blocks.  It also tried to give us some sense of the ideas of
+modularity and top down design, and most crucially, the idea of
+abstraction - that one can make a program which represents some
+concept or set of agreements, and thereafter use it without needing to
+know how the concept was implemented.  The program becomes a "black
+box" whose internal details are irrelevant. 
+
+ <P>
+Later that year I took a second course which explained how the simplest sorts of
+computer languages (machine language) could be implemented by hardware circuits.
+I was now able to understand computer programming down to the level of
+individual "logic gates", if I wanted to.  This reinforced my sense of the value
+of keeping different levels separate in order to build large, complex structure.
+ Later, though, I would learn that one of the hardest problems is deciding where
+to draw the modularity lines, and that putting one's borders in the wrong place
+makes a system slow and difficult to use.
+
+ <P> The next major step in learning programming was a student job at
+the Architecture Machine Group (which is an ancestor of the Media
+Laboratory).  In those days, a group of students at the ArcMac were
+developing a new operating system for use around the lab.  The
+operating system, being new, was full of bugs, and these in turn
+demanded that there be constructed many software tools for examining
+the structures used by the program.  I had the opportunity to look
+over the shoulders of those who were more experienced, and even to use
+the tools a bit to poke around.  It was while using one of these tools
+that I suddenly understood that there is no actual meaning in the
+patterns of binary ones and zeros in machine, and no significant
+difference between the information on a disk and in the
+machine's memory.  A given region of memory can be an instruction, or
+a number, or a letter, or a picture.  The difference is solely a
+matter of interpretation.  This was perhaps the biggest "aha" in my
+life, and I was happy that other people were around
+who could understand it and why it mattered.
+
+ <P>
+It was while working at this same job that I began to think not just about how
+to make a program do something but how to make it easy for someone else to use.
+This was also a step towards being a professional programmer, a worker who makes
+artifacts for others to use, not just for his/her own delight in making it.  It
+was also during this time that I also began to be good enough a designer that
+other people started taking my ideas for design and function seriously.
+
+ <P> After I graduated, I began to work in the real world as a
+programmer.  My first job was at Imlac in Needham MA.  The Imlac was a
+minicomputer (what you'd call a workstation now) that was sort of an
+expanded PDP-8 with a built in vector display processor.  It was
+programmed in assembly language.  Imlac's big product was a
+phototypsetting system, CES, which took advantage of the raster
+graphics to offer a kind of WYSIWYG interface for the typesetting.
+This was before laser printers.
+
+<P> I kept this first job only a year, and then moved to a new job
+with the (Honeywell) <A
+HREF="http://www.best.com/~thvv/multics.html">Multics</A>
+Multics is an operating system of great historical importance.  It was
+first developed as a partnership by MIT and General Electric as an
+experiment in a practical, very large time-sharing system.  At the
+time, it was the very cutting edge of the state of the art in computer
+science.  By the time I joined the Multics group, those days were
+past, but the group retained some measure of pride, and still had very
+high standards, even though time had passed them by.  I learned
+several important ideas from working with the Multics people.  First,
+my understanding of "interface" (the relation between a program and a
+user) expanded to include the idea that the user might be another
+programmer.  It was important to make programs as building blocks by
+programmers whose needs you could not expect to easily anticipate.  A
+second idea was that programs were meant to be read by people as well
+as machines.  The Multics group had developed a <A
+HREF="http://www.best.com/~thvv/mspp.html">programming
+process</A> which required that all modification to the system be
+described and justified to a group of senior programmers before being
+written, and be read by some person other than the author before being
+installed.  This was necessary because Multics was far too large for
+any single person to understand it.  The coordination that this review
+board provided kept Multics stable and consistent as it grew and
+changed for more than 15 years.  Though Multics is now nearly
+forgotten, it set a mark for software quality never equalled.  Working
+with Multics taught me to be careful in my designs, to always to allow
+room for unanticipated future changes, and to expect people to read my
+programs.
+
+ <P> In my work at Multics I came to know many people, but one of
+particular note was Bernie Greenberg.  Bernie was one of the most
+brilliant programmers I have ever met.  In addition, he was a very
+talented musician, playing both rock guitar and baroque harpsichord
+with equal ease, and he spoke several languages.  Bernie also
+re-introduced me to Lisp.  At that time, the MIT Artificial
+Intelligence Laboratory was developing the first Lisp Machines and
+Bernie was friends with several of the key workers on this project.  I
+learned Lisp from Bernie not long before he left Multics to join a new
+startup company to commercialize the Lisp Machine.  I soon left as
+well, to join Logo Computer Systems, a new firm which intended to
+implement a version of Logo for the Apple II home computer.
+
+ <P> 
+Logo Computer Systems was the first time I was ever with a
+startup firm.  Instead of the formal regulations of Multics, I was
+with an adhoc group which included several close friends and lovers,
+as well as some bizarre personalities.  At LCSI we worked very, very
+hard, because we knew that money was in short supply.  We would often
+work for 16 to 20 hours in a row.  We did almost all our work in Lisp,
+on Lisp Machines, and I gradually became an expert with this language.
+In the end, we managed to produce our product on time, but then most
+of us left the company as a result of political battles with the
+higher management.
+
+ <P>
+This turned out to be a blessing though, because Alan Kay had just gone to
+Atari, which was then quite rich, and Alan was setting up research labs in
+California and Cambridge.  Almost the entire Boston staff of LCSI came to form
+the Atari Cambridge Research Center.  Atari gave us money to design the best
+work environment we could think of, and freedom to work on problems that
+interested us.  Not only was I able to work on music, I was able to hire one of
+my friends, Tom Trobaugh, to work with me.  At Atari I knew the happiness of
+working with a partner on problems we really cared about using the most powerful
+computers available.  Alas, Atari began to lose money, and one day it closed the
+lab.
+
+<P> After Atari went under I enrolled in the MIT's Media Lab, as one
+of the first contingent of doctoral students.
+
+<H3>The Media Lab</H3>
+
+The Media Lab encourages students to set their own directions, in fact
+it insists on it.  This has both pros and cons.  The advantage is that
+you learn to be independent, to think outside the common assumptions
+of the field.  The drawback is that you don't always have the
+companionship of others while learning.  In my own case, I became
+interested in the linguistic phenomenon called "paraverbals", those
+inarticulate noises like "uh huh" and "hmmm" that help make
+conversation run smoothly.  There's a pretty large literature on the
+subject, but I had to discover it on my own, and I'm sure it would
+have gone faster with a guide.  On the other hand, with an experienced
+authority controlling my learning, I wouldn't have done what I did.
+
+ <P>
+The other important thing about the Media Lab is the constant focus on
+demonstrating one's work.  Some people complain about it, but it's
+very important.  To do a good demo, you have to be able to explain
+what you're doing and why it matters to a smart but uninformed person
+with just a few short sentences.  You have to learn to be clear, and
+you have to learn to express your idea for the benefit of the learner,
+not the teacher.  And you have to learn grace under pressure.
+I wish everyone learned these skills.
+
+ <P>
+
+One of the first projects I worked on was the "phonetic dictionary".
+Remember when you were a kid, and you asked a grown-up for the meaning
+of a word, and they told you to look it up in the dictionary?  That's
+a fine idea, except it's hard to do when you've only heard the word,
+and so don't know how it's spelled.  This is especially true for
+English, with its bizarre spelling rules.  The phonetic dictionary
+allows you to look up a word by spelling it according to how it
+sounds, not how it's spelled.  You write some approximation of the
+sound of the word, and the system consults a dictionary that's
+organized by pronunciation.  The key to the thing was being able to
+accept a wide range of "phonetic" spellings.  For example, for the
+word "headache" you might write "hedayk" or "hedake".  I was pleased
+to see this project mentioned on the very first page of Stewart
+Brand's book about the Lab.
+
+ <P>
+My supervisor was Chris Schmandt, known to all by his login name
+"geek". I could write at length about his knowledge, but there are
+lots of smart people in the world.  He has two qualities that are more
+rare.  First, he's no autocrat.  You can argue with him.  There's no
+way to put on an air of superiority when you call yourself "geek".
+Second, and even more valuable, he kept his perspective.  In
+particular, he was always taking off for a week or two at a time to
+bring his (then) baby daughter out into the wilderness.
+I learned from him that a computer will happily sit idle for a week,
+while a week lost from fathering is gone for ever.
+
+ <P>
+My major project was the "Back Seat Driver", which was a car that
+could give you driving instructions in the city of Boston.  It had a
+street map (so it knew the roads), a navigation system (so it knew
+where it was), and a speech synthesizer (so it could talk to you.).
+To actually make this work, I needed a car, and not just any car.  The
+navigation system was supplied by our sponsor, a Japanese electronics
+firm, and was designed to work with only one type of car, a top of the
+line luxury sedan.  I also needed not one but two cellular phones in
+the car for the communications.   The Media Lab bought me what I
+needed and I kept the keys.  I was surely the only graduate student in
+the USA with such lab equipment.
+
+ <P>
+  One day I was demonstrating the Back Seat
+Driver to a group from General Motors.  When I took them out for a
+ride, they had a great time shooting pictures of each another getting
+into a Japanese car.  Off we went driving.  As usually happened, at
+one point the driver missed a turn.  Normally, the consequence was
+that the BSD would calmly inform the driver of the fact and plan a new
+route, only in this case, the driver was a former race car driver, and
+he quickly made an (illegal) U Turn without even slowing down, a
+maneouver even seasoned Boston drivers never attempted.  This caused
+the program to crash, but I guess that's better than crashing the car.
+
+
+ <P> I'll have to add something here about the demise of Lisp Machines
+and the rise of Unix, and about becoming obsolete.
+
+</BODY>
+</HTML>

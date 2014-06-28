@@ -1,0 +1,126 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 24-Nov-96 22:06:29 GMT
+Content-Type: text/html
+Content-Length: 4398
+Last-Modified: Thursday, 17-Oct-96 18:38:57 GMT
+
+<html>
+ 
+<head>
+<title>The PREDATOR Project</title>
+</head>
+
+<body>
+
+<h1 ALIGN="center">The PREDATOR DBMS Project</h1>
+<p>
+
+<hr>
+<h3>Contents</h3>
+<p>
+<ul>
+  <LI> <A HREF="#sec:intro">What is PREDATOR?</A>
+  <LI> <a href="#sec:eadt">Paper describing the Enhanced Abstract Data Type (E-ADT) paradigm</a>
+  <LI> <a href="#sec:design">Code design of PREDATOR</a>
+  <LI> <A HREF="#sec:install">How to install PREDATOR</A>
+  <LI> <A HREF="#sec:sysdev">Tips on system development</A>
+  <LI> <A HREF="#sec:coding">Coding conventions</A>
+  <LI> <A HREF="#sec:test">Testing</A>
+  <LI> <A HREF="#sec:ack">Acknowledgements</A>
+</ul>
+<hr>
+
+<h3><a name="sec:intro">What is PREDATOR?</a></h3>
+<p>
+The PREDATOR database system (PRedator Enhanced DAta Type Object-Relational DBMS) is an object-relational DBMS built as a research
+prototype to study how complex data types should be supported.
+Existing technology is based on the notion of Abstract Data Types (ADTs): each data type is encapsulated through a well known interface,
+and the database system maintains an extensible table of ADTs. 
+Each ADT provides a bunch of user-level methods that can be
+applied from within an SQL query to operate on ADT values.
+The PREDATOR system recognizes that the cost of ADT operations
+can dominate database performance. Consequently,
+the ADT notion is "enhanced" so that each data type can
+maintain meta-information, use that meta-information for
+optimizing operations on the ADT, and apply optimizations
+on expressions involving concatenations of ADT operations.
+Further, each data type can provide a "query language" in which
+complex operations on that type can be expressed. This
+Enhanced Abstract Data Type (E-ADT) paradigm is the 
+basic technology in PREDATOR. Providing the support for
+this paradigm requires a fundamental redesign of many
+components of a traditional object-relational DBMS.
+The purpose of PREDATOR is to fully explore the E-ADT
+idea, and to see how queries involving complex object
+expressions can be further optimized by exploiting
+interactions between E-ADTs. The current focus of work
+is to build support for several different data types,
+each of which can co-exist independent of the others.
+<p>
+
+<h3><a name="sec:eadt">The E-ADT paradigm</a></h3>
+<p>
+The E-ADT paradigm is explained in detail in 
+a <a href="eadt.ps">technical report</a>, 
+also being submitted as a paper to ACM SIGMOD 97. This document
+also describes the high-level architecture of PREDATOR,
+the interesting design issues, possible extensions of the current
+technology, and open problems for future research.
+<p>
+
+<h3><a name="sec:design">System code structure</a></h3>
+<p>
+The detailed code design is described
+<a href="impl.html">here</a>. This may not always be
+upto date, because the code base is constantly being
+updated. For most students in CS537, you will only
+need to concentrate on the portion of the design document 
+dealing with the SQL engine, and/or the portion dealing with new
+data types.
+<p>
+
+<h3><a name="sec:install">Installation instructions</a></h3>
+<p>
+These instructions are only for Cornell CS537 students.
+For others, PREDATOR is not yet a publicly available piece
+of software, but it will be in a few months. 
+Here are the <a href="install.html">installation instructions</a> and
+some <a href=testing.html> quick tests </a> you can run.
+<p>
+
+<h3><a name="sec:sysdev">System Development</a></h3>
+<p>
+Look <a href="sysdev.html">here</a> for some tips on system
+development in PREDATOR.
+<p>
+<h3><a name="sec:coding">Coding conventions</a></h3>
+<p>
+When adding to PREDATOR, it is crucial that you follow 
+the same coding conventions that have been used 
+relatively uniformly throughout the code. 
+<a href="coding.html">Click here</a> to get to a list
+of dos and don'ts. The document also tells you how to use RCS,
+a simple source code control mechanism used to manage
+the distribution of PREDATOR code.
+<p>
+
+<h3><a name="sec:test">Testing</a></h3>
+<p>
+Initially, after installing your code, you should
+try some <a href=testing.html> quick tests </a>. On a more regular
+basis, as you add code, you should run a test suite that is being
+developed for PREDATOR. Details of this test suite and how to
+run it are <a href="test_suite.html"> here </a>.
+<p>
+<h3><a name="sec:ack">Acknowledgements</a></h3>
+<p>
+PREDATOR is built using the SHORE storage manager as the
+data repository.
+<p>
+
+<HR>
+</body>
+
+
+</html>

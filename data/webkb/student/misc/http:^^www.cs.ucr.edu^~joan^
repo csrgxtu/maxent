@@ -1,0 +1,189 @@
+Date: Thu, 21 Nov 1996 22:55:52 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+Content-length: 4439
+Last-modified: Tue, 01 Oct 1996 05:26:01 GMT
+
+<html>
+<SCRIPT LANGUAGE="JavaScript">
+
+
+<!-- Beginning of JavaScript Applet -------------------
+
+/*
+   Original code (C)1996 Web Integration Systems, Inc. DBA Websys, Inc.
+   All Rights Reserved.  This code can be re-used or modified, if credit
+   is given in the source code.
+
+   Chris Skinner, January 30, 1996.
+
+   Modified by RD @ CNNfn, Jan. 31, 1996
+
+   Modified by Kurt Koller @ MTVOnline, Feb 4, 1996
+
+   Modified by Eric Ludlum @ Core77, Feb 4, 1996
+
+   Disclaimer:  We will not be held responsible for any unwanted effects
+   due to the usage of this applet or any derivative.  No warrantees for
+   usability for any specific application are given or implied.
+
+*/
+
+function scrollit_r2l(seed)
+{
+
+
+        var m1  = "Hi ! Dear Friend : ";
+        var m2  = "Thank you for visiting!  ";
+        var m3  = "...";
+        var m4  = "Happy Surfing ! ";
+        var m5  = "... :-)";
+
+        var msg=m1+m2+m3+m4+m5;
+        var out = " ";
+        var c   = 1;
+
+        if (seed > 100) {
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 100 && seed > 0) {
+                for (c=0 ; c < seed ; c++) {
+                        out+=" ";
+                }
+                out+=msg;
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                    window.status=out;
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;      
+                var cmd="scrollit_r2l(" + seed + ")";
+                    window.status=out;
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;
+                        var cmd="scrollit_r2l(" + seed + ")";
+                        window.status=out;
+                        timerTwo=window.setTimeout(cmd,100);
+                }
+                else {
+                        window.status=" ";
+                        timerTwo=window.setTimeout("scrollit_r2l(100)",75);
+                }
+        }
+}
+}
+
+        scrollit_r2l ( 20 )
+// -- End of JavaScript code -------------- -->
+
+</script>     
+
+
+
+<head>
+
+
+ <title>Joan's Home Page</title>
+<LINK REV="made" HREF="mailto:joan@cs.ucr.edu">
+</head>
+
+
+<body>
+ <body background="pic/greenbk.gif">
+
+     <center>
+
+
+     <h1>Welcome to Joan's Home Page</h1>
+<!-- <hr size=4 width=50%> -->
+    </center>
+
+ <center>
+ <!WA0><img src="http://www.cs.ucr.edu/~joan/pic/barber.gif">
+ </center>
+
+<!WA1><a href="http://www.microsoft.com/sitebuilder" > <!WA2><img
+src="http://www.cs.ucr.edu/~joan/pic/ie-static.gif" align = right>  </a> 
+<p>
+ <!WA3><img src="http://www.cs.ucr.edu/~joan/pic/puppy.gif" align=left> 
+
+<blockquote>        <a name = "me">            I am a graduate student in the </a>
+<!WA4><a href="http://www.cs.ucr.edu/~joan//">Computer Science Department</a>
+     at the <!WA5><a href="http://www.ucr.edu/">University of California, Riverside</a>.
+<br clear>
+</blockquote>
+   <hr>
+
+     <h2> <!WA6><img src="http://www.cs.ucr.edu/images/redball.gif" > <!WA7><a href="http://www.cs.ucr.edu/~joan/cs182/cs182.html">CS182</a></h2>
+
+     <h2> <!WA8><img src="http://www.cs.ucr.edu/images/whiteball.gif" > <!WA9><a
+href="http://www.cs.ucr.edu/~joan/testform.html">A Link</a>
+ <!WA10><img src= "http://www.cs.ucr.edu/~joan/pic/puppy.gif" align = middle> </h2>
+    
+<hr>
+ <p> 
+ <h2> <!WA11><img src="http://www.cs.ucr.edu/images/pinkball.gif"> Other Links </h2>
+ <ul> 
+    <h3>
+   <li> <!WA12><a
+href="http://www.cs.ucr.edu/~joan/program.html"
+> Programming Stuff
+ </a>
+ <li> <!WA13><a href="http://www.cs.ucr.edu/~joan/net.html"> About Net
+</a>
+<!-- http://rescomp.stanford.edu/jobs    Jobs -->
+<li> <!WA14><a href="http://www.cs.ucr.edu/~joan/sar.html"> SAR and Related Things
+</a>
+<li> <!WA15><a href="http://ipl.sils.umich.edu">Internet
+Public Library
+ </a>
+
+</ul>
+</h3>
+
+<!--   
+<hr>
+<h2> <!WA16><img src="http://www.cs.ucr.edu/images/blueball.gif"> You may be interested in 
+<!WA17><a href="http://www.cs.ucr.edu/~joan/picture.html" > some
+pictures</a> </h2>
+
+
+
+-->   
+<hr>
+<!WA18><img src="http://www.cs.ucr.edu/images/at_work.gif"> This page is still <em>being worked
+on</em>.  <blink> Thanks for stopping by!</blink>  <!WA19><img src="http://www.cs.ucr.edu/~joan/pic/smile.gif">
+<br>
+
+<p> <h2> <!WA20><a href="#me" > I am a.. </a> </h2>
+
+<hr>
+
+<h3> The <!WA21><a href="http://www.cs.ucr.edu/~joan/java/clock.html" >Current System Time </a>is ... </h3>
+<hr>
+  <p>
+  <!WA22><img src="http://www.cs.ucr.edu/~joan/pic/mail.gif">  <address >  Contact me:  </address>
+   <!WA23><a href="mailto:joan@cs.ucr.edu"> joan@cs.ucr.edu </a> 
+  
+  </p>
+
+
+<hr> 
+         <!WA24><a href="http://www.cs.ucr.edu/homes/csgrads.html">
+        <!WA25><img src="http://www.cs.ucr.edu/images/house.gif"> Back to the Graduate Students Home Pages</a>
+
+</body> 
+</html>
+
+
+
+

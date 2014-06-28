@@ -1,0 +1,324 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 20:28:56 GMT
+Content-Type: text/html
+Content-Length: 5166
+Last-Modified: Monday, 06-Jan-97 03:53:34 GMT
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>CS382M: Advanced Computer Architecture</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (Win95; I) [Netscape]">
+</HEAD>
+<BODY TEXT="#FFFFFF" BGCOLOR="#527299" LINK="#1EE3E5" VLINK="#FFFF6A" ALINK="#E5924C" BACKGROUND="#000000">
+
+<H1 ALIGN=CENTER>CS382M: Advanced Computer Architecture</H1>
+
+<P>This course focuses on the techniques of quantitative analysis and evaluation
+of modern computing systems, such as the selection of appropriate benchmarks
+to reveal and compare the performance of alternative design choices in
+system design. The emphasis is on the major component subsystems of high
+performance computers: pipelining, instruction level parallelism, memory
+hierarchies, input/output, and network-oriented interconnections. Students
+will undertake a major computing system analysis and design project of
+their own choosing.</P>
+
+<P>
+<HR WIDTH="100%"></P>
+
+<H3>Administrative Information</H3>
+
+<UL>
+<P>Unique Number:&nbsp;47315</P>
+
+<P>Meeting Place:&nbsp;MWF 2-3, WEL 2.304</P>
+
+<P>Instructor:&nbsp;<!WA0><A HREF="http://www.cs.utexas.edu/users/dahlin">Mike
+Dahlin</A></P>
+
+<P>Office Hours:&nbsp;MW 3-4 or by appointment, TAY 4.136</P>
+
+<P>TA:&nbsp;TBD</P>
+
+<P>TA&nbsp;Office Hours:&nbsp;TBD</P>
+</UL>
+
+<H3>
+<HR WIDTH="100%">Readings</H3>
+
+<P>Textbook: Hennessy and Patteson <!WA1><A HREF="http://Literary.COM//mkp/pages/3298/index.html">Computer
+Architecture: A Quantitative Approach, Second Edition </A></P>
+
+<UL>
+<P><I>Note that the 2nd edition is significantly different than the 1st
+edition, and it is <B>not</B> recommended that you attempt to use the 1st
+edition as a textbook for this course. </I></P>
+
+<P><!WA2><A HREF="http://Literary.COM//mkp/new/hp2e/hp2e_bugs.shtml">Errata Sheet
+for Hennessy &amp; Patterson</A></P>
+</UL>
+
+<P>In addition, we will read current papers on various aspects of current
+computer architecture research. Watch this space for a pointer to the reading
+list. </P>
+
+<H3>
+<HR WIDTH="100%">Grading</H3>
+
+<UL>
+<P>10% Class Participation</P>
+
+<P>30% Homework (Work in pairs)</P>
+
+<P>30% Exams (2 midterms)</P>
+
+<P>30% Project (Work in pairs)</P>
+</UL>
+
+<P>
+<HR></P>
+
+<H2>Course Schedule</H2>
+
+<TABLE BORDER=1 >
+<TR>
+<TD>Week</TD>
+
+<TD>Date</TD>
+
+<TD>Topic</TD>
+
+<TD>Reading</TD>
+
+<TD>Due</TD>
+</TR>
+
+<TR>
+<TD>1</TD>
+
+<TD>Jan 13</TD>
+
+<TD>Intro, Admin, Review:&nbsp;Perf/Cost, Amdahl's Law, Tech Trends</TD>
+
+<TD>Ch 1</TD>
+
+<TD></TD>
+</TR>
+
+<TR>
+<TD>2</TD>
+
+<TD>Jan 20</TD>
+
+<TD>Caching and Memory, ISAs, Pipelining, Hazards and Branch Prediction</TD>
+
+<TD>Ch 2</TD>
+
+<TD>M:&nbsp;MLK&nbsp;Holiday
+<P>F:&nbsp;HW 1</P>
+</TD>
+</TR>
+
+<TR>
+<TD>3</TD>
+
+<TD>Jan 27</TD>
+
+<TD>Pipelining, Hazards, and Static Branch Prediction</TD>
+
+<TD>Ch 3</TD>
+
+<TD>F:&nbsp;Project Proposal</TD>
+</TR>
+
+<TR>
+<TD>4</TD>
+
+<TD>Feb 3</TD>
+
+<TD>ILP:&nbsp;Scoreboarding, Tomasulu, Speculation</TD>
+
+<TD>Ch 4</TD>
+
+<TD>F:&nbsp;HW 2</TD>
+</TR>
+
+<TR>
+<TD>5</TD>
+
+<TD>Feb 10</TD>
+
+<TD>ILP: Dynamic Prediction, Limits of ILP, Vector Processors</TD>
+
+<TD>Ch D</TD>
+
+<TD></TD>
+</TR>
+
+<TR>
+<TD>6</TD>
+
+<TD>Feb 17</TD>
+
+<TD>Memory Hierarchy</TD>
+
+<TD>Ch 5</TD>
+
+<TD>F:&nbsp;Project Survey</TD>
+</TR>
+
+<TR>
+<TD>7</TD>
+
+<TD>Feb 24</TD>
+
+<TD>Memory DRAM, VM, and Banks</TD>
+
+<TD></TD>
+
+<TD>F:&nbsp;HW 3</TD>
+</TR>
+
+<TR>
+<TD>8</TD>
+
+<TD>Mar 3</TD>
+
+<TD>Memory and Review</TD>
+
+<TD></TD>
+
+<TD>W:&nbsp;Midterm 1</TD>
+</TR>
+
+<TR>
+<TD>9</TD>
+
+<TD>Mar 10</TD>
+
+<TD>Spring Break</TD>
+
+<TD></TD>
+
+<TD>M-F:&nbsp;Spring Break</TD>
+</TR>
+
+<TR>
+<TD>10</TD>
+
+<TD>Mar 17</TD>
+
+<TD>I/O:&nbsp;Metrics, Queuing, Busses, Disks, RAID</TD>
+
+<TD>Ch 6</TD>
+
+<TD></TD>
+</TR>
+
+<TR>
+<TD>11</TD>
+
+<TD>Mar 24</TD>
+
+<TD>I/O:&nbsp;Tertiary, Networks</TD>
+
+<TD></TD>
+
+<TD>F:&nbsp;HW 4</TD>
+</TR>
+
+<TR>
+<TD>12</TD>
+
+<TD>Mar 31</TD>
+
+<TD>Networks</TD>
+
+<TD>Ch 7</TD>
+
+<TD>F:&nbsp;Project Checkpoint</TD>
+</TR>
+
+<TR>
+<TD>13</TD>
+
+<TD>Apr 7</TD>
+
+<TD>Networks, Parallel Architectures</TD>
+
+<TD></TD>
+
+<TD>F:&nbsp;HW 5</TD>
+</TR>
+
+<TR>
+<TD>14</TD>
+
+<TD>Apr 14</TD>
+
+<TD>MPPs</TD>
+
+<TD>Ch 8</TD>
+
+<TD></TD>
+</TR>
+
+<TR>
+<TD>15</TD>
+
+<TD>Apr 21</TD>
+
+<TD>MPPs, Review</TD>
+
+<TD></TD>
+
+<TD>W:&nbsp;Midterm 2</TD>
+</TR>
+
+<TR>
+<TD>16</TD>
+
+<TD>Apr 28</TD>
+
+<TD>Project Preseantations</TD>
+
+<TD></TD>
+
+<TD>M/W/F:&nbsp;Project Presentations
+<P>Fri:&nbsp;Last Day of Classes</P>
+</TD>
+</TR>
+
+<TR>
+<TD></TD>
+
+<TD></TD>
+
+<TD></TD>
+
+<TD></TD>
+
+<TD>M:&nbsp;Project Written Report</TD>
+</TR>
+</TABLE>
+
+<P>
+<HR></P>
+
+<H2>Additional Resources</H2>
+
+<UL>
+<P><!WA3><A HREF="http://www.cs.utexas.edu/users/dahlin/Classes/GradArch/other.html#courses">Course Pages </A></P>
+
+<P><!WA4><A HREF="http://www.cs.utexas.edu/users/dahlin/Classes/GradArch/other.html#products">Products and Research </A></P>
+
+<P><!WA5><A HREF="http://www.cs.utexas.edu/users/dahlin/Classes/GradArch/other.html#papers">Conferences, Bibliographies, and Tech Reports
+</A></P>
+
+<P><!WA6><A HREF="http://www.yahoo.com/Business_and_Economy/Companies/Computers/Systems/">Yahoo:&nbsp;Business
+and Economy:Companies:Computers:Systems</A></P>
+</UL>
+
+</BODY>
+</HTML>

@@ -1,0 +1,53 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 20:03:53 GMT
+Content-Type: text/html
+Content-Length: 2019
+Last-Modified: Thursday, 19-Sep-96 03:54:57 GMT
+
+<HTML>
+<HEAD>
+<TITLE>Course project</TITLE>
+</HEAD>
+<BODY>
+<H2>Course project information</H2>
+<HR>
+<UL>
+ <LI><!WA0><!WA0><!WA0><!WA0><A HREF="http://www.digpath.com/library.html">Security Reference Library</A>
+   <DD>Has whitepapers on authetication (S/Key).  Also has a FAQ on security issues.
+ <LI><!WA1><!WA1><!WA1><!WA1><A HREF="http://greenland.trantech.com/pacnet/wcube/radius.html">Livingston RADIUS</A>
+   <DD>Whitepaper on RADIUS (Remote Authentication Dial-In User Service
+ <LI><!WA2><!WA2><!WA2><!WA2><A HREF="http://www.securid.com/ID134.9992/Resources/WhitePapers/index.html">Security Dynamics White Papers</A>
+   <DD>Has papers on network security, internet security and kerberos.
+ <LI><!WA3><!WA3><!WA3><!WA3><A HREF="http://www.fivepaces.com/media/">Five Paces</A>
+   <DD>Looks like a white paper with some stuff on electronic commerce.
+ <HR>
+ <LI><!WA4><!WA4><!WA4><!WA4><A HREF="http://www.lcsweb.com/citl.htm">Computers, Information Technology, and the Law</A>
+   <DD>Links to laws (1) and articles (many) concerning legal issues.
+
+</UL>
+<HR>
+Financial transactions would have the following needs:<BR>
+<B>Security on an unsecure network.</B><BR>
+Gut reaction would be that for any sort of financial transactions, data
+encryption and user authetication are the first and foremost concerns.
+On user authentication, adequate encryption would presumably allow for less
+robust authetication.  Otherwise, an S/Key or SNK (like they use for CS
+firewall) are definitely necessary due to the lack of security in the data
+transmission.
+<P>
+<B>Fault-tolerant systems</B><BR>
+Transactions can not be halted because one server is down. 
+We need to make sure that transaction reports to the banks or whatever
+central database we are using filter out duplicates and all the standard
+mutual exclusion things so that transactions aren't missed.
+<P>
+<B>Guaranteed response time</B><BR>
+Or something resembling a guaranteed response time on an IP network.
+Having to wait 2-3 minutes for a transaction or having your packets
+dropped and timedout won't cut it for electronic commerce.
+<P>
+<HR>
+<!WA5><!WA5><!WA5><!WA5><A HREF="http://www.cs.cornell.edu/Info/People/jhsu/">Back to top</A>
+</BODY>
+</HTML>

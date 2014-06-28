@@ -1,0 +1,103 @@
+Date: Mon, 11 Nov 1996 17:25:03 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 25 Apr 1996 13:55:34 GMT
+Content-length: 2641
+
+<html>
+<head>
+<title>CS 537 - Quiz #9</title>
+</head>
+
+<body>
+<table border=0 width=100% align=center>
+<tr>
+<td width=25%><td width=50% align=center>
+<b>UNIVERSITY OF WISCONSIN-MADISON
+<br>
+Computer Sciences Department</b>
+<td width=25%>
+<tr>
+<tr>
+<td>
+<b>CS 537
+<br>
+Spring 1996 </b>
+<td><td align=right><b>Bart Miller</b>
+<tr>
+<td>
+<td align=center><b>Quiz #9</b>
+<br>
+Wednesday, April 24
+<td>
+</table>
+
+<h2>File Systems</h2>
+<h3>1. Unix File Sizes</h3>
+Consider the old UNIX file system (Version 7 or 4.1BSD).
+Assume that disk blocks are 1K bytes and each pointer to a disk block
+requires 4 bytes.
+What is the largest possible file using this design.
+Show your work (as an expression) to make sure you get credit;
+if your expression is correct, you will get full credit.
+<b>
+<p>
+The old UNIX file system has 10 direct pointers to data blocks in the i-node,
+plus a pointer to a single-indirect block that contains pointers to 256
+additional data blocks,
+plus a pointer to a double-indirect block that contains pointers to 256
+blocks that each contain pointers to 256 additional data blocks,
+plus a pointer to a triple-indirect block that contains pointers to 256
+blocks that each contain pointers to 256
+blocks that each contain pointers to 256 additional data blocks:
+<p>
+</b>
+<center>
+<table>
+<tr><td>Data blocks pointed to by i-node:
+    <td align=right>10
+<tr><td>Data blocks pointed to by single-indirect block:
+    <td align=right>+ 256
+<tr><td>Data blocks pointed to by double-indirect block:
+    <td align=right>+ 256 * 256
+<tr><td>Data blocks pointed to by triple-indirect block:
+    <td align=right>+ 256 * 256 256
+<tr><td colspan=2><hr>
+<tr><td><b>Total Number of Blocks:</b>
+    <td align=right><b>16,843,018</b>
+<tr><td colspan=2><hr>
+<tr><td>Number of bytes per block::
+    <td align=right>x 1,024
+<tr><td><b>Total Number of Bytes:</b>
+    <td align=right><b>17,247,250,432</b>
+<tr><td colspan=2><hr>
+</table>
+</center>
+<h3>2. Unix File Access Speed</h3>
+Assume that you have the Unix file system presented above in Problem 1.
+Also assume that the operating system has already read the i-node for
+your file into memory (RAM).
+How many <i>additional</i> disk reads will be required to read data block
+number 300 into memory?
+To assure full credit, list each additional disk read.
+<b>
+<p>
+Three (3) additional reads are necessary:
+<ol>
+<li>
+Read the first indirect block for double indirection.
+<li>
+Read the second indirect block (for blocks 267-522)
+<li>
+Read the data block for block 300.
+</ol>
+</b>
+
+<hr>
+<H4>
+Last modified:
+Thu Apr 25 08:52:12 CDT 1996
+by
+<a href="http://www.cs.wisc.edu/~bart">bart</a></b>
+</H4>
+</body>

@@ -1,0 +1,247 @@
+Date: Tue, 14 Jan 1997 23:17:25 GMT
+Server: NCSA/1.4.1
+Content-type: text/html
+Last-modified: Fri, 08 Mar 1996 19:46:31 GMT
+Content-length: 12707
+
+<HEAD>
+<TITLE>CS 484/584 </TITLE>
+<HEAD>
+
+<BODY background="/~billjunk/images/back2.gif">
+
+<!WA0><IMG ALIGN=MIDDLE SRC="http://www.cs.uidaho.edu/~billjunk/images/rainbow.gif">
+
+<H1>CS 484/584 Software Quality Assurance</H1>
+<H2>Spring 95-96</H2>
+<H2>3 semester credits</H2>
+<H3> http://www.cs.uidaho.edu/~billjunk/courses/cs484/exer3.html<BR>
+ Last updated: 8 March 1996 </H3>
+
+<!WA1><IMG ALIGN=MIDDLE SRC="http://www.cs.uidaho.edu/~billjunk/images/rainbow.gif"><P>
+
+<!WA2><A HREF="http://www.cs.uidaho.edu/index.html"><!WA3><IMG width=28 height=22
+ALIGN=middle SRC="http://www.cs.uidaho.edu/~billjunk/images/csclogo.gif"></A> Computer Science 
+Home Page
+
+<!WA4><A HREF="http://www.uidaho.edu/"><!WA5><IMG width=22 height=22
+ALIGN=middle SRC="http://www.cs.uidaho.edu/~billjunk/images/uilogo3.gif"></A> Univ. of Idaho Home
+Page<P>
+
+<!WA6><IMG ALIGN=MIDDLE SRC="http://www.cs.uidaho.edu/~billjunk/images/rainbow.gif">   
+
+
+<center><B><H1>Exercise 3 -- Quality Assurance</H1></B></center>
+
+There are two options to select from for this assignment.  Option 1 is a case study in
+which you prepare a Software Quality Assurance Plan for an organization.  Option 2
+has you preparing review guidelines for some common software review activities.<P>
+
+<HR>
+
+
+<center><B><H2>Option 1<BR>
+Software Quality Assurance Plan</H2></B></center>
+
+If you elect this option for Exercise 3, you must prepare a Software Quality Assurance Plan 
+(SQAP) for the project described in the accompanying case study, SureSafe Security 
+Systems Company.  You should prepare your SQAP following the outline provided in IEEE 
+Std 730.1-1989.  The IEEE outline provides that the following sections should be include in 
+your plan:<P>
+<PRE>
+        1.  Purpose
+        2.  Reference documents
+        3.  Management
+        4.  Documentation
+        5.  Standards, practices, conventions, and metrics
+        6.  Reviews and audits
+        7.  Test
+        8.  Problem reporting and corrective action
+        9.  Tools, techniques, and methodologies
+       10.  Code control
+       11.  Media control
+       12.  Supplier control
+       13.  Records collection, maintenance, and retention
+       14.  Training
+       15.  Risk management
+</PRE>
+Additional information is available in IEEE Std 983, Guide for Software Quality Assurance 
+Planning.  (In December 1995 IEEE announced the approval of a revised standard IEEE 
+Std 730.2 Guide for Software Quality Assurance Planning which supersedes IEEE Std 
+983, but it will probably not be in general circulation for a few months.)  Although the IEEE 
+format is being used, you do not need to have the IEEE standard available in order to 
+select this option for Exercise 3.  In most cases the contents of a document section can be 
+prepared following a common sense approach to software development based on good 
+software engineering and sound management practices.  If you need some assistance or 
+want to see the IEEE standard, please contact me individually.<P>
+
+This SQAP must be written as though it will be applied to a real project by a real 
+company.  Therefore, you may have to make assumptions and decisions about what the 
+company is going to do to define and implement software quality assurance. I'm guessing
+that a well done SQAP for this assignment should require from 10 to 15 pages.<P>
+
+<B>Due dates:
+<UL>
+<LI>On-campus students:  April 16, 1996<BR>
+<LI>Off-campus video outreach and NTU Students:  April 30, 1996<P>
+</UL></B>
+
+<center><H2><B>Case Study<BR>
+SureSafe Safety Systems Company</B></H2></center>
+
+<B>The company, individuals, and situations describe in this case 
+study are entirely fictional.  Any similarity to an existing company or 
+organization is purely coincidental.</B><P>
+
+
+<H3><B>Company Description:</B></H3>
+SureSafe Safety Systems is a relatively small company with a 
+total employment of about 250 people.  The company is located in Seattle, WA where all 
+development and manufacturing activities are performed.  Several wholesale offices are 
+located in other major US cities.  The company markets its products to independent retail 
+home security product vendors and installers.<P>
+
+SureSafe was founded in 1972 by Mr. Robert Atwood who is still participating in daily 
+company operations as its president.  Mr. Atwood has BS and MS degrees in electrical 
+engineering.  Prior to founding SureSafe he designed intrusion monitoring equipment for 
+major industrial supplier.  Shortly after Mr. Atwood left his former employer he hired John 
+Smithson to collaborate on electrical designs and Gary McMillian to provide product 
+design and mechanical engineering support.  During their first year of operation additional 
+personnel were gradually hired in supporting roles, including office personnel, laboratory 
+technician, and manufacturing personnel.  Although capital funding for the start up of 
+SureSafe was scarce, the company has had ten consecutive years of profitable 
+operations.  The company still maintains a "no frills" attitude with respect to facilities and 
+equipment.<P>
+
+As a response to a continual growth in sales and employees, a major company 
+reorganization occurred in 1980.  Gary McMillian was promoted to Manufacturing 
+Manager.  Mr. McMillian is beginning to think about the possibility of retiring.  During the 
+reorganization, John Smithson was promoted to Engineering Manager.  He subsequently 
+left the company in 1991.  His replacement was Charles Taylor who joined SureSafe with 
+no previous experience in the security systems field although he had 10 years of system 
+design experience and 15 years of management experience in the electronics industry.
+In 1992 Mr. Taylor consolidated all of the staff responsible for software development 
+activities into a single organization reporting directly to himself.  A search was initiated for 
+a person to manage this newly formed group.  The successful candidate was Julie 
+Johnson.  Julie was selected over a number of internal and external candidates.  She 
+initially began her employment with SureSafe in 1986 as a direct college hire after 
+completing her BSCS degree.  At the time of her hiring there were only seven employees 
+doing software development.  Today there are 20.<P>
+
+Since SureSafe produces equipment destined for consumer use, it is not directly regulated 
+by federal or state government entities (as is the case for example of medical device 
+manufacturers).  However, their equipment does need to be safe for use by consumers and 
+must comply with general product safety requirements and national electrical codes.
+In 1990 SureSafe became interested in the possibility of being certified as an ISO 9000 
+compliant manufacturer.  They hired a consultant to review their development and quality 
+assurances practices.  After a one week on-site evaluation the consultant reported that he 
+did not believe that SureSafe had adequately defined development and manufacturing 
+processes to ensure a successful ISO compliance review.  He indicated that SureSafe 
+personnel appeared to be generally unaware of the requirements for certification and the 
+impact that these requirements might have on development practices.  In particular, the 
+results of the audit indicated that SureSafe had no clear, well-documented product 
+development process and that supporting software development documentation was 
+inconsistent or non existent.  Further findings cast serious doubt on the thoroughness with 
+which software was being tested.  As a result, SureSafe hired another independent 
+consultant to draft a Software Development Standard for use in all software development 
+projects.  Several current software developers were asked to contribute to and review the 
+Software Development Standard as it was developed.  In July 1991 the current version of 
+the Software Development Standard was approved by Mr. Taylor.<P>
+
+<H3><B>Starting a New Project:</B></H3>
+While their 20+ year history has been successful, SureSafe 
+now wishes to expand its operations by developing an easily expandable and 
+customizable unit to allow them to be more cost competitive in existing markets and to 
+enter additional markets  The Marketing group believes that technology has advanced to 
+the point that this new product can be built and successfully sold to improve SureSafe's 
+profitability.  The Marketing group has produced a preliminary requirements document 
+which identifies the key product features and market needs.  The Engineering group has 
+begun the detailed engineering (functional) specification.  The rights to use software 
+developed by another company, SoftCraft, have been purchased.  This software provides 
+voice recognition features that are planned for the new products.  SureSafe will port the 
+SoftCraft code to run on the processor used in the security system.  The ported code will 
+be integrated with some new software being developed by SureSafe.  Extensive reuse of 
+code from existing SureSafe products is anticipated.  SureSafe's New Products 
+Development group, headed by Jerry Gibons, is performing all the electrical and 
+mechanical design for the product.  New Products Development considers itself to have 
+leadership responsibilities for the new generation of SureSafe products.<P>
+
+Three months ago when the project was started, management felt that a time frame of 5 
+months was realistic because of their previous track record in computer controlled security 
+systems, extensive leveraging from existing systems, and also because the voice 
+recognition software (purchased from SoftCraft) had already been developed, thus 
+eliminating a major portion of the design work.<P>
+
+However, due to several significant specification changes and the resulting rework, the 
+project is now projected to be two months behind schedule.   Software and hardware 
+design are underway and a prototype (hardware) unit is due to be completed by the 
+engineers within the next two weeks.  Some of the software should be ready to try on the 
+prototype in about three weeks.  In an attempt to keep the project moving as fast as 
+possible, management has instituted a bonus plan whereby the project team will be 
+monetarily rewarded for meeting future project deadlines.<P>
+
+At this time the following documentation is available: Marketing Analysis (Preliminary), 
+Functional Specification (Preliminary), electronics schematics, mechanical assembly 
+drawings, software architecture diagram (module hierarchy and major data structures), 
+source code listings for the SoftCraft programs.<P>
+
+Marketing now believes that the market window is very narrow and is pushing for the most 
+expedient development path possible.  An important trade show is only 4 weeks away and 
+it is important that Specialty Medical have a working system to show potential new clients.<P>
+
+<H3><B>The Assessment:</B></H3>
+The QA Manager, Martin Adams, has openly expressed his concerns 
+that the organization is not adequately prepared for meeting all of the demands of this 
+development project.  He believes that the company may be pushing too hard to meet the 
+upcoming trade show deadline by cutting corners on some of the design work.  He is 
+particularly concerned that a faulty system would do serious harm to the company's 
+reputation.  He has heard about your extensive experience in the software field and has 
+retained you as a consultant.  He wants you to study the situation and prepare a Software 
+Quality Assurance Plan that will be effective in helping to ensure that only high quality 
+products are delivered.<P>
+
+<HR>
+
+<center><H2><B>Option 2 -- Review Guidelines</H2></B></center>
+
+If you elect this option, you must prepare comprehensive Review Guidelines for three of the 
+following types of reviews:  
+
+<UL>
+<LI>Software Requirements Reviews
+<LI>Preliminary Design Review (architectural design)
+<LI>Usability Review
+<LI>Detailed Design Review (logic design)
+<LI>Code Review
+<LI>Test Design Review
+<LI>Test Case Review 
+<LI>User's Manual Review
+</UL>
+
+A review guideline must be a comprehensive list of items to check during the review.  A 
+stating point can be the information presented in class during Sessions 19 and 20.  Your 
+guidelines must substantially extend the information presented in class.  Be sure to 
+address the follow:<P>
+
+<UL>
+<LI>  Entrance criteria
+<LI>  Required items
+<LI>  Review issues and points (checklist of things to look for)
+<LI>  Measurements
+<LI>  Exit criteria
+</UL>
+
+You can use your own experience to help with the expansion, but you may also find it 
+advantageous to consult other sources.<P>
+
+If you want to develop guidelines that are tailored to your own organization, you are 
+welcome to do so provided your results aren't considered proprietary.<P>
+
+<B>Due dates: 	
+<UL>
+<LI>On-campus students:  April 16, 1996
+<LI>Off-campus video outreach and NTU Students:  April 30, 1996
+</UL>
+</B>
+
+

@@ -1,0 +1,346 @@
+Date: Tue, 05 Nov 1996 21:57:36 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 05 May 1995 15:13:10 GMT
+Content-length: 11933
+
+<HTML>
+<HEAD>
+<TITLE>World Wide Web Specification Issues</TITLE>
+</HEAD>
+<BODY>
+
+<H1>World Wide Web Specification Issues</H1>
+<H3>Steven Fought - 5 May 1995</H3>
+
+<P> <H2>Sources</H2>
+<UL>
+  <LI> W3O Official specifications
+  <LI> Internet RFCs and drafts
+  <LI> WWW newsgroups
+  <LI> Experience
+</UL>
+
+<P> <H2>Personal Experience</H2>
+<UL> 
+  <LI> I have been working with Web related programs for 2 years
+  <LI> Webmaster at Caltech from inception in November 1993 until August 1994
+  <LI> Implemented database search and entry tools using FORMS
+  <LI> Installed most Web software packages available for UNIX
+  <LI> Followed Web newsgroups from the beginning
+  <LI> Currently the ``Webmaster'' at UW CS
+</UL>
+
+<P> <H2>The Origins of the World Wide Web</H2>
+<UL>
+  <LI> Conceived by Tim Berners-Lee and others at CERN
+  <LI> Designed to foster communication between High Energy Physicists
+  <LI> First specification called for a hypertextual system
+</UL>
+
+<P> Tim Berners-Lee (now with W3O) was asked to design a system that would allow
+physicists in different parts of the world to collaborate on projects and
+share information using the Internet after it was decided that existing
+tools weren't adequate.  
+
+<P> Berners-Lee decided to use a hypertextual model, and then set out to solve
+a number of problems posed by that model.
+
+<H2>First problem:</H2>
+
+<P> In any hypertext system you need a way to point to information
+objects so you can ``carry'' the pointer instead of the object.
+
+<H2>Solution:</H2>
+
+<P> The Uniform Resource Identifier (URI) specification, a general 
+specification that makes it possible to point to any document, anywhere.
+
+<H2>Uniform Resource Locators (URIs)</H2>
+
+<P> The URI specification ``defines a way to encapsulate a name in any 
+registered namespace, and label it with the namespace, producing
+a member of the universal set.''
+
+<P> In other words, the URI specification defines a superset to all 
+existing and possible namespaces.  Any namespace can be given a 
+label and incorporated into the URI space.
+
+<H2>Properties of URIs</H2>
+
+<DL>
+<DT> Extensible
+<DD> New naming schemes can be easily added.
+<DT> Complete
+<DD>  It is possible to encode any naming scheme
+<DT> Printable
+<DD>  URIs are encoded in 7-bit ASCII and are designed to 
+be at least partially human-understandable and communicable.
+</DL>
+
+<H2>Parts of the URI specification</H2>
+
+<P> URIs consist of two parts:  
+
+<UL>
+<LI> A <EM>prefix</EM> that indicates what namespace is being referenced, 
+followed by a colon
+<LI> A string with format defined as a function of the prefix
+</UL>
+
+<P> The extensibility requirement is met by the ability to register new unique
+prefixes.  The completeness requirement is met by the ability to encode
+any binary information in the string following the prefix (in Base64, 
+for instance).  The printability requirement is left to the implementation
+of specific namespace encodings.
+
+<H2>Special considerations and reserved characters in URIs</H2>
+
+<DL>
+<DT> \ 
+<DD> is reserved as an escape character, so non-7-bit ASCII characters
+and reserved characters can be used in URIs easily
+<DT> / 
+<DD> is reserved as a delimiter of a hierarchical set of substrings
+<DT> . and ..
+<DD> are reserved if they are used between / characters, to 
+indicate the current and previous level in a hierarchy respectively
+<DT> \# 
+<DD> is reserved to separate a URI from a ``fragment identifier''
+<DT> ? 
+<DD> is reserved to delimit the boundary between a URI and a 
+queryable object
+<DT> + 
+<DD> is reserved as a shorthand notation for a space, so real + 
+signs must be encoded.
+<DT> * and !
+<DD> are reserved for use with special significance within
+specific namespaces.
+</DL>
+
+<H2>Relative URIs</H2>
+
+<P> Reserving /, . and .. allowed the specification of relative URIs, which 
+work much like relative paths in a filesystem.  When a relative URI is 
+found the URI of the containing document is used as a reference to construct 
+a new full URI following these semantics:
+
+<UL>
+<LI> If a partial URI starts with some number of slashes, the parent URI
+is searched for the first occurrence of the same number of slashes, and the
+relative URI is substituted for the remaining part of the parent, provided
+that no greater number of consecutive slashes are in the remaining part of
+the parent.
+<LI> Within the result all occurrences of ``xxx/../'' or ``/.'' are
+recursively removed, where ``xxx'', ``..'', and ``.'' are complete 
+path elements.
+</UL>
+
+<H2>Examples of relative URI substitutions</H2>
+
+If the parent URI is <TT>http://www/b/c//d/e/f</TT> the following partial URIs 
+result in the listed full URIs:
+
+<DL>
+<DT> g 
+<DD> <TT>http://www/b/c//d/e/g</TT>
+<DT> /g 
+<DD> <TT>http://www/g</TT>
+<DT> //g 
+<DD> <TT>http://g</TT>
+<DT> ../g 
+<DD> <TT>http://www/b/c//d/g</TT>
+<DT> g:h 
+<DD> <TT>g:h</TT>
+</DL>
+
+<P> Note that using the parent URI <TT>http://www/b/c//d/e/</TT> would 
+yield the
+same results.
+
+
+<H2>Second problem:</H2>  Pointing to the documents we have now.
+
+<P> Now that a we have the URI specification, we need to be able to point to 
+existing documents available on the Web.
+
+<H2>Solution:</H2>  The Uniform Resource Locator (URL) specifications, one for 
+each supported Internet protocol.
+
+Some examples:
+<DL>
+  <DT> ftp:  
+  <DD> <TT>ftp://ftp.cs.wisc.edu/condor/</TT>
+  <DT> telnet:  
+  <DD> <TT>telnet://keeper:notquite@spacely.cs.wisc.edu</TT>
+  <DT> http:  
+  <DD> <TT>http://spacely.cs.wisc.edu:8000/home.html</TT>
+</DL>
+
+<H2>Side note:  Work on the URN specification</H2>
+
+<P> There is a working group of the IETF attempting to define a Uniform Resource
+Name specification.  URNs are meant to be persistent objects regardless of
+how machine and server configurations are changed.  URNs solve the same problem
+for URLs as DNS solves for IP numbers.
+
+<H2>Third problem:</H2>  
+
+<P> Now that we have pointers to document objects, we need a
+place to put them.
+
+<H2>Solution:</H2>  HTML, the Hypertext Markup Language. 
+
+<P> Design features of HTML:
+<UL>
+  <LI> Defined as an SGML Document Type Definition, allowing easy 
+  processing of HTML by SGML parsers
+  <LI> Structural Markup
+  <LI> Simple and quick to render (no lookahead)
+  <LI> Human readable and editable (no special tools are needed to create 
+  HTML documents)
+</UL>
+
+<P> HTML is beyond the scope of the talk.
+
+<H2>Side Note:  Multimedia and MIME</H2>
+
+<P> The original Web browsers used the extension of a file to determine its type.
+This method had several disadvantages:
+<UL>
+  <LI> A single extension may be used for more than one kind of file.
+  <LI> File extensions do not generally carry enough information to allow
+  identification of a file format by a human.
+  <LI> Not everyone will agree on what file extensions map to what types of
+  files.
+</UL>
+
+<P> To fix this problem parts of the existing MIME (Multipurpose Internet Mail 
+Extensions) system was integrated into Web clients and servers.
+
+<H2>How MIME works</H2>
+
+<P> Before a document is transmitted it is assigned a MIME type by the server or
+mailer.  This assignment is often made based on file extension, but because
+the assignment is made locally the user can make sure the appropriate type is
+defined.  The MIME type is a description of the contents of the file.
+
+<P> When the file is received, the browser uses the MIME type to find an 
+appropriate viewer for the file.
+
+<P> MIME features:
+<UL>
+  <LI> New MIME types can be added at any time
+  <LI> An official organization exists to register and distribute 
+  MIME types
+  <LI> Several implementations of either end of the MIME system exist for
+  many different architectures
+</UL>
+
+<H2>Fourth Problem:</H2>  
+<P> How to transfer documents from the author to the user.
+
+<H2>Solution:</H2>  
+<P> The Hypertext Transfer Protocol (HTTP).
+
+<P> Any simple summary of the features of HTTP would ignore the serious
+changes its role precipitated by other changes in other WWW tools.
+A chronological summary of the changes in HTTP features is more interesting.
+
+
+<H2>HTTP 0.9:  The original features and purpose</H2>
+
+<P> The first version of HTTP to be distributed widely was 0.9.  The only 
+request that could be made was ``GET (url)'', where ``url'' is an HTTP URL
+with the prefix stripped.  The document pointed to by the URL would be 
+returned to the browser.
+
+<P> HTTP 0.9 was designed to deliver documents with the lowest amount of 
+overhead as possible.  FTP can perform the same function, but it requires
+a costly login process.  HTTP is a stateless protocol.  Berners-Lee saw
+that a document would be transferred and read, and then a link would be 
+followed to another document, possibly not on the same server.  There was
+no advantage to keeping a socket open.
+
+<H2>HTTP 1.0:  Document Typing and CGI</H2>
+
+<P> The next version of HTTP was designed to fix a number of problems with the
+previous versions and add new features.  The major change was the addition
+of document typing using MIME-related headers.  In addition other 
+<EM>Methods</EM> were included in addition to the GET method.  Some of 
+these were:
+
+<DL>
+<DT> HEAD
+<DD> is the same as GET, but only returns the headers
+<DT> PUT 
+<DD> allows data sent to the server to be stored under the supplied
+URL (not widely used)
+<DT> POST 
+<DD> Creates a new object based on the data sent that is linked
+to the object specified in the supplied URL
+<DT> LINK 
+<DD> links an object to the specified object (not widely used)
+<DT> UNLINK 
+<DD> removes a link or other information from an object
+</DL>
+
+<P> The most important of these methods is PUT, which is used in conjunction
+with the Common Gateway Interface.
+
+<H2>The Common Gateway Interface (CGI) and Forms</H2>
+
+<P> Forms:  A specification for creating a fill-out form within an HTML document.
+Each browser that implements Forms is responsible for packing the information
+into a special format when a form is submitted and sending it to a specified
+URL.
+
+<P> CGI:  A specification for a script on an HTTP server that has its own URL.  
+When the URL is accessed, the script is run and its output is sent to the
+client.  Used in conjunction with Forms, a set of scripts can carry on a
+"dialogue" with a client.
+
+<BLOCKQUOTE>Interesting note:  Because HTTP is stateless, CGI scripts often have to 
+play tricks to ensure that the state of a conversation is stored in the 
+document returned to a client.
+</BLOCKQUOTE>
+
+<H2>Problems caused by inlined documents</H2>
+
+<P> During the development of Mosaic, one of the programmers (Marc Andreesen)
+decided he wanted to add support for displaying pictures inside of
+documents.  As with every decision made by Andreesen and the new Netscape
+Communications company since, he designed a quick-and-dirty solution
+that served his needs and caused significant problems he could blame on other 
+people.  
+
+<P> Rather than find a way of encapsulating a picture with a document he decided
+on the most general model, which was to have the browser perform an
+additional request for each picture.  This changed the model that Berners-Lee
+had originally envisioned and created performance problems caused by the
+overhead of forming a TCP socket.
+
+<H2>Proposed solutions to the inlining problem</H2>
+
+<P> There are two proposed solutions to the problem of inlined documents:  
+
+<UL>
+<LI> Include a multiple GET method in HTTP 1.1, which will require
+at most two sockets to be created (one for the original document, and the
+other for the supporting documents).  
+<LI> HTTP-NG, which is based
+on top of the <EM>Session Protocol Architecture</EM> and allows multiple 
+low-level
+virtual connections to be encoded on top of one socket.  The socket could
+be kept open until the browser was finished with the server.
+</UL>
+
+<H2>HTTP 1.1:  Proposed Additions to the protocol</H2>
+
+<P> Other additions include support for more advanced applications, and 
+for encryption of sensitive data.  
+
+<P> Care is being taken to ensure that the protocol will be extensible.
+
+</BODY>
+</HTML>

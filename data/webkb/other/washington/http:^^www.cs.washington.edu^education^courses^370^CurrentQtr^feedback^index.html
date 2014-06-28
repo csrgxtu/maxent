@@ -1,0 +1,65 @@
+Date: Mon, 02 Dec 1996 14:34:35 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<HTML>
+<head>
+<TITLE>CSE370 Feedback Form</TITLE>
+</head>
+
+<body>
+
+<h2>CSE370 Feedback Form</h2>
+
+<FORM METHOD="POST"
+ACTION="http://www.cs.washington.edu/htbin-post/cse370/cws/feedback">
+
+<!--
+You need to edit the above feedback script file to match the right TA
+names, and update the SELECT below.  
+-->
+
+Feedback is quite important to us as it helps us improve the course along the
+way. Please use this form to send us any feedback you have about the way
+the course is going.
+
+<p>
+If you want to make your feedback anonymous just type in "anonymous" for user 
+id and leave password blank.  There is no other tracking of who sent mail.
+<p>
+
+User id: <INPUT NAME="username" VALUE="anonymous"><P>
+
+Please enter the subject(s) here: <INPUT NAME="subject"><p>
+
+Please enter your comments below:
+
+<TEXTAREA NAME="comments" ROWS=10 COLS=80></TEXTAREA> <P>
+
+To whom do you want your feedback to go?<p>
+
+<ul>
+<li> <INPUT TYPE="radio" NAME="destination" VALUE="Both" CHECKED>Instructor and TA.
+<li> <INPUT TYPE="radio" NAME="destination" VALUE="Instructor">Instructor only.
+<li> <INPUT TYPE="radio" NAME="destination" VALUE="TA">TA only.
+<li> <INPUT TYPE="radio" NAME="destination" VALUE="Webmaster">Web Master.
+</ul>
+<p>
+To submit your comments, press this button: <INPUT TYPE="submit"
+VALUE="Submit Comments">. <P>
+
+To clear the form, press this button: <INPUT TYPE="reset"
+VALUE="Clear Form">.
+
+</FORM>
+
+<P>
+<hr>
+<address>
+  Comments to: <a href="mailto:cse370-webmaster@cs">cse370-webmaster@cs.washington.edu</a> (Last Update: 
+  <!-- see man strftime for full format opts-->
+  09/30/96
+)
+</address>
+</body>
+</html>

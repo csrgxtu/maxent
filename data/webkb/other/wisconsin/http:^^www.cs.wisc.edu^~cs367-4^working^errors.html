@@ -1,0 +1,284 @@
+Date: Tue, 05 Nov 1996 20:57:39 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 27 Sep 1996 18:05:24 GMT
+Content-length: 10620
+
+<HTML>
+
+<!-- (c) 1996 James D. Skrentny -->
+
+<HEAD>
+<TITLE>Common C++ Programming Errors</TITLE>
+</HEAD>
+
+<BODY>
+<H2>Common C++ Programming Errors</H2>
+
+<P>This page list common C++ coding errors, some of which are legal C++ code
+but have an unexpected behavior.  If you have suggestions for this list, please
+send email to <!WA0><A HREF="mailto:skrentny@cs.wisc.edu">skrentny@cs.wisc.edu</A>.
+These common errors are ordered into the following categories:
+
+<UL>
+ <LI><!WA1><A HREF="#basic">C++ Basics</A>
+ <LI><!WA2><A HREF="#control">Control Structures</A>
+ <LI><!WA3><A HREF="#datastructs">Basic Data Structures</A>
+ <LI><!WA4><A HREF="#functions">Functions</A>
+</UL>
+
+<P><HR>
+
+<H3><A NAME = "basic">C++ Basics</A></H3>
+
+<UL>
+ <LI><B>case isn't CASE isn't CaSe</B>
+     <BR>C++ is case sensitive!  Different capitalizations can be used to
+     make different identifiers.  The convention that I follow uses ALLCAPS
+     for constants, Initial_Cap for type names, and lower_case for variable
+     names.
+     <LISTING>
+     typedef float Case;
+     const Case CASE = 22.0;
+     Case case = CASE;
+     </LISTING>
+ <LI><B>dividing division</B>
+     <BR>Any time both operands of the <CODE>/</CODE> (division op) are
+     integral types (i.e. integers) the operation becomes whole number
+     division rather than fractional division.  You must change one of the
+     operands by using type casting to a real number (e.g. float, double)
+     to get fractional division.  The code below displays
+     <CODE> 5,5,5.5 </CODE>
+     <LISTING>
+     int i = 11, j = 2;
+     float k = i/j;
+     cout << ( i/j ) << ',' << k << ',' << ( i/float(j) ) << endl;
+     </LISTING>
+ <LI><B>something is true and nothing is false</B>
+     <BR>Any nonzero value means logical true, whereas only 0 is false.  Our
+     g++ compiler provides the <CODE><B>bool</B></CODE> type and the values
+     <CODE><B>true</B></CODE> and <CODE><B>false</B></CODE> for booleans.
+     Since this is now supported, it is preferred to use this type rather than
+     an enumerated boolean type as shown in the text or the integers 0 and 1.
+     For a simple example see <!WA5><A HREF="http://www.cs.wisc.edu/~cs367-4/samples/bool.cc">bool.cc</A>.  If you
+     use an enumerated type or <CODE>#include &lt;boolean.h&gt;</CODE> as
+     shown in the text you may get a compiler warning message that can be
+     ignored.
+     <P>
+ <LI><B>inner cities may have inadvertent locals</B>
+     <BR>Variables are created when they are defined and destroyed when they
+     fall out of scope.  There are many places where variables can be defined 
+     and unintentionally be within a code block that limits the variables scope.
+     <LISTING>
+     {   int i;
+         cout << i;
+         {
+            int j;           // j's scope limited to inner code block
+            cout << i << j;
+         }                   // j falls out of scope here
+         cout << i << j;     // ERROR!  j doesn't exist
+     }                       // i falls out of scope here
+     </LISTING>
+ <LI><B>leading with zeros can be confusing</B>
+     <BR>Numbers with at least one leading zeros are treated as octal (i.e. base
+     8) not decimal (i.e. base 10).  The code below displays <CODE> 81,121 </CODE>
+     <LISTING>
+     int i = 0121, j = 121;
+     cout << i << ',' << j << endl;
+     </LISTING>
+ <LI><B>'s' is not "s"</B>
+     <BR>Character values are enclosed in single quotes, whereas strings are
+     enclosed in double quotes and are terminated with a NULL character.
+     The code below should give a syntax error, but may not.
+     <LISTING>
+     if ( 's' == "s" )
+     </LISTING>
+</UL>
+
+<P><HR>
+
+<H3><A NAME = "control">Control Structures</A></H3>
+
+<UL>
+ <LI><B>if only == where = but they are not equal</B>
+     <BR>Probably the most common error is using <CODE>=</CODE> (assignment op)
+     rather than <CODE>==</CODE> (equality op).  Since assignment is often legal
+     where equality comparison is desired, this error may not create a syntax
+     error.  If you ever use assignment where equality would be expected,
+     comment your code to say the assignment was intentional.
+     <LISTING>
+     if ( apples = oranges )  // OOPS! or is this intentional?
+     </LISTING>
+ <LI><B>&& and || are "and" and "or" but not & and |</B>
+     <BR>Like equality comparisons, logical "and" and logical "or" must use
+     the appropriate symbol doubled with no space between.
+     <P>
+ <LI><B>greatest greater great</B>
+     <BR>When a sequence of comparisons (i.e ==, <, <=, >, >=) are made you can
+     only compare two things at a time and must join the comparisons using logical
+     "and".  The conditions below may look good but evaluate to false.
+     <LISTING>
+     if ( 33 > 22 > 11 )    // should be: (33 > 22) && (22 > 11)
+     if ( 11 == 11 == 11 )  // should be: (11 == 11) && (11 == 11)
+     </LISTING>
+ <LI><B>compounding the problem</B>
+     <BR>Only a single statement follows as the body of most control structures
+     unless you compound the statements using a statement block.  It is a good
+     practice to always use <CODE>{ }</CODE>.
+     <LISTING>
+     if ( apples == oranges )
+        cout << "Ok, but can be dangerous." << endl;
+     else
+     {
+        cout << "do one thing" << endl;
+        do_another( thing );
+     }
+     </LISTING>
+ <LI><B>to break or not to break</B>
+     <BR>A <CODE>break;</CODE> statement must follow every case in a switch
+     statement, unless you intend to flow through to the next case.  It is a
+     good practice to even put a break after the last case.
+     <LISTING>
+     switch ( menu_choice )
+     {
+      case 'a':           // intentional flow through to next case
+      case 'A':
+         add( item );     // accidental flow through to next case
+      case 'd':           // intentional flow through to next case
+      case 'D':
+         delete( item );
+         break;           // good practice
+     }
+     </LISTING>
+ <LI><B>the bodyless loop</B>
+     <BR>A misplaced semicolon can behead a loop.  In the examples below the
+     loops have a NULL body due to the extra semicolon, and the compiler won't
+     complain.
+     <LISTING>
+     for ( i = 0; i < MAX; i++ );   // <- see the extra semicolon?
+     {
+        do_something( useful );
+     }
+     while ( i < MAX );             // <- see the extra semicolon?
+     {
+        do_something( useful );
+     }
+     </LISTING>
+ <LI><A NAME = "forscope"><B>scoping for counters</B></A>
+     <BR>The scoping rules for <CODE>for</CODE> loops have changed to the new
+     ANSI rules.  This is generating many warning messages for programs that mix
+     old and new styles, and sometimes results in syntax errors.  For more detail
+     see <!WA6><A HREF = "http://www.cs.wisc.edu/~cs367-4/samples/for.cc">code example</A>.  I recommend the
+     following to eliminate problems:
+     <UL>
+      <LI><B>Loop counters that are used outside the loop body are defined
+          outside of the loop.</B>
+          <LISTING>
+     int i, j;
+     for (i=1, j=-1; i<11; i++, j--)
+        cout << i << j;       // <- counter used in loop body
+     cout << endl << i << ',' << j << endl; // <- and outside
+          </LISTING>
+      <LI><B>Loop counters that are used only inside of the loop body can be
+	  defined in the for loop in the manner shown below.</B>
+          <LISTING>
+     // defines TWO local counters m,n that are used only inside loop
+     for (int m=1, n=-1; m<11; m++, n--)
+        cout << m << n;
+          </LISTING>
+      <LI><B>Using the old style of defining two loop counters may give syntax
+	  errors and should be avoided.</B>
+          <LISTING>
+     // notice the ||| second int below?
+     //            vvv
+     for (int m=1, int n=-1; m<11; m++, n--)
+        cout << m << n;
+          </LISTING>
+     </UL>
+</UL>
+
+<P><HR>
+
+<H3><A NAME = "datastructs">Basic Data Structures</A></H3>
+
+<UL>
+ <LI><B>start indexing at 0</B>
+     <BR>Array indices always begin at 0.  The example below creates a array
+     with 11 elements with the first at index 0 and the last at index 10.
+     <LISTING>
+     int a[11];
+     a[0]  =  121;
+     a[11] = 1331;     // ERROR! last index is 10
+     </LISTING>
+ <LI><B>your out of bounds</B>
+     <BR>There is nothing to prevent your from indexing beyond the bounds of
+     an array, except perhaps that your program may misbehave intermittently
+     or even crash.  Unfortunately the compiler doesn't verify that your
+     indices are in range, so programs will compile with bad indices.
+     <P>
+ <LI><B>a[i,j] is like being out of your element</B>
+     <BR>Elements of multidimensional arrays are accessed by
+     <CODE>a[i][j]</CODE>.  However, <CODE>a[i,j]</CODE> is legal!  The
+     comma is an operator that evaluates each operand and results in the value
+     of the right-hand operand.  This means <CODE>a[i,j]</CODE> is the same as
+     <CODE>a[j]</CODE>, which does not access the element of the two dimensional
+     array as you intended.
+     <P>
+ <LI><B><A NAME = "arrays">arrays are not the same</A></B>
+     <BR>Unlike all other data types (e.g. int, char, structs), arrays by default
+     are passed to functions by reference, and can not be returned from a
+     function using a return statement.
+     <P>
+ <LI><B>classes end in a semicolon</B>
+     <BR>Don't forget to end your class definitions with a semicolon!
+     <LISTING>
+     class Example
+     {
+     };      // <- don't forget this
+     </LISTING>
+</UL>
+
+<P><HR>
+
+<H3><A NAME = "functions">Functions</A></H3>
+
+<UL>
+ <LI><B>mismatched arguments</B>
+     <BR>The formal arguments listed in a function's header and prototype must
+     match in order, number, and type.  If there is a mismatch you may get
+     a syntax error from the compiler or an undefined symbol error from the
+     linker.  Additionally, reference and constant arguments must match.
+     <P>
+ <LI><B>no arguing about parentheses</B>
+     <BR>Even when a function takes no arguments, you must still include the
+     <CODE>( )</CODE>s when calling the function, as well as in the prototype
+     and the function header.  Leaving the parentheses out may not cause a
+     syntax error because a function name by itself refers to the function's
+     address.  The example below shows this:
+     <LISTING>
+     void display();
+     int main()
+     {
+         display;      // OOPS! this doesn't call the function
+         //...
+     }
+     int display()
+     {
+         cout << "something" << endl;
+     }
+     </LISTING>
+ <LI><B>arrays can cause troubles, <!WA7><A HREF = "#arrays">see above</A></B>
+     <P>
+     <P><HR>
+
+</UL>
+
+<P><HR>
+
+<ADDRESS>
+<H4>Copyright &copy 1996 James D. Skrentny,
+<!WA8><A HREF="mailto:skrentny@cs.wisc.edu">skrentny@cs.wisc.edu</A></H4>
+</ADDRESS>
+
+</BODY>
+</HTML>

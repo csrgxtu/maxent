@@ -1,0 +1,134 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 24-Nov-96 22:57:13 GMT
+Content-Type: text/html
+Content-Length: 6359
+Last-Modified: Thursday, 21-Dec-95 19:08:30 GMT
+
+<TITLE> Masters of Engineering Projects </TITLE>
+This year all our projects will address issues associated with 
+the development of an environment for designing, specifying,
+implementing  and testing Adaptive Mesh Refinement (AMR)
+methods for tackling very complex problems (ex.  3D spiraling 
+coalescence of two black holes) from computational sciences. 
+
+The participants in the development of this environment will have 
+the opportunity to work on very specific projects that can be developed
+individually, but at the same time will require some degree of interaction 
+in the design, validation and testing phases. Thus, in addition to the 
+opportunity of acquiring specific skills and knowledge by working 
+on a very narrow and interesting problem the opportunity to see and 
+understand the procedure of designing and implementing a complex 
+software for parallel and distributed platforms will be given.
+
+Projects :
+<ul>
+<li>  <A href="#project1"> Intelligent Graphical User Interface for AMR </A> 
+<li>  <A href="#project2"> Parallel Runtime Support System for AMR </A> 
+<li>  <A href="#project3"> Dynamic Load Balancing Algorithms for AMR </A> 
+<li>  <A href="#project4"> Parallel PDE solvers using AMR methods   </A>  
+<li>  <A href="#project5"> Parallel structured grid generation for 2D/3D complex geometries  </A>   
+<li>  <A href="#project6"> Scientific computing benchmarks for multithreading on parallel and  distributed platforms </A>  
+<li>  <A href="#project7"> Study the impact of restructuring CG scalar algorithms and codes in terms of CG's performance on MPPs </A>  
+</ul>
+
+
+<A name="project1">
+<H3> Intelligent Graphical User Interface for AMR (GUI-AMR) </H3> 
+This project requires the design and implement an intelligent
+   frond-end for specifying 2D geometries, operators and various 
+   parameters required to solve numerically, time-dependent PDE problems. 
+   This project consist of two components:
+	A. Problem specification 
+        B. Visualization
+   Existing Problem Solving Environment (PSE) PELLPACK will be extended.
+   This project is recommended for students with interest on GUIs,
+   PSEs, I/O, and in general front-ends for high-performance computing 
+   environments.
+</A>
+<p>
+<A name="project2">
+<H3>Parallel Runtime Support System for AMR (PRTS-AMR)  </H3>
+This project requires the design and implementation
+    of communication and threaded modules requirted for
+    the efficient implementation of data-movement and 
+    control primitives for parallel AMR methods. 
+    Existing communication software like MPI, AMs and threaded
+    packages like Qt and PORTS0 will be utilized.
+    This project is recommended for students with interests
+    both on systems, parallel I/O, parallel compilers and computational 
+    sciences. An interaction with Bernoulli and Split-C projects
+    is expected.</A>
+<p>
+<A name="project3">
+<H3>Dynamic Load Balancing Algorithms for AMR (DLB-AMR) </H3>
+This project requires the development, implementation and evaluation of 
+   of dynamic load balancing algorithms for AMR: (i) direct like generalized 
+   spectral bisection and its derivatives and space-filling curves 
+   and (ii) incremental. The objective is to develop (i) a DLB-AMR module
+   for PRTS-AMR and (ii) acquire useful knowledge in solving an instance 
+   of a very difficult combinatorial optimization problem: dynamic load
+   balancing of adaptive computations on a network of time/memory-sharing
+   heterogeneous workstations and MPPs. Existing algorithms and software
+   will be extended and new ones will be build. This project is recommended
+   for students with interests on the solution of practical optimization 
+   problems related to parallel and distributed computing. </A>
+<p>
+<A name="project4">
+<H3>Parallel PDE solvers for time-dependent problems using AMR methods</H3>
+This project requires the implementation of a library of routines for the 
+   discretization and solution of 2D/3D wave equation on MPPs and SMPs. 
+   Both non-threaded and multithreaded paradigms will be used and evaluated.
+   In addition accuracy, and stability of multithreaded computations will be
+   analyzed. High-performance languages like HPF and low level like 
+   Fortran/C plus message passing will be used. This project is recommented
+   for students with interests in parallel numerical computing, and 
+   scalability analysis. An interaction with PRTS-AMR project is expected.</A>
+<p>
+<A name="project5">
+<H3>Parallel structured grid generation for 2D/3D complex geometries</H3>
+This project requires the development of parallel algorithms and 
+implementation of a library of parallel grid generation modules using :
+<ul>
+<li> Algebraic Methods
+<li> Elliptic Methods
+<li> Moving Algebraic Methods
+</ul>
+High-performance languages like HPF and low level like Fortan/C plus 
+message passing will be used. This project is recommented for students
+with interests in parallel numerical computing. Existing state-of-the-art 
+scalar algorithms and code will be used. An interaction with WLIB-AMR is
+expected. </A>
+<p>
+<A name="project6">
+<H3>Scientific computing benchmarks for multithreading on parallel and 
+   distributed platforms</H3>
+</A>
+<p>
+<A name="project7">
+<H3>Study the impact of restructuring CG scalar algorithms and codes in terms of CG's performance on MPPs</H3>
+This project requires the development of a Conjugate Gradient algorithm
+suitable for multiprocessors and includes the implementation of CG using
+Typhoon parallel compiler. Issues related to expensive dot product 
+operations will be studied:
+<ul>
+<li>  How much the algorithm restructuring can help in improving
+      performance compared to well known CG algorithm?
+      Is it worth the effort and possible increase in space complexity?
+<li> How much the code restructuring can help in improving
+     performance compared to straight forward cg code? 
+     Is it worth in doing the extra step in exploring functional
+     parallelism on top of the data-parallelism?
+<li>  How much will cost to use multithreading in (i) 
+      implementing functional parallelism (ii) masking some of the 
+      global address space overheads? Is the overhead worth the 
+      increase in software complexity? What about error and stability?
+</ul>
+</A>
+<p>
+
+For more information contact:  <A HREF="http://www.cs.cornell/Info/People/nikosc.html">  </A>
+
+
+
+

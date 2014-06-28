@@ -1,0 +1,102 @@
+Date: Tue, 10 Dec 1996 16:47:10 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<HTML>
+<HEAD>
+<TITLE>Assignment 5 - Maintenance</TITLE>
+<!-- Created by: Adam Carlson,  20-May-1996 -->
+<!-- Changed by: Adam Carlson, 22-May-1996 -->
+
+
+</HEAD>
+<BODY>
+<H1>Assignment 5 - Maintenance</H1>
+
+<H2>Introduction</H2>
+
+This assignment will give you experience modifying an existing code base to
+add functionality.  You will each be given another group's implementation of
+the HTML formatter, as well as the design document for that system.  Your
+assignment is to add the functionality described below and write up the issues
+you encountered.  The writeup will include what aspects of the program made it
+easy to modify and what aspects made it difficult.  (This can include
+non-design issues, like documentation, particularly if the program was
+<EM>well</EM> documented.)  It should also make recommendations describing how
+the program could be made more modifiable, without changing the entire design.
+
+<H2>What to code</H2>
+
+Add the following functionality to the formatter:
+
+<OL>
+  <LI> Add the &lt;HR&gt; (horizontal rule) tag.  The &lt;HR&gt; tag goes to a
+new line (a la &lt;BR&gt;) and outputs a line of dashes (-) across the page.
+The &lt;HR&gt; tag does not need a &lt;/HR&gt; tag, and any &lt;/HR&gt; tags
+can be ignored.
+  <LI> Add a LENGTH attribute to the &lt;HR&gt; tag.  If value of the length
+attribute is an integer, then the length of the line of dashes is
+<CODE>min(LENGTH, width of output)</CODE>, otherwise it is the width of the
+output.
+  <LI> Add a JUSTIFY attribute to the &lt;HR&gt; tag.  The JUSTIFY tag can
+have the values LEFT or CENTER.  The horizontal rule is either left justified
+or center justified appropriately.
+</OL>
+
+<H4>Some examples:</H4>
+<PRE>
+<EM>(1) Add &lt;HR&gt; tag</EM>
+DoOd! horizontal &lt;HR&gt; rulez.
+
+<EM>Is output as</EM>
+
+DoOd! horizontal
+--------------------------------------------------------------------------------
+rules.
+<HR>
+<EM>(2) Add LENGTH attribute</EM>
+
+This is your invoice:
+&lt;UL&gt;
+&lt;LI&gt; Widgets...... $15.99
+&lt;LI&gt; Gadgets...... $12.97 &lt;HR LENGTH=30&gt;
+&lt;LI&gt; Total........ $28.96
+&lt;UL&gt;
+
+<EM>Is output as</EM>
+
+This is your invoice:
+  * Widgets....... $15.99
+  * Gadgets....... $12.97
+------------------------------
+  * Total......... $28.96
+<HR>
+<EM>(3) Add JUSTIFY attribute</EM>
+
+This is your brain on invoice... &lt;HR LENGTH=30 JUSTIFY=CENTER&gt;
+AAAAAAAAAAAaaaaaaaaarrrrrrrrggghh!
+
+<EM>Is output as</EM>
+
+This is your brain on invoice...
+                         ------------------------------
+AAAAAAAAAAAaaaaaaaaarrrrrrrrggghh!
+</PRE>
+
+<H2>What to write up</H2>
+
+The write up should include a discussion of what parts of the program needed
+to be modified to incorporate each new piece of functionality, what changes to
+the interfaces between modules were necessary, and how well the design allowed
+for change overall.  You should describe what changes you would make to the
+program to make it easier to modify, while keeping within the design.  I will
+forward your writeup to the group whose program you modified.
+
+<H2>Due Date</H2>
+May 31, 1996
+
+<HR>
+
+<ADDRESS> <!WA0><A Name=Signature HREF=""http://www.cs.washington.edu/education/courses/cse403/96sp/>Adam Carlson</A></ADDRESS>
+</BODY>
+</HTML>

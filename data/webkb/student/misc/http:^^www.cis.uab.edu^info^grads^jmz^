@@ -1,0 +1,139 @@
+Date: Tuesday, 26-Nov-96 17:01:01 GMT
+Server: NCSA/1.3
+MIME-version: 1.0
+Content-type: text/html
+
+<HTMLPLUS>
+<HEAD>
+<SCRIPT language=javascript>
+
+<!--  
+var my_message = "Hello World!                                                              "
+
+/*
+ *  Usage:
+ *  onLoad=scroll_start(scroll_speed, status_bar_size, scroll_delay, message);
+ *  onUnload=scroll_stop();
+ */
+
+var scrl_timer_active = false;
+var scrl_timer_id = null;
+var scrl_speed = 100;
+var scrl_status_size = 100;     
+var scrl_time = 60;
+var scrl_idx = 0;
+var scrl_msg = " ";   
+
+function scroll_start(spd, size, time, msg) {
+        scroll_stop();                                  // stop any previous timer
+        scrl_speed = spd;                               // save scroll speed
+        scrl_status_size = size;                        // save status bar size
+        scrl_time = time;                               // save scroll delay
+        diff = (size/msg.length)+1;                     // create multiple buffer message
+        for (x=0; x<diff; x++)
+                scrl_msg += msg + " ";
+        scroll_status();                                // Start scrolling...
+}
+
+function scroll_stop() {
+        if (scrl_timer_active)
+                window.clearTimeout(scrl_timer_id);
+        scrl_timer_active = false;
+}
+
+function scroll_status() {
+        l = scrl_idx + scrl_status_size;                // Weirdo. this expr. doesn't eval correctly.
+        window.status = scrl_msg.substring(scrl_idx, l);
+        scrl_idx += scrl_speed;
+        if (scrl_idx >= scrl_msg.length)
+                scrl_idx -= scrl_msg.length;
+
+        scrl_timer_id = window.setTimeout("scroll_status()",scrl_time);
+        scrl_timer_active = true;
+}
+       
+//-->
+</SCRIPT>
+
+
+<TITLE>John Zachary</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#ffffff" onLoad="scroll_start(1, 200, 60, my_message);" onUnload="scroll_stop()">
+
+
+<!WA0><IMG SRC="http://www.cis.uab.edu/info/grads/jmz/john.jpg"><!WA1><IMG SRC="http://www.cis.uab.edu/info/grads/jmz/name1.gif">
+
+<P>
+<HR>
+
+<H2>Research</H2>
+Presently, I am working on a Master's thesis entitled <EM>An Environment
+to Reconstruct Surfaces from Contour Data</EM> under the guidance of
+Professor Kenneth Sloan and Professor John Johnstone. The software I
+am developing is meant to be extremely portable and extensible. I
+hope to be able to extend it to work with other data situations, mainly
+scattered data and multiple orthogonal contours. When I get the
+wherewithall, I will place the proposal online.
+<P>
+
+<!WA2><A HREF="http://www.cis.uab.edu/info/grads/jmz/Java/Project.html">Here</A> is my first <EM>real</EM> Java program. 
+I did this for my Computer Graphics II project. (Hint: This version has
+an error. Can you find it?)
+<HR>
+
+<H2>Personal</H2>
+When I'm not transfixed to a computer or research article, I spend time
+reading, role-playing, playing the guitar, and hanging out with my wife, 
+Lori, and
+our beautiful daughter, Hannah. We are expecting another child in
+August.
+<P>
+
+Here are some <!WA3><A HREF="http://www.cis.uab.edu/info/grads/jmz/list.html">useful bookmarks</A>. Send me some
+email if you have a site I might be interested in.
+<P>
+
+Here are some inane attempts at self-categorization.
+<H3>Geek Code:</H3>
+GCS/M>AT d--- H-- g+++ !p au+ a- w+++ !v C++++ UIX+++ P+ N++ E+++
+-po+ Y+>+++ t++@ 5-- j++ R+>+++ G+ tv-->! b+++ D--- B e+++ u++(*) h f---
+r+++ n+ y+++
+<P>
+
+<H3>Personality Type:</H3>
+<!WA4><A HREF="http://sunsite.unc.edu/pub/academic/psychology/
+alt.psychology.personality/profiles/intj">INTJ</A> as measured by
+the <!WA5><A HREF="http://sunsite.unc.edu/personality/keirsey.html">
+The Keirsey Temperament Sorter</A> (my wife says that this is right
+on the money - I scored at the extreme ends of the I, N, T, and J scales).
+<P>
+
+
+<HR><CENTER>
+<ADDRESS>
+UAB <!WA6><A HREF="http://www.cis.uab.edu/info/grail/grail.html">Graphics and AI Laboratory</A> <BR> 1300 University Blvd, 135A Campbell Hall<BR>
+Birmingham, AL 35242 <BR>
+<!WA7><IMG SRC="http://www.cis.uab.edu/info/grads/jmz/mailto.gif"> 
+<!WA8><A HREF="mailto:zachary@cis.uab.edu">zachary@cis.uab.edu</A>
+</ADDRESS>
+</CENTER><HR>
+
+<P>
+
+</BODY>
+</HTMLPLUS>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

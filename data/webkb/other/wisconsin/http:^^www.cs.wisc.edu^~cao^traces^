@@ -1,0 +1,208 @@
+Date: Tue, 05 Nov 1996 00:36:43 GMT
+Server: NCSA/1.5
+Content-type: text/html
+
+<HEAD><TITLE>Index of /~cao/traces/</TITLE></HEAD><BODY>
+<H1>Index of /~cao/traces/</H1>
+<PRE><!WA0><IMG SRC="http://www.cs.wisc.edu/icons/blank.xbm" ALT="     "> Name                   Last modified     Size  Description
+<HR>
+<!WA1><IMG SRC="http://www.cs.wisc.edu/icons/menu.gif" ALT="[DIR]"> <!WA2><A HREF="http://www.cs.wisc.edu/~cao/">Parent Directory</A>       19-Aug-96 17:39      -  
+<!WA3><IMG SRC="http://www.cs.wisc.edu/icons/text.gif" ALT="[TXT]"> <!WA4><A NAME="iotrace.h" HREF="http://www.cs.wisc.edu/~cao/traces/iotrace.h">iotrace.h</A>              07-Aug-96 19:36     3K  
+<!WA5><IMG SRC="http://www.cs.wisc.edu/icons/text.gif" ALT="[TXT]"> <!WA6><A NAME="readrec.c" HREF="http://www.cs.wisc.edu/~cao/traces/readrec.c">readrec.c</A>              07-Aug-96 19:36     3K  
+<!WA7><IMG SRC="http://www.cs.wisc.edu/icons/text.gif" ALT="[TXT]"> <!WA8><A NAME="readtrace.c" HREF="http://www.cs.wisc.edu/~cao/traces/readtrace.c">readtrace.c</A>            07-Aug-96 23:07     4K  
+<!WA9><IMG SRC="http://www.cs.wisc.edu/icons/text.gif" ALT="[TXT]"> <!WA10><A NAME="record.h" HREF="http://www.cs.wisc.edu/~cao/traces/record.h">record.h</A>               07-Aug-96 19:36     1K  
+</PRE><HR>
+<PRE>
+The raw trace is at: ftp://ftp.cs.princeton.edu/pub/people/pc/ultrix-traces.tar.Z 
+
+Enclosed here are the I/O traces I collected from a number of applications, and
+the program that parses them and prints out the records.  The applications
+are:
+
+dinero (j1-trace): trace-driven cache simulator.  
+	Access pattern: the trace file is read sequentially multiple times;
+cscope1 (j2-trace): cscope searching symbol names in a large kernel source;
+	Access pattern: the database file is read sequentially multiple
+		times;
+cscope2 (j4-trace): cscope searching text strings in a large kernel source;
+	Access pattern: collection of multiple source-code files read in
+		the same order sequentially multiple times; 
+cscope3 (j3-trace): cscope searching text strings in a small kernel source;
+	Access pattern: collection of multiple source-code files read in
+		the same order sequentially multiple times;
+	* The difference between cscope2 and cscope3 is that cscope2's data
+		set is larger than cscope3's.  
+glimpse (j5-trace): searching for key words among a collection of text files;
+	Access pattern: there is two sets of files, index files and data
+		files.  Index files are much smaller than the collection of
+		data files.  Index files are read sequentially multiple times,
+		and based on the result of searching the indices, some groups
+		of data files are read.  Each group of data files are always 
+		read sequentially in the same order every time.
+
+ld (j6-trace): link-editing the kernel.  
+	Access pattern: random accesses, including both read and write; no 
+		reuse of data, but since the size of a read request is not 
+		always 8K, there are reuse at the block level (a block is
+		8K bytes and is often the granularity of caching).
+
+postgres1 (pq7-trace): postgres doing selection, there is an index available;
+	Access pattern: the index is searched first, then selected tuples are
+		read; moderate reuse of file blocks due to one block holding 
+		multiple tuples;
+postgres2 (pjoin-trace): postgres doing join, between an indexed inner 
+		relation and a non-index outer relation.  
+	Access pattern: The outer relation is read sequentially once, and the 
+		index of the inner relation is search repeatedly everytime a 
+		tuple in the outer relation.
+
+XDataSlice (xds-trace): 3-D volume rendering software working on a 220x220x220
+		data volume, rendering 22 slices with stride 10, along the 
+		X axis, then Y axis, then Z axis.
+	Access pattern: access blocks in a file with regular strides, no reuse
+		when rendering along one axis, but moderate reuse between the
+		rendering along different axises.
+
+sort (bigsort-trace): UNIX external sorting utility, sorting a 200,000 line
+		17MB tex file.
+	Access pattern: first segment the file into small files that are
+		sorted in memory and wrote out to temporary file, then
+		temporary files are merge sorted into the final sorted file.
+		Both read and write intensive.
+
+For more detailed information on these applications, see my OSDI94 paper:
+
+@inproceedings{CFL94b,
+        author = "Pei Cao and Edward W. Felten and Kai Li",
+        title = "Implementation and Performance of Application-Controlled File C
+aching",
+        booktitle = "Proc. First USENIX Symposium on Operating Systems Design an
+d Implementation",
+        month = nov,
+        year = 1994,
+        pages = "165--178"
+}
+
+For more detailed description of what XDataSlice does, go to NCSA's ftp
+server and check their visualization package.
+
+-----------------------------------------------------------------------------
+
+The events that are traced all come with a time stamp, which is the ``time''
+field in ``struct tracerecord'' (see ``iotrace.h'').  The time field is
+actually the value of a counter that goes at 25MHz (40ns granularity); thus
+it is an unsigned 32-bit int, and wraps around every 171.8 seconds (is that
+right?).  
+
+The ``op'' field in ``struct tracerecord'' is the event identifier of the
+record.  Its possible values are listed in ``iotrace.h''.  
+
+The events traced fall in two categories:
+
+. system calls: almost all file system related syscalls, see the listing in
+	``iotrace.h'' for the value of tracerecord.op between 1 and 21.
+
+. kernel I/O events:
+	MYTRACE_RWEND: the kernel finished the processing of a ``read'' or
+			``write'' system call;
+		(so the time between the ``read'' or ``write'' system call
+		and the MYTRACE_RWEND event is the time it took the kernel
+		to process this call.)
+
+	MYTRACE_RDBEGIN and MYTRACE_RDBEGIN2: 
+		a disk read request is issued to the disk;
+		(the flags are different because they are issued in different
+		routines, MYTRACE_RDBEGIN in bread and MYTRACE_RDBEGIN2 in 
+		breada);
+	MYTRACE_RDEND and MYTRACE_RDEND2: the read request issued in
+		MYTRACE_RDBEGIN or MYTRACE_RDBEGIN2 has just finished;
+
+	MYTRACE_RARDBEGIN: Ultrix has a one-block-lookahead prefetching 
+		algorithm; that is, if block K of file A is read, and the 
+		kernel see that the last read to file A is to block K-1, then
+		the kernel prefetches block K+1.  This prefetch 
+		(or ``ReadAhead'') is recorded by MYTRACE_RARDBEGIN;
+
+	MYTRACE_BUSYEND: if a ``read'' or ``write'' system call finds that 
+		the block it wants to read is marked ``busy'', that is, an I/O 
+		is currently in progress for this block, then it waits till 
+		the busy bit is turned off.  This happens, for example, when 
+		a readahead was issued for this block in the previous read 
+		system call.
+		MYTRACE_BUSYEND record the time when the busy bit on the block
+		is cleared and the process can read or write the block.
+
+	MYTRACE_BWRBEGIN: a disk write request is issued; note that although
+		user processes always wait for the read request, they don't
+		necessary wait for the write request.  Most of the time the
+		write request is asynchronous.
+	MYTRACE_BWREND: if the above write request is synchronous, then this
+		event record the time when it finishes;
+
+. detailed Kernel activities: only some traces recorded these detailed events;
+	that is, don't be bothered if they don't show up in a particular
+	trace; (actually, I think they show up in any of the traces I put here;
+	my tracing utility evolve over time...)
+
+	MYTRACE_BIODONE: a disk I/O request is finished;
+
+	MYTRACE_RDBEGIN_INBREAD: a disk read request is issued in the ``bread''
+		routine in ufs code;
+	MYTRACE_RDEND_INBREAD: the time when that request is finished;
+	(MYTRACE_RDBEGIN_INBREAD and MYTRACE_RDEND_INBREAD should always
+		appear in pairs)
+
+	MYTRACE_RDBEGIN_INBRDA: a disk read request is issued in the ``breada''
+		routine in ufs code;
+	MYTRACE_RDEND_INBRDA: time when this request has finished;
+	MYTRACE_RDNEXT_INBRDA: a readahead request is issued in ``breada'';
+	
+	MYTRACE_BUSYWAIT: a ``read'' or ``write'' system call finds that
+		the block it needs to access is busy, so it is about to
+		sleep to wait for the busy bit to be cleared; MYTRACE_BUSYWAIT
+		records when this happens;
+
+	
+------------------------------------------------------------------------------
+
+The structure of the trace record is the following:
+
+pid: pid of the user process;
+op:  event identifier;
+i_num:	inode number of the file accessed;
+i_dev:  device number of the file accessed;
+offset: offset in file of the read or write request;
+count:  size of the read or write request;
+time:   40ns clock counter;
+
+Note: 
+. i_num is only meaningful for the system call events; you should ignore the 
+	i_num field for all other events; 
+. i_dev is meaningful for most events; it records the dev number of the device 
+	to which the I/O is issued;
+. offset and count are only meaningful for ``read'' and ``write'' system calls;
+	ignore them for all other events;
+
+------------------------------------------------------------------------------
+
+Source files:
+
+. iotrace.h: header file for the trace records and event identifiers;
+	rec_trace is the macro the kernel source uses to record an event;
+
+. readtrace.c: prints out each record in the raw trace file in a human-readable
+	form;
+
+. readrec.c: a library routine for my simulator; it reads the tracerecords 
+	from a trace files and return a generic record to be used by my
+	simulator; it ignores the kernel events; (it may not be that useful 
+	to you.)
+. record.h: the header file for the generic record type used in my simulator;
+
+-------------------------------------------------------------------------------
+
+More questions?  Contact me at cao@cs.wisc.edu.
+
+Pei
+</PRE>
+</BODY>

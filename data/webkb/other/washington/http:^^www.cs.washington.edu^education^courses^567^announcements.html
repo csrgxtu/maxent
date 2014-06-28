@@ -1,0 +1,139 @@
+Date: Mon, 02 Dec 1996 15:13:30 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<HTML>
+<head>
+<title>CSE567 Announcements</title>
+
+</head>
+
+<body bgcolor="#dddddd"  text="#000000"  link="#0000ee" vlink="501080"
+alink="ff0000">
+
+<h1>CSE 567: Principles of Digital Systems Design </h1>
+<h3>Carl Ebeling, Fall 1996 </h2>
+
+<hr>
+<b>Nov. 1</b>
+<ul>
+<li><b>Homework 4, Problem 3.</b>  You may assume that exactly one
+"last" bits is asserted, and that there is an initial "last" bit at
+the very beginning of the circuit.  (In general, you may make
+"reasonable" assumptions when you feel the problem spec is incomplete
+or ambiguous.  Deciding which assumptions to make is part of design.)
+</ul>
+
+<b>Oct. 31</b>
+<ul>
+<li><b>Homework 4, Problem 7.  </b>Reset and Start are the same signal.
+I changed names in the middle of writing the problem.
+</ul>
+
+<b>Oct. 28</b>
+<ul>
+<li>There's a new note on doing homework in the homework web page.
+<li>You are to work together as teams on Homework 4.  Please look at
+the problems individually first and sketch possible solutions and
+questions.  Then meet together and formulate solutions to each if you
+can, and assign the writeup to one or more team members.  Then meet
+again to collate and review your solutions before you hand them in.
+The whole team is responsible for understanding the solution to all
+problems.
+<li><B>Homework 4, Problem 7</b> The problem has been changed to
+adding 8-bit numbers.  Also, you may make reasonable assumptions when
+you design this circuit, provided they are reasonable and you explain
+what they are.
+</ul>
+
+<b>Oct. 25</b>
+<ul>
+<li><b>Timing optimization.</b>There are four delay paths that have
+to be considered when optimizing the timing of a circuit.  (We will cover registers soon.)
+<ol>
+  <li>Register to register path delay.  The clock period constrains this.
+  <li>Input to register path delay.
+  <li>Register to output path delay.
+  <li>Input to output delay.  (This is all there is for a
+  combinational circuit.)
+</ol>
+The timing constraints for the last three delay paths must be
+specified explicitly.
+</ul>
+
+<b>Oct. 25</b>
+<ul>
+<li>If you run into trouble, don't hesitate to fire off an email msg to me or
+the TAs, preferably all three.  One or the other of us is logged in for
+most of the 24 hours/day and we can probably save you time.  We know that
+you won't ask questions that can be easily answered by looking at a
+handout. 
+
+<LI>The cse567 mailing list is for all to use - you can post questions
+to the class if you like, and more important you might want to post hints
+or suggestions, although we'd rather you vet these through us to avoid the
+generation of tool rumors and superstitions.  Unfortunately, we don't all
+share a lab where information and ideas flow freely, but the email list is
+a substitute. 
+</ul>
+
+<b>Oct. 15</b>
+<ul>
+<li><b>Homework 2 clarification:</b><P>
+
+We will count the cost of a circuit as a) the number of gates and then
+b) the number of gate inputs.  ie. we minimuze the number of gates
+first and then the number of inputs.  And we assume negations are free.
+<P>
+It turns out that the cost of a gate (number of transistors) is
+directly proportional to the number of inputs, but the delay generally
+increases as n^2.  And it gets worse - increasing the fanout of a
+signal, ie. the number of places it is used, also increases the delay.
+So large fanin (number of gate inputs) and fanout (number of places
+gate output is used) are bad.
+
+</ul>
+
+<b>Oct. 14</b>
+<ul>
+<li><b>Homework 2:</b> Replace problem 2 with the following problem:<p>
+Find the minimal sum-of-products form for:<p>
+
+SUM m(0,1,2,3,6,7,8,9,10,12,13,14) + d(5,15)
+
+</ul>
+
+<b>Oct. 7</b>
+<ul>
+<li><b>Homework 1</b> problem 1 has been changed slightly.  Check out
+the online homework Web page.
+</ul>
+
+<b>Oct. 4</b>
+<ul>
+<li><b>Room Change</b> to Loew 201. 
+</ul>
+
+<b>Oct. 3</b>
+<ul>
+<li><b>Extra Handouts</b> are available on top of the file cabinet in
+the hall outside my door.  I will continue to leave extras out there.
+<blink><li><b>Email addresses.</b> Please send me email containing an http
+pointer to your home Web page.  If you don't have a Web page, this is
+the time to make one!</blink>
+<li><b>No quiz this Friday (10/4)</b>
+</ul>
+
+<b>Sept. 25</b>
+<ul>
+<li><b>Welcome</b> to CSE 567.  Announcements will be posted here as needed.
+</ul>
+
+</body>
+<address>
+<hr>
+ebeling@cs.washington.edu
+</address>
+<p>
+</html>
+

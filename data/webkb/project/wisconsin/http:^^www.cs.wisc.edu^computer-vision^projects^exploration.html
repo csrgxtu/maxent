@@ -1,0 +1,53 @@
+Date: Thu, 07 Nov 1996 19:23:03 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 04 Aug 1994 20:04:52 GMT
+Content-length: 2185
+
+<HTML>
+<HEAD>
+<TITLE> 3D Object Exploration by Purposive Viewpoint Control </TITLE>
+</HEAD>
+<BODY>
+
+<H1> 3D Object Exploration by Purposive Viewpoint Control </H1>
+<BR>
+<H2> Kyros Kutulakos, Chuck Dyer </H2>
+<P>
+There has been considerable interest recently in employing simple
+observer behaviors that either make the recovery of scene properties
+easier (e.g., fixation), or combine simple behaviors in order to
+perform complex tasks such as navigation and obstacle avoidance. Our
+work focuses on the ability of an active observer to control the point
+of observation to perform tasks involving the exploration of an object.
+The developed behaviors that are provably-correct, make
+simple motion decisions that are based on the observed local geometry
+of the scene, and require minimal processing of each image.
+<P>
+
+We first consider the task of recovering the local shape of the
+surface at a selected point. Our approach is based on the general
+observation that some positions provide more information about an object
+than others. The existence of such special viewpoints can be
+exploited only if the observer is mobile and has an efficient and
+deterministic strategy for reaching them.  We show that the local
+shape-recovery task can be achieved using a simple and qualitative
+strategy for smoothly controlling the point of observation until the viewing
+direction is "aligned" with a principal direction at the selected
+point. Second, we consider the task of deriving a global description
+of an object.  We formulate global surface reconstruction as the
+qualitative task of smoothly controlling the point of observation
+so that the visible rim "slides" over a maximal, connected, 
+reconstructible region. We show that this task can be provably achieved 
+for arbitrary smooth surfaces by attempting to maintain a well-defined 
+geometric relationship between the point of observation
+and the viewed surface.
+<P>
+
+Our approach suggests that the ability to smoothly control the point of 
+observation can lead to provably-correct behaviors for achieving 
+both local and global tasks (e.g., scene exploration, 3D navigation) 
+while also simplifying per-frame computations.
+
+</BODY>
+</HTML>

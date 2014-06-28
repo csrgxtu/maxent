@@ -1,0 +1,112 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 20:31:32 GMT
+Content-Type: text/html
+Content-Length: 4836
+Last-Modified: Thursday, 29-Aug-96 14:38:00 GMT
+
+<HEAD>
+<TITLE>Jason Hickey's Papers at Cornell</TITLE>
+</HEAD>
+<BODY><P>
+<H2>Some Cornell Papers</H2><P>
+
+<hr>
+Jason J. Hickey, <em>A Semantics of Objects in Type Theory</em>.
+Forthcoming Tech Report (also submitted to POPL '97).
+<a href="papers/otype_sem.ps">PostScript file</a>
+
+<p> Here are some
+<a href="nuprl/otype_sem/Welcome.html">formal
+definitions and theorems</a> for the semantics presented in the paper.
+These are just the bare formalizations; I plan to provide a guide that
+makes it easier to walk the proofs.
+
+<p>
+<b>Abstract:</b>
+We present a semantics of object calculi in type theory.  This
+interpretation serves to provide a solid mathematical foundation for
+object-oriented programming.  The calculi we consider support
+self-application, method selection, functional method update, and
+subtyping with method subsumption.  Our interpretation provides this
+support without the need for recursive types to represent ``Self,''
+and it provides a new analysis of objects where the requirements for
+subsumption are expressed directly in the method types.
+
+<hr>
+
+Jason J. Hickey, <em>Formal Objects in Type Theory Using Very
+Dependent Types</em>.
+<a href="papers/fool3.ps">PostScript file</a>.
+<p>
+<b>Abstract:</b>
+In this paper we present an extension to basic type theory to allow a
+uniform construction of abstract data types (ADTs) having many of the
+properties of objects, including abstraction, subtyping, and
+inheritance.  The extension relies on allowing type dependencies for
+function types to range over a well-founded domain.  Using the
+propositions-as-types correspondence, abstract data types can be
+identified with logical theories, and proofs of the theories are the
+objects that inhabit the corresponding ADT.
+<p>
+I also have the slides from my talk.
+<a href="papers/fool3-slides.pdf">PDF slides</a> are better,
+but if you don't
+have <a href="http://www.adobe.com/acrobat/readstep.html">Acrobat</a>,
+here are <a href="papers/fool3-slides.ps.gz">PostScript slides</a>.
+
+<hr>
+John O'Leary, Miriam Leeser, Mark Aagard, and Jason Hickey,
+<em>Non-Restoring Integer Square Root: A Case Study in Design by
+Pricipled Optimization</em>.
+<a href="papers/tpcd94.ps">PostScript file</a>.
+<p>
+<b>Abstract:</b>
+Theorem proving techniques are particularly well suited for reasoning
+about arithmetic above the bit level and for relating different levels
+of abstraction.  In this paper we show how a non-restoring integer
+square root algorithm can be transformed to a very efficient hardware
+implementation.  The top level is a Standard ML function that operates
+on unbounded integers.  The bottom level is a structural description
+of the hardware consisting of an adder/subtracter, simple
+combinational logic and some registers.  Looking at the hardware, it
+is not at all obvious what function the circuit implements.  At the
+top level, we prove that the algorithm correctly implements the square
+root function.  We then show a series of optimizing transformations
+that refine the top level algorithm into the hardware implementation.
+Each transformation can be verified, and in places the transformations
+are motivated by knowledge about the operands that we can guarantee
+through verification.  By decomposing the verification effort into these
+transformations, we can show that the hardware design implements a
+square root.  We have implemented the algorithm in hardware both as an
+Altera programmable device and in full-custom CMOS.
+
+<hr>
+
+Jason J. Hickey, <em>Formal Abstract Data Types.</em>
+<a href="papers/depend.ps">PostScript file</a>
+<p>
+<b>Abstract:</b>
+Current constructive type theories are powerful systems for describing
+mathematical objects with complex dependencies between types and
+computational values, making them expressive enough to encompass large
+ares of mathematics and programming.  However, as the body of formal
+knowledge in the type theory expands, the problem of managing
+mathematical domains and their proofs becomes increasingly
+significant.  Though the objects of the theory are formal, the domains
+are not.  In this paper, we show how to apply the methods of formal
+data abstraction to the organization of the mathematical domains.  In
+the process we expand the tools of data abstraction to include
+reusability and namespace organization, providing an environment that
+can be used for defining objects within a domain, for organizing
+domains within a type theory, and for organizing theories within a
+system.  This environment will require extending the expressivness of
+inductive definitions within the type theory to include the dependent
+characteristics of type theoretical domains.
+
+<p>
+<b>Note:</b>
+This also contains a summary of the NuPRL type theory as an Appendix.
+
+</BODY>
+

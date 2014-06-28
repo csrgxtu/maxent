@@ -1,0 +1,119 @@
+Date: Wed, 08 Jan 1997 21:28:59 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE>First Lisp Assignment</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value="First Lisp Assignment">
+<meta name="keywords" value="psl0">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ <BR> <HR><!WA0><!WA0><!WA0><!WA0><A NAME=tex2html5 HREF="http://www.cs.washington.edu/education/courses/341/spring96/assignments/psl0/node1.html"><!WA1><!WA1><!WA1><!WA1><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.washington.edu/general/latex2html_icons//next_motif.gif"></A>   <!WA2><!WA2><!WA2><!WA2><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.washington.edu/general/latex2html_icons//up_motif_gr.gif">   <!WA3><!WA3><!WA3><!WA3><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.washington.edu/general/latex2html_icons//previous_motif_gr.gif">         <BR>
+<B> Next:</B> <!WA4><!WA4><!WA4><!WA4><A NAME=tex2html6 HREF="http://www.cs.washington.edu/education/courses/341/spring96/assignments/psl0/node1.html"> Establishing your MSCC </A>
+<BR> <HR> <P>
+  CS341, Spring 1996<BR> 
+LISP Assignment #0<BR> 
+Assigned 3/25, (not to hand in).
+<P>
+<BR><HR><P>
+<P>
+The Assignment:
+<OL><LI> Set up your MSCC account 
+    (instructions <!WA5><!WA5><!WA5><!WA5><A HREF="http://www.cs.washington.edu/education/courses/341/spring96/assignments/psl0/node1.html#secmscc">here</A>) and log on.
+<LI> Register yourself on the class mailing list
+    (instructions <!WA6><!WA6><!WA6><!WA6><A HREF="http://www.cs.washington.edu/education/courses/341/spring96/assignments/psl0/node2.html#secmailing">here</A>).
+<LI> Find the Course Web.  Hint:  
+<PRE>http://www.cs.washington.edu/education/courses/341/
+</PRE>
+<LI> Look at the tutorial on how to use the 
+      <!WA7><!WA7><!WA7><!WA7><A NAME=tex2html1 HREF="http://www.cs.washington.edu/education/courses/341/spring96/help/emacs-lisp.html">Lisp/Emacs interface</A>
+      on the Course Web.   Follow the instructions in the <b> Getting
+      started</b> section for setting up the initialization files.
+<LI> Start Emacs.
+<LI> Open a buffer for a new Lisp code file called 
+<PRE>program.lisp
+</PRE> 
+to hold the code for the first asssignment.  You should notice on the 
+Emacs status line at the bottom of the window that 
+a lot of ``fi'' code is getting loaded into Emacs.
+(``Fi'' stands for ``Franz interface,'' and this is the Emacs code 
+that manages the Lisp editor buffers and the interaction between Lisp 
+and the editor.)
+<P>
+<LI> Type in the simple program <!WA8><!WA8><!WA8><!WA8><A HREF="http://www.cs.washington.edu/education/courses/341/spring96/assignments/psl0/node3.html#secprogram">here</A>.   
+(You don't have to type in the comments if you don't want.)
+The main thing to notice while you're doing this is 
+that the Emacs editor will help by indenting your code for you.  
+Every time you hit a carriage return it will indent you on the next line.
+If you don't see the same indentation pattern as in the sample code, 
+you probably have too many or two few parentheses.
+<P>
+<LI> Although you have now written a Lisp program, you are not 
+yet running the Lisp interpreter, so there's nobody around to 
+appreciate your great typing job.  Start a Lisp process now, as per 
+the instructions in the 
+<!WA9><!WA9><!WA9><!WA9><A NAME=tex2html2 HREF="http://www.cs.washington.edu/education/courses/341/spring96/help/emacs-lisp.html">Lisp/Emacs tutorial</A>.
+<P>
+<LI> Evaluate the program code. 
+Instructions <!WA10><!WA10><!WA10><!WA10><A HREF="http://www.cs.washington.edu/education/courses/341/spring96/assignments/psl0/node5.html#secloadcode">here</A>; 
+also see the <!WA11><!WA11><!WA11><!WA11><A NAME=tex2html3 HREF="http://www.cs.washington.edu/education/courses/341/spring96/help/emacs-lisp.html">tutorial</A>.  You have now 
+defined several functions, one for each <tt> defun</tt> in the 
+program file, but you really only want to run one of them.
+<P>
+<LI> Run the code by typing in 
+<PRE>(play-one-round)
+</PRE>
+(Upper or lower case, it doesn't matter.)
+You will get an error message. Try to figure out what is causing it.
+<P>
+<LI> Fix the error in your editor buffer, re-load the buffer 
+and run the function again.  Have fun playing this exciting 
+game!
+<P>
+<LI> The <code>format</code> function is a built-in Lisp function that does
+formatted output.  Try to figure out how it works.  (Hint:  
+use the Common Lisp manual to get the manual page for <tt> format</tt>. 
+The <!WA12><!WA12><!WA12><!WA12><A NAME=tex2html4 HREF="http://www.cs.washington.edu/education/courses/341/spring96/help/emacs-lisp.html">tutorial</A> will tell you how.
+We'll discuss it in class.
+<P>
+<LI> If you're feeling bold, put all your new knowledge together and 
+write your first Lisp program.  Write
+a function that takes two numbers as arguments and prints their sum.
+It should behave something like this:
+<PRE>    USER(1): (print-sum 2 -7)
+    The sum of 2 and -7 is -5.
+    NIL
+    USER(2):
+</PRE>
+(The <code>USER(1):</code> is just a prompt from Lisp telling you it's waiting 
+for input.)
+<P>
+<LI> Discussion question for class:  what is this <code>NIL</code> thing, 
+and why do we keep seeing it??!?
+</OL>
+<P>
+
+<P>
+<BR> <HR>
+<UL> 
+<LI> <!WA13><!WA13><!WA13><!WA13><A NAME=tex2html7 HREF="http://www.cs.washington.edu/education/courses/341/spring96/assignments/psl0/node1.html#SECTION00010000000000000000"> Establishing your MSCC account</A>
+<LI> <!WA14><!WA14><!WA14><!WA14><A NAME=tex2html8 HREF="http://www.cs.washington.edu/education/courses/341/spring96/assignments/psl0/node2.html#SECTION00020000000000000000"> Putting yourself on the mailing list</A>
+<LI> <!WA15><!WA15><!WA15><!WA15><A NAME=tex2html9 HREF="http://www.cs.washington.edu/education/courses/341/spring96/assignments/psl0/node3.html#SECTION00030000000000000000"> The program</A>
+<LI> <!WA16><!WA16><!WA16><!WA16><A NAME=tex2html10 HREF="http://www.cs.washington.edu/education/courses/341/spring96/assignments/psl0/node4.html#SECTION00040000000000000000"> Starting Lisp</A>
+<LI> <!WA17><!WA17><!WA17><!WA17><A NAME=tex2html11 HREF="http://www.cs.washington.edu/education/courses/341/spring96/assignments/psl0/node5.html#SECTION00050000000000000000"> Loading code into the Lisp image</A>
+<LI> <!WA18><!WA18><!WA18><!WA18><A NAME=tex2html12 HREF="http://www.cs.washington.edu/education/courses/341/spring96/assignments/psl0/node6.html#SECTION00060000000000000000">   About this document ... </A>
+</UL>
+<BR> <HR><!WA19><!WA19><!WA19><!WA19><A NAME=tex2html5 HREF="http://www.cs.washington.edu/education/courses/341/spring96/assignments/psl0/node1.html"><!WA20><!WA20><!WA20><!WA20><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.washington.edu/general/latex2html_icons//next_motif.gif"></A>   <!WA21><!WA21><!WA21><!WA21><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.washington.edu/general/latex2html_icons//up_motif_gr.gif">   <!WA22><!WA22><!WA22><!WA22><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.washington.edu/general/latex2html_icons//previous_motif_gr.gif">         <BR>
+<B> Next:</B> <!WA23><!WA23><!WA23><!WA23><A NAME=tex2html6 HREF="http://www.cs.washington.edu/education/courses/341/spring96/assignments/psl0/node1.html"> Establishing your MSCC </A>
+<BR> <HR> <P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Steve Hanks <BR>
+Wed Mar 27 11:22:38 PST 1996</I>
+</ADDRESS>
+</BODY>

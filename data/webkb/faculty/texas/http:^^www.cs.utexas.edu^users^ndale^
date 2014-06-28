@@ -1,0 +1,166 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 19:45:58 GMT
+Content-Type: text/html
+Content-Length: 5237
+Last-Modified: Tuesday, 20-Aug-96 16:59:02 GMT
+
+<TITLE>Professor Nell B. Dale Website</TITLE>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Beginning of JavaScript Applet -------------------
+
+/*
+*/
+
+   // Makes an empty array of n items
+   function makeArray(n) {
+      this.length = n
+      for (var i = 1; i <= n; i++)
+         this[i] = null
+      return this
+   }
+
+   // Get Name of Current Month
+   function mName(m) {
+      var nameM = new makeArray(12)
+      nameM[0] = "January"
+      nameM[1] = "February"
+      nameM[2] = "March"
+      nameM[3] = "April"
+      nameM[4] = "May"
+      nameM[5] = "June"
+      nameM[6] = "July"
+      nameM[7] = "August"
+      nameM[8] = "September"
+      nameM[9] = "October"
+      nameM[10] = "November"
+      nameM[11] = "December"
+
+      // Get Current Month
+      today = new Date();
+      month = today.getMonth();
+
+      // Return Current Month
+      m = nameM[month];
+      return m;
+   }
+
+   // Get Name of Current Day
+   function dName(d) {
+      // Define vars
+      var nameD = new makeArray(7);
+      nameD[0] = "Sunday"
+      nameD[1] = "Monday"
+      nameD[2] = "Tuesday"
+      nameD[3] = "Wednesday"
+      nameD[4] = "Thursday"
+      nameD[5] = "Friday"
+      nameD[6] = "Saturday"
+
+      // Get Current Day
+      today = new Date();
+      day = today.getDay();
+
+      // Return Current Day
+      d = nameD[day];
+      return d;
+   }
+
+function scrollit_r2l(seed)
+{
+        var dayname, monthname;
+
+        monthname = mName(monthname);
+        dayname = dName(dayname);
+
+        today = new Date();
+        year = today.getYear();
+        daynum = today.getDate();
+
+        var m0  = "Today is " + dayname + " " + monthname + " " + daynum + ", " + "19" + year + ".  " ;
+	var m1  = "Welcome to Nell Dale's Homepages.... ";
+	var m2  = "Click on an item of interest! ";
+	var m3  = " ";
+	var m4  = "";
+	
+	var msg=m0+m1+m2+m3+m4;
+	var out = " ";
+	var c   = 1;
+
+	if (seed > 100) {
+		seed--;
+		var cmd="scrollit_r2l(" + seed + ")";
+		timerTwo=window.setTimeout(cmd,100);
+	}
+	else if (seed <= 100 && seed > 0) {
+		for (c=0 ; c < seed ; c++) {
+			out+=" ";
+		}
+		out+=msg;
+		seed--;
+		var cmd="scrollit_r2l(" + seed + ")";
+		    window.status=out;
+		timerTwo=window.setTimeout(cmd,100);
+	}
+	else if (seed <= 0) {
+		if (-seed < msg.length) {
+			out+=msg.substring(-seed,msg.length);
+			seed--;
+			var cmd="scrollit_r2l(" + seed + ")";
+			window.status=out;
+			timerTwo=window.setTimeout(cmd,100);
+		}
+		else {
+			window.status=" ";
+			timerTwo=window.setTimeout("scrollit_r2l(100)",75);
+		}
+	}
+}
+// -- End of JavaScript code -------------- -->
+</SCRIPT>
+
+</HEAD>
+
+<body onLoad="timerONE=window.setTimeout('scrollit_r2l(100)',500);" bgcolor="#ffffff">
+
+
+
+
+
+<BODY>
+<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="mailto:ndale@cs.utexas.edu"><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><IMG SRC="http://www.cs.utexas.edu/users/ndale/ndale.gif" ALT="Nell Dale" ALIGN="right" HEIGHT=226 WIDTH=150 BORDER=2 LOWSRC="ndale.gif" HSPACE=1 VSPACE=1></A>
+<H1>Professor Nell B. Dale:<br>Home Pages</H1>
+<p>
+<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="http://www.cs.utexas.edu/"><b>University of Texas Computer Science Department</b></A><br>
+<br>
+Welcome to my home page.  You have reached the web address of <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="mailto:ndale@cs.utexas.edu">Dr. Nell B.
+Dale</A>, retired Senior Lecturer in Computer Sciences at the <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="http://www.utexas.edu/">University of
+Texas at Austin</A>.  I received my Ph.D. in Computer Sciences in 1972 from UT
+Austin and have been on the faculty here since 1975. I retired from
+full-time teaching in the summer of 1994. I now teach a full load each Fall
+and spend the Spring and Summer <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A HREF="http://www.cs.utexas.edu/users/ndale/books.htm"><b>writing</b></A> and <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><A HREF="http://www.cs.utexas.edu/users/ndale/interest.htm"><b>traveling</b></A>.
+<br><br>
+
+Please feel free to browse in any of my rooms: the <!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><A HREF="http://www.cs.utexas.edu/users/ndale/profile.htm"><b>resume room</b></A>, which contains my <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><A HREF="http://www.cs.utexas.edu/users/ndale/profile.htm"><b>curriculum vita</b></A>, the <!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><A HREF="http://www.cs.utexas.edu/users/ndale/books.htm"><b>bibliography room</b></A>, which contains information on the text books I have authored or co-authored, the <!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><A HREF="http://www.cs.utexas.edu/users/ndale/student.htm"><b>research room</b></A>, which contains abstracts of
+dissertations that I have co-chaired recently, and the <!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><A HREF="http://www.cs.utexas.edu/users/ndale/interest.htm"><b>personal room</b></A>, which
+contains mementos of my nontechnical interests.<br><br>
+Please direct any
+correspondence to my e-mail account:<!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><A HREF="mailto:ndale@cs.utexas.edu"> <b>ndale@cs.utexas.edu</b>.</A><br><br>
+<UL>
+<b>
+<LI><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><A HREF="http://www.cs.utexas.edu/users/ndale/profile.htm">Professional Profile</A>
+<LI><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><A HREF="http://www.cs.utexas.edu/users/ndale/books.htm">Publications</A>
+<LI><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><A HREF="http://www.cs.utexas.edu/users/ndale/student.htm">Research Interests</A>
+<LI><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><A HREF="http://www.cs.utexas.edu/users/ndale/interest.htm">Personal Interests</A>
+</b>
+</UL>
+<br>
+<p>
+<!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><A HREF="mailto:ndale@cs.utexas.edu">
+<center><FONT size="-1">Nell B. Dale, 1200 Westlake Dr., Austin, Tx. 78746 (fax-office) 512-471-8885</FONT></center></A>
+<br><br>
+</body>
+</html>
+<hr><FONT SIZE="-1">This document was created with the assistance of<br><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><a href="http://www.eden.com/~smejkal">F.J.S.I.</a> All rights reserved.<br>
+Last updated: Aug. 18, 1996.</FONT>

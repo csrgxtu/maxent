@@ -1,0 +1,83 @@
+Date: Mon, 02 Dec 1996 15:10:05 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+<title>CSE567 Homework Assignment #4</title>
+</head>
+
+<body bgcolor="#dddddd"  text="#000000"  link="#0000ee" vlink="501080" alink="ff0000">
+
+<h1>CSE 567: Principles of Digital Systems Design </h1>
+<h3>Carl Ebeling, Fall 1996 </h2>
+
+<hr>
+
+<h3>Homework 4</h3>
+<p>
+<b>Distributed: Monday Oct. 28 - Due Wed. Nov. 6, in class</b>
+<hr>
+<p>
+You are to work together as teams on Homework 4.  Please look at
+the problems individually first and sketch possible solutions and
+questions.  Then meet together and formulate solutions to each if you
+can, and assign the writeup to one or more team members.  Then meet
+again to collate and review your solutions before you hand them in.
+The whole team is responsible for understanding the solution to all
+problems.
+<p>
+For problems involving Verilog code, hand in your code and your
+simulation log (or at least part of it if it's really long).  
+<ol>
+<LI> [Leiserson 29.2-1]
+<LI> [Leiserson 29.2-2]
+<P><LI> Let's say we have a set of N clients requesting service at the
+same time, only one of which we can service.  We can use a round-robin
+approach to decide who next gets serviced.  The N clients are put in
+some order, C_1 to C_N, and two bits are associated with each client.
+The first bit indicates whether the client is requesting service and
+the second bit indicates whether this client was the last client to be
+serviced.  When choosing the next client to service, we start at the
+last client serviced and find the next requesting client.
+<p>
+Design a circuit based on parallel-prefix to implement the round-robin
+protocol.  Assume that once you get to the end of the list of clients,
+something happens to restart the operation from the beginning.
+Define your operator, show that it is associative, and
+sketch the resulting circuit.
+<p>
+Extra credit: Can you solve this problem if we place the clients in a
+circle, with no start or end, instead of a list?
+
+<P><LI> Show that the conditional sum operator defined in class is
+associative.  Design the conditional sum adder for an 8-bit adder.
+Write a verilog program for this adder and simulate it to show that it
+works correctly.
+
+<P><LI> Show that the delay of the carry-select adder is O(N^1/2). (root N)
+
+<P><LI> Take your sorting circuit from Homework #3 and turn it into a
+pipelined sorter by inserting the appropriate registers.  Model delay
+using the unit-delay model and calculate the clock period.
+Simulate your circuit and show that it works correctly.
+
+<P><LI> Design a <i>fast</i> accumulator circuit which adds up a list
+of 8-bit numbers presented sequentially, one per clock cycle.  Your
+circuit should have two inputs, Data and Start, and two outputs, Sum
+and Valid.  Start is asserted on the cycle that a new list of numbers
+starts.  Valid is asserted on the cycle that the sum of the last list
+of numbers is valid.  That is, it may take more than one cycle after a
+list of numbers has been entered to generate the final sum.  Implement
+your circuit using Verilog using the unit-delay model to model the
+circuit delays.  Simulate your circuit, showing how fast it is and
+that it works.
+
+</ol>
+</body>
+<address>
+<hr>
+ebeling@cs.washington.edu
+</address>
+<p>
+</html>

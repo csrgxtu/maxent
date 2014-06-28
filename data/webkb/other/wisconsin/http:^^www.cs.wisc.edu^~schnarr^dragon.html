@@ -1,0 +1,86 @@
+Date: Tue, 05 Nov 1996 21:49:10 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 19 Sep 1996 20:25:42 GMT
+Content-length: 2415
+
+<!-- Changed by: Eric Schnarr, 17-Jun-1996 -->
+
+<HTML>
+<TITLE>Dragon Bytes</TITLE>
+
+<HEAD>
+<BODY>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!-----------------------------------------------------------------------------
+var timeout = 75;
+var origCount = 300;
+var startCount = 150;
+var restartCount = 500;
+var msg =	"O.K., so maby I havn't updated this page in a while." +
+		"                                        " +
+		"                                        " +
+		"                                        " +
+		"                                        " +
+		"Sorry, still no new info, " +
+		"but I've got this neet new scrolling message.";
+function scroll_status(ii)
+{
+    if(ii > startCount)
+	window.setTimeout("scroll_status("+(--ii)+")",timeout);
+    else if (0 < ii && ii <= startCount) {
+	var blanks = "";
+	for(var jj=0; jj<ii; ++jj) blanks+=" ";
+	window.status = blanks + msg;
+	window.setTimeout("scroll_status("+(--ii)+")",timeout);
+    } else if(ii <= 0) {
+	if(-ii < msg.length) {
+	    window.status = msg.substring(-ii,msg.length);
+	    window.setTimeout("scroll_status(" +(--ii)+ ")",timeout);
+	} else {
+            window.status = "";
+            window.setTimeout("scroll_status("+restartCount+")",timeout);
+	}
+    }
+}
+//---------------------------------------------------------------------------->
+</SCRIPT>
+</BODY>
+<BODY onLoad="window.setTimeout('scroll_status('+origCount+')',timeout);">
+</HEAD>
+<P>
+<!WA0><!WA0><!WA0><!WA0><IMG SRC="http://www.cs.wisc.edu/~schnarr/pvwizard.gif" ALT="Wizard, lake, sky.\n">
+<H1>Dragon Bytes</H1>
+<P>
+Do you play AD&D? I write campaigns and run them (sometimes).
+<P>
+This page is dedicated to the artwork and descriptions of places
+and adventures in the world of <I>Roneleven</I>. I have been creating
+Roneleven for several years, making it is a consistent yet richly
+detailed world. Several diverse campaigns have already been created
+and play tested, as well as writings on the history and religions
+of the place.
+<P>
+This page is mostly empty now, but I will be adding more pictures
+and related information over time.
+<UL>
+<LI>Maps of Roneleven --
+<UL>
+<LI><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.wisc.edu/~schnarr/Roneleven.gif">Roneleven</A>
+<LI><!WA2><!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~schnarr/Empire.gif">The Empire</A>
+</UL>
+<LI>History of Roneleven
+<LI>The Pantheon of Gods
+<LI><!WA3><!WA3><!WA3><!WA3><A HREF="http://www.cs.wisc.edu/~schnarr/Knight.html">Cyber Kinght</A>
+</UL>
+<H4>Current Projects:</H4>
+<UL>
+<LI><!WA4><!WA4><!WA4><!WA4><A HREF="http://www.cs.wisc.edu/~schnarr/Kirti_1.html">Hell and Glory</A>
+</UL>
+<HR>
+<ADDRESS>
+  <!WA5><!WA5><!WA5><!WA5><A HREF="http://www.cs.wisc.edu/~schnarr/schnarr.html">schnarr@cs.wisc.edu</A>
+</ADDRESS>
+</BODY>
+</HTML>

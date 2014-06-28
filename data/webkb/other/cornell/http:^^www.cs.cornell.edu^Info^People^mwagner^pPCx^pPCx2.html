@@ -1,0 +1,93 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 24-Nov-96 23:03:15 GMT
+Content-Type: text/html
+Content-Length: 3004
+Last-Modified: Friday, 25-Oct-96 16:24:43 GMT
+
+<!DOCTYPE HTML PUBLIC -//AS//DTD HTML 3.0 asWedit + extensions//EN>
+<HTML>
+
+
+<HEAD>
+<TITLE> pPCx </title>
+</HEAD>
+
+<BODY bgcolor="#ffffff" link="#ff0000" vlink="#426F42" alink="#ffffff">
+<!BODY background="back.jpg" link="#ff0000" vlink="#426F42"
+alink="#ffffff">
+
+<H1 align=center>The pPCx page</H1>
+
+<P>
+
+pPCx stands for "parallel predictor corrector" package and is a
+parallel version of the PCx code for Linear Programming developed at
+the <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="http://www.mcs.anl.gov/home/otc/">Optimization Technology
+Center</A> at <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.mcs.anl.gov/">Argonne National
+Labs</A>. This is work in progress, people involved from the Cornell
+side are <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A
+HREF="http://www.cs.cornell.edu/Info/People/coleman/coleman.html">
+Thomas Coleman</A>, <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="http://www.cs.cornell.edu/Info/People/csun/sun.html">
+Chunguang Sun</A> and <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="http://www.orie.cornell.edu">Michael Wagner</A>,
+and <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A HREF="http://www.mcs.anl.gov/home/wright/">Steve Wright</A>
+from Argonne. 
+
+<P>
+
+The basic framework for pPCx is 
+<!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><A HREF="http://www.iems.nwu.edu/faculty/mehrotra.html">Mehrotra</A>'s
+predictor corrector interior point method for linear programming. Most of the
+work in an 
+interior point method lies in solving a symmetric sparse
+positive (semi-) definite system of linear
+equations: we use a new <!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><A 
+HREF="http://www.cs.cornell.edu/Info/People/csun/psspd/index.html">
+parallel multifrontal Cholesky factorization</A>
+developed by <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><A HREF="http://www.cs.cornell.edu/Info/People/csun/sun.html">
+Chunguang Sun</A> that efficiently handles near-degeneracies. We also
+take care of dense rows and columns efficiently so that we can exploit
+sparsity in the normal equations as much as possible.
+The constraint matrix is stored in a distributed form, thus enabling the
+solution of very large problems that cannot be solved on a single
+processor.
+
+</P>
+The code is written entirely in C (with MPI extensions) and
+will thus be easily portable to other architectures.
+The testing is being done in the 
+<!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><A HREF="http://www.tc.cornell.edu/Research/ACRI/">ACRI</A> on the 
+IBM SP2 at the <!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><A HREF="http://www.tc.cornell.edu">Cornell Theory Center</A>
+
+<P>
+Here are a few of the papers that are relevant for the development of
+this code:
+<UL>
+<LI>S. J. Wright, 
+<!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><A HREF="http://www.mcs.anl.gov/home/wright/papers/P600.ps">"Modified 
+Cholesky Factorizations in Interior-Point Algorithms for Linear
+Programming,"</A>
+Preprint ANL/MCS-P600-0596, May, 1996.
+<LI>S. Mehrotra, "On the implementation of a primal-dual interior
+point method", SIAM Journal on Optimization, 2 (1992), pp. 575-601
+</UL>
+For other interior page pages check out <!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><A
+HREF="http://www.mcs.anl.gov/home/otc/InteriorPoint/">Interior Points 
+Online</A>.
+
+<P>
+Back to the <!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><A HREF="http://www.cs.cornell.edu/Info/Projects/ccop">
+CCOP-homepage</A>....
+
+<P> <HR> <ADDRESS> 
+Please send comments or suggestions to
+<!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><A HREF=mailto:"mwagner@cs.cornell.edu">mwagner@cs.cornell.edu</A>
+<BR>
+</ADDRESS>
+<HR>
+</BODY>
+Last update: Fri Oct 25 12:23:20 EDT 1996
+</HTML>
+
+
+

@@ -1,0 +1,188 @@
+Date: Tue, 26 Nov 1996 19:04:39 GMT
+Server: NCSA/1.4.1
+Content-type: text/html
+Last-modified: Thu, 16 May 1996 22:51:02 GMT
+Content-length: 6110
+
+<BASE href="http://www.cs.uidaho.edu/~foster/495s96/">
+<HEAD>
+<TITLE>CS 495/Math 405 Analysis of Algorithms Home Page</TITLE>
+<!-- Changed by: James Foster, 16-May-1996 -->
+</HEAD>
+<BODY>
+<center>
+<h1>Analysis of Algorithms (Sp '96)</H1>
+<H2>CS 495/Math 475</h2>
+</center>
+
+<P> Instructor: <!WA0><a href = "http://www.cs.uidaho.edu/faculty/foster.html">Dr. James A. Foster</a>
+<p>
+This course covers techniques for analysing the efficiency of algorithms, and for using this information to design better ones.
+<p>
+Here is <!WA1><a href="http://www.cs.uidaho.edu/~foster/495s96/syllabus.html">the syllabus as is currently stands</a>.
+ <P>
+<P>This document contatins:
+<UL>
+<LI> <!WA2><A HREF="#announcements">Announcements</A>
+<LI> <!WA3><A HREF="#info">General information</A>
+<LI> <!WA4><A HREF="#project">Programming Project</A>
+<LI> <!WA5><A HREF="#homework">Homework</A> (usually with solutions)
+<LI> <!WA6><A HREF="#tests">Tests</A> (with solutions once you've taken them)
+<LI> <!WA7><A HREF="#stuff">Interesting Stuff</A>
+<LI> <!WA8><A HREF="ftp://ftp.cs.uidaho.edu/pub/cs495/">Course FTP Site</A>
+</UL>
+
+Please drop any suggestions or comments into the
+<!WA9><A HREF="http://www.cs.uidaho.edu/~foster/495s96/mail.html">suggestion box</A>.
+
+<hr>
+<H3><A NAME="announcements">Announcements</A></Blink></H3>
+<OL>
+
+<li> <!WA10><a href="http://www.cs.uidaho.edu/~foster/495s96/completeness.html">Here</a> are some notes on NP completeness.
+
+<li> <!WA11><a href="http://www.cs.uidaho.edu/~foster/495s96/np-notes.html">Here</a> are some notes on P, NP, and all that jazz.
+
+<li> <!WA12><a href="http://www.cs.uidaho.edu/~foster/495s96/leader.html">Here</a>
+are some notes on the probabilistic election of a leader in a ring.
+
+<li>Greg Hall has graciously agreed to make his C code for 
+<!WA13><a href="file://ftp.cs.uidaho.edu/pub/cs495/binheap.c">biomial heaps</a>
+to everyone.  Here are <!WA14><a href="http://www.cs.uidaho.edu/~foster/495s96/binheap-notes.txt">some additional notes</a> on using this code.
+
+
+<li>Here is a <!WA15><a href="file://ftp.cs.uidaho.edu/pub/cs495/lhrr.pl">perl script</a>
+which computes the closed form for a linear
+homogenous recurrence relation when you give it the roots and
+multiplicities of the characteristic polynomial.  Feel free to copy it
+over and play with it.
+
+<li>Jason Evans' 
+<!WA16><a href="ftp://ftp.cs.uidaho.edu/pub/cs495/gen_data.c">instance generator for three processor scheduling</a> is available via ftp.  Thanks, Jason.
+<li><!WA17><a href="ftp://ftp.cs.uidaho.edu/pub/cs495/hw1.ps">Solutions to homework one</a> are available now.
+</ol>
+
+<H3><a name="info">General Information</a></H3>
+<P>
+
+<uL>
+   <li> Instructor: <!WA18><A HREF="http://www.cs.uidaho.edu/~foster">James A. Foster</A>
+<MENU>
+<LI> Office: JEB B24
+<LI> Phone: 885-7062
+<LI> Office Hours: 2:30-3:20 MWF, 3:20-4:20 W
+<LI> Email: <tt> foster@cs.uidaho.edu</tt>
+<LI> Texts
+<UL>
+<LI> <EM>Fundamentals of Algorithmics</EM>, Brassard and Brately. Prentice Hall, 1995. (Req'd)
+<LI> <EM>Computers and Intractability</EM>, Garey and Johnson.  Freeman, 1979. (Recommended)
+</UL>
+
+</MENU>
+</ul>
+
+Grades will be determined approximately as follows:
+<ul>
+<li>Midterm: 30%
+<li>Final: 35%
+<li>Project: 25%
+<li>Homework: 10%
+</ul>
+Classroom participation will be considered, too.
+
+
+<h3><a name="project">Programming Project</a></h3>
+
+In this course, we implement three programs for the three processor
+scheduling problem.  One uses a simple exhaustive search, another uses
+backtracking, and the third uses branch and bound.  For details, see
+the <!WA19><a href = "http://www.cs.uidaho.edu/~foster/495s96/project-description.ps">project description</a>.
+
+<p>
+Here is a description of the criteria by which project papers are graded,
+and <!WA20><a href="http://www.cs.uidaho.edu/~foster/495s96/project-grading.ps">hints for getting a higher grade</a>.
+
+<p>
+
+
+<H3><a name="homework">Homework</a></H3>
+<P>There will be approximately eight homework assignments (every two weeks).
+However, these will be graded on a pass/fail basis, where students who 
+turn in the homeworks and make a genuine effort will pass.  
+I will provide solutions.
+<P> Here are the homework assignments for this semester:
+<center>
+<TABLE compact>
+<TH> Assignment <TH> Due Date <TH> Solutions <TR>
+<TD> <!WA21><a href="http://www.cs.uidaho.edu/~foster/495s96/hw1.ps">One</a> <TD> 2 Feb <td> <!WA22><a href="ftp://ftp.cs.uidaho.edu/pub/cs495/hw1.ps">Here</a> <TR>
+<TD> <!WA23><a href="http://www.cs.uidaho.edu/~foster/495s96/hw2.ps">Two</a> <TD> 28 Feb <td> <!WA24><a href="ftp://ftp.cs.uidaho.edu/pub/cs495/hw2.ps">Here</a> <TR>
+<TD> <!WA25><a href="http://www.cs.uidaho.edu/~foster/495s96/hw3.ps">Three</a> <TD> 8 March <td> <!WA26><a href="ftp://ftp.cs.uidaho.edu/pub/cs495/hw3.ps">Here</a> <tr>
+<TD> <!WA27><a href="http://www.cs.uidaho.edu/~foster/495s96/hw4.ps">Four</a> <TD> 15 April <td> <!WA28><a href="ftp://ftp.cs.uidaho.edu/pub/cs495/hw4.ps">Here</a> <tr>
+<TD> <!WA29><a href="http://www.cs.uidaho.edu/~foster/495s96/hw5.ps">Five</a> <TD> 8 May <td> <!WA30><a href="ftp://ftp.cs.uidaho.edu/pub/cs495/hw5.ps">Here</a><tr>
+ <TR>
+</TABLE>
+</center>
+
+<p>
+See the 
+<!WA31><a href="http://www.cs.uidaho.edu/~foster/495s94">homepage from 1994</a>
+for past homework.
+
+
+<H3><a name="tests">Tests</a></H3>
+<p>Here is <!WA32><a href="ftp://ftp.cs.uidaho.edu/pub/cs495/test1.ps">Test
+One</a> (with answers).  
+The average score was 65.1 with a standard deviation of 20.5.  
+Letter grades are:
+<center>
+<TABLE compact>
+<th>Range <TH>Grade <th>Number of People <tr>
+<td>102-85  <td>A <td> 7   <tr>
+<td>84-65   <td>B <td> 20   <tr>
+<td>64-40   <td>C <td> 10   <tr>
+<td>39-21   <td>D <td> 5   <tr>
+<td>20-0    <td>F <td> 3   <tr>
+</TABLE>
+</center>
+
+<p>Here is <!WA33><a href="ftp://ftp.cs.uidaho.edu/pub/cs495/test2.ps">Test
+Two</a> (with answers).  
+The average score was 129 with a standard deviation of 15.5.
+Letter grades are:
+
+<center>
+<TABLE compact>
+<th>Range <TH>Grade <th>Number of People <tr>
+<td>150-131 <td>A <td> 20  <tr>
+<td>130-111 <td>B <td> 12   <tr>
+<td>110-91  <td>C <td> 7   <tr>
+<td>90-51   <td>D <td> 0   <tr>
+<td>50-0    <td>F <td> 0   <tr>
+</TABLE>
+</center>
+
+<p>
+And here are some tests from years gone by:
+<dir>
+<li><!WA34><a href="http://www.cs.uidaho.edu/~foster/495s94/495_test.ps">Midterm from 1992</a>
+<li><!WA35><a href="http://www.cs.uidaho.edu/~foster/495s94/495-midterm-answers.ps">Midterm from 1994</a>
+<li><!WA36><a href="http://www.cs.uidaho.edu/~foster/495s94/495_final.ps">Final from 1994</a>
+</dir>
+<P>
+
+<h3><a name="stuff">Interesting Stuff</a></h3>
+<dir>
+
+<li><!WA37><a href="news:uidaho.cs.theory">uidaho.cs.theory</a> for discussions of theoretical computer science at UI.  You may use this newsgroup for discussions about this course.
+<li><!WA38><a href="news:comp.theory">comp.theory</a> for discussions of theoretical CS world-wide
+</dir>
+
+</BODY>
+<P><ADDRESS>
+<I>foster@cs.uidaho.edu</I>
+</ADDRESS>
+
+
+
+
+

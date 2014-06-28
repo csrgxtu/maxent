@@ -1,0 +1,160 @@
+Date: Thu, 21 Nov 1996 23:01:37 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Fri, 20 Sep 1996 12:36:35 GMT
+Content-length: 5305
+
+<html>
+<head>
+	<title>Marc E. Fiuczynski's Home Page</title>
+
+<script language="JavaScript"><!-- Begin code
+
+/* Copyright (C)1996 Web Integration Systems, Inc. DBA Websys, Inc.
+   All Rights Reserved.
+   This applet can be re-used or modified, if credit is given in the source code.
+*/
+
+function scrollit_r2l(seed)
+{
+	var m1  = "Isn't Java awesome?          ";
+	var m2  = "Give me a break.";
+	
+	var msg=m1+m2;
+	var out = " ";
+	var c   = 1;
+
+	if (seed > 100) {
+		seed--;
+		var cmd="scrollit_r2l(" + seed + ")";
+		timerTwo=window.setTimeout(cmd,100);
+	}
+	else if (seed <= 100 && seed > 0) {
+		for (c=0 ; c < seed ; c++) {
+			out+=" ";
+		}
+		out+=msg;
+		seed--;
+		var cmd="scrollit_r2l(" + seed + ")";
+		    window.status=out;
+		timerTwo=window.setTimeout(cmd,50);
+	}
+	else if (seed <= 0) {
+		if (-seed < msg.length) {
+			out+=msg.substring(-seed,msg.length);
+			seed--;
+			var cmd="scrollit_r2l(" + seed + ")";
+			window.status=out;
+			timerTwo=window.setTimeout(cmd,100);
+		}
+		else {
+			window.status=" ";
+			timerTwo=window.setTimeout("scrollit_r2l(100)",75);
+		}
+	}
+}
+// -- End code --></script>
+
+</head><body onLoad="timerONE=window.setTimeout('scrollit_r2l(100)',500);">
+
+<body>
+<h1> <a name="top">Marc E. Fiuczynski's Home Page</a></h1>
+<!WA0><!WA0><!WA0><!WA0><!WA0><img src=http://www.cs.washington.edu/homes/mef/mef-small.gif> Marc E. Fiuczynski<p>
+<address>     
+     <!WA1><!WA1><!WA1><!WA1><!WA1><a href="mailto:mef@cs.washington.edu">mef@cs.washington.edu</a> <br>
+     <!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.cs.washington.edu/homes/mef//">Computer Science & Engineering Department,</a> <br> 
+     <!WA3><!WA3><!WA3><!WA3><!WA3><a href="http://www.washington.edu/">University of Washington,</a> FR-35, <br>
+     <!WA4><!WA4><!WA4><!WA4><!WA4><a href="http://www.cs.washington.edu/area">Seattle, WA</a> 98195 USA
+</address>
+
+<hr> <p>
+
+<h2>Background</h2>
+
+<P>I'm a graduate student at the University of Washington in the <!WA5><!WA5><!WA5><!WA5><!WA5><a
+href="http://www.cs.washington.edu/homes/mef//">Department of Computer Science and Engineering</a>.  I grew
+up in Germany (near Düsseldorf), and spent a few years in High
+School in Princeton, NJ.  I received a B.A. in Computer Science from
+Rutgers University in 1992 and spent several summers at <!WA6><!WA6><!WA6><!WA6><!WA6><a
+href=http://www.research.att.com>AT&T Bell Labs</a> and the <!WA7><!WA7><!WA7><!WA7><!WA7><a
+href=http://www.mitre.org>MITRE Corporation</a> working on a range of
+projects.  I'm the sole proprietor of <i>MEF Systems</i>, a company
+that I created in December 1993 to sell a distributed, fault tolerant,
+IP network based telephone system that I built from scratch on a set
+of VME chasis with 680x0 processors, using <!WA8><!WA8><!WA8><!WA8><!WA8><A
+HREF="http://www.inea.com/uv/">UniVoice</A> telephone interface cards
+and the <!WA9><!WA9><!WA9><!WA9><!WA9><a href=http://147.11.1.23/>VxWorks</a> operating system.</P>
+
+
+Most of my time I spend hacking on <!WA10><!WA10><!WA10><!WA10><!WA10><A
+HREF=http://www.cs.washington.edu/research/projects/spin/www/index.html><i>SPIN</i></A>, which is
+a safe, adaptable and extensible operating system.
+
+My primary contribution to <i>SPIN</i> is <!WA11><!WA11><!WA11><!WA11><!WA11><a
+href=http://www.cs.washington.edu/homes/mef/usenix96.html>An Extensible Protocol Architecture for
+Application-Specific Networking</a>.  Applications achieve compelling
+performance improvements using our new structure, when compared to
+similar applications running on DEC's commercial OSF/1 V3.2 platform.
+For a demonstration of this work as it services HTTP requests contact
+<!WA12><!WA12><!WA12><!WA12><!WA12><a href="http://www-spin.cs.washington.edu">http://www-spin.cs.washington.edu</a>.
+
+<p>
+
+<h2>Recent reports and papers</h2>
+
+<dl> 
+
+<dt> <!WA13><!WA13><!WA13><!WA13><!WA13><a href=http://www.cs.washington.edu/homes/mef/usenix96.html>An Extensible Protocol Architecture for
+Application-Specific Networking</a> 
+<dd> A design and implementation and performance paper.  Describes an
+extensible protocol architecture that allows anyone to customize an
+in-kernel protocol graph, which enables applications achieves better
+performance compared to similar applications running on conventional
+operating systems.
+
+For a demonstration of this work as it services HTTP requests contact
+<!WA14><!WA14><!WA14><!WA14><!WA14><a
+href="http://www-spin.cs.washington.edu">http://www-spin.cs.washington.edu</a>.
+<br>
+
+<dd>Appeared in the Proceedings of the <!WA15><!WA15><!WA15><!WA15><!WA15><a
+href="http://www.usenix.org/sd96.html">1996 Winter USENIX Technical
+Conference</a>
+
+<dt> <!WA16><!WA16><!WA16><!WA16><!WA16><a
+HREF=http://www.cs.washington.edu/research/projects/spin/www/external/papers/papers/sosp.ps>Extensibility,
+Safety and Performance in the SPIN Operating System</a> 
+
+<dd> A design, implementation and performance paper.
+<dd> Appeared in the Proceedings of the Fifteenth ACM Symposium on Operating Systems Principles.
+<br>
+
+<dt> <!WA17><!WA17><!WA17><!WA17><!WA17><a
+HREF=http://www.cs.washington.edu/research/projects/spin/papers/WCS/language.ps>Language Support for Extensible Operating Systems</a>
+<dd>  We've been pretty happy with M3, but we've had to deal with a few shortcomings in
+order to use the language in a safe extensible operating system. This paper describes
+how we've addressed those shortcomings.
+<br>
+
+<dt> <!WA18><!WA18><!WA18><!WA18><!WA18><a
+ HREF=http://www.cs.washington.edu/research/projects/spin/papers/WCS/domains.ps>Safe Dynamic Linking in an Extensible Operating System</a>
+<dd> Describes the dynamic linker we use to load code into the kernel.  Key point is
+the ability to create and manage linkable namespaces that describe interfaces and
+collections of interfaces.
+<br>
+
+<dt> <!WA19><!WA19><!WA19><!WA19><!WA19><a href=http://www.cs.washington.edu/research/spin/www/HotOS95/hotos95.ps>Protection is a Software Issue</a>
+<dd> A position paper comparing software and hardware protection mechanisms.
+<dd> Proceedings of the Fifth IEEE Workshop on Hot Topics in Operating Systems.
+<br>
+
+<dt> <!WA20><!WA20><!WA20><!WA20><!WA20><a HREF=http://www.cs.washington.edu/homes/mef/tse.ps>Region Analysis: A Parallel Elimination Method for Data Flow Analysis</a>
+<dd> In IEEE 1995 Transactions on Software Engineering.
+
+</dl>
+</body>
+
+<hr><p>
+
+<!WA21><!WA21><!WA21><!WA21><!WA21><a href="mailto:mef@cs.washington.edu">mef@cs.washington.edu</a>
+</html>

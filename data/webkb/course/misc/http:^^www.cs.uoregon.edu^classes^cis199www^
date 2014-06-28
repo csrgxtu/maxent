@@ -1,0 +1,200 @@
+Date: Tue, 26 Nov 1996 19:16:21 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+
+<html>
+<!-- OWNER_NAME="Michael Perren, University of Oregon" -->
+<!-- MODIFIED_BY="Juan Flores, University of Oregon" -->
+<!--MODIFIED BY="Amitabha Roy,University of Oregon"-->
+<SCRIPT LANGUAGE="JavaScript">
+
+
+
+<!-- Beginning of JavaScript Applet -------------------
+var loop = 10;
+var delay = 100;
+function MoveMe(base)
+{
+  var msg   = "New demo on imagemaps... Start reading a little bit of PERL from the reference list ..";
+  var spaces = "                                                                                                         ";
+  var out = " ";
+  var c   = 0;
+  if (base > 100) base=100;
+  if (base <= 100 && base > 0) {
+        out = spaces.substring(0,base);
+        out+=msg;
+        base--;
+        var cmd="MoveMe(" + base + ")";
+        window.status=out;
+        timerTwo=window.setTimeout(cmd,delay);
+  }
+  else if (base <= 0) {
+        if (-base < msg.length) {
+          out+=msg.substring(-base,msg.length);
+          base--;
+          var cmd="MoveMe(" + base + ")";
+          window.status=out;
+          timerTwo=window.setTimeout(cmd,delay);
+        }
+        else {
+          loop--;
+          if(loop > 0) {
+                timerTwo=window.setTimeout("MoveMe(100)",delay);
+          }
+          else                        
+                window.status="Java script: Done ";
+        }
+  }
+}
+
+// -- End of JavaScript code -------------- -->
+
+
+
+
+</SCRIPT>
+<header>
+<title>CIS 199 : Web Page Authoring</title>
+</header>
+<body  onLoad="timerONE=window.setTimeout('MoveMe(500)',100);" background="pics/waveback.jpg"  text="#000000"  link="#0000ff" vlink="#8800ff">
+<!WA0><img src="http://www.cs.uoregon.edu/classes/cis199www/htbin/access.cgi?index.shtml"></img>
+<center>
+<!WA1><img src="http://www.cs.uoregon.edu/classes/cis199www/pics/barbed_wire.gif"></img><br>
+<table>
+<tr>
+<td>
+<!WA2><img src="http://www.cs.uoregon.edu/classes/cis199www/pics/duke.gif">
+</td>
+<td>
+<font color="red"><em><h3> CIS 199 : Web Page Authoring </h3></em></font>
+</td>
+<td>
+<!WA3><img src="http://www.cs.uoregon.edu/classes/cis199www/pics/duke.gif">
+</td>
+</table>
+<!WA4><img src="http://www.cs.uoregon.edu/classes/cis199www/pics/barbed_wire.gif"></img><br>	
+
+<br><br><br>
+<b>Welcome, <font color="#800080">gs35.sp.cs.cmu.edu</font>, to the CIS 199 web page.</b>
+<br> See the <!WA5><a href="http://www.cs.uoregon.edu/classes/cis199www/frames/frame.html" target="_top">Frames version of the CIS 199 web page</a><br>
+<font color=red size=5><!WA6><a href="http://www.cs.uoregon.edu/classes/cis199www/class/getinput.shtml">Grades</a> are online.</font>
+
+<br><br><br>
+<table border=6>
+<tr> <td> <b> Instructor </b></td>
+<tr> <td> 
+<table border=1>
+<tr><td><!WA7><a href="http://members.aol.com/jynelms/tv/links.htm"><!WA8><img src="http://www.cs.uoregon.edu/classes/cis199www/pics/homer.gif" border=0></a>
+<!WA9><a href="http://www.cs.uoregon.edu/~aroy"><font size="2"><font size="3">A</font>mitabha <font size="3">R</font>oy</font></a></img>
+</td>
+<tr>
+<td> <em> <!WA10><img src="http://www.cs.uoregon.edu/classes/cis199www/pics/home.gif"><font size="2">233 <!WA11><a href="http://www.cs.uoregon.edu/classes/cis199www/class/desh.shtml"><font size="3">D</font>eschutes </font></em></img></td>
+<tr>
+<td> <em> <!WA12><img align=middle src="http://www.cs.uoregon.edu/classes/cis199www/pics/ph.xbm"><font size="2"> (541)346-1384</em></font></img></td>
+<tr>
+<td>
+<em> <!WA13><img src="http://www.cs.uoregon.edu/classes/cis199www/pics/mailbox.gif"><font size="2"><!WA14><a href="mailto:aroy@cs.uoregon.edu">aroy@cs.uoregon.edu</a></img></font></em></td>
+</table>
+</table>
+
+<br><br>
+<table border=8 height=140 width=100%>
+<tr>
+<td rowspan=4  height=200 valign=top>
+<b>Resources</b><br>
+<hr size=5>
+<!WA15><a href="http://www.yahoo.com">Yahoo </a><br>
+<!WA16><a href="http://altavista.digital.com/">AltaVista </a><br>
+<!WA17><a href="http://www.infoseek.com/">Infoseek </a><br>
+<!WA18><a href="http://www.excite.com/">Excite </a><br>
+<!WA19><a href="http://www.lycos.com/">Lycos </a><br>
+<!WA20><a href="http://www.webcrawler.com/">Webcrawler</a><br>
+<!WA21><a href="http://home.netscape.com">Netscape</a><br>
+<!WA22><a href="news://news.uoregon.edu">News</a><br>
+<!WA23><a href="http://www.lib.umich.edu/">Internet Resource Guide</a><br>
+<!WA24><a href="http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/MetaIndex.html">Internet Metamap</a><br>
+</td>
+<td colspan=3>
+<b>Course Links </b></td>
+<tr>
+<td   valign=middle align=middle><h4><!WA25><A HREF="http://www.cs.uoregon.edu/classes/cis199www/class/courseinfo.shtml">Course Information</A></h4></td>
+<td valign=middle align=middle><h4><!WA26><A HREF="http://www.cs.uoregon.edu/classes/cis199www/class/syllabus.shtml">Course Outline</A></h4></td>
+<td valign=middle align=middle><h4><!WA27><a href="http://www.cs.uoregon.edu/classes/cis199www/class/handouts.shtml">Handouts</a></h4></td>
+</tr>
+
+<tr>
+<td valign=middle align=middle><h4><!WA28><a href="http://www.cs.uoregon.edu/classes/cis199www/class/announce.shtml">Announcements</a></h4></td>
+<td  align=middle valign=middle><h4><!WA29><A HREF="http://www.cs.uoregon.edu/classes/cis199www/class/office_hours.shtml">Office Hours</A></h4></td>
+<td valign=middle align=middle><h4><!WA30><A HREF="http://www.cs.uoregon.edu/classes/cis199www/class/students.shtml">Student Pages</A></h4></td>
+</tr>
+
+<tr>
+<td valign=middle align=middle><h4><!WA31><A HREF="http://www.cs.uoregon.edu/classes/cis199www/class/grading.shtml">Grading Policy</A></a></h4></td>
+<td valign=middle align=middle><h4><!WA32><A HREF="http://www.cs.uoregon.edu/classes/cis199www/class/home.shtml">Homeworks</A></h4></td>
+<td valign=middle align=middle><h4><!WA33><A HREF="http://www.cs.uoregon.edu/classes/cis199www/class/ref.shtml">References</A></h4></td>
+</tr>
+<tr>
+<td align=middle valign=middle height=30 colspan=2> <!WA34><A HREF="http://www.cs.uoregon.edu/cgi-bin/guestbook2?aroy!guests/guests199.html"><B>sign </B></A> <B> the CIS199 </B> <!WA35><A HREF="http://www.cs.uoregon.edu/~aroy/guests/guests199.html"><B>guest book</B></A>
+</td>
+<td colspan=1><center><b><!WA36><a href="http://www.cs.uoregon.edu/classes/cis199www/class/demoindx.shtml">Demos</a></b></center></td>
+<td><center><b><!WA37><a href="http://www.cs.uoregon.edu/classes/cis199www/class/stats.shtml">Statistics</a></td>
+</table>
+<p><p><p>
+</td>
+</table>
+
+
+<p><p>			
+
+
+<br><br><br>
+
+<table border=8 align=middle units=relative>
+<h1><font size="3">Say hello to the <!WA38><a href="http://www.cs.uoregon.edu/classes/cis199www/class/duke.shtml">Duke</a></font></h1>
+
+<td>
+<applet codebase="class" code="TumbleItem.class" width=600 height=95>
+<param name=maxwidth value="120">
+<param name=nimgs value="16">
+<param name=offset value="-57">
+<param name=img value="tumble">
+</applet>
+</td>
+</table>
+<br><br><br>
+<center>
+[<!WA39><a href="http://www.cs.uoregon.edu/~aroy">Roy's Home Page</a>][<!WA40><a href="http://www.uoregon.edu">UO Home Page</a>][<!WA41><a href="http://www.cs.uoregon.edu">UO CIS Dept</a>]
+</center>
+<br><br>
+<!WA42><img src="http://www.cs.uoregon.edu/classes/cis199www/pics/constrct.gif" ><b>Under Construction </b></img>
+<br><br>
+This page was last modified  on Wednesday. August 21,1996
+<p>
+<p>
+<hr noshade>
+<address><font size="2">
+AMITABHA ROY<br>
+DEPARTMENT OF COMPUTER AND INFORMATION SCIENCE<br>
+SCHOOL OF ARTS AND SCIENCES<br>
+UNIVERSITY OF OREGON<br>
+EUGENE ,OR 97403 <br>
+Email:<!WA43><A HREF="mailto:aroy@cs.uoregon.edu"> aroy@cs.uoregon.edu</A></i><br>
+<!WA44><img src="http://www.cs.uoregon.edu/classes/cis199www/pics/old_phone.gif" width=25>(541) 346-1384
+</font>
+</address>
+<br>
+<hr noshade>
+<br>
+
+<p>
+
+</body>
+</html>
+	
+	
+
+
+
+
+
+

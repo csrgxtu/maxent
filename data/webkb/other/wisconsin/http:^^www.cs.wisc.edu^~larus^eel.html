@@ -1,0 +1,162 @@
+Date: Tue, 05 Nov 1996 20:43:56 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 12 Aug 1996 14:15:36 GMT
+Content-length: 6259
+
+<HTML>
+<HEAD>
+<TITLE> EEL: An Executable Editing Library </TITLE>
+<!-- Changed by: James Larus, 12-Aug-1996 -->
+</HEAD>
+<BODY
+background="eel.gif" body text="#000000" link="#000fff"">
+
+<!IMG SRC="eel.gif" ALT=""> <BR>
+
+<H1> EEL: An Executable Editing Library </H1>
+EEL (Executable Editing Library) is a new C++ library that hides much of
+the complexity and system-specific detail of editing executables.  EEL
+provides abstractions that allow a tool to analyze and modify executable
+programs without being concerned with particular instruction sets,
+executable file formats, or consequences of deleting existing code and
+adding foreign code.  EEL greatly simplifies the construction of program
+measurement, protection, translation, and debugging tools.  EEL differs
+from other systems in two major ways: it can edit fully-linked
+executables, not just object files, and it emphasizes portability across
+a wide range of systems.
+
+<H3> Why Edit Executables? </H3>
+Executable editing is widely used for three purposes: emulation,
+observation, and optimization.  An edited executable can emulate features
+that hardware does not provide.  For example, the Wisconsin Wind Tunnel
+architecture simulator drives a distributed, discrete-event simulation of
+a parallel computer from the logical cycle times of processors directly
+executing a parallel program.  The underlying hardware (a SPARC processor
+in a Thinking Machines CM-5) does not provide a cycle counter or an
+efficient mechanism for interleaving computation and simulation.  The
+Wind Tunnel system edits programs so that they update a cycle timer and
+return control at timer expirations.  Similarly, one version of the
+Blizzard distributed shared-memory system edits programs to insert
+fine-grain access tests before shared loads and stores. These tests
+permit data sharing at cache-block granularity, which reduces the false
+sharing incurred by page-granularity distributed shared-memory
+systems. In the limit, editing can replace an entire program with
+instructions for a different architecture. Translation is used both to
+migrate legacy code to new architectures and to run binaries on other
+systems.
+
+<P>
+Another use of executable editing is program observation. Profiling and
+tracing tools, such as MIPS's pixie or qpt, edit executables to record
+execution frequencies or trace memory references. These tools are widely
+used to study program or system behavior and computer architecture . More
+recently, a tool based on EEL, Active Memory, dramatically lowered the
+cost of cache simulation-to a 2-7x slowdown-by inserting cache-miss tests
+before a program's memory references rather than post-processing an
+address trace.
+
+<P>
+Finally, executable editing has also been used for global register
+allocation and program optimization.  Unlike most compilers, which
+operate on a single file, editing can manipulate an entire program, which
+permits it to perform interprocedural analysis rather than stopping at
+procedure boundaries.
+
+<H3> How EEL Helps </H3>
+EEL provides five major abstractions (C++ class hierarchies) that allow a
+tool to examine and modify an executable: executable, routine, CFG,
+instruction, and snippet.  An executable contains code and data from
+either an object, library, or executable file.  A tool opens an
+executable, examines and modifies its contents, and writes an edited
+version.  An executable primarily contains routines, the second
+abstraction, but also contains non-executable data.  A tool can examine
+and modify routines in any order and place them, and new routines, in the
+edited executable in any order.  EEL represents a routine's body with two
+further abstractions: control-flow graphs (CFGs) and instructions.  A CFG
+is a directed graph whose nodes are basic blocks (single-entry,
+single-exit straight-line code sequences) and whose edges represent
+control flow between blocks.  EEL provides extensive control-flow and
+data-flow analysis for CFGs.  Blocks contain a sequence of instructions,
+each of which is a machine-independent description of a machine
+instruction.  A tool edits a CFG by deleting instructions or adding code
+snippets to blocks and edges.  A snippet encapsulates machine-specific
+foreign code and provides context-dependent register allocation.  EEL
+modifies calls, branch, and jumps to ensure that control flows correctly
+in the edited program.
+
+<H3> Details </H3>
+EEL currently works for SPARC processors (running SunOS or Solaris).
+Ports to other systems are in progress.
+
+<P>
+EEL is distributed as part of the Wisconsin Architectural Research
+Toolset (<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~larus/warts.html">WARTS</A>).  WARTS is available without
+charge for university researchers and is available to other
+researchers for a modest research donation.
+
+
+<H2> <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><IMG SRC="http://www.cs.wisc.edu/~larus/new.gif" ALT="">Tools Built with EEL</H2>
+
+<UL>
+<LI>
+<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~larus/qpt.html">
+QPT2: A Quick Profiling and Tracing System
+</A>
+
+<LI>
+<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="http://www.cs.berkeley.edu/~manuel/IRAM">
+Instrumenting the Solaris kernel.
+</A>
+
+<LI>
+<!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="file://ftp.cc.gatech.edu/pub/people/panesar/AISS-pads-96.ps.gz">
+Darrin West and Kiran Panesar, 
+<EM>Automatic Incremental State Saving,</EM>
+PADS 10.
+</A>
+</UL>
+
+<H2> For More Information</H2>
+
+Click <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A HREF="http://www.cs.wisc.edu/~larus/eel_slides.ps">here</A> for slides of a talk on EEL.
+
+<P>
+An overview <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><A HREF="ftp://ftp.cs.wisc.edu/wwt/pldi95_eel.ps">paper</A>
+for EEL (appeared in the ACM SIGPLAN PLDI Conference, June 1995).
+
+<P>
+Another <!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><A HREF="ftp://ftp.cs.wisc.edu/wwt/wcsss96_eel.ps">paper</A>
+demonstrating that simple instruction scheduling can hide 20-65% of the cost
+of program instrumentation and that rescheduling legacy code for superscalar
+processors can significantly improve performance.
+
+<H2> Related Work</H2>
+
+<P>
+<!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><A HREF="http://www.research.digital.com/wrl/projects/om/om.html">
+OM and ATOM project at DEC WRL (now Digital products).
+</A>
+
+<P>
+<!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><A HREF="http://www.cs.washington.edu/homes/bershad/etch/">
+Etch tool for editing Win32 x86 executables.
+</A>
+
+<P>
+James Larus<BR>
+Computer Sciences Department<BR>
+University of Wisconsin<BR>
+1210 West Dayton Street<BR>
+Madison, WI 53706<BR>
+larus@cs.wisc.edu<BR>
+608-262-9519
+
+
+<HR>
+Last modified: Sat Jun  1 08:09:20 1996 by James Larus
+<ADDRESS>
+  <!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><A HREF="http://www.cs.wisc.edu/~larus/larus.html">larus@cs.wisc.edu</A>
+</ADDRESS>
+</BODY>
+</HTML>

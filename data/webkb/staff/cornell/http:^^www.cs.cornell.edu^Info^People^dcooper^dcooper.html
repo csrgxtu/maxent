@@ -1,0 +1,117 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Wednesday, 20-Nov-96 19:32:11 GMT
+Content-Type: text/html
+Content-Length: 4800
+Last-Modified: Tuesday, 24-Oct-95 23:07:32 GMT
+
+<TITLE> David Cooper's Home Page </TITLE>
+
+<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><IMG BORDER=0 HSPACE=10 ALIGN="left" SRC="http://www.cs.cornell.edu/Info/People/dcooper/dcooper.gif">
+
+<H1> David Cooper </H1>
+<I><DL>
+<DT> Postdoctoral Associate
+<DT> 4112 Upson Hall
+<DT> Phone: 607-255-9222
+<DT> Email: <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="mailto:dcooper@cs.cornell.edu"> dcooper@cs.cornell.edu </A>
+</DL></I>
+
+<HR>
+
+<H3> Current Research </H3>
+
+My current research involves the design and implementation of a security
+architecture for <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="http://simon.cs.cornell.edu/Info/Projects/HORUS/">
+Horus</A>. The goal of this work is to provide a <I> layer </I> to Horus
+which will interact with
+<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="ftp://athena-dist.mit.edu/ftp/pub/ATHENA/kerberos"> The Kerberos
+Network Authentication Service</A> and other cryptographic tools in order to
+provide privacy and authentication services to processes in a group setting.
+
+<p>
+
+The original security architecture for Horus was implemented by Mike Reiter
+(see <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="http://cs-tr.cs.cornell.edu:80/TR/CORNELLCS:TR93-1367">
+A Security Architecture for Fault-Tolerant Systems</A>). In the original
+implementation of <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A HREF="http://simon.cs.cornell.edu/Info/Projects/HORUS/">
+Horus</A>, all process groups supported the virtual synchrony model of
+computation. In order to maintain virtual synchrony (in the crash failure
+model used in <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><A HREF="http://simon.cs.cornell.edu/Info/Projects/HORUS/">
+Horus</A>), it is necessary for all processes within a group to be honest. As
+a result, the original security architecture makes the assumption that any
+process which is allowed to join a group is trusted by all of the group members.
+
+<p>
+
+In the current version of
+<!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><A HREF="http://simon.cs.cornell.edu/Info/Projects/HORUS/"> Horus</A>, it is
+possible to maintain process groups whose semantics are weaker than those of
+virtual synchrony. In such groups, it may be desirable to permit untrusted
+processes to join. An example of this might involve allowing untrusted clients
+to join a client/server group. In such a setting, servers would communicate
+with untrusted clients, but would only accept a limited set of commands from
+the clients (and would be responsible for screening out all other messages).
+
+<p>
+
+The new <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><A HREF="http://simon.cs.cornell.edu/Info/Projects/HORUS/"> Horus</A>
+security architecture will permit arbitrary trust relationships
+among the processes within a group. This is accomplished by using a key
+management scheme which does not allow one process in a group to impersonate
+another group member. Using this scheme, a process group may trivially achieve
+the semantics provided by the original security architecture (however with
+a slightly higher overhead). However, unlike the original security architecture,
+the new architecture enables the implementation of groups (such as
+client/server groups) which many have more complicated trust relationships
+among group members.
+
+<HR>
+
+<H3> Thesis Research </H3>
+
+In my thesis, I proposed a set of solutions to the privacy problems inherent
+in mobile networks. In a static network, there are two basic types of
+information which users may wish to keep private. The first is the contents
+of the messages that they send to other users. This information can be hidden
+with the proper use of encryption. Users may also wish to prevent outsiders
+from determining with whom they are communicating. A solution to maintaining
+the unlinkability of message senders and recipients was first proposed in 1981
+by <!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><A HREF="http://www.digicash.com/digicash/people/david.html"> David Chaum</A>
+(<I>Communications of the ACM</I>, February 1981). Since then, several
+others have made improvements to the original scheme.
+
+<p>
+
+In a mobile network, in addition to the types of information in a static
+network, there is also location information. Users who carry mobile
+communications devices will, in general, desire privacy. However, the
+messages that their devices send and receive may reveal private information
+about the devices' owners. In my research, I developed, along with my advisor
+<!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><A HREF="http://www.cs.cornell.edu/Info/Department/Annual94/Faculty/Birman.html">
+Ken Birman</A>, a set of protocols to prevent such attacks from both internal
+and external adversaries.
+
+<HR>
+
+<H3> Publications </H3>
+
+<ul>
+<li>
+David A. Cooper and Kenneth P. Birman. Preserving privacy in a network of
+mobile computers. In <I> Proceedings of the 1995 IEEE Symposium on Security
+and Privacy, </I> pages 26-38, May 1995.
+
+<p>
+<li>
+David A. Cooper and Kenneth P. Birman. The design and implementation of a
+private message service for mobile computers. <I> Wireless Networks, </I> 1995.
+
+<p>
+<li>
+David Anthony Cooper.
+<!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><A HREF="http://cs-tr.cs.cornell.edu:80/TR/CORNELLCS:TR95-1539">
+The Design and Implementation of a Private Message Service for Mobile
+Computers</A>. Ph.D. dissertation, Cornell University, August 1995.
+
+</ul>

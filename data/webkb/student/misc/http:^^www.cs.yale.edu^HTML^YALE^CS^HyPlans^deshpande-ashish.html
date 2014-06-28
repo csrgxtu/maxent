@@ -1,0 +1,209 @@
+Date: Thu, 21 Nov 1996 23:47:58 GMT
+Server: NCSA/1.4.1
+Content-type: text/html
+Last-modified: Wed, 24 Jan 1996 20:59:40 GMT
+Content-length: 7271
+
+<head>
+
+<TITLE>Ashish Deshpande's Home Page</TITLE>
+<H1><!WA0><img align=middle src="http://www.cs.yale.edu/HTML/YALE/CS/HyPlans/deshpande/home.gif">
+Ashish's Home Page</H1>
+
+</head>
+
+<body>
+<h1>(deshpande-ashish@cs.yale.edu)</h1>
+<p>
+<HR>
+<P>
+<h2><!WA1><img src="http://www.cs.yale.edu/HTML/YALE/CS/HyPlans/deshpande/redball.gif">
+	Address</h2>
+<address>
+	Yale University Department of Computer Science<br>
+	P.O. Box 208285<br>
+	New Haven, CT 06520-8285<br>
+	Tel: (203)-432-1203<br>
+	Fax: (203)-432-0593<br>
+</address>
+<p>
+<HR>
+<p>
+<!WA2><img src="http://www.cs.yale.edu/HTML/YALE/CS/HyPlans/deshpande/at_work_icon.gif">
+This page is still under construction.
+<p>
+<HR>
+<p>
+
+<h2><!WA3><img src="http://www.cs.yale.edu/HTML/YALE/CS/HyPlans/deshpande/greenball.gif">
+Personal Information</H2>
+I'm a graduate student in the 
+<!WA4><a href="http://www.cs.yale.edu/HTML/YALE/CS/FrontDoor.html">Department of Computer Science</a> at
+<!WA5><a href="http://www.cs.yale.edu/HTML/YALE/FrontDoor.html"> Yale
+University</a>. I expect to get a Ph.D. in Computer Science in May 1996. I'm from 
+<!WA6><a href="http://spiderman.bu.edu/misc/india/">India</a> and moved
+to the US in 1988. I hold a Bachelor's degree in Computer Science and Engineering
+from the Indian Institute of Technology, Bombay and an MS in Computer Science from the
+<!WA7><a href="http://www.virginia.edu">University of Virginia</a>.
+<p>
+I'm married to <!WA8><a href=http://www.cs.yale.edu/HTML/YALE/CS/HyPlans/deshpande/golf.html> Rashmi</a> and we have a baby boy 
+<!WA9><a href=http://www.cs.yale.edu/HTML/YALE/CS/HyPlans/deshpande/rohan.html>
+Rohan.</a> Here's some
+<!WA10><a href=#cool>cool stuff</a> I enjoy.
+
+
+<p>
+<HR>
+<p>
+<h2><!WA11><img src="http://www.cs.yale.edu/HTML/YALE/CS/HyPlans/deshpande/orangeball.gif">
+	Research</H2>
+
+<ul>
+<h3><li>Dissertation Research</h3>
+We investigate a novel procedure for the numerical solution of
+scalar partial differential equations, which are in conservation form.
+Such equations are most commonly
+solved on a computer by approximating the derivatives using finite
+differences and advancing the solution forward in time using either an
+explicit or an implicit method.
+
+Explicit schemes have the advantage that each time step is very fast
+to compute.  They are also highly parallelizable. However,
+stability requirements necessitate a very small time step, which
+increases the total amount of work unacceptably.
+
+Implicit schemes remove the necessity of taking a very small time
+step. However, each time step is far more expensive in terms of
+computer time. Furthermore, the computation process is not easily
+parallelizable.
+<p>
+In this thesis, we propose a new procedure intermediate between the
+explicit and implicit schemes described above. It results from
+modifying the explicit method using the Gauss-Seidel principle. We
+simply use the latest available information at any point in the
+computation process. We retain the computational efficiency
+of the explicit scheme, and at the same time obtain a stability
+requirement that imposes an acceptable restriction on the length of
+the time step. However, the truncation error is of a form that again
+imposes an unacceptable restriction on the length of the time step. We
+circumvent this difficulty by using one or more additional sets of
+approximations to cancel out the undesirable terms in the truncation
+error. The new procedure is not as easily parallelized as the explicit
+method but is more parallel than the implicit method.  Hence, its
+characteristics lie between those of the explicit and implicit methods.
+We use the new method to solve the 1,2 and 3 dimensional Burgers'
+equation, which is frequently used as a model for the incompressible
+Navier-Stokes equations. We present proofs of
+stability along with experimental results that
+validate the theory.
+<p>
+Details in Postscript format (these are incomplete drafts I'm currently
+working on)
+<ul>
+<li> <!WA12><a href="http://www.cs.yale.edu/HTML/YALE/CS/HyPlans/deshpande/conslaw.ps">
+	Numerical solution of conservation laws</a> (169 K)
+<li> <!WA13><a href="http://www.cs.yale.edu/HTML/YALE/CS/HyPlans/deshpande/burgers.ps">
+	Parallel numerical solution of Burgers' equation </a> (643 K)
+</ul>
+
+<h3><li>Time Domain Parallelism</h3>
+Time dependent PDE's are often solved by parallelizing the solution
+process in the spatial domain. This often limits efficiency as the
+number of processors increases. In this paper, we examine a class
+of algorithms, which incorporate parallelism in the temporal domain
+to increase efficiency. We discuss conditions under which these
+algorithms may be useful.
+<p>
+A Postscript version can be found
+<!WA14><a href="http://www.cs.yale.edu/HTML/YALE/CS/HyPlans/deshpande/norms.ps">here</a> (133 K).
+
+<h3><li>Parallel CFD Simulations</h3>
+A general purpose, 3D, incompressible Navier-Stokes algorithm is implemented
+on a network of workstations using PVM. Performance comparisons with the
+Cray Y-MP and Intel IPSC/860 are made.
+<p>
+A Postscript version can be found
+<!WA15><a href="http://www.cs.yale.edu/HTML/YALE/CS/HyPlans/deshpande/reno93.ps">here</a> (395 K).
+
+<h3><li>Efficient Parallel Programming with Linda</h3>
+We discuss C-Linda's performance in solving a representative scientific
+computing problem, the shallow water equations, and make comparisons with
+alternatives available on various shared and distributed memory machines.
+<p>
+A Postscript version can be found
+<!WA16><a href="http://www.cs.yale.edu/HTML/YALE/CS/HyPlans/deshpande/p1.ps">here</a> (173 K).
+
+<h3><li>Biological Sequence Comparison</h3>
+We describe a general, efficient and flexible platform for searching biological
+sequence databases that runs on Intel hypercubes. It can easily be adapted to
+evaluate a wide variety of sequence comparison algorithms and shows close to
+optimal performance characteristics.
+<p>
+I don't have a Postscript version :-(
+</ul>
+
+<p>
+<hr>
+<p>
+<h2><!WA17><img src="http://www.cs.yale.edu/HTML/YALE/CS/HyPlans/deshpande/whiteball.gif"><a name="technical">
+Other Technical Interests</a></h2>
+
+<ul>
+<li>Check out Intel's fantastic 
+<!WA18><a href="http://www.intel.com/procs/p6/index.html">
+P6 processor presentation</a>.
+<li>Info on tons of CPU's at the
+<!WA19><a href="http://infopad.eecs.berkeley.edu/CIC/">
+CPU Info Center</a>
+<li>Here's a very nice
+<!WA20><a href="http://gams.nist.gov/">
+GAMS : Guide to Available Mathematical Software</a>.
+<li>Lots of MPI stuff is
+<!WA21><a href="http://www.mcs.anl.gov/Projects/mpi/index.html">here</a>.
+</ul>
+
+<p>
+<HR>
+<p>
+<h2><!WA22><img src="http://www.cs.yale.edu/HTML/YALE/CS/HyPlans/deshpande/purpleball.gif"><a name="cool">
+Cool Stuff</a></H2>
+
+<ul>
+<li><!WA23><a href="http://www.msstate.edu/Movies/">Movies</a>
+<li><!WA24><a href="http://humper.student.princeton.edu/floyd/">Pink Floyd</a>
+<li>Sci-fi (esp. Star Trek)
+<li><!WA25><a href="http://www.cis.ohio-state.edu/hypertext/faq/usenet/radio/top.html">
+World band radio</a>
+<li>15-minute delayed quotes can be found at the
+<!WA26><a href="http://www.secapl.com/cgi-bin/qs">
+Security APL Quote Server</a>
+<li> Check out the <!WA27><a href="http://update2.wsj.com/"> Money and Investing Update</a>
+from the Wall Street Journal.
+<li> Here's <!WA28><a href="http://pathfinder.com/@@tqbCs2GwFgMAQDFR/money/"> Money Magazine</a>
+on the Internet.
+<li>Stock Market Data from MIT is <!WA29><a href="http://www.ai.mit.edu:80/stocks/">here</a>.
+<li>Deep discount broker services from <!WA30><a href="http://www.etrade.com">E*Trade</a>.
+(This is not an endorsement). Also has delayed stock quotes.
+</ul>
+
+<p>
+<HR>
+<p>
+<h2><!WA31><img src="http://www.cs.yale.edu/HTML/YALE/CS/HyPlans/deshpande/yellowball.gif"><a name="sports">
+Sports</a></h2>
+
+<ul>
+<li><!WA32><a href="http://www.cs.yale.edu/HTML/YALE/CS/HyPlans/deshpande/golf.html">
+	Golf</a>
+<li>Lots of cool sports stuff at <!WA33><a href="http://pathfinder.com/si/greet.html">
+Sports Illustrated</a>.
+<li>Check out Jacqueline Dupree's fabulous 
+<!WA34><a href="http://www.access.digex.net/~jd/tennis.html">
+Site that the ATP hates</a>.
+<li>Here's the home page of the <!WA35><a href="http://atptour.com/">
+	Tennis ATP Tour</a>.
+<li><!WA36><a href="http://sunsite.unc.edu/drears/running/running.html">
+	Running</a>
+</ul>
+
+</body>

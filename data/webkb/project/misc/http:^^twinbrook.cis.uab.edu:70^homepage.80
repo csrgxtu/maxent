@@ -1,0 +1,254 @@
+<HTML>
+<! This Home Page is an instructional example of an HTML document.>
+<! It is good style to begin with the optional HTML tag - see the first line.>
+<! Notice that comments are tags that begin with ! >
+<! Notice also that white space is mostly ignored.>
+<! I capitalize the tag words but it is not necessary.>
+
+<HEADER>
+<! The HEADER tag begins a document part containing some common tags such as: >
+
+<TITLE>THE SIFTER Home Page</TITLE>
+<! The TITLE tag will render blocked text as the document title.>
+
+<META name="description" value="UAB-CIS SIFTER Research Group Home Page">
+<META name="keywords" value="computer science, research, information filtering">
+<META name="resource-type" value="document">
+<META name="distribution" value="global">
+<! META tags are used by various software to generate indices.>
+<! Resultant indices may be provided to remote services or searched locally.>
+
+</HEADER>
+<! The /HEADER tag ends this portion of the document.>
+
+<BODY>
+<! This BODY tag starts the main portion of the document.>
+
+<H1>
+<!A HREF="http://twinbrook.cis.uab.edu:70/HotLinks.80">
+<A HREF="http://twinbrook.cis.uab.edu:70/screen.gif">
+<IMG ALIGN=middle SRC="http://twinbrook.cis.uab.edu:70/starry.gif" ALT="[HotLinks]"></A>
+<!H1>The SIFTER Web Home Page</H1>
+<! These tags put an inline image which is also a button at the beginning of this page.>
+<! The IMG tag specifies an inline image to be displayed.>
+<! The ALIGN attribute specifies the desired alignment.>
+<! The SRC attribute specifies the URL of the image file.>
+<! The ALT attribute specifies alternative text if inline images are not supported.>
+<! The !H1 tag is a comment.>
+
+<A HREF="http://twinbrook.cis.uab.edu:70/GO/greeting.au">
+<BLINK>Greetings Internaut !!!</BLINK></A>
+<! This is a link to spoken message.>
+<! The A HREF tag defines an anchor linking to an audio file -- Nothing special.>
+<! The BLINK tag 'emphasizes' blocked text by 'blinking' it.>
+<! Note that the BLINK tag is rendered only by NetScape-capable clients.>
+
+<P>
+<! The P tag is used to end paragraphs.>
+
+<HR>
+<! The HR renders a horizontal rule line.>
+<HR>
+<H3><IMG SRC="http://twinbrook.cis.uab.edu:70/grunball.gif" ALT = "">
+The Service - Research Group, Department, School, and Institution </H3>
+<! This H3 tag is a type of heading tag that can range from 1 to 6 in intensity.>
+
+Welcome, you have reached the UAB-CIS 
+<A HREF="http://twinbrook.cis.uab.edu:70/SIFTER.80">SIFTER Research Group</A>
+<EM>World Wide Web</EM> Server.  "SIFTER" is an acronym for
+"Studies in Information Filtering Technology for Electronic Resources."
+This research group was formed in December of 1993 in
+<A HREF="http://www.cis.uab.edu/">
+the Department of Computer and Information Sciences</A>
+located in the School of Natural Sciences and Mathematics on the campus of
+<A HREF="http://www.uab.edu/">
+the University of Alabama at Birmingham</A>.
+<! A HREF tag defines an anchor for a specific hypertext link.>
+<! The EM tag 'emphasizes' blocked text by rendering it with a highlight.>
+<P>
+
+<HR>
+<H3><IMG SRC="http://twinbrook.cis.uab.edu:70/grunball.gif" ALT = "">
+The Technology - Server, System, Host, and History </H3>
+<! Depending on your viewer, these heading tags will be rendered in a larger typeface.>
+
+This Web service is currently provided via
+<A HREF="gopher://twinbrook.cis.uab.edu/0GO/uabhole.doc">
+the UAB-CIS Web/Gopher server</A>
+which is an IBM
+<A HREF="http://www.mit.edu:8001/activities/os2/os2world.html">
+OS/2</A>
+GoServe application running on an IBM PS/2 Ultimedia PC (486) at
+<A HREF="gopher://twinbrook.cis.uab.edu/0XE/vnfinger.cmd">
+TWINBROOK.CIS.UAB.EDU.</A>
+This <I>home page</I> provides both a point of access to
+<A HREF="gopher://twinbrook.cis.uab.edu:70/">
+the main menu</A>
+of the UAB-CIS Gopher server for Web navigators
+as well as a gateway to
+<A HREF="gopher://twinbrook.cis.uab.edu:70/hwebworld.80">
+the world of the Web</A>
+for Gopher navigators whose clients can process
+hypertext documents.
+<! The I tag 'emphasizes' blocked text by rendering it in italics.>
+<P>
+
+From its inception in February 1994 until July 1995, this server
+was the Web server for the Department of Computer and Information
+Sciences.  As a result of resource realignments, the official
+departmental Web server has been move to another Internet host
+having the URL of 
+<A HREF="http://www.cis.uab.edu/">http://www.cis.uab.edu/</A>.
+Please note this change in any links that you maintain. Also, note
+that some pages on this server are still in transition and may be
+mistitled.
+
+<HR>
+<H3><IMG SRC="http://twinbrook.cis.uab.edu:70/grunball.gif" ALT = "">
+The Resources - Here, Near, and Far </H3>
+
+A variety of information resources is available here in our department or
+nearby in the local geographic community as well as throughout the Internet. 
+The list below is but one of many possible starting points for your
+Web exploration:
+<P>
+
+<STRONG>Here</STRONG>
+<! The STRONG tag 'strongly emphasizes' blocked text by rendering it with a highlight.>
+<P>
+
+<UL>
+<! The UL tag begins an unnumbered list.>
+<! The OL tag begins a numbered list.>
+
+<LI><A HREF="http://twinbrook.cis.uab.edu:70/screen.80">
+A Recent TWINBROOK Console Screen Image</A>
+
+<LI><A HREF="gopher://twinbrook.cis.uab.edu">
+Departmental Gopher Service</A>
+
+<LI><A HREF="http://twinbrook.cis.uab.edu:70/PopPages.80">
+Popular Local Web Pages</A>
+
+<LI><A HREF="http://twinbrook.cis.uab.edu:70/webNews.80">
+webNews -- 'URL-Anchorized' USENET News Web Article Archive</A>
+
+</UL>
+<! The /UL tag ends an unnumbered list.>
+<! The /OL tag ends a numbered list.>
+<! The LI tag specifies an (un)numbered list entry.>
+
+<STRONG>Near</STRONG>
+<P>
+<UL>
+
+<LI><A HREF="http://www.bcbsal.org/">
+Alabama Blue Cross and Blue Shield</A>
+
+<LI><A HREF="http://sgisrvr.asc.edu">
+Alabama Supercomputing Network</A>
+
+<LI><A HREF="http://www.bst.bls.com">
+BellSouth Telecommunications</A>
+
+<LI><A HREF="http://www1.hsf.uab.edu">
+Kirklin Clinic</A>
+
+<LI><A HREF="http://www.dopig.uab.edu">
+UAB Department of Photography and Instructional Graphics</A>
+
+<LI><a href="http://www.lhl.uab.edu/">
+UAB Lister Hill Library</A>
+
+</UL>
+
+<STRONG>Far</STRONG>
+<P>
+<UL>
+
+<LI><A HREF="http://www.w3.org">
+Birthplace of the Web</A>
+
+<LI><A HREF="http://www.ibm.net/">
+IBM Internet Connection and the WebExplorer</A>
+
+<LI><A HREF="http://www.netscape.com/">
+Netscape Communications Corporation and NetScape</A>
+
+<LI><A HREF="http://www.lycos.com/">
+Lycos' Catalogue of the Internet</A>
+
+<LI><A HREF="http://www.ncsa.uiuc.edu/General/NCSAHome.html">
+National Center for Supercomputing Applications (NCSA) and Mosaic</A>
+
+<LI><A HREF="http://www.cc.gatech.edu/gvu/stats/NSF/merit.html">
+NSF Backbone (Internet Service) Usage with Graphs</A>
+
+<LI><A HREF="http://pespmc1.vub.ac.be/">
+Principia Cybernetica Project</A>
+
+<LI><A HREF="http://woodstock.stanford.edu:2000">
+USENET News Filtering Service</A>
+
+<LI><A HREF="http://www.whitehouse.gov">
+The White House and an Interactive Citizens' Handbook</A>
+
+<LI><A HREF="http://www.yahoo.com">
+Yahoo -- WWW Search Facility</A>
+
+</UL>
+<P>
+
+<HR>
+<H3><IMG SRC="http://twinbrook.cis.uab.edu:70/grunball.gif" ALT = "">
+The Contacts </H3>
+
+Further information about the SIFTER Research Group, its research interests,
+projects, computing facilities, or information services not described in
+these Web pages can be obtained by contacting, appropriately:
+<P>
+
+<DL>
+<! The DL tag begins a list of 'definitions.'>
+
+<DT><A HREF="mailto:jones@cis.uab.edu">Warren T. Jones</A>
+<DD>Faculty Advisor, SIFTER Research Group
+
+<DT><A HREF="mailto:will@cis.uab.edu">G B Williams</A>
+<DD>Senior Systems Analyst, UAB-CIS Computing Facilities
+
+<DT><A HREF="mailto:samuell@cis.uab.edu">R L Samuell</A>
+<DD>Administrator, UAB-CIS SIFTER Research Group Web Services</A>
+
+</DL>
+<! The DL tag ends a list of 'definitions.'>
+<! The DT tag specifies a definition list term entry.>
+<! The DD tag specifies associated definition list data entry.>
+<P>
+
+(The following or similar buttons are located at the end of many hypertext
+pages on this server.  They provide direct access to selected browsing
+functions such as to HELP you with questions, to SHOW you the current 
+document format, to SEARCH local indices, or to GO to the Home Page.)
+<P>
+
+<BR>
+<! The BR caused a line break.>
+
+<P>
+<P>
+<HR>
+[<A HREF="http://twinbrook.cis.uab.edu:70/UNDERCON.80">HELP</A>] 
+[<A HREF="http://twinbrook.cis.uab.edu:70/Hyperdex.80">SEARCH</A>] 
+[<A HREF="http://twinbrook.cis.uab.edu:70/UNDERCON.80">GO</A>] 
+[<A HREF="http://twinbrook.cis.uab.edu:70/HTMLX.80">SHOW</A>]
+<HR>
+<ADDRESS>Home.80 / 1995.7.14 / rl3s / samuell@cis.uab.edu</ADDRESS>
+<! The ADDRESS tag renders an address line.>
+
+<!ORIGINATED 1994.2.22>
+</BODY>
+<! The /BODY tag ends this document body.>
+</HTML>
+<! The /HTML tag ends this HTML document.>
+

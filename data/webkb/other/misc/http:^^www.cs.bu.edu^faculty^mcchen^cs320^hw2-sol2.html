@@ -1,0 +1,170 @@
+Date: Tue, 14 Jan 1997 23:01:51 GMT
+Server: NCSA/1.5
+Content-type: text/html
+
+<HEAD>
+<TITLE>  Concepts in Programming Languages. HW2 & SOL2</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value="  CS320 ... PROGRAMMING LANGUAGES">
+<meta name="keywords" value="hw2">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ 
+<P>
+<H4><b> CLA CS320 <BR>
+Concepts in Programming Languages, Spring 1995</b></H4>
+<P>
+<H2> Assignment #2  Due 2/17/95</H2>
+<P>
+<UL><LI> Chapter 5, pages 133; Problems 7, 9, 11, 12, 23.<BR> 
+<LI> Chapter 6, pages 160 -- 162; Problems 1, 2, 7, 8, 12.<BR>
+</UL><P>
+<P>
+<BR><em>
+SOLUTIONS for Assignment #2.</em><BR>
+<P>
+
+CHAPTER 5.<BR>
+<P> 
+
+<strong>7.</strong>  See pages 114-15.  Packed decimal is an encoding for integers that uses
+   one half-byte per decimal digit.  Within those four bits, codes 0000 to
+   1001 represent the digits - through 9, and codes 1010 to 1111 do not repre
+   sent digits.  Business computers used this encoding in the 1960s and many
+   computers still support this encoding today.
+<BR><P>
+   The advantage of packed decimal encoding is that input and output conversion
+   are much faster than with binary integer encoding.  The disadvantage is
+   that arithmetic is slower.  Thus, it is most often used for data processing
+   applications with lots of I/O and little computation.
+<BR>
+<P>
+<strong>
+9.</strong>  See page 117.  Sign and magnitude:  The high-order bit represents a sign
+   (0 for positive, 1 for negative) and the other bits represent the magnitude.
+   Thus, 10000 0000 0000 0001 is negative 1 and 0000 0000 0000 0001 is positive
+   1.
+<BR>
+<DL>
+<DT> One's complement:
+<DD> The representation of a positive number is the same as 
+   for sign and magnitude.  The  representation of negative number is the bit-
+   wise complement of the corresponding positive number.  Thus, -1 is 1111
+   1111 1111 1110. 
+<BR><P>
+   The advantage of any complement encoding is that subtraction can be done by
+   complementing and adding.  The high-order bit can be interpreted as a sign,
+   but is not treated differently from any other bit by the arithmetic hard-
+   ware.  Thus, it is cheaper to implement than sign and magnitude representa-
+   tion.  The disadvantage of one's complement is that there are two represen-
+   tations for zero: positive 0 is 0000 0000 0000 0000 and negative zero is
+   1111 1111 1111 1111.  Also, during an addition operation, a carry off the
+   left end must be added back in to the right end. 
+<BR><P>
+<DT> Two's complement:
+<DD> The representation of a positive number is the same as
+   for sign and magnitude.  The representation of a negative number is the bit-
+   wise complement of the corresponding positive number, plus 1.  Thus, -1 is
+   1111 1111 1111 1111.  This representation has all the advantages of comple-
+   ment encoding but none of the disadvantages; there is only one zero 0000
+   0000 0000 0000, and carries off the left end may be ingored.
+<BR>
+</DL>
+<P>
+<strong>11.</strong> See pages 118-19.  A floating-point number has two parts, the exponent and 
+   the mantissa.  Both are signed numbers.  According to the IEEE standard, 
+   floating point numbers can be single length (4 bytes) or double length (8
+   bytes).
+<BR><P>
+   Problems sometimes arise because this is an approximate encoding; many dif-
+   ferent external real numbers may be represented by the same internal float-
+   ing point encoding.  A four-byte number can only represent about 6 decimal 
+   places accurately before truncation must happen.  Arithmetic operations can
+   increase the size of the truncation error.  Invalid results can happen when
+   the programmer expects exact answers or when numbers of vastly different 
+   magnitude are used together.
+<BR>
+<P>
+<strong>
+12.</strong> See pages 118-19.
+<BR>
+<UL>
+<LI> a. The largest 32-bit integer: 0111 1111 1111 1111 1111 1111 1111 1111
+<LI> b. The largest positive floating-point number: 0 1111 1110 111 1111 1111
+      1111 1111 1111  The exponent is not 1111 1111 because that code is 
+      reserved for overflow error conditions.
+<LI> c. Negtive one-half, in floating-point: 1 0111 1110 000 0000 0000 0000 0000
+      0000
+<LI> d. The smallest positive float (closest to zero): 0 0000 0001 000 0000 0000
+      0000 0000 0000  The exponent is not 0000 0000 because that code is 
+      reserved for zero and underflow conditions.
+<LI> e. The negative floating-point number with the greatest magnitude: 1 1111
+      1110 111 1111 1111 1111 1111 1111
+</UL>
+<P>
+<strong>
+23.</strong> See page 130.  Simula pioneered the major idea now associated with
+object oriented programming:  that a type should be grouped together in a class
+   with the functions that operate on them.
+<BR><P>
+<BR><P>
+CHAPTER 6<BR> 
+<P>
+<strong>
+1.</strong> See page 135.  an external object is the real-world thing that is being
+   modelled.  The program object is the string of bits that represents the
+   external object within a program.  A storage object is a series of memory 
+   locations in which the program object can be stored.  
+<BR><P>
+   A pointer value is the address of a storage object.  A pointer variable is
+   a storage object that can store the address of a storage object.  Both
+   pointer values and pointer variables are pointer objects.
+<BR><P>
+<strong>
+2.</strong> See page 137.  A pointer variable is a storage object that can store an
+   address.  The term "variable" is more general; it includes both pointer 
+   variables and storage objects that store ordinary data values.
+<BR><P>
+<strong>
+7.</strong> See page 143.  To "dereference" is to FETCH the value from a storage object.
+<BR><P><strong>
+8.</strong> See page 144.  In the following examples assume that:
+<BR><UL>
+<LI> kk is an integer.
+<LI> ar is an array of 5 integers.
+<LI> pk is a pointer to an integer.
+<LI> pp is a pointer to a structure consisting of a string, name, and an in-
+      teger, age.
+<LI> f1 is a function that takes one integer argument.
+</UL>
+<BR><P><pre><TT>
+ Language | explicit  | Implicit         |  No dereference
+----------|-----------|------------------|----------------------------
+  Pascal  | pp^.age   | kk + 1           |
+          |           | f1(kk)           |If f1 has a VAR parameter.
+----------|-----------|------------------|----------------------------
+  C       | pp->age   | printf("%d", kk);|
+          | kk = *pk; | ar[kk]           |  pk = ar
+
+</TT></pre>
+<P>
+<strong>
+12.</strong> See pages 145-6.
+<BR><P><pre><TT>
+     TYPE list = ^cell;
+         cell = RECORD value:integer; link:list END;
+     VAR p1, p2, p3:  list;
+     p2:=p1^.link;
+     p3:=p1^.link^.link;
+
+</TT></pre>
+<P>
+<HR> <!WA0><IMG ALIGN=MIDDLE SRC="http://cs-www.bu.edu/faculty/crovella/icons/next_motif_gr.gif"> <!WA1><IMG ALIGN=MIDDLE SRC="http://cs-www.bu.edu/faculty/crovella/icons/up_motif_gr.gif"> <!WA2><IMG ALIGN=MIDDLE SRC="http://cs-www.bu.edu/faculty/crovella/icons/previous_motif_gr.gif">  <BR>
+<HR>
+<P><ADDRESS>
+<!WA3><A HREF=http://cs-www.bu.edu/faculty/mcchen/main_menu.html
+            >Marina Chen</A>
+</ADDRESS>
+</BODY>

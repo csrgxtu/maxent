@@ -1,0 +1,133 @@
+Date: Tue, 14 Jan 1997 20:06:54 GMT
+Server: Apache/1.0.3
+Content-type: text/html
+Content-length: 5346
+Last-modified: Thu, 05 Sep 1996 17:47:55 GMT
+
+<HTML>
+<HEAD>
+<TITLE>
+  General Gofer and LAL Information
+</TITLE>
+</HEAD>
+<BODY BGCOLOR="#F0F0F0">
+
+<H2> General Gofer and LAL Information </H2>
+
+<H3> Welcome </H3>
+Welcome to CS532, Semantics of Programming Languages.  I'm the TA for
+the class, and I also maintain the computers you'll be using for this
+course.  My email address is <!WA0><A
+HREF="mailto:jones@cs.byu.edu">jones@cs.byu.edu</A> and I promise to
+answer email questions as rapidly as I can.  Email is the best way to
+get ahold of me, but if you want to meet with me in person, I'm
+usually in TMCB 3325.
+<P>
+
+This general information page was written by Kelly Hall who was the last TA
+fro this class and is updated for use this semester.
+<p>
+
+<H3> Gofer background </H3>
+
+For this course we'll be using the lazy functional programming
+language Gofer.  much of what's in the course materials talks about a
+language called Haskell.  Gofer is a nice subset of Haskell, and
+chances are you won't notice any difference between the book and what
+we've got here.
+<P>
+
+If you hate Unix machines, Gofer is available for almost any kind of
+computer around.  Send me mail for details.  You can easily run this
+on PCs, Macs, Amigas, STs, whatever.  It will probably even run on the
+Y-Vax.  The rest of this page will cover running Gofer on the LAL
+machines; if you run Gofer elsewhere, check
+<!WA1><A HREF="ftp://coral.cs.jcu.edu.au/web/FP/hcs/gofer.html">this</A> out
+first.  <P>
+
+<H3> LAL Machine Background </H3> LAL Machines: If you're reading this
+email, you've probably already logged in to some machine in the LAL group.
+There are several LAL workstations, and you can log into any of them and
+all of your files will be there.  The machine names are: leopard, panther,
+cheetah, puma, jaguar, lynx, bobcat.  There is also 'lal', but that's just
+a different name for leopard.  Use whichever machine you want if all you'll
+be doing is email, gofer, and editing.  For bigger tasks, stay off leopard
+and jaguar.  One is the server, and the other is Dr. Windley's machine.
+<P>
+
+There are no facist disk quotas on the LAL machines.  All I ask is
+that you keep your usage to reasonable levels.  Follow this vague
+request and they'll be plenty of resources for everyone.
+<P>
+
+<H3> Getting Ready for Gofer </H3>
+Once you log in, make sure you enter the correct terminal type.  The
+standard login script will assume <tt>hp</tt>, but you will want to type in
+<tt>xterm</tt> if you're using a standard LAL login window.  If you're
+calling in from home, use <tt>vt100</tt>.  If you're telneting from
+elsewhere, <tt>vt100</tt> is a good choice as well.
+<P>
+
+If you forget to set the terminal type when you log in, you can do it
+later by isssuing the command: <CODE> export TERM=xterm </CODE> at the
+Unix prompt.  Of course, if you don't want <tt>xterm</tt> you can specify
+whatever you want.
+<P>
+
+Now that the terminal type is set, make sure you set your default
+editor.  We have emacs, vi, and the Vuepad editors available on the
+LAL machines.  Pick whichever one you want to use with Gofer and issue
+the appropriate command below:
+<UL>
+ <LI> Emacs: <CODE> export EDITOR=/usr/local/bin/emacs </CODE>
+ <LI> vi:    <CODE> export EDITOR=/usr/bin/vi </CODE>
+ <LI> Vuepad: <CODE> export EDITOR=/usr/vue/bin/vuepad </CODE>
+</UL>
+<P>
+
+(Clever users will stick these commands into the file
+<tt>.profile</tt> and forget about this.  Note: this is
+<tt>.profile</tt> and not <tt>.login</tt> for any of you archaic
+C-shell users.) 
+<P>
+
+<H3> Starting and Interacting with Gofer </H3>
+Now you can start up Gofer reliably: type the word <tt>gofer</tt> and
+Gofer will start up, print out some information, and prompt you with a
+<tt>?</tt> character.  At this point, you can enter expressions for
+Gofer to evaulate.  Or you can issue commands to the Gofer program.
+For a list of commands, enter <tt>:?</tt> Whenever you get tired of
+Gofer, you can leave it by issuing the command <tt>:quit</tt> at the
+<tt>?</tt> prompt.  <P>
+
+The commands you'll probably use most often are <tt>:edit</tt> and
+<tt>:load</tt> Start up an editor from within Gofer by typing
+<tt>:edit &lt;filename&gt;</tt> where you can replace
+<tt>&lt;filename&gt;</tt> with the name of a text file (try foo.g).
+This should start up the editor you specified earlier.  Add a couple
+of the example expressions from the Gofer/Haskell tutorial and save
+the file.  <P>
+
+Exit your editor and Gofer should resume.  Load the file you just
+edited by issuing the command <tt>:load &lt;filename&gt;</tt>
+Hopefully there were no errors and Gofer will print out the results of
+evaluating the stuff in your file.  In any case, you can go back and
+edit that file again by issuing another <tt>:edit
+&lt;filename&gt;</tt> command.  This process repeats until you get
+tired of Gofer an exit with the <tt>:quit</tt> command.  <P>
+
+You could just type those expressions straight into Gofer to evaluate,
+but then you'd have to type them over and over again whenever you
+started up Gofer.  Using a editor and a text file lets you save your
+work.
+<P>
+
+<H3> Wrap Up </H3>
+That's all I have for now.  Feel free to send me email, or you can ask
+questions to everyone in the class by using our <!WA2><a href="mailto:cs532@lal.cs.byu.edu">class mailing list</a>.  <P>
+
+<hr>
+<address> modified by <!WA3><A HREF="http://lal.cs.byu.edy/people/jones.html">Mike Jones</A> 9/5/96 </address>
+
+</BODY>
+</HTML>

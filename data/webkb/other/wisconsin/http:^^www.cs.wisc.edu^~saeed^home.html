@@ -1,0 +1,112 @@
+Date: Tue, 05 Nov 1996 21:21:18 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Tue, 01 Oct 1996 05:38:13 GMT
+Content-length: 2538
+
+<HTML>
+<HEAD>
+<TITLE>My Sweet Home at Lucknow </TITLE>
+</HEAD>
+<BODY background="staves.gif">
+
+<script language="javascript">
+<!-- Clock in Java Script .. Cameron Gregory cameron@local.com
+// http://www.bloke.com/
+// http://www.bloke.com/javascript/Clock/serverclock.html
+speed=1000;
+len=28;
+tid = 0;
+num=0;
+clockA = new Array();
+offsetA = new Array();
+dd = new Date();
+
+function doDate(x)
+{
+  for (i=0;i<num;i++) {
+    dt = new Date();
+  
+    if (offsetA[i] != 0) {
+      gt = dt.getTime();
+      gt = gt + offsetA[i];
+      dt.setTime(gt);
+      }
+  
+    clockA[i].date.value = dt;
+    }
+
+  tid=window.setTimeout("doDate()",speed);
+}
+
+function start() {
+  clockA[num] = document.forms[num];
+  offsetA[num] = 0;
+  if (num == 0)  
+    tid=window.setTimeout("doDate()",speed);
+  num++;
+}
+
+function startLong(diff) {
+  clockA[num] = document.forms[num];
+  offsetA[num] = (diff - dd.getTimezoneOffset())*60*1000;
+  if (num == 0)  
+    tid=window.setTimeout("doDate()",speed);
+  num++;
+}
+
+function cleartid() {
+  window.clearTimeout(tid);
+}
+ 
+// for some reason on some pages this crashes netscape
+function Clock()
+{
+  document.write('<!WA0><FORM name=form'+num+'><input name=date size=')
+  document.write(len)
+  document.write(' value="Clock: Requires Javascript"></FORM>')
+  start();
+}
+ 
+// for some reason on some pages this crashes netscape
+function ServerClock(diff)
+{
+  document.write('<FORM name=form'+num+'><input name=date size=')
+  // we chop the end, because it would be the wrong timezone
+  document.write(19)
+  document.write(' value="Clock: Javascript"></FORM>')
+  startLong(diff);
+}
+// end-->
+</script>
+
+<br>
+
+<P> <center> <IMG align = middle SRC="grnhouse.gif" ALT="A picture of my Home">
+<br>
+<em> My sweet home is in the beautiful city of Nawabs.</em>
+<H3> Home address </H3>
+E-III/172, Sector H, <br> Aliganj. Lucknow-226020. <br> INDIA <br>
+<H3> The time in India at present is </H3>
+<script language="javascript">
+ServerClock(930);
+</script>
+<img align = middle src = "/~sastry/gifs/icon.home2.gif"> </center> 
+<P>
+
+<img align = top src = "/~sastry/gifs/line.colorbar.gif"> 
+<P>
+<P>
+<em> For suggestions send <a href = "mailto:saeed@cs.wisc.edu"> <img align = center src = "emailed.gif"> </a> to me.  </em> <br>
+
+<a href = "http://www.cs.wisc.edu/~saeed"> 
+<img align = top src = "/~sastry/gifs/button.return.gif"> 
+<em> Back to my home page </a> </em>
+<br>
+<center> <em>
+Last updated <img src="http://dax.cs.wisc.edu/cgi-bin/last-mod?/u/s/a/saeed/publ
+ic/html/index.html" alt= "Sep. 22 1996">
+</em> </center>
+
+</BODY>
+</HTML>

@@ -1,0 +1,492 @@
+Date: Tue, 14 Jan 1997 23:38:42 GMT
+Server: NCSA/1.5.2
+Last-modified: Tue, 03 Sep 1996 18:38:19 GMT
+Content-type: text/html
+Content-length: 12261
+
+<H1>Reinforcement Learning and Information Access</H1>
+<h2>
+or <BR><BR>
+<I>What is the Real Learning Problem 
+in Information Access?</I></H2>
+
+<br>
+<H3>by <!WA0><A HREF="http://envy.cs.umass.edu/People/sutton/sutton.html">Rich Sutton</A><br>
+University of Massachusetts<br>
+rich@cs.umass.edu<br>
+<br><br>
+Presented at the <!WA1><A HREF="http://www.aaai.org/Symposia/symposia.html">AAAI Stanford Spring Symposium</A> on<BR>
+<!WA2><A HREF="http://www.parc.xerox.com/istl/projects/mlia/mlia.html">Machine Learning and Information Access</A><br>
+March 26, 1996<br>
+<br>
+with many thanks to <!WA3><A HREF="http://www-cse.ucsd.edu:80/users/rik/MLIA.html">Rik Belew and Jude Shavlik</A>
+</H3>
+<HR>
+
+<H3>
+Introductory Patter</H3>
+<i>
+In this talk we will try to take a new look at the
+learning problem in information access.  How is it structured?  What
+training information is really available, or likely to be available?  
+Will there be delays between decision making and the receipt of relevant
+feedback?  I am a newcomer to information access, but I have experience in reinforcement learning, and one of the main lessons of
+reinforcement learning is that it is really important to understand the
+true nature of the learning problem you want to solve.
+<p>
+Here is an example that illustrates the whole idea.  In 1989 Gerry
+Tesauro at IBM built the world's best computer player of backgammon.  It
+was a neural network trained from 15,000 examples of human-expert 
+moves.  Then he tried a reinforcement learning approach.  He trained the
+same network not from expert examples, but simply by playing it against
+itself and observing the outcomes.  After a month of self-play, the program 
+became the new world champ of computers.  Now it is an extremely strong
+player, on a par with the world's best grandmasters, who are now
+learning from it!  The self-play approach worked so well
+primarily because it could generate new training data itself.  The
+expert-trained network was always limited by its 15,000 examples,
+laboriously constructed by human experts.  Self-play training data may
+be individually less informative, but so much more of it can be
+generated so cheaply that it is a big win in the long run.
+<p>
+The same may be true for information access.  Right now we use training
+sets of documents labeled by experts as relevant or not relevant.  Such
+training data will always be expensive, scarce, and small.  How much
+better it would be if we could generate some kind of training data
+online, from the normal use of the system.  The data may be imperfect 
+and unclear, but certainly it will be plentiful!  It may also be truer in
+an important sense.  Expert-labeled training sets are artificial, and do not
+accurately mirror real usage.  In backgammon, the expert-trained system
+could only learn to mimic the experts, not to win the game.  Only
+the online-trained system was able to learn to play better than the
+experts. Its training data was more real.
+<p>
+This then is the challenge: to think about information access and
+uncover the real structure of the learning problem.  How can learning be
+done online?  Learning thrives on data, data, data!  How can we get the
+data we need online, from the normal operation of the system, without
+relying on expensive, expert-labeled training sets?
+<p>
+This talk proceeds in three parts. The first is an introduction to
+reinforcement learning.  The second examines how parts of the
+learning problem in information access are like those solved by
+reinforcement learning methods.  But the information access problem doesn't map exactly onto
+the reinforcement learning problem.  It has a special structure all it own.  In the third
+part of the talk we examine some of this special structure and what kind
+of new learning methods might be applied to it.
+</i>
+<p>
+The rest below are approximations to the slides presented in
+the talk. 
+<HR>
+
+
+
+<H2>
+Conclusions (in advance)</H2>
+
+<UL>
+<LI> Learning in IA (Information Access) is like learning everywhere
+     <UL>
+     <LI> you are never told the right answers
+     <LI> its a sequential problem - actions affect opportunities
+     </UL>
+<LI> Reinforcement Learning addresses these issues
+<LI> Learning can be powerful when done online (from normal operation)
+<LI> What is online data/feedback like in IA?
+</UL>
+<HR>
+
+
+<H2>
+Reinforcement Learning</H2>
+
+<UL>
+<LI>  Learning by trial and error, rewards and punishments,
+
+<LI>  Active, multidisciplinary research area
+
+<LI>  An overall approach to AI
+    <UL>
+	<LI>based on learning from interaction with the environment
+	<LI>integrates learning, planning, reacting...
+	<LI>handles stochastic, uncertain environments
+    </UL>
+<LI>  Recent large-scale, world-class applications
+
+<LI>  Not about particular learning mechanisms
+
+<LI>  Is about learning with less helpful feedback
+</UL>
+<HR>
+
+
+
+
+<H2>
+Classical Machine Learning - Supervised Learning</H2>
+
+
+<PRE>
+	situation1  --->  action1     then correct-action1
+	situation2  --->  action2     then correct-action2
+		      .
+		      .
+		      .
+</PRE>
+<!WA4><IMG ALIGN=right SRC="http://envy.cs.umass.edu/People/sutton/RLIA/SL.GIF">
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<UL>
+<LI>  correct action supplied
+<LI>  objective is % correct
+<LI>  actual actions have no effect
+<LI>  each interaction is independent, self contained
+</UL>
+<HR>
+
+
+
+
+<H2>
+Reinforcement Learning</H2>
+
+<PRE>
+	        situation1  --->  action1
+	reward2	situation2  --->  action2 
+	reward3	situation3  --->  action3 
+	                     .
+	                     .
+	                     .
+</PRE>
+<!WA5><IMG ALIGN=right SRC="http://envy.cs.umass.edu/People/sutton/RLIA/RL.GIF">
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<UL>
+<LI>  agent never told which action is correct
+<LI>  agent told nothing about actions not selected
+<LI>  actions may affect <I>next situation</I>
+<LI>  object is to maximize all future rewards
+</UL>
+<HR>
+<!WA6><IMG ALIGN=bottom SRC="http://envy.cs.umass.edu/People/sutton/RLIA/beads.GIF">
+<HR>
+
+
+
+
+
+
+
+<H2>
+It's not just a harder problem, it's a real problem</H2>
+
+<UL>
+<LI> Problems with relevance feedback:
+	<UL>
+	<LI> what about all the documents not shown?
+	<LI> the exploration-exploitation dilemma
+	<LI> degrees of relevance
+    </UL>
+
+<LI> We don't want to make user happy only in the short term
+
+<LI> Many solutions require <I>sequences</I> of steps
+	<UL>how do you support the early steps?</UL>
+
+<LI> SL can't be used reliably on-line (except for immed. prediction)
+	<UL> can't learn from normal operation </UL>
+</UL>
+<HR>
+
+
+<H2>
+Applications of RL</H2>
+
+<UL>
+<LI> TD-Gammon and Jellyfish -- Tesauro, Dahl
+
+<LI> Elevator control -- Crites
+
+<LI> Job-shop scheduling -- Zhang & Dietterich
+
+<LI> Mobile robot controllers -- Lin, Miller, Thrun, ...
+
+<LI> Computer Vision -- Peng et al.
+
+<LI> Natural language / dialog tuning -- Gorin, Henis
+
+<LI> Characters for interactive games -- Handelman & Lane
+
+<LI> Airline seat allocation -- Hutchinson
+
+<LI> Manufacturing of Composite materials -- Sofge & White
+</UL>
+<HR>
+
+
+
+<h2>
+Key Ideas of RL Algorithms</H2>
+
+<H3>Value Functions</H3>
+<UL>
+<LI> Like a heuristic state evaluation function -- but learned
+<LI> Approximates the expected future reward after a state or action
+<LI> The idea:	learn "how good" an action is,
+		rather than whether or not it is the best,
+		taking into account long-term affects
+<LI> Value functions vastly simplify everything</H3>
+</UL>
+
+<H3>TD Methods</H3>
+<UL> 
+<LI> An efficient way of learning to predict (e.g., value functions)
+from <I>experience</I> and search 
+<LI> Learning a guess from a guess
+</UL>
+<HR>
+
+
+
+<H2>
+A Large Space of RL Algorithms</H2>
+
+<!WA7><IMG SRC="http://envy.cs.umass.edu/People/sutton/RLIA/trinity.GIF">
+<HR>
+
+
+
+<H2>
+Major Components of an RL Agent</H2>
+
+<!WA8><IMG align=right SRC="http://envy.cs.umass.edu/People/sutton/RLIA/components.GIF">
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+
+Policy - what to do<BR><BR>
+
+Reward - what is good<BR><BR>
+
+Value - what is good because it predicts reward<BR><BR>
+
+Model - what follows what<BR><BR>
+
+
+<HR>
+
+
+<H2>
+Info-Access Applications of RL</H2>
+
+
+Anytime you have decisions to be made
+	<UL> and desired choice is not immediately clear </UL>
+
+Anytime you want to make long-term predictions
+<HR>
+
+
+<H2>
+Classical IR Querying/Routing/Filtering as RL</H2>
+
+
+<PRE>	Situation = Query or user model + Documents
+	Actions	  = Present document?  Rankings
+	Reward	  = User feedback on presented docs
+
+Pro RL:
+	Feedback is selective
+	and does not exactly fit SL framework
+
+Con RL:
+	Feedback does not exactly fit RL framework
+	Problem is not sequential
+
+e.g.,
+Bartell, Cottrell & Belew, 1995
+Boyan, Freitag & Joachim 1996
+Schütze, Hull & Pederson, 1995
+</PRE>
+<HR>
+
+
+
+<H2>
+MultiStep Info-Access Problems</H2>
+
+<UL>
+<LI> Query/Search Optimization
+<LI> Entertainment
+<LI> Software IR Agents
+<LI> Information Assistant
+<LI> Routing/Filtering
+<LI> Interface Manager
+<LI> Web Browsing
+<LI> Anticipating User
+</UL>
+But in a sense all these are the same<BR><BR>
+
+Learning a complex, interactive, goal-directed, input-sensitive, sequence of steps
+<BR><BR>
+
+That's exactly what RL is good for.
+<HR>
+
+
+
+<H2>
+The Multi-Step, Sequential Nature of IA</H2>
+
+<UL>
+<LI> the web page that led to the web page
+<LI> the request of user that enabled a much better query
+<LI> the query whose results enabled user to refine his next query
+<LI> the ordering of search steps
+<LI> the document that turned out NOT to be useful
+<LI> the series of searches, each building on the prior's results
+</UL>
+<HR>
+
+
+
+<H2>
+Imagine an Ideal Info-Access System</H2>
+
+<UL>
+<LI> Continuous oportunity to provide query info:
+	<UL> <LI> keywords, type specs, feedback </UL>
+<LI> Continuously updated list of proposed documents
+	<UL> <LI> find the good ones as soon as possible! </UL>
+<LI> Actions: all the things that could be done to pursue the search
+	<UL> 
+	<LI> when, where to send queries (Alta Vista? Yahoo? ...)
+	<LI> when, what to ask user (synonyms, types, utilities...)
+	<LI> what documents to propose
+	<LI> which links to follow
+	<LI> who else to consult
+	 </UL>
+<LI> Situations: the whole current status of the search
+<LI> Reward: good and bad buttons, maintaining interest, etc
+<LI> Value: how good is this action? what rewards will it lead to?
+</UL>
+<HR>
+
+
+<H2>
+Shortcutting</H2>
+
+<UL> 
+<LI> Feedback is often more than good/bad
+
+<LI> Often it does indicate the desired response
+	<UL> 
+	<LI> not for the one situation,
+	<LI> but for the whole sequence of prior situations
+	</UL>
+
+<LI> Each good document is
+	<UL> 
+	<LI> a positive example    -  this is what I was looking for
+	<LI> a negative example  -  why wasn't this found earlier?
+	</UL>
+
+<LI> The result of each search can be generalized, learned, anticipated, shortcutted
+
+<LI> This "anticipation" process is similar to certain RL processes...
+</UL>
+<HR>
+
+
+<H2>
+Compare...</H2>
+
+<H3>
+The classical context</H3>
+<UL> 
+	<LI> Large numbers of documents (e.g., 2 million)
+	<LI> a few queries (e.g., 200)
+	</UL>
+No way the queries can be used to learn about the docs
+</UL>
+<H3>The Web</H3>
+<UL>
+	<LI> Large numbers of documents
+	<LI> Even more queries
+	</UL>
+There will always be more readings than writings<BR><BR>
+Thus, we can learn about the docs
+    <UL>
+    <LI> How good are they?
+    <LI> Who are they good for?
+    <LI> What keywords are appropriate for them?
+    </UL>
+<HR>
+
+
+<H2>
+Popularity Ratings, Priors on Documents </H2>
+
+<H3>
+Q. How do you decide what to access today?</H3>
+		<UL> <LI> scientific papers, books, movies, web pages...</UL>
+<H3>
+A. Recommendations:	</H3>
+	<UL>
+	<LI> reviewed journals
+	<LI> movie critics
+	<LI> cool site of the day
+	<LI> # visitors to site
+	<LI> what your colleagues are talking about
+	</UL>
+<BR>
+"Its hard to find the good stuff on the web"
+<BR><BR>
+But in classical IR there is no concept of good stuff
+	<UL> docs are relevant or not, but not good or bad</UL>
+<HR>
+
+
+
+<H2>
+Differences and Similarities between Users</H2>
+
+<UL>
+<LI> Now users provide feedback as a favor, to help others, <BR>
+	or because they are paid or the program forces them to
+<LI> They ought to be providing feedback for selfish reasons
+<LI> Suppose you had a personal research assistant... <BR>
+	wouldn't you tell him what you liked and didn't like?
+<LI> user differences ==> selfish feedback ==> known user similarities
+</UL>
+<HR>
+
+
+
+<H2>
+Summary</H2>
+
+<UL>
+<LI> Data is power!  What relevant data is/will be available? 
+<LI> Relevance vs Utility
+<LI> Independent vs Multi-Step Queries
+<LI> Shortcutting
+<LI> Collaborative Filtering
+<LI> Selfish Feedback
+<LI> Learning classifications that help
+</UL>
+
+

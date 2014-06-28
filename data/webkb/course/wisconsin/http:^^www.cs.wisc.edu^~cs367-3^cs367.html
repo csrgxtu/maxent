@@ -1,0 +1,175 @@
+Date: Thu, 07 Nov 1996 19:25:10 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 30 Oct 1996 20:46:29 GMT
+Content-length: 10016
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+
+<html>
+
+<head>
+<title>CS 367</title>
+<!-- Changed by: James Larus, 17-Oct-1996 -->
+<meta name="GENERATOR" content="Microsoft FrontPage 1.1">
+</head>
+
+<body>
+<p>&#160;</p>
+<h1 align=center>CS 367-3: Introduction to Data Structures</h1>
+<p align=center>(<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><a href="http://www.cs.wisc.edu/~cs367-3/cs367.html">http://www.cs.wisc.edu/~cs367-3/cs367.html</a>, Revised 9/4/96)</p>
+<h1 align=center>Fall 1996</h1>
+<h1 align=center>James R. Larus</h1>
+<p align=center>&#160;</p>
+<h2><b>Instructor:</b></h2>
+<p><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href="http://www.cs.wisc.edu/~larus"><b>James Larus<br>
+</b></a><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.cs.wisc.edu/cgi-bin/finger/m?larus">larus@cs.wisc.edu </a><a name="yannis"><br>
+</a>5393 Computer Sciences<br>
+262-9519<br>
+<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a href="http://www.cs.wisc.edu/~larus/larus.html">http://www.cs.wisc.edu/~larus/larus.html </a></p>
+<p>Office hours: Tuesday 3-4 pm , Friday 11-12 am</p>
+<hr>
+<h2>Contents</h2>
+<ul>
+<li><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a href="#tas">Teaching Assistants</a></li>
+<li><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href="#text">Text</a></li>
+<li><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a href="#lectures">Lecture Information</a></li>
+<li><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><a href="#Electronic Mail">Electronic Mail</a></li>
+<li><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><a href="#cnotes">The C++ Language</a></li>
+<li><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><a href="#grading">Grading</a></li>
+<li><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><a href="#exams">Exams</a></li>
+<li><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><a href="#schedule">Course Schedule</a></li>
+<li><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><a href="#photo">Assignment 0</a></li>
+<li><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><a href="#assign1">Assignment 1</a></li>
+<li><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><a href="#assign2">Assignment 2</a></li>
+<li><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><a href="#assign3">Assignment 3</a></li>
+<li><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><a href="http://www.cs.wisc.edu/~cs367-3/assignments.html">Programming Assignments</a></li>
+</ul>
+<hr>
+<h2>Course Objectives</h2>
+<p>CS367 has two objectives:</p>
+<ul>
+<li>Present the concepts of data structures in general and some of the most widely used structures in detail. Data structures are the fundamental building 
+blocks of computer programs. By the end of the course, you should be able to identify situations in which a data structure is necessary, determine the 
+requirements for the data structure, and select the appropriate data structure from those covered in this course.</li>
+<li>Reiterate the concepts of structure programming, abstract data types, and modularity. These principles, which were introduced in CS302, are essential 
+to writing clear, correct, and maintainable software. As there is a close connection between abstract data types and data structures, this course places 
+a strong emphasis on applying these principles in all programming exercises.</li>
+</ul>
+<h2><a name="tas">Teaching Assistants</a></h2>
+<p>Wei Zhang and Chin Tang Chin are the teaching assistants (TAs) for
+this course (sections 2 and 3). They will grade your homework assignments
+and will be happy to answer questions about the
+assignments, or any other aspect of the course that is giving you trouble.</p>
+<p><b>Wei Zhang</b><br>
+Office: 1343 Compuer Sciences<br>
+Office hours: Wednesday 10-11, Thursday 9-10, Sunday 3-4<br>
+Office phone: 262-5596 <br>
+Email address: weiz@cs.wisc.edu<!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><a href="http://www.cs.wisc.edu/cgi-bin/finger?TBA"> </a></p>
+
+<p><b>Chin Tang Chin</b> <br>
+Office: 3310 Computer Sciences<br>
+Office hours:  Monday 9:30-10:30am, Tuesday 2:30-3:30pm, Friday 9:30-10:30am<br>
+Office phone: 262-1721 <br>
+Email address:
+<!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><A HREF="http://www.cs.wisc.edu/cgi-bin/finger/m?cchin"> cchin@cs.wisc.edu </A><br>
+Home page:
+<!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><A HREF="http://www.cs.wisc.edu/~cchin/cchin.html"> http://www.cs.wisc.edu/~cchin/cchin.html </A><br>
+<p>
+
+<h2><a name="text">Text</a></h2>
+<p>The text book for this course is <i>Data Abstraction and Problem Solving with C++: Walls and Mirrors </i>by Frank M. Carrano (ISBN # 0-8053-1226-9). 
+This is a well-written, if a little long-winded, text that covers most (but not all) of the material in this course. It also includes background about C++, so a 
+separate text for the language is not necessary.</p>
+<p>The lectures will often (but not always) follow David Dewitt's <i>CS 367 Lecture Notes - Fall 1995</i>. These notes are far more complete that simple lecture 
+notes, but they fall short of a true text book (they contain very little narrative text, no exercises, etc.). I am using these notes as a basis for my lectures; as 
+such, I feel free to skip portions and cover additional material. You may want to purchase these notes, which are available from the DoIT documentation 
+desk at the Dayton Street entrance of the Computer Sciences building (1210 W. Dayton St). </p>
+<p>If this course is your first experience with Unix, you will need information about activating your account, logging in, creating, editing, and manipulating files, 
+and compiling, running, and debugging programs. The handout <i>CS 1000</i>, also available from the DoIT information desk, contains this crucial information. 
+(Also, see also the <!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><a href="#help">help</a> section below.)</p>
+<h2><a name="lectures">Lecture Information </a></h2>
+<p>Tuesday and Thursday: 11:00 - 12:30 in 107 Psychology.</p>
+<p>As mentioned above, lectures will often follow DeWitt's notes. Lecture attendence is strongly recommended as I will regularly present material that does not 
+appear in the textbook or lecture notes, but will be useful for the programming assignments and exams. Needless to say, <em>You are responsible for all 
+material covered in lecture! </em>The exams will be based on the lecture material, reading assignments in the notes, and the course assignments.</p>
+<h2><a name="Electronic Mail">Electronic Mail</a></h2>
+<p>I often use electronic mail to notify students of changes in assignments, hints for programs, etc. I assume that you regularly read your electronic mail.</p>
+<h2><a name="grading">Grading</a></h2>
+<p>There will be one or two evening exams during the semester, a final exam and five programming assignments. The exams will determine 50% of the final 
+grade (with approximately equal weight for each one), and the programming assignments will count for 10% each.</p>
+<h2><a name="cnotes">The C++ Language </a></h2>
+<p>CS 367 will be taught using the C++ programming language, and programming assignments must be written in C++. <strong>If you do not know C++, you should 
+not be in this section of CS367.</strong> Jim Skrentny is teaching two sections of CS367 that cover C++ in addition to data structures. C++ is a large and complex 
+language; unless you are an experience programming (and even then), it is a difficult language to learn from a book.</p>
+<p>There is also another <!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><a href="http://www.cs.wisc.edu/~cs367-3/assignments.html">WWW page</a> with more information on the programming assignments.</p>
+<h2>Gdb</h2>
+<p>There is also a web page that describes the <!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><a href="http://www.cs.wisc.edu/~cs367-3/gdb.html">gdb</a> program debugger.</p>
+<h2><a name="exams">Exams </a></h2>
+<dl compact>
+<dt>Exam 1 </dt>
+<dd>Tuesday, Oct 22, 7:15-9:15pm, 1351 Chemistry. </dd>
+<dt>Exam 2 </dt>
+<dd>TBA </dd>
+<dt>Final Exam </dt>
+<dd>Wednesday, December 18th, 5:05pm-7:05pm, <i>place TBA</i> </dd>
+</dl>
+<h2><a name="schedule">Course Schedule </a></h2>
+<p>The following is a rough outline of topics that will be covered in this course. A more detailed scheduled will be provided later.</p>
+<div align=center><center>
+<table width=80%>
+<tr><td width=50%><p align=left><font size=4><strong>Topic</strong></font> </p>
+</td><td width=50%><p align=left><font size=4><strong>Dewitt's Notes</strong></font> </p>
+</td></tr>
+<tr><td width=50%>Introduction &amp; Administration</td><td width=50%></td></tr>
+<tr><td width=50%>Basic stuff of C++ </td><td width=50%>lecture #2 </td></tr>
+<tr><td width=50%>Functions </td><td width=50%>lecture #3 </td></tr>
+<tr><td width=50%>Pointers </td><td width=50%>lecture #4 </td></tr>
+<tr><td width=50%>Records &amp; dynamic storage</td><td width=50%>lecture #5 </td></tr>
+<tr><td width=50%>Lists </td><td width=50%>lecture #6</td></tr>
+<tr><td width=50%>Binary Search and O notation </td><td width=50%></td></tr>
+<tr><td width=50%>Advanced Lists</td><td width=50%>lecture #7</td></tr>
+<tr><td width=50%>Stacks</td><td width=50%>lecture #8 </td></tr>
+<tr><td width=50%>Queues</td><td width=50%>lecture #9</td></tr>
+<tr><td width=50%>Hashing</td><td width=50%>lecture #10</td></tr>
+<tr><td width=50%><strong>(Evening Exam)</strong></td><td width=50%>lecture #11 </td></tr>
+<tr><td width=50%>Recursion</td><td width=50%>lecture #12 </td></tr>
+<tr><td width=50%>Trees</td><td width=50%></td></tr>
+<tr><td width=50%>Binary Trees - Sort &amp; Search</td><td width=50%>lecture #13</td></tr>
+<tr><td width=50%>AVL Trees</td><td width=50%></td></tr>
+<tr><td>Graphs</td><td>lecture #16</td></tr>
+<tr><td><strong>(Evening Exam)</strong></td><td></td></tr>
+<tr><td>Sorting</td><td>lecture #17</td></tr>
+<tr><td>TBA</td><td></td></tr>
+</table>
+</center></div>
+<h2><a name="photo">Assignment 0</a></h2>
+<p>This is an <strong>absolute requirement to get a grade other than F!</strong><em> </em>Turn in an index card with the following information:</p>
+<ul>
+<li>Name and login name</li>
+<li>Year in school (freshman, sophomore, ...)</li>
+<li>Previous CS courses</li>
+<li>Previous programming experience</li>
+<li>Recent photograph of you. It should not be your picture from your 1st birthday, nor from that boy/girl scout trip in the summer of 1984. It can be 
+color or black-and-white, any size, etc.<em> No CS367 grades will be given without a photo! </em></li>
+</ul>
+
+<h2><a name="assign1">Assignment 1</a></h2>
+The first programming assignment is to write a simple abstract data byte for
+a bounded integer sequence.  The text of the assignment is 
+<!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><a href="http://www.cs.wisc.edu/~cs367-2/assign1.html">on-line.</a>
+</body>
+
+<h2><a name="assign2">Assignment 2</a></h2>
+The second programming assignment is to write a program to maintain a database
+of scores for a tennis tournament.  The text of the assignment is 
+<!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><a href="http://www.cs.wisc.edu/~cs367-2/assign2/assign2.html">on-line.</a>
+</body>
+
+<h2><a name="assign3">Assignment 3</a></h2>
+The second programming assignment is to write a program to produce a
+concordance using hash tables.  The text of the assignment is 
+<!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><a href="http://www.cs.wisc.edu/~cs367-2/assign3/assign3.html">on-line.</a>
+</body>
+
+</html>

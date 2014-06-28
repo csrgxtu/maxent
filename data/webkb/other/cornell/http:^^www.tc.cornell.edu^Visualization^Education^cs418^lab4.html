@@ -1,0 +1,128 @@
+Date: Mon, 16 Dec 1996 22:11:15 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 06 Mar 1996 18:11:51 GMT
+Content-length: 4855
+
+
+<html>
+<head>
+<title>
+CS418 Lab 4
+</title>
+</head>
+
+<body>
+<h2> <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/gifs/teapot.thumb.gif">
+CS 418: Laboratory 4</h2> 
+<h2> Using a virtual camera </h2>
+<b> Introduction. </b><br>
+<p>
+This exercise introduces the concept of a "virtual camera". The virtual camera
+is a set of transforms which takes a 3D representation of a set of objects
+and arranges for them to be shown in a 2D window.
+By analogy, a 35mm film camera transforms the 3D world into a fixed size (35mm)   
+image, viewed from a certain point, with a certain focal length of lens. For
+a virtual camera we will need to specify where the camera is, where it is
+pointed, the width of the field of the camera, and perhaps other parameters
+which a real camera cannot have (e.g. clip planes, or variable aspect ratio).
+
+<b><hr>Procedure:</b><p>
+
+First you need to download several example files. To do this, click on
+each of the filenames shown below.  When the text window opens, use the
+"save as" option to put the file in your own directory. Name each file with
+the same name as shown below. 
+<ul>
+<li> <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/cameraIntro.net"> CameraIntro.net </a>
+<li> <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/cameraIntro.cfg"> CameraIntro.cfg </a>
+<p>
+<li> <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/cameraINscene.net"> cameraINscene.net </a>
+<li> <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/cameraINscene.cfg"> cameraINscene.cfg </a>
+</ul>
+
+<p>
+Open the program CameraIntro.net and its control panel. When you execute it you
+will see that two image windows are opened. One is controlled by the familiar
+Image module. The other is controlled by a Camera and Display module. The
+Camera module gives you explicit control of the viewing parameters. Whereas the
+image module always points at the scene (by default), an explicit Camera
+can point anywhere you want and can be controlled by the program itself. On the
+control panel, switch the selectors to the Animate position and run the
+sequencer. The position of the Camera (the "from" parameter) and the up direction
+are now a function  of time. 
+The contents of the two compute modules which control the camera are shown
+<!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/cameraIntro.net.gif"> here. </a>
+
+<p>
+
+<b> Bugs found as of 2/23/96 </b>
+<p>
+<ul>
+<li> In the "program fragment" hyperlink replace "approxUP" with
+"norm(approxUP)" in the second compute module expression.
+</ul>
+
+<b> <hr> Assignment:</b><p>
+Model a TV sitting on a table next to a simple still life. Model a TV camera
+floating in space (chassis, lens tube, lens). Define 
+<!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/TV.controls.gif"> interactors </a>
+to control
+the position, look-to point, up direction, and zoom angle  of the TV camera.
+Use these interactors to orient the TV camera in space and to control a 
+Camera module to produce the image the TV camera would see. Put the image
+on the front of the modeled TV as shown in the image below.
+(The cameraINscene program "mirror" is very similar to the TV set.)
+You will need to convert the control interactors into rotations and translations
+of the TV camera. The Transform module allows you to rotate by an arbitrary
+set of basis vectors.
+A <!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/TV.net.camerafrag.gif"> program fragment </a>
+helps to explain how to take the three input vectors (to, from, up) and 
+convert them to a camera rotation matrix.
+Your program does not need to show the recursive image if the camera happens
+to be looking at the TV screen. (See image below, right.)
+It is more important to be able to control the camera in space and show
+the resulting image than to make a fancy TV set or camera model.
+<p>
+<!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/TV.image.gif">
+<!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/TV.image.nopict.gif">
+<p>
+<!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/student.1995.gifs/lab4.95results.html"> Some results from 1995. </a>
+<p>
+<!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/student.1996.gifs/lab4.96results.html"> Some results from 1996. </a>
+<p>
+Be prepared to demo your TV program  during section for a maximum of 15
+minutes. You will be graded on the correctness of the camera control and the
+readability of the program.
+<p>
+<b>You must document your code!</b>  Layout small groups of modules which fit on
+one screen and connect them to other groups with transmitters.  You should
+use transmitters/receivers, macros, and comments in the "Notation" field of
+each module so that you and the grader can understand the program.  Control
+panels, if any, should be well organized, labeled, and with the appropriate
+numeric ranges.
+
+<p>
+The
+<!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/GradeGuides/Lab4.grade.ps"> Lab 4 grading guide </a>
+will be filled out by a consultant during section to evaluate your work.
+<p>
+<p>
+<!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/gifs/leftarrow.icon.gif">
+Back to <!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/index.html">Main Page</a>
+<br>
+<!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/gifs/rightarrow.icon.gif">
+Go to <!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/lab5.html">Lab 5</a>
+
+ <P>
+<hr>
+Last modified, 2/23/96, B. Land.
+<! Revision history:
+	Original document: P.Maxfield, 10/94
+>
+<br>
+<!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><IMG SRC="http://www.tc.cornell.edu/copyright.xbm">
+<!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><A HREF="http://www.tc.cornell.edu/ctcCopyright.html"> 
+<i>Copyright Statement </I></A>
+</body> </html>
+

@@ -1,0 +1,54 @@
+Date: Tue, 05 Nov 1996 21:56:46 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 05 Aug 1996 04:34:02 GMT
+Content-length: 1684
+
+<HTML>
+<HEAD>
+<TITLE>OO C stuff</TITLE>
+</HEAD>
+<BODY>
+
+<H2>Object Oriented Programming in C</H2>
+
+<p> Here is a small collection of possibly-interesting tidbits relating to
+object-oriented programming in C.  Some of these are written by me,
+others I've pulled off the net.  
+
+<p>The idea is to use function pointers to implement dynamic binding
+in order to write easily-extensible code as well as to effect data and
+code abstraction through well-defined interfaces (in this case, 
+function signatures).  (Follow all that??) 
+This method is similar to using virtual
+functions and subtyping in C++, but it's more flexible: there's no
+difference between member functions and non-member functions, and the
+subtyping mechanism does not depend on the language's builtin dynamic
+memory allocation mechanism (i.e., operator new).  And, of course, it
+doesn't require C++, so you don't need to pay for what you don't want.
+
+<p>
+Here are some links.
+<p>
+
+<LI><!WA0><!WA0><!WA0><!WA0><A HREF="http://www.lysator.liu.se/c/pikestyle.html"><EM>Notes on 
+Programming in C</EM></A> by Rob Pike 
+
+<LI><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.wisc.edu/~gid/rgb.c">rgb.c</A>: a simple example program
+
+<LI><!WA2><!WA2><!WA2><!WA2><A HREF="http://www.sun.com:80/sunworldonline/swol-10-1995/swol-10-ooc.html"><em>some article</em></a>: taken from <em>SunWorld OnLine</em>
+
+<p>
+
+<i>update:</i> The last project I worked on that required creating new
+code from scratch (it was a simulator for an <!WA3><!WA3><!WA3><!WA3><a
+href="http://www.ece.wisc.edu/~jes/ece752.html">architecture class</a>
+project) was done in C++, using its inheritance method.  Apparently, I
+don't practice what I preach.  Oh well.
+
+<p>
+
+Comments/flames welcome:
+<!WA4><!WA4><!WA4><!WA4><A HREF="mailto:gid@cs.wisc.edu"> <ADDRESS>gid@cs.wisc.edu</ADDRESS></A>
+</BODY>
+</HTML>

@@ -1,0 +1,192 @@
+Date: Mon, 16 Dec 1996 22:11:34 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 01 Mar 1996 15:08:15 GMT
+Content-length: 7367
+
+
+<html>
+<head>
+<title>
+CS418 Lab 3
+</title>
+</head>
+
+<body>
+<h2> <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/gifs/teapot.thumb.gif">
+CS 418: Laboratory 3 </h2> 
+<h2> Transformations and Modeling</h2>
+
+<b> Introduction. </b><br>
+This exercise introduces the processes of geometrically
+transforming an object in size, orientation, and location, then combining
+objects to make a complex scene.
+There are several example programs given below to show you how to
+combine objects and animate them. Based on these examples, you will be asked
+to construct a short animation.
+
+<b><hr>Procedure:</b>
+<p>
+First you may want to download several example files. To do this, click on
+each of the filenames shown below.  When the text window opens, use the
+"save as" option to put the file in your own directory. Name each file with
+the same name as shown below. If you decide not to look at all of them, you
+may load them in pairs of *.net and *.cfg.
+The program polyhedra-unit.net reads a data file polyhedra-unit.dx. You will need
+to change the path name in the Import module in the program to reflect the
+directory in which you copy polyhedra-unit.dx.
+<b> The programs windmill.net and cubeflake.net also require the data file 
+polyhedra-unit.dx.</b>
+<ul>
+<li> <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/transform.net"> transform.net </a>
+<li> <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/transform.cfg"> transform.cfg </a>
+<p>
+<li> <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/windmill.net"> windmill.net </a>
+<li> <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/windmill.cfg"> windmill.cfg </a>
+<p>
+<li> <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/cubeflake.net"> cubeflake.net </a>
+<li> <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/cubeflake.cfg"> cubeflake.cfg </a>
+<p>
+<li> <!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/rose.net"> rose.net </a>
+<li> <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/rose.cfg"> rose.cfg </a>
+<p>
+<li> <!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/polyhedra-unit.net"> polyhedra-unit.net </a>
+<li> <!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/polyhedra-unit.cfg"> polyhedra-unit.cfg </a>
+<li> <!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/polyhedra-unit.dx"> polyhedra-unit.dx </a>
+</ul>
+<p>
+The first program is an example which shows how to scale, rotate and
+translate an object.  Open the program transform.net and it's control panel
+and execute it while changing the rotation, translation, and scaling
+of the simple object (see <!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><a href="#IM1">Image 1</a>
+). The program also allows you to select whether the
+translate control transforms the object before the scaling and rotation or
+after them.  Note that as you rotate the object, that a positive angle of
+rotation corresponds to counterclockwise rotation if you are looking down
+the positive axis of rotation toward [0,0,0].  The object is defined to
+have the base of the arrows at [0,0,0] so that the scale operation
+magnifies the objects, but does not move the base.  Likewise, the rotate
+operation (which rotates around the origin) leaves the base at the origin
+if translation is performed last.  Investigate the effects of changing the
+order of the rotate, translate, and scaling operations by using the
+operation order control and by modifying the program module order.
+<h4><a name = "IM1">
+<!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><img align=bottom src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/transform.1.gif"> Image 1</h4>
+
+<p>
+The second program, windmill.net,
+ is an example of a hierarchically modelled, animated
+object (see <!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><a href="#IM2">Image 2</a>)
+. The object is a windmill constructed from a propellor and a tower.
+The propellor, in turn, is make up of two blades, a hub and a shaft.  Open
+the sequencer and run the program.  The QuadricSurface module gererates
+spheres, cylinders, and other shapes.  The shape is set by an integer.  The
+shape list may be found by double- clicking the QuadricSurface module, then
+clicking on the "Description..."  button.  The import module reads the
+vertex list of a cube from polyhedra-unit.dx.  Edit the file to see what
+else is there.  Rotation of the whole tower is controlled by a compute
+module with a conditional in it to delay rotation.
+<h4><a name = "IM2">
+<!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><img align=bottom src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/windmill.1.gif"> Image 2</h4>
+
+<p>
+The third example program, cubeflake.net,
+ combines polyhedra to make an interesting object
+(see <!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><a href="#IM3">Image 3</a>).
+Open the control panel and run the program using the sequencer.  Note how
+multiple copies of objects are positioned.
+<h4> <a name = "IM3">
+<!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><img align=bottom src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/cubeflake.1.gif"> Image 3 </h4>
+
+<p>
+Other Lab 3 demonstration nets: polyhedra-unit.net (see <!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><a href="#IM4">Image 4</a>), 
+rose.net (see <!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><a href="#IM5">Image 5</a>). <br>
+<h4><a name="IM4">
+<p>
+<!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><img align=bottom src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/polyhedraunit.1.gif"> Image 4 
+<a name="IM5">
+<p>
+<!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><img align=bottom src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/rose.image.gif"> Image 5 </h4>
+
+
+<b> <hr> Assignment:</b><p>
+Using the three example programs as background, construct one of the
+objects described below.  Use the various modules in the "macros" category
+which produce shapes, such as NewQuadricSurface.  Also use the shapes defined
+in the polyhedra-unit.dx file.  Animate the resulting objects as specified.
+The animation should be 20 to 100 frames in length. A small Image window size
+(perhaps 320x240) will speed execution.
+
+<p>
+Construct <b> one </b> of:
+<ol>
+
+<li> A helicopter with fuselage, tail, skids, main rotor and tail rotor.
+The tail rotor
+should rotate twice as fast as the main rotor. The helicopter should sit
+on the ground
+until the blades are spinning, then fly straight up.
+
+<li> A propellor airplane on which the propellors rotate at the same rate.
+The plane
+should have wings, tail, engines, and a cockpit canopy. The plane should
+sit on the
+ground until the blades are spinning then roll forward and up.
+
+<li> A flowering plant with stem, leaves, and flower. The plant 
+should grow and bloom. The flower should be constructed from several
+petals. There must be at least two leaves on the plant.
+
+<li> A robot with a head, body, arm(s) and at least two wheels.  The robot
+must roll forward, stop, grasp an object and move it.  The head must have
+eyes (or cameras) which move together.
+<li> A bird landing on a tree. The bird must have wings, head, eyes, beak and
+feet. The wings must flap and the feet must move as the bird lands.
+</ol>
+
+<p>
+<!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/student.1995.gifs/lab3.95results.html">
+Some examples from 1995.</a>
+<p>
+<!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/student.1996.gifs/lab3.96results.html">
+Some examples from 1996.</a>
+<p>
+
+ Be prepared to demo your animation during section for a maximum of 15
+minutes. You will be graded on the correctness of the animation and the
+readability of the program. You may want to 
+<!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/MPEG/mpeg.html"> MPEG compress </a> your animation
+for rapid playback, or if you wish to submit it to the course web pages.
+<p>
+<b>You must document your code!</b>  Layout small groups of modules which fit on
+one screen and connect them to other groups with transmitters.  You should
+use transmitters/receivers, macros, and comments in the "Notation" field of
+each module so that you and the grader can understand the program.  Control
+panels, if any, should be well organized, labeled, and with the appropriate
+numeric ranges.
+
+<p>
+The
+<!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/GradeGuides/Lab3.grade.ps"> Lab 3 grading guide </a>
+will be filled out by a consultant during section to evaluate your work.
+<p>
+
+<p>
+<!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/gifs/leftarrow.icon.gif">
+Back to <!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/index.html">Main Page</a>
+<br>
+<!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/gifs/rightarrow.icon.gif">
+Go to <!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/lab4.html">Lab 4</a>
+
+ <P>
+<hr>
+Last modified, 1/23/96, B. Land. 
+<! Revision history:
+	Original document: P.Maxfield, 10/94
+>
+<br>
+<!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><IMG SRC="http://www.tc.cornell.edu/copyright.xbm">
+<!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><A HREF="http://www.tc.cornell.edu/ctcCopyright.html"> 
+<i>Copyright Statement </I></A>
+</body> </html>
+

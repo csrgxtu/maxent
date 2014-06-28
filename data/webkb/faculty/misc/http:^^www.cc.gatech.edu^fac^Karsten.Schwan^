@@ -1,0 +1,488 @@
+Date: Wed, 20 Nov 1996 22:47:19 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+Content-length: 20848
+Last-modified: Thu, 25 Jul 1996 14:54:49 GMT
+
+<HEAD>
+<TITLE>Karsten Schwan Home Page </TITLE>
+</HEAD>
+
+<BODY>
+<P>
+<P>
+
+<H1> Karsten Schwan <BR> </h1>
+
+RESEARCH STATEMENT:<BR>
+
+<B>Programming and Operating Systems for High Performance Platforms</B><BR> </b>
+<P> 
+College of Computing<BR>Georgia Institute of Technology<BR>Atlanta, GA 30332<BR>(404)894-2589, schwan@cc.gatech.edu<BR><P>
+
+<P>
+
+Prof. Schwan has been working with experimental and commercial 
+parallel machines since their inception in the late 70's. His research
+is driven by relevant applications developed as part of a multidisciplinary
+laboratory at Georgia Tech -- the HPPCEL Laboratory contains uniprocessor
+and multiprocessor supercomputers (a Cray machine, an IBM SP-2, and
+networked sets of workstations like IBM RS6000, SUN and SGI machines). His
+research is also driven by the future heterogeneous SMP and distributed
+systems infrastructure experienced in commercial and research settings --
+the Distributed Laboratories project is constructing a heterogeneous
+computing environment consisting of ATM-networked uniprocessor and SMP machines,
+jointly offering the computational power and interconnection bandwidth of
+modern supercomputers.
+
+<P>
+
+<B>Applications and the <!WA0><A HREF="http://www.cc.gatech.edu/net/www/systems/projects/HPPCEL/"> HPPCEL</A> Laboratory.</B>
+
+The HPPCEL Laboratory for experimentation with parallel applications
+is undertaking the development of several sample, large-scale parallel 
+applications jointly with end users (
+<!WA1><A HREF="http://www.cc.gatech.edu/grads/e/Greg.Eisenhauer/papers/particle_paper.ps.Z>
+molecular dynamics, 
+</A>
+<A HREF="ftp://ftp.cc.gatech.edu/pub/coc/tech_reports/1995/GIT-CC-95-17.ps.Z">
+atmospheric modeling,
+</A>
+finite element codes, fluid flow applications). In
+each case, these `applications' not only
+consist of specific computational tasks, but also include online analyses 
+being performed for these computations and real-time visualizations of program 
+data and monitoring of performance information, all of which are executed 
+simultaneously such that end users can inspect program results and steer
+program executions to gain experimental insights. Additional applications
+used to evaluate operating system support, program adaptation, and
+programming environments research have included:
+(a) robotics applications and real-time simulations (the ASV autonomous
+suspension vehicle, schema based robot navigation, and discrete
+event simulations), (b) real-time multi-media applications involving
+multiple machines and human end users, (c) the design and 
+implementation of interactive graphical interfaces for high performance
+applications, and (d) graph-based searching algorithms used in the solution of
+Operations Research problems.
+
+<P>
+
+<B>
+<!WA2><A HREF="http://www.cc.gatech.edu/systems/projects/DISTLABS/">
+Distributed Laboratories.
+</A>
+</B> 
+The topic of our joint research is the realization of 
+distributed laboratories, where individuals can interact with each other,
+and more importantly, with powerful, distributed computational tools as
+readily as if all were located in a single site. Our intent is to permit
+scientists, engineers, and managers at geographically distinct locations
+(including individuals ``tele-commuting'' from home) to combine their
+expertise in solving shared problems, by allowing them to
+simultaneously view, interact with, and steer sophisticated
+computations executing on high performance distributed computing platforms.
+Prof. Schwan's primary contribution to this effort concerns the construction of
+a distributed laboratory for experimentation with high performance
+numeric computations for applications in molecular physics,
+atmospheric sciences, working with high performance atmospheric and 
+pollution modelling, and manufacturing systems. In addition, Prof. Schwan's
+group is involved in the development of basic technologies facilitating the
+use of future heterogeneous and large-scale distributed and parallel systems.
+These technologies are concerned with ``middleware'' software
+that will be directly utilized by distributed laboratory applications and
+described in more detail below:
+
+<UL>
+<LI>The Falcon project is studying the dynamic monitoring, adaptation, and 
+interactive steering of high performance computations for on-line control of 
+``virtual laboratory instruments'' and for ``what-if?'' experimentation with 
+complex simulation models by distributed laboratory users. 
+
+<LI> The COBS project is concerned with the distributed systems and
+communication technologies underlying distributed laboratory applications. 
+The emphasis in distributed systems research is on support for shared-state
+in multi-granular and distributed computing environments.
+Research in communication protocols is concerned with providing the necessary
+communication latencies, bandwidths, and transmission guarantees across 
+heterogeneous underlying communication media.
+</UL>
+
+<P>
+
+Prof. Schwan's current research addresses three basic research topics
+addressing the computational requirements and underlying hardware systems 
+presented by the HPPCEL and Distributed Laboratory efforts: 
+<UL>
+<LI> programming support tools, 
+<LI> operating systems, and
+<LI> communication protocols.
+</UL>
+
+<P>
+
+<B>Programming tools - FALCON.</B> 
+The <!WA3><A HREF="http://www.cc.gatech.edu/systems/projects/FALCON/"> FALCON</A> 
+project addresses the construction of interactive parallel programs, 
+even permitting programmers to `steer'
+such applications. Steering may be defined as:
+
+<P> 
+<B> Program Steering - </B>
+A program that can interact with human users during its execution,
+where the purpose of such interactions is the use of on-line program
+information to affect or `steer' program execution.
+
+<P>
+The FALCON project's goal is to have high performance programs become 
+equally interactive as commonly used PC tools (e.g., spreadsheets) such that
+program performance is either maintained or improved! The expectation is
+that scientists can work more effectively when able to view program results
+during execution and steer program execution toward useful data domains. The
+initial experience is that on-line steering can improve the performance of
+programs by avoiding needless execution and by adapting (algorithmically)
+specific program abstractions to better match their functionality to 
+dynamically varying program characteristics. In essence,
+we expect to gain significant increases in the usefulness of parallel
+programs to end users and in program performance by use of steering.
+
+<P>
+
+FALCON offers specific support for program performance
+monitoring, evaluation, and tuning, and they provide system integration
+support using an incore data dictionary. Using FALCON, information required for 
+performance tuning is easily captured, analyzed, displayed, and then 
+used for program performance improvement. Program monitoring is 
+performed in an identical fashion for both shared and non-shared memory 
+parallel machines, using language-based and graphical user 
+interfaces. Using programming extensions of FALCON now under development, 
+program tuning is performed graphically, as well, by explicit manipulation 
+of parallel programs displayed as hierarchical sets of related objects. 
+The tools will be used in the context of large-scale parallel applications being
+interactively steered by end users. The FALCON tool is
+operational on SUNs, SGIs, IBM RS/6000, IBM SP-2 and the KSR
+machine. FALCON's programming extensions are still under construction, but 
+their runtime support is already operational.
+
+<P>
+
+<B>Adaptable Operating Systems.</B>
+The efficient execution of a parallel program
+requires that operating system primitives match the program's performance
+and reliability requirements. By constructing and evaluating novel
+operating system mechanisms for multiple parallel architectures,
+we are studying high-performance operating system support for multiple
+parallel applications, including real-time applications, scientific and 
+engineering codes, discrete event simulations, and optimization codes.
+
+<P>
+
+This research has resulted in several software libraries that facilitate
+the construction of parallel programs. The 
+<!WA4><A HREF="http://www.cc.gatech.edu/systems/projects/Cthreads/">
+`Cthreads' 
+</A>
+library is commonly used in operating systems and parallel computing courses 
+and is available on many uniprocessor and multiprocessor machines. 
+Its extensions toward `Configurable CThreads' address the on-line
+monitoring and configuration of high performance parallel programs, ranging 
+from the rapid adaptation of individual program abstractions to 
+user-directed program steering. 
+
+Specific examples of configurable abstractions constructed with the 
+CThreads basis include (1) 
+<!WA5><A HREF="ftp://ftp.cc.gatech.edu/pub/coc/tech_reports/1993/GIT-CC-93-05.ps.Z">
+adaptable multiprocessor locks
+</A>
+able to improve program performance by adapting lock characteristics to 
+program behavior during program execution and (2) 
+<!WA6><A HREF="ftp://ftp.cc.gatech.edu/pub/coc/tech_reports/1993/GIT-CC-93-22.ps.Z">
+adaptable communication protocols
+</A>
+
+<P>
+
+The DSA (Distributed Shared Abstractions) library for construction of 
+distributed objects is available on shared and (in a prototype version) on 
+distributed memory machines, including networks of workstations. 
+
+<! VERNARD, need the link to DSA here...software library available via remote FTP. Bother Bodhi if you cannot find it.>
+
+Its purpose is to support programmers in the construction of efficient 
+program abstractions capable of spanning both shared memory and distributed 
+memory platforms. Its initial SMP prototype is now being extended to address
+both sets of platforms, including larger scale distributed systems (see the
+COBS project described below).
+
+<P>
+
+The 
+<!WA7><A HREF="ftp://ftp.cc.gatech.edu/pub/coc/tech_reports/1994/GIT-CC-94-11.ps.Z">
+Kernel ToolKit (KTK) </A>
+is a substrate for parallel programming 
+and for the development of multiprocessor operating system kernels. At the
+object-level, it gives developers the ability to construct custom 
+implementations of object-based operating system abstractions. Objects are
+customized using meta-object-like interfaces described by `object attributes'
+and implemented by `policies'. Since policies may be present at runtime,
+KTK objects may also be dynamically adapted to suit varying runtime requirements
+of parallel and distributed applications. KTK`s attributes are the principal
+basis for construction of adaptable objects in the COBS project described
+next.
+
+<P>
+
+The 
+<!WA8><A HREF="http://www.cc.gatech.edu/systems/projects/COBS>
+COBS 
+</A>
+project's purpose
+is the development of technologies for high performance implementations of
+objects across SMP and networked platforms. Its initial prototype provides
+both DSM and DSA support on networked systems, and it offers developers
+basic mechanisms for programming diverse object abstractions, ranging from 
+shared blocks of memory of varied consistency to typed objects offering 
+well-defined operational interfaces, with varying methods for invoking both. 
+The intent of COBS is to interoperate with COM objects while also permitting
+developers to implement object functionalities for both interactive network
+applications and high performance distributed programs. COBS is our group's
+vehicle for experimentation with operating system constructs for the 
+heterogeneous parallel machines now commonly used in advanced industrial and 
+laboratory settings.
+
+<P>
+
+<B>Real-time systems.</B>
+For real-time systems, the Chaos-arc operating systems and a real-time
+version of Cthreads jointly implement reliable parallel computations for
+multi-target parallel machines and for real-time applications.
+
+<! VERNARD, cross link to chaosarc TR here. >
+
+Chaos-Arc demonstrates new operating system constructs that are required 
+when programmers need to enforce and guarantee 
+timing constraints of multiple and parallel components of real-time 
+programs, in the presence of uncertain external execution environments.
+Chaos-Arc's prime contribution is the `atomic real-time computation', 
+which is an operating system construct that allows programmers to enforce
+or recover from a timing constraint formulated for a set of invocations
+of objects. The system was used with parallel, real-time programs
+on a BBN Butterfly multiprocessor and is now being used on a Kendall Square 
+supercomputer. Besides its operating system kernel
+(running on top of the Cthreads package), Chaos-Arc consists of a 
+programming language for the description of objects (an
+extension of C) and other program development tools. Chaos-Arc has also been
+ported to SUN Sparcstations, to SGI machines, and to the Kendall Square
+supercomputer.
+For the lowest level of Chaos-arc, we have designed a real-time threads package 
+
+<! VERNARD, cross link to RT Threads here >
+
+that performs thread scheduling such that deadline guarantees are made
+for static and dynamic thread arrivals. The real-time threads package 
+has been implemented on the BBN Butterfly, at user level and on bare
+hardware, and it is now being implemented on the KSR supercomputer
+and on SUN Sparcstations.
+
+Our current research in real-time systems concerns the on-line scheduling of
+real-time threads
+using classical formulations of timing constraints, as well as the development
+of technology for real-time simulation.
+
+<UL>
+<LI>
+<A
+HREF="ftp://ftp.cc.gatech.edu/pub/coc/tech_reports/1993/GIT-CC-93-35.ps.Z">GIT-C
+C-93-35</A>
+LDA - Scalable, Off-Line Multiprocessor Scheduling for Real-Time Systems <BR>
+Authors: Hongyi Zhou and Karsten Schwan
+
+<LI> <!WA9><A HREF="ftp://ftp.cc.gatech.edu/pub/coc/tech_reports/1994/GIT-CC-94-23.ps.Z">GIT-CC-94-23</A> Rapid -- A Multiprocessor Scheduler for Dynamic Real-Time Applications <BR>
+Authors: <!WA10><A HREF="http://www.cc.gatech.edu/grads/f/Harold.Forbes/Harold.Forbes.html">Harold Forbes</A>
+and Karsten Schwan.
+</UL>
+
+Equally importantly, recent research is addressing the formulation and support 
+of timing constraints for distributed information systems offering both 
+program-program communications and human interactive services. For such systems,
+a benchmark application being developed by our group is able to emulate the
+behavior of video delivery systems and of more dynamic systems like those
+
+
+<UL>
+<LI> <!WA11><A HREF="ftp://ftp.cc.gatech.edu/pub/coc/tech_reports/1994/GIT-CC-94-29.ps.Z">GIT-CC-94-29</A> <BR>PORTS: Experiences with a Scheduler for Dynamic Real-Time 
+Systems<BR>
+Authors: <!WA12><A HREF="http://www.cc.gatech.edu/grads/g/Kaushik.Ghosh/homepage.html">Kaushik Ghosh</A>, 
+Richard M.  Fujimoto, and Karsten Schwan
+
+<LI> <!WA13><A HREF="ftp://ftp.cc.gatech.edu/pub/coc/tech_reports/1994/GIT-CC-94-57.ps.Z">GIT-CC-94-57</A><BR> Reconfigurable Garbage Collection of Data Structures in a Speculative Real-Time System<BR>
+Authors: <!WA14><A HREF="http://www.cc.gatech.edu/grads/g/Kaushik.Ghosh/homepage.html">Kaushik
+Ghosh</A><BR>
+</UL>
+
+
+<P>
+
+<H3> Recent publications </h3>
+
+
+<P> 
+
+Jeffrey Vetter, Karsten Schwan 
+<!WA15><A HREF="ftp://ftp.cc.gatech.edu/pub/coc/tech_reports/1995/GIT-CC-95-16.ps.Z">
+<B>"Progress: a Toolkit for Interactive Program Steering."</B></A>
+<EM> Proceedings of the International Conference on Parallel 
+Processing 1995 </EM> Oconomowoc, Wisconsin. August, 1995. 
+
+<P> 
+
+Weiming Gu, Greg Eisenhauer, Eileen Kraemer, John Stasko, Jeffrey Vetter, and 
+Karsten Schwan 
+<!WA16><A HREF="ftp://ftp.cc.gatech.edu/pub/coc/tech_reports/1994/GIT-CC-94-21.ps.Z">
+<B>"Falcon: On-line Monitoring and Steering of Large-Scale Parallel 
+Programs."</B></A>
+<EM> The Fifth Symposium on the Frontiers of
+Massively Parallel Computation </EM> McLean, Virginia. February, 1995. 
+
+<P> 
+
+Jeffrey Vetter, Greg Eisenhauer, Weiming Gu, Thomas Kindler, Karsten Schwan,
+and Dilma Silva 
+<!WA17><A HREF="ftp://ftp.cc.gatech.edu/pub/coc/tech_reports/1994/GIT-CC-94-58.ps.Z">
+<B>"Opportunities and Tools for Highly Interactive Distributed and Parallel 
+Computing"</B> </A> or
+<!WA18><A
+HREF="ftp://ftp.cc.gatech.edu/pub/coc/tech_reports/1994/GIT-CC-94-58.color.ps">
+here for a color version</A>
+<EM> Proceedings of The Workshop On Debugging and 
+Tuning for Parallel Computing Systems </EM> Chatham, MA. October, 1994. 
+
+<P> 
+
+Greg Eisenhauer, Weiming Gu, Karsten Schwan,and Niru Mallavarupu,
+<!WA19><A HREF="ftp://ftp.cc.gatech.edu/pub/coc/tech_reports/1994/GIT-CC-94-08.ps.Z">
+<B>``Falcon - Toward Interactive Parallel Programs: The On-line Steering of a 
+Molecular Dynamics Application''</B> </A>,<EM> High Performance Distributed 
+Computing (HPDC-3)</EM>, San Francisco, CA, Aug. 1994. 
+
+<P>
+
+Weiming Gu, Jeffrey Vetter, and Karsten Schwan,
+<!WA20><A HREF="ftp://ftp.cc.gatech.edu/pub/coc/tech_reports/1994/GIT-CC-94-15.ps.Z">
+<B>``An Annotated Bibliography of Interactive Program Steering''</B></A>,
+ACM SIGPLAN Notices, July 1994. 
+
+<P>
+
+Kaushik Ghosh, Kiran Panesar, Richard Fujimoto, and Karsten Schwan,
+<!WA21><A HREF="ftp://ftp.cc.gatech.edu/pub/coc/tech_reports/1993/GIT-CC-93-71.ps.Z">
+<B> ``Ports: A Parallel, Optimistic Real-Time Simulator''</B></A>, 
+<EM>8th Workshop on Parallel and Distributed Simulation (PADS)</EM>, July 1994. 
+
+<P>
+
+Greg Eisenhauer and Karsten Schwan, <B>``MD -- A Flexible Framework for 
+High-Speed Parallel Molecular Dynamics''</b> <EM> High Performance Computing, 
+Proceedings of the 1994 SCS Simulation Multiconference </EM>, pages 70-75, 
+April 1994, Society for Computer Simulation. 
+
+<P>
+
+
+Ahmed Gheith, Bodhi Mukherjee, Dilma Silva, and Karsten Schwan,
+<!WA22><A HREF="ftp://ftp.cc.gatech.edu/pub/coc/tech_reports/1994/GIT-CC-94-11.ps.Z">
+<B>``KTK: Kernel Support for Configurable Objects and Invocations''</B></A>
+,<EM> Second International Workshop on Configurable Distributed Systems</EM>,
+IEEE, ACM, March 1994. 
+
+<P>
+
+Bodhi Mukherjee and Karsten Schwan,
+<!WA23><A HREF="ftp://ftp.cc.gatech.edu/pub/coc/tech_reports/1993/GIT-CC-93-17.ps.Z">
+<B>``Improving Performance by Use of Adaptive Objects: Experimentation with a 
+Configurable Multiprocessor Threads Package''</B></A>,
+<EM>Second International Symposium on High Performance Distributed Computing (HPDC-2)</EM>, Spokane, Washington, July 1993. 
+
+<P>
+Prince Kohli, Mustaque Ahamad, and Karsten Schwan. 
+<!WA24><A HREF="ftp://ftp.cc.gatech.edu/pub/coc/tech_reports/1994/GIT-CC-94-53.ps.Z">
+<B> Indigo: User-level Support for Building Distributed Shared Abstractions </B>
+</A> <EM> Fourth International Symposium on High Performance Distributed 
+Computing (HPDC-4)</EM> 
+
+<P>
+
+Kaushik Ghosh, Richard M. Fujimoto, and Karsten Schwan,<B> ``Time Warp 
+Simulation in Time Constrained Systems''</B>, <em>7th Workshop 
+on Parallel and Distributed Simulation (PADS)</em>, San Diego, May 1993. 
+
+<P>
+
+Kaushik Ghosh, Richard M. Fujimoto, and Karsten Schwan,
+<B>``A Testbed for Optimistic Execution of Real-Time Simulations''</B>,
+<em>IEEE Workshop on Parallel and Distributed Real-Time Systems</em>,
+Newport Beach, April 1993.
+
+<P>
+
+Ahmed Gheith and Karsten Schwan,<B> ``CHAOS-Arc - Kernel Support for Atomic
+Transactions in Real-Time Applications''</B>, <i>ACM Transactions on Computer 
+Systems</i>, April 1993. 
+
+<P>
+
+Hongyi Zhou, Karsten Schwan, and Ian Akyildiz, <B>``Performance Effects of Information Sharing in a Distributed Multiprocessor Real-Time Scheduler''</B>, 
+<em>12th Real-Time Systems Symposium</em>, Dec. 1992. 
+
+<P>
+
+Karsten Schwan and Hongyi Zhou, <B>``Dynamic Scheduling of Hard Real-time Tasks and Real-Time Threads"</B>, <em>IEEE Transactions on Software Engineering</em>, August 1992. 
+
+<P>
+
+<h3>Partial list of current and recent students:</h3>
+
+<P> 
+<!WA25><A HREF="http://www.cc.gatech.edu/grads/e/Greg.Eisenhauer/">Greg Eisenhauer</A>, FALCON project
+<P>
+<!WA26><A HREF="http://www.cc.gatech.edu/grads/f/Harold.Forbes/Harold.Forbes.html">Harold Forbes</A>, real-time systems
+<P>
+<!WA27><A HREF="http://www.cc.gatech.edu/grads/g/Kaushik.Ghosh/homepage.html">Kaushik Ghosh</A> (jointly with R. Fujimoto), real-time simulation
+<P>
+<!WA28><A HREF="http://www.cc.gatech.edu/grads/g/Weiming.Gu/homepage.html"> Weiming Gu </a>, FALCON project
+<P>
+Daniela Ivan, real-time communications and scheduling
+<P> 
+<!WA29><A HREF="http://www.cc.gatech.edu/computing/Telecomm/people/Phd/rhk.html">Robin Kravets</A>, high performance communications
+<P>
+<!WA30><A HREF="http://www.cc.gatech.edu/people/home/vernard/"> Vernard Martin</A> Vernard Martin, FALCON project
+<P>
+Bodhi Mukherjee, adaptable operating system kernels
+<P>
+Byron Jeff, real-time control of multi-media applications
+<P>
+Dilma Silva, high performance objects
+<P> 
+Phyllis Schneck, adaptable communications
+<P>
+<!WA31><A HREF="http://www.cc.gatech.edu/people/home/vetter/"> Jeffrey Vetter </A>, FALCON project
+<P>
+Rich West, real-time threads and communications
+<P>
+Hongyi Zhou, real-time scheduling
+<P>
+Thomas Kindler, Mary Trauner (jointly with School of EAS), 
+parallel modeling of atmospheric conditions
+<P>
+Shih-Chang Chuang (Advisor: R. Fulton, ME), finite element computation on 
+parallel machines
+<P>
+<!WA32><A HREF="http://www.cc.gatech.edu/gvu/people/Phd/Eileen.Kraemer.html">Eileen Kraemer</A> (Advisor: J. Stasko), performance animation of parallel programs
+<P>
+Ranjit John (Advisor: M. Ahamad), implementing and programming 
+weakly consistent memories
+<P>
+
+<P>
+</b><HR>
+
+</BODY>

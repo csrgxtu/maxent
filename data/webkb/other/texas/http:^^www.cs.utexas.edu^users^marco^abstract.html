@@ -1,0 +1,89 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 22:02:39 GMT
+Content-Type: text/html
+Content-Length: 2941
+Last-Modified: Monday, 05-Aug-96 00:58:09 GMT
+
+
+<HTML>
+
+<!-- This document is in HyperText Markup Language.  HTML tags are enclosed
+  -- in angle brackets. This is a comment tag and won't be displayed as part
+  -- of your document. -->
+
+<!-- ====================================================================== -->
+
+<HEAD>
+
+<TITLE>
+Flow Routing in Computer Networks
+</TITLE>
+
+</HEAD>
+
+<!-- ====================================================================== -->
+
+<BODY>
+
+<p>
+Conventional connectionless datagram routing protocols such as IP
+utilize vector-distance and link-state routing in order to minimize
+the distance traveled when routing a datagram from one location to another.
+Motivated by the requirements of the many types of emerging multimedia 
+applications that will require dedicated virtual circuits, we investigate 
+fault-tolerant protocols for routing virtual circuits that 
+both minimize distance and maximize bandwidth. The protocols we present are
+self-stabilizing: starting from an arbitrary and possibly illegitimate
+initial state, they  converge to a legitimate state.
+As a consequence of this property they can tolerate changes in network 
+topology and link capacities. 
+
+<p>
+We consider networks where edges have positive capacities.
+The flow of a path in a network is the minimum capacity for an edge in that
+path. A maximum flow path is a path whose flow is greater than or equal
+to the flow of any other path with the same first and last vertices.
+We introduce the concept of a maximum flow tree in a network.
+A maximum flow tree in a  network is a rooted spanning tree of the network
+wherein the path of every vertex to the root is a maximum flow path.
+
+
+<p>
+We present a stabilizing  protocol for constructing maximum flow
+trees in networks. We make the following observation: every maximum weight
+spanning tree is a maximum flow tree, but the reverse is not true.
+We observe that our maximum flow tree protocol has a number of advantages
+over any maximum weight spanning tree protocol.
+
+<p>
+We also present a stabilizing protocol for constructing
+maximum weight spanning trees in networks. 
+Any maximum weight spanning tree algorithm is alternatively a minimum
+weight spanning tree algorithm. Minimum
+weight spanning trees are very useful for implementing
+multicast on a computer network. 
+
+
+<p>
+We present a protocol for routing and allocating virtual circuits along a 
+maximum flow tree. As virtual circuits are allocated and freed
+along the tree, it may lose its maximum flow tree property, and thus it may
+need to be updated. We present a stabilizing protocol to update the 
+maintained maximum flow tree. 
+The protocol has the following desirable safety property:
+while the tree is being updated, it always remains a tree.
+
+<p>
+Finally we present a flexible strategy for routing and allocating
+virtual circuits that minimizes the length of a circuit with respect
+to a desired set of flow values. The protocol presented is also
+stabilizing.
+
+
+
+
+
+
+
+

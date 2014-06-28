@@ -1,0 +1,220 @@
+Date: Wednesday, 20-Nov-96 20:04:49 GMT
+Server: NCSA/1.3
+MIME-version: 1.0
+Content-type: text/html
+Last-modified: Friday, 21-Jun-96 21:14:58 GMT
+Content-length: 8223
+
+<HTML>
+<HEAD>
+<TITLE>Performance Prediction</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="textures/yellow_paper.gif">
+
+<!WA0><IMG Align=middle SRC=http://www.cs.rochester.edu/u/leblanc/icons/carnival.gif>
+<H2>Measurement and Prediction of <BR>
+Parallel Program Performance</H2>
+
+<H3>NSF CISE grant CCR-9510173</H3>
+
+<H3>Faculty</H3>
+<DL>
+<DT>
+<!WA1><A HREF="http://www.cs.rochester.edu/users/faculty/leblanc/">Tom LeBlanc</A>
+<EM>(leblanc@cs.rochester.edu)</EM>
+</DT>
+<DD></DD>
+<DT>
+in collaboration with
+<!WA2><A HREF="http://cs-www.bu.edu/faculty/crovella/Home.html">Mark Crovella</A>
+<EM>(crovella@cs.bu.edu)</EM>
+<DT>
+<DD></DD></DL>
+
+<H3>Graduate Students</H3>
+
+<DL>
+<DT>
+<!WA3><A HREF="http://www.cs.rochester.edu/users/grads/meira/">Wagner Meira</A>
+<EM>(meira@cs.rochester.edu)</EM>
+</DT>
+<DD></DD>
+<DT>
+<!WA4><A HREF="http://www.cs.rochester.edu/users/grads/poulos/">Alex Poulos</A>
+<EM>(poulos@cs.rochester.edu)</EM>
+</DT>
+<DD></DD>
+<DT>
+<!WA5><A HREF="http://www.cs.rochester.edu/users/grads/nikolaos/">Nikolaos
+    Hardavellas</A> <EM>(nikolaos@cs.rochester.edu)</EM>
+</DT>
+<DD></DD>
+</DL>
+
+<HR>
+<H3>Project Summary</H3>
+<P>
+Carnival is a tool designed to automate the process
+of understanding the performance of parallel programs.
+It supports performance measurement, modeling, tuning,
+and visualization.
+
+<P>
+Carnival measurements are based on
+<em>predicate profiling</em>,
+which quantifies the time spent in each category of overhead during execution.
+Our first implementation of predicate profiling
+was implemented on the KSR-1.
+We now have implementations for
+the SGI Challenge multiprocessor,
+the IBM SP-2,
+a network of SUN workstations running PVM,
+and a cluster of Alpha workstations.
+
+<P>
+Carnival is a novel attempt to automate the cause-and-effect
+inference process for performance phenomena.
+In particular, Carnival currently supports <em>waiting time analysis</em>,
+an automatic inference process that explains each source
+of waiting time in terms of the underlying causes,
+instead of simply identifying where it occurs.
+We are now developing a similar technique to explain
+the causes of communication.
+
+<P>
+Our ultimate goal is to combine the accuracy of empirical performance
+measurement with the predictive power of analytic performance modeling.
+Towards that end, Carnival supports
+<em>lost cycles analysis</em>,
+which uses a priori knowledge of the sources and characteristics
+of the overhead categories in parallel systems to guide and constrain
+the modeling process.
+The Lost Cycles Toolkit, which we are integrating within Carnival,
+combines empirical model-building techniques from statistics
+with measurement and modeling techniques for parallel programs.
+
+<P>
+Carnival is also a visualization tool
+that provides a link between performance measurements
+and the source code.
+The interface presents the original source code in a window.
+Along the left hand side of the source is a grey-scale
+scroll bar that indicates the amount of time spent in
+each portion of the source code (summed across all processors).
+Along the right hand side of the source code are color bars that indicate
+the percent of time spent in each overhead category by that section of
+source code (again summed across all processors).
+Pop-up windows are used during modeling and waiting time analysis.
+
+<P>
+The Carnival implementation comprises about 15,000
+lines of Tcl/Tk and C source code.
+It has been installed at the Cornell Theory Center
+and we plan to make it more widely available soon.
+We are currently porting the instrumentation library
+(the only machine-dependent portion of the tool)
+to clusters of DEC Alphas connected by the DEC Memory Channel.
+
+<HR>
+<H3>Related Publications</H3>
+<UL>
+<LI> Crovella, M. R. Bianchini,
+    T. LeBlanc, E. Markatos, and R. Wisniewski,
+    ``Using Communication-to-Computation Ratio in Parallel Program Design
+    and Performance Prediction,''
+    In Proc. 4th IEEE Symposium on Parallel and Distributed Processing,
+    Dallas, Texas, December 1992, pp. 238-245.
+<LI> Crovella, M. and T. LeBlanc.
+      <!WA6><A HREF="ftp://ftp.cs.rochester.edu/pub/papers/systems/93.WPDD.performance_predicates.ps.Z">Performance Debugging Using
+     Parallel Performance Predicates.</A>
+     In Proc., 3rd ACM/ONR Workshop
+     on Parallel and Distributed Debugging, pp. 140-150, May 1993.
+<LI> Crovella, M. and T. J. LeBlanc.
+      <!WA7><A HREF="ftp://ftp.cs.rochester.edu/pub/papers/systems/93.tr479.the_search_for_lost_cycles.ps.Z">The Search for Lost Cycles:
+     A New Approach to Performance Tuning of Parallel Programs.</A>
+     In Proc. Supercomputing '94, Washington, D.C. November 1994, pp. 600-609.
+     Also available as
+     Technical Report 479, Computer Science Dept., Univ. of Rochester,
+     December 1993.
+<LI> Crowl, L. A., M. Crovella, T. J. LeBlanc, and M. L. Scott. ``The
+     Advantages of Multiple Parallelizations in Combinatorial
+     Search.'' J. of Parallel and Distributed Computing, 21, 1, April 1994,
+     pp. 110-123.  Also available as
+     <!WA8><A HREF="ftp://ftp.cs.rochester.edu/pub/papers/systems/93.tr451.beyond_data_parallelism.ps.Z">Technical Report 451</A>,
+     Computer Science Dept., Univ. of Rochester, April 1993.
+<LI> Crovella, M.
+     <!WA9><A HREF="ftp://ftp.cs.rochester.edu/pub/papers/systems/95.tr573.Performance_prediction_and_tuning_of_parallel_programs.ps.gz">Performance
+     Prediction and Tuning of Parallel Programs.</A>
+     Ph.D. Dissertation, TR 573, Computer Science Department,
+     University of Rochester, August 1994.
+<LI> Mark Crovella, Thomas J. LeBlanc, Wagner Meira, Jr.,
+    <!WA10><A HREF="ftp://ftp.cs.rochester.edu/pub/papers/systems/95.tr580.Performance_measurement_and_modeling_with_lost_cycles_toolkit.ps.gz">Parallel
+    Performance Prediction Using the Lost Cycles Toolkit.</A>
+    TR 580, Computer Science Department, University of Rochester, May 1995.
+<LI> Wagner Meira Jr., <!WA11><A HREF="ftp://ftp.cs.rochester.edu/pub/papers/systems/95.tr589.Modeling_performance_of_parallel_programs.ps.gz">Modeling
+    Performance of Parallel Programs</A>,
+    TR 589, Computer Science Department, University of Rochester, June 1995.
+<LI> Wagner Meira Jr., Thomas J. LeBlanc, and Alexandros Poulos,
+    <!WA12><A HREF="http://www.cs.rochester.edu/u/leblanc/papers/carnival/paper.html">Performance Visualization and
+    Tuning with Carnival</A>, ACM SIGMETRICS Symp. on Parallel and
+    Distributed Tools, May 1996, pp. 1-10.
+</UL>
+
+<HR>
+<H3>Related Projects</H3>
+<UL>
+    <LI> <!WA13><A HREF="http://www.nas.nasa.gov/NAS/Tools/Projects/AIMS/">AIMS</A>
+	(NASA Ames)
+    <LI> <!WA14><A HREF="http://www.cc.gatech.edu/systems/projects/FALCON/falcon_home.html>Falcon</A>
+	(Georgia Tech)
+    <LI> <A HREF="http://www-pablo.cs.uiuc.edu/">Pablo</A>
+	(University of Illinois)
+    <LI> <!WA15><A HREF="http://www.cs.wisc.edu/~paradyn">Paradyn</A>
+	(University of Wisconsin)
+    <LI> <!WA16><A HREF="http://www.cs.uoregon.edu/~bhelm/poirot/index.html">Poirot</A>
+	(University of Oregon)
+    <LI> <!WA17><A HREF="http://www.cc.gatech.edu/computing/Architecture/projects/tass.html">TASS</A>
+	(Georgia Tech)
+    <LI> <!WA18><A HREF="http://www.cs.uoregon.edu:80/paracomp/tau/">TAU</A>
+	(University of Oregon)
+</UL>
+
+<HR>
+<H3>Other Information</H3>
+<P>
+There is a new symposium on parallel and distributed tools
+sponsored by ACM SIGMETRICS.
+The symposium has a
+<!WA19><A HREF="http://www.cs.wisc.edu/~paradyn/Call.html">home page</A>,
+and was held May 1996 as part of the ACM Federated Conference
+in Philadelphia, PA.
+See the proceedings of that symposium for papers on the latest work
+in this area.
+
+<P>
+The Parallel Tools Consortium was formed to help coordinate tool
+development in the parallel processing community.
+See their <!WA20><A HREF="http://www.llnl.gov/ptools/ptools.html">home page</A>
+for a list of projects approved by the consortium, as well as a
+comprehensive list of research projects on parallel tools.
+
+<P>
+The Cornell Theory Center maintains a
+<!WA21><A HREF="http://www.tc.cornell.edu/UserDoc/Software/PTools/">list
+of parallel tools</A>
+(including Forge, ParaGraph, ParaScope, and upshot)
+and associated documentation.
+
+<P>
+For an introduction to parallel computing, and a discussion of
+related performance issues, see Ian Foster's on-line text
+<!WA22><A HREF="http://www.mcs.anl.gov/dbpp">Designing and Building
+Parallel Programs</A>.
+
+<HR>
+<ADDRESS>
+last modified June 21 1996 / Tom LeBlanc / leblanc@cs.rochester.edu
+</ADDRESS>
+</BODY>
+</HTML>

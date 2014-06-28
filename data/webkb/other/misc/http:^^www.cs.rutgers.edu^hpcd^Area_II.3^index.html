@@ -1,0 +1,259 @@
+Date: Tue, 14 Jan 1997 22:09:19 GMT
+Server: NCSA/1.5.2
+Last-modified: Fri, 25 Oct 1996 17:21:26 GMT
+Content-type: text/html
+Content-length: 12609
+
+<title>Area II.3. Adaptive Voice Mimic</title>
+<h3>Cluster II. Hypercomputing in Design Tasks Supported by Computational
+Fluid Dynamics (CFD)</h3>
+<h4>Area II.3 Design of 'voice mimic' speech generation systems</h4>
+
+Area Coordinator:
+<ul>
+<li>James Flanagan (Rutgers)
+</ul>
+
+<CENTER>
+<!WA0><IMG SRC="http://www.cs.rutgers.edu/hpcd/Area_II.3/Images/flow_chart.gif" ALT="The Adaptive Voice Mimic System" 
+ ALIGN="middle">
+</CENTER>
+
+<P>
+<H4>I.  Introduction</H4>
+The research on the adaptive voice mimic aims to advance fundamental
+understanding of human speech generation and coalesces the problems of
+speech synthesis, speech recognition, and low bit-rate speech coding
+into a compact parametric framework. At its core, the mimic system
+utilizes optimization techniques and a computationally-intensive model
+of speech generation to provide a high quality estimate, moment by
+moment, of articulatory parameters from an acoustic speech signal.
+The estimation of articulatory parameters is accomplished through a
+two-step process: an open-loop (table look-up based) initial
+estimation followed by a closed-loop optimization refinement.
+
+<H4>II.  Articulatory Shape Estimation</H4> Starting from an acoustic
+input, the open-loop (i.e., with no optimization) estimate of the
+articulatory parameters is obtained via a table look-up of precomputed
+synthetic speech representations.  Each element in the table is stored
+with the articulatory parameters from which it was produced.  The
+input speech is compared with the synthetic speech in the table via a
+spectral representation, and the articulatory shape corresponding to
+the "closest" synthetic speech is selected.  Once initial articulatory
+estimates are found for a series of speech segments, a dynamic
+programming module provides smooth articulatory trajectories by
+imposing articulatory constraints.  This concludes the open-loop
+process.
+<P>
+The open-loop estimates, initialize a closed-loop optimization by
+suggesting a starting position which is likely in the vicinity of the
+(global) optimal solution. Effective open-loop estimates reduce the
+computation required by the computationally-costly optimization loop.
+Within the closed-loop optimization, synthetic speech is generated
+from a compact set of articulatory parameters and compared with the
+input speech using a perceptually weighted distance metric. The
+articulatory parameters are iteratively adjusted based on the result
+of the comparison so that the weighted spectral distance between the
+arbitrary speech input and the synthetic speech is driven to below a
+preset threshold.
+
+<H4>III.  Articulatory Speech Synthesis</H4>
+
+As part of this research, two methods of high quality speech synthesis
+from articulatory parameters are studied.  The first method is based
+on linear acoustic theory/models of speech production, and the second
+method is based on a fluid-dynamic formulation. The techniques for the
+first method are relatively well established, but the method assumes
+plane wave propagation inside the vocal tract and also neglects most
+of the non-linear terms. On the other hand, the second, new method
+attempts to capture more accurately the physics behind human speech
+production.  This is done by formulating the speech production process
+as a fluid-dynamic phenomenon.  The approach uses a form of the
+Reynolds-Averaged Navier-Stokes (RANS) equations describing fluid
+motion to numerically solve for low Mach number, compressible flow in
+vocal tract geometries.  Physical experiments, from which real flow
+quantities are acquired, support the computational approach by
+validating numerical results.
+
+<P>
+
+Both linear acoustic and fluid-dynamic synthesis use vocal tract
+shapes defined by means of articulatory models.  Two models have been
+used: Tracttalk (Lin, 1990) and the Flanagan-Ishizaka model
+(Ishizaka, 1976).  Both models provide stylized vocal tract shapes
+defined by a compact set of parameters.  These parameters quantify the
+position and shape of articulators.  For example, the parameters
+primarily used in this study specify the location and size of the main
+constriction in the vocal tract, the mouth aperture, and the
+cross-sectional area of the front cavity.  These parameters are shown
+in the schematic below.
+<P>
+<CENTER>
+<B>The Flanagan-Ishizaka Vocal Tract Model</B>
+<P><!WA1><IMG SRC="http://www.cs.rutgers.edu/hpcd/Area_II.3/Images/fi_vtmodel.gif">
+</CENTER>
+
+<H4>IV.  Achievements</H4>
+
+<H5>IV.1. Vowel Recognition</H5>
+
+Using a spectral representation based on linear-predictive poles and
+a reduced number of articulatory parameters, a vowel recognition system
+based on an articulatory representation of speech signals has been
+designed.  In contrast to the articulatory based approach, traditional
+speech recognition systems have relied on spectral and/or cepstral
+features.  Despite considerable efforts seeking more accurate,
+compact, and reliable features for robust speech recognition, the
+articulatory representation of speech has not been exploited due to
+the difficulty and computational intensity involved in estimating
+articulatory parameters from speech waveforms.  Adaptive voice mimic
+with optimized open-loop steering and efficient closed-loop control
+provides a promising solution to the challenge.
+<P>
+A nearly real-time laboratory prototype of the articulatory based
+recognition system has been implemented and demonstrated.  The system
+can recognize both isolated vowels and vowel strings.  A recognition
+accuracy of more than 97% is obtained.  During the recognition
+computation, dynamically changing sagittal profiles of the vocal tract
+(corresponding to the input speech) are displayed.  The figure below
+shows the main displays of the recognition prototype.
+<P>
+<CENTER>
+<B>The Voice Mimic Articulatory Based Vowel Recognition System</B>
+<P><!WA2><IMG SRC="http://www.cs.rutgers.edu/hpcd/Area_II.3/Images/mimic_screen.gif">
+</CENTER>
+<H5>IV.2. Speech Coding</H5> 
+
+The articulatory representation is one of the most promising technique
+for high quality very low bit-rate speech coding.  It is thought that
+such a representation can produce speech coders below 1 kbits per
+second.  Thus, the importance of acoustic to articulatory mapping
+for the purpose of coding is apparent.
+<P>
+The adaptive voice mimic research has also produced a coding system
+for vowels and fricative consonants (such as the /s/ in "sea" and /f/
+in "fire").  It was found that spectral comparison based on the poles
+of linear prediction, which works excellently for vowels, does not
+work equally well for fricatives. The major reason being that for the
+fricatives there are a number of bound pole/zero pairs. As a result,
+linear prediction fails to provide accurate estimates of these
+singularities. Therefore, other feature representations have been
+explored. The cepstrum representation was chosen since it is
+relatively compact and produces positive results.
+<P>
+In order to complete the extension of the voice mimic system to
+fricative sounds, an improved initial estimation of source parameters
+has been designed to include an efficient voiced/unvoiced decision.
+Evident discrepancies exist in the frequency content between sounds
+produced by a source at the glottis (vibration of vocal cords) and
+sounds produced by a noise source at a constriction in the vocal tract
+(as is the case for fricatives).  These discrepancies make necessary
+the use of multiple codebooks.  The appropriate codebook is selected
+based on the voiced-unvoiced decision. The estimation of articulatory
+parameters is then completed by the open-loop steering followed by
+closed-loop analysis.
+<P>
+This system has produced vowel/consonant/vowel utterances and short
+sentences of very encouraging quality.  Below, are some coding
+examples from the voice mimic where the articulatory parameters from
+the input speech have been used to re-synthesize the speech.
+<P><CENTER>
+<B>Speech Coding Examples Using the Adaptive Voice Mimic</B><BR>
+   <EM>(Sun Audio, 32kHz, 16-bit, linear)</EM>
+<P>   
+<TABLE BORDER>
+  <TR ALIGN=CENTER> <TH> Natural Input Speech <TH> Voice Mimic
+  <TR ALIGN=CENTER> <TD> <!WA3><A HREF="http://www.cs.rutgers.edu/hpcd/Area_II.3/Audio/oussou32_3.au">/usu/</A>
+		    <TD> <!WA4><A HREF="http://www.cs.rutgers.edu/hpcd/Area_II.3/Audio/oussou32syn_3.au">/usu/</A>
+  <TR ALIGN=CENTER> <TD> <!WA5><A HREF="http://www.cs.rutgers.edu/hpcd/Area_II.3/Audio/oushou32_3.au">/ushu/</A>
+		    <TD> <!WA6><A HREF="http://www.cs.rutgers.edu/hpcd/Area_II.3/Audio/oushou32syn_3.au">/ushu/</A>
+  <TR ALIGN=CENTER> <TD> <!WA7><A HREF="http://www.cs.rutgers.edu/hpcd/Area_II.3/Audio/ouffou32_3.au">/ufu/</A>
+		    <TD> <!WA8><A HREF="http://www.cs.rutgers.edu/hpcd/Area_II.3/Audio/ouffou32syn_3.au">/ufu/</A>
+  <TR ALIGN=CENTER> <TD> <!WA9><A HREF="http://www.cs.rutgers.edu/hpcd/Area_II.3/Audio/she1_3.au">she saw a fire</A>
+		    <TD> <!WA10><A HREF="http://www.cs.rutgers.edu/hpcd/Area_II.3/Audio/she1syn_3.au">she saw a fire</A>
+</TABLE>
+</CENTER>
+
+<H5>IV.3. Speaker Identification</H5> Physiological information about
+a particular speaker's vocal tract is "hidden" in their speech signal.
+Acoustic-to-articulatory mapping provides a means to extract
+this information and use it to differentiate speakers.  In particular,
+vocal tract parameters can be used to supplement traditional speaker
+identification methods.  The advantage of vocal tract parameters is
+that they are not affected by emotion or sickness, and they cannot be
+easily altered for the purpose of impersonation.
+<P> 
+
+Preliminary experiments have been done towards the estimation of the
+vocal tract length from the acoustic signal. This is a critical
+parameter for differentiating talkers in speaker identification or
+verification tasks. The estimation is performed using the voice mimic
+system and a two-step strategy.  First, the shape of the vocal tract
+is determined using a codebook built on a fixed vocal tract length.
+Then, the vocal tract length is estimated using a detailed codebook
+comprising variations of the same shape with it's length stretched and
+compressed.  Although such an approach requires advance knowledge of
+which sound is produced, this problem will be overcome in the future
+by replacing the second codebook by an optimization loop. Initial
+results have been obtained using a database which associates X-ray
+images of the vocal tract and the corresponding speech signal
+produced. It is shown that the vocal tract length estimated by the
+voice mimic system agrees well with the measured value.
+
+<H4>V.  Publications</H4>
+<UL>
+<LI>G. Richard, M. Goirand, D. Sinder, J. Flanagan, "Simulation and
+Visualization of Articulatory Trajectories Estimated from Speech
+Signals," <I>Submitted for presentation at the International Symposium on
+Simulation, Visualization and Auralization for Acoustic Research and
+Education (ASVA97)</I>, April 1997, Tokyo, Japan.
+
+<LI>G. Richard, Q. Lin, F. Zussa, D. Sinder, C. Che, and J. Flanagan,
+``Vowel recognition using an articulatory representation,''
+<I>JASA</I>, Vol. 98, No. 5, Pt. 2, November 1995, p. 2965.
+ 
+<LI>F. Zussa, Q. Lin, G. Richard, D. Sinder, and J. Flanagan,
+``Open-loop acoustic-to-articulatory mapping,'' <I>JASA</I>,Vol. 98,
+No. 5, Pt. 2, November 1995, p. 2931.
+
+<LI>Q. Lin, G. Richard, J. Zou, D. Sinder, J. Flanagan, ``Use of
+TRACTTALK for adaptive voice mimic,'',<I>JASA</I>, Vol. 97, No 5, Pt
+2, May 1995, p. 3247.  </UL>
+
+<H5>Related Publications</H5>
+<UL>
+<LI>D. Sinder, G. Richard, H. Duncan, J. Flanagan, S. Slimon,
+D. Davis, M. Krane, S. Levinson, "Flow Visualization in Stylized Vocal
+Tracts," <I>Submitted for presentation at the International Symposium
+on Simulation, Visualization and Auralization for Acoustic Research
+and Education (ASVA97)</I>, April 1997, Tokyo, Japan.
+
+<LI>S. Slimon, D. Davis, S. Levinson, M. Krane, G. Richard, D. Sinder,
+H. Duncan, Q. Lin, J. Flanagan, ``Low Mach number Flow Through A
+Constricted, Stylized Vocal Tract'', <I>American Institute of Aeronautics
+and Astronautics Conference (AIAA96)</I>, Penn State Univ., PA., May 1996.  
+
+<LI>D. Sinder, G. Richard, H. Duncan, Q. Lin, J. Flanagan, S.
+Levinson, D. Davis, and S. Slimon, ``A fluid flow approach to speech
+generation'', <I>First ESCA Tutorial and Research Workshop on Speech
+Production Modeling: From control strategies to Acoustic</I>, Autrans,
+France, May 21-24, 1996.
+
+<LI>G. Richard, M. Liu, D. Sinder, H. Duncan, Q. Lin, J. Flanagan, S.
+Levinson, D. Davis, and S. Slimon, ``Numerical simulations of fluid
+flow in the vocal tract,'' <I>Proc. of 1995 Eurospeech</I>, pp. 1297-1300.
+Madrid, Spain, September 18-21, 1995.
+
+<LI>G. Richard, M. Liu, D. Sinder, H. Duncan, Q. Lin,
+J. Flanagan, S.  Levinson, D. Davis, S. Slimon, ``Vocal tract
+simulations based on fluid dynamic analysis,'', <I>JASA</I>, Vol. 97, No 5,
+Pt 2, May 1995, pp3245.
+
+</UL>
+
+<hr>
+Visit
+<!WA11><a href=http://www.caip.rutgers.edu/multimedia/>CAIP's Multimedia Lab<!WA12><IMG SRC="http://www.cs.rutgers.edu/hpcd/Area_II.3/Images/multimedia_button.gif" ALIGN=middle></a>
+<p>
+<!WA13><a href=http://www.cs.rutgers.edu/hpcd><!WA14><img src=http://www.cs.rutgers.edu/hpcd/goback.gif alt="Return to HPCD Home Page" align=middle>Return to HPCD Home Page</a>
+

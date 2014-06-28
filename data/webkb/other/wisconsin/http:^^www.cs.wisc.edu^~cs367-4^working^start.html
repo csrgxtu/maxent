@@ -1,0 +1,112 @@
+Date: Tue, 05 Nov 1996 20:57:53 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 06 Sep 1996 19:01:56 GMT
+Content-length: 5194
+
+<HTML>
+
+<!-- (c) 1996 Jim Skrentny
+   Permission is granted to use this document as you wish so long
+   as this restriction and the copyright notice remain untouched. -->
+
+<HEAD>
+<TITLE>Getting Started in CS367</TITLE>
+</HEAD>
+
+<BODY>
+
+<CENTER>
+<H2>Getting Started in CS367</H2>
+</CENTER>
+
+<P>I highly recommended that you immediately start learning the applications
+that you will be using to develop your CS367 programs.  The environment in
+which you programmed in CS302 has differences than the one you'll use in CS367.
+Besides changing from the Macintosh or DOS/Windows operating system to UNIX,
+you'll also be working outside an integrated development environment.  Many
+of the tools you've used before are still present, but as independent
+applications.
+
+<P>Since you are reading this page I am assuming that you have successfully
+created your computer science account using <CODE> newuser </CODE> and are now
+logged in.  The following exercise takes you through the steps to get your first
+C++ program compiled and running under UNIX.  I have provided a sample program
+that plays the game <I>tic-tac-toe</I> for your use and experimentation.
+
+<P>While working on this exercise, you will be reading pages that indicate
+UNIX commands to enter.  These commands are preceded by a <CODE> % </CODE>,
+which it represents the UNIX prompt. You should not enter the <CODE> % </CODE>.
+
+<P>First, in your private sub-directory create a directory named <I>P0</I>
+(i.e. Pzero). If you are unfamiliar with how to do this see the page on
+<!WA0><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~cs367-4/working/mkdir.html">how to create a directory</A>.  Next get a copy of
+the sample tic-tac-toe program. This sample program can be obtained from
+the samples page that is linked to the CS367 home page.  During the semester
+I will be providing sample code for data structures that we discuss in lecture.
+Find this link by going back to the CS367 home page and looking for the sample
+page link.  If you are having difficulties, <!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.wisc.edu/~cs367-4/samples.html">click
+here</A> to go directly to that page.  Further instructions are provided in
+the samples page for getting a copy of sample code files such as for this case
+tictactoe.cc.
+
+<P>Now that you have a copy of the source file for the tic-tac-toe game
+you should look at it with and editor.  See <!WA2><!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~cs367-4/working/edit.html">edit your
+program</A> for more information on how to edit your program.  You do not
+need to make any changes to compile the program, which will be the next
+step.  Before compiling the program I suggest that you open another terminal
+window.  This can be done by clicking the left mouse button anywhere on the
+background and selecting Xterm from the pop-up menu.  More information about
+the X-window system is available <!WA3><!WA3><!WA3><!WA3><A HREF =
+"http://www.cs.wisc.edu/csl/cs1000/node7.html#SECTION00340000000000000000">here</A>.
+This new xterm window will be used for compiling your program.  Change
+directories to the location where you have copied the source code by entering:
+<PRE>
+	% cd private/P0
+</PRE>
+
+<P>You may compile your program by entering the g++ compiler command below.
+This command assumes that the source file is named tictactoe.cc.
+<PRE>
+       % g++ -Wall -g -o tictactoe tictactoe.cc
+</PRE>
+For more information about the compiler flags see <!WA4><!WA4><!WA4><!WA4><A HREF=
+"http://www.cs.wisc.edu/~cs367-4/working/compile.html#flags">the page on compiler flags</A>.
+
+<P>When you are developing your own programs you usually encounter compilation
+errors.  These are typically syntax errors that prevent the compiler from
+creating an executable version of your program.  In this case you would need
+to go to your editor window and make corrections to your source code.  For this
+program you should not experience any compiler errors, unless you accidentally
+changed the source with the editor.  In that case you can simply get a new
+copy of this sample code.
+
+<P>The next step after your program compiles would be to run your program.
+This is doen by entering the following at the UNIX shell prompt:
+<PRE>
+       % tictactoe
+</PRE>
+More information about running programs is located
+<!WA5><!WA5><!WA5><!WA5><A HREF="http://www.cs.wisc.edu/~cs367-4/working/run.html">here</A>. While developing programs it is prefered to run
+your program in a debugging environment.  In UNIX this requires you to execute
+another application as shown below.
+<PRE>
+       % gdb tictactoe
+</PRE>
+This start the debugger and allows you to control the execution of your
+program with breakpoints and by stepping through the program's instructions,
+and to examine the contents of variables and other memory locations.  Two
+important commands for the debugger are run, which begins execution of
+you program, and quit to end the debugger.  The are many other commands and
+some of the most useful are described <!WA6><!WA6><!WA6><!WA6><A HREF = "http://www.cs.wisc.edu/~cs367-4/working/commands.html">here</A>.
+
+<P>What you have completed above is called program development cycle: edit,
+compile, debug, repeat until it works.  However I have made a working program
+for you, which simplifies the process a great deal.  More information about
+the program development cycle can be obtained from the
+<!WA7><!WA7><!WA7><!WA7><A HREF = "http://www.cs.wisc.edu/~cs367-4/working/working.html">Working with C++ in UNIX</A> page.  Real practice is
+obtained by writing and debugging your own C++ program.  See
+<!WA8><!WA8><!WA8><!WA8><A HREF = "http://www.cs.wisc.edu/~cs367-4/program0.html">program 0</A> for more information.
+
+</BODY>
+</HTML>

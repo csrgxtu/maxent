@@ -1,0 +1,64 @@
+Date: Tue, 10 Dec 1996 03:25:02 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+<TITLE>SkyBlue: A Multi-Way Local Propagation Constraint Solver for User
+Interface Construction</title>
+</head>
+
+<body>
+
+<H2>SkyBlue: A Multi-Way Local Propagation Constraint Solver for User
+Interface Construction</H2>
+
+<p>
+
+Author: Michael Sannella
+
+<p>
+
+In <em>Proceedings of the 1994 ACM Symposium on User Interface Software and
+Technology</em>, pages 137-146.
+
+<P>
+<hr>
+
+<H3>Abstract</H3>
+
+Many user interface toolkits use constraint solvers to maintain geometric
+relationships between graphic objects, or to connect the graphics to the
+application data structures.  One efficient and flexible technique for
+maintaining constraints is multi-way local propagation, where constraints
+are represented by sets of <em>method</em> procedures.  To satisfy a set of
+constraints, a local propagation solver executes one method from each
+constraint.
+
+<P>
+
+SkyBlue is an incremental constraint solver that uses local propagation to
+maintain a set of constraints as individual constraints are added and
+removed.  If all of the constraints cannot be satisfied, SkyBlue leaves
+weaker constraints unsatisfied in order to satisfy stronger constraints
+(maintaining a constraint hierarchy).  SkyBlue is a more general successor
+to the DeltaBlue algorithm that satisfies cycles of methods by calling
+external cycle solvers and supports multi-output methods.  These features
+make SkyBlue more useful for constructing user interfaces, since cycles of
+constraints can occur frequently in user interface applications and
+multi-output methods are necessary to represent some useful constraints.
+This paper discusses some of the applications that use SkyBlue, presents
+times for some user interface benchmarks and describes the SkyBlue
+algorithm in detail.
+
+<P>
+<HR>
+<P>
+
+Click <!WA0><a href=
+"ftp://cs.washington.edu/pub/constraints/papers/skyblue-uist-94.ps.Z">
+here</a> to get the postscript file.
+
+<P>
+
+Return to <!WA1><a href="http://www.cs.washington.edu/research/projects/weird/www/index.html">Constraints home page</a>

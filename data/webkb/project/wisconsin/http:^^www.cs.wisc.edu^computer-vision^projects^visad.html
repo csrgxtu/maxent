@@ -1,0 +1,123 @@
+Date: Thu, 07 Nov 1996 19:22:57 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 11 Nov 1994 18:28:26 GMT
+Content-length: 5347
+
+<HTML>
+<HEAD>
+<TITLE> VIS-AD: Data Visualization based on Lattices </TITLE>
+</HEAD>
+<BODY>
+
+<H1> VIS-AD: Data Visualization based on Lattices </H1>
+<BR>
+<H2> Bill Hibbard, Brian Paul, Chuck Dyer </H2>
+<P>
+We are defining a foundation for data visualization based on the
+idea that a visualization process is a function from a set of
+data objects, called a data model, to a set of displays, called
+a display model.  A prototype system called 
+<!WA0><!WA0><!WA0><!WA0><A HREF="file://iris.ssec.wisc.edu/pub/www/visad.html">VIS-AD</A>
+has been implemented based upon our ideas.  
+
+<P>
+We are guided by the following principles:
+<OL>
+<LI>
+Scientists develop mathematical models of nature, and data objects
+represent the objects of mathematical models.  Mathematical objects
+frequently contain infinite precision real numbers and functions
+with infinite domains, whereas computer data objects contain
+finite amounts of information and are thus approximations to the
+mathematical objects they represent.
+<LI>
+Computer displays contain finite amounts of information (i.e.,
+they contain finite numbers of pixels, their colors are chosen
+from finite palettes, animation sequences contain finite numbers
+of frames, etc.) and are thus approximations to ideal displays.
+<LI>
+Because of the close relationship between data and computation,
+a data model should be appropriate for the data objects of a computational
+model such as a programming language.
+<LI>
+The purpose of data visualization is to communicate the information
+content of data objects.  In particular, we define expressiveness
+conditions on the mapping from data objects to displays such that
+displays should encode the facts about data objects, and only
+those facts.
+<LI>
+A visualization system should be complete in the sense that it
+implements any function from data objects to displays satisfying
+the expressivenss conditions.
+</OL>
+<P>
+We can define an order relation between data objects based on
+how precisely they approximate mathematical objects, and we
+can define an order relation between displays based on how
+precisely they approximate ideal displays (i.e., based on voxel
+resolution, etc.).  These order relations define lattices of
+data objects and displays.  Therefore we can model the visualization
+process as a function D:U --> V from a lattice U of data objects
+to a lattice V of displays.  We can interpret the expressiveness
+conditions in this context and show that D satisfies the
+expressiveness conditions if and only if it is a lattice isomorphism.
+
+<P>
+We can define a particular lattice US appropriate for scientific
+data objects.  These data objects are built up from primitive
+variables that we call scalars (e.g., time, latitude, radiance,
+and temperature) by tuple and array data type constructors
+(e.g., "array[time] of temperature" is a data type appropriate
+for a time series of temperatures).  Thus the lattice US contains
+the data objects of a scientific programming language.  We can
+also define a particular lattice VV of displays, in which a display
+is a set of voxels.  Each voxel is specified by a set of graphics
+primitives that we call display scalars, e.g., a pixel's location
+and size in a volume, its color, and its place in an animation
+sequence.  
+
+<P>
+We can show that functions D: US --> VV satisfying the expressiveness
+conditions are just the class of functions defined by mappings from
+the scalars used for primitive variables in data objects to the
+display scalars that specify graphics primitives of voxels.  Of
+course, designers of scientific displays already assume that 
+primitive variables are mapped to graphics primitives.  For example,
+given a data object of type "array[time] of temperature", it is
+natural to display it as a graph with time along one axis and
+temperature along another.  The remarkable thing is that we
+do not have to take this way of designing displays as an assumption,
+but that it is a consequence of the more fundamental expressiveness
+conditions.
+
+<P>
+We are developing and implementing a system called
+<!WA1><!WA1><!WA1><!WA1><A HREF="file://iris.ssec.wisc.edu/pub/visad/README">VIS-AD</A>
+that allows scientists to experiment with algorithms, steer their
+computations, and visualize the data objects they create in their
+programs.  The lattice US defines the data objects of the
+VIS-AD programming language, the system implements the lattice VV
+of displays, and data can be displayed using any function that
+satisfies the expressiveness conditions (however, the implementation
+is not quite precise).  Just as data flow systems define a
+user interface for controlling data display based on abstraction
+of the rendering pipeline, the VIS-AD system defines a user interface
+for controlling data display based on the abstraction of
+mappings from scalars to display scalars.
+
+<P>
+It is possible to define data lattices for the recursively defined
+data types (i.e., complex linked types such as trees) used in
+general-purpose programming languages, and for the abstract data
+types and object classes in object-oriented programming languages.
+
+<P>
+Lattices provide a rigorous foundation for visualization.  In particular,
+they can help us to develop an analytical alternative to the usual
+approach of defining a visualization process D constructively by
+writing a special-purpose program for computing a display D(u) for
+a specific data object u.
+
+</BODY>
+</HTML>

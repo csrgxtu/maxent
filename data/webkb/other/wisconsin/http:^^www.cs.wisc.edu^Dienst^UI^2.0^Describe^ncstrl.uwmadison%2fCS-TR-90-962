@@ -1,0 +1,28 @@
+Server: Dienst V4-1-1 
+MIME-version: 1.0
+Content-type: text/html
+
+<TITLE>A new Algorithm for Semantics-Based Program Integration </TITLE>
+<H2>A new Algorithm for Semantics-Based Program Integration </H2>
+ Wuu Yang<BR>
+CS-TR-90-962<BR>
+August 1990
+<p>
+ Programmers frequently face the problem of integrating several variants of a base program. Semantics-based program integration is a technique that attempts to create an integrated program that incorporates the changed computations of the variants as well as the computations of the base program that are preserved in all variants. Horwitz, Prins, and Reps were the first to address the problem of semantics-based program integration. They presented an integration algorithm that creates the integrated program by merging certain program slices of the variants. Our study provides semantic foundations for their approach: we show that the integrated program produced by their algorithm includes all required computations. We also develop a new program-integration algorithm with the same semantic properties. In addition, the new integration algorithm has two significant characteristics: (1) it is extendible in that it can incorporate any techniques for detecting program components with equivalent behaviors and (2) it can accommodate semantics-preserving transformations. The new integration algorithm improves on the integration algorithm of Horwitz, Prins, and Reps in that there are classes of program modifications for which their algorithm reports interference while the new integration algorithm produces satisfactory integrated programs. One fundamental problem in program integration is to detect program components with equivalent behaviors. For this purpose. we devised the Sequence-Congruence Algorithm, which divides program components into equivalence classes by a partitioning scheme. We show that components in the same equivalence classes have equivalent behaviors. The new integration algorithm is actually a family of algorithms, parameterized by the techniques used to detect equivalent components. Any equivalence-detection techniques can be used. Many techniques, such as constant propagation and invariant code movement, can be combined with the Sequence-Congruence Algorithm to detect larger classes of equivalent components. The new integration algorithm is capable of accommodating semantics-preserving transformations. It allows different stages of computations to be modified independently in different variants as long as the same values are computed in each stage. Due to the use of a technique called limited slicing, these semantics-preserving transformations can be accommodated by the new integration algorithm.<P>
+<hr><p>
+<H2>How to view this document</H2>
+<P><UL>
+<P>
+<LI>Display the <B>whole</B> document in one of the following formats.
+<P><UL>
+<LI><!WA0><A HREF="http://www.cs.wisc.edu/Dienst/Repository/2.0/Body/ncstrl.uwmadison%2fCS-TR-90-962/html">HTML
+</A> 0 bytes.
+</UL>
+</UL>
+<HR>
+<p>
+<BLOCKQUOTE> You are granted permission for the non-commercial reproduction, distribution,display, and performance of this technical report in any format, BUT thispermission is only for a period of 45 (forty-five) days from the most recenttime that you verified that this technical report is still available fromthe Computer Science Department of the University of Wisconsin - Madison underterms that include this permission.  All other rights are reserved by theauthor(s). </BLOCKQUOTE></p><HR><p>
+[ <!WA1><A HREF="http://www.cs.wisc.edu/Dienst/UI/2.0/Search">Search</A>
+ ]
+<HR>
+<I><!WA2><img align=left  src="http://www.cs.wisc.edu/Dienst/htdocs/image_gif/sm_ncstrl.gif">NCSTRL</I><br><I>This server operates at UW Madison Computer Sciences Technical Reports .</I> <BR><I>Send email to <!WA3><A HREF="mailto: www@cs.wisc.edu">www@cs.wisc.edu</A> </I>

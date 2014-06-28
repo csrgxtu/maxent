@@ -1,0 +1,114 @@
+Date: Mon, 11 Nov 1996 17:12:10 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 06 Nov 1996 18:32:19 GMT
+Content-length: 3671
+
+<HTML>
+<HEAD>
+<TITLE>Quiz 4 - CS 302 Fall 1996 - Section 4</TITLE>
+</HEAD>
+<BODY>
+
+<H4 ALIGN=CENTER>
+  <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~cs302">CS 302</A>
+  Fall 1996 - <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.wisc.edu/~milo/cs302.html">Section 4</A>
+</H4> 
+<H4 ALIGN=CENTER>Quiz 4 (Take Home)</H4>
+<H5 ALIGN=CENTER>Due Monday, November 11, 1996</H5> 
+<hr><br>
+
+This quiz is a ``take home'' assignment that counts the same as an
+in-class quiz.  Like an in-class quiz, this should be all of your own
+work, though you are welcome to use your text and/or a computer to
+assist you in this assignment.  Your answers may be written out by
+hand, or preferably, typed.
+
+<OL>
+  <LI> (5 points) Write a function called <TT>display</TT> that takes
+two parameters: an array of characters and an integer for size of the
+array.  The function should write the first N characters of the array
+to <TT>cout</TT>, where N is the size parameter that was passed into
+the function.  (Precondition: The size passed in will not be longer
+than the actual size of the array.) <p>
+
+  <LI> (5 points) Write a function called <TT>num_equal</TT> that
+takes three parameters: two arrays of integers and an integer variable
+for the number of valid entries in the array (in most cases just the
+size of the array).  The function should return the number of pairs of
+integers that are the same.  For example, if the function was passed
+two arrays {1, 2, 3, 4} and {2, 2, 3, 5}, and size 4, the function
+would return 2.  (Precondition: The size passed in will not be longer
+than the actual size of either array.) <p>
+
+  <LI> (8 points) Design and implement a QuizScores class.  This
+class will be used to read in and average quiz scores.  All quiz
+scores are integers from the range 0-20.  You will need the following
+private variables:
+    <UL>
+      <LI> an array of integers to hold the scores.  Declare this to
+contain at least 100 elements.
+      <LI> an integer to keep track of how many quiz scores you read
+in.
+    </UL>
+You will need the following public methods:
+    <UL>
+      <LI> a constructor which takes a single <TT>ifstream</TT> as a
+parameter and reads the data from that file.  The first integer in the
+data file is the number of quiz scores.  The rest of the file contains
+N integer quiz scores, where N is the first integer in the file.  The
+data should be read from the file and stored in the private array
+variable, and also set the integer that keeps track of the number of
+scores entered.  If the number of scores in the file is greater than
+the size of the array to hold the scores, give an error message and
+<TT>exit(1)</TT> the program.
+   <LI> an <tt>average</tt> method which takes no parameters and
+returns the average quiz score, a double.
+   <LI> a <tt>getNumber</tt> method which returns the number of quiz
+scores read in.
+    </UL> <p>
+
+  <LI> (2 points) Modify your QuizScores class by adding another
+public method that will produce a histogram of the results.  The
+method should take a single <tt>ofstream</tt> as a parameter and write
+to that stream a histogram of the quiz results.  To do this you will
+need a local array variable with 21 elements (0-20 is 21 possible
+scores).  Use this array to count how many time each score occurs in
+the file.  For example, if the quiz scores were 10, 15, 15, 15, 15, 18, 18, 20, the following should be displayed:
+<PRE>
+ 0: 
+ 1:
+ 2:
+ 3:
+ 4:
+ 5:
+ 6:
+ 7:
+ 8:
+ 9:
+10:*
+11:
+12:
+13:
+14:
+15:****
+16:
+17:
+18:**
+19:
+20:*
+</PRE>
+
+(Note: This question is only two points due to the extra time it will
+take to complete, if you can not finish this or can't figure it out,
+the most you can lose on this problem is only two points.)
+
+</OL>
+
+</BODY>
+</HTML>
+
+
+
+
+

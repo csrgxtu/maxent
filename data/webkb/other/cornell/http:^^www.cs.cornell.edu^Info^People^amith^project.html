@@ -1,0 +1,92 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 19:46:18 GMT
+Content-Type: text/html
+Content-Length: 3971
+Last-Modified: Saturday, 10-Aug-96 00:52:08 GMT
+
+<title>Image and Video Transition FX for Rivl</title>
+<center><h2>Image and Video Transition FX for Rivl</h2>
+<b><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><a href="http://www.cs.cornell.edu/Info/People/joseluis/joseluis.html">Jose-Luis Fernandez</a>, <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href="http://orac.ee.cornell.edu/unit1/valerie/index.html">Valerie J. Ohm</a> and <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.cs.cornell.edu/Info/People/amith/yam.html">Amith Yamasani</a></b>
+<p>16 October 1995
+</center>
+<p><hr>
+
+<p><h2>1. Overview</h2>
+
+<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/rivl.html">Rivl</A> is a language extension to Tcl/Tk for manipulating images and video
+sequences. It comes with a set of primitives such as fade, rotate, overlay,
+etc. The purpose of this project is to extend the set of primitives and use
+them for creating complex transitional effects between two images or video
+sequences. 
+
+
+<p><h2>2. Deliverables</h2>
+
+
+<ol>
+<li>A set of primitives to create transitional effects between two images or on one image
+by creating a sequence of intermediate images. Effects would include Flip, Deform, 
+Squish, Peel, Fold-up, Melt, Bounce-squish, Morph(?).
+<p>
+<li>The same transitional effects on video sequences. 
+</ol>
+
+<p><h2>3. Milestones</h2>
+
+<ul>
+<li>Study the implementation of Rivl and understand the internal representation of 
+     images and video sequences. 
+<li>Work on some of the simpler transitional effects such as Flip, Melt and Peel.
+    Get these effects working on a single image and on transition between two images. 
+<li>The algorithms will be modified to work on video sequences.
+<li>Implementation of the other effects like Fold-up, Squish and Deform to work on both
+    images and video sequences.
+<li>Test the functions extensively and optimize them for maximum speed.
+<li>If time permits - Create a simple interface to accept points on two images and use 
+    the points as references for the morphing of one image to the other. 
+<li>Documentation - parts of which could be done concurrently with the coding and testing.
+</ul>
+
+<p><h2>4. Technical Overview</h2>
+
+<H3>The effects</H3>
+<p>
+
+<B>Flip</B>: This is basically a shearing operation with a fixed line on either of the two axes.
+The parameters would be the position and orientation of the fulcrum, the image, and the angle
+through which to flip the image. In the case of flipping video, the frames would be processed
+one by one with the angle increasing gradually.
+<p>
+<B>Melt</B>: The image seems to melt into a liquid and flow down out of sight. This would involve
+generating a random smooth wave and shearing the image with the wave. The wave would also 
+have to change in shape gradually so that it doesn't look like a curtain falling.
+<p>
+<B>Fold-up</B>: This effect simulates the folding up of a piece of paper over and over again. How 
+the image is to be folded can be determined by parameters to the function. The image can be 
+folded as an opaque piece of paper or as a transparent one.
+<p>
+<B>Peel</B>: This is a real cool effect - like peeling off a sheet of paper placed over another one.
+Even a video sequence can be "peeled" off to expose another sequence. The direction of peeling
+can be specified as a parameter. This effect could be extended to rolling it away like a scroll. 
+<p>
+<B>Squish</B>: Squishing an image would cause it to get compressed with a bulge in the middle. Bounce-squish is a variant of this where the squishing is a little springy. This involves shearing the image unevenly, applying a sine function to the shear and gradually increasing the amplitude of the sine
+wave.
+
+<p>
+<B>Deform</B>: Deforming an image would involve squeezing a rectangular image into a nonrectangular 
+area which could be a quadrilateral or an oval. First the image would be resized in both dimensions
+to fit the bounding rectangle of the destination shape and then it would be sheared to fit the actual
+shape. 
+<p>
+In most of these effects, as one video sequence gets transformed, the next sequence fills the
+background. 
+
+<br>
+
+
+
+
+
+
+

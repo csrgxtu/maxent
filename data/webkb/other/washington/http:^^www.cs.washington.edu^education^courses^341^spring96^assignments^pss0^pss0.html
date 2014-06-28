@@ -1,0 +1,237 @@
+Date: Wed, 08 Jan 1997 21:27:43 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE>First Smalltalk Assignment</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value="First Smalltalk Assignment">
+<meta name="keywords" value="pss0">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ <BR> <HR><A NAME=tex2html1 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.washington.edu/general/latex2html_icons//next_motif.gif"></A>   <IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.washington.edu/general/latex2html_icons//up_motif_gr.gif">   <IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.washington.edu/general/latex2html_icons//previous_motif_gr.gif">         <BR>
+<B> Next:</B> <A NAME=tex2html2 HREF="node1.html">   About this document </A>
+<BR> <HR> <P>
+  CS341, Spring 1996<BR> 
+Smalltalk Assignment #0<BR> 
+Assigned 4/25, (not to hand in).
+<P>
+<BR><HR><P>
+<P>
+The Assignment (you will be helped through this in section):
+<OL><LI> Log on to the NT workstation.
+<LI> Start Smalltalk.
+<LI> Change the path of the <em> changes</em> file, and save 
+the image in your local file space.  (Instructions in the 
+lab, or on the Web.)
+<LI> Exit Smalltalk, and re-start it, but this time use your 
+own Smalltalk image.
+<LI> Type in the code for a very simple ``bank account''
+class, explained and listed below.
+<LI> Test the code (in a workspace) on a couple of simple examples 
+of your own devising.
+<LI> File out your new category.
+</OL>
+<P>
+<P>
+<BR><HR><P>
+<P>
+ The Scenario:
+<P>
+For the Smalltalk part of the class we will be looking 
+at banks and bank accounts again.  With that in mind 
+we will define some very simple code for manipulating 
+bank accounts.  We will define these classes:
+<UL><LI> <b> Account</b>---an account will have a <code>number</code>, 
+a <code>balance</code> and a list of <code>transactions</code>.  An 
+account should be able to answer its account number, 
+to accept deposits and withdrawals, and to provide 
+a displayed list of its transactions.   For this cut 
+at the code we will do very primitive output:  we will 
+create a window for each account and let it display its
+transactions to its own window.  (You do not need to understand
+exactly how this works.)
+<P>
+Therefore the account class will have the following instance variables:
+<code>number</code>, <code>balance</code>,  <code>transactions</code>, and 
+<code>displayer</code>.  The next available account number will be 
+stored using a class variable.  (We will talk in class about
+instance variables and class variables. For now, just notice 
+how we put them into the code.)
+<P>
+The methods for an account will be the following:
+<UL><LI> <code>number</code> Answer the account's number.
+<LI> <code>deposit: anAmount on: aDate</code>  Add the (numeric) argument
+<code>anAmount</code> to the account's balance.  Also add the 
+transaction to the list of transactions.
+<LI> <code>withdraw: anAmount on: aDate</code>  Deduct the (numeric) argument
+<code>anAmount</code> from the account's balance, and add the transaction 
+to the account's transaction list.   Signal an error if the balance 
+is insufficient.
+</UL>
+<P>
+<LI> <b> Transaction</b>---this class will store the amount of the 
+transaction (deposit or withdrawal) and the date on which it occurred.
+Its instance variables will therefore be <code>amount</code> and <code>date</code>.
+The transaction class should also be able to display itself on a window.
+</UL>
+<P>
+On the next page you will find code for the <code>Transaction</code> and 
+<code>Account</code> classes.  In section you will learn how 
+to enter these into the Smalltalk image.
+<P>
+<PRE>========================================
+This code defines the Transaction class
+========================================
+
+1.  Class definition for Transaction:
+
+   Object subclass: Transaction
+     instanceVariableNames: 'amount date'
+     classVariableNames: ''
+
+========================================
+
+2.  Class method for Transaction:
+
+    newAmount: anAmount date: aDate 
+       &quot;Answer an instance of a transaction object
+        with the specified date and amount. 
+        Sample:
+            Transaction newAmount: 100 date: Date today.&quot;
+
+    ^self new initializeAmount: anAmount date: aDate.
+
+========================================
+
+3.  Instance methods for Transaction:
+
+    initializeAmount: anAmount date: aDate 
+      &quot;This method is called only when a new instance is 
+       created.  It just sets the instance's variables.&quot;
+
+        amount := anAmount.
+        date := aDate.
+        ^self.
+
+   =================================
+
+   displayOn: aTextCollector 
+     &quot;Print a single line describing this transaction.&quot;
+
+    amount &lt; 0
+        ifTrue:  [aTextCollector show: 'Withdrawal of  $']
+        ifFalse: [aTextCollector show: 'Deposit of  $'].
+    aTextCollector show: amount printString; 
+                   show: ' on '; 
+                   show: date printString; 
+                   cr.
+</PRE>
+<P>
+<PRE>========================================
+This code defines the Account class
+========================================
+
+    Object subclass: Account
+       instanceVariableNames: 'number balance displayer transactions'
+       classVariableNames: 'NextNumber '
+
+
+========================================
+1.  Class methods for Account
+========================================
+
+     new
+       &quot;Answer a new instance of Account with next number,   
+        balance 0, and empty transactions.&quot;
+
+    ^self basicNew initialize.
+
+   =====================================
+
+     initialize
+       &quot;To initialize the Account class we set the 
+        next account number to 1.&quot;
+
+        NextNumber := 1.
+
+
+========================================
+2.  Instance methods for Account
+========================================
+
+     initialize
+       &quot;To initialize an instance of Account, we 
+        initialize the instance variables and open 
+        a window to display the transactions.&quot;
+
+       number := NextNumber.
+       NextNumber := NextNumber + 1.
+       balance := 0.
+       transactions := OrderedCollection new.
+            &quot;This sets up the display window&quot;
+       displayer := TextCollector new.
+       TextCollectorView open: displayer label: 'Account Window'.
+
+       ^self.
+
+       ===================================
+      
+      number
+        &quot;Answer the receiver's account number&quot;
+        ^number.
+
+       ===================================
+      
+      deposit: anAmount on: aDate
+        &quot;To deposit, adjust the balance, and make up 
+         a new transaction object with the specified amount
+         and date.&quot;
+
+        balance := balance + anAmount.
+        transactions addLast: (Transaction newAmount: anAmount date: aDate).
+
+       ===================================
+
+       withdraw:  anAmount on: aDate 
+         &quot;To withdraw, check to see if the balance is sufficient, 
+          if so adjust balance and generate a new transaction.
+
+         balance &lt; anAmount ifTrue: 
+            [ self error: 'Attempt to overdraw account.'].
+         balance := balance - anAmount.
+         transactions addLast: (Transaction newAmount: anAmount negated  
+                                            date: aDate).
+
+       
+       ===================================
+
+
+        displayTransactions
+          &quot;Display all the transactions on the account's window.
+           First print a header.&quot;
+
+          displayer show: 'Transactions for Account '; 
+                    show: number printString; 
+                    cr.
+
+          transactions do: [:trans |  displayer show: '  '.  
+                                      trans displayOn: displayer].
+</PRE>
+<BR> <HR>
+<UL> 
+<LI> <A NAME=tex2html3 HREF="node1.html#SECTION00010000000000000000">   About this document ... </A>
+</UL>
+<BR> <HR><A NAME=tex2html1 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.washington.edu/general/latex2html_icons//next_motif.gif"></A>   <IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.washington.edu/general/latex2html_icons//up_motif_gr.gif">   <IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.washington.edu/general/latex2html_icons//previous_motif_gr.gif">         <BR>
+<B> Next:</B> <A NAME=tex2html2 HREF="node1.html">   About this document </A>
+<BR> <HR> <P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Steve Hanks <BR>
+Wed Apr 24 14:21:00 PDT 1996</I>
+</ADDRESS>
+</BODY>

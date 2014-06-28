@@ -1,0 +1,166 @@
+Date: Tue, 10 Dec 1996 03:37:16 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+
+<head>
+        <title>SPIN Benchmarks</title>
+
+</head><p>
+<img src=/research/projects/spin/www/pics/caveman_benchmarks.gif>
+<h1><i>SPIN</i> Benchmarks (under contruction) </h1>
+This page is devoted to measurements of operating system performance
+for <i>SPIN</i> and other operating systems.  This page will be constantly 
+evolving as new measurements are made and new benchmarks are added.
+Under each clickable benchmark item you should find an explanation of
+the test, the source code for the benchmark for each system (<i>still not ready, sorry <b>-Stefan</b></i>), and possibly some discussion about the significance of
+the results.  Some pages have not yet been completed, please bear with us.
+<p>
+<b>Note</b>: This page uses the table extension and may not be viewable 
+with all viewers.
+<hr>
+
+<h2><li>Control Transfer</h2>
+<ul>
+<h3><li><a href=ControlTransfer/index.html#ProtectedCall>Protected in-kernel call</a></h3>
+<TABLE BORDER>
+        <TR>
+        <TH>DEC OSF/1</TH> <TH>Mach 3.0</TH><TH>SPIN extension</TH>
+        </TR>
+        <TR>
+        <TD ALIGN=RIGHT>n/a</TD> <TD ALIGN=RIGHT>n/a</TD> <TD ALIGN=RIGHT>.13 usecs</TD>
+        </TR>
+</TABLE>        
+</ul>
+<ul>
+<h3><li><a href=ControlTransfer/index.html#SystemCall>System call</a></h3>
+<TABLE BORDER>
+        <TR>
+        <TH>DEC OSF/1</TH> <TH>Mach 3.0</TH><TH>SPIN extension</TH>
+        </TR>
+        <TR>
+        <TD ALIGN=RIGHT>5 usecs</TD> <TD ALIGN=RIGHT>7 usecs</TD> <TD ALIGN=RIGHT>4 usecs</TD>
+        </TR>
+</TABLE>        
+</ul>
+<ul>
+<h3><li><a href=ControlTransfer/index.html#IPC>Cross-address space call (IPC)</a></h3>
+<TABLE BORDER>
+        <TR>
+        <TH>DEC OSF/1</TH><TH>Mach 3.0</TH><TH>SPIN extension</TH>
+        </TR>
+        <TR>
+        <TD ALIGN=RIGHT>845 usecs</TD> <TD ALIGN=RIGHT>104 usecs</TD> <TD ALIGN=RIGHT>89 usecs</TD>
+        </TR>
+        <TR>
+        <TD ALIGN=RIGHT>124 usecs</TD> <TD ALIGN=RIGHT>873 usecs</TD> <TD ALIGN=RIGHT>117 usecs</TD>
+        </TR>
+</TABLE>        
+</ul>
+
+<h2><li>Thread Management</h2>
+<ul>
+<h3><li><a href=ThreadManagement/index.html#KernelThreads>Kernel Thread Interface</a></h3>
+<TABLE BORDER>
+        <TR>
+        <TH></TH><TH>DEC OSF/1</TH><TH>Mach 3.0</TH><TH>SPIN extension</TH>
+        </TR>
+        <TR>
+        <TH ALIGN=RIGHT>Fork-Join</TH><TD ALIGN=RIGHT>198 usecs</TD><TD ALIGN=RIGHT>101 usecs</TD><TD ALIGN=RIGHT>22 usecs</TD>
+        </TR>
+        <TR>
+        <TH ALIGN=RIGHT>Ping-Pong</TH><TD ALIGN=RIGHT>21 usecs</TD><TD ALIGN=RIGHT>71 usecs</TD><TD ALIGN=RIGHT>17 usecs</TD>
+        </TR>
+</TABLE>        
+</ul>
+<ul>
+
+<h3><li><a href=ThreadManagement/index.html#UserThreads>User Thread Interface</a></h3>
+<TABLE BORDER>
+        <TR>
+        <TH></TH><TH>DEC OSF/1</TH><TH>Mach 3.0</TH><TH>SPIN layered</TH><TH>SPIN integrated</TH>
+        </TR>
+        <TR>
+        <TH ALIGN=RIGHT>ForkJoin</TH><TD ALIGN=RIGHT>1230 usecs</TD><TD ALIGN=RIGHT>338 usecs</TD><TD ALIGN=RIGHT>262 usecs</TD><TD ALIGN=RIGHT>111 usecs</TD>
+        </TR>
+        <TR>
+        <TH ALIGN=RIGHT>Ping-Pong</TH><TD ALIGN=RIGHT>264 usecs</TD><TD ALIGN=RIGHT>115 usecs</TD><TD ALIGN=RIGHT>159 usecs</TD><TD ALIGN=RIGHT>85 usecs</TD>
+        </TR>
+</TABLE>        
+</ul>
+
+<h2><li>Memory Management</h2>
+<ul>
+<h3><li><a href=MemoryManagement/index.html#MemoryProtection/>Memory protection</a></h3>
+<TABLE BORDER>
+     <TR>
+     <TH></TH><TH>DEC OSF/1</TH><TH>Mach 3.0</TH><TH>SPIN extension</TH>
+     </TR>
+     <TR>
+     <TH ALIGN=RIGHT>Dirty</TH><TD ALIGN=RIGHT>n/a</TD><TD ALIGN=RIGHT>n/a</TD><TD ALIGN=RIGHT>2 usecs</TD>
+     </TR>
+     <TR>
+     <TH ALIGN=RIGHT>Fault</TH><TD ALIGN=RIGHT>329 usecs</TD><TD ALIGN=RIGHT>415 usecs</TD><TD ALIGN=RIGHT>29 usecs</TD>
+     </TR>
+     <TR>
+     <TH ALIGN=RIGHT>Trap</TH><TD ALIGN=RIGHT>200 usecs</TD><TD ALIGN=RIGHT>185 usecs</TD><TD ALIGN=RIGHT>7 usecs</TD>
+     </TR>
+     <TR>
+     <TH ALIGN=RIGHT>Prot1</TH><TD ALIGN=RIGHT>45 usecs</TD><TD ALIGN=RIGHT>106 usecs</TD><TD ALIGN=RIGHT>16 usecs</TD>
+     </TR>
+     <TR>
+     <TH ALIGN=RIGHT>Prot100</TH><TD ALIGN=RIGHT>1041 usecs</TD><TD ALIGN=RIGHT>1792 usecs</TD><TD ALIGN=RIGHT>213 usecs</TD>
+     </TR>
+     <TR>
+     <TH ALIGN=RIGHT>Unprot100</TH><TD ALIGN=RIGHT>1016 usecs</TD><TD ALIGN=RIGHT>302 usecs</TD><TD ALIGN=RIGHT>214 usecs</TD>
+     </TR>
+     <TR>
+     <TH ALIGN=RIGHT>Appel1</TH><TD ALIGN=RIGHT>382 usecs</TD><TD ALIGN=RIGHT>819 usecs</TD><TD ALIGN=RIGHT>39 usecs</TD>
+     </TR>
+     <TR>
+     <TH ALIGN=RIGHT>Appel2</TH><TD ALIGN=RIGHT>351 usecs</TD><TD ALIGN=RIGHT>608 usecs</TD><TD ALIGN=RIGHT>29 usecs</TD>
+     </TR>
+</TABLE>        
+</ul>
+
+
+<h2><li>Networking</h2>
+<ul>
+<h3><li><a href=Networking/index.html#Latency>Latency</a></h3>
+<TABLE BORDER>
+        <TR>
+        <TH>Network</TH><TH>DEC OSF/1</TH><TH>SPIN extension</TH>
+        </TR>
+        <TR>
+        <TH ALIGN=RIGHT>Ethernet</TH><TD ALIGN=RIGHT>789 usecs</TD><TD ALIGN=RIGHT>565 usecs</TD>
+        </TR>
+        <TR>
+        <TH ALIGN=RIGHT>ATM</TH><TD ALIGN=RIGHT>631 usecs</TD><TD ALIGN=RIGHT>421 usecs</TD>
+        </TR>
+</TABLE>        
+</ul>
+<ul>
+<h3><li><a href=Networking/index.html#Bandwidth>Bandwidth</a></h3>
+<TABLE BORDER>
+        <TR>
+        <TH>Network</TH><TH>DEC OSF/1</TH><TH>SPIN extension</TH>
+        </TR>
+        <TR>
+        <TH ALIGN=RIGHT>Ethernet</TH><TD ALIGN=RIGHT>8.9 Mb/s</TD><TD ALIGN=RIGHT>8.9 Mb/s</TD>
+        </TR>
+        <TR>
+        <TH ALIGN=RIGHT>ATM</TH><TD ALIGN=RIGHT>27.9 Mb/s</TD><TD ALIGN=RIGHT>33.0 Mb/s</TD>
+        </TR>
+</TABLE>        
+</ul>
+
+
+
+<hr>
+This page maintained by Stefan Savage.
+<address>
+<a href="mailto:savage@cs.washington.edu">savage@cs.washington.edu</a>
+</address>
+</body>
+</html>

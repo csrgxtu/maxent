@@ -1,0 +1,450 @@
+Date: Wed, 20 Nov 1996 22:32:24 GMT
+Server: Apache/1.0.3
+Content-type: text/html
+Content-length: 11730
+Last-modified: Wed, 04 Sep 1996 20:23:27 GMT
+
+<head>
+<title> C335 Computer Structures </title>
+</head>
+
+
+<h1> C335 and H335 Computer Structures -- Fall 1996</h1>
+<h2> Sections 1141 and 1144 -- <!WA0><a href="http://www.cs.indiana.edu">Computer Science
+Department</a>, <!WA1><a href="http://www.indiana.edu">Indiana University</a><br>
+     Lecture: TR 1:00-2:15, Ballantine 209.<br>
+     <!WA2><A HREF="http://www.cs.indiana.edu/classes/c335/lab/lab.html">Laboratory</A>: R 10:10-11:00 or R 11:15-12:05 or R 3:50-4:40, 
+		Lindley 135.</h2>
+
+
+<h2>Texts for Fall 1996 </h2>
+
+** <a name="Wakerly">John Wakerly, <em>Microcomputer Architecture and
+Programming -- The 68000 Family,</em> Wiley, 1989.</a> <br><br>
+
+** <em>CSCI C335 packet </em> (printed locally). The packet consists of three
+documents: a laboratory manual, an M68000 programming reference guide, and
+selected pages from <a name="Prosser/Winkel">Prosser and Winkel, <em>The Art
+of Digital Design</em>.<br>
+
+<br> <br> <h2> Tentative lecture schedule.</h2> <strong> See the <!WA3><a
+href="#C335 description">C335 Computer Structures Course Description</a> for
+a more detailed outline of the course content.<br>
+
+Reading assignments are mainly from <!WA4><a
+href="#Wakerly">Wakerly</a>.</strong><br>
+
+<pre>
+Lect.	Topics and Wakerly sections
+<hr>
+2	Ch. 1	Introduction and background.
+		Reading assignment: all of chapter
+
+0	Ch. 2,3	Pascal, and data structures in Pascal.
+		Refer to this if needed during the semester. 
+		You are not required to know Pascal.
+
+3	Ch. 4	Number systems and arithmetic.
+		Reading assignment: all but 4.8-4.10. 
+
+2	Ch. 5	Computer organization.
+		Reading assignment: all of chapter.
+
+2	Ch. 7	Addressing.
+		Reading assignment: through 7.4.
+
+1	Ch. 8	Operations (including stack machines)
+		Reading assignment: through 8.9.
+
+3	Ch. 11	Interrupts.
+		Reading assignment: all of chapter.
+
+5	Ch. 6	Assembly language and assembly processes.
+		Reading assignment: all of chapter; additional handouts.
+
+3	---	Digital logic.
+		Reading assignment: Prosser/Winkel pages; additional handouts.
+
+5	---	Microprogrammed control and hardware design. 
+		Reading assignment: <em>Microprogrammed Control -- An
+		Illustration,</em> manuscript handed out in lecture.
+
+--	Ch. 9	Subroutines.
+		Reading assignment: 9.3, 9.4.
+
+--	Ch. 10	Input-output.
+	Appx. B	Serial data communication.
+		Reading assignment: as assigned.
+</pre>
+<br>
+<br>
+
+<h2> Procedures </h2>
+
+<h3> Staff </h3>
+
+The instructor is <!WA5><a
+href="http://www.cs.indiana.edu/hyplan/prosser.html">Franklin Prosser</a>,
+office LH330E, email <!WA6><a href="mailto:prosser@cs.indiana.edu">prosser@cs.indiana.edu</a>. <strong>Office
+hours:</strong> (tentative) T noon-12:45, R 9:15-10:15, and by appointment and
+by drop-in. All in LH330E.  <p>
+
+The associate instructors are :  <br>
+<!WA7><a href="http://www.cs.indiana.edu/hyplan/jbandhol.html">Jagadish Bandhole</a>,
+email <!WA8><a href="mailto:jbandhol@cs.indiana.edu">jbandhol@cs.indiana.edu</a>, <strong>Office hours:</strong> M 4:00-5:00P, F 10:30-11:30A at LH401F, 
+and <br>
+<!WA9><a href="http://www.cs.indiana.edu/hyplan/dsoruco.html">David Soruco</a>,
+email <!WA10><a href="mailto:dsoruco@cs.indiana.edu">dsoruco@cs.indiana.edu</a>,<strong>Office hours:</strong> M and W 11:00A-12:00P at LH 401F.
+
+<h3> Newsgroup </h3>
+
+The newsgroup for the C335 sections for Fall 1996 is <!WA11><a
+href="news:ac.c.335">ac.c.335</a> on the Computer Science departmental network.
+We will use the newsgroup heavily to convey a variety of course information,
+including questions and answers about lecture and laboratory procedures and
+problems. You should check the newsgroup frequently to keep up to date, and
+you should feel free to contribute questions and solutions about procedural
+problems and constructive comments.
+
+<h3>Course grade </h3>
+<pre>
+	3 in-class open-book exams @ 20%     60%
+	Laboratory                           35%
+	Collected homework                    5%
+</pre>
+<p>
+
+<h3> Homework policy </h3>
+
+Homework assignments are due in class at the end of class on
+the due date. Late homework will not be accepted. The instructional staff
+will post solutions on the class newsgroup or in the laboratory (Lindley Hall
+135). Some questions on the homework may not be graded, at the instructors'
+discretion. However, solutions to all questions will be posted.
+<p>
+
+<!WA12><A HREF="http://www.cs.indiana.edu/classes/c335/lab/lab.html"><h3> Laboratory </h3></A>
+
+The lab meets in Lindley Hall 135. Your AI will discuss lab procedures
+in your regular lab section. You should bring to lab the C335 lab manual. You
+will receive additional handouts and information in class or in lab. 
+<p>
+
+<h3> Attendance </h3>
+
+Attendance in class and laboratory is expected. Our experience shows a clear
+relation between good attendance and good performance. Both the lectures and
+the laboratory sessions discuss much material that is not available in the
+textbook or lab manual. There will be frequent handouts, but without the
+benefit of the lecture or lab discussion the handouts will usually be opaque.
+<p>
+
+<h3>Academic Integrity</h3>
+
+Read the Computer Science Department's <!WA13><A
+HREF="http://www.cs.indiana.edu/integrity.html"><EM>Statement on Academic
+Integrity</EM></A> to be sure you understand the rules under which computer
+science courses operate.  Cases of academic dishonesty will be reported
+to the Office of Student Ethics, a branch of the Office of the Dean of
+Students.
+
+<h3>Withdrawal</H3>
+
+The last day to drop a course with an automatic W is 30 October 1996. After
+that date, a student may withdraw only with the permission of the Dean of the
+College of Arts and Sciences. This approval is normally given only for urgent
+reasons related to extended illness or equivalent distress.
+
+<H3>Incomplete grade</H3>
+
+An incomplete (I) final grade will be given only by prior arrangement in
+exceptional circumstances conforming to university and departmental policy
+in which the bulk of course work has been completed in passing fashion.
+<P>
+<p>
+
+<hr>
+<h2> <a name="C335 description">C335 Computer Structures Course Description</a> </h2>
+<p>
+
+In C335 students study computer systems and problem solving in the context of
+basic computer hardware and low-level software systems. The emphasis is on
+fundamental properties of computer systems that apply across a broad range of
+computers and systems. The abstractions are reinforced in class and in the
+laboratory.  In the laboratory students extend their problem-solving skills
+by working at the level of computer assembly language using a modern
+microcomputer system such as the 68000. Although the class and laboratory
+proceed on their own schedules, the lab applies many of the fundamental
+concepts dealt with in lecture, and the lecture provides the foundation for
+the lab.  Both class and lab emphasize a disciplined, structured approach to
+programming.
+<p>
+
+Topics are selected from the following list. Topics marked with a star (*)
+might be included in an honors course. 
+
+
+<ul>
+<li><strong>Number systems and arithmetic:</strong>
+
+<ul>
+<li>Conversions among various number bases such as decimal, binary,
+hexadecimal, and arbitrary base. Integer and fraction conversions.
+
+<li>Number representations for signed arithmetic: signed magnitude, two's
+complement, one's complement, floating point.
+
+<li>Computer arithmetic: addition, negation and subtraction, simple binary
+multiplication, floating-point addition. Numerical problems such as overflow,
+and loss of precision.
+
+<li>Character codes.
+</ul><p>
+
+<li><strong>Computer organization:</strong>
+
+<ul>
+<li>Computer components: processor, RAM, ROM, peripherals.
+
+<li>Computer data flow: the system bus in a microcomputer.
+
+<li>Basic processor organization: registers, clocked circuits, ALUs, internal
+processor data flow. 
+
+<li>Processor architectures: accumulator machines, general-register machines,
+stack machines, others.
+
+<li>Computer instruction sets: classes of instructions, operands and
+operations, introduction to addressing modes, operation codes.
+
+<li>The "fetch-execute" instruction processing cycle. Examples of hardware
+execution of typical instructions. Operation of a simple program.
+
+<li>Instruction classes: moves, arithmetic, shifts and rotates, logical,
+program control. Status registers, condition codes, and processor control.
+  
+<li>* RISC and CISC
+
+<li>* Instruction pipelines
+</ul>
+<p>
+
+<li><strong>Operand addressing:</strong> 
+
+<ul>
+<li>Address size and its effect on register size and memory size.
+
+<li>Addressing modes, including register direct, memory direct, register
+indirect, memory indirect, auto-increment and auto-decrement, immediate,
+indexed, based, program-counter relative, paged.
+
+<li>* Position-independent code
+
+<li>* Memory mapping and memory management. Virtual memory. Caches.
+</ul>
+<p>
+
+<li><strong>Assembly language and assemblers:</strong>
+
+<ul>
+<li>Machine instructions and assembly directives. Object modules.
+
+<li>Structure of an assembler: the program location counter, symbol table,
+operation-code table. Two-pass assembly. Absolute versus relocatable
+assembly. 
+
+<li>Macros and their implementation.
+
+<li>Loading and linking: relocatable loading; linking of external references
+to entry points.
+
+<li>Structured programming in assembly language.
+
+<li>* Hash tables.
+
+<li>* Programming to save time and space.
+</ul>
+<p>
+
+<li><strong>Subroutines:</strong>
+
+<ul>
+<li>Parameters in high-level language programs.
+
+<li>Assembly-language subroutines and parameters.
+
+<li>Assembly-language subroutine calling methods; passing parameters; static
+and dynamic allocation; stack-oriented parameter-passing conventions: the
+stack frame. 
+
+<li>* Recursion, coroutines, etc.
+</ul>
+<p>
+
+<li><strong>Input-output:</strong>
+
+<ul>
+<li>I/O organization: busses, devices and interfaces, ports.
+
+<li>* I/O programming and protocols: memory-mapped versus isolated I/O,
+overlapped I/O; I/O drivers.
+
+<li>* Serial data communication.
+</ul>
+<p>
+
+<li><strong>Interrupts:</strong>
+
+<ul>
+<li>Basic interrupt processes: hardware and software responsibilities.
+
+<li>Interrupt protocols: single-level, priority, vectored priority. Interrupt
+identification and polling. Nonmaskable interrupts.
+
+<li>Traps and software interrupts.
+
+<li>Direct memory access.
+</ul>
+<p>
+
+<li><strong>Concurrency:</strong>
+
+<ul>
+<li>* Interrupt processes and concurrency. Multiple interrupts, waking and
+sleeping.
+
+<li>* Deadlocks and critical sections, locking and semaphores.
+
+<li>* Shared data and instructions, reentrant programs.
+</ul>
+<p>
+
+<li><strong>Digital computer organization:</strong>
+
+<ul>
+<li>Boolean algebra and combinational circuits. Circuits with memory.
+Register structure. Synchronous (clocked) design.
+
+<li>Processor architecture: register and bus structure, basic processor control.
+
+<li>Microprogrammed control.
+
+<li>* Instruction pipelines.
+</ul>
+<p>
+
+<li><strong>Programming laboratory</strong>
+
+<ul>
+<li>Programming in assembly language on a current processor such as the 68000.
+
+<li>Structured programming.
+
+<li>Good documentation.
+
+<li>Implementation of data structures such as queues, lists, trees.
+
+<li>Cumulative programming projects: each project is useful for subsequent
+projects. 
+</ul>
+</ul>
+<p>
+
+<h2>Suggested textbooks: </h2>
+
+<ul> <li>Wakerly, <em>Microcomputer Architecture and Programming -- The 68000
+Family,</em> John Wiley and Sons, New York, 1989, ISBN 0-471-85319-4.
+
+<p>
+<li>Hamacher, Vranesic, and Zaky, <em>Computer Organization,</em> 3rd edition,
+McGraw-Hill Co., New York, 1990, ISBN 0-07-025685-3.
+
+<p> <li>Patterson and Hennessy, <em>Computer Organization and Design: The
+Hardware/Software Interface,</em> Morgan Kaufmann Publishers, San Mateo,
+Calif., 1994, ISBN 1-55860-281-X.
+
+<p>
+<li>Stallings, <em>Computer Organization and Architecture,</em> 4th edition,
+Prentice-Hall, Inc., Upper Saddle River, N.J., 1996, ISBN 0-13-359985-X.
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

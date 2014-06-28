@@ -1,0 +1,96 @@
+Date: Tue, 14 Jan 1997 23:19:27 GMT
+Server: NCSA/1.5
+Content-type: text/html
+
+<TITLE>Homework 9</TITLE>
+<P>
+<H4><b>Computer Organization and Assembly Language Programming</H4></b>
+<H4><b>22C:18/108</H4></b>
+<H4><b>Homework 9: Due 4/24/95</H4></b>
+<P>
+
+<P>
+<b>Problem 1: [9 points]</b>
+<P>
+Translate the following recursive <b>Pascal</b> function into a
+recursive MC68000 subroutine.
+As you already know, this function computes <!WA0><IMG ALIGN=BOTTOM SRC="http://www.cs.uiowa.edu/~sriram/18spring95/homework9/_17901_tex2html_wrap91.gif"> for any
+integer <!WA1><IMG ALIGN=BOTTOM SRC="http://www.cs.uiowa.edu/~sriram/18spring95/homework9/_17901_tex2html_wrap93.gif"> and any positive integer <!WA2><IMG ALIGN=BOTTOM SRC="http://www.cs.uiowa.edu/~sriram/18spring95/homework9/_17901_tex2html_wrap95.gif">.
+<P><!WA3><IMG ALIGN=BOTTOM SRC="http://www.cs.uiowa.edu/~sriram/18spring95/homework9/_17901_tabbing21.gif"><P>
+<P>
+Then calculate the size of the stack frame for each call
+(you need not use the <tt>link</tt> and <tt>unlk</tt> instructions.)
+Suppose you were running your program on a machine with stack
+size bounded above by 16K.
+What is the maximum value of n for which your program would
+be able to calculate power(m,n)?
+<P>
+<P><b>Problem 2: [8 points]</b>
+<tt><P><!WA4><IMG ALIGN=BOTTOM SRC="http://www.cs.uiowa.edu/~sriram/18spring95/homework9/_17901_tabbing38.gif"><P>
+</tt>
+<P>
+Suppose that the above subroutine is called from the main program
+with two addresses (each 32-bits), say <tt>ad1</tt> and <tt>ad2</tt>,
+passed as parameters via the run-time stack.
+<DL COMPACT><DT>(a)
+<DD> Show the run-time stack <em>just</em> after the subroutine
+<tt>mystery</tt> has been called from the main program.
+Label each item in the stack and specify its size in bytes.
+<DT>(b)
+<DD> Show the run-time stack just after the <em>first</em>
+<tt>movem.l</tt> instruction in <tt>mystery</tt> has been executed.
+Label each item in the stack and specify its size in bytes.
+<DT>(c)
+<DD> Show the run-time stack just after the <tt>rts</tt> instruction 
+in <tt>mystery</tt> has been executed.
+Label each item in the stack and specify its size in bytes.
+<DT>(d)
+<DD> Describe precisely what the above subroutine does.
+<P>
+ </DL>
+<P>
+<P><b>Problem 3: [8 points]</b>
+<P>
+<tt><P><!WA5><IMG ALIGN=BOTTOM SRC="http://www.cs.uiowa.edu/~sriram/18spring95/homework9/_17901_tabbing52.gif"><P>
+</tt>
+<P>
+Given above is a <em>recursive</em> subroutine called <tt>strange</tt>.
+Two parameters, a 16-bit non-negative integer, say <tt>N</tt>, and a 32-bit
+address, say <tt>A</tt>, are passed to the subroutine via the run-time stack.
+As you might notice, the subroutine <tt>strange</tt> returns a
+16-bit answer in <tt>(D0.W)</tt>.
+<P>
+<DL COMPACT><DT>(a)
+<DD> Draw the run-time stack showing one stack frame
+clearly.
+Label all items in the stack frame and specify their sizes.
+<P>
+<DT>(b)
+<DD> Suppose that the main program that calls the above
+subroutine has the following storage declaration:
+<P>
+<tt>list: dc.w 1, 2, 3, 4</tt>
+<P>
+Further suppose that the number 4 is passed in as <tt>N</tt>
+and the address <tt>list</tt> is passed in as <tt>A</tt> 
+to the subroutine <tt>strange</tt>.
+What is the answer returned by <tt>strange</tt> in <tt>(D0.W)</tt>?
+<P>
+<DT>(c)
+<DD> Now suppose that the main program contains the following
+storage declaration:
+<P>
+<tt>list: dc.w 1, 2, 3, 4, 5</tt>
+<P>
+If the number 5 and the address <tt>list</tt> are passed into
+<tt>strange</tt>, then will <tt>strange</tt> return an answer in <tt>(D0.W)</tt>?
+If so, what is it? If not, why not?
+<P>
+<DT>(d)
+<DD> If 1000 bytes of stack space is available for the
+stack frames of <tt>strange</tt>, then what is the largest value
+of <tt>N</tt> for which the subroutine <tt>strange</tt> will produce a 
+correct answer.
+<P>
+</DL>
+

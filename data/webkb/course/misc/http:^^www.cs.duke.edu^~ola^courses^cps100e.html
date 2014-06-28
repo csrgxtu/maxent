@@ -1,0 +1,606 @@
+Date: Wed, 20 Nov 1996 22:17:04 GMT
+Server: NCSA/1.5.1
+Last-modified: Fri, 15 Nov 1996 11:38:29 GMT
+Content-type: text/html
+Content-length: 15297
+
+<head>
+<TITLE>CPS 100E, Fall 1996 </TITLE>
+<LINK REV="made" HREF="mailto:ola@cs.duke.edu">
+</head>
+<body bgcolor="#FFFFFF">
+
+<center>
+
+<HR>
+<TABLE BORDER=0 CELLSPACING=2>
+<TR>
+<TD align=center>
+<!WA0><A href="http://www.cs.duke.edu/~ola">
+<!WA1><IMG ALIGN=center SRC="http://www.cs.duke.edu/~ola/images/olasmall.gif" ALT="*">
+</TD>
+</A>
+<TD ALIGN=center>
+<H1>
+CPS 100E: (CS1.5 + CS2)
+</H1>
+</TD>
+<TD align=center>
+<!WA2><A href="http://www.cs.duke.edu/~dr">
+<!WA3><IMG ALIGN=center SRC="http://www.cs.duke.edu/~ola/images/drsmall.gif"></TD>
+</A>
+</TR>
+<TR>
+<TD COLSPAN=3 ALIGN=center>
+<H3>
+Programming Design and Analysis II (for those with prior experience)
+</H3>
+</TD>
+</TR>
+
+</TABLE>
+
+</center>
+
+<p>
+<CENTER>
+[ 
+<!WA4><A href="#overview"> Overview </A> |
+<!WA5><A href="#syllabus"> Syllabus </A> |
+<!WA6><A HREF="#links">Links</A> |
+<!WA7><A href="#assign"> Assignments </A> |
+<!WA8><A href="#labs"> Labs </A> |
+<!WA9><A href="#quizzes"> Quizzes </A> |
+<!WA10><A href="#grades"> Grading </A> |
+<!WA11><A href="#groupwk"> Group Work </A> |
+<!WA12><A href="#oldtests"> Tests </A>  |
+<!WA13><A href="#code"> Code </A>]
+</CENTER>
+
+<hr>
+
+<DL>
+<DT>
+<!WA14><IMG SRC=http://www.cs.duke.edu/images/redball.gif ALT="*"> 
+<strong> Professors  </strong><BR>
+
+<TABLE>
+<TR VALIGN=TOP>
+<TD>
+<!WA15><A href="http://www.cs.duke.edu/~ola"> Owen Astrachan</A>
+<DD> 
+<UL>
+<li> Office: D241, LSRC
+<li> email: <!WA16><A href="mailto:ola@cs.duke.edu"> ola@cs.duke.edu
+</A> or <!WA17><A href="mailto:ola@acpub.duke.edu"> ola@acpub.duke.edu
+</A>
+<li> phone: 660-6522
+<li> office hours: Monday 2:00-3:30, Thursday 11:00-12:30 <br>
+any time for quick questions
+</UL>
+</TD>
+<TD>
+<!WA18><A href="http://www.cs.duke.edu/~dr"> Dee Ramm</A>
+<DD> 
+<UL>
+<li> Office: D310, LSRC
+<li> email: <!WA19><A href="mailto:ola@cs.duke.edu"> dr@cs.duke.edu
+</A> or <!WA20><A href="mailto:dr@acpub.duke.edu"> dr@acpub.duke.edu
+</A>
+<li> phone: 660-6532
+<li> Tuesday, Thursday 3:45
+</UL>
+</TD>
+</TR>
+</TABLE>
+
+<p>
+
+<DT>
+<!WA21><IMG SRC=http://www.cs.duke.edu/images/redball.gif ALT="*"> 
+<strong> TA  </strong>
+<!WA22><A HREF="http://www.cs.duke.edu/~loeb">Michael Loeb</A>
+<DD>
+<UL>
+<li> Office: D203, LSRC
+<li> email:  <!WA23><A HREF="mailto:loeb@csd.duke.edu">
+loeb@cs.duke.edu</A> (mloeb@acpub.duke.edu)
+<li> phone:  660-6509
+<li> office hours: TBA
+</UL>
+
+<DT>
+<!WA24><IMG SRC=http://www.cs.duke.edu/images/redball.gif ALT="*"> 
+<strong> UTA  </strong>
+<!WA25><A href="http://www.duke.edu/~rpott"> Rachel Pottinger </A>
+<DD>
+<UL>
+<li> Office: D240, LSRC (yurt)
+<li> email: <!WA26><A href="mailto:rap@cs.duke.edu"> rap@cs.duke.edu </A> 
+<li> phone: 660-6526
+<li> TBA
+</UL>
+</DL>
+
+<hr>
+
+<h3> <A NAME="overview"> Course Overview </A> </h3>
+
+
+Covers the same material that's in CPS 100 which is:
+data structures, analysis of algorithms, data
+abstraction and abstract data types, object-oriented programming, proofs
+of correctness, complexity and computability, sorting and searching. 
+<p>
+
+However, CPS 100E assumes no prior knowledge of C++ (this <EM>is
+assumed</EM> in CPS 100).  Instead, students are expected to have
+prior experience programming with functions, arrays, and (ideally)
+records/structs as might be learned in a course using Pascal or C.
+Students who do well on the Advanced Placement Computer Science A exam
+(4/5) or who earn a 3 on the AB exam, should elect this course.  Complete
+
+<!WA27><A HREF="http://www.cs.duke.edu/~ola/dus/firstyear.html">
+information on choosing a first course in computer science is accessble.
+</A>
+<P>
+<strong> Texts </strong>
+<p>
+<UL>
+
+<LI> <EM>A Computer Science Tapestry: Exploring Programming and Computer Science with C++</EM> by Owen Astrachan (McGraw-Hill)
+ <P>
+
+<li> <em> Algorithms, Data Structures and Problems Solving with C++
+</em> by Mark Weiss (Addison-Wesley)
+ <P>
+
+<li> (optional) <em> Introduction to the Public Clusters at Duke </em>
+available at Gothic Bookshop
+ <P>
+<li> (optional) <em> C++, How to Program </em> Deitel and Deitel
+
+</UL>
+<p>
+
+<strong> Computing </strong>
+<p>
+All programs should compile and execute on acpub Sun workstations.  They
+should be compiled with g++ v. 2.7.2. <em> You will need to alter your
+path to have access to this version of the compiler. </em> Sparc
+Clusters are found in Teer 106, 139 Hudson Hall, Soc/Psych
+133, Bio-Sci 002CC, and Carr 125.  All programs/projects will be
+submitted electronically.
+<p>
+
+<strong> Collaboration </strong>
+<p>
+You may (and should) work with someone else on programs.
+You may <strong> not </strong> collaborate on written assignments or
+quizzes.  For each assigment you are expected to include a list of
+consultants and collaborators as part of the README that must be
+submitted.
+<strong> You may not work with the same person on two consecutive
+assignments without prior permission. </strong>
+<p>
+
+<strong> Grading </strong>
+<p>
+
+<center>
+<table border=1>
+<tr>
+<td align=left>  
+major programming assignments
+</td>
+<td align=right>
+30%
+</td>
+<! ************>
+<tr>
+<td align=left>  
+written/minor programming assignments
+</td>
+<td align=right>
+10%
+</td>
+<! ************>
+<tr>
+<td align=left>  
+labs
+</td>
+<td align=right>
+8%
+</td>
+<! ************>
+<tr>
+<td align=left>  
+random quizzes
+</td>
+<td align=right>
+6%
+</td>
+<! ************>
+<tr>
+<td align=left>  
+tests (2)
+</td>
+<td align=right>
+26%
+</td>
+<! ************>
+<tr>
+<td align=left>  
+final
+</td>
+<td align=right>
+20%
+</td>
+</table>
+</center>
+<p>
+
+Grading is done on an absolute, but adjustable scale.  This means that
+there is no curve.  Anyone earning 90% or more of the total number of
+points available will receive a grade in the A range; 80% = B, 70% =
+C, 60% = D. This scale may go down, but it will not go up.  In order to
+earn an A+ you must do several of the optional assignments.  These points
+count even if you don't earn an A+.
+<p>
+
+There will be several optional assignments.  Completion of these can
+earn points towards raising a grade by a half-step, e.g., from C+ to B-.
+In some cases it may be possible to raise a grade by more than one step.
+Completion of some of the optional assignments
+is mandatory in order to earn an A+.
+<p>
+
+The tests will be closed-book, the final exam will be open book.
+<p>
+
+Random quizzes will be given out in class and then flipped-for at the
+beginning of the next class.
+<p>
+
+<strong> Late Assignments </strong>
+<p>
+
+Assignments have an early due date and a final due date.  Normally
+these dates will be on Monday (at midnight).
+Assignments turned in on the early due
+date will earn a 10% bonus (based on the total value of the
+assignment).  <P>
+
+Assignments turned in after the final due date are penalized 25%.
+<STRONG>No assignment will be accepted more than one week after the
+final due date.</STRONG> Exceptions to this rule may be granted in
+advance, but not after the fact.
+
+<p>
+
+<strong> Newsgroup and mail </strong>
+<p>
+You should monitor the newsgroup <em>duke.cs.cps100e</em> on a regular
+basis.  Information about changes in assignments, due dates, and
+hints/help will be posted there.  News is the preferred forum for
+asking/answering questions.
+<p>
+
+You may want to ask questions by email, this is ok.  If you have a
+question about code, you should submit the code (all relevant files)
+using the appropriate submit command and send email.  You should set up
+acl permission on your cps100e directory for the professor and TA/UTA to
+have access to the directory.
+<p>
+
+<strong> World Wide Web </strong>
+<p>
+All course materials, except for daily notes, are accessible from the
+class home page.  This page is accessible from the Duke Course page and
+from Prof. Astrachan's homepage.  The URL is
+<!WA28><A href="http://www.cs.duke.edu/~ola/courses/cps100e.html">
+http://www.cs.duke.edu/~ola/courses/cps100e.html </A> (how's that for
+self-referential). 
+<p>
+
+<strong> Dishonesty Policy </strong>
+<p>
+You may discuss problems with other students, but strong collaboration
+is limited to one partner on major programming assignments.  If you have
+such a partner, your writeup and final program should still be your own,
+except for the final project(s)  when a group can submit one program.
+You must work on your own on written assignments an on minor programming
+assignments.  If you get help of a substantive nature on an assignment,
+you must acknowledge this assistance in your README file.
+
+
+
+
+<hr>
+
+<h3> <A NAME="syllabus"> Course Materials and Handouts </A> </h3>
+
+<DL>
+<DT>
+<!WA29><IMG SRC=http://www.cs.duke.edu/images/greenball.gif ALT="*"> 
+<!WA30><A href="http://www.cs.duke.edu/~ola/courses/cps100e/100esyl.html"> Syllabus </A>
+<DD> 
+reading, test dates, topics covered
+<p>
+
+<DT>
+<!WA31><IMG SRC=http://www.cs.duke.edu/images/greenball.gif ALT="*"> 
+<!WA32><A href="http://www.cs.duke.edu/~ola/courses/emacsref.ps"> emacs ref (postscript) </A>
+<DD> summary of emacs commands
+<p>
+
+<DT>
+<!WA33><IMG SRC=http://www.cs.duke.edu/images/greenball.gif ALT="*"> 
+<!WA34><A href="http://www.cs.duke.edu/~ola/courses/unixcommands.ps"> Unix summary (postscript) </A>
+<DD> common Unix commands summarized
+<p>
+
+
+</DL>
+
+<hr>
+<h3> <A NAME="assign"> Assignments </A> </h3>
+
+<h2> Programming Assignments </h2>
+<DL>
+<DT>
+<!WA35><IMG SRC=http://www.cs.duke.edu/images/redball.gif ALT="*"> 
+<!WA36><A HREF="http://www.cs.duke.edu/~ola/courses/cps100e/assign/prog1.html">Program 1 (firstprog)</A>
+<DD> 
+Gambling: Simulating Craps and Roulette
+<p>
+<DT>
+<!WA37><IMG SRC=http://www.cs.duke.edu/images/redball.gif ALT="*"> 
+<!WA38><A HREF="http://www.cs.duke.edu/~ola/courses/cps100e/assign/kwic.html">Program 2 (kwic)</A>
+<DD> 
+Reading, Sorting, Indexing, and printing Kwicly
+<p>
+<DT>
+<!WA39><IMG SRC=http://www.cs.duke.edu/images/redball.gif ALT="*"> 
+<!WA40><A HREF="http://www.cs.duke.edu/~ola/courses/cps100e/assign/linksort.html">Program 3 (linksort)</A>
+<DD> 
+Sorting with linked lists
+ <P>
+<DT>
+<!WA41><IMG SRC=http://www.cs.duke.edu/images/redball.gif ALT="*"> 
+<!WA42><A HREF="http://www.cs.duke.edu/~ola/courses/cps100e/assign/animal.html">Program 4 (guess-an-animal)</A>
+<DD> 
+Trees and Guessing Games
+
+
+</DL>
+
+<hr>
+<h3> Extra Credit Assignments </h3>
+<DL>
+<DT>
+<!WA43><IMG SRC=http://www.cs.duke.edu/images/yellowball.gif ALT="*"> 
+<!WA44><A HREF="http://www.cs.duke.edu/~ola/courses/cps100e/assign/ladder.html">Extra 1 (ladder)</A>
+<DD> 
+Finding word ladders, using pointers, queues (p's and q's??)
+<p>
+
+<DT>
+<!WA45><IMG SRC=http://www.cs.duke.edu/images/yellowball.gif ALT="*"> 
+<!WA46><A HREF="http://www.cs.duke.edu/~ola/courses/cps100e/assign/family.html">Extra 2 (family)</A>
+Finding family trees.
+<DD> 
+</DL>
+
+
+<h2> Written Assignments </h2>
+
+<DL>
+<DT>
+<!WA47><IMG SRC=http://www.cs.duke.edu/images/yellowball.gif ALT="*"> 
+<!WA48><A HREF="http://www.cs.duke.edu/~ola/courses/cps100e/linklist.html">linked list</A>
+<DD> 
+Linked List assignment due October 18, 8:00 am
+<p>
+
+<DT>
+<!WA49><IMG SRC=http://www.cs.duke.edu/images/yellowball.gif ALT="*"> 
+TBA
+<DD> 
+<p>
+
+</DL>
+
+<hr>
+<h3> <A NAME="labs"> Labs </A> </h3>
+
+<UL>
+<li> <!WA50><A href="http://www.cs.duke.edu/~ola/courses/cps100e/lab/lab1.html"> Lab 1 </A> 
+ <P>
+<li> <!WA51><A href="http://www.cs.duke.edu/~ola/courses/cps100e/lab/lab2.html"> Lab 2 </A> 
+ <P>
+<LI> <!WA52><A href="http://www.cs.duke.edu/~ola/courses/cps100e/lab/lab3.html"> Lab 3 </A> 
+and <!WA53><A HREF="http://www.cs.duke.edu/~ola/courses/cps100e/lab/lab3/inlab.html">inlab questions</A>
+ <P>
+<LI> <!WA54><A href="http://www.cs.duke.edu/~ola/courses/cps100e/lab/lab4.html"> Lab 4 </A> 
+and <!WA55><A HREF="http://www.cs.duke.edu/~ola/courses/cps100e/lab/lab4/inlab.html">inlab questions</A>
+ <P>
+<LI> <!WA56><A href="http://www.cs.duke.edu/~ola/courses/cps100e/lab/lab5.html"> Lab 5 </A> 
+and <!WA57><A HREF="http://www.cs.duke.edu/~ola/courses/cps100e/lab/lab5/inlab.html">inlab questions</A>
+ <P>
+<LI> <!WA58><A href="http://www.cs.duke.edu/~ola/courses/cps100e/lab/lab6.html"> Lab 6 </A> 
+and <!WA59><A HREF="http://www.cs.duke.edu/~ola/courses/cps100e/lab/lab6/inlab.html">inlab questions</A>
+ <P>
+<LI> <!WA60><A href="http://www.cs.duke.edu/~ola/courses/cps100e/lab/lab7.html"> Lab 7 <TT>Optional</TT></A> 
+ <P>
+<LI> <!WA61><A href="http://www.cs.duke.edu/~ola/courses/cps100e/lab/lab8.html"> Lab 8 </A> 
+and <!WA62><A HREF="http://www.cs.duke.edu/~ola/courses/cps100e/lab/lab8/inlab.html">inlab questions</A>
+ <P>
+<LI> <!WA63><A href="http://www.cs.duke.edu/~ola/courses/cps100e/lab/lab9.html"> Lab 9 </A> 
+and <!WA64><A HREF="http://www.cs.duke.edu/~ola/courses/cps100e/lab/lab9/inlab.html">inlab questions</A>
+ <P>
+<LI> <!WA65><A href="http://www.cs.duke.edu/~ola/courses/cps100e/lab/lab10.html"> Lab 10 </A> 
+and <!WA66><A HREF="http://www.cs.duke.edu/~ola/courses/cps100e/lab/lab10/inlab.html">inlab questions</A>
+</UL>
+
+
+<hr>
+<h3> <A NAME="quizzes"> Random Quizzes <A> </h3>
+
+<UL>
+<li> <!WA67><A href="http://www.cs.duke.edu/~ola/courses/cps100e/quiz/q1.html"> quiz 1 </A> 
+<li> <!WA68><A href="http://www.cs.duke.edu/~ola/courses/cps100e/quiz/q2.html"> quiz 2 </A> 
+<li> <!WA69><A href="http://www.cs.duke.edu/~ola/courses/cps100e/quiz/q3.html"> quiz 3 </A> 
+<li> <!WA70><A href="http://www.cs.duke.edu/~ola/courses/cps100e/quiz/q4.html"> quiz 4 </A> 
+<li> <!WA71><A href="http://www.cs.duke.edu/~ola/courses/cps100e/quiz/q5.html"> quiz 5 </A> 
+<li> <!WA72><A href="http://www.cs.duke.edu/~ola/courses/cps100e/quiz/q6.html"> quiz 6 </A> 
+<li> <!WA73><A href="http://www.cs.duke.edu/~ola/courses/cps100e/quiz/q7.html"> quiz 7 </A> 
+<li> <!WA74><A href="http://www.cs.duke.edu/~ola/courses/cps100e/quiz/q8.html"> quiz 8 </A> 
+</UL>
+
+<hr>
+<hr>
+<h3> <A NAME="grades"> Grades </A> </h3>
+
+<!WA75><A HREF="http://www.cs.duke.edu/~rap/ta/index.html">
+Information on grades and who grades what </A>assignments and labs
+
+<hr>
+<h3> <A NAME="groupwk"> Group Work <A> </h3>
+
+<UL>
+<LI> <!WA76><A HREF="http://www.cs.duke.edu/~ola/courses/cps100e/group/g1.html">Groupwork 1</A>
+<LI> <!WA77><A HREF="http://www.cs.duke.edu/~ola/courses/cps100e/group/g2.html">Groupwork 2</A>
+</UL>
+
+
+<HR>
+<h3> <A NAME="oldtests"> Tests from previous semesters </h3>
+
+<H4>Practice Test for Test 2 This semester</H4>
+<UL>
+<LI> <!WA78><A HREF="http://www.cs.duke.edu/~ola/courses/cps100e/test2practice.html">Practice test</A>
+and <!WA79><A HREF="http://www.cs.duke.edu/~ola/courses/cps100e/test2practiceanswers.txt">answers</A>
+</UL>
+
+
+
+<em> Note: topics may not be covered in the same order (or 
+even covered) in different semesters </em>
+<p>
+<!WA80><IMG SRC=http://www.cs.duke.edu/images/redball.gif ALT="*"> 
+<!WA81><A href="http://www.cs.duke.edu/~ola/courses/cs2/test1spring96.ps">Test 1, Spring 96 in postscript (CPS
+100)</A> 
+<!WA82><IMG SRC=http://www.cs.duke.edu/images/New.gif ALT="*">
+ <P>
+<!WA83><IMG SRC=http://www.cs.duke.edu/images/redball.gif ALT="*"> 
+<!WA84><A href="http://www.cs.duke.edu/~ola/courses/cs2/test2spring96.ps">Test 2, Spring 96 in postscript (CPS
+100)</A> 
+<!WA85><IMG SRC=http://www.cs.duke.edu/images/New.gif ALT="*">
+ <P>
+<!WA86><IMG SRC=http://www.cs.duke.edu/images/redball.gif ALT="*"> 
+<!WA87><A href="http://www.cs.duke.edu/~ola/courses/cs1.5/test2fall95.ps">Test 2, Fall 95 in postscript 
+(CPS 100 E)</A> <!WA88><IMG SRC=http://www.cs.duke.edu/images/New.gif ALT="*">
+<P>
+<!WA89><IMG SRC=http://www.cs.duke.edu/images/redball.gif ALT="*"> 
+<!WA90><A href="http://www.cs.duke.edu/~ola/courses/cs1.5/test1fall95.html">Test 1, Fall 95 in html (CPS 100 E)</A> 
+<P>
+<!WA91><IMG SRC=http://www.cs.duke.edu/images/redball.gif ALT="*"> 
+<!WA92><A href="http://www.cs.duke.edu/~ola/courses/cs2/test1fall95.html">Test 1, Fall 95 in html (CPS 100)</A> 
+
+<p>
+<!WA93><IMG SRC=http://www.cs.duke.edu/images/redball.gif ALT="*"> 
+<!WA94><A href="http://www.cs.duke.edu/~ola/courses/cs2/test2fall95.html">Test 2, Fall 95 in html (some pictures
+missing)  (CPS 100)</A> 
+
+
+<STRONG>Tests below are from CPS 100 </STRONG>
+<UL>
+
+
+
+<LI> <!WA95><A href="http://www.cs.duke.edu/~ola/courses/cs2/test2fall95.ps">
+ test 2 fall 1995 </A> and 
+<!WA96><A href="http://www.cs.duke.edu/~ola/courses/cs2/test2fall95answers.cc">
+ (answers fall 95) </A>
+
+
+
+<LI> <!WA97><A href="http://www.cs.duke.edu/~ola/courses/cs2/test1fall95.ps">
+ test 1 fall 1995 </A> and 
+<!WA98><A href="http://www.cs.duke.edu/~ola/courses/cs2/test1fall95answers.cc">
+ (answers fall 95) </A>
+
+
+
+<LI> <!WA99><A href="http://www.cs.duke.edu/~rodger/oldcps100/test2S.ps">
+ test 2 spring 1995 (with answers) </A> 
+<!WA100><A href="http://www.cs.duke.edu/~rodger/oldcps100/notestst1M.ps">
+ (test 1 spring 1995 handout) </A>
+<LI> <!WA101><A href="http://www.cs.duke.edu/~rodger/oldcps100/test1S.ps">
+ test 1 spring 1995 (with answers) </A> and 
+
+<LI> <!WA102><A href="http://www.cs.duke.edu/~ola/courses/cs2/test2fall94.ps">
+ test 2 fall 1994 </A> and 
+<!WA103><A href="http://www.cs.duke.edu/~ola/courses/cs2/test2fall94answers.cc">
+ (answers fall 94) </A>
+
+<LI> <!WA104><A href="http://www.cs.duke.edu/~ola/courses/cs2/test1fall94.ps">
+ test 1 fall 1994 </A> and 
+<!WA105><A href="http://www.cs.duke.edu/~ola/courses/cs2/test1fall94answers.cc">
+ (answers fall 94) </A>
+
+<LI> <!WA106><A href="http://www.cs.duke.edu/~ola/courses/cs2/test2spring94.ps">
+ test 2 spring 1994 </A> and 
+<!WA107><A href="http://www.cs.duke.edu/~ola/courses/cs2/test2spr94answers.cc">
+ (answers spring 94) </A>
+
+<LI> <!WA108><A href="http://www.cs.duke.edu/~ola/courses/cs2/test2fall93.ps"> 
+test 2 fall 1993 </A> and 
+<!WA109><A href="http://www.cs.duke.edu/~ola/courses/cs2/test2fall93answers.cc">
+ (answers fall 93) </A>
+<LI> <!WA110><A href="http://www.cs.duke.edu/~ola/courses/cs2/test1spring94.ps">
+ test 1 spring 1994 </A>
+
+<LI> <!WA111><A href="http://www.cs.duke.edu/~ola/courses/cs2/test1fall93.ps"> 
+test 1 fall 1993  </A>
+
+
+
+</UL>
+
+<hr>
+<h2> <A NAME="code">Code</A> </h2>
+Some code examples discussed in class.
+
+
+<HR>
+<H2><A NAME="links">Useful Links</A></H2>
+
+ <P>
+
+<DL>
+
+<DT>
+<!WA112><IMG SRC=http://www.cs.duke.edu/images/pinkball.gif ALT="*"> 
+<!WA113><A HREF="http://www.cs.duke.edu/~rap/ta/faq/index.html">
+class FAQ</A>
+<DD> frequently asked questions, news summaries, etc.
+<P>
+
+<DT>
+<!WA114><IMG SRC=http://www.cs.duke.edu/images/pinkball.gif ALT="*"> 
+<!WA115><A HREF="http://www.oit.duke.edu/helpdesk/search.html">
+OIT online help page</A> 
+<DD> information about clusters, Unix, AFS, etc.
+<P>
+
+</DL>
+
+
+<hr>
+<address>
+Last modified September 2, 1996 by Owen Astrachan, ola@cs.duke.edu
+</address>
+</body>
+

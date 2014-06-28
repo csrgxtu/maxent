@@ -1,0 +1,161 @@
+Date: Thursday, 21-Nov-96 23:46:23 GMT
+Server: NCSA/1.1
+MIME-version: 1.0
+Content-type: text/html
+Last-modified: Tuesday, 12-Nov-96 20:31:52 GMT
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Fei Shong's Homepage</TITLE>
+   <META NAME="Fei Shong" CONTENT="Fei Shong's Homepage">
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0b5aGold (X11; I; SunOS 5.3 sun4d) [Netscape]">
+</HEAD>
+<BODY onLoad="timerONE=window.setTimeout('scrollit_r2l(100)',500);
+startclock()">
+<SCRIPT LANGUAGE="JavaScript">
+
+<!-- Beginning of JavaScript Applet -------------------
+function scrollit_r2l(seed)
+{       
+        var m1  = "Welcome to Fei Shong Home  Page ";
+        var m2  = "....................";
+        var m3  = "I am a computer major graduate student";
+        var m4  = " in wesleyan University";
+        var msg=m1+m2+m3+m4;
+        var out = " ";
+        var c   = 1;
+        if (seed >100) {
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 100 && seed > 0) {
+                for (c=0 ; c < seed ; c++) {
+                        out+=" ";
+                }
+                out+=msg;
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                    window.status=out;
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;
+                        var cmd="scrollit_r2l(" + seed + ")";
+                        window.status=out;
+                        timerTwo=window.setTimeout(cmd,100);
+                }
+                else {
+                        window.status=" ";
+                        timerTwo=window.setTimeout("scrollit_r2l(100)",75);
+                }
+        }
+}
+
+
+var timeID=null
+var timerRunning=false
+function stopclock(){
+	if (timerRunning)
+		clearTimeout(timerID)
+		timerRunning=false
+}
+
+function startclock(){
+stopclock()
+showtime()
+}
+
+function showtime(){
+var now=new Date()
+document.clock.face.value=now.toGMTString()
+timerID=setTimeout("showtime()",1000)
+timerRunning=true
+}
+// -- End of JavaScript code -------------- -->
+</SCRIPT>
+
+
+<H2 ALIGN=CENTER><B>Welcome to Fei Shong's Homepage</B></H2>
+
+<CENTER><P><key>(Best viewed with Netscape Version 2.0 or above.)</key><BR>
+<!--#exec ../hello.pl--></P></CENTER>
+<!WA0><form name="clock" OnSubmit="0">
+	<input type="text" name="face" size=30 value="">
+</form>
+<UL>
+<PRE><citation>
+Myself:
+        I was born in ChongQing,Sichuan,P.R.China,a mountainous city
+        with ten million people. 
+        I LOVE my home country!
+<MAP name="china">
+<AREA shape="rect" coords="196,226,294,271" href="sichuan.html">
+<AREA shape="default" href="china.html">
+</MAP>
+</PRE>
+
+<CENTER><P><B>Find my home town! </B><p><iMG USEMAP="#china" SRC="map.gif" HEIGHT=405 WIDTH=480><BR>
+</P></CENTER>
+
+<UL>
+<LI>I got B.S. in computer science from <A HREF="http://www.tsinghua.edu.cn">Tsinghua
+University</A>, Beijing,1990.</LI>
+
+<LI>I became a college teacher in Sichuan Institute of Technology, between
+1990 and 1994. Then I worked in the field of stock broking and futures
+broking.</LI>
+
+<LI>Now, I'm studying computer science in <A HREF="http://www.wesleyan.edu">Wesleyan
+University</A>, Middletown,Connecticut.</LI>
+
+<LI>I am interested in programming,especially on Windows Platform. I am
+also interested in authoring on internet. Hobby: soccer,any kind of sports,bridge,make
+friends, computer games,horrifing films.</LI>
+</UL>
+
+<P></citation></P>
+
+<H3>JavaScript Experimental
+Field: <A HREF="expr.html">Javascript Lab</A></H3>
+
+<H3>Some my favoriate links :</H3>
+
+<H4><ul><li><A HREF="http://www.usc.edu/dept/CGIT/IMAGE/news/chinese.html"><iMG SRC="src/china.gif" BORDER=0 HEIGHT=30 WIDTH=60></A><A HREF="http://www.usc.edu/dept/CGIT/IMAGE/news/chinese.html"><iMG SRC="src/soccer.gif" BORDER=0 HEIGHT=30 WIDTH=60></A></li>
+<li><font=1><A HREF="http://www.owlnet.rice.edu/~dclin/csdgif.html?">China
+Sports Daily</li>
+<li><A HREF="http://harmony.wit.com/chinascape/">ChinaScape</li>
+<li><A HREF="http://205.212.223.40/csexp/express.html?">
+China Sports Express Daily</li>
+<li><A HREF="http://www.cnd.org/">CND
+Headquarter</A></B></li></H4></ul>
+
+<P><BR>
+
+<HR size=1 width=100%></P>
+
+<UL>
+<LI><A HREF="sich.html">Sichuan Soccer Team Name List</A></LI>
+</LI>
+<LI><A HREF="src/test4.ps">An Postscript graph</A></LI>
+</UL>
+
+<P>
+<HR size=1 width=100%><A HREF="mailto:fshong@picasso.cslab.wesleyan.edu"><iMG SRC="src/email.gif" BORDER=0 HEIGHT=52 WIDTH=45></A><BLINK><A HREF="mailto:fshong@picasso.cslab.wesleyan.edu">Any comment?</A></BLINK></P>
+
+<P>
+<HR size=1 width=100%><A HREF="http://www.wesleyan.edu/"><iMG SRC="src/wes1.gif" BORDER=2 HEIGHT=111 WIDTH=468></A><BR>
+<B><A HREF="http://www.wesleyan.edu/">Welcome to Wesleyan University</A></B>
+</P>
+</UL>
+
+<script>
+document.write
+("<small>This page was updated on "+document.lastModified+"<small>")
+</script>
+
+</BODY>
+</HTML>

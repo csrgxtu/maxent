@@ -1,0 +1,334 @@
+Date: Tue, 05 Nov 1996 00:27:26 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 31 Oct 1996 21:38:54 GMT
+Content-length: 12763
+
+<html>
+<head>
+   <title>CS 537 - Programming Assignment III</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <meta name="GENERATOR" content="Mozilla/2.01Gold (Win32)">
+</head>
+<body bgcolor="#FFFFFF">
+
+<h1>CS 537 
+<br>Programming Assignment III 
+<br>CPU Scheduling </h1>
+
+<h2>Due: </h2>
+
+<p>October 22 at the <b>start</b> of class. 
+<hr></p>
+
+<h2>Contents</h2>
+
+<ul>
+<li><!WA0><a href="#Intro">Introduction</a> </li>
+
+<li><!WA1><a href="#Simulation">Running the Simulator</a> </li>
+
+<li><!WA2><a href="#Overview">System Overview</a></li>
+
+<li><!WA3><a href="#Modification">Program Modification</a></li>
+
+<li><!WA4><a href="#Files">Files</a></li>
+
+<li><!WA5><a href="#Coding">Coding</a></li>
+
+<li><!WA6><a href="#Experiments">Experiments</a> </li>
+
+<li><!WA7><a href="#Report">Report</a> </li>
+
+<li><!WA8><a href="#Grading">Grading</a> </li>
+
+<li><!WA9><a href="#Handin">Handing In</a> </li>
+</ul>
+
+<p>
+<hr></p>
+
+<h2><a name="Intro"></a>Introduction </h2>
+
+<p>A program has been written that simulates a short-term scheduler and
+allows you to experiment with various scheduling policies. Your assignment
+is to measure and analyze the performance of several policies, modifying
+the simulation program as necessary. </p>
+
+<h2><a name="Simulation"></a>Running the Simulator </h2>
+
+<p>The current version of the program simulates <i>Round-Robin </i>(RR)
+scheduling, but it is constructed to allow easy modification for other
+scheduling policies. The program expects the following command line: </p>
+
+<p><tt>java Proj3 [-v...] [-t] data-file quantum </tt>
+<br></p>
+
+<ul>
+<li><b>Proj3</b>: Name of the main class. </li>
+
+<li><b>-v</b>, <b>-vv</b>, etc.: Starts verbose mode for debugging. Verbose
+mode causes the simulator to print debugging output to the screen. The
+more v's in the command line, the greater the verbosity. </li>
+
+<li><b>-t</b>: Starts trace mode. Trace mode causes the simulator to maintain
+a record of all significant events. </li>
+
+<li><b>data-file</b>: Name of the file containing the trace data used in
+the simulation. </li>
+
+<li><b>quantum</b>: Length of the time-slice used in Round-Robin scheduling.</li>
+</ul>
+
+<h2><a name="Overview"></a>System Overview</h2>
+
+<center><!WA10><img src="http://www.cs.wisc.edu/~cs537-1/system.gif"></center>
+<p>The Simulator essentially consists of Jobs, Devices, and Schedulers -- all
+coordinated by a single loop of code.
+A <b>Job </b>is a customer of services: it is a process that needs to use
+system resources during its execution. A <b>Device</b> represents a resource
+in the system. In this simulation, the devices available to a job are the CPU 
+and the disk.
+There is also a clock device and a pseudo-device that interrupts whenever
+a new job arrives in the system.
+A <b>Scheduler</b> coordinates access to a device. It queues Jobs
+that are waiting to use a device and will choose which job is the next
+to access.</p>
+
+<p>The overall execution of the simulator occurs like this:  Jobs arrive at
+the JobArrival device and are entered into the system.  A job's lifetime
+consists of alternating periods of using the CPU (called a 
+<b>burst</b>) and performing I/O. The Main Loop is responsible for 
+moving jobs around the system.  It sends them to a scheduler, takes
+the next job from a scheduler, and starts and stops jobs running on a device.
+The Disk Scheduler and the CPU Scheduler decide which job should
+be the next to run on their respective devices.  They also buffer jobs that
+are waiting to run but have not yet been given access.  The clock device is
+used to enable preemption (more on this later).</p>
+
+<p>For those who would like a more detailed description of the system 
+(more than is necessary to do this assignment), you can either read the
+comments in the code itself, or click 
+<!WA11><a href="http://www.cs.wisc.edu/~cs537-1/project3detail.html"><b>here</b></a>.
+</p>
+
+<h2><a name="Modification"></a>Program Modification</h2>
+
+<p>For this project, you are going to be focusing almost exclusively on
+the <b>CPU Scheduler</b> object shown above.  The provided simulator performs 
+Round-Robin (RR) scheduling.  You are to create separate versions 
+of the simulator to implement each of the CPU scheduling algorithms described 
+below. </p>
+
+<ol>
+<li>Modify one copy of the program to simulate the <i>Shortest-Job-First
+</i>(SJF) algorithm described in Section 2.4.4 of the text. The next process
+to be run is the one with the smallest burst. Use FCFS to break ties.
+Because this is a simulation, you can ``cheat''
+by looking at the burst length of a process when deciding which process
+to run next. In a real system, that information is not available to the
+scheduler.
+</li>
+This policy is <b>non-preemptive</b>: Newly arriving processes do not affect
+the currently-running process.
+</li>
+
+<li>Modify another copy of the program to implement a <b>preemptive</b>
+version of SJF, which is called <i>Shortest-Remaining-Time-First </i>(SRTF).
+In this algorithm, the currently-running process is the one with the least
+time left in its current burst.
+
+<li>For your final version of the program, modify the SJF algorithm
+to use a <i>predicted </i>burst length. We will call this policy <i>Predicted-Shortest-Job-First
+</i>(PSJF). You can predict the burst length by using an exponential average
+of the measured lengths of previous CPU bursts. The formula is as follows:
+</li>
+
+<ol>
+<tt>        
+                        T<sub><font SIZE=-1>n+1</font></sub> = at<sub><font SIZE=-1>n</font></sub> + (1 - a)T<sub><font SIZE=-1>n</font></sub></tt>
+
+<ul>
+<li><tt>T = predicted burst length</tt> </li>
+
+<li><tt>t = past measurement of actual burst length</tt> </li>
+
+<li><tt>0 &lt;= a &lt;= 1</tt> </li>
+</ul>
+</ol>
+
+<p>What the formula says is that the predicted value of the next burst
+length (<b>T<sub>n+1</sub></b>) will be dependent upon both the last measured
+burst length (<b>t<sub>n</sub></b>) and the last predicted burst length
+(<b>T<sub>n</sub></b>). The weight the previous two measurements have in
+calculating the new prediction is contained in <b>a</b>. If <b>a</b> = 1/2,
+then they will both contribute equally; if <b>a</b> = 1, then only the
+last measured burst time is used to predict the next burst time. Experiment
+with different values of <b>a</b> for this section. </p>
+<p>To implement PSJF you will have to modify the Job class to
+record a little more information.</p>
+</ol>
+
+<p>You should have four versions of the simulation program when finished,
+</p>
+
+<ul>
+<li>the original (RR) </li>
+
+<li>one for SJF </li>
+
+<li>one for SRTF</li>
+
+<li>and one for PSJF. </li>
+</ul>
+
+<h2><a name="Files"></a>Files</h2>
+The files you will need can be found in 
+<font COLOR="#0000FF"> <pre>
+    ~cs537-1/public/src
+</pre></font>
+They include all of the files for the simulator, the data file, and a Makefile.
+Copy all of these files into one of your directories and type
+<font COLOR="#0000FF">make</font> to run the Round-Robin version of the 
+simulator.
+
+<h2><a name="Coding"></a>Coding</h2>
+
+<p>The easiest way to attack this assignment is to modify a copy of the provided
+Round-Robin scheduler.</p>
+
+<font COLOR="#0000FF"> <pre>
+    cp RRScheduler.java SJFScheduler.java
+</pre></font>
+Don't forget to change all occurrences of <samp>RRScheduler</samp>
+to <samp>SJFScheduler</samp> in the copy and in the Makefile.
+
+<p>You should also change the following line in the file <font COLOR="#0000FF">Sim.java</font>
+so your Scheduler is used by the simulator instead of the default:</p>
+
+<font COLOR="#0000FF"> <pre>
+    Sim.java: 
+        cpuScheduler = new RRScheduler();
+
+    becomes 
+        cpuScheduler = new SJFScheduler(); 
+</pre></font>
+
+The methods in RRScheduler which you will have to modify for your assignment
+include:
+<ul>
+<li><font COLOR="#0000FF">boolean add(Job,timeLeft)</font>
+adds a new job wanting service.
+The second parameter is the amount of CPU time remaining until the job
+currently using the CPU will next do I/O or finish.
+It is -1 if the CPU is currently idle.
+This method should return <i>true</i> if the scheduler would like to
+preempt the current job.
+
+<li><font COLOR="#0000FF">Job remove() </font>returns the job that
+the scheduler would like to run next
+(and removes it from the queue) </li>
+
+<li><font COLOR="#0000FF">boolean reschedule(int timeLeft)</font> returns
+<i>true</i> if
+there is a reason to stop the current process and start another.  It is
+called by mainLoop on a clock interrupt and is essential to implementing
+preemption.  If
+it returns <i>true</i>, the mainLoop will take the current running process off
+the CPU and return it to the CPU queue (by calling <samp><font color="0f0fff">add</font></samp>) and then
+ask for another job to run by calling <samp><font color="0f0fff">remove</font></samp>.
+As in <samp><font color="0f0fff">add</font></samp>, the <samp><font color="0f0fff">timeLeft</font></samp> parameter is the amount of CPU
+time remaining in the current burst of the currently running job (-1 if
+no job is running).
+</ul>
+
+You may also need to look at the Job class.  One useful
+Job method is:
+<ul>
+<li><font COLOR="#0000FF">int nextBurst()</font> which returns the burst time
+remaining</li>
+</ul>
+
+<h2><a name="Experiments"></a>Experiments</h2>
+
+<p>Compare the performance of the four scheduling algorithms.
+Also compare the performance for various values of the parameters:
+<b>quantum</b> for RR and <b>a</b> for PSJF). Note that if <b>quantum</b>
+is very large, RR becomes <i>First-Come-First-Served </i>(FCFS) and if
+<b>quantum</b><tt>==1</tt> , RR approximates <i>Processor-Sharing </i>(PS).
+</p>
+
+<p>Compare the behavior and performance of each of the policies. Discover
+the strengths and weaknesses of each of them. Compare the performance results
+you observe with the predictions discussed in class and in the book. You
+must supply <i>quantitative </i>data to support your conclusions. </p>
+
+<p>You should approach this portion of the assignment as you would approach
+a laboratory assignment in a physics course. Use the ``scientific method.''
+You should have some hypotheses that you confirm or reject based on behaviors
+observed during well-planned, organized experimentation. Give careful thought
+to the correct choice of parameters for the programs. Try a few trial runs
+with various parameters, print out the results, and go home and think about
+the results. These preliminary results should help you decide on better
+parameters for a second round of trials. Remember: It's not the quantity
+but the quality of data that dictates the quality of the experiments. </p>
+
+<p>If the program is not printing out all the statistics you would like
+to see, feel free to modify it to produce better output. You may find additional
+statistics-reporting code can help explain some of the behavior you observe.
+</p>
+
+<h2><a name="Report"></a>Report</h2>
+
+<p>You are to prepare a report describing the results of your experiments.
+Again, approach this report as you would approach a physics laboratory
+experiment report. You should carefully describe what experiments you did
+and what the results showed you about the different scheduling policies.
+We want to see a correlation between the experiments you run and the conclusions
+you draw. You must supply <i>quantitative </i>data to support your conclusions.
+The report should be <b>not more </b>than three typewritten pages, excluding
+tables, graphs, etc. </p>
+
+<h2><a name="Grading"></a>Grading</h2>
+
+<p>You grade will be determined as follows: </p>
+
+<ul>
+<li>60% - Report (experiments, conclusions, presentation) </li>
+
+<li>40% - Implementation (correctness, style, documentation) </li>
+</ul>
+
+<p>You must work in two-person groups for this project. 
+</p>
+
+<h2><a name="Handin"></a>Handing In </h2>
+
+<p>You should bring your<font COLOR="#FF0080"> </font><font COLOR="#0000FF">report
+</font>and all of the <font COLOR="#0000FF">.java</font><font COLOR="#FF0000">
+</font>files you modified (with your additions clearly detailed in your
+code or in a separate file) to class on the day the project is due. You should
+also create four directories in your hand-in folder -- one for each of your
+scheduler versions.  Into each directory you should place a 
+<font COLOR="#0000FF">copy 
+</font>of the files needed to run that particular scheduler
+(<font COLOR="#0000FF">.java</font> files, <font COLOR="#0000FF">trace
+</font>file) as well as a redirected copy of the output from one execution.
+A short README file containing the names of you and your partner
+can just be placed in your hand-in folder. 
+The hand-in directories
+for project 3 can be found at: </p>
+<ul>
+<ul>
+<p><tt>~cs537-1/public/handin/project3</tt></p>
+</ul>
+</ul>
+
+<p>As always, points will be deducted for code that fails to satisfy the
+minimal criteria for comments and structure specified in the hand-in directions
+for project 2. </p>
+<br>
+Copyright &#169; 1996 by Marvin Solomon.  All rights reserved.
+
+</body>
+</html>

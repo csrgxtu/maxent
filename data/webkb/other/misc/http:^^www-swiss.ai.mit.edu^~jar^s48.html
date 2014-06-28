@@ -1,0 +1,109 @@
+MIME-Version: 1.0
+Date: Tuesday, 14-Jan-97 19:03:01 GMT
+Server: NaviServer/2.0 GNNserver/2.1b2
+Content-Type: text/html
+Content-Length: 4276
+Last-Modified: Wednesday, 04-Dec-96 23:06:06 GMT
+
+
+<TITLE>Scheme 48 home page</TITLE>
+
+<H1>Scheme 48</H1>
+
+You are invited to beta-test Scheme 48, a 
+<!WA0><A HREF="http://www-swiss.ai.mit.edu/~jar//scheme-home.html">Scheme</A>
+implementation based
+on a virtual machine architecture.  Compressed tar files are in
+
+<PRE>
+    <!WA1><A HREF="ftp://cs.indiana.edu/pub/scheme-repository/imp/scheme48-0.36.tar.Z">cs.indiana.edu:/pub/scheme-repository/imp/scheme48-0.36.tar.Z</A>
+    <!WA2><A HREF="http://www-swiss.ai.mit.edu/~jar//ftpdir/s48/scheme48-0.36.tar.gz">www-swiss.ai.mit.edu:/archive/s48/scheme48-0.36.tar.gz</A>
+</PRE>
+
+Scheme 48 is designed to be straightforward, flexible, reliable, and
+fast.  It should be easily portable to 32-bit byte-addressed machines
+that have POSIX and ANSI C support. <P>
+
+In addition to the usual Scheme built-in procedures and a development
+environment, library software includes support for hygienic macros (as
+described in the Revised^4 Scheme report), multitasking, records,
+exception handling, hash tables, arrays, weak pointers, and <KBD>format</KBD>. <P>
+
+Scheme 48 implements and exploits an experimental module system
+loosely derived from Standard ML and Scheme Xerox.  The development
+environment supports interactive changes to modules and interfaces.
+This feature makes the module system significantly easier to work with
+than it would be otherwise. <P>
+
+The virtual machine executes a byte-code instruction set similar to
+the target of the Scheme 311 compiler [Clinger, LFP 1984].  The
+interpreter for the virtual instruction set is itself written in
+Pre-Scheme, a systems programming dialect of Scheme.  A Pre-Scheme
+compiler applies intensive source-to-source rewrites to the
+interpreter source code and emits low-level C code.  When the output
+is then compiled by an optimizing C compiler such as gcc, the result
+is an efficient and portable emulator. <P>
+
+The virtual machine is initialized from a specified memory image
+containing byte-compiled Scheme code and data.  Images, including
+small stand-alone applications, are built either using a static linker
+or by writing out a procedure from an executing program.  A standard
+memory image contains a Scheme run-time library (<KBD>append</KBD>,
+<KBD>read</KBD>, <KBD>write</KBD>, etc.), a compiler from Scheme to
+the virtual instruction set, and a command processor and debugger.  In
+this way Scheme 48 can be configured to look like a conventional Lisp
+interpreter. <P>
+
+Scheme 48 is available under the following license: <P>
+
+<UL>
+     Use of this program for non-commercial purposes is permitted
+  provided that such use is acknowledged both in the software itself
+  and in accompanying documentation. <P>
+
+     Use of this program for commercial purposes is also permitted,
+  but only if, in addition to the acknowledgement required for
+  non-commercial users, written notification of such use is provided
+  by the commercial user to the authors prior to the fabrication and
+  distribution of the resulting software. <P>
+
+     This software is provided ``as is'' without express or implied
+  warranty. <P>
+</UL>
+
+Some relevant pointers:
+<UL>
+<LI> <!WA3><A HREF="http://www-swiss.ai.mit.edu/~jar//~jar/s48-user-guide.txt">
+     Scheme 48 user's guide</A>.
+
+<LI> <!WA4><A HREF="ftp://ftp.cs.cornell.edu/pub/jar/mobot-scheme.ps">
+     "Program Mobile Robots in Scheme"</A> (paper in ICRA '92) describes
+     the use of Scheme 48 in programming
+     <!WA5><A HREF="http://www.cs.cornell.edu/Info/Projects/csrvl/tommy.html">
+     a mobile robot</A>.
+
+<LI> <!WA6><A HREF="http://www-swiss.ai.mit.edu/~jar//ftpdir/users/jar/lsc.ps">
+     "A Tractable Scheme Implementation"</A> (postscript, 177K) is a
+     draft of a paper that describes Scheme 48 and its design
+     philosophy.
+
+<LI> <!WA7><A HREF="http://www.ai.mit.edu/projects/su/su.html">
+     The Scheme Underground</A>
+     is a project to develop a new, highly portable programming
+     environment for Unix, the World Wide Web, and wearable computers.
+
+<LI> <!WA8><A HREF="http://www-swiss.ai.mit.edu/~jar//scheme-home.html">The Scheme home page</A>.
+
+<LI> <!WA9><A HREF="http://www-swiss.ai.mit.edu/~jar//~jar/connolly-thoughts.html">
+     Daniel W. Connolly's review</A>
+     and
+     <!WA10><A HREF="http://www-swiss.ai.mit.edu/~jar//~jar/reply-to-connolly.txt">
+     Richard Kelsey's reply to it</A>
+</UL>
+
+<hr>
+
+<ADDRESS>Richard Kelsey
+ (<!WA11><A HREF="http://www.neci.nj.nec.com/homepages/kelsey.html">kelsey@research.nj.nec.com</A>)</ADDRESS>
+<ADDRESS>Jonathan Rees
+ (<!WA12><A HREF="http://www-swiss.ai.mit.edu/~jar//~jar/jar.html">jar@ai.mit.edu</A>)</ADDRESS>

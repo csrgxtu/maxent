@@ -1,0 +1,319 @@
+Date: Wed, 20 Nov 1996 23:03:18 GMT
+Server: Apache/1.0.2
+Content-type: text/html
+Content-length: 7262
+Last-modified: Thu, 31 Oct 1996 23:19:50 GMT
+
+
+<html>
+
+
+<head>
+<title>CS 130A Gonzalez</title>
+</head>
+
+<body>
+
+<center>
+<h1>
+CS 130 A  (Fall 1996)
+</h1>
+</center>
+
+<p>
+******  Added Sept 30, at 3:15 pm
+ 
+<p>
+Instructor
+ 
+<DL> <p>
+Dr. Teofilo F. Gonzalez
+<DT> Office: 2119 Engineering I
+<DT> Phone: 893-3849
+<DT> Office hours:  M 1:00 - 2:00 pm and Th 2:00 - 3:00 pm.
+<DT> E-mail:  teo@cs
+</DL>
+ 
+<p>
+Teaching Assistants
+ 
+<DL> <p>
+Mr. Bogdan Cocosel (Discussion Session F 1:00 - 1:50)
+<DT> Office: Building (trailer) 380, Room 101B.
+<DT> Office hours: M 4:00 pm - 5:00pm and F 3:00pm - 4:00 pm.
+<DT> E-mail:  bcocosel@cs
+</DL>
+
+<DL> <p>
+Mr. Huican Zhu (Discussion Session W 11:00am - 11:50am)
+<DT> Office: Building (trailer) 380, Room 101B.
+<DT> Office hours: T 1:00 - 2:00 pm and W 4:30 - 5:30 pm.
+<DT> E-mail:  hczhu@cs
+</DL>
+ 
+<p>
+******  Added October 2, at 4:30 pm
+ 
+<p>
+The code we will review Thursday Oct 3 is
+in file ~cs130a/files/llist.C
+You may one to see the one used last year
+which does the same thing but in a slightly
+different way.  That program is in file
+~cs130a/files/95llist.C
+ 
+<p>
+Copy them into your directory and type:
+g++ llist.C
+ 
+<p>
+then type
+a.out
+ 
+<p>
+Sample input (one number per line):
+6
+7
+5
+4
+3
+0
+7
+6
+8
+9
+1
+2
+3
+0
+
+<p>
+***************************
+October 9, 1996   3:00 pm
+***************************
+ 
+<p> 
+You may use the listitarator class for the hw, as long
+as it results in a time efficient procedure
+as without it, (time efficient with respect to O notation).
+
+<p> 
+For problem two if you do insert(s), insert(s+1), ... insert(f)
+results in very inefficient code.  So just implement the operation
+directly .
+
+<p> 
+Remember, we want time efficient code, but do not try to optimize to the
+last bit (i.e., do not try to reduce to the last bit the constant "c"
+in the O notation for the time complexity).
+ 
+<p>
+***************************
+October 11, 1996   5:00 pm
+***************************
+ 
+ 
+<p>
+Typo in Hw: In the sorting algorithm (problem 6d)
+       replace if (count == 0)
+            by if (count != 0)
+
+ 
+<p>
+***************************
+October 15, 1996   5:00 pm
+***************************
+
+<p>
+Comments on the project:
+<p>
+(1)    Use g++
+<p>
+(2)    Note that k is either zero or it is a positive integer >= 2
+<p>
+(3)    Typos ( replace "retured" by "returned",
+replace "occurence" by "occurance",
+replace "occurences" by "occurances",
+replace "ingnore" by "ignore",
+replace "clases" by "classes". )
+<p>
+(4)
+An example for the project is in ~cs130a/files/example
+<p>
+Comments on the project:
+<p>
+The root node in both figures should have a 9 instead of an 8
+
+ 
+<p> 
+***************************
+October 16, 1996   1:00 pm
+***************************
+
+<p> 
+Comments on the project:
+
+<p> 
+The root node in both figures should have a 9 instead of an 8
+
+<p> 
+***************************
+October 17, 1996   1:00 pm
+***************************
+
+<p> 
+Just called the RBR and they said the old midterms for cs130a
+are there.  If they are not listed, then ask the person in the counter
+directly.
+ 
+<p>
+***************************
+October 18, 1996   5:00 pm
+***************************
+ 
+<p>
+As we said in the first handout: you must work in the project
+(and homeworks) individually.
+
+<p>
+As I said before in the project, my member functions should
+not be your final memeber functions.  The purpose of the functions
+is to give examples on how to acceess the data.  However the data
+in the nodes should be left untouched.
+
+<p>
+In the project handout (page 6) I say that x is followed by a CR.
+I should have said that x is followed by a CR or a blank.
+The same holds for string y. 
+A little C++ program to read data is in file ~cs130a/files/read.C
+
+<p>
+***************************
+October 18, 1996   7:00 pm
+***************************
+
+<p>
+In the project I say that when a ArrayTrieNode or a LinkedTrieNode
+has a count that becomes 1 it should become a TinyTrieNode.
+That is INCORRECT (sorry about that).  It becomes a TinyTrieNode
+when in addition to the count being 1 the StrEnds is TRUE.
+
+<p>
+***************************
+October 21, 1996   10:30 pm
+***************************
+ 
+ 
+<p>
+The homeworks have been graded.  You can pick them
+up during my office hours today from 1-2.  
+ 
+<p>
+The solutions are in the RBR.  They are also in
+the file ~cs130a/files/hw1.ps
+  
+<p>
+You can print that file or view it with ghostscript hw1.ps
+The press the left bottom on the dismiss sign if it appears.
+Put the mouse insede the window and type CR to advance the page.
+Additional information on ghostview appears when you type 
+man hw1.ps
+ 
+ 
+<p>
+In the hw it should say that Bogdan Cocosel is a co-author
+of the solutions.
+
+
+<p> 
+***************************
+October 22, 1996   2:00 pm
+***************************
+
+<p> 
+Oops!!  I forgot to add this.  But here it is.
+In the file ~cs130a/files/proj.C and the
+file ~cs130a/files/projh.C you will find code
+to access and create the two examples in the project
+handout.  You can copy them into your directory,
+compile it and run it.
+
+<p>
+***************************
+October 28, 1996   10:30 am
+***************************
+ 
+<p>
+As we say in the project description we are dealing with sets, so
+we do not keep multiple copies of the same word in the same set.
+Also, the input is ERROR FREE. But one might try to insert
+a word in a set that is already there or delete a word that
+is not in a set.  In the first case you must not insert the word and
+the count needs to remain unchanged.  In the second case, the count must
+remain unchanged and nothing must be deleted.  Note that this is important
+to facilitate testing.
+
+<p>
+If you implement insert as in the class
+notes, you will have to make to passes
+over the Trie in some cases. Either to 
+update the count when inserting a new word, or
+"unupdating" the count if it was updated incorrectly
+because the word was already there.
+ 
+<p>
+You can create a member function whoami (defined like
+GetNext) to return the type of object you have for derived
+classes (like TinyTrieNode, etc.).
+ 
+
+<p>
+***************************
+October 28, 1996   15:30 pm
+***************************
+ 
+<p>
+Remember that the final type of a node DEPENDS on the
+NUMBER OF WORDS in that subtree  It DOES NOT depend on the number of nodes
+or the number of nonnull pointers in that subtree.
+ 
+ 
+ 
+<p>
+***************************
+October 31, 1996   15:15 pm
+***************************
+ 
+<p>
+The Office hours of the TAs on Wednesday and Friday will be in CSIL
+from now till December.
+
+<p>
+If you would like CSIL to be open during the Thankgiving Holidays,
+please send e-mail to humphrey@cs.  It would be nice if you
+specify the times and days you want it be open, and if you would
+like to "babysit" the machines.
+
+
+
+
+
+
+<center>
+
+<DL><p>
+    Under Construction
+
+    <DT><!WA0><A HREF="http://rs560.cl.msu.edu/weather/" ADD_DATE="791489728" LAST_VISIT="0">Current Weather Maps/Movies</A>
+
+    <DT><!WA1><A HREF="http://www.ncsa.uiuc.edu/General/Internet/WWW/HTMLPrimer.html" ADD_DATE="791489728" LAST_VISIT="0">A Beginner's Guide to HTML</A>
+
+    <DT><!WA2><A HREF="http://info.desy.de/user/projects/C++.html" ADD_DATE="812061133" LAST_VISIT="812064258">The C++ Virtual Library</A>
+
+    <DT><!WA3><A HREF="http://www.cs.ucsb.edu/~teo/XXX.html" ADD_DATE="812061133" LAST_VISIT="812064258">DO NOT CLICK HERE</A>
+
+</DL><p>
+
+</body>
+<p>
+</html>

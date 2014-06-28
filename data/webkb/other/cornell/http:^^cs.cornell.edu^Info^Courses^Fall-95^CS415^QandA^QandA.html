@@ -1,0 +1,256 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 16-Dec-96 22:00:28 GMT
+Content-Type: text/html
+Content-Length: 11344
+Last-Modified: Wednesday, 25-Oct-95 13:37:15 GMT
+
+<TITLE> CS415 Questions and Answers </TITLE> <P> 
+<STRONG> Phase 1 </STRONG>
+<HR>
+<DT> <STRONG> Question:
+</STRONG> We're having difficulty understanding the abstraction for
+process queues which we're asked to implement for phase one of the
+project for cs415.  We don't understand what removeProc is supposed to
+do.  The specification says, "Remove the first element from the
+process queue whose tail-pointer (not tail) is pointed to by tp."  Are
+we to scan down procTable for the first element which has a
+tail-pointer (by which we assume you mean the element p_next of some
+structure of type proc_t) identical to (*tp)? 
+<P>
+
+<DT><STRONG> Answer: </STRONG> Function RemoveProc should do precisely
+what the spec says.  Consider a queue q (A queue is a FIFO list with a
+"head" element and a "tail" element).  Consider a pointer to the tail
+element of q. Let that pointer be p.  Consider now a pointer to p.
+Let's call it tp.  RemoveProc assumes that you know tp. Your goal is
+to remove from q the head element of q.  How you do it (namely, how
+you devise a "smart" and efficient implementation of the queue data
+structure that makes this task easy) it is up to you... :-)
+<HR>
+<DT> <STRONG> Question: </STRONG> 
+I cannot read files <EM> types.h
+</EM> and <EM> const.h </EM>. In particular, if I try to access
+directory ~cs415/hoca/h I get back "Permission Denied". What should I
+do?
+<DT> <STRONG> Answer: </STRONG> 
+Don't try to cd to the directory -- you won't be able to do that.
+Instead, just use the UNIX "cp" command to copy the files from
+~cs415/hoca/h to your directory.
+The following will work, as I have just tried it on dahlia in the
+SunLab:
+<PRE>
+  dahlia% cd
+  dahlia% cp ~cs415/hoca/h/types.h types.h
+  dahlia% cp ~cs415/hoca/h/const.h const.h
+</PRE>
+<HR>
+<DT> <STRONG> Question: </STRONG> 
+I believe the function on pg 10 should be outBlocked(semAdd,p) NOT
+outBlocked(p) as listed
+<DT> <STRONG> Answer: </STRONG> 
+No, outBlocked really takes only p as a parameter. As you point
+out, however, you do need to know the address of the semaphore, if
+any, on which p is blocked. Maybe this is an instance in which adding
+fields to the given data structures is a good idea...   
+<HR>
+<DT> <STRONG> Question: </STRONG>
+ The assignment says that we can add to the fields of proc_t,
+semd_t to make them more efficient.  But since we are abstracting them
+in our module, how close to this implementation to we have to have?  I
+ask this because the "queue" implementation only has a pointer to the
+tail, not both the head and tail, as usual.  Thus removeProc() will
+involve a search along the whole list.  Does the "tail pointer" have
+to point to something of type proc_t, or can it point to an
+intermediate type which points to the head and tail of the queue?
+<DT> <STRONG> Answer: </STRONG>
+Yes, you can add fields to the proc_t and semd_t structures.
+However, you should try to resist the temptation to add fields without
+having first thought if a simpler and more efficient solution exists
+that will not require you to do so. Implementing the queue abstraction,
+and taking care of function removeProc(), happens to be an instance in
+which adding fields to the structures would probably only serve to
+make things more complex and less efficient. To be specific,
+removeProc() *can* be efficiently implemented with the structure fields
+that you have already without involving a search along the whole list,
+as you suggest. Also, the tail pointer (which by the way must point to
+the last element in the queue) does have to point to an element of
+type proc_t.
+<HR>
+
+<DT> <STRONG> Question: </STRONG>
+Is the C that pcc compiles for the "old-style" C?
+
+What does it expect for function declarations in export files?
+pcc keeps giving a core dump when we try to compile our
+export file.
+<DT> <STRONG> Answer: </STRONG>
+Indeed, pcc uses the "old" C syntax.
+As far as how to set up extern declarations in a .e file, you can
+refer to the example in Appendix 1 of the HOCA documentation. (file
+Queue.e).
+<HR>
+<DT> <STRONG> Question: </STRONG>
+Hi!  We compiled our modules with gcc first (along with our own
+tester module), so that we could use the awesome debugging power
+of gdb before moving on to the graphically pleasing but somewhat
+less powerful CHIP simulator.  We just thought others might benefit
+from this strategy, and we wonder<DT> <STRONG> Question: </STRONG>ed if you might pass it on via
+the Web.
+<DT> <STRONG> Answer: </STRONG>
+Using gcc to compile and debug your modules is a good idea, if you
+know how to use gdb. However, keep in mind that:
+<UL>
+<LI> <STRONG> The executable compiled with gcc will not run in CHIP.
+</STRONG> Gcc produces executable for your SPARC, not for CHIP.
+<LI> Because of the above point, you will have to eventually
+compile your files using pcc. Remember that <STRONG> pcc is not
+ANSI-compliant</STRONG>. If you used ANSI C in your gcc code, you will
+have to change it back to pre-ANSI notation.
+<LI> Beginning with the next phase, gcc will probably be less
+useful, since you will need to look closely at what happens in CHIP
+registers and memory. Your friendly CHIP interface will be glad to help
+:-)
+</UL>
+<HR>
+<STRONG> PHASE 2 </STRONG>
+<HR>
+<DT> <STRONG> Question: </STRONG>
+Is there an instruction called STIT in CHIP?  If not, does 
+that mean that we can't read the value stored in IT?
+<DT> <STRONG> Answer: </STRONG>
+No, there is no instruction named STIT. You can infer what the value
+of IT is by comparing the current time of day with the time of day
+of the last time you loaded IT.
+<HR>
+<DT> <STRONG> Question: </STRONG>
+Does sys6 return total CPU time(t1+t2) used by the process or the
+currently used cpu-time(t2)?
+
+that is
+<PRE>
+Process 1:   |-----t1-----|         |-----t2-----|
+process 2:                |---------|            |
+                                                 |
+                                                 |<-sys6 is called at here.
+</PRE>
+<DT> <STRONG> Answer: </STRONG>
+SYS6 returns t1+t2
+<HR>
+<DT> <STRONG> Question: </STRONG>
+Interrupt priority 0 is higher(or lower) than priority 5 ?
+<DT> <STRONG> Answer: </STRONG>
+I believe 5 is higher. But why do you care?
+<HR>
+<DT> <STRONG> Question: </STRONG>
+ To set the initial "running" area for the nucleus, we use STST
+at some point.  How do we guarantee the processor will be in kernel
+mode before that?  
+<DT> <STRONG> Answer: </STRONG>
+Your program runs by default in kernel mode. So you can use STST with
+no problems.
+<HR>
+<DT> <STRONG> Question: </STRONG>
+Could you please tell me how to get the value in the status register and
+that in the length register for an IO device?  There is a table on page 17
+of the CHIP documentation, but that doesn't seem to help much.  Actually,
+when does the value in the length register need to be retrieved?  
+Furthermore, how am I supposed to pass those two values to the 
+appropriate process when necessary?  Do I just save them in the 
+corresponding entry in the process table?
+<DT> <STRONG> Answer: </STRONG>
+First of all when a device completes i/o  the values for the status
+and length register are returned in the device registers for that
+device. The device registers are located in CHIP's memory just below
+the interrupt area. 
+As far as accessing that area, if you look in const.h you will find
+the following definition:
+<PRE>
+#define BEGINDEVREG     01400   /* beginning of device registers */
+</PRE>
+that should be what you are looking for.
+
+The value in the lenght register need to be retrieved for the Terminal
+and Printer devices. (see sections 8.3 and 8.4)
+
+You are going to pass these values as follows:
+
+if there is a process waiting on the i/o semaphore for the device that
+returned the values, then you can simply copy the values in the
+registers 2 and 3 of the process that is waiting. (you should also
+unblock the process)
+
+if there is no process waiting, you should copy the returned value in
+the buffer dedicated to the device (the one that you declared at
+initialization time). The process which initiated i/o will eventually
+retrieve the values from there.
+<HR>
+<DT><STRONG> Question: </STRONG>
+Why do we need to distinguish between caller and running inside a trap
+handler? What does really mean "passing up" a trap? And what is SYS5
+doing, anyway? 
+<DT> <STRONG> Answer: </STRONG>
+Let me answer the question is reverse order.
+<PRE>
+
+* What is SYS5 doing, anyway? 
+
+</PRE>
+SYS5 is called to initialize the old and
+new trap areas that are kept by each process (as opposed to the trap
+areas kept by the nucleus in the low memory addresses).
+It is not your job (at least for now) to decide *how* to initialize
+those areas: you can just assume that they are initialized through the
+values passed in registers 2, 3, and 4. You can look at an example of
+initialization browsing through the test program.
+<PRE>
+* What does really mean to "pass up" a trap?
+
+</PRE>
+Passing up a trap really means invoking a trap handler that is not located
+in the nucleus, but rather in a higher layer of the operating system.
+Before a trap can be passed up, the appropriate old and new trap areas
+for the calling process must be initialized (calling SYS5). If an
+attempt to pass up a trap is made before SYS5 for the invoked trap
+type has been executed, the calling process must be terminated.
+
+Passing up the trap involves copying the state of the calling
+process into the old area, and copying the state contained in the new
+trap area in the calling process' state as it is maintained in the
+process table.
+
+A possible implementation of the "passing up mechanism" would call
+MOVBLK twice. The first time to copy running->p_s in the old trap
+area. The second time to copy the state stored in the new trap area into
+running->p_s.  As you can see, to "load" the new state we are not
+using LDST.  Rather, we just modify the state of the running process
+in the proc table. With this implementation when the nucleus trap
+handler finishes, and the calling process gets to run again, it will
+actually run the higher level trap handler.
+<PRE>
+
+* Why do we need to distinguish between caller and running process?*
+
+</pre>
+You may or may not, depending on your implementation. In mine, 
+the reason why the caller may be different from the running process is
+easy to see if we consider the SYS trap handler, and we concentrate on
+SYS4, As a result of the P operation, the calling process may be
+blocked, and a new process elected to be the next to run. 
+Using the caller vs running trick one can figure out withn the SYS
+trap handler if such an event has taken place, and load the IT for the
+new running process with an appropriate value.
+
+It is less clear why the caller/running trick may be useful for prog,
+MM, or even SYS traps for SYS instructions greater than 8. After all, these
+traps are "passed up", a new state is loaded, and any instruction after
+a call to passup will never be executed (this was the question that
+Nesheet asked today in class).
+In my implementation, the check that the trap areas have been
+initialized (i.e. the right SYS5 has been executed) is done within the
+call to passup. If the caller process has not executed SYS5, the caller will
+be terminated, and a new process will be designated as the next to
+run. In this case, control will indeed reach the code after passup, 
+and the "caller!=running" check will allow to correctly reload the
+interval timer.
+<HR>

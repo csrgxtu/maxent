@@ -1,0 +1,72 @@
+Date: Tue, 10 Dec 1996 03:25:06 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+<TITLE>Constraint Satisfaction and Debugging for Interactive 
+User Interfaces</title>
+</head>
+
+<body>
+
+<H2>Constraint Satisfaction and Debugging for Interactive User
+Interfaces</H2>
+
+<p>
+
+Author: Michael Sannella
+
+<p>
+
+Ph.D. dissertation, Department of Computer Science and Engineering,
+University of Washington, August 1994.  Revised version published as UW
+Tech Report 94-09-10.
+
+<P>
+<hr>
+
+<H3>Abstract</H3>
+
+   Many user interface toolkits use constraint solvers to maintain geometric
+   relationships between graphic objects, or to connect the graphics to the
+   application data structures.  One efficient and flexible technique for
+   maintaining constraints is multi-way local propagation, where constraints
+   are represented by sets of method procedures.  This dissertation examines
+   the use of local propagation constraint solvers in user interface toolkits,
+   and presents three new systems:
+<p>
+   (1) The SkyBlue constraint solver.  SkyBlue is an incremental constraint
+   solver that uses local propagation to maintain a set of constraints as
+   individual constraints are added and removed.  If all of the constraints
+   cannot be satisfied, SkyBlue leaves weaker constraints unsatisfied in order
+   to satisfy stronger constraints (maintaining a constraint hierarchy).
+   SkyBlue is a more general successor to the DeltaBlue algorithm that
+   satisfies cycles of methods by calling external cycle solvers and supports
+   multi-output methods.
+<p>
+   (2) The Multi-Garnet user interface development system.  Garnet is a user
+   interface toolkit that incorporates a constraint solver to maintain one-way
+   constraints between object fields.  The Multi-Garnet package extends Garnet
+   to support multi-way constraints and constraint hierarchies.  Multi-Garnet
+   has been used to construct complex user interfaces that would have been
+   difficult to construct just using Garnet's constraint solver.
+<p>
+   (3) The CNV user interface builder and debugger.  CNV includes a set of
+   debugging tools to help programmers understand the behavior of complex
+   constraint networks.  One tool uses a new algorithm to generate alternate
+   constraint solutions that would have been produced if SkyBlue had chosen
+   different methods to satisfy the constraints.
+
+<P>
+<HR>
+<P>
+
+Click <!WA0><!WA0><a href=
+"ftp://cs.washington.edu/pub/constraints/papers/sannella-dissertation">
+here</a> to access the directory containing postscript files for the
+dissertation (one file per chapter).
+
+<P>
+
+Return to <!WA1><!WA1><a href="http://www.cs.washington.edu/research/projects/weird/www/index.html">Constraints home page</a>

@@ -1,0 +1,39 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 20:30:53 GMT
+Content-Type: text/html
+Content-Length: 1113
+Last-Modified: Thursday, 07-Nov-96 21:35:17 GMT
+
+<HTML><HEAD>
+<TITLE> Compiling the Walker Demo Program </TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+<H1> Compiling the Walker Demo Program </H1>
+</CENTER>
+<P>
+
+To compile the walker demo program in the lab, do the following.  Copy
+the contents of the directory
+/p/src/Mesa-1.2.8/glut-3.0/progs/demos/walker to a directory under
+your home directory.  Change the name of Imakefile.class to Imakefile
+in your directory.  Execute the command "xmkmf" followed by the
+commands "make clean" and "make" in your directory.  This should
+result in the creation of the executable "walker" in your directory,
+which should run on any of the lab machines.  Please note that if you
+have previously copied the walker code, you should do this again
+anyway, since I have made a small change to walker.c to fix a bug in
+solaris that causes the cset filenames to be misread.  This bug also
+shows up on the department suns running solaris, but not on aix or
+linux machines.
+
+<P>
+
+Don't forget to 
+"export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/p/lib"
+or
+"setenv LD_LIBRARY_PATH $LD_LIBRARY_PATH:/p/lib"
+before you try to run "walker."
+
+</BODY> </HTML>

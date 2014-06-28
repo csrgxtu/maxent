@@ -1,0 +1,142 @@
+Date: Wed, 20 Nov 1996 22:40:40 GMT
+Server: Apache/1.1.0
+Content-type: text/html
+Last-modified: Mon, 11 Nov 1996 05:05:51 GMT
+
+<HTML>
+<HEAD>
+<SCRIPT LANGUAGE='JavaScript'>
+
+<!--
+function findit() {
+        var selection = document.menuform.menu.selectedIndex;
+        if (selection == 0);
+        else if (selection == 1) location = 'http://www.cps.msu.edu/~cps131/handouts/labs/lab1.html';
+        else if (selection == 2) location = 'http://www.cps.msu.edu/~cps131/handouts/labs/lab2.html';
+        else if (selection == 3) location = 'http://www.cps.msu.edu/~cps131/handouts/labs/lab3.html';
+        else if (selection == 4) location = 'http://www.cps.msu.edu/~cps131/handouts/labs/lab4.html';
+        else if (selection == 5) location = 'http://www.cps.msu.edu/~cps131/handouts/labs/lab5.html';
+        else if (selection == 6) location = 'http://www.cps.msu.edu/~cps131/handouts/labs/lab6.html';
+        else if (selection == 7) location = 'http://www.cps.msu.edu/~cps131/handouts/labs/lab7.html';
+        else if (selection == 8) location = 'http://www.cps.msu.edu/~cps131/handouts/labs/lab8.html';
+        else if (selection == 9) location = 'http://www.cps.msu.edu/~cps131/handouts/labs/lab9.html';
+        else if (selection == 10) location = 'http://www.cps.msu.edu/~cps131/handouts/labs/lab10.html';
+        else if (selection == 11) location = 'http://www.cps.msu.edu/~cps131/handouts/labs/lab11.html';
+        else if (selection == 12) location = 'http://www.cps.msu.edu/~cps131/handouts/labs/lab12.html';
+        else location = 'http://www.cps.msu.edu/~cps131/handouts/syllabus/index.html';
+}
+
+function printit() {
+        var selection = document.menuform.menu.selectedIndex;
+        if (selection == 0);
+        else if (selection == 1) location = 'http://www.cps.msu.edu/cgi-user/cps131/print.cgi?lab1.ps';
+        else if (selection == 2) location = 'http://www.cps.msu.edu/cgi-user/cps131/print.cgi?lab2.ps';
+        else if (selection == 3) location = 'http://www.cps.msu.edu/cgi-user/cps131/print.cgi?lab3.ps';
+        else if (selection == 4) location = 'http://www.cps.msu.edu/cgi-user/cps131/print.cgi?lab4.ps';
+        else if (selection == 5) location = 'http://www.cps.msu.edu/cgi-user/cps131/print.cgi?lab5.ps';
+        else if (selection == 6) location = 'http://www.cps.msu.edu/cgi-user/cps131/print.cgi?lab6.ps';
+        else if (selection == 7) location = 'http://www.cps.msu.edu/cgi-user/cps131/print.cgi?lab7.ps';
+        else if (selection == 8) location = 'http://www.cps.msu.edu/cgi-user/cps131/print.cgi?lab8.ps';
+        else if (selection == 9) location = 'http://www.cps.msu.edu/cgi-user/cps131/print.cgi?lab9.ps';
+        else if (selection == 10) location = 'http://www.cps.msu.edu/cgi-user/cps131/print.cgi?lab10.ps';
+        else if (selection == 11) location = 'http://www.cps.msu.edu/cgi-user/cps131/print.cgi?lab11.ps';
+        else if (selection == 12) location = 'http://www.cps.msu.edu/cgi-user/cps131/print.cgi?lab12.ps';
+        else location = 'http://www.cps.msu.edu/cgi-user/cps131/print.cgi?syl.ps';
+}
+
+//-->
+
+</SCRIPT>
+<TITLE>CPS 131 Home Page</TITLE>
+
+</HEAD>
+<BODY BGCOLOR="#ffffff" LINK="#0000ff" VLINK="#ff0000" ALINK="#ff0000" TEXT="#000000" >
+
+<CENTER>
+<!WA0><IMG SRC="http://web.cps.msu.edu/~cps131/tg/mir131.gif" ALT="CPS 131 - Introduction to Technical Computing" WIDTH=470 HEIGHT=150 BORDER=0 >
+</CENTER>
+
+<!WA1><FORM NAME="menuform">
+<TABLE CELLPADDING=15 CELLSPACING=5>
+   <TR>
+      <TD WIDTH=15% VALIGN=TOP>
+      
+      <P>
+      <A HREF="calendar.html"> <B> The CPS 131 Course Calendar</B></A> </P>     
+      <BR>
+      <P>
+      <A HREF="http://www.cps.msu.edu/cgi-user/cps131/handouts/index.html"> <B> Get your CPS 131 Handounts Here!</B></A></P>      
+
+      <BR>
+      <P>
+      <A HREF="nclass/index.html"> <B> Review the slides from class.</B></A></P>      
+
+      <BR>
+      <P>
+      <A HREF="whoswho.html"> <B> The CPS 131 Who's Who.</B></A></P>
+
+
+
+      </TD>      
+      <TD WIDTH=* VALIGN=TOP>
+      
+      
+      
+      
+         <P>
+         <H3>
+         <FONT SIZE=+2>W</FONT>ELCOME
+         <FONT SIZE=+2>T</FONT>O
+         <FONT SIZE=+2>T</FONT>HE
+         <FONT SIZE=+2><I>CPS 131</I></FONT>
+         <FONT SIZE=+2>H</FONT>OMEPAGE!
+         </H3>
+         <P>
+         From here you can find all sorts of <STRONG> important information</STRONG> for the course.</P
+  
+         
+         <P>Try out the <A HREF="whoswho.html">CPS 131 Who's Who</A> to find your favorite CPS 131 people.  Then find all the important email addresses and Help Room Hours.</P>
+
+
+
+<P> If you're in Room 130 of the Engineering Building you can print a copy of the lab assignment. Just select the lab below and click <I>Print it!</I><P>
+      
+
+<SELECT NAME="menu">
+<OPTION>Select here
+<OPTION>Lab One
+<OPTION>Lab Two
+<OPTION>Lab Three
+<OPTION>Lab Four
+<OPTION>Lab Five
+<OPTION>Lab Six
+<OPTION>Lab Seven
+<OPTION>Lab Eight
+<OPTION>Lab Nine
+<OPTION>Lab Ten
+<OPTION>Lab Eleven
+<OPTION>Lab Twelve
+<OPTION>Syllabus
+</SELECT>
+
+<INPUT TYPE=Button onClick="findit()" VALUE="Find it!">
+<INPUT TYPE=Button onClick="printit()" VALUE="Print it!">
+
+
+
+
+      
+                  
+      </TD>
+   </TR>
+</TABLE>   
+</FORM> 
+
+<HR>
+<IMG ALIGN=RIGHT VSPACE=5 SRC="footg/msu.gif" ALT="Michigan State University">
+<H2>CPS 131 - Introduction to Technical Computing</H2>
+
+
+</BODY>
+</HTML>
+           

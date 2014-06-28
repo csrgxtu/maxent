@@ -1,0 +1,161 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Thursday, 21-Nov-96 22:34:26 GMT
+Content-Type: text/html
+Content-Length: 4338
+Last-Modified: Friday, 12-Jul-96 02:54:22 GMT
+
+<!doctype html public "-//IETF//DTD HTML//EN">
+
+<!-- INDEX.HTML -->
+
+<HEAD>
+<!-- <BASE HREF="http://www.ccs.neu.edu/home/aviv/.www/index.html"> -->
+<TITLE>Aviv's home </TITLE>
+
+<SCRIPT LANGUAGE="JavaScript">
+
+
+<!-- Beginning of JavaScript Applet -------------------
+
+/* Copyright (C)1996 Web Integration Systems, Inc. DBA Websys, Inc.
+   All Rights Reserved.
+
+   This applet can be re-used or modified, if credit is given in 
+   the source code.
+
+   We will not be held responsible for any unwanted effects due to the 
+   usage of this applet or any derivative.  No warrantees for usability 
+   for any specific application are given or implied.
+
+   Chris Skinner, January 30th, 1996.
+   
+   Hacked for Innovative Computer Enterpsrises Feb. 5, 1996
+*/
+
+function scrollit_r2l(seed)
+{
+        var m1  = "Thank you for visiting Aviv's Web site.";
+        var m2  = "  This site is updated once in awhile";
+        var m3  = " Make sure to visit my links, they are cool :)";
+        var m4  = " again, thanks, and i would be realy happy to get a feedback from you.";
+        
+        var msg=m1+m2+m3+m4;
+        var out = " ";
+        var c   = 1;
+
+        if (seed > 100) {
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                timerTwo=setTimeout(cmd,100);
+        }
+        else if (seed <= 100 && seed > 0) {
+                for (c=0 ; c < seed ; c++) {
+                        out+=" ";
+                }
+                out+=msg;
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                    status=out;
+                timerTwo=setTimeout(cmd,100);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;
+                        var cmd="scrollit_r2l(" + seed + ")";
+                        status=out;
+                        timerTwo=setTimeout(cmd,100);
+                }
+                else {
+                        status=" ";
+                        timerTwo=setTimeout("scrollit_r2l(100)",75);
+                }
+        }
+}
+// -- End of JavaScript code -------------- -->
+
+
+
+</SCRIPT>
+
+</HEAD>
+
+<HR>
+<BODY  onLoad="timerONE=window.setTimeout('scrollit_r2l(100)',500);">
+
+<BODY>
+<H1 ALIGN=CENTER>Welcome to <BLINK> Aviv's </BLINK> home.</H1>
+<HR>
+<!WA0><img src="http://www.ccs.neu.edu/home/aviv/.www/ns.gif" ALIGN="RIGHT">
+<P>
+If you bother to come and check my home-page. I will try to give
+you a good reason to come and visit this page again.
+</P>
+<br>
+<p>
+<p>
+<br>
+<br>
+<p>
+<br>
+<p>
+<br>
+
+<U><B>Warning</B></U>: The page is still under construction, visiting
+this site is on your own risk !!!
+<HR>
+
+<!WA1><IMG SRC="http://www.ccs.neu.edu/home/aviv/aviv2.gif" ALIGN="RIGHT">
+I guess, I need to say something about myslef. 
+<LI>My name is Aviv Rosenberg, and I was born in 1965 in <!WA2><A HREF="http://www.ccs.neu.edu/home/aviv/pt.html">Petah-Tikva</A>  <!WA3><A HREF="http://www.ac.il/israel_sens.html">Israel</A>. If you don't know hebrew. Aviv is the spring season, and as you guess it is my favorite season ;).
+<LI>Currently, I am a grad student in <!WA4><A HREF="http://splinter.coe.neu.edu">Computer Engineering </A>at
+<!WA5><A HREF="http://www.neu.edu">Northeastern-University</A> in <!WA6><A href="http://www.ccs.neu.edu/home/aviv/boston.html">Boston</A>, MA.
+<LI> I will get my degree in June 1996.
+</UL>
+
+
+<HR>
+<menu>
+<B>Some cool places to visit</B> 
+
+<LI><!WA7><A HREF="http://www.ccs.neu.edu/home/aviv/friends.html">My friend's home-pages</A>.
+<LI><!WA8><A HREF="http://www.ccs.neu.edu/home/aviv/cool.html">My favorites.</A>
+<LI><!WA9><A HREF="http://www.ccs.neu.edu/home/aviv/jew.html">Judaism and Jews. </A>
+<LI><!WA10><A HREF="http://www.ccs.neu.edu/home/aviv/home.html">How to write your own home page. </A>
+<LI><!WA11><A HREF="http://www.ccs.neu.edu/home/aviv/pictures.html">My picture. </A>
+</menu>
+<p>
+<!WA12><IMG SRC="http://www.ccs.neu.edu/home/aviv/.www/1.gif" ALIGN="BOTTOM"><p>
+
+
+Thanks for visiting my home page<p>
+If you find any error or you have any ideas, please drop me a note.<p>
+
+<HR>
+
+Last modified: April 2, 1996<p>
+<!--You are the <!WA13><img src="http://i-bin/nph-count?width=5&link=http://www.ccs.neu.edu/home/aviv"> th honored visitor to my page.-->
+<hr>
+
+<ADDRESS>
+<!WA14><IMG SRC="http://www.ccs.neu.edu/home/aviv/.www/cert.gif" ALIGN=LEFT><FONT SIZE=+1>
+Send comments to <!WA15><A href=mailto:arosenbe@splinter.coe.neu.edu>Aviv Rosenberg</A>.<BR CLEAR=LEFT>
+</ADDRESS>
+</BODY>
+</HTML>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

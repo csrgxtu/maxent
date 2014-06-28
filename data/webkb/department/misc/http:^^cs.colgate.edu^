@@ -1,0 +1,227 @@
+Date: Tuesday, 26-Nov-96 ? GMT
+Server: NCSA/1.3
+MIME-version: 1.0
+Content-type: text/html
+Last-modified: Wednesday, 07-Aug-96 ? GMT
+Content-length: 3922
+
+<html>
+
+
+
+<head>
+
+<title>Colgate University Department of Computer Science</title>
+
+<base href="http://cs.colgate.edu/">
+
+<SCRIPT LANGUAGE="JavaScript">
+
+<!-- Beginning of JavaScript Applet -------------------
+
+
+
+/* Copyright (C)1996 Web Integration Systems, Inc. DBA Websys, Inc.
+
+   All Rights Reserved.
+
+
+
+   This applet can be re-used or modified, if credit is given in 
+
+   the source code.
+
+
+
+   We will not be held responsible for any unwanted effects due to the 
+
+   usage of this applet or any derivative.  No warrantees for usability 
+
+   for any specific application are given or implied.
+
+
+
+   Chris Skinner, January 30th, 1996.
+
+   
+
+   Hacked for CNNfn by RD, Jan. 31, 1996
+
+*/
+
+
+
+function scrollit_r2l(seed)
+
+{
+
+	var m1  = "Welcome";
+
+	var m2  = " to the Colgate University ";
+
+	var m3  = "Computer Science ";
+
+	var m4  = "Department ";
+
+	
+
+	var msg=m1+m2+m3+m4;
+
+	var out = " ";
+
+	var c   = 1;
+
+
+
+	if (seed > 100) {
+
+		seed--;
+
+		var cmd="scrollit_r2l(" + seed + ")";
+
+		timerTwo=window.setTimeout(cmd,100);
+
+	}
+
+	else if (seed <= 100 && seed > 0) {
+
+		for (c=0 ; c < seed ; c++) {
+
+			out+=" ";
+
+		}
+
+		out+=msg;
+
+		seed--;
+
+		var cmd="scrollit_r2l(" + seed + ")";
+
+		    window.status=out;
+
+		timerTwo=window.setTimeout(cmd,100);
+
+	}
+
+	else if (seed <= 0) {
+
+		if (-seed < msg.length) {
+
+			out+=msg.substring(-seed,msg.length);
+
+			seed--;
+
+			var cmd="scrollit_r2l(" + seed + ")";
+
+			window.status=out;
+
+			timerTwo=window.setTimeout(cmd,100);
+
+		}
+
+		else {
+
+			window.status=" ";
+
+			timerTwo=window.setTimeout("scrollit_r2l(100)",75);
+
+		}
+
+	}
+
+}
+
+// -- End of JavaScript code -------------- -->
+
+</SCRIPT>
+
+</head>
+
+
+
+<body bgcolor="#ffffef" vlink="#941734"
+
+onLoad="timerONE=window.setTimeout('scrollit_r2l(100)',500);">
+
+
+
+<center>
+
+<!WA0><a href="http://www2.colgate.edu/imagemaps/cwishead.map"><!WA1><img src="http://www2.colgate.edu/images/cwishead.gif" border="0" ismap></a>
+
+<hr width="60%" size="3">
+
+<p>
+
+<H1>
+
+<!WA2><img src="http://cs.colgate.edu/mcgregory.gif" WIDTH=323 HEIGHT=166 BORDER=0 USEMAP="#windows" ALT="Colgate Univeristy Department of Computer Science">
+
+</H1>
+
+</center>
+
+<MAP NAME="windows">
+<AREA SHAPE="POLY" COORDS="252,67 257,69 257,54 252,52 252,67" HREF="faculty/nakhimovsky.html">
+<AREA SHAPE="POLY" COORDS="265,70 272,73 272,58 266,57 266,70" HREF="faculty/sanchis.html">  
+<AREA SHAPE="POLY" COORDS="279,73 283,74 283,64 279,62 279,75" HREF="csdept/welcome.html"> 
+<AREA SHAPE="POLY" COORDS="290,78 296,81 294,66 289,64 289,81" HREF="faculty/nevison.html"> 
+<AREA SHAPE="POLY" COORDS="300,82 306,82 305,72 298,69 302,82" HREF="faculty/nevison.html"> 
+<AREA SHAPE="POLY" COORDS="226,54 226,68 235,68 235,54 226,56" HREF="faculty/nakhimovsky.html"> 
+<!--AREA SHAPE="POLY" COORDS="210,71 217,71 216,59 208,60 210,71" HREF="faculty/mulry.html"--> 
+<!--AREA SHAPE="POLY" COORDS="199,74 208,73 208,59 200,61 201,70 199,73" HREF="faculty/mulry.html"--> 
+<AREA SHAPE="POLY" COORDS="186,76 193,76 193,64 185,66 185,78" HREF="csdept/welcome.html"> 
+<AREA SHAPE="POLY" COORDS="169,81 176,81 176,69 168,70 168,81" HREF="http://www.cs.dartmouth.edu/~james/"> 
+</MAP>
+
+
+<HR>
+
+<H2><FONT SIZE=+3>A</FONT>BOUT THE <FONT SIZE=+3>D</FONT>EPARTMENT</H2>
+
+<ul>
+
+<li><!WA3><a href="http://cs.colgate.edu/csdept/welcome2.html">Welcome to the Computer Science Department</a>
+
+<li><!WA4><a href="http://cs.colgate.edu/csdept/about.html">The Computer Science Program</a>
+
+<li><!WA5><a href="http://cs.colgate.edu/csdept/courses.html">Courses Offered By The Department</a>
+
+<li><!WA6><a href="http://cs.colgate.edu/cslabs/">Information for Computer Science Lab Courses</A>
+
+<li><!WA7><a href="http://cs.colgate.edu/faculty/">Faculty Pages</A>
+
+<li><!WA8><a href="http://cs.colgate.edu/csdept/students.html">Student Pages</A>
+
+<li><!WA9><a href="http://cs.colgate.edu/csdept/alumni.html">Alumni Pages</A>
+
+</ul>
+
+
+
+<p>
+
+<hr>
+
+<!WA10><a href="http://www2.colgate.edu/cwis/">
+
+<!WA11><img src="http://www2.colgate.edu/images/cwisicon.gif" border="0" align="right"></a>
+
+http://cs.colgate.edu/
+
+<br>
+
+
+
+Revised: April 11, 1996.<BR>
+
+ Questions to: 
+
+<!WA12><a href="mailto:knolan@cs.colgate.edu">knolan@cs.colgate.edu
+
+</a>
+
+</body>
+
+</html>
+

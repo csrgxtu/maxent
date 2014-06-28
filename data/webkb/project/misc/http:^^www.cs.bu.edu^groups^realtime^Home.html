@@ -1,0 +1,108 @@
+Date: Wed, 20 Nov 1996 19:06:03 GMT
+Server: NCSA/1.5
+Content-type: text/html
+
+<HTML>
+<HEAD>
+<TITLE>Real-Time Research at Boston University</TITLE> 
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<SCRIPT LANGUAGE="JavaScript">
+
+<!-- Beginning of JavaScript Applet -------------------
+
+
+function scrollit_r2l(seed)
+{
+        var m1  = "Welcome to the Home Page of "; 
+        var m2  = "Boston University Real-time Research Group"; 
+        var msg=m1+m2;
+        var out = " ";
+        var c   = 1;
+        if (seed > 100) {
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 100 && seed > 0) {
+                for (c=0 ; c < seed ; c++) {
+                        out+=" ";
+                }
+                out+=msg;
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                    window.status=out;
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;
+                        var cmd="scrollit_r2l(" + seed + ")";
+                        window.status=out;
+                        timerTwo=window.setTimeout(cmd,100);
+                }
+                else {
+                        window.status=" ";
+                        timerTwo=window.setTimeout("scrollit_r2l(100)",75);
+                }
+        }
+}
+// -- End of JavaScript code -------------- -->
+
+</SCRIPT>
+
+<BODY onLoad="timerONE=window.setTimeout('scrollit_r2l(100)',500);">
+<CENTER>
+<H2>
+<!WA0><IMG SRC="http://www.cs.bu.edu/groups/realtime/pictures/burt-logo.gif"><P>
+<FONT SIZE="+3">B</FONT>oston 
+<FONT SIZE="+3">U</FONT>niversity
+<FONT SIZE="+3">R</FONT>eal-<FONT SIZE="+3">T</FONT>ime<BR>
+Research Group<BR>
+</H2>
+
+<P>
+<FONT SIZE="+1">
+<TABLE BORDER=6 WIDTH=100% CELLPADDING=6> 
+<TR>
+<TD align=center valign=center> 
+<!WA1><A href = "http://www.cs.bu.edu/groups/realtime/interests/interests.html">
+<B><FONT SIZE=+2>O</FONT>verview</B></A>
+</TD>
+<TD align=center valign=center> 
+<!WA2><A href = "http://www.cs.bu.edu/groups/realtime/papers/Home.html">
+<B><FONT SIZE=+2>P</FONT>ublications</B></A>
+</TD>
+<TD align=center valign=center> 
+<!WA3><A href = "http://www.cs.bu.edu/groups/realtime/people/Home.html">
+<B><FONT SIZE=+2>P</FONT>eople</B></A>
+</TD>
+</TR>
+<TR>
+<TD align=center valign=center>
+<!WA4><A href = "http://www.cs.bu.edu/groups/realtime/lab/Home.html">
+<B><FONT SIZE=+2>L</FONT>aboratory</B></A>
+</TD>
+<TD align=center valign=center>
+<!WA5><A href = "http://www.cs.bu.edu/groups/realtime/sponsors/Home.html">
+<B><FONT SIZE=+2>S</FONT>ponsors</B></A>
+</TD>
+<TD align=center valign=center>
+<!WA6><A href = "http://www.cs.bu.edu/faculty/best/crs/cs835/S96/Home.html">
+<B><FONT SIZE=+2>S</FONT>eminar</B></A>
+</TD>
+</TR>
+</TABLE>
+</FONT>
+<P>
+<EM>"Real Time is here and now as opposed to Fake Time, which occurs there and then."</EM><BR>
+--Glynn Winskel, The formal semantics of Programming Languages.
+<P>
+</CENTER>
+<PRE><HR><CENTER><!WA7><A href = "http://www.cs.bu.edu/Home.html"><FONT SIZE=-1>[BU/CS Dept]</FONT></A><!WA8><A href = "http://www.cs.bu.edu/pub/ieee-rts/Home.html"><FONT SIZE=-1>[IEEE TC-RTS]</FONT></A></CENTER><HR>Maintainer: <!WA9><A href = "http://www.cs.bu.edu/faculty/best/Home.html">Azer Bestavros</A>
+Created on: <EM>June 6, 1994</EM>
+Updated on: <EM>April 27, 1995</EM>
+Visitor No: <EM>5969</B></EM></PRE>
+
+</BODY>

@@ -1,0 +1,405 @@
+Date: Tue, 14 Jan 1997 20:21:04 GMT
+Server: NCSA/1.5
+Content-type: text/plain
+Last-modified: Tue, 24 Sep 1996 00:36:23 GMT
+Content-length: 10563
+
+SOURCE FILES  (Execution tests follow)
+====== =====
+
+
+/*           File:  hw1-temp.c
+ *           =====  ==========
+ *         Author:  Nick Eskelinen
+ *          Class:  CAS CS113
+ *     Assignment:  AS 1, Prob 1 (based on ROBERTS 2-7, p50)
+ *       Due Date:  13 September 1996
+ *  Last Modified:  11 September 1996
+ *  --------------------------------------------------------------------------
+ *  
+ *  USAGE:  hw1-temp (no commandline arguments)
+ *  ======
+ *
+ *  OVERVIEW:
+ *  =========
+ *  This simple program accepts as input an integer value in degrees
+ *  Fahrenheit and returns its Celsius equivalent to standard output.
+ *  
+ *  Algorithm Notes:
+ *  ================
+ *  Uses the simple algorithm (Fahrenheit-32)*5/9
+ *
+ *  Known Bugs:  none
+ *  =========== 
+ *
+ *  Enhancements:  none
+ *  =============
+ *
+ *  Error Handling:
+ *  ===============
+ *  1.  User enters a non-integer number.
+ *      Error message:  Text displayed indicating why input is not acceptable.
+ *      Error action:   User is given another chance to input.
+ *
+ *  Other Comments:
+ *  ===============
+ *  Because output is in integer form, decimal portion of output is truncated.
+ *  Hence, an actual value of 1.7 would return an output of 1.  This is not
+ *  preferable, however, and could be remedied with a round() function or
+ *  similar.
+ *  
+ */
+
+#include <stdio.h>
+#include "genlib.h"
+#include "simpio.h"
+
+int main()
+{
+  int degCelsius, degFrnht;  /*  Assume input/output is integer  */
+
+  printf("\nThis program converts Fahrenheit to Celsius.\n");
+  printf("Enter a temperature in degrees Fahrenheit: ");
+  degFrnht=GetInteger();
+  degCelsius=(degFrnht-32)*5/9;  /*  Compiler automatically changes decimal
+                                  *  to integer  */
+  printf("%d degrees F = %d degrees C\n\n", degFrnht, degCelsius);
+  return(0);
+}
+
+
+/* ---------------------- END OF FILE: hw1-temp.c ------------------- */
+
+
+/*
+ *          File:  hw1-weight.c
+ *          =====  ============
+ *        Author:  Nick Eskelinen
+ *         Class:  CAS CS113
+ *    Assignment:  Assignment 1, Problem 2 (ROBERTS Ch2, p57 #9)  
+ *      Due Date:  13 September 1996
+ * Last modified:  12 September 1996
+ * -----------------------------------------------------
+ *
+ * USAGE:  hw1-weight (no command-line arguments)
+ * ======
+ *
+ * OVERVIEW:
+ * =========
+ * This program takes a weight in kilograms and converts it into its
+ * equivalent in pounds and ounces.
+ *
+ * Algorithm Notes:  
+ * ================
+ * The precise decimal value in pounds is first computed.  The non-
+ * decimal portion is used as the "lb" value, while the decimal portion
+ * is multiplied by 16 to obtain the "oz" value.
+ *
+ * Known Bugs:  none
+ * ===========
+ *
+ * Enhancements:  none
+ * =============
+ *
+ * Error Handling: 
+ * ===============
+ * 1.  User enters a non-numerical value.
+ *     Error message:  Text displayed indicating why input is unacceptable.
+ *      Error action:  User is given another chance to enter input.
+ * 
+ * Other Comments:
+ * ===============
+ * The precision of the "oz" output is set to one decimal place, but can be
+ * changed to be more or less precise.
+ */
+
+#include <stdio.h>
+#include "simpio.h"
+#include "genlib.h"
+
+int main()
+{
+  double kilos, totalPounds, ounces;  /* Input, output, & computation */
+  int lbs;                            /* variables.                   */
+
+  printf("\nThis program converts kilograms to pounds & ounces.\n");
+  printf("Enter a weight in kilograms:  ");
+  kilos=GetReal();
+
+  totalPounds=kilos*2.2;         /* Precise value in pounds */
+  lbs=(int) totalPounds;         /* Value output for "lb"   */
+  ounces=(totalPounds-lbs)*16.0; /* Value output for "oz"   */
+
+  printf("\n%g kg = %d lbs %.1f oz\n\n", kilos, lbs, ounces);
+  return(0);
+} /* end main */
+
+/* -------------> END OF FILE: hw1-weight.c <----------------- */
+
+
+
+
+
+
+
+
+
+/*
+ *          File:  hw1-sum.c
+ *          =====  =========
+ *        Author:  Nick Eskelinen
+ *         Class:  CAS CS113
+ *    Assignment:  #1, Problem 3 (ROBERTS ch3-ex6, p94)
+ *      Due Date:  13 September 1996
+ * Last modified:  12 September 1996
+ * -----------------------------------------------------
+ *
+ * USAGE:  hw1-sum (no command-line arguments)
+ * ======
+ *
+ * OVERVIEW:
+ * =========
+ * This program takes as input an integer and returns the sum of all positive
+ * integers less than or equal to the input.
+ *
+ * Algorithm Notes:  
+ * ================
+ * A for loop was utilized to compute the sum of 1+2+3+...+n, however, Gauss'
+ * theorem sum = n*(n+1)/2 would also work.
+ *
+ * Known Bugs:  
+ * ===========
+ * Though not a bug in programming, when a user enters a value less than 1, a
+ * sum of zero is returned.  Because it was not specifically mentioned
+ * otherwise, the user is allowed to enter any integer, positive or negative.
+ *
+ * Enhancements:  none
+ * =============
+ *
+ * Error Handling: 
+ * ===============
+ * 1. User enters a non-integer value.
+ *     Program message:  Text displays why input is unacceptable.
+ *      Program action:  User is given another chance to input.
+ * 
+ * Other Comments:
+ * ===============
+ * A routine could be added to ensure that the user does not enter a value
+ * less than one.
+ *
+ */
+
+#include <stdio.h>
+#include "genlib.h"
+#include "simpio.h"
+
+int main()
+{
+  int posInt, maxNum, sum;
+
+  printf("\nThis program prints the sum of all positive integers less than");
+  printf("\nor equal to a given integer.\n");
+  printf("Enter an integer:  ");
+  maxNum=GetInteger();
+
+  sum=0;
+  for (posInt = 1; posInt <= maxNum; posInt++) {
+    sum += posInt;
+  } /* end for loop */
+
+  printf("\nThe sum of all integers from 1 to %d is %d\n", maxNum, sum);
+  return(0);
+} /* end main */
+
+/* ----------------> END OF FILE: hw1-sum.c <---------------- */
+
+
+/*
+ *          File:  hw1-stats.c
+ *          =====  ===========
+ *        Author:  Nick Eskelinen
+ *         Class:  CAS CS113
+ *    Assignment:  #1, Problem 4 (ROBERTS ch3-ex9&14, pp95-6)
+ *      Due Date:  13 September 1996
+ * Last modified:  12 September 1996
+ * -----------------------------------------------------
+ *
+ * USAGE:  hw1-stats (no command-line arguments)
+ * ======
+ *
+ * OVERVIEW:
+ * =========
+ * This program accepts as input a list of integers.  It then outputs the
+ * number of items in the list, the average of the items, and the largest
+ * number in the list.
+ *
+ * Algorithm Notes:  
+ * ================
+ * Standard "while" loop is used to add up the items in the list until user
+ * enters the sentinel value of -1 (or any negative value).
+ *
+ * Known Bugs:  none
+ * ===========
+ *
+ * Enhancements:  
+ * =============
+ * Program halts if user starts list with a negative number and returns an
+ * exit code of 1.
+ *
+ * Error Handling: 
+ * ===============
+ * 1.  (See above)
+ * 2.  User enters non-integer value for input
+ *     Error message:  Text displayed telling why input is unacceptable.
+ *      Error action:  User is given another chance to input data.
+ * 
+ * Other Comments: none
+ * ===============
+ */
+
+#include <stdio.h>
+#include "genlib.h"
+#include "simpio.h"
+
+int main()
+{
+  int numItems, item, sum, bigItem;
+  double average;
+
+  printf("\nThis program takes a list and finds its average & greatest #.");
+  printf("\nEnter -1 to signal the end of the list:\n");
+
+  numItems=0;      /* Variable initialization */
+  sum=0;
+  bigItem=0;
+
+  while (TRUE) {
+    printf("?: ");
+    item=GetInteger();
+    if (item<0) break;
+    numItems++;
+    sum += item;
+    if (item>bigItem) bigItem=item;    /* Try to find largest number */
+  } /* end while */
+  if (numItems==0) {                   /* Avoid division by zero     */
+    printf("\nEXITING PROGRAM...\n");
+    return(1);
+  } /* end if */
+  average=(double) sum/numItems;
+
+  printf(" Number of Items: %d", numItems);
+  printf("\nAverage of Items: %g", average);
+  printf("\n  Largest number: %d\n\n", bigItem);
+  return(0);
+} /* end main */
+
+/* ---------------> END OF FILE: hw1-stats.c <------------------ */
+
+
+
+EXECUTION TESTS
+========= =====
+
+hw1-temp < /home/course/cs113/GradesF96/HW1/temp.in1 
+
+
+This program converts Fahrenheit to Celsius.
+Enter a temperature in degrees Fahrenheit: 66 degrees F = 18 degrees C
+
+============================================================
+hw1-temp < /home/course/cs113/GradesF96/HW1/temp.in2 
+
+
+This program converts Fahrenheit to Celsius.
+Enter a temperature in degrees Fahrenheit: -45 degrees F = -42 degrees C
+
+============================================================
+hw1-weight < /home/course/cs113/GradesF96/HW1/weight.in1 
+
+
+This program converts kilograms to pounds & ounces.
+Enter a weight in kilograms:  
+20 kg = 44 lbs 0.0 oz
+
+============================================================
+hw1-weight < /home/course/cs113/GradesF96/HW1/weight.in2 
+
+
+This program converts kilograms to pounds & ounces.
+Enter a weight in kilograms:  
+167.25 kg = 367 lbs 15.2 oz
+
+============================================================
+hw1-sum < /home/course/cs113/GradesF96/HW1/sum.in1 
+
+
+This program prints the sum of all positive integers less than
+or equal to a given integer.
+Enter an integer:  
+The sum of all integers from 1 to 9 is 45
+============================================================
+hw1-sum < /home/course/cs113/GradesF96/HW1/sum.in2 
+
+
+This program prints the sum of all positive integers less than
+or equal to a given integer.
+Enter an integer:  
+The sum of all integers from 1 to 5100 is 13007550
+============================================================
+hw1-stats < /home/course/cs113/GradesF96/HW1/stats.in1 
+
+
+This program takes a list and finds its average & greatest #.
+Enter -1 to signal the end of the list:
+?: ?: ?: ?: ?: ?: ?: ?: ?:  Number of Items: 8
+Average of Items: 6.5
+  Largest number: 12
+
+============================================================
+hw1-stats < /home/course/cs113/GradesF96/HW1/stats.in2 
+
+
+This program takes a list and finds its average & greatest #.
+Enter -1 to signal the end of the list:
+?: 
+EXITING PROGRAM...
+============================================================
+
+Data files:
+==========:
+==> /home/course/cs113/GradesF96/HW1/stats.in1 <==
+7
+3
+8
+1
+9
+12
+4
+8
+-1
+
+
+==> /home/course/cs113/GradesF96/HW1/stats.in2 <==
+-1
+
+
+==> /home/course/cs113/GradesF96/HW1/sum.in1 <==
+9
+
+==> /home/course/cs113/GradesF96/HW1/sum.in2 <==
+5100
+
+==> /home/course/cs113/GradesF96/HW1/temp.in1 <==
+66
+
+==> /home/course/cs113/GradesF96/HW1/temp.in2 <==
+-45
+
+==> /home/course/cs113/GradesF96/HW1/weight.in1 <==
+20
+
+==> /home/course/cs113/GradesF96/HW1/weight.in2 <==
+167.25
+
+============================================================
+

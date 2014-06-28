@@ -1,0 +1,370 @@
+Date: Mon, 16 Dec 1996 22:14:49 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 15 Dec 1995 19:12:13 GMT
+Content-length: 20114
+
+<HTML>
+
+<TITLE> CS718 Project-  Interdependent Particle Systems </TITLE> 
+
+<BODY  BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#000077"> 
+
+<H2> Interdependent Particle Systems </H2>
+<H3>  by Justin A. McCune  </H3>
+<!WA0><!WA0><!WA0><!WA0><IMG SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/mccune/final/Images/hline.gif"><P>
+<H3> 1.0 Introduction </H3> <P>
+Particle systems have been used to model a variety of "fuzzy" objects
+such as water, fire, grass, fireworks, clouds, smoke, and others.  In
+no work that I am aware of do the particles within the system interact
+with each other.  Instead to simulate the realities which they model,
+the designers of the particle-system use specific starting configurations,
+groups of particle systems, and introduce torques, spirals, and other
+effects to the particle system(s).  Sometimes to simulate waterfalls and
+other fuzzy objects where collisions are necessary, the particles are
+checked for collision against a small number of external objects and
+are bounced off of the objects with which they collide. Independent
+particle systems therefore, do not experience pressure gradients, do
+not collide with particles within their own system, and only approximate
+the reality which they represent.
+
+The results
+reported within this paper report on particle-systems that do interact
+with their neighboring particles. The motivation behind this research
+is an attempt to allow the interaction
+of two or more particle systems and to more produce a more realistic
+model of particle systems.
+<P>
+	Section 2 reviews the principles of independent particle systems,
+section 3 presents the problems and methods used in this research, section
+4 discusses the results, section 5 presents the conclusion and possible
+extensions, while section 6 presents the references. <P>
+
+<H3> 2.0 A Review of Independent Particle Systems </H3>
+
+	Particle systems can usually be characterized by the following
+properties:
+<OL>
+<LI>	A lifetime
+<LI>	A velocity
+<LI>	A color 
+<LI>	A transparency
+<LI>	A size
+<LI>	A shape
+</OL>	
+	Almost all particles have a lifetime,velocity, and color where
+the remaining properties are decided upon by the modeller. 
+Over the lifetime of
+the particle, the particle will change some or all of its attributes- the
+color might fade from white to red before it "dies". Velocities of
+particles can increase, decrease, or alter directions due to gravity 
+or a collision with some object. <P>
+
+	The other characteristic of particle systems is that there are a 
+large number of particles.  Water is technically comprised of billions and
+billions of H2O molecules, and a particle system likewise represents what
+it models with many many particles, though not billions and billions.  
+The typical particle system is comprised of thousands of particles where
+this could range from a few thousand to hundreds of thousands depending
+upon the resolution needed and the size of the desired image. <P>
+
+Particle systems are used to model "fuzzy" objects, such as fire, water,
+and other dynamic systems that are difficult to model with conventional
+methods, mainly due to the wide variations in color and shape even for
+just one moment in time.  To provide a well known example of a particle
+system take a look at the "Genesis Effect" in Star Trek II: The Wrath of Kahn.  
+A particle system is used to model first an explosion and then the spreading
+of a fire around a planet.  The Genesis Effect used 25-750+ thousand particles 
+throughout the course of the animation.
+
+
+<H3> 3.0 Interdependent Particle Systems </H3>
+
+In an interdependent particle system, particles can change based on
+the presence, number, and/or proximity of neighboring particles.  In
+real systems comprised of molecules, large densities tend to disperse
+until equilibrium is reached.  Molecules also exchange energy, and that
+energy can directly affect the color of the light that the molecule
+emits or reflects.  With an interdependent particle system, it becomes
+possible to simulate these effects.  For instance, take a fire particle
+system and a water particle system and mix parts of the systems together-
+the result is steam.  An interdependent system of fire and water interacting
+to produce steam was the goal and motivation of this research. <P>
+
+The obvious and most difficult problem when dealing with an 
+interactive particle system is the large number of particles.
+To determine collision, engergy exchange, or other interactive effects
+on any particle X, the particle either must search or sum the effects
+of all its neihgboring N-1 particles.  The problem as most simply
+and correctly formulated is N squared in complexity.
+With a hundred thousand particles, however, moving and changing N
+squared particles per frame of an animation will take too long.
+A simplification
+is needed to make the system develop more quickly and is easily justified
+and arrived at when examining real systems. <P>
+
+In all systems we are concerned with, a particle's dependency on its 
+neighbors is usually
+proportional to or less than the inverse square of the distance between
+it and the neighbor.  With thousands of particles within a
+system, it is likely that much less than a hundred particles
+will actually contribute significantly to the motion or energy level
+of any particle.  Thus, there is but to determine what a "significant"
+contribution is, the distance where the average particle's contribution
+will be less than significant, and which particles are within that distance.
+<P>
+
+The problem is simplified, but to determine which particles are within
+the distance without any other information than given by the particles
+themselves would still be an N squared operation.  Therefore, it is 
+logical to introduce into the model, the concept of bins.  Space is
+divided into regularly spaced equal volume bins.  Each particle is 
+put into the bin corresponding to its location in space.  Thus, there
+are two large lists - one a list of all the particles, and the other 
+an arranged set of bins containing pointers to the appropriate particle.<P>
+
+Ideally each bin would in any dimension be at least the size of the
+distance whereby a particle is judged to possibly have a significant
+contribution.  To determine the contributions of the neighbors to particle X,
+the program would need  to search only the other particles within the bin 
+that particle X is in and all the particles within the immediately 
+neighboring bins --to deal with particles located near the boundaries of a bin.
+Since all particles within the threshold distance are guaranteed to be within
+the space searched, particle X is guaranteed to be modified by all significant
+contributors.<P>
+
+Though this would work, it is impractical to implement due to memory
+limitations.  The ideal bin size would generally be only three to four
+times the size of a particle.  However to account for all the places a
+particle might move to during the progression of its life, there will be a large
+percentage of bins that most of the time are empty.
+Given this and the fact that there are 3 dimensions which must have bins
+allocated, result in very large numbers of bins.  For instance,
+taking a hundred bins per each dimension, results in the need for a million
+bins- more bins than particles.  A hundred bins, would also be inefficient
+for many parts of the particle system where there were large densities of
+particles-- again the lists to be searched would be in the hundreds per
+particle negating the effectiveness of using bins.  
+Therefore, a larger number of bins is necessary, but using more bins would
+quickly exhaust the resources of almost any computer. <P>
+
+To solve this problem we must simplify the model even further losing much
+of the accuracy that could be obtained with the previous methods.  Each bin
+is now allowed to hold only a number of particles, a temperature,or some other
+most important data element.  Instead
+of containing a variable size list of particles within the bin, 
+it contains a set small number of informational elements.  
+This results in the loss of alot of useful information and will
+result in rough approximations that
+lose the accuracy of earlier models.  However, interdependent reactions
+are still possible, because there is some information available about any 
+particle's local
+region of space and its immediately neighboring areas of space. <P>
+
+The problem is transformed from one of searching through thousands of particles
+to one of communication and/or accuracy.  
+By containing only such simple information, spatial
+relation is lost, as well as specific data, and most importantly identity.
+Simulation of collisions, movement, and temperature exchange is  now possible
+only as probabilities and is no longer deterministic. <P>
+
+For example, to determine the collision of a particle X moving through space
+with another particle, we must bound the maximum number of particles in any
+given region of space.  If particle X is attempting to move through a bin,
+then collision occurs with a probablility equal to the 
+number of particles within the bin
+divided by the maximum number of particles allowed in the bin.  For example,
+if the maximum number of particles per bin is 30, and there are 19 particles
+in the bin that particle X is attempting to move through, then there is a 
+2/3rds chance that particle X will collide. <P>
+
+The communication issue is also a problem that must be resolved.  In 
+the efforts to research fire and water combining to form steam, the appropriate
+physical model is each particle exchanges temperatures and sometimes steam
+is created and/or sometimes the fire is extinguished.  Since the identity
+of any particle within a bin is lost, a particle that moves from a bin to
+another bin where it should change state and likewise decrement the opposing
+particles' states will not have any specific particle with which to interact.
+Therefore, some means of communicating the change of state is necessary. 
+For example, consider a water particle moving into a bin full of fire-particles.With all the surrounding fire particles, the water particle(s) should
+transform to steam.  But the fire particles should have their temperatures
+altered as well, or should have some proportion of fire particles die to
+account for the energy exchanged.<P>
+
+The bins therefore must be utilized to pass messages to particles that should
+die or undergo a loss in energy.  One set of particles is choosen to perform
+the transition and issue the appropriate message, the other is choosen to 
+listen for the message and take the appropriate action.  In the fire and
+water example, the water is the one which performs the tansition to steam
+and passes the message, while the fire particles are the system that reacts
+to the passed messages. <P>
+
+One possible means of message passing and the one utilized in this research
+is to use the number of particles per bin as the means of message passing.
+Temperature of given particles and motion vectors can be calculated based
+on these figures.  To differentiate water from fire, water is given a 
+negative count.  Where it is obvious that two types of particles are 
+present in a certain bin, it is assumed that fire extinguishes water with
+a certain ratio of fire particles to water particles.  If the water particles
+transform, they decrement the number of particle bins by the number of
+fire particles extinguished.  Before the fire-particles move again they
+note the change and that percentage of particles will on average die. <P>
+
+For example, take particle X.  It moves into a bin and after all other
+<I>fire</I> particles have moved it notes that there are 15 particles
+including itself in the bin.  During the <I>water</I> movement portion of the frame,
+3 water particles move into the same bin and are considered to exchange heat
+and vaporize with the fire particles.  Say that it takes two fire particles
+to vaporize one water particle, then 6 fire particles are extinguished, while
+3 new steam particles are created.  The final bin count is 9-- steam is counted
+as a neutral particle.  The final position of all particles in the frame
+is output and processing for the next frame begins.  Each fire-particle is
+searched for those particles that should have died.  When particle X is
+reached (or any of the fire particles in the bin) it notes that there are
+now 9 particles in the bin when their used to be 15.  Thus, 6 out of the 15
+particles must have died.  The particle picks a random number between 0 and 1
+and if it's number is less than 6/15ths, it's number is up and 
+the particle "dies."
+<P>
+It can happen the opposite way as well, that a fire-particle moves into a bin
+populated by water particles and should extinguish itself as well.  The water
+particles also need to know their state after all water particles have moved,
+so that they will also be killed off in the appropriate situtation.
+<P>
+A byproduct of the fact that probabilities are used to kill of particles, is
+that the bin counts are accurate only on the average.  As time passes however,
+local error and changes in the system based on the error could accumulate.
+Therefore it is necessary to recount the number of particles of any type at
+the end of each movement phase.  This in some ways doubles the time required
+to animate any interacting particle system, but is still linear in time and
+better than N squared.
+
+Thus, the steps required to interact 2 particle systems with message passing
+can be generalized as follows:
+
+<UL>
+<LI>	Remove "dead" particles of type 1 from the particle system
+<LI>	Move the type 1 particles
+<LI>	After all type 1 particles have moved, each type 1 particle notes final state
+<LI>	Remove "dead" particles of type 2 from the particle system
+<LI>    Move the type 2 particles
+<LI>	After all type 2 particles have moved, each type 2 particle notes final state
+</UL>
+
+<H3> 4.0 Results </H3>
+
+	Though the above presented method solves many problems, there are
+a few that are more difficult to side-step.  In particular, conservation of
+momentum is difficult to maintain- simulating a collision is easily done 
+using a probabilistic method and in closely approximating reality  should
+be done through every bin which the particle moves.  However, when a collision
+occurs the only particle that can be affected (unless message passing is
+again used) is the source particle.  <P>
+	This problem encountered during the research can either be side-stepped
+by ignoring interim bins completely (as is done in this research) or perhaps
+can have a damping factor applied proportionate to the number of collisions
+that might have occurred.  
+
+	Another difficulty is that there are even more parameters that must
+be tweaked into place to produce an image that approximates the reality and
+doesn't approximate some alterante reality-- where flames progress upwards
+in very defined bands for instance. <P>
+
+	An implementation of an interdependent fire system was investigated
+and can be seen by the results below.  The fire particle system image 
+was originally created with a 200,000 particle-system. 
+attempted to use 150,000 particles in the provided MPEG.
+The particles are created during frames 1-30 and
+after that are created from the particles that have already died. 
+The image was rendered using <!WA1><!WA1><!WA1><!WA1><a href="http://www.tc.cornell.edu/Visualization/tools/dx.html"> 
+DX </A> with a color map and an opacity map. The animation took approximately
+11 minutes to create running on a RISC 6000 processor with 128 MB of memory. 
+However, it has been noticed that due to the bin
+limitations many of the particles go unused and essentially only slightly
+more than 50,000 particles are being used.  Using only 50,000 particles 
+(due to the current initialization sequence of the program) a slightly
+less full animation is produced, but is comparable to the original and
+only takes 5.4 minutes to create.  <P>
+
+In the provided animation,
+a particle's temperature is based on the number of particles
+within the same region of space, while it's motion vector is determined
+based upon the density of particles immediately within its own space as
+well as those bins that immediately neighbor the space.  A damping factor
+is applied to the motion in the plane that produces a circular cross-section
+when no particles are collided, whereas in the vertical direction changes
+in motion are based on temperature.  Overall, there are 21 parameters including
+bin sizes that may be modified. It is also important to note, 
+that if the bin size is selected to be too large, visible artifacts will
+be generated.
+<CENTER>
+<!WA2><!WA2><!WA2><!WA2><A HREF="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/mccune/final/Images/FlamePic0.jpg"> <!WA3><!WA3><!WA3><!WA3><IMG ALIGN=CENTER  SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/mccune/final/Images/FlamePic0.jpg">   </A>
+</CENTER> <P>
+The animation is also present as an <!WA4><!WA4><!WA4><!WA4><A HREF="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/mccune/final/flame.mpg"> MPEG. </A> <P>
+
+There are some artifacts present in the animation of the flame that I am
+not quite yet sure why they are there.  In the first frame of the animation
+provided, a top view is provided.  It is possible to see from this top view
+a criss-cross pattern that is an obvious artifact from using the bins and/or
+some combination of the motion mechanism, although I am unsure as to why
+this is the case.  Also, the flame tends to pulse from one frame to the next
+which is something that would preferably not occur- I am unsure
+what is causing the oscillatory motion. <P>
+
+
+There is another benefit to using bins with an interdependent particle systems,
+parallelization.  As opposed to passing particles and all their associated 
+information across bin boundaries, only the information contained by the
+bins need be passed.  This can save (given the amount of information each
+particle must pass as well as the fact that there can be a good number
+of particles per bin) up to more than 100 times the amount of message passing
+that needs to be done.  Thus, it should be possible to parallelize the
+application. <P>
+
+One other effect should be noted.  In independent particle systems, groups
+of particle systems can be lessened or local processing abandoned altogether
+once sufficient information for a given area of the output area has been 
+determined
+(e.g. there is no reason to use a thousand particles to represent a section
+of the screen only 10 pixels by 10 pixels wide).  In an interdependent particle
+systems, this is not the case.  The entire process of the particle system is
+dependent upon the presence and number of its nearest neighbors-- stopping
+part of the particle system will eventually translate its effects to neighboring
+parts of the particle system that are still moving, with <I>unknown</I> consequences.
+Thus, some of the optimizations that are possible for independent systems,
+are <I>not necessarily</I> possible with interdependent particle systems.  
+
+<H3> 5.0 Conclusions	</H3>
+
+	This work has demonstrated that an interdependent particle system 
+approach is feasible and that it is possible to use some of the attributes
+of the particle system itself to model "fuzzy" objects.  A model has been
+proposed to allow the interaction of two particle systems and could possibly
+be extended to more.  Many aspects of this work remain unexplored. Future work 
+will finish the investigation of the proposed model
+to interact two particle systems to result in a third.   <P>
+
+	There are many aspects of interdependent particle systems where
+	research could still be done.  For instance, 
+investigating the interactions used on independent systems to achieve the
+flickering of a flame by adding spirals or clustering particles.  Or trying
+to simulate these effects by adding an air particle system to
+the field to simulate the convection of air.  Starting
+configurations that change over time and are not based on some random 
+distribution of some preset starting configuration, but perhaps based on
+preset data volumes.   It would also be interesting to see the results
+of a wall of fire, or some other configuration of flames modeled on a
+parallel processor.
+
+<H3> 6.0 References </H3>
+
+<P>
+	"Particle Systems-- A Technique for Modeling a Class of Fuzzy Objects",
+	William T. Reeves, ACM Transactions on Graphics, Vol 2, No 2, pp 91-108
+<P>
+	"Particle Animation and Rendering Using Data Parallel Computation",
+	Karl Sims, Computer Graphics, Vol 24, No 4, pp 405-413
+
+</body>
+
+</HTML>

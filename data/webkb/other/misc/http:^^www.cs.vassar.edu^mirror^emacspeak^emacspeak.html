@@ -1,0 +1,165 @@
+Date: Wed, 15 Jan 1997 01:06:17 GMT
+Server: NCSA/1.5.1
+Last-modified: Fri, 22 Nov 1996 21:44:12 GMT
+Content-type: text/html
+Content-length: 5988
+
+<html>
+  <head>
+<!--$Id: emacspeak.html,v 1.3 1996/11/22 21:42:05 raman Exp $ -->
+<!-- Keywords: Emacspeak Speech System --> 
+<link REV="made"  href="mailto:raman@adobe.com">
+<title>Emacspeak --A Speech Output Subsystem For Emacs</title>
+</head>
+
+<body>
+<h1>Emacspeak --A Speech Output Subsystem For Emacs  </h1>
+<strong>
+ Announcing  Emacspeak, a full-fledged speech output interface to Emacs.
+</strong>  <hr>
+
+  Emacspeak is the first full-fledged speech output system that will allow
+someone who cannot see to work directly on a UNIX system.
+(Until now, the only option available to visually
+impaired users has been to use a talking PC as a terminal.)
+Emacspeak is built on top of Emacs. Once you start emacs with emacspeak
+loaded, you get spoken feedback for everything you do.  Your mileage will vary
+depending on how well you can use Emacs.<footnote>There is nothing that you
+cannot do inside Emacs:-)</footnote>
+<p>
+
+<H2>Publications And Talks</H2>
+
+<UL>
+<LI><!WA0><A href="http://www.cs.vassar.edu/mirror/emacspeak/talks/chi96-slides.pdf">  CHI 96 Presentation</A>
+     You can also get a
+     <!WA1><A href = "http://www.cs.vassar.edu/mirror/emacspeak/talks/chi96-slides.txt"> text version</a> of the slides.
+     <LI><!WA2><A href="http://www.cs.vassar.edu/mirror/emacspeak/talks/pcd96-slides.pdf">  Talk at Stanford on Emacspeak</A>
+     You can also get a
+     <!WA3><A href = "http://www.cs.vassar.edu/mirror/emacspeak/talks/pcd96-slides.txt"> text version</a> of the slides.
+     <LI>  Publications describing the design philosophy and architecture of
+          Emacspeak
+          can be found  at
+          <!WA4><A HREF="http://www.cs.vassar.edu/mirror/emacspeak/publications/">in the publications directory.</A>
+</UL>
+
+<H2>Emacspeak Mailing List</H2>
+
+There is a mailing list <em>emacspeak@cs.vassar.edu</em>
+that is being used to disseminate information about emacspeak. If you use
+Emacspeak, you can subscribe by sending email to
+<!WA5><A href="mailto:priestdo@cs.vassar.edu">
+greg e. priest-dorman</A>.
+See <!WA6><A HREF="http://www.cs.vassar.edu/mirror/emacspeak/release.html">the news page</A>for details on what's new in the
+latest release of Emacspeak.
+
+<H2>Description</H2>
+I currently  use Emacspeak
+at work on my Sparc20 workstation running SUNOS4.1;
+while at Digital I used Emacspeak on my DECALPHA workstation running Digital
+UNIX.
+I also use  Emacspeak as
+the only speech output system on my laptop running Linux.
+As a useful addition,
+<!WA7><A HREF="http://www.cs.vassar.edu/mirror/emacspeak/emacspeak-console.tar.gz">
+contains the necessary files</A>
+ to make Emacs easier to use at the Linux console. 
+Emacspeak currently supports the new
+<!WA8><a href="http://www.cs.vassar.edu/mirror/emacspeak/dectalk-express.html"> Dectalk Express </a> 
+speech synthesizer, as
+well as older versions of the Dectalk e.g. the MultiVoice.  On the DECALPHA,
+you can use it with the software Dectalk.
+(If you have a DECALPHA and also have software Dectalk installed at your site,
+    please get in touch with   <!WA9><A href =  mailto:"mangipudi@bgsdev.enet.dec.com">
+Krishna Mangipudi --Digital</A>.
+    
+<p>
+
+You need GNU FSF Emacs 19 (version 19.23 or later) and TCLX 7.3B (Extended
+TCL) to run Emacspeak.
+<STRONG> TCLX --the executable is called tcl on most systems-- is *not* plain
+tcl --typically called tclsh on most systems.</STRONG>
+See the Emacspeak distribution for additional details.
+<p>
+
+See the latest <!WA10><a href="http://www.cs.vassar.edu/mirror/emacspeak/release.html"> release notes</a>
+to see what is new in the latest release.
+
+You can  download <!WA11><a href="http://www.cs.vassar.edu/mirror/emacspeak/emacspeak.tar.gz">
+Emacspeak (390K)  </a>from this page.
+<p> For a list of frequently asked questions about Emacspeak along with their
+answers, see the <!WA12><a href="http://www.cs.vassar.edu/mirror/emacspeak/faqs.html">Emacspeak FAQ</a>.
+
+
+Emacspeak comes with full source level documentation. There is an online info
+manual as well, but this is still incomplete.
+<h2>Emacs Subsystems </h2>
+
+Emacspeak currently has extensions for many popular Emacs subsystems
+including: 
+
+
+<ul>
+  <li>  W3: A full-fledged W3 browser
+       <!WA13><a href="ftp://cs.indiana.edu/pub/elisp/w3/w3.tar.gz">available  by FTP
+</a>. Emacspeak implements a voice-lock mode analogous to Emacs' font-locking
+       that allows it to speak WWW hotlinks using different <em>voice
+       personalities</em>.
+       <li> GNUS: The Emacs news reader.
+            Emacspeak provides a fluent extension to gnus that allows you to
+            listen to Usenet news without taking your fingers off the four
+            arrow keys.
+       <li>  VM: The Emacs VM mail reader.
+            Emacspeak works with VM to present email messages using different
+            voices; Parts of a message that are cited from a previous message
+            are <em>voicified</em>to produce effective aural presentations.
+       <li>  Eterm: The Emacs 19 terminal emulator. (This will be part of
+            Emacs 19.29).
+            You can obtain a beta copy of eterm
+            <!WA14><a href="ftp://ftp.cygnus.com/pub/bothner/">
+            via anonymous FTP</a>.
+            I have used Emacspeak and Eterm to successfully login to work from
+            my laptop and interface with running applications on my office
+            workstation (including running Emacs sessions!). 
+</ul>
+
+Emacspeak also works well with Emacs addons like AUCTEX for editing TeX
+documents, the Emacs Calculator (CALC --a symbolic algebra system) etc. 
+
+<p>
+Emacspeak works fluently with all Emacs addons; writing an extension makes its
+ use even more pleasurable. 
+If you would like to write an Emacspeak addon for your favorite package please
+get in touch with me so we do not end up duplicating work. 
+
+<h2>Support For Emacspeak  </h2>
+
+Emacspeak comes as is, please see the accompanying 
+<!WA15><a href="http://www.cs.vassar.edu/mirror/emacspeak/COPYRIGHT">Copyright </a>
+notice.
+See the <!WA16><a href="http://www.cs.vassar.edu/mirror/emacspeak/README">README</a>file for details about this release and
+how to install Emacspeak on your system.
+
+<p>
+
+I work on Emacspeak in my spare time, and may not be able to answer
+ questions  on Emacspeak immediately.
+If you do download and use Emacspeak, please subscribe to the mailing list
+<em>emacspeak@adobe.com</em>by sending a message to <em>
+emacspeak-request@adobe.com</em>.
+
+
+
+<hr>
+<address>
+<!WA17><a href="http://www.cs.cornell.edu/Info/People/raman/raman.html">
+T. V. Raman</a>
+raman@adobe.com</address>
+
+
+<!-- hhmts start -->
+Last modified: Fri Nov 22 13:41:59 1996
+<!-- hhmts end -->
+</body>
+
+ </html>

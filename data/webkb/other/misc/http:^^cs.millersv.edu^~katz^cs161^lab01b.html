@@ -1,0 +1,102 @@
+Server: Netscape-Communications/1.1
+Date: Tuesday, 14-Jan-97 22:42:35 GMT
+Last-modified: Wednesday, 28-Aug-96 16:02:10 GMT
+Content-length: 8215
+Content-type: text/html
+
+<HTML>
+<HEAD>
+<TITLE>More Introduction to the Lab (hello, observe)</TITLE>
+<H1>More Introduction to the Lab (hello, observe)</H1>
+<H2>CS 161 - Fall 1996</H2>
+</HEAD>
+
+<H2>Goals</H2>
+<UL>
+<LI>to create a customized command to compile programs for this class
+<LI>to become familiar with the Sun environment
+<LI>to become familiar with the C++ compiler and reading its messages
+</UL>
+<H2>Overview</H2>
+We need to use some special files for this class; therefore, you will create a customized command to compile and execute your programs. This will briefly show you some command tool (shell) commands.
+Then, you will continue using the file manager, the command tool, and the edit tool. You will type in the C++ program on the second page of this lab, compile it, and execute it. You will submit that program.
+Finally, you will copy another program, make some changes to it, and report on what happens. This will give you experience reading the compiler's error messages and seeing what caused those messages.
+<H2>Creating a customized compiling command</H2>
+C++ is not completely standardized. Not all compilers include a string class. The Sun compiler does not. But a string class will be in the standard, and using it makes some problems easier. Therefore, we need to include our own string class whenever we want to use strings. This easiest way for us to do this is to create a customized command for compiling our programs. This command will call the C++ compiler but will also tell the compiler where to look for our string class and to link it in when we use it. We don't expect you to understand this part of the lab. You will not be tested on it. You'll learn these commands as time goes by.
+<P>
+In the command tool (shell), type the following boldface commands. Note the period in the cp command. The plain text at right describes what you are doing: <PRE WIDTH=50>
+<STRONG>cd</STRONG>                          move to home directory
+<STRONG>mkdir bin</STRONG>                   create a bin sub-directory
+<STRONG>cd bin</STRONG>                      move into bin directory
+<STRONG>cp /grader/katz/bin/go .</STRONG>    copy command to your directory
+<STRONG>rehash</STRONG>                      tell shell to see new command
+<STRONG>ls -l</STRONG>                       list files and permissions
+<STRONG>cd ../Labs</STRONG>                  go back to Labs directory
+</PRE>
+You should be back at your Labs directory. Now, whenever you want to use strings in your code, you can use the go command to compile C++ programs. You can also use it for compiling all your other C++ programs for this class.
+<H2>Creating hello.cc</H2>
+<H4>Create C++ Source File in Labs folder</H4> Make sure you are in the Labs folder in the file manager and choose File->Create Document. Drag over its name and call it hello.cc. Open the file. Type in the program below (hello2.cc from the text). Include your name in the comments. Get into the habit of indenting the program as shown with three or four spaces. Programs are for people to read as much as for compilers to translate. Proofread your typing. Save the file but leave it open.
+<H4>Compile and Execute</H4> Move to the command tool. Type <STRONG><CODE>ls</CODE></STRONG> to see a listing of the files in your Labs folder. hello.cc should be there. Type 
+<STRONG><CODE> go hello.cc</CODE></STRONG> to compile it. This will also execute the program if you have no errors. If you have errors, carefully read the messages and correct the problem by modifying the source program in the edit window. Save your changes, and then run the compiler again.
+<H4>Submit your Program</H4> In the command tool, use <STRONG><CODE> submit </CODE></STRONG>and think about your answers to give it to your class's account as the hello lab. Note that the name to use for submitting is usually at the top of the lab handout.
+<H4>Code for hello.cc</H4>
+<PRE WIDTH=50>
+#include &lt;iostream.h&gt;
+
+// traditional first program with user-defined function
+// author: your name, today's date
+
+void
+Hello()
+{
+    cout &lt;&lt; &quot;Hello world&quot; &lt;&lt; endl;
+}
+
+int main()
+{
+    Hello();
+
+    return 0;
+}
+</PRE>
+
+<H2>Modifying an Existing Program</H2>
+<H4>Create a New Program from an Existing Program</H4> The second program is in a file named /grader/katz/examples/bday.cc (bday2.cc from text). In the file manager, locate the file to copy. Double-click on it to open it in the editor. Use Save As to change its name to bdaygood.cc and put it in your Labs directory. Add your name to the comments. Save. Then use Save As again to name it bday.cc. At this point you have two copies of the file in your Labs directory. Both contain your name. You will be editing bday.cc. The other file is a backup.
+<H4>Compile and Execute the Program</H4> Compile and execute bday.cc with <STRONG><CODE>go bday.cc</CODE></STRONG>.
+<H4>Create an Observations File</H4>To ease your writing by hand, you'll record your observations in a file named obs.txt. Create it in the editor. Put your name at the top.
+<H4>Practice Reading Error Messages</H4> The Changes Exploration section below describes several changes to make to the program. Follow those instructions and record your observations in your file. Save your answers after each observation. Be sure to save your program changes before you try to compile and always undo the change before trying the next change. When you are done, submit your observations file as observe. Make sure you save before you submit.
+<H4>Log out </H4>Save any work before logging out. Quit any editor sessions. Use the menu mouse button over the background and choose Exit.
+
+<H2>Changes Exploration</H2>
+For this portion of the lab, you will make changes to a C++ program. Each change will break the program slightly. You will save the broken program and try to compile it. Report what you see in your observations file. Between each break, restore the program to its original state before proceeding. When you finish, make sure the program is in its correct state, save it, and turn in your observations for grading.<P>
+
+For each change, start with the original program.<P>
+
+For each change, answer the following questions. If there are multiple messages and lines, give the first two errors or warnings.
+<OL>
+<LI>What is the text of the error message? (first two if many) Include the line number.
+<LI>Is that the same line that you changed? (use View/Select Line at Number... )
+<LI>Did the program execute? Does the output look pretty?
+</OL>
+<P>
+Undo the previous change and make the next change.
+<P>
+HINT: Drag over the text of the messages you want to copy. Press the Copy button on the left side of the keyboard. Click in your observations file where you want the text to be placed. Press the Paste button.
+<P>
+HINT: In the command tool/shell, you can repeat a command by typing an exclamation point and one of a) another exclamation to repeat the previous command, b) the desired command's number, c) enough of the beginning of the command to choose the desired one most recently used.
+<H4>Changes to Make</H4>
+<OL>
+<LI>Change <STRONG><CODE>CPstring.h</CODE></STRONG> to <STRONG><CODE>cpstring.h</CODE></STRONG> (all lowercase)
+<LI>Change <STRONG><CODE>int</CODE></STRONG> to <STRONG><CODE>void</CODE></STRONG> in <STRONG><CODE>int main()</CODE></STRONG>
+<LI>Change <STRONG><CODE>main</CODE></STRONG> to <STRONG><CODE>Main</CODE></STRONG> in <STRONG><CODE>int main()</CODE></STRONG>
+<LI>Change <STRONG><CODE>person</CODE></STRONG> to <STRONG><CODE>kid</CODE></STRONG> in <STRONG><CODE>Sing(string person)</CODE></STRONG>
+<LI>Change the first <STRONG><CODE>&lt;&lt;</CODE></STRONG> to <STRONG><CODE>&gt;&gt;</CODE></STRONG> 
+<LI>Delete semi-colon (;) at end of first cout statement
+<LI>Delete the closing brace (}) at bottom of program (last line of file)
+<LI>Delete <STRONG><CODE>return 0;</CODE></STRONG>
+<LI>Delete every <STRONG><CODE><< endl</CODE></STRONG> (5 of them)
+<LI>Change <STRONG><CODE>Sing(&quot;Grace&quot;)</CODE></STRONG> to <STRONG><CODE>Sing(Grace)</CODE></STRONG> (delete quotes around string in call)
+<LI>Delete four calls to Sing in main program and replace the name in the remaining call with your name (you may leave it this way)
+</OL>
+
+</HTML>

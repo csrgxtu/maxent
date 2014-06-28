@@ -1,0 +1,77 @@
+Date: Wed, 15 Jan 1997 01:30:11 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Wed, 24 Jul 1996 23:39:29 GMT
+Content-length: 2954
+
+
+<TITLE>Fail-Aware Clock Synchronization</TITLE>
+
+<H2> 
+<!WA0><A HREF="http://www-cse.ucsd.edu/users/cfetzer/CS95-453.html">
+Fail-Aware Clock Synchronization
+</A></H2>
+
+<HR> 
+
+<H3> Abstract </H3>
+
+Internal clock synchronization requires that at any
+point in time the deviation between any two correct
+clocks is bounded by an a priori given constant.
+Due to network partitions, unbounded message transmission 
+and process scheduling delays, internal clock synchronization
+is impossible to implement in asynchronous systems.
+We address this problem by proposing a new kind of
+clock synchronization that is implementable in asynchronous 
+systems with local hardware clocks: 
+<B>fail-aware clock synchronization</B>. 
+The specification of that new service is derived 
+using the general concept of 
+<!WA1><A HREF="http://www-cse.ucsd.edu/users/cfetzer/CS95-453.html">
+fail-awareness</A>: this concept allows to
+transform the specification of a synchronous service
+into a fail-aware service such that it becomes
+implementable in asynchronous systems.
+To illustrate the usage of fail-aware clock synchronization,
+we show how it can be used to solve the highly-available, 
+fail-aware leader election problem.
+The specification of fail-aware clock synchronization requires that
+<UL>
+<LI> each time server maintains a <B>synchronization indicator</B>,
+<LI> for any time <B>t</B> and any two time servers <B>p</B> and <B>q</B>,
+	if the two synchronization indicators of <B>p</B> and <B>q</B> are
+	true at <B>t</B>, then the deviation between <B>p's</B> and <B>q's</B> 
+	clock at time <B>t</B> is bounded by an a priori 
+	given constant, and
+<LI> a time server which can communicate with a majority of 
+	time servers in a timely manner and which is timely (i.e. it
+	does not suffer performance failures), has to set its synchronization
+	indicator to true.
+</UL>
+
+We show how fail-aware clock synchronization can efficiently
+be implemented in <B> timed asynchronous systems</B>. 
+These systems are characterized by
+<UL>
+<LI> 	a precise notion of what it means that 
+	a process or message to be <B>timely</B>,
+<LI>	unbounded message transmission and process scheduling delays, and
+<LI>	each process has access to a local hardware clock with a 
+    	drift rate within some given bounds.
+</UL>
+The proposed protocol to implement fail-aware clock synchronization
+is based on the protocols described in 
+<!WA2><A HREF="http://www-cse.ucsd.edu/users/cfetzer/CS94-367.html"> CS94-367 </A>. 
+Each process <B>p</B> synchronizes its clock in a round based fashion.
+Only when <B>p</B> succeeds to read the 
+synchronized clocks (i.e. their synchronization indicators are true)
+of a majority of processes within some given reading error at the end of
+a round, <B>p</B> can keep its synchronization indicator
+true for the next round. Otherwise, <B>p's</B>
+synchronization indicator is (automatically) switched to false.
+
+
+<HR> 
+
+<!WA3><A HREF="http://www-cse.ucsd.edu/users/cfetzer/index.html"> Home </A>

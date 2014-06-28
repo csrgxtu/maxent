@@ -1,0 +1,151 @@
+Date: Tue, 10 Dec 1996 03:29:33 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+	<title>Recent ZPL Language Changes</title>
+</head>
+
+<h1> <!WA0><!WA0><img align=center src="http://www.cs.washington.edu/research/projects/zpl/images/zpl.logo.gif"> <a name="top">Recent ZPL Language Changes</a></h1>
+
+<hr>
+
+<body>
+
+<P><B>The changes below are effective July 25, 1996.</B></P>
+
+<P>The newly installed version of ZPL is improved in two ways:  A 
+multitude of small language changes have been incorporated to make 
+the language more convenient/powerful, and many bugs have been 
+fixed.  The resulting compiler is considerably more stable, and the 
+language is more convenient.  However... <P>
+
+<P><B>MOST EXISTING ZPL PROGRAMS WILL HAVE TO CHANGE SOMEWHAT.</B></P>
+
+<P>Though possibly causing some inconvenience for the moment, this is 
+a one-time change.  ZPL is essentially stable, with all subsequent 
+research being applied to a new language.<P>
+
+<P>The following language feature changes will likely require 
+modifications to existing programs: </P>
+
+<OL>
+  <LI> <B>Some data type have been introduced, eliminated, or renamed.</B>  
+       Signed and unsigned byte data types are now supported (<TT>sbyte</TT> 
+       and <TT>ubyte</TT>), and <TT>unsigned char</TT> no longer exists.  The
+       unsigned data types have been renamed as summarized below.
+<PRE>
+        unsigned shortint ---> ushortint
+        unsigned integer  ---> uinteger
+        unsigned longint  ---> ulongint
+</PRE>
+
+  <LI><B>Exponentiation added.</B>  The binary operator ^  has been added.  The 
+expression a^b raises a to the b power. The compiler generates a 
+direct evaluation when b is an integer constant 2, 3 or 4. All other 
+cases compile to a call on pow().  The functions sqr() and cube() have 
+been removed.<P>
+
+  <LI> <B>Bit operations have been changed.</B>
+<PRE>
+        &  --->  band(a,b)     bitwise and of integers a, b
+        |  --->  bor(a,b)      bitwise or of integers a, b
+        ~  --->  bnot(a)       bitwise negation of integer a
+        ^  --->  bxor(a,b)     bitwise exclusive or of integers a, b
+        << --->  bsl(a,b)      integer a left shifted b bit positions
+        >> --->  bsr(a,b)      integer a right shifted b bit positions
+</PRE>
+
+  <LI><B>Logical operations have been changed.</B>
+<PRE>
+        and ---> &
+        or  ---> |
+        (! continues to be correct for logical negation)
+</PRE>
+
+  <LI><B>Compound assignments <<= and >>= have been removed.</B><P>
+
+  <LI><B>Double brackets may optionally be removed in most instances.</B>
+Dynamic region specifiers not involving prepositions do not require
+double brackets.  Thus
+<PRE>
+        [[1..m, i..n]]  --->  [1..m, i..n]
+        [[1..m, *]]     --->  [1..m, *]
+</PRE>
+but
+<PRE>
+        [[1..m,i..n] at west]
+        [[1..m, 1..n] with M]
+</PRE>
+require both sets of brackets.  <B>This is not yet implemented.</B><P>
+
+  <LI><B>Rank-defined arrays in procedure specifications have been 
+replaced</B> with dynamic regions that inherit their dimension information 
+from the call site.  Thus
+<PRE>
+        procedure Example (X, Y:[2] float);
+</PRE>
+becomes
+<PRE>
+        procedure Example (X, Y:[,] float);
+</PRE>
+The inheritance capability is available with all region specifications 
+-- empty dimensions are inherited from the enclosing scopes.<P>
+
+  <LI><B>Reduce, scan and flood operators have changed</B>
+<PRE>
+        Reduce   +\  --->  +&lt;&lt;
+        Scan     +\\ --->  +||
+        Flood    \\\ --->  &gt;&gt;
+</PRE>
+The heuristic here is that the result of reduce (&lt;&lt;) is "smaller" than 
+the operand, the result of scan (||) is the same size as the operand, 
+and the result of flood (&gt;&gt;) is "larger" than the operand.<P>
+
+  <LI><B>Region change removed.</B>
+The region change construct, used to specify the regions for partial 
+reduce and flood, has been removed.  Thus, the "left arrow" construct
+<PRE>
+        [R <- S]  A := ...;
+</PRE>
+is no longer legal.  Accordingly, the partial reduce and flood 
+operators have changed in that both specify a region following the 
+operator which describes the operand.  This region, together with 
+the region "on the statement" which describes the result, supply the 
+needed region information for these operations.  <P>
+
+Thus, for example in the partial reduction
+<PRE>
+	[1..n, 1]  A := +<<[1..n,1..m] B;  --Sum B's rows, store in A's col 1
+</PRE>
+
+the region following the operator is the region of the operand, i.e. 
+the region to be reduced.  The region on the statement specifies the 
+result region, which since relative to the operand region it has the 
+second as a collapsed dimension, the elements of each row are 
+added, and the result is stored into the first column of A.<P>
+
+Similarly, for the flood
+<PRE>
+	[*,1..m]  Fl := >>[3,1..m] A; -- Replicate A's 3rd row into Fl
+</PRE>
+the region following the operand specifies the array to be 
+replicated, and the region on the statement specifies the region of 
+the result.  So, relative to the result region the first dimension is 
+collapsed.<P>
+
+<inc srv "/research/projects/zpl/footer.html">
+<hr> <p>
+<center>
+[
+<!WA1><!WA1><a href="http://www.cs.washington.edu/research/projects/zpl/">ZPL</a> | 
+<!WA2><!WA2><a href="http://www.cs.washington.edu/">UW CSE</a> |
+<!WA3><!WA3><a href="http://www.cac.washington.edu:1183/">UW</a>
+]
+<address>
+<!WA4><!WA4><A HREF="mailto:zpl-info@cs.washington.edu">zpl-info@cs.washington.edu</a>
+</address>
+</center>
+
+</html>

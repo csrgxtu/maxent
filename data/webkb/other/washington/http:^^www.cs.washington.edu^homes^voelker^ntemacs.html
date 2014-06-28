@@ -1,0 +1,2162 @@
+Date: Tue, 10 Dec 1996 21:55:51 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Thu, 05 Dec 1996 07:12:28 GMT
+Content-length: 88963
+
+<html>
+<!-- $Id: ntemacs.html,v 1.1 1996/01/11 20:59:13 voelker Exp voelker $ -->
+
+<head><title>GNU Emacs for Windows NT and Windows 95</title></head>
+<body>
+
+<center>
+<h1>GNU Emacs on Windows NT and Windows 95</h1>
+</center>
+
+<center>
+
+The latest release is <b>19.34</b>. <br>
+
+See the section below on the <!WA0><!WA0><!WA0><a href="#changes19-33">changes between
+19.32/33/34 and 19.31</a>. <p>
+
+Emacs won't start anymore?  See <!WA1><!WA1><!WA1><a
+href="#trouble-usedtowork">troubleshooting</a> below.
+
+</center>
+
+<p>
+
+<center>
+<i><font size=-1>Last modified: December 3, 1996</font></i>
+</center>
+
+<hr>
+<h2>Table of Contents</h2>
+
+<ol>
+<li><!WA2><!WA2><!WA2><a href="#support">Which versions of NT and Win95 are supported?</a>
+	<ul>
+	<li>Related ports: <!WA3><!WA3><!WA3><a href="#support-msdos">MSDOS and Windows 3.11</a>, <!WA4><!WA4><!WA4><a href="#support-mule">MULE</a>
+	</ul>
+<li><!WA5><!WA5><!WA5><a href="#changes19-34">Changes between 19.32/33/34 and 19.31.</a>
+<li><!WA6><!WA6><!WA6><a href="#get-dist">How do I get an Emacs distribution?</a>
+	<ul>
+	<li><!WA7><!WA7><!WA7><a href="#where-source">Where can I get the source distribution?</a>
+	<li><!WA8><!WA8><!WA8><a href="#where-precompiled">Where can I get precompiled versions?</a>
+	<li><!WA9><!WA9><!WA9><a href="#unpack">How do I unpack the distributions?</a>
+	</ul>
+<li><!WA10><!WA10><!WA10><a href="#compile">I don't want the precompiled version. How do I compile Emacs myself?</a>
+<li><!WA11><!WA11><!WA11><a href="#install">How do I install Emacs?</a>
+<li><!WA12><!WA12><!WA12><a href="#troubleshooting">When I run Emacs, nothing happens.  What's the deal?</a>
+	<ul>
+	<li><!WA13><!WA13><!WA13><a href="#trouble-usedtowork">Emacs used to work fine.  But now it
+won't start, and I didn't change anything in Emacs.</a>
+	</ul>
+<li><!WA14><!WA14><!WA14><a href="#dialup-problem">Why does Emacs ask me to connect to my dialup service when it starts up?</a>
+<li><!WA15><!WA15><!WA15><a href="#popup">When I run Emacs, a console window pops up.  How do I make it go away?</a>
+<li><!WA16><!WA16><!WA16><a href="#startup">Where do I put my .emacs (or _emacs) file?</a>
+<li><!WA17><!WA17><!WA17><a href="#capscontrol">How do I swap CapsLock and Control?</a>
+<li><!WA18><!WA18><!WA18><a href="#attributes">How do I change the size, position, font, and
+color attributes of Emacs?</a>
+	<ul>
+	<li><!WA19><!WA19><!WA19><a href="#windows-attributes">Windows Interface</a>:
+	    <!WA20><!WA20><!WA20><a href="#windows-size">Size</a>,
+	    <!WA21><!WA21><!WA21><a href="#windows-position">Position</a>,
+	    <!WA22><!WA22><!WA22><a href="#windows-font">Fonts</a>, and
+	    <!WA23><!WA23><!WA23><a href="#windows-color">Colors</a>.
+	    <ul>
+	    <li><!WA24><!WA24><!WA24><a href="#windows-frames">Customizing frame appearances.</a>
+	    <li><!WA25><!WA25><!WA25><a href="#windows-italics">Information on italic fonts.</a>
+	    </ul>
+	<li><!WA26><!WA26><!WA26><a href="#console-attributes">Console Interface</a>:
+	    <!WA27><!WA27><!WA27><a href="#console-size">Size</a>,
+	    <!WA28><!WA28><!WA28><a href="#console-position">Position</a>,
+	    <!WA29><!WA29><!WA29><a href="#console-font">Fonts</a>, and
+	    <!WA30><!WA30><!WA30><a href="#console-color">Colors</a>.
+	</ul>
+<li><!WA31><!WA31><!WA31><a href="#mouse">How do I use Emacs with a two-button mouse?</a>
+<li><!WA32><!WA32><!WA32><a href="#highlight">How do I highlight the region between the point and the mark?</a>
+<li><!WA33><!WA33><!WA33><a href="#beep">How do I change the sound of the Emacs beep?</a>
+<li><!WA34><!WA34><!WA34><a href="#display-iso">How do I display ISO 8859 characters?</a>
+<li><!WA35><!WA35><!WA35><a href="#subproc">Subprocesses under Emacs</a>
+	<ul>
+	<li><!WA36><!WA36><!WA36><a href="#subproc-console">Programs reading input hang</a>
+	<li><!WA37><!WA37><!WA37><a href="#subproc-buffer">Buffering in shells</a>
+	<li><!WA38><!WA38><!WA38><a href="#subproc-dos">DOS subprocesses</a>
+	</ul>
+<li><!WA39><!WA39><!WA39><a href="#shell">How do I use a shell in Emacs?</a>
+	<ul>
+	<li><!WA40><!WA40><!WA40><a href="#shell-echo">How do I prevent shell commands from being echoed?</a>
+	<li><!WA41><!WA41><!WA41><a href="#shell-command_com">Why is a "Specified COMMAND search directory bad" message printed?</a>
+	<li><!WA42><!WA42><!WA42><a href="#shell-invalid">Within a shell, when I run programs I get "Incorrect DOS version" messages.  Why?</a>
+	</ul>
+<li><!WA43><!WA43><!WA43><a href="#mail">How do I use mail with Emacs?</a>
+	<ul>
+	<li><!WA44><!WA44><!WA44><a href="#mail-outgoing">Outgoing</a>
+	<li><!WA45><!WA45><!WA45><a href="#mail-rmail">Incoming: RMAIL and POP3</a>
+	<li><!WA46><!WA46><!WA46><a href="#mail-vm-pop3">Incoming: VM and POP3</a>
+	<li><!WA47><!WA47><!WA47><a href="#mail-gnus">Incoming: GNUS</a>
+	<li><!WA48><!WA48><!WA48><a href="#mail-tm">tm</a>
+	</ul>
+<li><!WA49><!WA49><!WA49><a href="#ange-ftp">How do I use ange-ftp with Emacs?</a>
+<li><!WA50><!WA50><!WA50><a href="#telnet">How do I use telnet with Emacs?</a>
+<li><!WA51><!WA51><!WA51><a href="#crypt">How do I use crypt with Emacs?</a>
+<li><!WA52><!WA52><!WA52><a href="#browse-url">How do I use the browse-url package?</a>
+<li><!WA53><!WA53><!WA53><a href="#printing">How do I print from Emacs?</a>
+<li><!WA54><!WA54><!WA54><a href="#assoc">How do I associate files with Emacs?</a>
+<li><!WA55><!WA55><!WA55><a href="#unix">How do I access UNIX files via NFS?</a>
+<li><!WA56><!WA56><!WA56><a href="#generic-mode">Is there a package for editing Windows specific files (.bat, .ini, .inf, etc.)?</a>
+<li><!WA57><!WA57><!WA57><a href="#vb">Is there a mode for editing Visual Basic source?</a>
+<li><!WA58><!WA58><!WA58><a href="#rcs">Is there a version of RCS for Win32?</a>
+<li><!WA59><!WA59><!WA59><a href="#ispell">Is there a version of ispell for Win32?</a>
+<li><!WA60><!WA60><!WA60><a href="#popupmenu">Does Emacs support popup menus?</a>
+<li><!WA61><!WA61><!WA61><a href="#bugs">BUGS</a>
+<li><!WA62><!WA62><!WA62><a href="#error-messages">I get these strange error messages.  What's wrong?</a>
+	<ul>
+	<li><!WA63><!WA63><!WA63><a href="#error-messages">M-x shell, etc., fails with 'Invalid read
+syntax: "."'</a>
+	<li><!WA64><!WA64><!WA64><a href="#error-messages">M-x shell, etc., fails with 'Symbol's value
+as variable is void: ll\.'</a>
+	<li><!WA65><!WA65><!WA65><a href="#error-messages">Symbol's value as variable is void: pressions\.</a>
+	<li><!WA66><!WA66><!WA66><a href="#error-messages">C-z produces <i>Can't spawn ...</i></a>
+	</ul>
+<li><!WA67><!WA67><!WA67><a href="#win95">Win95 Specific Problems</a>
+	<ul>
+	<li><!WA68><!WA68><!WA68><a href="#win95-env">I get these "Out of environment space" messages.  Why?</a>
+	<li><!WA69><!WA69><!WA69><a href="#win95-esc">The ESC key doesn't seem to work on Win95.  Why?</a>
+	<li><!WA70><!WA70><!WA70><a href="#win95-refresh">Emacs doesn't refresh correctly.  Why?</a>
+	<li><!WA71><!WA71><!WA71><a href="#win95-subprocess">When will the Win95 version have subprocess support?</a>
+	</ul>
+<li><!WA72><!WA72><!WA72><a href="#patches">Patches</a>
+	<ul>
+	<li><!WA73><!WA73><!WA73><a href="#patch-19-30-0">19.30.0</a>
+	<li><!WA74><!WA74><!WA74><a href="#patch-19-30-1">19.30.1</a>
+	</ul>
+<li><!WA75><!WA75><!WA75><a href="#other-tools">What other Unix tools have been ported to NT and/or Windows 95?</a>
+<li><!WA76><!WA76><!WA76><a href="#mailing-list">What's the name of the NT Emacs mailing list?</a>
+	<ul>
+	<li><!WA77><!WA77><!WA77><a href="#mailing-archives">Where are the archives for ntemacs-users?</a>
+	</ul>
+</ol>
+
+<hr>
+<h3><a name="support">Which versions of NT and Win95 are supported?</a></h3>
+
+This port is known to run on all versions of NT up to 4.0 (including
+with the beta Win95 shell) on all NT hardware platforms, and on
+Windows 95 beta version 347 and later versions.  This port is built
+using the Win32 API and supports most of the features of the Unix
+version.  (Note that this port does not work with Win32s, and I do not
+know enough about Win32s to know whether it is either possible or even
+worth trying.) <p>
+
+<h4><a name="support-msdos">MSDOS and Windows 3.11</h4>
+
+Eli Zaretskii &lteliz@is.elta.co.il&gt maintains the port of GNU Emacs
+for MSDOS and MS Windows.  You can download precompiled versions
+with the latest DJGPP archives:
+
+<ul>
+<li><!WA78><!WA78><!WA78><a href="ftp://ftp.simtel.net/pub/simtelnet/gnu/djgpp/v2gnu/emacs.README">ftp://ftp.simtel.net/pub/simtelnet/gnu/djgpp/v2gnu/emacs.README</a>
+<li><!WA79><!WA79><!WA79><a href="ftp://ftp.simtel.net/pub/simtelnet/gnu/djgpp/v2gnu/em1934*.zip">ftp://ftp.simtel.net/pub/simtelnet/gnu/djgpp/v2gnu/em1934*.zip</a>
+</ul>
+
+Eli strongly recommends that you start with the emacs.README file --
+it contains crucial info about what's in the other 10 zip files and
+how to install them and get started with Emacs on MSDOS/MS-Windows
+platforms. <p>
+
+More from Eli:
+
+<blockquote>
+It might be of interest to Windows users that this version of Emacs
+supports long filenames (Windows 95 only) and the Windows clipboard (all
+versions of MS-Windows).  It also supports multiple frames, but they all
+overlap, like when Emacs runs on a ``glass teletype'' terminal. <p>
+
+People who would like to run Emacs on plain DOS (as opposed to Windows)
+will need to download and install a DPMI host at this URL: <p>
+
+<!WA80><!WA80><!WA80><a href="ftp://ftp.simtel.net/pub/simtelnet/gnu/djgpp/v2misc/csdpmi3b.zip">ftp://ftp.simtel.net/pub/simtelnet/gnu/djgpp/v2misc/csdpmi3b.zip</a>
+</blockquote>
+
+<h4><a name="support-mule">MULE</h4>
+
+Hisashi Miyashita &lthimi@bird.scphys.kyoto-u.ac.jp&gt maintains MULE,
+multilingual Emacs.  You can get distributions of MULE at <!WA81><!WA81><!WA81><a
+href="ftp://ftp.tokyonet.AD.JP/pub/pc/misc/mule2.3-win32">ftp://ftp.tokyonet.AD.JP/pub/pc/misc/mule2.3-win32</a>. <p>
+
+<hr>
+<h3><a name="changes19-34">Changes between 19.32/33/34 and 19.31.</h3>
+
+<i> As far as Emacs on NT/Win95 are concerned, 19.32, 19.33, and 19.34
+(released within weeks of each other) are essentially the same. </i>
+
+<ul>
+
+<li> Emacs now loads winsock.dll dynamically to get around the problem
+where starting Emacs would force a network connection to be made on
+machines configured to use the dialup network.
+
+<ul>
+	<li> Two new functions, <b>win32-has-winsock</b> and
+<b>win32-unload-winsock</b>, determine whether winsock has been loaded
+(and load it if not), and unload winsock, respectively.
+
+	<li> The registry entry PRELOAD_WINSOCK can be set to have
+winsock loaded when Emacs starts up (for machines that are always
+connected to the network).
+</ul>
+
+<li> Bug fixes to the rename function which, on Win95, does some
+shuffling to overcome a bug in MoveFile.  If the new name is only
+different in case to the old name, the old file is not deleted.  Also,
+the temporary file name now uses a long extension to ensure that Win95
+names the renamed file properly.
+
+<li> The Alt key can now be used to generate the <b>alt</b> modifier
+(default use of Alt is to generate the <b>meta</b> modifier).  New
+variable <b>win32-alt-is-meta</b>, when non-nil, has Alt generate the
+<b>alt</b> modifier.
+
+<li> Emacs now repaints the backgrounds properly when occluded.
+
+<li> Fixed-width fonts of any quality or precision are now allowed.
+
+<li> DOS processes restricted on NT as well as Win95.
+
+<li> Bug fix to mouse positioning.
+
+<li> Driver letters now always lower-cased.
+
+<li> Improvements to keyboard handling.  Emacs no longer loses
+modifier key state when switching back and forth among applications.
+It now also processes valid keys that are produced using AltGr with
+dead keys.  The strange behavior of Emacs hanging when C-g is pressed
+repeatedly upon startup in console mode has also been fixed.
+
+<li> New variable <b>win32-downcase-file-names</b>.  When non-nil,
+upper case filenames are converted to lower case.
+
+<li> DOS subprocesses no longer can be killed via signals.
+
+<li> Improvements to shell-mode.  
+
+<ul>
+	<li>It can now complete filenames that include '/' or '\' as
+the path separator, and defaults to '\' as the path separator for
+completed names.
+
+	<li>It can also expand environment variable references using
+the %ENV_VAR% syntax.
+
+	<li>It does a better job at following directory changes,
+although it can still get confused as you switch among drives.
+</ul>
+
+<li> The smtpmail.el file is now in the standard distribution.
+
+<li> vc-mode now properly quotes checkin messages.
+
+<li> TAGS files are now computed and loaded as text.
+
+<li> The wakeup program has been removed (across all platforms) now
+that Emacs internally supports timers.
+
+</ul>
+
+<hr>
+<h3><a name="get-dist">How do I get an Emacs distribution?</h3>
+
+Emacs is distributed in two different forms.  You can get the full
+source distribution of Emacs, or you can get an installed distribution
+of Emacs with all executables precompiled.<p>
+
+<h4><a name="where-source">Where can I get the source distribution?</h4>
+
+The latest source distribution can be found in <!WA82><!WA82><!WA82><a
+href="ftp://ftp.cs.washington.edu/pub/ntemacs/latest/src">ftp.cs.washington.edu/pub/ntemacs/latest/src</a>. It
+is distributed in two formats: one large gzipped tar file
+(emacs*.tar.gz), and a collection of smaller zip files that can be
+copied to 1.44 Mbyte floppies (em-src-_?.zip).<p>
+
+In the same directory you should also find patch files that enable you
+to upgrade source distributions to the latest version.  These patch
+files are mirrors of the ones on the FSF server at <!WA83><!WA83><!WA83><a
+href="ftp://ftp.gnu.ai.mit.edu/pub/gnu">ftp://ftp.gnu.ai.mit.edu/pub/gnu</a>. <p>
+
+<h4><a name="where-precompiled">Where can I get precompiled versions?</h4>
+
+Precompiled versions always exist for NT-i386 and Win95.  When I
+receive contributed precompiled versions from other users on the other
+platforms, I place them in the appropriate directory.  So if the link
+ends in an empty or nonexistant directory, then I haven't received any
+precompiled executables for that platform.  In this case, if you have
+a Microsoft compiler, then you can download the source and compile it
+(and if you do, please consider contributing your executables; send me
+mail and we can make arrangements for making them available on my ftp
+server). <p>
+
+Links to precompiled versions: <p>
+
+<ul>
+<li><b>i386:</b> <!WA84><!WA84><!WA84><a href="ftp://ftp.cs.washington.edu/pub/ntemacs/latest/i386">ftp.cs.washington.edu/pub/ntemacs/latest/i386</a>
+<li><b>mips:</b> <!WA85><!WA85><!WA85><a href="ftp://ftp.cs.washington.edu/pub/ntemacs/latest/mips">ftp.cs.washington.edu/pub/ntemacs/latest/mips</a>
+<li><b>alpha:</b> <!WA86><!WA86><!WA86><a href="ftp://ftp.cs.washington.edu/pub/ntemacs/latest/alpha">ftp.cs.washington.edu/pub/ntemacs/latest/alpha</a>
+<li><b>ppc:</b> <!WA87><!WA87><!WA87><a href="ftp://ftp.cs.washington.edu/pub/ntemacs/latest/ppc">ftp.cs.washington.edu/pub/ntemacs/latest/ppc</a>
+<li><b>win95:</b> <!WA88><!WA88><!WA88><a href="ftp://ftp.cs.washington.edu/pub/ntemacs/latest/i386">ftp.cs.washington.edu/pub/ntemacs/latest/i386</a> (i386 is both NT and Win95)
+</ul>
+
+I've had numerous reports from people outside North America stating
+that their ftp connection aborts for no apparent reason roughly a
+third of the way through a transfer of a full distribution.  Marc
+Haber (s_haber@ira.uka.de) said that he suffered from the same
+problem, and later found that a timeout configured into his WWW proxy
+would cancel the transfer when the link to the US was very busy.
+Going around his proxy solved the problem.  Other than that, I have
+not been able to figure out why this might be the case.  If this
+happens to you, you might consider trying to download it in the 1.44
+MB chunks, or try one of the mirror sites.  Also, if you have access
+to a standalone ftp client (separate from your web browser), you
+should definitely try that as well. <p>
+
+Mirror sites with precompiled versions:
+
+<ul>
+<!-- Peter Flynn (pflynn@curia.ucc.ie) -->
+<li><b>Ireland:</b><br>
+<!WA89><!WA89><!WA89><a href="ftp://ftp.ucc.ie/pub/emacs">ftp://ftp.ucc.ie/pub/emacs</a> (all)
+<!-- David Wood (dwood@plugged.net.au) -->
+<li><b>Australia:</b><br>
+<!WA90><!WA90><!WA90><a href="http://www.plugged.net.au/gnu/ntemacs">http://www.plugged.net.au/gnu/ntemacs</a> (i386)
+<!-- Chris Szurgot (szurgot@itribe.net) -->
+<li><b>North America (East Coast):</b><br>
+<!WA91><!WA91><!WA91><a href="http://www.itribe.net/virtunix/emacs">http://www.itribe.net/virtunix/emacs</a> (i386)
+</ul>
+
+<!-- I don't have a precompiled version for the powerpc.  If someone has a -->
+<!-- precompiled version that they wouldn't mind having others use, please -->
+<!-- send me mail so that we can arrange to place it on the ftp site. -->
+
+<h4><a name="unpack">How do I unpack the distributions?</h4>
+
+Decide on a directory in which to place Emacs.  Move the distribution
+to that directory, and then unpack it.  If you have the gzipped tar
+version, first use gunzip to uncompress the tar file, and then use tar
+with the "xvfm" flags to extract the files from the tar file:<p>
+
+<pre>
+	% gunzip -c -d emacs.tar.gz | tar xvfm -
+</pre>
+
+The "-d" flag forces gunzip to decompress (its behavior depends upon
+the name of the executable, and sometimes it doesn't recognize that it
+is really gunzip), and the "-c" flag tells it to pipe its output to
+stdout.  Similarly, the "-" flag to tar tells it to read the tar file
+from stdin.  Unpacking the distribution this way leaves the
+distribution in compressed form so it takes up less space.  <p>
+
+If for some reason you also want to have the tar file gunzipped, then
+invoke gunzip without the -c option: <p>
+
+<pre>
+	% gunzip -d emacs.tar.gz
+</pre>
+
+If you have the zip version, use unzip with the "-x" flag on all of
+the .zip files (note that you cannot use pkunzip on these files, as
+pkunzip will not preserve the long filenames): <p>
+
+<pre>
+	% unzip -x emacs-_1.zip
+	% (repeat for the remaining .zip files)
+</pre>
+
+You can find precompiled versions of all of the compression and
+archive utilities in <!WA92><!WA92><!WA92><a
+href="ftp://ftp.cs.washington.edu/pub/ntemacs/utilities">ftp.cs.washington.edu/pub/ntemacs/utilities</a>. <p>
+
+<a name="unpack-problems"><font size=-1><b>WARNING:</b></font> Some
+utilities that handle tar files can incorrectly untar the
+distributions when using the default settings.  If you encounter
+problems with Emacs, see the section below on <!WA93><!WA93><!WA93><a
+href="#troubleshooting">troubleshooting</a> these problems. <p>
+
+<h4>Now what?</h4>
+
+You should find a file named README as a part of the distribution.  Be
+sure to read this file for information on installing Emacs, as well as
+reading the <!WA94><!WA94><!WA94><a href="#install">section below</a> on installing
+Emacs. <p>
+
+<hr> 
+<h3><a name="compile">I don't want the precompiled version. How
+do I compile Emacs myself?</h3>
+
+To compile Emacs, you will need a Microsoft C compiler package.  For
+NT, this can be any of the SDK compilers from NT 3.1 and up, Microsoft
+Visual C++ for NT (versions 1.0 and up), or Microsoft Visual C++
+(versions 2.0 and up).  For Windows 95, this can be Microsoft Visual
+C++ versions 2.0 and up. <p>
+
+Download and place the source distribution in a directory (say,
+c:\emacs).  Unpack the distribution, and go to the nt subdirectory of
+the emacs directory that gets created in the unpacking process.  Read
+the README and INSTALL files included with the distribution for the
+full details of this process. <p>
+
+Below are known problems with various combinations of Emacs versions
+and compiler versions.  The problems are being addressed in later
+versions, and are included here so that you know to expect them and
+how to work around them: <p>
+
+<h4><a name="19.29.1-msvc22">Emacs 19.29.1 and MSVC 2.2</a></h4>
+
+<blockquote>
+
+<b>win32.mak:</b> For some reason, the MSVC 2.2 installation process
+does not install win32.mak, which is included by the file ntwin32.mak.
+You'll have to copy over the win32.mak file into the MSVC include
+directory before the Emacs makefiles will work. <p>
+
+<b>PROCESSOR_* macros:</b> Although the PROCESSOR_* macros are defined
+in the manual, MSVC 2.2 no longer defines the full set of PROCESSOR_*
+macros in winnt.h.  You'll have to comment the macros out in nt\nt.c
+to get nt.c to compile. <p>
+
+</blockquote>
+
+<hr>
+<h3><a name="install">How do I install Emacs?</h3>
+
+<dl>
+<dt><b>Precompiled distribution</b> <p>
+
+<dd>
+
+<b>Preferred method:</b> <p>
+
+Let's assume that the directory in which you have unpacked Emacs is
+c:\emacs (note that it can be anything you want it to be; I just want
+to be able to refer to something concrete at this point).  First, you
+will want to run the program <b>bin\addpm.exe</b> with the Emacs
+directory as an argument.  In this example you would invoke it as: <p>
+
+<pre>
+	c:\emacs\bin\addpm.exe c:\emacs
+</pre>
+
+Invoking addpm.exe will do two things.  First, it will create a set of
+registry keys that tell Emacs where to find its support files (lisp,
+info, etc.).  Second, it will create a folder containing an icon
+linked to runemacs.exe (a wrapper program for invoking Emacs). <p>
+
+Now, to run Emacs, simply click on the icon in the newly created
+folder or invoke runemacs.exe from a command prompt. <p>
+
+<b>Alternate method:</b> <p>
+
+Another alternative for running Emacs is to use the <b>emacs.bat</b>
+batch file in the bin directory (this is now the old method of
+invoking Emacs).  Edit the emacs.bat file to change the emacs_dir
+environment variable to point to the Emacs installation directory and
+invoke the emacs.bat file to run Emacs. (If you use bash as your
+shell, you can use an <!WA95><!WA95><!WA95><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/emacs.sh">equivalent
+bash script</a> to emacs.bat.) <p>
+
+Note that, on Win95, you are likely to get "Out of environment space"
+messages when invoking the emacs.bat batch file.  The problem is that
+the console process in which the script is executed runs out of memory
+in which to set the Emacs environment variables.  To get around this
+problem, create a shortcut icon to the emacs.bat script.  Then right
+click on the icon and select Properties.  In the dialog box that pops
+up, select the Memory tab and then change the Environment memory
+allocation from "Auto" to "1024".  Close the dialog box and then
+double click on the icon to start Emacs. <p>
+
+<dt><b>Source distribution</b>
+
+<dd>You have two options for installing Emacs with the source
+distribution.  You can install it over the source directory, or you
+can install it in a completely separate directory.  Emacs works the
+same with either installation option.  One advantage of installing it
+over the source directory is that it takes up far less disk space
+(primarly because the lisp files don't have to be copied).  One
+advantage of installing Emacs in a separate directory is that Emacs
+can now be managed as a single unit that can be moved and copied
+independently of the source code. <p>
+
+The <b>INSTALL_DIR</b> macro in the nt\makefile.def makefile
+determines where Emacs will get installed from the source
+distribution.  If you want to install Emacs in the same directory as
+the source tree (say, c:\src\emacs), then simply set INSTALL_DIR
+appropriately:
+<pre>
+	INSTALL_DIR = c:\src\emacs
+</pre>
+
+If you want to install Emacs in a different directory (say, c:\emacs),
+then set INSTALL_DIR to this directory:
+<pre>
+	INSTALL_DIR = c:\emacs
+</pre>
+
+As compared with the installation process for the precompiled version,
+the installation process will automatically create a bin\emacs.bat
+file in the installation tree with the <b>emacs_dir</b> variable set
+appropriately.<p>
+
+</dl>
+
+<hr>
+<h3><a name="troubleshooting">When I run Emacs, nothing happens.  
+What's the deal?</h3>
+
+Emacs could have failed to run for a number of reasons.  The most
+common symptom is that, when Emacs is started, the cursor changes for
+a second but nothing happens.  If this happens to you, it is quite
+likely that the distribution was unpacked incorrectly.  If you are
+using 19.31 on a machine that uses dialup networking, then it is also
+possible that Emacs is trying to resolve your machine's domain name as
+winsock.dll is being loaded.  
+
+See the next section for more info on working around this problem;
+check for the following to see if there was a problem during
+unpacking: <p>
+
+<ol>
+
+<li>Be sure to disable the CR/LF translation or the executables will
+be unusable.  Older versions of WinZipNT would enable this translation
+by default.  If you are using WinZipNT, disable it.  <p>
+
+<li>Check that filenames were not truncated to 8.3.  For example,
+there should be a file lisp\term\win32-win.el; if this has been
+truncated to win32-wi.el, your distribution has been corrupted while
+unpacking and Emacs will not start. <p>
+
+<li>I've been told that some utilities (WinZip again?) don't create
+the lock subdirectory.  The lock subdirectory needs to be created. <p>
+
+<li>I've also had reports that the gnu-win32 tar corrupts the
+executables.  Use the version of tar on my ftp site instead.  <p>
+
+</ol>
+
+If you are in doubt about whether the utilities you used unpacked the
+distribution incorrectly, use the gunzip, tar, and unzip executables
+provided in the utilities directory.  These are the ones I use to
+create and test the distributions.  My advice would be to use these
+utilities from the start.  <p>
+
+If you feel certain that you have unpacked the distribution correctly,
+then you should check to make sure that the <tt>emacs_dir</tt>
+variable in the emacs.bat file is set correctly.  If it is and you are
+still having trouble, make sure that it is an absolute path that
+includes the drive letter (or is in UNC format). <p>
+
+If it is still not working, send me mail or send mail to the list. <p>
+
+<h4><a name="trouble-usedtowork">Emacs used to work fine.  But now it
+won't start, and I didn't change anything in Emacs.</h4>
+
+The typical behavior people are encountering with this problem is that
+they invoke Emacs but either nothing happens or it produces an access
+violation -- and yet they have changed nothing in their Emacs
+installation, and Emacs used to work fine before this point.  Most
+likely, the problem is due to an interaction between Emacs and some
+new piece of software you have just installed (the most popular
+culprit seems to be HeapAgent).  Due to the nature in which Emacs is
+designed and built, Emacs is fundamentally non-relocatable: it uses an
+initialized heap segment that needs to be mapped in at a particular
+virtual address at startup time before Emacs will work correctly.  It
+appears that programs like HeapAgent install DLLs that intrude upon
+Emacs' virtual address space, preventing Emacs to load its initialized
+heap. <p>
+
+If you have HeapAgent, then you can work around the problem in two
+ways.  You can download the source and recompile, as described below.
+Or, you can use <tt>editbin</tt> to change the base address at which
+the <b>haloader.dll</b> dll will be loaded (this is the dll that gets
+loaded into every application's address space on startup): <p>
+
+<blockquote><pre>
+editbin /rebase:base=0x20000000 haloader.dll
+</pre></blockquote>
+
+Otherwise, the only other workaround is to recompile Emacs on your
+machine so that Emacs creates and initializes its heap at a virtual
+address that does not conflict with software such as HeapAgent.  To do
+this, you will need to download the <!WA96><!WA96><!WA96><a
+href="#where-source">source</a>, #define the macro NTHEAP_PROBE_BASE
+inside the procedure src\ntheap.c:allocate_heap(), and rebuild. <p>
+
+<hr>
+<h3><a name="dialup-problem">Why does Emacs ask me to connect to my dialup service when it starts up?</h3>
+
+For some users, when Emacs starts up it pops up the dialog for
+connecting to their dialup service, or sometimes appears to hang for a
+few minutes and suddenly appear. <p>
+
+The reason for this is that Emacs now has networking support built in.
+When Emacs starts, the winsock DLL automatically gets loaded and tries
+to resolve the fully qualified domain name for your machine under the
+name "localhost".  If the system doesn't have this name mapped, it
+will try to query a nameserver on the internet, which is typically
+some host within your ISP and subsequently prompts to connect to your
+dialup service so that it can ask a name server for the domain name of
+your machine.  As you know, this is very unfortunate, and was not
+anticipated when the networking support was added. <p>
+
+This problem will be fixed when 19.32 comes out, but you can work
+around the problem by giving the dialup support another method for
+figuring out the domain name of your machine.  To do this, you need to
+edit the hosts file for your system (located in %windir%\hosts on
+Win95 and %windir%\system32\drivers\etc\hosts on NT) so that localhost
+becomes an alias for your machine name.  If your system doesn't have a
+hosts file yet, you can easily create one by copying the sample hosts
+file in the same directory, <tt>hosts.sam</tt>. <p>
+
+For example, if my machine were named
+<tt>banana-fish.cs.washington.edu</tt>, then I would edit the hosts
+file from: <p>
+
+<blockquote><pre>
+127.0.0.1       localhost
+</pre></blockquote>
+
+to <p>
+
+<blockquote><pre>
+127.0.0.1       banana-fish.cs.washington.edu localhost
+</pre></blockquote>
+
+The <i>hostname</i> should be the value of invoking (system-name) in
+the Emacs *scratch* buffer, i.e., the fully qualified domain name for
+your system.  Note that you may also have to tell the system to look
+in the hosts file as well as using DNS. <p>
+
+If this doesn't work for you, there are some other options (I have not
+tried these): <p>
+
+<ul>
+
+<li> Turn off the auto-dial option of PPP under the Control Panel
+Dialup Networking icon.  However, this would mean that you would have
+to manually connect to your dialup service whenever you wanted to use
+a network applicaton.  <p>
+
+<li> Use a dummy winsock.dll.  Cristian Ionescu-Idbohrn
+&ltcii@kcs.se&gt has provided one called <!WA97><!WA97><!WA97><a
+href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/mozock.zip">mozock.dll</a>.  Download the zip
+file, unzip it, move the mozock.dll file to the bin directory where
+emacs.exe resides, and then rename the mozock.dll file to wsock32.dll.
+When Emacs loads, it will load this wsock32.dll instead of the system
+one.  <p>
+
+For networking support, you can use the external <!WA98><!WA98><!WA98><a
+href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/nttcp.exe">nttcp.exe</a> program.  Download
+nttcp.exe and place it in your Emacs bin directory.  Also download
+this version of <!WA99><!WA99><!WA99><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/tcp.el">tcp.el</a>,
+byte-compile it, and place it in your lisp directory.  Then add the
+following to your .emacs: <p>
+
+<blockquote><pre>
+  (load-library "tcp")
+  (setq tcp-program-name "nttcp")
+</pre></blockquote>
+
+<li> Edit the emacs.exe executable to remove the reference to
+wsock32.dll in the import table.  Copy emacs.exe to a backup file, and
+then start up Emacs (you might have to connect to your service
+provider to do this), load emacs.exe into a buffer, search for
+wsock32.dll, turn on overwrite mode, and then change wsock32.dll to
+xsock32.dll by changing the 'w' to an 'x'.  Now save the modified
+emacs.exe.  Now, to get networking support again, follow the
+directions in the previous item. <p>
+
+<li> Delete all DNS nameservers listed in the TCP/IP propoerties of
+the network control panel dialog.  This is a rather drastic approach,
+since you will want DNS nameservers when running other applications
+(and even the networking ones inside of Emace). <p>
+
+</ul>
+
+<hr>
+<h3><a name="popup">When I run Emacs, a console window pops up.  How do I make it go away?</h3>
+
+This is annoying, I know, and you shouldn't have to be dealing with
+this.  But please bear with me for now.  If it isn't there already,
+prepend "start" to the last line of the .bat file (the line that
+invokes the emacs.exe executable).  Then create a shortcut icon to the
+emacs.bat file, and edit the <b>Properties</b> of the shortcut (right
+click on the icon).  On the <b>Program</b> tab, select <b>Run:</b> to
+be <b>Minimized</b> and make sure the <b>Close on exit</b> checkbox is
+checked.  Double click on the icon, and Emacs should start up cleanly.
+<p>
+
+<hr>
+<h3><a name="attributes">How do I change the size, position, font, and
+color attributes of Emacs?</h3>
+
+Emacs can run in two different interface modes: the Windows interface,
+which allows the flexible use and mixture of fonts and colors; and the
+console interface, which constrains Emacs to the limitations of
+console windows.  The following two sections describe how to specify
+and change the size, position, font, and color attributes of Emacs in
+both interface modes.  <p>
+
+<center>
+<h3><a name="windows-attributes">Windows Interface</h3>
+</center>
+
+With the Windows interface, you can change the size, position, font,
+and color attributes of Emacs using three different mechanisms: using
+the mouse with the user interface, by specifying them as command line
+arguments, or by invoking Emacs Lisp functions.  You will probably
+find it convenient to specify command line arguments in the
+<b>Properties</b> of the shortcut to the Emacs batch file, and to
+invoke the lisp functions in your startup file.  For information on
+how to propagate attributes to new frames, see <!WA100><!WA100><!WA100><a
+href="#windows-frames">the section below on frames</a>. <p>
+
+<li><a name="windows-size"><b>S<font size=-1>IZE</font></b><p>
+
+<dl>
+
+<dt><b>User Interface</b>
+
+<dd>To resize an Emacs window, drag on a border with the mouse. <p>
+
+<dt><b>Command Line</b>
+
+<dd>To have Emacs start up with a particular size, invoke it with the
+X Windows <b>-geometry</b> command line argument.  For example, to
+start Emacs with a window 40 lines by 80 columns in size, use the
+following: <p>
+
+<blockquote>
+<tt>emacs -g 80x40</tt>
+</blockquote>
+
+Note that the geometry command can be combined with the position
+command, as described below. <p>
+
+<dt><b>Emacs Lisp</b>
+
+<dd>To change the size of an Emacs frame using elisp, you can use the
+two functions <tt>set-frame-width</tt> and <tt>set-frame-height</tt>.
+For example, to resize Emacs to display 40 lines by 80 columns, you could
+use: <p>
+
+<blockquote>
+<tt>(set-frame-height (selected-frame) 40)</tt><br>
+<tt>(set-frame-width (selected-frame) 80)</tt>
+</blockquote>
+
+</dl>
+
+<p>
+<li><a name="windows-position"><b>P<font size=-1>OSITION</font></b> <p>
+
+<dl>
+<dt><b>User Interface</b>
+
+<dd>To reposition a running Emacs, click on its title bar and drag the
+window. <p>
+
+<dt><b>Command Line</b>
+
+<dd>To start Emacs at a particular position, invoke it with the X
+Windows <b>-geometry</b> command line argument.  For example, to start
+Emacs at pixel offset (10, 30) from the top left corner: <p>
+
+<blockquote>
+<tt>emacs -g +10+30</tt>
+</blockquote>
+
+To combine the size with position, first specify the size and then
+the position.  The two examples above can be combined as follows: <p>
+
+<blockquote>
+<tt>emacs -g 80x40+10+30</tt>
+</blockquote>
+
+Note that you can also specify position offsets from any of the
+corners of the screen.  See the <!WA101><!WA101><!WA101><a
+href="http://www.x.org/consortium/R6doc/man/X/X">GEOMETRY
+SPECIFICATIONS section</a> of the X man page for complete details on
+the geometry command. <p>
+
+<dt><b>Emacs Lisp</b>
+
+<dd>To reposition an Emacs frame using elisp, you can use the
+<tt>set-frame-position</tt> function.  For example, to move the
+current frame to the offset (10, 30), you could use: <p>
+
+<blockquote>
+<tt>(set-frame-position (selected-frame) 10 30)</tt>
+</blockquote>
+
+</dl>
+
+<p>
+<li><a name="windows-font"><b>F<font size=-1>ONTS</font></b><p>
+
+Fonts in Emacs are named using the standard X Windows format for
+fonts.  These font names are the names that can be used as arguments
+on the command line or in lisp functions.  To see the font name
+corresponding to a font chosen using the font selection dialog,
+execute the following elisp code in the *scratch* buffer: <p>
+
+<blockquote>
+<tt>(insert (prin1-to-string (win32-select-font)))</tt>
+</blockquote>
+
+To see the complete list of fonts that Emacs has access to, execute
+the following elisp code in the *scratch* buffer: <p>
+
+<blockquote>
+<tt>(insert (prin1-to-string (x-list-fonts "*")))</tt>
+</blockquote>
+
+For complete details on X Windows font names, see the <!WA102><!WA102><!WA102><a
+href="http://www.x.org/consortium/R6doc/man/X/X">FONT NAMES
+section</a> of the X man page. <p>
+
+The font support currently is a little rough around the edges.  In
+particular, italic fonts give Emacs some problems; see <!WA103><!WA103><!WA103><a
+href="#windows-italics">below</a> for more info about using italic
+fonts.  Generally it performs as expected, but occasionally you might
+get unexpected results (e.g., Emacs didn't quite use the font you told
+it to use).  Work is underway to fix these problems, but for now I
+suggest experimenting if you encounter problems.  <p>
+
+Also, X Windows has the luxury of a set of font aliases (such as
+<b>fixed</b>) that are convenient names for referring to specific
+fonts.  Work is underway to provide an equivalent alias mechanism
+under Win32 so that naming fonts does not have to be as cumbersome as
+it currently is. <p>
+
+<dl>
+
+<dt><b>User Interface</b>
+
+<dd>To change the default font that Emacs uses, shift click the left
+mouse button (i.e., [shift-mouse-1]) and a font selection dialog will
+pop up.  Select the font that you would like to use, and click on the
+<b>OK</b> button to close the dialog and use the selected font.  (Note
+that the dialog only displays fixed-pitch and screen fonts since Emacs
+cannot handle variable-pitched fonts.) <p>
+
+<dt><b>Command Line</b>
+
+<dd>To start Emacs with a particular font, use the the <b>-font</b> X
+Windows command line option.  For example, to start Emacs with the
+<b>Courier</b> font of size <b>10</b> and font style <b>Regular</b>,
+invoke Emacs using:
+
+<blockquote>
+<tt>emacs -font "-*-Courier-normal-r-*-*-13-97-*-*-c-*-*-ansi-"</tt>
+</blockquote>
+
+<dt><b>Emacs Lisp</b>
+
+<dd>To change the default font of Emacs using elisp, use the
+<tt>set-default-font</tt> function: <p>
+
+<blockquote><pre>
+(set-default-font 
+ "-*-Courier-normal-r-*-*-13-97-*-*-c-*-*-ansi-")
+</pre></blockquote>
+
+To set the font of a particular face, use the <tt>set-face-font</tt>
+function. <p>
+
+<dt><b>Registry</b>
+
+<dd>To change the default font of Emacs frames using registry entries,
+create a value in the key <tt>HKEY_CURRENT_USER\Software\GNU\Emacs</tt>: <p>
+
+<blockquote>
+<b>Value Name:</b> <tt>Emacs.Font</tt> <br>
+<b>Value Type:</b> <tt>REG_SZ</tt> <br>
+<b>String:</b> <tt>-*-Courier-normal-r-*-*-13-97-*-*-c-*-*-ansi-</tt>
+</blockquote>
+
+Since the font strings are rather cumbersome, I would suggest cutting
+the font string into the kill-ring (which will place it in the
+clipboard, too) and pasting it (Ctrl-V) into the regedit dialog.
+(Note that you shouldn't place quotes around the font string in the
+registry.) <p>
+
+If you have Emacs frames with specific names, you can also specify a
+font for that frame.  For the <b>Value Name</b> of the entry, use the
+name of the frame instead of <tt>Emacs</tt> (e.g., <tt>RMAIL.Font</tt>
+for your RMAIL frame). <p>
+
+</dl>
+
+<p>
+<li><a name="windows-color"><b>C<font size=-1>OLORS</font></b><p>
+
+As with other windowing attributes, Emacs uses the X Windows color
+names for specifying colors on the command line and in elisp.  One set
+of these names is a set of abstract color names, e.g., <b>red</b>,
+<b>green</b>, and <b>blue</b>.  These names are the ones you will
+typically use as arguments on the command line or in elisp functions.
+Emacs also supports the use of numeric color names; see the <!WA104><!WA104><!WA104><a
+href="http://www.x.org/consortium/R6doc/man/X/X">COLOR NAMES
+section</a> of the X man page for complete details on how to specify
+numeric color names and their color spaces. <p>
+
+To see the abstract color names that Emacs understands and the colors
+that they map to, use the menu command <b>Edit</b>-><b>Text
+Properties</b>-><b>Display Colors</b>, or invoke the
+<tt>list-colors-display</tt> function in the *scratch* buffer: <p>
+
+<blockquote>
+<tt>(list-colors-display)</tt>
+</blockquote>
+
+If you would like to change the mapping of color names to RGB values,
+or to add new color names to Emacs, then you will want to modify the
+alist <b>win32-color-map</b>.  To make changes, you can simply cons
+new mappings onto the head of the alist: <p>
+
+<blockquote>
+<tt>(setq win32-color-map (cons '("snow" . 16448255) win32-color-map))</tt>
+</blockquote>
+
+The number in the element is the logical OR of three values for the
+red, green, and blue components: (B &lt&lt 16 | G &lt&lt 8 | R).  In
+the example above, red is 255, green is 250, and blue is 250.  At some
+point there will be support for reading in files with color mappings
+to make this process a little easier. <p>
+
+<dl>
+
+<dt><b>User Interface</b>
+
+<dd>To change the foreground or background color in Emacs through the
+windowing interface, you can use the menu commands <b>Foreground
+Color</b>-><b>Other</b> and <b>Background Color</b>-><b>Other</b> in
+the <b>Edit</b>-><b>Text Properties</b> menu. <p>
+
+<dt><b>Command Line</b>
+
+<dd>To change the foreground or background color in Emacs on
+the command line, you can use the <b>-fg</b> and <b>-bg</b>
+command line arguments.  For example, to start Emacs with yellow
+text on a black background, invoke Emacs using: <p>
+
+<blockquote>
+<tt>emacs -fg yellow -bg black</tt>
+</blockquote>
+
+<dt><b>Emacs Lisp</b>
+
+<dd>You can use elisp functions to change the colors of any of the
+Emacs faces.  For example, to change the foreground or background
+color of Emacs, you can use the <tt>set-foreground-color</tt> and
+<tt>set-background-color</tt> functions.  To change the color of an
+arbitrary face, use the <tt>set-face-foreground</tt> and
+<tt>set-face-background</tt> functions.  To change the color of the
+cursor, use the <tt>set-cursor-color</tt> function.<p>
+
+The following elisp changes the background color to black: <p>
+
+<blockquote>
+<tt>(set-background-color "black")</tt>
+</blockquote>
+
+The following elisp changes the mode line foreground to firebrick: <p>
+
+<blockquote>
+<tt>(set-face-foreground 'modeline "firebrick")</tt>
+</blockquote>
+
+The following elisp changes the cursor color to purple: <p>
+
+<blockquote>
+<tt>(set-cursor-color "purple")</tt>
+</blockquote>
+
+</dl>
+
+<p>
+<li><a name="windows-frames"><b>F<font size=-1>RAMES</font></b><p>
+
+Emacs uses two alists to determine the default appearances of frames,
+<tt>default-frame-alist</tt> and <tt>initial-frame-alist</tt>.  The
+<tt>default-frame-alist</tt> variable sets the basic defaults of all
+frames.  Since it is a common Emacs usage to have the initial frame
+have slightly different properties than other frames (e.g., its
+position), you can use the <tt>initial-frame-alist</tt> variable to
+override properties in <tt>default-frame-alist</tt> specially for the
+initial frame.  You should definitely read the help text for these
+variables (C-h v) for more details on the differences between the two
+variables and how they interact with each other. <p>
+
+Below is an example of using <tt>default-frame-alist</tt> and
+<tt>initial-frame-alist</tt> to configure the appearances of the
+initial frame and all other frames (you would place this code in your
+<!WA105><!WA105><!WA105><a href="#startup">startup file</a>).  With
+<tt>default-frame-alist</tt>, we set the top left corner of new frames
+to be at pixel offset +200+400, the width and height to be 80x40, the
+cursor to be white, the foreground to be yellow, the background to be
+black, and the font to be Courier 10.  With
+<tt>initial-frame-alist</tt>, we override the top left corner of the
+initial frame to be at pixel offset +10+30, and inherit the remaining
+properties for the initial frame from
+<tt>default-frame-alist</tt>. <p>
+
+<blockquote><pre>
+(setq default-frame-alist
+      '((top . 200) (left . 400)
+	(width . 80) (height . 40)
+	(cursor-color . "white")
+	(foreground-color . "yellow")
+	(background-color . "black")
+	(font . "-*-Courier-normal-r-*-*-13-97-*-*-c-*-*-ansi-")))
+
+(setq initial-frame-alist '((top . 10) (left . 30)))
+</pre></blockquote>
+
+<p>
+<li><a name="windows-italics"><b>I<font size=-1>TALICS</font></b><p>
+
+Emacs currently requires that italic versions of fonts have the same
+width as the normal version of the font.  However, most of the default
+fonts have italic and italic bold versions whose character widths are
+larger than the normal version (the only default font that appears to
+have viable italic and bold versions is Courier New).  Because of
+this, Emacs by default disables the use of italic faces. <p>
+
+You can still enable the use of italic faces with Emacs by setting the
+variable <tt>win32-enable-italics</tt> to <tt>t</tt> in your startup
+file:
+
+<blockquote><pre>
+(setq win32-enable-italics t)  ; This must be done before font settings!
+(set-face-font 'italic "-*-Courier New-normal-i-*-*-11-82-c-*-*-ansi-")
+(set-face-font 'bold-italic "-*-Courier New-bold-i-*-*-11-82-c-*-*-ansi-")
+</pre></blockquote>
+
+Although this works best with Courier New, there is still one minor
+glitch: the italics versions are one pixel higher than the other
+versions, so the line spacing is increased by a pixel when italics are
+enabled. <p>
+
+<center>
+<h3><a name="console-attributes">Console Interface</h3>
+</center>
+
+Emacs can also run inside a console window.  Simply invoke Emacs with
+the -nw command line option to do so.  Although you cannot change the
+size, font, or color of the window from within Emacs, you can use the
+window's menu to do so.  (If no icon has been created to invoke the
+Emacs batch file, then you'll have to create one to change these
+attributes.) <p>
+
+<li><a name="console-size"><b>S<font size=-1>IZE</font></b><p>
+
+Under NT, go to the upper left hand corner and open the "-" menu of
+the console window.  Select "Screen Size and Position...", and use the
+dialog to set the window to the size you want.  Be sure to check the
+"Save Window Size and Position" checkbox so that future invocations
+will retain the new window size.  After closing the dialog box, resize
+the window itself by dragging on the edges.<p>
+
+Under Win95, click on the properties icon in the icon
+toolbar at the top of the window.  Go to the "Screen" tab and select
+the desired window size in the "Usage" panel.  Click on "OK". <p>
+
+<li><a name="console-position"><b>P<font size=-1>OSITION</font></b><p>
+
+To reposition Emacs, click on the title bar of the console window
+and drag it. <p>
+
+<li><a name="console-font"><b>F<font size=-1>ONT</font></b><p>
+
+Under NT, open the "-" menu.  Select "Fonts...", and use
+the dialog to set the window font to the one you want.  Be sure to
+check the "Save Configuration" checkbox so that your font change will
+be used in future invocations.  Click on "OK", and the window will get
+resized. <p>.
+
+Under Win95, simply use the popup font menu in the upper
+left-hand corner of the window.  Or click on the font icon in the icon
+toolbar.  Or click on the properties icon in the icon toolbar and go
+to the "Font" tab and choose the font that you want to use. <p>
+
+<li><a name="console-color"><b>C<font size=-1>OLOR</font></b><p>
+
+Under the NT interface, open the "-" menu.  Select "Screen Colors...",
+and use the dialog to choose the colors you want to use for the
+window.  Be sure to check the "Save Configuration" checkbox so that
+the colors are used in future invocations.  Click on "OK".
+Unfortunately, the colors are not immediately used, but the changes
+have been made.  To use the new colors, simply close the window and
+use the icon to start Emacs again.  Emacs will then come up using the
+colors you chose before. <p>
+
+I'm not exactly sure how to change the colors on a per-console-window
+basis under Win95. <p>
+
+</ul>
+
+<hr>
+<h3><a name="startup">Where do I put my .emacs (or _emacs) file?</h3>
+
+Your startup file can be named either _emacs or .emacs, and should be
+placed in your "home" directory.  If you have both files in your home
+directory, Emacs will load the .emacs file and ignore _emacs.  Also,
+if you have a version of Emacs older than 19.31, Emacs will only
+recognized _emacs as the startup file. <p>
+
+Your home directory is where the HOME configuration variable tells
+Emacs it is.  As with the other Emacs configuration variables, HOME
+can be set in a number of ways:
+
+<ul>
+
+<li><b>Environment variable:</b> Emacs will always first check to see
+if you have an environment variable named HOME set and use that value
+as your home directory.  Under Win95, you can set the HOME environment
+variable in your autoexec.bat file; under NT, you can set the HOME
+environment variable in the System panel of the Control Panel.  (Note
+that if you set HOME as an environment variable in the System panel it
+will only take effect in new processes.)  <p>
+
+<li><b>Registry:</b> If Emacs doesn't find an environment variable
+named HOME, it will check the registry for a value named HOME and use
+that value as your home directory.  Emacs first checks the key
+"HKEY_CURRENT_USER\\SOFTWARE\\GNU\\Emacs", and then the key
+"HKEY_LOCAL_MACHINE\\SOFTWARE\\GNU\\Emacs" (although the use of the
+latter key is discouraged since HOME should be set on a per-user
+basis, not on a per-machine basis).  Note that the value of HOME is
+<i>not</i> set by the addpm.exe program that initializes the registry
+with the other Emacs configuration variables. <p>
+
+</ul>
+
+If Emacs cannot find HOME set in any of the above locations, it will
+assume your HOME directory is "C:\".  <p>
+
+The directory specified by HOME is also the directory substituted for
+tildes (~) in file names (so, by definition, your startup file will be
+in the directory "~\"). <p>
+
+<hr>
+<h3><a name="capscontrol">How do I swap CapsLock and Control?</h3>
+
+CapsLock and Control cannot be swapped from within Emacs, and Windows
+does not have a convenient mechanism like xmodmap to change virtual
+key bindings.  Instead, new keyboard layouts or device drivers need to
+be installed to swap the two keys. <p>
+
+<b>W<font size=-1>ARNING</font>:</b> If you use a new keyboard layout
+to switch CapsLock and Control, beware of the option to use hotkey
+sequences to switch keyboard layouts.  This option is in Control
+Panel->Keyboard under the Language (Win95) or Input Locales (NT) tabs;
+the sequences themselves are "Left Alt+Control" and "Ctrl+Shift".  If
+you enable one of these options, then you will likely at some point
+switch keyboard layouts while trying to use an Emacs key
+combination. <p>
+
+<b>NT 4.0:</b>  For NT 4.0, check out <!WA106><!WA106><!WA106><a href="http://bmrc.berkeley.edu/people/chaffee/winntutil.html">swapcapslock.zip</a>. <p>
+
+<b>NT 3.5, 3.51:</b> James Kittock has provided a program for NT that
+installs a new keyboard layout with the two keys swapped.  Once
+installed, you can then select it using the "International" control
+panel applet. <p>
+
+<ul>
+<li><!WA107><!WA107><!WA107><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/README.keyswap.txt">README</a>
+<li><!WA108><!WA108><!WA108><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/keyswap.tar">keyswap.tar</a>
+</ul>
+
+<b>Win95:</b> Microsoft has placed a keyboard remapping program for
+Win95 on their ftp site.  For more info, take a look at their <!WA109><!WA109><!WA109><a
+href="http://www.microsoft.com/windows/software/krnltoy.htm">Kernel
+Toys</a> page. <p>
+
+Mark Russinovich has also written a freeware VxD that swaps CapsLock
+and Control under Windows 95.  (I've been told that you might have to
+hit the real Control key once after installing the VxD to jumpstart
+the mapping.)
+
+<ul>
+<li><!WA110><!WA110><!WA110><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/ctrl2cap.doc">README</a>
+<li><!WA111><!WA111><!WA111><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/ctrl2cap.txt">source</a>
+<li><!WA112><!WA112><!WA112><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/ctrl2cap.vxd.tar">ctrl2cap.vxd.tar</a>
+</ul>
+
+</dl>
+
+<hr>
+<h3><a name="subproc">Subprocesses under Emacs</h3>
+
+Emacs on NT and Win95 can utilize subprocesses just like Unix Emacs.
+However, the behavior of subprocesses with Emacs may be unintuitive in
+some situations.  This section discusses these situations, and how you
+might work around them. <p>
+
+<h4><a name="subproc-console">Programs reading input hang</h4>
+
+Programs that explicitly use a handle to the console ("CON" or "CON:")
+instead of stdin and stdout cannot be used as subprocesses to Emacs,
+and they will also not work in shell-mode (the default ftp clients on
+Win95 and NT are examples of such programs).  There is no convenient
+way for either Emacs or any shell used in shell-mode to redirect the
+input and output of such processes from the console to input and
+output pipes.  The only workaround is to use a different
+implementation of the program that does not use the console directly
+(see the discussion on <!WA113><!WA113><!WA113><a href="#ange-ftp">ange-ftp</a> for a
+replacement for the default ftp clients). <p>
+
+<h4><a name="subproc-buffer">Buffering in shells</h4>
+
+You may notice that some programs, when run in a shell in shell-mode,
+have their output buffered (e.g., people have found this happening to
+them with sql-mode).  When the program has a lot of output, it
+overflows the buffering and gets printed to the shell buffer; however,
+if the program only outputs a small amount of text, it will remain
+buffered and won't appear in the shell buffer. <p>
+
+Although it may at first seem like the shell is buffering the output
+from the program, it is actually the program that is buffering output.
+The C runtime typically decides how to buffer output based upon
+whether stdout is bound to a handle to a console window or not.  If
+bound to a console window, output is buffered line by line; if bound
+to a block device, such as a file, output is buffered block by block. <p>
+
+In a shell buffer, stdout is a pipe handle and so is buffered in
+blocks.  If you would like the buffering behavior of your program to
+behave differently, the program itself is going to have to be changed;
+you can use setbuf and setvbuf to manipulate the buffering semantics.
+<p>
+
+<h4><a name="subproc-dos">DOS subprocesses</h4>
+
+You can run DOS subprocesses under Emacs, but with the limitation that
+you run only one at a time.  The implication of this is that, if you
+use command.com under Win95 as your shell, then you can only run one
+shell process at a time (command.com is still a DOS process even under
+Win95).  You can use other shells, such as bash, tcsh, or 4NT, instead
+of command.com; see the <!WA114><!WA114><!WA114><a href="#other-tools">section below on other
+tools</a> for pointers to other sites. <p>
+
+Andrew Innes is working on removing this limitation.  If all goes
+well, it should be available in 19.35. <p>
+
+<hr>
+<h3><a name="shell">How do I use a shell in Emacs?</h3>
+
+You can use an interactive subshell in Emacs by typing "M-x shell".
+Emacs uses the SHELL configuration variable to determine which program
+to use as the shell.  If you installed Emacs using the addpm.exe
+program, then addpm.exe will associate the value %COMSPEC% with SHELL
+in the registry.  Emacs will then use the value of the COMSPEC
+environment variable when it starts up, <i>unless</i> the SHELL
+environment variable is explicitly defined (as when using the
+emacs.bat batch file). <p>
+
+If you would like to specify a different shell for Emacs to use, then
+you should do one of two things.  You should either explicitly set the
+environment variable SHELL to be the shell you want to use, or, if you
+want to have the COMSPEC environment variable determine the shell,
+then you need to install Emacs using the addpm.exe program and ensure
+that the SHELL environment variable is <i>not</i> defined when you
+start up Emacs. <p>
+
+<h4><a name="shell-echo">How do I prevent shell commands from being echoed?</h4>
+
+Some shells echo the commands that you send to them, and the echoed
+commands appear in the output buffer.  In particular, the default
+shells, command.com on Win95 and cmd.exe on NT, have this
+behavior. <p>
+
+To prevent echoed commands from being printed, you can place the
+following in your startup file: <p>
+
+<blockquote><pre>
+(setq comint-process-echoes t)
+</pre></blockquote>
+
+If shell-mode still is not stripping echoed commands, then you'll have
+to explicitly tell the shell to not echo commands.  You can do this by
+setting the <tt>explicit-<i>SHELL</i>-args</tt> variable
+appropriately, where <tt><i>SHELL</i></tt> is the value of your shell
+environment variable (do a "M-: (getenv "SHELL")" to see what it is
+currently set to).  Assuming that you are on NT and that your SHELL
+environment variable is set to cmd.exe, then placing the following in
+your startup file will tell cmd.exe to not echo commands: <p>
+
+<blockquote><pre>
+(setq explicit-cmd.exe-args '("/q"))
+</pre></blockquote>
+
+The comint package will use the value of this variable as an argument
+to cmd.exe every time it starts up a new shell (as in shell-mode); the
+<tt>/q</tt> is the argument to cmd.exe that stops the echoing (in a
+shell, invoking "cmd /?" will show you all of the command line
+arguments to cmd.exe).  <p>
+
+Note that this variable is case sensitive; if the value of your SHELL
+environment variable is CMD.EXE instead, then this variable needs to
+be named <tt>explicit-CMD.EXE-args</tt> instead. <p>
+
+<h4><a name="shell-command_com">Why is a "Specified COMMAND search directory bad" message printed?</h4>
+
+The function <tt>shell</tt> in shell.el automatically invokes the
+shell program with the argument "-i", and parses this as the directory
+in which the shell program resides (which, of course, is invalid).  To
+prevent this message from being printed, you can create a variable
+named according to the form specified in the help message of
+<tt>shell</tt> (to look at the help message, type "C-h f shell").  For
+the default shells, then, you could place the following in your
+startup file to prevent this message (these will eventually get into
+winnt.el so you don't have to do this):
+
+<blockquote><pre>
+(setq explicit-command.com-args nil)
+(setq explicit-COMMAND.COM-args nil)
+(setq explicit-cmd.exe-args nil)
+(setq explicit-CMD.EXE-args nil)
+</pre></blockquote>
+
+Multiple lines for each shell are given since variable names are case
+sensitive and shell names can be any case (so this only handles the
+most common situations).  If you have an entirely different shell that
+also complains about being given the "-i" switch, you can initialize a
+similarly named variable to prevent the "-i" switch from being sent to
+the shell. <p>
+
+Note that, if you would like to always pass arguments to an
+interactive shell when it starts up, you would change the nil value in
+the appropriate assignment above to the list of arguments you would
+like to use with your shell.  For example, if you would like to invoke
+command.com and tell it which directory its executable resides, you
+could place something like the following in your startup file: <p>
+
+<blockquote><pre>
+;; Determine the directory containing the shell program, explicitly making
+;; certain that the directory separator is a backslash when doing so.
+(let ((directory-sep-char ?\\))
+  (setq shell-directory (file-name-directory (getenv "SHELL"))))
+
+(setq explicit-command.com-args (list shell-directory))
+(setq explicit-COMMAND.COM-args (list shell-directory))
+</pre></blockquote>
+
+<h4><a name="shell-invalid">When I run programs within a shell I get
+"Incorrect DOS version" messages.  Why?</h4>
+
+This might happen if, for example, you invoke nmake in a shell and it
+tries to create subshells.  The problem is related to the one above
+where, again, when the shell is initially created, the first argument
+to the shell is not the directory in which the shell program resides.
+When this happens, command.com fabricates a value for its COMSPEC
+environment variable that is incorrect.  Then, when other programs go
+to use COMSPEC to find the shell, they are given the wrong value. <p>
+
+The fix for this is to either prevent any arguments from being sent to
+the shell when it starts up (in which case command.com will use a
+default, and correct, value for COMSPEC), or to have the first
+argument be the directory in which the shell executable resides.
+Examples of how to do both of these are in shown in the <!WA115><!WA115><!WA115><a
+href="#shell-command_com">previous subsection</a>. <p>
+
+<hr>
+<h3><a name="mail">How do I use mail with Emacs?</h3>
+
+You do not need to do much to use mail with Emacs under Win32, but you
+do need to be able to communicate with local mail daemons and mail
+servers (they do most of the work) to both receive and send mail from
+your system.  These daemons and servers are typically running on the
+machines in your local network that are already handling mail for you
+and/or other users on other systems. <p>
+
+I've only tested the outgoing and incoming RMAIL setups.  If you find
+that the suggested code for any of the other incoming mail
+configurations is inaccurate, please let me know. <p>
+
+<h4><a name="mail-outgoing">Outgoing</h4>
+
+For outgoing mail, you need an elisp file, <!WA116><!WA116><!WA116><a
+href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/smtpmail.el">smtpmail.el</a>, that enables Emacs
+to talk SMTP with mail daemons (smtpmail.el was written by Tomoji
+Kagatani &ltkagatani@rbc.ncl.omron.co.jp&gt and has been submitted to
+be included in future distributions).  You also need to add the
+following to your startup file (be sure to customize for you and your
+system): <p>
+
+<blockquote><pre>
+(setq user-full-name <i>"Your full name"</i>)
+(setq user-mail-address <i>"Your email address"</i>)
+
+(setq smtpmail-default-smtp-server <i>"Domain name of machine with SMTP server"</i>)
+(setq smtpmail-local-domain nil)
+(setq send-mail-function 'smtpmail-send-it)
+
+(load-library "smtpmail")
+</pre></blockquote>
+
+<h4><a name="mail-rmail">Incoming: RMAIL and POP3</h4>
+
+For incoming mail using the RMAIL package and a POP3 mail server, you
+need only place the following in your startup file (again, be sure to
+customize): <p>
+
+<blockquote><pre>
+(setenv "MAILHOST" <i>"Domain name of machine with POP3 server"</i>)
+(setq rmail-primary-inbox-list '("po:<i>Your login</i>") rmail-pop-password-required t)
+</pre></blockquote>
+
+Note that you will need to customize the <i>Domain name of machine
+with POP3 server</i> and <i>Your login</i> fields to be the name of
+your POP server and your login name. <p>
+
+<h4><a name="mail-vm-pop3">Incoming: VM and POP3</h4>
+
+For incoming mail using the VM package and a POP3 mail server, you
+first need the vm package (check any elisp archive) and then you need
+to place the following in your .vm configuration file: <p>
+
+<blockquote><pre>
+(setq vm-spool-files 
+      (list 
+       (list "~/INBOX"
+             "<i>POP3 server</i>:110:pass:<i>POP user name</i>:<i>*</i>"
+             "~/INBOX.CRASH")))
+</pre></blockquote>
+
+Note that you will need to customize the <i>POP3 server</i> and <i>POP
+user name</i> fields to be your login name and the name of your POP
+server.  You will also probably want to customize the name of your
+inbox and crash files (<tt>~/INBOX</tt> and <tt>~/INBOX.CRASH</tt> in
+the example above.) <p>
+
+<h4><a name="mail-gnus">Incoming: GNUS</h4>
+
+You should be able to use Gnus 5.2 and above as a mail reader.  The
+following was sent as an example by Marc Fleischeuers
+&ltMarc.Fleischeuers@kub.nl&gt:
+
+<blockquote><pre>
+;; For sending mail
+(setq message-send-mail-function 'smtpmail-send-it)
+
+;; For reading mail (other backends can be substituted for nnml)
+(setq gnus-secondary-select-methods '((nnml "")))
+(setq nnmail-spool-file "po:<i>POP user name</i>")
+(setq nnmail-pop-password-required t)
+</pre></blockquote>
+
+Be sure to customize the <i>POP user name</i> field appropriately. <p>
+
+<h4><a name="mail-tm">tm</h4>
+
+I don't know of any complete ports of tm to the Win32 environment, but
+Fabrice POPINEAU &ltpopineau@esemetz.ese-metz.fr&gt has made some
+modifications to the OS2 version of tm.  See <!WA117><!WA117><!WA117><a
+href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/tm-support">his description</a> of what he has
+done for more info.  The support programs mentioned can be found in <!WA118><!WA118><!WA118><a
+href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/mm.zip">mm.zip</a> (note that they have only
+been tested on NT 4.0, though). <p>
+
+<hr>
+<h3><a name="ange-ftp">How do I use ange-ftp with Emacs?</h3>
+
+You will need some additional files before ange-ftp will work with
+Emacs.  Partly this is due to the unfortunate fact that the ftp
+program shipped with Win95 and NT does not accept a password from a
+pipe or a redirected file, and partly this is due to some
+incompatibilities in the ange-ftp.el lisp file when used on
+Windows. <p>
+
+Chris Szurgot &ltszurgot@itribe.net&gt has been working on both of
+these problems.  He has a version of ftp that solves the password
+problem, and a version of ange-ftp that deals with the
+incompatibilities.  You can find both on his ftp server: <p>
+
+<ul>
+<li><!WA119><!WA119><!WA119><a href="ftp://ftp.itribe.net/pub/virtunix/ftp.zip">ftp://ftp.itribe.net/pub/virtunix/ftp.zip</a>
+<li><!WA120><!WA120><!WA120><a href="http://www.itribe.net/virtunix/files/emacs/ange-ftp.el">http://www.itribe.net/virtunix/files/emacs/ange-ftp.el</a>
+</ul>
+
+
+Place the ftp.exe executable in a directory where you keep your local
+executables, and the ange-ftp.el file in whatever directory you keep
+custom and personalized elisp files (you will probably also want to
+byte-compile ange-ftp.el, too).  Then be sure that the exec-path
+variable is set so that, when Emacs runs the ftp.exe program, it runs
+the one you downloaded (and not the default one).  Likewise, be sure
+to set load-path so that, when ange-ftp is invoked, the ange-ftp.el
+file you downloaded gets loaded instead of the default one.  As an
+example, assuming that you placed ftp.exe in, say, %HOME%\bin and
+ange-ftp.el in %HOME%\elisp, you could set exec-path and load-path as
+follows in your startup file: <p>
+
+<blockquote><pre>
+(setq exec-path (cons (expand-file-name "~/bin") exec-path))
+(setq load-path (cons (expand-file-name "~/elisp") load-path))
+</pre></blockquote>
+
+As another alternative, you can tell ange-ftp exactly which ftp
+program to use by customizing ange-ftp-ftp-program-name, e.g.: <p>
+
+<blockquote><pre>
+(setq ange-ftp-ftp-program-name "c:/bin/ftp.exe")
+</pre></blockquote>
+
+With this method you don't have to worry about the wrong ftp program
+being picked up through exec-path. <p>
+
+You will also want to customize the temporary directory that ange-ftp
+uses to cache files: <p>
+
+<blockquote><pre>
+(setq ange-ftp-tmp-name-template 
+      (concat (expand-file-name (getenv "TEMP")) "/ange-ftp"))
+(setq ange-ftp-gateway-tmp-name-template 
+      (concat (expand-file-name (getenv "TEMP")) "/ange-ftp"))
+</pre></blockquote>
+
+Note that this particular ftp client was ported pretty much only for
+use with Emacs; if you're looking for a snazzier ftp client for more
+general use, you might want to look at the ncftp client on Chris's ftp
+server. <p>
+
+<hr>
+<h3><a name="telnet">How do I use telnet with Emacs?</h3>
+
+As far as I know, there is no telnet client that you can successfully
+use as a subprocess to Emacs, and so telnet mode does not work.  Most
+telnet clients for Windows are GUI apps that use their own windows;
+Emacs requires a console app that works with pipes.  <p>
+
+To get telnet working with Emacs, I see two possibilities.  One is to
+implement a version of telnet.el that talks the telnet protocol
+directly (c.f. the gnus implementation), skipping the telnet program
+altogether.  The other possibility is to implement a console version
+of telnet.  Chris Szurgot &ltszurgot@itribe.net&gt has a console app
+telnet on his ftp server (see <!WA121><!WA121><!WA121><a
+href="ftp://ftp.itribe.net/pub/virtunix/telc10a.zip">ftp://ftp.itribe.net/pub/virtunix/telc10a.zip</a>),
+but it unfortunately uses direct console input and output.  This
+version can be hacked to use stdin and stdout, and then could be used
+as an Emacs subprocess. <p>
+
+<hr>
+<h3><a name="crypt">How do I use crypt with Emacs?</h3>
+
+The crypt++ package doesn't yet work out of the box with Emacs on
+Win32.  David S. Rosinger &ltdsrosing@fed3005.reston.ingr.com&gt modified
+crypt++.el so that it would work, commenting: <p>
+
+<blockquote> This package will allow you to transparently visit `.Z',
+`.gz', `.tar', `.tar.gz' and DOS files.  (However, on occasion,
+certain `.tar.gz' files lock up emacs...don't know why, but killing
+`gzip' frees up emacs again.)  </blockquote>
+
+Download this version of <!WA122><!WA122><!WA122><a
+href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/crypt++.el">crypt++.el</a> and place it
+somewhere in your load path.  You'll also need the
+compression/uncompression utilities (look in <!WA123><!WA123><!WA123><a
+href="ftp://ftp.cs.washington.edu/pub/ntemacs/utilities">ftp.cs.washington.edu/pub/ntemacs/utilities</a>)
+in your exec path. <p>
+
+<hr>
+<h3><a name="browse-url">How do I use the browse-url package?</h3>
+
+Caleb Deupree <cdeupree@abwh.cincom.com> has put together a package
+for intergrating browse-url.el with Emacs on Win32.  First pick up the
+latest browse-url.el from <!WA124><!WA124><!WA124><a
+href="http://wombat.doc.ic.ac.uk/emacs/browse-url.el">http://wombat.doc.ic.ac.uk/emacs/browse-url.el</a>
+(note that this is a much more recent version than is shipped with
+Emacs), and set it up as per the instructions in that file.  Then
+download and install the <!WA125><!WA125><!WA125><a
+href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/shelex.exe">shelex.exe</a> program, making sure
+that it is in your exec-path. (The code for shelex.exe is in <!WA126><!WA126><!WA126><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/shelex.c">shelex.c</a>.)<p>
+
+Then add the following commands to your startup file: <p>
+
+<blockquote><pre>
+(defvar shell-execute-helper "shelex.exe")
+(defun shell-execute-url (url &optional new-window)
+"Invoke the shell-execute-helper program to call ShellExecute and launch
+or re-direct a web browser on the specified url."
+   (interactive "sURL: ")
+   (call-process shell-execute-helper nil nil nil url))
+
+(setq browse-url-browser-function 'shell-execute-url)
+(setq gnus-button-url 'shell-execute-url)		; GNUS
+(setq vm-url-browser 'shell-execute-url)		; VM
+</pre></blockquote>
+
+This works with the default browser on your system, whether it's IE or
+something else.  However, you must have IE3 installed on your system
+for it to work with other browsers as the dll that makes this all
+work, WININET.DLL, only gets installed when IE3 is installed. <p>
+
+<hr>
+<h3><a name="mouse">How do I use Emacs with a two-button mouse?</h3>
+
+Emacs assumes that you have a three-button mouse by default.  However,
+if you have a two-button mouse, you can press both buttons at once to
+emulate the missing middle button expected by Emacs.  If you have a
+three-button mouse, but the middle mouse button does not work for you,
+skip to the end of this section.  <p>
+
+Three variables control mouse button emulation under Emacs:
+<tt>win32-num-mouse-buttons</tt>,
+<tt>win32-mouse-button-tolerance</tt>, and
+<tt>win32-swap-mouse-buttons</tt>.  If you use help on
+<tt>win32-num-mouse-buttons</tt> (i.e., with "C-h v"), it will tell
+you how many buttons Emacs thinks your mouse has; if
+<tt>win32-num-mouse-buttons</tt> is less than 3, then Emacs will
+emulate the middle mouse button.  <p>
+
+Emacs emulates the middle mouse button by treating simultaneous button
+presses of the left and right buttons as a middle button press.  Since
+presses both buttons cannot really be simultaneous, Emacs compares
+button presses within a specified window of time to determine whether
+it should emulate the middle button.  This window of time is
+controlled using <tt>win32-mouse-button-tolerance</tt>.  Help on this
+variable will show you the value Emacs uses by default, and you can
+change this value to suit your needs. <p>
+
+Depending upon the type of two-button mouse, you may find it useful to
+swap the mapping of middle and right mouse buttons.  By default, the
+middle button is mapped to <tt>mouse-2</tt> and the right button is
+mapped to <tt>mouse-3</tt>.  If you set
+<tt>win32-swap-mouse-buttons</tt> to a non-nil value, then you can
+swap these two mappings. <p>
+
+Some people find that they have a three button mouse, but the middle
+mouse button does not work for them.  First check to see if
+<tt>win32-num-mouse-buttons</tt> is set correctly.  If so, then check
+to see whether your mouse has been installed with the proper driver
+(open Control Panel->Mouse to examine the driver being used).  If
+nothing seems to be amiss, then at the very least you can have Emacs
+emulate the middle button by setting <tt>win32-num-mouse-buttons</tt>
+to 2. <p>
+
+
+<hr>
+<h3><a name="highlight">How do I highlight the region between the point and the mark?</h3>
+
+To highlight the region between the point and the mark, use the
+function <tt>transient-mark-mode</tt>:
+
+<blockquote><pre>
+(transient-mark-mode t)
+</pre></blockquote>
+
+<hr>
+<h3><a name="beep">How do I change the sound of the Emacs beep?</h3>
+
+You can use the function <tt>set-message-beep</tt> to change the sound
+that Emacs uses for its beep.  Emacs allows you to specify one of the
+Windows system sounds for the beep.  For example, to use the
+<b>ok</b> system sound, place the following in your startup file:
+<p>
+
+<blockquote><pre>
+(set-message-beep 'ok)
+</pre></blockquote>
+
+Look up help for the function for a complete description of how to use
+the function and which sounds it recognizes. <p>
+
+<hr>
+<h3><a name="display-iso">How do I display ISO 8859 characters?</h3>
+
+To display ISO 8859 characters, place the following in your
+startup file: <p>
+
+<blockquote>
+<tt>(standard-display-european t)</tt>
+</blockquote>
+
+To input 8-bit characters, you may also need to adjust the input mode
+(from Johan Myreen (jem@vistacom.fi)): <p>
+
+<blockquote>
+<pre>
+(set-input-mode (car (current-input-mode))
+                (nth 1 (current-input-mode))
+                0)
+</pre>
+</blockquote>
+
+<hr>
+<h3><a name="printing">How do I print from Emacs?</h3>
+
+Pascal Obry has a <!WA127><!WA127><!WA127><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/printing2.txt">nice
+example</a> of how to set up some variables to get printing to work on
+NT. <p>
+
+Jeff Paquette &ltpaquette@ici.net&gt has a version of <!WA128><!WA128><!WA128><a
+href="http://www.tiac.net/users/paquette/WinProgramming.html#prwin32">pr</a>
+for use with Emacs, and instructions on how to set it up. <p>
+
+Vassil Peytchev &ltvassil@msn.fullfeed.com&gt has an <!WA129><!WA129><!WA129><a
+href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/printing-gs.txt">example</a> of how to use
+ghostscript to print to non-postscript printers. <p>
+
+<hr>
+<h3><a name="generic-mode">Is there a package for editing Windows specific files (.bat, .ini, .inf, etc.)?</h3>
+
+Peter Breton &ltpbreton@i-kinetics.com&gt has written a package called
+generic-mode for editing Windows specific files (such as .bat, .ini,
+.inf, .reg, .rc, and .rul files).  Download <!WA130><!WA130><!WA130><a
+href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/generic-mode.el">generic-mode.el</a> and <!WA131><!WA131><!WA131><a
+href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/generic-extras.el">generic-extras.el</a>, place
+them somewhere in your load-path, byte-compile them, and then follow
+the instructions at the top of file to use them. <p>
+
+<hr>
+<h3><a name="assoc">How do I associate files with Emacs?</h3>
+
+You can use a package like gnuserv to associate files with Emacs so
+that opening a file outside of Emacs (e.g., by double-clicking on its
+icon) will create a new frame in a running Emacs displaying that file.
+Peter Breton &ltpbreton@dirac.i-kinetics.com&gt ported a version of
+gnuserv to NT that used named pipes.  Since Win95 doesn't support
+named pipes, Nico Francois &ltNico.Francois@scala.nl&gt modified it
+again to use mailslots so that it would work on both platforms. <p>
+
+Nico's distribution is in: <p>
+
+<ul>
+<li><!WA132><!WA132><!WA132><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/gnuserv.zip">gnuserv.zip</a> (updated 10/10/96)
+<li><!WA133><!WA133><!WA133><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/gnuserv.readme.nt">README.NT</a>
+</ul>
+
+Note that you can set up file associations in Win95/NT 4.0 using
+Explorer by selecting the "View->Options..." menu operation, and then
+clicking on the "File Types" tab in the dialog that pops up.  Clicking
+on a file type will allow you to edit it and associate the file with
+gnuclient.exe. <p>
+
+Comments from Nico:
+
+<blockquote>
+I've made some small modifications and now there's a gnuclientw.exe
+included which is compiled as a Windows program (it will also force
+the -q flag on so it doesn't hang around for nothing). <p>
+
+Ideal to be used for file associations.  Also rather cool to put a
+shortcut to gnuclientw.exe on your desktop and have the ability to
+drag-n-drop files into Emacs. <p>
+</blockquote>
+
+<hr>
+<h3><a name="unix">How do I access UNIX files via NFS?</h3>
+
+If you mount UNIX file systems onto your machine (e.g., with samba),
+and you would like to prevent your files from being translated to the
+DOS CR/LF format, you can use <tt>using-unix-filesystems</tt> by
+placing the following: <p>
+
+<blockquote>
+<tt>(using-unix-filesystems t)</tt>
+</blockquote>
+
+in your startup file.  Note, though, that this has Emacs treat all files as if
+they were on a UNIX filesystem, which can be very limiting.  <p>
+
+A future replacement for <tt>using-unix-filesystems</tt> are the
+functions at the end of <!WA134><!WA134><!WA134><a
+href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/untranslate.el">untranslate.el</a>.  These
+functions enable you to turn on and off translation on an individual
+filesystem basis.  If you want to use these functions, download and
+place untranslate.el in your load-path and have it loaded from your
+startup file.  Then you can place calls to
+<tt>add-untranslated-filesystem</tt> to selectively access filesystems
+in binary mode. <p>
+
+<hr>
+<h3><a name="vb">Is there a mode for editing Visual Basic source?</h3>
+
+Fred White &ltfwhite@world.std.com&gt has written a package for
+editing Visual Basic source.  Download <!WA135><!WA135><!WA135><a
+href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/basic-mode.el">basic-mode.el</a>, place it in
+your load-path, and follow the directions at the top of the file to
+use it.  Fred's comments: <p>
+
+<blockquote>
+Here is a simple mode for editing programs written in The World's Most
+Sucessful Programming Language.  It features indentation, font
+locking, keyword capitalization, and some other convenience functions.
+</blockquote>
+
+<hr>
+<h3><a name="rcs">Is there a version of RCS for Win32?</h3>
+
+You can find a collection of the RCS x86 executables in <!WA136><!WA136><!WA136><a
+href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/rcs57nt.zip">rcs57nt.zip</a>.  I was told Mark
+Alexander &ltmarka@daddy.pepper.com&gt did the port. <p>
+
+(Executables provided by Peter Breton
+&ltpbreton@dirac.i-kinetics.com&gt.  I don't have any source.) <p>
+
+Note that to use RCS you will also need <!WA137><!WA137><!WA137><a
+href="http://www.itribe.net/virtunix/diff-2.5-NT.zip">a copy of gnu
+diff</a>.  <p>
+
+<hr>
+<h3><a name="ispell">Is there a version of ispell for Win32?</h3>
+
+Henry Thorpe has &ltthorpe@iew.sed.monmouth.army.mil&gt has ported a
+somewhat hacked up version of ispell to Win32.  You can get it from
+his ftp server at <!WA138><!WA138><!WA138><a
+href="ftp://www.sesd.ilex.com/pub/thorpe/NT-ispell.cygnus.hacked.zip">ftp://www.sesd.ilex.com/pub/thorpe/NT-ispell.cygnus.hacked.zip</a>. <p>
+
+Brian Tibbetts &lttibbetts@cat.rpi.edu&gt has also done some work on
+making ispell more Win32 friendly.  Check out his page at <!WA139><!WA139><!WA139><a
+href="http://cat.rpi.edu/~tibbetts/ispell_toc.html">http://cat.rpi.edu/~tibbetts/ispell_toc.html</a>
+(his latest update on 10/16/96). <p>
+
+<hr>
+<h3><a name="popupmenu">Does Emacs support popup menus?</h3>
+
+The standard distribution does not yet support popup menus like the
+Unix version does.  Mark Jungerman &ltmjungerm@us.oracle.com&gt and
+&lthsexton@us.oracle.com&gt (my apologies; I seem to have lost your
+name!) have implemented popup menu support, although its programming
+semantics are slightly different than the standard Emacs popup menu
+semantics (Jake Colman &ltjcolman@jnc.com&gt is trying to remedy this
+situation).  If you would like to use what they have implemented, you
+can download <!WA140><!WA140><!WA140><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/popup.diff">their patches</a>
+(which were made to the 19.34.1 source). <p>
+
+<hr>
+<h3><a name="bugs">BUGS</h3>
+
+Below is a list of the most obvious bugs that users typically
+encounter.  I am aware that these bugs exist, so there is no need to
+send a bug report to either me or to the mailing list.  If I know of a
+workaround, I'll mention it along with the description of the bug. <p>
+
+In time I will grow this list to be a more comprehensive
+list of bugs.  <p>
+
+<h4>19.34</h4>
+
+<ul>
+
+<li><!WA141><!WA141><!WA141><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/todo/ange-ftp">ange-ftp</a>: ange-ftp and UNC
+file names cause confusion; names of the form /server:/top are being
+expanded to /server:c:/top. <p>
+
+<li><!WA142><!WA142><!WA142><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/todo/untranslate">untranslate</a>: Inserting a
+file into a buffer changes the buffer type to the type of the inserted
+file. <p>
+
+<li><!WA143><!WA143><!WA143><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/todo/color-names">X color names</a>: X color
+names of the forms #RRRGGGBBB, RGB:RRR/GGG/BBB, RGBi:RRR/GGG/BBB,
+etc., are not parsed and converted to windows colors. <p>
+
+<li><!WA144><!WA144><!WA144><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/todo/faces-new-frames">faces and new frames</a>:
+Some face definitions are not used when a new frame is created. <p>
+
+<li><!WA145><!WA145><!WA145><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/todo/international">{[]}\ with Alt-Gr</a>:
+These keys are not handled correctly on some keyboard layouts. <p>
+
+</dl>
+
+<h4>As of 19.30.1</h4>
+
+<ul>
+
+<li>The keys delete, M-del and M-backspace don't work as expected.  To
+fix this, put the following in your startup file: <p>
+
+<blockquote>
+<tt>(global-set-key [delete] "\C-d")</tt><br>
+<tt>(global-set-key [M-delete] "\M-d")</tt><br>
+<tt>(global-set-key [M-backspace] [?\M-\177])</tt>
+</blockquote>
+
+<li>Autosave files become the same file as the original file (e.g.,
+foo.bat and foo.bat~ refer to the same file).  This problem is
+actually a bug in Windows 95 (you can use the DOS move command to
+reproduce the bug).  You can workaround this bug by placing the
+following in your startup file: <p>
+
+<blockquote>
+<tt>(setq backup-by-copying t)</tt>
+</blockquote>
+
+(Note that this workaround only works for autosave files, though.) <p>
+
+<li>Pop-up menus aren't implemented. <p>
+
+<li>The Control and Meta keys can get stuck such that Emacs thinks
+they are being pressed when they are not.  A workaround is to toggle
+the keys a couple of times to get Emacs back on track. <p>
+
+<li>RCS menu commands are greyed out when they seemingly shouldn't be. <p>
+
+<li>Emacs gets a fatal error when loading vm-folder while starting up
+the VM package. <p>
+
+<li>Emacs doesn't load the startup file (_emacs) even though HOME is
+set correctly.  (I can't reproduce this; if this is happening to
+someone who can also debug Emacs, I would appreciate your trying to
+track down what is going on.)  A workaround is to invoke Emacs with
+the "-l %HOME%\_emacs" command line argument.  <p>
+
+<li>ange-ftp doesn't work because of the colons.  no workaround.
+(Fixed in 19.31.)<p>
+
+<li>Bookmarks from the menu don't seem to work. <p>
+
+<li>CapsLock acts like a shift key. <p>
+
+<li>The desktop library doesn't work (delimiter problem). <p>
+
+<li>The paste menu item doesn't correspond to the clipboard (yank
+does, though). <p>
+
+<li>Getting file-attributes on locked files doesn't work. <p>
+
+<li>Emacs loses keyboard input after it has been iconified.  A
+workaround for this is to maximize the window and then return it to
+its normal size. <p>
+
+<li>Scrollbars aren't supported.  (No workaround.) <p>
+
+<li>"emacs -nw" doesn't work.  To have Emacs run in a console window,
+it has to be compiled to do so.  (Fixed in 19.31, but still doesn't
+work inside a telnet window.)<p>
+
+<li>emacsclient and server are not supported. <p>
+
+<li>Keyboard macros with search (C-s) don't always work. <p>
+
+<li>Setting <tt>debug-on-error</tt> to <tt>t</tt> crashes Emacs. <p>
+
+</ul>
+
+<hr>
+<h3><a name="error-messages">I get these strange error messages.  What's wrong?</h3>
+
+<dl>
+<dt><b>M-x shell, etc., fails with 'Invalid read syntax: "."'</b>
+<dt><b>M-x shell, etc., fails with 'Symbol's value as variable is void: ll\.'</b>
+
+<dd>These error messages appear when a precompiled source distribution
+has been unpacked incorrectly.  See the <!WA146><!WA146><!WA146><a
+href="#unpack-problems">Note to unpacking the distributions</a> above
+on the source of this problem and how to solve it.<p>
+
+<dt><b>Symbol's value as variable is void: pressions\.</b>
+
+<dd>This error message appears during the dumping phase when
+compiling a source distribution that has been unpacked
+incorrectly. See the <!WA147><!WA147><!WA147><a href="#unpack-problems">Note to unpacking the
+distributions</a> above on the source of this problem and how to solve
+it.<p>
+
+<dt><b>C-z produces <i>Can't spawn ...</i></b>
+
+<dd>When Emacs suspends, it actually creates and runs a new shell.  It
+uses the SHELL environment variable to determine which shell to run.
+If this environment variable is set incorrectly, the above error
+message will appear.  Change your SHELL environment variable to be a
+valid shell to solve this problem. <p>
+
+</dl>
+
+<hr>
+<h3><a name="win95">Win95 Specific Problems</h3>
+
+<h4><a name="win95-env">I get these "Out of environment space" messages.  Why?</h4>
+
+The emacs.bat script sets a number of environment variables that are
+used by Emacs to function properly.  The console process in which the
+script is executed runs out of memory in which to set these
+environment variables, causing a mess of problems.  <p>
+
+To get around this problem, create a shortcut icon to the emacs.bat
+script.  Then right click on the icon and select Properties.  In the
+dialog box that pops up, select the Memory tab and then change the
+Environment memory allocation from <b>Auto</b> to <b>1024</b>.  Close
+the dialog box and then double click on the icon to start Emacs. <p>
+
+<h4><a name="win95-esc">The ESC key doesn't seem to work on Win95.  Why?</h4>
+
+On early beta versions of Win95, ESC key events were not propagated to
+Emacs.  If you are still using an early beta version, then you will
+have to upgrade your version of Win95 to solve this problem. <p>
+
+<h4><a name="win95-refresh">Emacs doesn't refresh correctly.  Why?</h4>
+
+Even with the official release of Win95, there seems to be a bug that
+confuses Emacs when it refreshes the screen under certain
+circumstances.  A workaround is being implemented in the next
+version. <p>
+
+<h4><a name="win95-subprocess">When will the Win95 version have
+subprocess support?</h4>
+
+Due to legal technicalities of contributed work, subprocess support
+will arrive shortly after 19.31 has been officially released through
+the FSF.  (Andrew Innes is contributing this code, as well as many
+other bug fixes.  All kudos to Andrew.) <p>
+
+<hr>
+<h3><a name="patches">Patches</h3>
+
+Below are sets of patches that fix specific bugs, and are organized by
+release.  They are only useful if you have the source to Emacs.  (Note
+also that they do not represent the set of differences between one
+major release and the next; they are typically patches to popular
+problems, or patches that I've sent to the list.) <p>
+
+<ul>
+<li><a name="patch-19-30">19.30.0</a>
+	<ul>
+	<li><!WA148><!WA148><!WA148><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/patches/19.30/vc40.diff">Enable Emacs to be compiled with VC 4.0</a>
+	<li><!WA149><!WA149><!WA149><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/patches/19.30/uid.diff">Emulate getuid and geteuid.</a>
+	<li><!WA150><!WA150><!WA150><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/patches/19.30/menu.diff">Fix menu update problem.</a>
+	</ul>
+<li><a name="patch-19-30-1">19.30.1</a>
+	<ul>
+	<li><!WA151><!WA151><!WA151><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/patches/19.30.1/font.diff">Makes TrueType
+and italic fonts usable.</a>
+	<li><!WA152><!WA152><!WA152><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/patches/19.30.1/mupdate.diff">Only update
+the menu when absolutely necessary.</a>
+	<li><!WA153><!WA153><!WA153><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/contrib/palettergb.el">An elisp file with
+palette RGB values for colors.</a>
+	</ul>
+</ul>
+
+<hr>
+<h3><a name="other-tools">What other Unix tools have been ported to NT and/or Windows 95?</h3>
+
+Probably the first place you should look for more GNU tools is at
+Cygnus in the GNU-Win32 project, which is not only trying to port the
+GNU tools to Win32, but also provide libraries that allow Unix
+programs to use Win32 without modification.  The project is at <!WA154><!WA154><!WA154><a
+href="http://www.cygnus.com/misc/gnu-win32">http://www.cygnus.com/misc/gnu-win32</a>. <p>
+ 
+An older set of the GNU tools that I have seen offered on ftp sites
+for NT and Win95 have been based on the Congruent tools (I have heard
+mixed reviews of these ports, so use with your own discretion).  An
+ftp site that seems to offer the full set of these tools is <!WA155><!WA155><!WA155><a
+href="ftp://ftp.cc.utexas.edu/microlib/nt/gnu">ftp.cc.utexas.edu/microlib/nt/gnu</a>. <p>
+
+Microsoft also has a collection of tools for use with NT, including
+Unix tools such as cron, ps, kill, and nice, as well as a number of NT
+specific tools.  A list of these tools is at <!WA156><!WA156><!WA156><a
+href="http://www.microsoft.com/ntserver/tools/Maintnce.htm">http://www.microsoft.com/ntserver/tools/Maintnce.htm</a>. <p>
+
+If you're a perl user, then you probably want the port of perl to
+Win32.  Check out <!WA157><!WA157><!WA157><a href="http://www.perl.hip.com">HIP
+Communication's port of perl 5 for Win32</a>. <p>
+
+David Wihl is maintaining a FAQ about porting Unix applications to NT.
+It can be found at <!WA158><!WA158><!WA158><a
+href="http://www.shore.net/~wihl/unix2nt.html">http://www.shore.net/~wihl/unix2nt.html</a>. <p>
+
+Chris Szurgot is also collecting and implementing Unix style tools for
+Windows 95 (and presumably NT).  See <!WA159><!WA159><!WA159><a
+href="http://www.itribe.net/virtunix">http://www.itribe.net/virtunix</a>. <p>
+
+Jeff Paquette &ltpaquette@ici.net&gt has a collection of the GNU text
+utilities for Win32.  See <!WA160><!WA160><!WA160><a
+href="http://www.tiac.net/users/paquette/WinProgramming.html">http://www.tiac.net/users/paquette/WinProgramming.html</a>. <p>
+
+
+<hr>
+<h3><a name="mailing-list">What's the name of the NT Emacs mailing list?</h3>
+
+The name of the NT Emacs mailing list is
+<b>ntemacs-users@cs.washington.edu</b>.  It's a majordomo administered
+list, so, if you would like to subscribe to the mailing list, send a
+message to <!WA161><!WA161><!WA161><a
+href="mailto:ntemacs-users-request@cs.washington.edu">ntemacs-users-request@cs.washington.edu</a>
+with the word "subscribe" in the <b>body</b> of the message. <p>
+
+To unsubscribe from the list, send a message to <!WA162><!WA162><!WA162><a
+href="mailto:ntemacs-users-request@cs.washington.edu">ntemacs-users-request@cs.washington.edu</a>
+with the word "unsubscribe" in the <b>body</b> of the
+message. <i>Please</i> do not send the unsubscribe message to the list
+itself, but to the request alias instead.  Sending the message to the
+list does not unsubscribe you from it, and it tends to be annoying to
+people on the list. <p>
+
+If you are trying to unsubscribe from the list but are encountering
+problems, send me mail directly and I will manually remove you from
+the list.  Again, do not send mail to the list complaining that you
+cannot unsubscribe from it.  <p>
+
+From the list's "info" message:
+
+<blockquote>
+
+The list ntemacs-users@cs.washington.edu is a forum for discussion
+related to using GNU Emacs on Windows NT and Windows 95.  Please feel
+free to ask and/or answer any questions related to Emacs on NT or
+Win95 as you see fit, although I ask that questions regarding general
+use of Emacs be directed to the Emacs Info files and the general Emacs
+news groups, such as comp.emacs and gnu.emacs.help.<p>
+
+I will also be sending announcements about new releases and bug fixes
+to this list.  These announcements should be relatively infrequent,
+however.<p>
+
+</blockquote>
+
+<h4><a name="mailing-archives">Where are the archives for ntemacs-users?</h4>
+
+The ntemacs-users list is being archived in hypermail.  The gaps
+between archived directories are due to mail being thrown away by
+hypermail. <p>
+
+<dl>
+
+<dt><b>Latest:</b>
+<dd>
+<ul>
+<li><!WA163><!WA163><!WA163><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/mail/archive_index/date.html">date</a>
+<li><!WA164><!WA164><!WA164><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/mail/archive_index/subject.html">subject</a>
+<li><!WA165><!WA165><!WA165><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/mail/archive_index/author.html">author</a>
+</ul>
+
+<dt><b>June 2, 1996 - August 12, 1996</b>
+<dd>
+<ul>
+<li><!WA166><!WA166><!WA166><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/mail/6.2.96-8.12.96/date.html">date</a>
+<li><!WA167><!WA167><!WA167><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/mail/6.2.96-8.12.96/subject.html">subject</a>
+<li><!WA168><!WA168><!WA168><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/mail/6.2.96-8.12.96/author.html">author</a>
+</ul>
+
+<dt><b>August 26, 1996 - October 25, 1996</b>
+<dd>
+<ul>
+<li><!WA169><!WA169><!WA169><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/mail/8.26.96-10.25.96/date.html">date</a>
+<li><!WA170><!WA170><!WA170><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/mail/8.26.96-10.25.96/subject.html">subject</a>
+<li><!WA171><!WA171><!WA171><a href="http://www.cs.washington.edu/homes/voelker/ntemacs/mail/8.26.96-10.25.96/author.html">author</a>
+</ul>
+
+</dl>
+
+Note that I may occasionally trim the archive as it chews up
+disk space.  <p>
+
+</body>
+<hr> 
+<address><!WA172><!WA172><!WA172><a href="http://www.cs.washington.edu/homes/voelker">Geoff Voelker</a>
+<br>
+&lt;<!WA173><!WA173><!WA173><a href="mailto:voelker@cs.washington.edu">voelker@cs.washington.edu</a>&gt;
+</address>
+</html>

@@ -1,0 +1,128 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 14-Jan-97 20:34:33 GMT
+Content-Type: text/html
+Content-Length: 5836
+Last-Modified: Wednesday, 17-Jan-96 21:39:01 GMT
+
+<!-- -*- Mode: html-helper -*- -->
+<html> <head>
+<title>Suggestions for Projects</title>
+</head>
+
+<body>
+
+<h1>Suggestions for Projects</h1>
+
+We are collecting a number of possible projects here for students to
+pick from. While you are encouraged to dream up your own you can also
+pick one off of this list. For lack of a better systemization we have
+grouped the projects into those which are primarily implementation, i.e.,
+write code for a small interactive application, and those which are
+primarily theory oriented, e.g., study the smoothness of a class of
+subdivision schemes. The latter may at times involve small amounts of
+implementation along the lines of writing a Maple program to
+manipulate various Fourier transform expressions of subdivision
+matrices, for example.
+<p>
+Note that his list is incomplete and we are adding to it as we go
+along.
+
+
+<h1>Implementation Projects</h1>
+
+<h3>Loop's scheme</h3>
+Loop's scheme is a subdivision method for surfaces which will work for
+arbitrary triangular meshes and which generalizes quartic triangular
+splines. The main references on this are Loop's thesis from Utah,
+which we have in hardcopy only and a recent Siggraph paper,
+``Piecewise Smooth Surface Reconstruction,'' by Hugues Hoppe et al.,
+Siggraph 1994, pages 295-305.
+
+<h3>Peters' C<sup>1</sup> surface scheme</h3>
+J&ouml;rg Peters has recently described a scheme for arbitrary
+topology meshes which results in a globally C<sup>1</sup> by
+generating a number of Bezier patches. The scheme is not as simple as
+Loop's scheme for example, but it results in a finite set of patches,
+while other generatlization such as Loop's scheme only produce a
+surface in the subdivision limit around extraordinary points. In fact
+surprisingly little is known about the smoothness around such
+extraordinary points. An intriguing possibility of Peters' scheme is
+the fact that it allows for the incorporation of interpolation
+constraints. This can possibly be turned into an interpolating
+subdivision scheme for arbitrary topology meshes. The relevant papers
+are online. The C<sup>1</sup> algorithm is described in <!WA0><a
+href="http://www.cs.caltech.edu/~ps/papers/jorg/93ffss.ps">``C<sup>1</sup>
+Surfaces Splines''</a> and a somewhat restricted but much simpler
+version is described in <!WA1><a
+href="http://www.cs.caltech.edu/~ps/papers/jorg/94nocut.ps">``Smoothing
+Polyhedra Made Easy''</a>.
+
+<h3>Catmull-Clark and Doo-Sabin schemes</h3>
+These schemes generalize quadratic and cubic splines over arbitary
+topology meshes by modifying the schemes around extraordinary
+points. The schemes were the first introduced and are classic. The are
+simple to implement and result in surfaces which are C<sup>1</sup> and
+C<sup>2</sup> everywhere except at extraordinary points. We have
+hardcopy of the relevant articles availalbe.
+
+<h3>Butterfly scheme</h3>
+This is the only scheme which is interpolating by design. It is based
+on work by Dyn/Gregory/Levin and we have hardcopy of the article. It
+works for triangular meshes. If these are regular the limiting surface
+will be C<sup>1</sup>. For irregular vertices this is not true and
+there are a number of possible modifications that would be interesting
+to explore.
+
+<h3>Kobbelt's scheme</h3>
+This scheme is very similar to the Butterfly scheme except it works
+for meshes which have quadrilateral faces rather than triangular
+ones. The behaviour at extraordinary points appears nice, but no proof
+is yet given for this. The relevant paper is <!WA2><a
+href="http://www.cs.caltech.edu/~ps/papers/kobbelt/four.ps.Z">``Interpolatory
+Subdivision on Open Quadrilateral Nets with Arbitrary Topology''</a>.
+
+<h2>Some general remarks</h2>
+Any of the above could be oriented more towards theory by focusing on
+such aspects as smoothness of the limit surfaces near extraodinary
+points. This typically involves computing various Fourier transforms
+of subdivision matrices and examining the eigen values of these. In
+some cases this can lead to suggested modifications. Often there are
+degrees of freedom left and an interesting exploration would be to see
+how the resulting functions change as these degrees of freedom get
+manipulated. Such an exploration could easily be done in Maple or
+Matlab for those how prefer to stick with such tools.
+
+<h1>Theory Projects</h1>
+
+<h3>Deslauriers Dubuc interpolating subdivision</h3>
+This is a classic scheme for the real line which is interpolating. The
+paper describes how to compute the exact H&ouml;lder smoothness of the
+resulting limit functions. Build a Maple (or Mathematica) toolbox to
+compute this smoothness for various order schemes. We have hardcopy
+of the relevant paper.
+
+<h3>Variational design of interpolating subdivisions</h3>
+Leif Kobbelt <!WA3><a
+href="http://www.cs.caltech.edu/~ps/papers/kobbelt/variation.ps">describes</a>
+and interesting idea: instead of using polynomials to do interpolating
+subdivision compute new points by solving a discrete variational
+problem. This could easily be implemented in Matlab or Maple and it
+would be interesting to see just what kinds of curves one can build
+with this.
+
+<h3>Differentiating a subdivision curve</h3>
+There are a number of observations relating differecing of control
+points and applying a somewhat modified scheme to the difference
+coefficients, to the derivative of a given scheme. For example,
+differentiating the interpolating schemes of Deslauriers-Dubuc leads
+to the average interpolating functions of <!WA4><a
+href="http://www.cs.caltech.edu/~ps/papers/donoho/blocky.ps">Donoho</a>.
+This observation generalizes. A nice project would be to pick one
+family of curves, e.g., B-spline curves and work out the various
+derivatives in the irrgularly spaced knot setting. Again this is
+mostly pencil and paper and some Maple/Mathematica work.
+
+<hr>
+<b>Copyright &copy; 1995 Jim Arvo and Peter Schr&ouml;der</b>
+</body> </html>

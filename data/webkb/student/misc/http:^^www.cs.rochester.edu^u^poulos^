@@ -1,0 +1,139 @@
+Date: Thursday, 21-Nov-96 23:39:39 GMT
+Server: NCSA/1.3
+MIME-version: 1.0
+Content-type: text/html
+Last-modified: Tuesday, 09-Jul-96 22:27:58 GMT
+Content-length: 3959
+
+<HTML>
+<HEAD>
+<TITLE>Alexandros Poulos' URCS Home Page</TITLE>
+</HEAD>
+
+<BODY BACKGROUND="images/background_pebbles.gif">
+
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Beginning of JavaScript Applet -------------------
+function scrollit_r2l(seed)
+{
+        var m1  = "*** ";
+        var m2  = "Welcome";
+        var m3  = " ***";
+
+        var msg=m1+m2+m3;
+        var out = " ";
+        var c   = 1;
+
+        if (seed > 100) {
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 100 && seed > 0) {
+                for (c=0 ; c < seed ; c++) {
+                        out+=" ";
+                }
+                out+=msg;
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                    window.status=out;
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;
+                        var cmd="scrollit_r2l(" + seed + ")";
+                        window.status=out;
+                        timerTwo=window.setTimeout(cmd,100);
+                }
+                else {
+                        window.status=" ";
+                        timerTwo=window.setTimeout("scrollit_r2l(100)",75);
+                }
+        }
+}
+// -- End of JavaScript code -------------- -->
+</SCRIPT>
+<BODY onLoad="timerONE=window.setTimeout('scrollit_r2l(100)',500);">
+
+<!WA0><IMG ALIGN=TOP SRC="http://www.cs.rochester.edu/images/urcslogo.gif"> <!WA1><IMG ALIGN=TOP SRC="http://www.cs.rochester.edu/u/poulos/images/face.gif">
+
+<P>
+<B><FONT SIZE="+3">A</FONT><FONT SIZE="+2">lexandros </FONT>
+<FONT SIZE="+3">P</FONT><FONT SIZE="+2">oulos, </FONT>
+<FONT SIZE="+3">URCS </FONT>
+<FONT SIZE="+3">H</FONT><FONT SIZE="+2">ome </FONT>
+<FONT SIZE="+3">P</FONT><FONT SIZE="+2">age</FONT>
+</B>
+
+<P>
+<!WA2><IMG SRC="http://www.cs.rochester.edu/u/poulos/images/ribbonsmall.gif">
+<I>Java script requires Netscape 2.0 </I>
+<FONT SIZE="-2">e</FONT>
+<FONT SIZE="-1">n</FONT>
+h
+<FONT SIZE="+1">a</FONT>
+<FONT SIZE="+2">n</FONT>
+<FONT SIZE="+3">c</FONT>
+<FONT SIZE="+4">e</FONT>
+<FONT SIZE="+5">d</FONT>
+<!WA3><IMG SRC="http://www.cs.rochester.edu/u/poulos/images/prisma.gif">
+
+<!WA4><IMG ALIGN=MIDDLE SRC="http://www.cs.rochester.edu/u/poulos/images/line.gif">
+
+<P>
+<!WA5><A HREF="http://www.cs.rochester.edu/u/poulos/personal.html">
+<!WA6><IMG SRC="http://www.cs.rochester.edu/u/poulos/images/dino.gif">
+<FONT SIZE="+1">Personal Data</A></FONT>
+<!WA7><A HREF="http://www.cs.rochester.edu/u/poulos/publications.html">
+<!WA8><IMG SRC="http://www.cs.rochester.edu/u/poulos/images/academia.gif">
+<FONT SIZE="+1">Publications</A></FONT>
+<P>
+<!WA9><A HREF="http://www.cs.rochester.edu/u/poulos/parallel.html">
+<!WA10><IMG SRC="http://www.cs.rochester.edu/u/poulos/images/hcube.gif">
+<FONT SIZE="+1">Parallel Computing</A></FONT>
+<P>
+<!WA11><A HREF="http://www.cs.rochester.edu/u/leblanc/lca.html">
+<!WA12><IMG SRC="http://www.cs.rochester.edu/u/poulos/images/carnival_small.gif">
+<FONT SIZE="+1">Carnival Visualization Tool Home Page</A></FONT>
+<P>
+<!WA13><A HREF="http://www.cs.rochester.edu/u/poulos/pointers.html">
+<!WA14><IMG SRC="http://www.cs.rochester.edu/u/poulos/images/www.gif">
+<FONT SIZE="+1">WWW Pointers</A></FONT>
+<!WA15><A HREF="http://www.cs.rochester.edu/u/poulos/isles.html">
+<!WA16><IMG SRC="http://www.cs.rochester.edu/u/poulos/images/hellas.gif">
+<FONT SIZE="+1">A Guide To The Greek Islands</A></FONT>
+<P>
+<!WA17><A HREF="http://www.cs.indiana.edu/finger/cs.rochester.edu/poulos/w">
+<!WA18><IMG SRC="http://www.cs.rochester.edu/u/poulos/images/finger.gif">
+<FONT SIZE="+1">Finger</A></FONT>
+<!WA19><A HREF="http://www.cs.rochester.edu/u/ferguson/rochester/">
+<!WA20><IMG SRC="http://www.cs.rochester.edu/u/poulos/images/rochesternight.gif">
+<FONT SIZE="+1">George's "What's What in Rochester, NY"</A></FONT>
+<P>
+<!WA21><A HREF="http://jazzcentralstation.com/">
+<!WA22><IMG SRC="http://www.cs.rochester.edu/u/poulos/images/jazz.gif">
+<FONT SIZE="+1">The Jazzy Page</A></FONT><!WA23><IMG SRC="http://www.cs.rochester.edu/u/poulos/images/new.gif">
+<P>
+<!WA24><A HREF="http://www.mca.com/universal_pictures/12/index.html">
+<!WA25><IMG SRC="http://www.cs.rochester.edu/u/poulos/images/monkeys.gif">
+<FONT SIZE="+1">12 Monkeys Home Page</A> and 
+<!WA26><A HREF="http://www.cs.rochester.edu/u/poulos/anim/monkeys.mov">
+<!WA27><IMG SRC="http://www.cs.rochester.edu/u/poulos/images/video.gif">
+Clip</A></FONT><!WA28><IMG SRC="http://www.cs.rochester.edu/u/poulos/images/new.gif">
+
+<!WA29><IMG ALIGN=MIDDLE SRC="http://www.cs.rochester.edu/u/poulos/images/line.gif">
+
+<P>
+<!WA30><A HREF="http://www.cs.rochester.edu/users/grads.html">
+<!WA31><IMG ALIGN=TOP SRC="http://www.cs.rochester.edu/images/up.gif">Back to URCS Grads Directory</A>
+<!WA32><A HREF="http://www.cs.rochester.edu/urcs.html">
+<!WA33><IMG ALIGN=TOP SRC="http://www.cs.rochester.edu/images/home.gif">Back to URCS Home Page</A><P>
+
+<ADDRESS>Last Change: Feb 28 1995 / 
+<!WA34><A HREF="mailto:poulos@cs.rochester.edu">
+poulos@cs.rochester.edu</A></ADDRESS>
+
+</BODY>
+</HTML>

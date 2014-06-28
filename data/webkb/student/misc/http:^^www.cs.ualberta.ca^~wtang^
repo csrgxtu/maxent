@@ -1,0 +1,174 @@
+Date: Tue, 26 Nov 1996 16:48:42 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+Content-length: 4281
+Last-modified: Sun, 24 Nov 1996 03:58:25 GMT
+
+<HTML>
+<HEAD>
+<TITLE>Wei Tang's home page</TITLE>
+
+<SCRIPT LANGUAGE="JavaScript">
+function scrollit(seed)
+{	var msg="Welcome to Wei Tang's homepage!";
+	var out=" "; var c=1;
+	if (seed >100)
+	{ seed--;
+	  var cmd="scrollit(" + seed + ")";
+	  timerTwo=window.setTimeout(cmd,100);
+	}
+	else if (seed <=100 && seed > 0)
+		{ for (c=0; c<seed; c++)
+		     {  out+=" ";
+		     }
+		  out+=msg;
+		  seed--;
+		  var cmd="scrollit(" + seed + ")";
+		  window.status=out;
+		  timerTwo=window.setTimeout(cmd,100);
+		}
+	else if (seed <= 0)
+		{ if  (-seed < msg.length)
+		     {  out+=msg.substring(-seed,msg.length);
+			seed--;
+			var cmd="scrollit(" + seed + ")";
+			window.status=out;
+			timerTwo=window.setTimeout(cmd,100);
+		     }
+		  else
+		     {  window.status=" ";
+			timerTwo=window.setTimeout("scrollit(100)",75);
+		     }
+		}
+}
+</script>
+</HEAD>
+
+<BODY BACKGROUND="gif/gw_paper.gif" onload="timerONE=window.setTimeout('scrollit(100)',500);">
+<H1>
+<!WA0><img align=middle src="http://www.cs.ualberta.ca/~wtang/gif/tangbw_small.gif">
+<!WA1><a href="http://www.cs.ualberta.ca/~wtang/gif/tangbw.gif"><I>Wei Tang</I></H1></a>
+M.Sc. Student <br> 
+<!WA2><A HREF="http://www.cs.ualberta.ca"> Department of Computing Science</A> <br>
+<!WA3><A HREF="http://www.ualberta.ca"> University Of Alberta </A><br>
+<!WA4><A HREF="http://www.cs.ualberta.ca/~wtang/Edmonton.html"> Edmonton </a>,Alberta
+<br>
+Canada
+<br>
+<DT><STRONG>Email to me:</STRONG>
+<EM><!WA5><A
+HREF="mailto:wtang@cs.ualberta.ca">wtang@cs.ualberta.ca</A></EM><br>
+<!WA6><A HREF="http://www.cs.ualberta.ca/cgi-bin/finger?wtang@cs.ualberta.ca"><STRONG>Finger me</STRONG> </A>
+</DL>
+<br>
+
+	
+<!WA7><IMG SRC="http://www.cs.ualberta.ca/~wtang/gif/blue_line.gif"
+ALT="-----"><br><br><br>
+
+<I><b>Education</b></I>
+  <UL>
+  <LI>
+  B.Sc. from Dept. of Computer Science & Technology at <!WA8><a
+  href="http://www.pku.edu.cn">Peking University</a>
+  <LI>
+  Currently thesis-based M.Sc. in <!WA9><A
+  HREF="http://www.cs.ualberta.ca">Dept. of Computing Science</a>,<!WA10><A
+  HREF="http://www.ualberta.ca">University
+  of Alberta</a>
+  </UL>
+
+<I><b>Courses taken in U. of A.</b></I>
+  <UL>
+  <LI>
+  <!WA11><a
+  href="http://www.cs.ualberta.ca/~lingliu/c510">CMPUT 510: Topics on
+  OODB </a>
+  <LI>
+  CMPUT 513: Computer Networks
+  </UL> 
+
+<I><b>Spare time</b></I>
+  <UL>
+  <LI>
+  <!WA12><a href="http://www.cs.ualberta.ca/~wtang/gif.html">Photos taken in
+Edmonton</a>
+  <LI>
+  <!WA13><a href="http://www.cs.ualberta.ca/~wtang/news.html">Chinese newspapers</a>
+  <LI>
+  <!WA14><a href="http://www.asiaonline.net/hkbridge/hkbhome.htm">Hong Kong
+  Bridge </a>
+  <LI>
+  <!WA15><a href="http://www.vtourist.com/webmap">Virtual Tourist World Map</a>
+  <LI>
+  <!WA16><a href="http://www.byte.com">BYTE magazine </a>
+  <LI>
+  <!WA17><a href="http://tcp.ca">The Computer Paper magazine (Canada) </a>
+  </UL>
+
+<I><b>Web searcher</b></I>
+  <UL>
+  <LI>
+  <!WA18><a href="http://www.hotbot.com">Hotbot</a>
+  <LI>
+  <!WA19><a href="http://www.infoseek.com">Infoseek</a>
+  <LI>
+  <!WA20><a href="http://www.yahoo.com">Yahoo</a>
+  <LI>
+  <!WA21><a href="http://lycos.cs.cmu.edu">Lycos</a>
+  </UL>
+
+<I><b>Computer companies</b></I>
+  <UL>
+  <LI>
+  <!WA22><a href="http://www.ibm.com">IBM Corporation </a>
+  <LI>
+  <!WA23><a href="http://www.hp.com">Hewlett Packard </a>
+  <LI>
+  <!WA24><a href="http://www.microsoft.com">Microsoft Corporation </a>
+  <LI>
+  <!WA25><a href="http://www.apple.com">Apple Computer </a>
+  <LI>
+  <!WA26><a href="http://www.sun.com">Sun Microsystems </a>
+  <LI>
+  <!WA27><a href="http://www.digital.com">Digital Equipment Corporation </a>
+  <LI>
+  <!WA28><a href="http://www.sgi.com">Silicon Graphics </a>
+  <LI>
+  <!WA29><a href="http://www.oracle.com">Oracle </a>
+  <LI>
+  <!WA30><a href="http://www.sybase.com">Sybase </a>
+  <LI>
+  <!WA31><a href="http://www.informix.com">Informix </a>
+  </UL>
+
+<I><b>Miscellaneous</b></I>
+  <UL>
+  <LI>
+  <!WA32><a href="http://www.ualberta.ca/~cssa">Chinese Student and Scholar
+  Association</a>
+  <LI>
+  <!WA33><a href="http://www.geocities.com/WallStreet/6454">PKU Classmates</a>
+  <LI>
+  <!WA34><a href="http://c.gp.cs.cmu.edu:5103/prog/webster">Online Webster
+  Dictionary </a>
+  </UL>
+
+
+<HR>
+
+<!WA35><A HREF="http://web.cs.ualberta.ca/UAlberta.html">
+<!WA36><IMG ALIGN=TOP SRC="http://web.cs.ualberta.ca/gif/tiny/UA.gif"></A>
+<!WA37><A HREF="http://web.cs.ualberta.ca/index.html">
+<!WA38><IMG ALIGN=TOP SRC="http://web.cs.ualberta.ca/gif/tiny/CS.gif"></A>
+<br>
+
+<EM>
+You are visitor <!WA39><IMG
+SRC="http://www.dla.utexas.edu/cgi-bin/nph-count?width=5&link=
+http://www.cs.ualberta.ca/"wtang, alt="[COUNTER]">
+since Nov. 2, 1996.
+</EM>
+
+</BODY>
+</HTML>

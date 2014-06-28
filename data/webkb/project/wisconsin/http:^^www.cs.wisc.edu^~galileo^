@@ -1,0 +1,204 @@
+Date: Thu, 07 Nov 1996 19:23:27 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 07 Nov 1996 07:15:19 GMT
+Content-length: 9988
+
+<html>
+<head>
+<title> Galileo/SCI Home Page </title>
+</head>
+<body>
+<h1>The Galileo and SCI Projects at Wisconsin</h1>
+<hr>
+<h3><em>Table of contents</em></h3>
+<ul>
+<li><b>Galileo</b>
+<ul>
+<li><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="#Galileo">Project description</a>
+<li><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="#gpublications">Publications</a>
+<li><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="#grelated">Related projects</a>
+</ul><p>
+<li><b>SCI at Wisconsin</b>
+<ul>
+<li><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="#SCI">Project description</A>
+<li><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="#spublications">Publications</A>
+</ul><p>
+<li><b><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A HREF="#Member">Project Members</b></A>
+</ul>
+<hr>
+
+<a name="Galileo"></a>
+<center><h2>Galileo at Wisconsin</h2>
+<!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><IMG ALIGN=MIDDLE SRC="http://www.cs.wisc.edu/~galileo/integration.gif" alt = "Obligatory header picture for Galileo">
+</center><p>
+
+Galileo is a project being conducted in the 
+<!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><a href="http://www.cs.wisc.edu/~arch/uwarch/">computer architecture group</a>
+at the University of Wisconsin-Madison.  Our project focuses on the medium-
+to long-term evolution of processor and system architectures, with an emphasis
+on the memory system.  Specifically, we are studying what the
+relationship between the processor and main memory will be in future
+systems: completely separate, as today, or integrated (and if so, to what extent).<p>
+
+Processing capability and bit storage may merge in at least two ways.
+Because of increasing off-chip penalties (in issuable instructions) and/or
+limited off-chip bandwidth, designers may place more and more capacity
+on the processor chip and module, until eventually a sizable fraction
+of main memory resides on-chip (represented by the arrow labeled MOP
+in the above diagram).  A different possibility is the migration of
+processor capability onto the DRAM chips themselves, eventually
+obviating the central processor (see the IRAM arrow above).
+
+Our specific research currently focuses on the following areas:<p>
+<ul>
+<li>Examining the performance impact of large memory latencies and
+limited memory bandwidth in current and future microprocessor-based systems
+<li>Performance modeling of the various design points along the
+processor/memory (P/M) integration spectrum
+<li>Cache hierarchy design for P/M integrated systems
+<li>Design of main memory banks in a P/M integrated system
+<li>Program execution in systems with multiple integrated chips
+(DataScalar architectures)
+</ul>
+
+<hr>
+<h3><A name="gpublications">Galileo-specific publications:</a></h3>
+<ul>
+<li><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><a href="ftp://ftp.cs.wisc.edu/galileo/papers/TR_1324.ps">
+<cite>Exploiting Optical Interconnects to Eliminate Serial Bottlenecks</cite></a><br>
+Doug Burger and James R. Goodman.<br>
+Appears in the 3rd International Conference on Massively Parallel Processing Using Optical Interconnects, October, 1996.<p>
+
+<li><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><A HREF="ftp://ftp.cs.wisc.edu/galileo/papers/TR_1317.ps">
+<cite>DataScalar Architectures and the SPSD Execution Model</cite></a><br>
+Doug Burger, Stefanos Kaxiras, and James R. Goodman.<br>
+University of Wisconsin-Madison Computer Sciences Department Technical Report 1317, July, 1996.<p>
+
+<li><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><A HREF="ftp://ftp.cs.wisc.edu/galileo/papers/TR_1295.ps">
+<cite>Quantifying Memory Bandwidth Limitations of Current and Future Microprocessors</cite></a><br>
+Doug Burger, James R. Goodman, and Alain K&auml;gi.<br>
+Appears in the 23rd International Symposium on Computer Architecture, May, 1996.<p>
+
+<li><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><A HREF="ftp://ftp.cs.wisc.edu/galileo/papers/TR_1261.ps">
+<cite>The Declining Effectiveness of Dynamic Caching for General-Purpose Microprocessors</cite></A><br>
+Douglas C. Burger, James R. Goodman, and Alain K&auml;gi.<br>
+University of Wisconsin-Madison Computer Sciences Department Technical Report 1261, January, 1995.<p>
+</ul>
+<hr>
+<h3><A name="grelated">Related projects:</a></h3>
+<ul>
+<li><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><a href="http://iram.cs.berkeley.edu">IRAM</a> - UC-Berkeley
+<li><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><a href="http://kasuga.csce.kyushu-u.ac.jp/~ppram/">PPRAM</a> - Kyushu Univeristy, Japan
+</ul>
+<hr size=6 align="center"><p>
+<h2><center><a name="SCI">SCI</a> at Wisconsin</center></h2>
+Our group is also closely involved with research relating to cache-coherent
+shared-memory multiprocessor design, specifically studying the <b>Scalable Coherent
+Interface </b>coherence and transport layers.
+We are using SCI, which is an IEEE standard (1596-1992), as a base platform for 
+the exploration of our ideas.
+The SCI standard specifies a linked-list based hardware coherence protocol, 
+which includes support for efficient synchronization primitives 
+(Queue On Lock Bit, or QOLB), as
+well as optimizations for different sharing patterns, such as 
+pairwise-sharing and fresh read-sharing.  The standard also includes a definition
+for an extremely high-bandwidth (1 GB/s), low latency transport layer in between
+processing elements or individual clusters.
+
+We are currently performing SCI-related research on the following topics:
+<p>
+<ul>
+<li>Extending SCI with logarithmically-growing sharing structures
+<li>Efficient hardware synchronization for shared-memory multiprocessors
+<li>A scalability study of the base SCI protocol, including its standard extensions
+<li>Aggressive consistency models for shared-memory multiprocessors
+</ul>
+<hr>
+<h3><a name="spublications">Wisconsin SCI Publications:</a></h3>
+<ul>
+
+<!-- <li><cite>Mechanisms for Minimizing Synchronization Overheads in Shared-Memory Applications</cite><br> -->
+<!-- Alain K&aumlgi, Doug Burger, and James R. Goodman<br> -->
+<!-- Submitted for publication to --- October, 1996.<p> -->
+
+<li><cite>The GLOW Cache Coherence Protocol Extensions for Widely Shared Data</cite><br>
+Stefanos Kaxiras and James R. Goodman.<br>
+To appear in the proceedings of the 10th ACM International Conference on Supercomputing, May, 1996.<p>
+
+<li><cite>Kiloprocessor Extensions to SCI</cite><br>
+Stefanos Kaxiras.<br>
+To appear in the proceedings of the 10th International Parallel Processing Symposium, April, 1996.<p>
+
+<li><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><A HREF="ftp://ftp.cs.wisc.edu/galileo/papers/TR_1266.ps">
+<cite>Techniques for Reducing Overheads of Shared-Memory Multiprocessing</cite></a><br>
+Alain K&auml;gi, Nagi Aboulenein, Douglas C. Burger, and James R. Goodman.<br>
+Appears as "Best Architecture Paper" in the proceedings of the 9th ACM 
+International Conference on Supercomputing, July, 1995.<br>
+Also University of Wisconsin-Madison Computer Sciences Department TR #1266, May, 1995.<p>
+
+<li><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><A HREF="ftp://ftp.cs.wisc.edu/galileo/papers/TR_1265.ps">
+<cite>Simulation of the SCI Transport Layer on the Wisconsin Wind Tunnel</cite></a><br>
+Douglas C. Burger and James R. Goodman.<br>
+In the proceedings of the Second International Workshop on SCI-based High-Performance Low-Cost Computing, March, 1995.<br>
+Also University of Wisconsin-Madison Computer Sciences Department Technical Report 1265, March, 1995.<p>
+
+<li><cite><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><A HREF="ftp://ftp.cs.wisc.edu/tech-reports/reports/94/tr1235.ps">Hierarchical Extensions to SCI</A></cite><br>
+James R. Goodman and Stefanos Kaxiras.<br>
+University of Wisconsin-Madison Computer Sciences Department Technical Report 1235, July 1994.<p> 
+
+<li><cite><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><A HREF="ftp://ftp.cs.wisc.edu/tech-reports/reports/93/tr1136.ps.Z">Extending the Scalable Coherent Interface for Large-Scale Shared-Memory</a></cite><br>
+Ross Evan Johnson.<br>
+University of Wisconsin-Madison Computer Sciences Department Technical Report 1136, February 1993.<p>
+
+<li><cite><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><A HREF="ftp://ftp.cs.wisc.edu/tech-reports/reports/92/tr1117.ps.Z">Hardware Support for Synchronization in the Scalable Coherent Interface (SCI)</a></cite><br>
+Nagi M. Aboulenein, Stein Gjessing, James R. Goodman, and Philip J. Woest.<br>
+University of Wisconsin-Madison Computer Sciences Department Technical Report 1117, November 1992.<p>
+
+<li><cite><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><A HREF="ftp://ftp.cs.wisc.edu/tech-reports/reports/91/tr1058">Interconnect Topologies with Point-to-Point Rings</a></cite><br>
+Ross E. Johnson and James R. Goodman.<br>
+University of Wisconsin-Madison Computer Sciences Department Technical Report 1058, December 1991.<p>
+
+<li><cite><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><A HREF="ftp://ftp.cs.wisc.edu/tech-reports/reports/91/tr1055"> Analysis of the SCI Ring</a></cite><br>
+Steven L. Scott, James A. Goodman, and Mary K. Vernon.<br>
+University of Wisconsin-Madison Computer Sciences Department Technical Report 1055, November 1991.<p>
+
+<li><cite><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><A HREF="ftp://ftp.cs.wisc.edu/tech-reports/reports/91/tr1029">Lower Bounds on Latency for Scalable Linked-List Cache Coherence</a></cite><br>
+Ross Johnson.<br>
+University of Wisconsin-Madison Computer Sciences Department Technical Report 1029, June 1991.<p>
+
+<li><cite><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><A HREF="ftp://ftp.cs.wisc.edu/tech-reports/reports/91/tr1005.ps.Z">An Analysis of Synchronization Mechanisms in Shared-Memory Multiprocessors</a></cite><br>
+Philip J. Woest and James R. Goodman.<br>
+University of Wisconsin-Madison Computer Sciences Department Technical Report 1005, February 1991.<p>
+
+<li><cite>A Set of Efficient Synchronization Primitives for a Large-Scale Shared-Memory Multiprocessor</cite><br>
+James. R. Goodman, Mary. K. Vernon, Philip. J. Woest.<br> 
+In the proceedings of the Third International Conference on Architectural Support for Programming Languages and Operating Systems, April, 1989.<br>
+Also University of Wisconsin-Madison Computer Sciences Department Technical Report 814.<p>
+</ul>
+<p>
+<hr>
+<h2><A name="Member">Project</a> participants:</h2>
+<h3> Faculty </h3>
+<ul>
+<li> <!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><A HREF="http://www.cs.wisc.edu/~goodman/goodman.html"> Jim Goodman</a>
+</ul>
+<h3> Graduate students </h3>
+<ul>
+<li> <!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><a HREF="http://www.cs.wisc.edu/~dburger/dburger.html"> Doug Burger</a><br>
+<li> <!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><a HREF="http://www.cs.wisc.edu/~alain/alain.html"> Alain K&auml;gi</a><br>
+<li> <!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><a HREF="http://www.cs.wisc.edu/~kaxiras/kaxiras.html"> Stefanos Kaxiras</a><br>
+</ul>
+<h3> Project alumni </h3>
+<ul>
+<li><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><A HREF="http://www.cs.wisc.edu/~aboulene/aboulene.html">Nagi Aboulenein</a>
+<li><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><A HREF="http://www.cs.wisc.edu/~galileo/ross/ross.html">Ross Johnson</A>
+<li>Steve Scott
+</ul>
+<hr>
+Last modified: Fri Aug 2 09:12:00 1996 by Doug Burger
+<ADDRESS>
+<!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><A HREF="mailto:dburger@cs.wisc.edu">(dburger@cs.wisc.edu)</A><BR>
+</ADDRESS>
+</body>
+</html>

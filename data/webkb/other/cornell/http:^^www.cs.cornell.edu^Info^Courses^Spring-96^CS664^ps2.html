@@ -1,0 +1,110 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 16-Dec-96 23:20:33 GMT
+Content-Type: text/html
+Content-Length: 4262
+Last-Modified: Friday, 05-Apr-96 01:54:33 GMT
+
+<HEAD>
+<TITLE>CS 664:  Problem Set 2</TITLE>
+</HEAD>
+<BODY>
+<h1> CS 664:  Problem Set 2 : Motion and Snakes </h1>
+
+A postscript copy of the <a href="ps2/ps2.ps">assignment</a>.<p>  
+
+<dt><b>New Test Images.</b> Here is another set of <a
+href="ps2/test2.tgz">images</a>, with corresponding squared-gradient magnitude
+image.  Be sure to read mini-FAQ below.  I've also recomputed the coke-can
+image, there seemed to be problems with its sg image.  These images are also
+available in ~jmiller/test2 on the cs and sunlab machines.  I would prefer that
+you just create symbolic links to the images if you can, since they exceed
+3MB.  "ln -s ~jmiller/test2 ."<p>
+
+<dt><b>Test Images.</b> Here is the first set of images, available in
+a <a href="ps2/test.tar.gz">tar file</a>.  There are two sets of
+stereo images that you can use to test your motion calculations.
+There is a sequence called dots that is a moving box on a random
+background.  There is also the coke-can images along with the dx,dy,
+and squared gradient magnitude images for the coke can.  You can use
+the squared gradient magnitude image as a simple external energy field
+for snakes that are attracted to edges.<p>
+
+For you Sun users on the cs filesystems, feel free to use ~robotlab/bin/drawsnake or markpoints to draw your initial snakes.  (Also available on the sunlab in ~jmiller/664/ps2).
+
+
+<h3>Problem Set 2: MINI-FAQ</h3>
+
+<UL>
+ <li> <em>Mask for census transform.</em> <br>
+<pre>
+/* ShortImage census_transform(GrayImage inim)
+ *
+ * Performs the census_transform using the following 7x7 mask 
+ *   approximation.
+ *     - - x - - - -  (2,0)
+ *     - x - x - x -  (1,1) (3,1) (5,1)
+ *     - - x - x - x  (2,2) (4,2) (6,2)
+ *     x - x P - x -  (0,3) (2,3) (5,3) 
+ *     - x - x - x -  (1,4) (3,4) (5,4) 
+ *     - - x - x - -  (2,5) (4,5)
+ *     - - - x - - -  (3,6)
+ *
+ * Input: a pgm image
+ * Output: a ShortInt image containing the census transform of the
+ *   input, representing each comparison using on bit.
+*/
+
+</pre>
+<li> There are a few typos in the Chandran et al. paper.  In algorithm II, the
+line "if(temp < Si(<em>j</em>)" should be "if(temp < Si(<em>k</em>)".  They
+also get the order of growth for the algorithm wrong.
+<li> There is no need to "perturb" the point as described in Algorithm III,
+step 3.  The correct approach is to take a set of point positions , run algorithm II,
+and using the output set of point positions from alg. II, feed it into alg. II
+again.  Do this until the energy stops decreasing.
+<li> I've just been shown the error of my ways.  There is a way to dynamically
+program normalized correlation.  The solution is very cute, I'm not going to
+give any hints.  This goes beyond just precomputing the means and averages
+using sliding-sums.
+<li> The squared gradient images I have given you are images smoothed with a
+gaussian mask (sigma = 2.0).  Note that the squared gradient is highest at
+edges, your energy function needs to be lowest at edges for the snake to be
+attracted to edges.  Simply negating the image will work.
+
+
+
+</UL>
+
+<h3>Using the ADT image libraries</h3>
+  The following versions of the library are available
+<ul>
+<li> SunOS
+<ul> 
+<li>available on the cs dept machines as ~robotlab/new/lib/libadt.a, with the appropriate header files in ~robotlab/new/include/adt/ .  <b>USE -DSUNOS on your command line</b>.
+<li>Sunlab: located in ~jmiller/664/libadt.a, with header files in ~jmiller/664/include.  
+<li>Other locations: <a href="ps1/libadt.a">library</a> and <a href="ps1/adt-include.tgz">header files</a>.
+</ul>
+<li> Solaris
+<ul>
+
+<li>available on the cs dept machines as
+~robotlab/new/lib/libadt-svr4.a, with the appropriate header files in
+~robotlab/new/include/adt/ , <b>be sure to include -DSVR4 on your command
+line</b>.
+
+<li>Sunlab: you won't need the Solaris version.
+
+<li>Other locations: <a href="ps1/libadt-svr4.a">library</a> and <a href="ps1/adt-include.tgz">header files</a>.
+</ul>
+
+
+<li>Linux: Here is the (ELF) <a href="ps1/libadt-linux.a">library</a>
+and a tarfile containing the <a href="ps1/includes.tgz">header files</a>.
+
+<li> <a href="http://www.tc.cornell.edu/~ckline/lib-adt-aix3.2.5.tar.gz">AIX 3.2.5</a> (thanks to Christoper Kline), here is a <a href="ps1/ckline.txt">copy</a> of the email he sent me.
+
+</ul>
+
+
+

@@ -1,0 +1,77 @@
+Date: Tue, 05 Nov 1996 20:44:01 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 02 Feb 1996 17:24:55 GMT
+Content-length: 2840
+
+<html>
+<head>
+<title> SPIM </title>
+<!-- Changed by: James Larus,  2-Feb-1996 -->
+</head>
+<body>
+<h1> SPIM </h1>
+<p>
+The SPIM S20 is a software simulator that runs assembly language
+programs for the MIPS R2000/R3000 RISC computers.  SPIM can read and
+immediately run files containing assembly language statements.  It can
+also read and run MIPS a.out files (when compiled on a MIPS system).
+SPIM is a self-contained system for running these programs and
+contains a debugger and interface to the operating system.
+<p>
+To see the manual, click <!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~larus/SPIM_manual/spim-manual.html">here</A>
+<p>
+I wrote SPIM as the target machine for an undergraduate compiler
+course. SPIM is very portable (I have run it on a DECStation
+3100/5100, Sun 3, Sun 4, PC/RT, HP Bobcat, and Sequent***), so the
+students could generate code for a simple, clean, orthogonal computer;
+no matter which god-awful machine they used.  It was a very successful
+in this role.
+<p>
+****NEW NEWS****<br>
+The Macintosh and PC versions of SPIM are available by anonymous ftp from:
+ftp.cs.wisc.edu:pub/spim<br>
+****************
+<p>
+SPIM is fairly slow.  It runs about 1000 dhrystones/second, which is
+roughly 1/25th the speed of a DECStation 3100, or about the speed of a
+68010-based system.
+<p>
+SPIM implements almost the entire MIPS assembler-extended instruction
+set (I've omitted some the complex floating point comparisons and
+details of the memory system page tables).  SPIM comes with complete
+source code and documentation of all instructions (including several
+that aren't in Kane's book, but are produced by MIPS compilers).  It
+also include a large torture test to verify a port to a new machine.
+<p>
+SPIM has a simple, terminal-style and a flashy, X-windows interface.
+<p>
+SPIM also includes an optional extension by Anne Rogers and Scott
+Rosenberg of Princeton that performs a cycle-by-cycle MIPS simulation
+that exposes the hardware pipeline.
+<p>
+SPIM is copyrighted by me and can be freely used for non-commercial
+purposes.  You can copy a compressed tar file from ftp.cs.wisc.edu in
+the file:
+<!WA1><!WA1><a href="ftp://ftp.cs.wisc.edu/pub/spim/spim.tar.Z">~ftp/pub/spim/spim.tar.Z</a>.
+If you want to be informed of future updates, send me your electronic address.
+<p>
+SPIM comes with documentation, however Appendix A of Hennessy &
+Patterson, "Computer Organization and Design: The Hardware/Software
+Interface," Morgan Kaufman, 1993 is a far better introduction to the
+software.
+<p>
+<!WA2><!WA2><a href="http://www.cs.wisc.edu/~larus/larus.html">James Larus</a><br>
+Computer Sciences Department <br>
+1210 West Dayton Street <br>
+University of Wisconsin <br>
+Madison, WI 53706 <br>
+<p>
+larus@cs.wisc.edu
+(608) 262-9519
+<p>
+*** SPIM also runs on a VAX, however it does not handle floating point
+properly because compilers for the VAX do not treat single floats
+properly.
+</body>
+</html>

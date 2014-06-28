@@ -1,0 +1,226 @@
+Date: Tue, 26 Nov 1996 03:44:06 GMT
+Server: NCSA/1.4.1
+Content-type: text/html
+Last-modified: Wed, 20 Nov 1996 23:42:28 GMT
+Content-length: 6621
+
+<HTML>
+
+<HEAD>
+<TITLE>
+Peter Wyckoff's Home Page
+</TITLE>
+</HEAD>
+
+<BODY>
+
+<!-- In case I forget, this is how a comment is written. -->
+
+<H1>Peter Wyckoff</H1>
+
+<!WA0><IMG ALIGN=right SRC = "http://cs.nyu.edu/phd_students/wyckoff/nyu.gif"><br>
+<H2>Ph.D. Student, 4th year</H2>
+
+<!WA1><a HREF="http://www.cs.nyu.edu/">
+Department of Computer Science</a><br>
+<!WA2><a HREF="http://www.cs.nyu.edu/cs/courantnyu.html">
+Courant Institute of Mathematical Sciences</a><br>
+<!WA3><a HREF="http://www.nyu.edu/">
+New York University</a><br>
+251 Mercer Street<br>
+New York, NY 10012<br>
+<p>
+
+<HR>
+
+<TABLE>
+
+<td>
+<!WA4><IMG ALIGN=center SRC = "http://cs.nyu.edu/phd_students/wyckoff/peter.jpg">
+</td>
+
+<td>
+Bandalier National Park, New Mexico
+</td>
+
+</TABLE>
+
+<HR>
+
+<!--
+<!WA5><IMG ALIGN=center SRC = "http://cs.nyu.edu/phd_students/wyckoff/jpg/RajuPic2.2.jpg">
+
+<HR>
+-->
+
+
+<H3>
+Contents
+<UL>
+<LI> <!WA6><a HREF = "#AboutMe">Brief Biography</a>
+<LI> Resume
+<UL>
+<LI> <!WA7><a HREF = "http://cs.nyu.edu/phd_students/wyckoff/res.html">html</a>
+<!--
+<LI> <!WA8><a HREF = "http://cs.nyu.edu/phd_students/wyckoff/resume.ps">Postscript Format</a>
+-->
+</UL>
+<LI> <!WA9><a HREF = "#ResearchInterests">Research Interests</a>
+<LI> <!WA10><a HREF = "#Publications">Publications</a>
+<LI> <!WA11><a HREF = "#ContactInformation">Contact Information</a>
+<!--
+-->
+
+</UL>
+</H3>
+
+<HR>
+
+<A NAME = "AboutMe">
+</A>
+<H2>Brief Biography</H2>
+I am a Ph.D. candidate at the
+<!WA12><A HREF="http://cs.nyu.edu/">Computer Science Department</A> of the
+<!WA13><A HREF="http://www.cims.nyu.edu/">Courant Institute of 
+Mathematical Sciences</A>
+of <!WA14><A HREF="http://www.nyu.edu/">New York University</A>.
+<p>I received a B.S. in computer science from 
+<!WA15><A HREF="http://www.sunysb.edu/">SUNY Stony Brook</A> in 1993 and
+an M.S. in computer science from NYU in 1995.
+I grew up in New York City and attended
+The Day School,
+City and Country, and finally Trinity.
+
+<HR>
+
+<A NAME = "ResearchInterests">
+</A>
+<H2> Research Interests</H2>
+I am interested in the theoretical and practical ways to address
+fault-tolerant computing where  response time is critical.
+<p>
+
+The main area of my research is in "lite-transactions",
+which have some of the properties of transactions, but are
+very light weight.
+Traditional transactions have properties (ACID) which are
+useful for fault-tolerance, but traditional transactions are too expensive
+to be practical in many areas.
+Previous  light-weight
+transactions (e.g. group commit ) have addressed increased
+server throughput.  However, the increased throughput has been
+achieved at the expense of increased client response time.  In many
+situations, such as in real-time systems, this tradeoff is not
+desirable or even practical.
+Unlike traditional transactions,
+Lite-transactions do not commit to disk.  Rather they commit to
+memory. This makes them very light, allows them to provide
+temporal guarantees that traditional systems can't, and
+makes them applicable when response time guarantees are needed.
+<p>
+If a server(s) fails,
+committed lite-transactions may be lost. In this case, the system is
+recovered from the last checkpoint.  
+Due to their volatile nature, lite-transactions pose a challenge
+for low overhead, non-client blocking, distributed checkpointing.
+I have developed an efficient checkpointing algorithm for 
+Lite-transactions which is non-blocking for clients and requires
+very little synchronization for servers.
+<p>
+
+We have applied lite-transactions to the Linda model.  Linda may be
+used to harness the aggregate power of networks of workstations.
+However, Linda is not fault-tolerant and Linda
+processes can become obtrusive when a user finds her
+machine busy with someone else's processes and the Piranha system
+can only be used for a limited types of applications. 
+<p>
+
+We have a working prototype of a system called 
+<!WA16><A HREF="http://merv.cs.nyu.edu:8001/~binli/plinda">Persistent Linda</A>
+where
+we apply lite-transactions to the Linda model.  Persistent Linda may
+be used to harness the aggregate power of networks of workstations in
+an unobtrusive manner: processes are automatically killed (ie kill -9 pid)
+on one machine and restarted elsewhere. The fault-tolerance
+mechanisms built on lite-transactions allow processes to recover from
+their last commit point.  In fact, the type (architecture) of the
+originating machine and the final destination machine can be
+different.  
+he fact that processes can be migrated independently
+is crucial to utilizing networks of workstations for parallel
+applications.
+<p>
+I have worked extensively on the current version of the prototype
+which is approximately 20,000 lines of C++.
+This includes designing and implementing no overhead locking for degree 2 lite-transactions,
+designing and implementing buffered writes and piggybacked transactions operations, 
+re-implementing the tuple data structure for more efficiency and portability,
+and re-implementing the communication library for portability.
+
+
+<p>
+Another project I am working on
+is to provide transparent shared memory, fault tolerance, and a runtime
+system capable of running efficiently on highly unpredictable networks
+(e.g. the WWW)
+for Java.
+With this type of language and runtime system, programmers have a rich
+environment to write applications in.
+<p>
+<HR>
+<PAPERS>
+<A NAME = "Publications">
+<H2>Publications</H2>
+
+<LI>Peter Wyckoff. Achieving High Performance and Robustness for Parallel Software on Loosely-Coupled Systems. <em>A Survey and Thesis Proposal</em>, November 1995<!WA17><A HREF="http://cs.nyu.edu/phd_students/wyckoff/survey.ps">(PostScript)</A>. 
+<p>
+<LI>Arash Baratloo, Mehmet Karaul, Zvi Kedem, Peter Wyckoff. Charlotte: Metacomputing on the Web.  <em> Ninth International Conference on Parallel and Distributed Computing Systems, </em> September 1996. <!WA18><A HREF="http://cs.nyu.edu/phd_students/wyckoff/charlotte.ps">(PostScript)</A>. 
+<p>
+<LI>Tom Brown, Karpjoo Jeong, Bin Li, Dennis Shasha, Peter Wyckoff.
+;Persistent Linda User Manual. <em>NYU Department of Computer Science Technical
+Report, </em> December 1996,   to appear. 
+<p>
+<LI>Karpjoo Jeong, Dennis Shasha, Suren Talla, Peter Wyckoff.
+An Approach to Fault Tolerant Parallel Processing
+on Intermittently Idle, Heterogeneous  Workstations.
+submitted to <em>The Twenty-Seventh International Symposium on
+Fault-Tolerant Computing</em>.
+</PAPERS>
+
+<p>
+<HR>
+
+<ADDRESS>
+
+<A NAME = "ContactInformation">
+</A>
+<!WA19><IMG ALIGN = left SRC = "http://cs.nyu.edu/phd_students/wyckoff/gif/contact.gif">
+<H2>Contact Information</H2>
+
+<H3>Office</H3>
+719 Broadway, Room 706<br>
+New York, NY 10012<br>
+(212)998-3523<br>
+<p>
+
+<H3>Home</H3>
+(212)799-4817<br>
+<p>
+
+<!WA20><IMG ALIGN = middle SRC = "http://cs.nyu.edu/phd_students/wyckoff/mail1.gif">
+Email: <!WA21><a HREF="mailto:wyckoff@cs.nyu.edu"><I>wyckoff@cs.nyu.edu</I></a><br>
+<!WA22><IMG ALIGN = middle SRC = "http://cs.nyu.edu/phd_students/wyckoff/scope.gif">
+Finger: <!WA23><a HREF="http://www.cs.indiana.edu/finger/gateway?wyckoff@slinky.cs.nyu.edu"><I>wyckoff@slinky.cs.nyu.edu</I></a>
+<p>
+
+</ADDRESS>
+
+<HR>
+
+</BODY>
+
+</HTML>
+
+<!-- In case I forget, this is how a comment is written. -->
+

@@ -1,0 +1,399 @@
+Date: Tue, 14 Jan 1997 20:09:02 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 05 Jun 1996 21:29:31 GMT
+Content-length: 14548
+
+<!-- $Date: 94/11/23 18:25:03 $ -->
+<!-- $Revision: 1.15 $ -->
+<!-- $Log:	tutorial.html,v $
+Revision 1.15  94/11/23  18:25:03  18:25:03  barry (Barry Lee Roberts)
+Took out reference to bulletin board communication.
+
+Revision 1.14  94/11/23  16:00:13  16:00:13  goodman (Maland Brent Goodman)
+Put "Add or Create" back in the OIM outline.
+
+Revision 1.13  94/11/23  15:53:36  15:53:36  goodman (Maland Brent Goodman)
+Removed reference to Add and Create in the OIM
+outline since a file add.html does not exist.
+I assumed it wasn't needed.
+
+Revision 1.12  94/11/23  15:29:37  15:29:37  goodman (Maland Brent Goodman)
+Deleted "Object Interactions" from the outline for
+OIM.
+
+Revision 1.11  94/11/04  17:04:29  17:04:29  goodman (Maland Brent Goodman)
+Hid comments from the Revision section.
+
+Revision 1.10  94/11/04  10:48:13  10:48:13  black (Paul E. Black)
+Add General Constraints for Behavior to OBM outline (it points to
+the appropriate place in General Constraints).  Change General
+Constraints in Interactions in OIM to point to the appropriate
+place in General Constraints, too.  Fix comments to HTML 2.0
+standard, that is they end in --, optional spaces, and >
+
+<!-- Revision 1.9  94/11/04  09:49:34  09:49:34  black (Paul E. Black)
+Change Prior and Subsequent State Conjunctions to just Prior and Subsequent
+States - conjunctions are just one type.  Switch their order.
+
+Revision 1.8  94/11/02  13:36:41  13:36:41  nielson (Ben Nielson)
+Changed High Level Transactions to High Level Transitions
+
+Revision 1.7  94/11/01  20:27:33  20:27:33  rohead (Sean R. Rohead)
+added 'interacting with multiple objects'.
+
+Revision 1.6  94/10/26  16:28:37  16:28:37  goodman (Maland Brent Goodman)
+A few minor changes to punctuation, etc.
+
+Revision 1.5  94/10/25  15:34:47  15:34:47  black (Paul E. Black)
+Add a line about getting more information by clicking on highlighted
+words.
+
+Revision 1.4  94/10/24  17:57:50  17:57:50  goodman (Maland Brent Goodman)
+Made some spelling and grammar changes down to, but not including "Reality Representation."
+
+Revision 1.3  94/10/21  14:00:25  14:00:25  black (Paul E. Black)
+Finialize outline of OBM.
+
+Revision 1.2  94/10/18  14:41:04  14:41:04  goodman (Maland Brent Goodman)
+Added OBM outline needs file references added, also needs tweeking.
+ -->
+<HTML>
+<HEAD>
+<TITLE>OSA Tutorial</TITLE>
+
+<!--  describe the document, avoid context sensative descriptions -->
+<meta name="description" 
+      value="Tutorial for OSA (Object-oriented System Analysis)">
+
+<!--  keywords for the document -->
+<meta name="keywords"
+      value="tutorial, OSA, Object-Oriented, System Analysis">
+
+<!--  should be "document" unless providing a search, then "service" -->
+<meta name="resource-type" 
+      value="document">
+
+<!--  use global for documents to be indexed outside BYU -->
+<meta name="distribution" 
+      value="local">
+
+</HEAD>
+<BODY>
+<h1>An OSA Tutorial</h1>
+by <P>
+<MENU>
+<LI> <!WA0><A HREF="http://lal.cs.byu.edu/people/black.html">Paul Black</A>
+	(p.black@ieee.org) 
+<LI> Lei Cao (caol@bert.cs.byu.edu)
+<LI> <!WA1><A HREF="http://bert.cs.byu.edu/~goodman/goodman.html">Brent Goodman</A> (mbg@byu.edu)
+<LI> <!WA2><A HREF="http://genie.cs.byu.edu/~nielson/Ben.html">Ben Nielson</A> (nielson@cs.byu.edu)
+<LI> Lu Pan (pan@math.byu.edu)
+<LI> <!WA3><A HREF="http://bert.cs.byu.edu/~parra/amalia.html">Amalia Parra</A> (parra@bert.cs.byu.edu)
+<LI> Barry Roberts (barry@bert.cs.byu.edu)
+<LI> Sean Rohead (rohead@bert.cs.byu.edu)
+<LI> Roger Smith (rsmith@bert.cs.byu.edu)
+<LI> Mike Steed (mrs@bert.cs.byu.edu)
+<LI> Wei Wei (weiwei@bert.cs.byu.edu)
+<LI> <!WA4><A HREF="http://osm7.cs.byu.edu/people/xmk/xmk.html">Mingkang Xu</A> (xmk@osm7.cs.byu.edu)
+
+</MENU>
+
+<HR>
+
+<H1>How to use this hyper-document</H1>
+
+This is a hyper-text tutorial and reference manual for
+<strong>OSA</strong>, an Object-oriented Systems Analysis technique.
+
+<P>
+You can get details, further explanations, or related subjects by clicking
+on highlighted words.
+
+<P>
+The objective of this tutorial is for you to learn
+<OL>
+<LI> what <strong>OSA</strong> is,
+<LI> how to use <strong>OSA</strong> to model the real world, and
+<LI> why using <strong>OSA</strong> can lead to better systems.
+</OL>
+The <!WA5><A HREF="#Philosophy">first part</A> of this page explains the
+general ideas behind and
+approaches of OSA: what does it do, when and how does one use it,
+what to expect (and not to expect), etc.  
+
+<P>
+The <!WA6><A HREF="#Components">second part</A> explains the individual
+building blocks from which models are constructed.  
+
+<P>
+The <!WA7><A HREF="#References">last part</A> is reference material for OSA:
+a <!WA8><A HREF="http://osm7.cs.byu.edu/OSA/glossary.html">glossary</A>,
+a <!WA9><A HREF="http://osm7.cs.byu.edu/OSA/symbolary.html">symbolary</A>, and
+a <!WA10><A HREF="http://osm7.cs.byu.edu/OSA/bibliography.html">bibliography and URL's</A>.
+
+<P>
+We use markers in the text to indicate special parts of this tutorial.
+
+<MENU>
+
+<LI> <!WA11><img src="http://osm7.cs.byu.edu/OSA/images/mark_formal.gif"> indicates the formal basis
+	underlying the OSA model.
+
+<LI> <!WA12><img src="http://osm7.cs.byu.edu/OSA/images/mark_change.gif">	indicates changes from the
+	book, <!WA13><A href="http://osm7.cs.byu.edu/OSA/bibliography.html#OOSA book">
+	Object-Oriented Systems Analysis</A>.
+
+<LI> <!WA14><img src="http://osm7.cs.byu.edu/OSA/images/mark_tentative.gif"> indicates that the concepts
+	are somewhat tentative, that is, that the developers are not
+	happy with it and it is likely to change.
+
+<LI> <!WA15><img src="http://osm7.cs.byu.edu/OSA/images/mark_compare.gif"> indicates comparisons with
+	other systems analysis techniques and object-oriented languages.
+
+</MENU>
+
+<HR>
+
+<A NAME="Philosophy">
+<H1>The Philosophy of OSA</H1>
+</A>
+
+OSA is an objected-oriented systems
+analysis technique, which we understand as the study of a specific domain of interacting
+objects for the purpose of understanding and documenting their essential characteristics.
+It has the expressive power to represent reality.  Its underlying concepts are based 
+on formal definitions of system data and behavior modeling.
+
+<H2>Object-oriented vs. Process-oriented analysis</H2>
+
+Process-oriented analysis describes systems as a network of interacting processes. It includes
+descriptions of data used by processes, which are recorded in a data dictionary. This approach
+often steers the analyst away from studying system components and their interrelationships
+towards studying how the system might be designed and implemented. It is also difficult for 
+process-oriented analysis to map concepts between a network of processes and objects existing
+in a real-world system.<p>
+As opposed to process-oriented analysis, object-oriented analysis modularizes an analysis document
+along the same object boundaries that exist in a real-world system. In addition, this approach also
+organizes all knowledge about each system object in a single logical location in the analysis document.
+Thus, information about a system object is easier to locate in object-oriented analysis than in
+other analysis methods. The object-oriented approach also encourages analysts to concentrate on 
+"what" rather than "how", which reduces the temptation to skip prematurely to design. To make it 
+easier to understand information about objects, object-oriented techniques 
+provide forms of abstraction including aggregation, generalization and classification. <p>
+
+<H2>Model-driven (vs. Method-driven) analysis</H2>
+
+A method-driven approach consists of a fixed sequence of steps to
+follow.  That is, a system is developed by some method, such as the
+waterfall method or the spiral model.  In practice, 
+these steps cannot be followed exactly.  When development problems are
+encountered, the analyst must adjust the order of steps, adapt the
+procedures, 
+and make exceptions to rules.  The analyst is left to rely 
+on experience and underlying principles, which may be undocumented and
+are poorly understood.
+
+<P>
+A model-driven technique, on the other hand, provides a prespecified set of fundamental concepts with 
+which to model the system under study. This aids analysts in building models as best suits their needs.
+The philosophy of the model-driven technique is that the most important thing to learn is not a 
+step-by-step procedure, but rather the conceptual framework behind the analysis technique.<p>
+
+<H2>Reality Representation</H2>
+
+An OSA model is designed with the idea that reality is represented instead of some particular programming
+language. Modeling components have been designed to allow analysts to capture everything of importance
+in a system. Thus, OSA encourages analysts to represent systems the way they are perceived,
+without being constrained by how it will be implemented.
+
+<H2>Formal Basis</H2>
+
+The underlying concepts of OSA are based on formal definitions of system data and behavior modeling. 
+Analysis through the construction of system models, whose modeling constructs are based on formal definitions,
+is helpful for the following reasons.<p>
+<DL>
+<DD>1) Models based on formal definitions can provide a foundation for testing
+model integrity, and completeness of analysis. <DD>2) Since formal model definition ensures a consistent 
+interpretation, it can provide a mechanism for communicating system understanding within the analysis
+team. <DD>3) A model with a formal foundation can also improve communication with parties outside the analysis team.<p>
+</DL>
+
+<HR>
+
+<A NAME="Components">
+<H1>The Components of OSA</H1>
+</A>
+
+<strong>OSA </strong> has concepts to formalize just about everything one needs to model
+a real world situation.  Although OSA is an "integrated" modeling
+scheme, that is all the parts work together, it can conveniently be
+seen as consisting of three parts: <!WA16><A HREF="http://osm7.cs.byu.edu/OSA/orm.html">ORM</A>, 
+<!WA17><A HREF="http://osm7.cs.byu.edu/OSA/obm.html">OBM</A>, and <!WA18><A HREF="http://osm7.cs.byu.edu/OSA/oim.html">OIM</A>.
+
+<H2>
+<!WA19><A HREF="http://osm7.cs.byu.edu/OSA/orm.html">ORM</A> - Object-Relationship Model</H2>
+
+The <strong> ORM </strong> (Object-Relationship Model) is a way to
+describe or represent objects, classes of object, relationships
+between objects 
+and classes, and memberships of the real world. <P>  
+The <strong> ORM</strong></A> consists of:
+
+<DL>
+<DD> <!WA20><A HREF="http://osm7.cs.byu.edu/OSA/object.html">Objects</A>,
+
+<DD> <!WA21><A HREF="http://osm7.cs.byu.edu/OSA/objectClass.html">Object Classes</A>,
+
+<DL>
+<DD> <!WA22><A HREF="http://osm7.cs.byu.edu/OSA/lexObjClass.html">Lexical Object Classes</A>
+<DD> <!WA23><A HREF="http://osm7.cs.byu.edu/OSA/relationalObjClass.html">Relational Object Classes</A>
+<DD> <!WA24><A HREF="http://osm7.cs.byu.edu/OSA/hiLevObjectClass.html">High-Level Object Classes</A>
+</DL>
+
+<DD> <!WA25><A HREF="http://osm7.cs.byu.edu/OSA/relation.html">Relationships</A>,
+
+<DD> <!WA26><A HREF="http://osm7.cs.byu.edu/OSA/relationshipSet.html">Relationship Sets</A>, and the
+	special forms,
+
+<DL>
+<DD> <!WA27><A HREF="http://osm7.cs.byu.edu/OSA/generalSpecial.html">Generalization/Specialization</A>
+<DD> <!WA28><A HREF="http://osm7.cs.byu.edu/OSA/role.html">Roles</A>
+<DD> <!WA29><A HREF="http://osm7.cs.byu.edu/OSA/aggregation.html">Aggregation</A>
+<DD> <!WA30><A HREF="http://osm7.cs.byu.edu/OSA/association.html">Association</A>
+</DL>
+
+<DD> <!WA31><A HREF="http://osm7.cs.byu.edu/OSA/constraint.html">Constraints</A>,
+
+<DL>
+<DD> <!WA32><A HREF="http://osm7.cs.byu.edu/OSA/participConst.html">Participation Constraints</A>
+<DD> <!WA33><A HREF="http://osm7.cs.byu.edu/OSA/cooccurConst.html">Co-occurrence Constraints</A>
+<DD> <!WA34><A HREF="http://osm7.cs.byu.edu/OSA/cardinalConst.html">Object-class Cardinality Constraints</A>
+<DD> <!WA35><A HREF="http://osm7.cs.byu.edu/OSA/specialConst.html">Specialization Constraints</A>
+<DD> <!WA36><A HREF="http://osm7.cs.byu.edu/OSA/generalConst.html">General Constraints</A>
+</DL>
+
+<DD> <!WA37><A HREF="http://osm7.cs.byu.edu/OSA/hiLevRelationshipSet.html">High-Level Relationship Sets</A>, and
+
+<DD> <!WA38><A HREF="http://osm7.cs.byu.edu/OSA/note.html">Notes</A>.
+
+</DL>
+
+<H2>
+<!WA39><A HREF="http://osm7.cs.byu.edu/OSA/obm.html">OBM</A> - Object-Behavior Model</H2>
+
+<p>
+The OBM (Object-Behavior Model) is a means of describing the
+behavior of objects.  It is a means of explaining an object's possible
+states (informally, what it may do) and how and why it changes state.
+
+<P>
+<!WA40><img src="http://osm7.cs.byu.edu/OSA/images/mark_formal.gif">The OBM may be thought of as
+detailing when and how objects join and leave object classes and
+relationships.
+
+<p>
+The <strong>OBM</strong></A> consists of:
+
+<DD> <!WA41><A HREF="http://osm7.cs.byu.edu/OSA/state.html">States</A>,
+<DD> <!WA42><A HREF="http://osm7.cs.byu.edu/OSA/Transition.html">Transitions</A>,
+<DL>
+<DD> <!WA43><A HREF="http://osm7.cs.byu.edu/OSA/trigger.html">Triggers, Conditions, and Events</A>,
+<DD> <!WA44><A HREF="http://osm7.cs.byu.edu/OSA/action.html">Actions</A>,
+<DD> <!WA45><A HREF="http://osm7.cs.byu.edu/OSA/initTrans.html">Initial Transitions</A>,
+<DD> <!WA46><A HREF="http://osm7.cs.byu.edu/OSA/finaltrans.html">Final Transitions</A>,
+</DL>
+
+<DD> <!WA47><A HREF="http://osm7.cs.byu.edu/OSA/Exceptions.html">Exceptions</A>,
+<DD> <!WA48><A HREF="http://osm7.cs.byu.edu/OSA/priorConj.html">Prior States</A>,
+<DD> <!WA49><A HREF="http://osm7.cs.byu.edu/OSA/subsequent.html">Subsequent States</A>,
+<DD> <!WA50><A HREF="http://osm7.cs.byu.edu/OSA/thread.html">Threads</A>,
+<DD> <!WA51><A HREF="http://osm7.cs.byu.edu/OSA/RTC.html">Real-Time Constraints</A>,
+<DD> <!WA52><A HREF="http://osm7.cs.byu.edu/OSA/generalConst.html#obm">General Constraints for Behaviors</A>,
+<DD> <!WA53><A HREF="http://osm7.cs.byu.edu/OSA/hiLevState.html">High Level States</A>,
+<DD> <!WA54><A HREF="http://osm7.cs.byu.edu/OSA/hiLevTrans.html">High Level Transitions</A>, and
+<DD> <!WA55><A HREF="http://osm7.cs.byu.edu/OSA/gen_spe.html">Generalization/Specialization</A>.
+</DL>
+
+
+<H2><!WA56><A HREF="http://osm7.cs.byu.edu/OSA/oim.html">OIM</A> - Object-Interaction Model</H2>
+
+Under construction
+
+<p>
+The <strong>OIM</strong></A> consists of:
+
+<DD> <!WA57><A HREF="http://osm7.cs.byu.edu/OSA/specify.html">Specifying Interacting Objects</A>,
+
+<DD> <!WA58><A HREF="http://osm7.cs.byu.edu/OSA/multiple.html">Interacting with Multiple Objects</A>,
+
+<DD> <!WA59><A HREF="http://osm7.cs.byu.edu/OSA/bidirect.html">Bidirectional Interaction</A>,
+
+<DD> <!WA60><A HREF="http://osm7.cs.byu.edu/OSA/specInteract.html">Special Interactions</A>,
+<DL>
+<DD> <!WA61><A HREF="http://osm7.cs.byu.edu/OSA/access.html">Access</A>
+<DD> <!WA62><A HREF="http://osm7.cs.byu.edu/OSA/modify.html">Modify</A>
+<DD> <!WA63><A HREF="http://osm7.cs.byu.edu/OSA/remove.html">Remove and Destroy</A> 
+<DD> <!WA64><A HREF="http://osm7.cs.byu.edu/OSA/add.html">Add and Create<A/>
+</DL>
+
+
+<DD> <!WA65><A HREF="http://osm7.cs.byu.edu/OSA/continuous.html">Continuous Interaction</A>,
+
+<DD> <!WA66><A HREF="http://osm7.cs.byu.edu/OSA/timed.html">Time-Constrained Interactions</A>,
+
+<DD> <!WA67><A HREF="http://osm7.cs.byu.edu/OSA/generalConst.html#oim">General Constraints for Interactions</A>,
+
+<DD> <!WA68><A HREF="http://osm7.cs.byu.edu/OSA/internalIntr.html">Interaction Within an Object Class</A>,
+
+<DD> <!WA69><A HREF="http://osm7.cs.byu.edu/OSA/hiLevIntr.html">High-Level Interactions and Views</A>, and
+
+<DD> <!WA70><A HREF="http://osm7.cs.byu.edu/OSA/genSpecIntr.html">Generalization/Specialization</A>.
+
+<HR>
+
+<A NAME="References">
+<H1>References</H1>
+</A>
+
+This section gives references which may be helpful while reading OSA
+models or using OSA to build models.
+
+<H2>Glossary</H2>
+
+The <!WA71><A HREF="http://osm7.cs.byu.edu/OSA/glossary.html">glossary</A> is an alphabetical list of
+OSA terms.  Each entry has a brief definition, a
+link to the main defining page, and links to related terms.
+
+<H2>Symbolary</H2>
+
+The <!WA72><A HREF="http://osm7.cs.byu.edu/OSA/symbolary.html">symbolary</A> is a list of the symbols
+used in the graphical representation of OSA diagrams.
+
+<H2>Bibliography</H2>
+
+The <!WA73><A HREF="http://osm7.cs.byu.edu/OSA/bibliography.html">bibliography</A> is a list of books,
+papers, and URL's primarily about OSA.  There are also some references
+to other system analysis and software engineering techniques. <P>
+
+<HR>
+
+<!WA74><a href="http://osm7.cs.byu.edu/HomePage.html">
+<!WA75><img align=MIDDLE src="http://osm7.cs.byu.edu/OSA/images/button-osm.gif" alt="OSM Home Page "></a>
+<!WA76><a href="http://www.cs.byu.edu/byu.html">
+<!WA77><img align=MIDDLE src="http://osm7.cs.byu.edu/OSA/images/button-to-cs.gif" alt=" CS Dept Home Page "></a>
+<!WA78><a href="http://www.byu.edu/">
+<!WA79><img align=MIDDLE src="http://osm7.cs.byu.edu/OSA/images/thumb-cougar.gif" alt=" BYU Home Page"></a>
+
+<HR>
+<P>
+<EM>Updated
+Fri Nov  4 10:48:00 1994
+</EM><ADDRESS>
+by <!WA80><a href="http://lal.cs.byu.edu/people/black.html">Paul E. Black
+</a>
+(black@lal.cs.byu.edu)
+</ADDRESS>
+
+</BODY>
+</HTML>

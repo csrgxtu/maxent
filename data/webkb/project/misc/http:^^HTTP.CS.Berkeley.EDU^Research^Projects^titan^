@@ -1,0 +1,174 @@
+Date: Wed, 20 Nov 1996 19:22:55 GMT
+Server: NCSA/1.4
+Content-type: text/html
+Last-modified: Thu, 28 Mar 1996 22:32:53 GMT
+Content-length: 7440
+
+<TITLE>
+TITAN: A Next-Generation Infrastructure for Integrating Computing and Communication
+</TITLE>
+
+<H1>
+TITAN: A Next-Generation Infrastructure for Integrating Computing and Communication
+</H1>
+Funded by the National Science Foundation CISE Institutional Infrastructure Program
+<P>
+The Computer Science faculty at the University of California at Berkeley
+is developing as its computing and communication
+infrastructure a new type of computing system, called Titan.  This
+computing system comprises an integrated ensemble of computing and
+communication elements, organized to provide the user with a number of
+services that we think will characterize the practice of computing into
+the next century.  The most important of these are (i) multimedia
+(especially video) capabilities in delivery vehicles, storage and
+communication, (ii) huge computing power (especially from clusters
+of workstations operating as a single parallel computer) and enormous
+storage space, (iii) innovative parallel languages, debuggers, and
+libraries, and (iv) high accessibility from mobile as well as fixed
+locations.
+
+<UL>
+ <LI> <!WA0><A HREF="http://www.cs.berkeley.edu/~culler/titan/progress96.html"> Progress Report 1995-96</A>
+ <LI> <!WA1><A HREF="http://http.cs.berkeley.edu/~culler/titan/progress95.ps"> Progress Report 1994-95 </A>
+ <LI> <!WA2><A HREF="http://http.cs.berkeley.edu/~culler/titan/titan-pi.ps"> Project Presentation </A> 1995 NSF IIG PI Meeting, Duke University, June 1995.
+</UL>
+
+<H2> Primary Components of the Project
+</H2>
+<UL>
+ <LI> Core Computing Component
+   <UL>
+    <LI> <!WA3><A HREF = "#NOW-section">NOW</A> forms the architecture and operating systems portion of the core computing component of
+Titan.
+    <LI> <!WA4><A HREF = "#Castle-section">Castle</A> forms the parallel programming and compilation portion of the Core.
+ </UL>
+
+ <LI> <!WA5><A HREF="#Media-section">Media Component</A>
+ <LI> <!WA6><A HREF="#Application-section">Driving Applications</A>
+ <LI> <!WA7><A HREF="#SWW-section">General CS Research Infrastructure</A>
+</UL>
+
+<H2> <A NAME = NOW-section> NOW: Architecture and OS for a Network of Workstations</A> </H2>
+
+<!WA8><A HREF="http://now.cs.berkeley.edu/">
+NOW</A>: Network of Workstations as a High Performance Integrated System 
+<P>
+<h3> Areas of Research within the NOW Component</h3>
+
+<UL>
+<LI><!WA9><a HREF="http://now.cs.berkeley.edu/active_messages.html"> 
+Active Messages:</a> Fast Communication Primitives (Culler)
+
+<LI><!WA10><a HREF="http://now.cs.berkeley.edu/fastcomm.html"> 
+Fast implementations of conventional communication layers.</a> Fast Sockets and MPI. (Culler,Anderson)
+
+<LI><!WA11><a HREF="http://now.cs.berkeley.edu/glunix.html"> GLUnix:</a> Global management of resources. (Anderson)
+
+<LI><!WA12><a HREF="http://now.cs.berkeley.edu/xfs.html"> xFS:</a> a distributed file system using striping across workstation disks and 
+co-operative caching in client memories.(Anderson, Patterson)
+
+<LI><!WA13><a HREF="http://now.cs.berkeley.edu/network-ram.html">
+Network Virtual Memory.</a>(Patterson,Anderson,Culler)
+
+<LI><!WA14><a HREF="http://now.cs.berkeley.edu/bench.html"> 
+The NOW Benchmark Suite</a>(Patterson)
+</UL>
+	
+<H2> <A NAME= Castle-section>Castle: Core parallel programming and language support</A> </H2>
+
+<dt> <!WA15><a href="http://HTTP.CS.Berkeley.EDU/public/parallel/castle">The Castle Project:</a> Integrated
+software support for parallel computing.
+<P>
+
+<H3> Areas of Research within the Castle component</H3>
+
+<UL>
+<li> <!WA16><A HREF="http://http.cs.berkeley.edu/public/parallel/castle/split-c">
+Split-C</A>: A performance programming language for NOWs and parallel machines. Include <!WA17><A href="http://http.cs.berkeley.edu:80/public/parallel/castle/mantis/">Mantis</A> graphical debugger. (Culler,Yelick)
+
+<li> <!WA18><A href="http://http.cs.berkeley.edu/public/parallel/castle/multipol/">
+Multipol</a> a library of distributed data structures, designed to ease the programming of
+"irregular" problems on large scale, distributed-memory multiprocessors. (Yelick)
+
+<li> <!WA19><A href="http://www.netlib.org/scalapack/index.html">
+ScaLAPACK:</a> Scalable version of the <!WA20><A href="http://www.netlib.org/lapack/>LAPACK</A> library of linear algebra routine for parallel computers. (Demmel,Kahan)
+
+<LI> <A href="http://www.cs.berkeley.edu/~yelick/titanium/>Titanium:</A>
+compiler and language support for parallel programming
+of distributed memory multiprocessors(Aiken,Yelick,Graham)
+
+<LI> <!WA21><A href="http://www.icsi.berkeley.edu/Sather"> pSather</a> is a parallel
+version of the object oriented language Sather.(Feldman)
+</UL>
+
+<P>
+
+<H2> <A NAME= Media-section>MultiMedia Systems Support and Content Development </A></H2>
+<H3> Areas of Research within the Multimedia component</H3>
+<UL>
+<LI> <!WA22><A href="http://tenet.berkeley.edu/">Tenet</A> Protocols for real-time applications.(Ferrari)
+<LI> <!WA23><A HREF="http://bmrc.berkeley.edu/projects/cmt/cmt.html">  Plateau Multimedia Research Group:</A> continuous media applications
+ and systems infrastructure. (Rowe)
+<LI> <A> Multimedia Authoring Initiative </A> (Harrison)
+<LI> <A> Ensemble: Language- and Document- centric Interactive
+Systems  </A> (Graham and Harrison)
+<LI> <!WA24><A HREF="http://http.cs.berkeley.edu/projects/graphics/"> Computer Graphics </A> (Sequin, Barsky, Forsyth, Canny, Malik)
+<LI> <!WA25><A HREF="http://infopad.eecs.berkeley.edu/ "> Info pad:</A>prototype for providing ubiquitous, wireless access to multimedia data. (Broderson, Brewer, Katz, Messerschmitt, Rowe)
+<LI> <!WA26><A HREF="http://http.cs.Berkeley.edu/~randy/Daedalus/BARWAN/BARWAN_index.html
+http"> 
+The Daedalus/Icarus Project:</A>wireless networking strategies. (Katz)
+<LI> Connection to BagNet 
+</UL>
+
+<H2> <A NAME="#Application-section"> Driving Applications </A> </H2>
+
+<UL>
+<LI> Global Climate Modeling: <!WA27><A href="http://http.cs.berkeley.edu/~ssmith/GATOR.html"> GATOR</a> (Demmel)
+<LI> <!WA28><A HREF="http://www.cs.berkeley.edu/~raph/soda.html "> Soda Hall Building Walkthrough </A> (Sequin)
+<LI> <!WA29><A HREF="http://www-path.eecs.berkeley.edu/~delnaz/SmartPath/sm.html"> The SmartPath Simulation and Animation Package </A>, part of the
+<!WA30><A HREF="http://www-path.eecs.berkeley.edu/">Path Project </A> (Varaiya, Yelick)
+<LI> <!WA31><A HREF="http://www.cs.berkeley.edu/~kanazawa/bat/index.html "> BAT (Bayesian Automated Taxi): Autonomous Vehicle Control
+ </A>, part of the
+<!WA32><A HREF="http://www-path.eecs.berkeley.edu/">Path Project </A> (Russell)
+<LI> <!WA33><A HREF="http://http.cs.berkeley.edu:80/~yelick/coordination/"> Cancer Cell Simulation </A> (Yelick, Demmel)
+<LI> Digital Repositories: intelligent access to massive quantities of multimedia 
+information in distributed repositories (Wilensky, Stonebraker)
+ <UL>
+  <LI> <!WA34><A HREF="http://elib.cs.berkeley.edu"> CS Technical Report Server
+ and Electronic Environmental Library Project</A>
+  <LI>NASA EOSDIS Alternative Architecture Project.
+ </UL>
+<LI> <!WA35><A HREF="http://http.cs.berkeley.edu/projects/optical/"> OPtometric Topography Involving the Cornea And
+Lens </A> (Barsky)
+<LI> <!WA36><A HREF="ftp://s2k-ftp.cs.berkeley.edu/pub/postgres/index.html"> Database </A> (Stonebraker)
+<LI> <!WA37><A HREF="http://inktomi.berkeley.edu:/">Scalable Web Services</A> (Brewer)
+</UL>
+<P>
+
+<H2> <A NAME=SWW-section>General CS Research Infrastructure  </A></H2>
+<UL>
+<LI><!WA38><A HREF="http://http.cs.berkeley.edu/csdiv/SWW/ "> SoftWare Warehouse </A>
+</UL>
+
+<!WA39><A href="http://http.CS.Berkeley.EDU/">
+CS Division Home Page</a>
+<HR>
+<!WA40><A href="http://http.CS.Berkeley.EDU/~culler/"> David E. Culler</a><BR>
+<!WA41><A HREF="http://HTTP.CS.Berkeley.EDU/Research/Projects/titan/feedback/"> culler@CS.Berkeley.EDU</A><BR>
+<address>culler@CS.Berkeley.EDU
+</address>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

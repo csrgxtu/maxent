@@ -1,0 +1,287 @@
+Date: Mon, 02 Dec 1996 15:53:22 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<!-- Generated with CERN WebMaker 1.4 -->
+<HTML>
+<HEAD>
+<TITLE>Cecil Language Reference Manual</TITLE>
+</HEAD>
+<BODY>
+<A HREF="cecil-spec_2.html">[Next] </A><P>
+<H1></H1>
+<HR>
+<H1></H1>
+<HR>
+<H2> </H2>
+<H2> </H2>
+<H2> </H2>
+<H1>The Cecil Language</H1>
+<HR>
+<H2> Specification and Rationale</H2>
+<H2> Version 2.0</H2>
+<H2> Craig Chambers</H2>
+ Department of Computer Science and Engineering<BR>
+University of Washington<BR>
+Box 352350, Seattle, Washington  98195-2350  USA<P>
+<H2> September 12, 1996</H2>
+ Abstract<P>
+ Cecil is a purely object-oriented language intended to support rapid construction of high-quality, extensible software. Cecil combines multi-methods with a simple classless object model, a kind of dynamic inheritance, modules, and optional static type checking. Instance variables in Cecil are accessed solely through messages, allowing instance variables to be replaced or overridden by methods and vice versa. Cecil's predicate objects mechanism allows an object to be classified automatically based on its run-time (mutable) state. Cecil's static type system distinguishes between subtyping and code inheritance, but Cecil enables these two graphs to be described with a single set of declarations, streamlining the common case where the two graphs are parallel. Cecil includes a fairly flexible form of parameterization, including explicitly parameterized objects, types, and methods, as well as implicitly parameterized methods related to the polymorphic functions commonly found in functional languages. By making type declarations optional, Cecil aims to allow mixing of and migration between exploratory and production programming styles. Cecil supports a module mechanism that enables independently-developed subsystems to be encapsulated, allowing them to be type-checked and reasoned about in isolation despite the presence of multi-methods and subclassing. Objects can be extended externally with additional methods and instance variables, often encapsulated in separate modules, supporting a kind of role-based or subject-oriented programming style.<P>
+ This document describes the design of the Cecil language as of December 1995. It mixes the specification of the language with discussions of design issues and explanations of the reasoning that led to various design decisions.<P>
+ <P>
+ Table of Contents<P>
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<DL>
+<DT><A HREF="cecil-spec_2.html#HEADING1"><B>1 </B> - Introduction</A><DD>
+<DL>
+<DT><A HREF="cecil-spec_3.html#HEADING2"><B>1.1 </B> - Design Goals and Major Features</A><DD>
+<DT><A HREF="cecil-spec_4.html#HEADING3"><B>1.2 </B> - Overview</A><DD>
+</DL>
+<DT><A HREF="cecil-spec_5.html#HEADING4"><B>2 </B> - Dynamically-Typed Core</A><DD>
+<DL>
+<DT><A HREF="cecil-spec_6.html#HEADING5"><B>2.1 </B> - Objects and Inheritance</A><DD>
+<DL>
+<DT><A HREF="cecil-spec_6.html#HEADING6"><B>2.1.1 </B> - Inheritance</A><DD>
+<DT><A HREF="cecil-spec_6.html#HEADING7"><B>2.1.2 </B> - Object Instantiation</A><DD>
+<DT><A HREF="cecil-spec_6.html#HEADING8"><B>2.1.3 </B> - Extension Declarations</A><DD>
+<DT><A HREF="cecil-spec_6.html#HEADING9"><B>2.1.4 </B> - Predefined Objects</A><DD>
+<DT><A HREF="cecil-spec_6.html#HEADING10"><B>2.1.5 </B> - Closures</A><DD>
+</DL>
+<DT><A HREF="cecil-spec_7.html#HEADING11"><B>2.2 </B> - Methods</A><DD>
+<DL>
+<DT><A HREF="cecil-spec_7.html#HEADING12"><B>2.2.1 </B> - Argument Specializers and Multi-Methods</A><DD>
+<DT><A HREF="cecil-spec_7.html#HEADING13"><B>2.2.2 </B> - Method Bodies</A><DD>
+<DT><A HREF="cecil-spec_7.html#HEADING14"><B>2.2.3 </B> - Primitive Methods</A><DD>
+</DL>
+<DT><A HREF="cecil-spec_8.html#HEADING15"><B>2.3 </B> - Fields</A><DD>
+<DL>
+<DT><A HREF="cecil-spec_8.html#HEADING16"><B>2.3.1 </B> - Read-Only vs. Mutable Fields</A><DD>
+<DT><A HREF="cecil-spec_8.html#HEADING17"><B>2.3.2 </B> - Fields and Methods</A><DD>
+<DT><A HREF="cecil-spec_8.html#HEADING18"><B>2.3.3 </B> - Copy-Down vs. Shared Fields</A><DD>
+<DT><A HREF="cecil-spec_8.html#HEADING19"><B>2.3.4 </B> - Field Initialization</A><DD>
+</DL>
+<DT><A HREF="cecil-spec_9.html#HEADING20"><B>2.4 </B> - Predicate Objects</A><DD>
+<DL>
+<DT><A HREF="cecil-spec_9.html#HEADING21"><B>2.4.1 </B> - Predicate Objects and Inheritance</A><DD>
+<DT><A HREF="cecil-spec_9.html#HEADING22"><B>2.4.2 </B> - Predicate Objects and Fields</A><DD>
+</DL>
+<DT><A HREF="cecil-spec_10.html#HEADING23"><B>2.5 </B> - Statements and Expressions</A><DD>
+<DL>
+<DT><A HREF="cecil-spec_10.html#HEADING24"><B>2.5.1 </B> - Declaration Blocks</A><DD>
+<DT><A HREF="cecil-spec_10.html#HEADING25"><B>2.5.2 </B> - Variable Declarations</A><DD>
+<DT><A HREF="cecil-spec_10.html#HEADING26"><B>2.5.3 </B> - Variable References</A><DD>
+<DT><A HREF="cecil-spec_10.html#HEADING27"><B>2.5.4 </B> - Assignment Statements</A><DD>
+<DT><A HREF="cecil-spec_10.html#HEADING28"><B>2.5.5 </B> - Literals</A><DD>
+<DT><A HREF="cecil-spec_10.html#HEADING29"><B>2.5.6 </B> - Message Sends</A><DD>
+<DT><A HREF="cecil-spec_10.html#HEADING30"><B>2.5.7 </B> - Object Constructors</A><DD>
+<DT><A HREF="cecil-spec_10.html#HEADING31"><B>2.5.8 </B> - Vector Constructors</A><DD>
+<DT><A HREF="cecil-spec_10.html#HEADING32"><B>2.5.9 </B> - Closures</A><DD>
+<DT><A HREF="cecil-spec_10.html#HEADING33"><B>2.5.10 </B> - Parenthetical Subexpressions</A><DD>
+</DL>
+<DT><A HREF="cecil-spec_11.html#HEADING34"><B>2.6 </B> - Precedence Declarations</A><DD>
+<DL>
+<DT><A HREF="cecil-spec_11.html#HEADING35"><B>2.6.1 </B> - Previous Approaches</A><DD>
+<DT><A HREF="cecil-spec_11.html#HEADING36"><B>2.6.2 </B> - Precedence and Associativity Declarations in Cecil</A><DD>
+</DL>
+<DT><A HREF="cecil-spec_12.html#HEADING37"><B>2.7 </B> - Method Lookup</A><DD>
+<DL>
+<DT><A HREF="cecil-spec_12.html#HEADING38"><B>2.7.1 </B> - Philosophy</A><DD>
+<DT><A HREF="cecil-spec_12.html#HEADING39"><B>2.7.2 </B> - Semantics</A><DD>
+<DT><A HREF="cecil-spec_12.html#HEADING40"><B>2.7.3 </B> - Examples</A><DD>
+<DT><A HREF="cecil-spec_12.html#HEADING41"><B>2.7.4 </B> - Strengths and Limitations</A><DD>
+<DT><A HREF="cecil-spec_12.html#HEADING42"><B>2.7.5 </B> - Multiple Inheritance of Fields</A><DD>
+<DT><A HREF="cecil-spec_12.html#HEADING43"><B>2.7.6 </B> - Cyclic Inheritance</A><DD>
+<DT><A HREF="cecil-spec_12.html#HEADING44"><B>2.7.7 </B> - Method Lookup and Lexical Scoping</A><DD>
+<DT><A HREF="cecil-spec_12.html#HEADING45"><B>2.7.8 </B> - Method Invocation</A><DD>
+</DL>
+<DT><A HREF="cecil-spec_13.html#HEADING46"><B>2.8 </B> - Resends</A><DD>
+<DT><A HREF="cecil-spec_14.html#HEADING47"><B>2.9 </B> - Files and Include Declarations</A><DD>
+<DT><A HREF="cecil-spec_15.html#HEADING48"><B>2.10 </B> - Pragmas</A><DD>
+</DL>
+<DT><A HREF="cecil-spec_16.html#HEADING49"><B>3 </B> - Static Types</A><DD>
+<DL>
+<DT><A HREF="cecil-spec_17.html#HEADING50"><B>3.1 </B> - Goals</A><DD>
+<DT><A HREF="cecil-spec_18.html#HEADING51"><B>3.2 </B> - Types and Signatures</A><DD>
+<DT><A HREF="cecil-spec_19.html#HEADING52"><B>3.3 </B> - Type and Signature Declarations</A><DD>
+<DL>
+<DT><A HREF="cecil-spec_19.html#HEADING53"><B>3.3.1 </B> - Type Declarations</A><DD>
+<DT><A HREF="cecil-spec_19.html#HEADING54"><B>3.3.2 </B> - Representation and Object Declarations</A><DD>
+<DT><A HREF="cecil-spec_19.html#HEADING55"><B>3.3.3 </B> - Type and Object Extension Declarations</A><DD>
+<DT><A HREF="cecil-spec_19.html#HEADING56"><B>3.3.4 </B> - Signature Declarations</A><DD>
+<DT><A HREF="cecil-spec_19.html#HEADING57"><B>3.3.5 </B> - Implementation and Method Declarations</A><DD>
+<DT><A HREF="cecil-spec_19.html#HEADING58"><B>3.3.6 </B> - Field Implementation Declarations</A><DD>
+<DT><A HREF="cecil-spec_19.html#HEADING59"><B>3.3.7 </B> - Other Type Declarations</A><DD>
+<DT><A HREF="cecil-spec_19.html#HEADING60"><B>3.3.8 </B> - Discussion</A><DD>
+</DL>
+<DT><A HREF="cecil-spec_20.html#HEADING61"><B>3.4 </B> - Special Types and Type Constructors</A><DD>
+<DL>
+<DT><A HREF="cecil-spec_20.html#HEADING62"><B>3.4.1 </B> - Named Types</A><DD>
+<DT><A HREF="cecil-spec_20.html#HEADING63"><B>3.4.2 </B> - Closure Types</A><DD>
+<DT><A HREF="cecil-spec_20.html#HEADING64"><B>3.4.3 </B> - Least-Upper-Bound Types</A><DD>
+<DT><A HREF="cecil-spec_20.html#HEADING65"><B>3.4.4 </B> - Greatest-Lower-Bound Types</A><DD>
+</DL>
+<DT><A HREF="cecil-spec_21.html#HEADING66"><B>3.5 </B> - Object Role Annotations</A><DD>
+<DT><A HREF="cecil-spec_22.html#HEADING67"><B>3.6 </B> - Type Checking Messages</A><DD>
+<DL>
+<DT><A HREF="cecil-spec_22.html#HEADING68"><B>3.6.1 </B> - Checking Messages Against Signatures</A><DD>
+<DT><A HREF="cecil-spec_22.html#HEADING69"><B>3.6.2 </B> - Checking Signatures Against Method Implementations</A><DD>
+<DT><A HREF="cecil-spec_22.html#HEADING70"><B>3.6.3 </B> - Comparison with Other Type Systems</A><DD>
+<DT><A HREF="cecil-spec_22.html#HEADING71"><B>3.6.4 </B> - Type Checking Inherited Methods</A><DD>
+</DL>
+<DT><A HREF="cecil-spec_23.html#HEADING72"><B>3.7 </B> - Type Checking Expressions, Statements, and Declarations</A><DD>
+<DT><A HREF="cecil-spec_24.html#HEADING73"><B>3.8 </B> - Type Checking Subtyping Declarations</A><DD>
+<DT><A HREF="cecil-spec_25.html#HEADING74"><B>3.9 </B> - Type Checking Predicate Objects</A><DD>
+<DT><A HREF="cecil-spec_26.html#HEADING75"><B>3.10 </B> - Mixed Statically- and Dynamically-Typed Code</A><DD>
+</DL>
+<DT><A HREF="cecil-spec_27.html#HEADING76"><B>4 </B> - Parameterization and Parametric Polymorphism</A><DD>
+<DL>
+<DT><A HREF="cecil-spec_28.html#HEADING77"><B>4.1 </B> - Explicit Parameterization</A><DD>
+<DL>
+<DT><A HREF="cecil-spec_28.html#HEADING78"><B>4.1.1 </B> - Parameterized Declarations and Formal Type Parameters</A><DD>
+<DT><A HREF="cecil-spec_28.html#HEADING79"><B>4.1.2 </B> - Instantiating Parameterized Declarations</A><DD>
+<DT><A HREF="cecil-spec_28.html#HEADING80"><B>4.1.3 </B> - Parameterized Objects and Types</A><DD>
+<DT><A HREF="cecil-spec_28.html#HEADING81"><B>4.1.4 </B> - Method Lookup</A><DD>
+<DT><A HREF="cecil-spec_28.html#HEADING82"><B>4.1.5 </B> - Type Checking Instantiations</A><DD>
+</DL>
+<DT><A HREF="cecil-spec_29.html#HEADING83"><B>4.2 </B> - Implicit Parameterization</A><DD>
+<DT><A HREF="cecil-spec_30.html#HEADING84"><B>4.3 </B> - Matching Against Type Patterns</A><DD>
+<DL>
+<DT><A HREF="cecil-spec_30.html#HEADING85"><B>4.3.1 </B> - Method Formal Type Patterns</A><DD>
+<DT><A HREF="cecil-spec_30.html#HEADING86"><B>4.3.2 </B> - Upper Bound Type Patterns</A><DD>
+<DT><A HREF="cecil-spec_30.html#HEADING87"><B>4.3.3 </B> - The Matching Algorithm</A><DD>
+<DT><A HREF="cecil-spec_30.html#HEADING88"><B>4.3.4 </B> - Static vs. Dynamic Matching</A><DD>
+<DT><A HREF="cecil-spec_30.html#HEADING89"><B>4.3.5 </B> - Constraints on Supertype Graphs for Matching</A><DD>
+<DT><A HREF="cecil-spec_30.html#HEADING90"><B>4.3.6 </B> - Matching and Bounded Formal Type Parameters</A><DD>
+</DL>
+<DT><A HREF="cecil-spec_31.html#HEADING91"><B>4.4 </B> - Implicit Type Parameters in Extension Declarations</A><DD>
+<DT><A HREF="cecil-spec_32.html#HEADING92"><B>4.5 </B> - Parameterized Objects and Method Lookup</A><DD>
+<DT><A HREF="cecil-spec_33.html#HEADING93"><B>4.6 </B> - Parameterization and Syntactic Sugars</A><DD>
+<DT><A HREF="cecil-spec_34.html#HEADING94"><B>4.7 </B> - F-Bounded Polymorphism</A><DD>
+<DL>
+<DT><A HREF="cecil-spec_34.html#HEADING95"><B>4.7.1 </B> - Motivation</A><DD>
+<DT><A HREF="cecil-spec_34.html#HEADING96"><B>4.7.2 </B> - F-Bounded Polymorphism in Singly-Dispatched Languages</A><DD>
+<DT><A HREF="cecil-spec_34.html#HEADING97"><B>4.7.3 </B> - F-Bounded Polymorphism in Cecil</A><DD>
+<DT><A HREF="cecil-spec_34.html#HEADING98"><B>4.7.4 </B> - F-Bounded Polymorphism among Multiple Types</A><DD>
+</DL>
+</DL>
+<DT><A HREF="cecil-spec_35.html#HEADING99"><B>5 </B> - Modules</A><DD>
+<DT><A HREF="cecil-spec_36.html#HEADING100"><B>6 </B> - Related Work</A><DD>
+<DT><A HREF="cecil-spec_37.html#HEADING101"><B>7 </B> - Conclusion</A><DD>
+<DT><A HREF="cecil-spec_38.html#HEADING102"><B></B>  Acknowledgments</A><DD>
+<DT><A HREF="cecil-spec_39.html#HEADING103"><B></B>  References</A><DD>
+<DT><A HREF="cecil-spec_40.html#HEADING104"><B>Appendix A </B> - Annotated Cecil Syntax</A><DD>
+<DT><A HREF="cecil-spec_41.html#HEADING105"><B>A.1 </B> - Grammar</A><DD>
+<DT><A HREF="cecil-spec_42.html#HEADING106"><B>A.2 </B> - Tokens</A><DD>
+<DT><A HREF="cecil-spec_43.html#HEADING107"><B>A.3 </B> - White Space</A><DD>
+</DL>
+
+<HR>
+<ADDRESS>Cecil Language Reference Manual - 12 SEP 96</ADDRESS>
+<A HREF="cecil-spec_2.html">[Next] </A><P>
+</BODY>
+</HTML>

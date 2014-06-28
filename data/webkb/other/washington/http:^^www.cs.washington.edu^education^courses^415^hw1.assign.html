@@ -1,0 +1,66 @@
+Date: Mon, 02 Dec 1996 14:43:04 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<HEADER>
+<TITLE>
+CSE 415  Homework Assignment 1
+</TITLE>
+</HEADER>
+<BODY>
+<pre>
+CSE 415		Homework 1 	due Thursday, April 18, 1996
+
+
+	Now that we have introduced Lisp, it is time to do some 
+problems on the AI concepts we have discussed in class.
+	Besides the readings and problems about Lisp (in Touretzky),
+you should now have read the first three chapters of Rich and Knight,
+without spending too much time on the details of the different algorithms
+for tic-tac-toe and the water-jug problem. Our discussion of chess was
+more general, and more interesting!
+	In our last class, after talking about various search algorithms,
+and pruning heuristics, I asked you to read about alpha-beta pruning for 
+chess. This is covered in chapter 12 of Rich and Knight, so now I am 
+asking you to read all of chapter 12. It is about Game Playing, but the
+search and pruning techniques are applicable to many problem-solving
+situations.
+
+
+		Homework Problems
+
+	Problems 1, 2, 3, 4  in chapter 12, page 326, Rich and Knight.
+
+
+	The following chess problem is from the Kasparov vs Deep Blue
+(IBM's chess playing system) game, where the computer won:-
+
+	Kasparov resigned when it was his turn to play (he was black).
+At that point, the board positions were as follows:-
+
+	White positions (deep blue):
+
+	a3  P,  b3  P,  d5  Q,  g3  P,  g5  N,  h2  K,  h3  P,  h7  R
+
+	Black positions (Kasparov):    {black pieces have a ' symbol}
+
+	d4  P',  e1  R',  f2  N',  f3  P',  f6  Q',  h6  K'
+
+
+	The notation is standard for chess. With white starting on the board
+closest to you, the rows are numbered 1, 2, 3, ..., 8, and the columns are
+marked a, b, c, d, e, f, g, h.
+
+	knights are represented by N.
+
+	Your problem is to finish the game without making any unreasonable
+moves, with as few moves as possible. You will note that Kasparov could win
+at any time (with the above board positions) if white did not keep the black
+king in check.
+	Then, for your end-game, give the branching factor at each move,
+and give your best guess as to the heuristics that could have guided 
+either Kasparov or deep blue, at each move. (Both Kasparov and deep blue
+used recall of past good situations for the end-game, but your answer here
+should disregard that.)
+
+</body>

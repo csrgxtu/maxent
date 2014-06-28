@@ -1,0 +1,547 @@
+Date: Mon, 04 Nov 1996 23:54:24 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 24 Oct 1996 22:13:43 GMT
+Content-length: 18716
+
+<html> <head>
+<title>An Introduction to HTML</title>
+</head>
+
+<body>
+<h1>An Introduction to HTML</h1>
+<H3>Written by Kurt Revis, modified by Steven Fought</H3>
+
+<P> This document is an introduction to HTML, the <I>Hypertext Markup
+Language.</I> The vast majority of the documents that you have seen on
+the Web have been written using HTML. 
+
+<P> HTML was intended to be a structural markup language.  In a traditional
+word processor or desktop publishing program you indicate how you want the
+different parts of your document look.  In a structural publishing system,
+you indicate what the different parts of your document <EM>are</EM>, and
+elsewhere, outside of the document, you indicate how each element should
+be shown to a user.  In the case of HTML, each browser decides how it will
+render the HTML elements.  The original developers of HTML wanted browsers
+to be developed on a wide variety of systems, so they kept it simple and 
+tried to avoid including elements that made assumptions about a Web user's
+computer (such as the ability to display pictures).  The visually-oriented
+tags that are now in HTML were simply added into browsers by their developers,
+and have since become popular.
+
+<P> It is important to understand that HTML is designed to
+specify the structure of the document, and not its
+visual appearance, because while you might like for your 
+document to show up in 12-point Times, double spaced, with 2 inch 
+margins on all sides, those kinds of decisions will be made not by 
+you, but by the person reading your document.
+
+<P><HR>
+<h2>Tags</h2>
+
+<p> HTML files are just plain text, with <em>tags</em> mixed in for formatting.
+Tags are used like this:
+
+<BLOCKQUOTE><PRE>&lt;h1&gt;Operating Systems&lt;/h1&gt;</PRE></BLOCKQUOTE>
+
+<p>
+Tags usually come in pairs called <EM>containers</EM> that surround 
+pieces of text. The tags themselves
+are made up of &lt;, the tag name, and &gt;. The first tag
+(<code>&lt;H1&gt;</code>) is called the <em>start tag</em>, the text inside
+("Operating Systems") is called the <em>content</em>, and the second tag
+(<code>&lt;/H1&gt;</code>) is called the <em>end tag</em>.
+
+<p> The &lt;h1&gt; tag signifies that the content text should be
+displayed as a header (the 1 means that it is at level 1, the
+largest). When viewed in the browser (Netscape, lynx, or whatever), the
+above line will look like:
+
+<H1>Operating Systems</H1>
+
+<p>Although most tags work this way, some tags don't have end
+tags. For example, the <code>&lt;P&gt;</code> tag for specifying the
+beginning of a paragraph doesn't need a <code>&lt;/P&gt;</code> at the
+end of the paragraph.  We will discuss this tag (and others) later in
+this document.
+
+<P>Tag names are not case-sensitive, so <code>&lt;H1&gt;</code> and
+<code>&lt;h1&gt;</code> are equivalent.
+
+<P>Some tags may also have optional <em>attributes</em>, which modify the
+interpretation of the tag. For example, the <code>&lt;IMG&gt;</code> 
+tag, which tells the
+browser to display an image, can have a <code>SRC</code> attribute to 
+specify the image's
+name or an <code>ALIGN</code> atttribute to specify the alignment 
+compared to the
+surrounding text. With attributes, a tag might be used like this:
+
+<blockquote><pre>
+&lt;IMG SRC="os.gif" ALIGN="top"&gt;
+</pre></blockquote>
+
+<P><HR>
+<h2>Structure of an HTML file</h2>
+
+All HTML files should follow this general format:
+
+<PRE>
+&lt;HTML&gt;
+
+&lt;HEAD&gt;
+&lt;TITLE&gt;This is the title of the document.&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+
+&lt;BODY&gt;
+This is the body, or main text, of the document.
+&lt;/BODY&gt;
+
+&lt;/HTML&gt;
+</PRE>
+
+<P>
+
+<P> The first tag, <code>&lt;HTML&gt;</code>, indicates that the
+contents of the file are, in fact, in HTML format. It is a good idea
+to enclose the whole file in <code>&lt;HTML&gt;&lt;/HTML&gt;</code>,
+although it's not strictly required right now.  Although your
+documents may be interpreted correctly by browsers currently in use, 
+this may change in the future.
+
+<P> Each HTML file is split up into two parts: the <em>header</em>,
+marked by <code>&lt;HEAD&gt;&lt;/HEAD&gt;</code>, and the
+<em>body</em>, marked by <code>&lt;BODY&gt;&lt;/BODY&gt;</code>. (All
+text in the file should be enclosed within these tags.)
+
+<UL>
+<LI>
+The header specifies information about the document in
+general. Usually, it's only used to specify the title with
+<code>&lt;TITLE&gt;&lt;/TITLE&gt;</code>.  This title is usually
+displayed at the top of the screen: for example, this document's title
+is "An Introduction to HTML". (Note that this does <em>not</em>
+automatically display the large line at the beginning: use
+<code>&lt;H1&gt;</code> for that.)
+
+<LI>
+The body is where the actual text of the document goes.
+</UL>
+
+<p>
+Note that in HTML, character and line spacing are unimportant. In
+the example above, I could have written (for example)
+
+<PRE>
+&lt;HTML&gt;
+&lt;HEAD&gt;&lt;TITLE&gt;This is the title of the document.&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;This is the body, or main text, of the document.&lt;/BODY&gt;
+&lt;/HTML&gt;
+</PRE>
+
+<P>and gotten the same result.
+
+<P>Note that there are a huge number of documents on the Web that
+are not written in "strict HTML". Often, the &lt;HEAD&gt; section will 
+be completely missing.  When Mosaic became popular, NCSA's
+documentation, which does not stress proper construction, was
+what many people used to learn HTML. The emphasis was not on using HTML
+correctly, but on creating documents that looked good in Mosaic,
+which is very forgiving of bad HTML.  The result is that many documents
+look good in Mosaic and bad in many other browsers.  The same holds
+true for Netscape and MSIE, which support and encourage a wide variety of
+features outside of the HTML spec.
+
+<P><HR>
+<H2>Paragraphs and Spaces</H2>
+
+One of the problems beginners have with HTML is that spaces, tabs, and
+newlines--known collectively as "white space"--are all equivalent. If I
+type
+<PRE>
+         This    is a     test.
+</PRE>
+or
+<PRE>
+This is
+a
+    test.
+</PRE>
+or
+<PRE>
+This is a test.
+</PRE>
+it will always be shown in the browser as:
+<P>This is a test.
+
+<p> So just adding a blank line to your document will not start a
+new paragraph.  To make a paragraph, use the <code>&lt;P&gt;</code>
+tag at the <em>beginning</em> of the paragraph.  For example:
+
+<PRE>
+&lt;P&gt; This is the first paragraph. It babbles on and on, never really going
+anywhere. 
+
+&lt;P&gt;
+The second paragraph, however, is a little more weird.
+It has some
+very short lines,
+for instance.
+There are also other lines that seem to go forever; in fact, they are rather long, extending for more than 80 characters, but decidedly finite in scope.
+Also, it contains blank
+
+lines in the middle of itself.
+</PRE>
+
+This HTML is rendered as:
+
+<P> This is the first paragraph. It babbles on and on, never really going
+anywhere. 
+
+<P>
+The second paragraph, however, is a little more weird.
+It has some
+very short lines,
+for instance.
+There are also other lines that seem to go forever; in fact, they are rather long, extending for more than 80 characters, but decidedly finite in scope.
+Also, it contains blank
+
+lines in the middle of itself.
+
+<P>Related to <code>&lt;P&gt;</code> are the <code>&lt;BR&gt;</code> 
+and <code>&lt;HR&gt;</code> tags.
+<code>&lt;BR&gt;</code> produces a line break, without the extra vertical
+space that <code>&lt;P&gt;</code> puts in. <code>&lt;HR&gt;</code> inserts
+a horizontal rule--a line extending across the page.
+
+<P><HR>
+<H2>Section Headings</H2>
+
+<p> The most common HTML tags are the section headings, like the
+<code>&lt;H1&gt;</code> tag we used earlier. In fact, there is a whole
+range of these tags, from <code>&lt;H1&gt;</code> for top-level
+headings to <code>&lt;H6&gt;</code> for the bottom. These tags tell the
+browser to use a different type size, indentation, or color.
+
+<H1>Heading level 1 &lt;H1&gt;</H1>
+<H2>Heading level 2 &lt;H2&gt;</H2>
+<H3>Heading level 3 &lt;H3&gt;</H3>
+<H4>Heading level 4 &lt;H4&gt;</H4>
+<H5>Heading level 5 &lt;H5&gt;</H5>
+<H6>Heading level 6 &lt;H6&gt;</H6>
+
+<P> These tags do not denote section numbers (as in "See Chapter 3,
+Section 4"), but section <em>levels</em>. You can, of course, use a section
+level tag more than once in a document.
+
+
+<P><HR>
+<H2>Type Styles</H2>
+
+<p>
+HTML allows the use of a number of different type styles. The most useful
+are <code>&lt;EM&gt;</code>, for adding <em>emphasis</em> like <em>this</em>,
+and <code>&lt;STRONG&gt;</code> for <strong>stronger emphasis</strong>.
+Browsers may display the text in italics, in bold characters, underlined,
+in all capital letters, or with asterisks around it.
+
+<P> In general, it is best to use <code>&lt;EM&gt;</code> and
+<code>&lt;STRONG&gt;</code>, since they give good results on all browsers.
+If you need to, however, you can use <code>&lt;I&gt;</code>, which produces
+<I>italics</I>, or <code>&lt;B&gt;</code> which produces <B>bold</B> text.
+
+<P>
+There is also typewriter style, <TT>like this</TT>, produced with the
+<code>&lt;TT&gt;</code> tag.
+
+<P><HR>
+<H2>Entities</H2>
+
+<p>
+<EM>Entities</EM> are names that start with <TT>&amp;</TT> and end
+with <TT>;</TT> that represent characters which cannot normally
+be written in ASCII, and characters used for markup. For example, 
+because the angle bracket characters are used in tags, to avoid ambiguities
+the codes <code>&amp;lt;</code> and <code>&amp;gt;</code> are used to 
+produce &lt; and &gt; respectively.
+Similarly, the ampersand character '&amp;' is produced with 
+<code>&amp;amp;</code>.  The semicolon at the end of the code is necessary.
+
+<p>
+Other codes include <code>&amp;quot;</code> which produces the double-quote character
+&quot;. (I'm not sure why this code is necessary; I've never seen a browser
+get confused by the character " itself.) All of the characters in the
+ISO-Latin-1 set can also be expressed--CERN provides a
+<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="http://info.cern.ch/hypertext/WWW/MarkUp/Entities.html">table
+of the codes</A>. For example, to produce a u with an umlaut (&uuml;) the
+<code>&amp;uuml;</code> code is used.
+
+<p>
+Another useful structure is the HTML comment, produced with &lt;!-- and
+--&gt;. The contents of the comment should not be displayed by the browser.
+(However, some versions of Mosaic are broken and still interpret tags within
+comments, so you can't comment out tags. This is unfortunate.) For example,
+the text
+<blockquote><pre>This here &lt;!-- right here --&gt; is a comment.</pre></blockquote>
+should appear as
+
+<p>
+This here <!-- yeah, right here --> is a comment.
+
+<P><HR>
+<H2>Lists</H2>
+
+<p>
+Lists are a very useful construct in HTML. There are three types of lists:
+ordered, unordered, and descriptive.
+
+<p> Ordered lists produce a list of numbered items. To make an ordered
+list, use the <code>&lt;OL&gt;</code> (ordered list) and
+<code>&lt;LI&gt;</code> (list item) tags, like this:
+
+<blockquote><pre>
+&lt;OL&gt;
+&lt;LI&gt;Get two slices of bread, peanut butter, and jelly.
+&lt;LI&gt;Spread jelly on one side of one slice of bread.
+&lt;LI&gt;Spread peanut butter on the other side of the other slice.
+&lt;LI&gt;Put the sandwich together and eat!
+&lt;/OL&gt;
+</pre></blockquote>
+
+<p> The result is this:
+<OL>
+<LI>Get two slices of bread, peanut butter, and jelly.
+<LI>Spread jelly on one side of one slice of bread.
+<LI>Spread peanut butter on the other side of the other slice.
+<LI>Put the sandwich together and eat!
+</OL>
+
+<p>As you can see, the items are automatically numbered in order.
+
+<p>Unordered lists are similar, but aren't numbered.  Instead of 
+<code>&lt;OL&gt;</code> and <code>&lt;/OL&gt;</code>,
+use <code>&lt;UL&gt;</code> and <code>&lt;/UL&gt;</code>.  For example:
+
+<ul>
+  <li> Bread (two slices)
+  <li> Jelly
+  <li> Peanut Butter
+</ul>
+
+
+<p> Descriptive lists are a little different: they are used when
+giving lists of items and their descriptions, like in a dictionary.
+The tag for descriptive lists is, predictably, <code>&lt;DL&gt;</code>,
+and each item has a <code>&lt;DT&gt;</code> (term to be defined) and
+<code>&lt;DD&gt;</code> (definition) tag. The example should make the
+usage clear:
+
+<blockquote><pre>
+&lt;DL&gt;
+&lt;DT&gt;This is the first term to be defined
+&lt;DD&gt;This is the definition of that term.
+&lt;DT&gt;piz-za \'pe^-t-se\
+&lt;DD&gt;an open pie made typically of thinly rolled bread dough
+    spread with a spiced mixture (as of tomatoes, cheese, and
+    ground meat) and baked
+&lt;/DL&gt;
+</pre></blockquote>
+
+<DL>
+<DT>This is the first term to be defined
+<DD>This is the definition of that term.
+<DT>piz-za \'pe^-t-se\
+<DD>an open pie made typically of thinly rolled bread dough spread with
+     a spiced mixture (as of tomatoes, cheese, and ground meat) and baked
+</DL>
+
+
+<p> In all of the different kinds of lists, you are not limited to
+short items.  In fact, they can be as long as you want, and can even
+have multiple paragraphs.
+
+<UL>
+  <LI> This is an example of some really long items in a list. This text can
+       go on and on and on, for quite some time, really. You get the idea.
+       The next sentence will be a new paragraph, started with <code>&lt;P&gt;</code>.
+
+       <p>Surprising, eh? It's another paragraph, with blank space separating
+       it from the previous text, but still indented correctly.
+
+  <li> This item has nothing to do with the previous item, though.
+</UL>
+
+
+<P><HR>
+<H2>Pictures</H2>
+
+<p>
+Adding pictures to an HTML document is not difficult. The picture 
+itself must be in GIF format, and have a filename that ends in <TT>.gif</TT>.
+If you have a file in some other format you can make a GIF file using a
+utility such as <TT>xv</TT> or the <TT>pbm</TT> programs.
+
+<p> To include an image, use the <code>&lt;IMG&gt;</code> tag. The usage
+is a little different than the other tags we have seen so far. By
+itself, the <code>&lt;IMG&gt;</code> tag does nothing; you must use
+the <code>SRC=""</code> attribute in the tag to specify the name of
+the image.  Inside the quotes of the <code>SRC=""</code>, insert the 
+<!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.wisc.edu/docs/url.html">URL</A> of the image.
+
+An example:
+
+<PRE>
+Here is a picture of Felix: &lt;IMG SRC="felix.gif"&gt;
+</PRE>
+
+<p>Here is a picture of Felix: <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><IMG SRC="http://www.cs.wisc.edu/docs/felix.gif">
+
+<p>
+By default, the text was lined up with the bottom of the picture. By using the
+<code>ALIGN=MIDDLE</code> or <code>ALIGN=TOP</code> attributes, you can change
+this. For instance:
+
+<PRE>
+Felix is the center of all things:&lt;IMG SRC="felix.gif" ALIGN=MIDDLE&gt;
+</PRE>
+
+<p>Felix is the center of all things:<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><IMG SRC="http://www.cs.wisc.edu/docs/felix.gif" ALIGN=MIDDLE>
+
+<PRE>
+Felix: &lt;IMG SRC="felix.gif" ALIGN=TOP&gt; on top of the world!
+</PRE>
+
+<p>Felix: <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><IMG SRC="http://www.cs.wisc.edu/docs/felix.gif" ALIGN=TOP> on top of the world!
+
+<p>
+Another important attribute that you can add to <code>&lt;IMG&gt;</code>
+tags is <code>ALT=""</code>. If a browser is not capable of displaying
+graphics, it will instead show any text that you put inside the quotes.
+(Lynx, a text-only browser, is an example.)
+If your page would be incomprehensible without the pictures, it is a very
+good idea to use this alternative.
+
+<PRE>
+&lt;IMG SRC="felix.gif" ALT="Felix"&gt; was quite a skier.
+</PRE>
+
+<!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><IMG SRC="http://www.cs.wisc.edu/docs/felix.gif" ALT="Felix"> was quite a skier.
+
+
+<P><HR>
+<H2><A NAME="links">Links</A></H2>
+
+<p> A full explanation of how to create links between documents is
+beyond the scope of this document. However, we can give a quick
+introduction.
+
+<p>
+Links, sometimes referred to as "anchors", are specified with the
+<code>&lt;A&gt;</code> tag. Like the <code>&lt;IMG&gt;</code> tag,
+<code>&lt;A&gt;</code> does nothing by itself. The <code>HREF=""</code>
+attribute specifies the <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><A HREF="http://www.cs.wisc.edu/docs/url.html">URL</A> that the link points to:
+
+<PRE>
+If you click &lt;A HREF="link.html"&gt;here&lt;/A&gt;, you will see
+the file "link.html".
+</PRE>
+
+<p>
+If you click <!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><A HREF="http://www.cs.wisc.edu/docs/link.html">here</A>, you will see the file "link.html".
+
+<p> As you can see, the text inside the <code>&lt;A&gt;</code> and
+<code>&lt;/A&gt;</code> tags is marked as a link.
+
+<p>
+To create a link using a <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><A HREF="http://www.cs.wisc.edu/docs/url.html">URL</A>, just put the URL 
+in the <code>HREF=""</code>
+part of the anchor. For example, a link and its original HTML source:
+
+<p>
+The <!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><A HREF="http://www.cs.wisc.edu/">UWCS home page</A>.
+
+<PRE>
+The &lt;A HREF="http://www.cs.wisc.edu/"&gt;UWCS home page&lt;/a&gt;.
+</PRE>
+
+<p>
+Another attribute for <code>&lt;A&gt;</code> is the 
+<code>NAME=""</code> attribute.
+This attibute specifies that the text within the anchor should be
+associated with a name. Other links may jump directly to that anchor by
+specifying <code>theURL#name</code> as a target. For example, I might
+surround the heading for Chapter 3 of my book with the anchor
+<blockquote><pre>&lt;A NAME="Chapter3"&gt;Chapter Three&lt;/A&gt;</pre></blockquote>
+<p>
+Then, from anywhere else in the document, I could provide a link to Chapter 3
+by writing
+<blockquote><pre>&lt;A HREF="#Chapter3"&gt;Jump to Chapter 3&lt;/A&gt;</pre></blockquote>
+
+<p>
+If Felix had a book with the URL 
+<TT>http://www.cs.wisc.edu/~felix/book.html</TT>,
+any document could jump to Chapter 3 of the book by specifying
+<blockquote><pre>&lt;A HREF="http://www.cs.wisc.edu/~felix/book.html#Chapter3"&gt;
+Chapter 3 of Felix's book&lt;/A&gt;</pre></blockquote>
+
+
+<p><HR>
+<H2>Other Tags</H2>
+
+<p>
+There are a number of other tags, more and less useful. A quick survey:
+
+<DL>
+<DT> <code>&lt;PRE&gt;</code>
+<DD> Preformatted text: rendered in a monospace font. Unlike most HTML,
+     white space is significant. Tags are still honored, though.
+     This style is useful for tables of information, since tabs work.
+
+<DT> <code>&lt;LISTING&gt;</code>
+<DD> Similar to <code>&lt;PRE&gt;</code>, but in a smaller size.
+     Meant for program listings. Supposedly, embedded tags are ignored.
+
+<DT> <code>&lt;BLOCKQUOTE&gt;</code>
+<DD> Indented text, meant for long quotes from other material.
+
+<DT> <code>&lt;ADDRESS&gt;</code>
+<DD> Address formatting--different browsers give different results.
+     Use the <code>&lt;BR&gt;</code> code for multiple lines.
+
+</DL>
+<p>
+Some other tags are of not very useful, since no one seems to know
+exactly what they should be used for:
+
+<DL>
+<DT> <code>&lt;DFN&gt;</code>
+<DD> Definition
+
+<dt> <code>&lt;CITE&gt;</code>
+<dd> Citation
+
+<dt> <code>&lt;CODE&gt;</code>
+<dd> HTML codes?
+
+<dt> <code>&lt;KBD&gt;</code>
+<dd> Keys on a keyboard, like <KBD>Return</KBD>.
+
+<dt> <code>&lt;SAMP&gt;</code>
+<dd> Sample codes?
+
+<dt> <code>&lt;VAR&gt;</code>
+<dd> Variable names
+
+</DL>
+
+<P><HR>
+<H2>Other Sources of Information</H2>
+
+<p> By now, you should have a good idea of what HTML is all about, and
+you should be able to create your own HTML documents.
+If you want to see more, we have links to other more complete sources 
+of information <!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><A HREF="http://www.cs.wisc.edu/docs/otherdocs.html#html">here</A>.  Or, you might
+want to read some of our other <!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><A HREF="http://www.cs.wisc.edu/docs/">documents</A>.
+
+<P><hr>
+</body> </html>

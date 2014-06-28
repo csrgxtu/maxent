@@ -1,0 +1,83 @@
+Date: Wed, 08 Jan 1997 20:36:50 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE>CSE 322: Assignment 9 Solution Set</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value="CSE 322: Assignment 9 Solution Set">
+<meta name="keywords" value="hw9soln">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ <BR> <HR><A NAME=tex2html1 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.washington.edu/general/latex2html_icons//next_motif.gif"></A>   <IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.washington.edu/general/latex2html_icons//up_motif_gr.gif">   <IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.washington.edu/general/latex2html_icons//previous_motif_gr.gif">         <BR>
+<B> Next:</B> <A NAME=tex2html2 HREF="node1.html">   About this document </A>
+<BR> <HR> <P>
+ CSE 322 Winter 1996: Assignment 9 Solution Set
+<P>
+<OL><LI>
+Let <IMG  ALIGN=MIDDLE ALT="" SRC="img1.gif"> and
+<IMG  ALIGN=MIDDLE ALT="" SRC="img2.gif"> be NFAs.
+Construct a new NFA <b>M</b> that accepts the language
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img3.gif"><P>
+<P>
+Let <IMG  ALIGN=MIDDLE ALT="" SRC="img4.gif"> where
+for all <IMG  ALIGN=MIDDLE ALT="" SRC="img5.gif">, <IMG  ALIGN=MIDDLE ALT="" SRC="img6.gif">, <IMG  ALIGN=MIDDLE ALT="" SRC="img7.gif">
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img8.gif"><P>
+<P>
+<b> Behavioral Lemma:</b> 
+For all <IMG  ALIGN=MIDDLE ALT="" SRC="img9.gif">, <IMG  ALIGN=MIDDLE ALT="" SRC="img10.gif">,
+<IMG  ALIGN=MIDDLE ALT="" SRC="img11.gif">, <IMG  ALIGN=MIDDLE ALT="" SRC="img12.gif">, and
+<IMG  ALIGN=MIDDLE ALT="" SRC="img13.gif">, 
+<IMG  ALIGN=MIDDLE ALT="" SRC="img14.gif">
+if and only if
+<IMG  ALIGN=MIDDLE ALT="" SRC="img15.gif">
+and
+<IMG  ALIGN=MIDDLE ALT="" SRC="img16.gif">.
+<P>
+<LI>
+Suppose <IMG  ALIGN=MIDDLE ALT="" SRC="img17.gif"> is regular.
+If we intersect <b>L</b> with any regular language, the resulting
+language is also regular.
+For instance, <IMG  ALIGN=MIDDLE ALT="" SRC="img18.gif"> is regular.
+But <IMG  ALIGN=MIDDLE ALT="" SRC="img19.gif">, and we know that
+this language is not regular from class.  This is a contradiction
+so <b>L</b> must not be regular.
+<P>
+<LI>
+Show that the language <IMG  ALIGN=MIDDLE ALT="" SRC="img20.gif"> is not regular.
+<P>
+Assume <b>L</b> is regular, and let <IMG  ALIGN=MIDDLE ALT="" SRC="img21.gif"> 
+be a DFA that accepts <b>L</b>.  Suppose <b>Q</b> contains <b>n</b> states.
+Consider the computation of <b>M</b> on any string of length <b>n</b> or more.
+Because there are only <b>n</b> total states, some state will be visited more
+than once during the computation.  For example, when <b>M</b> processes the
+string <IMG  ALIGN=MIDDLE ALT="" SRC="img22.gif">, the computation looks like this:
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img23.gif"><P>
+for some <IMG  ALIGN=MIDDLE ALT="" SRC="img24.gif">, <IMG  ALIGN=MIDDLE ALT="" SRC="img25.gif">, and <IMG  ALIGN=MIDDLE ALT="" SRC="img26.gif">.  
+Because we visit the same state twice, we can remove 
+<IMG  ALIGN=BOTTOM ALT="" SRC="img27.gif"> from the string and still end in the same state:
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img28.gif"><P>
+This means that <IMG  ALIGN=MIDDLE ALT="" SRC="img29.gif">.  However,
+<IMG  ALIGN=MIDDLE ALT="" SRC="img30.gif">.  Also, note that
+since <IMG  ALIGN=MIDDLE ALT="" SRC="img31.gif"> and <IMG  ALIGN=MIDDLE ALT="" SRC="img32.gif">, 
+<b>2n+1</b> must be greater than <b>j-i</b>.  This means that
+<IMG  ALIGN=MIDDLE ALT="" SRC="img33.gif">.  So <IMG  ALIGN=MIDDLE ALT="" SRC="img34.gif"> falls strictly between
+<IMG  ALIGN=BOTTOM ALT="" SRC="img35.gif"> and <IMG  ALIGN=MIDDLE ALT="" SRC="img36.gif">, two consecutive perfect squares.
+Therefore, <IMG  ALIGN=MIDDLE ALT="" SRC="img37.gif"> is not a perfect square and
+<IMG  ALIGN=MIDDLE ALT="" SRC="img38.gif">.  This is a contradiction, 
+so <b>L</b> must not be regular.
+<P>
+</OL><BR> <HR>
+<UL> 
+<LI> <A NAME=tex2html3 HREF="node1.html#SECTION00010000000000000000">   About this document ... </A>
+</UL>
+<BR> <HR>
+<P><ADDRESS>
+<I>James Fix <BR>
+Wed Mar  6 11:11:44 PST 1996</I>
+</ADDRESS>
+</BODY>

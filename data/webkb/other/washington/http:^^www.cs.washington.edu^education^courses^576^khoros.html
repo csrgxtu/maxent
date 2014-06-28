@@ -1,0 +1,102 @@
+Date: Mon, 02 Dec 1996 15:34:31 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<HTML>
+<head>
+<title>KHOROS 2.0.1 Developer's Release</title>
+
+</head>
+<body>
+<h1>KHOROS 2.0.1 Developer's Release</h1>
+
+<h2>What is it?</h2>
+Khoros is a fully fledged general programming environment that
+supports data flow programming. You can quickly develop an 
+application by pasting existing library modules on a workspace,
+connecting the inputs and outputs of the modules, and run
+the network of modules.
+<p>
+The Khoros system is currently installed on department's SGI's
+and Suns. However, only the Sun installation is complete (contains
+all the extra toolboxes and sample data).
+
+<h2>Configuration</h2> 
+ First you have to configure your environment. If you have previously
+used Khoros 1.0 you should remove from your .cshrc file all the
+related information. Especially important is that you remove a path to
+the old Khoros bin.
+ <p> 
+ Now you have to log on to one of the Sun workstations, e.g.,
+hobbes. Then you need to execute
+/projects/image/KHOROS_2.0.1DR/bin/kconfigure.  Among other things it
+will ask you about the base directory for Khoros, that will be
+/projects/image/KHOROS_2.0.1DR. You should accept all the other
+defaults.
+ <p>
+ The configuration script creates a file .khoros_env into your home
+directory. You should add lines
+ <ul>
+ <li>setenv DIP /projects/image/KHOROS_2.0.1DR/dip_course_alpha
+ <li>setenv MMACH /projects/image/KHOROS_2.0.1DR/mmach
+ </ul>
+ into that file. This environment variable is needed if you want to
+execute the sample workspaces that you can download from the Khoros
+DIP course. After you modified the .khoros_env, type source .cshrc and
+rehash.
+
+<h2>Trying it out</h2> 
+ You should be now able to run cantata, the graphical user interface
+of Khoros. Type cantata. If you now get error messages about some
+missing libraries, you should add
+<ul>
+ setenv LD_LIBRARY_PATH /usr/X11R5/lib:/usr/openwin/lib:/usr/local/motif-1.2.2/lib:/usropt/lib
+</ul>
+ into your .cshrc, type source .cshrc and try again. Warning: cantata
+is rather particular about its colors. If you run mosaic or netscape
+while running cantata you'll get dozens of warnings about colors that
+couldn't be allocated and you may end up trying to read white text
+on white background (which is quite hard...)
+ <p>
+ To test everything is fine, try this exercise. Go to Input/Output
+menu and choose Generate Data/2D Gaussian. Place the module to your
+workspace.  Then go to Visualization menu, choose Non-Interactive
+Display/Display Image and place it to the workspace to the right from
+the 2D Gaussian module.  Connect the right (yellow) arrow of the 2D
+Gaussian to the upper left arrow of the Display Image by clicking the
+arrows. Click the option icon of the 2D Gaussian module, it should
+open you a window with several parameters.  Set the values of variance
+along height and width and the peak value all to 100, then close the
+option window. Now run the whole workspace by pressing the leftmost
+accelerator icon (above "Command String:"). After a short while you
+should get a window with some white Gaussian blur on black background.
+
+<h2>How to learn more</h2> 
+ There are some on-line helps that you can access directly from
+cantata that explain what Khoros and cantata are about and how to use
+them.  There is also a whole <a
+href="http://www.khoros.unm.edu/dip/html/dip.html">course </a> about
+image processing with Khoros that is really useful.
+
+<h2>A tip for homeworks and learning</h2>
+ You can download fully configured workspaces from the DIP course that
+demonstrate image processing tricks and how they are done with Khoros
+(use the Files button on the left of the workspace to load them). For
+example, all the edge detection and Laplace filtering stuff is
+directly there. Remember to set the environment variables DIP and
+MMACH, though, the examples use them. 
+ <p>
+ If you notice that there is something missing or wrong in these
+instructions, please send mail to kapu@cs. Also good tips are welcome
+(such as how does one use the *.pane files that you can also download
+from the DIP course).
+
+<address>
+(Last Update: 18 April 1995)
+</address>
+</body>
+</html>
+
+
+
+

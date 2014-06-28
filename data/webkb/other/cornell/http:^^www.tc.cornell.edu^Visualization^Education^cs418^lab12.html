@@ -1,0 +1,246 @@
+Date: Mon, 16 Dec 1996 22:08:46 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 23 May 1996 15:40:20 GMT
+Content-length: 8547
+
+
+<html>
+<head>
+<title>
+CS418 Lab 12
+</title>
+</head>
+
+
+<body>
+<h2> <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/gifs/teapot.thumb.gif">
+CS 418: Laboratory 12</h2> 
+<h2> Procedural Textures </h2>
+
+<b> Introduction. </b><p>
+In this lab you will investigate texture generation by Fourier methods,
+cellular automata (CA), and partial differential equations.
+
+
+<b><hr>Procedure:</b>
+<p>
+Download:
+<ul>
+<li> <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/SurfaceTension.net"> SurfaceTension.net </a>
+<li> <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/SurfaceTension.cfg"> SurfaceTension.cfg </a>
+<p>
+<li> <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/FFTtextures.net"> FFTtextures.net </a>
+<li> <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/FFTtextures.cfg"> FFTtextures.cfg </a>
+<p>
+<li> <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/Reaction.net"> Reaction.net </a>
+<li> <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/Reaction.cfg"> Reaction.cfg </a>
+<p>
+</ul>
+
+<hr>
+<b> Fourier Transform Textures </b> <p>
+The program FFTtexture.net takes as input an array of points or user defined
+pixels, then computes the Fourier transform of the points. Since the
+output of the FFT is complex, the program allows the user
+to choose either the phase,
+magnitude, real part or imaginary part, scales the result and displays
+it.
+<p>
+Transform texture examples: <p>
+<!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab12.fft1.image.gif">
+<!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab12.fft2.image.gif">
+<!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab12.fft3.image.gif">
+<!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab12.fft4.image.gif">
+<!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab12.fft5.image.gif">
+<!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab12.fft6.image.gif">
+<!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab12.fft7.image.gif">
+<!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab12.fft8.image.gif">
+<p>
+
+<hr>
+<b> Cellular Automaton Textures </b> <p>
+
+The program SurfaceTension.net is a CA which simulates the effect of
+surface tension. Areas tend to get smoother, rounder, and less
+fragmented. An 
+<!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/mpeg/tension.mpg"> mpeg </a>
+animation shows a typical evolution. The rule for
+this CA is:
+<ul>
+<li> Sum the 8 nearest neighbors of each cell and the cell itself
+ (cells are binary valued).
+<li> If the sum is less than 4 or equal to 5, set the cell to zero.
+Otherwise set it to one.
+</ul>
+
+<hr>
+<b> Reaction/Diffusion Textures </b> <p>
+The program Reaction.net simulates a chemical reaction coupled to diffusion.
+There are two reacting chemicals called "red" and "blue". You can think
+of these as chemically reacting inks. The inks can also spread across
+the paper at different rates, refered to as their "diffusion constants".
+Many different behaviors can be simulated by changing the chemical
+reactions and specific parameters. 
+<p> 
+One specific reaction scheme described below results in this 
+<!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/mpeg/reaction1.mpg"> dynamically changing texture. </a>
+<p> <code>
+Red diffusion constant: Dred=0.03 <br>
+Blue diffusion constant: Dblue=0.1<br>
+Red initial concentration is random with maximum of 0.5.<br>
+Blue initial concentration is the Letters "Test Diff" in a polygon font.<p>
+To step time:<p>
+NewRed concentration = red + 0.2*red*blue - 0.1*red + Dred*Del^2(red)<p>
+NewBlue concentration = blue - 0.2*red*blue + 0.1*blue + Dblue*Del^2(blue)<p>
+Where Del^2(x) is the sum of the second partial
+derivitives of concentration of x with respect to x and y,
+as described in the Water wave section of the 
+<!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><a href="http://www.tc.cornell.edu/Visualization/Education/cs417/SECTIONS/dynamics.html"> 
+dynamics description.</a>
+</code><p>
+In DX, the second derivitive operators are calculated using the Filter
+module.
+<p> <!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/mpeg/reaction2.mpg"> Another example </a>
+uses the same reaction kinetics as above, but the
+initial condition is blue dots.
+
+<hr><b>Assignment:</b><p>
+Execute the programs to understand their behavior, then modify them as
+follows:
+
+<ul>
+
+<hr>
+<li>Modify the program SurfaceTension.net, to compute  a CA version of 
+a percolation cluster. A percolation cluster is a set of cells which are
+connected to an initial group of cells. 
+The automaton rule for each time step is:
+<ul>
+<li> Sum the 8 nearest neighbors of each cell (cells are binary valued, 0/1).
+<li> Test to find out if the current cell has ever been visited before.
+<li> Compute a random number for the current cell.
+<li> If the sum is greater than zero (at least one neighbor) <b>and</b>
+the random number exceeds a threshold value,  <b>and </b>  the cell has
+never been visited before, <b> then </b> set the cell to one.
+<li>If the sum is greater than zero (at least one neighbor) <b>and</b>
+ the random number does not exceed a threshold value, 
+ set the "visited" flag for the cell. <blink> (Correction 3/20/96) </blink>
+</ul>
+<p>Below is an example of a percolation cluster using a stroke font as an
+initial condition. The threshold probability for each cell was set to 0.3
+for the first three time steps. then changed to 0.65. An
+<!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/mpeg/percolation.mpg"> mpeg animation </a> of 
+the cluster growth shows its evolution.
+<p>
+<!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab12.percolation.image.gif">
+
+<hr>
+<li>Extend SurfaceTension.net to 3D. Now there 26 nearest neighbors. You
+will have to change the 0/1 thresholds to appropriate values. the 3D
+array may be rendered by connecting it to an isosurface module (with
+it's second input set to 0.5) then to an image module. Use this 
+<!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab12.tension3D.program.gif"> code fragment</a>
+to map the CA array to the surface of a torus. The Mark-compute-Unmark
+scales to object to lie inside the CA volume. The wire entering from the
+left is a floated version of the 3D CA array. This 
+<!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/mpeg/tension3D.mpg"> mpeg animation</a> shows the CA array 
+on the left
+(isosurface rendered) and the array used to control the color of a
+torus.
+
+<hr>
+<li> Build a 1D CA simulator which fills a 2D array, one row at a time. 
+Assume a neighborhood 
+extending one cell on each side of the current cell. 
+You might use the ForEachN module to 
+control the loop which causes the program to visit each row once. 
+Assuming that the 1D CA rule is based on summing the cells, 
+try several rules. This 
+<!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/mpeg/onedimension.mpg"> mpeg animation </a>
+ is based on the rule:
+<code><br>
+If sum==0 newState=0 <br>
+If sum==1 newState=1<br>
+If sum==2 newState=1<br>
+If sum==3 newState=0<br>
+</code>
+
+<hr>
+<li> Modify Reaction.net to include a CA component. The CA should take
+as initial conditions the thresholded "blue" concentration. The CA rule
+should be 
+<!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><a href="http://alife.santafe.edu/alife/topics/cas/ca-faq/lifefaq/lifefaq.html">
+Conway's game of life.</a> 
+Life is based on the rule (where sum is over the 8-membered neighborhood):
+<code><br>
+If sum==3 newState=1 <br>
+If sum==2 newState=oldstate<br>
+If sum<2 newState=0<br>
+If sum>3 newState=0<br>
+</code>
+<p>
+
+The CA should be coupled back into the
+reaction/diffusion equations as a source term for blue or for red with
+an interactor to control the strength of each source. So for each cell,
+there needs to be a term in the NewRed and NewBlue equations of the form
+<p> <code>
+strength * CA
+</code><p>
+Where CA is the value (1/0) of the automaton cell.
+Use text as initial conditions.  Make an MPEG animation
+of your favorite reaction/CA texture resulting from this process. 
+<p>
+One <!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/mpeg/reactionCA1.mpg"> example </a>
+shows this process
+with a CA source strength of 0.05 for blue and 0.0 for red, and using
+text as an initial condition for the CA. Another 
+<!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/mpeg/reactionCA2.mpg"> example </a> shows a process with a 
+CA source strength of 0.1 for blue and 0.05 for red, and using two
+strips as an initial condition for the CA. For both of these examples,
+the reaction equations were the same as above, except that 
+<p> <code>
+Red diffusion constant: Dred=0.05 <br>
+Blue diffusion constant: Dblue=0.2<br>
+</code>
+
+</ul>
+
+<hr>
+Be prepared to demo the modified programs to show:
+<li> The percolation CA
+<li> The 3D CA
+<li> The 1D CA
+<li> The reaction/diffusion program modified to include a CA.
+</ul>
+<p>
+<!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/student.1996.gifs/lab12.96results.html"> Some results from 1996. </a>
+<p>
+
+You should be able to explain your programs. You should use
+transmitters/receivers, macros, and comments 
+in the "Notation" field of each module
+so that you and the grader can understand the program. 
+Control panels, if any,
+should be well organized, labeled, and with the appropriate numeric ranges.
+<p>
+The
+<!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/GradeGuides/Lab12.grade.ps"> Lab 12 grading guide </a>
+will be filled out by a consultant during section to evaluate your work.
+<p>
+<hr>
+<!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/gifs/leftarrow.icon.gif">
+Back to <!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/index.html">Main Page</a>
+ <P>
+<hr>
+Last modified, 11/7/95, B. Land.
+<! Revision history:
+	Original document: Land 10/95
+>
+<br>
+<!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><IMG SRC="http://www.tc.cornell.edu/copyright.xbm">
+<!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><A HREF="http://www.tc.cornell.edu/ctcCopyright.html"> 
+<i>Copyright Statement </I></A>
+</body> </html>
+

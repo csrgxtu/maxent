@@ -1,0 +1,119 @@
+Date: Tue, 26 Nov 1996 00:30:28 GMT
+Server: NCSA/1.5.2
+Last-modified: Wed, 02 Aug 1995 19:04:34 GMT
+Content-type: text/html
+Content-length: 4230
+
+<TITLE>Rutgers CAM Project </TITLE>
+<h1>The Rutgers CAM Project</h1>
+<!WA0><img src = "http://www.cs.rutgers.edu/cam/camlogo.gif">
+
+<p>
+
+The Rutgers CAM2000 Memory Architecture uses the concepts of
+associative processing to overcome the shortcomings of conventional
+von Neumann architecture in dealing with compute-bound applications
+involving massive amounts of data.  The architecture provides hardware
+support for data parallel, reduction, broadcast, and parallel
+prefix/suffix operations within a memory architecture that is DRAM
+compatible.  
+
+The CAM2000 architecture is particularly appropriate for applications
+that require simple operations (e.g., counting, matching, etc.) over
+large amounts of data.  It is designed to replace the memory, not the
+processor, of a conventional computer and is a dual of cache.  It
+ameliorates the performance bottleneck imposed by the processor/memory
+bus by moving processing across into the memory.  The CAM2000 can
+emulate existing memory functions, and run existing software
+unchanged.  Furthermore, software can be upgraded incrementally, on a
+statement-by-statement basis, to use associative functions.
+
+<p>
+
+The CAM2000 applies the associative processing model by placing many
+word-width, low performance processors in the memory.  The word-width
+hardware designed for the CAM2000 provides significant speedup and
+reduces software complexity compared to approaches using single-bit
+data paths.  In addition, the CAM2000 supports extended precision
+(functions on data wider than its hardware) allowing arbitrary
+precision CAM operations to execute with minimal slowdown.
+
+This approach can produce significant speed-up even when the in-memory
+processors run only at memory speed.  By 2000 a CAM architecture can
+provide 5-10 giga-ops on a single chip that replaces DRAM,
+significantly increases system peak performance, and scales with
+memory size.
+
+<p>
+
+The graphic above illustrates the architecture of the Rutgers CAM2000
+which replaces DRAM chips in an otherwise conventional architecture.
+Half the area of the CAM2000 chip is DRAM and the other half is
+processing elements.  The processing elements can provide enormously
+high parallelism whenever it is applicable; otherwise the CAM chip
+acts as ordinary memory.
+
+
+<h3>Personel</h3>
+<ul>
+<li><!WA1><a href="http://www.cs.rutgers.edu/~levy">Saul Levy </a> --   levy@cs.rutgers.edu, 908-445-3523
+<li><!WA2><a href="http://www.cs.rutgers.edu/~josh">Josh Hall</a> --  josh@cs.rutgers.edu, 908-445-3896
+<li><!WA3><a href="http://www.cs.rutgers.edu/~dsmith">Don Smith </a> -- dsmith@cs.rutgers.edu, 908-445-3628
+<li>Keith Miyake -- kmiyake@cs.rutgers.edu, 908-445-2558
+<li>Chung-Hsing Hsu -- chunghsu@cs.rutgers.edu, 908-445-4635
+</ul>
+
+<p>
+
+This work is supported by ARPA and NASA under NAG 2-668
+
+<h3>Online Publications</h3>
+
+<p>
+J. Storrs Hall,
+<!WA4><a href = "http://www.cs.rutgers.edu/cam/fornax.ps">
+"FORNAX"</a>, 
+USENIX VHLL,
+April 1995 (FORNAX is a very high-level programming language
+we are developing to ameliorate the difficulties of programming
+the unconventional architecture of CAM (and other parallel 
+machines)).
+
+<p>
+J. Storrs Hall and Don Smith,
+<!WA5><a href = "http://www.cs.rutgers.edu/cam/dbmm.ps">
+"Database Mining and Matching in Rutgers CAM"</a>, 
+2nd Associative Processing & Applications Workshop, 
+Syracuse University, July 1993
+
+<p>
+J. Storrs Hall, Don Smith, and Keith Miyake,
+<!WA6><a href = "http://www.cs.rutgers.edu/cam/collective.ps">
+"Collective Functions in the Rutgers CAM"</a>, 
+Associative Processing & Applications Workshop, 
+Syracuse University, July 1992
+
+<p>
+Donald E. Smith, J. Storrs Hall, and  Keith M. Miyake, 
+<!WA7><a href = "http://www.cs.rutgers.edu/cam/TR196.ps">
+"Rutgers CAM Chip Architecture"</a>, 
+Technical Report No. LCSR-TR-196, 
+Department of Computer Science, 
+Rutgers University, 1992
+
+<p>
+Donald E. Smith, Keith M. Miyake, and J. Storrs Hall
+<!WA8><a href = "http://www.cs.rutgers.edu/cam/TRxxx.ps">
+"A Greedy Rescheduling Assembler for the CAM2000" </a>,
+Department of Computer Science, 
+Rutgers University, 1994
+
+<p>
+Keith M. Miyake and Donald E. Smith, 
+<!WA9><a href = "http://www.cs.rutgers.edu/cam/TR191.ps">
+"Circuit Design Tool User's Manual"</a>,  
+Technical Report No. LCSR-TR-191, 
+Department of Computer Science, 
+Rutgers University, 1992
+
+

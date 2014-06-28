@@ -1,0 +1,219 @@
+Date: Mon, 11 Nov 1996 17:13:11 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 27 Sep 1996 07:29:26 GMT
+Content-length: 8189
+
+<HTML>
+<HEAD>
+<TITLE>Program 3 - CS 302 Fall 1996 - Section 4</TITLE>
+</HEAD>
+<BODY>
+
+<H1 ALIGN=CENTER>
+  <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~cs302">CS 302</A>
+  Fall 1996 - <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.wisc.edu/~milo/cs302.html">Section 4</A>
+</H1> 
+<H2 ALIGN=CENTER>Algebraic Language Programming in C++</H2>
+<H4 ALIGN=CENTER>Instructor: 
+  <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~milo">Milo M. Martin</A> 
+  (milo@cs.wisc.edu)</H4>
+<hr><br>
+
+<H1 ALIGN=CENTER>Program 3</H1>
+<H3 ALIGN=CENTER>Due Friday, October 4, 1996</H3> 
+<hr><br>
+
+<b>Objective</B>: Give the student experience working with and writing
+functions.<p>
+
+<H3>Program Description</H3>
+
+Due to the great cash register program that you wrote for the
+restaurant, you have earned quite a reputation and your skills are in
+high demand.  A large hardware distributor, We 'R Nails, has
+contracted you to write a program to replace an old cash register. <p>
+
+This program will be an even greater challenge than the restaurant
+because of a number of added complications.  First, the price a
+customer pays for each nail decreases as the quantity ordered
+increases.  This is described in detail below.  Second, the warehouse
+has a finite number of nails in stock, and your program must not allow
+the operator to place an order for more of one type of nail than is in
+stock. <p>
+
+The cost of ordering some number of one type of nail can be calculated
+from the quantity ordered and the base price of each nail.  The more
+nails that a customer orders, the less the customer pays per nail.
+The discount schedule is as follows:
+
+<pre>
+   First 1000: regular price
+   Next  1000: 10% discount
+   Next  1000: 15% discount
+   After that: 25% discount
+</pre>
+
+For example, the price of 1300 items at 10 cents a piece would be
+(1000*10) + (300*9) cents = $127.00, <em>not</em> (1300 * 9) cents.
+Note that if the user orders 800 of a particular item at one point,
+and later orders 500 more of the same item, she should be given the
+discount as if she ordered all 1300 at once. <p>
+
+We 'R Nails sells four types of nails.  Below is a chart of the
+item number, description, base cost per nail, and quantity on hand in
+the warehouse.
+
+<pre>
+ Item #    Item Description	Cost per Nail   Number in Warehouse
+====================================================================
+  315         2.0" Nails           $0.025            15000
+  426         3.0" Nails           $0.030            20000
+  537         4.0" Nails           $0.035            25000
+  648         9.0" Nails           $0.050            30000
+</pre>
+
+Customers can only order by the box (there are 100 nails to the box,
+regardless of size). <p>
+
+Similar to the last program, you need prompt the user for the order,
+keep track of how many of each item have been ordered, loop until the
+user asks for the bill, display the final bill.  However, this program
+requires that you prompt the user for the item number and quantity
+ordered.  You may design the menu and bill formats yourself, but, as
+in your previous assignment, all dollar amounts must be formatted to 2
+decimal places. <p>
+
+<b> Constants variables should be used where appropriate and all input
+should be checked to make sure it is valid.  If the input is not
+valid, tell the user, and re-prompt the user for input</B>.  (These
+statements apply to all programs from now on.)
+
+<H3>Code Provided</H3>
+
+Since the object of this assignment is to give you practice using
+functions, I have provided the basic framework and <tt>main</tt>
+function for you to build the other functions upon.  It is your job to
+complete the functions which "fill-in" the program and perform the
+desired operations.  <b>You must use the following code as your
+<tt>main</tt> function with no modifications to the code:</b>
+
+<pre>
+// Your header comments go here
+
+#include &ltiostream.h&gt
+
+const int TRUE = 1;
+const int FALSE = 0;
+
+// Your function prototypes go here
+
+int main() {
+  int choice;    // item number
+  int quantity;  // quantity ordered
+
+  int num_ord1 = 0, num_ord2 = 0; // cumulative number of each item ordered
+  int num_ord3 = 0, num_ord4 = 0;
+
+  do {
+    // Prompt the user and get the input
+    print_menu(num_ord1, num_ord2, num_ord3, num_ord4);
+    choice = get_choice();
+    quantity = get_quantity();
+    
+    // Process the order
+    place_order(choice, quantity, num_ord1, num_ord2, num_ord3, num_ord4);
+    
+  } while (keep_going() == TRUE); // Ask the user if they want to continue
+
+  // Display the bill summarizing the items ordered.
+  print_bill(num_ord1, num_ord2, num_ord3, num_ord4);
+}
+</pre>
+
+<p>
+<h3>Functions To Write</h3>
+<p>
+
+The following is a list of functions that you <b>must</b> write for
+the assignment.  Some of these procedures will only require
+call-by-value parameters, others will need to use call-by-reference
+parameters.  It is up to you to figure out how many and what types the
+parameters are.
+
+<ul> <p>
+
+<p><li> <b>print_menu</b> - This function should print the menu and the
+current subtotal (not including tax).
+
+<p><li> <b>calculate_subtotal</b> - This function should compute the subtotal
+(not including tax) of the items ordered so far.
+
+<p><li> <b>calculate_price</b> - This function (which will be called by
+calculate_subtotal) should take two arguments: quantity ordered of a
+particular item, and the price of the item.  It then computes the cost
+using the rules in the above program description.
+
+<p><li> <b>get_choice</b> - This function should prompt the user for an
+item number.  You must ensure that the return value is a legitimate
+item number.  If the user enters an invalid choice, an error message
+should be printed, and the user should be reprompted for a new number.
+
+<p><li> <b>get_quantity</b> - This function should prompt the user for the
+quantity of the order.  You must ensure that the return value is a
+legitimate quantity (remember, if you have the user enter the number of
+nails desired, the number must be divisible by 100 to be valid, since
+nails come in 100 item packages).  If the user enters an invalid
+choice, an error message should be printed, and the user should be
+reprompted for a new number.
+
+<p><li> <b>place_order</b> - This function will attempt to place the
+order, adjusting the appropriate <tt>num_ord</tt><em>x</em>.  If the
+total quantity of the item requested is greater than the stock on-hand,
+as much as possible of the order should be filled, and an informative
+out of stock message should be displayed.  This message should display
+which item was out of stock and the quantity to which the order was
+reduced.
+
+<p> If the ordering of an item causes the available stock to drop
+below 10,000 items, a descriptive "low on item" message should be
+printed, along with the appropriate item number.
+
+<p><li> <b>keep_going</b> - This function should ask the user whether
+they would like to continue ordering items (or, it could ask the user
+if they want to print the bill.)  Either way, it should return TRUE if
+the loop is to be executed again, and FALSE otherwise.  (TRUE and
+FALSE are integer constants that are included in the code for
+<tt>main</tt>.)
+
+<p><li> <b>print_bill</b> - This function should print the number of
+each item ordered (only the items which the customer ordered more than
+zero of), the subtotal, and the final total (adding in 5% tax) in a
+way that is similar to the last program.
+
+</ul>
+
+<p> 
+
+<H3>What To Turn In</H3>
+
+Once you have your program working, you should print sample runs of
+the program.  Your output file should demonstrate ordering quantities
+of the items such that various discount levels are calculated, orders
+that exceed the available items in stock, orders that cause a stock
+low message to be displayed, and an example where two requests for the
+same item are handled properly. (as one large request.)
+
+As always, submit print-outs of both your source code and your sample
+program runs, and an submit an electronic copy of your source code and
+executable as described previously.  <p>
+
+<hr>
+<address>
+Created by 
+  <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="http://www.cs.wisc.edu/~burnett">Dave Burnett</A>,
+  <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="http://www.cs.wisc.edu/~milo">Milo Martin</A>, and
+  <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A HREF="http://www.cs.wisc.edu/~dyao">Dan Yao</A>.
+</Address>
+</BODY>
+</HTML>

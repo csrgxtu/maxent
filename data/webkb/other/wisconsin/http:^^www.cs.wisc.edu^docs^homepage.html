@@ -1,0 +1,258 @@
+Date: Tue, 05 Nov 1996 21:47:58 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 19 Sep 1994 21:56:41 GMT
+Content-length: 12327
+
+<HTML>
+<HEAD>
+<TITLE>8 Easy steps to having your own WWW Page</TITLE>
+</HEAD>
+<BODY>
+
+<P> <H2>8 Easy steps to having your own WWW Page on the CS UNIX Machines</H2>
+
+<P> In this document we will go through a step-by-step procedure for creating
+a simple WWW Home page on the departmental workstations.  It should take 
+you about 30
+minutes to complete the steps described here.  The page you create will 
+probably not be exactly what you want, but going through these instructions
+will give you a general idea of what is involved in creating Web pages,
+and after you understand more of how the system works you can go back and
+edit or replace it.  Some of what is said in this document isn't strictly
+true, as you will see when you continue learning about the Web.
+
+<P> <BLOCKQUOTE> <B>Note:</B>  The term <EM>Home Page</EM> has come to 
+mean two different things.  Some people refer to a page that describes 
+a person or institution as its "Home Page."  Others think a "Home Page" 
+is a page you create for your own use that contains a list of links to 
+the sites you visit frequently.  The page you are creating is of the 
+first type. </BLOCKQUOTE>
+
+<P> <H2>Step 0: What you should have in front of you.</H2>
+
+<P> Chances are you have probably completed most of this step already.
+This document assumes you are logged into the console of a UNIX workstation
+in the CS department, and that you are running Mosaic for X to view 
+this page.  If you are using some other browser or you aren't logged into
+a CS machine, some of the instructions below won't work and might not
+make sense, and you will have to move or be prepared to improvise.  
+
+<P> You will probably want to read both this document and the page you
+are editing at the same time, so to make that easier you can create a 
+second Mosaic window.  Keeping in mind that you will have to put the first
+window back on top to continue reading, press the "New Window" button on 
+the bottom of Mosaic.  We'll use this other window later.
+
+<P> In addition to Mosaic, you should have a window with a shell available
+because you will be typing a few commands.  Finally, you should have 
+your favorite text editor in a fourth window.  This document doesn't assume 
+any HTML-specific editor modes; you will be editing the file directly.  Make 
+sure you can switch between the windows easily. 
+
+<P> <H2>Step 1: Create your public WWW directory.</H2>
+
+<P> If you have never put a document on the Web, you will need to create your
+publicly accessible WWW directory.  In your shell, execute the following
+command: 
+
+<P><BLOCKQUOTE><PRE>mkdir ~/public/html</PRE></BLOCKQUOTE>
+
+<P> This directory is where you will keep all of your Web documents.  It has
+a special place in the namespace of our Web server.  If this command did
+not work because you do not have a <TT>~/public</TT> directory, you have to
+do a little more work.  Please see this <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/docs/public_afs.html">note</A>.
+
+<P> <H2>Step 2: Copy the sample home page.</H2>
+
+<P> In your shell, run the following command:
+
+<P><BLOCKQUOTE><PRE>cp /common/www/home-sample.html ~/public/html/<EM>username</EM>.html</PRE></BLOCKQUOTE>
+
+<P> where <I>username</I> is your own UNIX login name.  This file contains
+a WWW home page for you to personalize.
+
+<P> <H2>Step 3: Edit the home page file.</H2>
+
+<P> What you do to accomplish this will depend on what editor you use.  The
+first few lines of the file should look like this:
+
+<P><BLOCKQUOTE><PRE>&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;TITLE&gt;Felix's Home Page&lt;TITLE&gt;
+&lt;HEAD&gt;
+&lt;BODY&gt;</BLOCKQUOTE></PRE>
+
+<P> Don't change anything yet.  
+
+<P> <H2>Step 4: View the document in Mosaic.</H2>
+
+In the other Mosaic window you created,
+click on the <EM>Open...</EM> button at the bottom.  A dialog box with a 
+text field and some buttons will appear.  If there is anything in the text 
+field, press the <EM>Clear</EM> button.  Now type
+
+<P><BLOCKQUOTE><PRE>http://www.cs.wisc.edu/~<EM>username</EM>/</BLOCKQUOTE></PRE>
+
+<P> in the text field.  If you make a mistake, the <B>Backspace</B> key
+should delete the character before the cursor, and the <B>Delete</B> key 
+should delete the character after it. 
+
+<P> In the other Mosaic window there should be a short list of directories
+and files, one of which is <TT><EM>username</EM>.html</TT>.  Just as the 
+string <TT>~<EM>username</EM>/public/html/</TT> is a complete path in the
+filesystem pointing to the directory you created, the string
+<TT>http://www.cs.wisc.edu/~<EM>username</EM>/</TT> is a complete path (or
+full <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.wisc.edu/docs/url.html">URL</A>) to
+that same directory in the Web namespace.  If you had wanted to load the
+document directly, you could have entered
+
+<P><BLOCKQUOTE><PRE>http://www.cs.wisc.edu/~<EM>username</EM>/<EM>username</EM>.html</BLOCKQUOTE></PRE>
+
+<P> However, the server was nice enough to make a directory listing for you,
+so you can just click on the name of the file to view it.  
+
+<P> <H2>Step 5: Examine the file.</H2>
+
+<P> The file you are editing is written in HTML, the Hypertext Markup 
+Language.  We are not going to go into detail about HTML here, but there is
+a reasonably complete description in <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/docs/htmltutorial.html">another 
+document</A>.  Here is an 
+over-simplified summary of HTML markup.  As you read it, look for examples 
+in the file:
+
+<P><UL> 
+<LI> Markup in HTML is done with <EM>Elements</EM> and <EM>Entities</EM>.
+<LI> Elements consist of <EM>tags</EM>, which are names inside
+angle brackets, as in <TT>&lt;TITLE&gt;</TT>.
+<LI> Tag names are not case-sensitive.
+<LI> Some elements are <EM>containers</EM>, which consist of two
+tags: a <EM>start tag</EM> and an <EM>end tag</EM>.  Start tags and end tags
+are generally the same, except that end tags start with a "/".  For
+example, if <TT>&lt;FOO&gt;</TT> is a start tag, <TT>&lt;/FOO&gt;</TT> is
+its end tag.  Whatever is between the start and end tags is inside the 
+container.
+<LI> <EM>Entities</EM> are names that start with <TT>&amp;</TT> and end 
+with <TT>;</TT> that represent characters which cannot normally 
+be written in ASCII, and characters used for markup.  
+<LI> The only entities you need to know right now are <TT>&amp;lt;</TT> 
+for <TT>&lt;</TT>, <TT>&amp;gt;</TT> for <TT>&gt;</TT>, and <TT>&amp;amp;</TT>
+for <TT>&amp;</TT>.  
+</UL>
+
+<P> Also notice that tabs, spaces, and newlines 
+separate words, but are otherwise interchangeable.  You can format your
+HTML document however you want to, and any combination of "whitespace" 
+characters will not have an effect on the finished product.  While there
+is a blank line between paragraphs in the sample file, it is the 
+<TT>&lt;P&gt;</TT> tags that cause space to be included in the
+Mosaic window.
+
+<P> To make an HTML document, you simply need to know the elements and 
+entities and how to use them.  The use of entities is very simple.  Whenever
+you need to enter a character special or markup character into your document,
+instead of typing the character itself you type the entity.  The use of 
+elements is more complicated, so for now we will just tell you what you
+need to know to alter the sample home page.
+
+<P> There are a number of tags that get included in every document that we
+will not discuss.  Here we will only discuss the <B>Title</B>, and the 
+<B>Body</B>.
+
+<P> <H2>Step 6:  Edit the title.</H2>
+
+<P> The third line of the sample home page looks like this:
+
+<P><BLOCKQUOTE><PRE>&lt;TITLE&gt;Felix's Home Page&lt;/TITLE&gt;</BLOCKQUOTE></PRE>
+
+<P> If you look at the top of your Mosaic window where it says "<EM>Document 
+Title:</EM>" you will see that the string in the <TT>TITLE</TT> container is
+displayed there.  Different browsers use the title in different ways.  The
+title should be short and summarize the contents of the document.  In this 
+case you can replace "<TT>Felix</TT>" with your own name.  
+
+<P> After you have made the change, save the file without exiting your editor
+and press the <EM>Reload</EM> button on the bottom of the other Mosaic window.  
+The new title should appear.  From now on, whenever you make changes to the 
+file you can save it in your editor and reload it into your browser to see 
+the result.
+
+<P> <H2>Step 7:  Edit the body.</H2>
+
+<P> The <B>body</B> is everything between the <TT>&lt;BODY&gt;</TT> and
+<TT>&lt;/BODY&gt;</TT> tags (if you look at the end of the document, you
+will see the <TT>&lt;/BODY&gt;</TT> tag).  The body is where you put your
+text, entities, and most of the elements.  The sample file has a number of 
+elements you might want to use in your own home page.  Don't delete a
+sample element until you have left at least one example of its use in 
+the file or decided you don't want to use it.
+
+<P> As you look at the sample page in your editor and in Mosaic it should
+become clear what the different elements do <EM>in Mosaic for X</EM>.  
+Different browsers have different interpretations of the tags.  Here is a 
+list of the elements in the document and what they do in Mosaic:
+
+<UL>
+<LI> <TT>&lt;B&gt;</TT> is a container that emboldens its contents.
+<LI> <TT>&lt;EM&gt;</TT> is a container that italicizes its contents (<TT>EM</TT> stands for <EM>emphasis</EM>).
+<LI> <TT>&lt;H1&gt;</TT> is a container that creates a heading. 
+<LI> <TT>&lt;P&gt;</TT> separates paragraphs.
+<LI> <TT>&lt;UL&gt;</TT> creates a "bullet-ed list" (<TT>UL</TT> stands for <EM>unordered list</EM>).
+<LI> <TT>&lt;LI&gt;</TT> is used to specify <EM>list items</EM> inside a list container.
+<LI> <TT>&lt;A&gt;</TT> is used to make a link to another document.
+<LI> <TT>&lt;IMG&gt;</TT> is used to include a picture.
+</UL>
+
+<P> There are also a number of elements not included in the sample document.  
+Here is a list of some of them:
+
+<UL>
+<LI> <TT>&lt;H2&gt;</TT> through <TT>&lt;H6&gt;</TT> are like <TT>&lt;H1&gt;</TT> and create headings with progressively smaller fonts.
+<LI> <TT>&lt;OL&gt;</TT> is like <TT>&lt;UL&gt;</TT>, but creates a numbered
+list (<TT>OL</TT> stands for <EM>ordered list</EM>).
+<LI> <TT>&lt;HR&gt;</TT> makes a <EM>horizontal rule</EM>.
+<LI> <TT>&lt;BR&gt;</TT> inserts a line <EM>break</EM>.
+</UL>
+
+<P> Two of the included tags, <TT>&lt;A&gt;</TT> and <TT>&lt;IMG&gt;</TT>, 
+had <EM>attributes</EM>.  The <TT>A</TT> container was used to create a link to 
+another document, which was specified in the 
+<TT>HREF="/cgi-bin/finger?keeper@spacely"</TT> attribute.  In this case,
+that document is a script that fingers a user (<TT>keeper@spacely</TT>) and 
+creates a document with the result.  Note that path (<EM>URL</EM>) to the
+document starts with a "/".  When you link from one document to another 
+in the Web, you can refer to the new location relative to the current one.
+In this case, we could omit the <TT>http://www.cs.wisc.edu</TT> because
+both documents are on the same server.  
+
+<P> The <TT>&lt;IMG&gt;</TT> tag, as we said before, is used to include a
+picture.  The picture must be either an X bitmap, or a GIF file.  The 
+<TT>SRC</TT> attribute is used to specify the location of the picture.  The 
+filenames of X bitmaps must end with the extension <TT>.xbm</TT> and GIF 
+filenames must end in <TT>.gif</TT>.  If you had a GIF file called 
+<TT>me.gif</TT>, and you wanted to include it in your document, you could
+put it in the same directory where the document is located, and use the
+tag <TT>&lt;IMG SRC="me.gif"&gt;</TT>.  The <TT>ALT</TT> attribute specifies
+a string to be printed if a browser cannot display pictures. 
+
+<P> Now that you know what the elements do, you should figure out what 
+you want to say (the hard part), and then use the tags and text to create the 
+"look" you want.  Remember that you can preview what you create in Mosaic
+as you go along by saving the document and clicking the <EM>Reload</EM>
+button.
+
+<P> Every night, every page that matches the pattern 
+<TT>~<EM>username</EM>/public/html/<EM>username</EM>.html</TT> is mapped
+into the master list of <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="http://www.cs.wisc.edu/directories">home pages</A>.
+
+<P> <H2>Step 8:  Read the other <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="http://www.cs.wisc.edu/docs/">documents</A>.</H2>
+
+<P> You don't have to read them now, but before you do more work with HTML or 
+the server you should get the complete description of how they work.  In 
+particular, read the <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A HREF="http://www.cs.wisc.edu/docs/htmltutorial.html">HTML document</A>.  
+Using Mosaic to test your HTML for
+correctness can leave your documents looking pretty in Mosaic, and 
+non-sensical in other browsers.
+
+</BODY>
+</HTML>

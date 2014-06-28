@@ -1,0 +1,224 @@
+Date: Mon, 11 Nov 1996 17:00:37 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Tue, 29 Oct 1996 21:21:14 GMT
+Content-length: 6598
+
+<html>
+<head>
+<title> Program 5 </title>
+<center> <h2> Program 5 </h2> </center>
+</head>
+<body>
+
+<ul>
+<li> CS302 Section 12
+<li> TA: Michael Birk
+<li> <strong>Assigned:</strong> Tue 10/29/96
+<li> <strong>Due:</strong> Tue 11/5/96
+</ul>
+
+For this assignment you will write a program that can print a simple
+histogram, or bar chart, based on the contents of a string.  The chart shows
+how many of each letter of the alphabet appeared in the string.  For
+example, when run on the string <tt>"Program Four"</tt>, the program
+should print the following output:
+
+<p>
+
+<pre>
+   a:    1 *
+   f:    1 *
+   g:    1 *
+   m:    1 *
+   o:    2 **
+   p:    1 *
+   r:    3 ***
+   u:    1 *
+
+   11 letters
+   scale factor: 1
+</pre>
+
+<p>
+
+Note how only the letters are counted - punctuation, such as spaces, is
+ignored.  Also, upper- and lower- case letters are not distinguished.  The
+chart shows the number of occurrences of each letter in both numerical and
+"visual" form (a bunch of asterisks).
+
+<h2> How to Do It </h2>
+
+The basic technique is to create an array of integers to hold the counts for
+each letter.  The array should have 26 elements - one for each letter of the
+alphabet.  The first element in the array will hold the number of A's, the
+second element holds the number of B's, and so on.  You can achieve this
+mapping of the letters 'A' - 'Z' to the numbers 0 - 25 with the following
+functions:
+
+<pre>
+   int char_to_int (char ch)
+   {
+      return tolower (ch) - 'a';
+   }
+
+   char int_to_char (int n)
+   {
+       return n + 'a';
+   }
+</pre>
+
+These functions rely on the fact that characters are really just integers,
+and the compiler will translate from one to the other automatically.
+
+<p>
+
+Your program should go through the entire input string
+character-by-character, and if it is a letter, add 1 to the count stored in
+the element of the array that corresponds to that letter.
+
+<h2> What to Do </h2>
+
+There are some other requirements for this assignment.  You must do these,
+but I highly recommend that you get the basics working first.  Only work on
+these after you can actually print out a simple histogram!
+
+<h3> Counting the Total Number of Characters </h3>
+
+You must count the total number of letters and print out this information. 
+See the example below.
+
+<h3> Scaling the Bar Chart </h3>
+
+If any character occurs more than 50 times, you must scale all of the bars
+in the chart so that the longest bar is printed with 50 stars.  You should
+also print out the scaling factor.  For example, if the input string was:
+
+<pre>
+   aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbb
+   ccccccccccccccccccc
+   d
+   eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+   eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+   fffffffffffff
+   gggggg
+</pre>
+
+Then your program should print:
+
+<pre>
+   a:   37 *****************
+   b:   22 **********
+   c:   19 *********
+   d:    1
+   e:  104 **************************************************
+   f:   13 ******
+   g:    6 **
+
+   26 letters
+   scale factor: 0.480769
+</pre>
+
+The scaling factor is just 1.0 if the most frequent character occurs at most
+50 times.  If it appears, say 104 times, then the scaling factor would be
+50.0 / 104, or 0.480769.  You would then multiply this scaling factor by the
+frequency of each character to compute the number of stars to print.
+
+<h3> Using Functions </h3>
+
+Your program must be properly structured using functions.  This means that
+different tasks or subproblems are performed in different functions. 
+Information is passed in and out of the the functions via the parameters and
+return value.
+
+<p>
+
+To help push you in the right direction in this regard, I am instituting a
+few rules for this assignment.
+
+<p>
+
+<ul>
+  <li> No global variables may be used.  All variables must be defined
+       within a function definition.
+  <li> No function may contain more than 15 statements (variable
+       definitions, cin/cout, if, for, etc.)  Most should have a lot fewer
+       than that.  If you're not sure if you're complying with this rule 
+       then ask me.
+  <li> No function may contain more than one loop.  (But of course it can
+       call another function which has a loop.)
+  <li> Only use simple counting loops (simple <tt>for</tt> loops).
+</ul>
+
+<p>
+
+In addition, these rules always apply:
+
+<ul>
+  <li> You must use proper indentation; indent the body of composite
+       statements such as if, for, etc., and line up your curly braces!  If
+       you aren't sure then follow the book's guideline!
+  <li> <b>All functions</b> must be documented using comments.  These
+       comments should explain what the function does and what the meanings
+       of the parameters and return values are.
+</ul>
+
+<h3> Reading the Input from a File </h3>
+
+Eventually, after you get everything else working, you must change your
+program so that it get its input from a file.  It should ask the user for
+the name of the file, read the file, and use this as the input. 
+Fortunately, this should be really easy, since I am providing you with a
+function that reads an entire file as a single string.  The function has the
+following prototype:
+
+<pre>
+     string read_file (string filename)
+</pre>
+
+This function reads the file <tt>filename</tt> and returns its contents as
+a single string.  (This string may contain many lines, which are separated
+by special newline and carriage return characters.  Your program should
+just ignore these, like all non-letters.)  If there was an error (for
+example, the file didn't exist) then it returns the empty string. 
+
+<p>
+
+The read_file function is defined in the object file 
+<a href="prog5/readfile.cpp">r:\public\mbirk\readfile.obj</a>.  This means
+that you will have to add this to the Project Window.  The Project Window
+should contain three files: <tt>prog4.cpp</tt>,
+<tt>r:\public\mbirk\string.obj</tt>, and
+<tt>r:\public\mbirk\readfile.obj</tt>.
+
+<h2> What to Hand In </h2>
+
+Hand in your source code, as well as the output of your program on the
+following test cases: (note: don't hand in the test cases themselves)
+
+<p>
+
+<ul>
+  <li> <a href="prog5/test1.txt">Test 1</a>
+  <li> <a href="prog5/test2.txt">Test 2</a>
+</ul>
+
+<p>
+
+Also, here are a couple more test cases and their result, which you can
+use to see if your implementation is working.  Do not hand these in.
+
+<p>
+
+<ul>
+  <li> <a href="prog5/test3.txt">Test 3</a>
+       (<a href="prog5/test3out.txt">Output</a>)
+  <li> <a href="prog5/test4.txt">Test 4</a>
+       (<a href="prog5/test4out.txt">Output</a>)
+</ul>
+
+<hr>
+<i> <a href="mailto:mbirk@cs.wisc.edu">mbirk@cs.wisc.edu</a>
+
+</body>
+</html>

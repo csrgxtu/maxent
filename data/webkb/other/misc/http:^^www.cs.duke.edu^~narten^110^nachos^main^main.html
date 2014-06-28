@@ -1,0 +1,103 @@
+Date: Tue, 14 Jan 1997 23:08:12 GMT
+Server: NCSA/1.5.2
+Last-modified: Wed, 04 Jan 1995 18:23:07 GMT
+Content-type: text/html
+Content-length: 6044
+
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!- Converted with LaTeX2HTML 0.6.4 (Tues Aug 30 1994) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds ->
+<P>
+<HEAD>
+<TITLE>A Road Map Through Nachos</TITLE>
+<meta name="description" value="A Road Map Through Nachos">
+<meta name="keywords" value="main">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+</HEAD>
+<BODY><P>
+ <BR> <HR><!WA0><A NAME=tex2html10 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node1.html"><!WA1><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.duke.edu/images/latex2html/next_motif.gif"></A> <!WA2><IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.duke.edu/images/latex2html/up_motif_gr.gif"> <!WA3><IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.duke.edu/images/latex2html/previous_motif_gr.gif"> <!WA4><A NAME=tex2html12 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node1.html"><!WA5><IMG ALIGN=BOTTOM ALT="contents" SRC="http://www.cs.duke.edu/images/latex2html/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <!WA6><A NAME=tex2html11 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node1.html">Contents</A>
+<BR> <HR> <P>
+<P>
+<H1>A Road Map Through Nachos</H1>
+<P><STRONG>Thomas Narten<BR>Department of Computer Sciences<BR>Levine Science Research Center<BR>Duke University<BR>Box 90129 <BR>Durham, N.C. 27708-0129    <BR>narten@cs.duke.edu</STRONG><P>
+<P><STRONG>Wed Jan  4 13:21:16 EST 1995
+</STRONG><P>
+<H3>Abstract:</H3>
+<EM>Nachos is instructional software that allows students to examine,
+modify and execute operating system software. Nachos provides a
+skeletal operating system that supports threads, user-level processes,
+virtual memory and interrupt-driven input output devices. Nachos is a
+complex piece of software and it is difficult for beginning students
+(and instructors) to easily gain on overall understanding of the
+various system pieces and how they fit together.
+<P>
+This document provides a road map to understanding the Nachos system.
+It gives a high-level overview of the source code, focusing on the big
+picture rather than on the details.  It is not intended as a
+replacement for reading the source code.  Rather, it is a companion
+that is intended to help students (and instructors) overcome the
+initial learning curve encountered when learning and using the system.
+</EM><P>
+<P>
+<BR> <HR>
+<UL> 
+<LI> <!WA7><A NAME=tex2html13 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node1.html#SECTION00010000000000000000">Contents</A>
+<LI> <!WA8><A NAME=tex2html14 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node2.html#SECTION00020000000000000000"> Introduction to Nachos</A>
+<LI> <!WA9><A NAME=tex2html15 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node3.html#SECTION00030000000000000000"> Nachos Machine</A>
+<UL> 
+<LI> <!WA10><A NAME=tex2html16 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node4.html#SECTION00031000000000000000"> Machine Components</A>
+<LI> <!WA11><A NAME=tex2html17 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node5.html#SECTION00032000000000000000"> Interrupt Management</A>
+<LI> <!WA12><A NAME=tex2html18 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node6.html#SECTION00033000000000000000"> Real-Time Clock Interrupts</A>
+<LI> <!WA13><A NAME=tex2html19 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node7.html#SECTION00034000000000000000"> Address Translation</A>
+<UL> 
+<LI> <!WA14><A NAME=tex2html20 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node8.html#SECTION00034100000000000000"> Linear Page Tables</A>
+<LI> <!WA15><A NAME=tex2html21 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node9.html#SECTION00034200000000000000"> Software Managed TLB</A>
+</UL> 
+<LI> <!WA16><A NAME=tex2html22 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node10.html#SECTION00035000000000000000"> Console Device</A>
+<LI> <!WA17><A NAME=tex2html23 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node11.html#SECTION00036000000000000000"> Disk Device</A>
+</UL> 
+<LI> <!WA18><A NAME=tex2html24 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node12.html#SECTION00040000000000000000"> Nachos Threads</A>
+<UL> 
+<LI> <!WA19><A NAME=tex2html25 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node13.html#SECTION00041000000000000000"> Mechanics of Thread Switching</A>
+<LI> <!WA20><A NAME=tex2html26 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node14.html#SECTION00042000000000000000"> Threads &amp; Scheduling</A>
+<LI> <!WA21><A NAME=tex2html27 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node15.html#SECTION00043000000000000000"> Synchronization and Mutual Exclusion</A>
+<LI> <!WA22><A NAME=tex2html28 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node16.html#SECTION00044000000000000000"> Special Notes</A>
+</UL> 
+<LI> <!WA23><A NAME=tex2html29 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node17.html#SECTION00050000000000000000"> User-Level Processes</A>
+<UL> 
+<LI> <!WA24><A NAME=tex2html30 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node18.html#SECTION00051000000000000000"> Process Creation</A>
+<LI> <!WA25><A NAME=tex2html31 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node19.html#SECTION00052000000000000000"> Creating a Noff Binary</A>
+<LI> <!WA26><A NAME=tex2html32 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node20.html#SECTION00053000000000000000"> System Calls and Exception Handling</A>
+<LI> <!WA27><A NAME=tex2html33 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node21.html#SECTION00054000000000000000"> Execution Trace of User-Level Process</A>
+</UL> 
+<LI> <!WA28><A NAME=tex2html34 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node22.html#SECTION00060000000000000000"> Nachos Filesystem</A>
+<UL> 
+<LI> <!WA29><A NAME=tex2html35 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node23.html#SECTION00061000000000000000"> SynchDisk</A>
+<LI> <!WA30><A NAME=tex2html36 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node24.html#SECTION00062000000000000000"> FileSystem Object</A>
+<LI> <!WA31><A NAME=tex2html37 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node25.html#SECTION00063000000000000000"> OpenFile Object</A>
+<LI> <!WA32><A NAME=tex2html38 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node26.html#SECTION00064000000000000000"> File System Physical Representation</A>
+<UL> 
+<LI> <!WA33><A NAME=tex2html39 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node27.html#SECTION00064100000000000000"> File Header</A>
+<LI> <!WA34><A NAME=tex2html40 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node28.html#SECTION00064200000000000000"> Directories</A>
+<LI> <!WA35><A NAME=tex2html41 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node29.html#SECTION00064300000000000000"> Putting It All Together</A>
+</UL> 
+</UL> 
+<LI> <!WA36><A NAME=tex2html42 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node30.html#SECTION00070000000000000000"> Experience With Nachos Assignments</A>
+<UL> 
+<LI> <!WA37><A NAME=tex2html43 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node31.html#SECTION00071000000000000000"> General Tips</A>
+<LI> <!WA38><A NAME=tex2html44 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node32.html#SECTION00072000000000000000"> Synchronization</A>
+<LI> <!WA39><A NAME=tex2html45 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node33.html#SECTION00073000000000000000"> Multiprogramming</A>
+<LI> <!WA40><A NAME=tex2html46 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node34.html#SECTION00074000000000000000"> Virtual Memory</A>
+<LI> <!WA41><A NAME=tex2html47 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node35.html#SECTION00075000000000000000"> File System</A>
+<LI> <!WA42><A NAME=tex2html48 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node36.html#SECTION00076000000000000000"> Common Errors</A>
+</UL> 
+<LI> <!WA43><A NAME=tex2html49 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node37.html#SECTION00080000000000000000"> MIPS Architecture</A>
+<LI> <!WA44><A NAME=tex2html50 HREF="http://www.cs.duke.edu/~narten/110/nachos/main/node38.html#SECTION00090000000000000000">  <em>About this document ...</em> </A>
+</UL>
+<BR> <HR>
+<P><ADDRESS>
+<I> Thomas Narten <BR>
+Wed Jan  4 13:19:55 EST 1995</I>
+</ADDRESS>
+</BODY>

@@ -1,0 +1,155 @@
+Date: Tue, 05 Nov 1996 00:32:14 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 10 Oct 1996 20:02:36 GMT
+Content-length: 5639
+
+<!--This file created 9/27/96 4:08 PM by Claris Home Page version 1.0b1-->
+<HTML>
+<HEAD>
+   <TITLE>JT-HW3.ans.html</TITLE>
+   <X-SAS-WINDOW TOP=-49 BOTTOM=503 LEFT=-784 RIGHT=-111>
+</HEAD>
+<BODY>
+
+<H1 ALIGN=CENTER><FONT SIZE=5>CS354, Fall 1996</FONT></H1>
+
+<H1 ALIGN=CENTER><FONT SIZE=5>Homework 3, due Wednesday October 9 at
+the start of class.</FONT></H1>
+
+<H3><TABLE BORDER=1 CELLPADDING=1 WIDTH="100%" HEIGHT=35>
+   <TR>
+      <TD>
+         <P><B><FONT SIZE=4 COLOR="#AF0000">Name
+         (printed):</FONT></B>
+      </TD><TD>
+         <P><B><FONT SIZE=4 COLOR="#AF0000">Name (signed):</FONT></B>
+
+      </TD></TR>
+</TABLE></H3>
+
+<H3>Grader:</H3>
+
+<P><TABLE BORDER=1 CELLPADDING=1 WIDTH="24%">
+   <TR>
+      <TD>
+         <P>Mohammad
+      </TD><TD>
+         <P>&nbsp;
+      </TD></TR>
+   <TR>
+      <TD>
+         <P>Sridevi
+      </TD><TD>
+         <P>&nbsp;
+      </TD></TR>
+   <TR>
+      <TD>
+         <P>Sunlung
+      </TD><TD>
+         <P>&nbsp;
+      </TD></TR>
+</TABLE></P>
+
+<H3>Total score:</H3>
+
+<P><FONT COLOR="#000000">(1) (4 points) Find the largest IEEE 32 bit
+floating point number that does not have an integer value. Express
+the answer in binary and in decimal.</FONT></P>
+
+<BLOCKQUOTE><P><B><FONT COLOR="#000000">ANSWER</FONT></B></P>
+
+<PRE><FONT COLOR="#000000">all FPS numbers larger than:
+100000000000000000000000.0</FONT><SUB><FONT
+COLOR="#000000">2</FONT></SUB><FONT COLOR="#000000"> = 2</FONT><SUP><FONT
+COLOR="#000000">23</FONT></SUP><FONT COLOR="#000000"> have integer values
+since
+the significant only holds 23 bits
+&nbsp;
+the next smaller FPS number is:
+ 11111111111111111111111.1</FONT><SUB><FONT
+COLOR="#000000">2</FONT></SUB><FONT COLOR="#000000"> = 2</FONT><SUP><FONT
+COLOR="#000000">23</FONT></SUP><FONT COLOR="#000000"> - 0.5 =
+8388607.5</FONT><SUB><FONT COLOR="#000000">10</FONT></SUB></PRE>
+</BLOCKQUOTE>
+
+<P><FONT COLOR="#000000">&nbsp;</FONT></P>
+
+<P><FONT COLOR="#000000">(2) (2 points each, 6 points total) Write
+the hexadecimal values for x, y and z just after the following code
+executes:</FONT></P>
+
+<BLOCKQUOTE><BLOCKQUOTE><BLOCKQUOTE><BLOCKQUOTE><BLOCKQUOTE><BLOCKQUOTE><BLO
+CKQUOTE><PRE><B><FONT COLOR="#000000">ANSWER</FONT></B></PRE>
+</BLOCKQUOTE></BLOCKQUOTE></BLOCKQUOTE></BLOCKQUOTE></BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<PRE><FONT COLOR="#000000">move x, 0x0f0fc123
+and  x, x, 0xff00f000      # x = 0x0f00c000
+not  x, x                  # x = 0xf0ff3fff &lt;- ans
+move y, 0x8f0aabc9
+sll  y, y, 5               # y = 0xe1557920 &lt;- ans
+nor  z, x, y               # z = 0x0e008000 &lt;- ans</FONT></PRE>
+</BLOCKQUOTE>
+
+<P><FONT COLOR="#000000">&nbsp;</FONT></P>
+
+<P><FONT COLOR="#000000">(3) (3 points each, 6 points total) Do the
+following 2's complement multiplication. Indicate if either
+computation overflows for 12 bit words, for 6 bit words. Show your
+work. Check your results by redoing the computation in
+decimal.</FONT></P>
+
+<BLOCKQUOTE><PRE><FONT COLOR="#000000">          001010                                    001010</FONT><SUB><FONT COLOR="#000000">            </FONT></SUB><FONT COLOR="#000000">
+        x 111100                                  x 000011</FONT><SUB><FONT COLOR="#000000">
+</FONT></SUB><FONT COLOR="#000000">
+        --------                                  --------
+&nbsp;</FONT><B><FONT COLOR="#000000">
+ANSWER</FONT></B><FONT COLOR="#000000">
+&nbsp;
+    111111111100 &lt;-  sign extend the -4</FONT><SUB><FONT
+COLOR="#000000">10</FONT></SUB><FONT COLOR="#000000">            001010 &lt;-  10</FONT><SUB><FONT COLOR="#000000">10</FONT></SUB><FONT
+COLOR="#000000">
+          x 1010 &lt;-  10</FONT><SUB><FONT
+COLOR="#000000">10</FONT></SUB><FONT COLOR="#000000">                          x 000011 &lt;-   3</FONT><SUB><FONT COLOR="#000000">10</FONT></SUB><FONT
+COLOR="#000000">
+    ------------                                  --------
+   1111111111000                                    001010
+ 111111111100                                      001010
+----------------                                  --------
+1001111111011000 &lt;- 011000 is 24</FONT><SUB><FONT
+COLOR="#000000">10</FONT></SUB><FONT COLOR="#000000">                 0011110 &lt;-  011110 is 30</FONT><SUB><FONT
+COLOR="#000000">10</FONT></SUB><FONT COLOR="#000000">
+                    in 6 bit, 2's comp                         in 6 bit, 2's comp</FONT><B><FONT COLOR="#000000">
+&nbsp;</FONT></B><FONT COLOR="#000000">
+111111011000</FONT><B><FONT COLOR="#000000"> </FONT></B><FONT
+COLOR="#000000">is -40 in 12 bit 2's comp,            no overflow in 12 or 6 bits
+no overflow for 12 bit words but overflow
+for 6 bit words</FONT></PRE></BLOCKQUOTE>
+
+<PRE><FONT COLOR="#000000">     </FONT></PRE>
+
+<P><FONT COLOR="#000000">(4) (4 points) Show that the following two
+code segments give the same value for c, for any values of a and b.
+Hint: consider truth tables (see page 116 of the text).</FONT></P>
+
+<BLOCKQUOTE><PRE><FONT COLOR="#000000">and c, a, b          not c, a
+not c                not d, b
+                     or  c, c, d</FONT></PRE>
+
+<P><B><FONT COLOR="#000000">ANSWER</FONT></B></P>
+
+<PRE><FONT COLOR="#000000">the first sequence is not(a and b)
+while the second is (not(a) or not(b))
+column 4 and 7 of the following truth table are the same
+so not(a and b) is the same as not(a) or not(b)
+&nbsp;
+a     b    (a and b)  not(a and b)   not(a)   not(b)   (not(a) or not(b))
+0     0        0           1           1        1              1
+0     1        0           1           1        0              1
+1     0        0           1           0        1              1
+1     1        1           0           0        0              0</FONT></PRE>
+</BLOCKQUOTE>
+</BODY>
+</HTML>
+

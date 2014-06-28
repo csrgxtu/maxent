@@ -1,0 +1,289 @@
+Server: Netscape-Commerce/1.12
+Date: Wednesday, 20-Nov-96 22:45:56 GMT
+Last-modified: Monday, 22-Apr-96 14:52:01 GMT
+Content-length: 8939
+Content-type: text/html
+
+<title>Princeton CS 441 Programming Languages, Spring '96</title>
+
+<h2><!WA0><A HREF="http://www.cs.princeton.edu/">Princeton</A> CS 441 Programming Languages, Spring '96</h3>
+
+<h1><!WA1><img src="http://www.CS.Princeton.EDU/courses/archive/spr96/cs441/lambdasmall.gif" alt=""> Home Page</h1>
+
+<FONT SIZE=1>
+(Image borrowed from the Indiana
+<!WA2><A HREF="http://www.cs.indiana.edu/classes/c311/fall95/c311/home.html">C311</A>
+page, courtesy of Erik Hilsdale.)
+<FONT SIZE=3>
+
+<ul>
+<li> <!WA3><A HREF="#overview">Overview</A>
+<li> <!WA4><A HREF="#classinfo">Class Information</A>
+<li> <!WA5><A HREF="#texts">Textbooks</A>
+<li> <!WA6><A HREF="#syllabus">Syllabus</A>
+<li> <!WA7><A HREF="#notes">Lecture Notes</A>
+<li> <!WA8><A HREF="#assign">Assignments</A>
+<li> <!WA9><A HREF="#tools">Tools</A>
+<li> <!WA10><A HREF="#exams">Examinations</A>
+<li> <!WA11><A HREF="#acks">Acknowledgments</A>
+</ul>
+
+<A name="overview"></A>
+<h2>Overview</h2>
+
+This course provides an introduction to the principles underlying the
+design of both modern and legacy programming languages.  By developing
+a series of interpreters that study various characteristics of
+programming languages, students will obtain a deep understanding of
+language semantics.  Such understanding provides a firm basis for
+selecting a language for a particular task and for graduate study in
+programming languages and compilers.  To a lesser degree, this course will
+also cover programming paradigms, implementation concerns, and formal
+specification of programming language semantics.
+
+<p>
+
+Previous CS 441 courses at Princeton were taught using Kamin's book
+and involved writing interpreters in Pascal. While this course is
+similar in content, we will be developing interpreters in
+<!WA12><A HREF="http://swiss-ftp.ai.mit.edu/scheme-home.html">Scheme</A>.
+Not only is Scheme better suited to this task, but using Scheme will
+give students some first-hand experience with an advanced programming
+language.
+
+<h3>Course Topics from Academic Calendar</h3>
+
+Principles, theory, and implementation of modern programming
+languages.  Name binding, macros, parameter passing, and closures.
+Continuations, coroutines, and objects.  Types, modules, and
+representation independence.  Compilation by transformation.  Lambda
+calculus, operational semantics, and denotational semantics.
+
+
+<A name="classinfo"></A>
+<h2>Class Information</h2>
+
+<dl>
+<dt> Instructor
+<dd> <!WA13><A HREF="http://www.neci.nj.nec.com/homepages/wright.html">
+     Andrew Wright</A>, room 206, Princeton x2211, NEC 951-2781,
+     <!WA14><A HREF="mailto:wright@research.nj.nec.com">
+    wright@research.nj.nec.com</A>.
+<dd> Office Hours: before or after class, by appointment via email.
+
+<dt> TA
+<dd> <!WA15><A HREF="http://www.cs.princeton.edu/~ahpah/">
+     Paul Martino</A>, room 216, x8058,
+     <!WA16><A HREF="mailto:ahpah@cs.princeton.edu">
+     ahpah@cs.princeton.edu</A>.
+<dd> Office Hours: Tuesday 3-4pm
+
+<dt> Lecture Hours
+<dd> Tuesday, Thursday from 10:30am - 11:50am in room 102.
+
+<dt> Web Page (this page)
+<dd> <!WA17><A HREF="http://www.cs.princeton.edu/courses/cs441/">
+http://www.cs.princeton.edu/courses/cs441/</A>
+
+<dt> Local newsgroup
+<dd> pu.cs.441
+
+<dt> Grading
+<dd> 35% midterm
+<dd> 35% final exam
+<dd> 20% assignments
+<dd> 10% Scheme quiz
+
+</dl>
+
+<A name="texts"></A>
+<h2>Textbooks</h2>
+
+<dl>
+
+<dt> <B>Required:</B>
+<dd> <i>Essentials of Programming Languages</i> by Friedman, Wand and
+Haynes, McGraw-Hill, ISBN 0-07-022443-9.  Chapter six of this textbook is out of date;
+get an updated chapter six in <!WA18><A HREF="ftp://ftp.cs.indiana.edu/pub/eopl/ch6.ps">postscript
+format</A>.
+Also <!WA19><A Href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs441/tcheck.ps">here</A> is a draft chapter on types and type inference.
+
+<dt> <B>Recommended:</B>
+<dd> <i>The Little Schemer</i> by Friedman and Felleisen, MIT Press, ISBN 0-262-56099-2.
+      An older book called
+     <i>The Little Lisper</i> will do if you can find a used one.
+<dd> <i>The Seasoned Schemer</i> by Friedman and Felleisen, MIT Press, ISBN 0-262-56100-X.
+
+</dl>
+
+<A name="syllabus"></A>
+<h2>Tentative Syllabus for 
+<!WA20><A HREF="http://www.princeton.edu/Main/95-96.html">
+Spring '96</A></h2>
+
+<dl>
+<dt> Week of Feb 5
+<dd> Introduction to Scheme.  <i>The Little Schemer</i> chapters 1-10.
+<dd> Induction, Recursion, and Scope. <i>EOPL</i> chapter 2.
+<dd> Static Properties of Programs.  <i>EOPL</i> chapters 2 and 3.1.
+
+<dt> Week of Feb 12
+<dd> Syntactic Abstraction and Data Abstraction. <i>EOPL</i> chapter 3.
+<dd> Advanced Scheme.  <i>The Seasoned Schemer</i> chapters 11-18.
+<dd> Interpreters, <i>The Seasoned Schemer</i> chapter 20, <i>EOPL</i> chapter 5.
+<dd> <B>Scheme Quiz</B> on material from week of Feb 5.
+
+<dt> Week of Feb 19
+<dd> Representation Independence and Dynamic Scope. <i>EOPL</i> chapter 5.
+<dd> Parameter Passing. <i>EOPL</i> chapter 6.
+
+<dt> Week of Feb 26
+<dd> Continuation Passing Style.  <i>EOPL</i> chapter 8,
+<i>The Seasoned Schemer</i> chapters 13, 14, 19.
+
+<dt> Week of March 4
+<dd> Continuation-Passing Interpreters.  <i>EOPL</i> chapter 9.
+
+<dt> Week of March 11
+<dd> Review and Midterm Exam.
+
+<dt> Week of March 18
+<dd> Ski week, no lectures.
+
+<dt> Week of March 25
+<dd> Imperative form and Registerization.  <i>EOPL</i> chapter 10.
+
+<dt> Week of April 1
+<dd> Garbage Collection.
+<dd> Formal Semantics.
+
+<dt> Week of April 8
+<dd> Type systems.
+
+<dt> Week of April 15
+<dd> Module systems.
+
+<dt> Week of April 22
+<dd> Object systems.
+
+<dt> Week of April 29
+<dd> Whatever is left (logic programming?)
+
+<dt> May 6 - May 14
+<dd> Reading period.
+
+<dt> May 15 - May 23
+<dd> Final exams.  (last possible due date for take home is May 18)
+
+</dl>
+
+<A name="notes"></A>
+<h2>Lecture Notes</h2>
+
+Lecture notes for each class will be typeset and appear online one or
+two days after each class.
+
+<ul>
+<li>
+<!WA21><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs441/notes.html">Lecture Notes</a>
+</ul>
+
+<A name="assign"></A>
+<h2>Assignments</h2>
+
+One assignment will be due each week.  Most assignments will involve
+implementing some language facility in an interpreter.  Assignments
+will be available Thursday and due the following Thursday <b>at the
+beginning of class</b>.  Solutions will be discussed in class after
+assignments are collected, hence late assignments will not be
+accepted.  Solutions will also be posted online.
+
+<P>
+
+Assignments will be graded for both <I>content</I> and <I>style</I>
+(where <I>style</I> has a specific meaning that should become clear in
+class).  Since there are two points per assignment, the grades are
+simple: right (2), close (1), and wrong (0).
+
+<ul>
+<li>
+<!WA22><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs441/assignments.html">Assignments and Solutions</a>
+</ul>
+
+<A name="tools"></A>
+<h2>Tools</h2>
+
+Scheme is our most important tool.  Here are some useful Scheme links:
+<ul>
+<li> <!WA23><A HREF="http://www.cs.indiana.edu/scheme-repository/R4RS/r4rs_toc.html">
+     R4RS Scheme definition</A>.
+<li> <!WA24><A HREF="http://swiss-ftp.ai.mit.edu/ftpdir/scheme-7.3/">MIT Scheme</A>.
+<li> <!WA25><A HREF="http://swiss-ftp.ai.mit.edu/scheme-home.html">Scheme Home Page at MIT</A>.
+<li> <!WA26><A HREF="http://www.cs.indiana.edu/scheme-repository/home.html">
+     Indiana Scheme Repository</A>.
+</ul>
+
+We are using MIT Scheme for this course.
+<!WA27><A HREF="http://www.CS.Princeton.EDU/courses/archive/spr96/cs441/mitscheme.html">Here</A> are a few useful things to know
+about MIT Scheme.  To get started, type "scheme" in a shell to start a
+Scheme read-eval-print loop.  You can now type definitions and
+expressions interactively, or load files using (load "file.scm").
+Even if you are familiar with emacs, you may want to do the first
+assignment this way.
+Alternatively, you can run
+<!WA28><A HREF="http://www.CS.Princeton.EDU/courses/archive/spr96/cs441/mitscheme-emacs.html">Scheme under Emacs</A>.
+
+<p>
+
+For the interpreters we'll be building in this course, you
+need to install a few <!WA29><A HREF="http://www.CS.Princeton.EDU/courses/archive/spr96/cs441/extensions.html">extensions</A> to Scheme.
+
+<p>
+
+Even if you don't run Scheme under Emacs, you probably want to edit
+Scheme programs using Emacs, because it has nice automatic indentation
+facilities.  A better indentation style than the default can be
+enabled by placing
+<pre>
+    (setq load-path (cons "/u/cs441/emacs" load-path))
+</pre>
+in a file called ".emacs" in your home directory.
+
+<A name="exams"></A>
+<h2>Examinations</h2>
+
+The following is a tentative schedule for CS 441 examinations:
+
+<ul>
+<li> Scheme Quiz (in class) during the week of Feb 12.
+<li> Midterm Exam, the week of March 11.
+<li> Final Exam, May 15 - May 23.
+</ul>
+
+<!WA30><a href=http://www.CS.Princeton.EDU/courses/archive/spr96/cs441/study.html>Here</A>
+is a study guide for the final exam.
+
+<A name="acks"></A>
+<H2>Acknowledgments</H2>
+
+This course combines ideas and structure from:
+<ul>
+<li> <i>Essentials of Programming Languages</i>
+<li> <!WA31><A HREF="http://www.cs.indiana.edu/classes/c311/fall95/c311/home.html">C311</A>
+at Indiana University as taught by
+<!WA32><A HREF="http://www.cs.indiana.edu/hyplan/dfried.html">Dan Friedman</A>
+<li> <!WA33><A HREF="http://www.cs.rice.edu/~matthias/311web/">
+CS 311</A> at Rice University as taught by
+<!WA34><A HREF="http://www.cs.rice.edu/~matthias">Matthias Felleisen</A>
+</ul>
+
+<hr>
+
+<ADDRESS>
+<!WA35><A HREF="http://www.neci.nj.nec.com/homepages/wright.html">
+Andrew Wright</a> /
+<!WA36><a href="http://www.neci.nj.nec.com/">
+NEC Research Institute</a> /
+<!WA37><a href="mailto:wright@research.nj.nec.com">
+wright@research.nj.nec.com</a>
+</ADDRESS>

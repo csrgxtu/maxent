@@ -1,0 +1,413 @@
+Date: Wed, 20 Nov 1996 22:28:40 GMT
+Server: Apache/1.0.3
+Content-type: text/html
+Content-length: 12879
+Last-modified: Tue, 19 Nov 1996 01:21:54 GMT
+
+<!DOCTYPE htmlplus PUBLIC "-//Internet/RFC xxxx//EN">
+<HTMLPLUS>
+<HEAD>
+<TITLE>P436/536 Home Page</TITLE>
+</HEAD>
+
+<BODY>
+
+<center>
+<H1>
+P436/536<BR>
+Operating Systems
+</H1> 
+</center>
+
+<!--
+</center>
+<font color="#fa0000" size="+1">
+Recent announcements are at the bottom of the page!</font>
+</center>
+-->
+
+<H3>Instructor</H3>
+<!WA0><A
+HREF="http://www.cs.indiana.edu/people/s/stoller.html">Scott Stoller</A><BR>
+<H3>T.A.</H3>
+<!WA1><A
+HREF="http://www.cs.indiana.edu/people/s/sbalasub.html">Shamugasundar Balasubramaniam</A>
+<P>
+
+<H3>Hours</H3>
+
+Lectures: Monday and Wednesday, 4:00PM - 5:15PM, in BH304.<BR>
+Discussion: Thursday, 5:45PM - 6:35PM, in BH003.<BR>
+Instructor's Office Hours: Monday and Wednesday, 5:15PM - 6:15PM, or by
+appointment. Lindley Hall 201D.<BR>
+T.A.'s Office Hours: Tuesday and Thursday, 4:15PM - 5:15PM. Lindley
+Hall 330A.<BR>
+<P>
+
+
+<H3>Official Description</H3>
+
+<!WA2><A HREF="http://www.cs.indiana.edu/dept/acad/descr.html#P436">P436</A>,
+<!WA3><A HREF="http://www.cs.indiana.edu/dept/acad/descr.html#P536">P536</A>
+<P>
+
+<H3>Tentative Syllabus</H3>
+
+<TABLE>
+<TR><TD><B>Lectures</B><TD><B>Topic</B>
+<TR><TD>1<TD>Introduction
+<TR><TD>2-10<TD>Processes: Address Spaces, Threads, Synchronization,
+                Deadlock, Scheduling
+<TR><TD>11-15<TD>Memory: Segmentation, Paging, Virtual Memory
+<TR><TD>16-18<TD>I/O, Filesystems.
+<TR><TD>19-20<TD>Protection and Security
+<TR><TD>21<TD>Distributed Systems: Introduction
+<TR><TD>22-23<TD>Communication: Client-Server, RPC, Group Communication
+<TR><TD>24-26<TD>Distributed Filesystems
+<TR><TD>27-28<TD>Distributed Shared Memory or Authentication Protocols
+</TABLE>
+<P>
+If we can get through the earlier topics more quickly, I will
+happily spend more time discussing distributed systems.
+<P>
+
+The lectures are based in part on Tom Anderson's <!WA4><A
+HREF="http://http.cs.berkeley.edu/~tea/cs162sp96/">lecture notes for
+CS162</A> at UC Berkeley.
+<P>
+
+<H3>Textbook</H3>
+
+Andrew Tanenbaum, <I>Modern Operating Systems</I>
+(Prentice Hall, 1992).
+<P>
+
+<H3>Project</H3>
+
+The project is to design and implement parts of a small operating
+system, called <!WA5><A
+HREF="http://http.cs.berkeley.edu/~tea/nachos/">Nachos</A>, which runs
+in a simulator that runs on Sun workstations.  You will be given a
+"skeleton" of the operating system and will be asked to implement some
+of the missing parts, e.g., synchronization primitives for threads,
+virtual memory management, and a file system.  You will work on the
+project in small teams.  The programming is (almost) in C.  A few simple
+features of C++ are used; they will be explained as needed.  Here is a
+brief <!WA6><A HREF="http://www.cs.indiana.edu/classes/p436/nachos.ps">overview</A> of Nachos, from its developers at
+UC Berkeley.<P>
+
+Nachos is installed locally in <code>~c536/nachos-3.4</code> on both the
+Burrow and the Sharks.
+<P>
+
+<H3><!WA7><A HREF="http://www.cs.indiana.edu/classes/p436/mechanics.html">Project Mechanics</A></H3>
+
+Click above for information on accounts, software tools, etc.
+
+
+<H3>Grading</H3>
+
+The breakdown is:
+<TABLE>
+<TR><TD>Project + occasional problem sets <TD>40%
+<TR><TD>Midterm examination <TD>23%
+<TR><TD>Final examination <TD>37%
+</TABLE>
+Grading on the project will emphasize good design as well as working
+code.  Graduate students will be asked to implement additional features
+found in real operating systems; undergraduates can implement these
+features for extra credit.  The midterm will be a 75-minute, in-class
+exam.  The final will be a 2-hour exam held at the time specified in the
+Registrar's <!WA8><A
+HREF="http://www.indiana.edu/~registra/196finex.html">Schedule of Final
+Examinations</A>.  The weights of the two exams are in proportion to
+their length.  Both exams will be closed book, closed notes, etc.  The
+same exams will be used for 436 and 536, though separate curves will be
+used to convert numerical scores to letter grades.
+<P>
+
+<H3>Course Newsgroup</H3>
+
+ac.c.436 will be used for both 436 and 536.  If you have questions about
+the lectures or the project, this is a good place to ask them, so that
+other students can benefit from your questions.  If you see a question
+and (think you) know the answer, post it!  This will help your
+classmates and show us that you know what's going on; we'll re-read the
+postings in the newsgroup when assigning grades.  The instructor or the
+T.A. will periodically read the newsgroup and post answers or
+corrections to answers, if needed.
+<P>
+
+<HR>
+<center>
+<H2>
+<font color="#fa0000" size="+1">
+Weekly Announcements
+</font>
+</H2> 
+<BR>
+</center>
+
+<H3>Week of November 18</H3>
+
+Textbook Readings: Tanenbaum, Chapters 10 and 11 (for this week and next).
+<P>
+
+Project: For Project 4, you can get 15% extra credit by implementing
+swap-space management that is efficient for sparsely-used address
+spaces.  One way to do this is the first scheme described in a recent <!WA9><A
+HREF="http://www.cs.indiana.edu/classes/p436/assignments/swap-space">posting about swap space</A>.
+<P>
+
+
+<H3>Week of November 11</H3>
+
+Project: Here is the <!WA10><A HREF="http://www.cs.indiana.edu/classes/p436/assignments/proj3.faq">Projects 3 and 4 FAQ</A>.
+<P>
+
+<H3>Week of November 4</H3>
+
+Textbook Readings: Tanenbaum, Chapter 9.
+<P>
+
+Project:<P>
+
+(1) <!WA11><A HREF="http://www.cs.indiana.edu/classes/p436/assignments/proj3">Projects 3 and 4</A> were distributed in
+last Thursday's discussion section.
+<P>
+
+(2) Here is some <!WA12><A HREF="http://www.cs.indiana.edu/classes/p436/assignments/proj2-advice">Advice for teams
+that had difficulty with Project 2</A>.
+<P>
+
+<H3>Week of October 28</H3>
+
+Textbook Readings: Finish Tanenbaum, Chapters 4 and 5.
+<P>
+
+Final Exam: The final exam will be 5:00PM-7:00PM on Wednesday, December
+18, in BH 304.  If you have a problem with this, let me know
+immediately.<P>
+
+Project: Remember that Proj 2 is due on Fri, Nov. 1.
+
+
+<H3>Week of October 21</H3>
+
+Textbook Readings: Tanenbaum, Chapters 4 and 5 (for this week and next).
+<P>
+
+Project:<P>
+
+(1) You don't need to freeze the files from Project 1; you can continue
+to modify them until you submit Project 2.  Revised instructions for
+submitting and freezing files are in the <!WA13><A
+HREF="http://www.cs.indiana.edu/classes/p436/docs/section_docs/mechanics.ps">Project Mechanics Handout</A>; the
+changes are summarized in a <!WA14><A
+HREF="http://www.cs.indiana.edu/classes/p436/docs/section_docs/mechanics-update">news posting</A>.
+<P>
+
+(2) Revised project schedule:
+<TABLE>
+<TR><TD>Proj 2 due:            <TD>Fri, Nov. 1.
+<TR><TD>Proj 3 design review:  <TD>Fri, Nov. 8, and Sat, Nov. 9
+<TR><TD>Proj 3 due:	       <TD>Fri, Nov. 15
+<TR><TD>Proj 4 design review:  <TD>Fri, Nov. 22, and Sat, Nov. 23
+<TR><TD>Proj 4 due:	       <TD>Fri, Dec. 6
+</TABLE>
+<P>
+
+Midterm:<P>
+
+(1) As mentioned in a news posting, the answers to questions 3 and 5
+have been revised since printed solutions were distributed on Oct. 16.
+So, you might want to look at the revised <!WA15><A
+HREF="http://www.cs.indiana.edu/classes/p436/midterm.solutions">Brief Solutions to the Midterm</A>.
+<P>
+
+(2) Click for full-size plots showing the <!WA16><A
+HREF="http://www.cs.indiana.edu/classes/p436/midterm-scores-436.gif">Midterm scores for 436</A> and <!WA17><A
+HREF="http://www.cs.indiana.edu/classes/p436/midterm-scores-536.gif">Midterm scores for 536</A>.  Some
+statistics appear below.  Here are smaller plots:<P>
+<!WA18><IMG SRC="http://www.cs.indiana.edu/classes/p436/midterm-scores-436-small.gif" ALT="[436 plot]">
+<!WA19><IMG SRC="http://www.cs.indiana.edu/classes/p436/midterm-scores-536-small.gif" ALT="[536 plot]">
+<P>
+
+Grades: You can get an idea of your standing in the course from the
+following statistics (and the above plots for the midterm).
+<P>
+Statistics for 436:
+<TABLE>
+<TR><TD>Item<TD>Mean<TD>Stddev
+<TR><TD>Project 0 (out of 10)<TD>9.2<TD>1.3
+<TR><TD>Problem Set 1 (out of 15)<TD>7.2<TD>4.7
+<TR><TD>Midterm (out of 90)<TD>58 (64%)<TD>11
+</TABLE>
+
+Statistics for 536:
+<TABLE>
+<TR><TD>Item<TD>Mean<TD>Stddev
+<TR><TD>Project 0 (out of 10)<TD>9.5<TD>1.3
+<TR><TD>Problem Set 1 (out of 20)<TD>14.7<TD>4.4
+<TR><TD>Midterm (out of 90)<TD>70 (78%)<TD>15
+</TABLE>
+
+<H3>Week of October 14</H3>
+
+Midterm: The same exams will be used for 436 and 536, though separate
+curves will be used to convert numerical scores to letter grades.
+Here are <!WA20><A HREF="http://www.cs.indiana.edu/classes/p436/midterm.solutions">Brief Solutions to the Midterm</A>.
+<P>
+
+Project:<P>
+
+(1) Design reviews for Project 2 will be held on Fri (Oct. 18, 1PM-6PM),
+Sat (Oct. 19, 9AM-2PM), and Mon (Oct. 21., 5:30PM-8PM).  A sign-up sheet
+will be available at the midterm and during the discussion section.
+<P>
+
+(2) Project 5 has been cancelled.  Project 4 will be the last project,
+unless overwhelming popular demand prompts resurrection of Project 5.
+<P>
+
+<H3>Week of October 7</H3>
+
+Textbook Readings: Tanenbaum, Chapter 3 (continued).
+<P>
+
+Project: Some comments on Projects 1 and 2 have been collected in the <!WA21><A
+HREF="http://www.cs.indiana.edu/classes/p436/assignments/proj1.faq">Projects 1 and 2 FAQ</A> (last updated Oct. 11).
+<P>
+
+Midterm:<P>
+
+(1) The midterm will cover material up to and including the lecture of
+Oct. 7.  This corresponds to all of the assigned reading so far, except
+sections 3.4-3.6 of Tanenbaum.  The midterm focuses on the material
+covered in lecture and in the textbook, not on Nachos.
+<P>
+
+(2) You might want to look at these <!WA22><A
+HREF="http://www.cs.indiana.edu/classes/p436/assignments/practice1">Practice Problems for Midterm</A>.  These
+are intended to give you a feeling for the planned level of difficulty
+of the exam questions.  Here are <!WA23><A
+HREF="http://www.cs.indiana.edu/classes/p436/assignments/practice1.solutions">Brief Solutions to Practice
+Problems for Midterm</A>.
+<P>
+
+<H3>Week of September 30</H3>
+
+Textbook Readings: Tanenbaum, Chapter 3.
+<P>
+
+Project: A sign-up sheet to schedule design reviews for Project 1 will be
+available in this week's discussion section.  As per the handout, the
+design reviews should occur on Fri and Sat of this week.
+<P>
+
+<H3>Week of September 23</H3>
+
+Textbook Readings: finish Tanenbaum, Chapter 6.  Tanenbaum, Sections 2.4-2.5.
+<P>
+
+Homework: <!WA24><A HREF="http://www.cs.indiana.edu/classes/p436/assignments/probset1">Problem Set 1</A> was
+distributed on Sep. 23.  It is a problem set, not a programming
+assignment.  It must be done <B>individually</B>, not in teams.  It is
+technically due in lecture on Mon., Sep. 30, though I suggest you try to
+finish it by Fri., Sep 27, so you can get started on Project 1.  Some
+comments on Problem Set 1 have been collected in the <!WA25><A
+HREF="http://www.cs.indiana.edu/classes/p436/assignments/probset1.faq">Problem Set 1 FAQ</A>.
+<P>
+
+Exam Schedule: The midterm will be in-class on Wed., Oct. 16.
+<P>
+
+Project:<P>
+
+(1) <!WA26><A HREF="http://www.cs.indiana.edu/classes/p436/assignments/proj1">Project 1</A> was distributed on
+Sep. 25.  It is due by the end of the day on Fri, Oct. 11.  Design
+reviews for Project 1 will be held on Fri and Sat, Oct. 4 and 5.
+Projects 1 and 2 are the same for 436 and 536.
+<P>
+
+(2) We strongly recommend that you carefully read both Thomas Narten's
+<!WA27><A HREF="http://www.cs.indiana.edu/classes/p436/docs/roadmap.ps">A Road Map Through Nachos</A> (except the
+parts about virtual memory) and Mike O'Donnell's <!WA28><A
+HREF="http://www.cs.uchicago.edu/~odonnell/OData/Courses/CS230/NACHOS/reading-code.html">Guide
+to Reading the [Nachos] Source Code</A>, if you haven't already.
+<P>
+
+(3) To help you schedule your semester, here are <font
+color="#fa0000"><I>tentative</I></font> due dates for future projects:
+Project 3, due Sun, Nov. 10; Project 4, due Sun, Nov. 24; Project 5, due
+Sat, Dec. 14.  [This has changed; see below.]
+<P>
+
+
+<H3>Week of September 16</H3>
+
+Temporary Change in Office Hours: On Sep. 16, the instructor's office
+hour will be cancelled.  A replacement office hour will be held on Sep. 17,
+11AM-12AM.
+<P>
+
+Textbook Readings: start Tanenbaum, Chapter 6.
+<P>
+
+Project: Project 0 is due on Sep. 20.  The instructions in the Project
+Mechanics handout for submitting a project were flawed.  A posting to
+ac.c.436 describes the problem; you can also read that posting <!WA29><A
+HREF="http://www.cs.indiana.edu/classes/p436/assignments/mechanics-correction">here</A>.
+<P>
+
+<H3>Week of September 9</H3>
+
+Textbook Readings: Tanenbaum, Sections 2.1-2.3 and 12.1.
+<P>
+
+Project:
+<P>
+
+(1) You should read <!WA30><A HREF="http://www.cs.indiana.edu/classes/p436/docs/c++example/c++.ps">A Quick
+Introduction to C++</A>, by Tom Anderson.  This was distributed in the
+discussion section on Sep. 5; if you didn't get a copy, you can print one
+yourself, or you can ask us to print one.  I recommend reading it even
+if you are familiar with C++, because it contains some useful stylistic
+guidelines.  The code for the stack example is in
+<code>~c536/docs/c++example/</code>.
+<P>
+
+(2) A detailed version of <!WA31><A
+HREF="http://www.cs.indiana.edu/classes/p436/assignments/proj0">Project 0</A> was
+distributed on Sep. 11.  It is due on Sep. 20.
+
+<H3>Week of September 2</H3>
+
+Textbook Readings: Tanenbaum, Chapter 1
+<P>
+
+Project:
+<P>
+
+(1) Try to form teams by Monday, Sep. 9, so that you can start on
+Assignment 1 when it is distributed.  As mentioned in the <!WA32><A
+HREF="http://www.cs.indiana.edu/classes/p436/docs/section_docs/mechanics.ps">Project
+Mechanics Handout</A>, you should notify us by email when you form a
+team.
+<P>
+
+(2) Read the <!WA33><A HREF="http://www.cs.indiana.edu/classes/p436/mechanics.html">Project Mechanics Page</A>.
+<P>
+
+(3) Start reading the <!WA34><A
+HREF="http://www.cs.indiana.edu/classes/p436/docs/roadmap.ps">A Road Map Through Nachos</A> and the
+code in <code>~c536/nachos-3.4/code/threads</code>.  Printouts of the Roadmap
+and the <code>threads</code> code will be distributed on Sep. 4.
+Another very helpful resource is Mike O'Donnell's <!WA35><A
+HREF="http://www.cs.uchicago.edu/~odonnell/OData/Courses/CS230/NACHOS/reading-code.html">Guide
+to Reading the [Nachos] Source Code</A>.  Mike's Guide is available only
+in HTML format, so we won't be supplying printouts; this doesn't mean
+you shouldn't read it!
+
+
+</BODY>

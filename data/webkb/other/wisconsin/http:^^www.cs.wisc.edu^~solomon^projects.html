@@ -1,0 +1,857 @@
+Date: Mon, 11 Nov 1996 17:28:53 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 29 Sep 1995 21:30:42 GMT
+Content-length: 33263
+
+<html>
+<head>
+
+<title>
+CS 736 Project Ideas
+</title>
+
+<link rev=made href="mailto:solomon@cs.wisc.edu">
+
+</head>
+
+<body>
+
+<h1>
+<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><a href=http://www.cs.wisc.edu/~solomon/cs736.html>CS 736</a><br>
+Fall 1995<br>
+Term Project Ideas
+<! Originally distributed 9/28/95 (week 4)>
+</h1>
+<p>
+<b>Marvin Solomon</b> <br>
+<!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.wisc.edu/~solomon"> solomon@cs.wisc.edu </A>
+<p>
+<i> Last updated: Fri Sep 29 16:30:41 CDT 1995 </i>
+
+<hr>
+<h2>Contents</h2>
+
+<ul>
+<li> <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="#general"> General Comments </a>
+<li> <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a href="#deadlines"> Due Dates </a>
+<li> <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a href="#proposal"> Project Proposal </a>
+<li> <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href="#suggestions"> Project Suggestions </a>
+<ul>
+<li> <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a href="#naming"> Naming in Large Computer Networks</a>
+<li> <!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><a href="#multicast"> Group Communication</a>
+<li> <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><a href="#tigerteam"> Security Audit</a>
+<li> <!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><a href="#fileserver"> File Servers for Workstations</a>
+<li> <!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><a href="#loadbalencing"> Load Balancing</a>
+<li> <!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><a href="#kerberos"> Security and Authentication</a>
+<li> <!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><a href="#fuzz"> Random Software testing</a>
+<li> <!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><a href="#webcrawler"> Navigating the World-Wide Web</a>
+<li> <!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><a href="#webtopology"> Topology of the Web</a>
+<li> <!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><a href="#worms"> Self-perpetuating programs</a>
+<li> <!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><a href="#transactions"> A General-Purpose Transaction Package</a>
+<li> <!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><a href="#dsm"> Distributed Shared Memory</a>
+<li> <!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><a href="#performance"> Performance Study</a>
+<li> <!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><a href="#garbage"> Distributed or Persistent Garbage</a>
+<li> <!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><a href="#consumersreports"> Consumer Reports</a>
+<li> <!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><a href="#condor"> Condor</a>
+<li> <!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><a href="#efsd"> Specialized NFS Servers:</a>
+<li> <!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><a href="#shore"> Shore</a>
+<li> <!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><a href="#miscresearch"> UW--Madison Research Projects</a>
+<li> <!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><a href="#tempest"> Tempest </a>
+</ul>
+</ul>
+
+<hr>
+
+<a name="general">
+<h2> General Comments </h2>
+</a>
+The projects are intended to give you an opportunity to study a
+particular area related to operating systems.
+Some of the projects will require test implementations, measurement studies,
+simulations, or some combination.
+Most will require a literature search before you begin.
+<p>
+The project suggestions below are briefly stated.
+They are intended to guide you into particular areas, and you
+are expected to expand these suggestions into a full project
+descriptions.
+This gives you more freedom in selecting an area and more burden in
+defining your own project.
+There may be more issues listed for a project than you can cover.
+<em>
+I would prefer you to think up a topic that is not
+listed below.
+</em>
+If you do, you might want to come
+and talk with me so we can work out a reasonable project description. 
+<p>
+Some projects are appropriate for groups of two or more.
+There is no upper bound on the size of the group, but beware that groups
+of more than 3 persons are very hard to manage.
+I will not get involved in labor disputes;
+you will all hang together or you will be all hanged separately.
+Feel free to ask me for my opinions whether the size of a proposed team
+is appropriate for a given project.
+<p>
+In some cases, a project area straddles the boundary between operating systems
+and some other area (such as database, architecture, artificial intelligence,
+or programming languages).
+Such projects are intended for students with background and interests in
+the second area to explore the interface.
+They are not intended as substitutes for the regular courses in the second
+area.
+For example, if you have little or no background in database,
+you should take CS 764 before choosing a topic that requires database
+sophistication.
+Most topics call for a careful literature search
+<em>before</em>
+the proposal due date.
+
+<a name="deadlines">
+<h2> Due Dates </h2>
+</a>
+<dl>
+<dt>Project Proposal Due <dd> Tuesday, October 17
+<!Week 7>
+<dt>Final Report Due <dd> Thursday, December 14
+<!Week 15>
+</dl>
+
+<a name="proposal">
+<h2> Project Proposal </h2>
+</a>
+<p>
+You are to hand in an expanded description of your project (see the
+due date <!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><a href="#deadlines">above</a>; you are free to turn it in sooner).
+The project proposal should be brief (two pages or less), but very specific
+about what you intend to do.
+It must be long enough to convince me that you have a reasonable and
+achievable project (i.e, not trivial and not too large).
+You may have to revise your description before it will be acceptable.
+<p>
+The project description should describe the problem that you are addressing,
+how you will go about working on this project (the steps you will take),
+what results you expect and what you expect to produce,
+what resources you will need,
+and a brief schedule for your project.
+It must be reasonably well written.
+Projects that involve implementation or simulation should indicate what
+resources are required.
+<p>
+You should make an ordered list of features together with your current
+best guess on what you intend to accomplish together with contingency plans
+in case of unforeseen problems (``I will definitely do
+(a) and then (b).  If a.3 turns out to be impractical, however, I will do
+(b') instead.
+If time allows, I will also do (c).
+If things go especially well, I would also like to try (d), (e), and (f),
+in that order'').
+<p>
+<b>
+You should have already done a substantial amount of background work
+on the project before writing the proposal.
+</b>
+For example,
+if you intend to do a simulation, you should have familiarized yourself
+with all available software tools, and decided which are most appropriate.
+If you intend to build a useful tool such as a threads package or a distributed 
+<em>make</em>
+tool, you should know about all such tools that have been built before and
+described in the open literature.
+There is no reason why you shouldn't do something that has been done before.
+After all, the main purpose of this project is learning.
+But if it has been done before, you should learn about previous attempts
+so that you can learn from their mistakes rather than simply repeating them
+yourselves.
+<p>
+I will review all proposals and offer comments.
+Sketchy proposals will get sketchy comments.
+I will also indicate my opinion of the quality of each proposal.
+<h3>The Project Report</h3>
+<p>
+At the end of the semester, you will hand in a project report.
+The length will vary depending on the type of project, but
+no paper should be over 15 pages unless you get specific prior approval for a
+longer report.  (A famous person once wrote in a letter,
+``Please excuse the length of this letter.
+I did not have the time to make it shorter.'')
+In all cases, the quality of the writing will be a factor in the grade.
+You will also make a short oral presentation to the class and, if appropriate,
+demonstrate your software.
+<h3>Peer Reviewing</h3>
+<p>
+Your project report should be read and reviewed by at least one
+other person in the class.
+It is up to you to select the person.
+This person will critique your paper and you will use the critique to
+revise your paper.
+
+<a name="suggestions">
+<h2> Project Suggestions </h2>
+</a>
+<a name="naming">
+<h2>Naming in Large Computer Networks:</h2>
+</a>
+Consider the naming of resources (e.g., mail address, servers, etc.) in
+a distributed environment with many (1000 or more) computers.
+This environment might include universities, companies, and government
+agencies.
+Each of these areas might include other environments (e.g., the university
+might include a CS department, computer center, ECE department, etc.).
+A <em>name service</em>
+for such an environment is a special-purpose distributed database.
+A <em>server</em> can register services.
+Each registration includes a description of the service provided (e.g.,
+``mail delivery'')
+and information necessary to use the service (e.g.,
+``connect to address [128.105.2.33], port 25'').
+A
+<em>client</em>
+can look for a specific service (e.g.,
+``How do I deliver mail to host gjetost.cs.wisc.edu?'')
+or make a more generic request (e.g.,
+``Find me a nearby printer that allows student access and supports
+PostScript''.
+<p>
+Design a name service for such an environment.
+Issues such as performance, local autonomy, scope of authority, reliability,
+protection, and expandability may be discussed.
+How are names used?  (What studies might you do to find out?)
+What are the limits on the size of the environment that your design
+will be able to support?
+Evaluate your design through a pilot implementation or a simulation.
+<p>
+For background, read about Grapevine, Clearinghouse, the Arpanet Domain
+Name Service (see me for more specific references).
+
+<a name="multicast">
+<h2>Group Communication:</h2>
+</a>
+Several researchers have developed protocols and software packages to
+facilitate communication among processes in a distributed program.
+A process supplies information by delivering messages to the system
+and consumes it by registering requests.
+The system forwards each message to processes that expressed interest
+in it.
+Details differ considerably among the various proposals.
+Examples include the FIELD system from Brown university, the ISIS system
+from Cornell, and the Linda language from the University of Maryland.
+Numerous other proposals may be seen as variations on this theme, including
+other past and proposed 736 projects such as DREGS, Condor, and the
+switchboard.
+Among the dimensions of variability  are
+<dl compact>
+<dt>Implementation.<dd>
+Some systems are implemented by a central server.
+Others are fully distributed, using broadcasts of messages and/or requests.
+Other possibilities include establishment of explicit routing trees, or
+using a central server only to introduce processes to one another and
+allowing them to engage in bilateral or multilateral communication thereafter.
+<dt>Reliability and Security.<dd>
+Some systems go to great lengths to cope with process and network failures,
+authentication and security, or out-of-order delivery, while others
+largely ignore these problems.
+<dt>Matching and Synchronization.<dd>
+Systems differ in criteria for matching messages with requests.
+The simplest approach is to require an exact match:
+Each message has a
+``message type''
+and each request specifies an interest in all messages of that type.
+Other schemes involve regular-expression string matching, general Boolean
+expressions, or Prolog-like unification.
+A related issue is whether a message is delivered to a single process
+(perhaps with some priority ordering), multicast to all who are interested,
+or saved for those who may request it in the future.
+Requests can be blocking or non-blocking.
+<dt>Data Types.<dd>
+Messages may be simple untyped byte strings or they may be typed structures.
+The system may provide type checking facilities, to make sure the receiver
+interprets the data as the sender intended, and it may even provide
+automatic data conversion among integer or floating-point representations,
+character sets, etc.
+A concrete example is Linda, which maintains a single, conceptually global
+<em>tuple space </em>.
+Linda provides the primitives
+<b> put </b>
+which adds a tuple to tuple space,
+<b> get </b>
+which waits for a tuple with a give first component to appear and then
+removes it from the space, and
+<b> read </b>
+which waits for a matching tuple, but does not remove it from the space.
+</dl>
+<p>
+
+<a name="tigerteam">
+<h2>Security Audit:</h2>
+</a>
+A properly managed computer system should
+be secure from illegal entry.
+Normal users should not be able to obtain privileges beyond what they are
+given.
+Most systems in everyday have security holes.
+Normally, it is considered a violation of standards of ethical behavior
+to take advantage of such holes.
+However, a
+``tiger team''
+is a team specifically authorized to find as many security holes as possible
+and report them to responsible management.
+<p>
+Select a facility in the Computer Sciences
+Department or elsewhere and find, demonstrate, and document as many security
+problems as possible.
+You may attack the system either from the position of an
+``ordinary''
+user, with an account but no special privileges, or from the point of view
+of an outsider--someone who is not supposed to be able to access the
+facility at all.
+You should find as many security problems as possible.
+These problems include system flaws, improper management, and careless
+users.
+The results of this study should be a report of the problems, with
+suggestions for fixes in the system, system design,
+and changes in management procedures.
+You should
+<em>not</em>
+explore
+``denial of service''
+attacks such as jamming networks or crashing systems.
+<b>Warning:
+A project of this kind must be approved <blink>in advance</blink> by the
+person responsible for the facility you are proposing to attack!</b>
+
+<a name="fileserver">
+<h2>File Servers for Workstations:</h2>
+</a>
+Workstations are available with and without local disks.
+Bulk storage is provided by a combination of remote file servers, local
+disk, and local RAM memory.
+Servers provide remote devices, remote files,
+or other abstractions.
+A variety of schemes for providing a
+``seamless''
+global file service have been suggested, including remote disk simulation,
+remote file access (e.g. NFS from Sun Microsystems)
+whole-file caching
+on local disk as in the Carnegie-Mellon ITC system (Andrew file system)
+and use of large local
+RAM for file caching, as in the Sprite system from Berkeley.
+The Locus system should also be studied for ideas about transparent global
+file naming.
+<p>
+Design a scheme for file access for a network of workstations.
+You should specify the functionality that is provided by the server and the
+responsibility of the client workstation.
+You will want to discuss reliability, fault tolerance, protection, and
+performance.
+Compare your design to the designs published in the literature.
+Evaluate the design by performing a simulation.
+See the
+``Spritely NFS''
+paper by Srinivasan and Mogul and the award-winning paper by Shirriff and
+Ousterhout from the Winter 1992 USENIX (see me for a copy)
+for examples of similar studies.
+See also related papers in SOSP proceedings over the last several years.
+
+<a name="loadbalencing">
+<h2>Load Balancing:</h2>
+</a>
+Many systems such as LOCUS, Sprite, or Condor allows you to start
+processes on any machine, move processes during execution,
+and access files (transparently) across machine boundaries.
+Automatic placement of processes and other system resources could
+substantially improve overall system performance.
+There are several interesting issues in load balancing, including
+<ol>
+<li>
+<em>Collection of Data for Load Balancing:</em>
+To make a load balancing decision, you might need data from each
+machine in the network.
+There are many forms that this data can take, and many designs for
+communicating this among machines.
+You must decide what data is needed, from where the data must come,
+and how it must be communicated.
+<p>
+This problem becomes interesting in the scope of a very large network
+of computers (1000's of machines).
+You do not want to consume huge amounts of system resources making
+these decisions, and you do not want to make decisions based on
+extremely old data.
+<li>
+<em>Policies for Load Balancing Decisions:</em>
+How do you decided when to move a process?
+On what do you base your decision?
+How frequently can we move processes (what is thrashing like in this
+environment)?
+What about groups of processes that are cooperating?
+<li>
+<em>Metrics for Load Evaluation:</em>
+What load metrics do you use in evaluating an individual machine's
+capacity?
+Are these related to processing?  storage?  communication?
+How do we (can we) measure these?
+Are they accurate reflections of a machine's performance?
+How can you demonstrate this?
+<li>
+<em>File migration:</em>
+We can move files, as well as processes.
+When do you move files vs. processes?
+Is only one needed?
+Which is better?
+How can you tell?
+</ol>
+<p>
+You are warned that is quite easy to suggest many
+<em>plausible</em>
+schemes for load balancing but not so easy to evaluate them.
+Therefore, a major component of any project in this area will be
+evaluation through simulation.
+
+<a name="kerberos">
+<h2>Security and Authentication:</h2>
+</a>
+The Popek and Kline paper on the reading list discusses use of encryption
+for authentication in distributed systems.
+It considers both conventional and public-key schemes.
+One popular implementation based on these ideas is the Kerberos system
+from MIT.
+Kerberos has been used to provide secure remote login, file transfer,
+and remote file access.
+<p>
+Use Kerberos or an
+<em>ad hoc</em>
+package to enhance the security of some existing system.
+
+<a name="fuzz">
+<h2>Random Software testing:</h2>
+</a>
+This suggestion is from Prof. Bart Miller.
+<p>
+This past Fall, in CS736, I had some students work on more of that random
+software testing.
+The result is
+<!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><a href="ftp://grilled.cs.wisc.edu/technical_papers/fuzz-revisited.ps.Z">
+a pretty nice paper
+</a>
+that we just submitted to CACM.
+One interesting result was that the utilities from GNU and Linux were
+substantially
+more crash-resistant than ones from the seven commercial systems that we tested
+(SunOS, Solaris, AIX, Ultrix, HP-UX, Irix, NEXTSTEP).
+<p>
+There are a bunch more things that can be done in this work:
+<ol>
+<li>test more of the
+new BSD UNIX systems, such as netBSD, freeBSD, BSDi;
+<li>test applications on
+Windows and Macs;
+<li>test more of the system library interfaces.
+</ol>
+I'd be happy to help supervise any projects in this area.
+
+<a name="webcrawler">
+<h2>Navigating the World-Wide Web</h2>
+</a>
+The World-Wide Web is growing at an unbelievable pace.
+There's a tremendous amount of information available, but
+finding what you want can be next to impossible.
+Quite a few
+on-line search engines
+have been created to aid in resource location on
+the web.
+Check the
+<!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><a href="http://home.netscape.com/home/internet-search.html">
+Directory pull-down menu of
+</a>
+NetScape for some examples.
+(Of particular note is WebCrawler, written by Wisconsin alumnus Brian Pinkerton,
+who recently sold it to America Online, reputedly for over $1 million!)
+<p>
+There are lots of ways of tackling this problem, but none discovered thus
+far is entirely satisfactory.
+Among the variables in design space are
+<dl>
+<dt>Server Support<dd>
+Does the provider of information cooperate in advertising it, or
+is the search entirely client-driven?
+<dt>Caching<dd>
+Does each search start from scratch, or is some sort of ``database'' used
+to guide the search?
+In the latter case, where is the database kept (at the client, the server,
+or somewhere in between)?
+How is it created?
+How is stale information detected and updated?
+How is the cache purged of valid, but seldom-referenced information?
+<dt>Search Strategy<dd>
+How does the search determine which information will be of interest
+to the user?
+How does determine which links to traverse, and in what order?
+When does it know when it has gone far enough?
+</dl>
+
+<a name="webtopology">
+<h2>Topology of the Web</h2>
+</a>
+A project closely related to <!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><a href="#webcrawler"> the previous suggestion
+</a> is to collect and analyze information about the current structure of
+the web.
+The web can be viewed as a vast directed graph.
+Gather as much information you can about this graph an analyze it.
+What is the average number of links out of a page?
+What is the average size of a page.
+What is the average distance between the pages at the two ends of a link
+(where ``distance'' is the number of links along a shortest path)?
+More generally, what are the distributions of these statistics?
+How do these things vary over time?
+<p>
+Information from this project would be of great interest to people proposing
+algorithms for traversing the web.
+This project has two distinct parts, both potentially quite challenging:
+gathering the data and analyzing it.
+
+<a name="worms">
+<h2>Self-perpetuating programs:</h2>
+</a>
+The
+``Worm''
+program propagated itself across many machines,
+automatically repairing parts that were damaged or destroyed.
+A worm is extremely difficult to kill.
+You should design a strategy to building worms on one of our systems.
+You will also need to determine how you might (constructively) use a
+worm program--i.e., what applications are there for this type of
+program?
+<p>
+This project could involve a design, test implementation(s), and study
+and evaluation of the implementation.
+Is there a generic structure such that you can take a
+large class of algorithms and automatically make them into worm-type
+programs?
+
+<a name="transactions">
+<h2>A General-Purpose Transaction Package:</h2>
+</a>
+The concept of a
+<em>transaction</em>--a sequence of actions that are executed atomicly and
+either commit (are reliably preserved forever) or abort (are completely
+undone)--was
+developed in the context of database systems, but transactions are useful in
+many areas outside of traditional database applications.
+Design and implement a portable transaction package.
+Look at
+<em>Camelot </em>,
+developed in the context of Mach, and
+<em>libtb </em>,
+built by Margo Seltzer and described in a recent Usenix proceedings.
+
+<a name="dsm">
+<h2>Distributed Shared Memory:</h2>
+</a>
+There been a great deal of interest recently in an architecture called
+``distributed shared memory''.
+The basic idea is to simulate a shared-memory multiprocessor programming
+model on top of a distributed system (a local-area network) by altering
+the page-fault handler of a traditional operating system to fetch
+pages over the network rather than the local disk.
+The 1991 SOSP contains a paper on an operating system called
+<em>Munin </em>,
+which
+explores some of the tradeoffs in page placement and replacement policies
+to support a variety of applications efficiently.
+Explore these issues by constructing a simulation.
+See also the <!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><a href="#tempest"> Wisconsin Wind Tunnel (WWT) </a>
+project for related research.
+
+<a name="performance">
+<h2>Performance Study:</h2>
+</a>
+Monitor one or more of the Computer Science Department's machines or
+networks to determine its characteristics.
+Where are the bottlenecks?
+What sorts of programs are producing most of the load.
+What causes spikes in usage (and corresponding drops in response)?
+<p>
+For example, in a recent
+USENIX conference Matt Blaze describes a publicly
+available program for eavesdropping on NFS traffic on a local area Ethernet
+and gathering statistics.
+Install this program, use it to gather some statistics, and compare them
+with similar data from the literature.
+See also the suggestions regarding distributed file systems above.
+
+<a name="garbage">
+<h2>Distributed or Persistent Garbage:</h2>
+</a>
+The problem of garbage collection (finding and reclaiming space allocated
+to inaccessible objects) has been well studied for almost 30 years.
+Algorithms can be roughly classified as explicit deletion
+(``It's my data and I'll throw it away when I want to!''),
+reference counting
+(``Will the last one out please turn off the lights?''),
+mark-and-sweep
+(``Unclaimed goods will be recycled''),
+and generational
+(``When the ashtray is full it's time to buy a new car'').
+Recently, there's been a resurgence of research in garbage collection spurred
+by two developments:
+distributed systems
+(``I can't throw this away because somebody in France may still want it'')
+and persistent programming languages (the Pampers problem:
+The only thing worse than garbage is persistent garbage).
+Well known garbage collection algorithms that work fine for physical or
+virtual memory are terrible when pointers can cross continents or disk
+cylinders.
+Interesting algorithms for a disk-based or distributed environment have
+been proposed (see me for references).
+Study some of these algorithms, and either suggest improvements or implement
+them and study their performance.
+
+<a name="consumersreports">
+<h2>Consumer Reports:</h2>
+</a>
+Many people are generating software and making it freely available on
+the network for
+``anonymous ftp.''
+Often, there are several packages available for the same or similar purposes.
+Much of this software is worth exactly what it costs, but some of it is
+as good as, if not better than, expensive
+``commercial''
+products.
+Select two or more related programs and do a careful comparative critical
+review.
+Depending on the nature of programs, the review might be a benchmarking
+study of relative performance, an analysis of functionality or ease-of-use,
+or some combination of these factors.
+<p>
+One area of particular interest is file accessing and indexing packages
+(if this were cs764, I would call them low-level database facilities).
+Examples are the WISS and Exodus storage managers, both written here,
+and the dbm and libdb packages from Berkeley (the latter is in the
+yet-to-be-released 4.4BSD version of Unix, but we have a early version of
+this code).
+<p>
+A related suggestion is to compare implementations of Unix and alternative
+ways of achieving the same function in different ways.
+For example, consider the question,
+``What's the best way to get data from one process to another?''
+Under various flavors of Unix you can use TCP or UDP, Unix-domain sockets,
+pipes, fifo's, shared memory, files, or at least three different flavors
+of remote procedure call.
+The answer depends on the versions of Unix involved, and various
+characteristics of the communication desired (such as the amount of data
+to be transferred, the sizes of messages, whether replies are required,
+the degree of reliability needed, etc.)
+I've written a rough program that tests many of these techniques.
+I would like someone to polish the program a bit and use it to do an evaluation
+of many of the IPC mechanisms available.
+
+<a name="condor">
+<h2>Condor:</h2>
+</a>
+Condor is a locally-written utility that makes unused cpu power on
+idle workstations available for productive use.
+A daemon process on each workstation monitors activity and reports to
+a central resource manager.
+A client who wishes to run a long cpu-bound program contacts the resource
+manager to obtain the name of an idle workstation.
+It then contacts the selected server workstation and sends the job to be
+executed.
+Jobs to be run under Condor are linked with a version of the
+C library that handles system calls specially:
+File I/O calls are turned into requests sent back to a
+<em>shadow</em>
+process running on the submitting host.
+If the server workstation should become non-idle before the job finishes,
+the job is checkpointed and restarted on another workstation in the pool.
+One user of Condor had a program successfully complete after consuming
+over 300 cpu
+<em>days</em>
+during a period that spanned the department's move to a new building!
+<p>
+Several enhancements to Condor have been considered.
+<ol>
+<li>
+<em>Security:</em>
+Server security seems adequate.
+Application processes runs with a non-privileged guest user id under control
+of a trusted
+``starter''
+that can kill them at any time.
+Providing security for condor users seems much more tricky.
+Here the problem is that the shadow, which by design runs under the UID of
+the job's owner and has all of that person's privileges, is vulnerable to
+``spoofing''
+by software on the server machine.
+If we assume that the server workstation is owned by a hostile
+user who has super-user capabilities, the problem becomes
+quite difficult.
+Design and implement a mutual-authentication protocol, perhaps using
+the Kerberos package.
+<li>
+<em>Multiprocess Jobs:</em>
+Currently, Condor only supports jobs consisting of a single UNIX process;
+Condor does not support the UNIX
+<em>fork</em>
+call.
+Design extensions to Condor that support a collection of processes connected
+by pipes.
+Your design must deal with problems such as co-scheduling (making sure
+all processes are running at the same time) and maintaining connections
+as processes are checkpointed and moved.
+<li>
+<em>Condor Lite:</em>
+Condor is designed for single processes that consume many hours of cpu time.
+Fixed overhead makes Condor impractical
+for short jobs (such as a C compilation).
+Consider how to use some of the Condor machinery to produce a
+<em>network make</em>
+facility.
+</ol>
+<p>
+Other enhancements suggested by Mike Litzkow, principal implementor and
+maintainer of Condor, include:
+<ul>
+<li>
+Execution of condor jobs across wide area networks.
+<li>
+Support for a parallel programming model other than pipe/fork/exec
+(e.g., Linda).
+<li>
+More sophisticated matching of jobs to available resources.
+<li>
+Checkpointing mechanisms which require less data movement.
+<li>
+Implementation of applications which are well suited to Condor's
+capabilities and can really show off its power.
+Applications in such
+``trendy''
+areas as code decryption or genetic engineering are obvious choices.
+</ul>
+<p>
+The current implementation of Condor is available by anonymous ftp.
+
+<a name="efsd">
+<h2>Specialized NFS Servers:</h2>
+</a>
+<p>
+The Unix File System interface provides a convenient abstraction for
+a variety of data beyond ordinary files.
+For example,
+``classic''
+Unix makes I/O devices and communication channels (pipes) look like files.
+Some flavors of Unix support other kinds of objects that look like files,
+including network connections, 
+``named pipes''
+and shared-memory regions.
+The Network File System
+(NFS) provides a convenient path for adding new kinds of
+``file-like''
+objects without modifying the operating system kernel.
+An NFS server running as user-level process can be
+``mounted''
+in the Unix name space.
+Any requests to open, read, or write files in this space are forwarded
+to the server.
+This trick is used in the CAPITL program-development environment and
+the SHORE object-oriented database system to allow access to database
+objects from
+``legacy''
+applications such as compilers, editors,
+<em>grep </em>,
+etc. without the need to modify, or even re-link them.
+I have written a package of C++ classes that encapsulate all the messy
+details of the NFS protocol to create a
+``do it yourself''
+NFS server kit.
+All you have to do is implement the necessary data structures to
+simulate Unix file behavior.
+<p>
+Use this kit to provide a Unix-compatible veneer over some other service.
+A representative example is FTP.
+Write a server that allows you to navigate the space of files accessible
+via anonymous FTP as if they were part of the local file system.
+
+<a name="shore">
+<h2>Shore:</h2>
+</a>
+<p>
+Shore is an experimental object-oriented database being developed in our
+department.
+It combines many of the features of traditional databases (concurrency
+control and recovery and high-speed bulk operations), object-oriented databases
+(fine-grained strongly typed objects with identity), and file systems
+(a hierarchical name space with secure protection of objects and Unix
+compatibility).
+Write a persistent application using the facilities of Shore and critically
+evaluate how well it served your needs, or work to extend or improve
+Shore in some way (see me for ideas).
+
+<a name="miscresearch">
+<h2>UW--Madison Research Projects:</h2>
+</a>
+<p>
+<!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><a href="http://www.cs.wisc.edu/rsch-info/"> Detailed descriptions </a>
+of several of the research projects mentioned above
+(and more) are available via the
+<!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><a href="http://www.cs.wisc.edu/"> CS Department Home Page </a>.
+Most of the projects listed there would welcome participation by interested
+students.
+<a name="tempest">
+<h2>Tempest</h2>
+</a>
+From: markhill@reggiano.cs.wisc.edu (Mark D. Hill)
+<p>
+Date: Mon, 27 Feb 1995 14:36:04 -0600 (CST)
+<p>
+Here is a 736 project that I think would be interesting:
+<p>
+Background: Future parallel computers must execute efficiently both
+hand-coded applications and also programs written in high-level
+programming languages.  Today's machines limit programs to a single
+communication paradigm--message-passing or shared-memory--which results
+in uneven performance.  To address this problem, we have developed the
+Tempest interface, which supports shared-memory, message-passing, and
+hybrid applications.  Tempest enhances portability of parallel programs
+by allowing low-cost networks of workstations to provide the same
+abstractions (e.g., shared memory) as high-performance parallel machines.
+<p>
+The Tempest interface consists of low-level communication and
+memory-system mechanisms.  Policies, such as shared memory, are
+implemented in user-level software, which allows programmers and compilers
+to customize policies to an application's semantics and sharing patterns.
+Experiments show that custom cache coherency policies can produce upto
+an order-of-magnitude performance improvement.
+<p>
+The <!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><a href="http://www.cs.wisc.edu/~wwt">Wisconsin Wind Tunnel Project</a> has
+developed implementations of Tempest for the CM-5 and a cluster of
+workstations (COW) (Sun SS-20 running Solaris 2.4).  To complete our
+portability story and facilitate program development, we would like to see
+Tempest run a single workstation (either uniprocessor or multiprocessor).
+<p>
+The project: Implement Tempest so that all processes run on on a single
+two-processor node of COW.  The key challenge is implementing the
+messaging so that functionally it looks exactly the same as the version
+that sends messages between nodes.  
+<p>
+Interested groups should read
+<!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><a href="ftp://ftp.cs.wisc.edu/wwt/compcon95_tempest.ps.Z">
+the paper
+</a>
+before talking with him further.
+
+<hr>
+
+<address>
+<i>
+<!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><a HREF="http://www.cs.wisc.edu/~solomon/solomon.html">
+solomon@cs.wisc.edu
+</a>
+<br>
+Fri Sep 29 16:30:41 CDT 1995
+</i>
+</address>
+
+</body>
+
+</html>

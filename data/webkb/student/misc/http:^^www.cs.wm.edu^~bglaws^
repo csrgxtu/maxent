@@ -1,0 +1,159 @@
+Date: Tue, 26 Nov 1996 18:01:30 GMT
+Server: NCSA/1.4.1
+Content-type: text/html
+Last-modified: Thu, 07 Nov 1996 16:50:45 GMT
+Content-length: 3905
+
+<head>
+<!-- Barry G. Lawson -->
+<TITLE>Barry's Bore and Grill</TITLE> 
+
+<SCRIPT LANGUAGE="JavaScript">
+
+/* Copyright (C)1996 Web Integration Systems, Inc. DBA Websys, Inc.
+   All Rights Reserved.   This applet can be re-used or modified, if credit is given in 
+   the source code. We will not be held responsible for any unwanted effects due to the 
+   usage of this applet or any derivative.  No warrantees for usability for any specific 
+   application are given or implied. Chris Skinner, January 30th, 1996.
+*/
+function scrollit_r2l(seed)
+{
+     var msg1 = "For what shall it profit a man, if he shall gain the whole "
+     var msg2 = "world, and lose his own soul? -- Mark 8:36" 
+     var msg = msg1 + msg2;
+     var out = " ";
+     var c   = 1;
+        if (seed > 100) {
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 100 && seed > 0) {
+                for (c=0 ; c < seed ; c++) {
+                        out+=" ";
+                }
+                out+=msg;
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                    window.status=out;
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;
+                        var cmd="scrollit_r2l(" + seed + ")";
+                        window.status=out;
+                        timerTwo=window.setTimeout(cmd,100);
+                }
+                else {
+                        window.status=" ";
+                        timerTwo=window.setTimeout("scrollit_r2l(100)",75);
+                }
+        }
+}
+
+</SCRIPT>
+</head>
+
+<body onLoad="timerOne=window.setTimeout('scrollit_r2l(100)',500);"
+      background="images/bckgrnd/rug.jpg"
+      text="000000" link="f0f0f0"
+      vlink="ff0000" alink="ffff00">
+
+<br>
+
+<center>
+<table border=10 cellpadding=5 cellspacing=10> <tr> <td>
+  <br>
+  <h2>
+   <!WA0><A href="http://www.cs.wm.edu/~bglaws/niki.html"><!WA1><IMG align=middle border=0 SRC="http://www.cs.wm.edu/~bglaws/images/sports/B.gif"></A>
+   <i>arry G. Lawson</i>
+   </h2>
+   </td></tr>
+</table>
+</center>
+
+<br><br>
+
+<P>
+<b>
+
+<center>
+MS Student <br>
+Department of <!WA2><A href="http://www.cs.wm.edu/homedoc.html">
+	Computer Science</A> <br>
+College of <!WA3><A href="http://www.wm.edu/">
+	William and Mary</A> <br>
+Williamsburg, VA 23187</A> <br> <br>
+Office:<br>
+101 Tercentenary Hall <br>
+<!WA4><IMG SRC="http://www.cs.wm.edu/~bglaws/images/html/phone.xbm"> (757) 221-3468<br><br>
+
+email:
+<!WA5><A href="mailto:bglaws@cs.wm.edu">
+<i> bglaws@cs.wm.edu</i></A>
+</b>
+</P>
+<br>
+
+<b>
+You are recent sucker #<br>
+<!WA6><IMG SRC="http://counter.digits.com/wc/-d/4/bore_grill"
+ALIGN=bottom WIDTH=60 HEIGHT=20 BORDER=0 HSPACE=4><br>
+<i>(kudos to <!WA7><a href="http://www.digits.com">Web Counter</a>)</i><br>
+</b>
+<br><br>
+
+<!WA8><img src="http://www.cs.wm.edu/~bglaws/images/html/wm.gif">
+</center>
+
+<br><br>
+
+<center>
+<!WA9><IMG SRC="http://www.cs.wm.edu/~bglaws/images/html/guitar.gif">
+
+<h2>My Hero: Bernard P. Fife</h2>
+<!WA10><a href="http://www.cs.wm.edu/~bglaws/audio/nipit.wav">
+<!WA11><img src="http://www.cs.wm.edu/~bglaws/images/misc/barn.gif">
+</a>
+<br>
+<b><i>"Click me if you have a computer compelsion"</i></b><br>
+(Download
+<!WA12><a href="ftp://ftp.ai.mit.edu/pub/xplay/">.wav player</a>
+for SUNs)<br>
+
+<br><br>
+
+<b>
+There once was a deputy called Fife<br>
+Who carried a gun and a knife<br>
+The gun was all dusty<br>
+And his knife was all rusty<br>
+Because he never caught a crook in his life
+
+<!--
+<br><br>
+<!WA13><a href="http://www.cs.wm.edu/~bglaws/tags.html">My TAGS Listing and Summary Updated Daily</a>
+</b>
+-->
+
+<br><br><br>
+<!WA14><img src="http://www.cs.wm.edu/~bglaws/images/html/guitar2.gif">
+<br><br>
+
+<H3><i> Assorted Web Foolery </i></H3>
+
+<b>
+<!WA15><A href="http://www.cs.wm.edu/~bglaws/sports.html"> Sports </A><br>
+<!WA16><A href="http://www.cs.wm.edu/~bglaws/pics.html"> Picture Album </A><br>
+<!WA17><A href="http://www.cs.wm.edu/~bglaws/interests.html"> Links of Interest </A><br>
+<!WA18><A href="http://www.cs.wm.edu/~bglaws/music.html"> Tuneage </A><br>
+<!WA19><A href="http://www.cs.wm.edu/~bglaws/friends.html"> Friends Stuck in the Web </A><br>
+</b>
+
+<br><br>
+<!WA20><img src="http://www.cs.wm.edu/~bglaws/images/misc/hdeagle.gif">
+</center>
+
+</body>

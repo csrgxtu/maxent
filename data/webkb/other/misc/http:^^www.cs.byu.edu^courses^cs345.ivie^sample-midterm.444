@@ -1,0 +1,167 @@
+Date: Tue, 14 Jan 1997 23:05:39 GMT
+Server: Apache/1.0.5
+Content-type: text/plain
+Content-length: 4609
+Last-modified: Fri, 18 Oct 1996 22:57:10 GMT
+
+			SAMPLE MIDTERM ANSWERS
+
+These are the answers to the Qantitative section of the sample midterm
+on the syllabus:
+
+1.   Formula: a, a/2+b/2, a/4+b/4+c/2, a/8+b/8+c/4+d/2,
+     a/16+b/16+c/8+d/4+e/2
+
+     80=a, 96=b, 64=c, 40=d, 44=e
+
+     80, 80/2 + 96/2, 80/4+96/4+64/2, 80/8+96/8+64/4+40/2,
+     80/16+96/16+64/8+40/4+44/2 
+
+     80/16+96/16+64/8+40/4+44/2  = 816/16
+
+     Prediction of the next time = 51 milliseconds.
+
+2.   2^32 virtual address space
+     32M physical address space
+     2K page size = 2^11
+
+     |----------|---------|
+     |     21   |   11    |    2^21 = 2097152 entries for a
+     |----------|---------|    conventional page table.
+
+
+Page table entries would have to be 16 bits (14 + 2 (for the present
+and modified bit)
+
+3.   proacess size = s bytes
+     page size     = p bytes
+     page entry    = e bytes
+     
+     Formula:   p   = 2se                    
+
+     p = 2x8Mx3
+
+     p = 2x2^23x3
+
+     p = 7094 bytes  
+     
+4.   page table access = 100nsec
+     associate memory access = 10nsec
+     average access = 11nsec
+
+     Formula:
+     average access time = (hit ratio x associate memory
+     access) + ((1-hit ratio) x page table access)
+
+     11 = (hit ratio x 10) + ((1-hit ratio) x  100)
+
+     hit ratio = 98.8%
+
+
+5.   300 rpm
+     1 rotation takes 60/300 = 0.2 seconds
+     0.1 + 0.2 + 0.2 + (3/4 x 0.2) = 0.65 seconds
+
+
+6.     1  has max       2  has max        3  has max
+     |---|---|---|    |---|---|---|     |---|---|---|     
+     | A | 3 | 7 |    | A | 3 | 7 |     | A | 3 | 7 |
+     |---|---|---|    |---|---|---|     |---|---|---|
+     | B | 5 | 10|    | B | 5 | 10|     | B | 5 | 10|
+     |---|---|---|    |---|---|---|     |---|---|---|
+     | C | 1 | 3 |    | C | 3 | 3 |     | C | 0 | - |
+     |---|---|---|    |---|---|---|     |---|---|---|
+       FREE:3         RUN PROCESS C     PROCESS C ENDED
+                        FREE:1            FREE:4
+    
+       4  has max       5 has max        6  has max
+     |---|---|---|   |---|---|---|     |---|---|---|
+     | A | 7 | 7 |   | A | 0 | - |     | A | 0 | - |
+     |---|---|---|   |---|---|---|     |---|---|---|
+     | B | 5 | 10|   | B | 5 | 10|     | B | 10| 10|
+     |---|---|---|   | --|---|---|     |---|---|---|
+     | C | 0 | - |   | C | 0 | - |     | C | 0 | - |
+     |---|---|---|   | --|---|---|     |---|---|---|
+     RUN PROCESS A    PROCESS A ENDED   RUN PROCESS B
+       FREE:0           FREE:7            FREE:2
+
+       7  has max
+     |---|---|---|                               
+     | A | 0 | - |     This is a safe state as all the
+     |---|---|---|     processes can be satisfied.
+     | B | 0 | - |
+     |---|---|---|     
+     | C | 0 | - |
+     |---|---|---|
+     PROCESS B ENDED
+       FREE:12
+     
+     If one of the drives fails, there will be a total of 11
+     drives remaining. It will no longer be a safe state as seen
+by the following:
+
+       1  has max       2  has max       3  has max
+     |---|---|---|    |---|---|---|    |---|---|---|
+     | A | 3 | 7 |    | A | 3 | 7 |    | A | 3 | 7 |  
+     |---|---|---|    |---|---|---|    |---|---|---|
+     | B | 5 | 10|    | B | 5 | 10|    | B | 5 | 10|
+     |---|---|---|    |---|---|---|    |---|---|---|
+     | C | 1 | 3 |    | C | 3 | 3 |    | C | 0 | - |
+     |---|---|---|    |---|---|---|    |---|---|---|
+       FREE:2         RUN PROCESS C    PROCESS C ENDED
+                        FREE:0           FREE:3
+
+     This is no longer a safe state, as process A needs 4 drives,
+and process B needs 5 drives. There are only 3 drives available.
+
+
+
+7.   Formula: (h x 0.1 milliseconds) + ((1-h) x
+     5 milliseconds) = average time
+
+     Function Graph:
+          |
+time      |
+(milli-   |
+seconds)  |
+        5-|       .
+          |
+          |              . 
+          |---------------
+          0              0.1
+              (h)
+
+8.   Direct access: 8x4K = 32K is the maximum size of a file.
+
+     One level of indirection:
+     8 x 512 x 4K = 2^3 x 2^9 x 2^12 = 2^24 = 16M
+
+     Two levels of indirection:
+     8 x 512 x 512 x 4K = 2^3 x 2^9 x 2^9 x 2^12 = 2^30 x 2^3 = 8G
+
+9.   1/2 of the first block is wasted, 1/4 of the next 2 blocks are wasted, 
+     1/6 of the next 3 blocks are wasted, and an 1/8 of the next 4 blocks 
+     are wasted.                
+     There are 10 blocks, in total 2 of these are wasted, therefore the 
+     actual loss due to due internal fragmentation is 20%.   
+  
+
+10.  To exhaustively generate the encrypted version of all
+     possible 5-character passwords, it would take 96^5 
+     milliseconds.
+     
+     If salted it would take (96^5 + 2^8) = 66 years!
+
+
+
+
+
+
+
+
+
+
+
+
+  
+

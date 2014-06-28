@@ -1,0 +1,74 @@
+Date: Tue, 05 Nov 1996 00:28:07 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 05 Oct 1995 03:22:39 GMT
+Content-length: 1688
+
+<HTML>
+<HEAD>
+<TITLE>Coding Conventions
+</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+<H1>Coding Conventions</H1>
+</CENTER>
+
+<P>The following conventions are recommended.  Thanks due to Prof. Fischer
+and Ranjani Ramamurthy.  (Admittedly, they are not followed in Minibase to
+the extent they should be.) 
+<OL>
+<LI> Classes are named with a mixture of capitals and small letters.. start
+   with a capital and do not contain any '_' or '-'.
+   If class name is a concatenation of 2 words, the second word begins with
+   a capital letter as well.
+
+<P>   For example:
+<PRE>
+        class RecoveryManager{
+
+        };
+</PRE>
+
+<LI> First declare public methods, then public variables.
+   Later, private methods and then private variables.
+ 
+<P>   Public methods and variables :: same rules as naming classes ::
+
+<P>   For example:
+<PRE>
+   Status AddEntry(lsn_t lsn, int xid);
+
+   lsn_t  RecLSN;
+</PRE>
+<P>   Private variables/methods ::
+   no capitals at all. All variables and methods start with an underscore.
+
+<P>   For example :
+<PRE>
+   int   _pgid_array[100];
+   Status _restart_undo(RecXactTbl* xact_tbl);
+</PRE>
+
+<LI> All global variables to begin with <CODE>minibase_</CODE>  ( Basically the system name).
+   The variable itself can begin with small letters.
+<PRE>
+   minibase_bufmgr ==> Global buffer manager variable.
+</PRE>
+
+<LI> All global functions begin with <CODE>minibase_</CODE>
+
+<P>   Let the function name ( after <CODE>minibase_</CODE>) begin with capitals
+   and break multi words with underscores.
+
+<PRE>
+   example :: minibase_Print_Routine();
+</PRE>
+
+
+<LI> All macro definitions begin with <CODE>MINIBASE_</CODE> whatever..
+
+<LI> All filenames in  lower case..
+</OL>
+</BODY>
+</HEAD>

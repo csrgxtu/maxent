@@ -1,0 +1,91 @@
+Date: Tue, 14 Jan 1997 23:12:51 GMT
+Server: Apache/1.0.3
+Content-type: text/html
+Content-length: 3735
+Last-modified: Tue, 19 Nov 1996 16:04:00 GMT
+
+<head><title>P523 Project Five</title></head>
+
+<body>
+<h1>P523 Project Five</h1>
+<h3>Fall Semester 96-97</h3>
+<h3>Code Generation</h3>
+<h3>Due 11:59pm Sunday, December 8</h3>
+
+Design and implement a code generator for programs in <!WA0><a
+href="http://www.cs.indiana.edu/classes/p523/p4/proj4.html#weasel">weasel form</a>, using the procedure calling
+conventions and pointer and object representations discussed in class.
+Your code generator must produce assembly code for the <!WA1><a
+href="http://www.cs.indiana.edu/classes/p523/p5/alpha.ps.gz">Alpha AXP</a> processor.  Use the interpreters
+presented in <!WA2><a href="http://www.cs.indiana.edu/classes/p523/p5/beta.ss">beta.ss</a> and <!WA3><a
+href="http://www.cs.indiana.edu/classes/p523/p5/gamma.ss">gamma.ss</a> as guidelines for writing your code
+generator.<p>
+
+<h3>Support Code</h3>
+
+<!WA4><a href="http://www.cs.indiana.edu/classes/p523/p5/cg-help.ss"<tt>cg-help.ss</tt></a> provides 
+some code generation
+utilities:
+<ul>
+<li>symbolic constants for tagging
+<li><tt>open-file</tt> opens the assembly output file, <tt>scheme.s</tt>, and writes
+the header
+<li><tt>emit</tt> writes assembly instructions to <tt>scheme.s</tt>
+<li><tt>new-label</tt> creates a new assembly language label
+<li><tt>write-label</tt> writes a label to <tt>scheme.s</tt>
+<li><tt>c-imm</tt> converts Scheme immediates to tagged Alpha immediates
+<li><tt>close-file</tt> writes trailer to <tt>scheme.s</tt> and closes it
+<li><tt>run-file</tt> copies <tt>scheme.s</tt> to your 431 directory on copper and
+executes a remote shell on copper to assemble and run it.
+</ul><p>
+
+The directory <tt>/u/c431/p5</tt> on copper contains support files for making
+an executable file from your assembly output file, <tt>scheme.s</tt>:
+<ul>
+<li><tt>startup.c</tt>: allocates and initializes the Scheme stack and heap,
+calls your code via the assembly stub <tt>call_scheme.s</tt>, and prints the
+result.
+<li><tt>call_scheme.s</tt>: assembly language stub that sets up the Scheme
+registers, places the return address onto the base of the frame, calls
+your code, and returns to the C caller, <tt>startup.c</tt>.
+<li><tt>cg.h</tt>: assembly language header file that defines constants for
+tagging and generating immediates.
+</ul><p>
+
+You should create the directory <tt>copper:431</tt> and copy all the
+files from <tt>copper:/u/c431/p5</tt> into it.  The procedures in
+<tt>cg-help.ss</tt> assume that this directory and your <tt>.rhosts</tt> file
+on copper are set up.<p>
+
+<tt>p5trial.alpha</tt> in <tt>/u/c431/p5</tt> on copper (and
+<tt>p5trial.sun4</tt> for Suns) defines the procedure <tt>c431-cg</tt>.
+<tt>(c431-cg &lt;weasel&gt;)</tt> generates Alpha assembly for the weasel
+program into the file <tt>scheme.s</tt> in the current directory.<p>
+
+<tt>p5good</tt> (in <tt>/u/c431/p5</tt> on copper) gives a set of test
+cases you may find useful.  Each test case is followed by the expected
+result in a comment.  The result is printed in the same format
+<tt>startup.c</tt> prints it, so you can compare the results quite
+easily.  <!WA5><a href="http://www.cs.indiana.edu/classes/p523/p5/p5test.ss">p5test.ss</a> provides a Scheme procedure
+that will run your code generator on all the test cases in
+<tt>p5good</tt> and create the file tests.out that can be compared
+against <tt>p5good</tt> using <tt>diff</tt>.  <em>Before using this, you must
+have the latest version of <tt>Makefile</tt> and <tt>startup.c</tt> from
+<tt>/u/c431/p5</tt>.</em>
+
+
+<h3>Project report:</h3>
+
+Your project report should contain a description of your code
+generator along with the source for the code generator.  It should
+also contain sample assembly output for several small examples showing
+what the code generator produces for a variety of expressions.  Follow
+the guidelines for documentation, neatness, and collaboration from the
+first project assignment.<p>
+
+<h3>Late policy:</h3>
+
+Project reports may be handed in up to one week late without penalty.
+Reports handed in more than one week late will not be graded.
+
+</body>

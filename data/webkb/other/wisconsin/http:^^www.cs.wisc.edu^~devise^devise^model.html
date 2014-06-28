@@ -1,0 +1,204 @@
+Date: Fri, 13 Dec 1996 17:06:39 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 30 Oct 1996 19:02:14 GMT
+Content-length: 7077
+
+<HTML>
+<HEAD>
+<TITLE>DEVise Model of Visualization</TITLE>
+</HEAD>
+<BODY>
+
+<H1>Model of Visualization</H1>
+
+<!WA0><!WA0><!WA0><img src="http://www.cs.wisc.edu/~devise/devise/model.gif" align=middle>
+
+The model of visualization is used to design the framework from which
+DEVise is constructed. It is also the best way to understand how
+DEVise functions.
+
+<UL>
+<LI><!WA1><!WA1><!WA1><A href="#Stages">Stages of Visualization</A>
+<LI><!WA2><!WA2><!WA2><A href="#File">File</A>
+<LI><!WA3><!WA3><!WA3><A href="#Schema">Schema</A>
+<LI><!WA4><!WA4><!WA4><A href="#TData">TData</A>
+<LI><!WA5><!WA5><!WA5><A href="#Mapping">Mapping</A>
+<LI><!WA6><!WA6><!WA6><A href="#GData">GData</A>
+<LI><!WA7><!WA7><!WA7><A href="#Filter">Visual Filter</A>
+<LI><!WA8><!WA8><!WA8><A href="#View">View</A>
+<LI><!WA9><!WA9><!WA9><A href="#Window">Window</A>
+<LI><!WA10><!WA10><!WA10><A href="#Link">Link</A>
+<LI><!WA11><!WA11><!WA11><A href="#Cursor">Cursor</A>
+</UL>
+
+<A name="Stages"><H2>Stages of Visualization</H2></A>
+
+Visualization in DEVise is divided into stages, each stage supported
+by components responsible for the functions of that stage.  The
+component design is essential to providing the following
+functionalities of DEVise:
+
+<UL>
+<LI>Visualizations are constructed by creating component instances,
+and interconnections between components.
+<LI>DEVise is extensible in that new components may be defined
+and incorporated into its framework. For example, a new type of
+file, or new way of drawing graphics may be incorporated.
+<LI>The <!WA12><!WA12><!WA12><A href="http://www.cs.wisc.edu/~devise/devise/visualQuery.html">visual query interface</A> allows the user 
+to save a visualization and apply it to different sets of input files.
+</UL>
+
+<P>The stages of creating a visualization are as follows:
+
+<OL>
+<LI>Import a <!WA13><!WA13><!WA13><A href="#File">file</A> into DEVise as a textual data
+(<!WA14><!WA14><!WA14><A href="#TData">TData</A>). The <!WA15><!WA15><!WA15><A href="#Schema">schema</A> is
+used to describe information about how to import the file.
+<LI><!WA16><!WA16><!WA16><A href="#Mapping">Mapping</A>TData into graphical Data
+(<!WA17><!WA17><!WA17><A href="#GData">GData</A>).
+<LI>Select a <!WA18><!WA18><!WA18><A href="#View">view</A> to display the GData.
+Assign a <!WA19><!WA19><!WA19><A href="#Filter">visual filter</A> to select which portion
+of GData are to be viewed.
+<LI>Arrange views in <!WA20><!WA20><!WA20><A href="#Window">windows</A>.
+<LI>Create linked axes using <!WA21><!WA21><!WA21><A href="#Link">visual links</A>. Or
+display relationships between views using <!WA22><!WA22><!WA22><A href="#Cursor">cursors</A>.
+</OL>
+
+<A name="File"><H2>File</H2></A>
+
+The input file is provided by the user. It is stored on disk in ASCII
+format. An example of an ASCII file containing sin(time) and cos(time)
+might look like:
+
+<TT>
+<BR> #	time       sin        cos
+<BR>0.000000.2 1.000000.2 0.000000.2
+<BR>0.017453.2 0.999848.2 0.017452.2
+<BR>0.034906.2 0.999391.2 0.034898.2
+<BR>0.052358.2 0.998630.2 0.052334.2
+<BR>...
+</TT>
+
+<A name="Schema"><H2>Schema</H2></A>
+
+The schema file describes the layout of an ASCII input file.  It is
+used to convey: name, type, and range of attributes, characters that
+separate the attributes in the file, and characters that should be
+ignored while reading the file. The attribute range information is
+optional. For our example file, the schema file looks like:
+
+<TT>
+<BR>type Sensor ascii
+<BR>comment #
+<BR>whitespace ' '
+<BR>attr time double hi 1000 lo 0
+<BR>attr sin double hi 1 lo -1
+<BR>attr cos double hi 1 lo -1
+</TT>
+
+<P>The first line names the file type: Sensor. All sensor files have
+data stored in the same format.  More than one file type can be
+imported into DEVise, each having its own schema file. For example, we
+can also create a Stock file type to read information about stock
+prices, with data stored in a different format.  The second line tells
+DEVise to ignore lines that start with '#'. The third line tells
+DEVise that the attributes in the file are separated by white
+spaces. DEVise can also read files separated by other delimiters,
+such as '10,20,20'. The remaining lines describe attribute names,
+types, and ranges.
+
+<A name="TData"><H2>TData</H2></A>
+
+A Textual Data (TData) is the representation used by DEVise to access
+files (or other types of input data). Once a file is imported into
+DEVise as a tdata, the user uses the tdata to create visualizations.
+Different types of input files are input into DEVise and treated
+uniformly as TData.
+
+<P>After selecting the file type, the user is asked to enter an alias
+for the tdata. The default name is the name of the input file,
+stripped of its path information. After entering the alias, the file
+is imported as TData into DEVise.
+
+<A name="Mapping"><H2>Mapping</H2></A>
+
+A mapping converts TData attributes into graphical data (GData)
+attributes. The user decides how tdata is visualize by selecting the
+tdata attributes that map onto the the x, y, color and shape gdata
+attributes. Notice that a TData can be visualized in more than one way
+by creating more than one mapping.
+
+<P>For our example, we can create the following example mappings:
+<BR>sin_vs_time:
+<BR>x <-- time
+<BR>y <-- sin
+<BR>	
+<BR>cos_vs_time:
+<BR>x <-- time
+<BR>y <-- cos
+<BR>	
+<BR>sin_vs_cos
+<BR>x <-- cos
+<BR>y <-- sin
+
+<P>Once a mapping is created, it can be used on all TData with the
+same file type.
+
+<A name="GData"><h2>GData</h2></a>
+
+<!WA23><!WA23><!WA23><img src="http://www.cs.wisc.edu/~devise/devise/gdata.gif" align=middle>
+
+<P>The graphical data (gdata) is the graphical representation of the
+tdata. It consists of attributes: x, y, color, pattern, size,
+orientation, shape, and shape specific attributes.
+
+<A name="Filter"><H2>Visual Filter</H2></A>
+
+A visual filter defines a query over the graphical data attributes of
+the gdata. Our implementation supports range query over the X and Y
+GData attributes.  Use visual filter to specify portions of GData to
+be viewed.
+
+<A name="View"><H2>View</H2></A>
+
+A view is used to display those gdata that fall within the range of
+the visual filter. Currently we have two types of views: Scatter and
+SortedX. The Scatter view is used to draw a scattered plot.  The
+SortedX view implements optimizations used to reduce the time used to
+draw the gdata if the X attribute is sorted.
+
+<A name="Window"><H2>Window</H2></A>
+
+A window provides the screen real estate used by views to draw the
+gdata. It it also responsible for arranging views in its
+boundaries. Currently, DEVise supports tiled/automatic, vertical, and
+horizontal window layouts.
+
+<P>A view can be removed from a window to reduce clutter, or
+be moved to another window so that related views are brought
+together for comparison.
+
+<P>Windows can be duplicated, a very handy feature. 
+
+<A name="Link"><H2>Link</H2>
+
+A link is used to link visual filters so that updating one
+synchronously updates all linked visual filters. We have implemented
+links for linked axes, either linked x and/or y axes. However, a link
+in theory can be used on any of the of the graphical attributes: x, y,
+color, size, pattern, orientation, and shape.
+
+<A name="Cursor"><H2>Cursor</H2>
+
+A cursor can also be used to display the X/Y boundaries of one view
+within another view. A cursor contains both a source view and a
+destination view.  The source view is where the cursor fetches
+information about the current view X/Y axes boundaries. The boundaries
+of the source view are drawn as line segments in the axes of the
+destination view. Click in the axes area of the destination view to
+move the source view (by changing its visual filter) to the location
+clicked.
+
+</BODY>
+</HTML>

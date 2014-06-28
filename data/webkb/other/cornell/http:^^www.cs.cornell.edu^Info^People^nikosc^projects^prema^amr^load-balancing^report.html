@@ -1,0 +1,203 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 16-Dec-96 21:40:18 GMT
+Content-Type: text/html
+Content-Length: 10987
+Last-Modified: Thursday, 24-Oct-96 23:53:42 GMT
+
+<BODY>
+<TITLE> Mobile Object Layer for Dynamic and Irregular  Computations </TITLE>
+
+<center>
+<H2> Mobile Object Layer for Dynamic and Irregular  Computations </H2>
+<H2> Nikos Chrisochoides and Chris Hawblitzel </H2>
+</center>
+<A HREF="../description/index.html"> The motivation for this work is the implementation of runtime support for dynamic and irregular computations. </A> The work consisted of two parts:</P>
+
+<UL>
+<LI>Implementing a runtime library ("Mobile Objects") to handle migration of
+objects from one
+processor to another, and to handle the communication between these objects
+<LI>Parallelizing an adaptive mesh refinement (AMR) program on top of Mobile
+Objects and PORTS
+</UL>
+
+The AMR algorithm starts with a uniform mesh (on which a pde can be solved)
+and recursively refines areas of the mesh that need a finer mesh to achieve
+the desired level of accuracy in the pde solution.  We cannot tell until
+runtime which areas will need refining, so some sort of dynamic load
+balancing is necessary in a parallel implementation of AMR.  Our approach
+was to break up the mesh into small pieces called "Grid Components", and
+then balance the load by transferring grid components from heavily loaded
+processors to lightly loaded processors.  In contrast to approaches
+involving centralized decision making, our system is completely decentralized.
+No collective communication is required, and processors do not have to
+wait for centralized decisions to be made before proceeding on with
+their work.</P>
+
+The AMR algorithm on grid components
+as follows:  The mesh starts out as a single root grid component.  If any
+areas of this grid component need refining, the root grid component spawns
+many smaller child grid components which have finer meshes.  The children
+can then spawn their own children recursively, forming a tree of
+grid components.</P>
+
+In order to balance the load, grid components can move from one
+processor to another.  When this happens, pointers between grid
+components must remain valid.  With conventional global pointers
+consisting of <processor, address> pairs, if the processor or the
+address of an object change, all global pointers to that object become
+invalid.  To deal with this, we use "mobile pointers" which remain
+valid even when objects move.  To keep track of mobile pointers, each
+processor has a directory which it uses to hold the location of mobile
+objects.  The entries in the directory may not be current, so messages
+can be sent out to the "best guess" at where the object resides, and
+the messages will be forwarded to the true location of the object.</P>
+
+The current interface to the Mobile Objects layer is contained in mobile.h.  Mobile pointers are implemented as a 
+structure containing the number of the processor that created the
+object, and an index number which is unique on that processor (in
+addition, an epoch number is used to guard against stale data).  The
+members of this structure form a unique name for every mobile object
+in the system.  A directory consists of a set of tables, where each
+table holds information about objects originating at one processor.
+To send a message to an object specified by a mobile pointer, a
+processor checks the table corresponding to the originating processor
+of the mobile pointer.  It uses the index field of the mobile pointer
+to look up a specific entry in this table.  Each entry holds the
+processor at which the object can be located (if the object is local
+to a processor, the entry also holds the local memory address of the
+object).  This entry may not be the true current location of the
+object, but is the "best guess" that the processor has as to where the
+object resides (if there is no entry in the table, then the
+originating processor field of the mobile pointer serves as the best
+guess location of the object).  Once an entry has been looked up in
+the directory, a message can be sent to the mobile object on a remote
+processor.  If it turns out that the object moved and is no longer
+located at the processor specified in the directory entry, the message
+is automatically forwarded (possibly multiple times) to the correct
+destination.  The directory entry can later be updated with more
+current information, so that subsequent messages sent to the mobile
+object go directly to the correct destination.</P>
+
+The two functions <code>mob_ObjReq</code> and <code>mob_MsgReq</code>
+form the core of the Mobile Objects communication interface.  An
+application can call <code>mob_ObjReq</code> to send out a "request
+for object" from one processor to another.  This request invokes a
+user handler at the remote processor which selects an object and sends
+the object back to the requesting processor.  The handler uninstalls
+the object from the remote processor by calling
+<code>mob_uninstallObj</code>.  This function takes the new location
+of the object as an argument, so that the remote processor knows where
+to forward incoming messages.  When the object arrives at the
+requesting processor, the application installs the object with
+<code>mob_installObj</code>.  To send a message to an object, the
+application calls <code>mob_MsgReq</code>.  This sends a small message
+to the processor that holds the object specified by a mobile pointer.
+When the message arrives, a user handler is invoked to perform an
+action using the object (such as sending a large reply message back).</P>
+
+The current implementation of <code>mob_ObjReq</code> and
+<code>mob_MsgReq</code> uses the PORTS functions
+<code>ports1_put</code> and <code>ports1_rsr_handler</code>.  Each
+processor has one queue for each other processor in the system to hold
+incoming messages.  Messages data is into one of the queues at the
+destination processor using the PORTS function
+<code>ports1_put</code>.  The put is followed by a
+<code>ports1_rsr_handler</code>, which invokes a handler at the
+destination to process the message.  As the destination processes the
+incoming messages, it sends replies back to free up space in the
+queue.  The communication interface is a compromise in that it only
+handles buffering and forwarding for the small, fixed sized messages
+sent out by <code>mob_MsgReq</code>.  An interface that also handled
+buffering and forwarding for large messages would be easier to use but
+more difficult to implement (I think arbitrary sized message buffering
+and forwarding would be worth implementing but it is beyond the scope
+of this project).
+
+The current implementation of Mobile Objects is mobile.c (there are still a few features that are unimplemented in this). As a simple example of how Mobile Objects is used, a small test file  is provided.</P>
+
+The parallelized AMR code is contained in the directory 
+(the files <A HREF="main.c">main.c</A>, <A HREF="amr0.c">amr0.c</A>,
+<A HREF="cluster.c>cluster.c</A>, and
+<A HREF="grid_level.h">grid_level.h</A> are good places to look).  The
+AMR program creates one mobile object per grid component to handle the
+grid component data, and uses one thread for each grid component to
+handle control.  The code does only the mesh refinement and tree
+construction - no equations are solved on the mesh as it is constructed.</P>
+
+One of the most attractive aspects of the threads/mobile objects approach
+is that it is easy to experiment with different load balancing strategies
+in an application without drastically altering the application code.  The
+current policy is fairly simple.  The processors are organized in a grid
+(actually a 2-d ring).  When the number of threads on a processor
+drops below a certain value (currently 8), the processor sends out requests
+to all of its neighbors asking for more grid components.  If a processor
+receives a request for grid components, it checks its list of available
+grid components to see if it has any work to send out.  If it does, it
+sends out the grid component whose position is the furthest towards the
+position of the requesting processor (for instance, if the the request comes
+from the processor on the left, the leftmost grid component is sent out).
+
+<H3>
+Timing Results
+</H3>
+
+Timing measurements of the AMR code were made on 4 processors on the
+SP-2.  The following plots show how much time was spent by each
+processor doing useful work, and how much time went into communication
+and thread management.  These measurements are shown as functions of
+time, so that it is apparent how the balance of computation and
+communication change as the mesh refinement progresses.  The
+communication times shown include all overhead associated with load
+balancing, including handler execution and packing and unpacking of
+objects.  </P>
+
+(Note: you may want to make your web browser wide enough to display
+two plots side by side)</P>
+
+<IMG SRC="times0.gif">
+<IMG SRC="athreads0.gif">
+<IMG SRC="times1.gif">
+<IMG SRC="athreads1.gif">
+<IMG SRC="times2.gif">
+<IMG SRC="athreads2.gif">
+<IMG SRC="times3.gif">
+<IMG SRC="athreads3.gif">
+</P>
+
+The best performance is obtained early in the computation, because
+small objects near the root of the grid component tree quickly spawn
+large amounts of work for the processors.  A processor spends
+relatively little time fetching these components, and a lot of time
+doing useful work on the components and the components' decendants.
+However, as the computation progresses, the processors spend more and
+more time fetching components, because the components are near the
+bottom of the grid component tree and therefore lead to relatively
+little work.  Processors 0 and 3 struggle to find enough grid
+components to keep them busy near the end of the refinement.  Although
+the processors do have at least some work to do during most of the
+computation (they request more work before running completely running
+out of threads), the resultant communication overhead leads to low
+performance during this period of time on these two processors.  This
+communication also has an impact on processors 1 and 2, which must
+service the requests for work. </P>
+
+As the above plots show, AMR is difficult to load balance, because of
+the explosive growth of the grid component tree in unpredictable
+places.  However, the above tests are somewhat of a worst-case
+situation, because they only test one part of one time step of a real
+AMR application.  In an application using AMR, the grid component tree
+is similar in structure from one time step to the next (in fact, it
+may be held fixed for several time steps), so refinements
+are no longer completely unpredictable and load balancing can occur
+more gradually over many time steps.  In contrast to centralized
+algorithms that must completely redistribute the load when the mesh
+changes significantly, an AMR implementation based on threads and
+moving objects should be able to incrementally balance the load,
+preserving data locality and holding down communication costs.  While
+we have not implemented this yet, the tools built here should provide
+an easy platform on which to construct a full AMR application.
+
+</BODY>
+

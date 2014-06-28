@@ -1,0 +1,62 @@
+Date: Tue, 10 Dec 1996 20:34:30 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Mon, 28 Oct 1996 18:54:03 GMT
+Content-length: 1795
+
+<HTML>
+<HEAD><TITLE>Cooperative Time Schedule</TITLE>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!-- hide from other browsers
+
+// define a short hand
+var n = 0;
+
+function u(a,b,c,d,e) {
+ this[0] = a; this[1] = b; this[2] = c; this[3] = d; this[4] = e;
+}
+
+// ********************* Enter your appointments here ********************
+// this[n++]=u(dayOfWeek, timeSlot, Appt, optionalNSlots, optionalAcross);
+//     dayOfWeek is defined by the routine makeDayNames()
+//     timeSlot is defined by the routine makeTimeSlots()
+//     Appointment can be any string (including HTML constructs)
+//     optionalNSlots is an optional arg, default to 1, namely # slots
+//           (rows) total to occupy.
+//     optionalAcross is an optional arg, default to 1, namely # of
+//           days (columns) across for that time slot.
+// ***********************************************************************
+var URL590g="http://www/education/courses/590g/";
+
+function sched() {
+//this[n++]= new u("Mon", "4:00", "590F<BR>Sieg 226</BR>".bold(), 3);
+this[n++]= new u("Mon", "12:00", "Step", 2);
+this[n++]= new u("Wed", "12:00", "Step", 2);
+this[n++]= new u("Fri", "12:00", "Step", 2);
+this[n++]= new u("Thu", "9:00", "At Home", 13);
+this[n++]= new u("Wed", "1:30", "Dr.'s App", 3);
+this[n++]= new u("Tue", "10:00", "Nadia's Music Lesson");
+//this[n++]= new u("Tue", "12:30", "<B>"+"590G".link(URL590g)+"<BR>MOR 226</B>", 2);
+//this[n++]= new u("Tue", "3:30", "519".bold(), 2);
+}
+
+var userSched = new sched();
+
+// stop hiding -->
+</SCRIPT>
+
+</HEAD>
+<FRAMESET ROWS="50%,*">
+<FRAME SRC="http://www/homes/chou/publiccal.shtml" NAME="pub"> <!-- public -->
+<FRAME SRC="mycalframe.shtml" NAME="cal"> <!-- personal calendar -->
+</FRAMESET>
+
+<NOFRAMES>
+<BODY>
+Sorry, Netscape 2.0 or later is required!
+</BODY>
+</NOFRAMES>
+
+</HTML>
+

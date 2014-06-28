@@ -1,0 +1,92 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 20:32:31 GMT
+Content-Type: text/html
+Content-Length: 3662
+Last-Modified: Monday, 21-Oct-96 23:59:06 GMT
+
+<HTML><HEAD>
+<TITLE> Program 2 - Interactive Hierarchical Modeling using Mesa </TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+<H1> Program 2 - Interactive Hierarchical Modeling using Mesa </H1>
+</CENTER>
+<P>
+<CENTER>
+<H2> Due - November 14 </H2>
+</CENTER>
+<P>
+
+<IMG SRC=robot3.gif ALIGN=RIGHT>
+
+You are to create an industrial-style robot arm similar to that in the
+picture above and a user interface which can be used to interactively
+control the arm.  You should also create a cube that can be picked up
+by the arm when both fingers of the arm are touching opposite faces of
+the cube.  You will create the robot arm as a hierarchical model based
+on only a few simple base primitives (perhaps only a cylinder).  You
+will use Mesa to control the viewing (camera) parameters and the
+lighting and material properties of the robot.  The robot should be
+rendered as a set of opaque closed objects, so your primitives will
+consist of filled surfaces and you will use back face culling and
+z-buffer based hidden surface removal for display.  Your lighting
+should be designed carefully to make the three dimensional shape of
+the robot clear.  You must use at least lambertian flat shading for
+the surfaces, you may choose to add smooth shading and specular
+lighting as well, but do not overdo the lighting at the expense of
+interaction speed.  The number of light sources used is also your
+choice.
+
+<P>
+
+Your model should be structured along the lines of the picture and should
+have the degrees of freedom indicated. Cylinder B should rotate about
+the common axis it shares with the base A.  The rest of the arm
+should rotate with B.  C should be fixed with respect to B except that it
+too can rotate about its axis.  D should be fixed with respect to
+C.  E should be able to translate along the common axis it shares with
+D and also rotate about its axis.  F should be fixed with respect to
+E and G and H should pivot about the ends of F so they can be used to
+grasp things.
+
+<P>
+
+Both the base of the robot and the movable cube will initially sit
+on a common table plane.  The cube should be positioned randomly within
+the reach of the arm.
+
+<P>
+
+The user interface of your program should have a mode in which the
+mouse can be used to move the viewing position with respect to the
+world containing the robot arm and cube.  You should also have a mode
+for controlling the arm.  In arm control mode, when the left mouse
+button is pressed, sideways motion of the mouse should rotate B and
+forward and back rotation of the mouse should rotate C.  When the
+middle button is held, sideways mouse motion should rotate E and back
+and forth motion should translate E.  The left and right arrow keys
+should always open and close the fingers.  The right mouse button
+should exit the mode or bring up a menu.  In viewing mode, when the
+left mouse button is held down, sidways mouse motion should move the
+observer longitudinally about an imaginary sphere centered on the
+robot arm and back and forth motion should move the view
+latitudinally.  With the middle mouse button down, mouse motions
+should lengthen and shorten the radius of the imaginary sphere.  The
+right button should behave as in arm control mode.
+You should also be able to reset the robot arm to its initial
+configuration.
+
+<P>
+
+Your user interface should be implemented using GLUT, the toolkit
+included for this purpose with our Mesa installation.  You can get
+a head start on this project by looking at pages 113-116 in the
+OpenGL Programmer's Guide and at the GLUT Walker demo in
+/p/src/Mesa-1.2.6/GLUT/progs/demos/walker
+(this is /p/src/Mesa-1.2.8/progs/demos/walker in the lab).
+Good luck and have fun!
+</BODY> </HTML>
+
+
+

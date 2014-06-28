@@ -1,0 +1,117 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 25-Nov-96 20:12:11 GMT
+Content-Type: text/html
+Content-Length: 3572
+Last-Modified: Thursday, 21-Nov-96 21:16:28 GMT
+
+<Html>
+<Head>
+<title> Howard Pu's Home Page </title>
+<Script>
+<!--
+function banner(msg,ctrlwidth) {
+        // bring msg width to form control width.
+        msg = " *** "+msg
+        newmsg = msg
+        while (newmsg.length < ctrlwidth) {
+                newmsg += msg
+        }
+        // Set up the form and form field.
+        document.write ('<!WA0><FORM NAME="Banner">')
+        document.write ('<CENTER><INPUT NAME="banner" VALUE= "'+newmsg+'" SIZE= '+ctrlwidth+'></CENTER>')
+        document.write ('</FORM>')
+        var bannerid = null
+        rollmsg()       //get the banner rolling
+}
+function rollmsg() {
+        NowMsg=document.Banner.banner.value
+        NowMsg=NowMsg.substring(1,NowMsg.length)+NowMsg.substring(0,1)
+        document.Banner.banner.value = NowMsg
+        bannerid=setTimeout("rollmsg()",250) 
+}
+var bannerid = 0
+// done hiding --></SCRIPT>
+</head>
+
+<Body background=pic/0101.gif>
+<center><img src="pic/cis-csu-hagar-ani.gif"> </img></center>
+<Center><img src="pic/colorbar.gif"></img></center> 
+<h1 align=center><i> Welcome to Howard Pu's Home Page </i></h1>
+
+<SCRIPT> 
+banner("For God so loved the world, that he gave his only begotten Son, that whosoever believes in him should not perish, but have ever lasting life. (John 3:16)",70)
+</SCRIPT> </p>
+  
+
+<img src="pic/pu1.gif" width=107 height=161 align=left> </img> 
+<UL type=square > 
+<B>
+<LI> 1974 BE Computer Science, <a href="http://www.tku.edu.tw">
+     University of Tamkang, Taiwan</a>
+<LI> 1976 MBA Management Information Systems, University of Tamkang
+<LI> 1988 Ph.D. Information Systems, <a href="http://www.pitt.edu">
+     University of Pittsburgh</a>
+<LI> 1988 Assistant Professor, <a href="http://cis.csuohio.edu">
+     Computer Information Science</a>, <a href="http://www.csuohio.edu">
+     CSU</a>
+<LI> 1995 Associate Professor, Computer Information Science, CSU
+</UL >
+<!-BR clear=left->
+<Hr SIZE=4>
+<TABLE BORDER=0 >
+<TR>
+<TH><!-- <img src="pic/bouncing_ball.gif" align=left hspace=10></img>< -->
+<TH><B><FONT SIZE=+1><a href="assign.html">CIS 306, Fall 1996</a>
+</B> 
+<TR>
+<TH><img src="pic/leopard.gif" align=middle  hspace=10></img>
+<TH><FONT SIZE=+1><a href="WhatsOutThere/homepage.htm">What's Out There</a>
+<TR>
+<TH>
+<TH><FONT SIZE=+1><a href="sybase.html">Using Sybase SQL Server on Grail </a>
+<TR>
+<TR>
+<TR>
+<TH>
+<TH><a href="http://www.coolnerds.com"><FONT SIZE=+1>
+    Advanced HTML/Images/JavaScript Learning </a>
+</Font>
+</Table>
+
+<img src="pic/jumping_ball.gif" align=right></img>  
+<HR>
+Dr. Howard Pu's Office: UC 483 Phone: (216)687-3685 Fax: (216)687-5448  
+<P>
+<img src="pic/earth.gif" align=middle></img>
+<a href="mailto:pu@cis.csuohio.edu">pu@cis.csuohio.edu</a>
+<BR>
+
+<P><h3>Please type any questions, comments, or suggestions
+on how I can improve this site to better serve my readers, in the box below.
+Don't forget to include your return e-mail address if you're posting a
+question.</h3></P>
+<br clear="both">
+<P><FORM METHOD=POST ACTION="mailto:pu@cis.csuohio.edu">
+<B><I><FONT COLOR="#800040">Comment,
+Question, Suggestion</FONT></I>:</B>
+<br><TEXTAREA NAME="Suggestion" ROWS=5 COLS=80></TEXTAREA><P>
+<B><I><FONT COLOR="#800040">My e-mail address is</FONT></I></B>
+<br><INPUT NAME="ReturnAdd" VALUE="" SIZE=72></P>
+
+<P><INPUT TYPE="SUBMIT" VALUE="Submit">
+<INPUT TYPE="RESET"></FORM>
+</P></CENTER>
+<P>
+
+<SCRIPT>
+<!-- 
+ RightNow = new Date()
+ document.write("<Center><H4>You visited this page at ",RightNow,
+   "<BR>")
+  document.write("This page was last modified at ",
+    document.lastModified,"<BR></H4></Center> ")
+//-->
+</SCRIPT>
+</Body>
+</Html>

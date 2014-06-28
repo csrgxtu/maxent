@@ -1,0 +1,137 @@
+Date: Thu, 21 Nov 1996 22:17:17 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<TITLE>590MV</TITLE>
+
+<H2>590MV: Global Resource Management in Distributed Systems</H2>
+
+<B>Professor:</B> Mary Vernon<br>
+<B>Time:</B> W 2:30-3:50pm<br>
+<B>Location:</B> LOW 220<p>
+
+<hr>
+
+<B>Jan 10</B>  Processor allocation:  gang scheduling, NOWs
+<UL>
+<LI> J. Ousterhout.  Scheduling techniques for concurrent systems.  In
+<I>3rd Int'l. Conf. on Distributed Systems,</I> pages
+22-30, Oct. 1982.
+<LI> R. H. Arpaci, A. C. Dusseau, A. M. Vahdat, L. T. Liu,
+T. E. Anderson, and D. A. Patterson.  The Interaction of Parallel and
+Sequential Workloads on a Network of Workstations.  <I>Proc. of
+the ACM SIGMETRICS Conf.</I>, 1995.
+</UL>
+
+<B>Jan 17</B>  Processor allocation:  dynamic equi-partitioning  (Thu Nguyen)
+<UL>
+<LI> A. Tucker and A. Gupta.  Process Control and Scheduling Issues
+for Multiprogrammed Shared-Memory Multiprocessors.  In <I>Proc.
+of the 12th ACM Symp. on Operating System Principles,</I> pages
+159-166, Dec. 1989.
+<LI> T. D. Nguyen, R. Vaswani, and J. Zahorjan.  <A
+HREF="papers/eff-sched.ps">Using Runtime Measured Workload
+Characteristics in Parallel Processor Scheduling</A>.  Univ. of
+Washington Technical Report, UW-CSE-95-10-01, Oct. 1995.
+</UL>
+
+<B>Jan 24</B>  Tutorial:  how applications use processors  (Shun-Tak Leung)
+<UL>
+<LI> Evangelos P. Markatos and Thomas J. LeBlanc,
+<A HREF="papers/markatos.s92.ps">Using Processor Affinity in Loop
+Scheduling on Shared-Memory Multiprocessors</A>.
+<I>Proc. Supercomputing '92,</I>, pp. 104-113, Nov. 1992.
+(Expanded version in
+<I>IEEE Trans. on Parallel and Distributed Systems</I>, pp. 379-400, Apr. 1994.)
+<LI> Hans P. Zima and Barbara Mary Chapman,
+<A HREF="papers/zima.ps">Compiling for Distributed-Memory Systems</A>,
+<I>Proc. of the IEEE,</I>, Vol 81, No. 2, pp. 264-287,
+Feb. 1993.
+<LI> G. Edjlali, G. Agrawal, A. Sussman, J. Saltz,
+<A HREF="papers/saltz.ps">Data Parallel
+Programming in an Adaptive Environment</A>.
+<I>Proc. 9th Int'l. Parallel Processing Symp.</I>, Santa Barbara, April 1995.
+</UL>
+
+<B>Jan 31</B> Tutorial:  processor allocation policy comparisons
+<UL>
+<LI>Shikharesh Majumdar, Derek L. Eager, Richard B. Bunt,
+Scheduling in Multiprogrammed Parallel Systems.
+<I>Proc. 1988 ACM Sigmetrics Conference on Measurement and Modeling of
+Computer Systems</I>, Santa Fe, NM, pp. 104-113, May 1988.
+<LI>Eric W. Parsons, Kenneth C. Sevcik,
+<A HREF="papers/PaSe95.ps">Multiprocessor Scheduling for High-Variability
+Service Time Distributions</A>.
+<I>Proc. IPPS '95 Workshop on Job Scheduling Strategies for Parallel Systems
+</I>, Santa Barbara, CA, pp. 127-145, Apr. 1995.
+<LI> Dror G. Feitelson, Bill Nitzberg,
+Job Characteristics of a Production Parallel Scientific Workload on the
+NASA Ames iPSC/860.
+<I> Proc. IPPS '95 Workshop on Job Scheduling Strategies for Parallel Systems
+</I>, Santa Barbara, CA, pp. 337-360, Apr. 1995.
+</UL>
+
+The following will also be covered, but are not required reading:
+
+<UL>
+<LI>S. L. Leutenegger, M. K. Vernon,
+Performance of Multiprogrammed Multiprocessor Scheduling Policies.
+<I>Proc. 1990 ACM SIGMETRICS Conf. on Measurement and Modeling of
+Computer Systems</I>, pp. 226-236, May 1990.
+<LI>C. McCann, R. Vaswani, J. Zahorjan,
+A Dynamic Processor Allocation Policy for Multiprogrammed, Shared Memory
+Multiprocessors.
+<I>ACM Transactions on Computer Systems</I>, Vol. 11, No. 2, May 1993.
+</UL>
+
+<B>Feb 7</B>  Processor allocation:  demand based co-scheduling
+<UL>
+<LI> Patrick G. Sobalvarro, William E. Weihl,
+<A HREF="http://www.psg.lcs.mit.edu/~pgs">Demand-based Coscheduling of
+Parallel Jobs on Multiprogrammed Multiprocessors.</A>,
+<I>Proc. IPPS '95 Workshop on Job Scheduling Strategies for Parallel Systems
+</I>, Santa Barbara, CA, Apr. 1995.
+</UL>
+
+<B>Feb 14</B>  Impact of paging, page migration
+<UL>
+<LI> D. C. Burger, R. S. Hyder, B. P. Miller, D. A. Wood,
+<A HREF="papers/sc94_paging.ps">Paging Tradeoffs in Distributed-Shared-Memory
+Multiprocessors.</A>
+<I> Proc. Supercomputing '94</I>, Nov. 1994.
+<LI> Rohit Chandra, Scott Devine, Ben Verghese, Anoop Gupta, Mendel Rosenblum,
+<A HREF="papers/chandra.ps">Scheduling and Page Migration for Multiprocessor
+Compute Servers.</A>
+<I> Proc. 6th Int'l. Conf. on Architectural Support for Programming
+Languages and Operating Systems (ASPLOS-VI)</I>,
+San Jose, CA, pp. 12-24, Oct. 1994.
+</UL>
+
+<B>Feb 21</B>  Coordinated scheduling of processors and memory
+<UL>
+<LI> G. Alverson, S. Kahan, R. Korry, C. McCann, B. Smith,
+<A HREF="papers/tera.3.ps">Scheduling on the Tera MTA.</A>
+<I>Proc. IPPS '95 Workshop on Job Scheduling Strategies for Parallel Systems
+</I>, Santa Barbara, CA, Apr. 1995.
+<LI> Eric. W. Parsons, Kenneth C. Sevcik,
+Coordinated Allocation of Memory and Processors in Multiprocessors.
+October 15, 1995.
+</UL>
+
+<B>Feb 28</B>  Demand-based co-scheduling, discussion of open problems
+<UL>
+<LI> A. Dusseau, R. H. Arpaci, D. E. Culler,
+<A HREF="http://www.cs.berkeley.edu/~dusseau/Papers/sigmetrics96.ps">Effective
+Distributed Scheduling of Parallel Workloads.</A>
+<I>Proc. 1996 ACM Sigmetrics Conf. on Measurement and Modeling of Computer
+Systems</I>, Philadelphia, PA, June 1996 (to appear).
+<LI> D. G. Feitelson and L. Rudolph,
+Coscheduling Based on Runtime Identification of Activity Working Sets.
+<I>Int'l. J. of Parallel Programming
+</I>, Vol. 23, No. 2, pp. 135-160, 1995.
+</UL>
+
+<B>Mar 6</B>  Theoretical Results on Processor and Memory Allocation (A. Karlin)
+<UL>
+Papers TBA
+</UL>

@@ -1,0 +1,202 @@
+Date: Tue, 14 Jan 1997 22:51:36 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+Content-length: 7928
+Last-modified: Fri, 22 Nov 1996 22:40:16 GMT
+
+<html>
+ 
+<title>CS122 Programming Assignment #4</title>
+
+<body>
+
+<center>
+<h1>CS122 - Computer Science II</h1>
+<h2>Fall, 1996</h2>
+<h2>Programming Assignment #4</h2>
+</center>
+
+<h3>Assigned: Friday, November 22nd, 1996</h3>
+<h3>E-mail Proposal Due: Wednesday, November 27th, 1996</h3>
+<h3>External Documentation Due: Tuesday, December 3nd, 1996</h3>
+<h3>Program Listing Due: Tuesday, December 10th, 1996</h3>
+<h3>Scheduled Demonstrations: Tuesday, December 13th, 1996, and following</h3>
+
+** NOTE:  Standard late penalties will apply after these dates;
+however, no work will be accepted after the last day of classes,
+Friday, December 13th, 1996.  **
+
+<p>
+
+Your last programming assignment this semester is to design and
+implement a C++ program that visually demonstrates the ideas underlying
+one of the advanced sorting techniques we are studying in class.
+
+<p>
+
+Here are the requirements:
+
+<ul>
+
+<li>Your program must be written in C++.
+
+<li>You are not required to use the SAC computers, but rather
+can use any of the computer systems that are readily available on
+campus, including (but not limited to) the SAC computers, the
+IBM PC's or Macintoshes in the Library Microlabs, or the NeXT
+computers.  (If you would like to use a computer system other than one
+of these 4, check with me first.)   Whatever system you choose, it must
+have some way of proving to me that it was able to compile your C++
+program (for example, by creating a program listing), and must be
+available on-campus for you to demonstrate your program for me.
+
+<li>You must choose one of the advanced sorts we are studying in class,
+namely Quicksort, Heapsort, or Shellsort, to show in your program.
+
+<li>You must design some method of visually demonstrating, through your
+C++ program, the ideas that underlie your chosen sort.  There are
+*many* possible different designs -- here are just three ideas:
+
+   <ul>
+
+   <li>Using an IBM PC with its graphics capabilities, along with Microsoft
+   C++ or Borland C++, you could demonstrate a Heapsort.  First, you
+   could construct a list of 500 randomly chosen integers, graph them
+   as a "cloud of points" (with their list index positions plotted
+   along the horizontal axis and their values plotted along the
+   vertical axis), and then apply a Heapsort to the list and show how
+   the cloud gradually changes shape, first to that of a triangular
+   heap, and from there to the (nearly straight) diagonal line that is
+   the signature of a sorted list.  At first, all points could be drawn
+   red (for unsorted); as you swap two points they could briefly blink
+   yellow, then back to red; and finally, when a point is known to have
+   reached its final position in the sorted list, it could permanently
+   become green.  You could show running statistics on how many total
+   comparisons and swaps were made, and how much time the the sort is
+   taking.
+
+   <li>Like the above, showing a cloud of points being sorted by, say, 
+   Shellsort, but using SAC, Unix, GNU C++ (g++), and the CURSES
+   screen-control library.  (CURSES was the library I used to demonstrate
+   the interactive workings of the MazeCrawler from Program #3.)  You
+   won't be able to show as many points in the cloud, being limited
+   to a maximum of 80 by the standard monitor screen's 80 columns, but 
+   the effect would be similar.  Instead of color, you could use 
+   the special hilighting features made available by CURSES.
+   
+   <li>Using SAC, Unix, GNU C++ (g++), and regular "cout" statements to 
+   demonstrate a Quicksort.  First, you could ask the user to choose
+   between several possible pivot-picking strategies (we'll discuss what
+   these are in lecture soon, which include picking the
+   1st, middle, or last item on list, or an item chosen at random, or
+   the median value of three items chosen at random, etc.).  Then you
+   could ask the user to enter an unsorted list of up to up to 20
+   numbers:  say the user entered the 20 numbers 21, 47, 16, ... , 32,
+   12.  You could then visually display the list on the screen as a
+   series of text bars:
+
+<pre>
+              1 (31) XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+              2 (47) XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+              3 (16) XXXXXXXXXXXXXXXX
+              .
+              .
+              .
+             19 (32) XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+             20 (12) XXXXXXXXXXXX
+</pre>
+
+   where the far-left-hand number is the position of the item in the
+   list, and the next number is the value of the item.  Your program
+   could pause, and once the user signals that he/she is ready to
+   continue by pressing the enter key, you would then inform the user
+   of the next step involved in performing your Quicksort ("Now we pick
+   a pivot, namely the item in position #1, which is 21, and use it to
+   partition the list."), and would then visually display your list
+   again.  You could display the entire list each time, but could have
+   some special way of marking that portion of the list that is
+   currently undergoing partitioning (say, by drawing it using capital
+   X's, and drawing the rest of the list using small x's).  This
+   process of drawing, pausing, explaining, and re-drawing would
+   continue until the entire list was sorted.  You could then provide
+   some statistics on how good the chosen pivot-picking strategy was
+   for this particular list (e.g.  "During partitioning, the average
+   size of the larger of the two partitions formed contained 58% of the
+   available list items, which is 8% above the optimal value of
+   50%.").
+
+   </ul>
+
+<li>I encourage you to come up with your own design, or you may use one
+of the two listed above.  Your goals should be to:
+
+   <ul>
+
+   <li>Be creative and innovative.
+
+   <li>Show off your knowledge of programming in C++ and of your chosen
+   sort.
+
+   <li>Produce an attractive and informative demonstration program.
+
+   </ul>
+
+<li>Your program must actually implement your chosen sort; that is to
+say, it must be capable of applying your chosen sort to *many*
+different lists of numbers, not just the same old list over and over.
+Your program must have some means of acquiring diverse lists of
+numbers:  by allowing the user to enter the list, or by creating the
+list randomly and in a different fashion each time it is run, etc.  You
+can, however, place some reasonable constraints on the size of the list
+and on the range of the values in the list.
+
+<li>Your program must also teach the sort by indicating *both* the strategy
+used by the sort to order the entire list, and also the strategy used
+by the sort in a single sort pass.
+
+<li>Here is what you'll need to submit to complete the assignment:
+
+<ol>
+
+<li>You must e-mail me a proposal which specifies:
+
+<ul>
+
+<li>which computer system you have chosen to use
+
+<li>which make/version of C++ compiler software you will be using
+
+<li>which of the three sorts you have chosen to work with
+
+<li>how you are going to visually demonstrate the way your chosen sort works  
+
+</ul>
+
+<li>You must turn in standard External Documentation, including
+Specifications, Algorithm, and Justification.  In the place of Proposed
+Testcases, you *must* include some extensive visual samples (hand-drawn
+are OK here) of how your demonstration program will look when it is
+run.
+
+<li>You must turn in listing for your program, and have some method of
+indicating that your program compiled with no errors.
+
+<li>In the place of program executions, you must schedule a 15 minute
+demonstration of your program with me.  You must have submitted your
+proposal, external documentation, and program listing prior to your
+demonstration.  I'll talk more during class about how to go about
+scheduling a demonstration with me.
+
+</ol>
+
+<li>For extra credit, you can add demonstrations of additional sorts to
+your program, so that the interesting aspects of more than one sort can
+be seen and studied.
+
+</ul>
+
+Good luck!
+
+</body>
+
+</html>

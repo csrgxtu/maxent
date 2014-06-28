@@ -1,0 +1,102 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 19:46:32 GMT
+Content-Type: text/html
+Content-Length: 3161
+Last-Modified: Friday, 26-Apr-96 14:52:16 GMT
+
+<html>
+<head>
+<title>Ride To Heaven</title>
+<body>
+<h1>Ride To Heaven
+<br>
+</h1>
+<h2>CS418 Final Project - Spring 1996
+<br>
+<a>Kartik Kapadia</a>
+ 
+<br>
+<a>Amith Yamasani
+<br>
+</a>
+</h2>
+<br>
+<h3>Storyline
+<br>
+</h3>
+This is a simulation of a magnetic levitation train travelling over the sea
+ (ofcourse on tracks). This setting is some time in the future when Ithaca gets
+ submerged under the sea and everyone lives under water, surfacing only to
+ catch the Ithaca Transit Train. The journey is very exciting with a lot of
+ scenic sights along the way. So sit back, relax and enjoy the ride - you may
+ never come back......
+<br>
+<br>
+<h3>Now for some technical stuff:
+<br>
+</h3>
+<br>We have used most of the concepts that we learned in CS 417/418 as well as
+ some tricks of our own. This includes parametric surfaces, hierarchical
+ modelling, texture mapping, physics based animation, fractals, etc.
+<br>
+<br>The DX program is structured in a modular way, with macros for almost all
+ objects in the scene. The program itself is hierarchical in nature. Some of
+ the interesting modelling that we have done is :
+<br>
+<br>
+<h4>Dolphin
+<br>
+</h4>
+We modelled a realistic looking dolphin (well almost!) after hours of web
+ surfing for dolphins. The main body as well as the fins and beak were made
+ from parametric surfaces. We started with a kind of cylindrical surface,
+ flattened it a bit and then modified the radii at different points using a
+ manually entered list of numbers. A random colormap gave it a better
+ appearance. In order to warp the hierarchically modelled object, it was
+ necessary to write our own transforms which physically alter the vertices and
+ then warp them.
+<br>
+<br>
+<img src="Ride.Amith.Kartik.CS418.dolphin.gif">
+<h4>Fractal Tree
+<br>
+</h4>
+We built a recursive tree using loop structures in DX. The method used was
+ simple and does not support much randomness in the structure of the tree. But
+ the effect is good enough for a reasonably complex scene. The basic idea is to
+ make a simple branch, duplicate it around an axis and cache this structure for
+ the next generation branch (branch made up of smaller branches).
+<br>
+<br>
+<h4>Train</h4>
+The train is parametrically modelled, with tinted glass windows and sliding
+ doors. It is a very good example of hierarchical modelling. It has volume
+ rendered flames for jets on the engine. The motion of the train is controlled
+ by the equation S=ut+1/2 a.t^2. It decelerates to stop at the station and then
+ accelerates off into space (courtesy, the booster jets). Care was taken to
+ align the train carriages on the tracks at all times. 
+<br>
+<br>
+<img src="Ride.Amith.Kartik.CS418.train.gif">
+<h4>Texture maps
+<br>
+</h4>
+We used plenty of texture mapping to enhance the visual effects, though it was
+ expensive in terms of computing power.
+<br>
+<br>
+<img src="Ride.Amith.Kartik.CS418.island.gif">
+<h4>Camera movement 
+<br>
+</h4>
+This was simplified by specifying key positions and then in-betweening them to
+ get the actual To and From positions. 
+<br>
+<br>
+<img src="Ride.Amith.Kartik.CS418.divider.gif" width=605 height=24>
+<br>
+<br>
+<br>TIME: 13:42:42
+<br>DATE: 04/24/96
+</html>

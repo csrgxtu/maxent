@@ -1,0 +1,70 @@
+Date: Tue, 26 Nov 1996 00:57:45 GMT
+Server: NCSA/1.5.1
+Content-type: text/html
+
+
+<HTML><HEAD><TITLE>Graph Theory</TITLE></HEAD>
+<BODY>
+
+<H1>Graph Theory </H1>
+ <P> 
+Primary Investigators:  <!WA0><A
+HREF="http://www.cs.usask.ca/homepages/faculty/cheston/Cheston.html"> Grant Cheston </A>
+and <!WA1><A HREF="http://www.cs.usask.ca/homepages/faculty/keil/Keil.html"> Mark Keil </A> 
+
+
+<H2> Algorithmic Development in Restricted Classes of Graphs
+</H2>
+<P>Many problems in graph theory are NP-complete on general graphs. In
+practice one rarely has to contend with general graphs; often
+information is available to limit the graphs to a restricted class.  In
+particular, graphs which arise from geometric models are common.  Also
+there are problems that can be solved efficiently for some of these restricted
+classes (for example, maximum clique in circle graphs).  In this project we
+employ various techniques including a generalized form of dynamic
+programming to design polynomial time algorithms for problems on various
+restricted classes of graphs.   
+</P>
+<P>Sometimes graph parameters that are not generally equal are equal
+for certain restricted classes . This can be useful in showing the
+problems are NP-complete or in developing algorithms.  Finally, it is
+useful to study new classes of  graphs, and determine for a wide variety
+of problems whether they are NP-complete or not . 
+</P>
+</P>
+<H2> Even Adjacency Split of a Graph </H2>
+<P>The objective is to partition the vertices of a graph into two sets
+S and T such that each vertex of one set is adjacent to a vertex in the
+other set, and the two sets are within one of having the same size.
+Determining whether a graph has an Even Adjacency Split (EAS) is
+NP-complete for general graphs.  Nevertheless there is an O(n<sup>2</sup>)
+algorithm for trees, and a linear time algorithm has been found that
+handles graphs where no vertex is adjacent to more than two vertices of
+degree 1.  
+</P>
+</P>
+<H2> Fractional Graph Parameters </H2>
+<P>For some time, it has been useful to describe graphs in terms of a
+variety of parameters, for example the chromatic number, the clique
+number, the independence number, the matching number, and the domination
+number. All these parameters can be expressed in terms of integer
+functions on the graphs. Recently several people have started to
+investigate fractional variations of these parameters where the
+functions map to the [0,1] real interval rather than the set of
+integers. This project has been investigating the Upper Fractional
+Domination Number, GAMMA<SUB>f</SUB>.   We have shown that GAMMA<SUB>f</SUB> is
+always computable and rational, but in general it is NP-hard to compute
+it. For trees, cycles, simplicial graphs, and 2-trees, we have shown
+that GAMMA<SUB>f</SUB> = GAMMA (the corresponding integer problem), 
+and this value is easy to compute. 
+Also we have shown that for a large subclass of the class of Perfect
+Graphs (the subclass is called the Strongly Perfect Graphs), four
+parameters are equal.  These four parameters are beta, GAMMA,
+GAMMA<SUB>f</SUB>, and IR, where beta is the
+Independence number and IR is the Upper Irredundance number.  Other
+classes of graphs have also been studied to
+determine whether these parameters are equal, but generally they are
+not equal. 
+</P>
+</BODY>
+</HTML>

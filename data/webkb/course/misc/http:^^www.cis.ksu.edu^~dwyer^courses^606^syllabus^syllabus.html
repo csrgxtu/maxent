@@ -1,0 +1,175 @@
+Date: Wed, 20 Nov 1996 22:39:22 GMT
+Server: NCSA/1.5.1
+Last-modified: Wed, 20 Nov 1996 16:17:39 GMT
+Content-type: text/html
+Content-length: 5729
+
+<HEAD>
+<TITLE>CIS 606 Translator Design I Fall 1996</TITLE>
+</HEAD>
+<BODY><P>
+<H1>CIS 606<br> Translator Design I              Fall 1996</H1>
+<hr>
+<hr>
+<i><b>What's New on these Web Pages</b></i>
+<ul>
+<li> Phase 4 assignment is online.
+<li> Phase 2 solution is online.
+</ul>
+<HR>
+<HR>
+
+<P>
+<HR>
+<P>
+<DL ><DT>OVERVIEW
+<DD>This course explores basic problems in the construction
+of programming language translators.  We study the theoretical foundations
+of translators and common implementation techniques.  The course will
+focus on compilers for high-level languages, but we will also look
+at applying translation techniques to a variety of <em>little</em> languages.
+<P>
+<HR>
+<P>
+<DT>LECTURES
+<DD>Nichols 127, MWF 10:30-11:20 am
+<P>
+<HR>
+<P>
+<DT>INSTRUCTOR
+<DD>Prof. Matt Dwyer
+<pre><TT> 
+Office:       Nichols 324E
+Email:        dwyer@cis.ksu.edu
+WWW:          http://www.cis.ksu.edu/<code>~</code>dwyer
+Phone:        532-6350
+Office Hours: MW 2:30-3:30, Thu 2:00-3:00
+</TT></PRE>
+<P>
+<HR>
+<P>
+<DT>TEXT
+<DD><b>Compilers : Principles, Techniques, and Tools</b>, Aho, Sethi, and Ullman, Addison-Wesley
+<P>
+<HR>
+<P>
+<DT>ADDITIONAL RESOURCES
+<DD>Web pages for course will 
+include tool documentation,
+assignments, solutions, test cases, and
+<!WA0><a href="http://www.cis.ksu.edu/~dwyer/courses/606/lectures/lectures.html">
+lecture notes</a>
+<P>
+<HR>
+<P>
+<DT>PREREQUISITES
+<DD>CIS 500
+<P>
+<HR>
+<P>
+<DT>REQUIREMENTS
+<DD>The course will consist of a mixture of different kinds of
+assignments.  A major component of your grade will be determined by
+a large multi-part compiler implementation 
+<!WA1><a href="http://www.cis.ksu.edu/~dwyer/courses/606/project/project.html">
+project</a>.  There will
+be an open-book open-note in-class 
+<!WA2><a href="http://www.cis.ksu.edu/~dwyer/courses/606/quizzes/quizzes.html">
+final exam</a>.
+Occasional short 
+<!WA3><a href="http://www.cis.ksu.edu/~dwyer/courses/606/homework/homework.html">
+homework assignments</a> and closed-book closed-note in-class 
+<!WA4><a href="http://www.cis.ksu.edu/~dwyer/courses/606/quizzes/quizzes.html">
+quizzes</a> will be given.   The goal of
+these assignments is to provide feedback to you on how you are
+progressing in understanding the course material.  It also provides
+valuable feedback to me on how you are doing so that I can tailor
+the course to maximize the benefit to the class.
+The weighting used for the final grade will be : 50%project,
+30%final exam and 20%homeworks and quizes.
+<P>
+The project consists of implementing a compiler for a 
+Pascal-like language with classes.
+You may write your compiler in C, C++, Pascal or Ada (if you really want
+to write it in another language come and talk to me).  
+I expect the code to be clearly organized and documented
+(I am <b>very</b> serious about this).  
+If you use either C, C++ or Ada you can write your lexical analyzer using
+a scanner generator, such as 
+flex (see "man flexdoc" for details).
+If you use another
+language you will have to build the lexical analyzer by hand.
+Regardless of the implementation language you will build a top-down
+recursive descent parser.  This parser will produce an abstract
+syntax tree intermediate representation from which code will be generated.
+You may use the
+<!WA5><A HREF="http://www.cs.uni-sb.de/RW/users/sander/html/gsvcg1.html">VCG</A>
+tool to quickly and easily produce postscript depictions of your syntax trees.
+Your compiler will generate assembly code for the MIPS R2000/R3000.  
+Generated programs will be executed on a MIPS simulator called 
+<!WA6><a href="http://www.cis.ksu.edu/~dwyer/courses/606/spim/spim.ps">
+spim</a>.
+If you don't already know about machine architecture and assembly language
+programming you might start to browse the spim document.
+<P>
+The compiler will be implemented in four phase:
+<OL><DT><DD> Scanner with identifier table
+<DT><DD> Parser with type checking
+<DT><DD> Embellish Parser to build IR 
+<DT><DD> <em>Optimize IR</em>
+<DT><DD> Code Generator
+</OL>
+<P>
+The project can be implemented either independently or in pairs.  
+Those who chose to work in pairs will be expected to perform some
+local optimization of the generated code.  This will involve building
+an additional phase to perform the IR optimization.
+<P>
+In part,	
+this is an exercise in building a large software system with reasonably
+complicated component interactions.   You will not be graded on the quality
+of the generated code.  Correctness of the code, however, is very important.
+I will make a number of test files available prior to the due date of
+each stage.  You are encouraged to use these to test your implementation.
+I may execute your projects on those (and other) test files.
+You may also create tests of your own.  If there is sufficient interest
+we can create a class wide collection of test cases for all to use.
+<P>
+All students are encouraged to talk to each other about
+compiler concepts, design alternatives, implementation details, etc. 
+The final product should be of your own creation.  If you copy other's
+work you will not be prepared for the exam and you will not maximize
+the benefit you get from this course.
+<P>
+<HR>
+<P>
+<DT>SCHEDULE
+<DD>
+<P><!WA7><IMG ALIGN=BOTTOM ALT="" SRC="http://www.cis.ksu.edu/~dwyer/courses/606/syllabus/table.gif"><P>
+<P>
+ </DL>
+<P>
+<HR>
+<P>
+<DT>ACADEMIC HONESTY
+<DD>
+<P>
+On all assignments, you are expected to do your own work. 
+From the Provost's office: "Plagiarism and cheating are serious offenses 
+and may be punished by failure on the exam, paper or project, failure in 
+the course and/or expulsion from the University. For more information 
+refer to the `Academic Dishonesty' policy in `Inside KSU'".
+<P>
+<HR>
+<UL> 
+
+<hl>
+</font>
+
+<P><ADDRESS>
+Matt Dwyer (<!WA8><a href=
+"http://www.cis.ksu.edu/htbin/finger?dwyer@cis.ksu.edu">dwyer@cis.ksu.edu
+</a>)
+Last updated 10 Aug 1996
+</ADDRESS>
+</BODY>

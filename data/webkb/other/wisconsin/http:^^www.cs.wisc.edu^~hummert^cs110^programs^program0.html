@@ -1,0 +1,137 @@
+Date: Mon, 11 Nov 1996 17:21:46 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 04 Nov 1996 18:14:56 GMT
+Content-length: 5768
+
+<HTML>
+<HEAD>
+<TITLE>CS110 Program 0</TITLE>
+</HEAD>
+<BODY>
+<H2>Program 0</H2>
+Program 0 is designed to give you practice editing, compiling, and executing
+a program.  Before doing this assignment you may want to read our web
+page on <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~cs302/C++/Introduction/MSwindows.html">
+Microsoft Windows</A>. You are also advised to go through the 
+<!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF = "http://www.cs.wisc.edu/~cs302/C++/Borland4.5/intro.html"> introductory tutorial of Borland C++</A><P>
+Enter the following C++ program as it appears below, <STRONG>between</STRONG> the lines of 
+asterisks.  It will run as written, so you need not modify the program.
+<P>
+<STRONG>Please remember to put your name, login ID (not your password!)
+and your course section number
+in the program documentation (comments at the top of the program).</STRONG>
+<P>
+If you want to save yourself some typing, you can click
+<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~hummert/cs110/programs/program0.cpp">here</A> and then go to the "File" menu on
+Netscape and do a "Save as...".  This will let you save the program
+listed below without having to type it in.  You will still need edit
+the file to put in your name, etc.
+
+
+<H3>The Program:</H3>
+
+<PRE>
+*******************************************************************************
+
+/*
+Name: [your name here]
+Login: [your login ID here]
+Section: [your class section number here]
+
+This program computes the gross wages, income taxes, and net wages for
+an employee when given the pay rate and number of hours worked.
+
+*/
+
+#include &lt;iostream.h&gt;	// This file must be included to do input & output.
+
+main()
+{
+	int hours;		// number of hours worked in the week
+	float payRate;		// rate of pay in dollars per hour
+	float taxRate;		// income tax rate
+	float netWages;		// net pay for the week (pre-tax)
+	float taxes;		// amount paid in income tax
+	float grossWages;	// gross pay for the week (post-tax)
+
+	taxRate = .175;		// set the tax rate to 17.5%
+
+	cout << "Enter the number of hours worked: ";
+	cin >> hours;
+
+	cout << "Enter the hourly rate of pay: $";
+	cin >> payRate;
+
+	// compute the taxes and gross and net wages
+	netWages = hours * payRate;
+	taxes = netWages * taxRate;
+	grossWages = netWages - taxes;
+
+	// print out the net wages, taxes, and gross wages
+	cout << "Net wages: " << netWages << "\n";
+	cout << "Taxes: " << taxes << "\n";
+	cout << "Gross wages: " << grossWages << "\n";
+}
+*******************************************************************************
+</PRE>
+
+<H3>Borland C++ 4.5 Hints</H3>
+
+Log into your account, and start Borland C++ <B>4.5</B> which is found
+in the <B>CSApps</B> program group.  Make sure you are using <B>4.5</B> instead
+of 4.0 -- your CSApps program group may contain both.  When you have
+Borland up and running, you want to first create a file to write your 
+program in.  You click on <B>File</B> in the left corner of the screen, and 
+choose <B>New</B> within the menu that drops down.  An empty box will appear on
+your screen; this is where you will write your program.  You will want to 
+save your programs often.  The first time you save it, choose <B>Save as</B>
+within the <B>File</B> menu.  This will ask you to name the file.  Remember,
+since this will be a program file, the name must end with <B>.cpp</B>.  The 
+second time you save, you can just choose <B>Save</B>, and it will be done
+automatically.  To access a file that you have previously saved to the disk, 
+simply choose <B>Open</B> from the <B>File</B> menu and then let the computer 
+know what file you wish to access.<P>
+
+Once you have the program typed into the file window, and you have saved
+the program in case something unsavory happens, then you just need to press
+the little lightening bolt button near the top of the screen.  Your program
+will be compiled, linked, and run.  If you mis-typed something, chances
+are you will get a syntax error.  Go back to the program, check your typing,
+and when the mistake is found, change it and run the program again.<P>
+
+When the program runs, it will create a window, and prompt you to enter
+a number of hours worked and an hourly rate of pay.  It will then compute
+the taxes and net and gross salaries using these numbers.
+You know that 
+the program has run to completion by the appearance of the word
+<B> INACTIVE </B> at the top of the window. 
+
+<H3>Turning in the assignment</H3>
+When you turn in programs, I am going to want you to bring a printed copy
+of the program to me at the beginning of class on the day it is due.  I am
+also going to want an electronic copy dropped into a secure area of the
+disk (see below for details).<P>
+
+To print a copy of the program, go back to the <B>File</B> menu, and choose 
+<B>Print</B>.  Click on <B>OK</B> in the little window that appears.  The 
+pages will automatically be printed in the printer room across the hall 
+(room 1359).  You can determine which printer will do the printing by checking 
+out the <B>Check Print Queues</B> icon in the <B>Administration</B> folder.  
+(It may take a few seconds to show your name).<P>
+
+To hand in an electronic copy of the program, you must use the 
+<B>File Manager</B> program in the <B>Main</B> group.  However, this
+ time you will be 
+dropping the program from your directory into a handin directory.  You can 
+locate the correct handin directory for you by first going to the <B>r</B> 
+drive, opening the <B>handin</B> folder, finding another folder marked 
+<B>hummert</B> and opening that, and then locating the final folder that 
+contains your login name.  You are to drop your <B>program0.cpp</B> file 
+into the folder with your name.<P>
+
+Even though this program is not graded, it is important that you turn the 
+electronic as well as a printed copy of the assignment in to me correctly (so I can make sure there are no problems).  
+</BODY>
+</HTML>
+

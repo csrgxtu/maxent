@@ -1,0 +1,429 @@
+<HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.45
+     from schintro.txi on 30 October 1996 -->
+
+<TITLE>An Introduction to Scheme and its Implementation - Table of Contents</TITLE>
+</HEAD>
+<BODY>
+<H1>An Introduction to Scheme and its Implementation</H1>
+<P>
+<UL>
+<LI><A NAME="SEC1" HREF="schintro_2.html#SEC1">Overview</A>
+<UL>
+<LI><A NAME="SEC2" HREF="schintro_3.html#SEC2">Scheme: A Small But Powerful Language</A>
+<LI><A NAME="SEC3" HREF="schintro_4.html#SEC3">Who Is this Book For?</A>
+<LI><A NAME="SEC4" HREF="schintro_5.html#SEC4">Why Scheme?</A>
+<LI><A NAME="SEC5" HREF="schintro_5.html#SEC5">Why Scheme Now?</A>
+<LI><A NAME="SEC6" HREF="schintro_6.html#SEC6">What this Book Is Not</A>
+<LI><A NAME="SEC7" HREF="schintro_7.html#SEC7">Structure of this Book</A>
+</UL>
+<LI><A NAME="SEC8" HREF="schintro_8.html#SEC8">Introduction</A>
+<UL>
+<LI><A NAME="SEC9" HREF="schintro_9.html#SEC9">What is Scheme? (Hunk A)</A>
+<LI><A NAME="SEC10" HREF="schintro_10.html#SEC10">Basic Scheme Features</A>
+<UL>
+<LI><A NAME="SEC11" HREF="schintro_11.html#SEC11">Code Consists of Expressions</A>
+<UL>
+<LI><A NAME="SEC12" HREF="schintro_12.html#SEC12">Parenthesized Prefix Expressions</A>
+<LI><A NAME="SEC13" HREF="schintro_13.html#SEC13">Expressions Return Values, But May Have Side-Effects</A>
+<LI><A NAME="SEC14" HREF="schintro_14.html#SEC14">Defining Variables and Procedures</A>
+<LI><A NAME="SEC15" HREF="schintro_15.html#SEC15">Most Operators are Procedures</A>
+<LI><A NAME="SEC16" HREF="schintro_16.html#SEC16">Definitions vs. Assignments</A>
+<LI><A NAME="SEC17" HREF="schintro_17.html#SEC17">Special Forms</A>
+<LI><A NAME="SEC18" HREF="schintro_18.html#SEC18">Control Structures are Expressions</A>
+</UL>
+<LI><A NAME="SEC19" HREF="schintro_19.html#SEC19">The Boolean Values <CODE>#t</CODE> and <CODE>#f</CODE></A>
+<LI><A NAME="SEC20" HREF="schintro_20.html#SEC20">Some Other Control-Flow Constructs: <CODE>cond</CODE>, <CODE>and</CODE>, and <CODE>or</CODE></A>
+<UL>
+<LI><A NAME="SEC21" HREF="schintro_21.html#SEC21"><CODE>cond</CODE></A>
+<LI><A NAME="SEC22" HREF="schintro_22.html#SEC22"><CODE>and</CODE> and <CODE>or</CODE></A>
+</UL>
+<LI><A NAME="SEC23" HREF="schintro_23.html#SEC23">Comments (Hunk C)</A>
+<LI><A NAME="SEC24" HREF="schintro_24.html#SEC24">A Note about Parentheses and Indenting</A>
+<UL>
+<LI><A NAME="SEC25" HREF="schintro_25.html#SEC25">Let Your Editor Help You</A>
+<LI><A NAME="SEC26" HREF="schintro_26.html#SEC26">Indenting Procedure Calls and Simple Control Constructs</A>
+<LI><A NAME="SEC27" HREF="schintro_27.html#SEC27">Indenting <CODE>cond</CODE></A>
+<LI><A NAME="SEC28" HREF="schintro_28.html#SEC28">Indenting Procedure Definitions</A>
+</UL>
+<LI><A NAME="SEC29" HREF="schintro_29.html#SEC29">All Values are Pointers to Objects</A>
+<UL>
+<LI><A NAME="SEC30" HREF="schintro_30.html#SEC30">All Values are Pointers</A>
+<LI><A NAME="SEC31" HREF="schintro_31.html#SEC31">Implementations Optimize Away Pointers</A>
+<LI><A NAME="SEC32" HREF="schintro_32.html#SEC32">Objects on the Heap</A>
+</UL>
+<LI><A NAME="SEC33" HREF="schintro_33.html#SEC33">Scheme Reclaims Memory Automatically</A>
+<LI><A NAME="SEC34" HREF="schintro_34.html#SEC34">Objects Have Types, Variables Don't</A>
+<UL>
+<LI><A NAME="SEC35" HREF="schintro_34.html#SEC35">Dynamic typing</A>
+</UL>
+<LI><A NAME="SEC36" HREF="schintro_35.html#SEC36">The Empty List (Hunk E)</A>
+</UL>
+<LI><A NAME="SEC37" HREF="schintro_36.html#SEC37">Pairs and Lists</A>
+<UL>
+<LI><A NAME="SEC38" HREF="schintro_37.html#SEC38"><CODE>cdr-</CODE>linked lists</A>
+<LI><A NAME="SEC39" HREF="schintro_38.html#SEC39">Lists and Quoting</A>
+<LI><A NAME="SEC40" HREF="schintro_39.html#SEC40">Where the Empty List Got its Name</A>
+</UL>
+<LI><A NAME="SEC41" HREF="schintro_40.html#SEC41">Recursion Over Lists and Other Data Structures</A>
+<LI><A NAME="SEC42" HREF="schintro_41.html#SEC42">Type and Equality Predicates (Hunk G)</A>
+<UL>
+<LI><A NAME="SEC43" HREF="schintro_42.html#SEC43">Type Predicates</A>
+<LI><A NAME="SEC44" HREF="schintro_43.html#SEC44">Equality Predicates</A>
+<LI><A NAME="SEC45" HREF="schintro_44.html#SEC45">Choosing Equality Predicates  (Hunk I)</A>
+</UL>
+<LI><A NAME="SEC46" HREF="schintro_45.html#SEC46">Quoting and Literals</A>
+<UL>
+<LI><A NAME="SEC47" HREF="schintro_46.html#SEC47">Simple Literals and Self-Evaluation</A>
+</UL>
+<LI><A NAME="SEC48" HREF="schintro_47.html#SEC48">Local Variables and Lexical Scope</A>
+<UL>
+<LI><A NAME="SEC49" HREF="schintro_48.html#SEC49"><CODE>let</CODE></A>
+<UL>
+<LI><A NAME="SEC50" HREF="schintro_49.html#SEC50">Indenting <CODE>let</CODE> Expressions</A>
+</UL>
+<LI><A NAME="SEC51" HREF="schintro_50.html#SEC51">Lexical Scope</A>
+<UL>
+<LI><A NAME="SEC52" HREF="schintro_51.html#SEC52">Binding Environments and Binding Contours</A>
+<LI><A NAME="SEC53" HREF="schintro_52.html#SEC53">Block Structure Diagrams for <CODE>let</CODE>s</A>
+</UL>
+<LI><A NAME="SEC54" HREF="schintro_53.html#SEC54"><CODE>let*</CODE></A>
+</UL>
+<LI><A NAME="SEC55" HREF="schintro_54.html#SEC55">Procedures (Hunk K)</A>
+<UL>
+<LI><A NAME="SEC56" HREF="schintro_55.html#SEC56">Procedures are First Class</A>
+<LI><A NAME="SEC57" HREF="schintro_56.html#SEC57">Higher-Order Procedures</A>
+<LI><A NAME="SEC58" HREF="schintro_57.html#SEC58">Anonymous Procedures and <CODE>lambda</CODE></A>
+<LI><A NAME="SEC59" HREF="schintro_58.html#SEC59"><CODE>lambda</CODE> and Lexical Scope (Hunk M)</A>
+<LI><A NAME="SEC60" HREF="schintro_59.html#SEC60">Local Definitions</A>
+<LI><A NAME="SEC61" HREF="schintro_60.html#SEC61">Recursive Local Procedures and <CODE>letrec</CODE></A>
+<LI><A NAME="SEC62" HREF="schintro_61.html#SEC62">Multiple <CODE>define</CODE>s are like a <CODE>letrec</CODE></A>
+<LI><A NAME="SEC63" HREF="schintro_62.html#SEC63">Variable Arity: Procedures that Take a Variable Number of Arguments</A>
+<LI><A NAME="SEC64" HREF="schintro_63.html#SEC64"><CODE>apply</CODE></A>
+</UL>
+<LI><A NAME="SEC65" HREF="schintro_64.html#SEC65">Variable Binding Again</A>
+<UL>
+<LI><A NAME="SEC66" HREF="schintro_65.html#SEC66">Identifiers and Variables</A>
+<LI><A NAME="SEC67" HREF="schintro_66.html#SEC67">Variables vs. Bindings vs. Values</A>
+</UL>
+<LI><A NAME="SEC68" HREF="schintro_67.html#SEC68">Tail Recursion (Hunk O)</A>
+<LI><A NAME="SEC69" HREF="schintro_68.html#SEC69">Macros</A>
+<LI><A NAME="SEC70" HREF="schintro_69.html#SEC70">Continuations</A>
+<LI><A NAME="SEC71" HREF="schintro_70.html#SEC71">Iteration Constructs</A>
+<LI><A NAME="SEC72" HREF="schintro_71.html#SEC72">Discussion and Review</A>
+</UL>
+<LI><A NAME="SEC73" HREF="schintro_73.html#SEC73">Using Scheme (A Tutorial)</A>
+<UL>
+<LI><A NAME="SEC74" HREF="schintro_74.html#SEC74">An Interactive Programming Environment  (Hunk B)</A>
+<UL>
+<LI><A NAME="SEC75" HREF="schintro_75.html#SEC75">Starting Scheme</A>
+<LI><A NAME="SEC76" HREF="schintro_76.html#SEC76">Making mistakes and recovering from them</A>
+<LI><A NAME="SEC77" HREF="schintro_77.html#SEC77">Returns and Parentheses</A>
+<LI><A NAME="SEC78" HREF="schintro_78.html#SEC78">Interrupting Scheme</A>
+<LI><A NAME="SEC79" HREF="schintro_79.html#SEC79">Exiting (Quitting) Scheme</A>
+<LI><A NAME="SEC80" HREF="schintro_80.html#SEC80">Trying Out More Expressions</A>
+<LI><A NAME="SEC81" HREF="schintro_81.html#SEC81">Booleans and Conditionals</A>
+<LI><A NAME="SEC82" HREF="schintro_82.html#SEC82">Sequencing</A>
+<LI><A NAME="SEC83" HREF="schintro_83.html#SEC83">Other Flow-of-control Structures</A>
+<UL>
+<LI><A NAME="SEC84" HREF="schintro_84.html#SEC84">Using <CODE>cond</CODE></A>
+<LI><A NAME="SEC85" HREF="schintro_85.html#SEC85">Using <CODE>and</CODE> and <CODE>or</CODE></A>
+</UL>
+<LI><A NAME="SEC86" HREF="schintro_86.html#SEC86">Making Some Objects (Hunk D)</A>
+<LI><A NAME="SEC87" HREF="schintro_87.html#SEC87">Lists (Hunk F)</A>
+</UL>
+<LI><A NAME="SEC88" HREF="schintro_88.html#SEC88">Using Predicates (Hunk H)</A>
+<UL>
+<LI><A NAME="SEC89" HREF="schintro_89.html#SEC89">Using Type Predicates</A>
+<LI><A NAME="SEC90" HREF="schintro_90.html#SEC90">Using Equality Predicates</A>
+</UL>
+<LI><A NAME="SEC91" HREF="schintro_91.html#SEC91">Local Variables, <CODE>let</CODE>, and Lexical Scope (Hunk J)</A>
+<LI><A NAME="SEC92" HREF="schintro_92.html#SEC92">Using First-Class, Higher-Order, and Anonymous Procedures (Hunk L)</A>
+<UL>
+<LI><A NAME="SEC93" HREF="schintro_92.html#SEC93">First-Class Procedures</A>
+<LI><A NAME="SEC94" HREF="schintro_93.html#SEC94">Using and Writing Higher-Order Procedures</A>
+</UL>
+<LI><A NAME="SEC95" HREF="schintro_94.html#SEC95">Interactively Changing a Program (Hunk N)</A>
+<UL>
+<LI><A NAME="SEC96" HREF="schintro_94.html#SEC96">Replacing Procedure Values</A>
+<LI><A NAME="SEC97" HREF="schintro_94.html#SEC97">Loading Code from a File</A>
+<LI><A NAME="SEC98" HREF="schintro_94.html#SEC98">Loading and Running Whole Programs</A>
+</UL>
+<LI><A NAME="SEC99" HREF="schintro_95.html#SEC99">Some Other Useful Data Types</A>
+<UL>
+<LI><A NAME="SEC100" HREF="schintro_96.html#SEC100">Strings</A>
+<LI><A NAME="SEC101" HREF="schintro_97.html#SEC101">Symbols</A>
+<UL>
+<LI><A NAME="SEC102" HREF="schintro_98.html#SEC102">A Note on Identifiers</A>
+</UL>
+<LI><A NAME="SEC103" HREF="schintro_99.html#SEC103">Lists Again</A>
+<UL>
+<LI><A NAME="SEC104" HREF="schintro_99.html#SEC104">Heterogeneous Lists</A>
+<LI><A NAME="SEC105" HREF="schintro_99.html#SEC105">Operations on Lists</A>
+</UL>
+</UL>
+<LI><A NAME="SEC106" HREF="schintro_100.html#SEC106">Basic Programming Examples (Hunk P)</A>
+<UL>
+<LI><A NAME="SEC107" HREF="schintro_100.html#SEC107">An Error Signaling Routine</A>
+<LI><A NAME="SEC108" HREF="schintro_100.html#SEC108"><CODE>length</CODE></A>
+<LI><A NAME="SEC109" HREF="schintro_100.html#SEC109">Copying Lists</A>
+<LI><A NAME="SEC110" HREF="schintro_100.html#SEC110"><CODE>append</CODE> and <CODE>reverse</CODE></A>
+<UL>
+<LI><A NAME="SEC111" HREF="schintro_100.html#SEC111"><CODE>append</CODE></A>
+<LI><A NAME="SEC112" HREF="schintro_100.html#SEC112"><CODE>reverse</CODE></A>
+</UL>
+<LI><A NAME="SEC113" HREF="schintro_100.html#SEC113"><CODE>map</CODE> and <CODE>for-each</CODE></A>
+<UL>
+<LI><A NAME="SEC114" HREF="schintro_100.html#SEC114"><CODE>map</CODE></A>
+<LI><A NAME="SEC115" HREF="schintro_100.html#SEC115"><CODE>for-each</CODE></A>
+</UL>
+<LI><A NAME="SEC116" HREF="schintro_100.html#SEC116"><CODE>member</CODE> and <CODE>assoc</CODE>, and friends</A>
+<UL>
+<LI><A NAME="SEC117" HREF="schintro_100.html#SEC117"><CODE>member</CODE>, <CODE>memq</CODE>, and <CODE>memv</CODE></A>
+<LI><A NAME="SEC118" HREF="schintro_100.html#SEC118"><CODE>assoc</CODE>, <CODE>assq</CODE>, and <CODE>assv</CODE></A>
+</UL>
+</UL>
+<LI><A NAME="SEC119" HREF="schintro_101.html#SEC119">Procedural Abstraction</A>
+<UL>
+<LI><A NAME="SEC120" HREF="schintro_102.html#SEC120">Procedure Specialization</A>
+<LI><A NAME="SEC121" HREF="schintro_103.html#SEC121">Procedure Composition</A>
+<LI><A NAME="SEC122" HREF="schintro_104.html#SEC122">Currying</A>
+</UL>
+<LI><A NAME="SEC123" HREF="schintro_104.html#SEC123">Discussion and Review</A>
+</UL>
+<LI><A NAME="SEC124" HREF="schintro_105.html#SEC124">Writing an Interpreter</A>
+<UL>
+<LI><A NAME="SEC125" HREF="schintro_106.html#SEC125">Interpretation and Compilation</A>
+<LI><A NAME="SEC126" HREF="schintro_107.html#SEC126">Implementing a Simple Interpreter</A>
+<UL>
+<LI><A NAME="SEC127" HREF="schintro_108.html#SEC127">The Read-Eval-Print Loop</A>
+<LI><A NAME="SEC128" HREF="schintro_109.html#SEC128">The Reader</A>
+<UL>
+<LI><A NAME="SEC129" HREF="schintro_109.html#SEC129">Implementing <CODE>read</CODE></A>
+<LI><A NAME="SEC130" HREF="schintro_109.html#SEC130">Implementing <CODE>read-list</CODE></A>
+<LI><A NAME="SEC131" HREF="schintro_109.html#SEC131">Comments on the Reader</A>
+</UL>
+<LI><A NAME="SEC132" HREF="schintro_110.html#SEC132">Recursive Evaluation</A>
+<LI><A NAME="SEC133" HREF="schintro_110.html#SEC133">A Note on Snarfing and Bootstrapping</A>
+<UL>
+<LI><A NAME="SEC134" HREF="schintro_110.html#SEC134">Snarfing</A>
+<LI><A NAME="SEC135" HREF="schintro_110.html#SEC135">Bootstrapping and Cross-compiling</A>
+</UL>
+<LI><A NAME="SEC136" HREF="schintro_111.html#SEC136">Improving the Simple Interpreter</A>
+</UL>
+<LI><A NAME="SEC137" HREF="schintro_112.html#SEC137">Discussion and Review</A>
+</UL>
+<LI><A NAME="SEC138" HREF="schintro_113.html#SEC138">Environments and Procedures</A>
+<UL>
+<LI><A NAME="SEC139" HREF="schintro_114.html#SEC139">Understanding <CODE>let</CODE> and <CODE>lambda</CODE></A>
+<UL>
+<LI><A NAME="SEC140" HREF="schintro_115.html#SEC140"><CODE>let</CODE></A>
+<LI><A NAME="SEC141" HREF="schintro_116.html#SEC141"><CODE>lambda</CODE></A>
+<UL>
+<LI><A NAME="SEC142" HREF="schintro_116.html#SEC142"><CODE>define</CODE> and <CODE>lambda</CODE></A>
+<LI><A NAME="SEC143" HREF="schintro_116.html#SEC143">Currying</A>
+<LI><A NAME="SEC144" HREF="schintro_116.html#SEC144">Procedures are Closures</A>
+</UL>
+</UL>
+<LI><A NAME="SEC145" HREF="schintro_116.html#SEC145">Lambda is cheap, and Closures are Fast</A>
+<LI><A NAME="SEC146" HREF="schintro_117.html#SEC146">An Interpreter with <CODE>let</CODE> and <CODE>lambda</CODE></A>
+<UL>
+<LI><A NAME="SEC147" HREF="schintro_117.html#SEC147">Nested Environments and Recursive Evaluation</A>
+<LI><A NAME="SEC148" HREF="schintro_117.html#SEC148">Integrated, Extensible Treatment of Special Forms</A>
+<LI><A NAME="SEC149" HREF="schintro_118.html#SEC149">Interpreting <CODE>let</CODE></A>
+<LI><A NAME="SEC150" HREF="schintro_118.html#SEC150">Variable References and <CODE>set!</CODE></A>
+<LI><A NAME="SEC151" HREF="schintro_119.html#SEC151">Interpreting <CODE>lambda</CODE> and Procedure Calling</A>
+<UL>
+<LI><A NAME="SEC152" HREF="schintro_119.html#SEC152">Mutual Recursion Between Eval and Apply</A>
+</UL>
+</UL>
+<LI><A NAME="SEC153" HREF="schintro_120.html#SEC153">Variants of <CODE>let</CODE>: <CODE>letrec</CODE> and <CODE>let*</CODE></A>
+<UL>
+<LI><A NAME="SEC154" HREF="schintro_120.html#SEC154">Understanding <CODE>letrec</CODE></A>
+<UL>
+<LI><A NAME="SEC155" HREF="schintro_120.html#SEC155">Using <CODE>letrec</CODE> and <CODE>lambda</CODE> to Implement Modules</A>
+</UL>
+<LI><A NAME="SEC156" HREF="schintro_120.html#SEC156"><CODE>let*</CODE></A>
+</UL>
+<LI><A NAME="SEC157" HREF="schintro_120.html#SEC157">Iteration Constructs</A>
+<UL>
+<LI><A NAME="SEC158" HREF="schintro_120.html#SEC158">Named <CODE>let</CODE></A>
+</UL>
+<LI><A NAME="SEC159" HREF="schintro_120.html#SEC159">Programming with Procedures and Environments</A>
+<LI><A NAME="SEC160" HREF="schintro_120.html#SEC160"><CODE>do</CODE></A>
+<LI><A NAME="SEC161" HREF="schintro_120.html#SEC161">Exercises</A>
+</UL>
+<LI><A NAME="SEC162" HREF="schintro_121.html#SEC162">Recursion in Scheme</A>
+<UL>
+<LI><A NAME="SEC163" HREF="schintro_121.html#SEC163">Subproblems and Reductions (non-tail and tail calls)</A>
+<LI><A NAME="SEC164" HREF="schintro_121.html#SEC164">The Continuation Chain</A>
+<LI><A NAME="SEC165" HREF="schintro_121.html#SEC165">Exploiting Tail Recursion</A>
+<UL>
+<LI><A NAME="SEC166" HREF="schintro_121.html#SEC166">Passing Intermediate Values as Arguments</A>
+<UL>
+<LI><A NAME="SEC167" HREF="schintro_121.html#SEC167">Summing a List</A>
+<LI><A NAME="SEC168" HREF="schintro_121.html#SEC168">Implementing <CODE>length</CODE> tail-recursively</A>
+</UL>
+<LI><A NAME="SEC169" HREF="schintro_121.html#SEC169"><CODE>reduce</CODE></A>
+</UL>
+</UL>
+<LI><A NAME="SEC170" HREF="schintro_122.html#SEC170">Quasiquotation and Macros</A>
+<UL>
+<LI><A NAME="SEC171" HREF="schintro_123.html#SEC171"><CODE>quasiquote</CODE></A>
+<UL>
+<LI><A NAME="SEC172" HREF="schintro_123.html#SEC172"><CODE>unquote-splicing</CODE></A>
+</UL>
+<LI><A NAME="SEC173" HREF="schintro_124.html#SEC173">Defining New Special Forms</A>
+<UL>
+<LI><A NAME="SEC174" HREF="schintro_124.html#SEC174">Macros vs. Procedures</A>
+</UL>
+<LI><A NAME="SEC175" HREF="schintro_124.html#SEC175">Implementing More Scheme Special Forms</A>
+<UL>
+<LI><A NAME="SEC176" HREF="schintro_124.html#SEC176"><CODE>let</CODE></A>
+<LI><A NAME="SEC177" HREF="schintro_124.html#SEC177"><CODE>let*</CODE></A>
+<LI><A NAME="SEC178" HREF="schintro_124.html#SEC178"><CODE>cond</CODE></A>
+<LI><A NAME="SEC179" HREF="schintro_124.html#SEC179">Discussion</A>
+</UL>
+<LI><A NAME="SEC180" HREF="schintro_124.html#SEC180">Lisp-style Macros</A>
+<UL>
+<LI><A NAME="SEC181" HREF="schintro_124.html#SEC181">Ultra-simple Lispish Macros</A>
+<UL>
+<LI><A NAME="SEC182" HREF="schintro_124.html#SEC182">Better Lisp-style Macros</A>
+<LI><A NAME="SEC183" HREF="schintro_124.html#SEC183">Problems With Lisp-Style Macros</A>
+<LI><A NAME="SEC184" HREF="schintro_124.html#SEC184">Ugly Hacks Around Name Conflicts</A>
+</UL>
+</UL>
+<LI><A NAME="SEC185" HREF="schintro_124.html#SEC185">Implementing Simple Macros and Quasiquote</A>
+<UL>
+<LI><A NAME="SEC186" HREF="schintro_124.html#SEC186">Implementing Simple Macros</A>
+<LI><A NAME="SEC187" HREF="schintro_124.html#SEC187">Implementing <CODE>quasiquote</CODE> and <CODE>unquote</CODE></A>
+<UL>
+<LI><A NAME="SEC188" HREF="schintro_124.html#SEC188">Translating backquotes to <CODE>quasiquote</CODE></A>
+<LI><A NAME="SEC189" HREF="schintro_124.html#SEC189"><CODE>quasiquote</CODE></A>
+<LI><A NAME="SEC190" HREF="schintro_124.html#SEC190"><CODE>define-rewriter</CODE></A>
+<LI><A NAME="SEC191" HREF="schintro_124.html#SEC191"><CODE>define-macro</CODE></A>
+</UL>
+</UL>
+<LI><A NAME="SEC192" HREF="schintro_125.html#SEC192">Procedural Macros vs. Template-filling Macros</A>
+<LI><A NAME="SEC193" HREF="schintro_126.html#SEC193">Programming Examples Using Macros</A>
+</UL>
+<LI><A NAME="SEC194" HREF="schintro_127.html#SEC194">Records and Object Orientation</A>
+<UL>
+<LI><A NAME="SEC195" HREF="schintro_127.html#SEC195">Records</A>
+<UL>
+<LI><A NAME="SEC196" HREF="schintro_127.html#SEC196">Data Abstraction</A>
+<LI><A NAME="SEC197" HREF="schintro_127.html#SEC197">Implementing Records</A>
+</UL>
+<LI><A NAME="SEC198" HREF="schintro_127.html#SEC198">Objects</A>
+<UL>
+<LI><A NAME="SEC199" HREF="schintro_127.html#SEC199">Object Orientation</A>
+<LI><A NAME="SEC200" HREF="schintro_127.html#SEC200">Implementing a Simple Object System</A>
+<UL>
+<LI><A NAME="SEC201" HREF="schintro_127.html#SEC201">Generic Functions and Dynamic Dispatch</A>
+<LI><A NAME="SEC202" HREF="schintro_127.html#SEC202">Inheritance</A>
+</UL>
+</UL>
+</UL>
+<LI><A NAME="SEC203" HREF="schintro_128.html#SEC203">Other Useful Features</A>
+<UL>
+<LI><A NAME="SEC204" HREF="schintro_129.html#SEC204">Special Forms</A>
+<LI><A NAME="SEC205" HREF="schintro_130.html#SEC205">Input-Output Facilities</A>
+<UL>
+<LI><A NAME="SEC206" HREF="schintro_131.html#SEC206"><CODE>read</CODE> and <CODE>write</CODE></A>
+<LI><A NAME="SEC207" HREF="schintro_132.html#SEC207"><CODE>display</CODE></A>
+<LI><A NAME="SEC208" HREF="schintro_133.html#SEC208">Ports</A>
+<LI><A NAME="SEC209" HREF="schintro_134.html#SEC209"><CODE>with-input-</CODE>\dots{} Forms</A>
+</UL>
+<LI><A NAME="SEC210" HREF="schintro_134.html#SEC210">Useful Types and Associated Procedures</A>
+<UL>
+<LI><A NAME="SEC211" HREF="schintro_134.html#SEC211">Numeric Types</A>
+<UL>
+<LI><A NAME="SEC212" HREF="schintro_134.html#SEC212">Floating-Point Numbers</A>
+<LI><A NAME="SEC213" HREF="schintro_134.html#SEC213">Arbitrary-Precision Integers</A>
+<LI><A NAME="SEC214" HREF="schintro_134.html#SEC214">Ratios</A>
+<LI><A NAME="SEC215" HREF="schintro_134.html#SEC215">Coercions and Exactness</A>
+</UL>
+<LI><A NAME="SEC216" HREF="schintro_134.html#SEC216">Vectors</A>
+<LI><A NAME="SEC217" HREF="schintro_134.html#SEC217">Strings and Characters</A>
+</UL>
+</UL>
+<LI><A NAME="SEC218" HREF="schintro_135.html#SEC218"><CODE>call-with-current-continuation</CODE></A>
+<UL>
+<LI><A NAME="SEC219" HREF="schintro_135.html#SEC219">Implementing a Better Read-Eval-Print Loop</A>
+<LI><A NAME="SEC220" HREF="schintro_135.html#SEC220">Implementing Catch and Throw</A>
+<LI><A NAME="SEC221" HREF="schintro_135.html#SEC221">Implementing Backtracking</A>
+<LI><A NAME="SEC222" HREF="schintro_135.html#SEC222">Implementing Coroutines</A>
+<LI><A NAME="SEC223" HREF="schintro_135.html#SEC223">Implementing Cooperative Multitasking</A>
+<LI><A NAME="SEC224" HREF="schintro_135.html#SEC224">Caveats about <CODE>call-with-current-continuation</CODE></A>
+</UL>
+<LI><A NAME="SEC225" HREF="schintro_136.html#SEC225">A Simple Scheme Compiler</A>
+<UL>
+<LI><A NAME="SEC226" HREF="schintro_136.html#SEC226">What is a Compiler?</A>
+<UL>
+<LI><A NAME="SEC227" HREF="schintro_136.html#SEC227">What is an Interpreter?</A>
+<LI><A NAME="SEC228" HREF="schintro_136.html#SEC228">OK, so what's a compiler?</A>
+</UL>
+<LI><A NAME="SEC229" HREF="schintro_136.html#SEC229">What Does a Compiler Generate?</A>
+<LI><A NAME="SEC230" HREF="schintro_136.html#SEC230">Basic Structure of the Compiler</A>
+<LI><A NAME="SEC231" HREF="schintro_136.html#SEC231">Data Representations, Calling Convention, etc.</A>
+<UL>
+<LI><A NAME="SEC232" HREF="schintro_136.html#SEC232">The Registers</A>
+<LI><A NAME="SEC233" HREF="schintro_136.html#SEC233">The Evaluation Stack (or Eval Stack, for short)</A>
+<LI><A NAME="SEC234" HREF="schintro_136.html#SEC234">The Continuation Chain</A>
+<LI><A NAME="SEC235" HREF="schintro_136.html#SEC235">Environments</A>
+<LI><A NAME="SEC236" HREF="schintro_136.html#SEC236">Closure Representation and Calling</A>
+</UL>
+<LI><A NAME="SEC237" HREF="schintro_136.html#SEC237">Continuations</A>
+<UL>
+<LI><A NAME="SEC238" HREF="schintro_136.html#SEC238">Applying a Procedure Doesn't Save the Caller's State</A>
+<LI><A NAME="SEC239" HREF="schintro_136.html#SEC239">Continuation Saving</A>
+<LI><A NAME="SEC240" HREF="schintro_136.html#SEC240">An Example</A>
+<LI><A NAME="SEC241" HREF="schintro_136.html#SEC241">Generating Unique Labels</A>
+</UL>
+<LI><A NAME="SEC242" HREF="schintro_136.html#SEC242">More on Representations of Environments</A>
+<LI><A NAME="SEC243" HREF="schintro_136.html#SEC243">Compiling Code for Literals</A>
+<LI><A NAME="SEC244" HREF="schintro_136.html#SEC244">Compiling Code for Top-Level Variable References</A>
+<LI><A NAME="SEC245" HREF="schintro_136.html#SEC245">Precomputing Local Variable Lookups using Lexical Scope</A>
+<UL>
+<LI><A NAME="SEC246" HREF="schintro_136.html#SEC246">Lexical Addressing and Compile-Time Environments</A>
+<LI><A NAME="SEC247" HREF="schintro_136.html#SEC247">A Detailed Example</A>
+</UL>
+<LI><A NAME="SEC248" HREF="schintro_136.html#SEC248">Preserving Tail-Recursiveness using Compile-Time Continuations</A>
+<UL>
+<LI><A NAME="SEC249" HREF="schintro_136.html#SEC249">When Should We Save Continuations?</A>
+<UL>
+<LI><A NAME="SEC250" HREF="schintro_136.html#SEC250">Compiling Returns</A>
+</UL>
+</UL>
+<LI><A NAME="SEC251" HREF="schintro_136.html#SEC251">Compiling Top-Level Expressions</A>
+<LI><A NAME="SEC252" HREF="schintro_136.html#SEC252">Compiling <CODE>lambda</CODE> Expressions Inside Procedures</A>
+<LI><A NAME="SEC253" HREF="schintro_136.html#SEC253">Compiling Top-level Definitions</A>
+<LI><A NAME="SEC254" HREF="schintro_136.html#SEC254">Interfacing to the Runtime System</A>
+<UL>
+<LI><A NAME="SEC255" HREF="schintro_136.html#SEC255">Garbage Collection</A>
+<UL>
+<LI><A NAME="SEC256" HREF="schintro_136.html#SEC256">Safe Points</A>
+<LI><A NAME="SEC257" HREF="schintro_136.html#SEC257">GC at Any Time</A>
+</UL>
+<LI><A NAME="SEC258" HREF="schintro_136.html#SEC258">Interrupts</A>
+</UL>
+<LI><A NAME="SEC259" HREF="schintro_136.html#SEC259">Advanced Compiler and Runtime System Techniques</A>
+<UL>
+<LI><A NAME="SEC260" HREF="schintro_136.html#SEC260">Inlining Small Procedures</A>
+<LI><A NAME="SEC261" HREF="schintro_136.html#SEC261">Type Declarations and Type Analysis</A>
+<LI><A NAME="SEC262" HREF="schintro_136.html#SEC262">Using More Hardware Registers</A>
+<LI><A NAME="SEC263" HREF="schintro_136.html#SEC263">Closure Analysis</A>
+<LI><A NAME="SEC264" HREF="schintro_136.html#SEC264">Register Allocating Loop Variables for Loops</A>
+<LI><A NAME="SEC265" HREF="schintro_136.html#SEC265">Conventional Optimizations</A>
+<LI><A NAME="SEC266" HREF="schintro_136.html#SEC266">Stack Caches</A>
+</UL>
+</UL>
+<LI><A NAME="SEC267" HREF="schintro_137.html#SEC267">Concept Index</A>
+</UL>
+<HR>
+<P>This document was generated on 30 October 1996 using the
+<A HREF="http://wwwcn.cern.ch/dci/texi2html/">texi2html</A>
+translator version 1.45.</P>
+</BODY>
+</HTML>

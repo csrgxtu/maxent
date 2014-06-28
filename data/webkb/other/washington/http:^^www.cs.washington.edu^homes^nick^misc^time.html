@@ -1,0 +1,45 @@
+Date: Tue, 10 Dec 1996 20:44:32 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Fri, 07 Jun 1996 23:29:54 GMT
+Content-length: 1047
+
+<HTML>
+<HEAD>
+<TITLE>Time</TITLE>
+<!-- **** timestamp gizmo adapted from from http://www.c2.org/~andreww/javascript/ **** -->
+<SCRIPT Language="JavaScript"> 
+<!--
+var timerID = null;
+var timerRunning = false;
+function startclock() {
+	if (timerRunning) clearTimeout(timerID);
+	timerRunning = true;
+	showtime();
+}
+function showtime() {
+	var now = new Date();
+        var month = now.getMonth() + 1;
+ 	var date = now.getDate();
+        var year = now.getYear();
+	var hours = now.getHours();
+	var minutes = now.getMinutes();
+	var seconds = now.getSeconds();
+	document.clock.timestamp.value = 
+            "" + month + "/" + date + "/" + year + " @ " +
+	    ((hours > 12) ? (hours-12) : hours) +
+	    ((minutes < 10) ? ":0" : ":") + minutes +
+	    ((seconds < 10) ? ":0" : ":") + seconds +
+	    ((hours < 12) ? "am" : "pm");
+	timerID = setTimeout("showtime()", 1000);
+}
+// -->
+</SCRIPT>
+</HEAD>
+
+<BODY onLoad="startclock()">
+
+<FORM name="clock" onSubmit="0">
+It's now <input type="text" name="timestamp" size=21 value="Javascript required!">.
+</FORM>
+

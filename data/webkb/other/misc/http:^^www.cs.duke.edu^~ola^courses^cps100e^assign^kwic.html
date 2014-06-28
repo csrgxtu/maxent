@@ -1,0 +1,369 @@
+Date: Tue, 14 Jan 1997 20:39:42 GMT
+Server: NCSA/1.5.2
+Last-modified: Wed, 25 Sep 1996 01:59:43 GMT
+Content-type: text/html
+Content-length: 11426
+
+<html>
+<title>
+CPS 100E, Fall 1996, Second Assignment
+</title>
+<body bgcolor="#FFFFFF">
+
+<H2>Programming Assignment #1, CPS 100E, Fall 1996: <BR>
+Searching Kwicly (24 points)</H2>
+
+(<EM>This problem appeared in a slighly different format in the Internet
+Programming Contest</EM>.)
+
+
+<p>
+<em>
+Due Date: Early bonus: Wednesday, October 2, midnight<BR>
+Final Due Date: Monday, October 7, midnight
+</em>
+ <P>
+This assignment will provide practice with structs, vectors, sorting, reading
+from files using getline, streams, writing classes, and iterative
+enhancement. 
+<P>
+<CENTER>
+<STRONG>Table of Contents</STRONG>
+</CENTER>
+ <P>
+<CENTER>
+[
+<!WA0><A HREF="#intro">Introduction</A> |
+<!WA1><A HREF="#input">Input/Output</A> |
+<!WA2><A HREF="#code">Coding</A> |
+<!WA3><A HREF="#grading">Grading</A> |
+<!WA4><A HREF="#submit">Submitting</A> |
+<!WA5><A HREF="#extra">Extra Credit</A>
+]
+</CENTER>
+ <P>
+
+(<EM>A Makefile and sample input files are accessible in
+<TT>~ola/cps100e/kwic</TT> on the acpub system.  Be sure to
+create a subdirectory <TT>kwic</TT> for this problem and to
+set the permissions for access by prof/uta/ta by typing
+<TT>fs setacl kwic ola:cps100e read</TT>.</EM>)
+ <P>
+<FONT SIZE=+1>
+<H2> <A NAME="intro">Introduction</A></H2>
+
+
+Searching and sorting are prototypical computer applications.  For this
+assignment you'll write a program that organizes titles (or sentences)
+for efficient "human search" based on different key words.
+Given a list of titles and a list of words to ignore, you are to
+write a program that generates a <EM>KWIC</EM> (Key Word In Context) index of the
+titles.  In a KWIC-index, a title is listed once for each keyword that
+occurs in the title.  The KWIC-index is alphabetized by keyword.
+Keywords are any words that are not listed in the list of words to ignore.
+<p>
+
+For example, if words to ignore are
+<EM> the, of, and, as, a </EM> and the list
+of titles is:
+<pre>
+Descent of Man
+The Ascent of Man
+The Old Man and The Sea
+A Portrait of The Artist As a Young Man
+</pre>
+<p>
+A KWIC-index of these titles is given by:
+<p>
+<FONT SIZE=-1>
+<pre>
+                  a portrait of the ARTIST as a young man 
+                                the ASCENT of man 
+                                    DESCENT of man 
+                         descent of MAN 
+                      the ascent of MAN 
+                            the old MAN and the sea 
+a portrait of the artist as a young MAN 
+                                the OLD man and the sea 
+                                  a PORTRAIT of the artist as a young man 
+                the old man and the SEA 
+      a portrait of the artist as a YOUNG man 
+</pre>
+<FONT SIZE=+1>
+ <P>
+Each title is listed as many times as there are key words in the title.
+For example, "A Portrait of the Artist As a Young Man" is listed four
+times, once each for "portrait", "artist", "young", and "man".
+<P>
+
+<H2> <A NAME="input">Input/Output</A></H2>
+
+Your program should read from a file whose name
+you enter when you run the program.
+Legal input files contain a list of words to ignore (one per line)
+followed by a list of titles (one per line)
+The string <TT>::</TT> on a line by itself is used to
+separate the list of words to ignore from the list of titles.  Each of
+the words to ignore appears in lower-case letters on a line by itself
+and is no more than 10 characters in length.  Each title appears on a
+line by itself and may consist of mixed-case (upper and lower) letters.
+Words in a title are separated by whitespace.  No title contains more
+than 25 words.
+<p>
+
+There will be no more than 100 words to ignore, no more than than 500
+titles, and no more than 50,000 characters in the titles and words to
+ignore combined.  No characters other than 'a'--'z', 'A'--'Z', and white
+space will appear in the input.
+<p>
+
+<h3> The Output </h3>
+
+The output should be a KWIC-index of the titles, with each title
+appearing once for each keyword in the title, and with the KWIC-index
+alphabetized by keyword.  <STRONG>If a word appears more than once in a title,
+each instance is a potential keyword.</STRONG>  In other words the title
+<EM>A Rose is a Rose is an Aphorism</EM> would appear three times (once
+for each occurrence of Rose and once for Aphorism.)
+<p>
+
+The keyword should appear in all upper-case
+letters. All other words in a title should be in lower-case letters.
+Case (upper or lower) is irrelevant when determining if a word is to be
+ignored.  Titles should be roughly centered as shown above with all key
+words capitalized and justified somewhere near the middle of an 80
+column screen (don't worry about this part at first).  Assume titles
+will fit on a line, don't worry about handling weird cases, just handle
+cases assuming that the longest title will fit properly.
+<p>
+
+<STRONG>
+Titles in the KWIC-index with the same keyword should appear in the same
+order as they appeared in the input file.
+In the case where multiple
+instances of a word are keywords in the same title, the keywords should
+be capitalized in left-to-right order.
+</STRONG>  A sort that maintains the original order of elements with
+equal keys is called a <EM>stable sort</EM>.  Insertion sort is stable.
+The code for insertion sort can be found in the <EM>Tapestry</EM> text,
+it is reproduced below for a vector of ints.
+<P>
+<FONT SIZE=-1>
+<XMP>
+
+
+
+
+void InsertSort(Vector<int> & a, int numElts)
+// precondition: a contains numElts ints
+// postcondition: elements of a are sorted in non-decreasing order
+{
+    int k,loc;
+    int hold;
+    
+    for(k=1; k < numElts; k++) 
+    {
+        hold = a[k];                   // "keep" the k-th element
+        loc = k;                       // shift other elements right
+        while (0 < loc && hold < a[loc-1])
+        {
+            a[loc] = a[loc-1];
+            loc--;
+        }
+        a[loc] = hold;                 // store kept element in hole created
+    }
+}
+</XMP>
+
+<p>
+
+<H3>Sample Input</H3>
+<pre>
+is
+the
+of
+and
+as
+a
+but
+::
+Descent of Man
+The Ascent of Man
+The Old Man and The Sea
+A Portrait of The Artist As a Young Man
+A Man is a Man but Bubblesort IS A DOG
+</pre>
+
+<FONT SIZE=+1>
+<H3>Corresponding Output</H3>
+<FONT SIZE=-1>
+<pre>
+                  a portrait of the ARTIST as a young man 
+                                the ASCENT of man 
+                 a man is a man but BUBBLESORT is a dog 
+                                    DESCENT of man 
+ a man is a man but bubblesort is a DOG 
+                         descent of MAN 
+                      the ascent of MAN 
+                            the old MAN and the sea 
+a portrait of the artist as a young MAN 
+                                  a MAN is a man but bubblesort is a dog 
+                         a man is a MAN but bubblesort is a dog 
+                                the OLD man and the sea 
+                                  a PORTRAIT of the artist as a young man 
+                the old man and the SEA 
+      a portrait of the artist as a YOUNG man 
+</pre>
+
+
+<HR>
+<FONT SIZE=+1>
+<H2><A NAME="code">Coding Requirements and Help</A></H2>
+
+Ideally you will maintain only one copy of each title, you will not
+store a title once for each keyword although you will print a title
+once for each keyword.  You may choose not to worry about this.  This
+assignment is worth 24 points and 4 of the points are for minimizing
+storage by storing titles only once.  
+As a first pass, you may decide to store each
+title once for each occurrence of a keyword.  That might lead to the
+following declarations.  A <!WA6><A HREF="#diagram">diagram below</A> 
+shows how the struct <TT>KwicTitle</TT> is used
+to store the title <EM>The Old Man and the Sea</EM>.
+ <P>
+<FONT SIZE=-1>
+<XMP>
+   struct KwicTitle
+   {
+       Vector<string> myTitle;
+       int            myKeyIndex;
+   };
+
+   bool operator < (const KwicTitle & lhs, const KwicTitle & rhs)
+   {
+	return lhs.myTitle[lhs.myKeyIndex] < rhs.myTitle[rhs.myKeyIndex];
+   }
+</XMP>
+<P>
+<FONT SIZE=+1>
+
+In the diagram below the title is stored as 4 KwicTitle objects, 
+once for each keyword. Note that when two two KwicTitles are compared
+(using less than: <TT>operator &lt;</TT>) 
+the index of the
+keyword determines which string in the KwicTitles are compared (you may
+need to think about this).
+ <P>
+<A NAME="diagram">
+<!WA7><IMG SRC="http://www.cs.duke.edu/~ola/courses/cps100e/assign/kwic/diagram.gif" ALT="*"></A>
+<P>
+
+<H3>Minimizing Storage</H3>
+
+One option for storing titles once is to use a vector of titles, storing
+each title once in the vector (of course the titles may be vectors
+of strings, but this isn't a problem --- you can also make the titles
+structs that contain a vector of strings).  
+Then you can replace <TT>myTitle</TT> in
+the declaration of <TT>KwicTitle</TT> with an index into the vector of
+titles.  With this solution there will still be four <TT>KwicTitle</TT>
+objects for <EM>The Sun Also Rises</EM> but <TT>myTitle</TT> is now an
+index to a title rather than a title (again, think about this carefully
+and ask questions.)
+
+<H3> Developing a Class </H3>
+
+You'll probably find it useful to develop a class to solve this problem.
+For example, public member functions could include <TT>Read</TT> and
+<TT>PrintIndex</TT>.  There will probably be several private member
+functions that will be called from <TT>PrintIndex</TT> and that will
+call each other.  For example, you might store the words to ignore in a 
+<TT>Vector&lt;string&gt; myIgnore</TT> and then write a function as
+shown below to search this vector.
+<XMP>
+    bool Kwic::IsIgnore(const string & s)
+    {
+        int k;
+        for(k=0; k < myIgnoreCount; k++)
+        {
+            if (myIgnore[k] == s) return true;
+        }
+        return false;
+    }
+</XMP>
+Of course you don't need to do this, it's just an example of a private
+member function (<TT>Kwic::IsIgnore</TT>) that could be useful.
+
+<HR>
+<H2><A NAME="grading">Grading Standards</A></H2>
+
+This assignment is worth 24 points.  Points will be awarded as follows:
+<CENTER>
+<TABLE>
+<TR>
+<TH> Behavior
+<TH> Points
+<TR>
+<TD>Generates KWIC-index</TD>
+<TD>6</TD>
+<TR>
+<TD>Sorted Properly</TD>
+<TD>2</TD>
+<TR>
+<TD>Handles duplicate key words in title</TD>
+<TD>2</TD>
+<TR>
+<TD>Nice output (centered)</TD>
+<TD>2</TD>
+<TR>
+<TD>Memory Efficient</TD>
+<TD>4</TD>
+<TR>
+<TD>Coding Style (uses classes, comments)</TD>
+<TD>6</TD>
+<TR>
+<TD>README</TD>
+<TD>2</TD>
+</TABLE>
+</CENTER>
+
+<HR>
+<H2><A NAME="submit">Submission</A></H2>
+
+You should create a <em>README</em> file for this and all assignments.
+All <em>README</em> files should include your name as well as the name(s)
+of anyone with whom you collaborated on the assignment and the amount of
+time you spent.
+<p>
+
+To submit your assignment, type:
+<xmp>
+   submit100e kwic README kwic.cc Makefile ...
+</xmp>
+
+Be sure to submit all source files (e.g., you may decide to write a
+seperate header file although this is NOT required.)
+
+<HR>
+
+<H2><A NAME="extra">Extra Credit</A></H2>
+
+For extra credit you should not use a vector to store the words in a
+title, you should use a List (see chapter 6 of <EM>Tapestry</EM>).  
+You can still use an index for each keyword, but you'll need to count
+words rather than index directly to the keyword because the list class
+doesn't support random access.  You are free to change
+<TT>KwicTitle</TT> completely, but you must minimize storage and you
+must use Lists to store any titles.
+
+To submit the extra credit assignment, type:
+<xmp>
+   submit100 kwic.xtra README ..........
+</xmp>
+where you include all the files you use for this version of the kwic program.
+
+
+
+</BODY>
+</HTML>
+

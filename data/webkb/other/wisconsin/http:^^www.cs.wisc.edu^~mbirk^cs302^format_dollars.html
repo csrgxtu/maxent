@@ -1,0 +1,119 @@
+Date: Mon, 11 Nov 1996 17:01:23 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Tue, 01 Oct 1996 20:08:43 GMT
+Content-length: 2431
+
+<html>
+<head>
+<title>Formatting Dollar Amounts in Program 2</title>
+</head>
+
+<body>
+
+<h2>Formatting Dollar Amounts in Program 2</h2>
+
+You might be wondering how to line up the dollar amounts for Program 2 so
+that everything looks nice like the example output.  This involves two
+steps:
+
+<p>
+
+<ol>
+  <li> Telling the computer to print floating-point nuumbers
+       using exactly two decimal places
+  <li> Making the dollar amounts line up at their decimal point
+</ol>
+
+<p>
+
+The necessary material is described on pages 51 and 232 of the
+Savitch text (pages 65-66 of Perry & Levin).  However, I'll explain
+here just what you need to know for the assignment.
+
+<p>
+
+Consider this silly little program:
+
+<p>
+
+<pre>
+#include &lt;iostream.h&gt;
+
+int main ()
+{
+    double amount_deposited = 100.0;
+    double cash_received    = 9.71;
+    cout &lt;&lt; "Amount deposited: $" &lt;&lt; amount_deposited &lt;&lt; endl;
+    cout &lt;&lt; "Cash received:    $" &lt;&lt; cash_received &lt;&lt; endl;
+    cout &lt;&lt; "Net deposit:      $" &lt;&lt; (amount_deposited - cash_received) &lt;&lt; endl;
+    return 0;
+}
+</pre>
+
+<p>
+
+When run, it produces the following output:
+
+<p>
+ 
+<pre>
+Amount deposited: $100
+Cash recieved:    $9.71
+Net deposit:      $90.29
+</pre>
+
+<p>
+
+But what we <i>want</i> is something more like this:
+
+<p>
+
+<pre>
+Amount deposited: $ 100.00
+Cash recieved:    $   9.71
+Net deposit:      $  90.29
+</pre>
+
+<p>
+
+We can modify the above program to achieve this:
+
+<p>
+
+<pre>
+#include &lt;iostream.h&gt;
+#include &lt;iomanip.h&gt;
+
+int main ()
+{
+    // Force two decimal places (see p. 51 of Savitch text)
+    cout.setf(ios::fixed);
+    cout.setf(ios::showpoint);
+    cout.precision(2);
+
+    double amount_deposited = 100.0;
+    double cash_received    = 9.71;
+
+    // The "setw(7)" below causes the next thing printed to
+    // have a width of seven
+    cout &lt;&lt; "Amount deposited: $"
+         &lt;&lt; setw(7) &lt;&lt; amount_deposited &lt;&lt; endl;
+    cout &lt;&lt; "Cash received:    $"
+         &lt;&lt; setw(7) &lt;&lt; cash_received &lt;&lt; endl;
+    cout &lt;&lt; "Net deposit:      $"
+         &lt;&lt; setw(7) &lt;&lt; (amount_deposited - cash_received) &lt;&lt; endl;
+    return 0;
+}
+</pre>
+
+<p>
+
+Note the extra <tt>#include&lt;iomanip.h&gt;</tt> directive at the top of the
+program.  This is necessary to use <tt>setw</tt>.
+
+<hr>
+<i><a href="mailto:mbirk@cs.wisc.edu">mbirk@cs.wisc.edu</a></i>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+Date: Thu, 07 Nov 1996 19:23:06 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 09 Sep 1996 16:40:32 GMT
+Content-length: 3529
+
+<HTML>
+<HEAD>
+<TITLE>View Morphing (by Steve Seitz)</TITLE>
+</HEAD>
+
+<BODY>
+
+<H1> View Morphing </H1>
+<H3>
+Investigators:
+<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~seitz/seitz.html">Steve Seitz</A>,
+<!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.wisc.edu/~dyer/dyer.html"> Chuck Dyer</A>
+</H3>
+
+<B> Related Publications: </B>  
+<BR> 
+<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/abstracts.html#sigg96-seitz">
+<I>
+View Morphing 
+</I>
+</A> --- to appear in
+<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="http://www.siggraph.org/conferences/siggraph96"> SIGGRAPH 96 </A>
+<BR>
+<!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/abstracts.html#icpr96-seitz">
+<I>
+Toward Image-Based Scene Representation Using View Morphing 
+</I>
+</A> --- to appear in
+<!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A HREF="http://www.prip.tuwien.ac.at/icpr/icpr.html"> ICPR 96 </A>
+<P>
+
+
+
+Image morphing techniques can generate compelling 2D transitions between
+images.  However, differences in object pose or viewpoint often cause
+unnatural distortions in image morphs that are difficult to correct manually.
+Using basic principles of projective
+geometry, this paper introduces a simple extension to image morphing
+that correctly handles 3D projective camera and scene transformations.
+The technique, called {\em view morphing}, works by prewarping two images
+prior to computing a morph and then postwarping the interpolated images.
+Because no knowledge of 3D shape is required, the technique may be applied
+to photographs and drawings, as well as rendered scenes.
+The ability to synthesize changes both in viewpoint and image structure
+affords a wide variety of interesting 3D effects via simple image
+transformations.
+
+<P>
+
+<TABLE BORDER=0 CELLPADDING=2 CELLSPACING=2>
+<TR ALIGN=center>
+	<TD> 
+	<!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><A HREF="http://www.cs.wisc.edu/~seitz/interp/mfig1.mpg">
+	<!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><IMG SRC="http://www.cs.wisc.edu/~seitz/interp/mfig1.gif"> </A>,
+	</TD>
+</TR>
+<TR VALIGN=center> 
+	<TD> <B>View morphing between two images of an object taken from 
+	two different viewpoints produces the illusion of physically moving a 
+	virtual camera.  
+	<BR>
+	Click for an 
+	<!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><A HREF="http://www.cs.wisc.edu/~seitz/interp/mfig1.mpg">
+	MPEG movie </A> (184K) of this interpolation. </B>
+	</TD>
+</TR>
+</TABLE>
+<P>
+<TABLE BORDER=0 CELLPADDING=2 CELLSPACING=2>
+<TR ALIGN=center>
+	<TD> 
+	<!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><A HREF="http://www.cs.wisc.edu/~seitz/interp/mfig2.mpg">
+	<!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><IMG ALIGN=TOP SRC="http://www.cs.wisc.edu/~seitz/interp/mfig2.gif"> </A>
+	</TD>
+</TR>
+<TR VALIGN=center>
+	<TD> <B> Morph between views of different faces produces simultaneous
+	interpolation of facial shape, color, and pose.
+	<BR>
+	Click for an
+	<!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><A HREF="http://www.cs.wisc.edu/~seitz/interp/mfig2.mpg">
+	MPEG movie </A> (143K) of this interpolation. </B>
+	</TD>
+</TR>
+</TABLE>
+<P>
+
+<HR>
+
+<H1> More MPEG Movies of View Morphs </H1>
+<P>
+<TABLE BORDER=1 CELLPADDING=2 CELLSPACING=1>
+<TR ALIGN=left>
+	<TD> <!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><A HREF="http://www.cs.wisc.edu/~seitz/interp/mona.gif"> 
+		<!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><IMG ALIGN=CENTER SRC="http://www.cs.wisc.edu/~seitz/interp/mona-icon.gif"> </A> 
+	</TD>
+	<TD> Two resolutions of Mona Lisa <--> Mona Lisa reflection: 
+		<UL> 
+		<LI> <!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><A HREF="http://www.cs.wisc.edu/~seitz/interp/mona.mpg"> 
+			High resolution MPEG movie </A> (198K, 10 frames)
+		<LI> <!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><A HREF="http://www.cs.wisc.edu/~seitz/interp/monas.mpg"> 
+			Low resolution MPEG movie </A> (64K, 20 frames)
+		</UL>
+	</TD>
+</TR>
+<TR ALIGN=center>
+	<TD> <!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><A HREF="http://www.cs.wisc.edu/~seitz/interp/chude.gif"> 
+		<!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><IMG SRC="http://www.cs.wisc.edu/~seitz/interp/chude-icon.gif"> </A>
+	</TD>
+	<TD> Click for <!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><A HREF="http://www.cs.wisc.edu/~seitz/interp/chude.mpg"> 
+		MPEG movie </A> (84K) of Jude Shavlik <--> Chuck Dyer
+	</TD>
+</TR>
+</TABLE>
+
+
+<HR>
+<ADDRESS> <!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><IMG ALT="o" SRC="http://www.cs.wisc.edu/~seitz/tinysteve.gif">
+Last Changed: September 8, 1996 </ADDRESS> 
+<HR>
+
+
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,275 @@
+Server: Microsoft-IIS/2.0
+Date: Mon, 25 Nov 1996 00:31:52 GMT
+Content-Type: text/html
+Accept-Ranges: bytes
+Last-Modified: Mon, 18 Nov 1996 15:04:12 GMT
+Content-Length: 13652
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type"
+content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 2.0">
+<title>U-Net</title>
+<meta name="FORMATTER" content="Microsoft FrontPage 2.0">
+</head>
+
+<body>
+
+<p><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><img src="http://www2.cs.cornell.edu/U-Net/images/unet-logo.gif" align="absbottom" width="492"
+height="32"><br>
+<!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><img src="http://www2.cs.cornell.edu/U-Net/images/lab-wind.gif" align="top" width="492"
+height="257"> </p>
+
+<h1>U-Net: A User-Level Network Interface Architecture</h1>
+
+<hr>
+
+<p>The U-Net architecture provides low-latency and high-bandwidth
+communication over commodity networks for workstations and PCs.
+It removes the large communication overheads found in the
+standard networking layers in the operating system. U-Net defines
+an architecture which allows network interfaces to be mapped
+directly into user-space without compromizing protection. With
+U-Net the operating system is no longer involved with the sending
+and receiving of messages. This allows a much tighter integration
+of computation and communication with the effect that
+communication overheads are reduced dramatically. </p>
+
+<p>U-Net is available on several platforms:</p>
+
+<ul>
+    <li>PCs running Windows NT 4.0 and using a DECchip 21140
+        based fast ethernet interface.</li>
+    <li>PCs running Linux and using a DECchip 21140 based fast
+        ethernet interface or using a Fore Systems PCA-200 (not
+        PCA-200E!) ATM interface.</li>
+    <li>Sparcstations 10&amp;20 running SunOS 4.1.x or Solaris
+        2.x and using a FORE Systems SBA-200 (not SBA-200E!) ATM
+        interface.</li>
+</ul>
+
+<p>Funding for the project is provided through a <a
+href="http://www.ito.darpa.mil/">DARPA ITO</a> contract (ONR
+contract N00014-92-J-1866). The initial versions of U-Net were
+developed under contract F30602-94-C-0224 from Rome Laboratory,
+Air Force Material Command. </p>
+
+<hr>
+
+<h2>Software</h2>
+
+<ul>
+    <li><b>U-Net Alpha Release 0.9 for Windows NT 4.0</b> is
+        forthcoming RSN, as they say...</li>
+    <li><b>U-Net Release 2.0 for Unix, 10-March-1996</b> is now
+        available. <ul>
+            <li>Download the software distribution: <a
+                href="ftp://ftp.cs.cornell.edu/pub/mdw/unet/unet-2.tar.gz">unet-2.tar.gz</a>
+                and the <a
+                href="http://www.cs.cornell.edu/Info/Projects/U-Net/release-docs/unet.html">Release
+                Documentation</a>. </li>
+            <li>This release supports the Linux/DC21140,
+                Linux/PCA-200, SunOS/SBA-200, and Solaris/SBA-200
+                systems mentioned above and is fairly flexible
+                and easy to install (some may point out, unlike
+                the previous release). Please send mail to <a
+                href="mailto:mdw@cs.cornell.edu">Matt Welsh</a>
+                for questions or problems about this release. </li>
+        </ul>
+    </li>
+    <li>The earlier <strong>U-Net alpha Release 0.9 for Unix</strong>
+        is still available in <a
+        href="http://www.cs.cornell.edu/Info/Projects/U-Net/unet-0-9.tar.gz">unet-0-9.tar.gz</a>.
+        There is little or no reason to use this release, except
+        that it includes U-Net Active Messages 1.1 and a
+        different implementation of <tt>libunet</tt>. </li>
+</ul>
+
+<h2>Papers and talks</h2>
+
+<ul>
+    <li><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www2.cs.cornell.edu/U-Net/papers/unetmm.pdf"><strong>Incorporating Memory
+        Management into User-Level Network Interfaces</strong></a>,
+        Anindya Basu, Matt Welsh, Thorsten von Eicken, Department
+        of Computer Science, Cornell University, Submitted for
+        publication November 1996. <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a href="http://www2.cs.cornell.edu/U-Net/papers/unetmm.ps"><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><img
+        src="http://www2.cs.cornell.edu/U-Net/images/icon-ps.gif" align="top" width="18"
+        height="14"></a> <p><font size="2">User-level network
+        interfaces allow applications direct access to the
+        network without operating system inter-vention on every
+        send and receive. Messages are transferred directly to
+        and from user-space by the network interface while
+        observing the traditional protection boundaries between
+        processes. Current user-level network interfaces limit
+        this message transfer to a per-process region of
+        permanently-pinned physical memory to allow safe DMA.
+        This approach is inflexible in that it requires data to
+        be copied into and out of this memory region, and does
+        not scale to a large number of processes.</font></p>
+        <p><font size="2">This paper presents an extension to the
+        U-Net user-level network architecture (U-Net/MM) allowing
+        messages to be transferred directly to and from any part
+        of an application&#146;s address space. This is achieved
+        by integrating a translation look-aside buffer into the
+        network interface and coordinating its operation with the
+        operating system&#146;s virtual memory subsystem. This
+        mechanism allows network buffer pages to be pinned and
+        unpinned dynamically. Two implementations of U-Net/MM are
+        described, demonstrating that existing commodity hardware
+        and commercial operating systems can efficiently support
+        the architecture.</font></p>
+    </li>
+    <li><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href="http://www2.cs.cornell.edu/U-Net/papers/hpca97.pdf"><b>ATM and Fast Ethernet
+        Network Interfaces for User-level Communication</b></a>,
+        Matt Welsh, Anindya Basu, and Thorsten von Eicken.
+        Proceedings of the Third International Symposium on High
+        Performance Computer Architecture (HPCA), San Antonio,
+        Texas, February 1-5, 1997. <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a href="http://www2.cs.cornell.edu/U-Net/papers/hpca97.ps"><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><img
+        src="http://www2.cs.cornell.edu/U-Net/images/icon-ps.gif" align="top" width="18"
+        height="14"></a> <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><a href="http://www2.cs.cornell.edu/U-Net/papers/hpca97.ps.gz"><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><img
+        src="http://www2.cs.cornell.edu/U-Net/images/icon-psgz.gif" align="top" width="36"
+        height="14"></a> <p><font size="2"><em>Fast Ethernet and
+        ATM are two attractive network technologies for
+        interconnecting workstation clusters for parallel and
+        distributed computing. This paper compares network
+        interfaces with and without programmable co-processors
+        for the two types of networks using the U-Net
+        communication architecture to provide low-latency and
+        high-bandwidth communication. U-Net provides protected,
+        user-level access to the network interface and offers
+        application-level round-trip latencies as low as 60 usec
+        over Fast Ethernet and 90 usec over ATM. </em></font></p>
+        <p><font size="2"><em>The design of the network interface
+        and the underlying network fabric have a large bearing on
+        the U-Net design and performance. Network interfaces with
+        programmable co-processors can transfer data directly to
+        and from user space while others require aid from the
+        operating system kernel. The paper provides detailed
+        performance analysis of U-Net for Fast Ethernet and ATM,
+        including application-level performance on a set of
+        Split-C parallel benchmarks. These results show that
+        high-performance computing is possible on a network of
+        PCs connected via Fast Ethernet. </em></font></p>
+        <p><font size="2"><em>Copyright 1997 IEEE. Personal use
+        of this material is permitted. However, permission to
+        reprint/republish this material for advertising or
+        promotional purposes or for creating new collective works
+        for resale or redistribution to servers or lists, or to
+        reuse any copyrighted component of this work in other
+        works, must be obtained from the IEEE. Contact: Manager,
+        Copyrights and Permissions / IEEE Service Center / 445
+        Hoes Lane / P.O. Box 1331 / Piscataway, NJ 08855-1331,
+        USA. Telephone: + Intl. 908-562-3966.</em> </font></p>
+    </li>
+    <li><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><a href="http://www2.cs.cornell.edu/U-Net/papers/europar.pdf"><font size="3"><b>Low-Latency
+        Communication over Fast Ethernet</b></font></a><font
+        size="3">, Matt Welsh, Anindya Basu, Thorsten von Eicken.
+        Proceedings of Euro-Par '96, Lyon, France, August 27-29,
+        1996. </font><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><a href="http://www2.cs.cornell.edu/U-Net/papers/europar.ps"><font size="3"><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><img
+        src="http://www2.cs.cornell.edu/U-Net/images/icon-ps.gif" align="top" width="18"
+        height="14"></font></a><font size="3"> </font><a
+        href="papers/europar.ps.gz"><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><img
+        src="http://www2.cs.cornell.edu/U-Net/images/icon-psgz.gif" align="top" width="36"
+        height="14"></a> <p><font size="2"><em>Fast Ethernet
+        (100Base-TX) can provide a low-cost alternative to more
+        esoteric network technologies for high-performance
+        cluster computing. We use a network architecture based on
+        the U-Net approach to implement low-latency and
+        high-bandwidth communication over Fast Ethernet, with
+        performance rivaling (and in some cases exceeding) that
+        of 155 Mbps ATM. U-Net provides protected, user-level
+        access to the network interface and enables
+        application-level round-trip latencies of less than 60
+        usec over Fast Ethernet. </em></font></p>
+    </li>
+    <li><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><a href="http://www2.cs.cornell.edu/U-Net/papers/sosp.pdf"><font size="3"><b>U-Net: A
+        User-Level Network Interface for Parallel and Distributed
+        Computing</b></font></a><font size="3">, Anindya Basu,
+        Vineet Buch, Werner Vogels, Thorsten von Eicken.
+        Proceedings of the 15th ACM Symposium on Operating
+        Systems Principles (SOSP), Copper Mountain, Colorado,
+        December 3-6, 1995. </font><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><a href="http://www2.cs.cornell.edu/U-Net/papers/sosp.ps"><font
+        size="3"><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><img src="http://www2.cs.cornell.edu/U-Net/images/icon-ps.gif" align="top"
+        width="18" height="14"></font></a><font size="3"> </font><a
+        href="papers/sosp.ps.gz"><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><img src="http://www2.cs.cornell.edu/U-Net/images/icon-psgz.gif"
+        align="top" width="36" height="14"></a> <p><font size="2"><em>The
+        U-Net communication architecture provides processes with
+        a virtual view of a network interface to enable
+        user-level access to high-speed communication devices.
+        The architecture, implemented on standard workstations
+        using off-the-shelf ATM communication hardware, removes
+        the kernel from the communication path, while still
+        providing full protection. </em></font></p>
+        <p><font size="2"><em>The model presented by U-Net allows
+        for the construction of protocols at user level whose
+        performance is only limited by the capabilities of
+        network. The architecture is extremely flexible in the
+        sense that traditional protocols like TCP and UDP, as
+        well as novel abstractions like Active Messages can be
+        implemented efficiently. A U-Net prototype on an 8-node
+        ATM cluster of standard workstations offers 65
+        microseconds round-trip latency and 15 Mbytes/sec
+        bandwidth. It achieves TCP performance at maximum network
+        bandwidth and demonstrates performance equivalent to
+        Meiko CS-2 and TMC CM-5 supercomputers on a set of
+        Split-C benchmarks. </em></font></p>
+    </li>
+    <li><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><a href="http://www2.cs.cornell.edu/U-Net/papers/unet-talk-6-95.pdf"><font size="3"><b>The
+        U-Net User-Level Network Architecture</b></font></a><font
+        size="3">. A talk about U-Net given at the U.C. Berkeley
+        NoW retreat, by Thorsten von Eicken, May '95. </font><a
+        href="papers/unet-talk-6-95.ps"><font size="3"><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><img
+        src="http://www2.cs.cornell.edu/U-Net/images/icon-ps.gif" align="top" width="18"
+        height="14"></font></a><font size="3"> </font><a
+        href="papers/unet-talk-6-95.ps.gz"><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><img
+        src="http://www2.cs.cornell.edu/U-Net/images/icon-psgz.gif" align="top" width="36"
+        height="14"></a><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><a href="http://www2.cs.cornell.edu/U-Net/papers/unet-talk-6-95.ps.gz"><br>
+        </a></li>
+    <li><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><a href="http://www2.cs.cornell.edu/U-Net/papers/wips-talk.pdf"><font size="3"><b>U-Net
+        and UNAM: Bringing Parallel and Distributed Computing
+        Closer</b></font></a><font size="3">. A Cornell WIPS
+        (Systems Work in Progress Seminar) talk by A. Basu that
+        describes the architectures of U-Net and UNAM. </font><a
+        href="papers/wips-talk.ps"><font size="3"><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><img
+        src="http://www2.cs.cornell.edu/U-Net/images/icon-ps.gif" align="top" width="18"
+        height="14"></font></a><font size="3"> </font><a
+        href="papers/wips-talk.ps.gz"><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><img
+        src="http://www2.cs.cornell.edu/U-Net/images/icon-psgz.gif" align="top" width="36"
+        height="14"></a></li>
+</ul>
+
+<hr>
+
+<h2><font size="3">People</font></h2>
+
+<ul>
+    <li><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><a href="http://www.cs.cornell.edu/Info/People/tve/"><font
+        size="3">Thorsten von Eicken</font></a><font size="3"> </font></li>
+    <li><a
+        href="http://www.cs.cornell.edu/Info/People/basu/home.html"><font
+        size="3">Anindya Basu</font></a><font size="3"> </font></li>
+    <li><a
+        href="http://www.cs.cornell.edu/Info/People/chichao/chichao.html"><font
+        size="3">Chi-Chao Chang</font></a><font size="3"> </font></li>
+    <li><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><a href="mailto:grzes@cs.cornell.edu"><font size="3">Grzegorz
+        Czajkowski</font></a><font size="3"> </font></li>
+    <li><a
+        href="http://www.cs.cornell.edu/Info/People/hu/hu.html"><font
+        size="3">Deyu Hu</font></a><font size="3"> </font></li>
+    <li><a
+        href="http://www.cs.cornell.edu/Info/People/vogels/index.html"><font
+        size="3">Werner Vogels</font></a><font size="3"> </font></li>
+    <li><a
+        href="http://www.cs.cornell.edu/Info/People/mdw/mdw.html"><font
+        size="3">Matt Welsh</font></a><font size="3"> </font></li>
+</ul>
+
+<hr>
+
+<p><font size="3">For further information contact </font><a
+href="mailto:tve@cs.cornell.edu"><font size="3">Thorsten von
+Eicken</font></a><font size="3"> </font></p>
+</body>
+</html>

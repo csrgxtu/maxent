@@ -1,0 +1,59 @@
+Date: Tue, 10 Dec 1996 03:26:34 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+<TITLE>Implementing Constraint Imperative Programming Languages: The
+Kaleidosope'93 Virtual Machine
+</title>
+</head>
+
+<body>
+<H2>Implementing Constraint Imperative Programming Languages:
+The Kaleidosope'93 Virtual Machine</H2>
+
+<p>
+
+Authors: Gus Lopez, Bjorn Freeman-Benson, and Alan Borning
+
+<p>
+
+Published in <em>Proceedings of the 1994 ACM Conference on Object-Oriented
+Programming Systems, Languages, and Applications</em>, Portland, Oregon,
+October 1994, pages 259-271.
+
+<P>
+<hr>
+
+<H3>Abstract</H3>
+
+Constraint Imperative Programming (CIP) languages integrate declarative
+constraints with imperative state and destructive assignment, yielding a
+powerful new programming paradigm.  However, CIP languages are difficult
+to implement efficiently due to complex interactions between the two donor
+paradigms.  Neither the virtual machines for classical object-oriented
+languges, nor those for existing constraint languages, are suitable for
+implementing CIP languages, as each assumes a purely imperative or a purely
+declarative computation model.  We have developed a new virtual machine for
+CIP languages, the K-machine, an imperative machine with an incremental
+constraint solver and a constraint-based, rather than value-based, data store.
+This virtual machine allows user-defined constraints to be defined using
+constraint constructor definitions which are the CIP analog to method
+definitions.  Similar to methods, these constructors are able to reference
+variables indirectly through many levels of pointers.  The K-machine maintains
+relations between objects in the presence of state change to these indirectly
+referenced objects.  The K-machine is capable of supporting a wide variety
+of CIP languages, including our most recent:  Kaleidoscope'93.
+
+<P>
+<HR>
+<P>
+
+Click <!WA0><a href=
+"ftp://cs.washington.edu/tr/1994/07/UW-CSE-94-07-07.PS.Z">
+here</a> to get the postscript file.
+
+<P>
+
+Return to <!WA1><a href="http://www.cs.washington.edu/research/projects/weird/www/index.html">Constraints home page</a>

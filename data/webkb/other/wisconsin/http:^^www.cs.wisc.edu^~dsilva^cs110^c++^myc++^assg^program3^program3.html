@@ -1,0 +1,328 @@
+Date: Mon, 11 Nov 1996 17:35:30 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Sun, 29 Sep 1996 16:31:07 GMT
+Content-length: 9419
+
+<HTML>
+<HEAD>
+<TITLE>CS110: Program #2</TITLE>
+</HEAD>
+
+<BODY>
+<CENTER>
+<H1>Program #3 -- Family Vacation Planning Program</H1>
+</CENTER>
+
+<H2>Due Date</H2>
+
+This assignment is due on Thursday, October 10th
+<P>Note that this program is worth 25% of your grade; the previous two
+assignments were only worth 20% each.
+<H2>Introduction</H2> 
+
+<P>This assignment is meant to give you practice using functions; passing
+parameters by value and by reference; return statements;  if/else
+statements and  switch statements.
+
+<P>The story so far: You've been hired by HAPPY FAMILY travel agency to
+create a reservation system.  The basic idea of this program is to aid the
+user to estimate the cost of her/his family vacation.  Even though you
+have had only a month of C++, your employers insist you complete the
+project by the stated deadline.
+
+<P>But there is a silver lining.  A previous programmer (now unemployed)
+had previously tried (unsuccessfully) to write the program last year -- and
+he left notes!  A skeleton program!  Just the thing to get you started.
+Using this outline code, and a list of guidelines required by your
+employers, you must now begin your plan of attack ...<P>
+
+<P>Your program will need to be "full-featured" and allow the user to:
+<UL TYPE=CIRCLE>
+  <LI> buy airplane tickets
+  <LI> book hotel rooms
+  <LI> reserve rental cars
+</UL>
+
+To do this, you will need to implement the five functions:
+
+<CODE>userChoice()</CODE>, 
+<CODE>bookTickets()</CODE>, 
+<CODE>bookRooms()</CODE>,
+<CODE>reserveCars()</CODE>, and 
+<CODE>printReceipt()</CODE> 
+
+which are outlined below. The skeleton code follows:<BR>
+
+<PRE WIDTH=80>
+// a header comment should go here
+
+// include statements should go here
+
+// function prototypes
+char   userInput();
+char   userChoice(int&amp; numChildren, int&amp; numAdults);
+double bookTickets(int numChildren, int numAdults);    // returns ticket cost
+double bookRooms();                                    // returns room cost
+double reserveCars();                                  // returns car rental cost
+void printReceipt(double totalCost);                   // displays total cost
+
+void main()      // main should just call the auxiliary functions
+{                // and must be very short!
+
+}
+
+//gets input after a Y/N question
+char userInput()
+{
+	char response;
+	cin &gt;&gt; response;
+	if ((response == 'y')||(response == 'Y'))
+		return 'y';
+	else
+	    if ((response == 'n')||(response == 'N'))
+		return 'n';
+	    else
+		{
+		     cout&lt;&lt;"Bad Input--expected Y or N and you typed: "&lt;&lt;response&lt;&lt;&lt;endl;
+		     cout&lt;&lt;"shame on you! Aborting program...."&lt;&lt;endl;
+		     exit(0);
+		}
+}
+
+
+
+
+
+char userChoice(int&amp; numChildren, int&amp; numAdults)
+{
+  char response; // user's response 
+
+
+  return response;    	                                       
+}
+
+double bookTickets(int numChildren, // returns plane tix cost
+                   int numAdults)   
+{
+  const int HAWAII      = 1;     // only three destinations
+  const int GREECE = 2;     // are necessary for this program       
+  const int INDIA     = 3;     // -- do more if you want
+
+  
+}
+
+double bookRooms()               // returns room cost
+{
+  const int MARRIOT      = 1;     // hotels -- again, three minimum
+  const int DAYS_INN     = 2;
+  const int MOTEL6      = 3;
+
+  
+}
+
+double reserveCars()             // returns car rental price
+{
+  const int BUDGET        = 1;	 // rental car companies -- three min
+  const int ALAMO         = 2;
+  const int RENT_A_WRECK  = 3;
+
+  
+}
+
+void printReceipt(double totalCost)  // prints out total cost
+                                     // (don't cout totals from within main!)
+{              
+
+
+}
+
+</PRE>
+
+<P>
+
+<P><B>Note</B>: You have been supplied with a working function <EM>userInput()</EM> that accepts
+the answer to a Y/N question (and filters out invalid input).  To
+<EM>greatly</EM> simplify your code, you might choose to use it ...
+
+<P>
+
+Also since a lot of the above code involves implementing menu-driven 
+decisions, you might find the <STRONG>switch</STRONG> statement quite helpful.
+Look at the examples of the switch statements we looked at in lecture.
+
+<H2>Description of the functions you have to write</H2>
+<EM>Please note that all these functions must behave <STRONG>exactly</STRONG>
+as specified.</EM>
+	
+<H3>The userChoice Function</H3>
+
+The <CODE>userChoice</CODE> function should do the following:
+<OL>
+  <LI> Prompt the user asking if s/he is interested in any of three
+possible vacation destinations.
+<UL>
+  <LI> Hawaii 
+  <LI> Greece 
+  <LI> India  
+</UL>
+
+  <LI> If the user enters 'y' indicating YES, you will query for the
+number of children and adults in the family and return the user's
+response.  (NOTE: the number of children and number of adults are returned
+by reference to the main program to be used at a later stage)
+
+  <LI> If the user enters 'n', simply return this response
+
+</OL>
+
+<H3>The bookTickets Function</H3>
+
+The <CODE>bookTickets</CODE> function should do the following:
+<OL>
+  <LI> Ask the user if s/he wants to buy airline tickets.  
+       If the answer is no ('n'), then return 0.0 (no money spent).
+  <LI> If the answer is yes ('y'), then display the following menu and
+       ask for a choice of destination:
+<PRE WIDTH=80>
+         Destination  - PER ADULT		
+	1. Hawaii : $672.19
+	2. Greece : $900.27
+	3. India  : $1599.99
+	Please choose a destination (1-3):
+</PRE>
+  
+  <LI>Calculate the total air-travel cost. <EM>Note that children get a
+37% discount.</EM>
+   
+  <LI>Return the total cost of the purchased tickets.
+</OL>
+
+<H3>The bookRooms Function</H3>
+
+The <CODE>bookRooms</CODE> function should do the following:
+<OL>
+  <LI> Ask the user if s/he wants to book hotel rooms.  
+       If the answer is no ('n'), then return 0.0 (no money spent).
+  <LI> If the answer is yes ('y'), then display the following menu and
+       ask for a choice of hotel:
+<PRE WIDTH=80>
+	1. Marriot  : $65.00 per night
+	2. Days Inn : $45.95 per night
+	3. Motel 6  : $36.00 per night
+	Please choose a hotel (1-3):
+</PRE>
+  <LI> Ask for the number of rooms to book.
+  <LI> Ask for the number of nights to stay.
+  <LI> Calculate and return the total cost of the rooms.
+</OL>
+
+<H3>The reserveCars Function</H3>
+
+The <CODE>reserveCars</CODE> function should do the following:
+<OL>
+  <LI> Ask the user if s/he wants to reserve any rental cars.
+       If the answer is negative, return 0.0 (no money spent).
+  <LI> If the answer is affirmative, display the following menu and
+       ask for a choice of rental car company:
+<PRE WIDTH=80>
+	1. Budget     : $68.52 per day
+	2. Alamo      : $72.36 per day
+	3. RentAWreck : $25.99 per day
+	Please choose a car (1-3):
+</PRE>
+  <LI> Ask for the number of cars they would like to rent.
+  <LI> Ask for the number of days they would like to rent the car.
+  <LI> Ask if they would like collision insurance. Collision 
+	insurance will add 10% to the car rental cost.
+  <LI> Calculate and return the total cost of the rentals.
+</OL>
+
+<H3>The printReceipt Procedure</H3>
+
+The <CODE>printReceipt</CODE> procedure should display the total
+amount spent at the travel agency.  
+
+
+<H3>The main program</H3>
+
+Your main program must be very very short. It should simply call your 
+functions at appropriate places. It should work as follows:
+<OL>
+  <LI> Call <CODE>userChoice()</CODE> function:
+
+<P>If function returns 'n' your program must terminate with a thank you
+message.
+
+<P>If function returns 'y' your program should call the other functions
+<CODE>bookTickets(), bookRooms(), reserveTickets()</CODE> and
+<CODE>printReceipt()</CODE>. It must then terminate with a thank you
+message.<BR>
+
+<P>If function returns anything other than a 'n' or a 'y' your program
+must terminate with an error message. 
+</OL>
+ 
+<H2>Your test cases</H2>
+
+You will be required to turn in the screen output generated from <EM>three
+</EM> program runs. The inputs should cleverly chosen so as to demonstrate
+all functionality of your program.
+
+<H2>Handing In the Assignment</H2>
+
+<OL>
+  <LI> Please turn in both an electronic copy of your source code (.cpp)
+<STRONG>and</STRONG> your executable program (.exe) <EM>into your handin directory</EM>. <EM>I will be testing each program
+with my test cases.  If I do not receive an electronic copy of your source
+code and executable, you will lose most of the points. In case your program
+does not compile or run correctly, you must, nevertheless, turn in what
+you have to get some credit. If your program fails on my test cases you
+will receive a low score.</EM>
+
+  <LI> A printed copy of source code. 
+
+  <LI> A printed copy of your three test cases
+
+</OL>
+
+<CENTER><H1>Items 2 and 3 must be <I>stapled</I> together.</H1></CENTER>
+
+
+<HR>
+
+<H2>Grading</H2>
+
+
+
+<UL>
+  <LI> <B> CORRECT OUTPUT:</B>
+    <UL>
+      <LI> Your test cases: 3
+      <LI> My test cases  : 7	
+    </UL> 
+  <LI> <B> USER INTERFACE:</B>
+    <UL>
+      <LI> Meaningful prompts to user: 1
+      <LI> Correct display of program output: 1
+    </UL>
+  <LI> <B> IMPLEMENTATION:</B>
+    <UL>
+      <LI> Correct use of if-else statements: 3
+      <LI> Meaningful variable names: 2
+      <LI> Correct use of functions--parameter passing, return, calling: 4 
+    </UL>
+  <LI> <B> DOCUMENTATION:</B>
+    <UL>
+      <LI> Program description: 1
+      <LI> Variable definition and section comments: 2
+      <LI> Good overall program style: 1
+    </UL>
+  
+</UL>
+
+
+
+
+</BODY>
+</HTML>

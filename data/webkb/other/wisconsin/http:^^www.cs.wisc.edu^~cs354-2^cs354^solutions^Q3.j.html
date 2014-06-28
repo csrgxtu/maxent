@@ -1,0 +1,144 @@
+Date: Tue, 05 Nov 1996 20:51:28 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 23 Oct 1996 20:23:48 GMT
+Content-length: 4641
+
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Mac">
+  <TITLE>Q3.ans.html</TITLE>
+</HEAD>
+<BODY>
+
+<H3 ALIGN=CENTER>CS354, Fall 1996</H3>
+
+<H3 ALIGN=CENTER>Quiz 3, Sections 1 &amp; 3, 10/9/96 &amp; 10/11/96</H3>
+
+<P><TABLE WIDTH="100%" HEIGHT="36" BORDER="1" CELLSPACING="2" CELLPADDING=
+"0">
+<TR>
+<TD WIDTH="50%">&nbsp;Name (printed): </TD>
+<TD WIDTH="50%">&nbsp;Name (signed):</TD></TR>
+</TABLE>
+</P>
+
+<P>(1, ver 1) (10 points) Write a SAL code segment that prints a 1 if variable
+wd contains the bit sequence &quot;101101&quot; and prints a 0 if it does
+not. The code segment should leave variable wd unchanged.</P>
+
+<PRE><B>ANSWER</B>
+
+        move a, 0                # assume &quot;101101&quot; is not in wd
+        move pattern, 0x0000002d # &quot;101101&quot; as a 6 bit pattern
+        move mask, 0x0000003f    # used to get 6 bits of wd
+        move count, 0            # do at most 32-6+1=27 tests
+loop:   and  x, wd, mask         # get 6 bits of wd
+        bne  pattern, x, cont
+        move a, 1                # &quot;101101&quot; is in wd
+        b    end                 # might as well quit
+cont:   add  count, count, 1
+        sll  mask, mask, 1       # &quot;ror wd, wd, 1&quot; is no good
+        sll  pattern, pattern, 1
+        bne  count, 27, loop
+end:    put  a </PRE>
+
+<P>(1, ver 2) (10 points) Write a SAL code segment that prints a 1 if variable
+wd does not contain the bit sequence &quot;1001100&quot; and prints a 0
+if it does. The code seqment should leave variable wd unchanged.</P>
+
+<PRE><B>ANSWER</B>
+
+        move a, 1                # assume &quot;1001100&quot; is not in wd
+        move pattern, 0x0000004c # &quot;10001100&quot; as a 7 bit pattern
+        move mask, 0x0000007f    # used to get 7 bits of wd
+        move count, 0            # do at most 32-7+1=26 tests
+loop:   and  x, wd, mask
+        bne  pattern, x, cont
+        move a, 0                # &quot;1001100&quot; is in wd
+        b    end                 # might as well quit
+cont:   add  count, count, 1
+        sll  mask, mask, 1       # &quot;ror  wd, wd, 1&quot; is no good
+        sll  pattern, pattern, 1
+        bne  count, 26, loop
+end:    put  a</PRE>
+
+<P>(2, ver 1) (5 points) In the simp simulator, the &quot;not&quot; instruction
+was left out. Explain why:</P>
+
+<BLOCKQUOTE>
+  <BLOCKQUOTE>
+    <BLOCKQUOTE>
+      <P>&quot;xor a, a, -1&quot; is equivalent to &quot;not a, a&quot;</P>
+    </BLOCKQUOTE>
+  </BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<PRE><B>ANSWER</B>
+
+1 xor 1 is 0
+0 xor 1 is 1
+
+so xor'ing with 1 acts like not'ing and
+-1 is all 1's in a 32 bit, 2's complement representation</PRE>
+
+<P>(2, ver 2) (5 points) In the simp simulator, the &quot;not&quot; instruction
+was left out. Explain why:</P>
+
+<BLOCKQUOTE>
+  <BLOCKQUOTE>
+    <BLOCKQUOTE>
+      <P>&quot;xnor a, a, 0&quot; is equivalent to &quot;not a, a&quot;</P>
+    </BLOCKQUOTE>
+  </BLOCKQUOTE>
+</BLOCKQUOTE>
+
+<PRE><B>ANSWER</B>
+
+1 xnor 0 is 0
+0 xnor 0 is 1
+
+so xnor'ing with 0 acts like not'ing and
+0 is all 0's in a 32 bit, 2's complement representation</PRE>
+
+<P>(3, ver 1) (10 points) Add the following two IEEE floating point numbers
+(hidden bit is shown). Show the IEEE form of the result, with hidden bit
+showing (8 points). What is the value of the result in decimal (2 points)?</P>
+
+<PRE>   S   E             F
+   0   1000 1010  (1)100 0110 0000 0000 0000 0000
+   0   1000 0111  (1)001 1000 0000 0000 0000 0000
+
+<B>ANSWER</B>
+
+S    E             F
+0    1000 1010  (1)100 0110 0000 0000 0000 0000
+0    1000 0111  (1)001 1000 0000 0000 0000 0000 &lt;- smaller E,
+                                          shift rt 3 places
+S    E             F                          (3 = 10 - 7)
+0    1000 1010  (1)100 0110 0000 0000 0000 0000
+0    1000 1010  (0)001 0011 0000 0000 0000 0000
+
+0    1000 1010  (1)101 1001 0000 0000 0000 0000 &lt;- ans = 3472.0</PRE>
+
+<P>(3, ver 2) (10 points) Add the following two IEEE floating point numbers
+(hidden bit is shown). Show the IEEE form of the result, with hidden bit
+showing (8 points). What is the value of the result in decimal (2 points)?</P>
+
+<PRE>   S   E             F
+   1   1000 0010  (1)100 1100 0000 0000 0000 0000
+   1   1000 0111  (1)001 1000 0000 0000 0000 0000
+
+<B>ANSWER</B>
+
+S   E             F
+1   1000 0010  (1)100 1100 0000 0000 0000 0000 &lt;- smaller E,
+1   1000 0111  (1)001 1000 0000 0000 0000 0000    shift rt 5 places
+                                                  (5 = 7 - 2)
+S   E             F
+1   1000 0111  (0)000 0110 0110 0000 0000 0000
+1   1000 0111  (1)001 1000 0000 0000 0000 0000
+
+1   1000 0111  (1)001 1110 0110 0000 0000 0000 &lt;- ans = -316.75</PRE>
+</BODY>
+</HTML>

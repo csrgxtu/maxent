@@ -1,0 +1,494 @@
+Date: Tue, 26 Nov 1996 19:11:00 GMT
+Server: Apache/1.1-dev
+Content-type: text/html
+Set-Cookie: Apache=gs359347849035460905; path=/
+
+<HTML>
+<HEAD>
+<TITLE>EECS451 Home Page</TITLE> 
+</HEAD>
+<BODY bgcolor=#ffffff text=#000000>
+
+<center>
+
+<B><H1>EECS 451<br> 
+Digital Signal Processing<br>
+Fall '96
+</H1></B></center>
+
+<CENTER>
+<!-- IMG SRC="line.gif" ALT="------------------------------">
+</CENTER>
+
+<UL>
+<LI>
+<!WA0><A HREF="#Announce">Announcements</A>
+</LI>
+
+<LI>
+<!WA1><A HREF="http://www.eecs.umich.edu/courses/eecs451/feedback.html">Send me Feedback!</A>
+</LI>
+
+<LI>
+<!WA2><A HREF="#Assign">Assignments</A>
+</LI>
+
+<LI>
+<!WA3><A HREF="#Group">Group Projects</A>
+</LI>
+
+<LI>
+<!WA4><A HREF="#Code">MATLAB Code</A>
+</LI>
+
+<LI>
+<!WA5><A HREF="#Brain">Brain Teasers</A>
+</LI>
+
+<LI>
+<!WA6><A HREF="#Details">Course Details</A>
+</LI>
+
+</UL>
+
+<CENTER>
+<!WA7><IMG SRC="http://www.eecs.umich.edu/courses/eecs451/line.gif" ALT="------------------------------">
+</CENTER>
+
+<A NAME="Announce">
+<H1><B>Announcements</B></H1></A>
+<UL>
+
+<P>
+<LI><!WA8><IMG SRC="http://www.eecs.umich.edu/courses/eecs451/new.gif" BORDER=0>
+Remember that exam 3 will be a take-home exam given out on Dec. 6, to be 
+returned Dec. 10, and the
+<!WA9><A HREF="#Group">group projects</A> will be due on Dec. 13.
+</LI>
+
+</UL>
+
+<CENTER>
+<!WA10><IMG SRC="http://www.eecs.umich.edu/courses/eecs451/line.gif" ALT="------------------------------">
+</CENTER>
+
+<A NAME="Assign">
+<H1><B>Assignments</B></H1>
+<UL>
+
+<P>
+<LI><!WA11><IMG SRC="http://www.eecs.umich.edu/courses/eecs451/new.gif" BORDER=0>
+<B>Homework #8:</B> Chapter 8 problems: 1, 9, 12, 15, 19, 23<br>
+<B>Due in class Wednesday, November 27</B>
+</LI>
+
+<P>
+<LI>
+<B>Exam Review Problems<br>
+Do not hand in for grading!</B>
+<P>
+Chapter 4 problems: 8a),c), 10a),b), 17a)-d), 28, 45a)-c), 54<br>
+Chapter 5 problems: 5, 7, 11, 21, 22, 23
+</LI>
+
+<P>
+<LI>
+<B>Homework #7:</B><br>
+Chapter 5 problems: 16, 18, 28<br>
+Chapter 6 problems: 3, 8, 37
+</LI>
+
+<P>
+<LI>
+<B>Homework #6:</B> Chapter 4 problems: 15, 22, 25, 35, 48, 49
+</LI>
+
+<P>
+<LI>
+<B>Homework #5:</B> see last two pages of Monday's handout (Oct. 21)
+</LI>
+
+<P>
+<LI>
+<B>Exam review problems</B>
+<br>
+Chapter 2 problems: 28, 32, 37, 41, 44, 46 (Use Z-Transforms as necessary)
+<br>
+Chapter 3 problems: 14 a) c) e) g) i), 35, 41, 45, 47, 49
+</LI>
+
+<P>
+<LI>Read Chapters 4 and 5.
+</LI>
+
+<P>
+<LI>
+<B>Homework #4:</B>
+Chapter 3 problems: 24, 25, 26, 34, 39, 44
+<P>
+<B>NOTE: </B>The solution to problem 34 a) has a slight mistake. The
+pole is at -0.81, not 0.81.
+</LI>
+
+<P>
+<LI>
+<B>Homework #3:</B>
+Chapter 3 problems: 3, 9, 13, 16, 22, 23
+</LI>
+
+<P>
+<LI>
+<B>Homework #2:</B>
+Chapter 2 problems: 25, 30, 33, 35, 36, 39
+</LI>
+
+<P>
+<LI>Read Chapter 3.</LI>
+
+<P>
+<LI>
+<B>Homework #1:</B>
+Chapter 2 problems: 3, 5, 7, 8, 11, 15, 18, 21, 23, 24
+<P>
+Note that the solutions to homework #1 have
+some errors in them. Specifically, Problem 2.7 parts (d), (h), and (l)
+are time-VARIANT systems, not time-invariant as the solutions indicate.
+</LI>
+
+<P>
+<LI>Read Chapter 2.</LI>
+
+<P>
+<LI>Skim through Chapter 1, mainly for your own interest.</LI>
+
+</UL>
+
+<CENTER>
+<!WA12><IMG SRC="http://www.eecs.umich.edu/courses/eecs451/line.gif" ALT="------------------------------">
+</CENTER>
+
+<A NAME="Group">
+<H1><B>Group Projects</B></H1>
+
+<P>
+Remember, the group projects will count for 15% of your grade and will be
+due on December 13th.
+<P>
+For those of you doing data analysis on a PC, I suggest you consider
+using the <!WA13><A HREF="http://web.cs.mun.ca/~chris3/goldwave/goldwave.html">
+GoldWave Digital Audio Editor</A>. This is a shareware package that
+can be found on the CAEN Pentium machines in the Media Union. The program
+is located on the S: drive in the \BIN\GOLDWAVE directory.
+<P>
+GoldWave does not replace MATLAB for doing
+Fourier analysis, filtering, LPC modelling, etc. but it is a good
+tool for manipulation of audio at the sample level and performing
+simple transformations such as volume adjustments. Most importantly,
+GoldWave is an excellent tool for performing conversions between
+audio formats and extracting short segments of your waveforms for input
+to MATLAB. GoldWave will, for example, convert WAV files to/from MATLAB
+format.
+<P>
+If you'd like some data to play with, and don't have any of your own
+yet, here are 2 sample files that you can use. They are recordings
+of Prof. Wakefield's voice pronouncing 5 vowels, as heard in class.
+Use your browser's "Save Link As..." feature to save these to a file
+in your account (Shift-Left-Click instead of just Left-Click if you
+are using Netscape).
+<P>
+<B>NOTE: </B> these sounds are currently corrupted due to a bad file
+transfer. I will have fixed versions of these sounds available ASAP.
+<P>
+<UL>
+<P><LI>
+The <!WA14><A HREF="http://www.eecs.umich.edu/courses/eecs451/gwvowel.raw">gwvowel.raw</A> file is in raw (i.e.,
+headerless) 16-bit, signed, monophonic format. This file was created
+on a PC so it is in little-endian format (meaning the least significant
+8 bits of each 16-bit sample comes first in the file). 
+<P><LI>If you want to do
+your experiments on a big-endian machine (such as a Sun or HP), you should use
+this file, <!WA15><A HREF="http://www.eecs.umich.edu/courses/eecs451/gwbsw.raw">gwbsw.raw</A>, which is the same data
+but it has already been byte-swapped for you. If you use the wrong
+file, there'll be no doubt about it when you play it over speakers or
+headphones.
+</UL>
+
+<CENTER>
+<!WA16><IMG SRC="http://www.eecs.umich.edu/courses/eecs451/line.gif" ALT="------------------------------">
+</CENTER>
+
+<A NAME="Code">
+<H1><B>MATLAB Code</B></H1></A>
+<P>
+Here is some MATLAB code that may be of use
+or of interest. You can get the code by clicking on each link,
+copying the code, and pasting it into an editor window. Easier is to
+use your browser's "Save Link As..." function to save the code to a file.
+Using Netscape on a Unix workstation, Right-Click on the link and
+select "Save Link As..." or Shift-Left-Click to achieve the same thing.
+
+<P>
+<B><FONT SIZE=+2>PLEASE DO NOT PRINT OUT THIS CODE</FONT></B>. Remember
+how uptight CAEN is about printing things out. Too many people printing
+off copies of the same file will lead to all of these files being
+removed.
+<P>
+<UL>
+<LI><!WA17><IMG SRC="http://www.eecs.umich.edu/courses/eecs451/new.gif" BORDER=0><!WA18><A HREF="http://www.eecs.umich.edu/courses/eecs451/p528.m">Problem 5.28 from the text</A></LI>
+<LI><!WA19><IMG SRC="http://www.eecs.umich.edu/courses/eecs451/new.gif" BORDER=0><!WA20><A HREF="http://www.eecs.umich.edu/courses/eecs451/filtplot.m">Plot magnitude/phase of filter response (filtplot.m)</A></LI>
+<LI><!WA21><A HREF="http://www.eecs.umich.edu/courses/eecs451/stft.m">Short-time Fourier Transform computation (stft.m)</A></LI>
+<LI><!WA22><A HREF="http://www.eecs.umich.edu/courses/eecs451/star.m">Short-time Autoregressive modelling (star.m)</A></LI>
+<LI><!WA23><A HREF="http://www.eecs.umich.edu/courses/eecs451/dftlec17.m">MATLAB examples from lecture 17</A></LI>
+<LI><!WA24><A HREF="http://www.eecs.umich.edu/courses/eecs451/orthstem.m">Plot a sequence and its FFT as stems</A></LI>
+<LI><!WA25><A HREF="http://www.eecs.umich.edu/courses/eecs451/overlay.m">Plot a sequence to overlay an orthstem plot</A></LI>
+<LI><!WA26><A HREF="http://www.eecs.umich.edu/courses/eecs451/hw5p1.m">Homework #5 Problem #1</A> code to plot bk vectors</LI>
+<LI><!WA27><A HREF="http://www.eecs.umich.edu/courses/eecs451/hw5p4a.m">Homework #5 Problem #4a</A> code to plot Hadamard vectors</LI>
+<LI><!WA28><A HREF="http://www.eecs.umich.edu/courses/eecs451/hw5p4d.m">Homework #5 Problem #4d</A> code to plot expansion coefficients of a sinusoid on the Hadamard basis</LI>
+</UL>
+
+<CENTER>
+<!WA29><IMG SRC="http://www.eecs.umich.edu/courses/eecs451/line.gif" ALT="------------------------------">
+</CENTER>
+
+<A NAME="Brain">
+<H1><B>Brain Teasers</B></A>
+<!WA30><IMG SRC="http://www.eecs.umich.edu/courses/eecs451/small-brain.gif" ALIGN=Middle></H1>
+
+Here is a compendium of the "brain teaser du jour" questions that have
+been sent out on the mailing list. Someone suggested they might make
+good review questions or study aids (or even Quals questions, nudge nudge,
+wink wink, say no more).
+
+<UL>
+<P>
+<LI><!WA31><IMG SRC="http://www.eecs.umich.edu/courses/eecs451/new.gif" BORDER=0>
+  Consider the analog unit step signal u(t)=1, t&gt;=0, u(t)=0, t&lt;0. Is there
+  any sampling frequency we can use to sample u(t) so that the resulting
+  digital signal, u(n), exhibits no frequency-domain aliasing?
+<P>
+  Realizing that the answer to the above question is "no", now consider
+  the sampled signal u(n).  What does this signal look like, for *any*
+  sampling rate? How can this be explained?
+</LI>
+
+<P>
+<LI>
+Show that an FIR system may be written as an IIR system with an
+infinite number of poles.
+</LI>
+
+<P>
+<LI>
+Show that an antisymmetric impulse response (i.e., h(n) = -h(-n)) has
+a zero in its frequency response at omega=pi (and, of course, omega=-pi).
+</LI>
+
+<P>
+<LI>
+Consider the discrete-time signal:
+<P><CODE><PRE>
+        x(n) = cos(2*pi*f*n) for n in the range [0,15]
+</PRE></CODE>
+<P>
+and the frequency 'f' is 5/16. What is the 16-point DFT of this signal? Now
+define the signal:
+<P><CODE><PRE>
+        y(n) = x(n), n in the range [0,15]
+             = 0, n in the range [16,31]
+</PRE></CODE>
+<P>
+What is the 32-point DFT of this signal? It is possible to answer all
+of the above questions without a computer and without doing any math.
+<P>
+Having done so, repeat this exercise using MATLAB. Display the magnitude
+of your DFT's on a logarithmic scale to see the difference between theory
+and reality. Also, do it again using f=5.5/16. Think about what you'd
+expect to see both for the 16-point DFT and the 32-point DFT.
+</LI>
+
+<P>
+<LI>
+Let {bk} be one set of basis vectors for N-point sequences. Let {vk}
+be another set of basis vectors for the same space. Find the "change of 
+basis" transformation.  That is, find a matrix T such that:
+<PRE>
+                            h
+                       y = T x
+</PRE>
+<P>
+transforms the vector of expansion coefficients x (expanded on the {bk}
+vectors) to the vector of expansion coefficients y (expanded on the {vk}
+vectors). As its name implies, this transformation maps a data vector
+from one basis to another. Both x and y represent the same data vector,
+but written in terms of different bases.
+<P>
+What's the change of basis transformation for mapping a Fourier expansion
+onto a Hadamard expansion?
+</LI>
+
+<P>
+<LI>
+Consider the continuous function:
+<CENTER><PRE>
+f(w) = exp(-jw(N-1)/2)*sin(wN/2)/sin(w/2)
+</PRE>
+</CENTER>
+<P>
+where 'w' is a real-valued continuous variable, N is a positive integer (N>1),
+'j' is the square root of -1, and exp() is the standard exponential
+function (i.e., "e to the power of...").
+<P> 
+Compute the N-point circular convolution of f(w) with itself: f(w) ** f(w)
+where '**' indicates circular convolution. NOTE: If you can do this problem
+IN YOUR HEAD without doing ANY MATH, then you are in great shape (mentally
+speaking, of course).
+</LI>
+
+<P>
+<LI>
+Consider two NxN circulant matrices A and B (see page 4 of Lecture 20
+for an example of a circulant matrix).
+<P>
+<OL>
+<LI>Show that AB (this is matrix multiplication) is also a circulant
+matrix.
+<LI>Show that AB=BA. Is this true in general (i.e., for ANY matrix)?
+<LI>Why are the above properties important when considering which
+matrices can represent linear circularly-shift-invariant operators?
+<LI>Prove that circular convolution is commutative (HINT: you've already
+done it).
+</OL>
+</LI>
+
+<P>
+<LI>
+<!WA32><A HREF="http://www.eecs.umich.edu/courses/eecs451/brain.html">Brain teasers from the first third of the course</A>
+have been placed on a separate page.
+</LI>
+
+</UL>
+<P>
+So where are the answers? Come to <!WA33><A HREF="#Office">office hours</A>!
+
+<P>
+Want more? Tell me and I'll try to think of some.
+
+<CENTER>
+<!WA34><IMG SRC="http://www.eecs.umich.edu/courses/eecs451/line.gif" ALT="------------------------------">
+</CENTER>
+
+<A NAME="Details">
+<H1><B>Course Details</B></H1>
+
+<DL>
+
+<P>
+<DT><B><FONT SIZE=+1>Meeting Times</FONT></B></DT>
+<DD><TABLE BORDER=2 CELLPADDING=2>
+ <TR>
+  <TD><B>Lectures</B></TD>
+  <TD>MWF 12:30-1:30</TD>
+  <TD>GGB 1504 (Lee Iacocca Lecture Hall)</TD>
+ </TR>
+ <TR>
+  <TH ROWSPAN=3><B>Recitation</B></TH>
+  <TD>Tues 1:30-2:30</TD>
+  <TD>EECS 1003</TD>
+ </TR>
+ <TR>
+  <TH COLSPAN=2>OR</TH>
+ </TR>
+ <TR>
+  <TD>Thurs 2:30-3:30</TD>
+  <TD>GGB 1371</TD>
+ </TR>
+</TABLE>
+<P>
+The two recitation sections will be identical so please come to only
+one or the other. We'd like to keep the recitations more informal and
+that is hard to do if everyone comes to the same recitation.
+<P>
+GGB 1371 is hard to find. It is in the north-east section of G.G. Brown,
+in that heavy machinery area where they build the concrete canoe, etc.
+If you're coming to Thursday's recitation, plan on a few extra minutes
+for finding the room. Use the building maps posted on the walls. 
+Bring your hard-hat.
+</DD>
+
+<P>
+<DT><B><FONT SIZE=+1>Instructor</FONT></B></DT>
+<DD>Prof. Gregory H. Wakefield <br>
+    <!WA35><A HREF="mailto:ghw@eecs.umich.edu">ghw@eecs.umich.edu</A> <br>
+    4118 EECS <br>
+    3-9857
+</DD>
+
+<P>
+<DT><B><FONT SIZE=+1>Teaching Assistant</FONT></B></DT>
+<DD>Andrew Sterian <br>
+    <!WA36><A HREF="mailto:asterian@eecs.umich.edu">asterian@eecs.umich.edu</A>
+</DD>
+
+<A NAME="Office">
+<P>
+<DT><B><FONT SIZE=+1>Office Hours</FONT></B></DT>
+<DD>
+<TABLE BORDER=4 CELLPADDING=4>
+  <TR>
+    <TH ROWSPAN=4>Andrew Sterian</TH>
+    <TD>Monday 2:30-4:30</TD>
+    <TD ROWSPAN=4>EECS 2420</TD>
+  </TR>
+  <TR>
+    <TD>Tuesday 2:30-4:30</TD>
+  </TR>
+  <TR>
+    <TD>Wednesday 1:30-3:30</TD>
+  </TR>
+  <TR>
+    <TD>Thursday 1:30-2:30</TD>
+  </TR>
+  <TR>
+    <TH>Prof. Wakefield</TH>
+    <TD>Friday 1:30-3:30</TD>
+    <TD>EECS 4118</TD>
+  </TR>
+ </TABLE>
+</DD>
+
+<P>
+<DT><B><FONT SIZE=+1>Textbook</FONT></B></DT>
+<DD><B>Digital Signal Processing: Principles, Algorithms, and Applications.
+</B> (3rd ed.) John Proakis and Dimitris Manolakis, Prentice-Hall.
+</DD>
+
+<P>
+<DT><B><FONT SIZE=+1>Workload</FONT></B></DT>
+<DD>
+  <UL>
+  <LI>Homework (10%) <B>NOTE: </B>One homework will not be counted</LI>
+  <LI>Group Project (15%)</LI>
+  <LI>3 Exams (25% each)</LI>
+  </UL>
+  Computer environment will utilize MATLAB
+</DD>
+
+<P>
+<DT><B><FONT SIZE=+1>Syllabus</FONT></B></DT>
+<DD>
+  <UL>
+  <LI>Introduction: What you have learned in the course... [3-5]</LI>
+  <LI>Chapter 2: Discrete-Time Signals and Systems [3]</LI>
+  <LI>Chapter 3: Z-Transform [6]</LI>
+  <LI>Chapter 4: Frequency Analysis [6]</LI>
+  <LI>Chapter 5: Discrete Fourier Transform [2]</LI>
+  <LI>Chapter 6: FFT [2]</LI>
+  <LI>Chapter 7: Implementation [6]</LI>
+  <LI>Chapter 8: Design of Digital Filters [6]</LI>
+  <LI>Chapter 9: Sampling and Reconstruction [2]</LI>
+  <LI>Chapter 12: Power Spectrum Estimation [3]</LI>
+  </UL>
+</DD>
+</DL>
+</BODY>
+</HTML>

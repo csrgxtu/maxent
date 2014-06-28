@@ -1,0 +1,131 @@
+Date: Mon, 11 Nov 1996 17:24:58 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 02 May 1996 16:02:11 GMT
+Content-length: 3476
+
+<html>
+<head>
+<title>CS 537 - Quiz #10</title>
+</head>
+
+<body>
+<table border=0 width=100% align=center>
+<tr>
+<td width=25%><td width=50% align=center>
+<b>UNIVERSITY OF WISCONSIN-MADISON
+<br>
+Computer Sciences Department</b>
+<td width=25%>
+<tr>
+<tr>
+<td>
+<b>CS 537
+<br>
+Spring 1996 </b>
+<td><td align=right><b>Bart Miller</b>
+<tr>
+<td>
+<td align=center><b>Quiz #10</b>
+<br>
+Wednesday, May 1
+<td>
+</table>
+
+<h2>File Systems and Recovery</h2>
+<h3>1. Updating File System Information on Disk</h3>
+When writing a new block to a file, three on-disk things need to be updated.
+These are:
+<ul>
+<li>
+The new block in the file that contains the data to be written.
+<li>
+The disk block free list.
+<li>
+The inode (file descriptor).
+</ul>
+In what order must these operations be done to be able to safely recover
+from a system crash?
+<b>
+<ol>
+<li>
+Get the disk block from the free list.
+<li>
+Write the data to the block.
+<li>
+Update the inode.
+</ol>
+</b>
+
+<h3>2. Recovering from a Crash</h3>
+When an operating system crashes, it often leaves the data
+that it stores on the disk in an inconsistent state.
+By inconsistent state, we mean that file system data structures do not
+correctly describe what should be in the files, directories, descriptors, and
+free lists.
+This can happen because it takes several disk reads and writes to update a
+file, its inodes (file descriptors), and the free list.
+Remember that multiple processes and users can be updating their files
+in the same time interval.
+<p>
+When the operating system is rebooted,
+it is necessary to validate that the file system and
+its data structures are all right (or figure out how to fix them).
+
+<ol>
+<li>
+With an allocation scheme based on block groups and a free block bit-map
+(such as that used in DEMOS), is it possible to tell, after a crash, if
+a block that is marked "free" in the bit-map should not be?
+If so, how?  If not, why not?
+<b>
+<p>
+If you first removed a block from the bitmap (as we did in the Question 1),
+then you know that if a block is marked "free", then it should really be
+a free block.
+<p>
+If you want to double-check, just to make sure that your system was
+behaving properly, you could the following recovery algorithm after
+the system was rebooted:
+<ol>
+<li>
+Create a new bit map (in memory) that indicates all blocks free (all ``1''s).
+<li>
+Start at the root directory and traverse the file system tree.
+At each descriptor, record in the new bit-map which disk blocks are allocated
+for that descriptor.
+<li>
+Compare the new bit-map to the one that is on disk.
+This will show files that should be in bit-map but are not, and files that
+are in the bit-map but should not be.
+</ol>
+As you can see, from the last step above, we can tell which blocks are
+really free and which are allocated to a file.
+</b>
+<p>
+
+<li>
+After a crash, suppose we know that a disk block appears both in the free
+list/map and in a file.  Is there some action we could safely take?
+(I.e., we do not want to make matters any worse,
+and would like to make them better).
+If so, what?  If not, why not?
+<b>
+<p>
+If a block occurs in both the free list and <i>only one</i> file,
+then it is usually safe to
+take it out of the free list and keep it in the file.
+If a block somehow appeared in multiple files (i.e., pointed to by
+multiple inodes), then you'd have to manually try to fix the problem.
+</b>
+
+</ol>
+
+<hr>
+<H4>
+Last modified:
+Thu May  2 10:58:15 CDT 1996
+by
+<a href="http://www.cs.wisc.edu/~bart">bart</a></b>
+</H4>
+</body>

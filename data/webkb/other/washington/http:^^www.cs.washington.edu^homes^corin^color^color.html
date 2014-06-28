@@ -1,0 +1,77 @@
+Date: Tue, 10 Dec 1996 17:33:10 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+
+<head>
+<title>Color Perception and Correcting for Chromatic Induction</title>
+</head>
+
+<body>
+<center>
+<h1>Color Perception and Correcting for Chromatic Induction</h1>
+</center>
+
+<h4>Research in progress, joint with Corin Anderson, Evan McLain, David
+Salesin, and Dani Lischinski</h4>
+
+
+In human vision, the perceived color of an object does not depend solely
+upon the physical light that leaves the surface of that object.  Many other
+factors play a role in the perceived color, including the color and brightness
+of surrounding objects.  This is most clearly noted in the image below:<p>
+
+<img src="images/blocks.gif" alt="[Image of obvious color shifts]"><p>
+
+Believe it or not, the two center gray boxes are the same color,
+although they clearly do not appear to be so.  This is due to
+<em>chromatic induction</em> (actually, it is brightness induction,
+but that subtly doesn't matter a whole lot here).  Automatically
+correcting (<i>i.e.</i> removing) this effect is the topic of our
+research.<p>
+
+As motivation for this research, consider the case where the image below
+were your company logo:<p>
+
+<img src="images/logo_half.gif" alt="[Image of gray company logo]"><p>
+
+If you were to compose your logo with the image below on the left, you would
+generate an image like that shown below and on the right:<p>
+
+<img src="images/colors_half.gif"
+alt="[Green field on top, yellow field on bottom]">
+<img src="images/ugly_half.gif"
+alt="[Composite image:  gray logo looks red on top, blue on bottom]"><p>
+
+This is an undesireable effect -- your company logo is supposed to be all
+gray, not red on top, green on bottom, and blue on the side!  So you must
+somehow correct this problem.<p>
+
+One method of correction is simple avoidance: never put your company logo
+on any strongly colored backgrounds.  The problem with this solution is
+that you are now restricted with what you can do with your company's logo.
+The second solution is to hand-correct your company's logo.  That is, with
+the knowledge that the top of your logo will become reddish, you could add
+green to your logo, and balance the chromatic induction.  While this
+solution works for simple cases such as the one above, consider, the case
+below, where the background color changes widely and smoothly.  It would
+be difficult to guess what the resulting induced effects would be:<p>
+
+<img src="images/spots_half.gif" alt="[Logo on mottled  background with
+smooth color transitions]"><p>
+
+The third alternative is to have a computer automatically correct for
+chromatic induction, letting you have complete freedom of design with your
+company's logo.  This is what our research is doing.  Our goal is to
+design a program whose input is the graphic artist's image, where colors
+are specified by what color <em>should be perceived</em> at each point.
+The program would compute how the design elements will interact with each
+other by chromatic and brightness induction, and adjust the image
+accordingly.  The output would be an image whose <em>physical</em> colors
+may be different than the input's, but whose <em>perceived</em> colors
+would be what the graphic artist specified.<p>
+
+<address>corin@cs.washington.edu</address>
+</body>
+</html>

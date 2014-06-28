@@ -1,0 +1,107 @@
+Date: Wed, 08 Jan 1997 21:43:41 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+<title>CSE467 Laboratory Assignment #1</title>
+</head>
+<body bgcolor="#dddddd"  text="#000000"  link="#0000ee" vlink="551a8b" alink="ff0000">
+
+<h1>CSE467: Advanced Logic Design</h1>
+<h3>Ted Kehl, Fall 1996 </h3>
+
+<hr>
+
+<h2>Lab 1</h3>
+<p>
+<h3>Introduction to Synario: Schematic Capture and Simulation</h3>
+<p>
+<b>Distributed:  Oct 4 - Due: Oct 15</b>
+<hr>
+<p>
+
+<H3>Objectives</H3>
+When you have completed this lab, you should know how to:
+<UL>
+<LI>Login to WindowsNT and start programs like NetScape and Synario
+<LI>Create a new project or open an old project in Synario
+<LI>Draw schematics for a simple circuit
+<LI>Simulate a combinational circuit in Synario by writing a Verilog
+    driver program
+<LI>Print schematics and programs from Synario
+</UL>  
+                              
+For this lab, and this lab only, you can choose a lab partner to work
+with.  Make sure though that you both learn how to use Synario - you
+should each spend half the time "at the controls".
+
+<H3>Part 1: Logging In</H3>
+
+You must have an account on the NT workstations before you can login.
+We will let you know what your initial password is.  You must change
+this to something only you know the first time you login.  Please use
+the usual password rules when choosing your password.  Also, make sure
+you logout out before you leave the lab.
+<p>
+After you login, take a few minutes to look around.  If you have used
+Windows before, everything should be pretty familiar.  You will be
+able to do everything from Program Manager.  Look in the "Accessories"
+folder for common applications like NetScape.  Look in the "Main"
+folder others.  The Synario tools we use will be in the "Hardware Design Lab
+Tools" folder.
+<p>
+The File Manager allows you to poke around through the NT directory
+structure.  You don't really have to know where everything is, but it
+doesn't hurt to get a feel for the lay of the land.  Your home
+directory will be in the toplevel [z] directory.
+
+<H3>Part 2: The Synario Tutorials</H3>
+
+The "Getting Started" tutorials provide an excellent introduction to
+Synario.  For this lab assignment, you will do Tutorials #1 and #2.
+<font size=+1> (Please read these <a
+href="notes.html"><b> notes</b></a>on the tutorials first.)</font> The
+first tutorial walks you around an existing project so you can see how
+projects are organized.  (Make sure you copy the example project
+(Prep2) to your own directory before starting this tutorial.)  Your
+first project will not be this complicated, so don't worry if it
+doesn't all make sense.
+
+Tutorial #2 leads you through all the steps you will have to follow to
+complete the first assignment:  Project creation, schematic capture
+and simulation.  Pay particular attention to how the Verilog program
+is used to perform the simulation - you will have to write a simple
+verilog program to test the circuit you design.
+
+<H3>Part 3: Design a Simple Circuit</H3>
+
+In this part you will design and simulate the following simple
+combinational circuit which implements a simple median
+filter.  The inputs to this filter are the values (0=black/1=white) of
+one pixel and its 4 NEWS neighbors.  The output of the filter circuit
+is white if 3 or more of these 5 pixels are white, and black
+otherwise.
+<p>
+Design a circuit for this filter using a schematic.  You may use any
+of the symbols in the generic library.  
+<P>
+<b>Hint:</b> This circuit is not that
+complicated if you can find a structured way to solve it.
+
+<H3>Turn In:</h3>
+<ol>
+<li>Schematic of your circuit.
+<li>Printout of your Verilog driver function.
+<li>A <b>signed</b> simulation log or waveform which shows that your
+circuit works.  You must demo your simulation to one of the TAs who
+will sign the printout.
+</ol>
+
+</body>
+<address>
+<hr>
+ted@cs.washington.edu
+</address>
+<p>
+</html>

@@ -1,0 +1,619 @@
+Date: Tue, 26 Nov 1996 00:08:22 GMT
+Server: NCSA/1.5.2
+Last-modified: Mon, 29 Jan 1996 15:38:25 GMT
+Content-type: text/html
+Content-length: 21535
+
+<HTML>
+<p align=center>
+<!WA0><a href="http://www.csc.ncsu.edu/cgi-bin/imagemap/header-all" >
+<!WA1><img src="http://www.csc.ncsu.edu/graphics/headers/pic/all.gif" ISMAP ALT="Menubar">
+
+</a>
+<HEAD>
+ <TITLE>Operating Systems Laboratory
+Organization and Tools</TITLE>
+</HEAD>
+
+
+
+
+<H2 ALIGN=center>Operating Systems<BR>
+Laboratory Organization and Tools</H2>
+
+<H3 ALIGN=center><I>Carol Miller
+</I></H3>
+
+
+
+<H4 ALIGN=center><I>HTML by William Hicks and Earl Shannon</I></H4>
+
+<H3 align=center>
+<a name="table">
+Table of Contents<br>
+<!WA2><a href="#intro">Introduction</a><br>
+<!WA3><a href="#tools">Operating System Development Tools</a><br></h3>
+<h4 align=center>
+<!WA4><a href="#xcc">xcc</a>
+<!WA5><a href="#as">as</a>
+<!WA6><a href="#down">download</a>
+<!WA7><a href="#odt">odt</a>
+<!WA8><a href="#busers">busers</a>
+<!WA9><a href="#xinu8">Xinu8</a></h4><br>
+<h3 align=center>
+<!WA10><a href="#develop">Program Development Example</a><br>
+<!WA11><a href="#trouble">Troubleshooting</a><br>
+</h3>
+<HR>
+<a name="intro">
+<H3>Introduction:</H3> The Operating Systems Laboratory of the Computer Science
+Department is provided for students enrolled in upper level undergraduate
+and graduate operating system courses.  This document contains a description
+of the computers in the lab and the software development tools available
+to students in these advanced classes.<BR>
+<HR>
+
+<BR>
+
+<H3>Laboratory Configuration</H3>
+
+The Operating Systems Laboratory, often referred to as OSL, for the Computer
+Science Department is located in Daniels 205.  This lab is a vital resource
+for two undergraduate courses (CSC 451 and CSC 452) and the graduate level
+real-time operating systems course (CSC 574). The computers in the laboratory
+for CSC 451 consist of a single Sun Sparc and five Sun 3/60 Xinu clients,
+named friedpie, fishstick, onionring, tatortot, and frenchfry. <BR>
+
+<H4>Hushpuppy</H4>
+
+The Sparc workstation, known as hushpuppy, is where student accounts are 
+located and Xinu software development is done.  Hushpuppy uses the SunOS
+operating system which is a 4.3 version of UNIX with System V release 3.2
+extensions.  It is connected to the campus network via ethernet and uses
+TCP/IP to communicate with other machines.  Hushpuppy can also be reached
+by using a Hayes compatible modem through the NCSU Campus dataswitch, 
+university terminal servers, or from other computer systems via Internet
+using the address hushpuppy.csc.ncsu.edu or just plain hushpuppy if you are
+currently in the NCSU Internet Domain.
+<p>
+To telnet to hushpuppy you can also just click
+<!WA12><a href = "telnet://hushpuppy.csc"> here.</a>
+<BR>
+<p>
+SunOS has many of the commands found on other campus machines such as aza,
+the Eos workstations, and garfield, some of which are running Digital 
+Equipment's ULTRIX.  Familiarity with any of these systems will allow you
+to quickly become comfortable using SunOS.  Help is available via the
+on-line manuals commonly called man pages.  The following is an example
+to show how to display man pages for the SunOS command ls, which will
+list the contents of a directory.
+<BR>
+<BR>
+<CODE>
+<PRE>
+	sun4-%man ls
+</PRE>
+</CODE>
+<BR>
+Hushpuppy responds with:<BR>
+<CODE>
+<PRE>
+	
+	reformatting page. Wait... done
+
+	LS(1V)			USER COMMANDS			LS(1V)
+
+	NAME ls - list the contents of a directory
+
+	SYNOPSIS ls [-aAcCdfFgilLqrRstu1 ] filename ...
+
+	SYSTEM V SYNOPSIS /usr/5bin/ls [-abcCdfFgilLmnopqrRstux] filename ...
+</PRE>
+</CODE>
+
+and continues with the remaining information on the ls command.
+<BR>
+
+<H4>Xinu Clients</H4>
+
+There are five Xinu clients.  They are named fishstick, frenchfry, onionring,
+tatortot, and friedpie.  They are Sun 3/60 with 8 or 4 megabytes of RAM, two
+serial ports, an ethernet connection, and a SCSI port.  The console port
+(one of the two serial ports) on each of the five clients is connected to
+hushpuppy via a multiplexer.  This connection allows the server machine to
+act as a front end to the Xinu client and eliminates the need for an 
+additional terminal.  The operating system also suppports a terminal 
+connected to the second serial port, but which is not currently configured.
+<BR> 
+
+The five target machines (clients) are connected to each other and to
+hushpuppy through an ethernet network.  It is through this connection the
+clients download Xinu executables created on the Sparc (hushpuppy). 
+Devices such as hard disks, CD-ROMs, and scanners can be connected to the
+Sun via the SCSI port.
+<BR>
+<p>
+<!WA13><a href="#table">Contents</a>
+<hr>
+<a name="tools">
+<H3>Operating System Development Tools</H2>
+
+Xinu is a small operating system originally designed for the Digital Equipment
+LSI 11 computer but has been transported to other platforms; it is for this
+reason that a Xinu target machine is sometimes called an LSI.  Written by 
+Douglas Comer and associates at Purdue University, Xinu and its development
+tools are used to explore the different aspects of operating system design.
+Xinu Version 6 is discussed in Comer's book Operating System Design, The
+Xinu Approach volume one.  Volume two of this text covers Xinu Version 7.
+Xinu 6 is currently installed on hushpuppy and can be found in the directory 
+/usr/Xinu/.  The C and MC68030 assembly source files for Xinu 6 are located
+in the directory /usr/Xinu/src, Xinu header files are in /usr/Xinu/include/,
+and the library files are located in /usr/Xinu/lib/.
+<BR>
+<a name="xcc">
+<H4>xcc: C Compiler for Xinu</H4>
+
+The command xcc invokes the C compiler, assember, and loader to produce
+object files, Motorola MC68030 assembly language files, or Xinu executables
+from input files located on hushpuppy.  The input files can be C source files,
+Motorola 680xx assembly source files, object files, or libraries of object
+files.  The distinction between the different types of files is made by the 
+suffix of the file name:
+<BR>
+<PRE>
+
+	Suffix		File Type
+	.c		C source code
+	.s		MC680xx assembly source
+	.o 		object file
+	.a		object file library
+
+</PRE>
+
+For example, xcc would assume the files main.c, io.c, and control.c to be 
+C source code and the file lowlevel.s to be an assembly module.  It is 
+recommended that you use xcc to assemble routines written in assembly 
+language.
+<BR>
+
+Below are the switches (options sent to programs via the command line) that
+xcc understands.
+<BR>
+<PRE>
+
+	Switch		Purpose
+	-c		To suppress the loading(linking) phase of the
+			compilation, and force xcc to stop after
+			producing '.o' files from source programs.
+
+	-o output	To name the final output file output.
+
+	-v		Verbose output narrating each step of the 
+A
+			compile.
+
+	-Dname		Define name to the preprocessor, as if by the
+			#define directive.
+
+	-E		Run only the macro preprocessor on the named
+			C programs, and send the result to standard
+			output.
+
+	-Idir		#include files whose names do not begin with 'I'
+			are always sought first in the directory of
+			the file argument, the in directories named in
+			the -I options, then in directories on a 
+			standard list.
+
+	-O		Invoke the object-code improver as part of the
+			C compilation.
+
+	-P 		Run only the macro preprocessor on the named C
+			programs, and send the result to corresponding
+			files suffixed with .i.
+
+	-S		Compile the named C programs into assembly
+			language, and leave the asembly-language output
+			in corresponding files suffixed with .s, without
+			assembling or loading the result.
+
+	-L		Include the standalone startup routine to allow
+			downloading without Xinu.  The xcc command can be
+			used to generate modules for downloading that do
+			not contain the Xinu operating system.  The -L
+			switch is used to create this standalone object file.
+			When a standalone module is mode, the linker uses 
+			the libsa.a library of functions instead of the usual
+			libx.a and libc.a.
+
+			</PRE>
+For example, to compile a C source file named main.c, an assembly listing
+named lowlevel.s, and the object io.o into an executable named prog1 use
+xcc in the following way:
+<BR>
+
+
+<PRE>
+	xcc -o prog1 main.c lowlevel.s io.o
+</PRE>
+For more information about the above options, consult the man pages on the
+Sun C compiler (cc command).
+<BR>
+<a name="as">
+<H4>as: MC680xx Assembler</H4>
+
+The Sun 3/60's are based upon the Motorola 68000 family of microprocessors.
+The command as can be used to assemble 680xx source files into machine
+code, however the resulting binary file in not in the proper format for
+downloading.  It is for this reason that you are encouraged to use xcc to
+do all your assembling.  The assemble the file setup.s, enter:
+<PRE>
+	xcc setup.s
+</PRE>
+<a name="down">
+<H4>download: Download Executable to Xinu Client</H4>
+
+The download command loads the absolute binary program image produced by
+xcc into the memory of the target machine.  The name of the file to 
+download can be provided as an argument otherwise the name a.out is assumed.  
+The -m<machine_name> option can be used to select a 3/60 to send your binaries to,
+otherwise any available client machine is used.  For example:
+<PRE>
+	download -mfishstick prog1 
+</PRE>
+
+will download the file prog1 to fishstick.  If no client is available
+(all are reserved by other users) then download will display an error
+message.
+<BR>
+<a name="odt">
+<H4>odt: Connect the User Terminal to the Console Port on the Xinu Client</H4>
+
+The command odt takes it name from the on-line debugging technique (odt)
+feature of the LSI 11 and PDP 11 computers.  This feature is a ROM-based
+monitor which accepts console keyboard commands.  The name odt has been kept 
+for historical reasons and to provide uniformity across different Xinu
+platforms.  The development tool odt is used to connect the user's
+terminal to the console port on a client machine.  Input from the keyboard
+is sent to the 3/60 and output for the 3/60 is displayed on your terminal.
+<BR>
+
+To run a downloaded program, enter odt at the prompt on the server machine.
+You will see a message telling you to which 3/60 you are being connected.
+This will automatically be the machine you selected previously when you
+downloaded your executable.  Press &ltReturn> a few times until a >
+prompt appears.  If you do not get a prompt or if it seems that a program
+is already running on the client then enter the key sequence \ (the backslash
+character) followed by &ltControl-@> repeatedly until the 3/60 responds
+with the correct prompt.  Enter b at the prompt to boot the client.  This
+will load Xinu and your executable into the memory of the machine.  Start
+your program by typing g 4000 and pressing <Return>.  Below is an example
+using the above instructions.
+<BR>
+<PRE>
+	sun4-%download prog1
+	using front end 'hushpuppy':   Using backend 'fishstick'
+	downloading file: prog1
+	Sent Xk bytes 
+	download completed
+
+</PRE>
+
+Note: The X in the line Sent Xk bytes will be some number. 
+<PRE>
+	sun4-%odt
+	using front end 'hushpuppy':   Using backend 'fishstick'
+	Using /dev/ttyX
+
+</PRE>
+Note: The X in the line Using /dev/ttyX will be a device name such as m00.
+<PRE>
+	>b
+	EEPROM boot device...Boot: le(0,0,0)
+	Using IP Address 152.1.58.32 = 98013A20
+	Booting from tftp server at 152.1.58.33 = 98013A21
+	Downloaded X bytes from tftp server.
+
+</PRE>
+
+Note: The X in the above line will be some number.
+<PRE>
+	>g 4000
+</PRE>
+At this point Xinu will start and your program will begin execution.
+To return to hushpuppy press &ltControl-C>.  This ends the odt session and
+causes the connection between the front-end (hushpuppy) and a 3/60 to be
+broken.  Pressing &ltControl-C> does not cause the Xinu client to stop executing 
+your program, it may continue executing after odt has been exited.
+<BR>
+B
+<PRE>
+	&ltControl-C>Machine released
+	sun4-%
+</PRE>
+
+If a target machine begins behaving strangely it may need to be reset.  To
+reset a 3/60, connect to it using the odt command as shown above.  At the 
+odt prompt enter k 2 (the letter k followed by a space and then the number
+2) and press <Return>.  This will casue the client to reset, perform a
+self-test, then load any downloaded program into memory.
+<BR>
+
+
+Two switches (program options) commonly used with odt are -m and -h.
+<PRE>
+	Switch	      		Purpose
+	-mMachine Name  	causes odt to connect the user terminal to Sun
+				named Machine Name (an odt following a download
+				will automatically use the same 3/60 selected 
+				by the download if the -m switch is not used)
+
+	-h			allows this 3/60 to remain reserved while
+				another is also being used.
+</PRE>
+    For example, odt -mfishstick -h will access fishstick and keep the reservation
+for those computers which have already reserved. Normally, downloading and using odt
+to connect with one Xinu client releases any other reservations.
+<BR>
+<a name="busers">
+<H4>busers: List the Xinu Client Users</H4>
+
+     The command busers lists each of the 3/60s that is currently being reserved 
+and the login name of the user who is using the target machine. Example:
+<BR>
+<PRE>
+	sun-4% busers
+     
+     	fishstick     idle time = 0 mins     class =   SUN reserved by ershanno
+     	frenchfry     idly time = 2 mins     class =   SUN reserved by wjhicks
+</PRE>
+<!WA14><a href="#table">Contents</a>
+<hr>
+<a name="develop">
+<H4>Program Development Example</H4>
+    
+    Any editor can be used to create source files. This sample program is compiled using
+the xcc command and download with the Xinu operating system to a Sun 3/60. The system call
+getc is used to read characters form the terminal.
+<BR>
+
+C source program:
+<PRE>
+	#include &ltconf.h>
+	main ()
+	{
+		char c;
+		while ((c=getc(CONSOLE))!= 'A')
+		printf("%c\n",c);
+
+	} /* end of sample program */
+
+</PRE>
+The program is compiled using xcc.
+
+<PRE>
+	sun-4%>xcc prog1.c
+	prog1.c:
+
+	a.out:
+	596+0 records in
+	37+1 records out
+
+	sun-4%>
+</PRE>
+
+The output file a.out is the absolute object image for the 3/60.
+<PRE>
+	sun-4%> download a.out
+	sun-4%>odt
+	Using fishstick
+
+	> b
+	EEPROM boot device...Boot: le(0,0,0) 
+        Using IP Address 152.1.58.32 = 98013A20
+        Booting from tftp server at 152.1.58.33 = 98013A21
+        Downloaded 5432 bytes from tftp server.
+
+	>g 4000
+
+</PRE>
+     The program executes until the letter 'A' is typed. Press &ltControl-C> to release
+the target machine and return to hushpuppy.  Remember, ending an odt session will not halt any
+programs that may be executing on a target machine.
+<BR>
+<p>
+<!WA15><a href="#table">Contents</a>
+<hr>
+<a name="xinu8">
+
+<H4>Working in Xinu 8</H4>
+
+<H5>Adding Commands to Xinu 8 Shell</H5>
+ 
+<ul>
+<li>Put command in {home}/xinu/src/sys/shell/usercmds. The home in this path is the directory
+ where you originally uncompressed and untared the file. 
+<li>In makefile in {home}/xinu/src/sys/shell add to the USEROFIL line 
+ so it will compile new command. The line should look something like this:
+<pre>
+  USEROFIL = 	usercmds/ascdate.o usercmds/x_cat.o usercmds/x_cp.o	\
+		usercmds/x_date.o usercmds/x_echo.o usercmds/x_mount.o	\
+		usercmds/x_mv.o usercmds/x_rls.o usercmds/x_rm.o	\
+		usercmds/x_sleep.o usercmds/x_unmou.o			\
+		usercmds/x_close.o usercmds/x_kill.o                    \
+		usercmds/my_commands.o
+</pre>
+
+<li>Run make in  {home}/xinu/src/sys/shell/usercmds to make
+ all the necessary object files <br>(See Using make in Xinu8 below).
+<li>In cmd.h add function name of command to list of externs. The externs list
+should look like this after you have added my_command:
+<pre>
+extern        int
+      x_bpool(),      x_cat(),        x_close(),      x_conf(),
+      x_cp(),         x_creat(),      x_date(),       x_devs(),
+      x_dg(),         x_echo(),       x_exit(),       x_help(),
+      x_kill(),       x_mem(),        x_mount(),      x_mv(),
+      x_net(),        x_ps(),         x_reboot(),     x_rf(),
+      x_rls(),        x_rm(),         x_routes(),     x_sleep(),
+      x_snap(),       x_unmou(),      x_uptime(),     x_who(),
+      x_fmdump(),     x_run(),
+      x_pgstats(),
+      x_printpgtbl(),
+      x_vmem(),
+      my_command();
+
+</pre>
+<li>Add a line to #define CMDS so the shell knows what to run when
+you type a command in. The first piece of info is the command the shell will
+recognize which should be in quotes followed by a comma. The second 
+thing is a boolean variable that determines whether the command is 
+builtin or not. Unsure of the implications of this with regards to
+xinu now so just set it to FALSE. The third thing is the name of the
+function that will be called when you type the command from the shell
+prompt. The CMDS line looks like this:
+
+<pre>
+#define       CMDS    "bpool",        FALSE,          x_bpool,        \
+              "cat",          FALSE,          x_cat,          \
+              "close",        FALSE,          x_close,        \
+              "conf",         FALSE,          x_conf,         \
+              "cp",           FALSE,          x_cp,           \
+              "create",       FALSE,          x_creat,        \
+                                    .
+                                    .
+                                    .
+              "ruptime",      FALSE,          x_uptime,       \
+              "sleep",        FALSE,          x_sleep,        \
+              "snap",         FALSE,          x_snap,         \
+              "time",         FALSE,          x_date,         \
+              "unmount",      FALSE,          x_unmou,        \
+              "uptime",       FALSE,          x_uptime,       \
+              "who",          FALSE,          x_who,          \
+              "vmem",         FALSE,          x_vmem,         \
+              "?",            FALSE,          x_help          \
+	      "command",      FALSE,          my_command
+</pre>
+</ul> 
+Note: When adding commands to usercmds make sure the name of the function has the same
+name as the file. This is not absolutely necessary as long as the function to be
+run when a given command is typed in the shell corresponds with the function you think 
+you are running. This link is setup in the cmd.h file.
+<br>
+<br>
+The function should have the following structure:
+<br> 
+<br>
+<pre>COMMAND my_command(stdin, stdout, stderr, nargs, args)
+   int     stdin, stdout, stderr, nargs;
+   char    *args[];
+</pre>
+<br>
+ 
+This function would be saved in a file called my_command.c
+
+
+<hr>
+
+<h4> Using make in Xinu 8 </h4>
+
+Make needs to be run in your Xinu 8 directory to create the downloadable file
+which will be run on the Sun 3/60s. To do this there is a special script 
+already written for this specific task. It is called <b>Makeall</b>. It should be located in the following directory: <br>
+<br>
+<pre>{home}/xinu/src/sys
+</pre>
+To execute it you will probably have to tell the shell where the script is
+located since this directory is not in your path. If your are in the directory 
+where Makeall is located the line to execute it would be:<br>
+<br>
+<pre>
+Sun-4%>./Makeall
+</pre>
+
+<hr>
+
+<h4>Getting a copy of Xinu 8</h4>
+
+To get a copy of Xinu 8 just click
+<!WA16><a href="ftp://ftp.csc.ncsu.edu/pub/Xinu/sun/xinu8.tar.Z">here</a>
+<br>
+<br>
+This will get a copy of the tared and compressed file. To untar and unzip the file, you will need to do the following
+
+<ul>
+<li> Uncompress the file
+<pre>
+Sun-4%> uncompress xinu8.tar.Z
+
+</pre>
+
+<li> Untar the file 
+<pre>
+Sun-4%> tar xvf xinu8.tar
+</pre>
+</ul>
+
+<br>
+<br>
+This will create three directories: docs, programs, and xinu. The source code is located in xinu and can be changed as described above.
+
+<hr>
+
+<a name="trouble">
+
+<H4>Trouble Shooting in OSL</H4>
+
+<H5>Trouble with xcc</H5>
+
+     The command xcc creates temporary object files in your current directory when
+compiling C programs and assembling 680xx programs.  These temporary files have the same 
+names as the source files except with a .o suffix. It is therefore not possible to compile two
+modules with the same base name (name excluding the suffix) in the same directory such as
+read.c and read.s because the resulting object files will have the same name.
+<BR>
+	
+<H5>Trouble with download</H5>
+
+     If the hushpuppy responds to a download request with NO Suns Available you must wait
+until someone releases a target machine as all are currently in use.
+<BR>
+
+<H5>Trouble with odt</H5>
+
+     If a 3/60 refuses to respond (at the point where you are expecting an odt prompt)
+press \ (backlash) then &ltControl-@> multiple times. If you see any prompt other than > when
+you start an odt session then another user's program is still running on the client. Use the same
+same key sequence described above to abort the other program then boot normally.
+<BR>
+     If a &ltControl-c> does not return you to hushpuppy, login to another terminal and kill
+your odt process (or ask an operator to do this for you).
+<BR>          	 
+<H5>Stack Overflow</H5>
+
+     The Suns in OSL are 32 bit machines and need twice as much memory to strore addresses
+and data as the 16 bit LSI 11 computers used in Volume 1 of Douglas Comer's book. There 
+are example programs in the textbook that use the Xinu system call create to spawn new
+processes. You should double or triple the stack sizes given in the book for these programs to
+be sure each process has enough memory. If a process runs out of stack space Xinu will reply
+with the error message Panic: current process stack overflow.
+<BR>
+<H5>Report Problems with Lab Equipment</H5>
+
+     If a problem persists with a particular machine, report it by sending mail to ops and use 
+another 3/60. Mail sent to ops goes to all the operators and the first one to read your message will
+correct the problem.
+<BR>
+<p>
+<p>
+<hr>
+For comments or sugestions about this document please send email to<br>
+<p>
+Earl Shannon ershanno@hushpuppy.csc.ncsu.edu<br>
+<p>
+Bill Hicks wjhicks@hushpuppy.csc.ncsu.edu<br>
+last-update: 1/29/96
+<br>
+version: 1.0
+</HTML>
+

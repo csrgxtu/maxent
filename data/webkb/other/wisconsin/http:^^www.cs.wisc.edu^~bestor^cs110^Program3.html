@@ -1,0 +1,170 @@
+Date: Mon, 11 Nov 1996 17:57:29 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 18 Apr 1996 22:56:19 GMT
+Content-length: 10149
+
+<HTML>
+
+<HEAD>
+<TITLE>CS 110 Section 2 - Program #3</TITLE>
+</HEAD>
+
+<BODY>
+
+<H2><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~bestor/cs110/cs110.html#assignments" ><!WA1><!WA1><!WA1><IMG SRC="http://www.cs.wisc.edu/~bestor/icons/arrowleft.gif" WIDTH=15 HEIGHT=15></A> Program #3 - Grading Program</H2>
+
+<HR>
+
+<DL>
+   <DT>Due Date:
+   <DD>Wednesday 5/1/96, 8:50 am<P>
+
+   <DT>Grade:
+   <DD>25% of your final grade.<P>
+
+   <DT>Text Covered:
+   <DD>Chp. 1, 2, 3, 4 and 5<P>
+
+   <DT>Problem Description:
+   <DD>Suppose you are a TA for CS 123 - Introductory Problem Solving, a one-credit Pass/Fail course that is graded off four programming assignments.  To save time in computing the <EM>final grades</EM> for your class you decide write a computer program to help you.  The data for each student in the class is stored in two <EM>files</EM>.  The first file contains the <EM>name</EM> and <EM>ID number</EM> of each student.  The second file contains the <EM>ID number</EM> and <EM>assignment scores</EM> for each student.  Your program will read in these two files and write a table to a third <EM>results</EM> file showing each student's name, ID number, average and final grade.<P>
+
+<CENTER>
+<!WA2><!WA2><!WA2><IMG SRC="http://www.cs.wisc.edu/~bestor/cs110/diagram.jpg">
+<P>
+</CENTER>
+
+This is a typical <EM>file processing problem</EM>.  It is <EM>non-interactive</EM> because the user does not type in anything at the keyboard - all the necessary input comes from files that are already on disk.  The user also does not see any results on the screen because the results file is also written directly to disk.  File processing programs can be difficult to debug because they are non-interactive and its hard to determine exactly where the error(s) occurr.<P>
+
+This assignment is non-trivial so I would <STRONG>strongly</STRONG> suggest starting it as soon as possible.<P>
+
+   <DT>Student Data File Format:
+   <DD>The name and ID number of each student is stored on a single line in the student data file in the following format:<P>
+   <LISTING>
+Column    Data                Variable Type
+------    ----                -------------
+1-20      Name                CHARACTER *20
+21-30     ID Number           CHARACTER *10
+   </LISTING>
+   <P>
+   For example,<P>
+   <LISTING>
+Clark Kent          1679689152
+Gareth Bestor       3912232504
+   </LISTING>
+   <P>
+
+   I have created an example student data file which you should use to test your program, called "r:\public\bestor\cs110\students.txt".  You may want to print off this file to check that your program is producing the correct results.<P>
+
+   <DT>Assignment Scores File Format:
+   <DD>The programming assignment scores for each student are stored on a single line in the scores data file.  The first item on each line is the student's ID number followed by four <TT>REAL</TT> numbers, one for each assignment, in the following format:<P>
+   <LISTING>
+Column    Data                Variable Type
+------    ----                -------------
+1-10      ID number           CHARACTER *10
+11-15     Assignment #1       REAL
+16-20     Assignment #2       REAL
+21-25     Assignment #3       REAL
+26-30     Assignment #4       REAL
+   </LISTING>
+   <P>
+   For example,<P>
+   <LISTING>
+391223250479.2592.3383.7595.00
+167968915296.5925.8255.9192.90
+   </LISTING>
+   <P>
+   I have created an example assignment scores file which you should use, called "r:\public\bestor\cs110\scores.txt".  You may want to print off this file also.<P>
+
+   <DT>Results File:
+   <DD>The purpose of your program is to write a table to the results file summarizing all the assignment scores and final grades for each student (Note: this table is <STRONG>not</STRONG> printed on the screen).  The table must show the name, ID number, assignment scores, average and final grade for every student.  All averages should be displayed <EM>rounded</EM> to two decimal places.<P>
+
+   You may display this information in any format you like but the resulting table must be neat with all the columns lining up and everything appropriately labelled.  For example,<P>
+   <LISTING>
+Name                 ID Number  Prog1 Prog2 Prog3 Prog4  Avg  Grade
+--------------------+----------+-----+-----+-----+-----+-----+-----
+Clark Kent           1679689152 96.59 25.82 55.91 92.90 67.81  Pass
+Gareth Bestor        3912232504 79.25 92.33 83.75 95.00 87.58  Pass
+   </LISTING>
+   <P>
+
+   <DT>Program Design:
+   <DD>Your program should first <TT>OPEN</TT> the results file and write any preliminary table headings to it.  Then <TT>OPEN</TT> the student data file and read in the first student.  You must then open up and read through the assignment scores file one line at a time until you find the scores for that student.  After finding their assignment scores compute their average and final Pass/Fail grade. The final grade is given by:<P>
+   <PRE>
+Fail:  Avg <  65.0
+Pass:  Avg >= 65.0
+   </PRE>
+   <P>
+   Finally write everything about this student to the results file in the appropriate columns.  After you have finished processing the first student, read in the next student from the student data file and process him or her the same way.  Continue processing all the students in this way until you reach the end of the student data file.<P>
+
+   Notes:<P>
+   <UL>
+      <LI>To search through the assignment scores file to find the scores for a particular student you must first <TT>OPEN</TT> the file and read in the first line.  If the ID number of this line matches the ID number of the student you are looking for then you have found it.  If the ID number does not match then ignore the line and read in the next one until you find one that matches.  After you find a match <TT>CLOSE</TT> the scores file so that you can re-<TT>OPEN</TT> it again later when you search through it for the next student.
+      <LI>All the students listed in the student data file will have one corresponding line in the assignment scores file (i.e. you will always find a match eventually).
+      <LI>You do not know ahead of time how many students are in the class (i.e. you do not know the length of either file).
+   </UL>
+   <P>
+
+   <DT>Debugging:
+   <DD>To help debug your program you should print messages on the screen whenever anything significant happens. For example, when you read in a student from the student data file print their name and ID number. Also, when you read in each line from the scores file print that student's ID number and whether or not it matches the one you are looking for.  This is a very useful debugging technique and will help you track down bugs if your program crashes. For example,<P>
+   <LISTING>
+Read in student Clark Kent          1679689152
+Read in scores for student 3912232504
+Read in scores for student 1679689152
+Found student! Computing average and grade
+Writing to results file
+Read in student Gareth Bestor       3912232504
+Read in scores for student 3912232504
+Found student! Computing average and grade
+Writing to results file
+   </LISTING>
+   <P>
+
+   <DT>Demo Program:
+   <DD>There is a compiled version of my solution available for reference, called "r:\public\bestor\cs110\program3.exe".  You may copy my solution to your own directory and run it to see what sort of debugging messages should be displayed and what the results file should look like.  I encourage you to use my solution to check the output of your program, but obviously do not use it to generate the output that you hand in (I will run your program myself to confirm this).<P>
+
+   <DT>Skeleton Program:
+   <DD>There is a <EM>skeleton</EM> file my solution available to get you started, called "r:\public\bestor\cs110\program3.for".  You should copy my skeleton to your own directory and use it as the basis for writing your program.  The skeleton contains the overall structure of the program and has lots of comments indicating what the different sections of the program do.  Add the appropriate statements in the spaces provided and complete the documentation.  This skeleton is intended to give you a head-start on the program and to show you the sort of programming style you should be aiming for.<P>
+
+   <DT>What to Hand In:
+   <DD>Hand in this assignment online by copying your FORTRAN <EM>source code</EM> file (e.g. "program3.for") and the <EM>compiled executable</EM> file (e.g. "program3.exe") to your handin directory.  You also have to hand in a printed copy of your FORTRAN <EM>source code</EM> file, your <EM>results</EM> file and the <EM>screen output</EM> when your program is run with my two example files.<P>
+
+   <DT>Gradesheet:
+   <DD>The following gradesheet will be used to grade this assignment.  Please take a close look at it to make sure you do everything that is required.  Note that you will be graded on correct output for the two files I have provided, so before handing it in you <STRONG>must</STRONG> run your program with these files and check that your program gives the same results as my solution.<P>
+
+   <PRE>
+Correct Output                                        [20]
+   Correctly display student name, ID number,   [15]
+     assignment scores, average and final grade
+   Correct debugging messages                   [5]
+
+Implementation                                        [22]
+   Correctly read from student data file        [4]
+   Correctly read from scores data file         [4]
+   Correctly write to results file              [4]
+   Correct use of IF/THEN/ELSE/END IF statement [2]
+   Correct use of DO WHILE/END DO loop          [2]
+   Correct use of FORMAT statement              [2]
+   Meaningful variable names                    [2]
+   Indenting and neatness                       [2]
+
+Documentation                                        [8]
+   Program description                          [4]
+   Variable definitions                         [4]
+_________________________________________________________
+
+Total (25%)                                          [50]
+   </PRE>
+   <P>
+</DL>
+
+</BODY>
+
+<HR>
+
+<ADDRESS>
+<H5>Copyright &copy 1996 <!WA3><!WA3><!WA3><A HREF="http://www.cs.wisc.edu/~bestor/bestor.html">Gareth S. Bestor</A> (<!WA4><!WA4><!WA4><A HREF="mailto:bestor@cs.wisc.edu">bestor@cs.wisc.edu</A>).  Last modified April 18, 1996.</H5>
+</ADDRESS>
+
+</HTML>
+

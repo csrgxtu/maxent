@@ -1,0 +1,107 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 16-Dec-96 23:18:52 GMT
+Content-Type: text/html
+Content-Length: 2373
+Last-Modified: Monday, 13-Mar-95 14:33:34 GMT
+
+<html>
+<head>
+<title> CS 314: Homework Number 4  </title>
+</head>
+
+<body>
+
+<h1> Homework Number 4 </h1>
+<h3>
+Date Assigned:   February 21, 1995<br>
+Date Due:   February 28, 1995
+</h3>
+<h3> To submit your answer </h3>
+Drop by the consulting office (305 Upson) during consulting hours to
+get your homework graded and recorded.
+
+<p>
+In the problems below, you are asked to write several 68000 assembly
+language routines. While it is not required, we strongly suggest that
+you use BasePak to solve this problem set. In grading this problem set,
+we will forgive minor syntactic errors, but many occurrences of the
+same error will be penalized. All programs should be well commented,
+listing any assumptions you made about the problem and how the
+registers are used. Unless otherwise specified, assume callee-save
+conventions are being used. All problems count equally in the final
+grade.
+
+<h3> Problem 1: Bit counting</h3>
+Write a 68000 code fragment that counts the number of bits that
+are set (i.e., equal one) in the number stored in register D0. The
+result should be placed in register D1. For example, if
+<code> D0 = 1101 0100 1000 0011 </code> on entry to the code fragment,
+then D1 should contain 7 on exit. The contents of D1 may be destroyed
+by the fragment.
+
+<h3>Problem 2: Machine Code </h3>
+
+<ol>
+<li> Give the machine code representation (in hexadecimal) of the
+following instructions in 68000 assembler.
+
+<PRE>
+  MOVE.L    D0,-(A6)
+</PRE>
+<li> What 68000 assembly language instruction is encoded in the
+following machine code?
+<PRE>
+  5C5F
+</PRE>
+
+</OL>
+<h3>Problem 3: Control Structures</h3>
+For each of the following Pascal control structures, give the 68000
+assembler equivalent. Assume the variable i is stored in register D0
+and x is stored in register D1.
+
+<ol>
+<li> the for-loop
+<PRE>
+  <B>for</B> i := 1 to n do <B>begin</B>
+    x := x + 1;
+  <B>end</B>;
+</PRE>
+
+<li> the while loop
+<PRE>
+  <B>while</B> (i &lt;&gt; 0) <B>do begin</B>
+    i := i-1;
+    x := x+1;
+  <B>end</B>;
+</PRE>
+
+<li> the repeat-until loop
+<PRE>
+  repeat
+    i := i-1;
+  <B>until</B> (i = 0);
+</PRE>
+
+<li> the if-then-else structure
+<PRE>
+  <B>if</B> (i &lt; 0) <B>then</B> begin
+    x := i;
+  end else begin
+    x := -i;
+  end
+</PRE>
+
+<li> the case statement
+<PRE>
+  <B>case</B> i <B>of</B>
+    1:  x := -x;
+    2:  x := 0;
+    3:  x := x + 1;
+  <B>end</B>;
+</PRE>
+
+</body>
+</html>
+

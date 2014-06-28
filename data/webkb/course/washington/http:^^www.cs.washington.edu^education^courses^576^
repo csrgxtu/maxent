@@ -1,0 +1,215 @@
+Date: Thu, 21 Nov 1996 22:18:11 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<HTML>
+<head>
+<title>CSE/EE 576 Home Page</title>
+
+</head>
+<body>
+<h1>CSE/EE 576: Image Understanding</h1>
+<h2>Welcome to the 576 Home Page!</h2>
+
+This is the World Wide Web ("the Web" for short) hypermedia document
+for CSE/EE 576 and contains information about the
+class.  Keep in mind that this document is not static, and that new
+information (especially class messages) will be added frequently.
+If you have any problems with this document, send mail to 
+ <!WA0><!WA0><!WA0><a href="http://www.cs.washington.edu/homes/mock">mock@cs</a>.
+
+<hr>
+Copyright Notice:  The material in this course web is subject
+to copyright.  While it may be viewed by the public,
+it should not be installed at any web site other
+than the one at the University of Washington.
+<hr>
+
+<h2>Assignments </h2>
+
+<ul>
+The first assignment is to read Chapter 1 of the course notes and do
+exercise 5.
+
+<hr>
+The second assignment is due Wednesday,  April 5.
+Read Chapter 2 of the course notes and do exercises 1-7.
+Next, determine the most convenient way to
+run KHOROS and CANTATA for you.  In CSE it runs on Suns such as
+Lillith.
+Edit your local workstation's .login file to contain
+xhost +lillith
+Then add to you .cshrc file on the Suns the following:
+
+<ul>
+<li> setenv KHOROS_HOME /usr/local/khoros
+<li> setenv MANPATH /usr/local/khoros/man
+<li> set path=($KHOROS_HOME/bin $path)
+</ul>
+
+After an rlogin onto Lillith with your rhost assignments
+and DISPLAY environment variable set up appropriately, type
+cantata at the Unix prompt.  In EE, the machine "george" has
+KHOROS and CANTATA installed on it.
+
+
+Also go to our course home page on the WWW
+http://www.cs.washington.edu/education/courses/576/index.html
+and follow the links to the KHOROS/CANTATA tutorial.  Go to its
+course outline, to "experiments" and do at least the first two
+topics ("Image information" and "Spatial Resolution").
+The ideal way to take the tutorial is to read the web pages
+and experiment with KHOROS in another X window.
+There is nothing to turn in for this part of the assignment.
+
+<hr>
+The third assignment is to read the article by Lin, Huertas, and
+Nevatia on pp.62-69 of the CVPR'94 proceedings, and also to
+look at the article by Wolff on pp.369-376.
+
+<hr>
+The fourth assignment is due Monday,  April 17.  In this assignment,
+we make a comparison of three image-processing software environments:
+KHOROS, MSVC/C++ & "Image", and MATLAB Image Processing Toolbox.
+The objects of the assignment
+are (1) to gain some experience with each environment,
+(2) to begin to get a feel for the strengths and weaknesses of
+each of these environments, and (3) to explore the use of
+convolution in noise suppression and edge detection.
+
+In each environment: (a) select a monochrome test image.
+(b) apply the Sobel operation to the test
+image. (c) apply a moving average filter to the test image.
+(d) apply a 3 by 3 laplacian to the test image.
+(e) simulate gaussian smoothing with larger standard-deviation
+gaussians by iteratively applying the moving average filter.
+(f) apply the 3 by 3 laplacian to each gaussian-smoothed image.
+(g) describe the results obtained in terms of changes in appearance
+to objects and contours in the test image.
+(h) describe the following aspects of the implementation:
+what menu selections, direct manipulations, or programming you
+had to do to perform the experiments; how fast the operations ran;
+and level of learning effort required on your part.
+
+</ul>
+
+<h2>Announcements </h2>
+
+The final examination will be on Monday, June 5 from 2:30 to 4:20PM
+in our regular class meeting room.  The exam will cover a combination
+of pre-midterm and post-midterm material.
+Here is a list of <!WA1><!WA1><!WA1><a href="http://www.cs.washington.edu/education/courses/576/final-topics.txt">topics</a> to study.
+Reminder: the class approved Sunday, June 4 from 1:30-2:30
+as the time for the final-exam review meeting.  The plan is to meet in
+Sieg 422.
+
+<hr>
+
+Outlines for selected class periods are available here:
+<!WA2><!WA2><!WA2><a href="http://www.cs.washington.edu/education/courses/576/segmentation.txt">Friday, 28 April</a>.
+<!WA3><!WA3><!WA3><a href="http://www.cs.washington.edu/education/courses/576/segmentation2.txt">Monday, 1 May</a>.
+<!WA4><!WA4><!WA4><a href="http://www.cs.washington.edu/education/courses/576/shape1.txt">Wednesday, 3 May</a>.
+<!WA5><!WA5><!WA5><a href="http://www.cs.washington.edu/education/courses/576/shape2.txt">Monday, 8 May</a>.
+<!WA6><!WA6><!WA6><a href="http://www.cs.washington.edu/education/courses/576/shape3.txt">Friday, 12 May</a>.
+<!WA7><!WA7><!WA7><a href="http://www.cs.washington.edu/education/courses/576/shape4.txt">Monday, 15 May</a>.
+<!WA8><!WA8><!WA8><a href="http://www.cs.washington.edu/education/courses/576/thinning.txt">Wednesday, 17 May</a>.
+<!WA9><!WA9><!WA9><a href="http://www.cs.washington.edu/education/courses/576/texture.txt">Friday, 19 May</a>.
+<!WA10><!WA10><!WA10><a href="http://www.cs.washington.edu/education/courses/576/nn1.txt">Monday, 22 May</a>.
+<!WA11><!WA11><!WA11><a href="http://www.cs.washington.edu/education/courses/576/nn2.txt">Wednesday, 24 May</a>.
+Copies of the overhead transparencies for the May 22 and 24 lectures on
+neural nets are available at the Engineering Library Copy Center (2nd floor)
+as CSE/EE 576 packet number 2 ("Trainable Classifiers").
+<!WA12><!WA12><!WA12><a href="http://www.cs.washington.edu/education/courses/576/retrieval.txt">Friday, 26 May</a>.
+
+
+Students in 576 are permitted to get a temporary copy of
+MATLAB for their own use in the course.  This will require
+that you fill out a form and sign a contract.
+Let me know if you are interested.
+<hr>
+
+<!WA13><!WA13><!WA13><a href="http://www.cs.washington.edu/education/courses/576/projects.txt">Term projects</a> are an important part of
+the course.  These are to be started during the week of April 24.
+<hr>
+
+Here are some <!WA14><!WA14><!WA14><a href="http://www.cs.washington.edu/education/courses/576/errata.txt">corrections to the course notes.</a>
+
+<hr>
+
+On Friday, April 7, we were introduced to the Pentium laboratory, including
+the MSVC/C++ software development environment.
+
+Here is  <!WA15><!WA15><!WA15><a href="http://www.cs.washington.edu/education/courses/576/extending-the-image-app.txt">Evan McLain's document</a>
+explaining how to add a new transform to the Image application.
+<hr>
+
+Here is <!WA16><!WA16><!WA16><a href="http://www.cs.washington.edu/education/courses/576/khoros.html">
+Current status of the KHOROS installation on the Suns.</a>
+It contains the most recent information about getting started with
+Khoros and the accompanying DIP course.
+Please read this.
+
+<hr>
+
+No class on Friday, March 31 or Monday, April 3.
+<hr> 
+
+Most students already have a computer account that can access
+KHOROS and CANTATA.  If you do not, contact Renee Reed on
+Thursday or Friday to make an arrangement to pick up your
+account login name and password so that you can use it
+over the weekend and early next week.  Renee's hours are
+limited, so plan ahead.  Her email address is reed@cs, and
+she is in part of Sieg 127 (in a back office).
+Sieg 127 is kept locked, so you will either need to knock or
+have a prior arrangement to meet her.
+
+Many of the account application cards were not signed.  We will
+have to take care of that next week.
+<hr> 
+
+<h2>Selected Lecture Slides </h2>
+
+<li> <!WA17><!WA17><!WA17><a href="http://www.cs.washington.edu/education/courses/576/intro-slides.ps"><b>Monday, March 27.</b></a>
+<li> <!WA18><!WA18><!WA18><a href="http://www.cs.washington.edu/education/courses/576/illusion-slides.ps"><b>Wednesday, March 29.</b></a>
+
+
+<h2>Information Resources for Image Understanding </h2>
+<li> <!WA19><!WA19><!WA19><a href="http://www.khoros.unm.edu/dip/html/dip.html"><b>An Online Intro to Image Processing with KHOROS/CANTATA</b></a>
+<li> <!WA20><!WA20><!WA20><a href="http://galaxy.ph.tn.tudelft.nl:2000/PRInfo.html"><b>The Delft Univ. Pattern Recognition Information Page.</b></a>
+<li> <!WA21><!WA21><!WA21><a href="http://www.cs.cmu.edu:8001/afs/cs/project/cil/ftp/html/vision.html"><b>The Computer Vision Home Page (stored at CMU).</b></a>
+
+<h2>Other information</h2>
+<ul>
+
+<li> <!WA22><!WA22><!WA22><a href="http://www.cs.washington.edu/index.html"><b>Home page for the
+Department of Computer Science and Engineering</b></a>
+
+<li> <!WA23><!WA23><!WA23><a
+href="http://www.cs.washington.edu/education/computer-science/computer-science.html">
+<b>Online version of the Computer Science undergraduate brochure</b></a>
+
+<li> <!WA24><!WA24><!WA24><a
+href="http://www.cs.washington.edu/education/computer-engineering/computer-engineering.html">
+<b>Online version of the Computer Engineering undergraduate brochure</b></a>
+
+</ul>
+
+<hr>
+<p>
+<h2><a name="help">Mosaic Help:</a></h2>
+If you're running Mosaic on a Mac, you can find some help items
+under the Mac Balloon Help menu, and on the MacMosaic Home Page item
+under the Navigate menu, and 
+ <!WA25><!WA25><!WA25><a href="http://www.cs.washington.edu/info/mosaic.html">here.</a>
+
+<pre>
+
+
+</pre>
+<address>
+(Last Update: 31 May 1995)
+</address>
+</body>
+</html>
+

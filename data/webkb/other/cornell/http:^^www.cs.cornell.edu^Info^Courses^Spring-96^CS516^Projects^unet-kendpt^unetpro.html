@@ -1,0 +1,208 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 19:21:08 GMT
+Content-Type: text/html
+Content-Length: 10196
+Last-Modified: Monday, 06-May-96 15:04:08 GMT
+
+<html>
+<head><title>Project Report: U-Net Kernel Endpoint</title></head>
+<BODY BGCOLOR ="#ffffff" TEXT= "#000000" VLINK="#CF2000" > 
+
+<center><!WA0><!WA0><!WA0><!WA0><IMG SRC = "http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/logotype.gif"></center><br>
+<h3><center>CS516  HIGH PERFORMANCE COMPUTER ARCHITECTURE</center></h3> 
+<h3><center>Final Project : Kernel Endpoint for U-Net</center></h3>
+<h3><center>March 28 - May 2, 1996</center></h3>
+<h3><center>Ankit Patel and Gerry Toll</center></h3>
+<h4><center>{apatel@cs.cornell.edu, gtoll@tc.cornell.edu}</h4></center>
+<center><!WA1><!WA1><!WA1><!WA1><IMG SRC="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/grapvine.gif"></center><br>       
+<hr>
+
+<h2> Project Description </h2>
+
+<h3>Kernel Endpoint for U-Net</h3>
+<p>
+One drawback of U-Net is that it doesn't
+allow existing applications and kernel facilities (e.g. TCP/IP) to easily 
+share the underlying network hardware with U-Net based user-level 
+applications. There are at least two ways that 
+this problem can be solved. 
+<p>
+One idea is to implement the required 
+services through a library of user level functions that use 
+U-Net as the transport mechanism. Another approach is to actually 
+construct an endpoint inside of the kernel, and allow it to access 
+the network hardware via the U-Net device driver. We decided on the latter 
+because in the long run, it should provide more flexibility than the 
+library-based implementation. Once the kernel endpoint is in
+place, any type of 
+data can be transmitted across the network, regardless of protocol.
+Additionally, we may even be able to communicate with non-U-Net hosts if we're
+careful about using compatible header formats.
+Our idea is to take advantage of the "virtual network interface" 
+provided by the U-Net driver and to treat it as a real network card
+inside of the kernel.
+<p>
+
+While any communication using the kernel endpoint will no doubt be
+slower than user-level endpoints, the idea is to allow many applications
+to multiplex on one kernel endpoint and for existing socket-based apps
+to at least run.The idea is not to implement IP or other high-level
+protocols; but essentially to replace the low-level kernel functions
+for sending data to an ATM or Ethernet card with routines which read/write
+to the kernel endpoint.
+<p>
+
+
+<h2> Project milestones </h2>
+
+<h3>March 28 : Project Proposal<br></h3>
+
+We have met with Matt Welsh to get a better idea of what this project will
+involve. We believe that the best platform for this project will be on a PC 
+running Linux, using Fast Ethernet hardware. Ideally, the abstraction 
+provided by U-Net should allow our code to also work across the ATM hardware, 
+but whether this proves to be true remains to be seen and is beyond the 
+scope of this project. If time permits, this would be a natural extension to 
+our work.
+It is our understanding that the basic idea of this project is to 
+provide the ability for the kernel to 
+access the U-Net interface via the already written U-Net driver. We will 
+therefore be writing code to bridge the gap between IP and the U-Net 
+device driver.<br><br>
+ Our understanding through diagrams :
+ <!WA2><!WA2><!WA2><!WA2><A HREF="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/page2.516.gif"> A look at the Network Architectures</A>   
+
+<h3>April 18 : Checkpoint Meeting</h3>
+Setup of hardware - Two pentium PCs are interconnected through Fast Ethernet, using a null modem.<br>
+Setup of software - Linux as well as U-Net software is loaded on the machines, the Kernel code has been compiled.<br>
+The U-Net pingpong application has been tested to run properly, however, sometimes CRC errors are received which are possibly due to absence of Fast Ethernet Hub and also, the expected latency is not obtained.<br><br>
+
+With this basic setup, we have divided the project into two basic parts, so that each of us can concentrate on one of them,<br>(1) kendpt-lib : a kernel-level implementation of devtulip and libunet.<br>(2) kendpt-dev : a pseudo-ethernet driver that is implemented using kendpt-lib.
+
+<h3> Major issues decided to be solved </h3>
+<ul>
+<li><h4>Issue 1 :</h4>  To create a kernel-level endpoint driver that can
+accept IP,ICMP,etc. datagrams and passes them to the U-Net driver which then
+handles their transmission and receipt.<br>
+<p>
+<li><h4>Issue 2 :</h4>  To make one of the U-Net endpoints behave as the 'Kernel-Endpoint', this requires changes to be made in the U-Net code to force the 'Kernel-Endpoint' to the kernel space.This issue requires a thorough understanding of the U-Net architecture and driver code.<br>
+<p>
+<li><h4>Issue 3 :</h4>  To solve the problem of 'when does the kernel-endpoint receive the packets from U-Net' and hand it to the IP at the receiving end. The kernel code needs to be scanned to find the right place for this changes. Also an efficient method other needs to be implemented.  <br>
+<p>
+<li><h4>Issue 4 :</h4>  U-Net requires that a "channel" be created between two 
+communicating hosts before they can exchange data. We need to devise an 
+efficient mechanism for activating and deactivating channels as needed. 
+Additionally, we need to be able to map these channels to their 
+corresponding IP addresses. On a large network, we can't maintain a channel
+per host, but the overhead of activating a channel is probably too 
+substantial for us to activate and deactivate once for every transmitted 
+packet.
+</ul>
+<h3>Solutions for the above issues</h3>
+(April 19- )  Getting into the code...Wanna-be hackers! Here is the kernel code...and the U-Net code...go man, hack it! <!WA3><!WA3><!WA3><!WA3><IMG SRC = "http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/smiley.gif">
+
+<ul>
+<li><h4> <!WA4><!WA4><!WA4><!WA4><a href="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/page4.516.gif">Issue 1</a> </h4> The kernel uses a generic "device" structure to represent
+all network devices. We can construct a new device struct and trick the kernel
+into believing that it's talking to a real network card. We need a large
+portion of the functionality provided by libunet, but since we're in the kernel,
+we can't use it in its current form. We'll have to rewrite what we need so
+that it will work inside of the kernel, and add it to the module. In order
+to get at all of the stuff we need tulip_ioctl() and tulip_devs[] will have
+to be made global inside the kernel. 
+
+<p>
+<li><h4> <!WA5><!WA5><!WA5><!WA5><a href="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/page6.516.gif">Issue 2</a></h4>(April 22) A process, while in kernel mode, can still 
+access user-space memory through macros :get_fs(), memcpy_fromfs(), 
+put_fs() and memcpy_tofs().verify_area() is used if write protection is
+ allowed in kernel mode, for checking if the area is safe to write. The
+ 'Kernel-Endpoint' works only in the kernel space and hence, the above
+ functions are not called while creating and deleting endpoints and channels.
+<p>
+<li><h4> <!WA6><!WA6><!WA6><!WA6><a href="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/page5.516.gif">Issue 3</a></h4> (April 23) U-Net uses polling at the receiving end. 
+From U-Net we need to pick up the packets and pass it on to the IP. 
+(April 24) We considered polling as 'cpu time wasting' and signals are
+ not useful in kernels. The IPC methods are useful only for communication 
+between two processes, the problem still remains... (April 25) So, we
+ tried implementing wake_up(wait_queue),an upcall function to pass the buffer
+  and sleep_on(wait_queue). (April 26) However, it turned out that
+ sleep_on-wake_up mechanism is also not required. Simply upcall when a
+ packet is received... Almost no time waste... Efficiency Increase!!!    
+(April 27) But stuck on a problem again... devtulip uses its own device
+ structure...Oh,have to look through the higher level code...no, we think
+ that the layers above IP need not worry about network devices... so no more
+ problems! <br><br>
+<p>
+(April 28) Hey... there can still be further increase in efficiency! Can
+ we pick up the incoming packets directly from the rx_rings into the IP,
+ instead of passing them to the endpoints i.e. bypass the endpoint and
+ handover the data directly to the IP???  So we consulted Matt Welsh (who wishes
+ to use our modified code later on for further extensions of U-Net) Sure, we
+ can... But, we need our code to be portable for the ATM... plus later on Matt
+ plans to provide an interface which would let user processes multiplex via
+ the kernel endpoint without the IP, so its more flexible if the interface
+ looks just like U-Net. Conclusion : use the endpoint...<br><br> 
+Thus, the only extra overhead involved is of copying the buffer once!   
+<p>
+<li> <h4>  <!WA7><!WA7><!WA7><!WA7><a href="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/page7.516.gif">Issue 4</a></h4>
+Hey, we need to leave something for the next CS516 class to do... <!WA8><!WA8><!WA8><!WA8><IMG SRC="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/smiley.gif" > 
+</ul>
+
+<p>
+<h3>May 3 : Poster Presentation</h3>
+<p>
+<center>
+<!WA9><!WA9><!WA9><!WA9><A HREF="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/thumb3.html"><!WA10><!WA10><!WA10><!WA10><img src="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/thumb3.gif"></a>
+<!WA11><!WA11><!WA11><!WA11><A HREF="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/thumb4.html"><!WA12><!WA12><!WA12><!WA12><img src="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/thumb4.gif"></a>
+</center>
+<p>
+<center>
+<!WA13><!WA13><!WA13><!WA13><A HREF="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/thumb2.html"><!WA14><!WA14><!WA14><!WA14><img src="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/thumb2.gif"></a>
+<!WA15><!WA15><!WA15><!WA15><A HREF="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/thumb1.html"><!WA16><!WA16><!WA16><!WA16><img src="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/thumb1.gif"></a>
+<!WA17><!WA17><!WA17><!WA17><A HREF="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/thumb5.html"><!WA18><!WA18><!WA18><!WA18><img src="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/thumb5.gif"></a>
+</center>
+<p>
+<center>
+<!WA19><!WA19><!WA19><!WA19><A HREF="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/thumb6.html"><!WA20><!WA20><!WA20><!WA20><img src="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/thumb6.gif"></a>
+<!WA21><!WA21><!WA21><!WA21><A HREF="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/thumb7.html"><!WA22><!WA22><!WA22><!WA22><img src="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/thumb7.gif"></a>
+</center>
+
+<h2> Project Status </h2>
+Well, the semester is over with, so whether we're done or not, the project is
+over with. Unfortunately, we ran into too many difficulties, and we never
+finished. The majority of the <!WA23><!WA23><!WA23><!WA23><a href="http://www-local.cs.cornell.edu/Info/Courses/Current/CS516/Projects/unet-kendpt/Sources/index.html"> 
+code</a> is written, and all of the major issues seem to be resolved.
+
+<h2> <!WA24><!WA24><!WA24><!WA24><a href="http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/page7.516.gif"> Expected Overhead and Future Extensions </a></h2>
+
+
+<h2>Thanks a lot ...</h2> 
+to our Instructor, Thorsten von Eicken for providing us with the 
+opportunity (and hardware) to work on this project, and
+Matt Welsh for maintaining his patience while explaining (and re-explaining) 
+the U-Net driver internals as well as providing us with guidance throughout
+this project.
+<p>
+Additional thanks go out to Alan Cox, Michael K. Johnson, and the 
+linux-kernel mailing list for their assistance in solving our Linux 
+namei() problems.
+<p>
+
+<h2> Related Links </h2>
+
+For information on U-Net :
+<!WA25><!WA25><!WA25><!WA25><a href="http://www.cs.cornell.edu/Info/Projects/U-Net/"> 
+U-Net Home Page </a><p>
+For information on Linux :
+<!WA26><!WA26><!WA26><!WA26><a href="http://sunsite.unc.edu/mdw/linux.html/"> 
+Linux Documentation Project</a><p>
+All information related to TCP/IP is maintained at Ohio State in their
+online list of 
+<!WA27><!WA27><!WA27><!WA27><a href="http://www.cis.ohio-state.edu/hypertext/information/rfc.html"> 
+Internet RFC's </a>
+
+<hr>
+<center><!WA28><!WA28><!WA28><!WA28><IMG SRC = "http://www.cs.cornell.edu/Info/Courses/Spring-96/CS516/Projects/unet-kendpt/grapvine.gif"></center>
+</body>
+</html>

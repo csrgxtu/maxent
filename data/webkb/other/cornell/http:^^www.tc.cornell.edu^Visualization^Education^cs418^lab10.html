@@ -1,0 +1,161 @@
+Date: Mon, 16 Dec 1996 22:09:21 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 13 Mar 1996 13:51:25 GMT
+Content-length: 5653
+
+
+<html>
+<head>
+<title>
+CS418 Lab 10
+</title>
+</head>
+
+
+<body>
+<h2> <!WA0><!WA0><!WA0><!WA0><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/gifs/teapot.thumb.gif">
+CS 418: Laboratory 10</h2> 
+<h2> Physically Based Animation</h2>
+
+<b> Introduction. </b><p>
+In this lab you will use physical (i.e. forces and accelerations)
+descriptions of processes to animate objects. 
+There are several good reasons why you may want to compute motion of objects
+based on forces, rather than attempt a kinematic description of object motion.
+<ul>
+<li> It is often easier to write an expression for the forces on an object
+(a differential equation) than it is to directly describe the motion.
+<li> Dynamic systems based on forces evolve "automatically" so than the motion
+is physically correct (given the correct equations). This automatic behavior
+relieves the animator of attention to lots of boring detail.
+<li> For chaotic systems it is impossible to write a kinematic description.
+</ul>
+Refer to the section on
+<!WA1><!WA1><!WA1><!WA1><a
+href="http://www.tc.cornell.edu/Visualization/Education/cs417/SECTIONS/d
+ynamics.html"> dynamics </a> in the CS 417 page for more information 
+about solving dynamic systems. Three examples are shown here of systems
+which would be difficult or impossible to animate by manual kinematic
+description.
+
+<ul>
+  <li> <!WA2><!WA2><!WA2><!WA2><a href="http://www.tc.cornell.edu/Visualization/Education/cs417/SECTIONS/dynamics.3body.mpg"> 
+Three-body gravitation </a>
+  <li> <!WA3><!WA3><!WA3><!WA3><a href="http://www.tc.cornell.edu/Visualization/Education/cs417/SECTIONS/dynamics.WaterWave.mpg"> 
+Water waves </a>
+  <li> <!WA4><!WA4><!WA4><!WA4><a href="http://www.tc.cornell.edu/Visualization/Education/cs417/SECTIONS/dynamics.billards.mpg">
+ Billards impact system </a>
+</ul>
+
+<b><hr>Assignment</b>
+<p>
+Download:
+<ul>
+<li> <!WA5><!WA5><!WA5><!WA5><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/NbodyGravity.net"> NbodyGravity.net </a>
+<li> <!WA6><!WA6><!WA6><!WA6><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/NbodyGravity.cfg"> NbodyGravity.cfg </a>
+<p>
+<li> <!WA7><!WA7><!WA7><!WA7><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/2DLinearWave.net"> 2DLinearWave.net </a>
+<li> <!WA8><!WA8><!WA8><!WA8><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/2DLinearWave.cfg"> 2DLinearWave.cfg </a>
+<p>
+<li> load macros and move to your .DXmacros directory
+  <ul>
+  <li> <!WA9><!WA9><!WA9><!WA9><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/NbodyGmacro.net"> NbodyGmacro.net </a>
+  </ul>
+</ul>
+<p>
+<blink> Bug as of 3/4/96 </blink> <br>
+After you donwload the NbodyGmacro.net, open it and remove the Set module, 
+then replace it with a new Set module, then reconnect it and save it. 
+(The internal state
+of the module seems to be messed up).
+<p>
+
+Execute the programs to understand their behavior, then modify them as
+follows:
+
+<ul>
+<li> Modify the NbodyGravity.net to allow other force laws besides inverse square.
+Provide an interactor to set the exponent on the law from inverse first
+power to inverse fourth power. Can you make a stable orbit with just two
+gravitating bodies for inverse first power or inverse third power force
+laws?<p>
+<li> Modify the linear wave equation given in program 2DLinearWave.net
+to simulate water by making the acceleration
+proportional to depth. Refer to the
+<!WA10><!WA10><!WA10><!WA10><a
+href="http://www.tc.cornell.edu/Visualization/Education/cs417/SECTIONS/d
+ynamics.html"> dynamics</a> section for more information on water
+waves.
+Make the 2D function which represents the bottom
+of the region containing the water have some variation with position, perhaps
+a gaussian hillock:<p>
+<b>Note correction on 3/13/96.</b> A missing minus sign was added.<p>
+<code> z = -1 + 0.7*exp(-((x-0.5)^2 + (y-0.5)^2)/0.2) </code> <p>
+When the modified program is running correctly, the water wave should slow down
+over the bump, and will bounce off the bump if it is above the surface. 
+<p>
+<li> Modify the water-wave program you just wrote to simulate a
+cannon firing a ball through the air and into water where it starts a
+wave. Use a Euler integrator for the ball (and the given Verlet integrator for
+the water).  The ball should have initial conditions
+of position corresponding to the muzzle of the cannon and a velocity
+consistent with the cannon's altitude (angle with the horizontal)
+and azimuth (horizontal direction).
+You should be able to set the altitude and azimuth of the cannon
+via interactors, which means you will have to detect where and when the
+ball hits the water surface (which is flat until the ball hits it). You
+will need to figure out how to notify the water simulation that the ball
+hit, perhaps by adding a sudden velocity to the water where the ball
+hit.
+  There should be interactors to set the
+force of gravity on the ball, <code>g</code> and the air drag coefficient, 
+<code>r</code>.<p>
+For the ball assume that: <p><code>
+ax = - r*vx <p>
+ay = - r*vy <p>
+az = -g - r*vz<p>
+</code>
+where <code> [vx, vy, vz] </code>are the components of the velocity, and 
+<code>[ax, ay, az]</code> the components of the accelaration.
+</ul>
+
+<hr>
+Be prepared to demo the two programs in section. You will also need to 
+demonstrate <!WA11><!WA11><!WA11><!WA11><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/MPEG/mpeg.html"> mpeg </a> movies of final results 
+including:
+<ul>
+<li> An orbit (if any), in an inverse first power field.
+<li> One paticular cannon shot into the water.
+</ul>
+<p>
+
+You should be able to explain your programs. You should use
+transmitters/receivers, macros, and comments 
+in the "Notation" field of each module
+so that you and the grader can understand the program. 
+Control panels, if any,
+should be well organized, labeled, and with the appropriate numeric ranges.
+<p>
+<!WA12><!WA12><!WA12><!WA12><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/student.1996.gifs/lab10.96results.html">
+Some results from 1996. </a>
+<p>
+The
+<!WA13><!WA13><!WA13><!WA13><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/GradeGuides/Lab10.grade.ps"> Lab 10 grading guide </a>
+will be filled out by a consultant during section to evaluate your work.
+<p>
+<hr>
+<!WA14><!WA14><!WA14><!WA14><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/gifs/leftarrow.icon.gif">
+Back to <!WA15><!WA15><!WA15><!WA15><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/index.html">Main Page</a>
+ <P>
+<hr>
+Last modified, 10/20/95, B. Land.
+<! Revision history:
+	Original document: Land 10/95
+>
+<br>
+<!WA16><!WA16><!WA16><!WA16><IMG SRC="http://www.tc.cornell.edu/copyright.xbm">
+<!WA17><!WA17><!WA17><!WA17><A HREF="http://www.tc.cornell.edu/ctcCopyright.html"> 
+<i>Copyright Statement </I></A>
+</body> </html>
+

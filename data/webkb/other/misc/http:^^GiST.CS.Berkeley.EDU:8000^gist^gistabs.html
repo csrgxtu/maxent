@@ -1,0 +1,34 @@
+Date: Tue, 14 Jan 1997 23:38:39 GMT
+Server: NCSA/1.5.2
+Last-modified: Mon, 05 Aug 1996 19:39:49 GMT
+Content-type: text/html
+Content-length: 1276
+
+<HTML>
+<HEAD>
+<TITLE>Generalized Search Trees for Database Systems</TITLE>
+</HEAD>
+<BODY>
+<STRONG>Abstract.</STRONG>
+	This paper introduces the Generalized Search Tree (GiST), an
+index structure supporting an extensible set of queries and data
+types.  The GiST allows new data types to be indexed in a manner
+supporting queries natural to the types; this is in contrast to
+previous work on tree extensibility which only supported the
+traditional set of equality and range predicates.  In a single data
+structure, the GiST provides all the basic search tree logic required
+by a database system, thereby unifying disparate structures such as
+B+-trees and R-trees in a single piece of code, and opening the
+application of search trees to general extensibility.
+<p>
+	To illustrate the flexibility of the GiST, we provide simple
+method implementations that allow it to behave like a B+-tree, an
+R-tree, and an <EM>RD-tree</EM>, a new index for data with set-valued
+attributes.  We also present a preliminary performance analysis of
+RD-trees, which leads to discussion on the nature of tree indices and
+how they behave for various datasets.
+<HR> Last modified: Fri May 5 12:34:10 1995 by Joe Hellerstein
+<!WA0><A HREF="http://GiST.CS.Berkeley.EDU:8000/~jmh/index.html">jmh@cs.berkeley.edu</A>
+</ADDRESS>
+</BODY>
+</html>

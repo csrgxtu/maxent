@@ -1,0 +1,109 @@
+Date: Tue, 10 Dec 1996 14:59:14 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+	<title>The UCPOP planner</title>
+<!-- Changed by: Cody Chung Tin Kwok, 24-Sep-1995 -->
+<!-- Changed by: Marc Friedman,       26-Sep-1995 -->
+</head>
+
+<body>
+<h1>The UCPOP Planner</h1>
+
+<p>
+Version 4.0 of UCPOP now available!
+
+<p>
+Common Lisp source code for the UCPOP partial order planner, version 4.0,
+is now available via <!WA0><!WA0><!WA0><A HREF="file://june.cs.washington.edu/pub/ai/ucpop40.tar.gz">anonymous FTP</A>.
+UCPOP operates with actions that have
+conditional effects and universally quantified preconditions and effects.  It 
+accepts universally quantified goals.  In addition, UCPOP 4.0 allows domain
+axioms and predicates that call Common Lisp code to determine
+satisfiability.  With a conservative search strategy UCPOP is both sound
+and complete for this representation, but one can add aggressive,
+domain-dependent search control with convenient declarative rules. Our
+Common Lisp implementation is simple enough for classroom use, yet quite
+efficient (requiring between 2-20ms to explore and refine a partial plan).
+
+<p>
+Version 4.0 replaces and subsumes version 2.0.  Highlights include:
+
+<ol>
+
+<li> Twice as fast at plan elaboration
+<li> The revamped, improved graphical Plan DeBugger (
+<!WA1><!WA1><!WA1><a HREF="http://www.cs.washington.edu/research/projects/ai/www/pdb/pdb.html>
+PDB</a>) (requires CLIM 2.0)
+<li> Safety constraints (as explained <A HREF="file://june.cs.washington.edu/pub/ai/first-law-aaai94.ps.Z">here</A>).
+<li> Improved quantification over dynamic universes
+<li> More sophisticated search control strategies (including Schubert and
+Gerevini's ZLIFO)
+<li> Improved user's manual
+</ol>
+
+<p>
+
+This builds on the features introduced in version 2.0:
+
+<ol>
+<li> Declarative specification of search control rules 
+<li> Universal quantification over dynamic universes (object creation and
+       destruction) 
+<li> Domain axioms
+<li> Predicates expanding to lisp code
+<li> Larger set of domain theories & search functions for testing.
+</ol>
+
+<P> This work was first presented at KR-92:
+ <blockquote>
+    Penberthy, J. S. and Weld, D., ``UCPOP: A Sound, Complete, Partial-Order
+    Planner for ADL,'' Third International Conference on Knowledge
+    Representation and Reasoning (KR-92), Cambridge, MA, October 1992.  
+</blockquote>
+
+<p>
+An experimental implementation of UCPOP 2.0 in C++ is also available.  
+It is about an order of magnitude faster than the Lisp implementation 
+but it doesn't have all the extensions.  Please send us 
+<!WA2><!WA2><!WA2><a href="mailto:ctkwok@cs.washington.edu">mail</a> 
+for more information. 
+</body>
+
+<P><HR>
+
+<table>
+<tr valign=center>
+  <td align=center>
+   <!WA3><!WA3><!WA3><A HREF ="http://www.cs.washington.edu/research/projects/ai/www/homepage.html">
+   <!WA4><!WA4><!WA4><IMG width=100 height=49 Align=top SRC="http://www.cs.washington.edu/research/projects/ai/www/homepage.icon.gif" 
+   alt="[homepage Button]"></A></td>
+  <th colspan=20> </th>
+  <td align=left>
+    Back to <!WA5><!WA5><!WA5><A HREF = "http://www.cs.washington.edu/research/projects/ai/www/homepage.html">AI Home Page</A>
+  </td>
+</tr></table>
+
+<table>
+<tr valign=center>
+  <td align=center>
+   <!WA6><!WA6><!WA6><A HREF ="http://www.cs.washington.edu">
+   <!WA7><!WA7><!WA7><IMG width=100 height=49 Align=top  SRC="http://www.cs.washington.edu/general/sptm_s.gif"
+   alt="[CSE Button]"></A></td>
+  <th colspan=20> </th>
+  <td align=left>
+    Back to <!WA8><!WA8><!WA8><A HREF = "http://www.cs.washington.edu">CSE Home Page</A>
+  </td>
+</tr></table>
+
+
+
+	</body>
+	<address>
+	bug-ucpop@cs.washington.edu
+	</address>
+	</html>
+
+

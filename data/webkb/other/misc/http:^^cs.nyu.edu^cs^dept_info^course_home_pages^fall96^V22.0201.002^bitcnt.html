@@ -1,0 +1,29 @@
+Date: Tue, 14 Jan 1997 20:09:36 GMT
+Server: NCSA/1.4.1
+Content-type: text/html
+Last-modified: Mon, 30 Sep 1996 23:02:56 GMT
+Content-length: 692
+
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Mac">
+  <TITLE>Bit count of a byte - version one</TITLE>
+</HEAD>
+<BODY BGCOLOR="#fee7cb">
+
+<PRE>;This program counts the number of one bits found in byte 01FFH, and
+;put the count (a number between 0 and 8) into location 0200H.
+;
+;
+        mov al, byte ptr 01ffH          ;get the input
+        mov byte ptr 0200h, 0           ;zero out count of &quot;1&quot; bits
+        mov bl, 8                       ;shift left 8 times
+lp:     add al, al                      ;double number = shift left
+        jnc checkend
+        add byte ptr 0200h, 1
+checkend: sub bl, 1
+        jnz lp
+        hlt
+        end</PRE>
+</BODY>
+</HTML>

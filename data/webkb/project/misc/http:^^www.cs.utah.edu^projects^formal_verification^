@@ -1,0 +1,200 @@
+Date: Wed, 20 Nov 1996 20:12:34 GMT
+Server: Apache/1.1.1+
+Content-type: text/html
+Content-length: 5354
+Last-modified: Wed, 25 Sep 1996 22:37:47 GMT
+
+<! -- $Id: index.html,v 1.4 1996/07/02 17:03:23 ldl Exp ganesh $ --> 
+
+<HTML>
+<HEAD>
+<TITLE>  Formal Methods in System Design and Verification </title>
+</HEAD>
+
+<BODY bgcolor="ffffff">
+<hr>
+<h2>University of Utah<br>
+Department of Computer Science
+</h2>
+
+<HR>
+
+<H3> The Utah Verifier (UV) Project: Formal Methods in System Design and Verification</H3>
+
+<hr>
+The UV Cartoon
+<!WA0><img src="http://www.cs.utah.edu/projects/formal_verification/uv-cartoon.gif" align=middle> <br>
+
+<HR>
+
+<H3>Synopsis</H3>
+<p>
+<h4><blockquote>
+
+The process of designing modern digital hardware systems
+(e.g. multiprocessors) is quite challenging in many ways,
+especially in terms of correctness problems that must be
+solved. Projects in this area last several years with large
+group sizes, and constantly face changing requirements,
+personnel turnover, as well as newly unearthed (and often
+unanticipated) facts. Applying today's verification tools to
+verify entire systems of this nature requires inordinate
+amounts of human effort as well as computer resources.
+
+<p>
+
+Under a DARPA award, the Utah Verifier (UV) project hopes
+to address and solve some of the problems in making formal
+verification techniques apply to problems of industrial scale.
+Our ideas are being developed in the context of real systems projects such as
+<!WA1><a href=http://www.cs.utah.edu/projects/avalanche> Avalanche </a>.
+Specific activities to date include efficient explicit enumeration methods
+based on new partial-order reduction methods, and model checking of non-trivial
+industrial bus specifications. Specific activities planned include
+creation of the following suite of verification tools, explained below.
+
+<hr>
+
+The UV System Block Diagram
+
+<!WA2><img src="http://www.cs.utah.edu/projects/formal_verification/uv-system.gif" align=middle> <br>
+
+<hr>
+
+<h4> PV: A Protocol Verifier </h4>
+
+<p>
+
+PV will accept descriptions in an extended subset of the
+PROtocol ModEling LAnguage (Promela) 
+with key extensions in the area of incorporating
+abstract data types and uninterpreted functions.
+It will employ efficient
+on-the-fly explicit enumeration algorithms.
+A unique feature of PV will be its support
+for refining high-level protocol descriptions
+that assume infinitely sized communication buffers to
+those that use finite- (and/or shared) buffers.
+
+<hr>
+
+<h4> CV: A Cycle-level Verifier </h4>
+
+<p>
+
+CV will accept descriptions
+in an extended subset of Verilog, with
+key extensions in the area of incorporating
+abstract data types.
+It will perform implicit enumeration efficiently, using
+recently developed graph representations of logic functions
+such as Multiway Decision Graphs (Corella et. al.).
+CV will also support many pragmatically motivated
+features including a facility to accept test vectors from
+PV for cross-validating the PV and CV models.
+
+<hr>
+
+<h4> SV: A Switch-level Verifier </h4>
+
+<p>
+
+SV will feature the use of 
+parametric forms of Boolean expressions 
+investigated by us
+for incorporating input constraints into
+symbolic simulation vectors.
+The verification conditions to be established by SV
+through symbolic simulation will be derived from 
+the very same descriptions provided to the CV tool.
+
+<hr>
+
+<h4> DB: A Design-requirements Base </h4>
+
+<p>
+
+DB will be shared by members of the project group.
+The core of DB will be based on the PVS verification
+system from SRI. The expressive power of the PVS theory description
+language will permit design requirements to be captured at a high level
+of abstraction, and also permit future extensions
+to exploit PVS's full power. It will also permit the
+state transition relation in PV and CV to be translated
+into PVS to prove key system properties.
+DB will also have facilities to translate assertions in its
+design requirements-base into assertions to be verified
+by the PV (mainly for protocol) and CV
+(mainly for data-layout and cycle-level details)
+tools, to ensure consistency
+between the models.
+A valuable aspect of this organization is that it will permit
+regression verification runs after design changes.
+The DB tool will have a hypertext-based API allowing designers
+to pursue links to various pieces of the specification.
+
+<hr>
+
+<h4> Benchmark Examples </h4>
+
+<p>
+
+Benchmark examples cutting across several hierarchical levels of
+abstraction will be released. 
+A key verification benchmark-suite delivered will be
+a distributed shared memory cache protocol, and its refinement through 
+a hardware realization using an industrial bus and a routing network,
+the refinement of the bus transactions, the refinement of the bus
+arbitration schemes and flow control, all the way down to the bus
+interface logic. 
+
+<hr>
+
+<h4> Further Details </h4>
+
+<p>
+
+Prospective graduate students
+and post-doctoral fellows are encouraged to contact <!WA3><a href="mailto:ganesh@cs.utah.edu">ganesh@cs.utah.edu</a>.
+See <!WA4><a href="http://www.cs.utah.edu/~ganesh/"> http://www.cs.utah.edu/~ganesh</a>
+for further details.
+
+</blockquote>
+
+
+
+
+<hr>
+<P><H3>Faculty</H3>
+<p><h4><blockquote>
+<ul>
+<li><!WA5><a href="http://www.cs.utah.edu/~ganesh/">Ganesh Gopalakrishnan</a>
+<p>
+<li><!WA6><a href="http://www.cs.utah.edu/~ald/">Alan Davis</a>
+<p>
+</ul></h4></blockquote>
+<p>
+<br>
+<hr>
+<p><h3>Students</h3>
+<ul><h4><blockquote>
+<li><!WA7><a href="http://www.cs.utah.edu/~ratan/">Ratan Nalumasu</a>
+<p>
+<p>
+<li><!WA8><a href="http://www.cs.utah.edu/~hosabett/">Ravi Hosabettu</a>
+<p>
+</ul></h3></blockquote>
+
+
+<hr>
+<center>
+<nobr>
+<!WA9><a href="http://www.cs.utah.edu/projects/formal_verification//"><!WA10><img border=0 src="http://www.cs.utah.edu/projects/icons/dept_cs_button.gif"></a>
+<!WA11><a href="http://www.cs.utah.edu/projects/"><!WA12><img border=0
+src="http://www.cs.utah.edu/projects/icons/research_cs_button.gif"></a>
+</nobr>
+</center>
+<HR>
+
+</BODY>
+</HTML>

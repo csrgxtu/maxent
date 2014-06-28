@@ -1,0 +1,241 @@
+Date: Mon, 11 Nov 1996 17:24:37 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Tue, 13 Feb 1996 16:07:21 GMT
+Content-length: 6507
+
+<html>
+<head>
+<title>CS 537 - Problem Set #1</title>
+</head>
+
+<body>
+<table border=0 width=100% align=center>
+<tr>
+<td width=25%><td width=50% align=center>
+<b>UNIVERSITY OF WISCONSIN-MADISON
+<br>
+Computer Sciences Department</b>
+<td width=25%>
+<tr>
+<tr>
+<td>
+<b>CS 537
+<br>
+Spring 1996 </b>
+<td><td align=right><b>Bart Miller</b>
+<tr>
+<td>
+<td align=center><b>Problem Set #1</b>
+<br>
+<!--(Due ?????day, ??????? ??, at 5pm) -->
+<td>
+</table>
+
+<hr>
+
+<h2>Problem 1</h2>
+You have been hired by the Wisconsin Department of Transportation
+to computerize traffic control at a 3-way intersection (pictured below).
+<CENTER>
+<BR>
+<IMG ALIGN=CENTER SRC="figures/hw1.intersect.gif" ALT="Dispatcher Figure">
+<BR>
+</CENTER>
+<p>
+The east-west street is one-way (westbound).
+The north-south street is two-way.
+The rules for this intersection are:
+<ol>
+<li>
+Each car (process) arriving at the intersection will call a
+procedure <tt>Enter(inDir, outDir)</tt>,
+where <tt>inDir</tt>
+and <tt>outDir</tt>
+are parameters whose value is one of the defined constants:
+<tt>NORTH</tt>, <tt>SOUTH</tt>, <tt>EAST</tt>, or <tt>WEST</tt>.
+The parameter <tt>inDir</tt>
+is the direction that you enter the intersection, and <tt>outDir</tt>
+is the direction that you will leave the intersection.
+This procedure returns only when it is safe to proceed through the intersection.
+<li>
+After leaving the intersection, the car (process) must call
+procedure <tt>Leave(outDir)</tt>,
+where <tt>outDir</tt>
+is defined the same as above.
+<li>
+Cars can proceed straight or make legal turns.
+U turns are illegal.
+<li>
+If cars are waiting from both the north and east directions,
+they should proceed at the same time if they
+can safely do so.
+<li>
+If cars are waiting from both the north and east directions,
+and they <b>cannot</b> both safely proceed at the same time, they
+must alternate (this prevents starvation).
+<li>
+The east-west street has a single lane.
+The north-south street has two lanes - one in either direction.
+</ol>
+<p>
+You are to write the code for the
+<tt>Enter()</tt>
+and
+<tt>Leave()</tt>
+procedures.
+You can assume that you are supplied with (already written) a procedure
+called
+<tt>DriveThroughTheIntersection()</tt>.
+You have no idea how long this procedure takes to execute.
+<p>
+You should write three versions of the program.
+For all three of these programs, you should use the C++.
+<ol>
+<li>
+The first program will be written using semaphores as the synchronization
+mechanism.
+Assume that car each is a process.
+You are to define the global variables (including semaphores) that are to be
+used, and how they are initialized.
+You are to then write the code that the cars
+will use.
+<p>
+<li>
+The second program will be written using monitors.
+Use C++ with monitor classes (as we have done in lecture).
+Again, assume that each car is a process.
+You are to first describe the monitor(s) that will be used by the cars.
+For each monitor, you should describe the data maintained by the monitor,
+and the initial values.
+You should also describe the procedures within each monitor that are used
+for synchronization.
+Last, describe the code that the cars use
+(to call the monitors, etc.) to be properly synchronized.
+<p>
+The procedures
+<tt>Enter()</tt>
+and
+<tt>Leave()</tt>
+will probably
+<b>not</b>
+be in a monitor, or else rule 4 will be difficult to obey.
+<tt>Enter()</tt>
+and
+<tt>Leave()</tt>
+will probably call
+procedures within a monitor (or monitors).
+<p>
+<li>
+The third program will be written using messages.
+Assume that we have processes communicating via messages.
+The processes do not have any shared memory.
+Each mail box has a unique name, which is a character string
+(like
+<tt>bart</tt>
+or
+<tt>HiThere</tt>).
+<p>
+You will have three communications primitives,
+<tt>Send</tt>,
+<tt>Receive</tt>,
+and
+<tt>CreateMailBox</tt>.
+The send operation looks like:
+<center>
+<tt>Send (const char *mailBoxName, const char *contents)</tt>
+</center>
+<p>
+The
+<tt>mailBoxName</tt>
+is a string naming the destination mail box and
+you might want to use names such as
+<tt>waitQueue</tt>
+or
+<tt>trafficCop</tt>.
+The
+<tt>contents</tt>
+are anything you want to send in the message.
+The send operation does not block, and we will assume that there are
+no error cases (like unknown mail box) to be handled.
+After a send, you know that the message is queued in the mail box.
+The receive operation looks like:
+<center>
+<tt>Receive (const char *mailBoxName, char *contents)</tt>
+</center>
+<p>
+The
+<tt>mailBoxName</tt>
+is a string naming the mail box.
+The receive operation blocks until a message gets delivered.
+If a message is already available, or if a message arrives after the
+receiver has blocked, then the receive returns.
+When the receive returns, the
+<tt>contents</tt>
+gets filled in with the contents that were sent with the message.
+<p>
+The create operation looks like:
+<center>
+<tt>CreateMailBox (const char *mailBoxName)</tt>
+</center>
+<p>
+The
+<tt>mailBoxName</tt>
+is a string naming the newly created mail box.
+Mail box names must be unique.
+<p>
+You are to design the code that will be executed by each process.
+As with the first two programs, assume that each car is a process.
+You may also create any extra processes that you find useful.
+</ol>
+
+<hr>
+
+<h2>Problem 2</h2>
+<p>
+You are given a system that has binary semaphores.
+That is, you can declare variables with the class
+<tt>binSem</tt>,
+and you can perform the constructor and
+<tt>BinP()</tt> and
+<tt>BinV()</tt>
+methods on these variables.
+<p>
+Using these binary semaphores, you are to implement general semaphores
+on this system.
+You will define a new class called
+<tt>genSem</tt>
+and write the code for the constructor and
+<tt>GenP</tt> and
+<tt>GenV</tt>
+methods.
+
+<hr>
+
+<h2>Problem 3</h2>
+<p>
+A important aspect of multiprocessing is using multiple
+processes to concurrently compute a single problem.
+With this in mind, write a C++
+program that uses four processes to multiply two 4 by 4
+matrices <tt>A</tt> and <tt>B</tt>, and store the result in (the 4 by 4
+matrix) <tt>C</tt>.
+The heart of your program will be a procedure called
+<tt>MatrixMult(row, column)</tt>,
+that multiples row <tt>row</tt> of <tt>A</tt> times
+column <tt>column</tt> of <tt>B</tt> and stores it in
+<tt>C[row,column]</tt>.
+Assume the matrices are in memory global to all the processes.
+<p>
+What (if any) synchronization mechanisms or primitives do you need for
+your solution?
+Why?
+
+<hr>
+<H4>
+Last modified:
+Fri Feb  9 12:52:06 CST 1996
+by
+<a href="http://www.cs.wisc.edu/~bart">bart</a></b>
+</H4>
+</body>

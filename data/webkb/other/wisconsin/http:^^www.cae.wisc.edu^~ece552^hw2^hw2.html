@@ -1,0 +1,120 @@
+Server: Netscape-Enterprise/2.0a
+Date: Wed, 13 Nov 1996 23:15:04 GMT
+Content-type: text/html
+
+<HEAD>
+<TITLE>Homework #2</TITLE>
+</HEAD>
+<BODY>
+<P>
+<H3> <b> ECE/CS 552: INTRODUCTION TO COMPUTER ARCHITECTURE</H3></b> <BR> 
+(Fall 1996-97) <BR> 
+Kewal K. Saluja -- Section 1
+<P>
+<H5> <b> PROBLEM SET 2</H5></b> <BR>
+Date: September 26, 1996 Thursday <BR> 
+<b> Due Date: October 10, 1996 Thursday</b>
+<P>
+
+<b> Note:</b> Optional problems are not required to be submitted. <BR>
+<P>
+<OL><LI> (<b> 10 points</b>) Answer the questions  3.1, 3.3, 3.4  from
+pages 155 -- 156 of Chapter 3 of the text.
+<P>
+<LI> (<b> 10 points</b>) Answer the question  3.7 from page 156 of Chapter
+3 of the text.
+<P>
+<LI> (<b> optional</b>)
+Answer the question  3.37 from page 164 of Chapter 3 of the text. You will
+need to read the material on page 163 of the text to answer this question.
+<P>
+<LI> (<b> 10 points</b>)
+A 16-bit machine using two-address format has three types of 
+instructions as follows:
+<p><IMG  ALIGN=MIDDLE ALT="" SRC="img2.gif">
+<p>The machine contains 16 registers and the <em> imm-value</em> field of type 3
+instructions is 8-bits.  The OPCODE field is of variable length. 
+The computer has 18 instructions of Type 2, and 5 instructions of Type 3.
+What is the maximum number of Type 1 instructions this computer can have?
+Explain your answer.
+<P>
+<LI> (<b> 10 points</b>)
+Compute the worst-case delay of a 64-bit adder that uses only one
+large Carry Look Ahead (CLA) unit. In other words the CLA unit has
+64 pairs of <IMG  ALIGN=MIDDLE ALT="" SRC="img3.gif"> and <IMG  ALIGN=BOTTOM
+ALT="" SRC="img4.gif"> inputs. Further, assume that all gates used
+in the realization of the CLA unit have four or fewer inputs and
+every gate has a delay of one unit.
+<P>
+
+<P>
+<LI> (<b> 40 points</b>)
+Design a 16-bit adder using carry look ahead method and the gate types from 
+the following list. The components are available in the gen_lib. <p>
+<IMG  ALIGN=MIDDLE ALT="" SRC="img5.gif">
+
+<p>Use as little hardware as possible but without unduly increasing the delay.
+Determine the cost and the worst case delay of your adder.
+<P>
+Complete the design using Mentor graphic tools and simulate your design. 
+(Please see the note below for simulation).
+Save your design as you will need it in the successive homeworks and in the
+final project.
+<P>
+<b> Submit the following;</b> (total number of pages to be submitted for this
+problem should not exceed 5)
+<P>
+<OL><LI>  One page of your design. Chose the page you submit judiciously so that
+       it conveys information about the complexity or novelty of your design.
+<P>
+<LI>  Chose inputs such that the worst case path in your design is
+       exercised. Choose a second set of inputs which represent typical 
+       inputs. List both these inputs.  Simulate both these inputs 
+       and submit trace outputs with appropriate comments.
+<P>
+<LI>  Compare the worst case delay computed by you with the simulated value.
+</OL>
+<P>
+
+
+<LI> (<b> 20 points</b>)  Design a 16-bit Program Counter Register (PCR) on which the
+following three operations can be performed. The three operations of the PCR are
+controlled by 2 control lines <IMG ALIGN=MIDDLE ALT="" SRC="img6.gif"> and <IMG
+ALIGN=BOTTOM ALT="" SRC="img7.gif">. The PCR forms a part of an ALU and its operations
+are shown in the table below.  <P>
+<IMG ALIGN=MIDDLE ALT="" SRC="x.gif"><P>
+
+Assume that DataIn is a 16-bit input bus. The addition
+operation must be carried out using the adder designed by you in
+the previous problem.
+<P>
+Complete the design using Mentor graphic tools and simulate your design.
+<P>
+<b> Submit the following;</b> (no more than 3 pages in all for this problem)
+<P>
+<OL><LI>  One page of your design. Chose the page you submit judiciously so that
+       it conveys information about the complexity or novelty of your design.
+<P>
+<LI>  Simulate your design for all three values of the control signals. Chose 
+       some typical contents of PCR. Submit these values and the trace outputs.
+</OL></OL>
+<P>
+<b> Note:</b> You will need to use quicksim with timing mode for these designs.
+For this you will need to add the delays to every component you use. 
+Default delay values for the gen_lib components is 0 rise time and 0 fall time.
+In your design so far you may have seen these values appear with each 
+component. The method to change these values is the same as that to 
+change a text value. Thus you will have to specify both these
+values for every component used. By the way, if we say that a gate has a 
+delay of 2, it means both the rise  and fall time delays are 2.
+<P>
+You will see the impact of delays by looking at the trace window when 
+you simulate the circuit using quicksim in timing mode.
+<P>
+<BR> <HR>
+
+<P><ADDRESS>
+<I>Course Account ece552 <BR>
+Sat Sep 21 12:25:42 CDT 1996</I>
+</ADDRESS>
+</BODY>

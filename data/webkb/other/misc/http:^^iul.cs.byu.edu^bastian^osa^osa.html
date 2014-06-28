@@ -1,0 +1,126 @@
+Date: Tue, 14 Jan 1997 22:52:35 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Tue, 04 Jun 1996 21:05:58 GMT
+Content-length: 9833
+
+<HTML>
+<HEAD>
+<TITLE>OSA Tutorial Page</TITLE>
+</HEAD>
+<BODY BACKGROUND="../gifs/green_stucco.gif" TEXT="moccasin"
+LINK="mintcream" VLINK="powderblue" ALINK="violet">
+<H1>Object-oriented Systems Analysis (OSA) Tutorial</H1>
+<!WA0><IMG SRC="http://iul.cs.byu.edu/bastian/gifs/bronze.gif"> <P>
+This page is a tutorial for students of
+<!WA1><A HREF="http://osm7.cs.byu.edu/cs525/cs525HomePage.html">Computer Science 525 - Software Creation</A>
+and other individuals wishing to learn the OSA model.  <EM>Systems Analysis</EM> is defined as the study
+of a specific domain of interacting objects for the purpose of understanding and documenting their essential
+characteristics.  The key words used in this definition are
+<UL>
+<LI> Study
+<LI> Understanding
+<LI> Documenting
+</UL>
+OSA is an object-oriented modelling technique under which the study, understanding and documenting of a system occur.
+The final OSA documents contain the results of the study performed and convey the understaning gained by the systems
+analyst. <P>
+This document consists of a brief description of <!WA2><A HREF="#MODEL_DRIVEN_ANALYSIS">model-driven analysis</A>, a discussion
+of the <!WA3><A HREF="#TEMPORAL_LOGIC">temporal logic</A> of OSA, and concludes with a summary of the different 
+<!WA4><A HREF="#COMPONENTS">components</A> of an OSA model instance. <P>
+<!WA5><IMG SRC="http://iul.cs.byu.edu/bastian/gifs/bronze.gif">
+
+<H2><A NAME="MODEL_DRIVEN_ANALYSIS">Model-Driven Analysis</A></H2>
+OSA is a model-driven analysis technique.  There are three different levels in the OSA model hierarchy
+<OL>
+<LI> The Meta-Model
+<LI> A Model Instance
+<LI> A Data Instance
+</OL>
+The OSA meta-model describes valid model instances.  A model instance is a model of a specific system such as an
+air traffic control system or a plant nursery database.  A data instance is a system that contains real world data.
+Examples of data instances are the Salt Lake City International Airport's Air Traffic Control System and the Cherry
+Hill Nursery's database.  An analogy to the OSA model hierarchy in the programming language world is
+<UL>
+<LI> Data Instance -&gt; C Program
+<LI> Model Instance -&gt; C Compiler
+<LI> Meta-Model -&gt; yacc description of C
+</UL>
+Some programming languages, such as Smalltalk, allow the programmer to access its meta-model.  Modeling techniques that
+allow meta-model information at the model instance level are <EM>seamless</EM>.  OSA is seamless because the analyst can
+access meta-model level information from a model instance.  Also, the OSA meta-model can be described as an OSA model
+instance.  The power of this seamless property will be revealed throughout this tutorial. <P>
+<!WA6><IMG SRC="http://iul.cs.byu.edu/bastian/gifs/bronze_thin.gif">
+<H3>Model-Driven Analysis vs. Method-Driven Analysis</H3>
+OSA is model-driven in that it gives a meta-model for valid OSA models.  The OSA models in turn describe valid system
+data and behavior.  OSA does not give a step-by-step procedure for analyzing and documenting a system.  Instead, it
+allows the analyst to create a model of the system. <P>
+An example of the difference between a model and a method is the problem finding the way to a terminal in an airport.
+People can either ask a steward the way to a specific terminal and receive step-by-step instructions or look at an
+airport map.  The steward will tell a person to go down the breezeway, turn left at the cafeteria, go down the
+escalator, and then turn right.  However, if a person misread his ticket and arrived at the wrong terminal, then he
+will have to ask another steward how to get to the correct terminal. <P>
+In contrast, if a person looks at the airport map that gives an abstract view of the airport and a reference position
+with the "You Are Here" arrow, then a person will be able to find his way to his terminal.  If he misread the ticket
+he can recall in his mind where terminal F is in relation to terminal C and will be able find his way. <P>
+Both model-driven and method-driven analysis techniques have their merits.  This tutorial will contain a hyperlink to
+the method-driven approach of OSA in the future.  However, this tutorial is chiefly concerned with the model-driven
+approach and will describe that approach in detail. <P>
+<!WA7><IMG SRC="http://iul.cs.byu.edu/bastian/gifs/bronze.gif">
+<H2><A NAME="TEMPORAL_LOGIC">Temporal Logic</A></H2>
+OSA has temporal logic incorporated at the data instance level.  Simply put, the data instance can change over time.
+At any given time <VAR>t</VAR> a certain object may be a part of the data instance of a particular model.  However, the
+object may not have been part of the data instance at a time prior to <VAR>t</VAR> and may not be part of the data instance
+at a time after <VAR>t</VAR>.  This reflects the temporal nature of data.  Files in operating systems are created, used, and
+then deleted.  Memory in programming languages is allocated, used, and then freed.  Bank customers open checking accounts,
+deposit money, take out loans, cash checks, pay off loans, and close accounts.  Temporal logic is a necessary part for any
+modelling technique that attempts to model real-world systems and data. <P>
+Time in OSA is defined to be the set of all non-negative integers.  Hence, time 0 is when the system first begins
+operating.  The smallest increment of time is 1.  Anything occuring in a smaller time increment is considered to be
+instantaneous.  If the data instance at time <VAR>t</VAR> is equal to the data instance at time <VAR>t</VAR> + 1, then the data
+instance was not changed during that time increment. <P>
+<!WA8><IMG SRC="http://iul.cs.byu.edu/bastian/gifs/bronze.gif">
+<H2><A NAME="COMPONENTS">Components of OSA</A></H2>
+Every model instance in OSA consists of three component models.  These are
+<OL>
+<LI> Object Relationship Model (<!WA9><A HREF="http://iul.cs.byu.edu/bastian/osa/orm.html">ORM</A>)
+<LI> Object Behavior Model (<!WA10><A HREF="http://www.cs.byu.edu/~mr/525obm.html">OBM</A>)
+<LI> Object Interaction Model (<!WA11><A HREF="http://iul.cs.byu.edu/bastian/osa/oim.html">OIM</A>)
+<LI> High-Level Components (<!WA12><A HREF="http://www.cs.byu.edu/~mr/525HighLevelComponents.html">HL</A>)
+</OL>
+The <EM><!WA13><A HREF="http://iul.cs.byu.edu/bastian/osa/orm.html">Object Relationship Model</A></EM> describes how different objects and object classes relate to
+one another.  People have names, airplanes have registry numbers, husbands are married to wives, leaves are parts of
+plants, and boys scouts earn merit badges.  All of these relationships are binary in nature.  Other relationships involve
+more than two objects or classes. A person could take a trip on June 14 on flight 576 from Salt Lake International Airport
+aboard aircraft NA 16587 that leaves at 7:55 AM MST and arrives in Chicago at 10:20 AM CST.  Such complex relationships are
+a part of nearly every system and the <EM><!WA14><A HREF="http://iul.cs.byu.edu/bastian/osa/orm.html">Object Relationship Model</A></EM> allows the analyst to keep
+tabs on how objects are related to one another. <P>
+The <EM><!WA15><A HREF="http://www.cs.byu.edu/~mr/525obm.html">Object Behavior Model</A></EM> allows the analyst to construct an
+abstract computation machine called a <EM>state net</EM> that models the behavior of objects in a particular object set.
+A <EM>state net</EM> is a non-deterministic machine that allows multiple threads to be processed.  Hence, an object can
+have one or more states activated at any one time.  A thread can change states by passing through <EM>transitions</EM>.
+A transition consists of a <EM>trigger</EM> and an <EM>action</EM>.  Common triggers are switch activations, key presses,
+mouse clicks, receiving a message, or a change in some conditional value.  For example, when a person reaches the age of 13,
+that person becomes a teenager.  This could be a transition between the child state and the teenager state. The trigger would
+be the condition that person's age is greater than or equal to 13.  When a trigger is true, an object can also initiate an
+action associated with a particular state transition.  When a key is pressed the corresponding action to the trigger is that a
+character is echoed on the screen. Trigger and actions allow objects to be able to react to input and generate output. <P>
+The <EM><!WA16><A HREF="http://iul.cs.byu.edu/bastian/osa/oim.html">Object Interaction Model</A></EM> allows the analyst to model interaction and communication between
+objects of various classes.  A person can talk to another person, an employee can complain to his or her boss, and a client can
+request a service or data from a server.  All these interactions can be easily modeled in the <EM><!WA17><A HREF="http://iul.cs.byu.edu/bastian/osa/oim.html">Object
+Interaction Model</A></EM>.  An interaction between two object sets has a name, a list objects that are sent from the source
+to the destination and another list of object returned to the sender by the receiver.  In its basic form an interaction originates
+in an action of an object set's state net and influences the triggers of another object set's state net.  However, it can also be
+used as a general high-level communication model in order to keep track of which object sets influence one another. <P>
+Large projects modeled in OSA tend to become very large and confusing.  In order to combat this problem, 
+<EM><!WA18><A HREF="http://www.cs.byu.edu/~mr/525HighLevelComponents.html">High-Level Components</A></EM> have been developed.  High-Level
+Components abstract arbitrarily large portions of information in the OSA diagram.  High-Level Components exist for objects, object
+sets, relationship sets, states, transitions, and interactions.  High-Level Components are very useful when a quick overview of a
+system is needed, or when a clear understanding of the system being modeled can be achieved through further abstraction.  If I were
+to model a kitchen, I would have such High-Level Objects as the oven, the microwave, the refrigerator, the sink, and the cupboards
+among other things.  Within these High-Level Objects, their parts, behaviors, and interactions would be modeled.  However, it would
+be easy to see the main parts of the kitchen along with their primary functions.<P>
+<!WA19><IMG SRC="http://iul.cs.byu.edu/bastian/gifs/bronze.gif">
+</BODY>
+</HTML>
+

@@ -1,0 +1,257 @@
+Return-Path: <MBran@aol.com>
+Delivered-To: bguenter-bait@mikhail.qcc.sk.ca
+Received: (qmail 31599 invoked by alias); 12 Mar 1998 23:27:55 -0000
+Delivered-To: bait@mikhail.qcc.sk.ca
+Received: (qmail 31594 invoked from network); 12 Mar 1998 23:27:51 -0000
+Received: from imo14.mx.aol.com (198.81.17.36)
+  by mikhail.qcc.sk.ca with SMTP; 12 Mar 1998 23:27:51 -0000
+Received: from MBran@aol.com
+	by imo14.mx.aol.com (IMOv13.ems) id HAYIa26753;
+	Thu, 12 Mar 1998 17:23:10 -0500 (EST)
+From: MBran <MBran@aol.com>
+Message-ID: <367a6bc2.35086056@aol.com>
+Date: Thu, 12 Mar 1998 17:23:10 EST
+To: UDog244@aol.com
+Cc: baileyl@cream.cambridge.scr.slb.com, baileyl@delphi.com, baileyl@erols.com,
+        baileyli@hubble.sheridanc.on.ca, baileym@concentric.net,
+        baileym@delphi.com, baileym@tekwork.com, baileyma@marykay.com,
+        baileyman@delphi.com, baileyo@anv.net, baileyp@delphi.com,
+        baileyr@cinternet.net, baileyr@citizen.infi.net, baileyr@cuug.ab.ca,
+        baileyr@ix.netcom.com, baileyr@netinfo.com.au, baileyrig@delphi.com,
+        baileyrl@cig.mot.com, baileyrw@css.bham.ac.uk, baileys@dmv.com,
+        baileys@ix.netcom.com, baileys@world.std.com, baileysf@pipeline.com,
+        baileysl@free.000, baileyst@delphi.com, baileysweb@delphi.com,
+        baileyt@conch.aa.msen.com, baileyt@conch.msen.com,
+        baileyt@conch.msen.com, baileyt@mail.msen.com, baileytiger@delphi.com,
+        baileytony@delphi.com, baileywerewolf@vnet.ibm.com, bailie@ibm.net,
+        bailie@phoenix.net, bailieb@hutch.com.au, bailied@cadvision.com,
+        bailiff@dsoe.com, bailiff@maple.can.net, bailiff@pz.timber.com,
+        bailiffc@telusplanet.net, bailin@delphi.com, bailin@mizar.usc.000,
+        bailk@delphi.com, baillacs@zeus.mgmt.wits.ac.za, baillard@delphi.com,
+        baillarg@cycor.ca, baillargeon@uqtr.uquebec.ca,
+        bailleuf@btmaa.bel.alcatel.be, bailleul@etu.univ-compiegne.fr,
+        baillie@ed.ac.uk, baillie@mnsi.net, baillie@munta.cs.mu.oz.au,
+        baillieg@agresearch.cri.nz, baillio@mc.com, baillo_t@cation.epita.fr,
+        baillo_t@neon.epita.fr, baillod@binc.net, baillou@imaginet.fr,
+        bailly@cimrs1.mnhn.fr, bailly@delphi.com, bailly@paroles.fr,
+        bailo@delphi.com, bailorfam@linkline.com, bailot@delphi.com,
+        bailout@delphi.com, baily@cais.cais.com, baily@cais.com,
+        baily@delphi.com, baily@ix.netcom.com, baily@netcom.com,
+        bailys@delphi.com, bailys@vianet.net.au, baim@aaec.com,
+        baim@aaec1.aaec.com, baim@harpo.aaec.com, baimba@sj.unisys.com,
+        baimbrid@mhost.utmb.000, bain@austin.ibm.com,
+        bain@baa00022.slip.digex.net, bain@crl.com, bain@cube.net,
+        bain@egress.demon.co.uk, bain@ix.netcom.com, bain@mail.msen.com,
+        bain@myself.com, bain@netcom.com, bain@netropolis.net, bain@psion.com,
+        bain@rm3.flashnet.it, bain@seas.ucla.000, bain@smh.com,
+        bain@spider.herston.uq.oz.au, bain@terminus.com, bain@unixg.ubc.ca,
+        bain1@vax.ox.ac.uk, bain336@delphi.com, bainar@cad.canterbury.ac.nz,
+        bainbdge@skypoint.com, bainbridge@calunet.com,
+        bainbridge@skyway.usask.ca, bainbridge@stpaul.ncr.com,
+        bainbridge@vcd.hp.com, bainbrjr@vax.sbu.ac.uk, baine@usapipeline.com,
+        baines@uk.sun.com, bainesl@ozemail.com.au, bainesy@delphi.com,
+        bainge@delphi.com, bainh@maple.net, baini@ix.netcom.com,
+        bainj@jbc.cuug.ab.ca, bainj@tssi.com, bainjohn@hubble.sheridanc.on.ca,
+        bainlink@online.ru, bainm@cs.man.ac.uk, bainr@candw.lc,
+        bainr@delphi.com, bains@mindlink.bc.ca, bains@yallara.cs.rm,
+        bainsrev@argonet.co.uk, bainss@lgwct.logica.com,
+        bainster@interramp.com, bainster@packet.net, bainster@worldnet.att.net,
+        baint@delphi.com, bainter@halcyon.com, bainter@pogo.den.mmc.com,
+        bainter@troll.dnet.ge.com, bainto@interlog.com, bainton@delphi.com,
+        bainxbx@hssc.slg.eds.com, baio1@sicilia.pandora.it,
+        baiqing@gurukun.jircasos.go.jp, baiqing@jircas-os.affrc.go.jp,
+        bair.patrick@a1.pader, bair.tim@acd.net, bair@pogo.den.mmc.com,
+        bair@rand.nidlink.com, bair@smh.com, bair@sparki44.ih.att.com,
+        bair@telebit.com, baird.charities-request@ed.ac.uk,
+        baird.charities@ed.ac.uk, baird.committee-request@ed.ac.uk,
+        baird.committee@ed.ac.uk, baird.ents-request@ed.ac.uk,
+        baird.ents@ed.ac.uk, baird.green-request@ed.ac.uk,
+        baird.green@ed.ac.uk, baird.info@ed.ac.uk, baird.jm@lmco.com,
+        baird.secretary-request@ed.ac.uk, baird.secretary@ed.ac.uk,
+        baird.senior.residents@ed.ac.uk, baird.sports-request@ed.ac.uk,
+        baird.sports@ed.ac.uk, baird.wardens-request@ed.ac.uk,
+        baird.wardens@ed.ac.uk, baird@aimnet.com, baird@asc.on.ca,
+        baird@csicqm.sps.mot.com, baird@delphi.com, baird@digntn1.csgi.com,
+        baird@ecst.csuchico.000, baird@firstonline.com, baird@gate.net,
+        baird@iu.net, baird@labsun1.med.uottawa.ca, baird@maillol.inria.fr,
+        baird@netsville.com, baird@northcoast.com, baird@pacbell.net,
+        baird@pacifier.com, baird@proaxis.com, baird@qnet.com, baird@rrnet.com,
+        baird@sdt.com, baird_david@tandem.com, baird1@ix.netcom.com,
+        baird125@delphi.com, baird2@lincoln.ac.nz, baird321@halcyon.com,
+        bairda@eburg.com, bairdd@agresearch.cri.nz, bairdent@earthlink.net,
+        bairdent@iamerica.net, bairdi@rockisland.com, bairdster@tic.ab.ca,
+        bairey@delphi.com, bairey@teleport.com, bairglenn@delphi.com,
+        bairl1433@cobra.uni.000, bairobi@usa.pipeline.com,
+        bairoch@cmu.unige.ch, bairong@ccr.bris.ac.uk, bairos@conu2.bitnet,
+        bairp@ix.netcom.com, bairpa@crl.com, bairstow@delphi.com, bairz@nb.net,
+        bais@ccm.fm.intel.com, bais@datasrv.co.il, bais@elron.net,
+        bais@iuav.unive.it, bais@netvision.net.il, baisa@erasethisinterlog.com,
+        baisa@hookup.net, baisa@tor.hookup.net, baisaacs@miamiu.bitnet,
+        baisley@delphi.com, baiso01@bbadmin.bitnet, baiso01@bbadmin.earn,
+        baissier@delphi.com, bait@mikhail.qcc.sk.ca, bait@usa.pipeline.com,
+        baitalmal@geocities.com, baiter@chocolat.demon.co.uk,
+        baiter@chocolat.foobar.co.uk, baites@connexus.apana.org.au,
+        baithor@webtv.net, baiti@herrenberg.netsurf.de,
+        baitken@cableregina.com, baits@delphi.com, baits@www.fishingworld.com,
+        baitshop@ma.ultranet.com, baity@delphi.com, baity@worldnet.att.net,
+        baiulfan@m4.sprynet.com, baiulfan@sprynet.com, baixo@wavenet.com,
+        baiyor@marconi.ih.att.com, baj@alaweb.com, baj@blueriver.net,
+        baj@cais.cais.com, baj@mcs.net, baj@techline.com, baj@tsh.com,
+        baj@usa.net, baj@xnet.com, baj121570@delphi.com, baj2110@delphi.com,
+        baj44566@pcvan.or.jp, baja@ix.netcom.com, baja@nando.net,
+        baja@netcom.com, baja@onramp.net, baja@pacbell.net, baja@zip.com.au,
+        baja1@ix.netcom.com, bajaair@ix.netcom.com, bajaboy@delphi.com,
+        bajacal@terra.igcom.net, bajachuck@delphi.com, bajackson@delphi.com,
+        bajacobi@aol.co, bajades@electriciti.com, bajafan@somewhere.com,
+        bajafish@msn.com, bajagene@worldnet.att.net, bajagmc@gmc.ualaval.ca,
+        bajaj@delphi.com, bajaj@giasbm01.vsnl.net.in, bajaj@india.hp.com,
+        bajaj@msn.com, bajaj@vorpal.bellcore.com, bajajeff@bajalife.com,
+        bajajs@autodesk.com, bajan@bunyip.com, bajan@digital.net,
+        bajan@ibm.net, bajan@inforamp.net, bajan@ix.netcom.com,
+        bajan@mustang.uwo.ca, bajan@ramzes.umcs.lublin.pl, bajan@webspan.net,
+        bajan_one@delphi.com, bajanj@blast.net, bajansurfer@msn.com,
+        bajanx@julian.uwo.ca, bajaone@mindspring.com, bajarat@bajarat.com,
+        bajarat@delphi.com, bajarat@hwsys.com, bajarat@ix.netcom.com,
+        bajarat@netcom.com, bajard@cri.enslyon.fr, bajard@gyptis.univ-mrs.fr,
+        bajarjoura@delphi.com, bajasurf@ix.netcom.com, bajatec1@cabonet.ne,
+        bajaweather@webtv.net, bajazzo@xs4all.nl, bajb66a@prodigy.com,
+        bajc@delphi.com, bajc@ix.netcom.com, baje88a@prodigy.com,
+        bajema@alc.com, bajemar@delphi.com, bajenkin@mail.delcoelect.not,
+        bajenkin@swansea.ac.uk, bajer@risc.upol.cz, bajerczak@bigfoot.com,
+        bajewell@pen.k12.va.us, bajger@cs.ualberta.ca, bajha@usit.net,
+        baji@ix.netcom.com, bajinsky@airport.in-berlin.de,
+        bajis@asu.edu balaji srinivasa, bajito@delphi.com,
+        bajjg@lbmdm.kjkmc.h.com, bajjrabenn@delphi.com, bajk@worldnet.att.net,
+        bajk29a@prodigy.com, bajl@delphi.com, bajm75a@prodigy.com,
+        bajobs@primenet.com, bajohann@utopia.ppp.sn.no, bajohns@primenet.com,
+        bajor@delphi.com, bajoriap@perkin-elmer.com, bajoriap@perkinelmer.com,
+        bajoros@c280.mbcredit.com, bajpai@alux4.cnet.att.com,
+        bajpai@duettech.com, bajpai@watson.ibm.com, bajrai@iinet.com.au,
+        bajrush@clear.net.nz, bajs@skit.se, bajtor@iconn.net, bajur@delphi.com,
+        bajus@ari.net, bajuscs@brandonu.ca, bajw32a@prodigy.com,
+        bajwa@asd.enet.dec.com, bajwa@att.com, bajwa@ucs.ubc.ca,
+        bajwas@delphi.com, bajy69a@prodigy.com, bak@aua.auc.dk,
+        bak@cs.waikato.ac.nz, bak@delphi.com, bak@idx.com, bak@interport.net,
+        bak@ioa.com, bak@linc.spb.su, bak@netcom.com, bak@online.pol.dk,
+        bak@poboxes.com, bak@sfu.ca, bak@ssd.kodak.com, bak@waikato.ac.nz,
+        bak_data@delphi.com, bak1@ix.netcom.com, bak1@ix9.ix.netcom.com,
+        bak2nature@delphi.com
+Mime-Version: 1.0
+Subject: "FREE AD"
+Content-type: text/plain; charset=US-ASCII
+Content-transfer-encoding: 7bit
+X-Mailer: AOL 3.0 for Windows 95 sub 18
+
+Hey, sounds exciting. You'll definately be hearing
+from me again soon! In the meantime, read how to
+get this opportunity into the hands of millions.
+
+                 
+*EXPOSE YOUR URL/WEB SITE TO 3 Million Readers - "FREE"*
+
+
+*If 39 Million people agreed to "Listen" To you for 
+1 minute what would you ask/or tell them ??
+
+Find out "How it works..." read on...
+
+Everyday, Over 55 Million people are on the I'net and 
+now you can Reach up to 3 Million of them easily...FREE.
+In Fact Up to 39 Million.
+
+Below is a list of five (5) URL's (Web sites/emails) 
+With a 25 word or less Advertisement telling what they  
+offer. Read each; If Interested Reply/Visit.
+
+If you don't want it Skip it and read the next.
+Then, Place YOUR URL/SITE/E-mail Ad In the Number #5 
+Spot. Rotate the other Names Upward! The URL Ad in Spot #5
+will become #4 as You become the New # 5. The Current #4 
+is moved UPWARD to become #3 etc. - The URL which is 
+listed as #1 is removed from the list. Email this 
+Advertiser a copy of the New list so they'll know to 
+start over.
+
+THERE'S NO Obligations - NO MONEY TO SEND- 
+JUST RUN YOUR URL/SITE/Email ADVERTISING = THATS IT!!! 
+WHATEVER You Offer/ Seek will do Greater Business if you 
+are "Exposed" to 39 Million Email readers".
+
+If you don't sell anything - GET Something To Sell/ Offer
+Yourself (single looking for love) A Recipe etc.
+If 39 Million are ready to see some kind of offer - Ask 
+Millionaires On-line to Invest in your Ideas -Anything !
+
+*Here's How It Works Out To 39 Million Email Readers*
+
+Put your name/email/URL/Website Ad (25 words or less) In 
+Space #5 , then Email this FREE ADVERTISING To 100 email 
+Addresses ( No Spamming needed - Answer classified ad's 
+which list an email address, i.e.: "Saw your Ad' Here's 
+how to get it into the hands of Millions of others...etc. 
+
+When you send 100 -All 100 will see your Ad - out of 100
+readers, 40% (40) are unable to read or comprehend what 
+this is! So of the 60 (30%) -that's 18- They Are Too 
+Lazy to try it, And of the 42 still remaining 20 have 
+Nothing to Advertise or Aren't Mentally Suited for 
+Business.  Or they tried  some idea and when it didn't work
+- they lost confidence in Business Advertising overall..
+
+That'll Leave 20 People who Place they're FREE AD URL/SITE 
+- and they each email 100 copies.
+That's 2000 Readers who see Your Ad in spot Number 4...
+(20 people Email 100 copies each- 20X 100 =2000 total )
+Now Grab an Adding Machine and Run the Numbers @ 20% 
+Follow through - By the time your URL is up to Space #1.
+There'll be 39 Million people reading this email message.
+- Unlike Money Games' It doesn't matter if someone follows 
+through or not.
+
+All WE Want here is A READER To Visit Our Site/Email us 
+etc. WHY 20% Follow through ? -Because There's NO MONEY 
+Involved , NO Need To BUY Anything, NOTHING !!! IT'S 
+simply "FREE ADVERTISING - WE ALL HELP EACHOTHER..no 
+matter what happens-Your URL/Email is Guaranteed to be 
+read/seen by the first 100 who get your email. right ? 
+GET STARTED NOW!
+
+*PLEASE TRY AND KEEP YOUR AD LIMITED TO 25 WORDS OR LESS*
+
+                           ********************
+                          "TODAYS ADVERTISMENTS"
+ (1)   Would you like to be able to work from home?
+If you have a computer and would like to work from home   
+this is an opportunity that is exploding!    Anyone 
+can do it!  Visit my website. 
+http://www.oyage.com/members/sc2420/index.html
+********************           
+
+
+((2) Turn $150.00 into $ 1000.00 in 7 days or less,
+then do it again and again and again... This is New, Hot
+and Will explode all of your existing businesses as well.
+Get more information and sign up today.
+A HREF="www.freeyellow.com/members2/drivevehicle/index.html
+http://www.freeyellow.com/members2/drivevehicle/index.html</A>
+
+(3)   You could make $2,500/wk or more and make 50% 
+comissions. Not mlm. Download your free software today.
+http://www.freeyellow.com/members/ia/index.html
+
+(4) $7000.00 CASH LOAN AVAILABLE. NO QUALIFING GUARANTEED.
+TIME LIMIT INVOLVED. EMAIL NOW FOR DETAILS. USE "7000" IN
+SUBJUCT LINE: EMAIL TO: GETTY244@YAHOO.COM  
+
+
+(5)  Earn big income right from your home.  NO HYPE JUST BIG WEEKLY CHECKS.
+Call for details 1-800-811-2141, code 50829.
+
+Place your Free Ad At #5 and move the current #5 Up to #4.
+Move the others up one spot then email a new copy 
+(with your name/email/URL) to the number #1. This will
+reach over 39 Million Readers in the next few Days 
+
+*Look for and prepare for 8,000 hits every two days ..!
+
+

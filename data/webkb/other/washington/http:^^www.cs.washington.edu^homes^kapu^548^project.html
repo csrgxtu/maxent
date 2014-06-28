@@ -1,0 +1,64 @@
+Date: Tue, 10 Dec 1996 21:29:10 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Wed, 05 Apr 1995 19:29:35 GMT
+Content-length: 1650
+
+<html>
+<head>
+<title>
+Evaluating predicated and speculative execution on Alpha
+</title>
+</head>
+
+<body>
+
+<h1>
+Evaluating predicated and speculative execution on Alpha
+</h1>
+<p>
+
+<dl>
+<dt> <b> The group: </b>
+<dd>
+<ul>
+<li> <!WA0><!WA0><a href="http://www.cs.washington.edu.homes/dbc1"> David Christianson </a>
+<li> <!WA1><!WA1><a href="http://www.cs.washington.edu/homes/madani"> Omid Madani </a>
+<li> <!WA2><!WA2><a href="http://www.cs.washington.edu/homes/kapu"> Kari Pulli </a>
+</ul>
+<p>
+
+<dt> <b> Project idea </b>
+<dd>
+ Predicated execution combines the effects of performing a test and
+branching based on the test. Hence a branch is avoided, which
+increases the pipeline efficiency and eases the scheduling for
+superscalar execution. Speculative execution, i.e., prediction of the
+branch direction, will facilitate speculative execution since the
+program contains less branches. The exact nature of their interaction,
+however, is not clear at the surface. Will they have their own niches,
+e.g., is predicated execution mainly useful for small branches and
+speculative for large branches?  Will their efforts overlap so that
+the combined speedup of the parts is less than their sum, or maybe
+they are orthogonal (combination equals sum) or there is synergy
+(combination exceeds sum)?
+<p>
+Click <!WA3><!WA3><A HREF="http://www.cs.washington.edu/homes/kapu/548/proposal.txt"> here </A> for a detailed proposal.
+<p>
+In the project we ended up concentrating more on the conditional
+moves rather than speculative execution. Here's our <!WA4><!WA4><A HREF="http://www.cs.washington.edu/homes/kapu/548/report.ps">
+report </A>.
+<p>
+Here's the <!WA5><!WA5><A HREF="http://www.cs.washington.edu/homes/kapu/548/rawdata.ps"> data </A> we gathered.
+</dl>
+
+<HR>
+
+<address>
+{kapu|madani|dbc1}@cs.washington.edu
+</address>
+
+<em> Updated 4/5/95 </em>
+
+<body>
+</html>

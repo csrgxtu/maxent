@@ -1,0 +1,70 @@
+Server: Netscape-Enterprise/2.0a
+Date: Wed, 13 Nov 1996 23:14:40 GMT
+Content-type: text/html
+
+<HEAD>
+<TITLE>Homework #3, Part II Solutions</TITLE>
+</HEAD>
+<BODY>
+
+<h3>Homework #3, Part II Solutions</h3>
+<p>
+
+<b> Problem 6</b> A <a href="alu.ps">schematic</a> of a 16-bit ALU.  There
+are several schematics which are part of this design, and they are listed
+here. <p>
+
+<a href="and16.ps">16-bit AND unit</a> <p>
+
+<a href="lsl16.ps">16-bit logical shift left (lsl) unit</a> <p>
+
+<a href="2x1mux16.ps">2x1 16-bit mux</a> <p>
+
+These next 2 components were created in Homework #2:
+
+<a href="~/public_html/hw2/sol2/16bitcla.ps">16-bit CLA adder</a> <p>
+
+<a href="~/public_html/hw2/sol2/4x1mux16.ps">4x1 16-bit mux</a> <p>
+
+<P>
+
+<br><hr>
+
+<b> Problem 7</b>
+A <a href="memory.ps">schematic</a> of a Memory unit, plus its
+component part schematics:
+<p>
+<a href="memctrl.ps">memory control unit</a> <p>
+
+<a href="ram_module.ps">RAM module</a> <p>
+
+<P>
+
+<br><hr>
+
+<b> Problem 8 </b>
+
+Implementing MYCALC requires you to use the ALU and memory module that you
+created in the previous two design questions, plus you must make a program
+counter which can count up by 1.  Beyond this, the rest of the design is a
+finite state machine which must be able to cycle through the instructions
+in the memory (which you pre-loaded into the RAM) and execute them.  The
+control for MYCALC must be able to synchronize the actions of the memory
+and the program counter.  The ALU is purely combinational, so it deosn't
+really require synchronization.  However, it would be a nice feature if
+the output of MYCALC (i.e., the output of the ALU) was tristated off if
+the value was invalid (before the first instruction is executed). 
+
+
+To prove that MYCALC works correctly, it must be simulated with a wide
+range of input sequences that exercises all of MYCALC's capabilities.  The
+simulation results must illustrate that every part of it works - hiding
+something that doesn't work will not suffice!!
+
+
+<BR> <HR>
+
+<P><ADDRESS>
+<I>Course Account ece552 <BR>
+</ADDRESS>
+</BODY>

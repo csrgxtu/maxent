@@ -1,0 +1,190 @@
+Date: Tue, 05 Nov 1996 20:51:53 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Sat, 07 Sep 1996 23:25:47 GMT
+Content-length: 5417
+
+<!--This file created 9/6/96 3:19 PM by Claris Home Page version 1.0b1-->
+<HTML>
+<HEAD>
+   <TITLE>a1pgm.html</TITLE>
+   <X-SAS-WINDOW TOP=-26 BOTTOM=329 LEFT=-693 RIGHT=-163>
+</HEAD>
+<BODY>
+
+<H2 ALIGN=CENTER>CS354, Fall 1996</H2>
+
+<H2 ALIGN=CENTER>Program 1, due Monday September 16, before 5pm.
+</H2>
+
+<BLOCKQUOTE><P><B>Purpose: </B>To learn how to use the SAL/MAL
+simulator, to learn basic SAL instructions, to learn how to code
+simple procedure calls in assembly language, to learn about problems
+involving the representation of information.</P>
+
+<P><B>Estimated time-to-complete:</B> 3 - 5 hours.</P>
+
+<P><B>Program description:</B> Write a SAL program that reads an
+integer and prints its value in Roman numeral notation.</P>
+
+<P>Use the subtractive representation, for example, write 4 as IV,
+not as IIII. The seven Roman numerals are: I = 1, V = 5, X = 10, L =
+50, C = 100, D = 500 and M = 1000. Use upper case letters in your
+output. Within a number in Roman numeral notation, letters with
+higher values should be written to the left of those with lower
+values, except for pairs that use the subtractive representation -
+this rule leads to a unique representation of the number in the Roman
+numeral notation.</P>
+
+<P>NOTE - The subtractive representation was not used by the Romans.
+It was introduced about 200 years ago in order to shorten the strings
+of Roman numerals. The "Arabic" notation for numbers was actually
+created and discovered by the Hindus and was brought to Europe by the
+Arabs. It began being used in about 1275 by European scholars.</P>
+
+<P><B>Algorithm: </B>To convert a number from the standard Arabic
+notation to the Roman notation you need to do the following steps.
+</P>
+
+<P>(1) determine the number of thousands, hundreds, tens and units in
+the number</P>
+
+<P>(2) for each thousand, write an M (1,000,000 would give 1000 M's,
+we will use smaller numbers)</P>
+
+<P>(3) write the hundreds, if any, using letters C, D and M, as:</P>
+
+<BLOCKQUOTE><P><TT>C, CC, CCC, CD, D, DC, DCC, DCCC, CM</TT></P>
+</BLOCKQUOTE>
+
+<P>(4) write the tens, if any, using letters X, L and C, as:</P>
+
+<BLOCKQUOTE><P><TT>X, XX, XXX, XL, L, LX, LXX, LXXX, XC</TT></P>
+</BLOCKQUOTE>
+
+<P>(5) write the units, if any, using letters I, V and X, as:</P>
+
+<BLOCKQUOTE><P><TT>I, II, III, IV, V, VI, VII, VIII, IX</TT></P>
+</BLOCKQUOTE>
+
+<P><B>Example of how the algorithm works: </B>1986 is MCMLXXXVI since
+1986 is</P>
+
+<P><TABLE BORDER=0 CELLPADDING=1 WIDTH="79%" HEIGHT=73>
+   <TR>
+      <TD>
+         <P>1000
+      </TD><TD>
+         <P>+
+      </TD><TD>
+         <P>900
+      </TD><TD>
+         <P>+
+      </TD><TD>
+         <P>80
+      </TD><TD>
+         <P>+
+      </TD><TD>
+         <P>6
+      </TD></TR>
+   <TR>
+      <TD>
+         <P>M
+      </TD><TD>
+         <P>&nbsp;
+      </TD><TD>
+         <P>CM
+      </TD><TD>
+         <P>&nbsp;
+      </TD><TD>
+         <P>LXXX
+      </TD><TD>
+         <P>&nbsp;
+      </TD><TD>
+         <P>VI
+      </TD></TR>
+   <TR>
+      <TD>
+         <P>1</P>
+         
+         <P>thousands
+      </TD><TD>
+         <P>&nbsp;
+      </TD><TD>
+         <P>9</P>
+         
+         <P>hundreds
+      </TD><TD>
+         <P>&nbsp;
+      </TD><TD>
+         <P>8</P>
+         
+         <P>tens
+      </TD><TD>
+         <P>&nbsp;
+      </TD><TD>
+         <P>6</P>
+         
+         <P>units
+      </TD></TR>
+</TABLE></P>
+
+<P>Notice that the form of the hundreds, tens and units is the same,
+but that different letters are used in the three cases. This means
+that a single procedure can be used to write the hundreds, tens and
+units.</P>
+
+<P><B>Specific requirements for your program:</B></P>
+
+<P>(1) Write a main program that reads an integer, breaks it into
+hundreds, tens and units, and, with the help of a procedure called
+"convert," prints the corresponding value in Roman numeral notation.
+</P>
+
+<P>(2) Procedure "convert" should have four input parameters: an
+integer from 1 through 9 and three characters. The integer would be
+the number of hundreds, tens or units and the characters would be the
+characters corresponding to hundreds, tens or units. The procedure
+should print the corresponding sequence of one to four Roman
+numerals. The procedure should have no output parameters. If, for
+example, you pass your procedure 8, X, L, and C, it should print
+LXXX. If you pass it 6, I, V, and X it should print VI.</P>
+
+<P>(3) You may assume that your input contains no errors, that is,
+the prompted input will be a single positive integer. Your labeled
+output should follow on the next line. Your program should process a
+single integer and then quit. A sample run would look like:</P>
+
+<DL>
+   <DD>Enter a positive integer: 1986 &lt;- you enter the "1896"
+   
+   <DD>In Roman numerals: MCMLXXXVI &lt;- the machine responds
+</DL>
+
+<P>Here are two more sample runs:</P>
+
+<DL>
+   <DD>Enter a positive integer: 8
+   
+   <DD>In Roman numerals: VIII
+   
+   <DD>&nbsp;
+   
+   <DD>Enter a positive integer: 4067
+   
+   <DD>In Roman numerals: MMMMLXVII
+</DL>
+
+<P><B>Handing in your program:</B> You must "hand in" your program
+(the SAL source code) to the computer directly by running the script
+</P>
+
+<BLOCKQUOTE><P>handin1 program1.s</P></BLOCKQUOTE>
+
+<P>just once, where "program1.s" is the name of the file containing
+your SAL source code. No printouts will be turned in. The TA/Grader
+will run your program several times using different test data.</P>
+</BLOCKQUOTE>
+</BODY>
+</HTML>
+

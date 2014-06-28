@@ -1,0 +1,137 @@
+Date: Thu, 21 Nov 1996 22:20:00 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+<title>CSE 524, Parallel Algorithms
+</title>
+</head>
+
+<body>
+<h1>CSE 524, Parallel Algorithms<br>
+    Spring 1995 </h1>
+
+
+<h2> General Information <br> </h2>
+Meets: TTh 9:00-10:30, Sieg 225 <br>
+Instructor: <!WA0><a href="http://www.cs.washington.edu/homes/anderson/">Richard 
+Anderson</a> <br>
+Office Hours: By appointment<br>
+E-mail address: anderson@cs <br>
+Office: Sieg 410 <br>
+<!WA1><a href=http://www.cs.washington.edu/education/courses/524/mechanics.html> Homework and Exams </a>
+
+
+
+<h2> <!WA2><a href=http://www.cs.washington.edu/education/courses.html#524> Catalog 
+Description </a> <br></h2>
+Design and analysis of parallel algorithms: fundamental parallel algorithms
+for sorting, arithmetic, matrix and graph problems, and additional selected 
+topics. Emphasis on general techniques and approaches used for developing
+fast and efficient parallel algorithms and on limitations to their
+efficacy. Prerequisite: CSE 521 (or equivalent). CSE Majors only. 
+<br>
+
+<h2> Homework Assignments and Notes <br></h2>
+
+<dl>
+
+<dd> <!WA3><a href=http://www.cs.washington.edu/education/courses/524/syllabus.html> Syllabus </a> <p>
+<dd> <!WA4><a href=http://www.cs.washington.edu/education/courses/524/homework1.html> Homework 1</a> Due Thursday, April 6.  <p>
+<dd> <!WA5><a href=http://www.cs.washington.edu/education/courses/524/homework2.html> Homework 2</a> plus some rambling comments
+about the course. Due Thursday, April 20.  <p>
+<dd> <!WA6><a href=http://www.cs.washington.edu/education/courses/524/slides.dvi> Lecture Transparencies, April 11</a> Code and analysis
+for list ranking. <p>
+<dd> <!WA7><a href=http://www.cs.washington.edu/education/courses/524/cc.dvi> Old lecture notes </a>
+on connected components (this algorithm
+is simpler and correcter than Section 5.1.3.)  <!WA8><a href=http://www.cs.washington.edu/education/courses/524/cc.tex> LaTeX 
+version</a> <p>
+<dd> <!WA9><a href=http://www.cs.washington.edu/education/courses/524/references.html> Pointers to papers about pointers</a> References
+for EREW and CREW Connectivity and the Ullman-Yannakakis paper.  <p>
+<dd> <!WA10><a href=http://www.cs.washington.edu/education/courses/524/homework3.html> Homework 3</a> Due Tuesday, May 2. <p>
+<dd> Union-Find Paper <!WA11><a href=http://www.cs.washington.edu/education/courses/524/uf.ps>.ps</a> or <!WA12><a href=http://www.cs.washington.edu/education/courses/524/uf.dvi>.dvi</a> <p>
+<dd> <!WA13><a href=http://www.cs.washington.edu/education/courses/524/homework4.html> Homework 4</a> Due Thursday, May 18. <p>
+<dd> Certified Write-All Paper <!WA14><a href=http://www.cs.washington.edu/education/courses/524/cwa.ps>.ps</a> or 
+<!WA15><a href=http://www.cs.washington.edu/education/courses/524/cwa.dvi>.dvi</a>  This implies the existence of
+a more efficient consensus algorithm based upon swap - although it is not likely
+something you are going to see inside your next supercomputer.<p>
+<dd> <!WA16><a href=http://www.cs.washington.edu/education/courses/524/homework5.html> Homework 5</a> Due Thursday, May 25. <p>
+<dd> Asynchronous P-RAM references - Martel et al. FOCS 1990, and 
+<!WA17><a href=http://plg.uwaterloo.ca/~jfbuss/write-all.ps> Buss et al. (Manuscript) </a>. <p>
+<dd> Notes on <!WA18><a href=http://www.cs.washington.edu/education/courses/524/smpc.dvi> memory models </a>.
+</dl>
+
+
+<h2> Real Description <br></h2>
+
+As a special topics course, the content is up to the whim of the instructor.
+A more descriptive title for this year's course would be: A theory of shared 
+memory parallel computing, or maybe, topics in the theory of SMPC.
+The course will start with a collection of basic algorithms, and then we 
+will spend some time on models of computation.  The <!WA19><a href=http://www.cs.washington.edu/education/courses/524/syllabus.html>
+syllabus</a> gives a list of topics which could be covered.
+
+<p>
+
+My use of the term "shared memory" is to indicate that we will not be looking
+at topics which pertain to specific interconnection topologies.  We
+will consider some situations where the cost of memory access is
+non-uniform.  
+
+<p>
+The course will be a theory course in the sense that we will not
+consider particular real machines, we will prove some theorems, and
+you will not be expected to log on to a parallel machine.  However,
+topics may be motivated by practical considerations.  Our goal in
+developing parallel algorithms will be to come up with algorithms
+which could conceivably be efficient on some parallel machines.
+
+<p>
+I am expecting that there will be three or four problem sets,
+containing a mix of routine and challenging problems.  I am not going
+to require a project, (but I will be happy if students do outside
+work on course related topics).
+
+<p>
+The text for the course will be "An Introduction to Parallel
+Algorithms" by Ja Ja.  This is a nice book, although I will not be
+following it very closely.  If you are feeling exceptionally cheap, you
+could probably get by without purchasing a copy.  My original plan,
+when I volunteered to teach the course a year ago, was that the text
+would be "A Theory of Shared Memory Parallel Computing" by Anderson.
+However, this book is progressing about as fast as Volume 7 of the Art
+of Computer Programming, so I chose the Ja Ja book instead.
+
+<p>
+
+I am going to be quite flexible on how this course is taught.  My
+choice of topics will be influenced by what is considered interesting
+or uninteresting.  There is also a choice as to teach this course as
+either a traditional lecture course, or to work in some research
+content.  I have a number of open problems in mind which could turn
+into very nice research results.  I could present my half baked ideas
+on some of these, provided that others have the interest and
+energy to think about them.
+
+<p>
+
+
+
+<br>
+
+<p>
+<p>
+
+<hr>
+
+<p>
+<p>
+
+
+<address>
+anderson@cs.washington.edu
+</address>
+
+</body>
+</html>

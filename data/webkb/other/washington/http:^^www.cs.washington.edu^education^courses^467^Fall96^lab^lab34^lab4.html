@@ -1,0 +1,232 @@
+Date: Wed, 08 Jan 1997 21:42:38 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+<title>CSE467 Laboratory Assignment #4</title>
+</head>
+
+<body bgcolor="#dddddd"  text="#000000"  link="#0000ee" vlink="501080" alink="ff0000">
+
+<h1>CSE467: Advanced Logic Design</h1>
+<h3>Ted Kehl, Fall 1996 </h3>
+
+<hr>
+
+<h3>Lab 4</h3>
+<p>
+<h3>Programming PALs and PLDs</h3>
+<p>
+<b>Distributed: Oct 24<br>
+  Due: TA Option<br>
+</b>
+<hr>
+<H3>Objectives</H3>
+After completing this lab you will know how to:
+<UL>
+<LI>Program PALs and PLDs
+<LI>Construct and debug sequential circuits
+</UL>
+
+<H3>I.  PLD Programming</H3>
+Below is an ABEL file describing a simple 3-bit up-counter
+(upcount3.abl in the class directory).  Program a PLD
+(instructions furnished at beginning of class) to implement
+this function and use your clock generator to
+provide a clock input.  Use switches to provide the other
+inputs to the PLD and LEDs to observe the outputs.
+
+<PRE>
+"Intel 5C032 PLD Pin Configuration
+"Input/CLK: 	1
+"Input/VPP:	11
+"Inputs: 	2,   3,  4,  5,  6,  7,  8,  9
+"Input/Output:	12, 13, 14, 15, 16, 17, 18, 19 
+
+module	upcount3
+
+title 'Simple 3-bit Up-Counter with Enable and Reset'
+
+"The following line is not needed in Synario
+"upcount3		device	'E0320';
+
+CLK		pin 1;				"Clock"
+Q0,Q1,Q2	pin 12,13,14 istype 'reg';	"Counter Outputs"
+En		pin 2;				"Counter Enable Signal"
+Reset		pin 3;				"Counter Reset Signal"
+	
+Output = [Q2,Q1,Q0];	"3-bit number"
+	
+equations
+	
+        Output.CLK = CLK;
+
+	WHEN (Reset) THEN
+		Output := 0;
+	ELSE WHEN (!En) THEN
+		Output := Output;
+	ELSE 
+		Output := Output + [0,0,1];
+				
+@const n=8;
+
+test_vectors ([CLK,Reset,En] -> Output)
+	[.C., 1 ,.X.] -> 0;	"Reset"
+	[.C., 0 , 1 ] -> 1;	"Increment"
+	[.C., 0 , 0 ] -> 1;	"Hold"
+	[.C., 0 , 1 ] -> 2;	"Increment"
+	[.C., 0 , 1 ] -> 3;	"Increment"
+	[.C., 0 , 1 ] -> 4;	"Increment"
+	[.C., 0 , 1 ] -> 5;	"Increment"
+	[.C., 0 , 0 ] -> 5;	"Hold"
+	[.C., 0 , 1 ] -> 6;	"Increment"
+	[.C., 0 , 1 ] -> 7;	"Increment"
+	[.C., 0 , 1 ] -> 0;	"Increment"
+@const i=1; @repeat n-1 {
+	[.C., 0 , 1 ] -> i;	"Increment"
+@const i=i+1;}
+	[.C., 0 , 1 ] -> 0;	"Increment"
+	[.C., 0 , 1 ] -> 1;	"Increment"
+	[.C., 0 , 1 ] -> 2;	"Increment"
+	[.C., 0 , 1 ] -> 3;	"Increment"
+	[.C., 1 ,.X.] -> 0;	"Reset"
+
+end upcount3
+</PRE>
+
+After you have completed the testing of this counter, modify
+the ABEL program to make the counter count down as well by
+adding another input that specifies whether the counter should
+count up or down on the next clock edge.  Remember to modify
+the test vectors appropriately.
+
+<H4>Programming PLD</H4>
+<ol>
+
+<li> Create a new project.
+
+<li> Double click on virtual device.  This will bring up a dialog box
+asking what kind of device you want to switch too.  Choose 'Standard PLDs'
+and then 'EO320'.  This tells Synario to create a JED file for the PLD
+programmer that programs the 20 pin PLD provided in your lab kit. 
+
+<li> Create a new source from within the main Synario program.  When
+asked what type of source it is, specify an ABEL-HDL file.  Now enter a
+module name and file name for your new ABEL file.  
+
+<li> Copy from netscape (or mosaic) the source code provided above.  Now
+paste the copied text into the synario editor containing your new abel file.
+Synario might stick some ABEL code into the editor automatically for you.  
+For this project, simply delete that code before you paste. 
+
+<li> Now you should be able to save your new ABEL file and return to the
+main Synario environment.  Now click on 'EO320' and then double click
+on 'JEDEC file'.
+
+<li> If it compiles successfully, then you should get a JEDEC- format file
+with .jed suffix. Copy this .jed file to an MSDOS floppy disk.
+
+<li> To blow the fuses follow the directions given in lab by Stephen Lee
+<\ul>
+<H4>Tasks</H4>
+<UL>
+<LI>Program the PLD to implement the up-counter.
+<LI>Modify the ABEL program and implement an up-down-counter.
+<LI>Use switches and LEDs for the inputs and outputs and your
+debounced push-button switch to provide a clock signal (that you can
+single-step by pushing on the switch).
+</UL>
+
+<H3>II. Constructing Your Circuit</H3>
+
+You will need some PLDs, a keypad, an LCD screen, and a potentiometer
+for its constrast control, Schmidt triggers ('14) and resistors and
+capacitors for switch debouncing.  The clock will be provided by your
+pulse generator (remember that your pulser output is open-collector,
+so you will need a pull-up resistor, 1KOhm should work fine).  And, of
+course you'll need your trusty logic probe.
+
+<h4>Debouncing Switches</h4>
+
+The keypad has nine wires: one for each column (5 through 8), one for
+each row (1 through 4), and a common wire (9) to be connected to
+ground (this is the common connection for all the switches).  (If you
+have a 3-column keypad, then there are only 3 column wires and 8 wires
+total.)  When a key is pressed the corresponding column and row wires
+are connected to the common signal (see the figure below).  Therefore,
+the keypad is called a 2-of-8, 2 of the 8 wires will be active low
+when a key is pressed, the others are pulled high through resistor
+connections to 5v.
+
+To debounce the type of switch in the keypad (single-pole single-throw
+or SPST) will require a special analog circuit consisting of a
+resistor, capacitor, and a Schmitt trigger (`LS14).  Connect pull-up
+resistors and capacitors to the eight outputs of the keypad as shown
+in the figure on the top of the next page.  The sizes of these devices
+should be chosen so that the RC time constant is approximately 50ms,
+this should be enough to eliminate the bounce of even these
+inexpensive keypad switches.  Test your keypad with your logic probe.
+
+<p><img src="keypad.jpeg"><p>
+When a key is pressed, two switches are closed thereby shorting the
+two capacitors to ground and very quickly discharging them.  This
+makes the output of the Schmitt trigger inverters immediately go high.
+If the switches momentarily disconnect, the capacitor will start
+recharging but only slowly due to the large RC time constant.  If the
+time constant is longer than the bounce time then there won't be
+enough time to charge the capacitor enough to trip the Schmitt trigger
+and the output will stay high.  The internal hysteresis of the Schmitt
+trigger will prevent it from switching again until the input gets very
+high.  Once the switch is let go, there will be enough time and the
+capacitor will eventually charge to 5v and the output of the Schmitt
+triggers will be low.  Also, note that the row and column wires
+corresponding to the depressed key may not change value at the same
+time.
+
+<h4>LCD Details</h4>
+Documentation for the LCD display was distributed in lab.
+There is also an excellent <a href=http://www.cen.uiuc.edu/~cburian/lcd.doc>FAQ</a>
+describing your LCD module.
+There is an accompanying figure
+(<a href=http://www.cen.uiuc.edu/~cburian/chset2.gif>Character set</a>.)
+Also, an article on the physics of LCD displays
+(<a href=ftp://ftp.ee.ualberta.ca/pub/cookbook/faq/LCD2.doc>text file</a>.)
+This collection is likely more complete
+and lucid than the data sheet.
+Details of other parts
+are available from the TTL data book or online
+from <a href="http://motserv.indirect.com">Motorola's Data Book Server</a>.
+<P>
+
+<p><img src="first.jpeg"><p>
+
+You should construct your circuit in phases.  First, build the keypad
+decoder and synchronizer, then the transmitter.  ON the receiving end,
+first build that portion of the FSM that will reset the display and
+print some character (possibly hard-wired, initially), and finally the
+transmitter.  Make sure the transmitter is working before plugging them
+together.  (You can see the values being transmitted if you run the
+clock at 1Hz.)
+
+You should be able to make some progress this week and perhaps even
+complete the circuit.  We will cover how to use the logic analyzer to
+debug sequential circuits in the next lab.  If you are having real
+problems, you might want to wait until then.
+
+<HR>
+
+<H3>Hand In: (DueTA Option)</H3>
+<OL>
+<LI>Demonstrate your up-down counter using switches and LEDs and have
+your TA sign your ABEL listing.
+<LI>ABEL program listing, test results, equations and PLD pinout.
+</OL>
+
+</body>
+<address>
+<hr>
+ted@cs.washington.edu
+</address>
+<p>
+</html>

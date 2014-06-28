@@ -1,0 +1,156 @@
+Date: Wed, 08 Jan 1997 21:31:20 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+<title>Using UNIX</title>
+</head>
+
+<body>
+
+<h1>Using UNIX</h1>
+<h2>a brief introduction</h2>
+
+<hr>
+
+<b>Executive Summary:</b> <i>This document is designed to help you get
+started on UNIX.  It assumes that you're not completely stupid about
+files and directories and such.  It will only tell you the very most
+basic-est things.</i>
+
+<hr>
+<h3>Introduction to UNIX</h3>
+
+UNIX is an operating system.  It likes to use short two-letter
+commands for most things.  When you ask it to do stuff, it doesn't
+usually prompt you to make sure you're sure.  It also doesn't print
+much back at you unless there's an error.<p>
+
+Most UNIX commands take arguments which are specified after the
+command -- often with a "-".<p>
+
+<h3>File basics</h3>
+
+The current directory is called "."  The parent directory is referred
+to as ".."  Your home directory can be referred to using "~".  The
+root directory in UNIX is simply called "/".  Files can be specified
+using slashes between directory names.  For example, I can refer to a
+file named foo in my home directory as "~/foo".<p>
+
+Paths that start with "~" or "/" are absolute pathnames because they
+refer to a specific starting point.  Other paths are relative, and
+constructed starting from the directory you're in.  The example above
+was absolute and will work no matter where I am.  In contrast,
+"../foo" will go back one level from the current directory and look
+for foo. Here are some useful commands:<p>
+<BLOCKQUOTE>
+
+<DL>
+<DT> <b>pwd</b>
+<DD> prints the working directory you're in.<p>
+
+<DT> <b>cd <i>name</i> </b>
+<DD> changes you into the the named directory.
+
+<DT> <b>ls</b> 
+<DD> lists the files in the current directory.  Subdirectories
+are marked with a "/". <b>ls -l</b> gives you the long version
+including the dates the files were created, their sizes, and
+plenty of other stuff that won't be important. <b>ls -a</b> lists all
+the files in a directory.  Filenames which start with "." are not
+printed otherwise. <b>ls <i>name</i></b> lists the contents of the
+named directory. 
+
+<DT> <b>cp <i>name</i> <i>new-name</i></b>
+<DD> copies a file to a new name or location.
+
+<DT> <b>mv <i>name</i> <i>new-name</i></b>
+<DD> moves a file.  If new-name is a
+directory, the file will be moved to that location.  If it is a
+filename, it will be renamed to that name.
+
+<DT> <b>rm <i>name</i></b>
+<DD> removes a file (<b>No warning!</b>).
+
+<DT> <b>mkdir <i>name</i></b>
+<DD>  makes a new directory.
+
+<DT> <b>rmdir <i>name</i> </b>
+<DD> removes a directory.
+
+</DL>
+
+</BLOCKQUOTE>
+
+
+<h3>Looking at files</h3>
+
+The best way to look at a file (short of firing up an emacs session),
+is to use <b>more</b>.  This will display the file one screenful at a
+time.  Between screens, you can hit <b>q</b> to quit, <b>RETURN</b> to
+advance one line, or <b>SPACE</b> to advance to the next screen.  You
+can also search for text using <b>/<i>text</i>-RETURN</b>.<p>
+
+<h3>Using the shell</h3>
+
+The shell is the command interpreter that you interact with in an
+xterm.  On the mscc machines, you'll be using a shell called tcsh.
+You can re-run the previous command using <b>!!</b>.  You can re-run a
+command starting with a particular substring using
+<b>!<i>substring</i></b>.  You can see a list of the recent commands
+you've typed using <b>history</b><p>
+
+You can also re-edit previous commands by using the arrow keys to
+scroll through them.  The MSCC machines seem to be set up in such a
+way that this isn't completely straightforward.  Type <b>bind
+emacs</b> to make it work intuitively.  Put this line in your .cshrc
+to have it be run automatically for you at every login (.cshrc
+contains commands that will be run whenever a new shell is
+started).<p>
+
+<h3>On-line help</h3>
+
+On UNIX, every command has an on-line manual entry, which is a very
+terse but complete description of what it does.  Access these entries
+by typing <b>man <i>command</i></b>.  You can also use <b>apropos
+<i>substring</i></b> to get a list of commands which contain a given
+substring.<p>
+
+<h3>Telnet/rlogin</h3>
+
+You can get access to other UNIX machines remotely using <b>telnet
+<i>machine</i></b> or <b>rlogin <i>machine</i></b>.  For example, to
+access your MSCC account from a departmental machine, you would use
+<b>rlogin mscc.ms</b>.  In this way, you'll never have to leave the
+comfort of Sieg Hall.  If your user name is different on the MSCC
+cluster, you can use <b>-l <i>username</i></b> to specify what your
+name is there.<p>
+
+<h3>Printing</h3>
+
+To print text files in UNIX, use enscript.  Specify the printer with
+the -P flag, and use -2r to save paper.  I also use -G to get the
+"gaudy graphical" look.
+
+<h3>Conclusion</h3>
+
+Those are the most basic basics.  This should tell you what you need
+to know to get through these assignments.  For the most part, you
+should be working within emacs, which has been documented elsewhere.  Feel
+free to ask questions if you have questions about UNIX that aren't
+covered here.
+
+<hr>
+
+<address>
+Shamelessly stolen from cse341 Winter '96  <P>
+cse341-webmaster@cs.washington.edu
+</i>(Last update:
+	
+	<!-- see man strftime for full formatting options-->
+	03/22/96 at 02PM
+)<i>
+</address>
+</body>
+</html>

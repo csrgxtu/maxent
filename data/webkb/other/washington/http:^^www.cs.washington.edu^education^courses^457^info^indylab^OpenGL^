@@ -1,0 +1,245 @@
+Date: Mon, 02 Dec 1996 16:08:38 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+  <title>OpenGL Example Programs</title>
+</head>
+
+<body>
+<h1>CSE 457: Introduction to Computer Graphics</h1>
+<hr>
+
+<h1>
+  OpenGL Example Programs
+</h1>
+
+<h2>
+  The following is a list of the example programs found in the <CITE>OpenGL Programming Guide</CITE> (Addison-Wesley Publishing Company).  The examples will probably not run unless you are running Mosaic locally on a Silicon Graphics workstation.
+</h2>
+
+<ul>
+<li> Accumulation buffer anti-aliasing, example 10-4.
+Run <a href="accanti.openglexample">accanti</a>.  
+View <a href="src/accanti.c">accanti.c</a>.
+<li> Same scene as accanti without anti-aliasing.
+Run <a href="accnot.openglexample">accnot</a>.
+View <a href="src/accnot.c">accnot.c</a>.
+<li> Same as accanti, but anti-aliasing with perspective, example 10-2.
+Run <a href="accpersp.openglexample">accpersp</a>.
+View <a href="src/accpersp.c">accpersp.c</a>.
+<li> Yet another accumulation buffer anti-aliasing example.
+Run <a href="accum.openglexample">accum</a>.
+View <a href="src/accum.c">accum.c</a>.
+<li> Calculates the field of view in the y direction.
+Run <a href="aim.openglexample">aim</a>.
+View <a href="src/aim.c">aim.c</a>.
+<li> Simple 2D alpha blending, example 7-1.
+Run <a href="alpha.openglexample">alpha</a>.
+View <a href="src/alpha.c">alpha.c</a>.
+<li> Alpha blending in 3D, example 7-2.
+Run <a href="alpha3D.openglexample">alpha3D</a>.
+View <a href="src/alpha3D.c">alpha3D.c</a>.
+<li> Anti-aliased true color (RGBA) lines, example 7-3.
+Run <a href="anti.openglexample">anti</a>.
+View <a href="src/anti.c">anti.c</a>.
+<li> Anti-aliased color index lines, example 7-4.
+Run <a href="antiindex.openglexample">antiindex</a>.
+View <a href="src/antiindex.c">antiindex.c</a>.
+<li> Anti-aliased points in color index mode.
+Run <a href="antipindex.openglexample">antipindex</a>.
+View <a href="src/antipindex.c">antipindex.c</a>.
+<li> Anti-aliased points in RGBA mode.
+Run <a href="antipoint.openglexample">antipoint</a>.
+View <a href="src/antipoint.c">antipoint.c</a>.
+<li> Anti-aliased polygons (Reality Engines only), example 7-5.
+Run <a href="antipoly.openglexample">antipoly</a>.
+View <a href="src/antipoly.c">antipoly.c</a>.
+<li> Simple 2D bezier curve, example 11-1.
+Run <a href="bezcurve.openglexample">bezcurve</a>.
+View <a href="src/bezcurve.c">bezcurve.c</a>.
+<li> Bezier surface, example 11-3.
+Run <a href="bezmesh.openglexample">bezmesh</a>.
+View <a href="src/bezmesh.c">bezmesh.c</a>.
+<li> Wire-frame version of bezmesh, example 11-2.
+Run <a href="bezsurf.openglexample">bezsurf</a>.
+View <a href="src/bezsurf.c">bezsurf.c</a>.
+<li> Texture maps a checkerboard onto two rectangles, example 9-1.
+Run <a href="checker.openglexample">checker</a>.
+View <a href="src/checker.c">checker.c</a>.
+<li> Texture maps a repeated checkerboard onto two rectanges.
+Run <a href="checker2.openglexample">checker2</a>.
+View <a href="src/checker2.c">checker2.c</a>.
+<li> Same as checker2, but only repeats edge pixels, not whole pattern.
+Run <a href="chess.openglexample">chess</a>.
+View <a href="src/chess.c">chess.c</a>.
+<li> Arbitrary clipping planes, example 3-5.
+Run <a href="clip.openglexample">clip</a>.
+View <a href="src/clip.c">clip.c</a>.
+<li> Diffuse material example.
+Run <a href="colormat.openglexample">colormat</a>.
+View <a href="src/colormat.c">colormat.c</a>.
+<li> A cone.
+Run <a href="cone.openglexample">cone</a>.
+View <a href="src/cone.c">cone.c</a>.
+<li> A stretched wireframe cube with perspective.
+Run <a href="cube.openglexample">cube</a>.
+View <a href="src/cube.c">cube.c</a>.
+<li> One-dimensional NURBS curve.
+Run <a href="curve.openglexample">curve</a>.
+View <a href="src/curve.c">curve.c</a>.
+<li> Fog used to make distant lines darker.
+Run <a href="depthcue.openglexample">depthcue</a>.
+View <a href="src/depthcue.c">depthcue.c</a>.
+<li> Quadrics used to draw some disks.
+Run <a href="disk.openglexample">disk</a>.
+View <a href="src/disk.c">disk.c</a>.
+<li> Accumulation buffer used to make distant objects blurry, example 10-5.
+Run <a href="dof.openglexample">dof</a>.
+View <a href="src/dof.c">dof.c</a>.
+<li> Same scene as dof, but without blur.
+Run <a href="dofnot.openglexample">dofnot</a>.
+View <a href="src/dofnot.c">dofnot.c</a>.
+<li> Double buffering of rotating square, example 1-3.
+Run <a href="double.openglexample">double</a>.
+View <a href="src/double.c">double.c</a>.
+<li> Draw bitmaps of "F" using glBitmap(), example 8-1.
+Run <a href="drawf.openglexample">drawf</a>.
+View <a href="src/drawf.c">drawf.c</a>.
+<li> Feedback buffer queues GL primatives and then prints them to stdout, example 12-7.
+Run <a href="feedback.openglexample">feedback</a>.
+View <a href="src/feedback.c">feedback.c</a>.
+<li> Teapots in the fog, example 7-6.
+Run <a href="fog.openglexample">fog</a>.
+View <a href="src/fog.c">fog.c</a>.
+<li> Fog in color index mode, example 7-7.
+Run <a href="fogindex.openglexample">fogindex</a>.
+View <a href="src/fogindex.c">fogindex.c</a>.
+<li> Draws text in a bitmapped font using glBitmap() and display lists, example 8-2.
+Run <a href="font.openglexample">font</a>.
+View <a href="src/font.c">font.c</a>.
+<li> Demonstrates lighting model.
+Run <a href="light.openglexample">light</a>.
+View <a href="src/light.c">light.c</a>.
+<li> Display lists are used to draw lines with different stipples.
+Run <a href="linelist.openglexample">linelist</a>.
+View <a href="src/linelist.c">linelist.c</a>.
+<li> Diffent types of stippled lines, example 2-1.
+Run <a href="lines.openglexample">lines</a>.
+View <a href="src/lines.c">lines.c</a>.
+<li> Executes a display list to draw triangles, example 4-2.
+Run <a href="list.openglexample">list</a>.
+View <a href="src/list.c">list.c</a>.
+<li> Demonstrates glGenList() and glPushAttrib().
+Run <a href="list2.openglexample">list2</a>.
+View <a href="src/list2.c">list2.c</a>.
+<li> Lighting in color map mode.
+Run <a href="maplight.openglexample">maplight</a>.
+View <a href="src/maplight.c">maplight.c</a>.
+<li> Assortment of different materials shown, example 6-3.
+Run <a href="material.openglexample">material</a>.
+View <a href="src/material.c">material.c</a>.
+<li> Mipmaps used to draw a texture map with a different color for each bitmap size, example 9-2. 
+Run <a href="mipmap.openglexample">mipmap</a>.
+View <a href="src/mipmap.c">mipmap.c</a>.
+<li> Demonstrates modeling transformations, example 3-2.
+Run <a href="model.openglexample">model</a>.
+View <a href="src/model.c">model.c</a>.
+<li> Light source moves around an object, example 6-2.
+Run <a href="movelight.openglexample">movelight</a>.
+View <a href="src/movelight.c">movelight.c</a>.
+<li> NURBS (Non-uniform rational B-splines) surface shaped like a heart.
+Run <a href="nurbs.openglexample">nurbs</a>.
+View <a href="src/nurbs.c">nurbs.c</a>.
+<li> Mouse and depth buffer are used to select objects, example 12-6.
+Run <a href="pickdepth.openglexample">pickdepth</a>.
+View <a href="src/pickdepth.c">pickdepth.c</a>.
+<li> Mouse is used to select lines.
+Run <a href="pickline.openglexample">pickline</a>.
+View <a href="src/pickline.c">pickline.c</a>.
+<li> Mouse is used to select a square.
+Run <a href="picksquare.openglexample">picksquare</a>.
+View <a href="src/picksquare.c">picksquare.c</a>.
+<li> Demonstrates directional versus point lights.
+Run <a href="plane.openglexample">plane</a>.
+View <a href="src/plane.c">plane.c</a>.
+<li> Composite modeling transformations used in drawing models (arrow keys move spheres).
+Run <a href="planet.openglexample">planet</a>.
+View <a href="src/planet.c">planet.c</a>.
+<li> Like planet, but scene is oriented "up."
+Run <a href="planetup.openglexample">planetup</a>.
+View <a href="src/planetup.c">planetup.c</a>.
+<li> Demonstrates polygon stippling, example 2-2.
+Run <a href="polys.openglexample">polys</a>.
+View <a href="src/polys.c">polys.c</a>.
+<li> Arrow keys move a wire-frame "arm," example 3-7.
+Run <a href="robot.openglexample">robot</a>.
+View <a href="src/robot.c">robot.c</a>.
+<li> Color light source.
+Run <a href="sccolorlight.openglexample">sccolorlight</a>.
+View <a href="src/sccolorlight.c">sccolorlight.c</a>.
+<li> Same scene as sccolorlight, but without colored light.
+Run <a href="scene.openglexample">scene</a>.
+View <a href="src/scene.c">scene.c</a>.
+<li> Same scene as sccolorlight, but with blue ambient light.
+Run <a href="scenebamb.openglexample">scenebamb</a>.
+View <a href="src/scenebamb.c">scenebamb.c</a>.
+<li> Same scene as sccolorlight, but with flat shading.
+Run <a href="sceneflat.openglexample">sceneflat</a>.
+View <a href="src/sceneflat.c">sceneflat.c</a>.
+<li> Shows selection mode and name stack to detect wheter objects collide with viewing volume, example 12-2.
+Run <a href="select.openglexample">select</a>.
+View <a href="src/select.c">select.c</a>.
+<li> White rectangle on a black background, example 1-2.
+Run <a href="simple.openglexample">simple</a>.
+View <a href="src/simple.c">simple.c</a>.
+<li> Gouraud shaded triangle, example 5-1.
+Run <a href="smooth.openglexample">smooth</a>.
+View <a href="src/smooth.c">smooth.c</a>.
+<li> Wire frame sphere using glTranslatef().
+Run <a href="sphere.openglexample">sphere</a>.
+View <a href="src/sphere.c">sphere.c</a>.
+<li> Diamond stencil cuts out part of a scene, example 10-1.
+Run <a href="stencil.openglexample">stencil</a>.
+View <a href="src/stencil.c">stencil.c</a>.
+<li> Demonstrates a stroke (vector) font and display lists,
+example 4-8.
+Run <a href="stroke.openglexample">stroke</a>.
+View <a href="src/stroke.c">stroke.c</a>.
+<li> Nurbs surface as a symmetrical hill, example 11-5.
+Run <a href="surface.openglexample">surface</a>.
+View <a href="src/surface.c">surface.c</a>.
+<li> One versus two sided lighting.
+Run <a href="tea.openglexample">tea</a>.
+View <a href="src/tea.c">tea.c</a>.
+<li> Teapots with different ambient values.
+Run <a href="teaambient.openglexample">teaambient</a>.
+View <a href="src/teaambient.c">teaambient.c</a>.
+<li> Several different materials shown on teapots
+Run <a href="teapots.openglexample">teapots</a>.
+View <a href="src/teapots.c">teapots.c</a>.
+<li> Texture mapped teapot with texture coordinates generated automatically, example 9-3.
+Run <a href="texgen.openglexample">texgen</a>.
+View <a href="src/texgen.c">texgen.c</a>.
+<li> Evaluators used to generate curved surface and texture corrdinates, example 11-4.
+Run <a href="texturesurf.openglexample">texturesurf</a>.
+View <a href="src/texturesurf.c">texturesurf.c</a>.
+<li> BROKEN!  Curves trim away part of a NURBS surface, example 11-6.
+Run <a href="trim.openglexample">trim</a>.
+View <a href="src/trim.c">trim.c</a>.
+<li> Like font, but draws X fonts.
+Run <a href="xfont.openglexample">xfont</a>.
+View <a href="src/xfont.c">xfont.c</a>.
+
+<hr>
+
+</body>
+
+<address>
+sean@cs.washington.edu   (last modified: Tue Sep 20 1994)
+</address>
+</html>
+
+
+

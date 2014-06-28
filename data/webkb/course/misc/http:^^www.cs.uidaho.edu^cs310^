@@ -1,0 +1,150 @@
+Date: Tue, 26 Nov 1996 19:06:05 GMT
+Server: NCSA/1.4.1
+Content-type: text/html
+Last-modified: Mon, 11 Nov 1996 20:23:30 GMT
+Content-length: 5302
+
+<HEAD>
+<TITLE>CS 310 -- Computing Languages</TITLE>
+</HEAD>
+<body text="#002244" link="#ff0000" vlink="#aa00aa" alink="#ffff00">
+<h1>CS 310 -- Computing Languages</h1>
+
+<h3>Course description</h3>
+	Major features of good programming languages, with primary
+emphasis on language features and their role in writing good software;
+programming language design alternatives; various types of languages,
+including procedure, data-flow, functional, and object-oriented languages.
+
+<h3>Course Goals</h3>
+<ul>
+	<li>To explore the notion of what a programming language really is
+	<li>To investigate programming paradigms: imperative, object
+		oriented, functional programming
+	<li>The class is not an overview of a variety of languages, but
+		a deep view of programming paradigms
+</ul>
+<h3>List of Topics covered</h3>
+<ul>
+        <li>Tools for Symbolic Programming
+	<li>Induction, Recursion, and Scope
+	<li>Syntactic Abstraction and Data Abstraction
+	<li>Reduction Rules and Imperative Programming
+	<li>Interpreters
+	<li>Parameter Passing
+	<li>Object-Oriented Languages
+	<li>Type Checking and Inference
+</ul>
+
+<!WA0><img align=left hspace=4 width=100
+     src="http://www.cs.uidaho.edu/~johnd/wbook5.jpg">
+<h3>Text</h3>
+<ul>
+	<li>Daniel Friedman, Mitchell Wand, and Christopher Haynes,
+		<i>Essentials of Programming Languages</i>, The MIT
+		Press and McGraw-Hill Book Company, Sixth printing, 1995.
+</ul>
+
+<h3>Grading for the course</h3>
+<ul>
+        <li>Two examinations during the semester, each worth 100 points
+	    <ul>
+	    <li><!WA1><a href="http://www.cs.uidaho.edu/cs310/exam1.html">Exam 1, October 11</a>
+	    <li>Exam 2, November 20
+	    </ul>
+        <li>Comprehensive final examination, worth 200 points
+        <li>Assignments during the semester, total worth of 100 points
+</ul>
+
+<h3>The instructor for this course:</h3>
+<ul>
+<li><!WA2><a href="http://www.cs.uidaho.edu/~johnd/">John Dickinson</a>.  His email address is <i>johnd</i>.
+</ul>
+
+<h3><!WA3><a href="http://www.cs.uidaho.edu/cs310/sylf.html">Syllabus for CS 310</a></h3>
+
+<h3>Assignments</h3>
+
+<p>
+In order to use records as defined and discussed in the text you 
+will need to either <!WA4><a href="http://www.cs.uidaho.edu/cs310/mitmacros.scm">download the definitions
+for <b>records</b></a> to your directories and then load them into 
+Scheme or you will need to use this load command <tt>(load
+"/usr/local/lib/mit-scheme/records.scm")</tt>.
+</p>
+<ul>
+	<li><!WA5><a href="http://www.cs.uidaho.edu/cs310/assign1.html">Assignment 1</a>
+	<li><!WA6><a href="http://www.cs.uidaho.edu/cs310/assign2.html">Assignment 2</a>
+	<li><!WA7><a href="http://www.cs.uidaho.edu/cs310/assign3.html">Assignment 3</a>
+	<li><!WA8><a href="http://www.cs.uidaho.edu/cs310/assign4.html">Assignment 4</a>
+	<li><!WA9><a href="http://www.cs.uidaho.edu/cs310/assign5.html">Assignment 5</a>
+</ul>
+
+<h3>Class Notes</h3>
+<ul>
+	<li><!WA10><a href="http://www.cs.uidaho.edu/cs310/notes/lect-21.html">Notes on the Environment Model</a>.
+	    This material was covered in class Oct 28-30.
+	<li><!WA11><a href="http://www.cs.uidaho.edu/cs310/ch6.ps">Revised Chapter 6 -- Parameter Passing</a>. 
+	    You should read this carefully before you print it out.  My book
+	    is the Sixth Printing, 1995 and I think it has all the proper
+	    modifications to Chapter 6.  If you have an older book, you
+	    might need to print this chapter out.  When printing, I'd
+	    suggest using one of the laser printers that duplexes (laser13
+	    or laser25) with the duplex option ( -oduplex ).
+	<li><!WA12><a href="http://www.cs.uidaho.edu/cs310/ch13.ps">The missing Chapter 13 -- Type Checking</a>.
+	<li><!WA13><a href="http://www.cs.uidaho.edu/cs310/errata">Errata for <i>Essentials of Programming
+	    Languages</i></a>.  This is especially useful if you have an
+	    older version of the book.  This errata gives changes and at
+	    what printing the changes occurred.
+	<li><!WA14><a href="http://www.cs.uidaho.edu/cs310/types.ps">Paper on Types and Polymorphism</a>.  This is
+	    an important paper on Type, Data Abstraction, and Polymorphism
+	    by Lucia Cardelli and Peter Wegner.  It appeared in Computer
+	    Surveys (December 1985) and is reproduced with permission.  It
+	    is in postscript format.
+<!---
+--->
+	<li><!WA15><a href="http://www.cs.uidaho.edu/cs310/code.html">All of the program code</a> has been provided
+	    by the authors of <i>Essentials of Programming Languages</i>.
+</ul>
+
+<h3>The Scheme Language</h3>
+<p>
+Scheme is a dynamically typed functional language descended from LISP.
+Several Scheme manuals are available through the web.
+</p>
+<ul>
+<li> The
+<!WA16><a href="http://www-swiss.ai.mit.edu/~jaffer/r4rs_toc.html">Programming
+Manual for Scheme</a>.  This is a reference for the Scheme language itself.
+<li> The
+<!WA17><a href="http://www-swiss.ai.mit.edu/emacs-html.local/scheme_toc.html">MIT
+Scheme Reference Manual</a>.  This describes the run-time environment and
+I/O facilities.
+<li> The
+<!WA18><a href="http://www-swiss.ai.mit.edu/emacs-html.local/user_toc.html">MIT Scheme
+User's Manual</a>.  This describes the read-eval-print loop, debugging, and
+loading and compiling files.
+</ul>
+<p>
+In addition to on-line manuals, you might wish to see these on-line
+resources about
+<!WA19><a href="http://www-swiss.ai.mit.edu/scheme-home.html">Scheme</a>. 
+This site gives many pointers to information about scheme and implementations
+of scheme.
+There is also a Scheme newsgroup at
+<!WA20><a href="news:comp.lang.scheme">comp.lang.scheme</a>.
+There is even an
+<!WA21><a href="http://www-swiss.ai.mit.edu/~jar/eval.html">on-line scheme
+interpreter</a> so that you can try scheme directly on the web.
+</p>
+
+<h3>Final Exam Schedule</h3>
+<p>
+The final examination will
+be <b>comprehensive</b>, that is, it will cover all the topics we 
+study this semester.
+</p>
+<ul>
+<li>Section 1 (12:30 MWF). Final is December 18 (Wednesday) 1:00-3:00pm
+</ul>
+</body>

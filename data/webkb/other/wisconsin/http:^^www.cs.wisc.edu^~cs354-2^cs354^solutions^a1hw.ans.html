@@ -1,0 +1,106 @@
+Date: Tue, 05 Nov 1996 00:32:06 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 25 Sep 1996 20:46:03 GMT
+Content-length: 2940
+
+<!--This file created 9/12/96 4:06 PM by Claris Home Page version 1.0b1-->
+<HTML>
+<HEAD>
+   <TITLE>a1hw.ans.html</TITLE>
+   <X-SAS-WINDOW TOP=67 BOTTOM=422 LEFT=-704 RIGHT=-174>
+</HEAD>
+<BODY>
+
+<H2 ALIGN=CENTER><B>CS354, Fall 1996</B></H2>
+
+<H2 ALIGN=CENTER><B>Homework 1, due Wednesday September 18 at the
+</B></H2>
+
+<BLOCKQUOTE><P>(1) T/F, 10 points, 1 point each</P>
+
+<BLOCKQUOTE><P>Note: The complete SAL instruction set is given in
+Appendix A of the textbook, page 386.</P></BLOCKQUOTE>
+
+<P>(a) all variables in SAL programs are global (<B>T</B>)</P>
+
+<P>(b) the SAL statement "get x" works the same for all types of "x"
+(<B>F</B>)</P>
+
+<P>(c) the label "b" could be used for a variable in a SAL program
+(<B>F,  it's  a reserved word</B>)</P>
+
+<P>(d) variables must be declared before they are used in SAL
+programs (<B>F, the ".data" section can come after the ".text"
+section of the source code</B>)</P>
+
+<P>(e) when executed, the SAL statement "b (ret)" will cause a branch
+to the SAL statement labeled by "ret:" (<B>F,  in this context, ret
+is a variable name, not a statement label</B>)</P>
+
+<P>(f) when executed, the SAL statement "j ret" will cause a branch
+to the SAL statement labeled by "ret:" (<B>T, here ret is a statement
+label</B>)</P>
+
+<P>(g) every SAL program must have a "__start:" label in it somewhere
+(<B>T</B>)</P>
+
+<P>(h) "done" is part of the SAL instruction set (<B>F, it's a
+"macro"</B>)</P>
+
+<P>(i) "rem" is used to put a remark or comment in a SAL program
+(<B>F</B>)</P>
+
+<P>(j) type declarations are made in SAL programs so that type
+checking can be done by the assembler (<B>F, type defs are to reserve
+space only</B>)</P>
+
+<P>(2) 2 points</P>
+
+<P>In a single sentence, explain what "computer architecture" means.
+</P>
+
+<DL>
+   <DD><B>In the context of CS354, "computer architecture" is defined
+   by the basic instruction set of the computer.</B>
+</DL>
+
+<P>3) 8 points</P>
+
+<P>Translate the following C code into the equivalent SAL statements.
+Assume that all variables are of C type "int."</P>
+
+<BLOCKQUOTE><PRE>if ((A &gt; 0 ) || ( B == 1 )) {
+     C = A + B * 5;
+} else {
+     A++; 
+     B = ( A / B ) % C;
+}</PRE></BLOCKQUOTE>
+
+<P>--------------------------------------------</P>
+
+<BLOCKQUOTE><PRE><B>      <TT><CODE>bgtz A, then    # if A &gt; 0, do 
+then part
+      beq  B, 1, then # or if B == 1, do then part
+      add  A, A, 1    # else part ...
+      div  B, A, B
+      rem  B, B, C
+      j    cont       # jump over then part
+then: mul  C, B, 5    # then part
+      add  C, A, C
+-------------------------------------------------------------
+	### Another solution
+         blez   A, check2
+then:    mul    C, B, 5
+         add    C, C, A
+         b      cont
+check2:  beq    B, 1, then
+         add    A, A, 1
+         div    B, A, B
+         rem    B, B, C
+-------------------------------------------------------------
+
+cont: ...</CODE></TT></B></PRE></BLOCKQUOTE></BLOCKQUOTE>
+</BODY>
+</HTML>
+

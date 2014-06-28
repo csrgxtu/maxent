@@ -1,0 +1,369 @@
+Date: Wed, 20 Nov 1996 19:18:57 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+Content-length: 15247
+Last-modified: Wed, 20 Nov 1996 10:04:38 GMT
+
+<html>
+<head>
+<TITLE>ScaLAPACK</TITLE>
+<meta name="BIDM.asset.name" content="ScaLAPACK">
+<meta name="BIDM.asset.abstract" content="
+ScaLAPACK is a library of high performance linear algebra
+routines for distributed memory MIMD computers.  It is a
+continuation of the LAPACK project, which designed and
+produced analogous software for workstations, vector
+supercomputers, and shared memory parallel computers.  Both
+libraries contain routines for solving systems of linear
+equations, least squares problems, and eigenvalue problems.
+Most machine dependencies are limited to two standard
+libraries called the BLAS, or Parallel Basic Linear Algebra Subroutines,
+and the BLACS, or Basic Linear Algebra Communication Subroutines.
+LAPACK and ScaLAPACK will run on any machine where the PBLAS
+and the BLACS are available.">
+<meta name="BIDM.asset.cost" content="free">
+<meta name="BIDM.asset.targetenvironment" content="
+PVM 3.3 or later; Intel distributed
+memory computers; IBM SP series; Thinking Machines CM-5.">
+<meta name="BIDM.asset.domain" content="numerical/linear algebra">
+<meta name="NHSE.asset.contactis.organization.email" content="scalapack@cs.utk.edu">
+<meta name="BIDM.asset.keyword" content="GAMS D. Linear algebra">
+<meta name="BIDM.asset.keyword" content="parallel numerical library;
+distributed memory multiprocessor; MIMD machine">
+<link rel="NHSE.asset.reference" 
+  href="http://www.netlib.org/lapack/lawns/lawn100.ps">
+<link rel="BIDM.asset.islocatedin.library" 
+title="Netlib" href="http://www.netlib.org/" 
+urn="urn:inet:netlib.org:netlib">
+<link rel="BIDM.asset.webpage" href="http://www.netlib.org/scalapack/">
+</head>
+
+<body>
+<h1>ScaLAPACK Project</h1>
+
+There have been
+<!-- Don't edit this line--> <!WA0><A HREF="http://www.netlib.org/netlib/master_counts.html">21,579</A> accesses to this library.  (Count updated 11/13/96 at 02:12:44)
+<p>
+The <!WA1><a href=http://www.netlib.org/scalapack/darpa-progress-report.html><B>DARPA/ITO Progress Report</B></a> for the project ``A Scalable 
+Library For Numerical Linear Algebra'' for fiscal year 1995/1996 is
+available for viewing.</p>
+<hr>
+<!WA2><A HREF="http://www.netlib.org/scalapack/poster.html">
+<!WA3><IMG border=1 SRC="http://www.netlib.org/scalapack/slap_thumbnail.gif" align="left">Click here to see <br>the
+SuperComputing'96 <br>ScaLAPACK poster</A>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr>
+<p>
+The ScaLAPACK project is a collaborative effort between:</p>
+<ul>
+<li>Oak Ridge National Laboratory
+<li>Rice University
+<li>University of California, Berkeley
+<li>University of California, Los Angeles
+<li>University of Illinois
+<li>University of Tennessee, Knoxville
+</ul>
+<p>
+The ScaLAPACK project is made up of 4 components:</p>
+<ul>
+<li>dense matrix software (<!WA4><a href="http://www.netlib.org/scalapack/scalapack_home.html"><B>ScaLAPACK</B></a>)
+<li>large sparse eigenvalue software (<!WA5><a href="http://www.caam.rice.edu/~kristyn/parpack_home.html"><B>PARPACK</B></a>)
+<li>sparse direct systems software (<B>CAPSS</B>)
+<li>preconditioners for large sparse iterative solvers (<!WA6><a href="http://www.math.ucla.edu/~eijkhout/parpre.html"><B>PARPRE</B></a>)
+</ul>
+<p>
+<!WA7><a href="http://www.netlib.org/scalapack/scalapack_home.html"><B>ScaLAPACK</B></a>,
+version 1.4, includes routines for the solution of dense,
+band, and tridiagonal linear systems of equations, condition estimation and
+iterative refinement, for LU and Cholesky factorization, matrix inversion,
+full-rank linear least squares problems, orthogonal and generalized orthogonal
+factorizations, orthogonal transformation routines, reductions to upper
+Hessenberg, bidiagonal and tridiagonal form, reduction of a symmetric-definite/
+Hermitian-definite generalized eigenproblem to standard form, the
+symmetric/Hermitian, generalized symmetric/Hermitian, and the nonsymmetric
+eigenproblem.</p>
+<p>
+Software is available in single precision real, double precision real,
+single precision complex, and double precision complex.  The software has
+been written to be portable across a wide range of distributed-memory
+environments such as the Cray T3, IBM SP, Intel series, TM CM-5,
+clusters of workstations, and any system for which 
+<!WA8><a href="http://www.netlib.org/pvm3/index.html">PVM</a>
+or <!WA9><a href="http://www.mcs.anl.gov/mpi/">MPI</a> is available.</p>
+<p>
+A draft of the
+<!WA10><a href="http://www.netlib.org/scalapack/scalapack_ug.ps">ScaLAPACK Users' Guide</a> and a comprehensive
+<!WA11><a href="http://www.netlib.org/scalapack/scalapack_install.ps">Installation Guide</a> is
+provided, as well as test suites for all <B>ScaLAPACK</B>,
+<!WA12><a href="http://www.netlib.org/scalapack/html/pblas_qref.html"><B>PBLAS</B></a>, and
+<!WA13><a href="http://www.netlib.org/blacs/index.html"><B>BLACS</B></a> routines.</p>
+<p>
+Future releases of
+<!WA14><a href="http://www.netlib.org/scalapack/scalapack_home.html"><B> ScaLAPACK</B></a> will include routines for the solution of
+general banded linear systems, general and symmetric positive definite
+tridiagonal systems, rank-deficient linear least squares problems,
+generalized linear least squares problems, and the singular value
+decomposition.  Also available will be the full-index <B>PBLAS</B>, which will
+have the majority of alignment restrictions removed, as well as the
+ability to operate on partial first blocks.  The next release of
+<B>ScaLAPACK</B> is slated for Fall, 1996.</p>
+<p>
+<!WA15><a href="http://www.caam.rice.edu/~kristyn/parpack_home.html"><B>PARPACK</B></a> (Parallel ARPACK) is an extension of the <B>ARPACK</B> software
+package used for solving large scale eigenvalue problems on distributed memory
+parallel architectures.  The message passing layers currently supported
+are <!WA16><a href="http://www.netlib.org/blacs/index.html">BLACS</a>
+and <!WA17><a href="http://www.mcs.anl.gov/mpi/">MPI</a>.  <I>Serial ARPACK must be
+retrieved and installed prior to installing PARPACK</I>.  All core
+<B>ARPACK</B> routines
+are available in single precision real, double precision real, single
+precision complex, and double precision complex.  An extensive set of driver
+routines are available for <B>ARPACK</B> and a subset of these are available
+for parallel computation with <B>PARPACK</B>.  These may be used as templates
+that are easily modified to construct a problem specific parallel interface to
+<B>PARPACK</B>.</p>
+<p>
+<B>CAPSS</B> is a fully parallel package to solve a sparse linear system of
+the form Ax=b on a message passing multiprocessor; the matrix A is assumed to
+be symmetric positive definite and associated with a mesh in two or three
+dimensions.  This version has been tested on the  Intel Paragon and makes
+possible efficient parallel solution for several right hand side vectors.</p>
+<p>
+<!WA18><a href="http://www.math.ucla.edu/~eijkhout/parpre.html"><B>PARPRE</B></a> is
+a package of parallel preconditioners for general sparse
+matrices. It includes classical point/block relaxation methods,
+generalised block SSOR preconditioners (this includes ILU), and domain
+decomposition methods (additive and multiplicative Schwarz, Schur
+complement).  The communication protocol is
+<!WA19><a href="http://www.mcs.anl.gov/mpi/">MPI</a>, and low level
+routines from the <B>Petsc</B> library are used, but installing the complete
+<B>Petsc</B> library is not necessary.</p>
+<p>
+Funding for this effort comes in part from DARPA, DOE, NSF, and CRPC.</p>
+<p>
+Comments/suggestions may be sent to <address>scalapack@cs.utk.edu</address>.</p>
+<p>
+
+<hr>
+<pre>
+#	SCALAPACK directory
+#	=========
+
+#	The ScaLAPACK project is a collaborative effort between:
+#	Oak Ridge National Laboratory  Rice University
+#	Univ. of Tenn., Knoxville      Univ. of Calif., Berkeley
+#	Univ. of Calif., Los Angeles   Univ. of Illinois, Urbana-Champaign
+
+#	The ScaLAPACK project is made up of 4 components:
+#	dense matrix software (ScaLAPACK)
+#	large sparse eigenvalue software (PARPACK)
+#	sparse direct systems software (CAPSS)
+#	preconditioners for large sparse iterative solvers (PARPRE)
+
+#	This directory contains a number of different software packages
+#	involved in the ScaLAPACK project.
+
+#       *********** 
+#       PLEASE NOTE:  As of November, 1996, this directory was updated.
+#       ***********   PROTOTYPE codes are in scalapack/prototype directory.
+#                     Pre-built ScaLAPACK libraries are now available!
+*                 
+#
+#       The URL for the BLAS is http://www.netlib.org/blas/index.html.
+#       The URL for the BLACS is http://www.netlib.org/blacs/index.html.
+#       The URL for PVM is http://www.netlib.org/pvm3/index.html.
+#       A URL for MPI is http://www.mcs.anl.gov/mpi/.
+
+#	The ARPACK/PARPACK files may also be obtained by anonymous ftp
+#	from ftp.caam.rice.edu.
+#
+#       Questions/comments should be directed to scalapack@cs.utk.edu.
+
+
+#       ########################################################
+#       # Pre-Built ScaLAPACK Libraries, Example Programs, etc #
+#       ########################################################
+ 
+ 
+lib     <!WA20><a href="http://www.netlib.org/scalapack/archives/">scalapack/archives</a>
+for     Pre-built ScaLAPACK Libraries
+
+
+lib	<!WA21><a href="http://www.netlib.org/scalapack/examples/">scalapack/examples</a>
+for	EXAMPLE programs calling PBLAS and ScaLAPACK routines
+
+lib	<!WA22><a href="http://www.netlib.org/scalapack/prototype/">scalapack/prototype</a>
+for     PROTOTYPE codes (HPF wrappers, Out-of-Core Solvers,
+,	Matrix sign function for eigenproblems)	
+
+ 
+#       ##############################
+#       # SOFTWARE AND DOCUMENTATION #
+#       ##############################
+
+#       #############
+#       # ScaLAPACK #
+#       #############
+
+file	<!WA23><a href="http://www.netlib.org/scalapack/scalapack.tar.gz">scalapack/scalapack.tar.gz</a>
+for	ScaLAPACK, version 1.4, containing source code, installation
+,	guide, and test suite.
+,	Assumes the BLAS and the BLACS are available.
+,	(Prebuilt libraries are available on this index and in the
+,	BLACS directory on netlib.)
+,	Date:  November 17, 1996
+size	3388262 bytes
+
+file	<!WA24><a href="http://www.netlib.org/scalapack/scalapack_install.ps">scalapack/scalapack_install.ps</a>
+for	LAPACK Working Note 93:  Installation Guide for ScaLAPACK.
+,	Date:  November 17, 1996
+size	277484 bytes
+
+file	<!WA25><a href="http://www.netlib.org/scalapack/scalapack_ug.ps.gz">scalapack/scalapack_ug.ps.gz</a>
+for	PRELIMINARY DRAFT:  ScaLAPACK Users' Guide (200 pages)
+,	Date:  November 17, 1996
+size	404591 bytes
+
+file	<!WA26><a href="http://www.netlib.org/scalapack/errata.scalapack">scalapack/errata.scalapack</a>
+for	ERRATA file for ScaLAPACK.  Details all machine-specific
+,	installation hints, bug fixes in patches, and a list of
+,	"TO BE FIXED" bugs for the upcoming release.
+,	Date:  November 17, 1996
+size	4113 bytes
+
+file	<!WA27><a href="http://www.netlib.org/scalapack/lawn100.ps">scalapack/lawn100.ps</a>
+for	LAPACK Working Note 100:  A Proposal for a Set of Parallel
+,	Basic Linear Algebra Subprograms (PBLAS)
+size	424966 bytes
+
+file	<!WA28><a href="http://www.netlib.org/scalapack/pblasqref.ps">scalapack/pblasqref.ps</a>
+for	PBLAS Quick Reference Guide
+size	93299 bytes
+
+#       #########
+#       # PUMMA #
+#       #########
+
+file	<!WA29><a href="http://www.netlib.org/scalapack/pumma_refmanual.ps">scalapack/pumma_refmanual.ps</a>
+for	PUMMA Reference Manual
+size	179780 bytes
+
+file	<!WA30><a href="http://www.netlib.org/scalapack/trans.ps">scalapack/trans.ps</a>
+for	Parallel Matrix Transpose Algorithms on Distributed
+,	Memory Concurrent Computers
+,	This paper outlines another facet of PUMMA.
+size	537057 bytes
+
+file	<!WA31><a href="http://www.netlib.org/scalapack/pumma_blacs.uue">scalapack/pumma_blacs.uue</a>
+for	(FOR ANON FTP, email via NETLIB, or XNETLIB USERS)
+,	This is the BLACS version of PUMMA, version 2.1.
+,	(this file has been tar; compress; uuencode)
+,	Updated:  July, 1995
+size	318504 bytes
+lang	Fortran
+gams	d1b6
+
+file	<!WA32><a href="http://www.netlib.org/scalapack/pumma_picl.uue">scalapack/pumma_picl.uue</a>
+for	(FOR ANON FTP, email via NETLIB, or XNETLIB USERS)
+,	This is the PICL version of PUMMA, version 2.1.
+,	(this file has been tar; compress; uuencode)
+,	Updated:  March 24, 1995
+size	318767 bytes
+lang	Fortran
+gams	d1b6
+
+#       ######################
+#       # ARPACK and PARPACK #
+#       ######################
+
+file	<!WA33><a href="http://www.netlib.org/scalapack/readme.arpack">scalapack/readme.arpack</a>
+for	A README file for the ARPACK distribution
+,	ARPACK is a Fortran 77 software package for solving large scale
+,	eigenvalue problems. The package is designed to compute a few
+,	eigenvalues and corresponding eigenvectors of a large (sparse)
+,	matrix.
+size	2146 bytes
+
+file	<!WA34><a href="http://www.netlib.org/scalapack/instructions.arpack">scalapack/instructions.arpack</a>
+for	Installation instructions for ARPACK.
+size	863 bytes
+
+file	<!WA35><a href="http://www.netlib.org/scalapack/arpack_ug.ps">scalapack/arpack_ug.ps</a>
+for	User's Guide for ARPACK (available soon)
+
+file	<!WA36><a href="http://www.netlib.org/scalapack/arpack96.tar.gz">scalapack/arpack96.tar.gz</a>
+for	ARPACK is an implementation of the Implicitly Restarted Arnoldi
+,	Method for computing a few selected eigenvalues and corresponding
+,	eigenvectors of a large (sparse) matrix.  It may be used to solve
+,	symmetric, nonsymmetric, standard or generalized eigenvalue problems 
+,	and to compute a partial singular value decomposition.
+by	Dan Sorensen &lt;sorensen@rice.edu&gt;, Rich Lehoucq &lt;lehoucq@mcs.anl.gov&gt;
+,	and Chao Yang &lt;chao@rice.edu&gt;.
+size	651178 bytes
+lang	Fortran 77
+
+file	<!WA37><a href="http://www.netlib.org/scalapack/readme.parpack">scalapack/readme.parpack</a>
+for	A README file for the PARPACK distribution
+,	PARPACK is an extension of the ARPACK software package used for
+,	solving large scale eigenvalue problems on distributed memory
+,	parallel architectures. 
+,	The message passing layers currently supported are BLACS and MPI. 
+size	2662 bytes
+
+file	<!WA38><a href="http://www.netlib.org/scalapack/instructions.parpack">scalapack/instructions.parpack</a>
+for	Installation instructions for PARPACK.
+size	1119 bytes
+
+file	<!WA39><a href="http://www.netlib.org/scalapack/parpack_ug.ps">scalapack/parpack_ug.ps</a>
+for	User's Guide for PARPACK (available soon)
+
+file	<!WA40><a href="http://www.netlib.org/scalapack/parpack96.tar.gz">scalapack/parpack96.tar.gz</a>
+for	PARPACK is a parallel implementation of the Implicitly Restarted
+,	Arnoldi Method for computing a few selected eigenvalues and 
+,	corresponding eigenvectors of a large (sparse) matrix. This 
+,	file includes the extensions to ARPACK needed to create PARPACK.
+,	Serial ARPACK must be retrieved and installed prior to installing
+,	PARPACK.  
+by	Kristi Maschhoff &lt;kristyn@caam.rice.edu&gt;, Dan Sorensen
+,	&lt;sorensen@caam.rice.edu&gt;, Rich Lehoucq &lt;lehoucq@mcs.anl.gov&gt;
+,	and Chao Yang &lt;chao@caam.rice.edu&gt;.
+size	504965 bytes
+lang	Fortran 77
+
+#       #########
+#       # CAPSS #
+#       #########
+
+file	<!WA41><a href="http://www.netlib.org/scalapack/capss.tar.gz">scalapack/capss.tar.gz</a>
+for	(FOR ANON FTP and XNETLIB USERS ONLY)
+,	NOT AVAILABLE BY EMAIL
+,	CAPSS is a fully parallel package to solve a sparse linear
+,	system of the form Ax=b on a message passing multiprocessor
+,	using matrix factorization.  This release is meant for the 
+,	Intel Paragon; the  code has been compiled and tested on an
+,	Intel Paragon running OSF with 1-128 processors.  The code is
+,	written in C with message passing extensions.
+,       This version provides features for solving a system with
+,	several right hand side vectors.
+,	(this file has been tar; gzip)
+by	Padma Raghavan &lt;padma@cs.utk.edu&gt;
+size	785089 bytes
+lang	C
+
+#       ##########
+#       # PARPRE #
+#       ##########
+
+file	<!WA42><a href="http://www.netlib.org/scalapack/parpre.tar.gz">scalapack/parpre.tar.gz</a>
+for	PARPRE package of preconditioners for large sparse iterative
+,	solvers.  Includes source code and documentation.
+by	Victor Eijkhout &lt;eijkhout@math.ucla.edu&gt;
+,	UPDATED:  July 3, 1996
+size	160580 bytes
+</pre>
+</body>
+</html>

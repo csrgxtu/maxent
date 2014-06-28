@@ -1,0 +1,41 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 07-Jan-97 15:25:46 GMT
+Content-Type: text/html
+Content-Length: 1365
+
+<HTML><HEAD><TITLE>Lisp / X Demo</TITLE></HEAD><BODY>
+<H2>Demonstration of Interactive X Graphics from Lisp</H2>
+
+This is a demo of the
+<!WA0><a href="http://www.cs.utexas.edu/users/novak/dwindow.html">X Interface for Gnu Common Lisp</a>
+which is available as free software under the Gnu General Public License
+from <CODE> ftp.ma.utexas.edu </CODE>
+<P>
+When the demo is started, a window is created and some things are
+drawn in it.  A menu of options is presented; select an option
+and then click the mouse one or more times inside the graphics window.
+<P>
+<!WA1><a href="file://ftp.cs.utexas.edu/pub/novak/xgcl/wtest.lsp">The code</a>
+is fairly simple.
+
+<HR>
+
+<H2>Instructions</H2>
+<!WA2><FORM METHOD=GET ACTION="http://www.cs.utexas.edu/users/novak/cgi/nph-xgcl-action">
+<OL>
+<LI>	You must be logged in to a host running X windows.
+<LI>	Type <CODE>  xhost + www.cs.utexas.edu  </CODE> (exactly as shown
+        at left) in a window on that host
+	to allow this server to write to your display.
+<LI>	Enter your X display name here if needed; you may need to change
+        what is shown in the box to your X display name.  For example,
+        <CODE> myterminal.cs.utexas.edu:0.0 </CODE> <BR>
+	<INPUT TYPE=text SIZE=40 VALUE="128.2.209.145:0.0" NAME=xdspname>
+<LI>	Click <INPUT TYPE=submit VALUE="here"> to start the demo.
+</OL>
+</BODY>
+<address><!WA3><a href="http://www.cs.utexas.edu/users/novak/index.html">
+Gordon S. Novak Jr.</a></address>
+</HTML>
+

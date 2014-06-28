@@ -1,0 +1,290 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Friday, 17-Jan-97 00:06:49 GMT
+Content-Type: text/html
+Content-Length: 10714
+Last-Modified: Thursday, 17-Oct-96 20:04:57 GMT
+
+<html>
+  <head>
+    <title>CODE: "Visual Parallel Programming May Come of Age with CODE" (HPCwire)</title>
+  </head>
+
+  <!-- background="../gracs/background.gif" -->
+
+  <body background="background.gif" bgcolor="#FFFFFF" LINK="#191eee" VLINK="#b90003" ALINK="#a051b7">
+
+<!WA0><!WA0><!WA0><!WA0><a href="http://hpcwire.com/hpcwire.html"><!WA1><!WA1><!WA1><!WA1><img border=0 src="http://www.cs.utexas.edu/users/code/hpc_banner.gif"></a>
+<h2>from <!WA2><!WA2><!WA2><!WA2><a href="http://hpcwire.com/hpcwire.html"><font size=+5 face="Arial, Helvetica">HPCwire</font></a>, 8/23/96:</h2>
+<font size=-1><em>(reprinted with permission)</em></font>
+<p>
+<center>
+      <h1><em>Visual Parallel Programming May Come of Age with CODE</em></h1>
+      <h2><font face="Arial, Helvetica">by Alan Beck, editor-in-chief</font></a></h2>
+</center>
+
+<center>
+<table width=50%>
+<tr><td>
+
+<font size=+1>
+AUSTIN, Texas -- Although visual parallel programming environments are not
+new, the unusually simple and direct techniques employed by the University of
+Texas' <!WA3><!WA3><!WA3><!WA3><a href="http://www.cs.utexas.edu/users/code">CODE</a> (Computationally Oriented Display Environment), an abstract
+declarative graphical environment for parallel programming, promises not only
+a different but also a much more effective approach to the entire task.
+Within the CODE environment, a parallel program is a directed graph, where
+data flows on arcs connecting nodes representing sequential programs.
+</font>
+<p>
+  The sequential programs may be written in any language, and CODE itself is architecture-independent. Thus, the CODE system can produce parallel programs
+for PVM-based and MPI-based networks as well as for the Sequent Symmetry,
+CRAY and Sun Sparc MP. Currently, the CODE graphical interface itself runs
+on Suns.
+<p>
+  In order to learn more about the operation of CODE, HPCwire interviewed its
+"godfather", <!WA4><!WA4><!WA4><!WA4><a href="http://www.cs.utexas.edu/users/browne">James C. Browne</a>, Regents Chair in Computer Sciences and
+Professor of Physics and Electrical & Computer Engineering at the University
+of Texas. Following are selected excerpts from that discussion.
+<p>
+<hr size=3>
+</td></tr>
+</table>
+<table>
+<tr><td width=20%></td>
+<td>
+<p>
+<b>
+<font color="#0000AF">
+HPCwire: What level of skill must a programmer bring to CODE?
+</font>
+</b>
+<p>
+<font color="#000000">
+   BROWNE: "No special programming skills are needed. Traditionally, one
+works at the procedural level, stipulating how a computation is done. With
+CODE, you make a transition from how something is done to what you're trying
+to do, at a very high level."
+<p>
+  "I've used CODE in undergraduate parallel programming classes, given
+students about an hour of instruction, then turned them loose in the
+graphical environment, and they work their way through it. It's forgiving. Of
+course, they already know how to program in traditional languages. And
+clearly, they must understand parallelism at the conceptual level."
+</font>
+<p>
+<b>
+<font color="#0000AF">
+HPCwire: Is it fair to say that the better the programmer, the better (s)he
+will be able to utilize CODE?
+</font>
+</b>
+<p>
+<font color="#000000">
+  BROWNE: "Let's take another tack and say the better people understand their
+applications, the better they'll be able to use CODE. When you write a
+program in a language like HPF, you have to do a lot of nonintuitive things
+like partitioning matrices, handling distributions, etc. But with CODE, what
+you must understand is that a parallel computation structure is basically a
+directed graph with many paths through it. It's a different level of
+conceptual understanding."
+</font>
+<p>
+</td></tr></table>
+<table>
+<tr><td valign=top width=40%>
+<font size=+2 color='#4A7373'>
+<hr>
+"I've used CODE in undergraduate parallel programming classes, given
+students about an hour of instruction, then turned them loose in the
+graphical environment, and they work their way through it."
+<hr>
+</font>
+</td>
+<td>
+<b>
+<font color="#0000AF">
+  HPCwire: Given a certain level of skill, how much more efficiently can a
+parallel programmer function with CODE?
+</font>
+</b>
+<p>
+<font color="#000000">
+  BROWNE: "An order of magnitude more effectively. And we need to do even
+better than that. What we've done is change the level of abstraction at
+which programs are described. It's like writing a book by simply writing an
+outline, and then having a smart word processor consult encyclopedias and
+dictionaries to fill in the rest."
+</font>
+</td></tr>
+</table>
+<table>
+<tr><td width=20%></td>
+<td>
+<p>
+<font color="#000000">
+  "CODE uses an abstract general model of parallel computation, which is a
+hierarchical dependence graph. Those are a lot of buzzwords, but the
+graphical environment speaks for itself. Let's say you have an old FORTRAN
+program with a bunch of subroutines for which you want to invoke many
+parallel copies. We associate one subroutine with a node on the graph. If you
+want to run <em>n</em> copies of it in parallel and connect them up with the rest of
+the program, you simply draw arcs among the routines you want connected. CODE
+takes care of all the parallel programming book-keeping -- like where the
+copy is, how to get in touch with it for input or output, how to synchronize
+it with other routines."
+</font>
+<p>
+<b>
+<font color="#0000AF">
+HPCwire: Doesn't this favor a coarse-grained approach?
+</font>
+</b>
+<p>
+<font color="#000000">
+  BROWNE: "Definitely. But about three years ago, we asked ourselves how
+data parallelism could be most simply represented in the dependence graph
+model. You can construct a graph where each node represents part of a
+computation on a matrix, but that's awkward. So we thought: why not
+introduce additional annotation on the arcs that says, 'Any data flowing
+down this arc will be split into pieces, with each piece sent to a copy of
+the routine at the arc's end.' If you do this, you then have fine-grained
+data parallelism embedded in the graphical model. <!WA5><!WA5><!WA5><!WA5><a href="http://www.cs.utexas.edu/users/code/code-publications.html#ipps96">A paper on this approach
+to integration of data parallelism into the graphical model</a> was presented
+at the last International Parallel Processing Symposium."
+</font>
+<p>
+<b>
+<font color="#0000AF">
+HPCwire: What are the limitations of this approach?
+</font>
+</b>
+<p>
+<font color="#000000">
+  BROWNE: "Lack of familiarity. The need to change the way you think. See,
+we're messing with people's minds. There are no intrinsic limitations. The
+nodes are nothing more or less than FORTRAN or C subroutines. There are no
+conceptual limitations on back-ends. We compile to shared-memory, PVM or
+MPI back-ends. Give us that one graph, click on the icon for the back-end
+you want, and we compile it with some optimization for each different
+environment."
+<p>
+  "The reason this approach to program development isn't particularly
+well-accepted is because the scientific and engineering community is
+accustomed to doing business in a certain way -- and working at a certain
+level of abstraction. With this method you require people to change the way
+they think. And people change the way they think very slowly."
+</font>
+<p>
+</td></tr></table>
+<table>
+<tr><td valign=top width=40%>
+<font size=+2  color='#4A7373'>
+<hr>
+"We compile to shared-memory, PVM or
+MPI back-ends. Give us that one graph, click on the icon for the back-end
+you want, and we compile it with some optimization for each different
+environment."
+<hr>
+</font>
+</td>
+<td>
+<b>
+<font color="#0000AF">
+HPCwire: But how about your competitors?
+</font>
+</b>
+<p>
+<font color="#000000">
+  BROWNE: "Many people have worked on graphical models of parallel
+programming for a long time. They have some very good systems. Ted Lewis did
+the PPSE system at Oregon State, and there was a group that used to work
+with <!WA6><!WA6><!WA6><!WA6><a href="http://www.netlib.org/utk/people/JackDongarra/">Jack Dongarra</a> at the University of Tennessee which produced a system
+called <!WA7><!WA7><!WA7><!WA7><a href="ftp://ftp.netlib.org/hence/index.html">HeNCE</a> similar to ours. And there are several other interesting
+graphical programming systems. We have all encountered similar results --
+that this was really neat technology, and once you get people trained in it
+they like it. But it's like any other major paradigm change -- it's hard
+for people to make paradigm shifts."
+</font>
+</td></tr></table>
+<table><tr><td width=20%></td>
+<td>
+<p>
+<font color="#000000">
+  "A great part of the benefit is not from the graphical interface --
+although it makes programming easier -- but from the fact that we're using a
+more general, more abstract model of parallel computation."
+</font>
+<p>
+<b>
+<font color="#0000AF">
+HPCwire: Are you still refining the system?
+</font>
+</b>
+<p>
+<font color="#000000">
+  BROWNE: "Yes. We're still trying to better integrate data parallelism with
+the dependence-graph model. Also, we're developing a debugger. Normally,
+debugging parallel programs is very difficult, particularly distributed ones
+-- because you have race conditions, and you can't wrap your hands around the
+problems."
+<p>
+  "There are really no good debuggers for parallel systems, although some
+strong academic work has been done, for example, by Bart Miller at the
+University of Wisconsin. To debug in CODE we play back the execution by
+animating the graph. We can do this because we've cleanly separated the
+notion of computation from notions of communication and interaction."
+</font>
+<p>
+<b>
+<font color="#0000AF">
+HPCwire: Do you feel this type of model will have a fundamental impact on
+parallel programming?
+</font>
+</b>
+<p>
+<font color="#000000">
+  BROWNE: "I think that over the next 10 years, as people learn to change, as
+everybody has a graphical workstation in front of them, the whole idea of
+raising the level of abstraction at which people program will take effect. I
+truly believe there will be a change in the practice of programming. And by
+going to higher levels of abstraction, there will be more change in the next
+5 or 10 years than there has been in the 40 years since I wrote my first
+program."
+</font>
+<p>
+
+</td>
+</tr>
+</table>
+</center>
+
+<hr size=3>
+
+<center>
+A free alpha release of CODE is now available. For more information see Web
+site <!WA8><!WA8><!WA8><!WA8><a href="http://www.cs.utexas.edu/users/code/">http://www.cs.utexas.edu/users/code/</a>.
+</center>
+<p>
+<hr>
+Copyright 1996 HPCwire. Redistribution of this article is forbidden by 
+law without the expressed written consent of the publisher. For a free trial 
+subscription to HPCwire, send e-mail to <!WA9><!WA9><!WA9><!WA9><a href="http://www.cs.utexas.edu/users/code/trial@hpcwire.tgc.com">trial@hpcwire.tgc.com</a>.
+
+      <hr>
+<center>
+<!WA10><!WA10><!WA10><!WA10><a href="http://www.cs.utexas.edu/users/code"><!WA11><!WA11><!WA11><!WA11><img border=0 src="http://www.cs.utexas.edu/users/code/code-icon-trim.gif"></a>
+
+<b>
+<FONT SIZE="-1"><address><!WA12><!WA12><!WA12><!WA12><A HREF="mailto:emery@cs.utexas.edu">emery@cs.utexas.edu</A> / 
+<!-- Created: Tue Oct  8 11:11:41 CDT 1996 -->
+<!-- hhmts start -->
+Last modified: Tue Oct  8 18:25:25 CDT 
+<!-- hhmts end -->
+</address>
+</FONT>
+</b>
+</center>
+
+  </body>
+</html>

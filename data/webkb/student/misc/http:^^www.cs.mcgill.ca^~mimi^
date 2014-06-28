@@ -1,0 +1,124 @@
+Date: Tue, 26 Nov 1996 02:58:18 GMT
+Server: Apache/1.0.0
+Content-type: text/html
+Content-length: 3981
+Last-modified: Fri, 08 Nov 1996 19:05:24 GMT
+
+<HTML>
+
+<HEAD>
+
+<TITLE>Maria Ignatova's Home Page</TITLE>
+
+<SCRIPT LANGUAGE="JavaScript">
+/* Provided By Web Integration Systems, Inc. DBA Websys, Inc. All Rights Reserved.*/
+function scrollit_r2l(seed)
+{
+        var m1 = "What's new in the ";
+        var m2 = "BDays section?     ";
+        var m3 = "Check it out yourself!!!";
+        var m4 = " ";
+        var m6 = "";
+        var msg= m1 + m2 + m3 + m4 +m6;
+        var out = " ";
+        var c = 1;
+        if (seed > 100) {
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                timerTwo=window.setTimeout(cmd,50);
+        }
+        else if (seed <= 100 && seed > 0) {
+                for (c=0 ; c < seed ; c++) {
+                        out+=" ";
+                }
+                out+=msg;
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                window.status=out;
+                timerTwo=window.setTimeout(cmd,50);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;
+                        var cmd="scrollit_r2l(" + seed + ")";
+                        window.status=out;
+                        timerTwo=window.setTimeout(cmd,50);
+                }
+                else {
+                        window.status=" ";
+                        timerTwo=window.setTimeout("scrollit_r2l(100)",45);
+                }
+        }
+}
+</SCRIPT>
+
+</HEAD>
+
+<BODY onLoad="timerONE=window.setTimeout('scrollit_r2l(100)',500);" BACKGROUND="paper01.gif" >
+
+<BR>
+
+<!WA0><IMG SRC="http://www.cs.mcgill.ca/~mimi/me.gif">
+
+<H1>Maria Ignatova</H1>
+
+<!WA1><IMG SRC="http://www.cs.mcgill.ca/~mimi/mail.gif" ALIGN="TOP">
+
+<STRONG>E-mail:</STRONG>
+<EM><!WA2><A HREF="mailto:mimi@cs.mcgill.ca">mimi@cs.mcgill.ca</A></EM>, 
+<EM><!WA3><A HREF="mailto:mimi@cim.mcgill.ca">mimi@cim.mcgill.ca</A></EM>
+
+<HR>
+
+Welcome to my home page. I am a grad student at SOCS, the <!WA4><A HREF="http://www.cs.mcgill.ca"> School of Computer Science</A>, McGill. I am currently working on my Master's thesis which is about locating faces in images using color and shape. This is part of a broader research done by prof. Martin Levine at CIM, the <!WA5><A HREF="http://www.cim.mcgill.ca"> Center for Intelligent Machines, <!WA6><A HREF="http://www.ee.mcgill.ca"> Electrical Engineering Department</A>, McGill. Prof. Levine (CIM) is my supervisor and Prof. Greg Dudek (SOCS) is my co-supervisor. I started my research this February after
+two weeks of discussions on the topic of Face Recognition and Neural Networks with prof. Kountchev, an old professor of mine at the <!WA7><A HREF="http://www.vmei.acad.bg/">Technical University</A> of Sofia, Bulgaria.
+
+<HR>
+
+<H2>Research Interests</H2>
+
+<UL>
+<LI> Face Recognition
+<DL>
+<DD><!WA8><A HREF="http://www.cs.rug.nl/~peterkr/FACE/face.html">Face Recognition</A> Home Page
+<DD><!WA9><A HREF="http://mambo.ucsc.edu/psl/fanl.html">Face Analysis</A> Home Page
+<DD><!WA10><A HREF="http://www.cs.cmu.edu/~cil/vision.html">Computer Vision</A> Home Page
+</DL>
+<LI>Color Spaces
+</UL>
+
+<HR>
+
+<H2>Interests</H2>
+<UL>
+<LI> C++, Visual C++, MFC
+<LI> OLE2, Automation, OCX
+<LI> Java
+</UL>
+
+<HR>
+
+<H2>Miscellany</H2><UL>
+<LI><!WA11><A HREF="http://www.cs.mcgill.ca/~mimi/mimicv02.html">My CV</A>
+<LI><!WA12><A HREF="http://www.cim.mcgill.ca/~mimi">My CIM Home Page</A>
+<LI><!WA13><A HREF="http://www.cs.mcgill.ca/~mimi/misc.html">Miscellany</A>
+<LI><!WA14><A HREF="http://www.cs.mcgill.ca/~mimi/bdays.html"><BLINK>The BDays Section</BLINK></A>
+<LI><!WA15><A HREF="http://glwarner.samford.edu/haiku.htm">Some Haiku</A>
+<LI>Some Tango
+<DL>
+<DD><!WA16><A HREF="http://www.login.net/tango">Les Ateliers Tango, </A>Montreal
+<DD><!WA17><A HREF="http://www2.csn.net/dtango7">Bridge to the Tango, </A>New York
+</DL>
+</UL>
+
+<P><!WA18><IMG SRC="http://www.cs.mcgill.ca/~mimi/ribbon.gif"><P>
+
+You are visitor #<!WA19><img src="http://www.cs.mcgill.ca/cgi-bin/Count.cgi?df=mimi.dat|dd=B|"align=absmiddle>as of May 15, 1996.
+<P>
+
+<!WA20><IMG SRC="http://www.cs.mcgill.ca/~mimi/smiley.gif">     special thanks to <!WA21><A HREF="http://www.cs.mcgill.ca/~herve">Herve!</A>
+
+</BODY>
+
+</HTML>

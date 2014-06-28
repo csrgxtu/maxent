@@ -1,0 +1,50 @@
+Date: Wed, 11 Dec 1996 22:33:21 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 01 Nov 1996 17:44:19 GMT
+Content-length: 7338
+
+<HTML>
+
+<HEAD>
+<TITLE>CS 302 Section 70 - Description of commands</TITLE>
+</HEAD>
+
+<BODY>
+
+<H2><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~tick/cs302.html#assignments" ><!WA1><!WA1><!WA1><IMG SRC="http://www.cs.wisc.edu/~tick/icons/arrowleft.gif" WIDTH=15 HEIGHT=15></A> Short Description of things to do in DOS/Fortran</H2>
+
+<HR>
+
+<OL>
+<LI><STRONG>Log on.</STRONG> If you've logged on before, skip the next step.<p>
+<LI><STRONG>At the Login prompt, type NEWUSER. At the password prompt, just hit enter.</STRONG> The computer will prompt you for other info. When it's done, wait five or ten minutes, and then log in normally (it will tell you how when newuser is running).<p>
+<LI>You're now in Windows.<STRONG>Click on the picture that says "MS-DOS PROMPT".</STRONG> A new window will appear (in black). If this window disappears (is backgrounded), do *NOT* click on the Dos Prompt again (that creates a completely seperate window). Instead, hold down the ALT key...a new window will pop up. Still holding down ALT, keep pressing TAB until the DOS Prompt appears in the new window. Then let go of both keys.<p>
+<LI>The black window should now say something like U:\>. This is your prompt. U is the name of the disk drive you're currently on. We're going to do all our work from R drive, so type <STRONG>R: and hit return.</STRONG> The prompt should now say R:\>.<p>
+<LI>The \ tells us which directory we're in on R drive. What's a directory? Think of a disk as a large box. Rather than throwing every single program in the same box, we'd like to organize them somehow. So we can put smaller boxes inside the large box and label them. For example, we might have a box called "public" which will house all the programs that everyone can use. We might have another box called "handin", which is where to put all the programs to be handed in. So a directory is just a sort of "box" that holds programs and other directories.<p>
+<LI>Let's go into the handin directory. Type <STRONG>cd \handin\tick\<EM>YourLoginName</EM></STRONG>, where <EM>YourLoginName</EM> is whatever name you type at your login prompt. This is the directory where you'll hand everything in. In our box analogy, our disk r has a main box, /, inside which has a box handin. Inside handin is a bunch of boxes, one of which is tick, and again once box inside tick is <EM>YourLoginName</EM>. Note that you are now *in* this directory. You can tell because your prompt now says R:\public\tick<EM>YourLoginName</EM>/>.<p>
+<LI>*If* my assignment tells you to copy something (for example, <EM>prog0.dat</EM>) from my public directory to use with your program then type <STRONG>copy \public\tick\<EM>DataName</EM> .</STRONG>, where <EM>DataName</EM> is the name of the data file you're supposed to copy (i.e. prog0.dat). Note the following: there is a space between dat and the period (yes, the period *IS* part of the line. *DO NOT FORGET THAT SECOND PERIOD*). copy is a command that copies a program from one place to another...the program in this case is prog0.dat, found in \public\tick\ (you have to use the full path name here...this will always be the directory for things I give you to use). The second argument tells which directory the program is to be copied into. The period is a shorthand which means "whatever directory you're in now." So typing copy \public\tick\prog0.dat \handin\tick\<EM>YourLoginName</EM> would do the exact same thing.<p>
+<LI>GENERAL NOTE: type <STRONG>dir</STRONG> at any time, anywhere, will show you what's in the current directory. *IMPORTANT* All filenames and directories can have no more than 8 letters, no spaces...files also add a dot followed by three other letters (such as .dat in prog0.dat). When you type dir, the first 8 letters will show up in one column, followed by a second column which lists the last three.  Directories will have DIR listed to the right of the name (they don't have 3 letter extensions).<STRONG>INSANELY IMPORTANT NOTE:</STRONG> One of the other columns shows the time your program was last modified. This is my indication of when you did your program. If you modify your program after 5 pm on the due date, I'll be able to tell.<p>
+<LI>If you type <STRONG>dir | more </STRONG>, only one screen's worth will be printed at a time. Once you hit the keyboard, it'll print the next screen's worth of listings. Lastly, if you add a path name right after dir, it'll list that directory instead of the current one.<p>
+<LI>Now you're ready to type up your program (i.e. prog0.for). Type <STRONG>edit <EM>ProgramName</EM></STRONG>, where <EM>ProgramName</EM> is the name of the program you wish to write. NOTE: your program *MUST* end with the .for extension.<p>
+<LI>You can now type on the blue screen, the same as if you were using a typewriter, which is effectively what this is. Remember Fortran's spacing rules (for example, using tabs to make sure no code line starts before column 7). When done, click on File, then click on the ssave option under File. Go up to file again, and select exit.<p>
+<LI>You're back on the black screen (the command line). So now you've got a program written in Fortran. You need to translate it into machine language so the computer can run it, so now you've got to to compile. Type <STRONG>f <EM>programname</EM></STRONG> to compile.<p>
+<LI>If there are errors, (the screen will say some sort of errors or warnings), you must compile again. WARNING: There is one machine that is set up incorrectly, V70. It's located right next to the far dor in the lab. If you're using that machine, it will claim upon compiling that it can't find llibfore.lib so every time you compile on it, it will ask you where to find it...when it asks, type q:\fortran\lib\llibfore.lib and it should work fine.<p>
+<LI>Doing a dir should reveal two new files were created. They have the same name as your program but with a .obj and a .exe extension. The .obj isn't important...it's machine language with some info missing (see wk1 notes for explanation). The .exe, however, is the finished machine-language program. You can now run it by <STRONG>typing in the programname (you can leave out the .exe if you wish)</STRONG>.<p>
+<LI>Errors may still occur, or the program may not be doing what you want. If so, you'll have to 1) edit the program again and 2) compile it again once you're done editing.<p>
+<LI>If you wish to delete the .obj file (which you don't need), type<STRONG>del prog0.obj</STRONG> In general, del <EM>file</EM> will delete a file. DON'T DELETE THE .FOR OR .EXE...you may need them for later programs, plus if your hard
+copy gets lost we'll need the file. Lastly, we test your programs once they're
+handed in, so they need to be there.<p>     
+<LI>To print something out, type <STRONG>print <EM>file</EM></STRONG>. It will prompt you for which printer to print to...use LPT1 (located in rm 1359, on the opposite side of the hall).<p>
+<LI>Type <STRONG>exit</STRONG> to get rid of the DOS window. Now <STRONG>exit windows to log out</STRONG>. DON'T FORGET TO DO THIS LAST STEP! If you do, you leave your account open to access by anyone, plus you're loading down the system.
+</OL>
+
+</BODY>
+
+<HR>
+
+<ADDRESS>
+<H5>Copyright &copy 1996 <!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~tick/tick.html">Jeff Lampert</A> (<!WA3><!WA3><!WA3><A HREF="mailto:tick@cs.wisc.edu">tick@cs.wisc.edu</A>).  Last modified September 10, 1996.</H5>
+</ADDRESS>
+
+</HTML>

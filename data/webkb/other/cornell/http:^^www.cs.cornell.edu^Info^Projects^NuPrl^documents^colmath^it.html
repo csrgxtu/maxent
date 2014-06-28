@@ -1,0 +1,180 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 25-Nov-96 00:40:05 GMT
+Content-Type: text/html
+Content-Length: 10448
+Last-Modified: Tuesday, 21-Nov-95 13:55:37 GMT
+
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95.1 (Fri Jan 20 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE>Collaborative Mathematics Environments</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value="Collaborative Mathematics Environments">
+<meta name="keywords" value="it">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ <BR> <HR><A NAME=tex2html1 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.cornell.edu/Info/Projects/NuPrl/icons/next_motif.gif"></A>   <IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.cornell.edu/Info/Projects/NuPrl/icons/up_motif_gr.gif">   <IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.cornell.edu/Info/Projects/NuPrl/icons/previous_motif_gr.gif">         <BR>
+<B> Next:</B> <A NAME=tex2html2 HREF="node1.html"> Introduction</A>
+<BR> <HR> <P>
+<P>
+<H4> <b> PROJECT SUMMARY</b></H4> <BR>
+<H4> <b> Collaborative Mathematics Environments</b></H4> <BR>
+Paul Chew, Robert L. Constable, Keshav Pingali, Steve Vavasis, Richard Zippel
+<P>
+<em> Computational science</em> will be the dominant paradigm for science
+in the next century.  This proposal addresses one of the major
+challenges facing this new kind of science---the demand for better
+software support for computational mathematics.  The task of providing
+this support is sufficiently central to the national interest and
+sufficiently comprehensive that it could serve as a Grand Challenge
+problem for computer science.
+<P>
+A strategy for meeting this challenge has evolved from inter-project
+cooperation at Cornell on the elements of scientific computing.  This
+proposal represents a collaboration among five computer scientists
+with diverse backgrounds: scientific computing, computational
+geometry, computer algebra, applied logic, and programming languages.
+In various combinations these people have worked together, and
+software from their separate projects has been linked.  Their
+experience with the difficulty of this linking process has led to the
+identification and to the prospective solutions of three major
+problems: the <em> connectivity problem</em>, the <em> code generation
+problem</em>, and the <em> explanation problem</em>.  The problems and their
+solutions are briefly explained below.  This proposal outlines a plan
+to design and implement an open system architecture that will
+integrate a variety of computational science tools into an environment
+that supports collaborative activity.
+<P>
+Many interesting and powerful tools exist to support computational
+mathematics (for example, Matlab, Lapack, Mathematica, Axiom, Ellpack,
+PLTMG, Autocad, and LEDA), but most of these are focused on one
+specific area or on one specific style of computation.  These systems
+are largely self-contained and <em> closed</em>, connecting to other
+software only at a very low level of abstraction, using, for instance,
+string-to-string communication.  They do not have a common semantic
+base that would allow one system to ``collaborate'' with another.
+This is the <em> connectivity problem</em>.  To address the connectivity
+problem, a common <em> mathematical bus</em> (the <em> MathBus</em>) will
+serve as the backbone of the system.  Its communication protocols will
+be based on a typed formal language which provides the semantics for
+collaboration.  A major design objective is to raise the level of
+communication among software tools, allowing the communication of
+mathematical objects instead of being restricted to simple strings.
+<P>
+Although existing software has contributed substantially to scientific
+programming productivity, the time taken to generate code remains a
+major impediment to progress in computational science.  This is the
+<em> code creation problem</em>.  In part, this problem is due to the
+difficulty of expressing certain mathematical techniques as
+subroutines.  The problem of code creation is addressed with a method
+of transformation and refinement, allowing the transformation of
+high-level mathematical expressions into more-traditional code.
+<P>
+One of the reasons that sharing code with a colleague is difficult is
+because there is no common language for explaining what a program does
+and for precisely giving the conditions necessary to apply it.  This
+is the <em> explanation problem</em>.  The solution to the connectivity
+problem also provides an approach to explanation, namely to provide
+formal and semi-formal semantic standards for communications and
+linkage on the proposed MathBus.
+<P>
+The problem solutions outlined here lead to an additional opportunity.
+Once tools can inter-operate and mathematical models can be shared, it
+becomes possible to create collections of mathematical theorems,
+explanations, and examples and counterexamples.  Such a mathematical
+database could capture an important part of mathematical knowledge
+that is at best poorly represented by books and journals.
+<P>
+
+<P>
+
+<H1>Collaborative Mathematics Environments</H1>
+<P><STRONG>Paul Chew, Robert L. Constable, Keshav Pingali, Steve Vavasis, Richard Zippel</STRONG><P>
+<P>
+
+<P>
+<BR> <HR>
+<UL> 
+<LI> <A NAME=tex2html3 HREF="node1.html#SECTION00010000000000000000"> Introduction</A>
+<UL> 
+<LI> <A NAME=tex2html4 HREF="node2.html#SECTION00011000000000000000"> The Basic Problems</A>
+<LI> <A NAME=tex2html5 HREF="node3.html#SECTION00012000000000000000"> Research Program</A>
+</UL> 
+<LI> <A NAME=tex2html6 HREF="node4.html#SECTION00020000000000000000"> The Connectivity Problem</A>
+<UL> 
+<LI> <A NAME=tex2html7 HREF="node5.html#SECTION00021000000000000000"> Mesh Generation</A>
+<LI> <A NAME=tex2html8 HREF="node6.html#SECTION00022000000000000000"> Numerical Linear Algebra</A>
+<LI> <A NAME=tex2html9 HREF="node7.html#SECTION00023000000000000000"> Weyl/Nuprl</A>
+<LI> <A NAME=tex2html10 HREF="node8.html#SECTION00024000000000000000"> Mathematical Bus</A>
+</UL> 
+<LI> <A NAME=tex2html11 HREF="node9.html#SECTION00030000000000000000"> The Code Creation Problem</A>
+<UL> 
+<LI> <A NAME=tex2html12 HREF="node10.html#SECTION00031000000000000000"> Quadratic Formula</A>
+<LI> <A NAME=tex2html13 HREF="node11.html#SECTION00032000000000000000"> Sparse Matrices</A>
+<LI> <A NAME=tex2html14 HREF="node12.html#SECTION00033000000000000000"> Ongoing Activities</A>
+</UL> 
+<LI> <A NAME=tex2html15 HREF="node13.html#SECTION00040000000000000000"> The Explanation Problem</A>
+<UL> 
+<LI> <A NAME=tex2html16 HREF="node14.html#SECTION00041000000000000000"> Symbolic Computations and the Explanation Problem</A>
+<LI> <A NAME=tex2html17 HREF="node15.html#SECTION00042000000000000000"> Geometry and the Explanation Problem</A>
+<LI> <A NAME=tex2html18 HREF="node16.html#SECTION00043000000000000000"> Access to Libraries</A>
+<LI> <A NAME=tex2html19 HREF="node17.html#SECTION00044000000000000000"> Value of Precise Mathematical Language</A>
+<UL> 
+<LI> <A NAME=tex2html20 HREF="node18.html#SECTION00044010000000000000"> Conditions on Transformations.</A>
+<LI> <A NAME=tex2html21 HREF="node19.html#SECTION00044020000000000000"> Geometry.</A>
+</UL> 
+<LI> <A NAME=tex2html22 HREF="node20.html#SECTION00045000000000000000"> Summary</A>
+</UL> 
+<LI> <A NAME=tex2html23 HREF="node21.html#SECTION00050000000000000000"> The Mathematical Database Opportunity</A>
+<LI> <A NAME=tex2html24 HREF="node22.html#SECTION00060000000000000000"> Milestones</A>
+<UL> 
+<LI> <A NAME=tex2html25 HREF="node23.html#SECTION00060010000000000000"> Year 1</A>
+<LI> <A NAME=tex2html26 HREF="node24.html#SECTION00060020000000000000"> Year 2</A>
+<LI> <A NAME=tex2html27 HREF="node25.html#SECTION00060030000000000000"> Year 3</A>
+<LI> <A NAME=tex2html28 HREF="node26.html#SECTION00060040000000000000"> Year 4</A>
+<LI> <A NAME=tex2html29 HREF="node27.html#SECTION00060050000000000000"> Year 5</A>
+</UL> 
+<LI> <A NAME=tex2html30 HREF="node28.html#SECTION00070000000000000000"> Results from Prior NSF Support</A>
+<UL> 
+<LI> <A NAME=tex2html31 HREF="node29.html#SECTION00071000000000000000"> Constable</A>
+<LI> <A NAME=tex2html32 HREF="node30.html#SECTION00072000000000000000"> Pingali</A>
+<UL> 
+<LI> <A NAME=tex2html33 HREF="node31.html#SECTION00072100000000000000"> Partial List of Publications</A>
+<LI> <A NAME=tex2html34 HREF="node32.html#SECTION00072200000000000000"> Development of Human Resources</A>
+</UL> 
+<LI> <A NAME=tex2html35 HREF="node33.html#SECTION00073000000000000000"> Vavasis</A>
+</UL> 
+<LI> <A NAME=tex2html36 HREF="node34.html#SECTION01000000000000000000">References</A>
+<UL> 
+<LI> <A NAME=tex2html37 HREF="node35.html#SECTION01010000000000000000"> Biographical Sketches</A>
+<UL> 
+<LI> <A NAME=tex2html38 HREF="node36.html#SECTION01011000000000000000"> L. Paul Chew</A>
+<LI> <A NAME=tex2html39 HREF="node37.html#SECTION01012000000000000000"> Robert L. Constable</A>
+<LI> <A NAME=tex2html40 HREF="node38.html#SECTION01013000000000000000"> Keshav K. Pingali</A>
+<LI> <A NAME=tex2html41 HREF="node39.html#SECTION01014000000000000000"> Stephen A. Vavasis</A>
+<LI> <A NAME=tex2html42 HREF="node40.html#SECTION01015000000000000000"> Richard E. Zippel</A>
+</UL> 
+</UL> 
+<LI> <A NAME=tex2html43 HREF="node41.html#SECTION02000000000000000000"> Budget</A>
+<UL> 
+<LI> <A NAME=tex2html44 HREF="node42.html#SECTION02000100000000000000"> Salaries and wages for senior personnel</A>
+<LI> <A NAME=tex2html45 HREF="node43.html#SECTION02000200000000000000"> Postdoctoral research associate</A>
+<LI> <A NAME=tex2html46 HREF="node44.html#SECTION02000300000000000000"> Equipment</A>
+<LI> <A NAME=tex2html47 HREF="node45.html#SECTION02000400000000000000"> Travel</A>
+</UL> 
+<LI> <A NAME=tex2html48 HREF="node46.html#SECTION03000000000000000000"> Current and Pending Support</A>
+<LI> <A NAME=tex2html49 HREF="node47.html#SECTION04000000000000000000"> Facilities, Equipment and Other Resources</A>
+<LI> <A NAME=tex2html50 HREF="node48.html#SECTION05000000000000000000">   About this document ... </A>
+</UL>
+<BR> <HR><A NAME=tex2html1 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.cornell.edu/Info/Projects/NuPrl/icons/next_motif.gif"></A>   <IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.cornell.edu/Info/Projects/NuPrl/icons/up_motif_gr.gif">   <IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.cornell.edu/Info/Projects/NuPrl/icons/previous_motif_gr.gif">         <BR>
+<B> Next:</B> <A NAME=tex2html2 HREF="node1.html"> Introduction</A>
+<BR> <HR> <P>
+<BR> <HR>
+<P><ADDRESS>
+<I>nuprl project <BR>
+Tue Nov 21 08:50:14 EST 1995</I>
+</ADDRESS>
+</BODY>

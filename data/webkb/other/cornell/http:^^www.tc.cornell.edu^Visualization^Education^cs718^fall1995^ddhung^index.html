@@ -1,0 +1,378 @@
+Date: Mon, 16 Dec 1996 22:16:09 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 15 Dec 1995 16:48:43 GMT
+Content-length: 14401
+
+<html>
+<title>Modeling Human Facial Expressions</title>
+
+<body>
+<center>
+<h1>Modeling Human Facial Expressions</h1>
+<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><a href="http://www.cs.cornell.edu/Info/People/ddhung/poetry/poetry.html">
+Daniel D. Hung</a> and 
+<!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href="http://www.cs.cornell.edu/Info/People/szuwen/szuwen.html">
+Szu-Wen (Steven) T. Huang</a><br>
+CS 718 Topics in Computer Graphics
+<hr>
+
+</center>
+<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/side.gif" align=right>
+
+<h2>Introduction</h2>
+
+Human faces are among some of the most difficult objects to model in
+computer graphics, and have been in the attention of numerous attempts,
+some almost as old as computer graphics itself.  Facial expressions are
+the result of the movement of skin layered atop muscles and bone
+structures, and may have thousands of combinations.  As part of our
+coursework, we propose to focus on this subject.  Our work will be divided
+into three parts:  a survey of various techniques developed throughout the
+years, an implementation of one such technique, and the presentation of
+our results. 
+
+<h2>Limitations</h2>
+
+Due to time constraints, it is unlikely that a detailed implementation of
+any of the models is possible.  The goal of the project is thus to produce
+a technology demonstration of a technique.  The availability of suitable
+input devices or a pre-defined face mesh would limit the accuracy and
+aesthetic quality of the finished product.  We wish to be able to produce,
+at the minimum, a wire frame animation of a face mesh.  The results from
+the survey and the implemented model will be presented in class. 
+
+<h2>Prior Art</h2>
+
+<h3>General Structure</h3>
+
+Among the various approaches taken over the years, a distinctive
+generalization can be made.  There generally exists a low-level muscle
+motion simulator, called variably as <em>action units</em>, <em>abstract
+muscle action procedures</em>, or <em>minimum perceptible actions</em>. 
+This layer enables the generation of expressions that are not necessarily
+humanly possible, such as asymmetric movement of two sides of the face. 
+
+<p>
+
+On top of the "muscle" layer, we find an abstraction for humanly
+significant expressions.  This layer might include <em>smile</em>,
+<em>frown</em>, <em>horror</em>, <em>surprise</em>, and other expressions. 
+
+<p>
+
+As the objective of many projects was to emulate the human face during
+speech, there usually exists another layer above expressions that include
+<em>phonemes</em> (speech primitives).  A complete data set of phonemes
+allow the synthesized face to look like it is coordinated with speech
+which is played back separately. 
+
+<h3>Keyframing</h3>
+
+<strong>Keyframing</strong> was one of the earliest approaches taken, and
+involved linear transformations from one face mesh to another.  The amount
+of computations were extensive and the data set large.  The approach was
+rather inflexible because the range of expressions that can be generated
+are limited by the keyframes that were previously digitized. It is also
+difficult to generalize work on one face mesh to another. 
+
+<h3>Parametric Deformations</h3>
+
+A second approach was to model the human face as a parametric surface and
+record the transformations as movements of the control points to minimize
+the data storage requirements.  These approaches are still difficult to
+generalize over different face meshes.
+
+<p>
+
+One such attempt utilizes B-spline patches that were defined manually
+on an actual digitized face mesh [<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/nahas88.html">Nahas88</a>].
+The control points for the B-spline patches were moved to effect the
+distortion of the face.  While this method is powerful, we know of no
+automatic way of defining the relevant control points for the B-spline
+patches.
+
+<p>
+
+Another such attempt used Rational Free-form Deformations to move points
+inside a defined volume [<!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/kalra92.html>Kalra92</a>] based on the
+control points placed at the edges of the volume.  The volume could be
+distorted by either changing the position of a control point or increasing
+the weight of the control point.  The method has similar shortcomings as
+the B-spline approach, though the definition of the volumes are more
+intuitive than B-spline control points.
+
+<h3>Anatomically-correct muscles</h3>
+
+A natural approach would be to simply simulate actual human muscles [<a
+href="waters87.html">Waters87</a>, <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/platt81.html">Platt81</a>], if
+not for the amazingly little understanding we have of them.  The human
+facial muscles are capable of a large amount of expressions, and realistic
+simulation of muscles requires the simulation of muscle action wrapping
+around the skull structure, jaw rotation, and folding and stretching
+properties of skin.
+
+<h3>Pseudo-muscles</h3>
+
+A hybrid approach would be to simulate muscles that are not necessarily
+anatomically-correct [<!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a href="thalmann88.html>Thalmann88</a>].  This
+allows muscle vectors to protrude out of the face if needs be.  The
+advantage of this approach is that we are more interested in getting a
+meaningful expression than actually simulating all the muscles.  This
+approach is easier and possibly yields a smaller data set than realistic
+muscles because some insignificant muscles that contribute to a certain
+expression could be generalized by a vector.  This is the approach we
+selected to follow.
+
+<h2>Implementation</h2>
+
+The first part of our work involves the tedious task of manually digitizing
+a face mesh into a machine-readable form.  We decided early on that dealing
+with the large data set generated by a scanner would be difficult, and we
+were able to generate a face composed of some 400 vertices and some 600
+polygons.  Some vertices were discarded during polygonalization because
+they were too detailed for our purposes.
+
+<p>
+
+The face is then divided into regions defined by rectangular bounding
+boxes.  Each muscle is associated with a bounding box, and could not
+affect any point outside that box.  A sample bounding box (for the muscle
+vector responsible for raising the edge of the left lip during smiles) is 
+shown below in yellow with translucent skin:
+
+<p><center>
+<img src="bbox.gif">
+<p></center>
+
+After the data set was complete, we decided that the available functions
+to deform the face mesh were overly complicated, and derived a simple
+one:
+
+<pre>
+                  1
+<em>P'</em> = <em>P</em> + ( -------------- ) (<em>Pd</em> - <em>P</em>) <em>t</em>
+            |<em>Po</em> + <em>P</em>| + 1
+</pre>
+
+where <em>t</em> is the time parameter running from 0 to 1, <em>Po</em>
+is the point where the force is applied, <em>Pd</em> is the point of
+attractive force, and <em>P</em> is every face vertex in the bounding box.
+The formula moves every vertex in the bounding box towards the attraction
+point <em>Pd</em> by a magnitude inversely proportional to its distance
+from the point of force application <em>Po</em>.  An example of this
+muscle model is shown below:
+
+<p><center>
+<!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/pinch.gif">
+<p></center>
+
+This formula had an unacceptable side effect of seemingly to "pinch" the
+points close to <em>Po</em> towards <em>Pd</em>.  We abandoned it because
+we felt we needed a "smoother attraction", which led us to:
+
+<pre>
+                     |<em>Po</em> - <em>P</em>|  
+           1 + <strong>cos</strong>( ---------- <strong>pi</strong> )
+<em>P'</em> = <em>P</em> + (               <em>R</em>          ) (<em>Pd</em> - <em>Po</em>) <em>t</em>
+           ------------------------
+                      2
+</pre>
+
+where we introduced a new parameter <em>R</em>.  <em>R</em> defines the
+radius of influence, and while closely related to the size of the bounding
+box, is a separate parameter.  In general, however, <em>R</em> should
+cover roughly the same area as the bounding box.  Note that singularities
+appear if <em>R</em> is much smaller than the bounding box.  Note that the
+<em>Pd</em> - <em>Po</em> term in this formula moves all the vertices in
+the bounding box and the radius of influence parallel to the vector
+between the point of force application towards the point of attraction.
+In effect, the point of attraction actually defines a <em>plane</em> of
+attraction for the bounding volume.  This is the formula we settled with,
+and the cosine term does provide us with a smooth deformation.  A sample
+of this muscle model is shown below:
+
+<p><center>
+<!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/linear.gif">
+<p></center>
+
+Not all muscles on the face apply force linearly.  Sphincter muscles around
+the lips, for example, do not work well with this formula unmodified.  We
+thus defined a special case of the formula to deal with these muscles:
+
+<pre>
+                       |<em>Po</em> - <em>P</em>|  
+             1 + <strong>cos</strong>( ---------- <strong>pi</strong> )
+<em>P'</em> = <em>P</em> + <em>K</em> (               <em>R</em>          ) (<em>P</em> - <em>Pd</em>) <em>t</em>
+             ------------------------
+                        2
+</pre>
+
+There are two important differences.  The <em>K</em> term was introduced
+to allow the muscle to contract in one axis and expand in another, instead
+of a uniform contraction or expansion.  The direction of motion is now
+defined by <em>P</em> - <em>Pd</em>, which is in the direction of the
+point of attraction (similar to formula 1).  The reason we inverted the
+sign of this formula was because we felt that a positive <em>K</em> should
+denote contraction and a negative <em>K</em> should denote expansion, in
+order to be consistent with formula 2.  The example on the left below
+shows a contracting sphincter muscle and the one on the right shows an
+expanding sphincter muscle:
+
+<p><center>
+<!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/sphinc2.gif">
+<!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/sphinc.gif">
+<p></center>
+
+<h2>Putting it all together</h2>
+
+Armed with the face mesh and the muscles, what remains is the definition
+of parameters, which is largely a tedious trial-and-error task.  We
+present a few expressions generated by <strong>IBM DataExplorer</strong>
+below (for mpeg demos click on the links below the images):
+
+<p><center>
+<!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/smile1.gif">
+<!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/smile2.gif">
+<!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/smile3.gif">
+<!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/smile4.gif">
+<p>
+<!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/kiss1.gif">
+<!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/kiss2.gif">
+<!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/kiss3.gif">
+<!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/kiss4.gif">
+<p></center>
+
+<strong> MPEG demos of our work </strong><p>
+<!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/smile.mpg"> Click Here </a> to see the smile animation.<p>
+<!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/kiss.mpg"> Click Here </a> to see the kiss animation.<p>
+
+<strong> Data Explorer files of our work </strong><p>
+<ul>
+<li><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/deidre-pts.dx>Click here</a> for the vertex list of the mesh.
+<li><a href="deidre-con.dx>Click here</a> for the connections 
+list of the mesh.
+<li><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/deidre-lip.dx>Click here</a> for the lip connections 
+list of the mesh.
+<li><a href="LinMuscle.net>Click here</a> for the DX macro which models a
+linear contract/relax muscle on the face.
+<li><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/SpcMuscle.net>Click here</a> for the DX macro which models a 
+sphincter squeez/expand muscle on the face.
+<li><a href="Face.net>Click here</a> for the DX macro which models the
+facial mesh.  Note that this requires a vertex list, connections, and lip
+connections file (similar to the ones above) in order to work.
+</ul>
+<h2>Ahead</h2>
+
+The effects we have achieved are far from realistic.  The complexities
+of facial animation have not yet been fully explored, but we believe we
+have come up with a reasonable model for manipulating data (less than
+500 vertices) versus the much larger data set acquired by machines with
+good quality.  Other areas may be explored, and those we feel are
+interesting are listed below:
+
+<ul>
+<li> Texture-mapped skin [Nahas90]
+<li> Coordination of lip muscles with speech [<!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><a 
+href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/thalmann88.html>Thalmann88</a>, <a href="nahas88.html>Nahas88</a>]
+<li> Motion of other facial elements such as eyeball or jaw
+<li> Modelling of the interior of the mouth such as teeth and gums
+<li> Modelling of hair features such as hair, moustache, beard, or
+eyebrows
+</ul>
+
+<h2>References</h2>
+
+Arad N., Dyn N., Reisfeld D., and Yeshurun Y., <em>Image Warping by
+Radial Basis Functions - Application to Facial Expressions</em>,
+CVGIP-Graphical Models and Image Processing, 1994
+
+<p>
+
+Badler N. and Platt S., <!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/platt81.html><em>Animating Facial
+Expressions</em></a>, Computer Graphics, August 1981
+
+<p>
+
+Bergeron P. and Lachappelle P., <em>Control of Facial Expressions and Body
+Movements in the Computer-generated Animated Short Tony de Peltrie</em>,
+1985
+
+<p>
+
+Fahlander O., <em>Moving Picture Synthesis at Linkoping
+University</em><br> Kalra P., Mangili A., Thalmann N., and Thalmann D., <a
+href="kalra92.html> <em>Simulation of Facial Muscle Actions Based on
+Rational Free-form Deformations</em></a>, Computer Graphics, September
+1992
+
+<p>
+
+Kang C., Chen Y., and Hsu W., <em>Automatic Approach to Mapping a Lifelike
+2.5D Human Face</em>, Image and Vision Computing, 1994
+
+<p>
+
+Magnenat-Thalmann N., Minh H., de Angelis, M., and Thalmann D., <!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><a
+href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/thalmann89.html"><em>Design, Transformation, and Animation of Human
+Faces</em></a>, Visual Computer
+
+<p>
+
+Magnenat-Thalmann N., Primeau E., and Thalmann D., <!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><a
+href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/thalmann88.html"><em>Abstract Muscle Action Procedures for Human
+Face Animation</em></a>, Visual Computer, 1988
+
+<p>
+
+Nahas M., Huitric H., Rioux M., and Domey J., <em>Facial Image Synthesis
+Using Skin Texture Recording</em>, Visual Computer, December 1990
+
+<p>
+
+Nahas M., Huitric H., and Saintourens M., <!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/nahas88.html>
+<em>Animation of a B-Spline Figure</em></a>, Visual Computer, 1988
+
+<p>
+
+Parke F., <em>A Model for Human Faces that Allowed Speech Synchronized
+Animation</em>, Computer Graphics, 1975
+
+<p>
+
+Parke F., <em>Animation of Faces</em>, Proceedings of the ACM
+(Annual Conference), 1972
+
+<p>
+
+Parke F., <em>Parametric Models for Facial Animation</em>, Computer
+Graphics and Applications, November 1982
+
+<p>
+
+Thalmann D. and Magnenat-Thalman N., <em>Artificial Intelligence in
+Three-dimensional Computer Animation</em>, Computer Graphics Forum, 1986
+
+<p>
+
+Thalmann N. and Thalmann D., <a href="thalmann95.html><em>Digital Actors
+for Interactive Television</em></a>, Proceedings of the IEEE, 1995
+
+<p>
+
+Tost D. and Pueyo X., <em>Human Body Animation:  A Survey</em>, Visual
+Computer, March 1988
+
+<p>
+
+Waters K., <!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/ddhung/waters87.html"><em>A Muscle Model for Animating
+Three-dimensional Facial Expressions</em></a>, Computer Graphics, July
+1987
+
+<p>
+<hr>
+<address>
+Maintained by: <!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><a href="mailto:szuwen@cs.cornell.edu">Steven Huang</a>
+and <!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><a href="mailto:ddhung@cs.cornell.edu">Dan Hung</a><br>
+Last Modified: December 11, 1995
+</address>

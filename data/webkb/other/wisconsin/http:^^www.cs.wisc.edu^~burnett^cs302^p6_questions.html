@@ -1,0 +1,37 @@
+Date: Mon, 11 Nov 1996 17:42:46 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 07 Nov 1996 19:16:49 GMT
+Content-length: 1528
+
+<head><title>Questions about Program 6</title></head>
+<body>
+<h3>Questions about Program 6</h3>
+<ol>
+<li><i>Is it OK to assume that the user is going to enter 
+a 'Y','y','N',or 'n' when asked if he/she wishes to make
+an appointment?</i><p>
+At this point, you should do this type of error-checking.
+You should have a similar function from a previous assignment
+that you can cut-and-paste into program 6; make sure to change
+the prompt accordingly.<p>
+<li><i>If the month,day,hour,etc. entered by the user is invalid,
+do we just include some sort of default value or can we
+indicate to the user that his/her answer was invalid and then ask him/her to
+select again?
+</i><p>
+Since the input is within a member function, it certainly makes
+sense to do the latter.  Contrast this with the following:  suppose
+instead of <b><tt>read_app</tt></b>, you had to write a bunch of
+<em>writer</em> functions that filled each field one by one.
+These writer functions would probably do error checking on their
+own and assign default values since they don't interact with the
+user.<p>
+To summarize, if the interaction with the user is built into a member
+function (as it is with <b><tt>read_app</tt></b>), then, if the user
+enters an invalid value, she should be prompted again for a valid value.
+If the interaction with the user is <em>not</em> built into a member
+function (see the <b><tt>HourlyEmployee</tt></b> example), then your
+writer functions should be prepared to assign default values (or nothing
+at all) to the member variables.<p>
+

@@ -1,0 +1,91 @@
+Date: Wed, 15 Jan 1997 01:24:20 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Tue, 02 Jul 1996 00:32:21 GMT
+Content-length: 2563
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title>Work Sample</title>
+</head>
+<body text = black link = maroon vlink = black alink = black>
+<h2> PVM C++ Project </h2>
+<h4> Purpose: to implement matrix algebra for parallel computing
+<br> as made possible by pvm ( ...parallel virtual machine ... )</h4>
+<br>
+<br>
+<table>
+<tr>
+<th> Classes
+<th align = left> Responsibilities
+<th> Declarations
+<th> Implementations
+<tr>
+<td> Mtx
+<td> Defines a matrix and provides
+<br> basic sequential operations
+<td><!WA0><a href = http://k2.scl.cwru.edu/~lxb41/Mtx_h.C.html#Mtx> Mtx.h </a>
+<td><!WA1><a href = http://k2.scl.cwru.edu/~lxb41/Mtx.C.html#Mtx> Mtx.C </a>
+<tr>
+<td> MtxIt
+<td> An Iterator for a defined matrix:
+<br> provides various traversals
+<td><!WA2><a href = http://k2.scl.cwru.edu/~lxb41/Mtx_h.C.html#MtxIt> MtxIt.h </a>
+<td><!WA3><a href = http://k2.scl.cwru.edu/~lxb41/Mtx_h.C.html#MtxIt > MtxIt.C </a>
+<tr>
+<td> MtxSg
+<td> Defines a segment of a matrix
+<br> such that matrix operations are possible
+<br> with other segments or matrices and an
+<br> easy update of the original can occur
+<td><!WA4><a href = http://k2.scl.cwru.edu/~lxb41/Mtx_h.C.html#MtxSg> MtxSg.h </a>
+<td><!WA5><a href = http://k2.scl.cwru.edu/~lxb41/Mtx.C.html#MtxSg > MtxSg.C </a>
+<tr>
+<td> pvmMtx
+<td> Defines a parallel matrix in the
+<br> master process and coordinates 
+<br> computation in the slave processes
+<td><!WA6><a href = http://k2.scl.cwru.edu/~lxb41/pvmMtx_h.C.html#pvmMtx> pvmMtx.h </a>
+<td><!WA7><a href = http://k2.scl.cwru.edu/~lxb41/pvmMtx.C.html#pvmMtx> pvmMtx.C </a>
+<tr>
+<td> pvmMtxP
+<td> Represents the master process
+<br> in the slave processes
+<td><!WA8><a href = http://k2.scl.cwru.edu/~lxb41/pvmPrc_h.C.html#pvmMtxP> pvmMtxP.h </a>
+<td><!WA9><a href = http://k2.scl.cwru.edu/~lxb41/pvmPrc.C.html#pvmMtxP > pvmMtxP.C </a>
+<tr>
+<td> pvmMtxD
+<td> Represents a single slave process
+<br> in the master process
+<td><!WA10><a href = http://k2.scl.cwru.edu/~lxb41/pvmPrc_h.C.html#pvmMtxD> pvmMtxD.h </a>
+<td><!WA11><a href = http://k2.scl.cwru.edu/~lxb41/pvmPrc.C.html#pvmMtxD > pvmMtxD.C </a>
+<tr>
+<td> pvmMtxG
+<td> Represents all slave processes
+<br> as a group in the master process
+<td><!WA12><a href = http://k2.scl.cwru.edu/~lxb41/pvmPrc_h.C.html#pvmMtxG> pvmMtxG.h </a>
+<td><!WA13><a href = http://k2.scl.cwru.edu/~lxb41/pvmPrc.C.html#pvmMtxG > pvmMtxG.C </a>
+<tr>
+<td> mtxdCMO
+<td> Defines command objects passed
+<br> from the master process to the slaves
+<td><!WA14><a href = http://k2.scl.cwru.edu/~lxb41/pvmPrc_h.C.html#mtxdCMO> mtxdCMO.h </a>
+<td><!WA15><a href = http://k2.scl.cwru.edu/~lxb41/pvmPrc_h.C.html#mtxdCMO > mtxdCMO.C </a>
+<tr>
+<td> mtxdUDO
+<td> Defines an update object
+<br> (...a partial solution ...)
+<br> which is passed from the slaves 
+<br> to the master process for integration
+<td><!WA16><a href = http://k2.scl.cwru.edu/~lxb41/pvmPrc_h.C.html#mtxdUDO> mtxdUDO.h </a>
+<td><!WA17><a href = http://k2.scl.cwru.edu/~lxb41/pvmPrc_h.C.html#mtxdUDO > mtxdUDO.C </a>
+<tr>
+<td> mtxdEng
+<td> Represents the computational
+<br> engine in the slave processes
+<td><!WA18><a href = http://k2.scl.cwru.edu/~lxb41/mtxd_h.C.html#mtxdEng> mtxdEng.h </a>
+<td><!WA19><a href = http://k2.scl.cwru.edu/~lxb41/mtxd.C.html#mtxdEng > mtxdEng.C </a>
+</table>
+</body?
+</html>

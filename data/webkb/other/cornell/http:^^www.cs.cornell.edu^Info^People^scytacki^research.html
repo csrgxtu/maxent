@@ -1,0 +1,38 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 17-Dec-96 00:00:26 GMT
+Content-Type: text/html
+Content-Length: 1604
+Last-Modified: Saturday, 16-Dec-95 07:01:22 GMT
+
+<html><head><title>
+Research
+</title></head>
+<body background="images/tan2.jpg">
+<h1>Stuff</h1>
+Currently I am working on an implementation of a image database.
+The implementation that we are trying to do is one written in First in Rivl
+and latter in Visual C or Visual Basic.  
+The idea of this database is to use as many images as we can handle from
+the web, and run a program on each one which generates an electronic 
+discription of the image.  Then a second program will take this database and 
+a sample image and generate a list of the top n images with similar
+descriptions.<br>  
+There are several similar databases out there
+right now.  Links to those will come latter.  Most of these databases use 
+color histograms to describe their images.  A color histogram is a list
+of colors and the amount of each color in the image.
+Color histograms are good for certain things, but a little example with 
+demonstrate where they fail.<br>
+Suppose you have a picture of a sunset.  (picture is coming). If this was
+compaired to a randomly generated image that resemble the snow you sometimes
+see on TV(but in color), the result could be a perfect match.  It is obvious
+that it is not a perfect match, but each images has exactly the same amount
+of each color in it.<br>
+The goal then of this database is examine other methods of compairing images
+that better represent a humans perception of similarity.<br>
+Currently we have a comparision which incorporates positional data as well as
+the color data.  Hopefully I have a better description of this later.  As long
+as it can be released. 
+
+</body></html>

@@ -1,0 +1,96 @@
+Date: Wed, 11 Dec 1996 22:32:54 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 20 Sep 1996 20:24:05 GMT
+Content-length: 4259
+
+<HTML>
+
+<HEAD>
+<TITLE>CS 302 Section 70 - Program 1</TITLE>
+</HEAD>
+
+<BODY>
+
+<H2><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~tick/cs302.html#assignments" ><!WA1><!WA1><!WA1><IMG SRC="http://www.cs.wisc.edu/~tick/icons/arrowleft.gif" WIDTH=15 HEIGHT=15></A> Program1</H2>
+
+<HR>
+<H3>Time's Fun When You're Having Flies - Kermit the Frog</H3>
+<DL>
+<DT>Due Date:
+<DD>Friday 9/20/96, 5:00 pm<P>
+<DT>Grade:
+<DD>3% of your final grade.<P>
+<DT>Text Covered:
+<DD>Chp. 2,3<P>
+<DT>Problem Description:
+<DD>For the first program, you're going to write a clock. It'll have the following features:
+<UL><P>
+<LI>It will ask for the current time; first the hour, then the minute.
+<LI>Then it will ask how much time is going to pass (again, first number of
+hours, then number of minutes).
+<LI>It will then add the two and print out the new time.
+</UL><P>
+This is not simply a case of addition, because you need to keep in mind the following rules for clocks:
+
+<UL><P>
+<LI>Clock Hours (both initial and final) is always a number between 1 and 12
+<LI>Clock Minutes (both initial and final) is always a number between 0 and 59
+<LI>Add Hours is always a number between 0 and 12
+<LI>Add Minutes is always a number between 0 and 59
+</UL><P>
+
+So you're going to have to handle
+
+<UL><P>
+<LI>Printing an error if you enter an invalid # of hours or minutes
+<LI>Rollover (if # of minutes > 59 or # of hrs > 12 due to addition...need to figure out when to carry).
+</UL><P>
+
+Try doing out some examples on paper before you start writing the program. It will help you quite a bit. Hint: The MOD statement may help you.<P>
+<DT>What to Hand In:
+   <DD>Hand in your assignment online by copying your FORTRAN <EM>source code</EM> file "program1.for" and the <EM>compiled executable</EM> file "program1.exe" to your handin directory.<P>
+
+   Your files are timestamped with the current time when you copy them to your handin directory.  This will be used to check they were handed in on time or whether late day penalties apply. <STRONG>Important</STRONG> - Make sure you copy the correct versions of your program files because these are what will be graded.<P>
+
+   You also have to hand in a printed copy of your FORTRAN <EM>source code</EM> file and a printed copy of the <EM>output</EM> when your program is run with the five sets of test data given in the gradesheet.<P>
+
+   <DT>Gradesheet:
+   <DD>The following gradesheet will be used to grade this assignment.  Please take a close look at it to make sure you do everything that is required.  Note that you will be graded on correct output for the input values given below, so before handing it in you <STRONG>must</STRONG> run your program with these values and manually check that your program gives the correct results in every case.<P>
+   <PRE>
+Correct Output                                                  [18]
+   time =  10 hr, 20 min, add 1 hr,  5 min               [3]
+   time =  9  hr,  7 min, add 4 hr,  6 min               [3]
+   time =  8  hr, 27 min, add 2 hr, 47 min               [3]
+   time =  11 hr, 47 min, add 1 hr, 17 min               [3]
+   time =  10 hr, 36 min, add 1 hr, 36 min               [3]
+   time =  12 hr, 18 min, add 1 hr, 65 min               [3]
+
+User Interface                                                  [8]
+   Useful prompts for inputting times                    [4]
+   Meaningful display of final time                      [4]
+
+Implementation                                                  [18]
+   Correct implementation of formulas                    [7]
+   Correct use of FORTRAN statements                     [7] 
+   Meaningful variable names                             [2]
+   Indenting and neatness                                [2]
+
+Documentation                                                   [6]
+   Program description                                   [3]
+   Variable definitions and section comments             [3]
+____________________________________________________________________
+
+Total  (3%)                                                     [50]
+   </PRE>
+
+</DL>
+</BODY>
+<HR>
+
+<ADDRESS>
+<H5>Copyright &copy 1996 <!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~tick/tick.html">Jeff Lampert</A> (<!WA3><!WA3><!WA3><A HREF="mailto:tick@cs.wisc.edu">tick@cs.wisc.edu</A>).  Last modified September 12, 1996.</H5>
+</ADDRESS>
+
+</HTML>
+

@@ -1,0 +1,211 @@
+Date: Thu, 21 Nov 1996 22:52:54 GMT
+Server: Apache/1.0.5
+Content-type: text/html
+Content-length: 7411
+Last-modified: Thu, 14 Nov 1996 10:32:01 GMT
+
+<HTML>
+<head>
+<title> Joe Hummel</title>
+</head>
+
+<i> Information last modified November 14, 1996 </i> 
+<h1>  Joe Hummel </h1>
+
+<ul>
+<LI> Area: Computer Systems Design
+<LI> Advisor: Alex Nicolau
+<LI> Electronic Mail: <!WA0><A HREF="mailto:jhummel@ics.uci.edu">jhummel@ics.uci.edu</A>
+<LI> Office: CSE 205
+<LI> Office Phone: (714) 824-2248
+</ul>
+<H2> Research Project: </H2>
+
+<i> Brief description: </i>
+<P>
+  Compilers, program optimization, and data dependence testing in the presence 
+of dynamic, pointer-based data structures.  
+<P>
+
+<i> Long description: </i>
+<P>
+  Data structures are important solution components in many programs, since
+the proper choice of data structure can greatly impact the efficiency of
+the resulting application.  This is well-known to FORTRAN programmers, where
+arrays serve as the primary data structure.  Recently however, given the
+increasing use of languages such as Ada, C, C++, and FORTRAN 90, data
+structures built using pointers and dynamic memory allocation are more
+prevalent.  These types of structures --- linked-lists, trees, DAGs --- present
+new and difficult analysis and optimization problems for the compiler
+writer.  The objective of our work is to solve these problems, thereby
+enabling the parallelization of such codes.
+<P>
+  Our approach is to create a data dependence testing framework targeted
+towards program code involving dynamic, pointer-based data structures.  Our
+framework has three components: (1) property collection, (2) path collection,
+and (3) dependence testing.  To enable accurate dependence testing, the
+compiler must collect both information about the properties of the data
+structure (e.g. tree vs. DAG) and information about the memory locations
+being manipulated in the data structure.  The former are represented as
+axioms about the structure, the latter as paths through the structure.
+Given this information, the dependence testing component applies 
+theorem proving, in a general and decidable way, to determine dependences
+in the code.  
+<P>
+  To date we have implemented a prototype of our data dependence testing
+framework, and successfully parallelized a number of important codes
+involving complex data structures.  These codes include the N-body problem,
+Sparse matrices, and a 3D electromagnetic simulation based on Bipartite
+graphs.  Speedups were linear to near-linear on a shared-memory
+multiprocessor.
+<P>
+  Our work is crucial to optimizing and parallelizing compilers, since
+dependence information directly impacts the application of numerous
+performance-enhancing transformations.  The more accurate the dependence
+information, the more chances for optimization and parallelization
+at all levels (from low-level instruction scheduling to source-level
+loop transformations).  Our work represents the first accurate and 
+general mechanism for data dependence testing in the presense of 
+dynamic, pointer-based data structures.  
+
+<P>
+<H2> Publications: </H2>
+
+<H3> Refereed Journal Articles and Book Chapters </H3>
+<P>
+<ul>
+<LI>
+   Chapter 2: Path Collection and Dependence Testing in the Presence 
+   of Dynamic, Pointer-Based Data Structures,
+   </A>
+   <!WA1><A HREF="http://www.ics.uci.edu/~jhummel//~jhummel/papers/lcssc95.ps">
+   (full text in postscript)
+   </A>
+   <i>Languages, Compilers and Run-Time Systems for Scalable Computers 
+   (Proceedings of the 3rd Workshop)</i>,
+   editors B. Szymanski and B. Sinharoy, Kluwer Academic Publishers,
+   pp. 15--27, May 1995,
+   by J. Hummel and L. Hendren and A. Nicolau.
+
+<P>
+<LI>
+   A Simple Mechanism for Improving the Accuracy and Efficiency of 
+   Instruction-level Disambiguation,
+   </A>
+   <!WA2><A HREF="http://www.ics.uci.edu/~jhummel//~jhummel/papers/lcpc95.ps">
+   (full text in postscript)
+   </A>
+   <i>Languages and Compilers for Parallel Computing</i> (August 1995),
+   Lecture Notes in Computer Science,
+   volume 1033, pp. 289-303,
+   Springer-Verlag, 1996, 
+   by S. Novack and J. Hummel and A. Nicolau.
+
+<P>
+<LI>
+   Abstract Description of Pointer Data Structures:  An Approach
+   for Improving the Analysis and Optimization of Imperative Programs,
+   </A>
+   <!WA3><A HREF="http://www.ics.uci.edu/~jhummel//~jhummel/papers/loplas.ps">
+   (full text in postscript)
+   </A>
+   <i>ACM Letters on Programming Languages and Systems</i>,
+   1(3), pp. 243-260, September 1992, 
+   by J. Hummel and L. Hendren and A. Nicolau.
+
+</ul>
+<H3> Refereed Conference Papers </H3>
+
+<P>
+<ul>
+<LI> 
+   A Framework for Data Dependence Testing in the Presence of Pointers,
+   </A>
+   <!WA4><A HREF="http://www.ics.uci.edu/~jhummel//~jhummel/papers/icpp94.ps">
+   (full text in postscript)
+   </A>
+   <i>Proceedings of the 23rd Annual International Conference on Parallel 
+   Processing</i>,
+   pp. 216--224, August 1994,
+   by J. Hummel and L. Hendren and A. Nicolau.
+
+<P>
+<LI> 
+   A General Data Dependence Test for Dynamic, Pointer-Based Data Structures,
+   </A>
+   <!WA5><A HREF="http://www.ics.uci.edu/~jhummel//~jhummel/papers/pldi94.ps">
+   (full text in postscript)
+   </A>
+   <i>Proceedings of the ACM SIGPLAN Conference on Programming Language 
+   Design and Implementation</i>,
+   pp. 218--229, June 1994,
+   by J. Hummel and L. Hendren and A. Nicolau.
+
+<P>
+<LI> 
+   A Language for Conveying the Aliasing Properties of Dynamic, 
+   Pointer-Based Data Structures,
+   </A>
+   <!WA6><A HREF="http://www.ics.uci.edu/~jhummel//~jhummel/papers/ipps94.ps">
+   (full text in postscript)
+   </A>
+   <i>Proceedings of the 8th International Parallel Processing Symposium</i>,
+   pp. 208--216, April 1994,
+   by J. Hummel and L. Hendren and A. Nicolau.
+
+<P>
+<LI> 
+   Applying an Abstract Data Structure Description Approach to Parallelizing
+   Scientific Pointer Programs,
+   </A>
+   <!WA7><A HREF="http://www.ics.uci.edu/~jhummel//~jhummel/papers/icpp92.ps">
+   (full text in postscript)
+   </A>
+   <i>Proceedings of the 21st Annual International Conference on Parallel 
+   Processing</i>, 
+   pp. 100--104, August 1992, 
+   by J. Hummel and L. Hendren and A. Nicolau.
+
+<P>
+<LI>  
+   Abstractions for Recursive Pointer Data Structures: Improving
+   the Analysis and Transformation of Imperative Programs,
+   </A>
+   <!WA8><A HREF="http://www.ics.uci.edu/~jhummel//~jhummel/papers/pldi92.ps">
+   (full text in postscript)
+   </A>
+   <i>Proceedings of the ACM SIGPLAN '92 Conference on Programming Language 
+   Design and Implementation</i>,
+   pp. 249--260, June 1992,
+   by L. Hendren and J. Hummel and A. Nicolau.
+
+</UL>
+<P>
+<H2> Other Interests: </H2>
+
+<P>
+   Sailing, teaching, and teaching sailing.  Visits to Washington, D.C. to
+see Beth.  In fact, here's a recent
+<!WA9><a href="http://www.ics.uci.edu/~jhummel//~jhummel/us-nz.JPG"> picture </a> of us in New Zealand...
+<P>
+If you like sailing...  We sailed from Fiji to New Zealand 
+aboard a 65' racing sloop owned and operated by Orange Coast College;
+the boat is called Alaska Eagle, and is an old Whitbread winner (Flyer).
+Pictures?  Here's a goofy
+<!WA10><a href="http://www.ics.uci.edu/~jhummel//~jhummel/sail2-nz.JPG"> picture </a> of me driving; a
+<!WA11><a href="http://www.ics.uci.edu/~jhummel//~jhummel/sail1-nz.JPG"> picture </a> of "A watch" (Brad, 
+Scott [the skipper], myself, and Ray [not pictured since he's driving]);
+a <!WA12><a href="http://www.ics.uci.edu/~jhummel//~jhummel/sail3-nz.JPG"> picture </a> of myself atop
+Roberts Island (Bay of Islands, NZ); and finally a
+<!WA13><a href="http://www.ics.uci.edu/~jhummel//~jhummel/sail4-nz.JPG"> picture </a> of a bunch of us
+atop Roberts Island (facing the other way -- you can just make out
+the mighty Eagle anchored in the background, lower right).  What a trip!
+
+<P>
+<HR>
+<ADDRESS> <!WA14><A HREF="http://www.ics.uci.edu">Department of Information and Computer Science </A>,
+<BR><!WA15><A HREF="http://www.uci.edu">University of California, Irvine</A> CA 92717-3425
+</ADDRESS>
+</BODY>
+</HTML>
+

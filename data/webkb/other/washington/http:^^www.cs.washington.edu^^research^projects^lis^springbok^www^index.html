@@ -1,0 +1,164 @@
+Date: Tue, 10 Dec 1996 03:20:31 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+
+<head>
+<title>Multi-FPGA Systems & Rapid-Prototyping</title>
+</head>
+<h1> <a name="top">Rapid-Prototyping & Multi-FPGA Systems</a><br></h1>
+<hr>
+<body>
+<!WA0><!WA0><img src="http://www.cs.washington.edu//research/projects/lis/springbok/www/baseplate.gif">
+<p>
+Springbok is a rapid-prototyping system for board-level designs.  The idea is
+to extend the orders of magnitude speed increase in ASIC logic emulation 
+achieved by systems like Quickturn to the board level.
+Instead of mapping all logic to FPGAs, the system includes the actual chips
+into the mapping.  The Springbok hardware includes baseplates that can be
+connected to form an arbitrarily large prototyping substrate.
+Daughter cards, with FPGAs on one side and arbitrary devices on the other, 
+embed the user-specified devices into an FPGA-based routing structure.
+Extender cards are placed between the daughter cards and the substrate to add
+functionality and fix resource problems.
+<p>
+As part of developing the Springbok system, we have examined several issues
+related to multi-FPGA systems.  
+In <!WA1><!WA1><a href="ftp://shrimp.cs.washington.edu/pub/olympia/ICCDMesh.ps.Z">
+"Mesh Routing Topologies for Multi-FPGA Systems"</a>
+we have done a quantitative study of nearest-neighbor routing topologies, 
+and developed structures that greatly improve 
+inter-FPGA routing efficiency.
+<p>
+In <!WA2><!WA2><a href="ftp://shrimp.cs.washington.edu/pub/olympia/ICCADpinassign.ps.Z">
+"Pin Assignment for Multi-FPGA Systems"</a>
+we examined the problems of global routing in multi-FPGA systems, and
+proposed an algorithm for pin assignment for arbitrary FPGA topologies.
+The problem is that the global routing of FPGA systems will in general occur
+before the mappings in individual FPGAs have been placed.  This means that the
+exact start and finish locations for inter-FPGA signals aren't fixed, and
+complete routing cannot be done by standard algorithms.  The process of
+choosing intermediate FPGAs to route through can be handled by standard
+algorithms, so we concern ourselves in the paper with the issue of pin
+assignment - choosing what exact pins the routes will use.  This is handled
+by placing all FPGAs simultaneously via force-directed placement, though
+spring-simplification rules based on physical laws make the problem
+manageable.
+<p>
+We have also considered the problem of partitioning for multi-FPGA systems.
+Two issues have been covered.  First of all, there are a huge number of 
+techniques that have been considered for partitioning.  We performed a 
+survey of many of them, primarily those that build from the Kernighan-Lin,
+Fiduccia-Mattheyses bipartitioning algorithm.  The results of this survey
+is in <!WA3><!WA3><a href="ftp://shrimp.cs.washington.edu/pub/olympia/Bipartition.ps.Z">
+"An Evaluation of Bipartitioning Techniques"</a>.
+We also considered the problem of how to apply bipartitioning iteratively
+to multi-FPGA systems.  Specifically, it is important to figure out what order
+of cuts in the logic correspond to what locations in the multi-FPGA system, so
+we both know how many I/O resources are available, as well as picking the best
+order to optimize for locality, thus minimizing the length and amount of 
+inter-FPGA routing.  This work can be found in
+<!WA4><!WA4><a href="ftp://shrimp.cs.washington.edu/pub/olympia/SplitOrder.ps.Z">
+"Logic Partition Orderings for Multi-FPGA Systems"</a>.
+
+<p>
+<hr>
+<p>
+<!WA5><!WA5><img src="http://www.cs.washington.edu//research/projects/lis/springbok/www/Springbok.gif">
+<p>
+<em>Springbok</em>:
+<p>
+1.) A small brown and white gazelle of southern Africa, that is capable of leaping high in the air.
+<p>
+2.) A popular jigsaw-puzzle company.
+<hr>
+<p>
+<h2>Researchers</h2>
+<h3>Faculty</h3> 
+<dl>
+<dd> <!WA6><!WA6><img alt="o" src="http://www.cs.washington.edu//research/projects/lis/springbok/www/blueball.gif"> <!WA7><!WA7><a href="http://www.cs.washington.edu/people/faculty/borriello.html">Gaetano Borriello</a> 
+
+<dd> <!WA8><!WA8><img alt="o" src="http://www.cs.washington.edu//research/projects/lis/springbok/www/blueball.gif"> <!WA9><!WA9><a href="http://www.cs.washington.edu/people/faculty/ebeling.html">Carl Ebeling</a> 
+</dl>
+
+<h3>Graduate Students</h3> 
+<dl>
+<dd> <!WA10><!WA10><img alt="o" src="http://www.cs.washington.edu//research/projects/lis/springbok/www/blueball.gif"> <!WA11><!WA11><a href="http://www.cs.washington.edu/homes/hauck/">Scott Hauck</a> 
+</dl>
+
+<h2>Related Work</h2>
+<dl>
+<dt> <!WA12><!WA12><img alt="o" src="http://www.cs.washington.edu//research/projects/lis/springbok/www/blueball.gif">
+<!WA13><!WA13><a href="http://www.cs.washington.edu//research/projects/lis/springbok/www//research/projects/lis/triptych/www/index.html">Triptych/Montage FPGA Architectures</a>
+	<dd> Development of the <em>Triptych</em> and <em>Montage</em> FPGA 
+	architectures, architectures with improved densities over current 
+	commercial FPGAs.
+</dl>
+
+<h2>Primary References</h2>
+<p>
+
+S. Hauck, G. Borriello, C. Ebeling.
+<!WA14><!WA14><a href="ftp://shrimp.cs.washington.edu/pub/olympia/Interface.ps.Z">
+"Achieving High-Latency, Low-Bandwidth Communication:  Logic Emulation
+Interfaces"</a>, 
+submitted to <em>IEEE Symposium on FPGAs for Custom Computing Machines</em>, 
+April, 1995.
+<p>
+
+S. Hauck, G. Borriello.
+<!WA15><!WA15><a href="ftp://shrimp.cs.washington.edu/pub/olympia/DACpins.ps.Z">
+"Pin Assignment for Multi-FPGA Systems"</a>,
+University of Washington, 
+Dept. of C.S.&E. TR #94-04-01, 1994.
+<p>
+
+S. Hauck, G. Borriello.
+<!WA16><!WA16><a href="ftp://shrimp.cs.washington.edu/pub/olympia/Bipartition.ps.Z">
+"An Evaluation of Bipartitioning Techniques"</a>,
+to appear in <em>Chapel Hill Conference on Advanced Research in VLSI</em>,
+March, 1995.
+<p>
+
+S. Hauck, G. Borriello.  
+<!WA17><!WA17><a href="ftp://shrimp.cs.washington.edu/pub/olympia/SplitOrder.ps.Z">
+"Logic Partition Orderings for Multi-FPGA Systems"</a>,
+to appear in <em>ACM/SIGDA International Symposium on Field-Programmable Gate
+Arrays</em>, Monterey, CA, February, 1995.  
+<p>
+
+S. Hauck, G. Borriello, C. Ebeling.
+<!WA18><!WA18><a href="ftp://shrimp.cs.washington.edu/pub/olympia/ICCDMesh.ps.Z">
+"Mesh Routing Topologies for Multi-FPGA Systems"</a>,
+<em>ICCD</em>, 1994.
+<p>
+
+S. Hauck, G. Borriello, C. Ebeling.
+<!WA19><!WA19><a href="ftp://shrimp.cs.washington.edu/pub/olympia/Springbok.ps.Z">
+"Springbok:  A Rapid-Prototyping System for Board-Level Design"</a>,
+<em>FPGA'94</em>, Berkeley, February, 1994.
+<p>
+
+<h2>Secondary References</h2>
+<p>
+
+S. Hauck, G. Borriello.
+<!WA20><!WA20><a href="ftp://shrimp.cs.washington.edu/pub/olympia/FCCMpinassign.ps.Z">
+"Pin Assignment for Multi-FPGA Systems (Extended Abstract)"</a>,
+<em>IEEE Workshop on FPGAs for Custom Computing Machines</em>,
+April, 1994.
+<p>
+
+S. Hauck, G. Borriello, C. Ebeling.
+<!WA21><!WA21><a href="ftp://shrimp.cs.washington.edu/pub/olympia/RoutingTop.ps.Z">
+"Mesh Routing Topologies for FPGA Arrays"</a>,
+<em>FPGA'94</em>, Berkeley, February, 1994.
+<p>
+
+<!WA22><!WA22><img alt="o" src="http://www.cs.washington.edu//research/projects/lis/springbok/www/blueball.gif">
+<!WA23><!WA23><a href="http://www.cs.washington.edu//research/projects/lis/springbok/www/arpa.html">Arpa Test</a>
+<p>
+
+<hr>
+</html>

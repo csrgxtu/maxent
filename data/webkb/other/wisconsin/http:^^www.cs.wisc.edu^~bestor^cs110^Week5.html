@@ -1,0 +1,462 @@
+Date: Wed, 13 Nov 1996 23:16:23 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 18 Apr 1996 22:56:51 GMT
+Content-length: 13991
+
+<HTML>
+
+<HEAD>
+<TITLE>CS 110 Section 2 Lecture Notes - Weeks 5</TITLE>
+</HEAD>
+
+<BODY>
+
+<H2><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~bestor/cs110/cs110.html#text" ><!WA1><!WA1><!WA1><IMG SRC="http://www.cs.wisc.edu/~bestor/icons/arrowleft.gif" WIDTH=15 HEIGHT=15></A> Lecture Notes - Week 5</H2>
+
+<HR>
+
+<DL>
+   <DT>Topic:
+   <DD>Formatted input and output. Reading and writing files.<P>
+
+   <DT>Text:
+   <DD>Chp. 5.1, 5.3, 5.5 - 5.7<P>
+
+   <DT>Notes:
+   <DD>
+
+   <HR>
+
+   <CENTER>
+   <H3>Formatted Output</H3>
+   </CENTER>
+   <UL>
+      <LI>So for we have been using <EM>unformatted</EM> output.
+      <LISTING>
+	PRINT *, 'Total = ', TOT
+      </LISTING>
+      prints
+      <LISTING>
+	Total =      12345
+      </LISTING>
+      with extraneous spaces in front of the number.
+      <LI>The <TT>*</TT> specifies to use the default output format to print the items on the line.
+      <LI>Alternatively, replace the <TT>*</TT> with the label of a <TT>FORMAT</TT> statement which describes how to print the items.
+      <LISTING>
+	     PRINT 15, 'Total = ', TOT
+	15   FORMAT(1X, A, I5)
+      </LISTING>
+      prints
+      <LISTING>
+	Total = 12345
+      </LISTING>
+      <LI>The <TT>FORMAT</TT> statement should immediately follow the <TT>PRINT</TT> statement.
+      <LI>The items in the <TT>FORMAT</TT> statement are called <EM>edit descriptors</EM> and describe the appearance of the line.
+      <LI>Each item in the <TT>PRINT</TT> statement has a corresponding edit descriptor in the <TT>FORMAT</TT> statement specifying how to print it.
+   </UL>
+
+   <H4>Edit Descriptors</H4>
+   <UL>
+      <LI>The first item in the <TT>FORMAT</TT> statement describes the <EM>line spacing</EM>.  The most common is <EM>single spacing</EM> specified by <TT>1X</TT>.
+      <LISTING>
+	15   FORMAT(1X, .... )
+      </LISTING>
+      <LI>The edit descriptor depends on the <EM>type</EM> of the value being printed.
+      <UL>
+         <LI><TT>Iw</TT>	- <TT>INTEGER</TT>
+         <LI><TT>Fw.d</TT>	- <TT>REAL</TT>
+         <LI><TT>Aw</TT>	- <TT>CHARACTER</TT> (i.e. strings)
+         <LI><TT>nX</TT>	- insert spaces between items
+      </UL>
+   </UL>
+
+
+   <H4>INTEGER - Iw</H4>
+   <UL>
+      <LI><TT>INTEGER</TT>s are printed <EM>right-justified</EM> in <TT>w</TT> columns.
+      <LI>If the <TT>INTEGER</TT> is shorter than <TT>w</TT> columns wide then it is printed with leading blanks (indicated by a #).
+      <LISTING>
+	     TOT = 87
+	     PRINT 15, 'Total=',TOT,'cents'
+	15   FORMAT(1X, A, I4, A)
+      </LISTING>
+prints
+      <LISTING>
+	Total=##87cents
+	      ^^^^
+      </LISTING>
+      <LI>Negative <TT>INTEGER</TT>s are printed with a leading minus "-" sign.
+      <LI>If the <TT>INTEGER</TT> is longer than <TT>w</TT> columns wide (i.e. it doesn't fit in the width specified) then "*"s are printed instead.
+      <LISTING>
+	     TOT = 12345
+	     PRINT 15, TOT
+	15   FORMAT(1X, I4)
+      </LISTING>
+      prints
+      <LISTING>
+	****
+      </LISTING>
+   </UL>
+
+   <H4>REAL - Fw.d</H4>
+   <UL>
+      <LI><TT>REAL</TT>s are printed <EM>right-justified</EM> in <TT>w</TT> columns and <EM>rounded</EM> to <TT>d</TT> decimal places.
+      <LISTING>
+	     MASS = -87.4395
+	     PRINT 15, MASS
+	15   FORMAT(1X, F8.2)
+      </LISTING>
+      prints
+      <LISTING>
+	##-87.44
+	^^^^^^^^
+      </LISTING>
+      <LI>Be sure to allow space for the sign (if negative) and decimal place, both of which take up an additional column each.
+   </UL>
+
+   <H4>CHARACTER - Aw</H4>
+   <UL>
+      <LI><TT>CHARACTER</TT> strings are printed <EM>right-justified</EM> in <TT>w</TT> columns.
+      <LI>If the string is shorter than <TT>w</TT> columns then it is printed with leading blanks (indicated by a #).
+      <LISTING>
+	     CHARACTER *11 NAME
+	     NAME = 'Christopher'
+
+	     PRINT 15, NAME
+	15   FORMAT(1X, A15)
+      </LISTING>
+      prints
+      <LISTING>
+	####Christopher
+      </LISTING>
+      <LI>If the string is longer than <TT>w</TT> columns then it is <EM>left-justified</EM> and the characters at the end are truncated.
+      <LISTING>
+	     PRINT 15, NAME
+	15   FORMAT(1X, A8)
+      </LISTING>
+      prints
+      <LISTING>
+	Christop
+      </LISTING>
+      <LI>Use <TT>A</TT> with no width specified to print the string in the same number of columns as its declared length.
+      <LISTING>
+	     PRINT 15, NAME
+	15   FORMAT(1X, A)	(same as A11)
+      </LISTING>
+   </UL>
+
+   <H4>Insert Spaces - nX</H4>
+   <UL>
+      <LI>Spaces/blanks can be inserted between any two items in the <TT>PRINT</TT> statement.
+      <LISTING>
+	     PRINT 15,'Hello','there','world'
+	15   FORMAT(1X, A, 2X, A, 3X, A)
+      </LISTING>
+      prints
+      <LISTING>
+	Hello##there###world
+	     ^^     ^^^
+      </LISTING>
+   </UL>
+
+   <H4>PRINT Statement</H4>
+   <UL>
+      <LI>The edit specifiers can be inserted directly into the <TT>PRINT</TT> statement without using a separate <TT>FORMAT</TT> statement and label.
+      <LISTING>
+	NAME = 'Christopher'
+	PRINT '(1X, A15)', NAME
+      </LISTING>
+      <LI>The edit descriptors are enclosed in brackets and apostrophes.
+   </UL>
+
+   <HR>
+
+   <CENTER>
+   <H3>Formatted Input</H3>
+   </CENTER>
+   <UL>
+      <LI>Unformatted input:
+      <OL>
+         <LI>All the data on the line has to be read into variables.
+         <LI>Multiple values on the same line must be separated by spaces.
+         <LI>Strings must be entered enclosed in apostrophes.
+      </OL>
+      <LI>If the format of the input data does not match these requirements then <EM>formatted</EM> input must be used instead.
+      <LI>Example: multiple values separated by a <EM>hyphen</EM>.
+      <LISTING>
+	Please enter today's date:
+	10-08-95
+      </LISTING>
+      <LI><STRONG>IMPORTANT</STRONG> - Formatted input specifies which columns are read in and which are skipped.
+      <LI>Use a <TT>FORMAT</TT> statement with edit descriptors to specify the type and width of each value to read in.
+      <LISTING>
+	     READ 15, MONTH, DAY, YEAR
+	15   FORMAT(I2, 1X, I2, 1X, I2)
+      </LISTING>
+      <LI>Note: no line spacing is specified for formatted <EM>input</EM>.
+   </UL>
+
+   <H4>Edit Descriptors</H4>
+   <UL>
+      <LI>Same descriptors as formatted output.
+      <UL>
+         <LI><TT>Iw</TT>	- <TT>INTEGER</TT>
+         <LI><TT>Fw.d</TT>	- <TT>REAL</TT>
+         <LI><TT>Aw</TT>	- <TT>CHARACTER</TT> (i.e. strings)
+         <LI><TT>nX</TT>	- skip characters between values
+      </UL>
+   </UL>
+
+   <H4>INTEGER - Iw</H4>
+   <UL>
+      <LI>Read only the next <TT>w</TT> digits as an <TT>INTEGER</TT> value.
+      <LISTING>
+	     READ 15, NUM
+	15   FORMAT(I3)
+      </LISTING>
+	User enters
+      <LISTING>
+	12345				(NUM = 123)
+	^^^
+      </LISTING>
+	User enters
+      <LISTING>
+	-12345				(NUM = -12)
+	^^^
+      </LISTING>
+      <LI>Only <TT>w</TT> digits are read. Any additional digits are <EM>ignored</EM>.
+   </UL>
+
+   <H4>REAL - Fw.d</H4>
+   <UL>
+      <LI>Read only the next <TT>w</TT> digits as an <TT>REAL</TT> value, where the last <TT>d</TT> digits are to the right of the decimal point.
+      <LISTING>
+	     READ 15, PRICE
+	15   FORMAT(F6.2)
+      </LISTING>
+	User enters
+      <LISTING>
+	123.4567		(PRICE = 123.45)
+	^^^^^^
+      </LISTING>
+      <LI><STRONG>WARNING</STRONG>: The decimal place is optional. If missing, the computer uses <TT>d</TT> to determine where it <EM>should</EM> have been. User enters
+      <LISTING>
+	1234567		(PRICE = 1234.56 !)
+	^^^^^^
+      </LISTING>
+      <LI>If the user does enter a decimal point then it over-rides the value of <TT>d</TT>. User enters
+      <LISTING>
+	12.34567		(PRICE = 12.345)
+	^^^^^^
+      </LISTING>
+      <LI>Only <TT>d</TT> digits are read. Any additional digits are <EM>ignored</EM>.
+   </UL>
+
+   <H4>CHARACTER - Aw</H4>
+   <UL>
+      <LI>Read the next <TT>w</TT> letters as a <TT>CHARACTER</TT> string and store them <EM>exactly</EM> as entered.
+      <LISTING>
+	     CHARACTER *10 NAME
+	     READ 15, NAME
+	15   FORMAT(A7)
+      </LISTING>
+	User enters
+      <LISTING>
+	Kilroy1994junior	(NAME='Kilroy1###')
+	^^^^^^^
+      </LISTING>
+      <LI>If <TT>w</TT> is not specified then read in the same number of characters as the declared length of the variable.
+      <LISTING>
+	     READ 15, NAME
+	15   FORMAT(A)
+      </LISTING>
+	User enters
+      <LISTING>
+	Kilroy1994junior	(NAME='Kilroy1994')
+	^^^^^^^^^^
+      </LISTING>
+      <LI>Note: The string is <STRONG>not</STRONG> enclosed by apostrophes!
+      <LISTING>
+	READ '(A)', NAME
+      </LISTING>
+	User enters
+      <LISTING>
+	Kilroy			(NAME='Kilroy#####')
+      </LISTING>
+   </UL>
+
+   <H4>Skip Characters - nX</H4>
+   <UL>
+      <LI>Skip over <TT>n</TT> characters in the input (e.g. a comma or hyphen).
+      <LISTING>
+	     CHARACTER *10 NAME
+	     READ 15, NAME, YEAR, FEES
+	15   FORMAT(A, 1X, I4, 3X, F6.2)
+      </LISTING>
+	User enters
+      <LISTING>
+	Kilroy,Joe,1997###1368.25
+	^^^^^^^^^^^^^^^^^^^^^^^^
+
+	NAME = 'Kilroy,Joe'
+	YEAR = 1997
+	FEES =  1368.2
+      </LISTING>
+   </UL>
+
+   <HR>
+
+   <CENTER>
+   <H3>Reading and Writing Files</H3>
+   </CENTER>
+   <UL>
+      <LI><EM>Interactive processing</EM> reads data from the keyboard and prints the results to the screen.
+      <LI><EM>Batch processing</EM> reads data directly from a file on disk and stores the results in another file on disk.
+   </UL>
+
+   <H4>OPEN Statement</H4>
+   <UL>
+      <LI>Before you can read or write to a file it must be <EM>opened</EM>.
+      <LI>The <TT>OPEN</TT> statement specifies the <EM>name</EM> of the file, assigns it a <EM>unit nummber</EM> and specifies whether the file will be <EM>read</EM> from or <EM>written</EM> to.
+      <LISTING>
+	OPEN(UNIT=1, FILE='MYDATA', STATUS='OLD')
+	OPEN(UNIT=2, FILE='RESULTS', STATUS='NEW')
+      </LISTING>
+      <LI>To read from a file <TT>STATUS</TT> is 'OLD'.
+      <LI>To write to a file <TT>STATUS</TT> is 'NEW'.
+      <LI>Any unique number can be used for the <TT>UNIT</TT> number, except 5 and 6 which are reserved for the keyboard and screen.
+   </UL>
+
+   <H4>Reading From Files</H4>
+   <UL>
+      <LI>Use a modified <TT>READ</TT> statement to read from a file rather than the keyboard. Note: no comma before the list of variables.
+      <LISTING>
+	READ (unit-number, *) variables
+
+	READ (1, *) X, Y, Z
+      </LISTING>
+      <LI>Must <TT>OPEN</TT> the file before you can read from it.
+      <LI>Can also read formatted data from files.
+      <LISTING>
+	     READ (1, 15) X, Y, Z
+	15   FORMAT (3F6.2)
+      </LISTING>
+      <LI>If the line contains more data than is read in then the rest of the line is ignored. e.g.
+      <LISTING>
+	131.92-21.67  18.412345
+	^^^^^^^^^^^^^^^^^^-----
+      </LISTING>
+      <LI>If the line contains less data than is read in the the <EM>next</EM> line is also read in. e.g.
+      <LISTING>
+	131.92-21.67
+	^^^^^^^^^^^^
+	18.412345
+	^^^^^^---
+      </LISTING>
+   </UL>
+
+   <H4>Writing To Files</H4>
+   <UL>
+      <LI>Use the <TT>WRITE</TT> statement to write to a file rather than the screen. Note: no comma before list of items.
+      <LISTING>
+	WRITE (unit-number, *) items
+
+	WRITE (2, *) 'The answer is', 42
+      </LISTING>
+      <LI>Must <TT>OPEN</TT> the file before you write to it.
+      <LI>Can also write formatted data to files.
+      <LISTING>
+	     WRITE (2, 15) X, Y, Z
+	15   FORMAT (3F6.2)
+      </LISTING>
+   </UL>
+
+   <H4>Batch Processing</H4>
+   <UL>
+      <LI>Can read/write <EM>several</EM> files at the same time. Each file must have a unique unit number.
+      <LISTING>
+	OPEN(UNIT=1, FILE='DATA1', STATUS='OLD')
+	OPEN(UNIT=2, FILE='DATA2', STATUS='OLD')
+	OPEN(UNIT=3, FILE='RESULT', STATUS='NEW')
+
+	READ (1,*) NUM1
+	READ (2,*) NUM2
+	WRITE (3, *) NUM1 + NUM2
+      </LISTING>
+      <LI>Can still read from the keyboard and write to the screen at the same time.
+      <LISTING>
+	READ (1,*) NUM1
+	PRINT *, 'Please enter a number'
+	READ *, NUM2
+	WRITE (3, *) NUM1 + NUM2
+      </LISTING>
+      <LI>If you are reading from a file you don't need prompts (redundant).
+   </UL>
+
+   <H4>End-of-File (writing)</H4>
+   <UL>
+      <LI>When you have finished writing everything to an output file, write a special <EM>end-of-file</EM> marker at the end.
+      <LISTING>
+	END FILE (UNIT=3)
+      </LISTING>
+      <LI>Must be the last thing written to the file.
+   </UL>
+
+   <H4>CLOSE Statement</H4>
+   <UL>
+      <LI>When you have finished using either an input or an output file then <TT>CLOSE</TT> it.
+      <LISTING>
+	READ (1, *) NUM1
+	READ (2, *) NUM2
+	WRITE (3, *) NUM1 + NUM2
+	END FILE (UNIT=3)
+
+	CLOSE (UNIT=1)
+	CLOSE (UNIT=2)
+	CLOSE (UNIT=3)
+      </LISTING>
+      <LI>Usually these are last few statements in your program before the <TT>STOP</TT> and <TT>END</TT>.
+   </UL>
+
+   <H4>End-of-File (reading)</H4>
+   <UL>
+      <LI>Unlike the keyboard where the user can always keep typing, eventually all the data in a file will be read in.
+      <LI>When there's no more data to be read, the computer will reach the <EM>end-of-file marker</EM>.  Generally you want to do something special when this happens; for example, exit a loop.
+      <LI>A modified <TT>READ</TT> statement jumps to a <TT>CONTINUE</TT> statement when it reaches the end-of-file marker.
+      <LISTING>
+
+	      OPEN(UNIT=1, FILE='DATA', STATUS='OLD')
+	      SUM = 0
+
+	C     Add up all the numbers in the file
+	      DO WHILE (.TRUE.)
+	         READ (1, *, END=20) NUM
+	         SUM = SUM + NUM
+	      END DO
+
+	C     Reached the end-of-file so print the sum
+	 20   CONTINUE
+	      PRINT *, SUM
+
+	      CLOSE (UNIT=1)
+	      STOP
+	      END
+      </LISTING>
+      <LI>Normally the <TT>CONTINUE</TT> is the first statement after the end of a <TT>DO/END DO</TT> loop.
+      <LI>Similar to a <TT>GOTO</TT> statement to exit the loop.
+      <LI>Exits the loop when the <TT>READ</TT> statement is re-executed and there's no more data to read; i.e. <STRONG>not</STRONG> immediately after the last number is read.
+   </UL>
+
+</DL>
+
+</BODY>
+
+<HR>
+
+<ADDRESS>
+<H5>Copyright &copy 1996 <!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~bestor/bestor.html">Gareth S. Bestor</A> (<!WA3><!WA3><!WA3><A HREF="mailto:bestor@cs.wisc.edu">bestor@cs.wisc.edu</A>).  Last modified April 18, 1996.</H5>
+</ADDRESS>
+
+</HTML>
+

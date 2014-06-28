@@ -1,0 +1,141 @@
+Date: Wed, 11 Dec 1996 22:32:48 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 20 Sep 1996 20:46:29 GMT
+Content-length: 7434
+
+<HTML>
+
+<HEAD>
+<TITLE>CS 302 Section 70</TITLE>
+</HEAD>
+
+<BODY>
+
+<H2><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~tick/cs302.html#assignments" ><!WA1><!WA1><!WA1><IMG SRC="http://www.cs.wisc.edu/~tick/icons/arrowleft.gif" WIDTH=15 HEIGHT=15></A>Program 2</H2><p>
+<H2>Your Plastic Pal Who's Fun to be With - Sirius Cybernetics Corporation<br>
+Don't Panic - Hitchhiker's Guide to the Galaxy</H2>
+
+<!WA2><!WA2><!WA2><IMG WIDTH=50 HEIGHT=50 SRC="http://www.cs.wisc.edu/~tick/pix/HHGTG.GIF">
+
+Marvin the Paranoid Android is not a happy robot. He's been shot at, insulted, abandoned for billions of years, then grabbed to go back in time to where he started the whole wait from, now in a ship plunging straight into the heart of a sun...the only escape is a teleporter tube.<p>
+
+The teleporter tube, however, is broken. Fortunately, Marvin (as he's fond of telling people) has the brains the size of a planet and can repair the teleporter if he can only get ahold of some spare parts. He'd better hurry, though, or he'll be melted like a smore in a campfire.<p>
+Over the next few assignments we'll be adding to this program to create a fully-playable game. For the moment, we'll only be designing the backbone for it, so some of the elements mentioned above won't be incorporated until a later assignment(for example, you'll note below there's no mention of spare parts...for this program, we'll have the tube working fine to begin with and no spare parts at all)<p>
+<HR>
+<DL>
+<DT>Due Date:
+<DD>Monday 10/1/96, 5:00 pm<P>
+<DT>GRADE:
+<DD>3% of your final grade.<P>
+<DT>Text Covered:
+<DD>Chp. 2,3,4
+</DL>
+
+<H3>Note: The Program as I initially presented it was too complex for a single assignment. I've simplified the design here.</H3>
+
+<HR>
+<DL>
+<DT><STRONG>This program has the following specifications:</STRONG>
+<DD>
+<UL>
+<LI> The room is square, 5 space units by 5 space units.
+<LI> Marvin starts at the top left corner.
+<LI> The teleporter tube is at the bottom right corner.
+<LI> Marvin can move N (North), W(West), S(South), and E(East).
+<LI> Also include an option Q(Quit), if you want to end the entire program.
+<LI> Each move is 1 time unit. If you enter an illegal move (either a bad command, or trying to move Marvin through the wall), no time unit is charged.
+<LI> If Marvin fails to reach the teleporter in 25 moves, he's fried.
+</UL><p>
+
+<DT><STRONG>Display:</STRONG><br>
+<DD>
+No fancy grid here. Here's a sample of my output:
+<PRE>
+Marvin is at 1    1
+Marvin has made 0 moves out of 25
+What's Marvin's next move?(N,S,E,W,Q)
+'S'
+Marvin is at 1    2
+Marvin has made 1 moves out of 25
+What's Marvin's next move?(N,S,E,W,Q)
+'s'
+Illegal Command
+What's Marvin's next move?(N,S,E,W,Q)
+'W'
+Marvin refused to go through the wall.
+What's Marvin's next move?(N,S,E,W,Q)
+'E'
+Marvin is at 2    2
+Marvin has made 2 moves out of 25
+What's Marvin's next move?(N,S,E,W,Q)
+</PRE><p>
+Feel free to spice up the output anyway you like, so long as the following are included:
+<UL><P>
+<LI>Horizontal and Verticlal coordinates of Marvin.
+<LI>How many moves Marvin's made out of how many possible (alternately, you can just print out how many moves he has *left*).
+<LI>A decent prompt.
+<LI>Error messages for illegal commands and for illegal moves.<STRONG>NOTE:</STRONG>remember that for characters, every command you give to Marvin must be put in quotes, as shown in the output above.
+</UL><P>
+
+<DT><STRONG>Programming Requirements:</STRONG><br>
+<DD>
+Don't use literals in expressions. Use constant parameters instead. For example, PARAMETER(WIDTH=5) may represent the width of the room. We may be modifying the program for a future assignment, so it'll be easier to change these values here than having to go search for them several times within the program itself. What I want to see as parameters are:
+<UL><p>
+<LI>coordinates of the teleporter tube.
+<LI>coordinates of Marvin's starting point.
+<LI>number of moves until the ship plunges into the sun.
+<LI>number of rows and columns on our plaing surface (the spaceship floor).
+<LI>number of time units that pass for each step Marvin takes.
+</UL><p>
+In the future, we may be loading in from disk some mazes for Marvin to move around, so he won't always start off at (1,1), nor will the tube always be at (5,5)...for that matter, our room can be a different size for each maze, and we can vary the time limit if we want. For now all these will be constants, hence we're making them parameters.<p>
+<STRONG>DO NOT USE GOTOS!</STRONG> The good programming fairy takes a heavy dislike of any code written with gotos. Don't mess with fairies; they turn code into frogs, and frogs begin with F.<P>
+
+<DT><STRONG>What to Hand In:</STRONG>
+<DD>Hand in your assignment online by copying your FORTRAN <EM>source code</EM> file "program2.for" and the <EM>compiled executable</EM> file "program2.exe" to your handin directory.<P>
+
+Your files are timestamped with the current time when you copy them to your handin directory.  This will be used to check they were handed in on time or whether late day penalties apply. <STRONG>Important</STRONG> - Make sure you copy the correct versions of your program files because these are what will be graded.<P>
+
+You also have to hand in a printed copy of your FORTRAN <EM>source code</EM> file.<P>
+<DT><STRONG>Gradesheet</STRONG>
+<DD>
+The following gradesheet will be used to grade this assignment.  Please take a close look at it to make sure you do everything that is required.  Note that you will be graded on correct output for the cases given below, so before handing it in you <STRONG>must</STRONG> run your program for the following cases  and manually check that your program gives the correct results in every case.<STRONG>In addition, 25 points (half of the total points for this assignment) will be taken off if you use GOTOs. You have been warned</STRONG><P>
+   <PRE>
+Correct Cases                                                   [18]
+   Marvin makes a legal move                             [3]
+   Marvin is given an illegal command                    [3]
+   Marvin is told to try to walk through a wall          [3]
+   Marvin escapes                                        [3]
+   Marvin fries                                          [3]
+   Marvin quits the game early                           [3]
+
+User Interface                                                  [6]
+   Useful prompts for directions                         [3]
+   Meaningful display of Marvin's world (location, etc)  [3]
+
+Implementation                                                  [20]
+   Correct implementation of DO and/or DO/WHILE          [4]
+   Correct use of IF/THEN or other conditionals          [4]
+   Correct declarations of paramater constants           [4] 
+   Meaningful variable names                             [2]
+   Indenting and neatness                                [2]
+   Correctness of Overall Program                        [4]
+
+Documentation                                                   [6]
+   Program description                                   [3]
+   Variable definitions and section comments             [3]
+____________________________________________________________________
+
+Total  (3%)                                                     [50]
+</PRE>
+</DL>
+</BODY>
+
+<HR>
+
+<ADDRESS>
+<H5>Copyright &copy 1996 <!WA3><!WA3><!WA3><A HREF="http://www.cs.wisc.edu/~tick/tick.html">Jeff Lampert</A> (<!WA4><!WA4><!WA4><A HREF="mailto:tick@cs.wisc.edu">tick@cs.wisc.edu</A>).  Last modified September 20, 1996.</H5>
+</ADDRESS>
+
+</HTML>
+

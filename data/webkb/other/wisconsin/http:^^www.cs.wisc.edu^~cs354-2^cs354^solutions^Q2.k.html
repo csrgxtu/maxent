@@ -1,0 +1,186 @@
+Date: Tue, 05 Nov 1996 20:51:31 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 27 Sep 1996 16:16:54 GMT
+Content-length: 3048
+
+<html>
+<head>
+<title>CS 354 - Quiz #2</title>
+</head>
+
+<body>
+<table border=0 width=100% align=center>
+<tr>
+<td width=25%><td width=50% align=center>
+<td width=25%>
+<tr>
+<tr>
+<td>
+<b>CS 354
+<br>
+Fall 1996 
+<br>
+Section 2 </b>
+<td><td align=right><b>Name:_____________________</b>
+<tr>
+<td>
+<td align=center><b>Quiz #2 for Friday September 27</b>
+<br>
+5 questions, 25 points total
+<td>
+</table>
+
+<p>
+<b>1. (8 points) </b>
+<br>
+a.  Express 22.4 (base 10) in base 2.
+<br>
+<ul>
+22 (base 10) is 10110 (binary)
+<br>
+.4 (base 10) is .0110 where all digits repeat
+<br>
+<br>
+So, 22.4 (base 10) is 10110.011001100110. . .
+</ul>
+<br>
+b.  Express 10011.011 (base 2) in base 4.
+<br>
+<ul>
+103.12
+</ul>
+<br>
+<br>
+<br>
+c.  Express c03 (hexadecimal) in octal.
+<br>
+<ul>
+c    0    3
+<br>
+1100 0000 0011
+<br>
+110 000 000 011
+<br>
+6   0   0   3
+</ul>
+<br>
+d.  Express 123 (base 5) in base 10.
+<br>
+<ul>
+1 x 5**2 + 2 x 5**1 + 3 x 5**0
+<br>
+  25     +   10     +  3
+<br>
+  38
+</ul>
+<br>
+<p>
+<b>2. (4 points) </b> What is the output of the following SAL program?
+<code>
+<pre>
+  .data
+str:     .ascii "why?\n"
+ch1:     .byte 'x'
+ch2:     .byte 'x'
+counter: .word  0
+newline: .byte '\n'
+int:     .word  0
+
+  .text
+__start:  puts str
+          putc ch1
+          putc ch2
+	  putc newline
+
+	  move int, ch1
+	  put  int
+          done
+</pre>
+</code>
+<br>
+<ul>
+why?
+<br>
+xxxx
+<br>
+120
+</ul>
+<br>
+<p>
+<b>3. (6 points) </b> 
+<br>
+a.  Give an 8-bit two's complement representation for the decimal value -46.
+<br>
+<ul>
++46 is 00101110
+<br>
+So, -46 is 11010001+1 = 11010010
+</ul>
+<br>
+b.  What decimal value does the 8-bit sign magnitude value 00100011 represent?
+<br>
+<ul>
+1 x 2**5 + 1 x 2**1 + 1 x 2**0
+<br>
+32       + 2        + 1
+<br>
+35
+</ul>
+<br>
+c.  Give a 6-bit biased-20 representation for the decimal value -5.
+<br>
+<ul>
+-5 (true value) + 20 (bias) = 15
+<br>
+15 represented in 6-bit unsigned is 001111
+</ul>
+<br>
+<p>
+<b>4. (4 points) </b> 
+A modified floating point representation is defined.  It is just like the IEEE floating point standard, except for a few modifications.  It is a 12-bit representation. The exponent field is 4 bits, and uses two's complement representation.  What decimal value is represented by 0xa46 in this modified floating point representation?
+<br>
+<ul>
+negative number!
+<br>
+1 0100 1000110
+<br>
+don't forget the hidden bit!
+<br>
+1.1000110 x 2**4
+<br>
+11000.11 (base 2)
+<br>
+24.75 --> -24.75
+</ul>
+<br>
+<p>
+<b>5. (3 points) </b> 
+Give the IEEE single precision floating point representation for the decimal value 6.125.  Show the result in both binary and hexadecimal.
+<br>
+<ul>
+6 (base 10) is 110 (base 2)
+<br>
+.125 (base 10) is 1/8 or .001 (base 2)
+<br>
+6.125 (base 10) is 110.001 (base 2)
+<br>
+Normalized, we get 1.10001 x 2**2
+<br>
+The exponent field is 2 (true value) + 127 (bias) = 129,
+   represented in 8-bit unsigned, 10000001.
+<br>
+<br>
+The number is positive, so the sign bit is a 0.
+<br>
+<br>
+In binary,
+<br>
+0 10000001 10001000000000000000000
+<br>
+In hexadecimal,
+<br>
+0100 0000 1100 0100 0000 0000 0000 0000
+<br>
+0x40c40000
+</ul>

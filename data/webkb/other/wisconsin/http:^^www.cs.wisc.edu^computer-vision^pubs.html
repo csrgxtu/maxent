@@ -1,0 +1,1028 @@
+Date: Tue, 05 Nov 1996 00:36:46 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Tue, 03 Sep 1996 16:17:44 GMT
+Content-length: 54887
+
+<HTML>
+<HEAD>
+<title>Wisconsin Computer Vision Group Publications</title>
+</HEAD>
+
+<BODY>
+<h1>Wisconsin Computer Vision Group Publications</h1>
+<HR>
+
+<BR>
+Click on any of the following topics to jump to that set of papers
+in this list of recent publications.  
+Click on the title to view a (postscript) paper.  If your browser supports
+uncompressing of gzip'ed postscript, you'll prefer to click on the
+compressed version to speed up downloading.  Size of compressed
+file is given in parentheses.  
+<P>
+
+<DD><!WA0><!WA0><!WA0><img alg="o" src="http://www.cs.wisc.edu/~dyer/images/redball.gif">
+    <!WA1><!WA1><!WA1><A HREF="#exploration">Visual Exploration</A>
+<DD><!WA2><!WA2><!WA2><img alg="o" src="http://www.cs.wisc.edu/~dyer/images/redball.gif">
+    <!WA3><!WA3><!WA3><A HREF="#motion">Motion Analysis</A>
+<DD><!WA4><!WA4><!WA4><img alg="o" src="http://www.cs.wisc.edu/~dyer/images/redball.gif">
+    <!WA5><!WA5><!WA5><A HREF="#shape">3D Shape Representation</A>
+<DD><!WA6><!WA6><!WA6><img alg="o" src="http://www.cs.wisc.edu/~dyer/images/redball.gif">
+    <!WA7><!WA7><!WA7><A HREF="#snakes">Deformable Contours</A>
+<DD><!WA8><!WA8><!WA8><img alg="o" src="http://www.cs.wisc.edu/~dyer/images/redball.gif">
+    <!WA9><!WA9><!WA9><A HREF="#visualization">Visualization</A>
+<P>
+
+<HR>
+<!WA10><!WA10><!WA10><A HREF="http://www.cs.wisc.edu/computer-vision/">
+  <!WA11><!WA11><!WA11><IMG SRC="http://www.cs.wisc.edu/~dyer/images/return.gif"> </A>
+  Return to Wisconsin Computer Vision Group Home Page
+<HR>
+<P>
+<H2><A NAME="exploration">Visual Exploration</A></H2>
+<UL>
+<LI><!WA12><!WA12><!WA12><img alg="o" src="http://www.cs.wisc.edu/~dyer/images/new.gif">
+    <B><A NAME="fest96-yu">Shape Recovery from Stationary Surface Contours by Controlled Observer Motion</A></B><BR>
+     L. Yu and C. R. Dyer,
+     in <CITE>Advances in Image Understanding: A Festschrift for Azriel Rosenfeld</CITE>, IEEE Computer Society Press, Los Alamitos, Ca., 1996, 177-193.
+     (<!WA13><!WA13><!WA13><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/fest96-yu.ps">960K postscript</A>)
+<p>
+<blockquote>
+The projected deformation of stationary contours and markings on
+object surfaces is analyzed in this paper. It is shown that given a
+marked point on a stationary contour, an active observer can move
+deterministically to the osculating plane for that point by observing
+and controlling the deformation of the projected contour. Reaching the
+osculating plane enables the observer to recover the object surface
+shape along the contour as well as the Frenet frame of the
+contour. Complete local surface recovery requires either two
+intersecting surface contours and the knowledge of one principle
+direction, or more than two intersecting contours. To reach the
+osculating plane, two strategies involving both pure translation and a
+combination of translation and rotation are analyzed. Once the Frenet
+frame for the marked point on the contour is recovered, the same
+information for all points on the contour can be recovered by staying
+on osculating planes while moving along the contour. It is also shown
+that occluding contours and stationary contours deform in a
+qualitatively different way and the problem of discriminating between
+these two types of contours can be resolved before the recovery of
+local surface shape.
+</blockquote>
+
+
+<LI>
+    <B><A NAME="ijcv94-kutulakos">Recovering Shape by Purposive Viewpoint Adjustment</A></B><BR>
+     K. N. Kutulakos and C. R. Dyer,
+     <CITE>Int. J. Computer Vision</CITE> <B>12</B>, 1994, 113-136.  
+    (<!WA14><!WA14><!WA14><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/ijcv94-kutulakos.ps">postscript</A>
+    or <!WA15><!WA15><!WA15><A NAME="ijcv94-kutulakos" HREF="ftp://ftp.cs.wisc.edu/computer-vision/ijcv94-kutulakos.ps.gz">570K gzip'ed postscript</A>)<br>
+     (Earlier versions appeared in
+     <CITE>Proc. Computer Vision and Pattern Recognition Conf.</CITE>,
+     1992, 16-22  
+     (<!WA16><!WA16><!WA16><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/cvpr92-kutulakos.ps">postscript</A>
+     or <!WA17><!WA17><!WA17><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/cvpr92-kutulakos.ps.gz">90K gzip'ed postscript</A>),<BR>
+     and as Computer Sciences Department
+     <CITE>Technical Report 1035</CITE> 
+     (<!WA18><!WA18><!WA18><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/tr1035-kutulakos.ps">postscript</A>
+     or <!WA19><!WA19><!WA19><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/tr1035-kutulakos.ps.gz">160K gzip'ed postscript</A>).) 
+<p> 
+<blockquote>
+  We present an approach for recovering surface shape from the occluding
+  contour using an active (i.e., moving) observer.  It is based on a relation
+  between the geometries of a surface in a scene and its occluding contour: If
+  the viewing direction of the observer is along a principal direction for a
+  surface point whose projection is on the contour, surface shape (i.e.,
+  curvature) at the surface point can be recovered from the contour. Unlike
+  previous approaches for recovering shape from the occluding contour, we use
+  an observer that <EM>purposefully</EM> changes viewpoint in order to
+  achieve a
+  well-defined geometric relationship with respect to a 3D shape prior to its
+  recognition.  We show that there is a simple and efficient viewing strategy
+  that allows the observer to align the viewing direction with one of the two
+  principal directions for a point on the surface. This strategy depends on
+  only curvature measurements on the occluding contour and therefore
+  demonstrates that recovering quantitative shape information from the contour
+  does not require knowledge of the velocities or accelerations of the
+  observer.  Experimental results demonstrate that our method can be easily
+  implemented and can provide reliable shape information from the occluding
+  contour.
+</blockquote>
+
+
+<LI> <B><A NAME="cvpr94-1-kutulakos">
+     Occluding Contour Detection using Affine Invariants and Purposive
+     Viewpoint Control</A></B><BR>
+     K. N. Kutulakos and C. R. Dyer,
+     <CITE>Proc. Computer Vision and Pattern Recognition Conf.</CITE>,
+     1994, 323-330.  
+     (Received Siemens Best Paper Award <!WA20><!WA20><!WA20><img alg="o" src="http://www.cs.wisc.edu/~dyer/images/award.gif">) 
+     (<!WA21><!WA21><!WA21><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/cvpr94-1-kutulakos.ps">postscript</A>
+     or <!WA22><!WA22><!WA22><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/cvpr94-1-kutulakos.ps.gz">190K gzip'ed postscript</A>)<P>
+<blockquote>
+  We present an approach for identifying the occluding contour and
+  determining its sidedness using an active (i.e., moving) observer.
+  It is based on the <EM>non-stationarity property</EM> of the visible
+  rim: When the observer's viewpoint is changed, the visible rim is a
+  collection of curves that ``slide,'' rigidly or non-rigidly, over
+  the surface.  We show that the observer can deterministically choose
+  three views on the tangent plane of selected surface points to
+  distinguish such curves from stationary surface curves (i.e.,
+  surface markings). Our approach demonstrates that the occluding
+  contour can be identified <EM> directly</EM>, i.e., without first
+  computing surface shape (distance and curvature).
+</blockquote>
+
+
+<LI> <B><A NAME="cvpr94-2-kutulakos">
+     Global Surface Reconstruction by Purposive Control of Observer Motion</A></B><BR>
+     K. N. Kutulakos and C. R. Dyer,
+     <CITE>Artificial Intelligence</CITE> <B>78</B>, No. 1-2, 1995, 147-177.
+     (<!WA23><!WA23><!WA23><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/aij95-kutulakos.tar.gz">2.0M gzip'ed tar file</A>)
+     <BR>
+     (Earlier version appeared in
+     <CITE>Proc. Computer Vision and Pattern Recognition Conf.</CITE>,
+     1994, 331-338.
+     (<!WA24><!WA24><!WA24><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/cvpr94-2-kutulakos.ps">postscript</A>
+     or <!WA25><!WA25><!WA25><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/cvpr94-2-kutulakos.ps.gz">370K gzip'ed postscript</A>).)<BR>
+     (Longer version appears as Computer Sciences Department
+     <CITE>Technical Report 1141</CITE>
+     (<!WA26><!WA26><!WA26><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/tr1141-kutulakos.ps">postscript</A>
+     or <!WA27><!WA27><!WA27><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/tr1141-kutulakos.ps.gz">1.1M gzip'ed postscript</A>).) <P>
+<blockquote>
+What viewpoint-control strategies are important for performing global
+visual exploration tasks such as searching for specific surface
+markings, building a global model of an arbitrary object, or
+recognizing an object?  In this paper we consider the task of
+purposefully controlling the motion of an active, monocular observer
+in order to recover a global description of a smooth,
+arbitrarily-shaped object.  We formulate global surface reconstruction
+as the task of controlling the motion of the observer so that the
+visible rim slides over the maximal, connected, reconstructible
+surface regions intersecting the visible rim at the initial
+viewpoint. We show that these regions are bounded by a subset of the
+visual event curves defined on the surface.
+<P>
+By studying the epipolar parameterization, we develop two basic
+strategies that allow reconstruction of a surface region around any
+point in a reconstructible surface region.  These strategies control
+viewpoint to achieve and maintain a well-defined geometric
+relationship with the object's surface, rely only on information
+extracted directly from images (e.g., tangents to the occluding
+contour), and are simple enough to be performed in real time. We
+then show how global surface reconstruction can be provably achieved
+by (1) appropriately integrating these strategies to iteratively
+``grow'' the reconstructed regions, and (2) obeying four simple
+rules.
+</blockquote>
+
+<LI> <B><A NAME="cbvw94-kutulakos">
+     Building Global Object Models by Purposive Viewpoint Control</A></B><BR>
+     K. N. Kutulakos, W. B. Seales, and C. R. Dyer,
+     <CITE>Proc. 2nd CAD-Based Vision Workshop</CITE>,
+     1994, 169-182.
+     (<!WA28><!WA28><!WA28><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/cbvw94-kutulakos.ps">postscript</A>
+     or <!WA29><!WA29><!WA29><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/cbvw94-kutulakos.ps.gz">760K gzip'ed postscript</A>)<BR>
+     (An earlier version appeared in
+     <CITE>Proc. SPIE: Sensor Fusion VI</CITE>, 
+     1993, 368-383
+     (<!WA30><!WA30><!WA30><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/spie93-kutulakos.ps">postscript</A>
+     or <!WA31><!WA31><!WA31><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/spie93-kutulakos.ps.gz">740K gzip'ed postscript</A>).)<P>
+<blockquote>
+We present an approach for recovering a global surface model of an
+object from the deformation of the occluding contour using an active
+(i.e., mobile) observer able to control its motion. In particular, we
+consider two problems: (1) How can the observer's viewpoint be
+controlled in order to generate a dense sequence of images that allows
+incremental reconstruction of an unknown surface, and (2) how can we
+construct a global surface model from the generated image sequence?
+Solving these two problems is crucial for automatically constructing
+models of objects whose surface is non-convex and self-occludes. We
+achieve the first goal by <EM>purposefully</EM> and <EM>qualitatively</EM>
+controlling the observer's instantaneous direction of motion in order
+to control the motion of the visible rim over the surface.  We achieve
+the second goal by using a calibrated trinocular camera rig and a
+mechanism for controlling the relative position and orientation of the
+viewed surface with respect to the trinocular rig.
+</blockquote>
+
+<LI> <B><A NAME="thesis-kutulakos">
+     Exploring Three-Dimensional Objects by Controlling the Point of
+     Observation</A></B><BR>
+     K. N. Kutulakos, Ph.D. Dissertation,
+     Computer Sciences Department Technical Report 1251,
+     University of Wisconsin - Madison, October 1994.
+     (<!WA32><!WA32><!WA32><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/thesis-kutulakos.ps">postscript</A>
+     or <!WA33><!WA33><!WA33><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/thesis-kutulakos.zip">5.1M zip-compressed postscript</A>)<P>
+<blockquote>
+In this thesis we study how controlled movements of a camera can be
+used to infer properties of a curved object's three-dimensional shape.
+The unknown geometry of an environment's objects, the effects of
+self-occlusion, the depth ambiguities caused by the projection
+process, and the presence of noise in image measurements are a few of
+the complications that make object-dependent movements of the camera
+advantageous in certain shape recovery tasks.  Such movements can
+simplify local shape computations such as curvature estimation, allow
+use of weaker camera calibration assumptions, and enable the
+extraction of global shape information for objects with complex
+surface geometry.  The utility of object-dependent camera movements is
+studied in the context of three tasks, each involving the extraction
+of progressively richer information about an object's unknown shape:
+(1) detecting the occluding contour, (2) estimating surface curvature
+for points projecting to the contour, and (3) building a
+three-dimensional model for an object's entire surface.  Our main
+result is the development of three distinct active vision strategies
+that solve these three tasks by controlling the motion of a camera.
+<P>
+
+Occluding contour detection and surface curvature estimation are
+achieved by exploiting the concept of a special viewpoint: For
+any image there exist special camera positions from which the object's
+view trivializes these tasks.  We show that these positions can be
+deterministically reached, and that they enable shape recovery even
+when few or no markings and discontinuities exist on the object's
+surface, and when differential camera motion measurements cannot be
+accurately obtained.
+<P>
+
+A basic issue in building three-dimensional global object models is
+how to control the camera's motion so that previously-unreconstructed
+regions of the object become reconstructed.  A fundamental difficulty
+is that the set of reconstructed points can change unpredictably
+(e.g., due to self-occlusions) when ad hoc motion strategies are
+used.  We show how global model-building can be achieved for generic
+objects of arbitrary shape by controlling the camera's motion on
+automatically-selected surface tangent and normal planes so that the
+boundary of the already-reconstructed regions is guaranteed to
+"slide" over the object's entire surface.
+<P>
+
+Our work emphasizes the need for (1) controlling camera motion
+through efficient processing of the image stream, and (2) designing
+provably-correct strategies, i.e., strategies whose success can be
+accurately characterized in terms of the geometry of the viewed
+object.  For each task, efficiency is achieved by extracting from
+each image only the information necessary to move the camera
+differentially, assuming a dense sequence of images, and using 2D
+rather than 3D information to control camera motion.  Provable
+correctness is achieved by controlling camera motion based on the
+occluding contour's dynamic shape and maintaining specific
+task-dependent geometric constraints that relate the camera's motion
+to the differential geometry of the object.
+</blockquote>
+
+<LI> <B><A NAME="cvpr93-kutulakos">
+     Toward Global Surface Reconstruction by Purposive 
+     Viewpoint Adjustment</A></B><br>
+     K. N. Kutulakos and C. R. Dyer, 
+     <CITE> Proc. Computer Vision and Pattern 
+     Recognition Conf.</CITE>, 1993, 726-727.
+     (<!WA34><!WA34><!WA34><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/cvpr93-kutulakos.ps">postscript</A>
+     or <!WA35><!WA35><!WA35><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/cvpr93-kutulakos.ps.gz">10K gzip'ed postscript</A>)<P>
+<blockquote>
+We consider the following problem: How should an observer change viewpoint
+in order to generate a dense image sequence of an arbitrary smooth surface
+so that it can be incrementally reconstructed using the occluding contour
+and the epipolar parameterization?  We present a collection of qualitative
+behaviors that, when integrated appropriately, purposefully control
+viewpoint based on the appearance of the surface in order to provably solve
+this problem.
+</blockquote>
+
+<LI> <B><A NAME="tr1124-kutulakos">
+     Object Exploration By Purposive, Dynamic Viewpoint 
+     Adjustment</A></B><br>
+     K. N. Kutulakos, C. R. Dyer, V. J. Lumelsky, 
+     Computer Sciences Department Technical Report 1124,
+     November 1992.
+     (<!WA36><!WA36><!WA36><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/tr1124-kutulakos.ps">postscript</A>
+     or <!WA37><!WA37><!WA37><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/tr1124-kutulakos.ps.gz">110K gzip'ed postscript</A>)<P>
+<blockquote>
+  We present a viewing strategy for exploring the surface of an unknown
+  object (i.e., making all of its points visible) by purposefully
+  controlling the motion of an active observer. It is based on a simple
+  relation between (1) the instantaneous direction of motion of the
+  observer, (2) the visibility of points projecting to the occluding
+  contour, and (3) the surface normal at those points: If the dot product of
+  the surface normal at such points and the observer's velocity is positive,
+  the visibility of the points is guaranteed under an infinitesimal
+  viewpoint change. We show that this leads to an object exploration
+  strategy in which the observer <EM>purposefully</EM> controls its motion
+  based on the occluding contour in order to impose structure on the set of
+  surface points explored, make its representation simple and qualitative,
+  and provably solve the exploration problem for smooth generic surfaces of
+  arbitrary shape. Unlike previous approaches where exploration is cast as a
+  discrete process (i.e., asking where to look next?) and where the
+  successful exploration of arbitrary objects is not guaranteed, our
+  approach demonstrates that dynamic viewpoint control through directed
+  observer motion leads to a qualitative exploration strategy that is
+  provably-correct, depends only on the dynamic appearance of the
+  occluding contour, and does not require the recovery of detailed
+  three-dimensional shape descriptions from every position of the observer.
+</blockquote>
+
+
+<LI> <B><A NAME="icra94-kutulakos">
+     Provable Strategies for Vision-Guided Exploration in Three Dimensions</A></B><BR>
+     K. N. Kutulakos, C. R. Dyer, and V. J. Lumelsky,
+     <CITE>Proc. 1994 IEEE Int. Conf. Robotics and Automation</CITE>,
+     1994, 1365-1372.
+     (<!WA38><!WA38><!WA38><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/icra94-kutulakos.ps">postscript</A>
+     or <!WA39><!WA39><!WA39><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/icra94-kutulakos.ps.gz">210K gzip'ed postscript</A>)<P>
+<blockquote>
+An approach is presented for exploring an unknown, arbitrary surface
+in three-dimensional (3D) space by a mobile robot.  The main
+contributions are (1) an analysis of the capabilities a robot must
+possess and the trade-offs involved in the design of an exploration
+strategy, and (2) two provably-correct exploration strategies that
+exploit these trade-offs and use visual sensors (e.g., cameras and
+range sensors) to plan the robot's motion.  No such analysis existed
+previously for the case of a robot moving freely in 3D space.  The
+approach exploits the notion of the <EM>occlusion boundary</EM>, i.e.,
+the points separating the visible from the occluded parts of an
+object.  The occlusion boundary is a collection of curves that
+``slide'' over the surface when the robot's position is continuously
+controlled, inducing the visibility of surface points over which they
+slide.  The paths generated by our strategies force the occlusion
+boundary to slide over the entire surface.  The strategies provide a
+basis for integrating motion planning and visual sensing under a
+common computational framework.
+</blockquote>
+
+<LI> <B><A NAME="icra93-kutulakos">
+     Vision-Guided Exploration:  A Step toward General Motion
+     Planning in Three Dimensions</A></B><br>
+     K. N. Kutulakos, 
+     V. J. Lumelsky, and C. R. Dyer, <CITE> Proc. 1993 IEEE 
+     Int. Conf. on Robotics and Automation</CITE>, 1993, 289-296. 
+     (<!WA40><!WA40><!WA40><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/icra93-kutulakos.ps">postscript</A>
+     or <!WA41><!WA41><!WA41><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/icra93-kutulakos.ps.gz">50K gzip'ed postscript</A>)<BR>
+     (Longer version appears as Computer Sciences Department
+     <CITE>Technical Report 1111</CITE>
+     (<!WA42><!WA42><!WA42><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/tr1111-kutulakos.ps">postscript</A>
+     or <!WA43><!WA43><!WA43><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/tr1111-kutulakos.ps.gz">90K gzip'ed postscript</A>).)<P>
+<blockquote>
+We present an approach for solving the path planning problem for a mobile
+robot operating in an unknown, three dimensional environment containing
+obstacles of arbitrary shape.  The main contributions of this paper are (1)
+an analysis of the type of sensing information that is necessary and
+sufficient for solving the path planning problem in such environments, and
+(2) the development of a framework for designing a provably-correct
+algorithm to solve this problem.  Working from first principles, without any
+assumptions about the environment of the robot or its sensing capabilities,
+our analysis shows that the ability to explore the obstacle surfaces (i.e.,
+to make all their points visible) is intrinsically linked with the ability
+to plan the motion of the robot.  We argue that current approaches to the
+path planning problem with incomplete information simply do not extend to
+the general three-dimensional case, and that qualitatively different
+algorithms are needed.
+</blockquote>
+
+
+
+</UL>
+<HR>
+<P>
+<H2><A NAME="motion">Motion Analysis</A></H2>
+<UL>
+
+<LI><B><A NAME="iccv95-seitz">
+     Complete Scene Structure from Four Point Correspondences</A></B><BR>
+     S. M. Seitz and C. R. Dyer,
+     <CITE>Proc. 5th Int. Conf. Computer Vision</CITE>,
+     1995, 330-337.
+     (<!WA44><!WA44><!WA44><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/iccv95-seitz.ps">postscript</A>
+     or <!WA45><!WA45><!WA45><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/iccv95-seitz.ps.gz">250K gzip'ed postscript</A>)<P>
+<blockquote>
+A new technique is presented for computing 3D scene structure from point 
+and line features in monocular image sequences.  Unlike previous methods, 
+the technique guarantees the completeness of the recovered scene, ensuring 
+that every scene feature that is detected in each image is reconstructed.
+The approach relies on the presence of four or more reference features 
+whose correspondences are known in all the images.  Under an orthographic 
+or affine camera model, the parallax of the reference features provides 
+constraints that simplify the recovery of the rest of the visible scene.
+An efficient recursive algorithm is described that uses a unified framework 
+for point and line features.  The algorithm integrates the tasks of feature 
+correspondence and structure recovery, ensuring that all reconstructible 
+features are tracked.  In addition, the algorithm is immune to outliers and
+feature-drift, two weaknesses of existing structure-from-motion techniques.
+Experimental results are presented for real images.
+</blockquote>
+
+<LI> <B><A NAME="nram94-seitz">
+     Detecting Irregularities in Cyclic Motion</A></B><BR>
+     S. M. Seitz and C. R. Dyer,
+     <CITE>Proc. Workshop on Motion of Non-Rigid and Articulated Objects</CITE>,
+     1994, 178-185.
+     (<!WA46><!WA46><!WA46><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/nram94-seitz.ps">postscript</A>
+     or <!WA47><!WA47><!WA47><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/nram94-seitz.ps.gz">910K gzip'ed postscript</A>)<P>
+<blockquote>
+Real cyclic motions tend not to be perfectly even, i.e., the period varies 
+slightly from one cycle to the next, because of physically important changes
+in the scene.  A generalization of period is defined for cyclic motions
+that makes periodic variation explicit.  This representation, called the 
+period trace, is compact and purely temporal, describing the evolution 
+of an object or scene without reference to spatial quantities such as 
+position or velocity.  By delimiting cycles and identifying correspondences 
+across cycles, the period trace provides a means of temporally registering 
+a cyclic motion.  In addition, several purely temporal motion features are 
+derived, relating to the nature and location of irregularities.  Results 
+are presented using real image sequences and applications to athletic and 
+medical motion analysis are discussed.
+</blockquote>
+
+
+<LI> <B><A NAME="cvpr94-seitz">
+     Affine Invariant Detection of Periodic Motion</A></B><BR>
+     S. M. Seitz and C. R. Dyer,
+     <CITE>Proc. Computer Vision and Pattern Recognition Conf.</CITE>,
+     1994, 970-975.
+     (<!WA48><!WA48><!WA48><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/cvpr94-seitz.ps">postscript</A>
+     or <!WA49><!WA49><!WA49><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/cvpr94-seitz.ps.gz">1M gzip'ed postscript</A>)<BR>
+     (Different version appears as Computer Sciences Department
+     <CITE>Technical Report 1225</CITE>
+     (<!WA50><!WA50><!WA50><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/tr1225-seitz.ps">postscript</A>
+     or <!WA51><!WA51><!WA51><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/tr1225-seitz.ps">890K gzip'ed postscript</A>).)<P>
+<blockquote>
+Current approaches for detecting periodic motion assume a stationary camera
+and place limits on an object's motion.  These approaches rely on the
+assumption that a periodic motion projects to a set of periodic image
+curves, an assumption that is invalid in general.
+Using affine-invariance,  we
+derive necessary and sufficient conditions for an image sequence to be
+the projection of a periodic motion.  No restrictions are placed on
+either the motion of the camera or the object.
+Our algorithm is shown to be provably-correct for
+noise-free data and is extended to be robust with respect to
+occlusions and noise.  The extended algorithm is evaluated with real and
+synthetic image sequences.
+</blockquote>
+
+
+<LI> <B><A NAME="cvgip93-allmen">
+     Computing Spatiotemporal Relations for Dynamic Perceptual
+     Organization</A></B><BR>
+     M. Allmen and C. R. Dyer,
+     <CITE>Computer Vision, Graphics and Image Processing:  Image
+     Understanding</CITE><B> 58</B>, 1993, 338-351.
+     (<!WA52><!WA52><!WA52><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/cvgip93-allmen.ps">postscript</A>
+     or <!WA53><!WA53><!WA53><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/cvgip93-allmen.ps.gz">200K gzip'ed postscript</A>)<BR>
+     (Earlier version appeared
+     as Computer Sciences Department
+     <CITE>Technical Report 1130</CITE>
+     (<!WA54><!WA54><!WA54><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/tr1130-allmen.ps">postscript</A>
+     or <!WA55><!WA55><!WA55><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/tr1130-allmen.ps.gz">200K gzip'ed postscript</A>).) 
+     <P>
+<blockquote>
+To date, the overwhelming use of motion in computational vision has been
+to recover the three-dimensional structure of the
+scene. We propose that there are other, more powerful, uses for motion.
+Toward this end,
+we define dynamic perceptual organization as an extension
+of the traditional (static) perceptual organization approach.
+Just as
+static perceptual organization groups coherent features in an image,
+dynamic perceptual organization groups coherent motions through an image
+sequence. Using dynamic perceptual organization, we propose a new paradigm
+for motion understanding and show why it can be
+done independently of the recovery of scene structure and scene motion.
+The paradigm starts with a spatiotemporal cube of image data and organizes
+the paths of points so that
+interactions between the paths and perceptual
+motions such as common, relative and cyclic
+are made explicit.
+The results of this can then be used for high-level motion recognition tasks.
+</blockquote>
+
+
+<LI> <B><A NAME="qv93-waldon">
+     Dynamic Shading, Motion Parallax and Qualitative Shape</A></B><BR>
+     S. Waldon and C. R. Dyer, <CITE>Proc. IEEE 
+     Workshop on Qualitative Vision</CITE>, 1993, 61-70.
+     (<!WA56><!WA56><!WA56><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/qv93-waldon.ps">postscript</A>
+     or <!WA57><!WA57><!WA57><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/qv93-waldon.ps.gz">140K gzip'ed postscript</A>)<P>
+<blockquote>
+We address the problem of qualitative shape
+recovery from moving surfaces. Our analysis is unique in that we
+consider specular interreflections and explore the effects of both
+motion parallax and changes in shading. To study this situation we
+define an image flow field called the reflection flow field,
+which describes the motion of reflection points and the motion of the
+surface. From a kinematic analysis, we show that the reflection flow
+is qualitatively different from the motion parallax because it is
+discontinuous at or near parabolic curves. We also show that when the
+gradient of the reflected image is strong, gradient-based flow
+measurement techniques approximate the reflection flow field and not
+the motion parallax. We conclude from these analyses that reliable
+qualitative shape information is generally available only at
+discontinuities in the image flow field.
+</blockquote>
+
+
+<LI> <B><A NAME="thesis-allmen">
+     Image Sequence Description using Spatiotemporal Flow Curves:
+     Toward Motion-Based Recognition</A></B><BR>
+     Ph.D. Dissertation, M. C. Allmen,
+     Computer Sciences Department Technical Report 1040,
+     August 1991.
+     (<!WA58><!WA58><!WA58><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/thesis-allmen.ps">postscript</A>
+     or <!WA59><!WA59><!WA59><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/thesis-allmen.ps.gz">1.1M gzip'ed postscript</A>)<P>
+<blockquote>
+Recovering a hierarchical motion description of a long image sequence is
+one way to recognize objects and their motions.
+Intermediate-level and high-level motion analysis, i.e., recognizing a
+coordinated sequence of events
+such as walking and throwing,
+has been formulated previously as a process that follows high-level object
+recognition. This thesis develops an alternative approach to
+intermediate-level and high-level motion analysis.
+It does not depend on complex object descriptions and can therefore be
+computed prior to object recognition. Toward this end,
+a new computational framework for low and intermediate-level processing of
+long sequences of images is
+presented.
+<P>
+ 
+Our new computational framework
+uses spatiotemporal (ST) surface flow and ST flow curves.
+As contours move, their projections
+into the image also move. Over time, these projections sweep out
+ST surfaces. Thus, these
+surfaces are direct representations of object motion.
+ST surface flow is defined as the natural extension
+of optical flow to
+ST surfaces. For every point on an ST surface, the instantaneous
+velocity of that point on the surface is recovered.
+It is observed that arc length of a rigid contour does not change if
+that contour is moved in the direction of motion on the ST surface. Motivated
+by this observation, a function measuring arc length change is defined.
+The direction of motion of a contour undergoing
+motion parallel to the image plane is shown to be perpendicular to the
+gradient of this function.
+<P>
+ 
+ST surface flow is then used to recover ST flow curves. ST flow curves
+are defined such that the tangent at a point on the curve equals the ST
+surface flow at that point. ST flow curves are then grouped so that each
+cluster represents a temporally-coherent structure, i.e.,
+structures that result
+from an object or surface in the scene undergoing motion. Using these clusters
+of ST flow curves, separate moving objects in the scene can be hypothesized
+and occlusion and disocclusion between them can be identified.
+<P>
+ 
+The problem of detecting cyclic motion, while recognized by the psychology
+community, has received very little attention in the computer vision
+community. In order to show the representational
+power of ST flow curves, cyclic motion is detected using ST flow curves
+without prior recovery of complex object descriptions.
+</blockquote>
+
+
+</UL>
+<HR>
+<P>
+<H2><A NAME="shape">3D Shape Representation</A></H2>
+<UL>
+
+<LI><!WA60><!WA60><!WA60><img alg="o" src="http://www.cs.wisc.edu/~dyer/images/new.gif"> 
+     <B><A NAME="sigg96-seitz"> View Morphing</A></B><BR>
+     S. M. Seitz and C. R. Dyer, <CITE>Proc. SIGGRAPH 96</CITE>, 1996, To
+     appear. 
+(<!WA61><!WA61><!WA61><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/sigg96-seitz.ps">
+4.2M postscript</A>
+or <!WA62><!WA62><!WA62><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/sigg96-seitz.ps.gz">
+1.6M gzip'ed postscript</A>)<P>
+<blockquote>
+Image morphing techniques can generate compelling 2D transitions between
+images.  However, differences in object pose or viewpoint often cause
+unnatural distortions in image morphs that are difficult to correct
+manually.  Using basic principles of projective
+geometry, this paper introduces a simple extension to image morphing
+that correctly handles 3D projective camera and scene transformations.
+The technique, called <I> view morphing</I>, works by prewarping two images
+prior to computing a morph and then postwarping the interpolated images.
+Because no knowledge of 3D shape is required, the technique may be applied
+to photographs and drawings, as well as rendered scenes.
+The ability to synthesize changes both in viewpoint and image structure
+affords a wide variety of interesting 3D effects via simple image
+transformations.
+</blockquote>
+
+<LI><!WA63><!WA63><!WA63><img alg="o" src="http://www.cs.wisc.edu/~dyer/images/new.gif"> 
+     <B><A NAME="icpr96-seitz"> Toward Image-Based Scene Representation
+	  Using View Morphing</A></B><BR>
+     S. M. Seitz and C. R. Dyer, <CITE>Proc. 13th Int. Conf. Pattern
+	  Recognition, Vol. I, Track A: Computer Vision</CITE>, 1996, 84-89.
+(<!WA64><!WA64><!WA64><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/icpr96-seitz.ps">
+1.2M postscript</A>
+or <!WA65><!WA65><!WA65><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/icpr96-seitz.ps.gz">
+486K gzip'ed postscript</A>)
+     (Longer version appears as Computer Sciences Department
+     <CITE>Technical Report 1298</CITE>
+     (<!WA66><!WA66><!WA66><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/tr1298-seitz.ps">postscript</A>
+     or <!WA67><!WA67><!WA67><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/tr1298-seitz.ps">552K gzip'ed postscript</A>).)<P>
+<blockquote>
+The question of which views may be inferred from a set of basis images
+is addressed.  Under certain conditions, a discrete set of images
+implicitly describes scene appearance for a continuous range of viewpoints.
+In particular, it is demonstrated that two basis views of a static scene
+determine the set of all views on the line between their optical centers.
+Additional basis views further extend the range of predictable views to a
+two- or three-dimensional region of viewspace.  These results are shown to
+apply under perspective projection subject to a generic visibility
+constraint called monotonicity.  In addition, a simple scanline algorithm is
+presented for actually generating these views from a set of basis images.
+The technique, called <I> view morphing</I> may be applied to both calibrated
+and uncalibrated images.  At a minimum, two basis views and their
+fundamental matrix are needed.  Experimental results are presented on
+real images.  This work provides a theoretical foundation for image-based
+representations of 3D scenes by demonstrating that perspective view
+synthesis is a theoretically well-posed problem.
+</blockquote>
+
+<LI> <B><A NAME="rvs95-seitz">
+     Physically-Valid View Synthesis by Image Interpolation</A></B><BR>
+     S. M. Seitz and C. R. Dyer, <CITE>Proc. Workshop on Representation
+     of Visual Scenes</CITE>, 1995, 18-25.
+     (<!WA68><!WA68><!WA68><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/rvs95-seitz.ps">postscript</A>
+     or <!WA69><!WA69><!WA69><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/rvs95-seitz.ps.gz">500K gzip'ed postscript</A>)<P>
+<blockquote>
+Image warping is a popular tool for
+smoothly transforming one image to another.  ``Morphing''
+techniques based on geometric image interpolation create compelling visual
+effects, but the validity of such transformations has not been established.
+In particular, does 2D interpolation of two
+views of the same scene produce a sequence of physically valid in-between
+views of that scene?  In this paper, we describe a simple image rectification
+procedure which guarantees that interpolation does in fact produce valid views,
+under generic assumptions about visibility and the projection process.
+Towards this end, it is first shown that two basis views are sufficient to
+predict the appearance of the scene within a specific range of new viewpoints.
+Second, it is demonstrated that interpolation of the rectified basis images
+produces exactly this range of views.
+Finally, it is shown that generating this range of views is a theoretically
+well-posed problem, requiring neither knowledge of camera positions nor
+3D scene reconstruction.
+A scanline algorithm for view interpolation is presented that requires only
+four user-provided feature correspondences to produce valid orthographic
+views.  The quality of the resulting images is demonstrated with
+interpolations of real imagery.
+</blockquote>
+
+
+<LI> <B><A NAME="pami93-eggert">
+     The Scale Space Aspect Graph</A></B><BR>
+     D. W. Eggert, K. W. Bowyer, C. R. Dyer, H. I. Christensen
+     and D. B. Goldgof, <CITE>IEEE Trans. Pattern Analysis and
+     Machine Intelligence</CITE><B> 15</B>, 1993, 1114-1130.
+     (<!WA70><!WA70><!WA70><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/pami93-eggert.ps">postscript</A>
+     or <!WA71><!WA71><!WA71><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/pami93-eggert.ps.gz">280K gzip'ed postscript</A>)<BR>
+     (An earlier
+     version of this paper appeared in
+     <CITE>Proc. Computer Vision and Pattern Recognition Conf.</CITE>,
+     1992, 335-340
+     (<!WA72><!WA72><!WA72><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/cvpr92-eggert.ps">postscript</A>
+     or <!WA73><!WA73><!WA73><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/cvpr92-eggert.ps.gz">250K gzip'ed postscript</A>).)
+     <P> 
+<blockquote>
+Currently the aspect graph is computed from the theoretical standpoint 
+of perfect resolution in object shape, the viewpoint and the projected image.
+This means that the aspect graph may include details that an observer could 
+never see in practice. Introducing the notion of scale into the aspect graph 
+framework provides a mechanism for selecting a level of detail that is 
+"large enough" to merit explicit representation. This effectively allows 
+control over the number of nodes retained in the aspect graph. This paper 
+introduces the concept of the scale space aspect graph, defines three 
+different interpretations of the scale dimension, and presents a detailed 
+example for a simple class of objects, with scale defined in terms of the 
+spatial extent of features in the image.
+</blockquote>
+
+
+<LI> <B><A NAME="cvgip92-seales">
+     Viewpoint from Occluding Contour</A></B><BR>
+     W. B. Seales and C. R. Dyer, 
+     <CITE>Computer Vision, Graphics and Image Processing:  Image
+     Understanding</CITE><B> 55</B>, 1992, 198-211.
+     (<!WA74><!WA74><!WA74><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/cvgip92-seales.ps">postscript</A>
+     or <!WA75><!WA75><!WA75><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/cvgip92-seales.ps.gz">290K gzip'ed postscript</A>)<P>
+<blockquote>
+In this paper we present the geometry and the algorithms for organizing a
+viewer-centered representation of the occluding contour of polyhedra.
+The contour is computed from a polyhedral boundary model as it would appear
+under orthographic projection into the image plane from every viewpoint
+on the view sphere.
+Using this representation, we show how to derive constraints on regions in
+viewpoint space from the relationship between detected image features and
+our precomputed contour model.
+Such constraints are based on both qualitative (viewpoint extent) and
+quantitative (angle measurements and relative geometry) information that has
+been precomputed about how the contour appears in the image plane as a set
+of projected curves and T-junctions from self-occlusion.
+The results we show from an experimental system demonstrate that features
+of the occluding contour can be computed in a model-based framework, and
+and their geometry constrains the viewpoints from which a model will project
+to a set of occluding contour features in an image.
+</blockquote>
+
+
+<LI> <B><A NAME="ecai92-seales">
+     An Occlusion-Based Representation of Shape for 
+     Viewpoint Recovery</A></B><BR>
+     W. B. Seales and C. R. Dyer, 
+     <CITE>Proc. 10th European Conf. on Artificial Intelligence</CITE>,
+     1992, 816-820.
+     (<!WA76><!WA76><!WA76><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/ecai92-seales.ps">postscript</A>
+     or <!WA77><!WA77><!WA77><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/ecai92-seales.ps.gz">80K gzip'ed postscript</A>)<P>
+<blockquote>
+In this paper we present the geometry and the algorithms for organizing and
+using a viewer-centered representation of the occluding contour of polyhedra.
+The representation is computed from a polyhedral model
+under orthographic projection for all viewing directions.
+Using this representation, we derive constraints on
+viewpoint correspondences between image features and
+model contours.
+Our results show that the occluding contour, computed
+in a model-based framework, can be used to strongly constrain the viewpoints
+where a 3D model matches the occluding contour features of the image.
+</blockquote>
+
+
+<LI> <B><A NAME="thesis-seales">
+     Appearance Models of Three-Dimensional 
+     Shape for Machine Vision and Graphics</A></B><BR>
+     Ph.D. Dissertation, W. B. Seales,
+     Computer Sciences Department Technical Report 1042,
+     August 1991.
+     (<!WA78><!WA78><!WA78><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/thesis-seales.ps">postscript</A>
+     or <!WA79><!WA79><!WA79><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/thesis-seales.ps.gz">460K gzip'ed postscript</A>)<P>
+<blockquote>
+A fundamental problem common to both computer graphics and model-based
+computer vision is how to efficiently model the appearance of a shape.
+Appearance is obtained procedurally by applying a projective transformation
+to a three-dimensional object-centered shape representation.
+This thesis presents a viewer-centered representation that is based on the
+visual event, a viewpoint where a specific change in the structure of the
+projected model occurs.
+We present and analyze the basis of this viewer-centered representation
+and the algorithms for its construction.
+Variations of this visual-event-based representation are applied to two
+specific problems:  hidden line/surface display, and the solution for model
+pose given an image contour.
+<P>
+
+The problem of how to efficiently display a polyhedral scene over a path
+of viewpoints is cast as a problem of computing visual events along that path.
+A visual event is a viewpoint that causes a change in the structure of
+the image structure graph, a model's projected line drawing.
+The information stored with a visual event is sufficient to update
+a representation of the image structure graph.
+Thus the visible lines of a scene can be displayed as viewpoint changes
+by first precomputing and storing visual events, and then using those events
+at display time to interactively update the image structure graph.
+Display rates comparable to wire-frame display are achieved for large
+polyhedral models.
+<P>
+
+The rim appearance representation is a new, viewer-centered, exact
+representation of the occluding contour of polyhedra.
+We present an algorithm based on the geometry of polyhedral self-occlusion
+and on visual events for computing a representation of the exact appearance
+of occluding contour edges.
+The rim appearance representation, organized as a multi-level model of the
+occluding contour, is used to constrain the viewpoints of
+a three-dimensional model that can produce a set of detected
+occluding-contour features.
+Implementation results demonstrate that precomputed occluding-contour
+information efficiently and tightly constrains the pose of a model while
+consistently accounting for detected occluding-contour features.
+</blockquote>
+
+
+</UL>
+<HR>
+<P>
+<H2><A NAME="snakes">Deformable Contours</A></H2>
+<UL>
+
+<LI><B><A NAME="pami94-lai">
+     Deformable Contours: Modeling and Extraction</A></B><BR>
+     K. F. Lai and R. T. Chin,
+     <CITE>IEEE Trans. Pattern Analysis and Machine Intell.</CITE> <B>17</B>,
+     1995, 1084-1090.  
+     (<!WA80><!WA80><!WA80><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/pami94-lai.ps">postscript</A>
+     or <!WA81><!WA81><!WA81><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/pami94-lai.ps.gz">350K gzip'ed postscript</A>)<BR>
+     (An earlier version appeared in
+     <CITE>Proc. Computer Vision and Pattern Recognition Conf.</CITE>,
+     1994, 601-608
+     (<!WA82><!WA82><!WA82><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/cvpr94-lai.ps">postscript</A>
+     or <!WA83><!WA83><!WA83><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/cvpr94-lai.ps.gz">220K gzip'ed postscript</A>).)
+<P>
+<blockquote>
+This paper considers the problem of modeling and extracting arbitrary deformable 
+contours from noisy images. We propose a global contour model based on a stable 
+and regenerative shape matrix, which is invariant and unique under rigid 
+motions. Combined with Markov random field to model local deformations, this 
+yields prior distribution that exerts influence over a global model while 
+allowing for deformations. We then cast the problem of extraction into posterior 
+estimation and show its equivalence to energy minimization of a generalized 
+active contour model. We discuss pertinent issues in shape training, energy 
+minimization, line search strategies, minimax regularization and initialization 
+by generalized Hough transform. Finally, we present experimental results and 
+compare its performance to rigid template matching.
+</blockquote>
+
+
+<LI> <B><A NAME="icarcv94-lai">
+     On Classifying Deformable Contours Using the Generalized
+     Active Contour Model</A></B><BR>
+     K. F. Lai and R. T. Chin,
+     <CITE>Proc. Int. Conf. Automation, Robotics and Computer Vision</CITE>,  
+     Singapore, 1994.  
+     (<!WA84><!WA84><!WA84><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/icarcv94-lai.ps">postscript</A>
+     or <!WA85><!WA85><!WA85><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/icarcv94-lai.ps.gz">150K gzip'ed postscript</A>)<P>
+<blockquote>
+Recently, we proposed the generalized active contour model (g-snake) to model 
+and extract deformable contours from noisy images. This paper demonstrates the 
+usefulness of g-snake in classifying among several candidate deformable 
+contours. The g-snake is suitable for this task because its shape 
+representation is unique, affine invariant and possesses
+metric properties. We derive the 
+optimal classification test and show that this requires marginalization of the 
+distribution. However, as the summation is peaked around the posterior estimate 
+in most practical applications, only small regions need to be considered.  
+Finally, we performed extensive experimentations and report significant 
+improvement over matched template in handwritten numeral recognition.
+</blockquote>
+
+
+<LI> <B><A NAME="thesis-lai">
+     Deformable Contours: Modeling, Extraction,
+     Detection and Classification</A></B><BR>
+     Ph.D. Dissertation, K. F. Lai,
+     Electrical and Computer Engineering Department,
+     August 1994.
+     (<!WA86><!WA86><!WA86><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/thesis-lai.ps">postscript</A>
+     or <!WA87><!WA87><!WA87><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/thesis-lai.ps.gz">820K gzip'ed postscript</A>)<P>
+<blockquote>
+This thesis presents an integrated approach in modeling, extracting, detecting 
+and classifying deformable contours directly from noisy images. We begin by 
+conducting a case study on regularization, formulation and initialization of
+the active contour models (snakes). Using minimax principle, we derive a 
+regularization criterion whereby the values can be automatically and implicitly 
+determined along the contour. Furthermore, we formulate a set of energy 
+functionals which yield snakes that contain Hough transform as a special case. 
+Subsequently, we consider the problem of modeling and extracting arbitrary 
+deformable contours from noisy images. We combine a stable, invariant and
+unique contour model with Markov random field to yield prior
+distribution that exerts 
+influence over an arbitrary global model while allowing for deformation. Under 
+the Bayesian framework, contour extraction turns into posterior estimation, 
+which is in turn equivalent to energy minimization in a generalized active 
+contour model. Finally, we integrate these lower level visual tasks with
+pattern recognition processes of detection and classification. Based on the 
+Nearman-Pearson lemma, we derive the optimal detection and classification
+tests.  As the summation is peaked in most practical applications,
+only small regions 
+need to be considered in marginalizing the distribution. The validity of our 
+formulation have been confirmed by extensive and rigorous experimentations.
+</blockquote>
+
+
+<LI> <B><A NAME="accv93-lai">
+     On Regularization, Formulation and Initialization of
+     Active Contour Models (Snakes)</A></B><BR>
+     K. F. Lai and R. T. Chin,
+     <CITE>Proc. 1st Asian Conf. on Computer Vision</CITE>,  
+     1993, 542-545.  
+     (<!WA88><!WA88><!WA88><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/accv93-lai.ps">postscript</A>
+     or <!WA89><!WA89><!WA89><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/accv93-lai.ps.gz">150K gzip'ed postscript</A>)<P>
+<blockquote>
+In snake formulation, large regularization enhances the robustness against noise 
+and incomplete data, while small values increase the accuracy in capturing 
+boundary variations. We present a local minimax criterion which automatically 
+determines the optimal regularization at every locations along the boundary with 
+no added computation cost. We also modify existing energy formulations to repair 
+deficiencies in internal energy and improve performance in external energy. This 
+yields snakes that contain Hough transform as a special case. We can therefore 
+initialize the snake efficiently and reliably using Hough transform.
+</blockquote>
+</UL>
+<HR>
+
+
+<P>
+<H2><A NAME="visualization">Visualization</A></H2>
+<UL>
+
+<LI><B><A NAME="thesis-hibbard">
+     Visualizing Scientific Computations: A System based on
+     Lattice-Structured Data and Display Models</A></B><BR>
+     W. L. Hibbard, Ph.D. Dissertation,
+     Computer Sciences Department Technical Report 1226,
+     University of Wisconsin-Madison, 1995.
+     (<!WA90><!WA90><!WA90><A HREF="ftp://iris.ssec.wisc.edu/pub/lattice">600K compress'ed postscript</A>)<P>
+<blockquote>
+In this thesis we develop a system that makes scientific
+computations visible and enables physical scientists to perform visual
+experiments with their computations.  Our approach is unique in the way
+it integrates visualization with a scientific programming language.  Data
+objects of any user-defined data type can be displayed, and can be
+displayed in any way that satisfies broad analytic conditions, without
+requiring graphics expertise from the user.  Furthermore, the system is
+highly interactive.
+<P>
+In order to achieve generality in our architecture, we first analyze
+the nature of scientific data and displays, and the visualization mappings
+between them.  Scientific data and displays are usually approximations to
+mathematical objects (i.e., variables, vectors and functions) and this
+provides a natural way to define a mathematical lattice structure on data
+models and display models.  Lattice-structured models provide a basis for
+integrating certain forms of scientific metadata into the computational and
+display semantics of data, and also provide a rigorous interpretation of
+certain expressiveness conditions on the visualization mapping from data
+to displays.  Visualization mappings satisfying these expressiveness
+conditions are lattice isomorphisms.  Applied to the data types of a
+scientific programming language, this implies that visualization mappings
+from data aggregates to display aggregates can always be decomposed
+into mappings of data primitives to display primitives.
+<P>
+These results provide very flexible data and display models, and
+provide the basis for flexible and easy-to-use visualization of data objects
+occurring in scientific computations.
+</blockquote>
+
+
+<LI> <B><A NAME="computer94-hibbard">
+     Interactive Visualization of Earth and Space Science Computations</A></B><BR>
+     W. L. Hibbard, B. E. Paul, A. L. Battaiola, D. A. Santek,
+     M-F. Voidrot-Martinez, and C. R. Dyer,
+     <CITE>Computer</CITE><B> 27</B>, No. 7, July 1994, 65-72.
+     (<!WA91><!WA91><!WA91><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/computer94-hibbard.ps">postscript</A>
+     or <!WA92><!WA92><!WA92><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/computer94-hibbard.ps.gz">20K gzip'ed postscript</A>)<P>
+<blockquote>
+We describe techniques that enable Earth and space scientists
+to interactively visualize and experiment with their computations.
+Numerical simulations of the Earth's atmosphere and oceans generate
+large and complex data sets, which we visualize in a highly interactive
+virtual Earth environment.  We use data compression and distributed
+computing to maximize the size of simulations that can be explored,
+and a user interface tuned to the needs of environmental modelers.
+For the broader class of computations used by scientists we have
+developed more general techniques, integrating visualization with an
+environment for developing and executing algorithms.  The key is
+providing a flexible data model that lets users define data types
+appropriate for their algorithms, and also providing a display model
+that lets users visualize those data types without placing a substantial
+burden of graphics knowledge on them.
+</blockquote>
+
+
+<LI> <B><A NAME="vis94-hibbard">
+     A Lattice Model for Data Display</A></B><BR>
+     W. L. Hibbard, C. R. Dyer, and B. E. Paul,
+     <CITE>Proc. Visualization '94</CITE>, 1994, 310-317.
+     (<!WA93><!WA93><!WA93><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/vis94-hibbard.ps">postscript</A>
+     or <!WA94><!WA94><!WA94><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/vis94-hibbard.ps.gz">60K gzip'ed postscript</A>)<P>
+<blockquote>
+In order to develop a foundation for visualization, we develop
+lattice models for data objects and displays that focus on the fact that
+data objects are approximations to mathematical objects and real
+displays are approximations to ideal displays.  These lattice models
+give us a way to quantize the information content of data and displays
+and to define conditions on the visualization mappings from data to
+displays.  Mappings satisfy these conditions if and only if they are
+lattice isomorphisms.  We show how to apply this result to scientific
+data and display models, and discuss how it might be applied to
+recursively defined data types appropriate for complex information
+processing.
+</blockquote>
+
+
+<LI> <B><A NAME="vis92-hibbard">
+     Display of Scientific Data Structures for Algorithm Visualization</A></B><BR>
+     W. Hibbard, C. R. Dyer, and B. Paul,
+     <CITE>Proc. Visualization '92</CITE>, 1992, 139-146.
+     (<!WA95><!WA95><!WA95><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/vis92-hibbard.ps">postscript</A>
+     or <!WA96><!WA96><!WA96><A HREF="ftp://ftp.cs.wisc.edu/computer-vision/vis92-hibbard.ps.gz">60K gzip'ed postscript</A>)<P>
+<blockquote>
+We present a technique for defining graphical depictions for all
+the data types defined in an algorithm.  The ability to display arbitrary
+combinations of an algorithm's data objects in a common frame of
+reference, coupled with interactive control of algorithm execution,
+provides a powerful way to understand algorithm behavior.  Type
+definitions are constrained so that all primitive values occurring in data
+objects are assigned scalar types.  A graphical display, including user
+interaction with the display, is modeled by a special data type.
+Mappings from the scalar types into the display model type provide a
+simple user interface for controlling how all data types are depicted,
+without the need for type-specific graphics logic.
+</blockquote>
+
+</UL>
+
+
+</BODY>
+</HTML>

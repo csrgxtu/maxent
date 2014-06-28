@@ -1,0 +1,338 @@
+Date: Mon, 11 Nov 1996 17:32:33 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Tue, 30 Jan 1996 23:07:28 GMT
+Content-length: 13558
+
+<html>
+<head>
+<title> CS 736 Project Suggestions (Spring 96)</title>
+</head>
+
+<BODY>
+<h1> CS 736 Project Suggestions (Spring 96)</h1>
+
+Here are a list of suggested topics for your project.  You are also welcome
+to come up with your own project.  As you can see, most of the projects listed
+here are open-ended research questions, and we will definitely discover
+some interesting stuff at the end of the projects --- I will be just as excited
+about them as you will be!
+<p>
+
+For most of the projects, you need to read some additional papers.  I will
+list the papers here if I have online copies, otherwise I will give out the
+references and you can either find them in library or ask me for copies.
+
+<h2>File Systems: Cache Management</h2>
+<p>
+
+As the disk performance continues to lag behind microprocessor performance,
+file system is increasingly becoming a performance bottleneck in many
+systems.  The file system performance is often determined by how effectively
+the file cache is used.  Unfortunately, most operating systems today
+still use the LRU (or its approximation, two-hand clock) caching strategy to
+decide which file data are kept in cache and which are not.  LRU algorithm, 
+unfortunately, do not always perform well due to the following problems:<br>
+. flushing: a one-time scan on a large file can wipe out the entire 
+	content of the file cache, if the file is larger than the cache;<br>
+. loops: sometimes a group of files are always accessed in the same order;
+	if the files are bigger than the cache, LRU would not perform well;<br>
+<p>
+
+Research on this topic consists of three projects:
+<ol>
+<li> 
+<b>Trace-Driven Simulation Study</b><br>
+
+Write a trace-driven simulator, which takes the SPRITE file system traces 
+and the DEC SRC Epoch file system traces as input, and study the hit 
+ratio of the file cache under different replacement policies:<br>
+. LRU replacement: baseline algorithm;<br>
+. LBN replacement: for each file, replace the block with the
+	largest logical block number first; <br>
+. sequence detection: in the trace, detect the situations when
+	file A is almost always read immediately before file
+	B, in which case file B's blocks should be replaced
+	before file A's blocks;<br>
+. LRU-2 replacement: in deciding about replacement blocks, consider
+	the times of the last two references to the file, instead of
+	just the last reference (like is done in LRU);
+	this is an algorithm suggested by database researchers, but
+	it might have good application in file cache management as well.<br>
+or any other policy you might discover along the way.
+<p>
+
+Papers you might want to read for this project:
+<pre>
+1) ftp ftp.cs.princeton.edu; cd reports/1994; get 445.ps.Z
+
+2) @inproceedings{dewitt:buffer-policy-evaluation,
+        author = "Hong-Tai Chou and David J. DeWitt",
+        title = "An Evaluation of Buffer Management Strategies for Relational Da
+tabase Systems",
+        booktitle = "Proceedings of the Eleventh International Conference on Ver
+y Large Databases",
+        year = 1985,
+        month = Aug,
+        pages = "127--141"
+}
+
+3) @inproceedings{db:lru-k,
+        author = "Elizabeth J. O'Neil and Patrick E. O'Neil and Gerhard Weikum",
+        title = "The {LRU-K} Page Replacement Algorithm For Database Disk Buffer
+ing",
+        booktitle = SIGMOD93,
+        year = 1993,
+        month = May,
+        pages = "297--306"
+        }
+</pre>
+<p>
+
+
+<li> 
+<b>File System Trace Replay</b><br>
+
+If we have a good file caching algorithm, how could we prove that it 
+performs better than existing ones?  Sometimes we can use benchmark
+programs, but they are often too small to capture the long term effects in
+file caching.  Traces, on the other hand, seems only good for simulations, 
+unless we can replay it on a real system.
+
+The project investigates how to emulate trace events as actual 
+file I/Os on a system, and how to simulate different caching policies for
+these traces by writing a special device driver that implements its own
+buffer cache.  The result would be a comparison of the different buffer 
+caching policies in terms of elapsed time on real systems (instead of 
+file cache hit ratios).<p>
+
+Papers you might want to read for this project:
+<pre>
+1) http://www.eecs.harvard.edu/~keith/papers/realloc.ps.gz
+</pre>
+
+<li> <b>Better File Caching in Solaris</b><br>
+
+While the above two projects are above kernel level, this one digs down and
+tries to find out what needs to be done to change Solaris' file caching
+policy.  In fact, you may need to change the VM paging algorithm as well.
+Pick any of the policies listed above (or policies that you come up with), and 
+implement them in the Solaris kernel.  Then we measure their performance by 
+using some benchmark programs.
+<p>
+
+Papers you might want to read for this project:
+<pre>
+1) ftp ftp.cs.princeton.edu; cd pub/people/pc/OSDI94; get paper.ps.Z
+</pre>
+
+</ol>
+
+<h2>Virtual Memory: Page Replacement Algorithms </h2>
+
+For the past few years, DRAM price has not dropped much.  As a result, DRAM is
+still fairly expensive, and people spend half of the cost of a computer on 
+its memory.  On the other hand, operating systems have not managed the memory
+very well.  Although most operating systems provide virtual memory, many
+applications cannot run on machines with relatively small memory 
+because the paging performance is too poor. 
+
+Research on this topic tries to find out why the demand-paging performance is
+poor for many large-memory applications, and what techinques can be applied to
+improve the situation.  There are three projects.
+<ol>
+<li>
+<b>Memory Intensive Applications</b><br>
+
+Instrument the Solaris kernel to collect information related to
+VM system: page fault information (pid, memory address, time, etc.), cost of
+page faults (how long the disk operation take), cleaning of dirty pages
+(how often it is done, cost of the disk writes), and other information.
+Then, collect a set of applications that you think is important and usually
+require too much memory to run on your workstation, run them anyway and
+collect their paging information.
+<p>
+From these traces, figure out exactly what were the cause of paging or 
+thrashing.  Is there simply not enough memory? (definition of "not enough":
+if the memory is less than 10% of the working set of the application.)  
+Does the VM system's prefetching policy hurt, rather than help, the 
+performance?  what about the writeback policy?
+Is two-hand clock policy a particularly bad page replacement policy for this 
+application? (You might want to feed the page fault traces to a cache
+simulator for this purpose.) 
+
+<p>
+
+<li>
+<b>Multi-User Workload</b><br>
+
+Similar to the above study, but use multi-user workload instead of a single
+application.  SPEC95 server benchmarks, or desktop bench, are examples
+of multi-user workload.  Again, if the VM system performs poorly, find
+out why, and what we can do to improve the situation.  In particular,
+pay attention to the interaction of virtual memory system and file buffer
+management when they compete for memory resource.  Would it have been better
+if Solaris used a fixed partition of memory among the VM and file cache?
+Also, see the messages from the project leader of Solaris VM system.
+<p>
+
+<li>
+<b>Memory Intensive Applications</b><br>
+
+Finally, if you are really into kernel hacking, here is another oppurtunity.
+Messages from the project leader of Solaris VM at SUN:<p>
+
+"a) madvise usage:
+        Solaris implements the madvise system calls but not many applications
+use them. Project is to take utilities (tar, ar, ld, grep etc) and modify them
+to use madvise and see if they have performance differences.<br>
+        Project can also see if the implementation of madvise (in seg_vn.c) 
+can be improved or new madvise calls are needed.
+...
+<p>
+
+g) Paging algorithm:
+        Solaris uses the global clock algorithm. Is there a better one?
+        Are the thresholds used for paging better tuned?
+        What is the interaction between swapping and paging? Are the thresholds
+at which each kicks in appropriate? Is there a better implemenation?
+<p>
+
+h) Page coloring for various CPU cache types:
+        There are 4 types of CPU caches (PIPT, VIPT, PIVT, VIVT). And with
+two levels of caches there can be even more combinations. In our physical
+freelist page management we try to do page coloring in various ways to 
+improve cache utilizations as well as reduce cache flushes. Pick various
+processors/machines and see if there are better page coloring algorithms.
+"
+<p>
+
+While the above two projects try to study these questions from trace analysis,
+in this project you will actually change the kernel and experiment with all 
+these issues.  
+
+</ol>
+
+Papers you might want to read for these projects:
+
+<pre>
+@inproceedings{anderson:oopsla,
+        author = "Keith Krueger and David Loftesness and Amin Vahdat and Tom And
+erson",
+        title = "Tools for the Development of Application-Specific Virtual Memor
+y Management",
+        booktitle = OOPSLA93,
+        year = 1993,
+        month = Oct,
+        pages = "48--64"
+        }
+
+@inproceedings{harty:appcontrol,
+        author = "Kieran Harty and David R. Cheriton",
+        title = "Application-Controlled Physical Memory using External
+Page-Cache Management",
+        booktitle = "The Fifth International Conference on Architectural
+Support for Programming Languages and Operating Systems",
+        year = 1992,
+        month = Oct,
+        pages = "187--197"
+        }
+</pre>
+
+<h2>WWW Regional Cache Management</h2>
+
+As the Web grows and expands, the traffic on network backbones are quickly 
+approaching the capacity limit of the network.  One attractive 
+method for reducing network traffic is through regional caching, i.e. 
+a department-wise or campus-wisc shared information resource.
+<p>
+
+The project seeks to build such a regional information cache.  We need a
+cache management layer, which keep track of all documents cached on member
+machines.  Then we need to modify the client browser to intercept URL
+requests, and make the request go through the cache management layer first.
+The cache management layer can return the document or request it from another
+workstation if it knows that the document is cached in its region.
+Otherwise, the request is forward to the real server.
+<p>
+
+The cache actually does not sit on one machine; rather, it is the collection
+of cached documents on member machines in the region.  The cache management
+maintains a directory of documents cached in this region, and authenticates
+the cached copy of the document by keeping its fingerprints.  In addition, the
+cache manager needs to coordinate with servers to maintain the consistency of
+cached documents (i.e. keeping them up to date).
+Investigate, through implementation, the tradeoff of various cache
+management policies and consistency protocols.
+<p>
+
+Papers you might want to read for these projects:
+<pre>
+http://excalibur.usc.edu
+http://www.das.harvard.edu/users/faculty/Margo_Seltzer/papers/hotos.95.ps.gz
+http://www.eecs.harvard.edu/~vino/web/usenix.196/
+</pre>
+
+<h2>Databases on COW</h2>
+
+Can clusters of workstations (or clusters of SMP) support database systems
+effectively and in a scalable fashion?  This project is a small step in
+investigating this big question.  The goal is to take the in-house database
+storage manager, shore, and port it onto the 4-node COW cluster.  The project
+involves making shore a true SMP program, and then applying the fine-grained 
+software DSM technique to its binary and running it on a 4-node COW cluster.  
+<p>
+
+<h2>Kernel Documentation, Debugging and Binary Instrumentation</h2>
+
+Again, there are a few projects in this area.
+
+<ol>
+<li>
+<b> Kernel Documentation</b>
+
+Again, messages from Solaris VM project leader:<p>
+
+"e) Documentation:
+        For some folks, it might be a good project to just look at the code and
+document how it works. For example, the VM system, the hat layer, the scheduler,the I/O system or even portions of it. This is not easy.<br>
+h) Fork:
+        Fork is typically a very heavy-weight operation. Why? Can this be speeded up?
+"
+<p>
+<li>
+<b> Kernel Reliability</b><br>
+
+"b) Kernel reliability:...<br>
+        Another project would be to look for panics in the system and see if
+they can be handled gracefully. Note that many panics are there because they
+are an invariant of the system (i.e. an ASSERT). We are more interested in
+those that are truly errors that we should handle.<br>
+        One of the interesting one is kmem_alloc(NOSLEEP). The caller is 
+supposed to be able to handle a return of NULL if there is no free memory
+in the system. In many cases the caller just panics. A good test would be to
+have kmem_alloc return random failures on kmem_alloc(NOSLEEP) and see if the
+system still works or how it can be fixed.<br>
+        How do the file systems behave if some random disk error occurs?<br>
+"
+<p>
+
+<li>
+<b> Binary Instrumentation</b><br>
+
+Investigate whether binary rewriting techniques (e.g. EEL) can be applied
+successfully on kernel.  There are probably a number of routines that shouldn't
+be instrumented by EEL --- find them out (usually, by instrumenting them and
+then crashing the machine...).
+<p>
+</ol>
+
+<h2>Parallel I/O Systems and Applications</h2>
+
+How would one build a parallel I/O system?  Partly, that depends on application
+needs.  Collect parallel applications that require large data sets, and 
+charaterize their I/O demands.  Port the applications to message-passing
+architecture, and observe their performance with a parallel file system
+prototype.
+
+</body>

@@ -1,0 +1,267 @@
+Server: Netscape-Commerce/1.12
+Date: Wednesday, 20-Nov-96 22:46:05 GMT
+Last-modified: Thursday, 09-May-96 20:27:58 GMT
+Content-length: 7977
+Content-type: text/html
+
+<html>
+<head>
+<title>Princeton CS 333 Advanced Programming Techniques, Spring '96</title>
+</head>
+
+<body>
+<h2>
+<!WA0><a href="http://www.princeton.edu/">Princeton</a> <!WA1><a href="http://www.cs.princeton.edu/">CS</a> 333 Advanced Programming Techniques, Spring '96
+</h2>
+
+<ul>
+<li> <!WA2><a href="#location">Location</a>
+<li> <!WA3><a href="#description">Description</a>
+<li> <!WA4><a href="#people">People</a>
+<li> <!WA5><a href="#texts">Texts</a>
+<li> <!WA6><a href="#syllabus">Syllabus</a>
+<li> <!WA7><a href="#notes">Lecture Notes and Programs</a>
+<li> <!WA8><a href="#assignments">Programming Assignments</a>
+<li> <!WA9><a href="#project">Programming Project</a>
+<li> <!WA10><a href="#resources">Resources</a>
+<li> <!WA11><a href="#guests">Guest Lecturers</a>
+</ul>
+
+Direct general questions to 
+<!WA12><A HREF="mailto:cs333@phoenix.Princeton.edu">cs333@phoenix.Princeton.edu</A>
+
+<hr>
+<a name="location">
+<h2>Location</h2>
+
+Computer Science Building, Room 105, MW 1:30-2:50
+
+<hr>
+<a name="description">
+<h2>Description</h2>
+
+CS 333 is a programming course that studies the construction of 
+real-world programs -- programs that robustly interact with their 
+users and with their computing environment.  
+The course is roughly organized into two sections: Unix programming
+and 
+<!WA13><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/java.html">Java</a>
+programming.  The first section covers Unix system calls,
+shells, and tools; the second section introduces and uses 
+the distributed programming language
+<!WA14><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/java.html">Java</a>.
+In the context of 
+<!WA15><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/java.html">Java</a>,
+we will study concurrency, graphics, user interfaces,
+and network programming. 
+
+<p>
+
+The course emphasizes large-scale programming
+and program correctness.  Throughout the term, guests will 
+augment the core material with lectures describing various software systems.
+
+
+<p>
+The course catalog's description can be found in  
+<!WA16><a href="http://www.princeton.edu/~registr/COS.html">here</a>.
+
+<hr>
+<a name="people"></a>
+<h2>People</h2>
+
+<dl>
+<dt> <h3>Instructor</h3>
+<dd> <!WA17><A HREF="http://www.research.att.com/orgs/ssr/people/lorenz">Lorenz Huelsbergen</A>
+(<!WA18><A HREF="mailto:lorenz@cs.princeton.edu">lorenz@cs.princeton.edu</A>)
+(<!WA19><A HREF="mailto:lorenz@research.att.com">lorenz@research.att.com</A>)
+<dd> Room: 407
+<dd> Phone: 258-4633 (908-582-4628)
+<dd> Office Hours: MW 3:00-4:00, and by appointment
+
+<dt> <h3>TAs</h3>
+<dd> <!WA20><A HREF="http://www.cs.princeton.edu/~ddean/">Drew Dean</A>
+(<!WA21><A HREF="mailto:ddean@cs.princeton.edu">ddean@cs.princeton.edu</A>)
+<dd> Room: 413
+<dd> Phone: 258-1797
+<dd> Office Hours: TuTh 2:00-3:00, and by appointment
+
+<p>
+
+<dd> <!WA22><A HREF="http://www.cs.princeton.edu/~jlk/">Jeff Korn</A>
+(<!WA23><A HREF="mailto:jlk@cs.princeton.edu">jlk@cs.princeton.edu</A>)
+<dd> Room: 217
+<dd> Phone: 258-0451
+<dd> Office Hours: M 4:00-5:00, and by appointment
+
+<dt> <h3><!WA24><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/students.html">Students</a></h3>
+
+</dl>
+
+<hr>
+<a name="texts"></a>
+<h2>Recommended Texts</h2>
+
+<dl>
+<dd> <i>The C Programming Language</i> by Kernighan and Ritchie, Prentice Hall,
+ISBN 0-13-110362-8.
+
+<p>
+
+<dd> <i>Writing solid code : Microsoft's techniques for developing bug-free C programs</i> by Maguire, Microsoft Press, ISBN 1-55615-551-4.
+</dl>
+
+<hr>
+<a name="syllabus"></a>
+<h2>Tentative Syllabus</h2>
+
+<dl>
+<dt> <b>Week I:    INTRODUCTION</b>
+<dd> Feb. 5:   Course organization, overview 
+(<!WA25><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/notes/l0.ps">notes</a>)
+<dd> Feb. 7:   Processes, files, file systems, make.
+(<!WA26><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/notes/l1.ps">notes</a>,
+<!WA27><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/notes/l1-progs.html">programs</a>)
+<dt> <b>Week II:   SHELLS</b>
+<dd> Feb. 12:  Shell programming.
+(<!WA28><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/notes/l2.4.ps">notes</a>,
+<!WA29><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/notes/l2-progs.html">programs</a>)
+<dd> Feb. 14:  Programming a shell.
+(<!WA30><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/notes/l3.4.ps">notes</a>,<!WA31><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/notes/l3-progs.html">programs</a>)
+<dt> <b>Week III:  TOOLS</b>
+<dd> Feb. 19:  grep, sed; A ksh/sed/grep Mailbot
+(<!WA32><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/notes/l4.4.ps">notes</a>)
+<dd> Feb. 21:  lex, yacc
+(<!WA33><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/notes/l5.4.ps">notes</a>)
+<dt> <b>Week IV:   SHELL GRAPHICS</b>
+<dd> Feb. 26:  Tcl/Tk
+(<!WA34><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/notes/l6.4.ps">notes</a>)
+<dd> Feb. 28:  Visual Basic
+(<!WA35><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/notes/l7.4.ps">notes</a>)
+<dt> <b>Week V:    JAVA</b>
+<dd> Mar. 4:   Java, top down (<!WA36><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/notes/l8.4.ps">notes</a>); 
+<!WA37><a href="http://www.cs.princeton.edu/~jlk/tksh/cs333talk.ps">Tksh</a>
+<dd> Mar. 6:   Java, bottom up; Unix timers
+(<!WA38><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/notes/l9.4.ps">notes</a>)
+<dt> <b>Week VI:   MIDTERM WEEK</b>
+<dd> Mar. 11:  Guest Lecture, <!WA39><a href="http://clark.lcs.mit.edu/~shivers/home.html">Olin Shivers</a>
+<dd> Mar. 13:  In-class project proposals
+<dt> <b>Week VII:  SPRING BREAK</b>
+<dt> <b>Week VIII:  ADVANCED JAVA</b>
+<dd> Mar. 25:  Java Class Libraries
+(<!WA40><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/notes/l10.4.ps">notes</a>)
+<dd> Mar. 27:  Guest Lecture, Gene Nelson
+<dt> <b>Week IX: CONCURRENCY</b>
+<dd> Apr. 1:   Threads, synchronization
+(<!WA41><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/notes/l11.4.ps">notes</a>)
+<dd> Apr. 3:   Guest Lecture, John Reppy
+<dt> <b>Week X:  GRAPHICS</b>
+<dd> Apr. 8:   Java graphics
+(<!WA42><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/notes/l12.4.ps">notes</a>)
+<dd> Apr. 10:  Guest Lecture, Dave MacQueen
+<dt> <b>Week XI: USER INTERFACES</b>
+<a name="last-lecture"></a>
+<dd> Apr. 15:  Java interaction
+(<!WA43><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/notes/l13.4.ps">notes</a>)
+<dd> Apr. 17:  Guest Lecture, Guy Jacobson
+(<!WA44><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/notes/complec.txt">notes</a>)
+<dt> <b>Week XII:   NETWORK PROGRAMMING</b>
+<dd> Apr. 22:  Networked Java (Guest Lecture, <!WA45><a href="http://netlib.att.com/netlib/att/cs/home/ordille.html">Joann Ordille</a>)
+<dd> Apr. 24:  Guest Lecture, <!WA46><a href="http://www.cs.wisc.edu/~larus/">Jim Larus</a>
+<dt> <b>Week XIII:  WHATEVER'S LEFT</b>
+<dd> Apr. 29:  profiling, debugging, gc
+(<!WA47><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/notes/l14.4.ps">notes</a>); Java security (<!WA48><A HREF="http://www.cs.princeton.edu/~ddean/">Drew Dean</A>)
+<dd> May  1:   TBA
+<dt> <b>Week XIV:  READING PERIOD</b>
+<dt> <b>Week XV: PROJECT DEMOS</b>
+
+</dl>
+
+<hr>
+<a name="notes"></a>
+<h2><!WA49><a href="#last-lecture">Last Lecture's Notes and Programs</a></h2>
+
+
+<hr>
+<a name="assignments"></a>
+<h2>Programming Assignments</h2>
+
+Send questions regarding assignments to 
+<!WA50><A HREF="mailto:cs333@phoenix.Princeton.edu">cs333@phoenix.Princeton.edu</A>
+<br>
+<p>
+
+There are four programming assignments; each constitutes 10% of the final
+grade.  The first three assignments address Unix programming. The last
+assignment addresses Java programming.  All assignments will be made and
+completed in the first half of the course, leaving the second half free
+for the programming project.
+<p>
+<!WA51><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/assignments/assignment1.html">Assignment I</a>
+<br>
+
+<p>
+<!WA52><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/assignments/assignment2.html">Assignment II</a>
+<br>
+
+<p>
+<!WA53><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/assignments/assignment3.html">Assignment III</a>
+<br>
+
+<p>
+<!WA54><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/assignments/assignment4.html">Assignment IV</a>
+<br>
+
+<hr>
+<a name="project"></a>
+<h2>Programming Project</h2>
+
+A substantial programming project comprises 60% of the course's final
+grade. A project must be proposed, designed, implemented and documented
+in teams of three to five students.
+
+<p>
+
+<h3>Project Timetable</h3>
+<dl>
+<dt>March 13, In-class proposals (15-20 minutes per team)
+<dt>April 8, Written project specifications due (5 page maximum)
+<dt>Week of April 22, Code reviews (30-45 minutes per team) <b>Moved to the week of April 29</b>
+<dt>Week of May 20 (Final's Week), Final Project Demos (30-45 minutes per team)
+</dl>
+<br>
+
+<h3><!WA55><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/demo-signup.html">Project-Demo Signup</a></h3>
+
+<h3><!WA56><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/project-grading.html">Project Grading</a></h3>
+
+<a name="resources"></a>
+<h2>Resources</h2>
+
+<!WA57><a href="http://www.CS.Princeton.EDU/courses/archive/spr96/cs333/java.html">Java Links</a>
+
+<hr>
+<a name="guests"></a>
+<h2>Guest Lecturers</h2>
+
+<dl>
+<dd><!WA58><a href="http://www.cs.princeton.edu/~dpd/">David Dobkin</a>
+<dd><!WA59><a href="http://www.research.att.com/orgs/ssr/people/guy/">Guy Jacobson</a>
+<dd><!WA60><a href="http://www.cs.wisc.edu/~larus/">Jim Larus</a>
+<dd>Dave MacQueen
+<dd>Gene Nelson
+<dd><!WA61><a href="http://netlib.att.com/netlib/att/cs/home/ordille.html">Joann Ordille</a>
+<dd>John Reppy
+<dd><!WA62><a href="http://clark.lcs.mit.edu/~shivers/home.html">Olin Shivers</a>
+</dl>
+
+<hr>
+
+<address>
+Tue Mar 14 12:27:13 EST 1995<BR>
+<!WA63><a href="mailto:lorenz@research.att.com">
+lorenz@research.att.com
+</a>
+</address>
+</body>
+</html>

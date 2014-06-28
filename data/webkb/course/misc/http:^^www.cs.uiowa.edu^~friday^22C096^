@@ -1,0 +1,80 @@
+Date: Wed, 20 Nov 1996 23:18:26 GMT
+Server: NCSA/1.5
+Content-type: text/html
+
+<HTML> 
+<HEAD><TITLE>22C:096 Topics in Computer Science, Orientation</TITLE></HEAD> 
+
+<BODY TEXT="#FFFFFF" LINK="#18A9B7" VLINK="#FF3D3A" BACKGROUND="http://www.cs.uiowa.edu/~sgelo/22C096/bluebkg.jpg">
+ 
+<CENTER>
+<TABLE BORDER=5>
+<TR><TD ALIGN=CENTER VALIGN=MIDDLE><!WA0><IMG SRC="http://www.cs.uiowa.edu/~friday/22C096/animlogo2.gif"><BR><!WA1><A HREF="http://www.cs.uiowa.edu/~friday/22C096/22C096.map"><!WA2><IMG ISMAP SRC="http://www.cs.uiowa.edu/~sgelo/22C096/22C096.jpg" border=0 alt=22C:096, Topics in Computer Science, Orientation></TD></TR>
+</TABLE>
+
+<FONT SIZE=4><!WA3><A HREF="http://www.cs.uiowa.edu/~friday/22C096/syllabus.html">Syllabus</A> :
+<!WA4><A HREF="http://www.cs.uiowa.edu/~friday/22C096/assignments.html">Assignments</A> :
+<!WA5><A HREF="http://www.cs.uiowa.edu/~friday/22C096/grading.html">Grading</A> :
+<!WA6><A HREF="http://www.cs.uiowa.edu/~friday/22C096/readinglist.html">Reading List</A> :
+<!WA7><A HREF="http://www.cs.uiowa.edu/~friday/22C096/gpublic.html">Going Public</A> :
+<!WA8><A HREF="http://www.cs.uiowa.edu/~friday/22C096/projects/">Completed Projects</A>
+</FONT>
+</CENTER>
+
+<P><BR>
+<FONT SIZE=5>
+<!WA9><A HREF="http://www.cs.uiowa.edu/~friday/22C096/whatabout.html">What this class is about</A><BR>
+<!WA10><A HREF="http://www.cs.uiowa.edu/~friday/22C096/help.html">Help</A>
+</FONT>
+
+<BR><BR><BR><BR>
+<!WA11><A HREF="http://www.cs.uiowa.edu/">
+<!WA12><IMG SRC="http://www.cs.uiowa.edu/~friday/22C096/leftarrow.gif" alt="back" border=1 ALIGN=middle>
+</A><FONT SIZE=5>to the
+<!WA13><A HREF="http://www.cs.uiowa.edu/">Department of Computer Science</A></FONT>
+
+<BR><BR><BR>
+<FONT SIZE=2>Direct any errors in the 22C:096 pages to <!WA14><A HREF="MAILTO:sgelo@cs.uiowa.edu">sgelo@cs.uiowa.edu</A>.<BR>
+This page has been accessed 2876 times since Friday, March 1, 1996 at 3:58:29 PM.
+
+</FONT>
+
+<script language="JavaScript">
+function loopmessage(seed) {
+var message = " Welcome to 22C:096! 	 Be sure to sign up for the spring semester of Topics in Computer Science, Orientation.	The course # will be changed to 22C:003 (Sections 1 and 2) " ;
+var display = " " ;
+var i = 1 ;
+if ( seed > 180 ) {
+seed -= 2 ;
+var cmd = "loopmessage(" + seed + ")" ;
+window.setTimeout(cmd,100) ;
+}
+else if ( seed <= 180 && seed > 0 ) {
+for ( i=0; i<seed; i++) 
+display += " " ;
+display += message ;
+seed -= 2 ;
+var cmd = "loopmessage(" + seed + ")" ;
+window.status = display ;
+window.setTimeout(cmd,100) ;
+}
+else if ( seed <= 0 ) {
+if ( -seed < message.length ) {
+display += message.substring( -seed, message.length ) ;
+seed -= 2 ;
+var cmd = "loopmessage(" + seed + ")" ;
+window.status = display ;
+window.setTimeout(cmd,100) ;
+}
+else {
+window.status = " " ;
+var cmd = "loopmessage(180)" 
+window.setTimeout(cmd,75) ;
+}
+}
+}
+loopmessage(180);
+</script>
+
+</BODY> 
+</HTML> 

@@ -1,0 +1,64 @@
+Date: Tue, 10 Dec 1996 22:42:33 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Tue, 08 Nov 1994 19:21:36 GMT
+Content-length: 2343
+
+<html>
+<head>
+<title>
+Create an Assessment Page
+</title>
+
+<body>
+<p> This form is used to create a multiple choice assessment page.
+See <a href="//www.cs.washington.edu/homes/dbj/help-multi.html">
+Help</a> for directions on how to use this form.
+If you want to modify an existing assessment page, see
+<a href="//www.cs.washington.edu/homes/dbj/edit-multi.html">
+Edit</a>.
+<hr>
+<form method=POST 
+action="http://www.cs.washington.edu/htbin-post/dbj/build-multi.pl">
+Page title: <input name=title size=30>
+<input type=submit value="Create page">
+<input type=reset value="Clear values">
+<p> Question: <input name=question size=50,4 maxlength=600>
+<hr>
+ Answer 1: <input name=answer1 size=50,4 maxlength=600>
+<p> Correct <input type=radio name=correct1 value="correct">
+Incorrect <input type=radio name=correct1 value="incorrect">
+<p> Next or review URL(s): <input name=url1 size=40 maxlength=200>
+<p> Descriptive title for URL(s): <input name=title1 size=36 maxlength=150>
+<hr>
+ Answer 2: <input name=answer2 size=50,4 maxlength=600>
+<p> Correct <input type=radio name=correct2 value="correct">
+Incorrect <input type=radio name=correct2 value="incorrect">
+<p> Next or review URL(s): <input name=url2 size=40 maxlength=200>
+<p> Descriptive title for URL(s): <input name=title2 size=36 maxlength=150>
+<hr>
+ Answer 3: <input name=answer3 size=50,4 maxlength=600>
+<p> Correct <input type=radio name=correct3 value="correct">
+Incorrect <input type=radio name=correct3 value="incorrect">
+<p> Next or review URL(s): <input name=url3 size=40 maxlength=200>
+<p> Descriptive title for URL(s): <input name=title3 size=36 maxlength=150>
+<hr>
+ Answer 4: <input name=answer4 size=50,4 maxlength=600>
+<p> Correct <input type=radio name=correct4 value="correct">
+Incorrect <input type=radio name=correct4 value="incorrect">
+<p> Next or review URL(s): <input name=url4 size=40 maxlength=200>
+<p> Descriptive title for URL(s): <input name=title4 size=36 maxlength=150>
+<hr>
+ Answer 5: <input name=answer5 size=50,4 maxlength=600>
+<p> Correct <input type=radio name=correct5 value="correct">
+Incorrect <input type=radio name=correct5 value="incorrect">
+<p> Next or review URL(s): <input name=url5 size=40 maxlength=200>
+<p> Descriptive title for URL(s): <input name=title5 size=36 maxlength=150>
+
+<hr>
+<p>
+</body>
+<address>
+dbj@cs.washington.edu
+</address>
+</html>

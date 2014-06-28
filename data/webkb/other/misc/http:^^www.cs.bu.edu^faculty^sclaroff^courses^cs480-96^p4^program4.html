@@ -1,0 +1,148 @@
+Date: Tue, 14 Jan 1997 23:02:01 GMT
+Server: NCSA/1.5
+Content-type: text/html
+
+		<HTML>
+		<HEAD><TITLE>
+BU CAS CS 480: Introduction to Computer Graphics---Programming Assignment 4
+		</TITLE></HEAD>
+
+		<BODY>
+		<H2>
+		<!WA0><A href="http://web.bu.edu/pagetwo.html">
+BU</A>
+CAS
+		<!WA1><A href="http://cs-pub.bu.edu/">
+CS</A> 480<p>
+		<!WA2><A href="http://www.cs.bu.edu/faculty/sclaroff/courses/cs480-96/Home.html">
+Introduction to Computer Graphics</A><p>
+Spring 1996
+		</H2>
+
+		<H2>
+Programming Assignment 4:<br> Shaded Display of Superquadric Toroids<p>
+Due before class on Tuesday April 9
+		</H2>
+
+		<HR>
+The purpose of the assignment is to introduce you to 1) polygonal surface
+generation, 2) basic 3-D shaded display in OpenGL, and 3) camera modeling.
+<p>
+
+<h3>The Program You Write</h3>
+
+Write a program that allows the user to create and display a superquadric
+toroid (donut) in 3-D with shading.  <p>
+
+		<UL>
+		<LI>
+Allow the user to modify the toroid's two exponents, the three radii,
+and the hole radius.  You may also want to allow the user to vary the
+number of polygons used to approximate the torus. <p>
+
+<li>
+
+Allow the user to modify the camera viewpoint to front, back, top,
+bottom, left, and right views.  In addition, make it possible to
+rotate and position the object in 3-D.  To make things easier, center
+you may want to put your toroid at the world coordinate system
+origin.<p>
+
+<li>
+
+Create an animation by defining a camera trajectory, and ``fly by'' a
+model created with your toroid(s).  During the fly-by, the camera
+motion should be smooth and remain pointed at the center of the
+scene.<p>
+
+</ul>
+
+<h3> Parametric Surface and Normal Functions 
+</h3>
+
+Given the following equations: <p>
+
+<em>c(w,m) = SGN(cos(w))*pow(fabs(cos(w)),m)</em><br>
+<em>s(w,m) = SGN(sin(w))*pow(fabs(sin(w)),m)</em><p>
+
+where <em>SGN(x)</em> = -1, 0, or 1, depending on whether <em>x</em>
+is less than, equal, or greater than 0. Suggestion: <em>SGN(x)</em> can be
+implemented as a C macro.<p>
+
+Points on the surface of a superquadric toroid can be
+computed with the following parametric equations:<p>
+
+<em>x(u,v) = rx*(r + c(u,e1))*c(v,e2)</em><br>
+<em>y(u,v) = ry*(r + c(u,e1))*s(v,e2)</em><br>
+<em>z(u,v) = rz*s(u,e1)</em><p>
+
+where: <p>
+<em>rx, ry, rz</em>  are the radii,<br>
+<em>r</em>  is the hole's radius,<br>
+<em>e1, e2</em> are the superquadric exponents,<br>
+<em>u, v</em> are the surface parameters, both in the range -PI to PI.<p>
+
+Normals on the surface of a superquadric toroid can
+be computed with the following equations:<p>
+
+<em>nx(u,v) = (1.0/rx)*c(u,2-e1)*c(v,2-e2)</em><br>
+<em>ny(u,v) = (1.0/ry)*c(u,2-e1)*s(v,2-e2)</em><br>
+<em>nz(u,v) = (1.0/rz)*s(u,2-e1)</em><p>
+
+<h3>
+Example Program</h3>
+
+Example source files for a simple program
+that generates a shaded display of a "regular" torus are
+available in <bf>~cs480/courseware/p4</bf> on the CGL
+cluster.<p>
+
+This example program was adapted from "The OpenGL Programming Guide."
+This program is only provided as an example and you are not required
+to use it as basis for your own program.<p>
+
+<h3>
+Demos and Grading</h3>
+
+Your project must run on the SGI, therefore you will need
+to use one of the SGI workstations in the CGL cluster (unless you have
+access to an OpenGL elsewhere). <p>
+
+Your program's source files are to be electronically submitted by using the <!WA3><A
+href="http://www.cs.bu.edu/faculty/sclaroff/courses/cs480-96/submit.html">submit</a> program on cgl.  The code you submit
+should conform with the <!WA4><A href="http://www.cs.bu.edu/faculty/sclaroff/courses/cs480-96/guidelines.html">program assignment
+guidelines.</a><p>
+
+Part of your grade for this programming assignment will be based on
+your giving a short demo (2-3 minutes) in the CGL cluster.  You will
+be expected to talk about how your program works, and we will see
+how well your program performs on some test examples. Demos will be
+scheduled for the Friday afternoon following the assignment due date.<p>
+
+<blink>
+Start programming early.</blink><p>
+
+<h3>
+Extra Credit</h3>
+
+Compute a procedural texture map using fractal techniques and apply it
+to your toroid.  Allow the user to toggle whether a texture map is
+used or not.<p>
+
+<h3>
+Test Cases </h3>
+
+You are responsible for testing your own code. 
+
+<pre><hr>
+Page Created: <EM>Feb 23, 1996</EM>      
+Last Modified: <em>Feb 23, 1996</em>
+Maintained by: <!WA5><A href ="http://www.cs.bu.edu/faculty/sclaroff/Home.html"><EM>Stan Sclaroff</EM></A><br></pre>
+		</BODY>
+		</HTML>
+
+
+
+
+
+

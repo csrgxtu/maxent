@@ -1,0 +1,51 @@
+Date: Tuesday, 14-Jan-97 21:45:48 GMT
+Server: NCSA/1.3
+MIME-version: 1.0
+Content-type: text/html
+
+<title>Robot Simulators</title>
+<h1>Select-a-Demo</h1>
+
+Submitting the following form will run a demo which will attempt to
+pop a window up on your screen.  If necessary, put your console host
+in the entry marked <b>X Display</b>.
+
+You will also need to type <p> <tt>xhost +piglet.cs.umass.edu</tt> <p>
+in a shell to allow piglet to set up a window on your screen.  <b>The
+demo will not work otherwise!</b>
+
+<br>
+There is a 10 minute timeout.
+<hr>
+
+Note: Piglet is a SPARCstation 2 under variable load -- some demos
+may slow down or momentarily stop, depending on piglet's work load.
+
+<hr>
+<!WA0><form method=POST action="http://piglet.cs.umass.edu:4321/cgi-bin/demo/">
+X Display: <input type="text" name=display value="gs35.sp.cs.cmu.edu:0.0" size=32>
+
+<input type=submit value="Begin"><input type=reset value="Clear"><p>
+<hr>
+
+<input type="radio" name=program value="2d" checked >
+Harmonic function path planning for a 2-dof arm
+<!WA1><a href="http://piglet.cs.umass.edu:4321/publications.html#jrs93">(Connolly and Grupen 1993)</a>.
+<br>
+
+<input type="radio" name=program value="proprioceptive">
+Dynamic contact localization for shape recovery
+<!WA2><a href="http://piglet.cs.umass.edu:4321/publications.html#contact">(Huber and Grupen 1994)</a>.
+<br>
+
+<input type="radio" name=program value="dyn">
+A Hamiltonian Framework for Kinodynamic Planning and Control
+<!WA3><a href="http://piglet.cs.umass.edu:4321/publications.html#kinodynamic">(Connolly, Grupen, Souccar 1995)</a>.
+<br>
+
+Other demos are pending - please stay tuned.
+
+
+<hr>
+<p>
+</form>

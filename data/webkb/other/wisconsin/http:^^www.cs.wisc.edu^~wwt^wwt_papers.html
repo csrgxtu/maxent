@@ -1,0 +1,474 @@
+Date: Tue, 05 Nov 1996 21:01:49 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 18 Sep 1996 20:05:28 GMT
+Content-length: 11461
+
+<html>
+<head>
+<title>  WWT Technical Papers </title>
+<!-- Changed by: Steven Reinhardt,  1-Mar-1996 -->
+<!-- Changed by: James Larus, 11-Sep-1996 -->
+</head>
+<body>
+<hr>
+<h1>
+<!WA0><!WA0><IMG SRC="http://www.cs.wisc.edu/~wwt/wwt_logo.gif" ALT="WWT Logo" ALIGN=MIDDLE>
+WWT Technical Papers
+</h1>
+<ul>
+<li> <!WA1><!WA1><A HREF="#overview">Overview</A>
+<li> <!WA2><!WA2><A HREF="#tempest">Tempest, Typhoon, Blizzard</A>
+<li> <!WA3><!WA3><A HREF="#custom">Custom Protocols</A>
+<li> <!WA4><!WA4><A HREF="#compiling">Compiling for Tempest</A>
+<li> <!WA5><!WA5><A HREF="#hardware">Hardare Design</A>
+<li> <!WA6><!WA6><A HREF="#tools">Tools</A>
+<li> <!WA7><!WA7><A HREF="#csm">Cooperative Shared Memory</A>
+<li> <!WA8><!WA8><A HREF="#wwt">Wisconsin Wind Tunnel</A>
+<li> <!WA9><!WA9><A HREF="#misc">Miscellaneous</A>
+<li> Return to <!WA10><!WA10><A HREF="http://www.cs.wisc.edu/~wwt/">WWT Home Page</A>
+</ul>
+<hr>
+
+
+<P>
+<h2><A NAME="overview"> Overview </A></h2>
+
+<P>
+<!WA11><!WA11><A HREF="ftp://ftp.cs.wisc.edu/wwt/annobib.ps">
+<cite>
+The Wisconsin Wind Tunnel Project: An Annotated Bibliography,
+</cite>
+</A>
+Mark D. Hill, James R. Larus, David A. Wood
+(unpublished manuscript, revised frequently).
+
+<P>
+<!WA12><!WA12><A HREF="ftp://ftp.cs.wisc.edu/wwt/nsf96_summary.ps">
+<cite>
+Parallel Computer Research in the Wisconsin Wind Tunnel Project
+</cite>
+</A>
+Mark D. Hill James R. Larus, David A. Wood
+(NSF Conference on Experimental Research in Computer Systems, Jun. 1996).
+
+
+<P>
+<h2><A NAME="tempest"> Tempest, Typhoon, Blizzard </A></h2>
+
+<P>
+<!WA13><!WA13><A HREF="ftp://ftp.cs.wisc.edu/wwt/isca94_typhoon.ps">
+<cite>
+Typhoon and Tempest: User-Level Shared Memory,
+</cite>
+</A>
+Steven K. Reinhardt, James R. Larus, David A. Wood
+(ACM/IEEE International Symposium on Computer Architecture (ISCA), April 1994).
+
+<P>
+<!WA14><!WA14><A HREF="ftp://ftp.cs.wisc.edu/wwt/asplos6_fine_grain.ps">
+<cite>
+Fine-grain Access Control for Distributed Shared Memory,
+</cite>
+</A>
+Ioannis Schoinas, Babak Falsafi, Alvin R. Lebeck,
+Steven K. Reinhardt, James R. Larus, David A. Wood
+(The Sixth International Conference on Architectural Support for Programming
+Languages and Operating Systems (ASPLOS VI), Oct. 1994).
+
+<P>
+<!WA15><!WA15><A HREF="ftp://ftp.cs.wisc.edu/wwt/compcon95_tempest.ps">
+<cite>
+Tempest: A Substrate for Portable Parallel Programs,
+</cite>
+</A>
+Mark D. Hill James R. Larus, David A. Wood
+(Compcon, Mar. 1995).
+
+<P>
+<!WA16><!WA16><A HREF="ftp://ftp.cs.wisc.edu/wwt/tr95_tempest_spec.ps">
+<cite>
+Tempest Interface Specification,
+</cite>
+</A>
+Steven K. Reinhardt
+(UW CS TR #1267, Feb. 1995).
+
+<P>
+<!WA17><!WA17><A HREF="http://scxy.tc.cornell.edu/sc95/proceedings/505_TCHI/SC95.HTM">
+<cite>
+StormWatch: A Tool for Visualizing Memory System Protocols,
+</cite>
+</A>,
+Trishul M. Chilimbi, Thomas Ball, Stephen G. Eick, and James R. Larus
+(Supercomputing '95, Dec. 1995).
+
+<P>
+<!WA18><!WA18><A HREF="ftp://ftp.cs.wisc.edu/wwt/isca96_dcpld.ps">
+<cite>
+Decoupled Hardware Support for Distributed Shared Memory,
+</cite>
+</A>
+Steven K. Reinhardt, Robert W. Pfile, and David A. Wood
+(23rd International Symposium on Computer Architecture (ISCA), May 1996).
+
+
+<P>
+<h2><A NAME="custom"> Custom Protocols </A></h2>
+
+<P>
+<!WA19><!WA19><A HREF="ftp://ftp.cs.wisc.edu/wwt/sc94_protocols.ps">
+<cite>
+Application-Specific Protocols for User-Level Shared Memory,
+</cite>
+</A>
+Babak Falsafi, Alvin R. Lebeck, Steven K. Reinhardt, Ioannis Schoinas,
+Mark D. Hill James R. Larus, Anne Rogers, David A. Wood
+(Supercomputing '94, Nov. 1994).
+
+<P>
+<!WA20><!WA20><A HREF="ftp://ftp.cs.wisc.edu/wwt/ppopp95_irregular.ps">
+<cite>
+Efficient Support for Irregular Applications on Distributed-Memory Machines,
+</cite>
+</A>
+Shubhendu S. Mukherjee, Shamik D. Sharma, Mark D. Hill, James R. Larus,
+Anne Rogers, and Joel Saltz
+(PPoPP, July 1995).
+
+<P>
+<!WA21><!WA21><A HREF="ftp://ftp.cs.wisc.edu/wwt/pldi96_teapot.ps">
+<cite>
+Teapot: Language Support for Writing Memory Coherence Protocols,
+</cite>
+</A>
+Satish Chandra,
+Brad Richards and
+James R. Larus
+(SIGPLAN Conference on Programming Languages Design and Implementation (PLDI),
+May 1996).
+
+<P>
+<!WA22><!WA22><A HREF="ftp://ftp.cs.wisc.edu/wwt/isca95_dsi.ps">
+<cite>
+Dynamic Self-Invalidation: Reducing Coherence Overhead in Shared-Memory Multiprocessors,
+</cite>
+</A>
+Alvin R. Lebeck and
+David A. Wood
+(ACM/IEEE International Symposium on Computer Architecture (ISCA),
+June 1995).
+
+
+<P>
+<h2><A NAME="compiling"> Compiling for Tempest </A></h2>
+
+<P>
+<!WA23><!WA23><A HREF="ftp://ftp.cs.wisc.edu/wwt/hw_sw_sm.ps">
+<cite>
+Compiling for Shared-Memory and Message-Passing Computers,
+</cite>
+</A>
+James R. Larus
+(ACM LOPLAS, Vol. 2, No. 1-4, March-Dec. 1993).
+
+<P>
+<!WA24><!WA24><A HREF="ftp://ftp.cs.wisc.edu/wwt/asplos6_sm_mp.ps">
+<cite>
+Where is Time Spent in Message-Passing and Shared-Memory Programs?,
+</cite>
+</A>
+Satish Chandra, James R. Larus, Anne Rogers
+(The Sixth International Conference on Architectural Support for Programming
+Languages and Operating Systems (ASPLOS VI), Oct. 1994).
+
+
+<P>
+<!WA25><!WA25><A HREF="ftp://ftp.cs.wisc.edu/wwt/asplos6_lcm.ps">
+<cite>
+LCM: Memory System Support for Parallel Language Implementation,
+</cite>
+</A>
+James R. Larus, Brad Richards, Guhan Viswanathan
+(The Sixth International Conference on Architectural Support for Programming
+Languages and Operating Systems (ASPLOS VI), Oct. 1994).
+
+<P>
+<!WA26><!WA26><A HREF="ftp://ftp.cs.wisc.edu/wwt/lcpc96_hpf.ps">
+<cite>
+HPF on Fine-Grain Distributed Shared Memory: Early Experience,
+</cite>
+</A>
+Satish Chandra and
+James R. Larus
+(To appear:
+Ninth Workshop on Languages and Compilers for Parallel Computing,
+August 1996).
+
+<P>
+<!WA27><!WA27><A HREF="ftp://ftp.cs.wisc.edu/wwt/PPUC.ps">
+<cite>
+Parallel Programming in C**: A Large-Grain Data-Parallel Programming Language,
+</cite>
+</A>
+James R. Larus and Brad Richards and Guhan Viswanathan
+(In: Gregory V. Wilson and Paul Lu, eds.,
+Parallel Programming Using C++,
+MIT Press 1996).
+
+<P>
+<!WA28><!WA28><A HREF="ftp://ftp.cs.wisc.edu/wwt/sc96_compiler_sm.ps">
+<cite>
+Compiler-directed Shared-Memory Communication for Iterative Parallel Applications,
+</cite>
+</A>
+Guhan Viswanathan and
+James R. Larus
+(To appear:
+Supercomputing 96,
+November 1996).
+
+
+<P>
+<h2><A NAME="hardware"> Hardware Design </A></h2>
+
+<P>
+<!WA29><!WA29><A HREF="ftp://ftp.cs.wisc.edu/wwt/ics94_directory.ps">
+<cite>
+An Evaluation of Directory Protocols for Medium-Scale Shared-Memory Multiprocessors,
+</A>
+Shubhendu S. Mukherjee and Mark D. Hill
+(International Conference on Supercomputing (ICS), July 1994).
+
+<P>
+<!WA30><!WA30><A HREF="ftp://ftp.cs.wisc.edu/wwt/isca96_cni.ps">
+<cite>
+Coherent Network Interfaces for Fine-Grain Communication,
+</cite>
+</A>
+Shubhendu S. Mukherjee,
+Babak Falsafi,
+Mark D. Hill, and
+David A. Wood
+(Proceedings of the 23rd International Symposium on
+Computer Architecture (ISCA), 1996).
+<!WA31><!WA31><a href = "http://www.cs.wisc.edu/~wwt/cni96">Raw Data</a>.
+
+
+<P>
+<h2><A NAME="tools"> Tools </A></h2>
+
+<P>
+<!WA32><!WA32><A HREF="ftp://ftp.cs.wisc.edu/wwt/pldi95_eel.ps">
+<cite>
+EEL: Machine-Independent Executable Editing,
+</cite>
+</A>
+James R. Larus and Eric Schnarr
+(SIGPLAN '95 Conference on Programming Languages Design and Impelementation
+(PLDI), June 1995).
+
+<P>
+<!WA33><!WA33><A HREF="ftp://ftp.cs.wisc.edu/wwt/sigmetrics95_am.ps">
+<cite>
+Active Memory: A New Abstraction For Memory System Simulation,
+</cite>
+</A>
+Alvin R. Lebeck and
+David A. Wood
+(ACM SIGMETRICS, May 1995).
+
+<P>
+<!WA34><!WA34><A HREF="ftp://ftp.cs.wisc.edu/wwt/wcsss96_eel.ps">
+<cite>
+Instruction Scheduling and Executable Editing,
+</cite>
+</A>
+Eric Schnarr and
+James R. Larus
+(Workshop on Compiler Support for System Software (WCSSS),
+February 1996).
+
+<P>
+<!WA35><!WA35><A HREF="ftp://ftp.cs.wisc.edu/wwt/micro29_eel.ps">
+<cite>
+Instruction Scheduling and Executable Editing,
+</cite>
+</A>
+Eric Schnarr and
+James R. Larus
+(IEEE/ACM Int'l Symp. on Microarchitecture (MICRO-29),
+Dec. 2-4, 1996, Paris, France).
+
+<P>
+<h2><A NAME="csm"> Cooperative Shared Memory </A></h2>
+
+<P>
+<!WA36><!WA36><A HREF="ftp://ftp.cs.wisc.edu/wwt/tocs93_csm.ps">
+<cite>
+Cooperative Shared Memory: Software and Hardware for Scalable Multiprocessors,
+</cite>
+</A>
+Mark D. Hill, James R. Larus, Steven K. Reinhardt, David A. Wood
+(ACM Transactions on Computer Systems (TOCS), November 1993).
+
+<P>
+<!WA37><!WA37><A HREF="ftp://ftp.cs.wisc.edu/wwt/isca93_mechanisms.ps">
+<cite>
+Mechanisms for Cooperative Shared Memory,
+</cite>
+</A>
+David A. Wood,
+Satish Chandra,
+Babak Falsafi,
+Mark D. Hill,
+James R. Larus,
+Alvin R. Lebeck,
+James C. Lewis,
+Shubhendu S. Mukherjee,
+Subbarao Palacharla,
+Steven K. Reinhardt
+(ACM/IEEE International Symposium on Computer Architecture (ISCA), May 1993).
+
+<P>
+<!WA38><!WA38><A HREF="ftp://ftp.cs.wisc.edu/wwt/p4_cico.ps">
+<cite>
+CICO: A Shared-Memory Programming Performance Model,
+</cite>
+</A>
+James R. Larus, Satish Chandra, David A. Wood
+(Portability and Performance for Parallel Processors, John Wiley &amp Sons, Ltd.,
+1994).
+
+<P>
+<!WA39><!WA39><A HREF="ftp://ftp.cs.wisc.edu/wwt/cce_electrostatics.ps">
+<cite>
+Solving Microstructure Electrostatics on a Proposed Parallel Computer,
+</cite>
+</A>
+Frank Traenkle, Mark D. Hill, Sangtae Kim
+(Computers and Chemical Engineering, 1995).
+
+<P>
+<!WA40><!WA40><A HREF="ftp://ftp.cs.wisc.edu/wwt/traenkle_ms.ps">
+<cite>
+Parallel Programming Models and Boundary Integral
+Equation Methods for Microstructure Electrostatics,
+</cite>
+</A>
+Frank Traenkle
+(Masters Thesis (Univ. of Wisconsin--Madison, Ch.E. Dept.), 1993).
+
+<P>
+<!WA41><!WA41><A HREF="ftp://ftp.cs.wisc.edu/wwt/icpp94_cachier.ps">
+<cite>
+Cachier: A Tool for Automatically Inserting CICO Annotations,
+</cite>
+</A>
+Trishul M. Chilimbi and James R. Larus
+(International Conference on Parallel Processing (ICPP), August, 1994).
+
+
+<P>
+<h2><A NAME="wwt"> Wisconsin Wind Tunnel </A></h2>
+
+<P>
+<!WA42><!WA42><A HREF="ftp://ftp.cs.wisc.edu/wwt/sigmetrics93_wwt.ps">
+<cite>
+The Wisconsin Wind Tunnel:  Virtual Prototyping of Parallel Computers,
+</cite>
+</A>
+Steven K. Reinhardt,
+Mark D. Hill,
+James R. Larus,
+Alvin R. Lebeck,
+James C. Lewis,
+David A. Wood
+(ACM SIGMETRICS, May 1993).
+
+<P>
+<!WA43><!WA43><A HREF="ftp://ftp.cs.wisc.edu/wwt/usenix93_kernel.ps">
+<cite>
+Kernel Support for the Wisconsin Wind Tunnel,
+</cite>
+</A>
+Steven K. Reinhardt, Babak Falsafi, David A. Wood
+(Usenix Symposium on Microkernels
+and Other Kernel Architectures, September 1993).
+
+<P>
+<!WA44><!WA44><A HREF="ftp://ftp.cs.wisc.edu/wwt/wwt_tutorial.ps">
+<cite>
+A Programming Tutorial for the Wisconsin Wind Tunnel,
+</cite>
+</A>
+Shubhendu S. Mukherjee,
+Alan Kagi, and
+Douglas Burger
+(Unpublished manuscript, revised January 1995).
+
+<P>
+<!WA45><!WA45><A HREF="ftp://ftp.cs.wisc.edu/wwt/pads94_costperf.ps">
+<cite>
+Cost/Performance of a Parallel Computer Simulator,
+</cite>
+</A>
+Babak Falsafi and David A. Wood
+(SCS PADS, July 1994).
+
+<P>
+<!WA46><!WA46><A HREF="ftp://ftp.cs.wisc.edu/wwt/ipps95_netsim.ps">
+<cite>
+Accuracy vs. Performance in Parallel Simulation of Interconnection Networks,
+</cite>
+</A>
+Douglas C. Burger and David A. Wood
+(ACM/IEEE International Parallel Processing Symposium (IPPS), April 1995).
+
+<P>
+<!WA47><!WA47><A HREF="ftp://ftp.cs.wisc.edu/wwt/pads96_optimistic.ps">
+<cite>
+Optimistic Simulation of Parallel Architectures Using Program Executables,
+</cite>
+</A>
+Sashikanth Chandrasekaran and Mark D. Hill
+(Workshop on Parallel and Distributed Simulation (PADS), May 1996).
+
+
+<P>
+<h2><A NAME="misc">Miscellaneous</A></h2>
+
+<P>
+<!WA48><!WA48><A HREF="ftp://ftp.cs.wisc.edu/wwt/sc94_paging.ps">
+<cite>
+Paging Tradeoffs in Distributed-Shared-Memory Multiprocessors,
+</cite>
+</A>
+Douglas C. Burger, Rahmat S. Hyder, Barton P. Miller, David A. Wood
+(Supercomputing '94, Nov. 1994).
+
+<P>
+<!WA49><!WA49><A HREF="ftp://ftp.cs.wisc.edu/wwt/computer95_cost.ps">
+<cite>
+Cost-Effective Parallel Computing,
+</cite>
+</A>
+David A. Wood and Mark D. Hill
+(IEEE Computer, February 1995).
+
+<P>
+<!WA50><!WA50><A HREF="ftp://ftp.cs.wisc.edu/wwt/micro96.ps">
+<cite>
+Efficient Path Profiling,
+</cite>
+</A>
+Thomas Ball, James R. Larus
+(MICRO 29, Dec. 1996).
+
+<hr>
+<hr>
+<address> Last Updated: September 11, 1996 by James R. Larus (larus@cs.wisc.edu) </address>
+<hr>
+
+</body>
+</html>

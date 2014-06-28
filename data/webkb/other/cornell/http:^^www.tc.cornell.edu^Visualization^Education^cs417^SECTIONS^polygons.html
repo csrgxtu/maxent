@@ -1,0 +1,80 @@
+Date: Mon, 16 Dec 1996 23:40:43 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 01 Aug 1996 15:31:03 GMT
+Content-length: 2648
+
+
+<html>
+<head>
+<title>
+polygons
+</title>
+</head>
+
+<body>
+
+<h2>Constructing objects using explicit polygon lists</h2>
+<hr>
+At some level (often hidden from the user) a graphics system based on
+polygons needs to keep a list of the polygons. The list must include
+their location in space (vertices) and often includes other data.
+The data may consist of face lists, normals, nearest neighbors, or perhaps
+other items.
+<p>
+The structure we will use here to represent polygons consists of two 
+lists: The first is a list of all vertices which make up an object.
+The second is a list of polygonal faces. Each face in the second list consists
+of a list of the vertices for that partcular polygon. 
+<p>
+An example is
+shown below. The vertex list contains four entries, each of which is
+a 3-vector corresponding to the [x,y,z] positions of the vertices.
+The face list contains four entries, each of which describes one face
+of the tetrahedron shown. The 3 integers on each line represent the
+index of the vertex in the vertex list (with zero being the first
+entry) corresponding to the corners of each polygonal face.
+The "front" of a polygon is defined as the side you see when you traverse
+the vertices of that face in a counter-clockwise direction. Each face list
+entry must have to correct orientation determined by enumerating the
+vertices a counter-clockwise order.
+<p>
+<!WA0><!WA0><!WA0><!WA0><img src="http://www.tc.cornell.edu/Visualization/Education/cs417/SECTIONS/polygons.list.tetrahedron.gif">
+<!WA1><!WA1><!WA1><!WA1><img src="http://www.tc.cornell.edu/Visualization/Education/cs417/SECTIONS/polygons.image.tetrahedron.gif">
+<p>
+Another example is shown below with 4 vertices, but just two triangles.
+Two images are shown. The image to the left shows the front of the
+larger triangle. The image to the right shows the back.
+The face which is highlighted in the list corresponds to the smaller
+triangle which sticks out to the left in both images.
+<p>
+<!WA2><!WA2><!WA2><!WA2><img src="http://www.tc.cornell.edu/Visualization/Education/cs417/SECTIONS/polygons.list.triangle.gif">
+<!WA3><!WA3><!WA3><!WA3><img src="http://www.tc.cornell.edu/Visualization/Education/cs417/SECTIONS/polygons.image.triangles.front.gif">
+<!WA4><!WA4><!WA4><!WA4><img src="http://www.tc.cornell.edu/Visualization/Education/cs417/SECTIONS/polygons.image.triangles.back.gif">
+
+<p>
+A face list can, in general, have any number of vertices for each
+polygonal entry. Limiting yourself to triangles has a couple of advangages:
+A triangle is always planar, so its surface normal is well defined. Some
+commerical renderers will only use triangles.
+<hr>
+A  
+<!WA5><!WA5><!WA5><!WA5><a href="http://www.tc.cornell.edu/Visualization/contrib/cs490-95to96/suzuki/User/index.html">
+Java Applet </a> allows you to design and view polyhedra. 
+<p>
+<hr>
+Comments about Theory Center online documents are welcome and may be sent to
+<i>doc-comments@tc.cornell.edu</i>.
+ <p>
+
+Last modified, 6/26/95 B. Land. 
+<! Revision history:
+	Original document: P.Maxfield, 10/94
+>
+<p>
+<!WA6><!WA6><!WA6><!WA6><iMG SRC="http://www.tc.cornell.edu/copyright.xbm">
+<!WA7><!WA7><!WA7><!WA7><A HREF="http://www.tc.cornell.edu/ctcCopyright.html"> 
+<i>Copyright Statement </I></A>
+
+</body> </html>
+

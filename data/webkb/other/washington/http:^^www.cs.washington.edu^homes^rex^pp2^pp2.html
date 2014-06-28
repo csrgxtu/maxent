@@ -1,0 +1,115 @@
+Date: Tue, 10 Dec 1996 20:41:13 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Tue, 14 Nov 1995 11:06:33 GMT
+Content-length: 6953
+
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE>Persistent Programming Languages:  The Best of Both
+  Worlds</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value="Persistent Programming Languages:  The Best of Both
+  Worlds">
+<meta name="keywords" value="pp2">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ <BR> <HR><A NAME=tex2html7 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.washington.edu/general/latex2html_icons//next_motif.gif"></A>   <IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.washington.edu/general/latex2html_icons//up_motif_gr.gif">   <IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.washington.edu/general/latex2html_icons//previous_motif_gr.gif">   <A NAME=tex2html9 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="contents" SRC="http://www.cs.washington.edu/general/latex2html_icons//contents_motif.gif"></A>      <BR>
+<B> Next:</B> <A NAME=tex2html8 HREF="node1.html">Contents</A>
+<BR> <HR> <P>
+ <H1>Persistent Programming Languages:  The Best of Both
+  Worlds</H1>
+<P><STRONG> Rex Jakobovits
+<BR> Department of Computer Science
+and Engineering, FR-35 <BR> University of Washington <BR> Seattle,
+Washington 98195</STRONG><P>
+<P><STRONG>ROUGH DRAFT</STRONG><P>
+<P>
+<H3>Abstract:</H3>
+<EM>The integration of databases and programming langauges is being
+  motivated from two directions.  The database community requires a
+  more flexible and powerful way of modeling the world, whereas the
+  programming language community wants the convenience of a reliable,
+  efficient means of enabling entities to persist between program
+  invocations.  Traditionally, the query facilities provided to
+  database users are not computationally complete, precluding
+  arbitrarily complex processing of data.  Furthermore, they support
+  only primitive data types, making them inappropriate for modeling
+  certain real world applications.  Processing must be done off-line
+  in a host language, but translation between the database and the
+  language results in an impedence mismatch problem.  One solution is
+  to extend an existing programming language with the notion of
+  persistence, enabling it to seamlessly interact with the storage
+  manager.  This paper is a survey of such efforts and the issues
+  involved, focusing primarily on persistent object-oriented
+  languages.
+</EM><P>
+<BR> <HR>
+<UL> 
+<LI> <A NAME=tex2html10 HREF="node1.html#SECTION00010000000000000000">Contents</A>
+<LI> <A NAME=tex2html11 HREF="node2.html#SECTION00020000000000000000"> Integrating Databases and Programming Languages</A>
+<UL> 
+<LI> <A NAME=tex2html12 HREF="node3.html#SECTION00021000000000000000"> The Programming Language Perspective</A>
+<LI> <A NAME=tex2html13 HREF="node4.html#SECTION00022000000000000000"> The Database Perspective</A>
+</UL> 
+<LI> <A NAME=tex2html14 HREF="node5.html#SECTION00030000000000000000"> Overcoming the Impedence Mismatch Problem</A>
+<UL> 
+<LI> <A NAME=tex2html15 HREF="node6.html#SECTION00031000000000000000"> Milestones in Persistent Programming Langauge Development</A>
+</UL> 
+<LI> <A NAME=tex2html16 HREF="node7.html#SECTION00040000000000000000"> Comparison to Relational Databases</A>
+<LI> <A NAME=tex2html17 HREF="node8.html#SECTION00050000000000000000"> Case Study: Two Object-Oriented Databases</A>
+<UL> 
+<LI> <A NAME=tex2html18 HREF="node9.html#SECTION00051000000000000000"> Transparent Persistence</A>
+<LI> <A NAME=tex2html19 HREF="node10.html#SECTION00052000000000000000"> Declarative Query Facility</A>
+<LI> <A NAME=tex2html20 HREF="node11.html#SECTION00053000000000000000"> Collections and Iterators</A>
+<LI> <A NAME=tex2html21 HREF="node12.html#SECTION00054000000000000000"> Constraints</A>
+</UL> 
+<LI> <A NAME=tex2html22 HREF="node13.html#SECTION00060000000000000000"> Active Databases: Triggers</A>
+<UL> 
+<LI> <A NAME=tex2html23 HREF="node14.html#SECTION00061000000000000000"> Once-Only Triggers</A>
+<LI> <A NAME=tex2html24 HREF="node15.html#SECTION00062000000000000000"> Perpetual Triggers</A>
+<LI> <A NAME=tex2html25 HREF="node16.html#SECTION00063000000000000000"> Intra-Object vs. Inter-Object Triggers</A>
+<LI> <A NAME=tex2html26 HREF="node17.html#SECTION00064000000000000000"> Eager vs. Lazy Computation</A>
+<LI> <A NAME=tex2html27 HREF="node18.html#SECTION00065000000000000000"> Triggers and Constraints in Other Systems</A>
+</UL> 
+<LI> <A NAME=tex2html28 HREF="node19.html#SECTION00070000000000000000"> Misc. Features of Object-Oriented Database Systems</A>
+<UL> 
+<LI> <A NAME=tex2html29 HREF="node20.html#SECTION00071000000000000000"> Mandatory Features</A>
+<LI> <A NAME=tex2html30 HREF="node21.html#SECTION00072000000000000000"> Optional Features</A>
+<LI> <A NAME=tex2html31 HREF="node22.html#SECTION00073000000000000000"> Swizzling</A>
+<LI> <A NAME=tex2html32 HREF="node23.html#SECTION00074000000000000000"> Referential Integrity</A>
+<LI> <A NAME=tex2html33 HREF="node24.html#SECTION00075000000000000000"> Versioning</A>
+</UL> 
+<LI> <A NAME=tex2html34 HREF="node25.html#SECTION00080000000000000000"> Other Object-Oriented Systems</A>
+<UL> 
+<LI> <A NAME=tex2html35 HREF="node26.html#SECTION00081000000000000000"> BETA</A>
+<LI> <A NAME=tex2html36 HREF="node27.html#SECTION00082000000000000000"> PROCOL</A>
+</UL> 
+<LI> <A NAME=tex2html37 HREF="node28.html#SECTION00090000000000000000"> Constraint-Based Imperative Languages</A>
+<UL> 
+<LI> <A NAME=tex2html38 HREF="node29.html#SECTION00091000000000000000"> Constraints and Object Identity</A>
+<LI> <A NAME=tex2html39 HREF="node30.html#SECTION00092000000000000000"> Kaleidoscope</A>
+<LI> <A NAME=tex2html40 HREF="node31.html#SECTION00093000000000000000"> Adding Transactions to Kaleidoscope</A>
+<LI> <A NAME=tex2html41 HREF="node32.html#SECTION00094000000000000000"> Techniques for Integration: Summary</A>
+</UL> 
+<LI> <A NAME=tex2html42 HREF="node33.html#SECTION000100000000000000000"> Persistent Prolog: Motivation and Issues</A>
+<UL> 
+<LI> <A NAME=tex2html43 HREF="node34.html#SECTION000101000000000000000"> Expert Systems</A>
+<LI> <A NAME=tex2html44 HREF="node35.html#SECTION000102000000000000000"> Why Prolog Could Use Persistence</A>
+<LI> <A NAME=tex2html45 HREF="node36.html#SECTION000103000000000000000"> Database Interface for Prolog</A>
+<LI> <A NAME=tex2html46 HREF="node37.html#SECTION000104000000000000000"> Translation Between SQL and Prolog</A>
+<LI> <A NAME=tex2html47 HREF="node38.html#SECTION000105000000000000000"> Meta-Translation</A>
+<LI> <A NAME=tex2html48 HREF="node39.html#SECTION000106000000000000000"> MIMER: A Back End to Prolog</A>
+</UL> 
+<LI> <A NAME=tex2html49 HREF="node40.html#SECTION000110000000000000000">References</A>
+<LI> <A NAME=tex2html50 HREF="node41.html#SECTION000120000000000000000">   About this document ... </A>
+</UL>
+<BR> <HR>
+<P><ADDRESS>
+<I>Rex Jakobovits <BR>
+Tue Nov 14 02:57:45 PST 1995</I>
+</ADDRESS>
+</BODY>

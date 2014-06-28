@@ -1,0 +1,171 @@
+Date: Mon, 02 Dec 1996 14:46:11 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<header>
+<title>CSE 451 Projects</title>
+</header>
+
+<body>
+
+<center>
+
+			   <h1>CSE 451</h1>
+	    <h2>Introduction to<br>Operating Systems</h2>
+			 <h3>Autumn 1996</h3>
+
+				 <hr>
+
+			  <h2>Projects</h2>
+</center>
+
+<b>NOTE:</b> As always, you are free to work on any platform, but it
+is your responsibility to make sure what you hand in works on the CS
+instructional machines (lynx, wolf or grizzly).  The source code
+provided throughout the quarter will be written in C.  You are free to
+use C++, but it will not be supported.
+
+<p>
+<dl>
+<dd>
+
+<p>
+
+<b>The <tt>turnin</tt> program is now accepting the intermdiate
+submission for Project 4 and the Java extra credit assignment.</b>
+
+</dd>
+</dl>
+
+<p>
+<hr>
+<p>
+
+<dl>
+
+<dt>1. <a href="project1.html">C Programming and Debugging</a> (<a href=#p1_solution>solution</a>)
+<dd>This project is out Monday 9/30/96 and is due Monday 10/7/96
+</dd>
+<p>
+
+<dt>2. <a href="project2.html">Threads and Synchronization</a> (<a href=#p2_solution>solution</a>)
+<dd>This project is out Wednesday 10/9/96 and is due Friday 10/25/96
+<p>
+
+<dt>3. <a href="project3.html">System Calls and Virtual Memory</a>
+<dd> (The project description has an accompanying <a
+href="project3-appendix.html">Appendix</a>) This project is out
+Thursday 10/31/96 and is due Monday 11/18/96.  There is also an
+intermediate due date Friday 11/8/96 <p>
+
+<dt>4. <a href="project4.html">DOS File system</a>
+<dd>This project is out Monday 11/25/96 and is due Wednesday 12/11/96.
+There is also an intermediate due date Wednesday 12/4/96 <p>
+
+<dt>5. <a href="java-proj.html">Extra Credit Java Assignment</a>
+<dd>This assignment is out Monday 11/25/96 and is due Friday 12/6/96 <p>
+</dl>
+
+<hr>
+
+<center> 
+	<h2>Project Solutions</h2></center>
+<dl>
+
+<a name="p1_solution">
+<dt><b>Project 1.</b>
+<ul>
+<li> <a href=./project1/queue.c>queue.c</a> (here's my version of <a href="./project1/queuetest.c">queuetest.c</a>)
+<li> <a href=./project1/timegetpid.c>timegetpid.c</a>
+</ul>
+
+<p>
+
+<dd><b>Notes</b>: When using <tt>gettimeofday</tt>, you get back a
+value in seconds and microseconds.  If you want to time something, you
+will need to call <tt>gettimeofday</tt> twice, once to get the start
+time, <tt>start_tp</tt>, and again to get the ending time,
+<tt>end_tp</tt>.  To find the elapsed time, it is not enough to
+subtract the seconds field of <tt>start_tp</tt> from the seconds field
+of <tt>end_tp</tt> and similarly with the microseconds field (you can
+get an incorrect value for the number of seconds and a negative value
+for the microseconds).  You must first convert to a common unit,
+either a floating point value of seconds or an integer value of
+microseconds, and then do the subtraction.
+
+<pre>
+  start = (double) start_tp->tv_sec + ((double) start_tp->tv_usec)*(1.0e-6);
+  end = (double) end_tp->tv_sec + ((double) end_tp->tv_usec)*(1.0e-6);
+
+  elapsed_time = end - start;
+</pre>
+</dt>
+
+<a name="p2_solution">
+<dt><b>Project 2.</b>
+<p>
+
+Below is my solution for the preemptive minithread system.  I
+implemented spinlocks and had a few extra header files.  Notice that
+if you actually destroy threads in <tt>semaphore_destroy</tt>, you
+need a special destroy routine that doesn't actually stop the thread
+(like the one you use to destroy threads in your minithread system).
+Look for <tt>minithread_destroy</tt> and
+<tt>minithread_destroy_internal</tt> in minithread.c and synch.c to see the difference.
+
+<p>
+
+<ul>
+<li> <a href=./project2/minithread.c>minithread.c</a> (minithread package)
+<li> <a href=./project2/synch.c>synch.c</a> (semaphore implementation)
+<li> <a href=./project2/my_malloc.c>my_malloc.c</a> (safe malloc)
+<li> <a href=./project2/spinlock.c>spinlock.c</a> and <a href=./project2/spinlock.h>spinlock.h</a> (spinlocks)
+<li> and a few extra header files: <a href=./project2/panic.h>panic.h</a> (for errors), <a href=./project2/minithread_export.h>minithread_export.h</a> (other exported routines)
+</ul>
+
+<p>
+
+For the bounded buffer problem, I use three semaphores:
+<tt>empty_s</tt> and <tt>full_s</tt> to synchronize the producers and
+consumers, and <tt>pool_s</tt> to manage accesses to the buffer pool.
+In addition, I provide three command line options that enable the user
+to choose the number of producers, the number of consumers and the size
+of the buffer pool (this was not part of the assignment).
+
+<p>
+
+<ul>
+<li> <a href=./project2/boundbuf.c>boundbuf.c</a>
+</ul>
+
+<p>
+
+For the cigarette problem, I use four semaphores: an array
+<tt>needed</tt>, one for each ingredient and <tt>empty</tt> to
+indicate that there is nothing on the table.  The way to think of this
+is that each of the three smokers (each has a different ingredient)
+P's on a semaphore that is signalled when the other two ingredients
+are there.  The agent randomly V's on one of these semaphores.  I also
+provided three command line options that allow you to control the
+agent.  In particular, by default the agent puts ingredients on the
+table, each with equal probability, <em>i.e.</em>, in the limit, each
+smoker will smoke about the same number of cigarettes.  The ratio of
+smokers smoking is <tt>1:1:1</tt>.  You can use the command line
+options to change this ratio (this was not part of the assignment).
+
+<p>
+
+<ul>
+<li> <a href=./project2/cigarette.c>cigarette.c</a>
+</ul>
+
+</dt>
+
+</dl>
+
+<p>
+<hr>
+</body>
+<address><a href = "mailto:cse451-webmaster@cs.washington.edu">cse451-webmaster@cs.washington.edu</a></address>
+</html>

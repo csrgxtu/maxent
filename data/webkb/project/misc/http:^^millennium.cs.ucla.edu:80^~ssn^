@@ -1,0 +1,128 @@
+Date: Wednesday, 20-Nov-96 19:28:39 GMT
+Server: NCSA/1.3
+MIME-version: 1.0
+Content-type: text/html
+Last-modified: Saturday, 27-May-95 00:04:02 GMT
+Content-length: 5559
+
+<html> <head>
+<title>The Distributed Supercomputer Supernet (SSN)</title>
+</head>
+
+<HEADER>
+<H1>The Distributed Supercomputer Supernet (SSN)</H1>
+</HEADER>
+<BODY>
+<DL>
+<DT>ORGANIZATION: <!WA0><a href="http://www.ucla.edu">University of California, Los Angeles </a>
+<DT>SUBCONTRACTORS: Jet Propulsion Laboratories
+<DT>PRINCIPAL INVESTIGATORS: <!WA1><a href="http://millennium.cs.ucla.edu/lk.html">Leonard Kleinrock</a> and
+ Larry Bergman
+
+<DT>CO-PRINCIPAL INVESTIGATORS:
+<DD>Nicholas Bambos<br>
+Jason Cong <br>
+Eli Gafni <br>
+Mario Gerla <br>
+</DL>
+<!WA2><img src="http://millennium.cs.ucla.edu:80/~ssn/Pictures/ssn1.gif">
+<hr>
+<H2>OBJECTIVE:</H2>
+
+The major focus of this research is the design, testing and prototyping
+of a novel, high-performance, optical interconnection network for
+supercomputers, which is based on optically communicating mesh routers
+or crossbars, and which is scalable. The geographic coverage ranges
+from interdepartmental to campus and even to metropolitan areas. The
+network provides very high speed multiple services, supporting hybrid
+circuit-switched and datagram traffic, and direct or multi-hop
+connections that are dynamically reconfigurable. At a first networking
+level, we locally interconnect workstations, supercomputers, peripheral
+devices, mass memory etc. through host interfaces. At a higher
+networking level, we use fully optical interconnects, allowing
+communication between devices connected to distinct mesh routers. A
+goal of this research is to capture the large, latent, distributed
+computational power of the network processors, to be used for network
+control and management, leading to an intelligent network.  A main
+motivation for the research stems from the limitations observed in
+current supercomputer interconnect systems, and from the opportunities
+offered by emerging communication technologies such as WDM
+optoelectronics for novel, feasible system architectures.
+
+<H2>APPROACH:</H2>
+
+We propose to overcome the usual interconnect problems by replacing the
+point-to-point links with an all-optical interconnect system. Namely,
+the high speed LANS will be connected to an optical star (or tree)
+"physical" topology. Wavelength Division Multiplexing (WDM) will be
+used to subdivide the very large fiber bandwidth into several channels,
+each of Gbps bandwidth. WDM channels (supporting also time division
+multiplexing) will be established between modules, thus defining a
+dense "virtual" interconnection topology, which is dynamically
+reconfigurable, responding to changing traffic patterns.  A pool of
+channels will be set aside for direct, end-to-end connections between
+mesh routers, providing circuit-switched service for real-time traffic
+applications.<P>
+
+
+The heart of the Distributed Supercomputer Supernet is OPTIMIC -
+OPTical Interconnect of MyriNet IC chips. OPTIMIC is a novel,
+high-performance network consisting of Myricom asynchronous pipeline
+crossbars (APC) interconnected by a WDM optical backbone. It supports
+both circuit-switched and packet switched (datagram) traffic; it
+achieves virtual topology reconfigurable interconnection through an
+optical star (or tree), and, it bases its networking operations on the
+intelligent fabric of the network itself. In OPTIMIC, each network node
+(i.e. APC) is connected to local hosts, to other nodes, and to multiple
+optical channels via an Optical Channel Interface (OCI).
+
+The optical interconnection and the use of their intelligence
+(computational power) for network operation and control, will be
+supported by several technical innovations at various levels of network
+design, including system integration and implementation, interfacing,
+distributed algorithms and protocols, modeling and performance
+evaluation, intelligent control and resource allocation etc.
+
+<hr>
+<!WA3><img src="http://millennium.cs.ucla.edu:80/~ssn/Pictures/ssn2.gif">
+<hr>
+<H2>TECHNOLOGY TRANSITION:</H2>
+
+Among the technology transfer possibilities for the research, we list the 
+following.
+
+Fine Grain Meta-Supercomputer: The SSN attributes would accelerate the 
+evolution of a network-based operating system with precise synchronization 
+of dispersed processes, fine grain process management on 100's-1000's of 
+processor elements, distributed checkpointing of jobs, and dynamic entry of 
+new hosts.<P>
+
+Real Time Distributed Network Operating System: Low and predictable
+(bounded) latency makes ideal for wide area network control and data
+acquisition applications. Examples in the government include Air Force
+SATCOM network, SDIBE, remote robot control for NASA applications, and
+in the commercial arena, oil refinery and power plant control, avionics
+and spacecraft control systems, control of electrical power
+distribution systems, and factory automation.<P>
+
+Distributed Image Data Base Perusal: Scientific image-based data-base
+archival and perusal systems are now being developed in several
+efforts, such as the UC Sequoia effort and the MAGIC testbed. NASA
+applications, such as EOS will require the capability of perusing
+through terabytes of data very quickly and interactively. A low latency
+high throughput network will be essential for responding quickly to
+interactive control from the user (datagram) and sending image bursts
+back to the user (streams/circuit switched).
+<hr>
+<!WA4><img src="http://millennium.cs.ucla.edu:80/~ssn/Pictures/ssn3.gif">
+<hr>
+<li> <!WA5><a href="http://millennium.cs.ucla.edu:80/~ssn/status.html"> Click here</a> for the SSN Status Report.<p>
+<li> <!WA6><A href=http://millennium.cs.ucla.edu:80/~ssn/docs.html>Click here</A> for more SSN
+documentation. <P>
+<hr>
+</DL>
+<address><!WA7><a href="http://millennium.cs.ucla.edu/~kolias">kolias@cs.ucla.edu</a></address>
+<!--hhmts start -->
+Last modified Tue Mar 21 16:30:16
+<!-- hhmts end -->
+</body> </html>

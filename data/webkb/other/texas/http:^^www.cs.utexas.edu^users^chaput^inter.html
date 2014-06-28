@@ -1,0 +1,647 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 21:15:55 GMT
+Content-Type: text/html
+Content-Length: 39917
+Last-Modified: Wednesday, 14-Feb-96 19:20:39 GMT
+
+<title>Symbol Emergence & Symbol Grounding</title>
+
+<h1 align=center>Symbol Emergence & Symbol Grounding</h1>
+<h2 align=center>Meaning and Communication in Man and Machine</h2>
+<h3 align=center>December 16, 1995
+<br><a href="mailto:chaput@cs.utexas.edu">Harold Cliff Chaput</a></h3>
+
+<h4>Introduction</h4>
+<p>The artificial intelligence
+debate has mainly centered on the representation problem.  On one side is
+classical AI, maintaining that intelligence is a matter of symbol processing. 
+The other side usually consists of connectionist, claiming that systems that
+model the brain (i.e. neural systems) are more likely to approach the
+functionality of the mind.</p>
+
+<p>White the debate continues to sputter on, recent events have brought into
+question whether symbol manipulation is necessary at all for some intelligent
+behavior.  It is becoming clear that some sophisticated actions can be
+accomplished with very little high-level computation, sometimes with no symbolic
+processing at all.  Yet we also know that certain cognition tasks are performed
+symbolically.  Symbol manipulation, and with it representative symbols, seem a
+necessary component of intelligence, but not of all parts of intelligence.  It
+also does not appear to be sufficient for creating intelligence.</p>
+
+<p>What has been missing from this dialog is a discussion of how symbols and symbol
+manipulation come about in the human mind.  How do symbols, or categories, emerge
+from our cognitive apparatus?  How do we understand categories?  And what
+relation does symbolic thought have with non-symbolic cognition?  Several efforts
+in linguistics, cognitive psychology, philosophy and computer science have shed
+some light of this area.  They reveal some aspects of the link between
+connectionism and representationism.</p>
+
+<p>These issues lie at the heart of communication: the ability to convey meaning
+with symbols, the ability to evoke thought without symbols, and the ability to
+translate between the two.  Communication is the golden fleece of AI, both
+connectionist and representationist: nothing better exposes the complexities and
+subtleties of intelligence, yet it remains completely out of reach.  Perhaps a
+philosophical look at communication will point the way towards a possible
+implementation.</p>
+
+<p>In this paper, I plan to discuss these issues, which arose while I was
+implementing a program for non-symbolic communication, RobotMap.  After a brief
+overview of representational and connectionist AI, I'll talk about some activity
+in robotics that has made people think differently about the problem.  Then,
+drawing from different fields, I'll discuss the implications these ideas have on
+cognition and communication, wrapping up with a look at RobotMap and what it
+reveals about symbol grounding and symbol emergence.</p>
+
+<h4>Natural Language Processing, Representation-Style</h4>
+<p>The bulk of existing artificial
+intelligence code is representational.  That is, artificial intelligence is
+realized by representing a problem as a set of symbols which the computer can
+then manipulate to find a correct and optimal solution.  Chess programs sort
+through possible moves and look at symbols that represent future states of the
+chess board; theorem provers take predicate logic statements (fortunately already
+in symbolic form) and churn through them with manipulation rules to find new
+theorems in the form of novel symbolic constructs.  The symbols that the computer
+manipulates necessarily correspond to some thing in the problem domain. 
+Therefore, answers which arise as a set of symbols can then be translated back
+into the problem domain, e.g. a chess move or a new theorem.</p>
+
+<p>As such, the essential design of a natural language processor on a computer is to
+take a sentence, break it down into its symbols, and convert those symbols into
+an internal representation.  Usually, this representation is some form of
+predicate logic, which the computer uses to derive meaning from the sentence. 
+For example, if we take the sentence:</p>
+
+<blockquote>
+	Jack kissed Jill.
+</blockquote>
+
+<P>We can take what we know about the syntactic structure of English and produce the
+following syntactical analysis:</p>
+<pre>	(S (NP "Jack") (VP (V "kissed") (NP "Jill.")))</pre>
+
+<p>Looking up the word "kiss" (of which "kissed" is the past tense) in our lexicon,
+we know that kiss takes an agent (the kisser) and a theme (the kissee).  Given
+that information, we can build the following predicate logic form:</p>
+
+<pre>	(PAST s1 KISS ACTION (AGENT s1 (NAME j1 PERSON "Jack"))
+		(THEME s1 (NAME j2 PERSON "Jill")))</pre>
+
+<p>This straightforward approach of converting sentences into predicate logic works
+with a great deal of success, and gives the computer something to analyze and
+manipulate.  But this approach quickly ran into some problems.  For example,
+consider the following couplet:<p>
+
+<blockquote>
+Jane saw the bike through the store window.  She wanted it.
+</blockquote>
+
+<p>Suppose now that we want our parser to identify the antecedent of "She".  Well,
+we know that the word "She" refers to an animate female object, and that there is
+only one of those in the previous sentence ("Jane"), so we assign "Jane" as the
+referent of "She".  For our parser to do this, we now must include extra
+information in our lexicon, like gender, animacy, etc.  So far so good.  Now,
+what about "it"?  Well, "it" is a genderless inanimate object, of which there are
+three: "bike", "store", and "window".  Our parser is stuck, and on a problem that
+people can answer to with little effort.  We might be tempted to create a hack
+for this and say that the subject "it" refers to the subject of the previous
+sentence, "bike." But this hack would fail quite quickly:</p>
+
+<blockquote>
+Jane saw the bike through the store window.  She pressed her nose up against it.
+</blockquote>
+
+<p>In order for our parser to interpret this sentence, we need to tell it about
+pressing noses and wanting bikes and looking through store windows, etc.  This
+can be done with scripts that describe these relationships [Schank and Abelson
+1977], but now our implementation is quite daunting: In order to understand
+natural language in an unconstrained setting, we would need to be armed with a
+battery of scripts to parse some of the simplest texts.  The number of scripts
+needed are tremendous, and the exceptions are quite numerous.  To illustrate,
+consider how our parser would make sense out of some of the following examples:</p>
+
+<ul>
+<li>Teacher: Billy, can you name a color in the rainbow?<br>
+Billy: Blue.<br>
+Teacher: Very good.  Janet, can you name a color in the rainbow?<br>
+Janet: Blue.<br>
+Teacher: That's the color that Billy used. [Implication: choose another color.]</li>
+
+<li>A: Teheran's in Turkey isn't it, teacher?<br>
+B: And New York's in France, I suppose.</li>
+
+<li>A: Is the Pope jewish?</li>
+
+<li>A: Doesn't the teacher for this class suck?<br>
+B: Hmm... How about them Cubs?</li>
+
+<li>Johnny: Hey Sally let's play Sonic.<br>
+Mother: How is your homework coming along, Johnny?</li>
+</ul>
+
+<p>This problem has been termed the "common-sense problem," because the solutions to
+these problems of ambiguity lie in our knowledge of common sense.  Ironically, it
+is these problems which are easy for people to understand that have stopped
+representational AI in its tracks.  There is currently a representational
+solution to this problem underway, the CYC project under Doug Lenat, that plans
+to catalog all of common-sense as a set of logic statements.  One cannot help but
+wonder if the solution to natural language understanding has to be this
+convoluted and difficult.</p>
+
+<h4>Undermining Symbols</h4>
+<p>The philosophical argument against intelligence as symbol
+processing has come in two major flavors.  One is that symbol crunching is not
+sufficient for describing intelligence.  This position is demonstrated by
+Searle's well-worn thought experiment of the Chinese Room [Searle 1980], which
+essentially says that a system that translates Chinese to English would know
+Chinese no more than a calculator knows math (i.e. not at all).  This claim is
+highly controversial, and many rejoinders have been launched against it.  For our
+purposes, the most useful is the response that knowing something is a matter of
+degree.  A person who has memorized "The Wasteland" certainly knows the poem, but
+in a different way and perhaps to a lesser degree than an author who has written
+a biography on T. S. Elliot, or a student of 20th century American poetry.  In
+this way, we might be more comfortable with the idea that a calculator might know
+math... just not very well.</p>
+
+<p>The other argument against representational AI is that some knowledge cannot be
+captured by a set of rules.  In particular, Dreyfus and Dreyfus claim that
+common-sense knowledge is particularly prone to this, being based on "whole
+patterns" of experience [Dreyfus and Dreyfus 1988].  I think this is closer to
+the matter, because it concedes that the logical approach might not work all the
+time.  The Dreyfuses say that it's a mistake to think "that there must be a
+theory for every domain."  He claims that proficiency is achieved by "similarity
+recognition" in the domain.  We will see that this view is psychologically
+supportable, and provides some insight to the problem.</P
+
+<p>Researchers in computer science have been looking at non-symbolic computation
+since 1943, when McCullock and Pitts first considered neurons as logic elements
+[McCulloch & Pitts 1943].  In 1957, Rosenblatt developed the Perceptron model
+[Rosenblatt 1958], which saw great success for the next ten years. 
+Connectionism, a sister to representation, held a lot of promise and excelled at
+problems that representation struggled with [Rosenblatt 1960a, 1960b, 1962;
+Steinbuch 1961; Widrow 1962; Grossberg 1968] (and, predictably, vice versa).  But
+this approach to the problem of artificial intelligence was brought to an abrupt
+halt in 1969 with Minsky and Papert's "Perceptrons" [Minsky & Papert 1969]. 
+Their paper forecast an inevitable ceiling in connectionism, and convinced a
+generation of researchers to abandon the field.  Interest did not pick up again
+until the 1980's and is just now regaining acceptance in the field of computer
+science.</p>
+
+<p>Lately, connectionist systems have been used to model neurology, learn complex
+systems, and even manipulate symbols.  Chalmers trained a neural net that takes
+active verbs as inputs as produces passive verbs as outputs [Chalmers 1990],
+which many would classify as a symbolic task.</p>
+
+<p>Consequently, connectionism has come under greater scrutiny as an approach to
+artificial intelligence.  While it provides some architectural features that
+representation AI is lacking ‹ namely that it is modelled (however loosely) on
+human neurophysiology ‹ Lloyd cautions that just because has the features of a
+brain doesn't necessarily make it intelligent [Lloyd 1989].  (This is similar to
+Searle's criticism that, just because a computer does brain-stuff, doesn't mean
+that it has a mind.)  Lloyd points out that many systems have the attributes that
+a neural net has (parallel processing, multidimensional inputs and outputs,
+non-symbolic or analog processing) but we don't view them as intelligent (e.g. a
+car).</p>
+
+<p>The most prevalent complaint is that connectionist architectures lack symbolic
+processing capabilities, and therefore do not capture the symbolic aspects of
+intelligence [Fodor 1983].  While connectionist systems can take symbols as input
+and produce other symbols as output, their processing is not at a symbolic level,
+and therefore do not capture the high level aspects of the brain.  Most
+connectionist researchers have taken the defensive, trying to show that symbol
+processing is a subset of connectionist capabilities.  Some, though, argue that
+connectionist systems use a completely different approach than symbol
+manipulation ‹ that they are mutually exclusive in operation and provide a
+functionality absent in symbolic systems [van Gelder 1990].</p>
+
+<h4>The Robot Revelation</h4>
+<p>The history of computational planning and problem solving is
+another classic example of the representational dilemma.  In the early stages of
+robotics, researches divided the problem of robotics into three areas:  looking
+around (sensing), figuring out what to do (planning), and doing it (acting).  At
+the time, the hardware wasn't yet available to handle the sensing and acting
+problems, so effort was concentrated on planning, with the understanding that
+sensors would eventually provide information about the environment (in symbolic
+form, of course), and that actuators would take symbolic instructions to perform
+actions in the environment.</p>
+
+<p>As sensor and actuator hardware became better, however, their performance didn't
+live up to AI researchers expectations: sensors are imperfect and give noisy or
+ambiguous readings; actuators are also imperfect, making it difficult to perform
+simple actions like going in a straight line or turning 90&#176.  The most
+problematic was the realization that the environment itself is imperfect.  There
+are always subtleties that the sensors will either not notice or unintentionally
+see, contradicting the robot's internal representation of the world.  Also, the
+environment is constantly changing: objects, like people, move around, and are
+inserted and removed from the robot's field of perception.  It is difficult to
+take all these contingencies into account representationally.  And the more a
+planning system takes into account, the longer it takes to do anything.  With
+symbol-processing systems, the robot has to perform a tremendous amount of work
+to navigate even the simplest environments.  Their knowledge bases are epic, and
+their computation times are geological.</p>
+
+<p>Something is really wrong here.  Moving around in the environment is not a
+high-level symbolic brain function like natural language processing or chess. 
+This is something the simplest life forms on Earth can perform, quickly, and with
+dead-on accuracy.  For example, imagine watching an ant walk along the beach.  We
+might be inclined to conclude, by watching its complicated and circuitous route,
+that the ant's representation of the world and its rule set for moving about must
+itself be very complicated.</p>
+
+<p>A more likely explanation is that the ant's view of the world and its method of
+movement are really quite simple.  The complexity of its behavior could be a
+reflection of the complexity of the ant's environment.  Braitenberg shows that
+intelligent behavior can be achieved by just wiring the sensors to the actuators
+in the right way, no planning needed [Braitenberg 1986].  For example, suppose
+you have a robot with two light sensors and two motors.  If you straight-wire the
+sensors to the motors (left sensor to the left motor, etc.), and set up the
+electronics so that the more light a sensor sees the faster its motor will go,
+then you will have a robot that avoids light.  Not only will it run away from
+light, but it will stand still when there is no light, and move faster when the
+light is brighter.  Put the robot in water, and the currents, differences in
+water temperatures and densities will all conspire to alter the robot's course. 
+With a convincing make-up job, somebody might mistake this robot for a living
+thing in the water.  Braitenberg also notes that if you have multiple sensors
+that sense different things, and multiple actuators that move in different ways,
+you can layer different actions which, operating simultaneously, will give the
+appearance of some very complex and intelligent behavior.</p>
+
+<p>This is the basis for Rodney Brooks' "subsumption architecture" [Brooks 1990], a
+layered architecture that Brooks uses to build autonomous robots.  Brooks' robots
+consist mostly of electronics connecting the sensors to the effectors, much like
+Braitenberg postulated.  With this method, he gets impressive behavior with
+little processing power and no representation at all.  One of Brooks' insect
+robots can walk around the room and climb over objects in real time without the
+help of any silicon whatsoever.  Robots that use a symbolic model of the world
+find this task exceedingly difficult and require a large database of facts.</p>
+
+<p>Brooks' robots sent a shockwave through the artificial intelligence community,
+and served as a wake-up call.  While computer scientists were busy trying to
+represent everything, Brooks has built robots that do in real time what before
+took hours to do, if it could be done at all.  AI researchers needed to
+reevaluate their methods.</p>
+
+<h4>The Problem of Realism</h4>
+<p>Brooks attributes his success to the rejection of
+representation all together.  He feels that representational AI is untenable
+because it is founded on Realism.  Specifically, he rejects the idea that meaning
+is derived from direct correlation to objects in the real world.  Brooks shows
+that it is impossible to know for sure if your representation system is
+sufficiently reflecting the true nature of the world [Brooks 1991].  This is very
+similar to the Dreyfuses' complaint above.</p>
+
+<p>Indeed, Lakoff discusses this problem at length, in particular regarding
+categories [Lakoff 1987].  If the meaning of abstract symbols are derived from
+their correspondence to objects in the real world, then categories must exist in
+the real world in order for them to be meaningful.  But the categories that we
+use do not follow the rules of logic.</p>
+
+<p>For example, Gould discusses the current problem in biology of classification
+[Gould 1983].  There are two camps who disagree on which taxonomy is correct: the
+cladists, who are interested in the branching order of evolution and look at
+shared derived results, and the pheneticists who look at overall similarity in
+form and function.  Traditionalists use the results of both taxonomies in their
+studies.  There are cases where the two main taxonomies violently contradict one
+another, like the lungfish, which pheneticists categorize with fish, but cladists
+categorize with elephants.</p>
+
+<blockquote>
+<p>In the cladistic ordering of trout, lungfish, and any bird or mammal, the
+lungfish must form a sister group with the sparrow or elephant, leaving the trout
+in its stream.  The characters that form our vernacular concept of "fish" are all
+shared primitives and do not therefore specify cladistic groupings. At this
+point, many biologists rebel, and rightly I think.  The cladogram of trout,
+lungfish, and elephant is undoubtedly true as an expression of branching order in
+time.  But must classifications be based only on cladistic information?  A
+coelacanth looks like a fish, tastes like a fish, acts like a fish, and therefore
+- in some legitimate sense beyond hidebound tradition - is a fish.</p>
+<p>Unfortunately, these two types of information - branching order and overall
+similarity - do not always yield congruent results.  The cladist rejects overall
+similarity as a snare and delusion and works with branching order alone.  The
+pheneticist attempts to work with overall similarity alone and tries to measure
+it in the vain pursuit of objectivity.  The traditional systematists tries to
+balance both kinds of information but often falls into hopeless confusion because
+they really do conflict.  Coelacanths are like mammals by branching order and
+like trout by biological role.  Thus cladists buy potential objectivity at the
+price of ignoring biologically important information.  And traditionalists curry
+confusion and subjectivity by trying to balance two legitimate, and often
+disparate, sources of information.  What is to be done?</p>
+</blockquote>
+
+<p>This presents a serious problem for the Realism approach to deriving meaning. 
+Lakoff uses this to make a point about the sentence, "Harry caught a fish."</p>
+
+<blockquote>
+Suppose he caught a coelacanth.  By phenetic criteria, this sentence would be
+true, but by cladistic criteria it would be false.  Objectivism requires that
+there be an absolutely correct answer.  But there is no objectivist rationale for
+choosing one set of scientific criteria over another, and there isn't even any
+reason to believe that there is one and only one objectively correct answer.  The
+objectivist criterion for being in the same category is having common properties.
+ But there is no objectivist criterion for which properties are to count.  The
+cladists and pheneticists have different criteria for which properties to take
+into consideration, and there is no standard, independent of human interests and
+concerns, that can choose between them and provide a unique answer.  But
+objectivist metaphysics requires just such an objective standard.
+</blockquote>
+
+<p>(By objectivist, Lakoff means the realist requirement that knowledge be grounded
+in an objective view of the world, not Ayn Rand's half-baked religion.)  While
+both taxonomies have some scientific validity, we cannot arrive at a consistent
+answer without sacrificing the benefits of one.  Lakoff shows that this problem
+crops up again and again in trying to derive the meaning of categories.</p>
+
+<h4>The Untapped Senses</h4>
+<p>Brooks has then concluded that representation is a red
+herring.  He feels that the only way to build robots that perform real-world
+tasks in real time is to completely forsake symbol-processing and rely entirely
+on the sensors and actuators.  "The world is its own representation," he is often
+heard to say.  There is plenty of evidence that shows we have underestimated the
+senses in our pursuit of artificial intelligence.</p>
+
+<p>Contemporary developmental psychology talks about four change processes that
+occur as a child matures: automatization, encoding, generalization, and strategy
+construction.  <i>Automatization</i> is the process of becoming more efficient in
+thought and action, thus freeing up the brain for more activity.  <i>Encoding</i> is
+internally representing objects and events in terms of sets of features. 
+<i>Generalization</i> is the process of mapping known encodings to new relations. 
+Finally, <i>strategy construction</i> uses the previous three to generate rules to adapt
+to task demands.  In this analysis, since the generalizations a child makes is
+based on the child's encodings, the child's view of the world is very much
+determined by its senses: the child is encoding sensory information.  The child
+then uses these generalizations to create rules about operating in the world.  In
+this schema, the rules are clearly not based on an objective view of the world,
+but on a very subjective view, a view through the child's senses.  How the senses
+are organized depends greatly on the automatization process.  Since efficiency in
+a system depends greatly on the system itself, the architecture of the mind also
+plays a great role in symbol creation.</p>
+
+<table border align=left><tr><td><img src="reber.jpeg"></td></tr>
+<caption align=bottom>Reber's Grammar</caption></table>
+
+<p>There is also evidence that the encoding process continues throughout the life of
+the person.  Reber demonstrated implicit learning by exposing subjects to strings
+generated by a finite state grammar [Reber, 1967].  He found that after exposure,
+the subjects made good grammar judgements on novel strings.  He then had two
+groups of subjects examine the strings; he told one group to develop a set of
+rules that would explain the grammar, while the other group was told to just
+memorize the strings [Reber, 1976].  The memorization group did better then the
+group that created the rules.  Reber's experiment suggests that there must be
+another process going on in this learning experiment other than rule formation. 
+It also suggests that this other process can out-perform rule formation.</p>
+
+<p>Brooks' robots have a hard time performing actions that would seem to require
+some kind of symbolic planning, though, like following a map or preparing for
+future obstacles.  I think that by ignoring symbols entirely, Brooks is just
+another voice on the connectionist side of the argument and is consequently
+throwing the baby out with the bathwater.  It seems clear that much of our
+higher-level intelligence is achieved through symbol manipulation.  Looking at
+the change processes in developmental psychology, Brooks seems to be focusing on
+the automatization process, and ignoring the other three.</p>
+
+<p>There is even some evidence to suggest that other simpler forms of life rely on
+symbolic information.  Neurobiologists have found so-called "place cells" in the
+brains of rats, which activate according to the rats position in the world
+independent of sensory information [Muller, Stead & Pach, 1995].  Ants have also
+been found to perform navigational tasks which would require a continuously
+updating knowledge of position [Gallistel, 1995].  What, then, is the origin of
+symbol manipulation in the brain?</p>
+
+<h4>Symbol Grounding and Communication</h4>
+<p>Putnam found that any formalization of
+semantic theory under Realism would result in inconsistency [Putnam 1990], and
+this led him to wonder about the true nature of meaning.  The result is a new
+kind of Realism called Internal Realism, in which meaning is derived from our
+sensory experiences.  Internal Realism assumes that a) there is a real world that
+we all live in, b) that our concepts of that world are determined by our sensory
+apparatus, but since c) all people have the same basic physiology then d) our
+conceptual system is based on a universal foundation of ideas about the world.</p>
+
+<blockquote>
+[Our conceptions] depend upon our biology and our culture; they are by no means
+'value-free'.  But they are our conceptions and they are conceptions of something
+real.  They define a kind of objectivity, objectivity for us, even if it is not
+the metaphysical objectivity of the God's Eye view.  Objectivity and rationality
+humanly speaking are what we have; they are better than nothing.
+</blockquote>
+
+<p>This is conclusion that Lakoff comes to in his exploration of categories and
+metaphor.  He feels that we create a set of "base-level concepts" from our
+observations.  Given our similar physiology, people develop nearly the same
+base-level concepts.  The classic example of this was the cross-culture
+psycoanthropological study of color [Berlin and Kay, 1969], which shows how
+disparate cultures have developed congruent models of color.  Since these
+base-level concepts emerge from our senses, however, they rely on our sensory
+apparatus to give them meaning.  For example, the color turquoise is understood
+as being both blue and green.  We have different sets of neurons for detecting
+blue and green, so we perceive both colors.  But we cannot do the same with red
+and green, since they are perceived via different responses from the same
+neurons.  Therefore, instead of seeing a color as both red and green, we see it
+as a murky brown.  Internal Realism has the advantage of explaining more
+phenomena than pure subjectivism (which doesn't purport to explain anything),
+while avoiding the pitfalls present in Realism.  It also suggests a direction for
+building artificial symbol processing systems that would act more "human."</p>
+
+<p>All this is just a biological spin on McLuhan's "the medium is the message." 
+McLuhan felt that the medium of transmission shaped and controlled the resultant
+derived meaning.  The senses certainly mediate all communication that people
+receive from outside their bodies.  And since the senses are the ultimate medium,
+they ultimately determine the meaning.  The root of meaning lies in the medium of
+our sensory apparatus: the physiology of sensing the world, and the neurological
+byproduct of attending to and organizing those senses.</p>
+
+<h4>RobotMap: Categorizing the Senses</h4>
+
+<table border align=center><tr><td><img src="screen.jpeg"></td></tr>
+<caption align=bottom>Screenshot from RobotMap</caption></table>
+
+<p>RobotMap places a simulated robot in a simulated space.  (RobotMap for
+the PowerMac can be downloaded by clicking <a
+href="RobotMap.sea.bin">here</a>.)  The robot moves around somewhat
+randomly, bumping into walls, turning around, and moving on.  All the
+while, the robot is sensing its environment.  The robot is equipped with
+seven simulated sonars that relay their distance to the closest wall (with
+a maximum range of 50 pixels).</p>
+
+<table border align=right><tr><td><img src="som.jpeg"></td></tr>
+<caption align=bottom>The Self-Organizing Map</caption></table>
+
+<p>These sonar readings are fed into a self-organizing map, or SOM.  A SOM is a new
+kind of neural network, a two-dimensional map of neurons which organizes stimuli,
+putting similar stimuli next to each other, while dissimilar stimuli are distant
+on the map [Kohonen, 1995].  It does this with only a distance measure, a way of
+telling how similar two stimuli are.  It uses no training or goal direction to
+organize its information (i.e. an unsupervised learning system).  It merely
+generates patterns by attending to its inputs.  (SOM's are currently generating
+some excitement in connectionism, as similar activities can be found in the brain, especially in the visual cortex.)</p>
+
+<p>The SOM in RobotMap is a 20 x 20 array of units which each contain seven slots
+for sonar readings, initially set to a random number.  As a stimulus enters the
+SOM, represented as a vector of seven sonar readings, the SOM measures the
+"distance" of the stimulus to the sonar slots in each unit.  (In this program,
+the distance measure is the Euclidean distance, but a variety of distance
+measures will work.) The SOM finds the unit that is closest to the stimulus,
+called the winner.  It then makes the sonar slots in the winner approach those of
+the stimulus by some learning constant (in this program, 1%).  This makes the
+winner a better prototype of the stimulus.  Also, the SOM takes all the
+neighboring neurons and has them approach the stimulus as well.  This action is
+what makes similar stimuli cluster together.  One starts with a large
+neighborhood, then, as you decrease the neighborhood, the map spreads out to
+cover the space of the stimuli.</p>
+
+<p>I'm going into this much detail to show that I have nothing up my sleeve.  I am
+not training a neural net to find anything in the sonar readings.  I am just
+using a SOM to perform some automatic organization on the sensor readings.  This
+is an attempt to replicate the developmental encoding process described above.</p>
+
+<p>Over time, the SOM organizes the sonars into four categories, which usually end
+up in the four corners of the SOM.  The four categories are "wall to the left,"
+"wall to the right," "wall ahead of me", and "open space." I did not "train" the
+robot to learn these generalizations.  They arose simply from organizing the
+robot's sensory information.  These are the robot's base-level concepts.  They
+are determined by only two things: the environment and the robot's "physiology,"
+i.e. Its sensory apparatus (sonars) and its processing capabilities (SOM).</p>
+
+<p>In order for agents to communicate, they must share a protocol, and that protocol
+must mean the same thing at both ends.  All effort to communicate with artificial
+intelligence has focused only on the protocol.  RobotMap is a first step in
+grounding a protocol in something that is meaningful to the autonomous agent. 
+When we say meaningful, we are saying that it has grounding in the agent's
+ability to perceive and manipulate.  This use of meaning fits into Putnam's
+Internal Realism, to a first approximation.  What is significant about the
+emergent categories in RobotMap is that they make so much sense to us: they are
+not alien concepts, but concepts that are part of our everyday lives.  So while
+Putnam bases his ideas about Internal Realism on our near-identical physiology,
+we have an example of a completely foreign physiology arriving at familiar
+concepts.  It might be the case that one does not need near-identical physiology
+for intelligent communication; it might be sufficient for the physiologies to
+obey and recognize the same laws of physics.  In other words, intelligent
+communication is not a product of the human mind, but of categorization of the
+physical world.</p>
+
+<h4>Future Work</h4>
+<p>I feel this is the first step towards grounded symbol-processing in a
+computer.  For Lakoff, the next step is "image mapping", the process of taking
+base-level concepts and mapping them onto higher level concepts via metaphor.</p>
+
+<blockquote>
+There are two ways in which abstract conceptual structure arises from basic-level
+and image-schematic structure:
+<ol>
+<li>By metaphorical projection from the domain of the physical to abstract domains.</li>
+<li>By the projection from basic-level categories to superordinate and subordinate categories.</li></ol>
+</blockquote>
+
+<p>This phenomenon is often found in our understanding of abstract concepts: the
+concept of time as a resource ("wasting time"), of the body as a container of
+emotions ("he blew up and let out his anger"), etc.  This process seems to be
+embodied in the developmental psychology change process of generalization.</p>
+
+<p>This process could be coerced out of RobotMap.  But a more interesting challenge
+is to see how such things emerge naturally.  Dennett claims that this came about
+in the evolution of the human species at the same time as language [Dennett
+1991].  This doesn't make too much sense if there is any truth to the idea that
+rats and ants are performing symbol processing.</p>
+
+<p>What is clearly lacking, suggesting an obvious next step, is motivation for the
+robot.  Right now it is wandering around without any will or intent.  While its
+brain may be passively categorizing information, that information is not being
+used to help the robot perform any actions or to "survive" in some way.  What is
+needed is an internal motivation for the robot, and an ability to tap into these
+new categories as an aid towards helping it perform its tasks.</p>
+
+<p>Another missing piece is the introduction of new sensors and actuators.  All
+creatures use a variety of senses and actors to move about.  This is sure to
+introduce a richness and multiplicity that Brooks uses in his subsumption
+architecture.  Cheap sonar (like those used on research robots today) might not
+be a sufficient reflection of reality on which to base intelligence.</p>
+
+<p>Finally, the most interesting task, and the original goal, is to communicate with
+the robot using it's new-found concepts.  It would be fascinating to try and
+teach these new dogs old tricks and see if they understand them in fundamentally
+different ways.  The introduction of symbol-grounding to symbol processing
+systems will provide a tremendous insight into cognitive psychology, as well as
+shed light on some dusty philosophical arguments.</p>
+ <h2>Bibliography</h2>
+
+<p>Allen, J. (1987).  <i>Natural Language Understanding</i>  Menlo Park, CA: Benjamin/Cummings Publishing Co.</p>
+
+<p>Berlin, B. and Kay, P. (1969).  <i>Basic Color Terms: Their Universality and Evolution.</i>  Berkeley: University of California Press.</p>
+
+<p>Braitenberg, V. (1986).  <i>Vehicles: Experiments in Synthetic Psychology</i>  Cambridge, MA: MIT Press.</p>
+
+<p>Brooks, R. A. (1990).  "A Robust Layered Control System for a Robot."  In P.H. Winston, ed., <i>Artificial Intelligence at MIT</i>, vol. 2.  Cambridge, MA: MIT Press.</p>
+
+<p>Brooks, R. A. (1991).  "Intelligence Without Representation."  Artificial Intelligence, 47: 139-159.</p>
+
+<p>Campbell, J. (1989).  <i>The Improbable Machine</i>  New York: Simon and Schuster.</p>
+
+<p>Chalmers, D. J. (1990).  "Syntactic Transformations on Distributed Representations."  Connection Science, 2: 53-62.</p>
+
+<p>Chomsky, N. (1972).  <i>Language and Mind, Enlarged Edition</i>  New York: Harcourt Brace Jovanovich, Inc.</p>
+
+<p>Clark, H. H. & Clark E. V. (1977).  <i>Psychology and Language</i>   San Diego: Harcourt Brace Jovanovich.</p>
+
+<p>Dennett, D. C. (1991).  <i>Consciousness Explained</i>  Boston: Little, Brown and Company.</p>
+
+<p>Dreyfus, H. L. and Dreyfus, S. E. (1988).  "Making a Mind Versus Modeling the Brain: Artificial Intelligence Back at a Branchpoint."  In Stephen R. Graubard, ed., <i>The Artificial Intelligence Debate.</i>  Cambridge, MA: MIT Press.</p>
+
+<p>Fodor, J. A. (1983).  <i>The Modularity of Mind.</i>  Cambridge, MA: MIT Press.</p>
+
+<p>Franklin, S. (1995).  <i>Artificial Minds</i>  Cambridge, MA: MIT Press.</p>
+
+<p>Freedman, D. H. (1994).  <i>Brainmakers</i>  New York: Simon and Schuster.</p>
+
+<p>Gallistel, C. R. (1995).  "Insect Navigation: Brains as Symbol Processors" in S. Sternberg & D. Scarborough, eds., <i>Conceptual and methodological foundations.  Vol. 4 of An invitation to cognitive science.</i> (D. Osherson, Series Editor) Cambridge, MA: MIT Press, in press.</p>
+
+<p>Gould, S. J. (1983).  <i>Hen's Teeth and Horse's Toes.</i>  New York: Norton.</p>
+
+<p>Grossberg, S. (1968).  "A prediction theory for some nonlinear functional-difference equations." Journal of Mathematical Analysis and Applications 21, 643-694.</p>
+
+<p>Kohonen, T. (1995). <i>Self-Organizing Maps.</i>  Berlin: Springer.</p>
+
+<p>Lakoff, G. L. (1987).  <i>Women, Fire, and Dangerous Things: What Categories Reveal about the Mind</i>  Chicago: The University of Chicago Press.</p>
+
+<p>Levinson, S. C. (1983).  <i>Pragmatics</i>  Cambridge: Cambridge University Press.</p>
+
+<p>Levy, S. (1992).  <i>Artificial Life</i>  New York: Vintage Books.</p>
+
+<p>Lloyd, D. (1989).  <i>Simple Minds</i>  Cambridge, MA: MIT Press.</p>
+
+<p>McCulloch, W. S. and Pitts, W. (1943).  "A logical calculus of the ideas immanent in nervous activity."  Bulletin of Mathematical Biophysics 5, 115-133.</p>
+
+<p>McLuhan, M. (1964).  <i>Understanding Media: The Extensions of Man.</i>  New York: Signet.</p>
+
+<p>Minsky, M. L. and Papert, S. A. (1969).  <i>Perceptrons.</i>  Cambridge, MA: MIT Press.</p>
+
+<p>Muller, R. U., Stead, M., and Pach, J. (1995).  "The hippocampus as a cognitive graph" New York University, in press.</p>
+
+<p>Penrose, R. (1989).  <i>The Emperor's New Mind</i>  New York: Oxford Press.</p>
+
+<p>Putnam, H. (1990).  <i>Realism with a Human Face.</i>  Cambridge, MA: Harvard University Press.</p>
+
+<p>Rich, E. (1983).  <i>Artificial Intelligence</i>  New York: McGraw-Hill Book Company.</p>
+
+<p>Rosenblatt, F. (1958).  "The Perceptron: A probabilistic model for information storage and organization in the brain."  Psychological Review 65, 386-408.</p>
+
+<p>Rosenblatt, F. (1960a).  "Perceptron Simulation Experiments." Proceedings of the Institute of Radio Engineers 48, 301-309.</p>
+
+<p>Rosenblatt, F. (1960b).  "On the convergence of reinforcement procedures in simple perceptrons," Report, VG-1196-G-4.  Buffalo, NY: Cornell Aeronautical Laboratory.</p>
+
+<p>Rosenblatt F. (1962).  <i>Principles of Neurodynamics</i>  Washington, DC: Spartan Books.</p>
+
+<p>Schank, R. S. and Abelson, R. P. (1977).  <i>Scripts, plans, goals and understanding.</i>  Hillsdale, NJ: Erlbaum.</p>
+
+<p>Searle, J. (1980).  "Minds, Brains, and Programs."  Behavioral and Brain Sciences 3:417-458.</p>
+
+<p>Siegler, R. S. (1991).  <i>Children¹s Thinking, Second Edition</i>  Englewood Cliffs, NJ: Prentice Hall.</p>
+
+<p>Steinbuch, K. (1961).  "Die Lernmatrix." Kybernetik 1, 36-45.</p>
+
+<p>van Gelder, T. (1990).  "Compositionality: A Connectionist Variation on a Classical Theme."  Cognitive Science, 14: 355-84.</p>
+
+<p>Widrow, B. (1962).  "Generalization and information storage in networks of adaline 'neurons'."  In <i>Self-Organizing Systems</i> (M.C. Yovitz, G.T. Jacobi, and G.D. Goldstein, eds.), pp. 435-461.  Washington, DC: Sparta.</p>
+
+<p>Winograd, T. (1983).  <i>Language as a Cognitive Process</i>   Reading, MA: Addison Wesley.</p>
+
+<p>Wittgenstein, L. (1958).  <i>Philosophical Investigations, Third Edition</i>  New York: MacMillan Publishing Co., Inc.</p>

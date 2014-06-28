@@ -1,0 +1,118 @@
+Date: Tue, 10 Dec 1996 03:38:07 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Sun, 04 Jun 1995 23:39:43 GMT
+Content-length: 4634
+
+<html>
+<title>Implementation of Dynamic Superpage Management</title>
+<h1>Implementation of Dynamic Superpage Management</h1>
+<p>
+We're looking for someone to help us implement dynamic superpage
+management as a quals or masters project.  Send me (<a
+href="mailto:romer@cs.washington.edu">romer@cs.washington.edu</a>)
+mail if you're interested.
+<h2>Background</h2>
+In recent work, 
+<a href="http://www/homes/ohlrich">Wayne Ohlrich</a>, 
+<a href="http://www/homes/karlin">Anna Karlin</a>, 
+<a href="http://www/homes/bershad">Brian Bershad</a>, 
+and
+<a href="http://www/homes/romer">I</a>
+have
+explored policies that monitor application memory reference patterns
+in order to identify and resolve TLB performance problems. Poor TLB
+performance results when the TLB is too small to cover the current
+application's working set.  Several modern architectures support
+superpages: pages whose size is a multiple of the system's base page
+size. On these systems TLB performance can be improved by using larger
+pages, but at the cost of wasted memory due to internal
+fragmentation. We explored several policies that adapt the page size
+dynamically to different regions of an application's address space,
+constructing superpages by copying the component pages to a contiguous
+region of memory. We developed a policy that monitors TLB misses, and
+balances the potential benefit of having a superpage (a reduction in
+future TLB misses) against the cost of constructing the superpage (an
+in-memory copy). By constructing superpages only when and where TLB
+miss patterns warrant, this policy attains the TLB performance of
+large pages without their internal fragmentation.
+<p>
+See the paper <a href="ftp://cs.washington.edu/homes/romer/isca95.ps>
+Reducing TLB and Memory Overhead Using Online Superpage Promotion</a>
+for more information (to appear in ISCA95).
+<p>
+Our simulations show this works.  We'd like to validate our results by
+implementing some of these policies on an architectures that support
+superpages, namely, the DEC Alpha.
+<h2>Sales Pitch</h2>
+This should make an interesting quals or masters project:
+<ul>
+<li>
+  The project is in a fundamentally interesting area, the interaction 
+  between operating systems and architecture.
+<li>
+  Although we have a roadmap for an implementation, there are still
+  some issues to resolve, so you get to apply your creative genius
+  to resolving them.
+<li>
+  You'll learn your way around a modern architecture (the Alpha)
+  and operating system (Digital Unix).
+<li>
+  We're very interested in having a working implementation, so we'll
+  be on hand to help out when things get rough.
+<li>
+  We're likely to learn something new in the process, which 
+  means something publishable.
+<li>
+  Superpages are just plain cool.  Why?  The policies we describe in the
+  paper are magical: they make each individual TLB miss take more
+  time, yet by reducing the total number of TLB misses, they improve
+  overall execution time.
+</ul>
+<p>
+<h2>Details</h2>
+An implementation would have several parts:
+
+<ul>
+<li>
+Mechanisms:
+<ul>
+<li>
+  Add support to construct and tear down superpages to the machine-dependent
+  component of the virtual memory system (pmap.c, pmap.h).
+<br>  
+  Superpages are constructed (from smaller pages) when the policy
+  identifies a contiguous region of virtual memory that can be more
+  effectively mapped by a single TLB entry.  Superpages are torn down
+  when a client of the virtual memory system changes the attributes of a
+  base page that is component to a superpage.
+<li>
+  Add a module to manage physical memory allocation in order to allow
+  efficient allocation of contiguous, aligned regions of physical memory.
+<li>
+  Modify the TLB miss handler to gather the information needed
+  to drive the policies.  We have experience hacking the Alpha TLB
+  miss handler, so this shouldn't be too daunting.
+</ul>
+<li>
+Policies:
+<ul>
+<li>
+  Adapt the policies described in the paper to work within the limitations
+  of the Alpha 21064 implementation.  In particular, the paper assumes
+  that on a TLB miss it is known which TLB entry will be replaced.
+  Unfortunately, the 21064 does not directly provide this information.
+<br>
+  Also, the 21064 provides hardware support for four page sizes (8KB, 64KB,
+  512KB, 4MB), rather than the 13 page sizes (4, 8, 16, 32, 64, ... 4 MB)
+  considered in the paper.
+<br>
+  In the course of addressing these two issues you would probably want
+  to learn to use the simulator we used to generate the results in the
+  paper.
+</ul>
+</ul>
+<h2><a href="http://www/homes/romer/memsys/index.html">
+   Memory Systems Research at UW</a></h2>
+
+</html>

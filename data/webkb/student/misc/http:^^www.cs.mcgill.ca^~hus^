@@ -1,0 +1,137 @@
+Date: Tue, 26 Nov 1996 02:58:31 GMT
+Server: Apache/1.0.0
+Content-type: text/html
+Content-length: 4619
+Last-modified: Sun, 22 Sep 1996 21:49:33 GMT
+
+<title>Hu Song's Homepage</title> <!-this is title for the WWW HP>
+<h1>Welcome to <!WA0><a href="http://www.cs.mcgill.ca/~hus/resume.html">HU Song</a>'s Homepage!!! </h1> <!--h1,h2,h3,h4-h6>
+<h2>My world: <!WA1><a href="#science">Science</a>, 
+              <!WA2><a href="#art">Art</a>, 
+              <!WA3><a href="#sports">Sports</a> and 
+              <!WA4><a href="#news">News</a></h2>    
+<ul> <!ul for tag , li for each line, then /ul for fin><li>
+<li><h3><a name="science">Scienc make the world reasonable.</a></h3> 
+  <ul>
+  <li><h4>Biology and Biochemistry let me know who am I.</h4>  
+    <ul>
+    <li><h5>Biology</h5>
+      <ol>
+      <li> a branch of knowledge that deals with living organisms and vital
+     processes.
+      <li>  the plant and animal life of a region or environment.
+      <li> the life processes of an organism or group.
+      </ol>
+    <li><h5>Biochemistry</h5>
+      <ol>
+      <li>chemistry that deals with the chemical compounds and processes 
+          occurring in organisms
+      <li> the chemical characteristics and reactions of a particular living
+           system or biological substance (as chlorophyll) <a change in the
+           patient's biochemistry accompanied her psychological depression>
+      </ol>
+    </ul>
+  <li><h4>Computer Science let me know why I should stay in this world.</h4>
+     <ul>
+     <li><h5>Programming language enable me talk to computer.</h5>
+       <ol>
+       <li>C Programming lauguage
+       <li>C++ Programming lauguage
+       <li>Assembling laugage
+       <li>Html laugage
+       </ol>
+     <li><h5>Data Structure make me manage my world logically.</h5>
+     <li><h5>Software extend my power to other areas</h5> 
+     </ul>
+  </ul>
+<li><h3><a name="art">Art make the world beautiful.</a></h3>
+  <ul><h4>
+  <li>Nature is art.
+  <li>Lauguages is art.
+  <li>Friendship is art.
+  <li>Art is art.
+  <h4></ul>
+<li><h3><a name="sports">Sports make the living.</a></h3> 
+<li><h3><a name="news">News make the comparison.</a></h3>
+   
+</ul>   
+
+this is the end of first p.<p> <!--p used for end of the paragraph,notice: if no p all are treat into one paragraph>
+this is the end of second paroagrph.<p></ul>
+<!WA5><a href="http://www.cs.mcgill.ca/~hus/test2.html">Link to test2 file </a> <! a href for connect to other file><p>
+<!WA6><a href="ftp://ccic.ifcss.org/">This is link to ccic.ifcss.org</a><!"Scheme://host.domain[:port]/path/filename"><p>
+<!WA7><a href="http://www.cs.mcgill.ca/~hus/test2.html#clients">Jump to Clients</a><p>
+<a name="clients"> this is the jump place for clients </a>
+<ol> <!ol give the number of each item>
+<li>oranges
+<li>peaches
+<li>grapes
+</ol>
+  <dl><dt>National Center for Supercomputing Applications
+  <DD> NCSA is located on the campus of the University
+  of Illinois at Urbana-Champaign. NCSA is a one of
+  four member institutions in the National Metacenter for
+  Computational Science and Engineering.
+  <DT> Cornell Theory Center
+  <DD> CTC is located on the campus of Cornell
+  University in Ithaca, New York. CTC is another member
+  of the National Metacenter for  Computational Science
+  and Engineering.
+  </DL>
+
+<! this will give a nested list display>
+<UL>
+  <LI> A few New England states:
+    <UL>
+    <LI> Vermont
+    <LI> New Hampshire
+    </UL>
+  <li> One Midwestern state:
+    <UL>
+    <LI> Michigan
+    </UL>
+ </UL>
+    <PRE>
+  #!/bin/csh
+  cd $SCR
+  cfs get mysrc.f:mycfsdir/mysrc.f
+  cfs get myinfile:mycfsdir/myinfile
+  fc -02 -o mya.out mysrc.f
+  mya.out
+  cfs save myoutfile:mycfsdir/myoutfile
+  rm *
+</PRE>
+
+    <blockquote>
+  Let us not wallow in the valley of despair. I say to you, my
+  friends, we have the difficulties of today and tomorrow. <P>
+
+  I still have a dream. It is a dream deeply rooted in the
+  American dream. <P>
+
+  I have a dream that one day this nation will rise up and
+  live out the true meaning of its creed. We hold these truths
+  to be self-evident that all men are created equal. <P>
+  </blockquote>
+
+<ADDRESS>
+  A Beginner's Guide to HTML / NCSA / pubs@ncsa.uiuc.edu
+  </ADDRESS>
+ Italic
+      <I>text</i> puts text in italics (HTML Primer)
+      <em>text</em> also italicizes text (only one viewer)
+      <cite>text</cite> is used for citations of names of manuals,
+      sections, or books (HTML Primer)
+      <var>text</var> indicates a variable (filename)
+   Bold
+      <b>text</b> puts text in bold (Important)
+      <strong>text</strong> also emphasizes text (Note:)
+   Fixed width font
+      <tt>text</tt> puts text in a fixed-width font (1 SU = 1 CPU
+      hour)
+      <code>text</code> also puts text in a fixed-width font (1 SU
+      = 1 CPU hour)
+      <samp>text</samp> formats text for samples (-la)
+      <kbd>text</kbd> displays the names of keys on the keyboard (
+      HELP)
+

@@ -1,0 +1,67 @@
+Date: Wed, 20 Nov 1996 19:40:50 GMT
+Server: Apache-SSL/0.4.3b
+Content-type: text/html
+Content-length: 2283
+Last-modified: Wed, 20 Nov 1996 16:53:53 GMT
+
+<HTML><HEAD>
+<TITLE>Coherent Virtual Machine (CVM)</TITLE>
+</HEAD>
+<BODY BACKGROUND="http://www.cs.umd.edu/~keleher/bkgnd.jpg">
+
+<h1>Coherent Virtual Machine (CVM)</h1>
+
+<hr>
+
+<BODY> The <b>C</b>oherent <b>V</b>irtual <b>M</b>achine (CVM) software
+Distributed Shared Memory (DSM) system is being developed here at the
+University of Maryland.  Project goals include:<ul>
+<li><i>Multiple protocol support</i> - CVM's initial configuration provides four
+memory models, single- and multiple-writer versions of
+lazy release consistency, sequential consistency, and eager release
+consistency.  
+<li><i>Extensiblity</i> - CVM will be extensible in that the
+source will be freely available, and the modules are being written in C++.
+New classes can easily be derived from a master Protocol class, allowing
+new protocols to be easily incorporated.  
+<li><i>Multi-threading support</i> - CVM is multi-threaded, allowing overlap of computation
+and communication through context switching.  Additionally, we plan to
+extend the
+multi-threading support to multiprocessor nodes, such as
+DEC's <i>Sable</i> machines.
+<li><i>Fault-tolerance</i> - CVM will have a limited amount of fault
+tolerance, allowing it to recover from at least one node failure at a time.
+</ul>
+<p>
+
+<b>Status:</b> CVM currently runs on several different UNIX-like systems,
+including Sparcs, the SP-2, and Digital UNIX running on DEC
+Sables. Multi-threading support is undergoing performance-optimization. CVM
+will be freely available, likely under the GNU CopyLeft. 
+
+<hr>
+
+<h3>Project Members:</h3>
+<DL>
+<DT><!WA0><IMG SRC="http://www.cs.umd.edu/fs/www/users/keleher/devil.gif" ALIGN=LEFT><BR>
+<DL>
+<DD><!WA1><a href="http://www.cs.umd.edu/~keleher">Dr. Pete Keleher</a>
+<p>
+<DD><!WA2><a href="http://www.cs.umd.edu/~dejanp">Dejan Perkovic</a>
+<DD><!WA3><a href="http://www.cs.umd.edu/~kritchal">Kritchalach Thitikamol</a>
+</DL>
+<BR CLEAR=RIGHT>
+<hr>
+
+<!WA4><a href="http://www.cs.umd.edu/~keleher/papers.html">
+<strong>Papers</strong></a> (<!WA5><a
+href="http://www.cs.umd.edu/~keleher/papers/cvm.ps.Z">CVM Manual</a>)
+<p>
+<!WA6><a href="http://www.cs.umd.edu/~keleher/dsm.html">
+<strong>Related Projects</strong></a>
+<p>
+<!WA7><a href="http://www.cs.umd.edu/~keleher/bib/dsmbiblio/dsmbiblio.html""><strong>DSM Bibliography</strong></a>
+<hr>
+<I>Last updated on November 20, 1996
+</I>
+</BODY>

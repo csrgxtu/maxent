@@ -1,0 +1,123 @@
+MIME-Version: 1.0
+Server: WebSTAR/1.2.4 ID/28
+Message-ID: <aec73e79.362@gabweb.cit.cornell.edu>
+Date: Sunday, 01-Dec-96 13:54:01 GMT
+Last-Modified: Tuesday, 02-Jul-96 12:40:43 GMT
+Content-type: text/html
+Content-length: 3365
+
+ <HTML>
+<HEAD><TITLE>George Alfred Bush, Jr.</TITLE>
+<SCRIPT LANGUAGE="JavaScript">
+
+
+
+<!-- Beginning of JavaScript Applet -------------------
+
+/* 
+   Original code (C)1996 Web Integration Systems, Inc. DBA Websys, Inc.
+   All Rights Reserved.  This code can be re-used or modified, if credit
+   is given in the source code.
+   
+   Chris Skinner, January 30, 1996.  
+   
+   Modified by RD @ CNNfn, Jan. 31, 1996   
+   Modified by Kurt Koller @ MTVOnline, Feb 4, 1996
+   Modified by Ryan Melcher @ IUMA, Feb 9, 1996
+   Disclaimer:  We will not be held responsible for any unwanted effects
+   due to the usage of this applet or any derivative.  No warrantees for
+   usability for any specific application are given or implied.
+
+*/
+
+function scrollit_r2l(seed)
+{
+
+
+        var m1  = "............Television is the Opiate of the Masses................Say, did you hear this one?.........Bob Dole was asked by a reporter whether he wore briefs or boxers......Dole replied,...................'Depends'............This PSA brought to you by GABWEB........";
+		var msg=m1;
+        var out = " ";
+        var c   = 1;
+
+        if (seed > 100) {
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 100 && seed > 0) {
+                for (c=0 ; c < seed ; c++) {
+                        out+=" ";
+                }
+                out+=msg;
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                    window.status=out;
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;
+                        var cmd="scrollit_r2l(" + seed + ")";
+                        window.status=out;
+                        timerTwo=window.setTimeout(cmd,100);
+                }
+                else {
+                        window.status=" ";
+                        timerTwo=window.setTimeout("scrollit_r2l(100)",75);
+                }
+        }
+}
+// -- End of JavaScript code -------------- -->
+
+
+
+</SCRIPT>
+
+</HEAD>
+<body background="ab.jpg" onLoad="timerONE=window.setTimeout('scrollit_r2l(100)',500);">
+
+<center><IMG SRC="rib_support_blk.gif"></center>
+<hr>
+<h2><bold><center><a href=robbie/robbie.html>"A Stranger in a Strange Land"</a></center><bold></h2>
+
+<center><IMG SRC="boothill.jpeg"></center>
+<center><h4><bold>This is a photograph of me at "Boot Hill" in Dodge City, Kansas.  </bold></h4></center>
+<hr>
+
+<CENTER><TABLE BORDER = 30 CELLPADDING = 3 CELLSPACING = 8>
+<TR>
+<TH><center><h2><b><a href=me.html>About "Me"</a></b></h2></center></TH>
+<TH><center><h2><b><a href=stuff.html>Stuff</a></b></h2></center>
+<TH><center><h2><b><a href=homo.html>Other<br>Homo Sapiens</a></b></h2></center></TH>
+</TH>
+</TR>
+<TR>
+</TABLE></CENTER>
+
+<br>
+
+<CENTER><h3>   
+10,000,000</h3></center>
+<center><h3><b>Burgers Sold- since 4/1/96</b></h3></center>
+
+<BR>
+
+
+<CENTER><TABLE BORDER = 30 CELLPADDING = 3 CELLSPACING = 8>
+<TR>
+<TH><IMG SRC="allnew.jpg"><br><center>
+<h3><b>This Week's Feature Item! <p><a href="rddog.html">"The  One and Only RoadDog"</a></b></h3></center></TH>
+
+</TH>
+</TR>
+<TR>
+</TABLE></CENTER>
+
+
+<center><TD>
+<h4></td></center>
+<hr>
+</body>
+</html>
+

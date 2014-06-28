@@ -1,0 +1,117 @@
+Date: Wed, 20 Nov 1996 19:40:16 GMT
+Server: Apache-SSL/0.4.3b
+Content-type: text/html
+Content-length: 4715
+Last-modified: Mon, 11 Nov 1996 21:09:25 GMT
+
+<HTML><HEAD>
+<TITLE>Active Harmony</TITLE>
+</HEAD>
+<BODY BACKGROUND="http://www.cs.umd.edu/~keleher/bkgnd.jpg">
+
+<center><h1>Active Harmony</h1><br>
+<!WA0><IMG SRC="http://www.cs.umd.edu/~keleher/new.gif">
+<!WA1><a href="#discuss">Discussion Group</a> - 
+<!WA2><a href="http://www.cs.umd.edu/projects/harmony/related.html">Links</a>
+</center>
+<!WA3><IMG SRC="http://www.cs.umd.edu/Images/Maryland_Bar_Top.gif">
+
+
+<BODY> 
+
+Complex software systems today can be characterized by distribution,
+heterogeneity, and changing resource requirements and capacities.
+These attributes make static systems unsuitable for a wide range of tasks
+that need high performance, or are long-lived.
+In order to achieve high performance in such environments for more than a
+short period of time, systems need to dynamically adapt to changing
+resource capacities and application requirements.
+
+We are designing and building <em>Active Harmony</em>, a software
+architecture that supports distributed execution of computational objects
+in such environments through the following innovations:
+
+<ul>
+<li><b>dynamic execution environment:</b> Dynamic adaptation to network and
+resource capacities, both when computational objects are created, and when
+application requirements or resource capacities change.
+Active Harmony will attempt to maximize data affinity and load balancing
+through intelligent resource allocation and object migration.
+<li><b>automatic application adaptation:</b> A framework that 
+permits runtime adaptation of algorithms, data distribution, and load
+balancing. 
+Active Harmony will export a detailed metric interface to
+applications, allowing them to access processor, network, and operating
+system parameters.
+Applications export tuning options to the system, which can then automatically
+optimize resource allocation.
+Measurement and tuning can therefore become first class objects in the
+programming model.
+Programmers can write applications that include ways to adapt computation to
+observed performance and changing conditions.
+<li><b>shared-data interfaces:</b> Active Harmony will support shared-memory
+semantics among computational objects regardless of location, allowing both
+peer-to-peer and client-server computations to exploit the simplified
+programming model and fine-grained sharing permitted by traditional
+shared-memory environments.
+Innovations include support for heterogeneity of both data \emph{and}
+program code, a multi-level security scheme that adapts data and code
+interfaces to the degree of trust between computational objects, and
+support for the dynamic execution environment.
+</ul>
+
+The unique aspect of the Active Harmony work is the emphasis on adapting to
+heterogeneous and changing environments.
+Other researchers have studied some of the constituent issues that we plan
+to address.
+Our emphasis is on the inter-relationships <em>between</em> objects in the
+system.
+The primary result of this research will be an infrastructure and a set of
+algorithms that permit global resource optimization under changing
+conditions.
+
+<!WA4><IMG SRC="http://www.cs.umd.edu/Images/Maryland_Bar_Top.gif">
+
+<h3>Project Members:</h3>
+<ul>
+<li><!WA5><a href="http://www.cs.umd.edu/~keleher">Dr. Jeff Hollingsworth</a>
+<li><!WA6><a href="http://www.cs.umd.edu/~keleher">Dr. Pete Keleher</a>
+</ul>
+<BR CLEAR=RIGHT>
+
+<br><p>
+<!WA7><IMG SRC="http://www.cs.umd.edu/Images/Maryland_Bar_Top.gif">
+<a name="discuss">
+<h3>Discussion group:</h3>
+We will be forming a reading and discussion group to investigate the above
+issues. Check back later (week of 11/18) for details.
+
+<p><b>Papers</b> (partial list):
+<ul>
+<LI><I><!WA8><A HREF="http://http.cs.berkeley.edu/~harchol/lb.ps">Exploiting
+Process Lifetime Distributions for Dynamic Load Balancing</A></I></LI>
+
+<LI><I><!WA9><A HREF="http://HTTP.CS.Berkeley.EDU/~dusseau/Papers/sigmetrics96.ps.gz">Effective
+Distributed Scheduling of Parallel Workloads</A></I></LI>
+
+<LI><I><!WA10><A HREF="http://HTTP.CS.Berkeley.EDU/~dusseau/Papers/sigmetrics.ps">The Interaction of Parallel and Sequential Workloads on a Network of Workstations</A></I></LI>
+
+<li><i><!WA11><a href="http://cs-tr.cs.washington.edu:80/Dienst/Repository/2.0/Body/ncstrl.uwash_cse%2fTR-95-10-01/postscript">Using Runtime Measured Workload Characteristics in Parallel Processor Scheduling</i></a>
+</UL>
+<p>
+<b>Open questions:</b>
+<ul>
+<li>Is the fastest sequential process migration appropriate for parallel
+applications? i.e. should more process state be moved prior to
+re-scheduling a parallel application?
+<li>How can scheduling of parallel and client/server applications take data
+affinity into account?
+<li>Is co-scheduling as important if we don't care about latency, only
+throughput?
+<li>How does co-scheduling perform when we move from local networks to internets?
+</ul>
+
+<!WA12><IMG SRC="http://www.cs.umd.edu/Images/Maryland_Bar_Top.gif">
+<I>Last updated on November 11, 1996
+</I>
+</BODY>

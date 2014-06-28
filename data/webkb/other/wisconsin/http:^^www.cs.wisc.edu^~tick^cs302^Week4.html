@@ -1,0 +1,467 @@
+Date: Wed, 11 Dec 1996 22:34:20 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 27 Sep 1996 18:31:11 GMT
+Content-length: 14558
+
+<HTML>
+
+<HEAD>
+<TITLE>CS 302 Section 70 Lecture Notes - Week 4</TITLE>
+</HEAD>
+
+<BODY>
+
+<H2><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~tick/cs302.html#text" ><!WA1><!WA1><!WA1><IMG SRC="http://www.cs.wisc.edu/~tick/icons/arrowleft.gif" WIDTH=15 HEIGHT=15></A> Lecture Notes - Week 4</H2>
+
+<HR>
+
+<DL>
+   <DT>Topic:
+   <DD>User-defined functions and subroutines. Input and output arguments.<P>
+
+   <DT>Text:
+   <DD>Chp. 6.1 - 6.6, 6.8<P>
+
+   <DT>Notes:
+   <DD>
+
+   <HR>
+
+   <CENTER>
+   <H3>User-Defined Functions</H3>
+   </CENTER>
+   <UL>
+      <LI>FORTRAN has <EM>pre-defined</EM> or <EM>built-in</EM> mathematical functions.
+      <LISTING>
+	X = SQRT(Y) * SIN(X*Y) + NINT(3.2)
+      </LISTING>
+      <LI>Functions are small independent program modules that compute commonly used values.  Highly reusable.
+      <LISTING>
+	             +----------+
+	 In          |          |      Out
+	 Y=9.0 ----> |  SQRT(Y) | ----> 3.0
+	             |          |
+	             +----------+
+      </LISTING>
+      <LI>Functions take one or more input values called <EM>arguments</EM>, to produce a single output value called the <EM>result</EM>.
+      <LISTING>
+	Y = COS(X)
+	C = MOD(A, B)
+			
+	Function    Arguments    Result
+	--------    ---------    ------
+	COS         X            cosine of X
+	MOD         A, B         remainder of A/B
+      </LISTING>
+      <LI>Functions simplify or break-down a larger problem into a series of smaller problems, called <EM>top-down design</EM>.
+   </UL>
+
+   <H4>User-Defined Functions</H4>
+   <UL>
+      <LI>Can define your own functions and use them in your program.
+      <LI>Resemble <EM>mini-programs</EM>.  Very similar structure.
+      <LISTING>
+	Function Header
+	Argument Declarations
+	Local Variable Declarations
+	Main Executable Section
+	RETURN
+	END
+      </LISTING>
+	Example: <EM>compute the area of a circle</EM>.
+      <LISTING>
+	      REAL FUNCTION AREAC (RADIUS)
+	C     Computes the area of a circle with
+	C     a radius of RADIUS.
+
+	C     Declare RADIUS argument
+	      REAL RADIUS
+
+	C     Declare local variables/constants
+	      REAL PI
+	      PARAMETER (PI = 3.14159)
+
+	C     Compute result
+	      AREAC = PI * (RADIUS ** 2)
+
+	      RETURN
+	      END
+      </LISTING>
+   </UL>
+
+   <H4>Calling User-Defined Functions</H4>
+   <UL>
+      <LI>User-defined functions are written after the main program.
+      <LISTING>
+	      PROGRAM TEST
+	C     ------------------------------------
+	C                 Main program
+	C     ------------------------------------
+	      REAL TWRAD, TWAREA, AREAC
+
+	      PRINT *, 'Enter radius of tower'
+	      READ *, TWRAD
+	      PRINT *, 'Area is ', AREAC(TWRAD)
+
+	      STOP
+	      END
+
+
+	C     ------------------------------------
+	C              User-defined Functions
+	C     ------------------------------------
+	      REAL FUNCTION AREAC (RADIUS)
+	      ...
+	      RETURN
+	      END
+      </LISTING>
+      <LI>User-defined functions are <EM>called</EM> from the main program just like any other function; i.e. part of an arithmetic expression.
+      <LI>User-defined functions can be called from inside other functions.
+   <STRONG>Exception</STRONG>: functions cannot call themselves (called <EM>recursion</EM>).
+      <LI><STRONG>Important</STRONG>: Function type must be declared like a variable in the main program (or wherever it is called from).
+      <LISTING>
+	      REAL ..., AREAC
+      </LISTING>
+   </UL>
+
+   <H4>Function Header</H4>
+   <UL>
+      <LI>The function header specifies the <EM>name</EM> of the function, the <EM>type</EM> of value it returns, and the <EM>name</EM> and <EM>number</EM> of input arguments.
+      <LISTING>
+	functype FUNCTION funcname (arguments)
+
+	REAL FUNCTION AREAC (RADIUS)
+	INTEGER FUNCTION MOD (DIVID, DIVIS)
+      </LISTING>
+      <LI>Can also have zero arguments, but unusual.
+      <LISTING>
+	INTEGER FUNCTION FOO ( )
+      </LISTING>
+      <LI>Only the argument <EM>names</EM> are listed in the function header.
+   </UL>
+
+   <H4>Argument Declarations</H4>
+   <UL>
+      <LI>The type of the arguments is specified immediately <EM>after</EM> the function header but <EM>before</EM> any local variables.
+      <LI>Declare arguments just like declaring variables.
+      <LISTING>
+	REAL RADIUS
+	INTEGER DIVID, DIVIS
+      </LISTING>
+      <LI>Also called <EM>dummy arguments</EM>.
+   </UL>
+
+   <H4>Actual Arguments</H4>
+   <UL>
+      <LI>The value of the dummy arguments are initialized to the corresponding values in the function call, called the <EM>actual arguments</EM>.
+      <LISTING>
+	...
+	Y = 10
+	X = AREAC(Y)
+	PRINT *, AREAC(3 * Y + 3)
+	STOP
+	END
+
+	REAL FUNCTION AREAC (RADIUS)
+	...
+	RETURN
+	END
+
+
+	Actual Argument      Dummy Argument
+	---------------      --------------
+	Y                    RADIUS = 10
+	3 * Y + 3            RADIUS = 33
+      </LISTING>
+      <LI>Number and type of actual arguments must correspond to number and type of dummy arguments.  Specified in same order.
+      <LI>Actual arguments may be variables, literals or expressions.
+   </UL>
+
+   <H4>Local Variables</H4>
+   <UL>
+      <LI>As with the main program, user-defined functions may need to store intermediate results in variables.
+      <LI>Variables declared within a function are called <EM>local variables</EM> because they can only be used locally within the function.
+      <LI><STRONG>Important</STRONG>: Variables declared in another function or in the main program cannot be used within a function!
+      <LI>Do not re-assign argument variables within a function (called <EM>side-effects</EM>).
+      <LISTING>
+	INTEGER FUNCTION FACT (N)
+	INTEGER N
+	INTEGER COUNT, TEMP
+      </LISTING>
+
+   Right:
+      <LISTING>
+	TEMP = 1
+	DO COUNT = 1, N
+	   TEMP = TEMP * COUNT
+	END DO
+	FACT = TEMP
+      </LISTING>
+   Wrong:
+      <LISTING>
+	DO COUNT = 1, N-1
+	   N = N * COUNT
+	END DO
+	FACT = N
+      </LISTING>
+   </UL>
+
+   <H4>Function Result</H4>
+   <UL>
+      <LI>The purpose of a function is to compute and return a <EM>result</EM>.
+      <LI>The result of a function is the last value assigned to the function name using a normal assignment statement.
+      <LISTING>
+	funcname = value
+
+
+	INTEGER FUNCTION FACT (N)
+	...
+	FACT = TEMP
+	RETURN
+	END
+      </LISTING>
+   </UL>
+
+   <H4><TT>RETURN</TT> Statement</H4>
+   <UL>
+      <LI>The <TT>RETURN</TT> statement exits the function and resumes execution in the main program (or wherever it was called from).
+      <LI>Normally the last statement in a function before the <TT>END</TT>.
+   </UL>
+
+   <H4><TT>END</TT> Statement</H4>
+   <UL>
+      <LI>Always the last statement in a function.
+      <LI>Specifies the end of the function definition.
+   </UL>
+
+   <H4>Order of Execution</H4>
+   <UL>
+      <LI>Program executes all the statements from program header to <TT>END</TT>.
+      <LISTING>
+	PROGRAM FOO                                          |
+	...                                                  |
+	END                                                  V
+      </LISTING>
+      <LI><TT>IF</TT> statement branches to execute different sections of code.
+      <LISTING>
+	IF (BAR .NE. 0) THEN                                 |
+	   ...                                           .---o---.
+	ELSE                                             |       |
+	   ...                                            --> <--
+	END IF                                               |
+	                                                     V
+      </LISTING>
+      <LI><TT>DO</TT> loop goes back and re-executes code.
+      <LISTING>
+	DO BAR = 1, 10                                       |
+	   ...                                               + <-.
+	END DO                                               |   |
+	                                                     +---
+	                                                     |
+ 	                                                     V
+     </LISTING>
+      <LI>When call a function, jumps down and execute all the function statements.  Return back to the main program on <TT>RETURN</TT>.
+      <LISTING>
+	PRINT *, FACT(Y)                    Main        Function
+	STOP                                 |        ...> |
+	END                                  |       .     |
+	                                     * ......      |
+	REAL FUNCTION FACT (N)               | <.....      |
+	...                                  |       .     |
+	RETURN                               V        .... V
+      </LISTING>
+   </UL>
+
+   <HR>
+
+   <CENTER>
+   <H3>Subroutines</H3>
+   </CENTER>
+   <UL>
+      <LI><EM>Functions</EM> return a single value, usually a number, and implement some mathematical function.
+      <LISTING>
+	      INTEGER FUNCTION FACT (N)
+	C     Computes the factorial of N
+      </LISTING>
+      <LI>Subroutines can return any number of values and can perform any sort of operation.
+      <LISTING>
+	      SUBROUTINE GRAPH (MIN, MAX, POWER)
+	C     Print a graph of Y = X^POWER from X=MIN to X=MAX
+      </LISTING>
+      <LI>Subroutines also take one or more input values (i.e. arguments) but may or may not return any results.
+      <LISTING>
+	                +----------+
+	MIN=0     In    |          | 
+	MAX=10   ---->  |  GRAPH   | 
+	POWER=2         |          |
+	                +----------+
+      </LISTING>
+   </UL>
+
+   <H4>User-Defined Subroutines</H4>
+   <UL>
+      <LI>Subroutines resemble functions.
+      <LISTING>
+	Subroutine Header
+	Argument Declarations
+	Local Variable Declarations
+	Main Executable Section
+	RETURN
+	END
+      </LISTING>
+      <LI><STRONG>Note</STRONG>: Subroutine header does not return a value.
+      <LI>Example: <EM>split a <TT>REAL</TT> number into to its whole and fractional parts</EM>.
+      <LISTING>
+	      SUBROUTINE BREAK (X, WHOLE, FRAC)
+	C     Break a real number into its
+	C     whole and fractional parts
+	
+	C     Declare arguments
+	      REAL X, FRAC
+	      INTEGER WHOLE
+
+	      WHOLE = INT(X)
+	      FRAC = X - REAL(INT(X))
+
+	      RETURN
+	      END
+      </LISTING>
+   </UL>
+
+   <H4>Calling Subroutines</H4>
+   <UL>
+      <LI>Subroutines are written with functions <EM>after</EM> the main program.
+      <LI>Subroutines are explicitly <EM>called</EM> from the main program using the <TT>CALL</TT> statement.
+      <LISTING>
+	CALL GRAPH(1, 10, 2)
+	CALL BREAK(10.3, IPART, FPART)
+      </LISTING>
+      <LI>Subroutines can be called from inside other subroutines or functions (but no recursion).
+   </UL>
+
+   <H4>Subroutine Header</H4>
+   <UL>
+      <LI>The subroutine header specifies the <EM>name</EM> of the subroutine and the <EM>name</EM> and <EM>number</EM> of arguments.
+      <LISTING>
+	SUBROUTINE subname (arguments)
+
+
+	SUBROUTINE GRAPH (MIN, MAX, POWER)
+	SUBROUTINE BREAK (X, WHOLE, FRAC)
+      </LISTING>
+      <LI>Can also have zero arguments, not unusual.
+      <LISTING>
+	SUBROUTINE MENU ( )
+      </LISTING>
+   </UL>
+
+   <H4>Argument Declarations</H4>
+   <UL>
+      <LI>As with functions, the <EM>type</EM> of the arguments is specified immediately after the subroutine header.
+   </UL>
+
+   <H4>Local Variables</H4>
+   <UL>
+      <LI>As with functions, subroutines may need to store intermediate results in variables.
+      <LI>Local variables can only be used <EM>locally</EM> within the subroutine.
+   </UL>
+
+   <H4>Subroutine Results</H4>
+   <UL>
+      <LI>Some subroutines do not return any values; e.g. <TT>GRAPH</TT> just draws a graph on the screen.
+      <LI>Other subroutines return one or more values; e.g. <TT>BREAK</TT> takes one input value and returns two output values.
+      <LI>A result is returned to the main program when the arguments are re-assigned inside the subroutine.  Arguments pass values both into the subroutine as well as <EM>out</EM> of it.
+      <LISTING>
+	                +----------+
+	MIN=0     In    |          | 
+	MAX=10   ---->  |  GRAPH   | 
+	POWER=2         |          |
+	                +----------+
+
+	                +----------+
+	          In    |          |   Out   WHOLE=10
+	X=10.3   ---->  |   BREAK  |  ---->  FRAC=0.3
+	                |          |
+	                +----------+
+      </LISTING>
+      <LI><STRONG>Note</STRONG>: Unlike functions, the subroutine name is <STRONG>not</STRONG> assigned a value.
+   </UL>
+
+   <H4>Input Arguments</H4>
+   <UL>
+      <LI><EM>Input arguments</EM> pass values <EM>into</EM> the subroutine, just like functions.
+      <LI>Input arguments should not be re-assigned.
+      <LI>As with functions, the <EM>actual arguments</EM> in the subroutine call may be literals, variables or expressions.
+      <LISTING>
+	CALL GRAPH(X-10, X+10, 2)
+	CALL BREAK(10.3, ...)
+      </LISTING>
+   </UL>
+
+   <H4>Output Arguments</H4>
+   <UL>
+      <LI><EM>Output arguments</EM> pass values back <EM>out</EM> to the main program. Similar to function results except multiple values can be passed.
+      <LI>Unlike input arguments, output arguments <STRONG>must</STRONG> be re-assigned to a new value to pass it back out.
+      <LI><STRONG>VERY IMPORTANT</STRONG>: The actual arguments in the subroutine call must always be <STRONG>variables</STRONG>.
+      <LI>These variables are re-assigned inside the subroutine, hence the new values get passed back out to the main program.
+      <LISTING>
+	CALL BREAK(10.3, IPART, FPART)
+	PRINT *, IPART, FPART	(10   0.3)
+	STOP
+	END
+
+
+	SUBROUTINE BREAK (X, WHOLE, FRAC)
+	...
+	WHOLE = INT(X)
+	FRAC = X - REAL(WHOLE)
+	RETURN
+	END
+      </LISTING>
+      <LI>When the <EM>dummy arguments</EM> <TT>WHOLE</TT> and <TT>FRAC</TT> are re-assigned, the <EM>actual arguments</EM> <TT>IPART</TT> and <TT>FPART</TT> are re-assigned too.
+      <LI>Actual and dummy argument names do <STRONG>not</STRONG> need to have the same name.
+      <LI>Output arguments only pass values out.  The original values of <TT>IPART</TT> and <TT>FPART</TT>, if any, are ignored.
+   </UL>
+
+   <H4>Input/Output Arguments</H4>
+   <UL>
+      <LI>Some arguments can pass values both into and out of the subroutine.  Called <EM>input/output arguments</EM>.
+      <LISTING>
+	      SUBROUTINE SORT (NUM1, NUM2)
+	C     Sorts two numbers so that NUM1<=NUM2
+
+	C     Input/Output Arguments
+	      INTEGER NUM1, NUM2
+
+	C     Local Variables
+	      INTEGER TEMP
+
+	C     Sort the numbers
+	      IF (NUM1 .GT. NUM2) THEN
+	         TEMP = NUM1
+	         NUM1 = NUM2
+	         NUM2 = TEMP
+	      END IF
+
+	      RETURN
+	      END
+
+
+	Input arguments:   NUM1, NUM2
+	Output arguments:  NUM1, NUM2
+      </LISTING>
+   </UL>
+
+</DL>
+
+</BODY>
+
+<HR>
+
+<ADDRESS>
+<H5>Copyright &copy 1996 Modified from<!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~bestor/bestor.html">Gareth S. Bestor</A> (<!WA3><!WA3><!WA3><A HREF="mailto:bestor@cs.wisc.edu">bestor@cs.wisc.edu</A>).  Last modified September 27, 1996.</H5>
+</ADDRESS>
+
+</HTML>
+

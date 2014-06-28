@@ -1,0 +1,284 @@
+Date: Wed, 20 Nov 1996 22:38:33 GMT
+Server: NCSA/1.5.1
+Last-modified: Fri, 10 May 1996 21:55:42 GMT
+Content-type: text/html
+Content-length: 8890
+
+<HEAD>
+<TITLE>
+CIS 841 (SE 750-KS)         Software Validation and Verification          Spring 1996
+</TITLE>
+</HEAD>
+<BODY><P>
+<H1>CIS 841 (SE 750-KS)<br>Software Validation and Verification          Spring 1996</H1>
+<P>
+<HR>
+<HR>
+<i><b>What's New on these Web Pages</b></i>
+<ul>
+<li> The final exam is now online.
+<li> Homework assignment 3 part B is now online.
+<li> Someone asked for a clarification regarding data flow criteria.
+It appears I mis-spoke in discussing a hint on collecting data for
+assignment 3, part A.  Here is the clarification:
+<ul>
+<li>
+The ALL-DU-Paths criteria requires that all paths between all defs 
+and all uses it reaches be exercised.  
+<li>
+The ALL-Uses criteria requires some path between all defs and all
+uses it reaches be exercised
+<li>
+The ALL-Defs criteria requires some path between all defs and some
+uses it reaches be exercised
+<li>
+To summarize, for all definitions
+<pre>
+    Criteria     NUM USES        Paths to USES
+    ALL-DU          all               all
+    ALL-Uses        all              some
+    ALL-Defs       some              some
+</pre>
+Note that some is satisfied by one.
+</ul>
+<li> I know that some of you are having significant technical problems
+with the course.  By this I mean delays in receiving tapes, receiving
+blank tapes and variability in the audio quality of tapes.  I'd
+like to try to assess how wide-spread this is.  If I find that
+it is a problem for a significant number of you I plan on 
+complaining to NTU.  I'm not sure if it will do any good, but its
+worth a try.  So, send me your feedback. 
+<li> If you have any other comments on the way the course is being
+taught please feel free to let me know (it will not affect your grade).
+</ul>
+<HR>
+<HR>
+
+
+<P>
+<HR>
+<b>OVERVIEW</b>
+<P>
+As software systems increase in size and complexity the difficulty
+of assuring that they function as intended increases rapidly.
+A variety of approaches have been proposed that have the
+potential to enable development organizations
+and individual developers to produce higher quality
+software.
+<P>
+In general, no single technique is capable of providing
+incontrovertable proof that software always behaves as
+intended.
+<P>
+In this course we will examine different verification
+and validation approaches that are capable of
+providing us with evidence of software quality.
+Using a combination of these techniques can provide 
+a high-degree of confidence in the quality of the software
+we construct.
+<P>
+<HR>
+<b>LECTURES</b>
+<P>
+Durland 164<BR>
+MW 3:30-4:45 pm<BR>
+Exams held in Nichols 236<BR>
+<P>
+<HR>
+<b>INSTRUCTOR</b>
+<P>
+Prof. Matt Dwyer<BR>
+<P><!WA0><IMG ALIGN=BOTTOM ALT="" SRC="http://www.cis.ksu.edu/~dwyer/courses/841/syllabus/_2488_tabbing9.xbm"><P>
+<HR>
+<b>PREREQUISITES</b>
+<P>
+CIS 740
+<P>
+<HR>
+<b>REQUIREMENTS</b>
+<P>
+The course will consist of lectures, readings, homework assignments
+and examinations.  The bulk of the concepts in the course will
+be presented, explained and illustrated by way of extended
+examples in the lectures.  The readings serve to provide more
+details and depth on selected concepts.  Homework is designed
+to develop student's abilities to apply concepts and synthesize
+solutions to new problems based on those concepts.
+<P>
+<DL>
+<DT>
+<!WA1><a href=
+"http://www.cis.ksu.edu/~dwyer/courses/841/lectures/lectures.html">
+Lectures </a>
+and Readings
+<DD>Lectures and readings function
+as an integrated presentation of the course material.  It is
+expected that readings will be read <b>prior</b> to the appropriate
+lecture.  
+<DT>
+<!WA2><a href=
+"http://www.cis.ksu.edu/~dwyer/courses/841/homework/homework.html">
+Homework </a>
+<DD>There will be four homework assignments.  The
+assignments will involve applying and extending the concepts
+presented in the lectures and readings.  For some of the homeworks
+you will be required to apply specific techniques to actual
+code.  For these assignments I will make samples
+of code available that you can use; alternatively you can
+use a piece of code that you have developed.
+<P>
+Homeworks should be completed individually.  Do not work with any
+other person.  Assignments are due at the beginning of class
+10%will be deducted for late assignments (an additional 10%
+for each day late).  Off-campus students may either
+email their solutions to me or fax
+their solutions using (913)532-7353.
+
+<DT>
+<!WA3><a href=
+"http://www.cis.ksu.edu/~dwyer/courses/841/exams/exams.html">
+Examinations </a>
+<DD>There will be a comprehensive take-home final exam.
+<P>
+ </DL>
+<P>
+Final grades will be assigned based on the following weighting:
+homeworks (40%), mid-term (20%), and final (40%).  
+
+<P>
+<HR>
+<b>READINGS</b>
+<P>
+The required readings for this course are selected papers from the literature.
+<P>
+<UL> 
+<LI> <!WA4><A NAME=tex2html3 HREF=http://www.cis.ksu.edu/~dwyer/courses/841/syllabus/bibliography3_1.html#SECTION0001000000000000000>References</A>
+</UL>
+
+<P>
+If you do not have access to these papers, they have been collected
+and are available from Copy Co., phone number (913) 537-2679.  The
+cost is &#126;$50.
+<P>
+In addition to the required readings you may find the following
+texts useful as they contain some of the material in the course.
+They range from general software engineering texts to in-depth
+treatments of issues related to particular verification and 
+validation approaches.
+<P>
+<UL><LI>There are a number of general software engineering
+text.  This text does a good job with software quaility issues:<BR><blockquote> <em>Fundamentals of software engineering</em>,
+       C. Ghezzi, M. Jazayeri and D. Mandrioli,
+       Prentice-Hall
+</blockquote>
+
+<P>
+<LI>The following two texts cover a broad range of 
+testing techniques and contain significant practical
+information for testers.<BR><blockquote> <em>Software Testing Techniques</em>,
+       B. Beizer,
+       Van Nostrand Reinhold,
+</blockquote>
+<P>
+<blockquote> <em>The Craft of Software Testing</em>,
+       B. Marick,
+       Prentice-Hall
+</blockquote>
+
+<P>
+<LI>Representations and algorithms for data flow analysis are
+covered in most compiler books.  A good example is:
+<blockquote> <em>Compilers : Principles, Techniques, and Tools</em>,
+       A.V. Aho, R. Sethi and J.D. Ullman,
+       Addison-Wesley
+</blockquote>
+
+<P>
+</UL>
+<P>
+<HR>
+<b>ADDITIONAL RESOURCES</b>
+<P>
+Web pages for course (linked off of
+my home page) will 
+include assignments, solutions, lecture notes, and links
+to other validation and verification pages.
+<P>
+<HR>
+<b>ORGANIZATION & SCHEDULE</b>
+<P>
+The course is broken up into the following parts:
+<DL ><DT>foundations
+<DD>of program analysis.  
+We cover mathematical preliminaries.   How validation
+and verification activities relate to other software
+development activities. 
+We present and discuss a variety of models that are
+used to represent
+and reason about the possible behavior of a program.
+<P>
+<DT>specification
+<DD>of intended program behavior.  How do
+we say what a program should do?
+<P>
+While there are a variety of different specification formalisms,
+in this course, we will focus on finite state automata specifications.
+
+<P>
+<DT>static techniques
+<DD>examine the text of designs, specifications or code.
+One can view static techniques as a kind of <em>abstract</em> execution
+of the program.  This execution produces different kinds of output
+than the normal program execution and that output is used to
+drive validation and  verification efforts.  This execution
+can be accomplished on a variety of different substrates.
+We will study both:
+<DL ><DT>manual
+<DD>techniques that use developers to perform program analyses.
+  <DT>automated
+<DD>techniques that algorithmically perform program analyses.
+<P>
+ </DL>
+
+<P>
+<DT>dynamic techniques
+<DD>involve executing an implementation with
+respect to the semantics of the language in which it is written.
+Validation and verification efforts are based on observing the
+behaviour of the software as it executes.  This can include
+observing normal program output as well as probing the state
+of the software during different points in its execution.
+Well look at techniques based on both of these:
+<DL ><DT>assertion based
+<DD>analyses involve periodic checking of intended behavior during program execution.
+  <DT>testing
+<DD>involves checking of software input/output relationships.
+<P>
+ </DL>
+
+<P>
+<DT>software processes
+<DD>that support verification and validation
+provide an infrastructure in which quality assurance activities can
+be organized, monitored, and controlled.
+<P>
+<DT>software safety
+<DD>in life-critical systems is emerging as an increasingly
+important area of quality  assurance.
+<P>
+<DT>concurrency
+<DD>is being used increasingly in distributed and parallel
+software.  Along with increased performance comes an increase in the
+complexity of the already difficult
+problem of quality assurance.  We will consider the impact of concurrency
+on both static and dynamic analysis approaches.
+<P>
+ </DL>
+<P><!WA5><IMG ALIGN=BOTTOM ALT="" SRC="http://www.cis.ksu.edu/~dwyer/courses/841/syllabus/_2488_tabular73.gif"><P>
+<P>
+<HR>
+
+</BODY>
+<P><ADDRESS>
+dwyer@cis.ksu.edu
+</ADDRESS>

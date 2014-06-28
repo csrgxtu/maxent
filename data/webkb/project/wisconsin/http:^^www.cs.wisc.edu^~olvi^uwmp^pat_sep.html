@@ -1,0 +1,176 @@
+Date: Thu, 07 Nov 1996 19:22:38 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 12 Jul 1995 15:40:37 GMT
+Content-length: 5416
+
+<HTML>
+<HEAD>
+<TITLE>Pattern Separation via Mathematical Programming</TITLE>
+</HEAD>
+
+<BODY>
+
+
+
+<HR>
+<H1>Pattern Separation via Mathematical Programming</H1>
+<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><IMG SRC="http://www.cs.wisc.edu/~olvi/uwmp/msmt_www.gif">
+
+<P>
+
+This WWW page describes work in Pattern Separation via Linear Programming in 
+the Mathematical Programming section of the <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.wisc.edu/">
+University of Wisconsin-Madison Computer Sciences Department.</A>  
+
+<HR>
+<H1>Brief History and Method Outline</H1>
+
+
+
+<P>
+
+Mathematical optimization approaches, in particular linear programming, have 
+long been used in problems of pattern separation.  
+In <CITE>[65]</CITE> linear programs were used to construct planes 
+to separate linearly separable point sets.  
+Separation by a nonlinear surface 
+using linear programming was also described, whenever the surface 
+parameters appeared linearly,
+e.g. a quadratic or polynomial surface.  These formulations however could fail
+on sets that were not separable by a surface linear in its parameters.  
+
+
+<P>
+
+A Multisurface Method (MSM) <CITE>[68,93]</CITE> 
+avoided this difficulty.  MSM separates 2 disjoint finite point sets in 
+<EM>n</EM>-dimensional Euclidean space as follows:  
+
+<OL>
+    <LI> Choose 2 parallel planes in <EM>n</EM>-dimensional Euclidean space
+       as close together so that only the region between the two planes
+       contains points from both sets (i.e. the regions NOT between the
+       2 parallel planes contain only points of 1 set or no points).
+
+
+  <LI> Discard the points in the regions not between the 2 parallel planes.
+
+  <LI> Repeat the process on the points between the 2 parallel planes, until
+       the region between the 2 parallel planes contains no points or very
+       few points.
+ 
+</OL>
+
+
+
+<P>
+
+Multisurface Method Tree (MSM-T),
+a variant on the Multisurface Method was developed in   
+<CITE>[92a], [92b], [93]</CITE>.
+Let <EM>A</EM> and <EM>B</EM> be finite disjoint point sets in <EM>n</EM>-dimensional Euclidean
+space.   
+The goal of MSM-T is to
+determine a sequence of planes in <EM>n</EM>-dimensional Euclidean
+space that separate the  sets <EM>A</EM> and <EM>B</EM> as follows:
+
+
+<OL>
+  <LI> Determine a plane in <EM>n</EM>-dimensional Euclidean space that
+       minimizes the average "distances" of misclassified points.  A point from
+       set <EM>A</EM> is misclassified if it lies on the side of the separating
+       plane assigned to <EM>B</EM>.
+       Similarly, a point from set <EM>B</EM> is misclassified if it lies
+       on the side of the separating plane assigned to <EM>A</EM>.
+
+
+  <LI> If the regions assigned to <EM>A</EM> and <EM>B</EM> contain only (or
+       mostly) points of the set <EM>A</EM> or <EM>B</EM>, then stop.  
+       Otherwise, generate another
+       error-minimizing plane (in 1.) in this region.
+
+</OL>
+
+The sequence of planes generated can be viewed as a decision tree.  For each
+node in the tree, the best split of the points reaching that node is found 
+by solving the LP in 1, above.  The node is split into 2 branches, and the
+same procedure is applied until there are only (or mostly) points of one
+set at the node.   This linear programming approach can also be viewed as
+training a neural network with 1 hidden layer
+(see <CITE>[93]</CITE>).
+
+
+
+<P>
+
+MSM-T has been shown to learn concepts as well or better than more traditional
+learning methods such as C4.5 and CART.  It also has an advantage over 
+artificial neural network (ANN) methods such as backpropagation in
+that training proceeds much faster (see <CITE>[92a]</CITE>).
+
+
+<HR>
+<H1>Implementations of MSM-T</H1>
+
+<P>     
+
+MSM-T has been implemented in <EM>C</EM> using the MINOS numerical 
+optimization package by  <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~street/street.html">Nick Street</A> and <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="http://rpinfo.its.rpi.edu:80/~bennek/">Kristin Bennett</A>.  MSM-T has also been implemented 
+for the MATLAB 
+optimization package by <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="http://www.cs.wisc.edu/~paulb/paulb.html">Paul Bradley</A>.  Following is a <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A HREF="http://www.cs.wisc.edu/~olvi/uwmp/msmt.html">description</A> of the MATLAB implementation of MSM-T.  Together with the <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><A HREF="file://www.cs.wisc.edu/~olvi/uwmp//afs/cs.wisc.edu/u/p/a/paulb/public/msmt">M-files</A> 
+required to run it. 
+
+
+<HR>
+<H2>Chronological Bibliography</H2>
+
+
+<DL>
+  <DT> <B> [65] O. L. Mangasarian. </B>
+   <DD>  Linear and Nonlinear Separation of Patterns by Linear Programming.
+	<EM> Operations Research, </EM> Vol. 13, No. 3, May-June, 1965, pages
+	444 - 452.
+
+  <DT> <B> [68] O. L. Mangasarian. </B>
+   <DD>  Multisurface Method of Pattern Separation. <EM> IEEE 
+        Transactions on 
+	Information Theory, </EM> Vol. IT-14, No. 6, November 1968, pages 
+	801 - 807.
+
+
+  <DT> <B> [92a] K. P. Bennett. </B>
+   <DD>  Decision Tree Construction via Linear Programming. <EM> Proceedings of the 4th Midwest Artificial Intelligence and Cognitive Science Society Conference, </EM> 1992, pages 97 - 101.
+
+
+  <DT> <B> [92b] K. P. Bennett and O. L. Mangasarian. </B>
+   <DD>  Robust Linear Programming Discrimination of Two Linearly Inseparable Sets. <EM> Optimization Methods and Software,</EM> Vol. 1, 1992, pages 23 - 34.
+
+
+  <DT> <B> [93] O. L. Mangasarian. </B> 
+   <DD> Mathematical Programming in Neural Networks.  <EM> ORSA Journal on Computing, </EM> Vol. 5, No. 4, Fall 1993, pages 349 - 360.
+
+</DL>
+
+
+<HR>
+
+
+Last modified: Wed Jul 12 10:40:37 1995 by Paul Bradley
+<ADDRESS>
+  <!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><A HREF="http://www.cs.wisc.edu/~paulb/paulb.html">paulb@cs.wisc.edu</A>
+</ADDRESS>
+</BODY>
+</HTML>
+
+
+
+
+
+
+
+
+
+
+
+

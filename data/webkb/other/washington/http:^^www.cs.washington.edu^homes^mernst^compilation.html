@@ -1,0 +1,65 @@
+Date: Tue, 10 Dec 1996 22:59:21 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Fri, 22 Nov 1996 03:05:28 GMT
+Content-length: 2848
+
+<title>Michael Ernst's compilation page</title>
+<link rev="made" href="mailto:mernst@cs.washington.edu">
+
+<h2>Compilation</h2>
+
+My primary research goal is improving programmer productivity, and my
+chief research area is compilation.  However, I am also interested in <!WA0><a
+href="http://www.cs.washington.edu/homes/mernst/other-technical.html">other topics</a> from game theory to
+intellectual property.<p>
+
+Microsoft's <!WA1><a href="http://www.research.microsoft.com/research/analysts/">program analysis
+group</a> aims to improve programming tools, primarily through the use
+of a new intermediate representation, the <!WA2><a
+href="http://www.research.microsoft.com/research/analysts/vdg.html">value dependence graph
+(VDG)</a>.  The VDG promises to make optimization easier and more
+efficient, at the cost of slightly more involved code generation.  We
+have a prototype programming environment and compiler for C which use
+the VDG.<p>
+
+<h3>Source information</h3>
+
+Our compiler generates information about source statements corresponding
+to intermediate graph nodes, and maintains this mapping during
+transformations.  This permits effective queries and feedback based on the
+original program.  A paper describing the details is forthcoming.<p>
+
+<h3>Slicing</h3>
+
+A static <!WA3><a href="http://www.cs.washington.edu/homes/mernst/slicing.html">slicer</a> for visualizing dependences is
+integrated with our programming environment.  This integration permits the
+slicer to take advantage of analyses and and optimizations performed by
+the compiler, resulting in improved slices.  The expression-oriented
+nature of the slicer also improves programmer control and the precision of
+the resulting slices.  Executable slices can be created without
+constraints based on the syntax of the original program or language.<p>
+
+<h3>Debugging</h3>
+
+Implementation of a source-level debugger for optimized programs is
+underway.  The debugger will take advantage of the features of the <!WA4><a
+href="http://www.research.microsoft.com/research/analysts/vdg.html">VDG</a> to
+provide the programmer with fine control over the execution of the program
+and to avoid misleading the programmer about the computation which is
+actually ocurring.<p>
+
+<h3>Serialization</h3>
+
+"<!WA5><a
+href="ftp://theory.lcs.mit.edu/pub/people/mernst/serialize/serialize.ps.Z">Serializing
+Parallel Programs by Removing Redundant Computation</a>" (also see the <!WA6><a
+href="ftp://theory.lcs.mit.edu/pub/people/mernst/serialize/abstract.txt">abstract</a>)
+takes a new approach to the old problem of compiling programs to run fast
+on both serial and parallel machines.  Exclusive focus on parallelization
+of serial programs is misguided; we should work to serialize parallel
+programs, because that is easier, more natural, and produces better results
+for a certain class of programs.  The paper also discusses new forms of
+common subexpression elimination.<p>
+
+Back to <!WA7><a href="http://www.cs.washington.edu/homes/mernst/">Michael Ernst's home page</a>.

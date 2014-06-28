@@ -1,0 +1,115 @@
+Date: Tue, 14 Jan 1997 23:11:53 GMT
+Server: Apache/1.0.3
+Content-type: text/html
+Content-length: 3749
+Last-modified: Mon, 29 Apr 1996 06:05:39 GMT
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML STRICT LEVEL
+2//EN"><HTML VERSION="-//IETF//DTD HTML STRICT LEVEL
+2//EN"><HEAD><TITLE>A306 - Retail Store
+Project</TITLE></HEAD><BODY>
+
+<H1>The Retail Store Project</H1>
+<h2>Due at Midnight on Tuesday/Wednesday, April 30/May 1</h2>
+<HR>
+
+<P>As our main project for the semester, we are implementing
+a system to manage the sales and inventory data for a retail
+store. This page will serve as a jumping-off point for
+information pertaining to all aspects of the project. Here
+you will find links to the results of our analysis and design
+discussions, descriptions of the assignments through which we
+will implement the system, and shared code and implementation
+hints.</P>
+
+<h2>How to Turn In Your Project</h2>
+
+<p> Sometime before the deadline, type
+<kbd>~jsobel/a306/final-handin</kbd> to turn in your work.  You will
+be prompted for a list of file names.  List all the files you have
+written for the project, including your <kbd>Makefile</kbd>.  If you
+run the final-handin program more than once, I will ignore all the
+handins except for the last one.  </p>
+
+<H2>Analysis and Design: Preliminary Results</H2>
+
+<P>Below you will find a list of the classes that we have
+chosen (so far) to model the activity in a retail store. The
+name of each class is a link to more information about that
+class (such as the variables used to represent the state of
+instances of the class and the methods used to implement the
+behavior the those instances).</P>
+
+<UL compact>
+
+<LI><!WA0><A href="http://www.cs.indiana.edu/classes/a306/retail/Person.html">Person</A> </LI>
+
+<LI><!WA1><A href="http://www.cs.indiana.edu/classes/a306/retail/Customer.html">Customer</A> </LI>
+
+<LI><!WA2><A href="http://www.cs.indiana.edu/classes/a306/retail/Employee.html">Employee</A> </LI>
+
+<LI><!WA3><A href="http://www.cs.indiana.edu/classes/a306/retail/Inventory.html">Inventory</A> </LI>
+
+<LI><!WA4><A href="http://www.cs.indiana.edu/classes/a306/retail/Item.html">Item</A> </LI>
+
+<LI><!WA5><A href="http://www.cs.indiana.edu/classes/a306/retail/Tender.html">Tender</A> </LI>
+
+<LI><!WA6><A href="http://www.cs.indiana.edu/classes/a306/retail/Transaction.html">Transaction</A> </LI>
+
+<LI><!WA7><A href="http://www.cs.indiana.edu/classes/a306/retail/TransElement.html">TransactionElement</A> </LI>
+
+<LI><!WA8><A href="http://www.cs.indiana.edu/classes/a306/retail/Sale.html">Sale</A> </LI>
+
+<LI><!WA9><A href="http://www.cs.indiana.edu/classes/a306/retail/Return.html">Return</A> </LI>
+
+<LI><!WA10><A href="http://www.cs.indiana.edu/classes/a306/retail/Store.html">Store</A> </LI>
+
+<LI><!WA11><A href="http://www.cs.indiana.edu/classes/a306/retail/Company.html">Company</A> </LI>
+
+</UL>
+
+<H2>Assignments</H2>
+
+<OL compact>
+<LI>Implement the <CODE>Person</CODE> class and the
+     <CODE>Customer</CODE> class.</LI>
+<li>Implement the <code>Tender</code> classes.</li>
+<li>Implement the <code>Transaction</code> class and the
+     <code>TranactionElement</code> classes. </li>
+<li>Write a main driver program for the retail store.</li>
+</OL>
+
+<H2>Code and Other Helpful Resources</H2>
+<p>All links to code in the following list are really only for
+reference.  You can just include the header from
+<kbd>~jsobel/a306/include</kbd> and link with <code>-la306</code> to
+use the extra classes below.</p>
+
+<UL compact>
+
+<li><!WA12><a href="http://www.cs.indiana.edu/classes/a306/retail/inv-test.cc">A sample program</a> demonstrating the use
+of the <code>Item</code> and <code>Inventory</code> classes.</li>
+
+<LI><!WA13><A href="http://www.cs.indiana.edu/classes/a306/retail/MemManaged.html">MemManaged classes:</A> How to
+create classes with automatic memory management.</LI>
+
+<LI><!WA14><A href="http://www.cs.indiana.edu/classes/a306/retail/Employee.h">Employee.h</A> and <!WA15><A
+href="http://www.cs.indiana.edu/classes/a306/retail/Employee.cc">Employee.cc</A>: Already written!</LI>
+
+<LI><!WA16><A href="http://www.cs.indiana.edu/classes/a306/retail/macros.html">C++ Macros:</A>Useful for saving
+time and typing effort.</LI>
+<li> <!WA17><a href="http://www.cs.indiana.edu/classes/a306/retail/Currency.h">Currency.h</a> and <!WA18><a
+     href="http://www.cs.indiana.edu/classes/a306/retail/Currency.cc">Currency.cc</a></li>
+<li> <!WA19><a href="http://www.cs.indiana.edu/classes/a306/retail/Percentage.h">Percentage.h</a> and <!WA20><a
+     href="http://www.cs.indiana.edu/classes/a306/retail/Percentage.cc">Percentage.cc</a></li>
+<li> <!WA21><a href="http://www.cs.indiana.edu/classes/a306/retail/Date.h">Date.h</a> and <!WA22><a href="http://www.cs.indiana.edu/classes/a306/retail/Date.cc">Date.cc</a></li>
+<li> <!WA23><a href="http://www.cs.indiana.edu/classes/a306/retail/DateTime.h">DateTime.h</a> and <!WA24><a
+     href="http://www.cs.indiana.edu/classes/a306/retail/DateTime.cc">DateTime.cc</a></li>
+<li> <!WA25><a href="http://www.cs.indiana.edu/classes/a306/retail/Time.h">Time.h</a> and <!WA26><a href="http://www.cs.indiana.edu/classes/a306/retail/Time.cc">Time.cc</a></li>
+<li> <!WA27><a href="http://www.cs.indiana.edu/classes/a306/retail/Shift.h">Shift.h</a> and <!WA28><a href="http://www.cs.indiana.edu/classes/a306/retail/Shift.cc">Shift.cc</a></li>
+<li> <!WA29><a href="http://www.cs.indiana.edu/classes/a306/retail/IDCode.h">IDCode.h</a></li>
+<li> <!WA30><a href="http://www.cs.indiana.edu/classes/a306/retail/SSN.h">SSN.h</a></li>
+</UL>
+
+
+</BODY></HTML>

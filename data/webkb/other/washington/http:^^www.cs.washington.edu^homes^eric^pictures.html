@@ -1,0 +1,128 @@
+Date: Tue, 10 Dec 1996 23:20:01 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Fri, 22 Mar 1996 03:32:37 GMT
+Content-length: 3765
+
+<html>
+
+<head>
+	<title>Rayleigh-Benard Convection</title>
+</head>
+
+<body>
+
+<h2> <img align=bottom src=lr5.gif> 
+<a name="top">A stable state</a><br> </h2>
+
+<hr>
+<img align=bottom src=palette.gif> 
+<a name="palette"></a><br>
+<hr>
+
+<a href=abstract.html> Abstract.</a>  This experiment models the spatial patterns formed by fluid convection
+close to onset.  You are looking down at a large thin square box,
+filled with (an infinitely viscous) slow-moving fluid.  The dimensions
+of the box are twenty by twenty by one unit deep.
+
+<p>
+The areas shaded blue represent fluid moving downwards, and those shaded red
+represent fluid moving up.  Green is motionless fluid;  at the
+boundary the fluid is constrained to be motionless, so we will
+eventually see all of the patterns fading out at the boundary.
+
+<p> The convection rolls that ultimately form have diameter comparable
+to the depth of the box.
+
+<p>
+<hr>
+<img align=middle src=lr0.gif> 
+<a name="lr0"></a>
+<b>Frame 0</b>. We start with some initial conditions, velocities small and
+distributed randomly.  
+<hr>
+
+<p>
+ <img align=middle src=lr1.gif> 
+<a name="lr1"></a>
+<b>Frame 1</b>. As time progresses the fluid begins to develop local coherence. <hr>
+
+<img align=middle src=lr2.gif> 
+<a name="lr2"></a>
+<b>Frame 2</b>. Distinct local convection rolls form, of measurable diameter.
+<hr>
+
+<img align=middle src=lr3.gif> 
+<a name="lr3"></a>
+<b>Frame 3</b>. The rolls become locally parallel, but defects
+form in the center of the box.
+<hr>
+
+<img align=middle src=lr4.gif> 
+<a name="lr4"></a>
+<b>Frame 4</b>. The center defects are resolved, leaving defects only at the boundary.
+<hr>
+
+<img align=middle src=lr5.gif> 
+<a name="lr5"></a>
+<b>Frame 5</b>. The fluid eventually reaches a steady state.
+<hr>
+
+These evolutions also make spiffy movies.  
+Unfortunately, to make them small enough to be reasonable over the
+network, the geometries are so small that the fluid motion is a little
+contrived.  But the pictures are pretty cute anyway.  Here's one
+with rigid boundary conditions (as above, only smaller).
+
+<p>
+<a href="evolve.qt">Rigid/rigid boundaries
+<img src=re.gif 
+alt="(picture)" align=middle> </a>
+(Quicktime format, 2.1Mb.) 
+<!-- (Or <a href="evolve.qtmov">download</a> the file.) -->
+<p>
+The final frames from some other movies still under construction:
+<p>
+<a href="periodic_evol.qt">Rigid/periodic boundaries<img src=pe.gif 
+alt="(picture)" align=middle> </a>
+(Picture only.)
+<!-- (Quicktime format, 1.3Mb.) -->
+<!-- (Or <a href="file://periodic_evol.qt">download</a> the file.) -->
+<hr>
+
+The second picture plainly shows the specific effect we're trying to
+pin down, the bending of the convection rolls as they leave the
+boundary.  This effect was first described by S. Zaleski et als.,
+"Optimal merging of rolls near a plane boundary", 29 Phys. Rev. A.
+366 (1984).
+
+<hr>
+The numerical problems are challenging principally because the
+steady state takes an enormously long time to achieve.  There is hope
+for improved techniques, because the successive differences from one
+state to another have considerable coherence.  Here are final frames
+(the movies are still under construction)
+ of the successive differences between frames of the above two
+simulations. 
+<p>
+<a href="rigid_diff.qt">Rigid/rigid boundaries <img src=rd.gif 
+alt="(picture)" align=middle> </a>
+(Picture only.)
+<!-- (Quicktime format, 2.1Mb.) -->
+<!-- (Or <a href="file://rigid_diff.qt">download</a> the file.) -->
+<p>
+<a href="periodic_diff.qt">Rigid/periodic boundaries <img src=pd.gif 
+alt="(picture)" align=middle> </a>
+(Picture only.)
+<!-- (Quicktime format, 1.3Mb.) -->
+<!-- (Or <a href="file://periodic_diff.qt">download</a> the file.) -->
+<hr>
+</body>
+<address>
+eric@cs.washington.edu 
+<DD> 26 Mar 1996
+</address>
+</html>
+
+
+

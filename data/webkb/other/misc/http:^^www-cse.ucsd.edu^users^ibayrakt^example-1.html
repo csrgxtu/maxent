@@ -1,0 +1,43 @@
+Date: Wed, 15 Jan 1997 01:31:14 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Wed, 13 Nov 1996 23:36:31 GMT
+Content-length: 1385
+
+<TITLE>Fill-Out Form Example #1</TITLE>
+<H1>Fill-Out Form Example #1</H1>
+
+This is a very simple fill-out form example. <P>
+
+<!WA0><FORM METHOD="POST" ACTION="http://www-cse.ucsd.edu/users/ibayrakt/cgi-bin/post-query">
+
+A single text entry field goes here: <INPUT NAME="entry"> <P>
+
+Note that it has no default value. <P>
+
+To submit the query, press this button: <INPUT TYPE="submit"
+VALUE="Submit Query">. <P>
+
+</FORM>
+
+That's it. <P>
+
+Things you may want to note: <P>
+
+<UL>
+<LI> Characters like "&amp;", "%", and "$" in the text typed into the
+     text entry field are automatically escaped (into hex form: a
+     percent sign followed by a two-digit hex value corresponding to
+     the ASCII value of the character) when the query is constructed.
+     For example, the string "&amp;%$" becomes "%26%25%24".
+<LI> By default, an <CODE>INPUT</CODE> tag corresponds to a text entry
+     field.  The <CODE>TYPE</CODE> attribute lets you change this --
+     the "submit" type indicates a special pushbutton that causes the
+     query to be submitted when it's pushed.  Other types are
+     demonstrated in the other examples.
+<LI> Because this fill-out form contains only a single text entry
+     field, the query can be submitted by pressing return in the text
+     entry field (as well as by pressing the "Submit Query" button).
+</UL>
+
+<!WA1><A HREF="http://www-cse.ucsd.edu/users/ibayrakt/example-2.html">Forward to example 2</A>. <P>

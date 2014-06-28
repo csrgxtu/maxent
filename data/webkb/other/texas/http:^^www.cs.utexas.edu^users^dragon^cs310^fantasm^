@@ -1,0 +1,171 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 20:37:11 GMT
+Content-Type: text/html
+Content-Length: 5425
+Last-Modified: Monday, 02-Dec-96 22:50:41 GMT
+
+<title> Fantasm Page </title>
+
+<!body background="images/legalpad.gif">
+<!BODY bgcolor="ddffdd" link=#ff0000 alink=#A1A3A0 vlink=#990000>
+<BODY bgcolor="000000" text=#ffffffff link=#00ff00 alink=#A1A3A0 vlink=#22cc00>
+
+
+<center><!WA0><!WA0><!WA0><img src="http://www.cs.utexas.edu/users/dragon/cs310/fantasm/images/fantasm.gif"></center>
+<br> <center>The truth is out there.</center>
+<p>
+<center> This page is constantly under construction:<br>
+Last Update - 
+Fri Nov 15 00:08:43 CST 1996
+</center>
+<!-- ----------------------------------------------------------------------
+--
+-- 	Title : Fantasm Page
+--
+-- ---------------------------------------------------------------------- --!>
+<hr>
+
+<!-- ----------------------------------------------------------------------
+--
+-- 	What's new
+--
+-- ---------------------------------------------------------------------- --!>
+<center>
+<h3> What's New </h3>
+</center>
+<hr>
+
+<center>
+Bug fixed version: f96.io.v1.1 was installed: log out from your 
+current session and relogin and let the machine 'REBUILD'. 
+After the rebuild, the new version will be visible in the 
+[System Disk]->[Fantasm] folder. Use the new version by all means.
+</center>
+<center>..........................................</center><br>
+<center>
+Bug in f96.io.v1.0 : if you are getting FATAL ERRORs when building,
+read this: <!WA1><!WA1><!WA1><a href="http://www.cs.utexas.edu/users/dragon/cs310/fantasm/even-problem"> Alignment problems </a>. You do 
+not need to do this if you are using v1.1 (see above)<br>
+</center>
+<center>..........................................</center><br>
+<hr>
+
+<!-- ----------------------------------------------------------------------
+  --
+  -- 	Contents
+  --
+  -- ---------------------------------------------------------------------- --!>
+<a name="contents">
+<h2> Contents </h2>
+This page contains stuff to do with writing assembly programs on the 
+M680x0 architecture - focusing on various issues on the assembler 
+<b>Fantasm</b> by <!WA2><!WA2><!WA2><a href="http://www.tau.it/lightsoft">Lightsoft</a>.
+
+<ol> 
+	<li> <!WA3><!WA3><!WA3><a href="http://www.cs.utexas.edu/users/dragon/cs310/fantasm/handouts/fantasm_users_manual">Fantasm User's Manual</a>
+	<li> <!WA4><!WA4><!WA4><a href="http://www.cs.utexas.edu/users/dragon/cs310/fantasm/handouts/faq.3"> FANTASM FAQ </a>
+	<li> <!WA5><!WA5><!WA5><a href="http://www.cs.utexas.edu/users/dragon/cs310/fantasm/handouts/hdt25"> MacsBug Quick Overview </a>
+	<li> <!WA6><!WA6><!WA6><a href="http://www.cs.utexas.edu/users/dragon/cs310/fantasm/handouts/hdt26"> Pitfalls in Fantasm programming </a>
+	<li> <!WA7><!WA7><!WA7><a href="http://www.cs.utexas.edu/users/dragon/cs310/fantasm/io_lib"> IO library specification </a>
+	<li> <!WA8><!WA8><!WA8><a href="#prog_ex">Example Programs:</a>
+		string output, hex to base32
+	<li> <!WA9><!WA9><!WA9><a href="#resource">Resources</a>: tips, programs, links, etc.
+
+		
+</ol>
+</blockquote>
+
+|<b><!WA10><!WA10><!WA10><a href="#contents">Back to Contents</a></b>|<hr>
+
+<!-- ----------------------------------------------------------------------
+  --
+  -- 	Example Programs
+  --
+  -- ---------------------------------------------------------------------- --!>
+<a name="prog_ex">
+<h2> Example Programs</h2>
+<blockquote>
+	Here are some example programs that run under Fantasm.
+	You have to obtain the [f96.io.v1.0] library files
+	from the [System Disk]->[Fantasm] folder in the new powermacs in the
+	macintosh lab in PAI.
+	<p>
+	This is the specification for the following programs:
+	<!WA11><!WA11><!WA11><a href="http://www.cs.utexas.edu/users/dragon/cs310/fantasm/handouts/hdt21"> program spec</a>.
+	<ul> 
+		<li> STROUTLN : subroutine for printing out 
+			Pascal style string (length+string)
+			<ol>
+			<li>global definition file 
+			   <!WA12><!WA12><!WA12><a href="http://www.cs.utexas.edu/users/dragon/cs310/fantasm/sol/pgm4-sol/glob-4.1.s.unix"> 
+			   (P4_globals.s)</a>
+			<li>source file 
+			   <!WA13><!WA13><!WA13><a href="http://www.cs.utexas.edu/users/dragon/cs310/fantasm/sol/pgm4-sol/start-4.1.s.unix">
+			   (start.s)</a>	
+			</ol>
+		<li> STROUTLN : shorter version
+			<ol>
+			<li>global definition file  
+			   <!WA14><!WA14><!WA14><a href="http://www.cs.utexas.edu/users/dragon/cs310/fantasm/sol/pgm4-sol/glob-4.2.s.unix"> 
+			   (P4_globals.s)</a>
+			<li> source file
+			   <!WA15><!WA15><!WA15><a href="http://www.cs.utexas.edu/users/dragon/cs310/fantasm/sol/pgm4-sol/start-4.2.s.unix">
+			   (start.s)</a>
+			</ol>
+		<li> Hex to base32 conversion :
+			<ol>
+			<li>global definition file  
+			   <!WA16><!WA16><!WA16><a href="http://www.cs.utexas.edu/users/dragon/cs310/fantasm/sol/pgm4-sol/glob-4.3.s.unix"> 
+			   (P4_globals.s)</a>
+			<li> source file
+			   <!WA17><!WA17><!WA17><a href="http://www.cs.utexas.edu/users/dragon/cs310/fantasm/sol/pgm4-sol/start-4.3.s.unix">
+			   (start.s)</a>
+			</ol>
+	</ul>
+</blockquote>
+|<b><!WA18><!WA18><!WA18><a href="#contents">Back to Contents</a></b>|<hr>
+
+<!-- ----------------------------------------------------------------------
+  --
+  -- 	Resources	
+  --
+  -- ---------------------------------------------------------------------- --!>
+<a name="resource">
+<h2> Resources </h2>
+<blockquote>
+   	<ul>
+	<li> <!WA19><!WA19><!WA19><a href="http://www.tau.it/lightsoft"> Lightsoft :</a>
+		The developer of Fantasm 
+	<li> 
+	<!WA20><!WA20><!WA20><a href="http://www.tau.it/lightsoft/PD/TheProgrammersDream.html">
+	The Programmer's Dream page at Lightsoft </a>
+	<br> <!WA21><!WA21><!WA21><a href="http://www.tau.it/lightsoft/PD/brynley/bb.html">
+	Brynley's page: </a> project and libraries stuff 
+	<li> 
+	<!WA22><!WA22><!WA22><a href="http://www.tau.it/lightsoft/docs.html"> Fantasm Documents:</a>
+		User's manual in StuffIt format 
+	<li> <!WA23><!WA23><!WA23><a href="http://www.tau.it/lightsoft/dlandupd.html">
+		Unregistered version of Fantasm</a>.
+	<li> <!WA24><!WA24><!WA24><a href="http://www.tau.it/lightsoft/dlandupd.html">
+	Test Bed V1.00" Library </a>: the current [f96.io.v1.0] is based on 
+	this library.
+	</ul>
+</blockquote>
+|<b><!WA25><!WA25><!WA25><a href="#contents">Back to Contents</a></b>|<hr>
+
+<!-- ----------------------------------------------------------------------
+  --
+  -- 	Okay, the trailer goes here.
+  --
+  -- ---------------------------------------------------------------------- --!>
+This page is maintained by <!WA26><!WA26><!WA26><a href="http://www.cs.utexas.edu/users/yschoe">
+Yoonsuck Choe</a> (<!WA27><!WA27><!WA27><a href="mailto:yschoe@cs.utexas.edu">yschoe@cs.utexas.edu</a>)
+<h3>
+| <b><!WA28><!WA28><!WA28><a href="http://www.utexas.edu">UT Austin</a></b> 
+| <b><!WA29><!WA29><!WA29><a href="http://www.cs.utexas.edu">UTCS</a></b>
+| <b><!WA30><!WA30><!WA30><a href="http://www.cs.utexas.edu/users/dragon/cs310">CS310 Fall 1996 Page</a></b>
+| 
+</h3>
+
+

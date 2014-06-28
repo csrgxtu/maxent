@@ -1,0 +1,80 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 16-Dec-96 23:19:21 GMT
+Content-Type: text/html
+Content-Length: 2336
+Last-Modified: Monday, 13-Mar-95 14:33:34 GMT
+
+<html>
+<head>
+<title> CS 314: Homework Number 2  </title>
+</head>
+
+<body>
+
+<h1> Homework Number 2 </h1>
+
+<h3>
+Date Assigned:   February 7, 1995<br>
+Date Due:   February 14, 1995
+</h3>
+<h3> To submit your answer </h3>
+Send an email message to <code>cs314@cs.cornell.edu</code> with the
+subject <I>cs314 assignment 2 answers</I> and the answers to the
+following questions. Label each answer with the problem number and part
+(e.g., 1A, 1B, etc)
+
+<h3>Problem 1 </h3>
+Convert the following decimal numbers into the indicated bases:
+<ul>
+    <li>A.  333 into binary
+    <li>B.  1861 into binary
+    <li>C.  1861 into hexadecimal
+    <li>D.  275 into binary
+    <li>E.  1336 into octal
+    <li>F.  453 into octal
+    <li>G.  577 into binary
+    <li>H.  1713 into octal
+    <li>I.  940 into hexadecimal
+    <li>J.  63 into hexadecimal
+</ul>
+
+<h3>Problem 2</h3>
+Assume that the computer is initialized using the data given below.
+(all values are decimal).  For each of the following machine
+instructions, indicate what registers change (if any) and what value
+they receive, and/or what memory locations are changed and what value
+it receives. <I>Each question is independent of the others and starts
+with the initial values given above</I>. If an instruction is illegal
+say so and indicate why. Report all values in decimal. Don't tell us
+what happens to the condition code bits.
+
+<pre>
+--------------------------------------
+Address      Value  Address      Value  
+0            10     10           -2     
+2            6      12           -4     
+4            4      14           -6     
+6            2      16           -10    
+8            0      18           -12    
+                                        
+Register A0  6      Register D0  20     
+Register A1  10                         
+-----------------------------------------
+
+    INSTRUCTION              What It Does  
+A.  MOVE.L #6,A0                           
+B.  MOVE.W (A0)+,D0                        
+C.  ASL.L #2,D0                            
+D.  MULS.L #2,D0                           
+E.  MOVE.W 4(A0),D0                        
+F.  ADD.L -15(A0,D0),D0                    
+G.  MOVE.L -16(A1,D0),-(A0)                
+H.  DIVS.W #6,D0                           
+I.  ANDI #FF,SR                            
+-----------------------------------------
+</pre>
+
+</body>
+</html>
+

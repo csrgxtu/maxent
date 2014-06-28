@@ -1,0 +1,216 @@
+Date: Wed, 08 Jan 1997 20:43:18 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE>CSE 322  
+Assignment 4 Solution Set  
+Monday, January 29, 1996</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value="CSE 322  
+Assignment 4 Solution Set 
+Monday, January 29, 1996">
+<meta name="keywords" value="hw4soln">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ <BR> <HR><A NAME=tex2html1 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.washington.edu/general/latex2html_icons//next_motif.gif"></A>   <IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.washington.edu/general/latex2html_icons//up_motif_gr.gif">   <IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.washington.edu/general/latex2html_icons//previous_motif_gr.gif">         <BR>
+<B> Next:</B> <A NAME=tex2html2 HREF="node1.html">   About this document </A>
+<BR> <HR> <P>
+<P>
+<H1>CSE 322  
+Assignment 4 Solution Set  
+Monday, January 29, 1996</H1>
+<P><STRONG></STRONG><P>
+<P><STRONG></STRONG><P>
+<P>
+<OL><LI> Number 36 on page 69.  Better yet construct the derivation tree for
+<IMG  ALIGN=MIDDLE ALT="" SRC="img1.gif">.
+<P>
+
+For the derivations, I'll use the following abbreviations:
+<P>
+<b>&lt;</b>E<b>&gt;</b> means <b>&lt;</b>expression<b>&gt;</b><BR> 
+<b>&lt;</b>SE<b>&gt;</b> means <b>&lt;</b>simple expression<b>&gt;</b><BR> 
+<b>&lt;</b>T<b>&gt;</b> means <b>&lt;</b>term<b>&gt;</b><BR> 
+<b>&lt;</b>F<b>&gt;</b> means <b>&lt;</b>factor<b>&gt;</b><BR> 
+<b>&lt;</b>AO<b>&gt;</b> means <b>&lt;</b>adding operator<b>&gt;</b><BR> 
+<b>&lt;</b>MO<b>&gt;</b> means <b>&lt;</b>multiplying operator<b>&gt;</b><BR> 
+<b>&lt;</b>V<b>&gt;</b> means <b>&lt;</b>variable<b>&gt;</b><BR> 
+<b>&lt;</b>EV<b>&gt;</b> means <b>&lt;</b>entire variable<b>&gt;</b><BR> 
+<b>&lt;</b>VI<b>&gt;</b> means <b>&lt;</b>variable identifier<b>&gt;</b><BR> 
+<b>&lt;</b>I<b>&gt;</b> means <b>&lt;</b>identifier<b>&gt;</b><BR> 
+<b>&lt;</b>IT<b>&gt;</b> means <b>&lt;</b>identifier tail<b>&gt;</b><BR> 
+<b>&lt;</b>L<b>&gt;</b> means <b>&lt;</b>letter<b>&gt;</b><BR> 
+<b>&lt;</b>UC<b>&gt;</b> means <b>&lt;</b>unsigned constant<b>&gt;</b><BR> 
+<b>&lt;</b>UN<b>&gt;</b> means <b>&lt;</b>unsigned number<b>&gt;</b><BR> 
+<b>&lt;</b>UI<b>&gt;</b> means <b>&lt;</b>unsigned integer<b>&gt;</b><BR> 
+<b>&lt;</b>D<b>&gt;</b> means <b>&lt;</b>digit<b>&gt;</b><BR> 
+<b>&lt;</b>DS<b>&gt;</b> means <b>&lt;</b>digits<b>&gt;</b><BR>
+<P>
+Also, I'm using the following CFG productions in place of their BNF 
+equivalents:
+<P>
+<b>&lt;</b>unsigned integer<b>&gt;</b> <IMG  ALIGN=BOTTOM ALT="" SRC="img2.gif"> <b>&lt;</b>digit<b>&gt;</b> <b>|</b> <b>&lt;</b>digit<b>&gt;</b> <b>&lt;</b>digits<b>&gt;</b> <BR> 
+<b>&lt;</b>digits<b>&gt;</b> <IMG  ALIGN=BOTTOM ALT="" SRC="img3.gif"> <b>&lt;</b>digit<b>&gt;</b> <b>&lt;</b>digits<b>&gt;</b>  <b>|</b>  <IMG  ALIGN=BOTTOM ALT="" SRC="img4.gif"> <BR> 
+<b>&lt;</b>identifier<b>&gt;</b> <IMG  ALIGN=BOTTOM ALT="" SRC="img5.gif"> <b>&lt;</b>letter<b>&gt;</b> <b>&lt;</b>identifier tail<b>&gt;</b> <BR> 
+<b>&lt;</b>identifier tail<b>&gt;</b> <IMG  ALIGN=BOTTOM ALT="" SRC="img6.gif"> <b>&lt;</b>letter or digit<b>&gt;</b> <b>&lt;</b>identifier tail<b>&gt;</b>   <b>|</b>  <IMG  ALIGN=BOTTOM ALT="" SRC="img7.gif"> <BR>
+<P>
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img8.gif"><P>
+
+<P>
+<LI>
+<P>
+<OL><LI> The given grammar is unambiguous because there are two leftmost
+derivations for the string <b>ababab</b>:
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img9.gif"><P>
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img10.gif"><P>
+There are two derivation trees for <b>ababab</b>, as well:
+<P>
+
+<IMG  ALIGN=MIDDLE ALT="" SRC="img11.gif">
+
+-0.75
+<IMG  ALIGN=MIDDLE ALT="" SRC="img12.gif">
+
+
+<IMG  ALIGN=MIDDLE ALT="" SRC="img13.gif">
+
+-0.75
+<IMG  ALIGN=MIDDLE ALT="" SRC="img14.gif">
+
+<P>
+<LI> The ambiguity in the grammar is due to the <IMG  ALIGN=BOTTOM ALT="" SRC="img15.gif">
+production.  
+The grammar allows multiple derivation trees of any terminal string that
+can be derived from <IMG  ALIGN=BOTTOM ALT="" SRC="img16.gif">.
+The following grammar corrects this problem:
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img17.gif"><P>
+Intuitively, what this does is force immediate parsing on the left
+side of the string, by forcing the parse to the <b>A</b> productions.  
+A formal argument
+for why this grammar is ambiguous might come
+from the following observation: if we consider any 
+string made up of balanced parenthesis, it can be described uniquely as
+a set of nested parenthesis surrounding some empty or non-empty string
+of balanced parenthesis, concatenated with some empty or
+non-empty string of balanced parenthesis.  This description corresponds 
+exactly to the grammar: the <b>A</b> productions generate the ``nested'' part 
+and the <b>S</b> productions generate the ``concatenated'' part.
+</OL>
+<P>
+<LI> Use the construction given in class for producing a regular grammar
+from a regular expression to construct a regular grammar which generates
+the language defined by the regular expression <IMG  ALIGN=MIDDLE ALT="" SRC="img18.gif">.
+<P>
+Since we eventually need to generate a unique set of non-terminals for 
+each <b>a</b> and <b>b</b> in the regular expression, we annotate the expression
+with indices: <IMG  ALIGN=MIDDLE ALT="" SRC="img19.gif">.  These indices aren't
+intended to mean anything, but we'll use them for bookeeping as we develop the grammar.  For each set of productions, we denote any starting symbol
+<b>S</b> as <IMG  ALIGN=BOTTOM ALT="" SRC="img20.gif">.  If any nonterminal and its productions can be 
+eliminated because it is unreachable from the starting symbol, it is 
+marked with <IMG  ALIGN=MIDDLE ALT="" SRC="img21.gif">.
+<P>
+<IMG  ALIGN=BOTTOM ALT="" SRC="img22.gif"><IMG  ALIGN=BOTTOM ALT="" SRC="img23.gif">
+<P>
+<IMG  ALIGN=BOTTOM ALT="" SRC="img24.gif"><IMG  ALIGN=BOTTOM ALT="" SRC="img25.gif">
+<P>
+<IMG  ALIGN=BOTTOM ALT="" SRC="img26.gif"><IMG  ALIGN=BOTTOM ALT="" SRC="img27.gif">
+<P>
+<IMG  ALIGN=BOTTOM ALT="" SRC="img28.gif"><IMG  ALIGN=BOTTOM ALT="" SRC="img29.gif">
+<P>
+<IMG  ALIGN=BOTTOM ALT="" SRC="img30.gif"><IMG  ALIGN=BOTTOM ALT="" SRC="img31.gif">
+<P>
+One grammar for the language described by <IMG  ALIGN=MIDDLE ALT="" SRC="img32.gif"> is then
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img33.gif"><P>
+where <b>P</b> is given by the productions below:
+<P>
+<IMG  ALIGN=BOTTOM ALT="" SRC="img34.gif">
+<P>
+<LI> Suppose <IMG  ALIGN=MIDDLE ALT="" SRC="img35.gif"> where <IMG  ALIGN=BOTTOM ALT="" SRC="img36.gif"> in the given grammar.
+Properties i) and ii) can be shown to hold for any such <b>x</b> 
+by (strong) induction on the length of the leftmost derivation of <b>x</b>.
+<P>
+<b>Basis:</b> (n=1) Suppose <IMG  ALIGN=MIDDLE ALT="" SRC="img37.gif"> and <IMG  ALIGN=BOTTOM ALT="" SRC="img38.gif">.  There
+is only one such terminal string <b>x</b>, namely <b>x=ab</b>.  
+<UL><LI> (property i) <IMG  ALIGN=BOTTOM ALT="" SRC="img39.gif">,<b>a</b>, and <b>ab</b> are the only prefixes of 
+<b>ab</b>.  For all of these prefixes, the number of <b>a</b>'s is at least 
+equal to the number of <b>b</b>'s.  
+<LI> (property ii) 
+<IMG  ALIGN=MIDDLE ALT="" SRC="img40.gif"></UL>
+<b>(Strong) Inductive hypothesis:</b> 
+Assume that properties i) and ii) are true for any 
+<IMG  ALIGN=MIDDLE ALT="" SRC="img41.gif"> where <IMG  ALIGN=BOTTOM ALT="" SRC="img42.gif"> for all <IMG  ALIGN=MIDDLE ALT="" SRC="img43.gif">.
+<b>Inductive step:</b> From this we need to show i) and ii) for any
+<IMG  ALIGN=MIDDLE ALT="" SRC="img44.gif"> where <IMG  ALIGN=BOTTOM ALT="" SRC="img45.gif">.  There are two 
+possibilities for the derivation of <b>x</b>:
+<UL><LI> <IMG  ALIGN=BOTTOM ALT="" SRC="img46.gif">
+<P>
+Since this is a leftmost derivation, we know that
+that there exist some <b>y</b> and <b>z</b> where 
+<IMG  ALIGN=MIDDLE ALT="" SRC="img47.gif">.
+This means that <IMG  ALIGN=MIDDLE ALT="" SRC="img48.gif"> and <IMG  ALIGN=BOTTOM ALT="" SRC="img49.gif"> where
+<b>k+j=n</b>.  Thus <b>y</b> and <b>z</b> have leftmost derivations from <b>S</b> of
+less than <b>n+1</b> steps, so properties i) and ii) hold for <b>y</b> and <b>z</b> by 
+the induction hypothesis.
+<P>
+(property i) Consider any prefix <IMG  ALIGN=MIDDLE ALT="" SRC="img50.gif"> of <b>x=yz</b>.  There are two 
+possibilities:
+<UL><LI> <IMG  ALIGN=MIDDLE ALT="" SRC="img51.gif"> is a prefix of <b>y</b>.  Then 
+<IMG  ALIGN=MIDDLE ALT="" SRC="img52.gif"> 
+by property i) for <b>y</b>.
+<LI> <IMG  ALIGN=MIDDLE ALT="" SRC="img53.gif"> for some prefix of <b>z</b>, <IMG  ALIGN=MIDDLE ALT="" SRC="img54.gif">.  
+Then <IMG  ALIGN=MIDDLE ALT="" SRC="img55.gif"> by property i) for <b>z</b> and property ii) for <b>y</b>.
+</UL>
+In each case of <IMG  ALIGN=MIDDLE ALT="" SRC="img56.gif">, the number of <b>a</b>'s in <IMG  ALIGN=MIDDLE ALT="" SRC="img57.gif"> is at least
+the number of <b>b</b>'s in <IMG  ALIGN=MIDDLE ALT="" SRC="img58.gif">.
+<P>
+(property ii) Since property ii) holds for <b>y</b> and <b>z</b> we have 
+<IMG  ALIGN=MIDDLE ALT="" SRC="img59.gif">.
+So the number of <b>a</b>'s in <b>x</b> is equal to the number of <b>b</b>'s in <b>x</b>.
+<P>
+<LI> <IMG  ALIGN=BOTTOM ALT="" SRC="img60.gif">
+We know that there exists some <b>w</b> where
+<IMG  ALIGN=BOTTOM ALT="" SRC="img61.gif">.
+This means that <IMG  ALIGN=BOTTOM ALT="" SRC="img62.gif">.
+Thus <b>w</b> has a leftmost derivation from <b>S</b> of
+less than <b>n+1</b> steps, so properties i) and ii) hold for <b>w</b> by the induction
+hypothesis.
+<P>
+(property i) Consider any prefix <IMG  ALIGN=MIDDLE ALT="" SRC="img63.gif"> of <b>x=awb</b>.  There are three 
+possibilities:
+<UL><LI> <IMG  ALIGN=MIDDLE ALT="" SRC="img64.gif">.  
+In this case, <IMG  ALIGN=MIDDLE ALT="" SRC="img65.gif">.
+<LI> <IMG  ALIGN=MIDDLE ALT="" SRC="img66.gif"> for some prefix of <b>w</b>, <IMG  ALIGN=MIDDLE ALT="" SRC="img67.gif">.
+Then <IMG  ALIGN=MIDDLE ALT="" SRC="img68.gif"> 
+by property i) for <b>w</b>.
+<LI> <IMG  ALIGN=MIDDLE ALT="" SRC="img69.gif">.  Since property ii) holds for <b>w</b>, we have
+<IMG  ALIGN=MIDDLE ALT="" SRC="img70.gif">.
+</UL>
+In each case of <IMG  ALIGN=MIDDLE ALT="" SRC="img71.gif">, the number of <b>a</b>'s in <IMG  ALIGN=MIDDLE ALT="" SRC="img72.gif"> is at least
+the number of <b>b</b>'s in <IMG  ALIGN=MIDDLE ALT="" SRC="img73.gif">.
+<P>
+(property ii) Since property ii) holds for <b>w</b> we have 
+<IMG  ALIGN=MIDDLE ALT="" SRC="img74.gif">.
+So the number of <b>a</b>'s in <b>x</b> is equal to the number of <b>b</b>'s in <b>x</b>.
+</UL>
+<P>
+Therefore, for any <IMG  ALIGN=MIDDLE ALT="" SRC="img75.gif"> where <IMG  ALIGN=BOTTOM ALT="" SRC="img76.gif">, properties
+i) and ii) hold by the principle of strong induction.
+<P>
+</OL><BR> <HR>
+<UL> 
+<LI> <A NAME=tex2html3 HREF="node1.html#SECTION00010000000000000000">   About this document ... </A>
+</UL>
+<BR> <HR><A NAME=tex2html1 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.washington.edu/general/latex2html_icons//next_motif.gif"></A>   <IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.washington.edu/general/latex2html_icons//up_motif_gr.gif">   <IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.washington.edu/general/latex2html_icons//previous_motif_gr.gif">         <BR>
+<B> Next:</B> <A NAME=tex2html2 HREF="node1.html">   About this document </A>
+<BR> <HR> <P>
+<BR> <HR>
+<P><ADDRESS>
+<I>James Fix <BR>
+Mon Jan 29 17:24:25 PST 1996</I>
+</ADDRESS>
+</BODY>

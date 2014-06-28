@@ -1,0 +1,295 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 16-Dec-96 23:50:59 GMT
+Content-Type: text/html
+Content-Length: 12013
+Last-Modified: Thursday, 14-Mar-96 18:00:20 GMT
+
+<html>
+<head><title>CS516 Project Proposals</title></head>
+<body>
+
+<h1>CS 516 Project Proposals</h1> 
+<h2>Thorsten von Eicken</h2>
+<h3>Wednesday, Mar. 13th, 1996</h3>
+       
+<hr>
+
+<h2>Proposals</h2>
+<h3>SP-2 related projects:</h3>
+<OL>
+
+<p><li><h3>Splash benchmarks in CC++ on the SP-2</h3>
+
+Splash is a benchmark suite consisting of parallel applications for
+shared memory machines developed at Stanford.  Splash-2 is the latest
+version of Splash containing several new applications as well as the
+original ones.  The suite is divided into two categories: kernels and
+applications.  Kernels are routines commonly used by applications.
+Here is a sample of them:
+<p>
+Kernels: 
+Complex 1D FFT;
+Blocked LU Decomposition;
+Blocked Sparse Cholesky Factorization;
+Integer Radix Sort;
+<p>
+Applications:
+Barnes-Hut;
+Ocean Simulation;
+Water Simulation with Spatial Data Structure;
+Water Simulation without Spatial Data Structure;
+and others.
+<p>
+Implement the kernels listed above and one or two applications
+(depending on the level of difficulty) in CC++ or Split-C.  Your
+implementation will be judged on correctness and performance.  A
+careful explanation of the results is expected along with detailed
+timing breakdowns.
+<p>
+The source code of the benchmarks for shared memory machines is
+available on the Web.  You can choose to port the existing code to
+CC++ or Split-C, or write your own from scratch once you understand
+the problem.  You should also read the paper entitled "Splash-2
+Programs: Characterization and Methodological Considerations"
+published in ISCA'95.  All these can be obtained from the Web.
+<p>
+This project will expose you to parallel programming using
+state-of-the-art languages in both shared and distributed memory
+machines.  The Splash benchmarks are widely accepted in the research
+community.  Besides, CC++ is a parallel extension of C++ that has
+become very popular over the years.  You can do your project on any
+available platform, but we suggest the SP-2 because these languages
+are currently well supported by us.
+
+
+<p><li><h3>PVM over Active Messages on the SP-2</h3>
+
+PVM (Parallel Virtual Machine) is a very popular software package that supports
+parallel computing on networked of workstations.  It provides a user
+library with routines (e.g. pvm_send, pvm_recv) for communication between 
+processes.  PVM communication is baed on TCP/UDP protocols, hence only
+coarse-grained parallel applications can get reasonable performance.
+<p>
+Try improve the performace of PVM by implementing its major communication 
+routines over Active Messages on the SP-2 and benchmark them against
+Split-C as well as MPI.
+
+<p><li><h3>Parallel VMRL renderer on the SP-2, in Split-C or CC++</h3>
+
+Implement a parallel renderer for the VRML (virtual reality modelling
+language). This would allow very complex VRML documents to be downloaded
+and scenes rendered, hopefully in near-real-time, on a system such as 
+the SP-2. You would also need a way to send the rendered image quickly
+to some desktop workstation ... a simple X connection works for prototype,
+but what about sending the rendered image back over ATM? 
+
+
+<p><li><h3>A parallel POVray or other raytracer in Split-C or CC++ </h3>
+
+Implement a parallel POVray or other raytracer. This is similar to the
+above, but probably has a less "real-time" feel (unless you manage to do
+it VERY quickly). POVRay is a freely available raytracing package which
+runs on a wide range of UNIX systems; try parallelizing aspects of it
+(say, by dividing the rendering space between CPUs) and implementing on
+a system such as the SP-2.
+
+
+<p><li><h3>A parallel file system on SP-2</h3>
+
+Implement a parallel file system on top of the regular filesystem on each
+node.  This is most easily done as a user-level library within Split-C.
+
+<p><li><h3>Split-C benchmark comparison and survey</h3>
+
+All of the high-end parallel
+systems in the department can run programs written in the Split-C parallel
+language: The SP-2, ATM cluster, Fast Ethernet cluster, and multiprocessor
+SPARCs. The Berkeley and UCSB groups have a number of nice Split-C 
+benchmarks; we would like to get an understanding for their relative
+performance on all of the above systems, as well as how they scale (say,
+when running with 8 as opposed to 4 CPUs).
+
+<p><li><h3>Linda over Active Messages on the SP-2</h3>
+
+Linda is a simple (only six operations!) yet powerful extension to existing 
+sequential languages that allows parallel execution of programs. The computing
+model is slightly different from what you've been shown so far in the course.
+Messages and new tasks to be executed are put into a tuple space
+and they can be retrieved from there by any process. One does not have
+to specify the address of a sender of receiver -- the tuple space is shared
+between all processes. Reception of messages is based on pattern matching. 
+Based on the simple concept of tuple space, one can program
+all kinds of synchronization, blocking and non-blocking communication, 
+point-to-point or multicast message passing etc.
+<p>
+The project will be to implement Linda run-time system over Active Messages
+on the SP-2, as an extension to C. The work will include understanding
+of Linda model and using fast communication subsystem and threads in order
+to get very efficient run-time system. 
+
+
+</OL>
+
+<h3>U_Net related projects:</h3>
+<p>
+These projects specifically deal with U-Net, our system for low-latency
+user-level networking. Four implementations of U-Net exist (three for
+ATM cards, one for Fast Ethernet). In these projects you will augment the
+existing U-Net system, either on one of these implementations, or
+combining several of them.
+
+<OL>
+<p><li><h3>CUsee-me over the ATM network or over Fast Ethernet</h3>
+
+Implement and demo a high-speed version of CUSeeMe over the ATM network
+or over Fast Ethernet. Requires independence, since nobody in our group 
+knows how CUSeeMe works. The idea here is to explore methods of 
+long-range video teleconferencing using the U-Net approach. As opposed to
+sending video between two workstations side-by-side with an ATM fiber
+between them, how can protocols be designed for robust, multicast 
+video conferencing? 
+<p>
+An alternative to CUSeeMe would be a system such as the MBONE using 'vat',
+or some other 'free' video conferencing package such as ivs.
+
+<p><li><h3>Gateway between Fast Ethernet and ATM using U-Net</h3>
+
+Design and build a gateway between Fast Ethernet and ATM using U-Net.
+This can either be at the raw U-Net level or at the IP level.
+
+<p><li><h3>Kernel Endpoint for U-Net</h3>
+
+One 'problem' with U-Net is that it doesn't
+allow existing applications and kernel facilities to easily share the
+network device with U-Net. The idea is to implement a kernel-level
+U-Net endpoint where data generated from IP sockets (in the kernel) is
+sent and received through the endpoint. In this way you are treating the
+kernel endpoint as a kind of Ethernet driver (say). 
+<p>
+While any communication using the kernel endpoint will no doubt be
+slower than user-level endpoints, the idea is to allow many applications
+to multiplex on one kernel endpoint and for existing socket-based apps
+to at least run. You would not need to implement IP or other high-level
+protocols; essentially you would replace the low-level kernel functions
+for sending data to an ATM or Ethernet card with routines which read/write
+to the kernel endpoint.
+<p>
+The best platform for this is the ATM or Fast Ethernet implementation 
+of U-Net on Linux. 
+<p>
+This is an "expert" project best undertaken by someone with Linux kernel
+hacking experience.
+
+<p><li><h3>IP packet filter on SBA-200 ATM adapter</h3>
+
+U-Net over Fast Ethernet and ATM currently use a simple "protocol" 
+which is not compatible with IP. Implement a simple IPv4 packet filter
+for either U-Net for Fast Ethernet or ATM, so that packets are in the
+correct IPv4 format. You may not wish to implement all aspects of the
+IP protocol, but that would be a plus.
+
+<p><li><h3>Flow control for Active Messages on Fast Ethernet</h3>
+
+Fast Ethernet poses interesting flow control problems because acks compete
+with regular packets for bandwidth. Design a good flow control algorithm
+for Active Messages that works well on a shared medium fast ethernet.
+
+<p><li><h3>Fast RPC</h3>
+
+Pick up last year's Fast RPC project and actually make it work.
+
+<p><li><h3>Distributed Shared Memory</h3>
+
+Pick up last year's DSM project, make it work and run the Splash benchmarks
+over it.
+
+<p><li><h3>Network performance tool Netperf for U-Net</h3>
+
+Implement the standard network performance tool Netperf for U-Net
+
+<p><li><h3>Gang Scheduling for the U-Net Cluster</h3>
+
+In gang scheduling,
+all processors working on a single parallel application schedule 
+themselves synchronously, so that communication and computation phases
+can be coordinated and reduce latency for data exchange. This might
+require some kind of interesting modifications to the kernel scheduler,
+and some sort of "clock synchronization" so that all processes in, say,
+a Split-C application run at the same time across the network of machines.
+<p>
+This is an "expert" project best undertaken by someone with Linux kernel
+hacking experience.
+
+</OL>
+
+<h3>USIT related projects:</h3>
+USIT is a toolkit we developed to help build parallel and distributed
+programming environment on the ATM cluster.  Currently, there are utility
+programs to set up daemons on a set of machines within the cluster, and
+to start running split-c programs and forwarding I/O between your local
+machine and the cluster.  Those who will be using the cluster to run
+split-c programs and other application programs may also find the
+toolkit useful.
+<p>
+At a lower level, USIT provides both C and Tcl/Tk interfaces for job
+control, I/O forwarding, job scheduling, U-Net channel allocation etc. within
+the cluster.  These interfaces can be used to customize a particular
+execution environment your application requires.
+<OL>
+
+<p><li><h3>PVM over U-Net using USIT</h3>
+
+PVM is a popular software package that allows a heterogeneous network
+of parallel and serial computers to appear as a single concurrent computational
+resource.  PVM consists of two parts: daemon processes that users install
+on machines that use PVM, and a user library mainly for communication between
+processes.
+In this project, you are to explore the possibility of implementing
+ basic PVM daemon functionalities on U-Net
+ using the interfaces USIT provides, and if necessary implement additional
+interfaces for USIT.
+
+</OL>
+
+<h3>Other:</h3>
+
+<OL>
+<p><li><h3>Benchmark the Liedtke microkernel system</h3>
+
+Jochen Liedtke published the paper "On microkernel construction"
+in last SOSP. The abstract is included below. The project will be
+to read the paper thoroughly, understand the problems and proposed
+solutions, download the described code and benchmark it.
+<p>
+Abstract:
+From a software-technology point of view, the microkernel concept is 
+superior to large integrated kernels. On the other hand, it is widely 
+believed that (a) microkernel based systems are inherently inefficient 
+and (b) they are not sufficiently flexible. Contradictory to this belief,
+we show and support by documentary evidence that inefficiency and 
+inflexibility of current microkernels is not inherited from the basic idea 
+but mostly from overloading the kernel and/or from improper implementation.
+Based on functional reasons, we describe some concepts which must be 
+implemented by a microkernel and illustrate their flexibility. Then, we 
+analyze the performance critical points. We show what performance
+is achievable, that the efficiency is sufficient with respect to macro-kernels
+ and why some published contradictory measurements are not evident. 
+Furthermore, we describe some implementation techniques and illustrate why 
+microkernels are inherently not portable, although they improve portability 
+of the whole system.
+
+
+
+</OL>
+
+<br>
+<br>
+<hr>
+<br>
+<a href="../Welcome.html">
+Return to 
+CS 516 Home Page</a><p>
+<hr>
+</body>
+</html>

@@ -1,0 +1,419 @@
+Date: Wed, 20 Nov 1996 19:40:58 GMT
+Server: Apache-SSL/0.4.3b
+Content-type: text/html
+Content-length: 12841
+Last-modified: Thu, 10 Oct 1996 18:24:27 GMT
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>The CHAOS Project</TITLE>
+   <META NAME="GENERATOR" CONTENT="User-Agent: Mozilla/3.0b6aGold 
+(Macintosh; I; 68K)">
+</HEAD>
+<BODY TEXT="#000000" LINK="#0000FF" VLINK="#000080" ALINK="#FF0000" 
+BACKGROUND="hpsl/icons/White_Granite_Background.gif">
+
+<P><!WA0><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/glass.gif" HEIGHT=102 WIDTH=468>
+<HR></P>
+
+<P>The CHAOS research group at the University of Maryland College Park
+has developed methods that are making it possible to produce portable 
+compilers
+and runtime libraries to map a broad range of challenging applications
+onto high performance computer architectures. A major focus of this work
+has been to develop techniques for irregular scientific problems, i.e.
+problems that are unstructured, sparse, adaptive or block structured. The
+group works extensively with <!WA1><A 
+HREF="http://www.cs.umd.edu/projects/hpsl/demos/app-demo.html"><!WA2><IMG 
+SRC="http://www.cs.umd.edu/projects/hpsl/icons/RIB.GIF" BORDER=0 HEIGHT=213 WIDTH=243 
+ALIGN=RIGHT></A>
+
+<!WA3><A 
+HREF="http://www.cs.umd.edu/projects/hpsl/appl/">applications
+</A>developers in many disciplines and with parallel compiler vendors.
+Many of the concepts first described and prototyped by this project are
+making their way into <!WA4><A 
+HREF="http://www.erc.msstate.edu/hpff/home.html">High
+Performance Fortran </A>during the ongoing second round of language 
+definition.
+This work is also leading to the development of runtime support ( <B><!WA5><A 
+HREF="http://www.cs.umd.edu/projects/hpsl/tool/tools.html#metaChaos">Meta-Chaos</A>
+</B>) to couple runtime libraries used in data and task parallel compilers.
+Meta-Chaos is a central component for the common compiler runtime support
+being developed by the <!WA6><A HREF="http://aldebaran.npac.syr.edu:1955">Parallel
+Compiler Runtime Consortium</A>.</P>
+
+<P>We are currently developing techniques that will allow parallel compute
+and data objects to offer their services to remotely connected clients.
+The goal is to develop techniques that will make it possible to compose
+programs running on any combination of distributed memory, shared memory
+or networked microcomputers or workstations. We are motivating this research
+by software interoperability scenarios associated with two classes of 
+applications.
+The first class is sensor data processing and integration, and the second
+is complex physical simulations. We have developed early prototypes of
+our data parallel program coupling software and have employed our prototype
+to demonstrate the ability to couple separately executing High Performance
+Fortran programs, and to couple High Performance Fortran programs with
+applications developed using the Maryland CHAOS and Multiblock Parti 
+libraries.</P>
+
+<P>Based upon our experiences in developing runtime libraries and 
+parallelizing
+applications, we have developed several <!WA7><A 
+HREF="http://www.cs.umd.edu/projects/hpsl/compilers/compilers.html">compilation
+techniques</A>. Our goal is to be able to automate our hand 
+parallelization/optimization
+techniques through the use of compilers. We have employed the <!WA8><A 
+HREF="http://www.cs.rice.edu/fortran-tools/DSystem/DSystem.html">Fortran~D
+compilation system </A>(developed primarily at Rice University) as the
+infrastructure for implementation of our techniques.</P>
+
+<P>For generating efficient code from applications having multiple levels
+of indirection, we have developed an index flattening technique (based
+upon the notion of program slicing). This technique transforms a loop having
+multiple levels of indirection into a series of loops having at most a
+single level of indirection. We have also observed that aggressive 
+interprocedural
+optimizations are required to deal with large applications that have 
+irregular
+accesses to data or large I/O requirements. We have developed an 
+Interprocedural
+Partial Redundancy Elimination (IPRE) technique for performing 
+interprocedural
+placement of communication preprocessing and collective communication 
+statements.
+We are currently working on Interprocedural Balanced Code Placement (IBCP),
+which will allow us to overlap computation and communication across procedure
+boundaries. We are also working on generating distributed memory code from
+Fortran~90 codes that use pointers and recursive data structures. -by <!WA9><A 
+HREF="http://www.cs.umd.edu/~saltz">Joel
+Saltz</A></P>
+
+<H3 ALIGN=CENTER><!WA10><A 
+HREF="http://www.cs.umd.edu/projects/hpsl/chaos.html">CHAOS/PARTI
+Runtime Support Library</A></H3>
+
+<P>
+<HR></P>
+
+<H3 ALIGN=CENTER><FONT SIZE=+3>C</FONT>urrent <FONT SIZE=+3>A</FONT>reas
+of <FONT SIZE=+3>R</FONT>esearch:</H3>
+
+<CENTER><P><B>[<!WA11><A 
+HREF="http://www.cs.umd.edu/projects/hpsl/appl/appl-abs.html">Applications</A>
+| <!WA12><A HREF="http://www.cs.umd.edu/projects/hpsl/io/io.html">High Performance
+I/O</A> | <!WA13><A 
+HREF="http://www.cs.umd.edu/projects/hpsl/compilers/compilers.html">Compilers</A>
+| <!WA14><A 
+HREF="http://www.cs.umd.edu/projects/hpsl/tool/tools.html">Tools</A>]</B></P></CENTER>
+
+<H3 ALIGN=CENTER><B><FONT SIZE=+3>L</FONT>ocal <FONT 
+SIZE=+3>R</FONT>esources</B></H3>
+
+<CENTER><TABLE CELLSPACING=0 CELLPADDING=0 WIDTH="70%" HEIGHT="10%" 
+COLSPEC="L20 L20" >
+<TR>
+<TD><!WA15><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA16><A 
+HREF="http://www.cs.umd.edu/projects/hpsl/papers.brandnew/index.html">Publications</A></TD>
+
+<TD><!WA17><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA18><A 
+HREF="http://www.cs.umd.edu/projects/hpsl/projects/projects.html">Funded
+Projects</A></TD>
+</TR>
+
+<TR>
+<TD><!WA19><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA20><A 
+HREF="http://www.cs.umd.edu/projects/hpsl/menus/ftpavail.html">Code
+for download</A></TD>
+
+<TD><!WA21><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA22><A 
+HREF="http://www.cs.umd.edu/projects/hpsl/slides/slides.html">Presentations</A></TD>
+</TR>
+
+<TR>
+<TD><!WA23><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA24><A 
+HREF="ftp://hpsl.cs.umd.edu/pub/hpf_bench/index.html">HPF+
+Benchmarks</A></TD>
+
+<TD></TD>
+</TR>
+</TABLE></CENTER>
+
+<H3 ALIGN=CENTER><B><FONT SIZE=+3>F</FONT>aculty:</B></H3>
+
+<CENTER><TABLE CELLSPACING=0 CELLPADDING=0 WIDTH="70%" HEIGHT="10%" 
+COLSPEC="L20 L20" >
+<TR>
+<TD><!WA25><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA26><A 
+HREF="http://www.cs.umd.edu/~saltz">Dr.
+Joel Saltz</A></TD>
+
+<TD><!WA27><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA28><A 
+HREF="http://www.cs.umd.edu/~franklin">Dr.
+Michael J. Franklin</A></TD>
+</TR>
+
+<TR>
+<TD><!WA29><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA30><A 
+HREF="http://www.cs.umd.edu/~hollings">Dr.
+Jeff Hollingsworth</A></TD>
+
+<TD><!WA31><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA32><A 
+HREF="http://www.cs.umd.edu/~keleher">Dr.
+Pete Keleher</A></TD>
+</TR>
+
+<TR>
+<TD><!WA33><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA34><A 
+HREF="http://www.cs.umd.edu/~tseng">Dr.
+Chau-Wen Tseng</A></TD>
+
+<TD></TD>
+</TR>
+</TABLE></CENTER>
+
+<H3 ALIGN=CENTER><B><FONT SIZE=+3>R</FONT>esearch <FONT 
+SIZE=+3>F</FONT>aculty:</B></H3>
+
+<CENTER><TABLE CELLSPACING=0 CELLPADDING=0 WIDTH="70%" HEIGHT="10%" 
+COLSPEC="L20 L20" >
+<TR>
+<TD><!WA35><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA36><A 
+HREF="http://www.cs.umd.edu/~acha">Dr.
+Anurag Acharya</A></TD>
+
+<TD><!WA37><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA38><A 
+HREF="http://www.cs.umd.edu/~edjlali">Dr.
+Guy Edjlali</A></TD>
+</TR>
+
+<TR>
+<TD><!WA39><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA40><A 
+HREF="http://www.cs.umd.edu/~als">Dr.
+Alan Sussman</A></TD>
+</TR>
+</TABLE></CENTER>
+
+
+<H3 ALIGN=CENTER><B><FONT SIZE=+3>A</FONT>ffiliated <FONT
+SIZE=+3>F</FONT>aculty:</B></H3>
+<CENTER>
+<TABLE CELLSPACING=0 CELLPADDING=0 WIDTH="70%" HEIGHT="10%"
+COLSPEC="L20 L20" >
+<TR>
+<TD><!WA41><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA42><A
+HREF="http://www.cis.udel.edu/~agrawal">Dr.
+Gagan Agrawal</A></TD>
+
+<TD><!WA43><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA44><A
+HREF="http://www.cs.umd.edu/~ksb">Dr.
+Kelvin Bryant</A></TD>
+</TR>
+
+<TR>
+<TD><!WA45><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA46><A
+HREF="http://www.cs.umd.edu/~raja">Dr.
+Raja Das</A></TD>
+
+
+<TD><!WA47><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA48><A
+HREF="http://www.cs.rice.edu/~paco/">Dr.
+Paul Havlak</A></TD>
+</TR>
+</TR>
+</TABLE></CENTER>
+ <H3 ALIGN=CENTER><B><FONT 
+SIZE=+3>F</FONT>aculty <FONT SIZE=+3>R</FONT>esearch
+<FONT SIZE=+3>A</FONT>ssistant:</B></H3>
+
+<CENTER><TABLE CELLSPACING=0 CELLPADDING=0 WIDTH="70%" HEIGHT="10%" 
+COLSPEC="L20 L20" >
+<CAPTION>
+<CENTER><P><!WA49><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 
+WIDTH=14><!WA50><A HREF="http://www.cs.umd.edu/~wes">Wes
+Stevens</A></P></CENTER>
+</CAPTION>
+
+<TR>
+<TD></TD>
+</TR>
+</TABLE></CENTER>
+
+<H3 ALIGN=CENTER><FONT SIZE=+3>V</FONT>isiting <FONT 
+SIZE=+3>C</FONT>ollaborators:</H3>
+
+<CENTER><TABLE CELLSPACING=0 CELLPADDING=0 WIDTH="70%" HEIGHT="10%" 
+COLSPEC="L20 L20" >
+<TR>
+<TD><!WA51><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA52><A 
+HREF="http://www.cs.umd.edu/~patnaik">Dr.
+Gopal Patnaik</A>: Naval Research Laboratory</TD>
+</TR>
+
+<TR>
+<TD><!WA53><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA54><A 
+HREF="http://www.cs.umd.edu/~suh">Edward
+Suh</A>: National Institutes of Health</TD>
+</TR>
+</TABLE></CENTER>
+
+<H3 ALIGN=CENTER><FONT SIZE=+3>G</FONT>raduate <FONT 
+SIZE=+3>S</FONT>tudents:</H3>
+
+<CENTER><P><!-- ------------------------- --><!-- START OF CONVERTED 
+OUTPUT --><!-- ------------------------- --></P></CENTER>
+
+<CENTER><TABLE>
+<TR>
+<TD><!WA55><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA56><A 
+HREF="http://www.cs.umd.edu/users/robertb/">Robert E. Bennett</A></TD>
+
+<TD></TD>
+
+<TD><!WA57><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA58><A 
+HREF="http://www.cs.umd.edu/users/beynon/">Michael
+Beynon</A></TD>
+</TR>
+
+<TR>
+<TD><!WA59><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA60><A 
+HREF="http://www.cs.umd.edu/users/chialin/">Chialin
+Chang</A></TD>
+
+<TD></TD>
+
+<TD><!WA61><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA62><A 
+HREF="http://www.cs.umd.edu/users/shin/">Yuan-Shin
+Hwang</A></TD>
+</TR>
+
+<TR>
+<TD><!WA63><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA64><A 
+HREF="http://www.cs.umd.edu/users/bkmoon/">Bongki
+Moon</A></TD>
+
+<TD></TD>
+
+<TD><!WA65><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA66><A 
+HREF="http://www.cs.umd.edu/users/ranga/">Mudumbai
+Ranganathan</A></TD>
+</TR>
+
+<TR>
+<TD><!WA67><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA68><A 
+HREF="http://www.cs.umd.edu/users/dfs/">Daniel
+Savarese</A></TD>
+
+<TD></TD>
+
+<TD><!WA69><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA70><A 
+HREF="http://www.cs.umd.edu/users/shamik/">Shamik Sharma</A></TD>
+</TR>
+
+<TR>
+<TD><!WA71><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA72><A 
+HREF="http://www.cs.umd.edu/users/uysal/">Mustafa Uysal</A></TD>
+
+<TD></TD>
+
+</TABLE></CENTER>
+
+<CENTER><P><!-- ------------------------- --><!--  END OF CONVERTED 
+OUTPUT  --><!-- ------------------------- --><B><FONT SIZE=+3>R</FONT>esearch
+<FONT SIZE=+3>P</FONT>rogrammer</B></P></CENTER>
+
+<CENTER><P><!WA73><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 
+WIDTH=14><!WA74><A HREF="http://www.cs.umd.edu/~humphrie">Jim
+Humphries</A></P></CENTER>
+
+<UL>
+<H3 ALIGN=CENTER><FONT SIZE=+3>U</FONT>ndergraduate <FONT 
+SIZE=+3>S</FONT>tudents:</H3>
+</UL>
+
+<TABLE CELLSPACING=0 CELLPADDING=0 WIDTH="70%" HEIGHT="10%" COLSPEC="L20 
+L20" >
+<TR>
+<TD>
+<UL>
+<UL>
+<UL>
+<UL>
+<UL>
+<P><!WA75><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA76><A 
+HREF="http://www.cs.umd.edu/~newt">Dan
+Ridge</A></P>
+</UL>
+</UL>
+</UL>
+</UL>
+</UL>
+</TD>
+</TR>
+
+<TR>
+<TD>
+<UL>
+<UL>
+<UL>
+<UL>
+<UL>
+<P><!WA77><IMG SRC="http://www.cs.umd.edu/projects/hpsl/icons/redball.gif" ALT="" HEIGHT=14 WIDTH=14><!WA78><A 
+HREF="http://www.cs.umd.edu/~anthro">Greg
+Seidman</A></P>
+</UL>
+</UL>
+</UL>
+</UL>
+</UL>
+</TD>
+</TR>
+</TABLE>
+
+<H3 ALIGN=CENTER><FONT SIZE=+3>O</FONT>ther <FONT SIZE=+3>S</FONT>ites
+of <FONT SIZE=+3>I</FONT>nterest</H3>
+
+<UL>
+<P><ALIGN LEFT></P>
+
+<UL>
+<LI><!WA79><A HREF="http://www.llnl.gov/ptools/ptools.html">The Parallel Tools
+Consortium</A></LI>
+
+<LI><!WA80><A HREF="http://www.npac.syr.edu/">Northeast Parallel Architectures
+Center Home Page</A></LI>
+
+<LI><!WA81><A HREF="http://www.mcs.anl.gov/tpf">Task Parallelism (and 
+Fortran)</A></LI>
+
+<LI><!WA82><A HREF="http://softlib.cs.rice.edu/CRPC.html">Center for Research
+in Parallel Computation (CRPC)</A></LI>
+
+<LI><!WA83><A HREF="http://www.ccsf.caltech.edu/ccsf.html">Caltech Concurrent
+Supercomputing Facilities (CCSF)</A></LI>
+
+<LI><!WA84><A HREF="http://www.mcs.anl.gov/index.html">Argonne National 
+Laboratory</A></LI>
+
+<LI><!WA85><A HREF="http://www.erc.msstate.edu/hpff/home.html">High Performance
+Fortran Forum (HPFF)</A></LI>
+
+<LI><!WA86><A HREF="http://www.acl.lanl.gov/Home.html">Los Alamos National 
+Laboratory</A></LI>
+
+<LI><!WA87><A HREF="http://netlib2.cs.utk.edu/utk/utk.html">University of Tennessee
+at Knoxville</A></LI>
+
+<LI><!WA88><A HREF="http://www.uiuc.edu/extern/UofI_intro.html">University of
+Illinois</A></LI>
+</UL>
+</UL>
+
+<CENTER><P>
+<HR></P></CENTER>
+
+</BODY>
+</HTML>
+

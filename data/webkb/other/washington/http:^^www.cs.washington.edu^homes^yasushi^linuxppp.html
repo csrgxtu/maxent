@@ -1,0 +1,63 @@
+Date: Tue, 10 Dec 1996 22:05:16 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Sat, 14 Sep 1996 00:18:33 GMT
+Content-length: 1510
+
+<head>
+<title>Setting up Linux for Dialup PPP</title>
+</head>
+<body>
+
+<h1>Setting up Linux for Dialup PPP</h1>
+
+I assume Slackware Linux. The version I tried is 3.0.
+
+<h2> Slackware Installation</h2>
+
+<ol>
+  <li> When installing Slackware, choose to install the Networking
+       disk set(<b>N</b>).
+  <li> At the Networking disk set installer, choose to install
+       PPP daemon.
+</ol>
+
+<h2>Configuration</h2>
+
+All the procedures below has to be done by the superuser.
+
+<ol>
+  <li> Set up the DNS resolver.  Make <code>/etc/resolve.conf</code>
+       look like below.
+       <pre>
+search cs.washington.edu washington.edu
+nameserver 128.95.1.2
+nameserver 128.95.1.4
+       </pre>
+
+  <li> Try connecting the departmental gateway using ordinary serial line.
+
+       <pre>
+       % seyon -modem /dev/cua1 
+       </pre>
+
+       At the seyon screen, type
+
+       <pre>
+       atdt6852730
+       </pre>
+
+       If everything is OK, this will connect you to oslo or hydra.
+       If you have a problem, check the modem device name and
+       modem initialization commands.
+
+  <li> If serial line connection is OK, then we try PPP next.
+       PPP connection is created using <code>/sbin/pppd</code>.
+       Here is the basic setting.
+       <pre>
+/usr/sbin/pppd /dev/cua1 38400 connect '/usr/sbin/chat -v \
+       "" "at" "OK" "atdt6852730" "38400" "\\d\\d\\d\\d" \
+       "" "" "" "" ">" "login" "name: " "<em>yourname</em>" "word: " \
+       "<em>password</em>" ">" "ppp default"' defaultroute
+       </pre>
+</ol>

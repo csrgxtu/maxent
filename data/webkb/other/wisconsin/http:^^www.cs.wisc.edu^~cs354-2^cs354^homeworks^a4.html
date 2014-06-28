@@ -1,0 +1,174 @@
+Date: Tue, 05 Nov 1996 20:51:40 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 07 Oct 1996 15:09:19 GMT
+Content-length: 5162
+
+<html>
+<head>
+<title>Assignment 4</title>
+</head>
+
+<body>
+<center><h1> Assignment 4</h1></center>
+<hr><p><ul>
+<li>Homework Due Wednesday, October 16, at the beginning of class.
+<li>SAL Program Due Monday, October 21, before 5pm.
+<li>MAL Program Due Monday, October 28, before 5pm.
+</ul>
+<h2>Program</h2>
+<h3>Purpose</h3>
+This program is intended to provide understanding in the area of data
+structures.  It also gives programming practice in MIPS assembly language
+code (MAL).<p>
+<h3>Program Statement</h3>
+The program graphs integer solutions for some points on a line specified
+by the user.
+A line can be specified by the equation ax + by = c.
+The solutions to this equation specify a line on a cartesian coordinate
+system.
+The program will have the user enter values for variables a, b, and c.
+It will then find all integer solutions to the equation where both x and y
+are greater than or equal to -5 and less than or equal to +5.
+<p>
+We will restrict the user entered values (a, b, and c) to be greater than
+-10 and less than +10 to simplify the code that does input.
+<p>
+Use an 11 x 11 array of bytes to hold all the points on the grid.
+To find integers solutions, test each point to see if it solves the
+equation.
+Where a solution is found, mark the solution within the array that
+represents the grid.  The last step in the program is to print out the
+grid.
+<p>
+Sample program run:
+<pre>
+<code>
+Enter a, b, and c: <b>1 1 3</b><br>
+
+   X |
+    X|
+     X
+     |X
+     | X
+-----|--X--
+     |   X
+     |    X
+     |
+     |
+     |
+
+</code>
+</pre>
+Another sample program run:<p>
+<pre>
+<code>
+Enter a, b, and c: <b>2 -1 -1</b><br>
+
+     | X
+     |
+     |X
+     |
+     X  
+-----------
+    X|
+     |
+   X |
+     |
+  X  |
+
+</code>
+</pre>
+<h3>Requirements<p></h3>
+<ol>
+<li>Write this program twice.  The first time, write the program in SAL.
+Then translate the SAL code to MAL.  The SAL version is due one week before
+the MAL version is due.
+<li>The user input is restricted in form to make the code easier to write.
+The user enters 3 integers, all on one line, separated by space characters.
+An end of line character (ASCII character '\n') directly follows the third
+integer.  Each integer is allowed to be positive or negative.
+Negative values have a '-' character immediately preceding them.
+If there is no '-' character, then the integer is positive.
+Use only the SAL/MAL <code>getc</code> instruction for reading user input.
+The magnitude of the integers is restricted to be less than 10.  No error
+checking need be done on the user input.
+<li>Write the program such that it runs once, and then exits. Do not incorporate a loop to execute the program more than once.
+<li>Since part of the goal of this programming assignment is to gain
+experience using arrays, the program must use a two dimensional array
+to store the solutions to the equation for a line.
+<li>Comment your program appropriately.
+<li>For the MAL version, make sure that all instructions in the program
+are part of the MAL instruction set.
+This means that all operands of arithmetic and logical instructions
+will be in registers.
+Points will be deducted if SAL instructions or code are included in the
+MAL version of the program.
+<li>For the MAL version, you will want to learn to use a different
+user interface to the simulator.
+The user interface to <code>sim</code> is graphical -- it gives much more
+information than <code>simp</code>.
+Note that <code>sim</code> and <code>simp</code> are scripts that run the
+same simulator; the difference is the user interface presented.
+The user interface that goes with <code>sim</code> shows register values,
+and it easily allows single stepping through code.
+For detailed information, read the document listed under "Simulator Help"
+on the cs354 home page.
+</ul>
+<h3>Handing In the Program<p></h3>
+<p>
+Turn in your SAL program (the SAL source code)
+only once by running the script<p>
+<code>handin4s program4s.s</code><p>
+where <code>program4s.s</code>
+is the name of the file containing the SAL program.
+The <code>handin4s</code> script submits your program for you.
+No printout will be turned in.
+<p>
+Turn in your MAL program (the MAL source code)
+only once by running the script<p>
+<code>handin4m program4m.s</code><p>
+where <code>program4m.s</code>
+is the name of the file containing the MAL program.
+The <code>handin4m</code> script submits your program for you.
+No printout will be turned in.<p>
+
+
+
+</ul>
+<h2>Homework</h2>
+<ol>
+<li>
+(10 points) Show all work in obtaining the result of the following floating
+point multiplication.
+The representation is IEEE single precision, except that the mantissa
+field of the representation contains only 6 bits.
+Use round to nearest for any rounding.
+<code>
+<pre>
+         S   E         F (shortened)
+         0  10001000  111011
+      x  1  10000011  110100
+      -----------------------
+</pre>
+</code>
+<li>
+(5 points) The fifth element of an array of integers declared with
+<br>
+<code>
+int_array:  .word   0:18
+</code>
+<br>
+is located at address 0x0400aa00.  What address (in the data section)
+would the the SAL instruction
+<br>
+<code>
+move  M[int_array], -1
+</code>
+<br>
+access?
+
+<p><hr>
+
+</body>
+</html>

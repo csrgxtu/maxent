@@ -1,0 +1,184 @@
+Date: Thu, 21 Nov 1996 19:52:34 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Tue, 19 Nov 1996 18:49:38 GMT
+Content-length: 5274
+
+<head>
+<title>Peter J. Downey's Home Page</title>
+</head>
+
+<body>
+
+<a name="pagetop">
+<hr>
+<h1> <!WA0><img align=bottom src="http://www.cs.arizona.edu/people/pete/pete2.gif"> Peter J. Downey </h1>
+<hr>
+
+Peter J. Downey is Associate Professor of 
+<!WA1><a href=http://www.cs.arizona.edu>Computer Science</a>
+at the 
+<!WA2><a href=http://www.arizona.edu>University of Arizona</a>.
+He received a Ph.D. from Harvard University in 1974, and joined
+the faculty at the Pennsylvania State University.
+In 1978 he moved to Arizona.
+<p>
+Downey's main research area is probabilistic analysis of
+algorithms and systems, with particular emphasis on modeling
+the performance of parallel
+algorithms.
+These areas are described in detail below.
+<p>
+During the 1996-97 academic year, Downey is on sabbatical
+leave, but can be reached at the addresses below.
+<hr>
+
+<address>
+Department of Computer Science <br>
+Gould-Simpson Building, Room 739<br>
+The University of Arizona <br>
+PO BOX 210077<br>
+Tucson  AZ 85721-0077<br>
+Phone: (520) 621-2207 <br>
+FAX: (520) 621-4246 <br>
+<!WA3><a href=mailto:pete@cs.arizona.edu><tt>pete@cs.arizona.edu</tt></a>
+</address>
+
+<hr>
+<p>
+<BR>
+
+Naval Observatory Time is now:   
+<!WA4><IMG SRC="http://tycho.usno.navy.mil/cgi-bin/nph-usnoclock.gif?zone=MMT&ticks=04
+" ALT="Clock"> 
+<P>
+
+<p>
+
+<a name = papers">
+
+<H2>Parallel Program Performance</H2>
+
+The goal of this research project is
+the development of
+analytic methods to evaluate the performance of parallel asynchronous
+algorithms and systems.
+In order to understand the origins and effects of overheads in parallel
+computation, such as synchronization delays,
+methods focus on probabilistic models of workloads and
+task processing times.
+Rather than developing exact but unrealistic models with only narrow
+applicability, emphasis is on the development of bounds and approximations
+that are robust and valid for extremely general workload and task
+distributions (distribution-free methods).
+For large workloads and massive numbers of parallel processors, laws of
+large number apply and allow run-time and speed-up to be approximated or
+bounded in terms of a few underlying parameters of the workload.
+
+<H3>Analysis of Overheads</H3>
+
+Analysis of parallel
+algorithms is distinctly different from that of
+sequential algorithms because of the presence of overheads,
+following from the need to coordinate parallel activity.  Overheads
+are of two fundamentally different kinds.
+<I>Explicit</I>
+overheads
+result from the need to add additional code
+to a parallel algorithm to handle coordination matters such
+as forks and message sends.
+<I>Implicit</I>
+overheads
+arise from delays spent waiting on synchronization
+events, such as joins,
+to occur.
+Implicit and explicit overheads
+increase with increasing degree of parallelism;
+expected implicit overheads
+increase with the mean, variance and skewness of the underlying task time
+distributions.
+Much of this research aims
+to quantify the effects
+of such overheads,
+and to understand how they depend on
+various parameters of the workload distribution.
+Work on this subject includes
+<li><!WA5><a href="http://www.cs.arizona.edu/people/pete/papers/bounds.ps">
+Bounds and Approximations for Overheads in the Time to Join
+Parallel Forks </a>,
+<i> ORSA Journal on Computing 7</i>, 2(Spring 1995), 125-139.
+
+<H3>Foundations: Extreme Order Statistics</H3>
+
+Let <I>X1,  ... , Xn</I>
+be random
+variables, representing execution times of tasks.
+Two random variables derived from the task times
+play a critical
+role in determining the performance of
+parallel activity:
+<UL>
+<LI>
+the extreme
+<I>Mn = max ( X1,  ...  , Xn)</I>
+and
+<LI>
+the sum
+<I>Sn = X1 + ... + Xn.</I>
+</UL>
+Work aimed at
+understanding the
+behavior of both
+<I>Sn</I>
+and
+<I>Mn</I> for large
+<I>n</I>,
+even if
+the
+task times are dependent, forms a fundamental part
+of this research upon which all analysis is based.
+This foundational
+theory must meet a very practical methodological constraint:
+to be able to bound or approximate
+the behavior of
+extrema and sums
+without detailed information about the task workload distributions.
+Work in this area includes
+<li><!WA6><a href="http://www.cs.arizona.edu/people/pete/papers/ratio.ps"> The Ratio of the Extreme to the Sum
+in a Random Sequence with Applications
+</a>,
+with P.E. Wright,
+University of Arizona Technical Report TR 94-18 (1994).
+
+<H3>Scheduling and Sequencing</H3>
+
+Parallel performance issues occur at the operating systems level
+in the design of multiprocessor schedulers.
+The design and analysis of simple
+scheduling policies having guaranteed
+performance bounds is an important part of this research.
+New applications of stochastic ordering relations to prove
+optimality of static scheduling policies and
+to develop bounds for dynamic policies are being
+extended as part of this work.
+New work in this area includes
+<li><!WA7><a href="http://www.cs.arizona.edu/people/pete/papers/scheduling.ps">
+Scheduling Independent Tasks
+to Minimize the Makespan on Identical Machines </a>,
+with E.G. Coffman, Jr. and J. Bruno,
+<i>Probability in the Engineering and Informational
+Sciences 9</i>, 3(Fall 1995), 447-456.
+
+<p>
+<!WA8><img src="http://www.cs.arizona.edu/images/hrule.gif" height=3 width=1000
+  alt="------------------------------------------------------------------">
+<br>
+[ <!WA9><a href="#pagetop">Top of Page</a>
+|
+<!WA10><a href="http://www.cs.arizona.edu/"">Department Home Page</a> ]
+<small>
+<br>http://www.cs.arizona.edu/people/pete/
+<br>Last updated July 11, 1996
+</small>
+</body>
+

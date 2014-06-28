@@ -1,0 +1,111 @@
+Date: Tue, 05 Nov 1996 00:32:04 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 13 Sep 1996 16:05:29 GMT
+Content-length: 2671
+
+<html>
+<head>
+<title>CS 354 - Quiz #1</title>
+</head>
+
+<body>
+<table border=0 width=100% align=center>
+<tr>
+<td width=25%><td width=50% align=center>
+<td width=25%>
+<tr>
+<tr>
+<td>
+<b>CS 354
+<br>
+Fall 1996 
+<br>
+Section 2 </b>
+<td><td align=right><b>Karen's Solution</b>
+<tr>
+<td>
+<td align=center><b>Quiz #1 for Friday September 13</b>
+<br>
+3 questions, 25 points total
+<td>
+</table>
+
+<p>
+<b>1. (7 points) </b> Your computer is running the following SAL program.
+<code>
+<pre>
+  .data
+msg1:     .asciiz "program started\n"
+msg2:     .asciiz "program ending\n"
+aa:       .word 0
+bb:       .word 6
+cc:       .word
+  .text
+__start:   puts msg1
+           bge  aa, bb, print_sum
+           add  cc, cc, aa
+           add  aa, aa, 1
+print_sum: put  cc
+           puts msg2
+           done
+</pre>
+</code>
+Just after the CPU fetches the instruction at label <code>print_sum</code>, the computer breaks. The circuitry in the PC update hardware fails such that the PC is never updated again.  What happens to the execution of the SAL program?
+<ul>
+If the PC never changes (gets updated), then the CPU endlessly fetches and executes the instruction <code>put cc</code>.  In this case, <code>cc</code> has the value 0, so the program endlessly prints zeros.
+</ul>
+<p>
+<b>2. (8 points) </b> The following SAL code contains a single error that causes it to execute incorrectly.
+<code>
+<pre>
+  .data
+proc1_ra: .word
+msg:      .asciiz "program running. . ."
+int1:     .word
+int2:     .word
+int3:     .word
+  .text
+__start:  puts msg
+          move int1, 3
+          move int2, 20
+          la   proc1_ra, ra
+ra:       b    proc1
+          done
+
+proc1:    move int1, 3
+          move int2, 20
+          mul  int3, int2, int1
+          b    proc1_ra
+</pre>
+</code>
+<p>
+Give an brief (1 sentence) explanation of what goes wrong with this code.
+<ul>
+The return from the procedure branches to <code>proc1_ra</code> (into the data section).
+</ul>
+<p>
+Show how to fix the code by adding to or modifying it.
+<ul>
+Modify the instruction <code>b proc1_ra</code> to be
+<br>
+<code> b (proc1_ra)</code>
+</ul>
+<p>
+<b>3. (10 points) </b> Write a SAL code fragment that sums and then prints out the result of the integers in the range <code>start <= integer <= end</code>. All variables are of type integer, and variables <code>start</code> and <code>end</code> are assumed to be assigned values before this code fragment is run.
+<ul>
+Here is just one possible solution:
+<br>
+<code>
+<pre>
+          move sum, 0
+          move integer, start
+for:      bgt  integer, end, done_for
+          add  sum, sum, integer
+          add  integer, integer, 1
+          b for
+done_for: put sum
+
+</pre>
+</code>
+</ul>

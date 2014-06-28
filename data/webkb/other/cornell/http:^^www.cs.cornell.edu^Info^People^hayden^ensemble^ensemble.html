@@ -1,0 +1,86 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 18:41:39 GMT
+Content-Type: text/html
+Content-Length: 3598
+Last-Modified: Sunday, 10-Nov-96 18:28:23 GMT
+
+<html>
+<head>
+<title> Ensemble </title>
+</head>
+<BODY BACKGROUND=per.gif TEXT=#000000> 
+
+<center><h1> THE ENSEMBLE DISTRIBUTED COMMUNICATION SYSTEM </h1></center>
+<body>
+<p>
+Ensemble is the next generation of the <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A
+HREF="http://www.cs.cornell.edu/Info/Projects/HORUS/Overview.html">Horus</A> group
+communication toolkit, also developed at <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.cornell.edu"> Cornell
+University.</A> Visit the Horus page for more information about Horus, papers on
+group communication, and pointers to other sites with related information.
+<p>
+<h3>Language support</h3> Note that the current distribution primarily provides
+support for applications developed in the ML programming language.  However,
+interfaces to several other languages are under developlment and will be made
+available soon.  (You can check out our <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="http://www.cs.cornell.edu/Info/People/hayden/ensemble/roadmap.html">roadmap</A> for future
+development to see what our plans are.)
+<ul>
+<li>ML: Ensemble is implemented in the <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A
+HREF="http://pauillac.inria.fr:80/ocaml">Objective Caml</A> programming language (a
+dialect of ML).  The use of ML supports a variety of optimizations that enable
+Ensemble to achieve communication latencies an order of magnitude faster than Horus
+(although the current distribution does not enable these optimizations).
+
+<li>C: Ensemble supports an interface to C, a prototype appears in the current
+distribution.  This interface is being expanded upon to provide complete support for
+C applications.
+
+<li>C++: Also under development are two C++ interfaces: the <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A
+HREF="http://www.cs.cornell.edu/Info/Projects/HORUS/HOT/hot.html"> Horus Object
+Tools</A> (HOT) interface, and <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A HREF="http://www.olsen.ch/~maffeis/electra.html">
+Electra </A> (a Corba object request broker interface).
+
+<li>Java: Finally, work is being to interface Ensemble to Java and to wrap Ensemble
+as a Netscape plug-in.
+</ul>
+
+<h3>Building applications with Ensemble</h3> For an application builder, Ensemble
+provides a library of protocols that can be used for quickly building complex
+distributed applications.  An application registers 10 or so event handlers with
+Ensemble, and then the Ensemble protocols handle the details of reliably sending and
+receiving messages, transferring state, implementing security, detecting failures,
+and managing reconfigurations in the system.
+
+<h3>A research tool</h3> For a distributed systems researcher, Ensemble is a highly
+modular and reconfigurable toolkit.  The high-level protocols provided to
+applications are really stacks of tiny protocol "layers."  These protocol layers each
+implement several simple properties: they are composed to provide sets of high-level
+properties, such as total ordering, security, virtual synchrony, etc....  Individual
+layers can be modified or rebuilt to experiment with new properties or change the
+performance characteristics of the system.  This makes Ensemble a very flexible
+platform on which to do research.
+<p>
+<h3>Other Information</h3>
+
+<ul>
+<li>
+<!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><A HREF="http://www.cs.cornell.edu/Info/People/hayden/ensemble/faq.html">General</A> information about Ensemble.
+<li>
+Find out more about <!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><A
+HREF="http://www.cs.cornell.edu/Info/Projects/HORUS/Overview.html">Horus</A>
+<li>
+Our <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><A HREF="http://www.cs.cornell.edu/Info/People/hayden/ensemble/roadmap.html">roadmap</A> for future development of Ensemble.
+<li>
+Transfer the <!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><A HREF="http://www.cs.cornell.edu/Info/People/hayden/ensemble/submit.html">distribution</A> (after reading the license
+agreement).
+<li>
+Peruse the <!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><A HREF="http://www.cs.cornell.edu/Info/People/hayden/ensemble/tut.ps">tutorial</A>.
+<li>
+Stay in touch with us through the Horus+Ensemble 
+<!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><A HREF="http://www.cs.cornell.edu/Info/Projects/HORUS/general/maillist.html">mailing list</A>.
+</ul>
+<p>
+<address><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><A HREF="mailto:hayden@cs.cornell.edu">Mark Hayden</A></address>
+</body>
+</html>

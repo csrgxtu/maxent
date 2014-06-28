@@ -1,0 +1,490 @@
+Date: Tue, 26 Nov 1996 19:16:34 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+Content-length: 15418
+Last-modified: Mon, 18 Nov 1996 06:16:54 GMT
+
+<HTML>
+<HEAD>
+<TITLE>CIS 629: Computer Architecture, Fall 1996</TITLE>
+</HEAD>
+
+<BODY>
+ 
+<HR>
+<div align=center>
+<H1>CIS 629: Computer Architecture</H1>
+<H2>Fall 1996</H2>
+<H2>Instructor: <!WA0><A HREF="http://www.cs.uoregon.edu/~malony/">
+	Allen D. Malony</A></H2>
+<H2><kbd>URL: http://www.cs.uoregon.edu/classes/cis629/</kbd></H2>
+</div>
+<HR>
+
+Computer architecture is the science and art of selecting and
+interconnecting hardware components to create a computer that meets
+functional, performance and cost goals.
+This course qualitatively and quantitatively examines computer design
+tradeoffs.
+Our focus will be on processor architectures, memory systems, and
+multiprocessor machines.
+In particular, we will study:
+instruction-level parallelism (super-pipelining and super-scalar
+aRISC processor design);
+memory hierarchies, cache systems, and coherency mechanisms; and
+multiprocessor architectures and parallel computing.
+
+<UL>
+  <LI> <!WA1><A HREF="#new">Announcements</A>
+  <LI> <!WA2><A HREF="#instructor">Instructor</A>
+  <LI> <!WA3><A HREF="#lecture">Lecture</A>
+  <LI> <!WA4><A HREF="#text">Required Text</A>
+  <LI> <!WA5><A HREF="#reference">Reference Text</A>
+  <LI> <!WA6><A HREF="#readings">Readings</A>
+  <LI> <!WA7><A HREF="#notes">Lecture Notes</A>
+  <LI> <!WA8><A HREF="#hw">Homeworks</A>
+  <LI> <!WA9><A HREF="#exams">Examinations</A>
+  <LI> <!WA10><A HREF="#programming">Programming</A>
+  <LI> <!WA11><A HREF="#project">Project</A>
+  <LI> <!WA12><A HREF="#grading">Grading</A>
+  <LI> <!WA13><A HREF="#schedule">Approximate Schedule</A>
+  <LI> <!WA14><A HREF="#tutorials">Tutorials</A>
+  <LI> <!WA15><A HREF="#tools">Tools</A>
+  <LI> <!WA16><A HREF="#miscellanea">Miscellanea</A>
+  <LI> <!WA17><A HREF="#misconduct">Academic Misconduct</A>
+  <LI> <!WA18><A HREF="#class">Class Roster</A>
+</UL>
+<HR>
+
+<H3><A NAME="new">Announcements</A></H3>
+<font color="purple">
+<UL>
+  <LI> 10/1: Required text is available in the bookstore.
+  <LI> 10/1: Readings packet 1 is available in the bookstore.
+  <LI> 10/2: Please read papers 1-4 in readings packet 1.
+  <LI> 10/7: Please read paper 5 in readings packet 1.
+  <LI> 10/22: Please read papers 6, 7, and 8 in readings packet 1.
+  <LI> 11/15: Please read cache coherence papers in readings packet 2.
+  <LI> 11/15: Please read STiNG paper in readings packet 2.
+  <LI> 11/15: Please do assignment describe in the Programming section.
+</UL>
+</font>
+
+<H3><A NAME="instructor">Instructor</A>
+<!WA19><A HREF="http://www.cs.uoregon.edu/~malony/">Allen D. Malony</A></H3>
+<pre>
+  Office:	307 Deschutes Hall
+  Email:	malony@cs.uoregon.edu
+  Office hours:	Monday/Wednesday, 11:00-12:00 or by appointment
+</pre>
+
+<H3><A NAME="lecture">Lecture</A></H3>
+<pre>
+  Time:		Tuesday/Thursday, 14:00 - 15:20
+  Place:	135 Gilbert Hall
+</pre>
+
+<H3><A NAME="text">Required Text</A></H3>
+<pre>
+  Harold S. Stone,
+  High-Performance Computer Architecture,
+  Third Edition, Addison-Wesley, 1993.
+</pre>
+
+<H3><A NAME="reference">Reference Text</A></H3>
+<pre>
+  John L. Hennessy and David A. Patterson,
+  <!WA20><A HREF="http://Literary.COM//mkp/new/hp2e/hp2e_index.shtml">Computer Architecture: A Quantitative Approach</A>,
+  Morgan Kaufmann Publishers, Second Edition, 1996.
+</pre>
+
+<H3><A NAME="readings">Readings</A></H3>
+<UL>
+  <LI> 1. <!WA21><A HREF="http://www.cs.uoregon.edu/classes/cis629/readings1.ps">Selected Readings --
+	Background and Processor Design</A>
+  <LI> 2. Selected Readings -- Memory System Architectures
+  <LI> 3. Selected Readings -- Multiprocessor Architectures
+</UL>
+Each part of the course will be accompanied by a set of papers from the
+computer architecture literature.
+The reading packets will be available in the bookstore.
+
+<H3><A NAME="notes">Lecture Notes</A></H3>
+Lecture notes will be made available as they are developed.
+See links in schedule.
+
+<H3><A NAME="hw">Homework</A></H3>
+There will be two homework assignments.
+Many problems will require the review of material that is touched upon,
+but not covered in depth in class.
+Assignments will be due in class on the due date.
+NO LATE ASSIGNMENTS WILL BE ACCEPTED, except under extreme non-academic
+circumstances discussed with the instructor at least one week before the
+assignment is due.
+
+<UL>
+  <LI> <!WA22><A HREF="http://www.cs.uoregon.edu/classes/cis629/Homework/homework-1.ps">Homework 1</A>;
+	<!WA23><A HREF="http://www.cs.uoregon.edu/classes/cis629/HP-book/Figures/3.10.ps">Figure 3.10</A> and
+	<!WA24><A HREF="http://www.cs.uoregon.edu/classes/cis629/HP-book/Figures/3.44.ps">Figure 3.44</A>;
+	<!WA25><A HREF="http://www.cs.uoregon.edu/classes/cis629/Homework/homework-1.errata">Errata</A>;
+	<!WA26><A HREF="http://www.cs.uoregon.edu/classes/cis629/Homework/solutions-1.ps">Solutions</A>.
+  <LI> Homework 2: This has been combined with the programming assignment.
+</UL>
+
+<H3><A NAME="exams">Examinations</A></H3>
+<pre>
+  <!WA27><A HREF="http://www.cs.uoregon.edu/classes/cis629/Midterm/midterm.ps">Midterm</A>: Takehome, Oct. 31 (Halloween); Due: Nov. 5
+</pre>
+Please advise me of any conflicts with these likely exam times before
+the end of the second week of classes.
+
+<H3><A NAME="programming">Programming</A></H3>
+The topic of the programming assignment is cache simulation.
+The programming assigment is combined with the second homework assignment.
+There are two parts.
+<P>
+Part 1.
+Run the following trace files through the Dinero cache
+simulator.  Use the Dinero server found in this WEB page.
+
+<UL>
+  <LI>  cc1 - found in Dinero server options
+  <LI>  spice - found in Dinero server options
+  <LI>  tex - found in Dinero server options
+</UL>
+
+Show results for different levels of cache size (unified and split),
+associativity, and block sizes.  Explain the results that you see.
+<P>
+Part 2.
+The following sample code models an 8 Kbyte, direct-mapped cache with
+32-byte lines (blocks) (2^5).  It treats reads and writes in the samewas,
+as a simple "reference".  Included is only the routine that checks for a
+reference in the cache and accummulates total references and misses.  Not
+included are the I/O routines to read in a reference trace (assuming it
+comes from a file or stdio) and to produce output statistics.
+
+<pre>
+#include <stdio.h>
+#include <assert.h>
+
+#define CACHE_SIZE 8192
+#define BLOCK_SHIFT 5
+
+long tags[CACHE_SIZE >> BLOCK_SHIFT];
+long references=0, misses=0;
+
+void Reference(long address)
+{
+  int index = (address & (CACHE_SIZE-1)) >> BLOCK_SHIFT;
+  long tag = address >> BLOCK_SHIFT;
+
+  if (tags[index] != tag) {
+      misses++;
+      tags[index] = tag;
+    }
+  references++;
+}
+</pre>
+
+a. Add necessary I/O support (as briefly described) to the code above to
+	make this into a cache simulation program that takes a reference
+	trace file.
+<P>
+b. Write a routine to model a 2-way and a 4-way set associative cache of
+	the same size.
+<P>
+c. Demonstrate the operation of all three simulators with three programs
+	of your own choosing.  That is, find or write three programs (they
+	can be simple) from which you can capture address references to
+	drive your simulators. (One thought is to get three Linpack
+	codes.) Note, you need to modify the programs to capture references;
+	concentrate only on data references.
+<P>
+This assignment will be due on Dec. 3.
+
+<H3><A NAME="project">Term Project</A></H3>
+The term project will be to write a paper that surveys an area within
+computer architecture.
+The paper should:
+  <UL>
+    <LI> summarize work in an area, giving extensive references (6 at least)
+    <LI> present opinions of others for or against various options
+	(again, with references)
+    <LI> conclude with your opinion of the strengths and weaknesses of
+	 the arguments given
+  </UL>
+You will be graded on the completeness of your survey, the accuracy of your
+summaries, and the support you give for your opinions.
+
+Some possible survey topics are:
+  <UL>
+    <LI> compiler transformations to improve memory behavior,
+    <LI> superscalar & superpipelined processors vs. VLIW
+    <LI> effect on architecture of changing technology (you might consider
+		different types of technology)
+    <LI> high-performance I/O (e.g., for storage or network communication)
+    <LI> contrast of state-of-the-art processors
+    <LI> massively parallel processing systems
+    <LI> scalable architecture technologies
+    <LI> some aspect of the history of computer architecture
+  </UL>
+
+The topic chosen should be something that you are particularly interested
+in.
+
+There are many references for papers including:
+  <UL>
+    <LI> Proc. of the Int'l. Symposium on Computer Architecture (ISCA)
+    <LI> Proc. of the Conf. on Architectural Support for Programming
+		Languages and Operating Systems (ASPLOS)
+    <LI> Int'l. Conf. on Parallel Processing (ICPP)
+    <LI> Supercomputing Conf.
+    <LI> Int'l. Conf. on Supercomputing (ICS)
+    <LI> IEEE Trans. on Computers
+    <LI> ACM Trans. on Computer Systems
+    <LI> IEEE Computer
+  </UL>
+
+<H3><A NAME="grading">Grading</A></H3>
+  <UL>
+    <LI> 20% Homework
+    <LI> 30% Midterm
+    <LI> 20% Programming
+    <LI> 30% Term Project
+  </UL>
+
+<H3><A NAME="schedule">Approximate Schedule</A></H3>
+<table border=2>
+<tr>
+<td align=left valign=top width=100><b>Date</b></td>
+<td align=left valign=top width=300><b>Topic</b></td>
+<td align=left valign=top width=200><b>Assignment</b></td>
+</tr>
+<tr>
+<td>Oct. 1</td>
+	<td>Introduction</td>
+	<td>Chapter 1</td>
+</tr>
+<tr>
+<td>Oct. 3</td>
+	<td><!WA28><A HREF="http://www.cs.uoregon.edu/classes/cis629/Lecture/Lecture2/Main.ps">Performance costs</A></td>
+	<td>Chapter 1; Readings</td>
+</tr>
+<tr>
+<td>Oct. 8</td>
+	<td><!WA29><A HREF="http://www.cs.uoregon.edu/classes/cis629/Lecture/Lecture3/Main.ps">Pipelining</A></td>
+	<td>Chapter 3; Readings</td>
+</tr>
+<tr>
+<td>Oct. 10</td>
+	<td><!WA30><A HREF="http://www.cs.uoregon.edu/classes/cis629/Lecture/Lecture4/Main.ps">Pipelining (continued)</A></td>
+	<td>Chapter 3; Readings</td>
+</tr>
+<tr>
+<td>Oct. 15</td>
+	<td><!WA31><A HREF="http://www.cs.uoregon.edu/classes/cis629/Lecture/Lecture5/Main.ps">Instruction Level Parallelism (ILP)*</A></td>
+	<td>Chapter 3; Readings; Tutorial</td>
+</tr>
+<tr>
+<td>Oct. 22</td>
+	<td><!WA32><A HREF="http://www.cs.uoregon.edu/classes/cis629/Lecture/Lecture6/Main.ps">ILP: Overcoming Data Hazards</A></td>
+	<td>Chapter 3; Readings; Tutorial</td>
+</tr>
+<tr>
+<td>Oct. 24</td>
+	<td>ILP: Reducing Branch Penalties</td>
+	<td>Chapter 3; Readings; Tutorial</td>
+</tr>
+<tr>
+<td>Oct. 29</td>
+	<td><!WA33><A HREF="http://www.cs.uoregon.edu/classes/cis629/Lecture/Lecture7/Main.ps">ILP: Superscalar</A></td>
+	<td>Tutorial</td>
+</tr>
+<tr>
+<td>Oct. 31</td>
+	<td>ILP: Limits</td>
+	<td><b>TAKEHOME MIDTERM</b></td>
+</tr>
+<tr>
+<td>Nov. 5</td>
+	<td><!WA34><A HREF="http://www.cs.uoregon.edu/classes/cis629/Lecture/Lecture8/Main.ps">Cache Systems</A></td>
+	<td>Chapter 2</td>
+</tr>
+<tr>
+<td>Nov. 7</td>
+	<td><!WA35><A HREF="http://www.cs.uoregon.edu/classes/cis629/Lecture/Lecture9/Main.ps">Cache Systems</A></td>
+	<td>Chapter 2; Readings</td>
+</tr>
+<tr>
+<td>Nov. 12</td>
+	<td><!WA36><A HREF="http://www.cs.uoregon.edu/classes/cis629/Lecture/Lecture10/Main.ps">Memory Systems</A></td>
+	<td>Chapter 6, Section 6.4 and 6.5; Readings</td>
+</tr>
+<tr>
+<td>Nov. 14</td>
+	<td><!WA37><A HREF="http://www.cs.uoregon.edu/classes/cis629/Lecture/Lecture11/Main.ps">Multiprocessor Systems</A></td>
+	<td>Chapter 6, Chapter 7; Readings</td>
+</tr>
+<tr>
+<td>Nov. 19</td>
+	<td>No Class</td>
+	<td>Work on Project</td>
+</tr>
+<tr>
+<td>Nov. 21**</td>
+	<td>Cache Coherent Memory Systems</td>
+	<td>Chapter 6: Readings</td>
+</tr>
+<tr>
+<td>Nov. 25***</td>
+	<td>The Sequent STiNG architecture</td>
+	<td>Readings: Sequent STiNG paper</td>
+</tr>
+<tr>
+<td>Nov. 26</td>
+	<td>Multiprocessor Architectures</td>
+	<td>Trip to Sequent</td>
+</tr>
+<tr>
+<td>Nov. 28</td>
+	<td>THANKSGIVING</td>
+	<td>THANKSGIVING</td>
+</tr>
+<tr>
+<td>Dec. 3</td>
+	<td>Multiprocessor Architectures</td>
+	<td>Chapter 6: Readings</td>
+</tr>
+<tr>
+<td>Dec. 5</td>
+	<td>Multiprocessor Architectures</td>
+	<td>Chapter 6: Readings</td>
+</tr>
+<tr>
+<td>Dec. 9</td>
+	<td><b>PROJECT DUE</b></td>
+	<td><b>PROJECT DUE</b></td>
+</tr>
+</table>
+<pre>
+*   This class will be taught by John Conery.
+**  This class will be taught by Jan Cuny.
+*** This is a Monday makeup class.
+</pre>
+
+<H3><A NAME="tutorials">Tutorials</A></H3>
+<UL>
+  <LI> Prof. Driscoll, Portland State University, has developed an online
+	<!WA38><A HREF="http://www.ee.pdx.edu/~driscoll/super/begin.html">
+	<cite>Tutorial on Superscalar Microprocessor Design</cite></A>.
+	Each student must work through the "expert" level of the tutorial.
+</UL>
+
+<H3><A NAME="tools">Tools</A></H3>
+<UL>
+  <LI> <!WA39><A HREF="http://www.cs.wisc.edu/~larus/warts.html">
+	Wisconsin Architectural Research Tool Set (WARTS)</A>.
+	WARTS will, hopefully, be available for project use.
+
+  <LI> <!WA40><A HREF="http://www.ece.neu.edu/~kevinrh/">
+	A Dinero Server (Dinero by Remote)</A>.
+	Dinero is a C-based cache simulation program that is provided as
+	part of WARTS.
+
+  <LI> <!WA41><a HREF="http://www.cs.uoregon.edu/classes/cis629/MINT/mint.user.manual.ps">
+	MINT</a>: a fast program-driven simulator for multiprocessor systems.
+	MINT will be available for project use.
+
+<!--
+http://tracebase.nmsu.edu/tracebase.html
+-->
+
+  <LI> <!WA42><A HREF="http://www.cs.washington.edu/homes/pardo/sim.d/index1.d/Index.html">
+	Instruction-Level Simulation And Tracing</A>
+	- This contains a huge list of simulators, emulators, and tracing tools,
+	including an extensive bibliography as well as list of people to contact.
+</UL>
+
+<H3><A NAME="miscellanea">Miscellanea</A></H3>
+<UL>
+  <LI> <!WA43><A HREF="http://www.cs.wisc.edu/~arch/www">Computer Architecture
+	Home Page</A>.
+	The WWW Computer Architecture Page was designed at the University
+	of Wisconsin, Madison, to act as a central repository of links
+	pointing to information relevant to computer architecture
+	researchers and students.  It contains pointers to over seventy
+	major architecture research groups and projects, most major
+	computer architecture- related conferences, industrial pages,
+	organizations, and news groups and a selection of miscellaneous
+	links of interest to computer architects.
+
+  <LI> Usenet newsgroup for computer architecture
+	(<!WA44><A HREF="news:comp.arch">comp.arch</A>).
+
+  <LI> <!WA45><A HREF="http://info.acm.org">ACM</A>
+	Special Interest Group on Computer Architecture 
+	<!WA46><A HREF="http://www.acm.org/sigarch/">(SIGARCH)</A><BR>
+
+  <LI> <!WA47><A HREF="http://infopad.eecs.Berkeley.edu/CIC/">CPU Info Center</a>
+	- info on current/future processors.
+
+  <P>
+  <LI> The <!WA48><A HREF="http://performance.netlib.org/performance/html/PDSbrowse.html">
+	Performance Database</A> Server.
+
+  <LI> <!WA49><A HREF="http://hpwww.epfl.ch/bench/bench.FAQ.html">
+	Benchmarks FAQ</A> - from the newsgroup
+	<!WA50><A HREF="news:comp.benchmarks">comp.benchmarks</A>.
+
+  <LI>  <!WA51><A HREF="http://performance.netlib.org/performance/html/spec.html">
+	SPEC benchmarks</A> -  SPEC92/SPEC95 benchmark suite from the
+	<!WA52><A HREF="http://www.specbench.org/">
+	Standard Performance Evaluation Corporation</A>.
+
+<!--
+  <LI> <!WA53><A HREF="http://www.cs.wisc.edu/~markhill/spec92miss.html">
+	Online Raw Data for <cite>Cache Performance of the SPEC92 Benchmark
+	Suite</cite></A>
+-->
+
+</UL>
+
+<H3><A NAME="misconduct">Academic Misconduct</A></H3>
+<UL>
+  <LI> <!WA54><A HREF="http://darkwing.uoregon.edu/~stl/conduct.html">University
+	of Oregon's student conduct code</A>.
+
+  <LI> <!WA55><A HREF="http://darkwing.uoregon.edu/~stl/brochure.html">Student
+	Academic Integrity</A>.
+	A brochure put out by the UO Dean of Students.
+</UL>
+
+<H3><A NAME="class">Class Roster</A></H3>
+<pre>
+    Al-Fudhail, Maan		alaalove@cs.uoregon.edu
+    Appayya, Vimala		vimala@cs.uoregon.edu
+    Fiskio-Lasseter, Jo		johnfl@cs.uoregon.edu
+    Galli, Mark			mgalli@cs.uoregon.edu
+    Gao, Yi			ygao@cs.uoregon.edu
+    Lindlan, Kathleen		klindlan@cs.uoregon.edu
+    Ma, Chia-Cha		chiache@cs.uoregon.edu
+    Palsule, Prachi		pvp@cs.uoregon.edu
+    Pusca, Lornel		ionel@cs.uoregon.edu
+    Reimer, Yolanda		yreimer@cs.uoregon.edu
+    Robertson, Chad		carober@cs.uoregon.edu
+    Sai, Teck			tecks@cs.uoregon.edu
+    Sather, Jim			jims@cs.uoregon.edu
+    Sheth, Sai			saisheth@cs.uoregon.edu
+    Skidmore, Jenifer		skid@cs.uoregon.edu
+    Svitak, John		svitak@cs.uoregon.edu
+    Wang, Chien-Chung		chien@cs.uoregon.edu
+    Wang, Zhunqin		zhunqinw@cs.uoregon.edu
+    Xiao, Yong			xiao@cs.uoregon.edu
+    Xue, Jianzhong		xue@cs.uoregon.edu
+    Yang, Shuang		sqyang@cs.uoregon.edu
+    Yao, Lixing			ylixing@cs.uoregon.edu
+</pre>
+
+</BODY>
+</HTML>

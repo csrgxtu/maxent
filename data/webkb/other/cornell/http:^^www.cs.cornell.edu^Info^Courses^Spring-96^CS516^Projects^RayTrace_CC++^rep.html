@@ -1,0 +1,280 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 20:09:19 GMT
+Content-Type: text/html
+Content-Length: 12013
+Last-Modified: Monday, 06-May-96 15:59:30 GMT
+
+<html>
+<head>
+<title>Parallel Raytracing in CC++</title>
+<body>
+<h1>Parallel Raytracing in CC++ 
+<br>
+</h1>
+<h2>CS516 Final Project - Spring '96
+<br>
+</h2>
+<h3>Vineet Ahuja 
+<br>Amith Yamasani</h3>
+
+<h3>Abstract</H3>
+This project is a parallelisation of a public domain raytracer. It is
+implemented in CC++ (Compositional C++) on the SP2. Raytracing in
+itself is easily parallelised, as the screen can be split up into
+several areas and each area can be given to one processor. The problem
+arises when antialiasing needs to be performed to reduce the aliasing
+effects due to finite sampling. Due to this, boundaries between
+processors need to be kept at a minimum. One also needs to worry about
+balancing the load well between the processors, depending on the
+complexity of the scene. Transferring all results back to one
+processor to write to disk also becomes an issue. We have attempted to
+tackle these problems and come up with as efficient a solution as
+possible, given the constraints of the language and the size of the
+problem set. 
+<br>
+<hr>
+
+
+<img src="image.gif" width=640 height=480>
+<h2><b>
+<br>
+</b></h2>
+<img src="./divider.gif" width=738 height=12>
+<h2><b>1.Introduction </b>
+<br>
+</h2>
+<i><b>CC++</b></i>
+<br>
+<br>Compositional C++, is a language that supports structured parallel
+ programming that is being developed at Caltech by the Computational Biology
+ group. It provides structured parallelism in the form of<b> par</b> blocks and
+ <b>parfor</b> loops and unstructured parallelism in the form of the <b>spawn 
+</b> statement. Functions preceeded by the keyword <b>atomic</b> are used to
+ implement mutual exclusion for functions that work on shared data. <b>Sync</b>
+ variables are used for synchronization and the <b>global</b> keyword is used
+ to modify pointers so that they can refer to local and remote memory. Sync
+ variables work by suspending the thread that tries to read the variable till
+ the variable is written to by another thread. Processor objects are objects
+ that control the computation on a processor and they are defined in the
+ regular manner except that the <b>global</b> keyword is used before the class
+ definition. 
+<br>
+<br>Data transfer functions have to be defined while calling functions that lie
+ on another processor object so that data like arrays and other user defined
+ data structures can be copied and sent to the other processor. 
+<br>
+<br><i><b>Raytracing </b></i>
+<br>
+<br>We picked up a public domain implementation of a raytracer called RayLab,
+ and worked on parallelising that. 
+<br>
+<br>Raytracing is a method of rendering graphics scene that considers the rays
+ entering the viewers eye. The method traces the path of those rays (from the
+ eye to the scene) and calculates the intensity and color of that ray,
+ depending on the ray's path and reflections. As calculating the ray value is
+ independent from the calculation of all other rays, parallelisation is
+ trivial. 
+<br>
+<br>The difficulty in parallelisation arises from the need to perform
+ antialiasing. Antialiasing is used to reduce the jaggies in the ouptut image
+ caused by the finite sampling rate of the screen (i.e. a finite resolution).
+ This is done for each pixel by considering the immediate pixels to the east,
+ the south and the south-east. 
+<br>
+<br>
+<br>
+<img src="./divider.gif" width=738 height=12>
+<h2><b>2.Strategies for Parallelisation </b>
+<br>
+</h2>
+<br>
+<br>
+<img src="./aa.gif" width=456 height=238>
+<h4><i>Strategy 1</i> -<i> Blocked row distribution</i>
+<br>
+</h4>
+ The easiest method is to divide the screen into n strips (where n is the
+ number of processors) and allow each processor to ray trace its own strip. The
+ problem with this method is load balancing. For example, if all the objects in
+ the scene were to lie on strip n, then the nth procesor would have to do the
+ most work leaving the first n-1 processors idle after they have completed
+ their own strips. 
+<br>
+<br>
+<h4><i>Strategy 2 - Column and row cyclic distribution </i>
+<br>
+</h4>
+ Another static division method, this one divides the screen into small squares
+ of n x n pixels (where n x n is the number of processors). Each of the pixels
+ in that square goes to a different processor. This is basically the column and
+ row cyclic division (see the figure above). The problem with this method is
+ that doing anti-aliasing is no longer straight forward as all the current
+ pixel's neighbours are on different processors, and performance becomes an
+ issue if a processor has to go across the network (connecting the processors)
+ to anti-alias each pixel. 
+<br>
+<br>
+<h4><i>Strategy 3 - Hungry Puppies </i>
+<br>
+</h4>
+ This method works by dividing up the screen into strips of m lines each. A
+ processor is designated as the master and the rest of the nodes are slaves.
+ Each slave node requests work from the master and goes back to ray trace its
+ strip. On completion it returns the quantized ray traced strip and gets more
+ work from the master (by quantization we mean converting the values of the RGB
+ value of the pixel from float to char to throw on the display). This goes on
+ till all the strips have been ray traced. (So each slave is a hungry puppy
+ that runs to the master for work) The master node then writes the entire
+ raytraced scene to disk. 
+<br>
+<br>Another problem is antialiasing. What does a processor do with the last row
+ of its strip. It needs the next row (which is on the another processor) to
+ antialias it. We have two different implementations to handle this problem. In
+ one we compute the next row on this processor as well (so doing the
+ computation twice - once on this one and once on the processors that actually
+ owns the line). In the other, we send the unquantized last and first rows of
+ each strip (in addition to the quantized values of all but the last row of
+ each strip) so that the master node can antialias the last rows of all the
+ strips therefore avoiding any redundant computation. At this time this version
+ has a bug in it so all performance results discussed in the next section are
+ with respect to the first implementaion. 
+<br>
+<br>The obvious problem with this method is scalablity. Since all the slaves
+ are sending so much data to the master, there is a lot of contention for
+ resources on the master. This obviously limits the number of processors that
+ can be thrown at the problem. 
+<br>
+<br>
+<img src="./divider.gif" width=738 height=12>
+<h2><b>3.Implementation Details </b>
+<br>
+</h2>
+<br>We define 2 types of processor objects (see section 1), a dispatcher and a
+ tracer. A dispatcher is essentially the master processor that dishes out the
+ work and the tracer does the actual raytracing of each strip. 
+<br>
+<br>Node 0 contains both a dispatcher and a tracer since it would be a waste of
+ a processor to dedicate it to just sending strip numbers to each tracer, and
+ disk writes. ( We timed the disk writes and ray tracing in the serial version
+ and found raytracing a pixel is 600 times more expensive than writing it to
+ disk). 
+<br>
+<br>
+<img src="distra.gif" width=381 height=271>
+<br>We found a problem with CC++ in that when data was being sent to another
+ processor by means of a data transfer functions there is unnecessary copying
+ of the data before it is packaged in the data transfer function. We avoided
+ this problem by defining copy constructors that do not actually allocate
+ memory for data referred to by pointers. We just make the new object point to
+ the data of the old object and do not define a destructor that releases the
+ memory. This was the only way we could think of avoiding the extra copies. 
+<br>
+<br>Sync variables are used when the dispatcher is waiting for the tracers to
+ complete their work, so no cycles are wasted in waiting in a dummy loop but
+ the dispatcher's main loop is suspended till the sync variable is set by the
+ function of the dispatcher that decides there are no more strips to be traced.
+ 
+<br>
+<br>The function that dishes out work in the dispatcher (called NeedLines) is
+ an atomic function since it has to increment a counter while giving out the
+ next strip. Now if this function is called simultaneously by 2 tracers (or
+ almost simultaneously) the value of the counter might not make any sense if
+ both the copies of NeedLines access the counter together. 
+<br>
+<br>
+<br>
+<img src="mainloop.gif" width=346 height=248>
+<h2><b>
+<br>
+</b></h2>
+<img src="./divider.gif" width=738 height=12>
+<h2><b>4.Performance</b>
+<br>
+</h2>
+<br>
+<h4><i>Speedup </i>
+<br>
+</h4>
+ The graph below shows speedup vs. number of processors, where speedup is
+ defined as the ratio of the time taken to run the serial implementation to the
+ time taken to run the parallel version. 
+<br>
+<br>
+<br>
+<img src="./Speed.gif" width=425 height=375>
+<br>
+<br>The speedup is almost linear, but doesnt have a slope of 1. This is because
+ of the bottleneck created on processor 1 which also needs to act as the
+ dispatcher and thus the tracer on processor 1 isn't as efficient as the
+ tracers on the other processors.
+<br>
+<h4><i>Communication vs. Computation time</i></h4>
+ The series of graphs shown below show breakup the time taken by the code to
+ run into the computation time and the communication time. 
+<br>
+<br>
+<br>
+<img src="gra1.gif" width=313 height=207>
+<img src="gra2.gif" width=313 height=209>
+<img src="gra3.gif" width=313 height=209>
+<img src="gra4.gif" width=312 height=209>
+<img src="gra5.gif" width=311 height=209>
+<img src="gra6.gif" width=312 height=208>
+<br>As can be seen from the above graphs, the performance of the program is
+ maximum at a granularity of about 30 lines per chunk. At lower granularity,
+ the communication overhead becomes too high. At higher granularity again the
+ efficiency goes down. This is due to load imbalance as some processors get
+ more work and others get less work and stay idle for a longer time. This is
+ shown to be true from the load balancing graph below.
+<h4><i>Load Balancing </i>
+<br>
+</h4>
+ The graph below shows the ratio of maximum work done by a processor to the
+ minimum work done by a processor (so showing how effectivley the load
+ balancing policy is). 
+<br>
+<br>
+<img src="load.gif" width=284 height=195>
+<br>
+<br>At low granularity the processor 1 ends up taking much longer to do its
+ work because it is interrupted very often by the dispatcher which is invoked
+ by the other tracers. At slightly higher granularities the load is much better
+ balanced. Again at very high granularity the load imbalance is due to some
+ processors getting more intensive work than others. 
+<br>
+<br>
+<img src="./divider.gif" width=738 height=12>
+<h2><b>5.Experiences and Conclusions </b>
+<br>
+</h2>
+<br>
+<h4><i>CC++ </i>
+<br>
+</h4>
+ We found CC++ to be overall a very effective language to work with in that it
+ allowed us to think about parallelism in a structured manner. However, we also
+ found the compiler we worked with to be very inefficient in code generation.
+ To fairly compare our parallel implementation with the original serial C
+ version, we had to recompile the serial version with the CC++ compiler;
+ otherwise the output code of the C compiler for the ray tracing code (and
+ therfore the computation intensive part of the program) was 50% faster than
+ the CC++ code. Another problem is with the data transfer functions, which we
+ mentioned earlier. 
+<br>
+<br>
+<h4><i>Raytracing</i>
+<br>
+</h4>
+ We feel that the best way to handle antialiasing is using shared memory
+ multiprocessors so that processors can readily access the neighbouring rows
+ that are handled by other processors. Also, since each processor needs only
+ the first row of the next block to antialias its last row, it is almost
+ certain that the neighbouring processor would have completed raytracing that
+ row and the processor can therefore immediately use that data. (This statement
+ is made under the assumption that all the processors carry the same work-load
+ outside of the raytracing.) 
+<br>
+<br>
+<img src="./divider.gif" width=738 height=12>
+</html>

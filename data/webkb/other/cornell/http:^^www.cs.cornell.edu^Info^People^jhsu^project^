@@ -1,0 +1,88 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 20:03:47 GMT
+Content-Type: text/html
+Content-Length: 3083
+Last-Modified: Friday, 27-Sep-96 04:01:17 GMT
+
+<HTML>
+<HEAD>
+<TITLE>Jerry Hsu's MEng Project</TITLE>
+<BODY>
+<TABLE>
+<TR>
+<TD width=25%></TD>
+<TD width=75%>
+	<H2>Jerry Hsu's MEng Project</H2>
+</TD>
+</TR><TR>
+<TD width=25%></TD>
+<TD width=75%>
+<H3>Purpose</H3>
+<P>
+Investigate training a neural net to process a digitized sound data
+stream and determine time indices that correspond to the beginning of
+a spoken word.
+</P>
+
+<H3>Background</H3> 
+<P> 
+One part in the process of subtitling a film (adding words to
+translate a piece into a different language) is known as timing.
+Timing consists of a person or group of people listening to the
+soundtrack and marking the starting and ending times of sentences.
+These times are then used by a computer along with a translation to
+overlay text on the film.
+<BR>
+There are a couple methods of timing.  One method is to listen to the
+soundtrack and whenever one hears the start of a sentence, he presses
+a key to mark the time on a computer (known as spacebar method).  This
+method is common among hobbyists due to minimal equipment
+requirements.  It has drawbacks though.  It can be a fairly accurate
+method of timing, but only with a large amount of practice.  The most
+experienced timers that use this method average around 3:1 or spending
+three times the running time of the actual film.  So for a two hour
+film, they would need to spend about six hours doing timing.
+<BR>
+A second method is to digitize the soundtrack and then step through
+the soundtrack in discrete intervals (1/10 second or 1/30 second).
+This method is slower than the spacebar method with a ratio of about
+10:1.  However, it has an advantage in that the skill requirement is
+lower, the end accuracy is higher, and the method is highly parallel.
+Because the information is stored digitally, it can be divided among
+multiple people.  So a group of three lesser skilled people using this
+method can achieve the 3:1 of a more skilled timer.
+<BR>
+With the second method, the amount of sound a person needs to listen
+to is less than a second.  I theorize that all the data the human
+needs to make this decision is present in the data stream.  Thus it
+should be possible for a computer to simulate the decision making by
+analyzing the same data.
+</P>
+<h3>Project</H3>
+<P>
+The goal of this project is to determine how accurately a neural net
+can simulate a human in recognizing the start of speech.  As a means
+of comparison, Id also analyze the accuracy of a dumb algorithm.  This
+method is to measure relative difference in intensity between sound
+segments with the start of a word being marked when the intensity goes
+over a threshold.  This is classically fooled by loud sound effects
+and background music.  It can also be fooled depending if a sentence
+begins with a hard or soft consonant.  I hypothesize that a neural net
+should be able to account for these two problems.
+</P>
+</TD>
+</TR>
+</TABLE>
+<HR>
+[
+<!WA0><!WA0><!WA0><!WA0><A HREF="http://www.cs.cornell.edu/Info/People/jhsu/">Back to top</A>
+]
+<HR>
+<ADDRESS>Maintained by
+<!WA1><!WA1><!WA1><!WA1><A HREF="http://www.fdemocracy.org/~jhsu/personal/">Jerry Hsu</A>
+-
+<!WA2><!WA2><!WA2><!WA2><A HREF="mailto:jh32@cornell.edu">jh32@cornell.edu</A>
+</ADDRESS>
+</BODY>
+</HTML>

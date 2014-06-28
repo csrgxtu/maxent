@@ -1,0 +1,92 @@
+Date: Mon, 02 Dec 1996 14:59:34 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+<title>CSE477 Laboratory Assignment #3</title>
+</head>
+
+<h1>CSE477: Digital Systems Design</h1>
+<h3>Steve Burns, Spring 1996 </h3>
+
+<hr>
+
+<h2>Lab 1</h3>
+<p>
+<h3>Motors, Motor Driver Circuits, Optical Speed Sensors, and Feedback</h3>
+<p>
+<b>Distributed:  April 22 - Complete By: May 2</b>
+<hr>
+<p>
+
+<H3>Objectives</H3>
+When you have completed this lab, you should know how to:
+<UL>
+<LI>Run a DC motor using an H-bridge motor driver circuit and a duty-cycle
+speed adjustment.
+<LI>Determine the speed of a motor shaft using an optical sensor,
+<LI>Integrate the two systems so that a motor can be run at a predetermined
+speed under a variety of loading conditions.
+</UL>  
+                              
+<H3>Part 1: Setting Up the Motors and Optical Speed Sensors</H3>
+You will need to fabricate a disk with black and white strips to be used
+in conjunction with the optical sensors to determine the speed at which the
+motor shaft is spinning. I've xeroxed enlarged copies of the disks shown on
+page 124 of the Mobile Robots Text.  Cut out the one with 16 black stripes
+and paste it (using a glue stick) to a piece of foam board. Cut out
+the combination.  Punch a hole in the center using the sharp end of a
+pair of scissors (be careful not to cut yourself) so that the disk pressure
+fits onto the pully shaft of the motor.
+<p>
+You will also need to attach the motor and the sensor together. Scotch
+tape works well for this. Before you do this though, acquire a sense for
+how close the sensor needs to be to the spinning disk for it to obtain a
+good signal. You can do this by wiring up the sensor: the blue and
+white leads correspond to the anode and cathode, respectively,
+of the transmiting LED, and 
+the green and purple leads correspond to the collector
+and emitter of the receiving phototransistor, respectively.
+No more than 20 mA should be allowed to flow through the LED. With a 5 volt
+supply, an 180 ohm series resistor works well. On the receiving end, a
+6.8 kiloohm series resistor will make an excellent voltage divider converting
+the current change caused to the presense or absense of a reflecting surface
+into a voltage change interpretable at CMOS digital levels. To determine how
+close the sensor has to be to a reflecting surface, measure the voltage changes
+between the resistor/phototransistor connection and ground as the distance
+between the sensor and the surface varies. I found that the sensor had to be
+be about 1/20 of a inch from the surface. Your sensor and circuit might be
+slightly different.
+<p>
+To drive the motor, use the L293D bipolar driver chip.  Please note the
+unusual pinout. There are four
+output buffers on this chip, so there is enough circuitry for 2 H-Bridges.
+To vary the speed of the motor, vary the duty-cycle of the enable signal.
+A larger duty-cycle will result in a higher average voltage and thus a
+higher motor speed. Experiment with different duty-cycles and determine
+the maximum/minumum no-load speeds of the motor. 
+
+<H3>Part 2: Connecting the Speed Sensors to the Motors Using Feedback</H3>
+Since the speed of a motor depends not only on the applied voltage but also
+on the amount of load, feedback from speed sensors is necessary
+to accurately control the speed of your motor. Your are to devise a system
+to control the speed of your motors using the optical speed sensors as
+input and a variation in duty-cycle as output. More on this later.
+
+<H3>Part 3: Operate Two Motors Simultaneously</H3>
+Modify your microcontroller program to control two motors simultaneously.
+Make sure that both motors have individual speed sensors. 
+
+
+<H3>What to Turn In</H3>
+Demo the two motors spinning in lockstep
+at three different rates to the TAs.
+
+</body>
+<address>
+<hr>
+burns@cs.washington.edu
+</address>
+<p>
+</html>

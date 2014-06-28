@@ -1,0 +1,257 @@
+Date: Mon, 11 Nov 1996 17:52:21 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 30 Oct 1996 18:40:07 GMT
+Content-length: 5159
+
+<HTML>
+<HEAD>
+<TITLE>Program Four</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#006699" TEXT="#D0D0D0" LINK="#DDDD00" VLINK="#00DDDD" ALINK="#DD0000"> 
+
+<H3>Assignment 5</H3>
+
+<H3>Hangman</H3>
+<BLOCKQUOTE>
+	Assigned: 10-30-96<BR>
+	Due: 11-8-96
+</BLOCKQUOTE>
+
+
+<P>You are to write a computer Hangman game.  In Hangman, one player
+picks a word or phrase.  She then writes out the phrase with the
+letters hidden.  For example,
+
+<CODE>
+<BLOCKQUOTE>
+###'# ######
+</BLOCKQUOTE>
+</CODE>
+
+is the hidden form of the Kurt Vonnegut book title
+
+<CODE>
+<BLOCKQUOTE>
+CAT'S CRADLE
+</BLOCKQUOTE>
+</CODE>
+
+The second player then repeatedly guesses letters in the word.
+Suppose he guesses an A.  The puzzle would become:
+
+<CODE>
+<BLOCKQUOTE>
+#A#'# ##A###
+</BLOCKQUOTE>
+</CODE>
+
+But if the user guesses a letter which isnt in the word (for example,
+a Q), then he is one step closer to the hangman's gallows.  The game
+continues until either (1) the user guesses all of the hidden letters
+in the puzzle correctly, or (2) the user makes 6 mistakes.  If the
+user makes 6 mistakes, he loses and the game is over.  If the user
+guesses all of the letters correctly, he wins and should be given a
+congratualatory message.
+
+<H3>Some Details</H3>
+
+At the beginning of the game the program should prompt the first
+player for the puzzle.  After she enters the phrase, you can
+optionally output a bunch of endl's to "clear" the screen.  The puzzle
+can contain spaces and punctuation characters, and these should be
+revealed immediately (as in the example above).  Puzzles should be
+displayed in all upper case.  After this, game play begins.  The game
+consists of multiple rounds.  During each round, the second player
+should be shown the current state of the puzzle, and the current state
+of the "gallows".  The program should then get and process the user's
+guess for that round.  A couple of rounds of play might look like
+this:
+
+<CODE>
+<PRE WIDTH=80>
+____
+|  |
+|  O
+| /|
+|
+|
+=====
+
+#A#'# ##A###
+your guess > C
+
+C is in the puzzle.
+
+____
+|  |
+|  O
+| /|
+|
+|
+=====
+
+CA#'# C#A###
+your guess > Q
+
+Q is not in the puzzle.
+
+____
+|  |
+|  O
+| /|\
+|
+|
+=====
+
+CA#'# C#A###
+...ETC...
+</PRE>
+</CODE>
+
+The second player should be able to enter his guesses in upper or
+lower case.  If the player loses, your game should display the correct
+solution to the puzzle.  It is frustrating to play a game and not be
+told the correct answer when you lose.  You may handle the case in
+which the user enters a letter which has already been chosen in
+whatever manner you find appropriate.  That is, it may count as
+another wrong answer or not.  I am allowing you this latitude so that
+you can consider different problem-solving alternatives to do the
+problem.
+
+<H3>The Gallows</H3>
+
+<P>The gallows is a visual way of displaying how many wrong guess the
+player has made.  Initially, with no wrong guesses, the player is
+shown an empty gallows:
+
+<CODE>
+<PRE WIDTH=80>
+____
+|  |
+|
+|
+|
+|
+=====
+</PRE>
+</CODE>
+
+As the player makes more and more mistakes, more of their bodies is
+added to the gallows.  First the head:
+
+<CODE>
+<PRE WIDTH=80>
+____
+|  |
+|  O
+|
+|
+|
+=====
+</PRE>
+</CODE>
+Then the body:
+<CODE>
+<PRE WIDTH=80>
+____
+|  |
+|  O
+|  | 
+|
+|
+=====
+</PRE>
+</CODE>
+One arm:
+<CODE>
+<PRE WIDTH=80>
+____
+|  |
+|  O
+| /|
+|
+|
+=====
+</PRE>
+</CODE>
+Another:
+<CODE>
+<PRE WIDTH=80>
+____
+|  |
+|  O
+| /|\
+|
+|
+=====
+</PRE>
+</CODE>
+A leg:
+<CODE>
+<PRE WIDTH=80>
+____
+|  |
+|  O
+| /|\
+| / \
+|
+=====
+</PRE>
+</CODE>
+And, when the body is complete, the player has been "hanged", they
+lose and the game is over.
+<CODE>
+<PRE WIDTH=80>
+____
+|  |
+|  O
+| /|\
+|   \
+|
+=====
+</PRE>
+</CODE>
+
+Note that the number of body parts above makes the game over when the
+player makes 6 wrong guesses.  You are free to add the arms and legs
+in whatever order you deem fit.  A bit of advice, if you make drawing
+the gallows the job of a function
+
+	void display_gallows(int wrong);
+
+then you can implement it as a stub function until you want to
+actually write it.  You don't have to draw the gallows in a
+complicated way; feel free to do it in an easy, natural way.
+
+<H3>Hints</H3>
+
+<P>You will somehow need to keep track of (1) the full text of the
+puzzle (so you can check to see if the user gives a correct answer)
+and (2) the letters/positions which are revealed (so when you display
+the puzzle, you can decide which characters to show and which
+characters to "blank out").  You will probably need two arrays to do
+this, the first a string to keep track of the "real" answer to the
+puzzle, the second some sort of array that <EM>somehow</EM> keeps
+track of how the displayed puzzle should look.  If you get really
+stuck I can give you more advice.
+
+<H3>What to Hand In</H3>
+
+<P>Hand in output from at least two games of Hangman.  The first game
+should be the puzzle "sCubA" with the guesses 'a', 'E', 'c', 'S', 'd',
+'B', and 'u'.  The second game can be of your choice.
+
+<HR>
+<H4>History</H4>
+<P><STRONG>Mar 95</STRONG> Written by Todd Turnidge
+<P><STRONG>Oct 96</STRONG> Modified by Todd Turnidge
+<HR>
+<HR>
+Last modified: Wed Oct 30 12:40:07 1996 by Todd Turnidge
+<ADDRESS>
+  <!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~turnidge/turnidge.html">turnidge@cs.wisc.edu</A>
+</ADDRESS>
+</BODY>
+</HTML>

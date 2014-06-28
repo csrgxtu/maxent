@@ -1,0 +1,3559 @@
+Date: Tue, 05 Nov 1996 00:04:24 GMT
+Server: Apache/0.8.14
+Content-type: text/html
+Content-length: 167642
+Last-modified: Fri, 13 Oct 1995 17:25:35 GMT
+
+<! ******************************************************************** >
+<! *           		STL NEWBIE GUIDE				>
+<! ******************************************************************** >
+
+<TITLE> Mumit's STL Newbie guide </title>
+<BODY>
+
+<H1><A name=index>Mumit's</A>
+<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><a href=http://www.xraylith.wisc.edu/~khan/software/stl/STL.newbie.html> 
+STL Newbie guide</a></H1>
+
+<UL>
+<LI><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href=#about>About this document</a>
+<LI><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href=#overview>General Overview</a>
+<LI><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a href=#class_howto>What's so special about writing container objects</a>
+    <UL>
+    <LI><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a href=#class_constr>Class constructors</a>
+    <LI><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href=#class_oper>Class operators</a>
+    <LI><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a href=#container_internals> <b>*NEW*</b> How do STL containers
+    and container objects interact?</a>
+    </UL>
+<LI><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><a href=#pointers>Pointers and STL</a>
+    <UL>
+    <LI><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><a href=#class_pointer>Gotcha's with storing pointers to objects</a>
+    <LI><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><a href=#pointer_wrap>Example of a pointer wrapper for storing in
+	STL containers</a>
+    <LI><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><a href=#pointer_deriv>How do I store derived objects in an STL
+	container?</a>
+    <LI><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><a href=#map_find>Checking for item in a map</a>
+    <LI><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><a href=#map_charptr>More on evils of <tt>char*</tt>: Phone-book
+        example.</a>
+    </UL>
+<LI><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><a href=#functions><b>*NEW*</b> Predicates, Comparators and General 
+    Functions</a>
+    <UL>
+    <LI><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><a href=#predicates> Predicates: what and how</a>
+    <LI><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><a href=#comparators> Comparators: what and how</a>
+    <LI><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><a href=#gen_functions> General Functions: what and how</a>
+    </UL>
+<LI><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><a href=#iterators>STL iterators</a>
+    <UL>
+    <LI><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><a href=#iterator_end>what does <tt>iterator::end()</tt> return?</a>
+    <LI><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><a href=#const_iterator>Const'ness of iterators</a>
+    <LI><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><a href=#iterator_tags><b>*NEW*</b> Using iterator tags</a>
+    </UL>
+<LI><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><a href=#misc>Miscellaneous examples/notes</a>
+    <UL>
+    <LI><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><a href=#copy_list>Copy between lists: right way and wrong way</a>
+    <LI><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><a href=#copy_map>Copy between maps</a>
+    <LI><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><a href=#adaptor>Adaptors in STL: <tt>not1</tt>, <tt>stack</tt>, 
+	<tt>queue</tt>, etc</a>
+    <LI><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><a href=#remove_erase><tt>remove</tt> <em>vs</em> <tt>erase</tt></a>
+    <LI><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><a href=#list_of_list><tt>List</tt> of <tt>List</tt>'s in STL</a>
+    <LI><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><a href=#sorting>Sorting a container</a>
+	<ul>
+	<li> <!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><a href=#sort_list>Sorting a <tt>list</tt> of user defined 
+	    objects</a>
+	<li> <!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><a href=#sort_vector>Sorting a <tt>vector</tt> of user defined 
+	    objects</a>
+	</ul>
+    <LI><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><a href=#shuffle>Shuffling a deck of cards</a>
+    <LI><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><a href=#value_type>Deducing type from iterator</a>
+    </UL>
+<LI><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><a href=#pers_stl>Persistent STL</a>
+<LI><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><a href=http://www.xraylith.wisc.edu/~khan/software/stl/os_examples/examples.html>236 examples from ObjectSpace</a>
+<LI><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><a href=#os_stl>A look at ObjectSpace STL&lt;ToolKit&gt;</a>
+<LI><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><a href=#gcc_templates>Template instantiation with GCC</a>
+    <UL>
+    <LI><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><a href=#gcc_template_visibility><b>*NEW</b> Visibility of template
+	definitions</a>
+    <LI><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><a href=#gcc_manual>Manual instantiation</a>
+    <LI><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><a href=#gcc_repo>Using GCC 2.7.0 template repository 
+	mechanism</a>
+    </UL>
+<LI><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><a href=#resources>Internet resources available</a>
+<LI><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><a href=#ack>Acknowledgments</a>
+</UL>
+<HR><HR>
+
+<! ******************************************************************** >
+<! *           		ABOUT THIS DOCUMENT				>
+<! ******************************************************************** >
+<a name=about><h1> About this Document</h1></a>
+I started this document as a wastebasket for my random notes and thoughts
+on STL when I first started learning and using it heavily during winter of
+1994. So far I have only included a small subset of my STL.NOTES file here
+(because it is <b><i>such</i></b> a mess), and hopefully will keep adding 
+to it over the next few weeks.
+
+<p>
+As always, I welcome thoughtful comments, suggestions, corrections, ale,
+and offers of help via email at <!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><a href="mailto:khan@xraylith.wisc.edu">
+<em>khan@xraylith.wisc.edu</em></a>.
+</p>
+<p>
+
+Copyright(c) 1995 Mumit Khan
+
+<hr>
+<!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><a href=#index>Back to index</a> 
+<hr>
+
+<! ******************************************************************** >
+<! *           		GENERAL OVERVIEW      				>
+<! ******************************************************************** >
+<a name=overview><h1> General overview</h1></a>
+
+My primary motivation for starting this guide is to help those who are 
+starting out with STL and I would like to hear from you if you find it
+useful. Currently most of this document really deals with issues that 
+are hard to find in manuals, such as how to create containers of pointers,
+or how to manage manual instantiation of STL template with GCC, etc.
+
+<p>
+I personally use <!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><a href=ftp://prep.ai.mit.edu/pub/gnu/gcc-2.7.0.tar.gz> 
+GCC 2.7.0</a> (combined with Cygnus 
+<!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><a href=ftp://ftp.cygnus.com/pub/g++/gcc-2.7.0-repo.gz> template 
+repository</a> patch) and <!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><a href="mailto:info@objectspace.com">
+ObjectSpace STL&lt;ToolKit&gt;</a>, so please bear this in mind when 
+you see something that doesn't make sense to your configuration. If you
+are using GCC 2.7.0 with ObjectSpace STL&lt;ToolKit&gt;, then you should
+get in touch with ObjectSpace for bug fixes (See <!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><a href=#os_stl> here
+</a> for more info).
+
+<hr>
+<!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><a href=#index>Back to index</a>
+<hr>
+
+<! ******************************************************************** >
+<! *           	What's so special about writing container objects	>
+<! ******************************************************************** >
+<a name=class_howto><h1>What's so special about writing container 
+objects</h1></a>
+
+STL containers copy the objects for local storage, and typically make
+heavy use of the default constructor, copy constructor and assignment
+operator. 
+<p>
+
+Here I describe some "general guidelines" (read: <i>this is what I do, your
+mileage may vary widely</i>) on what constructors and operators one should 
+define when working with STL.
+
+<a name=class_constr><h2>Class constructors</h2></a>
+For each class X, define the following constructors (unless you're happy
+with the compiler provided ones of course):
+
+<ol>
+<li> default constructor -- <tt>X()</tt>;
+<li> copy constructor -- <tt>X(const X&amp;)</tt>;
+    <p>
+    If you don't have this, STL will use the compiler generated one (ie.,
+    member-wise copy), and embedded pointers will result in weird bugs.
+</ol>
+
+<p>
+See <!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><a href=#container_internals>here</a> for an in-depth look at why and
+when these are needed.
+
+<a name=class_oper><h2>Class operators</h2></a>
+For each class X, define the following operators (again, unless you're happy
+with the compiler provided ones of course):
+
+<ol>
+<li> <tt>operator= (const X&amp;)</tt>
+    <p>
+    Better have this -- same effect as copy constructor.
+<li> <tt>operator&lt (const X&amp;)</tt>
+    <p>
+    if your class X is essentially un-ordered, simply return true or false.
+    For example, if you have container full of pointers to some other
+    object, ordering may not make sense either.
+<li> <tt>operator== (const X&amp;)</tt>
+    <p>
+    if your class X is essentially un-ordered, simply return true or false.
+    For example, if you have container full of pointers to some other
+    object, ordering may not make sense either.
+</ol>
+<p>
+The operators <tt>==</tt> and <tt>&lt</tt> are <em>very</em> important for
+sorted collections like <tt>set</tt>, <tt>map</tt> etc, and are the reason
+why storing pointers in STL sorted collections may not work as you would 
+expect. See <!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><a href=#class_pointer> here</a> for some caveats in storing
+pointers in STL containers. Even though I've shown the 2 operators as
+member functions here, they don't need be (which is great, since you can
+use somebody else's class without having to modify it). eg., if there is
+a library class <tt>X</tt> that you cannot modify, you can define the
+operators <tt>==</tt> and <tt>&lt;</tt> externally as following:
+<ul>
+<li> <tt>bool operator== (const X&amp; x1, const X&amp; x2)</tt>
+<li> <tt>bool operator&lt;  (const X&amp; x1, const X&amp; x2)</tt>
+</ul>
+
+<p>
+Note that you may not need the &lt; and == operators for some compilers 
+if your code doesn't use the algorithms that need these operators (eg., 
+sorting and such things). The compilers I deal with like to instantiate
+ALL the members when I manually instantiate templates, and so I'm out
+of luck. GCC 2.7.0 seems to do a much better job of instantiating only
+the needed members.
+
+<p>
+See <!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><a href=#container_internals>here</a> for an in-depth look at why and
+when these are needed.
+
+<a name=container_internals><h2>How do STL containers
+    and container objects interact?</h2></a>
+One of the most frequent questions regarding STL seems to be of the 
+following form: <br>
+<pre>
+    What members do I have to define for an object that will live in
+    an STL container?
+</pre>
+
+To explain this without having to go through the STL source code, let's
+examine how <tt>list&lt;T&gt;</tt> works. Here's a typical <tt>list</tt>
+usage scenario:
+
+<pre>
+
+    void f() {                           //   &lt;------- (1)
+        class X { };
+        list&lt;X&gt; xlist;                   //   &lt;------- (2)
+
+        //
+        // now populate the list with lots of X's.
+        //
+        X x();
+        xlist.push_back(x);             //   &lt;-------- (3)
+
+        //
+        // do what-not with xlist 
+        //
+
+	// 
+	// now replace the 1st element with something else.
+	//
+	X x2;
+	xlist.front() = x2;             //   &lt;-------- (4)
+
+	//
+        // remove the element with value x3
+	//
+	X x3;
+	xlist.remove(x3);               //   &lt;-------- (5)
+
+	//
+        // now sort the list
+	//
+	xlist.sort();                   //   &lt;-------- (6)
+
+
+	//
+        // do stuff with xlist and then return from f()
+	//
+
+        return;
+    }                                   //   &lt;-------- (7)
+
+</pre>
+
+Now let's see what happens at steps (1) through (7).
+
+<ol>
+<li> Enter a new scope, function <tt>f</tt>. Automatic objects will
+    be destructed when we leave this scope in Step (7).
+    <p>
+
+<li> Create a concrete <tt>list&lt;X&gt;</tt> from parameterized type,
+    <tt>list&lt;T&gt;</tt>. At this point, the constructor for <tt>list</tt>
+    creates a <tt>list_node</tt> that has a member data holding 
+    a copy of <tt>X</tt>. The <tt>list_node</tt> looks like the
+    following:
+    <pre>
+    template &lt;class T&gt;
+    struct list_node {
+	void_pointer next;
+	void_pointer prev;
+	T data;
+    };
+    </pre>
+
+    To create <tt>list_node</tt>, the data member, <tt>T</tt>, 
+    <em>must</em> have a <b>default constructor</b> (or equivalent,
+    such as a constructor with all default arguments) defined.
+
+    <p>
+    <b>Step (2) requires a default constructor</b>.
+    <p>
+
+<li> Here we add an object, <tt>x</tt>, of type <tt>X</tt>, to the end
+    of the <tt>list</tt>. The method <tt>push_back</tt> would typically
+    invoke the following:
+    <pre>
+    insert(begin(), x);
+    </pre>
+
+    And here's the code for a typical <tt>insert</tt> method:
+
+    <pre>
+
+    iterator insert(iterator position, const T&amp; x) {
+        link_type tmp = get_node();                         &lt; ---- (3a)
+        construct(value_allocator.address((*tmp).data), x); &lt; ---- (3b)
+        (*tmp).next = position.node;
+        (*tmp).prev = (*position.node).prev;
+        (*(link_type((*position.node).prev))).next = tmp;
+        (*position.node).prev = tmp;
+        ++length;
+        return tmp;
+    }
+    
+    </pre>
+
+    <p>
+    Step 3a requires the construction of a data member of type <tt>X</tt>
+    as in the Step 1, and hence requires a default constructor. Step 2b
+    uses the STL allocator interface to construct the object from
+    argument <tt>x</tt> using <tt>placement new</tt> and hence requires
+    a copy constructor. The typical <tt>construct</tt> looks like the
+    following:
+
+    <pre>
+
+    template &lt;class T1, class T2&gt;
+    inline void construct(T1* p, const T2& value) {
+	new (p) T1(value);
+    }
+
+    </pre>
+
+    <p>
+    <b>Step (3) requires a copy constructor (3b) in addition to a 
+    default constructor (3a)</b>.
+    <p>
+
+<li> Here we are replacing the first element of the <tt>list</tt> with
+    a new object, <tt>x2</tt>. Here the <tt>front</tt> method returns
+    a reference (lvalue) to the data member of the first element in the 
+    list and it is assigned a new value <tt>x2</tt>. This operation
+    hence requires the assignement operator (ie., operator=).
+
+    <p>
+    <b>Step (4) requires an assignment operator, ie., 
+    operator=(const X& x)</b>.
+    <p>
+
+<li> Here we want to remove the element, if any, in the list that equals
+    the value <tt>x3</tt>. The code looks like the following:
+
+    <pre>
+
+    template &lt;class T&gt;
+    void list&lt;T&gt;::remove(const T&amp; value) {
+	iterator first = begin();
+	iterator last = end();
+	while (first != last) {
+	    iterator next = first;
+	    ++next;
+	    if (*first == value)        //   &lt;-------- (5a)
+		erase(first);
+	    first = next;
+	}
+    }
+
+    </pre>
+
+    The <tt>remove</tt> member starts in the beginning of the list and
+    searches till either the end is reached or a value equalling 
+    <tt>value</tt> argument is found; if found, <tt>remove</tt> removes
+    the element from the list and calls the destructor. Note in Step (6a), 
+    we need the equality operator (operator==) defined for this to work.
+
+    <p>
+    <b>Step (5) requires an equality operator, ie., 
+    bool operator==(const X& x)</b>.
+    <p>
+
+<li> Now we sort the list. The <tt>sort</tt> member use an in-place <em>
+    merge sort</em> algorithm that requires the <em>less-than</em>
+    relation defined for the object (Step 6a below).
+   
+    <pre>
+
+    template &lt;class T&gt;
+    void list&lt;T&gt;::merge(list&lt;T&gt;&amp; x) {
+	iterator first1 = begin();
+	iterator last1 = end();
+	iterator first2 = x.begin();
+	iterator last2 = x.end();
+	while (first1 != last1 &amp;&amp; first2 != last2)
+	    if (*first2 &lt; *first1) {            //   &lt;-------- (6a)
+		iterator next = first2;
+		transfer(first1, first2, ++next);
+		first2 = next;
+	    } else
+		first1++;
+	if (first2 != last2) transfer(last1, first2, last2);
+	length += x.length;
+	x.length= 0;
+    }
+
+    template &lt;class T&gt;
+    void list&lt;T&gt;::sort() {
+	if (size() &lt; 2) return;
+	list&lt;T&gt; carry;
+	list&lt;T&gt; counter[64];
+	int fill = 0;
+	while (!empty()) {
+	    carry.splice(carry.begin(), *this, begin());
+	    int i = 0;
+	    while(i &lt; fill &amp;&amp; !counter[i].empty()) {
+		counter[i].merge(carry);
+		carry.swap(counter[i++]);
+	    }
+	    carry.swap(counter[i]);         
+	    if (i == fill) ++fill;
+	} 
+	while(fill--) merge(counter[fill]);
+    }
+
+    </pre>
+
+    <p>
+    <b>Step (6) requires a less-than operator, ie., 
+    bool operator&lt;(const X& x)</b>.
+    <p>
+
+
+<li> Here the <tt>list</tt> object goes out of scope and is automatically
+    destructed by the C++ runtime system. The destructor for <tt>list</tt>
+    in turns calls the destructor for all the elements that are in the
+    list. Hence the object requires a destructor.
+
+    <p>
+    <b>Step (7) requires a destructor</b>
+    <p>
+
+</ol>
+
+<p>
+The following are automatically supplied by the compiler if not defined by
+the user:
+<ul>
+<li> <tt>X()</tt> -- default constructor, but <em>only when</em> no other 
+   constructor is defined
+<li> <tt>X(X const&amp;)</tt> -- copy constructor
+<li> <tt>operator=(X const&amp;)</tt> -- assignment operator
+<li> <tt>~X()</tt> -- destructor
+</ul>
+
+<p>
+If <tt>X</tt> in this example contains pointers, please be sure to define
+all of these instead of leaving it to the compiler.
+
+<p>
+The following <em>must</em> be defined explicitly by the user:
+<ul>
+<li> <tt>bool operator==(X const&amp;)</tt> --  equality operator
+<li> <tt>bool operator&lt;(X const&amp;)</tt> -- less-than operator
+</ul>
+
+Note that if we had not used the <tt>remove</tt> and <tt>sort</tt>
+members, most smart compilers would not require <tt>X</tt> to define
+these two operators.
+
+<hr>
+<!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><a href=#class_howto>What's so special about writing container objects</a>
+<br>
+<!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><a href=#index>Back to index</a>
+<hr>
+
+<a name=pointers><h1>Pointers and STL</h1></a>
+As you might've noticed, STL containers manage the storage for objects,
+not pointers, and this has caused some trepidation about using STL for
+projects which need to store pointers in various STL containers. I
+strongly suggest people revisit their designs and <em>not</em> store 
+pointers, but if you have no choice, here's what I have found so far 
+regarding STL containers and pointers to defined types.
+
+<a name=class_pointer><h2>Gotcha's with storing pointers to objects</h2></a>
+Contrary to what some believe, STL does not care if you're storing pointers 
+to objects instead of objects in its containers. However, more often than 
+not, containers of pointers may be a design flaw that leads to memory 
+leaks and such lovely things. There are a few obvious exceptions:
+<ul>
+<li> Large objects that are too expensive to duplicate and are
+    already constructed on the heap.
+<li> Single object stored in multiple containers. This is quite common
+    and I believe the right way to do is to wrap the pointers into a class
+    the manages the objects, perhaps via a reference count. 
+<li> When you need to store objects derived from a (or a set of) base
+    objects in a container. This is quite common in CAD systems where
+    most manipulable objects are derived from a common base with a set of
+    common semantics. See <!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><a href=#pointer_deriv> here</a> for an example.
+    Remember that <em> C++ != Smalltalk</em>, and true heterogeneous 
+    containers are simply too messy to do in C++.
+</ul>
+
+There are few notable gotcha's:
+<ul>
+<li> No pointers to local variables please. See the function 
+    <tt><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><a href=#map_charptr>change_phno</a></tt> for an example of this.
+<li> Who manages the destruction? See <!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><a href=#class_ptr_destruction> here
+   </a> for an example of templatized sequence destructor.
+<li> Most STL containers use <tt>&lt</tt> for comparison which may be 
+    meaningless in some contexts. This is where <em>Smart pointers</em> 
+    shine.
+<li> Be careful when supplying a <em>Comparator</em> to STL containers need
+    one, such as SET, MAP, etc. See <!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><a href=#comparators> here
+    </a> for a rather involved example. Also see <!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><a href=#map_charptr>
+    here</a> for another example.
+    <p>
+    A better solution is to wrap the pointers in a simple class that you
+    store in STL containers. For a trivial example, see 
+    <!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><a href=#pointer_wrap>here</a>.
+<li> Some compilers and STL implementations seem to have inordinate
+    amount of trouble when you store pointers to objects instead of
+    objects, and it stems from <tt>construct</tt> and <tt>destroy</tt>
+    functions in STL allocator design; eg., HP reference implementation
+    comes with <tt>destroy</tt> specialized for pointers to all built-in
+    types, so it works fine if you store <tt>int*</tt> in a container, but
+    not when you store <tt>X*</tt>, where <tt>X</tt> is some user-defined
+    data type. See <!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><a href=#pointer_storage> here</a> for Benjamin 
+    Scherrey's note on how to manage this.
+</ul>
+
+<ul>
+<li> <!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><a href=#seq_pointer>Storing pointers in STL containers: Example code</a>
+<li> <!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><a href=#class_ptr_destruction>Deallocating pointers stored in STL 
+containers</a>
+<li> <!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><a href=#class_ptr_owner>Who owns the storage?</a>
+<li> <!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><a href=#class_ptr_char>More gotchas in storing char*</a>
+</ul>
+
+<a name=seq_pointer>
+    <h3>Storing pointers in STL containers: Example code</h3>
+</a>
+The following example is an excerpt from my <em>c.l.c++</em> posting on
+the subject of storing the same object in multiple container.
+<hr>
+
+<! 									>
+<!		CODE EXAMPLE BEGIN					>
+<! 									>
+
+<pre>
+
+<STRONG>#include</STRONG> &lt;<!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><A HREF="#stl.h">stl.h</A>&gt;                <EM><STRONG>//</STRONG> or individual includes if you like</EM>
+                                <EM><STRONG>//</STRONG> need list.h, set.h and algo.h</EM>
+<STRONG>#include</STRONG> &lt;iostream.h&gt;
+
+<EM><STRONG>//</STRONG></EM>
+<EM><STRONG>//</STRONG> THIS IS VERY IMPORTANT (see note above). You have to tell the set</EM>
+<EM><STRONG>//</STRONG> or multiset or map to compare the objects pointed to rather than </EM>
+<EM><STRONG>//</STRONG> the pointers these containers are storing.</EM>
+<EM><STRONG>//</STRONG></EM>
+<STRONG>struct</STRONG> compare <STRONG>{</STRONG>
+    bool <STRONG>operator</STRONG><STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>(</STRONG><STRONG>const</STRONG> <STRONG>int</STRONG><STRONG>*</STRONG> i1<STRONG>,</STRONG> <STRONG>const</STRONG> <STRONG>int</STRONG><STRONG>*</STRONG> i2<STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG>
+        <STRONG>return</STRONG> <STRONG>*</STRONG>i1 <STRONG>&lt;</STRONG> <STRONG>*</STRONG>i2<STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+<STRONG>}</STRONG><STRONG>;</STRONG>
+
+<STRONG>void</STRONG> print<STRONG>(</STRONG><STRONG>int</STRONG><STRONG>*</STRONG> i<STRONG>)</STRONG> <STRONG>{</STRONG>
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM> </EM>&quot; <STRONG>&lt;&lt;</STRONG> <STRONG>*</STRONG>i<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+<STRONG>int</STRONG> main<STRONG>(</STRONG><STRONG>int</STRONG><STRONG>,</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG><STRONG>[</STRONG><STRONG>]</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+    list<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>*</STRONG><STRONG>&gt;</STRONG> list1<STRONG>;</STRONG>
+
+    <EM><STRONG>//</STRONG></EM>
+    <EM><STRONG>//</STRONG> create a list of new'd integers.</EM>
+    <EM><STRONG>//</STRONG></EM>
+    <STRONG>for</STRONG><STRONG>(</STRONG><STRONG>int</STRONG> i <STRONG>=</STRONG> 0<STRONG>;</STRONG> i <STRONG>&lt;</STRONG> 5<STRONG>;</STRONG> <STRONG>++</STRONG>i<STRONG>)</STRONG> <STRONG>{</STRONG>
+        list1<STRONG>.</STRONG>push_back<STRONG>(</STRONG><STRONG>new</STRONG> <STRONG>int</STRONG><STRONG>(</STRONG>i <STRONG>*</STRONG> i<STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM>List of int*: (</EM>&quot;<STRONG>;</STRONG>
+    for_each<STRONG>(</STRONG>list1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> list1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> print<STRONG>)</STRONG><STRONG>;</STRONG>
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM>)</EM>&quot; <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    <EM><STRONG>//</STRONG></EM>
+    <EM><STRONG>//</STRONG> now put these integers into a set. Note that I'm using a</EM>
+    <EM><STRONG>//</STRONG> custom comparator to compare the integers, not the pointers.</EM>
+    <EM><STRONG>//</STRONG></EM>
+    set<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>*</STRONG><STRONG>,</STRONG> compare<STRONG>&gt;</STRONG> set1<STRONG>;</STRONG>
+    copy<STRONG>(</STRONG>list1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> list1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> 
+        insert_iterator<STRONG>&lt;</STRONG>set<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>*</STRONG><STRONG>,</STRONG> compare<STRONG>&gt;</STRONG> <STRONG>&gt;</STRONG> <STRONG>(</STRONG>set1<STRONG>,</STRONG> set1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>)</STRONG>
+    <STRONG>)</STRONG><STRONG>;</STRONG>
+
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM>Set of int* : [</EM>&quot;<STRONG>;</STRONG>
+    for_each<STRONG>(</STRONG>set1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> set1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> print<STRONG>)</STRONG><STRONG>;</STRONG>
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM>]</EM>&quot; <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    <STRONG>return</STRONG> 0<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+</pre>
+
+<hr>
+
+<pre>
+
+When you run the program, it should produce the following output.
+
+% ./testc++
+List of int*: ( 0 1 4 9 16)
+Set of int* : [ 0 1 4 9 16]
+
+</pre>
+
+<! 									>
+<!		CODE EXAMPLE END					>
+<! 									>
+<hr>
+
+<p>
+
+<a name=pointer_storage>Special Note for Borland C++ users:</a>
+However, Ben Scherrey (<tt>scherrey@proteus-tech.com</tt>) points out that 
+the OS/2 Borland C++ compiler cannot handle this, and I believe this is due 
+the compiler's lack of support for explicitly calling template destructor.
+Ben says that the if you overload <tt>destroy</tt> and <tt>construct</tt> 
+yourself, it works out. Thanks Ben.
+
+<p>
+
+<hr>
+<pre>
+
+void destroy(X** pointer ) {
+    (*pointer)->~X();
+}
+
+inline void construct(X** p, const X* value ) {
+    new (p) (const X*)(value);
+}
+
+</pre>
+<hr>
+
+<hr>
+<!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><a href=#pointers>Pointers and STL</a> 
+<br>
+<!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><a href=#index>Back to index</a>
+<hr>
+
+<a name=class_ptr_destruction>
+    <h3>Deallocating pointers stored in STL containers</h3>
+</a>
+
+If you create containers of pointers, make sure you deallocate the
+storage explicitly in the code, especially if the container is on the
+stack and goes out of scope creating a memory leak. STL containers only 
+copy and delete the storage required to hold the <strong>pointer</strong>,
+not the <strong>object</strong> it's pointing to.
+You can create templated deleters like the following:
+
+<pre>
+   template &lt;class ForwardIterator, class ForwardIterator&gt;
+   void sequence_delete(ForwardIterator first, ForwardIterator last) {
+       while (first != last)
+	   delete *first++;
+   }
+
+   template &lt;class ForwardIterator, class ForwardIterator&gt;
+   void map_delete(ForwardIterator first, ForwardIterator last) {
+       while (first != last)
+	   delete (*first++).second;
+   }
+
+   Map&lt;int, SomeType*, less&lt;int&gt &gt; mymap_;
+   //
+   // populate my map with new'd SomeType's.
+   //
+   map_delete(mymap_.begin(), mymap_.end());
+
+</pre>
+
+ObjectSpace uses a non-standard <tt>release()</tt> member to achieve the 
+above.
+
+<hr>
+<!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><a href=#pointers>Pointers and STL</a> 
+<br>
+<!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><a href=#index>Back to index</a>
+<hr>
+
+<a name=class_ptr_owner><h3>Who owns the storage?</h3></a>
+
+The following example shows another nasty side effect of storing pointers
+to things in STL containers.
+
+<p>
+
+<tt>list&lt;char*&gt;</tt> means a list character pointers, <em>NOT</em> 
+strings they point to. less&lt;char*&gt; will compare the pointers,
+<em>NOT</em> the strings (ie., <em>NOT</em> use <tt>strcmp</tt> and friends).
+
+<p>
+
+<pre>
+   char buf[1024];
+   strcpy(buf, "THIS_WOULD_CHANGE_MAGICALLY");
+   list&lt;char*&gt; list1;
+   list1.push_back(buf);
+   ostream_iterator&lt;char*&gt; citer(cout, " ");
+   copy(list1.begin(), list1.end(), citer);
+
+   // you should see one string, the one in buf above.
+
+   strcpy(buf, "YIKES!");
+   copy(list1.begin(), list1.end(), citer);
+
+   // SURPRISE. your list is changed now.
+   
+</pre>
+<p>
+In general, do not use <tt>char*</tt> as container objects, rather write a
+simple string class (ask me if you need one) and use that instead.
+
+<hr>
+<!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><a href=#pointers>Pointers and STL</a> 
+<br>
+<!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><a href=#index>Back to index</a>
+<hr>
+
+<a name=class_ptr_char><h3>More gotchas in storing char*</h3></a>
+Here's an example of a set of strings that can cause lots of headache.
+
+<PRE>
+<STRONG>#include</STRONG> &lt;<!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><A HREF="#stl.h">stl.h</A>&gt;
+<STRONG>#include</STRONG> &lt;iostream.h&gt;
+
+<STRONG>int</STRONG> main<STRONG>(</STRONG><STRONG>int</STRONG><STRONG>,</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG><STRONG>[</STRONG><STRONG>]</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>static</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG> names<STRONG>[</STRONG><STRONG>]</STRONG> <STRONG>=</STRONG> <STRONG>{</STRONG>&quot;<EM>one</EM>&quot;<STRONG>,</STRONG> &quot;<EM>two</EM>&quot;<STRONG>,</STRONG> &quot;<EM>three</EM>&quot;<STRONG>}</STRONG><STRONG>;</STRONG>
+    set<STRONG>&lt;</STRONG><STRONG>char</STRONG><STRONG>*</STRONG><STRONG>,</STRONG> less<STRONG>&lt;</STRONG><STRONG>char</STRONG><STRONG>*</STRONG><STRONG>&gt;</STRONG> <STRONG>&gt;</STRONG> name_set<STRONG>;</STRONG>
+    name_set<STRONG>.</STRONG>insert<STRONG>(</STRONG>names<STRONG>[</STRONG>0<STRONG>]</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    name_set<STRONG>.</STRONG>insert<STRONG>(</STRONG>names<STRONG>[</STRONG>1<STRONG>]</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    name_set<STRONG>.</STRONG>insert<STRONG>(</STRONG>names<STRONG>[</STRONG>2<STRONG>]</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+
+    <STRONG>char</STRONG> buf<STRONG>[</STRONG>256<STRONG>]</STRONG><STRONG>;</STRONG>
+    strcpy<STRONG>(</STRONG>buf<STRONG>,</STRONG> &quot;<EM>one</EM>&quot;<STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>const</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG> one <STRONG>=</STRONG> buf<STRONG>;</STRONG>
+    set<STRONG>&lt;</STRONG><STRONG>char</STRONG><STRONG>*</STRONG><STRONG>,</STRONG> less<STRONG>&lt;</STRONG><STRONG>char</STRONG><STRONG>*</STRONG><STRONG>&gt;</STRONG> <STRONG>&gt;</STRONG><STRONG>::</STRONG>const_iterator it <STRONG>=</STRONG> name_set<STRONG>.</STRONG>find<STRONG>(</STRONG>one<STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>if</STRONG> <STRONG>(</STRONG>it <STRONG>==</STRONG> name_set<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+        cerr <STRONG>&lt;&lt;</STRONG> &quot;<EM>No such name `</EM>&quot; <STRONG>&lt;&lt;</STRONG> one <STRONG>&lt;&lt;</STRONG> &quot;<EM>' in set!</EM>&quot; <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+    <STRONG>}</STRONG> <STRONG>else</STRONG> <STRONG>{</STRONG>
+        cerr <STRONG>&lt;&lt;</STRONG> &quot;<EM>Found name `</EM>&quot; <STRONG>&lt;&lt;</STRONG> one <STRONG>&lt;&lt;</STRONG> &quot;<EM>' in set.</EM>&quot; <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+    <STRONG>return</STRONG> 0<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+</PRE>
+
+<hr>
+<!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><a href=#pointers>Pointers and STL</a> 
+<br>
+<!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><a href=#index>Back to index</a>
+<hr>
+
+<a name=pointer_wrap><h2>Example of a pointer wrapper for storing in
+    STL containers</h2></a>
+If you <em>have to</em> store pointers in STL containers, especially the
+sorted collections such as <tt>set</tt> and <tt>map</tt>, you might want
+to wrap the pointers into a simple class that works as a holder for the
+pointer (<em>who cleans up the memory afterwards</em>?) See 
+<!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><a href=#class_ptr_destruction> here</a> for an example):
+
+<p>
+
+<hr>
+
+<PRE>
+<STRONG>#include</STRONG> &lt;<!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><A HREF="#stl.h">stl.h</A>&gt;
+<STRONG>#include</STRONG> &lt;iostream.h&gt;
+
+<EM><STRONG>//</STRONG></EM>
+<EM><STRONG>//</STRONG> Let's say you want to put pointers to X into multiple STL containers.</EM>
+<EM><STRONG>//</STRONG></EM>
+<STRONG>class</STRONG> X <STRONG>{</STRONG>
+public:
+    X<STRONG>(</STRONG><STRONG>int</STRONG> i<STRONG>)</STRONG> <STRONG>:</STRONG> i_<STRONG>(</STRONG>i<STRONG>)</STRONG> <STRONG>{</STRONG> <STRONG>;</STRONG> <STRONG>}</STRONG>
+    X<STRONG>(</STRONG><STRONG>const</STRONG> X<STRONG>&amp;</STRONG> x<STRONG>)</STRONG> <STRONG>:</STRONG> i_<STRONG>(</STRONG>x<STRONG>.</STRONG>i_<STRONG>)</STRONG> <STRONG>{</STRONG> <STRONG>}</STRONG>
+    <STRONG>~</STRONG>X<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG> <STRONG>}</STRONG>
+    X<STRONG>&amp;</STRONG> <STRONG>operator</STRONG><STRONG>=</STRONG> <STRONG>(</STRONG><STRONG>const</STRONG> X<STRONG>&amp;</STRONG> x<STRONG>)</STRONG> <STRONG>{</STRONG> i_ <STRONG>=</STRONG> x<STRONG>.</STRONG>i_<STRONG>;</STRONG> <STRONG>}</STRONG>
+
+    <STRONG>int</STRONG> <STRONG>operator</STRONG><STRONG>(</STRONG><STRONG>)</STRONG><STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG> <STRONG>return</STRONG> i_<STRONG>;</STRONG> <STRONG>}</STRONG>
+private:
+    <STRONG>int</STRONG> i_<STRONG>;</STRONG>
+<STRONG>}</STRONG><STRONG>;</STRONG>
+
+bool <STRONG>operator</STRONG><STRONG>==</STRONG> <STRONG>(</STRONG><STRONG>const</STRONG> X<STRONG>&amp;</STRONG> x1<STRONG>,</STRONG> <STRONG>const</STRONG> X<STRONG>&amp;</STRONG> x2<STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>return</STRONG> x1<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>==</STRONG> x2<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+bool <STRONG>operator</STRONG><STRONG>&lt;</STRONG> <STRONG>(</STRONG><STRONG>const</STRONG> X<STRONG>&amp;</STRONG> x1<STRONG>,</STRONG> <STRONG>const</STRONG> X<STRONG>&amp;</STRONG> x2<STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>return</STRONG> x1<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>&lt;</STRONG> x2<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+<EM><STRONG>//</STRONG></EM>
+<EM><STRONG>//</STRONG> Define a simple wrapper class to put into STL containers. This one</EM>
+<EM><STRONG>//</STRONG> simple wraps X.</EM>
+<EM><STRONG>//</STRONG></EM>
+<STRONG>class</STRONG> XPtrWrapper <STRONG>{</STRONG>
+public:
+    XPtrWrapper<STRONG>(</STRONG>X<STRONG>*</STRONG> x <STRONG>=</STRONG> 0<STRONG>)</STRONG> <STRONG>:</STRONG> x_<STRONG>(</STRONG>x<STRONG>)</STRONG> <STRONG>{</STRONG> <STRONG>}</STRONG>
+    XPtrWrapper<STRONG>(</STRONG><STRONG>const</STRONG> XPtrWrapper<STRONG>&amp;</STRONG> xw<STRONG>)</STRONG> <STRONG>:</STRONG> x_<STRONG>(</STRONG>xw<STRONG>.</STRONG>x_<STRONG>)</STRONG> <STRONG>{</STRONG> <STRONG>}</STRONG>
+    <STRONG>~</STRONG>XPtrWrapper<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG> <STRONG>}</STRONG>
+    XPtrWrapper<STRONG>&amp;</STRONG> <STRONG>operator</STRONG><STRONG>=</STRONG> <STRONG>(</STRONG><STRONG>const</STRONG> XPtrWrapper<STRONG>&amp;</STRONG> xw<STRONG>)</STRONG> <STRONG>{</STRONG> x_ <STRONG>=</STRONG> xw<STRONG>.</STRONG>x_<STRONG>;</STRONG> <STRONG>}</STRONG>
+
+    <STRONG>const</STRONG> X<STRONG>*</STRONG> <STRONG>operator</STRONG><STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG> <STRONG>return</STRONG> x_<STRONG>;</STRONG> <STRONG>}</STRONG>
+    X<STRONG>*</STRONG> <STRONG>operator</STRONG><STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG> <STRONG>return</STRONG> x_<STRONG>;</STRONG> <STRONG>}</STRONG>
+private:
+    X<STRONG>*</STRONG> x_<STRONG>;</STRONG>
+<STRONG>}</STRONG><STRONG>;</STRONG>
+
+bool <STRONG>operator</STRONG><STRONG>==</STRONG> <STRONG>(</STRONG><STRONG>const</STRONG> XPtrWrapper<STRONG>&amp;</STRONG> xw1<STRONG>,</STRONG> <STRONG>const</STRONG> XPtrWrapper<STRONG>&amp;</STRONG> xw2<STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>return</STRONG> <STRONG>(</STRONG>xw1<STRONG>.</STRONG><STRONG>operator</STRONG><STRONG>(</STRONG><STRONG>)</STRONG><STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>&amp;&amp;</STRONG> xw2<STRONG>.</STRONG><STRONG>operator</STRONG><STRONG>(</STRONG><STRONG>)</STRONG><STRONG>(</STRONG><STRONG>)</STRONG><STRONG>)</STRONG> <STRONG>?</STRONG> <STRONG>*</STRONG>xw1<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>==</STRONG> <STRONG>*</STRONG>xw2<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>:</STRONG> false<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+bool <STRONG>operator</STRONG><STRONG>&lt;</STRONG> <STRONG>(</STRONG><STRONG>const</STRONG> XPtrWrapper<STRONG>&amp;</STRONG> xw1<STRONG>,</STRONG> <STRONG>const</STRONG> XPtrWrapper<STRONG>&amp;</STRONG> xw2<STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>return</STRONG> <STRONG>(</STRONG>xw1<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>&amp;&amp;</STRONG> xw2<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>)</STRONG> <STRONG>?</STRONG> <STRONG>*</STRONG>xw1<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>&lt;</STRONG> <STRONG>*</STRONG>xw2<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>:</STRONG> false<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+<STRONG>void</STRONG> print<STRONG>(</STRONG><STRONG>const</STRONG> XPtrWrapper<STRONG>&amp;</STRONG> xw<STRONG>)</STRONG> <STRONG>{</STRONG>
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM> </EM>&quot; <STRONG>&lt;&lt;</STRONG> <STRONG>(</STRONG><STRONG>*</STRONG>xw<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+<STRONG>int</STRONG> main<STRONG>(</STRONG><STRONG>int</STRONG><STRONG>,</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG><STRONG>[</STRONG><STRONG>]</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+    XPtrWrapper bucket<STRONG>[</STRONG>5<STRONG>]</STRONG><STRONG>;</STRONG>
+    <STRONG>for</STRONG><STRONG>(</STRONG><STRONG>int</STRONG> i <STRONG>=</STRONG> 0<STRONG>;</STRONG> i <STRONG>&lt;</STRONG> 5<STRONG>;</STRONG> <STRONG>++</STRONG>i<STRONG>)</STRONG> <STRONG>{</STRONG>
+        bucket<STRONG>[</STRONG>i<STRONG>]</STRONG> <STRONG>=</STRONG> XPtrWrapper<STRONG>(</STRONG><STRONG>new</STRONG> X<STRONG>(</STRONG>i <STRONG>*</STRONG> i<STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+    random_shuffle<STRONG>(</STRONG>bucket<STRONG>,</STRONG> bucket <STRONG>+</STRONG> 5<STRONG>)</STRONG><STRONG>;</STRONG>
+
+    list<STRONG>&lt;</STRONG>XPtrWrapper<STRONG>&gt;</STRONG> list1<STRONG>;</STRONG>
+    copy<STRONG>(</STRONG>bucket<STRONG>,</STRONG> bucket <STRONG>+</STRONG> 5<STRONG>,</STRONG> 
+        back_insert_iterator<STRONG>&lt;</STRONG>list<STRONG>&lt;</STRONG>XPtrWrapper<STRONG>&gt;</STRONG> <STRONG>&gt;</STRONG> <STRONG>(</STRONG>list1<STRONG>)</STRONG>
+    <STRONG>)</STRONG><STRONG>;</STRONG>
+
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM>List of XPtrWrapper: (</EM>&quot;<STRONG>;</STRONG>
+    for_each<STRONG>(</STRONG>list1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> list1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> print<STRONG>)</STRONG><STRONG>;</STRONG>
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM>)</EM>&quot; <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    <EM><STRONG>//</STRONG></EM>
+    <EM><STRONG>//</STRONG> now put these XPtrWrappers into a set. Note that I can use</EM>
+    <EM><STRONG>//</STRONG> greater<XPtrWrapper> since I've defined operator> for it.</EM>
+    <EM><STRONG>//</STRONG></EM>
+    set<STRONG>&lt;</STRONG>XPtrWrapper<STRONG>,</STRONG> greater<STRONG>&lt;</STRONG>XPtrWrapper<STRONG>&gt;</STRONG> <STRONG>&gt;</STRONG> set1<STRONG>;</STRONG>
+    copy<STRONG>(</STRONG>list1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> list1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> 
+        insert_iterator<STRONG>&lt;</STRONG>set<STRONG>&lt;</STRONG>XPtrWrapper<STRONG>,</STRONG> greater<STRONG>&lt;</STRONG>XPtrWrapper<STRONG>&gt;</STRONG> <STRONG>&gt;</STRONG> <STRONG>&gt;</STRONG> 
+            <STRONG>(</STRONG>set1<STRONG>,</STRONG> set1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>)</STRONG>
+    <STRONG>)</STRONG><STRONG>;</STRONG>
+
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM>Set of XPtrWrapper : [</EM>&quot;<STRONG>;</STRONG>
+    for_each<STRONG>(</STRONG>set1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> set1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> print<STRONG>)</STRONG><STRONG>;</STRONG>
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM>]</EM>&quot; <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    <EM><STRONG>//</STRONG></EM>
+    <EM><STRONG>//</STRONG> now put these integers into a deque. </EM>
+    <EM><STRONG>//</STRONG></EM>
+    deque<STRONG>&lt;</STRONG>XPtrWrapper<STRONG>&gt;</STRONG> deque1<STRONG>;</STRONG>
+    copy<STRONG>(</STRONG>list1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> list1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> 
+        back_insert_iterator<STRONG>&lt;</STRONG>deque<STRONG>&lt;</STRONG>XPtrWrapper<STRONG>&gt;</STRONG> <STRONG>&gt;</STRONG> <STRONG>(</STRONG>deque1<STRONG>)</STRONG>
+    <STRONG>)</STRONG><STRONG>;</STRONG>
+
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM>Deque of XPtrWrapper : (</EM>&quot;<STRONG>;</STRONG>
+    for_each<STRONG>(</STRONG>deque1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> deque1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> print<STRONG>)</STRONG><STRONG>;</STRONG>
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM>)</EM>&quot; <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    <STRONG>return</STRONG> 0<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+</PRE>
+<hr>
+
+<p>
+
+And the output is:
+<hr>
+
+<pre>
+List of XPtrWrapper: ( 4 0 16 1 9)
+Set of XPtrWrapper : [ 16 9 4 1 0]
+Deque of XPtrWrapper : ( 4 0 16 1 9)
+</pre>
+<p>
+<hr>
+<!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><a href=#pointers>Pointers and STL</a> 
+<br>
+<!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><a href=#index>Back to index</a>
+<hr>
+
+<a name=pointer_deriv><h2>
+    How do I store derived objects in STL containers?</h2>
+</a>
+Consider a CAD application: you have lots of objects on a screen that all
+derive from the same base object. How would you store the derived objects
+in an STL container? Let's assume all derived objects have a set of
+virtual functions (and use RTTI if you have it). I've done it 3 different
+ways:
+<p>
+<ol>
+<li> <!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><a href=#seq_pointer>
+    Store the pointer itself in the container</a>. You have to explicitly
+    deallocate the memory later on of course. Also, not all STL
+    implementations seem to handle storage of pointers uniformly, so I
+    would suggest using a wrapper shown below.
+<li> <!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><a href=#pointer_deriv_hard>
+    Hard-coded wrapper</a> that takes a pointer to the base class
+<li> <!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><a href=#pointer_deriv_template>
+    Templated pointer wrapper</a> that takes a pointer to the base class
+</ol>
+<p>
+
+<a name=pointer_deriv_hard><h3>
+    Hard-coded wrapper that takes a pointer to the base class</h3></a>
+
+The following example shows 2 classes derived from <tt>Base</tt>, 
+<tt>derived1</tt> and <tt>derived2</tt> and a wrapper
+<tt>BaseWrapper</tt>. The wrapper class <b>assumes</b> that the base class
+provides a virtual <tt>clone</tt> facility and does the memory
+management. 
+<p>
+<em>Note: After the new'd Base derivative is passed to the 
+wrapper, it owns it and deletes it in the destructor</em>.
+<p>
+<hr>
+
+<PRE>
+<STRONG>#include</STRONG> &lt;<!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><A HREF="#stl.h">stl.h</A>&gt;
+<STRONG>#include</STRONG> &lt;string.h&gt;
+<STRONG>#include</STRONG> &lt;iostream.h&gt;
+
+<EM><STRONG>//</STRONG></EM>
+<EM><STRONG>//</STRONG> abstract base class</EM>
+<EM><STRONG>//</STRONG></EM>
+<STRONG>class</STRONG> Base <STRONG>{</STRONG>
+public:
+    <STRONG>const</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG> typename<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG> <STRONG>return</STRONG> typename_<STRONG>;</STRONG> <STRONG>}</STRONG>
+    <STRONG>virtual</STRONG> Base<STRONG>*</STRONG> clone<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>=</STRONG> 0<STRONG>;</STRONG>
+    <STRONG>virtual</STRONG> <STRONG>void</STRONG> identify<STRONG>(</STRONG>ostream<STRONG>&amp;</STRONG> os<STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>=</STRONG> 0<STRONG>;</STRONG>
+    <STRONG>virtual</STRONG> <STRONG>~</STRONG>Base<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+
+public:
+    <STRONG>static</STRONG> <STRONG>int</STRONG> count<STRONG>;</STRONG>
+
+protected:
+    Base<STRONG>(</STRONG><STRONG>const</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG> typename<STRONG>)</STRONG><STRONG>;</STRONG>
+    Base<STRONG>(</STRONG><STRONG>const</STRONG> Base<STRONG>&amp;</STRONG> base<STRONG>)</STRONG><STRONG>;</STRONG>
+
+private:
+    <STRONG>char</STRONG><STRONG>*</STRONG> typename_<STRONG>;</STRONG>
+<STRONG>}</STRONG><STRONG>;</STRONG>
+
+Base::Base<STRONG>(</STRONG><STRONG>const</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG> typename<STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>const</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG> tname <STRONG>=</STRONG> <STRONG>(</STRONG>typename<STRONG>)</STRONG> <STRONG>?</STRONG> typename <STRONG>:</STRONG> &quot;<EM>unknown</EM>&quot;<STRONG>;</STRONG>
+    strcpy<STRONG>(</STRONG>typename_ <STRONG>=</STRONG> <STRONG>new</STRONG> <STRONG>char</STRONG><STRONG>[</STRONG>strlen<STRONG>(</STRONG>tname<STRONG>)</STRONG> <STRONG>+</STRONG> 1<STRONG>]</STRONG><STRONG>,</STRONG> tname<STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>++</STRONG>count<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+Base::Base<STRONG>(</STRONG><STRONG>const</STRONG> Base<STRONG>&amp;</STRONG> base<STRONG>)</STRONG> <STRONG>{</STRONG>
+    strcpy<STRONG>(</STRONG>
+        typename_ <STRONG>=</STRONG> <STRONG>new</STRONG> <STRONG>char</STRONG><STRONG>[</STRONG>strlen<STRONG>(</STRONG>base<STRONG>.</STRONG>typename_<STRONG>)</STRONG> <STRONG>+</STRONG> 1<STRONG>]</STRONG><STRONG>,</STRONG> base<STRONG>.</STRONG>typename_
+    <STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>++</STRONG>count<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+Base::~Base<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>delete</STRONG><STRONG>[</STRONG><STRONG>]</STRONG> typename_<STRONG>;</STRONG>
+    <STRONG>--</STRONG>count<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+<EM><STRONG>//</STRONG></EM>
+<EM><STRONG>//</STRONG> First derived class. </EM>
+<EM><STRONG>//</STRONG></EM>
+<STRONG>class</STRONG> Derived1 <STRONG>:</STRONG> <STRONG>public</STRONG> Base <STRONG>{</STRONG>
+public:
+    Derived1<STRONG>(</STRONG><STRONG>int</STRONG> data<STRONG>)</STRONG> <STRONG>:</STRONG> Base<STRONG>(</STRONG>&quot;<EM>derived1</EM>&quot;<STRONG>)</STRONG><STRONG>,</STRONG> data_<STRONG>(</STRONG>data<STRONG>)</STRONG> <STRONG>{</STRONG> <STRONG>}</STRONG>
+    Derived1<STRONG>(</STRONG><STRONG>const</STRONG> Derived1<STRONG>&amp;</STRONG> d<STRONG>)</STRONG> <STRONG>:</STRONG> Base<STRONG>(</STRONG>&quot;<EM>derived1</EM>&quot;<STRONG>)</STRONG><STRONG>,</STRONG> data_<STRONG>(</STRONG>d<STRONG>.</STRONG>data<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG> <STRONG>}</STRONG>
+    <STRONG>virtual</STRONG> <STRONG>~</STRONG>Derived1<STRONG>(</STRONG><STRONG>)</STRONG>        <STRONG>{</STRONG> <STRONG>}</STRONG>
+    <STRONG>virtual</STRONG> Base<STRONG>*</STRONG> clone<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG> <STRONG>return</STRONG> <STRONG>new</STRONG> Derived1<STRONG>(</STRONG><STRONG>*</STRONG><STRONG>this</STRONG><STRONG>)</STRONG><STRONG>;</STRONG> <STRONG>}</STRONG>
+    <STRONG>virtual</STRONG> <STRONG>void</STRONG> identify<STRONG>(</STRONG>ostream<STRONG>&amp;</STRONG> os<STRONG>)</STRONG> <STRONG>const</STRONG><STRONG>;</STRONG>
+    <STRONG>int</STRONG> data<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG> <STRONG>return</STRONG> data_<STRONG>;</STRONG> <STRONG>}</STRONG>
+private:
+    <STRONG>int</STRONG> data_<STRONG>;</STRONG>
+<STRONG>}</STRONG><STRONG>;</STRONG>
+
+<STRONG>virtual</STRONG> <STRONG>void</STRONG> Derived1::identify<STRONG>(</STRONG>ostream<STRONG>&amp;</STRONG> os<STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG>
+    os <STRONG>&lt;&lt;</STRONG> &quot;<EM>(</EM>&quot; <STRONG>&lt;&lt;</STRONG> typename<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>&lt;&lt;</STRONG> &quot;<EM> </EM>&quot; <STRONG>&lt;&lt;</STRONG> data<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>&lt;&lt;</STRONG> &quot;<EM>)</EM>&quot;<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+<EM><STRONG>//</STRONG></EM>
+<EM><STRONG>//</STRONG> Second derived class. </EM>
+<EM><STRONG>//</STRONG></EM>
+<STRONG>class</STRONG> Derived2 <STRONG>:</STRONG> <STRONG>public</STRONG> Base <STRONG>{</STRONG>
+public:
+    Derived2<STRONG>(</STRONG><STRONG>int</STRONG> data<STRONG>)</STRONG> <STRONG>:</STRONG> Base<STRONG>(</STRONG>&quot;<EM>derived2</EM>&quot;<STRONG>)</STRONG><STRONG>,</STRONG> data_<STRONG>(</STRONG>data<STRONG>)</STRONG> <STRONG>{</STRONG> <STRONG>}</STRONG>
+    Derived2<STRONG>(</STRONG><STRONG>const</STRONG> Derived2<STRONG>&amp;</STRONG> d<STRONG>)</STRONG> <STRONG>:</STRONG> Base<STRONG>(</STRONG>&quot;<EM>derived2</EM>&quot;<STRONG>)</STRONG><STRONG>,</STRONG> data_<STRONG>(</STRONG>d<STRONG>.</STRONG>data<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG> <STRONG>}</STRONG>
+    <STRONG>virtual</STRONG> <STRONG>~</STRONG>Derived2<STRONG>(</STRONG><STRONG>)</STRONG>        <STRONG>{</STRONG> <STRONG>}</STRONG>
+    <STRONG>virtual</STRONG> Base<STRONG>*</STRONG> clone<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG> <STRONG>return</STRONG> <STRONG>new</STRONG> Derived2<STRONG>(</STRONG><STRONG>*</STRONG><STRONG>this</STRONG><STRONG>)</STRONG><STRONG>;</STRONG> <STRONG>}</STRONG>
+    <STRONG>virtual</STRONG> <STRONG>void</STRONG> identify<STRONG>(</STRONG>ostream<STRONG>&amp;</STRONG> os<STRONG>)</STRONG> <STRONG>const</STRONG><STRONG>;</STRONG>
+    <STRONG>int</STRONG> data<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG> <STRONG>return</STRONG> data_<STRONG>;</STRONG> <STRONG>}</STRONG>
+private:
+    <STRONG>int</STRONG> data_<STRONG>;</STRONG>
+<STRONG>}</STRONG><STRONG>;</STRONG>
+
+<STRONG>virtual</STRONG> <STRONG>void</STRONG> Derived2::identify<STRONG>(</STRONG>ostream<STRONG>&amp;</STRONG> os<STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG>
+    os <STRONG>&lt;&lt;</STRONG> &quot;<EM>(</EM>&quot; <STRONG>&lt;&lt;</STRONG> typename<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>&lt;&lt;</STRONG> &quot;<EM> </EM>&quot; <STRONG>&lt;&lt;</STRONG> data<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>&lt;&lt;</STRONG> &quot;<EM>)</EM>&quot;<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+<EM><STRONG>//</STRONG></EM>
+<EM><STRONG>//</STRONG> now define the pointer wrapper.</EM>
+<EM><STRONG>//</STRONG></EM>
+<STRONG>class</STRONG> BaseWrapper <STRONG>{</STRONG>
+public:
+    BaseWrapper<STRONG>(</STRONG>Base<STRONG>*</STRONG> base_ptr <STRONG>=</STRONG> 0<STRONG>)</STRONG> <STRONG>:</STRONG> base_ptr_<STRONG>(</STRONG>base_ptr<STRONG>)</STRONG> <STRONG>{</STRONG> <STRONG>}</STRONG>
+    BaseWrapper<STRONG>(</STRONG><STRONG>const</STRONG> BaseWrapper<STRONG>&amp;</STRONG> bw<STRONG>)</STRONG> <STRONG>{</STRONG>
+        base_ptr_ <STRONG>=</STRONG> bw<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>?</STRONG> bw<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>-&gt;</STRONG>clone<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>:</STRONG> 0<STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+    <STRONG>~</STRONG>BaseWrapper<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG> <STRONG>delete</STRONG> base_ptr_<STRONG>;</STRONG> <STRONG>}</STRONG>
+    <STRONG>const</STRONG> Base<STRONG>*</STRONG> <STRONG>operator</STRONG><STRONG>(</STRONG><STRONG>)</STRONG><STRONG>(</STRONG><STRONG>)</STRONG>  <STRONG>const</STRONG> <STRONG>{</STRONG> <STRONG>return</STRONG> base_ptr_<STRONG>;</STRONG> <STRONG>}</STRONG>
+    Base<STRONG>*</STRONG> <STRONG>operator</STRONG><STRONG>(</STRONG><STRONG>)</STRONG><STRONG>(</STRONG><STRONG>)</STRONG>  <STRONG>{</STRONG> <STRONG>return</STRONG> base_ptr_<STRONG>;</STRONG> <STRONG>}</STRONG>
+    BaseWrapper<STRONG>&amp;</STRONG> <STRONG>operator</STRONG><STRONG>=</STRONG> <STRONG>(</STRONG><STRONG>const</STRONG> BaseWrapper<STRONG>&amp;</STRONG> bw<STRONG>)</STRONG> <STRONG>{</STRONG>
+        <STRONG>delete</STRONG> base_ptr_<STRONG>;</STRONG>
+        base_ptr_ <STRONG>=</STRONG> bw<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>-&gt;</STRONG>clone<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+private:
+    Base<STRONG>*</STRONG> base_ptr_<STRONG>;</STRONG>
+<STRONG>}</STRONG><STRONG>;</STRONG>
+
+bool <STRONG>operator</STRONG><STRONG>==</STRONG> <STRONG>(</STRONG><STRONG>const</STRONG> BaseWrapper<STRONG>&amp;</STRONG> bw1<STRONG>,</STRONG> <STRONG>const</STRONG> BaseWrapper<STRONG>&amp;</STRONG> w2<STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>return</STRONG> false<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+bool <STRONG>operator</STRONG><STRONG>&lt;</STRONG> <STRONG>(</STRONG><STRONG>const</STRONG> BaseWrapper<STRONG>&amp;</STRONG> bw1<STRONG>,</STRONG> <STRONG>const</STRONG> BaseWrapper<STRONG>&amp;</STRONG> w2<STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>return</STRONG> false<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+<EM><STRONG>//</STRONG></EM>
+<EM><STRONG>//</STRONG> end of class defs.</EM>
+<EM><STRONG>//</STRONG></EM>
+
+<EM><STRONG>//</STRONG> define static members.</EM>
+<STRONG>int</STRONG> Base::count <STRONG>=</STRONG> 0<STRONG>;</STRONG>
+
+<STRONG>int</STRONG> main<STRONG>(</STRONG><STRONG>int</STRONG><STRONG>,</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG><STRONG>[</STRONG><STRONG>]</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+    list<STRONG>&lt;</STRONG>BaseWrapper<STRONG>&gt;</STRONG> list1<STRONG>;</STRONG>
+    list1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>BaseWrapper<STRONG>(</STRONG><STRONG>new</STRONG> Derived1<STRONG>(</STRONG>101<STRONG>)</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    list1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>BaseWrapper<STRONG>(</STRONG><STRONG>new</STRONG> Derived2<STRONG>(</STRONG>201<STRONG>)</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    list1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>BaseWrapper<STRONG>(</STRONG><STRONG>new</STRONG> Derived2<STRONG>(</STRONG>202<STRONG>)</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    list1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>BaseWrapper<STRONG>(</STRONG><STRONG>new</STRONG> Derived1<STRONG>(</STRONG>102<STRONG>)</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    list1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>BaseWrapper<STRONG>(</STRONG><STRONG>new</STRONG> Derived2<STRONG>(</STRONG>203<STRONG>)</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+
+    list<STRONG>&lt;</STRONG>BaseWrapper<STRONG>&gt;</STRONG><STRONG>::</STRONG>const_iterator it <STRONG>=</STRONG> list1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>for</STRONG><STRONG>(</STRONG><STRONG>;</STRONG> it <STRONG>!=</STRONG> list1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG> <STRONG>++</STRONG>it<STRONG>)</STRONG> <STRONG>{</STRONG>
+        <STRONG>const</STRONG> BaseWrapper<STRONG>&amp;</STRONG> bw <STRONG>=</STRONG> <STRONG>*</STRONG>it<STRONG>;</STRONG>
+        bw<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>-&gt;</STRONG>identify<STRONG>(</STRONG>cerr<STRONG>)</STRONG><STRONG>;</STRONG> 
+        cerr <STRONG>&lt;&lt;</STRONG> &quot;<EM> </EM>&quot;<STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+    cerr <STRONG>&lt;&lt;</STRONG> endl <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    <STRONG>return</STRONG> 0<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+</PRE>
+<hr>
+And here's the output:
+<p>
+<hr>
+<pre>
+
+(derived1 101) (derived2 201) (derived2 202) (derived1 102) (derived2 203) 
+
+</pre>
+<hr>
+
+<hr>
+<!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><a href=#pointers>Pointers and STL</a> 
+<br>
+<!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><a href=#index>Back to index</a>
+<hr>
+
+<a name=pointer_deriv_template><h3>
+    Templated pointer wrapper that takes a pointer to the base class</h3></a>
+The following example shows 2 classes derived from <tt>Base</tt>, 
+<tt>derived1</tt> and <tt>derived2</tt> and a templated wrapper
+<tt>Wrapper&lt;T&gt;</tt>. The wrapper class <b>assumes</b> that the base 
+class provides a virtual <tt>clone</tt> facility and does the memory
+management.
+<p>
+<em>Note: After the new'd Base derivative is passed to the 
+wrapper, it owns it and deletes it in the destructor</em>.
+<p>
+<hr>
+
+<PRE>
+<STRONG>#include</STRONG> &lt;<!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><A HREF="#stl.h">stl.h</A>&gt;
+<STRONG>#include</STRONG> &lt;string.h&gt;
+<STRONG>#include</STRONG> &lt;iostream.h&gt;
+
+<EM><STRONG>//</STRONG></EM>
+<EM><STRONG>//</STRONG> abstract base class</EM>
+<EM><STRONG>//</STRONG></EM>
+<STRONG>class</STRONG> Base <STRONG>{</STRONG>
+public:
+    <STRONG>const</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG> typename<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG> <STRONG>return</STRONG> typename_<STRONG>;</STRONG> <STRONG>}</STRONG>
+    <STRONG>virtual</STRONG> Base<STRONG>*</STRONG> clone<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>=</STRONG> 0<STRONG>;</STRONG>
+    <STRONG>virtual</STRONG> <STRONG>void</STRONG> identify<STRONG>(</STRONG>ostream<STRONG>&amp;</STRONG> os<STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>=</STRONG> 0<STRONG>;</STRONG>
+    <STRONG>virtual</STRONG> <STRONG>~</STRONG>Base<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+
+public:
+    <STRONG>static</STRONG> <STRONG>int</STRONG> count<STRONG>;</STRONG>
+
+protected:
+    Base<STRONG>(</STRONG><STRONG>const</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG> typename<STRONG>)</STRONG><STRONG>;</STRONG>
+    Base<STRONG>(</STRONG><STRONG>const</STRONG> Base<STRONG>&amp;</STRONG> base<STRONG>)</STRONG><STRONG>;</STRONG>
+
+private:
+    <STRONG>char</STRONG><STRONG>*</STRONG> typename_<STRONG>;</STRONG>
+<STRONG>}</STRONG><STRONG>;</STRONG>
+
+Base::Base<STRONG>(</STRONG><STRONG>const</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG> typename<STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>const</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG> tname <STRONG>=</STRONG> <STRONG>(</STRONG>typename<STRONG>)</STRONG> <STRONG>?</STRONG> typename <STRONG>:</STRONG> &quot;<EM>unknown</EM>&quot;<STRONG>;</STRONG>
+    strcpy<STRONG>(</STRONG>typename_ <STRONG>=</STRONG> <STRONG>new</STRONG> <STRONG>char</STRONG><STRONG>[</STRONG>strlen<STRONG>(</STRONG>tname<STRONG>)</STRONG> <STRONG>+</STRONG> 1<STRONG>]</STRONG><STRONG>,</STRONG> tname<STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>++</STRONG>count<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+Base::Base<STRONG>(</STRONG><STRONG>const</STRONG> Base<STRONG>&amp;</STRONG> base<STRONG>)</STRONG> <STRONG>{</STRONG>
+    strcpy<STRONG>(</STRONG>
+        typename_ <STRONG>=</STRONG> <STRONG>new</STRONG> <STRONG>char</STRONG><STRONG>[</STRONG>strlen<STRONG>(</STRONG>base<STRONG>.</STRONG>typename_<STRONG>)</STRONG> <STRONG>+</STRONG> 1<STRONG>]</STRONG><STRONG>,</STRONG> base<STRONG>.</STRONG>typename_
+    <STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>++</STRONG>count<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+Base::~Base<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>delete</STRONG><STRONG>[</STRONG><STRONG>]</STRONG> typename_<STRONG>;</STRONG>
+    <STRONG>--</STRONG>count<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+<EM><STRONG>//</STRONG></EM>
+<EM><STRONG>//</STRONG> First derived class. </EM>
+<EM><STRONG>//</STRONG></EM>
+<STRONG>class</STRONG> Derived1 <STRONG>:</STRONG> <STRONG>public</STRONG> Base <STRONG>{</STRONG>
+public:
+    Derived1<STRONG>(</STRONG><STRONG>int</STRONG> data<STRONG>)</STRONG> <STRONG>:</STRONG> Base<STRONG>(</STRONG>&quot;<EM>derived1</EM>&quot;<STRONG>)</STRONG><STRONG>,</STRONG> data_<STRONG>(</STRONG>data<STRONG>)</STRONG> <STRONG>{</STRONG> <STRONG>}</STRONG>
+    Derived1<STRONG>(</STRONG><STRONG>const</STRONG> Derived1<STRONG>&amp;</STRONG> d<STRONG>)</STRONG> <STRONG>:</STRONG> Base<STRONG>(</STRONG>&quot;<EM>derived1</EM>&quot;<STRONG>)</STRONG><STRONG>,</STRONG> data_<STRONG>(</STRONG>d<STRONG>.</STRONG>data<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG> <STRONG>}</STRONG>
+    <STRONG>virtual</STRONG> <STRONG>~</STRONG>Derived1<STRONG>(</STRONG><STRONG>)</STRONG>        <STRONG>{</STRONG> <STRONG>}</STRONG>
+    <STRONG>virtual</STRONG> Base<STRONG>*</STRONG> clone<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG> <STRONG>return</STRONG> <STRONG>new</STRONG> Derived1<STRONG>(</STRONG><STRONG>*</STRONG><STRONG>this</STRONG><STRONG>)</STRONG><STRONG>;</STRONG> <STRONG>}</STRONG>
+    <STRONG>virtual</STRONG> <STRONG>void</STRONG> identify<STRONG>(</STRONG>ostream<STRONG>&amp;</STRONG> os<STRONG>)</STRONG> <STRONG>const</STRONG><STRONG>;</STRONG>
+    <STRONG>int</STRONG> data<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG> <STRONG>return</STRONG> data_<STRONG>;</STRONG> <STRONG>}</STRONG>
+private:
+    <STRONG>int</STRONG> data_<STRONG>;</STRONG>
+<STRONG>}</STRONG><STRONG>;</STRONG>
+
+<STRONG>virtual</STRONG> <STRONG>void</STRONG> Derived1::identify<STRONG>(</STRONG>ostream<STRONG>&amp;</STRONG> os<STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG>
+    os <STRONG>&lt;&lt;</STRONG> &quot;<EM>(</EM>&quot; <STRONG>&lt;&lt;</STRONG> typename<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>&lt;&lt;</STRONG> &quot;<EM> </EM>&quot; <STRONG>&lt;&lt;</STRONG> data<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>&lt;&lt;</STRONG> &quot;<EM>)</EM>&quot;<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+<EM><STRONG>//</STRONG></EM>
+<EM><STRONG>//</STRONG> Second derived class. </EM>
+<EM><STRONG>//</STRONG></EM>
+<STRONG>class</STRONG> Derived2 <STRONG>:</STRONG> <STRONG>public</STRONG> Base <STRONG>{</STRONG>
+public:
+    Derived2<STRONG>(</STRONG><STRONG>int</STRONG> data<STRONG>)</STRONG> <STRONG>:</STRONG> Base<STRONG>(</STRONG>&quot;<EM>derived2</EM>&quot;<STRONG>)</STRONG><STRONG>,</STRONG> data_<STRONG>(</STRONG>data<STRONG>)</STRONG> <STRONG>{</STRONG> <STRONG>}</STRONG>
+    Derived2<STRONG>(</STRONG><STRONG>const</STRONG> Derived2<STRONG>&amp;</STRONG> d<STRONG>)</STRONG> <STRONG>:</STRONG> Base<STRONG>(</STRONG>&quot;<EM>derived2</EM>&quot;<STRONG>)</STRONG><STRONG>,</STRONG> data_<STRONG>(</STRONG>d<STRONG>.</STRONG>data<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG> <STRONG>}</STRONG>
+    <STRONG>virtual</STRONG> <STRONG>~</STRONG>Derived2<STRONG>(</STRONG><STRONG>)</STRONG>        <STRONG>{</STRONG> <STRONG>}</STRONG>
+    <STRONG>virtual</STRONG> Base<STRONG>*</STRONG> clone<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG> <STRONG>return</STRONG> <STRONG>new</STRONG> Derived2<STRONG>(</STRONG><STRONG>*</STRONG><STRONG>this</STRONG><STRONG>)</STRONG><STRONG>;</STRONG> <STRONG>}</STRONG>
+    <STRONG>virtual</STRONG> <STRONG>void</STRONG> identify<STRONG>(</STRONG>ostream<STRONG>&amp;</STRONG> os<STRONG>)</STRONG> <STRONG>const</STRONG><STRONG>;</STRONG>
+    <STRONG>int</STRONG> data<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG> <STRONG>return</STRONG> data_<STRONG>;</STRONG> <STRONG>}</STRONG>
+private:
+    <STRONG>int</STRONG> data_<STRONG>;</STRONG>
+<STRONG>}</STRONG><STRONG>;</STRONG>
+
+<STRONG>virtual</STRONG> <STRONG>void</STRONG> Derived2::identify<STRONG>(</STRONG>ostream<STRONG>&amp;</STRONG> os<STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG>
+    os <STRONG>&lt;&lt;</STRONG> &quot;<EM>(</EM>&quot; <STRONG>&lt;&lt;</STRONG> typename<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>&lt;&lt;</STRONG> &quot;<EM> </EM>&quot; <STRONG>&lt;&lt;</STRONG> data<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>&lt;&lt;</STRONG> &quot;<EM>)</EM>&quot;<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+<EM><STRONG>//</STRONG></EM>
+<EM><STRONG>//</STRONG> now define a templated pointer wrapper. The class must support the</EM>
+<EM><STRONG>//</STRONG> clone() method.</EM>
+<EM><STRONG>//</STRONG></EM>
+<STRONG>template</STRONG> <STRONG>&lt;</STRONG><STRONG>class</STRONG> T<STRONG>&gt;</STRONG>
+<STRONG>class</STRONG> PtrWrapper <STRONG>{</STRONG>
+public:
+    PtrWrapper<STRONG>(</STRONG>T<STRONG>*</STRONG> t_ptr <STRONG>=</STRONG> 0<STRONG>)</STRONG> <STRONG>:</STRONG> t_ptr_<STRONG>(</STRONG>t_ptr<STRONG>)</STRONG> <STRONG>{</STRONG> <STRONG>}</STRONG>
+    PtrWrapper<STRONG>(</STRONG><STRONG>const</STRONG> PtrWrapper<STRONG>&lt;</STRONG>T<STRONG>&gt;</STRONG><STRONG>&amp;</STRONG> w<STRONG>)</STRONG> <STRONG>{</STRONG>
+        t_ptr_ <STRONG>=</STRONG> w<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>?</STRONG> w<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>-&gt;</STRONG>clone<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>:</STRONG> 0<STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+    <STRONG>~</STRONG>PtrWrapper<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG> <STRONG>delete</STRONG> t_ptr_<STRONG>;</STRONG> <STRONG>}</STRONG>
+    <STRONG>const</STRONG> T<STRONG>*</STRONG> <STRONG>operator</STRONG><STRONG>(</STRONG><STRONG>)</STRONG><STRONG>(</STRONG><STRONG>)</STRONG>  <STRONG>const</STRONG> <STRONG>{</STRONG> <STRONG>return</STRONG> t_ptr_<STRONG>;</STRONG> <STRONG>}</STRONG>
+    T<STRONG>*</STRONG> <STRONG>operator</STRONG><STRONG>(</STRONG><STRONG>)</STRONG><STRONG>(</STRONG><STRONG>)</STRONG>  <STRONG>{</STRONG> <STRONG>return</STRONG> t_ptr_<STRONG>;</STRONG> <STRONG>}</STRONG>
+    PtrWrapper<STRONG>&lt;</STRONG>T<STRONG>&gt;</STRONG><STRONG>&amp;</STRONG> <STRONG>operator</STRONG><STRONG>=</STRONG> <STRONG>(</STRONG><STRONG>const</STRONG> PtrWrapper<STRONG>&lt;</STRONG>T<STRONG>&gt;</STRONG><STRONG>&amp;</STRONG> w<STRONG>)</STRONG> <STRONG>{</STRONG>
+        <STRONG>delete</STRONG> t_ptr_<STRONG>;</STRONG>
+        t_ptr_ <STRONG>=</STRONG> w<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>-&gt;</STRONG>clone<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+        <STRONG>return</STRONG> <STRONG>*</STRONG><STRONG>this</STRONG><STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+private:
+    T<STRONG>*</STRONG> t_ptr_<STRONG>;</STRONG>
+<STRONG>}</STRONG><STRONG>;</STRONG>
+
+<STRONG>template</STRONG> <STRONG>&lt;</STRONG><STRONG>class</STRONG> T<STRONG>&gt;</STRONG>
+bool <STRONG>operator</STRONG><STRONG>==</STRONG> <STRONG>(</STRONG><STRONG>const</STRONG> PtrWrapper<STRONG>&lt;</STRONG>T<STRONG>&gt;</STRONG><STRONG>&amp;</STRONG> w1<STRONG>,</STRONG> <STRONG>const</STRONG> PtrWrapper<STRONG>&lt;</STRONG>T<STRONG>&gt;</STRONG><STRONG>&amp;</STRONG> w2<STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>return</STRONG> false<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+<STRONG>template</STRONG> <STRONG>&lt;</STRONG><STRONG>class</STRONG> T<STRONG>&gt;</STRONG>
+bool <STRONG>operator</STRONG><STRONG>&lt;</STRONG> <STRONG>(</STRONG><STRONG>const</STRONG> PtrWrapper<STRONG>&lt;</STRONG>T<STRONG>&gt;</STRONG><STRONG>&amp;</STRONG> w1<STRONG>,</STRONG> <STRONG>const</STRONG> PtrWrapper<STRONG>&lt;</STRONG>T<STRONG>&gt;</STRONG><STRONG>&amp;</STRONG> w2<STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>return</STRONG> false<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+<EM><STRONG>//</STRONG></EM>
+<EM><STRONG>//</STRONG> end of class defs.</EM>
+<EM><STRONG>//</STRONG></EM>
+
+<EM><STRONG>//</STRONG> define static members.</EM>
+<STRONG>int</STRONG> Base::count <STRONG>=</STRONG> 0<STRONG>;</STRONG>
+
+<STRONG>int</STRONG> main<STRONG>(</STRONG><STRONG>int</STRONG><STRONG>,</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG><STRONG>[</STRONG><STRONG>]</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+    list<STRONG>&lt;</STRONG>PtrWrapper<STRONG>&lt;</STRONG>Base<STRONG>&gt;</STRONG> <STRONG>&gt;</STRONG> list1<STRONG>;</STRONG>
+    list1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>PtrWrapper<STRONG>&lt;</STRONG>Base<STRONG>&gt;</STRONG> <STRONG>(</STRONG><STRONG>new</STRONG> Derived1<STRONG>(</STRONG>101<STRONG>)</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    list1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>PtrWrapper<STRONG>&lt;</STRONG>Base<STRONG>&gt;</STRONG> <STRONG>(</STRONG><STRONG>new</STRONG> Derived2<STRONG>(</STRONG>201<STRONG>)</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    list1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>PtrWrapper<STRONG>&lt;</STRONG>Base<STRONG>&gt;</STRONG> <STRONG>(</STRONG><STRONG>new</STRONG> Derived2<STRONG>(</STRONG>202<STRONG>)</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    list1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>PtrWrapper<STRONG>&lt;</STRONG>Base<STRONG>&gt;</STRONG> <STRONG>(</STRONG><STRONG>new</STRONG> Derived1<STRONG>(</STRONG>102<STRONG>)</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    list1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>PtrWrapper<STRONG>&lt;</STRONG>Base<STRONG>&gt;</STRONG> <STRONG>(</STRONG><STRONG>new</STRONG> Derived2<STRONG>(</STRONG>203<STRONG>)</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+
+    list<STRONG>&lt;</STRONG>PtrWrapper<STRONG>&lt;</STRONG>Base<STRONG>&gt;</STRONG> <STRONG>&gt;</STRONG><STRONG>::</STRONG>const_iterator it <STRONG>=</STRONG> list1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>for</STRONG><STRONG>(</STRONG><STRONG>;</STRONG> it <STRONG>!=</STRONG> list1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG> <STRONG>++</STRONG>it<STRONG>)</STRONG> <STRONG>{</STRONG>
+        <STRONG>const</STRONG> PtrWrapper<STRONG>&lt;</STRONG>Base<STRONG>&gt;</STRONG><STRONG>&amp;</STRONG> w <STRONG>=</STRONG> <STRONG>*</STRONG>it<STRONG>;</STRONG>
+        w<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>-&gt;</STRONG>identify<STRONG>(</STRONG>cerr<STRONG>)</STRONG><STRONG>;</STRONG> 
+        cerr <STRONG>&lt;&lt;</STRONG> &quot;<EM> </EM>&quot;<STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+    cerr <STRONG>&lt;&lt;</STRONG> endl <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    <STRONG>return</STRONG> 0<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+</PRE>
+<hr>
+And here's the output:
+<p>
+<hr>
+<pre>
+
+(derived1 101) (derived2 201) (derived2 202) (derived1 102) (derived2 203) 
+
+</pre>
+<hr>
+
+<hr>
+<!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><a href=#pointers>Pointers and STL</a> 
+<br>
+<!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><a href=#index>Back to index</a>
+<hr>
+
+<a name=map_find><h2>Checking for an item in a map</h2></a>
+This is from a bug we found in our code a while back.
+
+<pre>
+    typedef Map&lt;int, X*, less&lt;int&gt; &gt; XMap;
+    XMap xmap;
+    //
+    // populate xmap will what-not.
+    //
+    const X* xx = xmap[5];
+    if (xx == 0) {			// not in map.
+	do_something();
+    } else {
+	do_something_else();
+    }
+</pre>
+
+<p>
+
+looks pretty innocuous, but what really happens is that a new entry for
+<tt>xmap[5]</tt> is created and gets stuffed with a NULL pointer which
+causes amazing amount of headache 10,000 lines of code later. The right
+way of course (and documented in the fine manual) is the following:
+
+<p>
+
+<pre>
+    typedef Map&lt;int, X*, less&lt;int&gt; &gt; XMap;
+    XMap xmap;
+    //
+    // populate xmap will what-not.
+    //
+    XMap::const_iterator it = xmap.find(5);
+    if (it == xmap.end()) {		// not in map.
+	do_something();
+    } else {
+	do_something_else();
+    }
+</pre>
+
+<hr>
+<!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><a href=#pointers>Pointers and STL</a> 
+<br>
+<!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><a href=#index>Back to index</a>
+<hr>
+
+<a name=map_charptr><h2>More on evils of <tt>char*</tt>: Phone-book example</h2>
+</a>
+<b>Motto: <em>Never</em> use <tt>char*</tt> if you can help it</b>! See the 
+following buggy example:
+
+<hr>
+<PRE>
+<STRONG>#include</STRONG> &lt;<!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><A HREF="#stl.h">stl.h</A>&gt;
+<STRONG>#include</STRONG> &lt;iostream.h&gt;
+
+<STRONG>typedef</STRONG> map<STRONG>&lt;</STRONG><STRONG>char</STRONG><STRONG>*</STRONG><STRONG>,</STRONG> <STRONG>unsigned</STRONG> <STRONG>long</STRONG><STRONG>,</STRONG> less<STRONG>&lt;</STRONG><STRONG>char</STRONG><STRONG>*</STRONG><STRONG>&gt;</STRONG> <STRONG>&gt;</STRONG> Phonebook<STRONG>;</STRONG>
+
+<STRONG>static</STRONG> <STRONG>void</STRONG> print_phbook<STRONG>(</STRONG>ostream<STRONG>&amp;</STRONG> os<STRONG>,</STRONG> <STRONG>const</STRONG> Phonebook<STRONG>&amp;</STRONG> map_<STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>for</STRONG><STRONG>(</STRONG>Phonebook::const_iterator i <STRONG>=</STRONG> map_<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG> i <STRONG>!=</STRONG> map_<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG> <STRONG>++</STRONG>i<STRONG>)</STRONG> <STRONG>{</STRONG>
+        os <STRONG>&lt;&lt;</STRONG> &quot;<EM>\t(</EM>&quot; <STRONG>&lt;&lt;</STRONG> <STRONG>(</STRONG><STRONG>*</STRONG>i<STRONG>)</STRONG><STRONG>.</STRONG>first <STRONG>&lt;&lt;</STRONG> &quot;<EM> </EM>&quot; <STRONG>&lt;&lt;</STRONG> <STRONG>(</STRONG><STRONG>*</STRONG>i<STRONG>)</STRONG><STRONG>.</STRONG>second <STRONG>&lt;&lt;</STRONG> &quot;<EM>) </EM>&quot; <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+<STRONG>}</STRONG>
+
+<STRONG>static</STRONG> <STRONG>void</STRONG> change_phno<STRONG>(</STRONG>
+    Phonebook<STRONG>&amp;</STRONG> phbook<STRONG>,</STRONG> <STRONG>const</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG> name<STRONG>,</STRONG> <STRONG>unsigned</STRONG> <STRONG>long</STRONG> phno
+<STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>char</STRONG> buf<STRONG>[</STRONG>1024<STRONG>]</STRONG><STRONG>;</STRONG>
+    strcpy<STRONG>(</STRONG>buf<STRONG>,</STRONG> name<STRONG>)</STRONG><STRONG>;</STRONG>
+    phbook<STRONG>[</STRONG><STRONG>(</STRONG><STRONG>char</STRONG><STRONG>*</STRONG><STRONG>)</STRONG>buf<STRONG>]</STRONG> <STRONG>=</STRONG> phno<STRONG>;</STRONG>
+<STRONG>}</STRONG><STRONG>;</STRONG>
+
+<STRONG>int</STRONG> main<STRONG>(</STRONG><STRONG>int</STRONG><STRONG>,</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG><STRONG>[</STRONG><STRONG>]</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+    Phonebook phbook<STRONG>;</STRONG>
+
+    phbook<STRONG>[</STRONG><STRONG>(</STRONG><STRONG>char</STRONG><STRONG>*</STRONG><STRONG>)</STRONG>&quot;<EM>grumpy</EM>&quot;<STRONG>]</STRONG> <STRONG>=</STRONG> 5551212<STRONG>;</STRONG>
+    phbook<STRONG>[</STRONG><STRONG>(</STRONG><STRONG>char</STRONG><STRONG>*</STRONG><STRONG>)</STRONG>&quot;<EM>sleepy</EM>&quot;<STRONG>]</STRONG> <STRONG>=</STRONG> 5552121<STRONG>;</STRONG>
+    phbook<STRONG>[</STRONG><STRONG>(</STRONG><STRONG>char</STRONG><STRONG>*</STRONG><STRONG>)</STRONG>&quot;<EM>gandhi</EM>&quot;<STRONG>]</STRONG> <STRONG>=</STRONG> 5554242<STRONG>;</STRONG>
+
+    cerr <STRONG>&lt;&lt;</STRONG> &quot;<EM>==&gt; Initial phone book</EM>&quot; <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+    print_phbook<STRONG>(</STRONG>cerr<STRONG>,</STRONG> phbook<STRONG>)</STRONG><STRONG>;</STRONG>
+    cerr <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    change_phno<STRONG>(</STRONG>phbook<STRONG>,</STRONG> &quot;<EM>grumpy</EM>&quot;<STRONG>,</STRONG> 9995152<STRONG>)</STRONG><STRONG>;</STRONG>
+
+    cerr <STRONG>&lt;&lt;</STRONG> &quot;<EM>==&gt; Grumpy moved. The new number is 9995152</EM>&quot; <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+    print_phbook<STRONG>(</STRONG>cerr<STRONG>,</STRONG> phbook<STRONG>)</STRONG><STRONG>;</STRONG>
+    cerr <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    <STRONG>char</STRONG> buf<STRONG>[</STRONG>1024<STRONG>]</STRONG><STRONG>;</STRONG>
+    strcpy<STRONG>(</STRONG>buf<STRONG>,</STRONG> &quot;<EM>grumpy</EM>&quot;<STRONG>)</STRONG><STRONG>;</STRONG>
+    phbook<STRONG>[</STRONG><STRONG>(</STRONG><STRONG>char</STRONG><STRONG>*</STRONG><STRONG>)</STRONG>buf<STRONG>]</STRONG> <STRONG>=</STRONG> 7621212<STRONG>;</STRONG>
+
+    cerr <STRONG>&lt;&lt;</STRONG> &quot;<EM>==&gt; Grumpy moved again! latest number 7621212</EM>&quot; <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+    print_phbook<STRONG>(</STRONG>cerr<STRONG>,</STRONG> phbook<STRONG>)</STRONG><STRONG>;</STRONG>
+    cerr <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    <STRONG>return</STRONG> 0<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+</PRE>
+<hr>
+
+<p>
+
+And here's the output (might even dump core with some STL implementations):
+
+<p>
+
+<hr>
+<pre>
+==> Initial phone book
+	(grumpy 5551212) 
+	(sleepy 5552121) 
+	(gandhi 5554242) 
+
+==> Grumpy moved. The new number is 9995152
+	(grumpy 5551212) 
+	(sleepy 5552121) 
+	(gandhi 5554242) 
+	( 9995152) 
+
+==> Grumpy moved again! latest number 7621212
+	(grumpy 5551212) 
+	(sleepy 5552121) 
+	(gandhi 5554242) 
+	( 9995152) 
+	(grumpy 7621212) 
+
+</pre>
+<hr>
+
+Hmmm... two grumpy's and a number without a name!
+
+<hr>
+<!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><a href=#pointers>Pointers and STL</a> 
+<br>
+<!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><a href=#index>Back to index</a>
+<hr>
+
+<a name=functions><h1>Predicates, Comparators and General Functions</h1></a>
+STL containers and algorithms make heavy use of <em>function objects</em>
+that are either provided by STL (eg., <tt>less&lt;T&gt;</tt>) or by the user. 
+These function objects typically fall in 3 different categories:
+
+<ol>
+<li> <!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><a href=#predicates>Predicates</a>: boolean function. Especially
+    useful for algorithms that end in <em>_if</em>, such as 
+    <tt>count_if</tt>, <tt>find_if</tt>, <tt>replace_if</tt>, etc.
+<li> <!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><a href=#comparators>Comparator</a>: boolean function. Useful for 
+    ordered containers, such as <tt>map&lt;T&gt;</tt>, 
+    <tt>priority_queue&lt;T&gt;</tt>, etc.
+<li> <!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><a href=#gen_functions>General functions</a>: functions that operate
+    on objects, but do not necessarily return a value, and if they do, it
+    could be anything.
+</ol>
+<p>
+
+<a name=predicates><h2>Predicates: what and how</h2></a>
+Jim Jackl-Mochel &lt;JimJM@smtp-gateway2.silverplatter.com&gt; sent me the
+following note on using the <tt>find</tt> algorithm: 
+
+<pre>
+
+     First off. thank you for maintaining such a useful page on STL. It has 
+     filled the documentation gap for me twice when I could'nt figure out 
+     the Modena manual !
+
+     A question that I cannot get a handle on yet is how to search for 
+     element in a list without passing the full element in..
+
+     Example: If I have a list or vector of regions which contain a pointer 
+     to a buffer.
+
+     vector&lt;Region&gt;
+
+     and Region has a method for determining whether or not it contains a 
+     specific pointer in memory. 
+     
+     bool Region::Contains(Byte* Bfr)
+     
+     What I thought I should be able to do is use 
+     
+     Region = find(List.begin(), List.end(), Byte* BfrToBeSearchedFor);
+     
+     or something like it.
+     
+     But STL (in my probably limited understanding) seems to require that I 
+     use 
+     
+     Region = find(List.begin(), List.end(), RegionToBeSearchedFor);
+     
+     or 
+     
+     Region = find(List.begin(), List.end(), ComparisonFunction);
+     
+     Neither of which appears to answer my needs.
+     
+     If you have any suggestions on how this would be tackled please put 
+     them in your Newbie guide. If not I will try posting to comp.lang.c++.
+     Thank you again.
+     
+     Jim Jackl-Mochel
+</pre>
+<p>     
+
+The first thing to note is that the appropriate algorithm to use is
+<tt>find_if</tt>, not <tt>find</tt>; now, we also need to supply a
+predicate (<tt>has_buffer</tt> shown below) that will do the right 
+thing. The following solution works in this case:
+
+<pre>
+
+    class Region {
+    public:
+	// ...
+	bool Contains(Byte* Bfr) const;
+    private:
+	// ...
+    };
+
+    list&lt;Region&gt; regions;
+    //
+    // populate regions with all the Region objects containing unique
+    // Byte* elements, one of which may contain the Byte* you're looking
+    // for.
+    //
+
+    Byte* BfrToBeSearchedFor = INITIALIZE_BUFFER_POINTER;
+
+    //
+    // find the region which contains the given buffer pointer bufferp;
+    //
+    // first, let's define the appropriate comparator fct.
+    //
+
+    struct has_buffer {
+	Byte* buffer_;
+	has_buffer(const Byte* buffer) : buffer_(buffer) { }
+	bool operator()(const Region& region) const {
+	    return region.Contains(buffer_);
+	}
+    };
+
+    list&lt;Region&gt;::const_iterator it = find_if(regions.begin(), 
+	regions.end(), has_buffer(BfrToBeSearchedFor)
+    );
+
+    if (it == regions.end()) {
+	// not found
+    } else {
+	// found it
+	const Byte* Bfr = *it;
+	// ...
+    }
+
+</pre>
+
+Notice the use of <tt>find_if</tt>, which takes a predicate that you can 
+supply to find the element. 
+
+<p>
+
+<a name=comparators><h2>Comparators: what and how</h2></a>
+<em>Comparators</em> are typically used for sorting/ordering container
+objects such as the one used by the <tt>sort</tt> algorithm. More often
+than not, the STL provided comparators (eg., <tt>less&lt;T&gt;</tt>, 
+<tt>greater&lt;T&gt;</tt>, etc), which in turn invoke the <tt>&lt; operator</tt>,
+are sufficient; there are cases, however, where you need to supply custom 
+comparators to get the job done. Let's take the following example:
+
+<pre>
+    
+    deque&lt;int*> deque1;
+    //
+    // populate deque1
+    //
+
+    //
+    // now sort. (THIS IS INCORRECT)
+    //
+    sort(deque1.begin(), dequeu1.end());
+
+</pre>
+
+In the code sample above, the <tt>sort</tt> algorithm will use the default
+<tt>less&lt;int*&gt;</tt> function object to do the ordering and the
+result is obviously not the guranteed to be correct. There are two
+different approaches we can take -- define a set of comparator functions 
+that work on pointers by dereferencing the arguments first (ala ObjectSpace
+STL&lt;ToolKit&gt;), define a "dereferencing" function object that works
+on unary and binary functions.
+
+<p>
+
+The following example shows how to do a custom pointer comparator.
+
+<pre>
+
+    bool intp_less(const int* i1, const int* i2) {
+	return *i1 &lt; *i2;
+    }
+
+    sort(deque1.begin(), dequeu1.end(), intp_less);
+
+</pre>
+
+Or, we can use a bit more structured method:
+
+<pre>
+
+    template &lt;class BinaryFunction&gt;
+    class binary_dereference : binary_function&lt;
+	BinaryFunction::first_argument_type,
+	BinaryFunction::second_argument_type, 
+	BinaryFunction::result_type&gt; 
+    {
+    public:
+	binary_dereference(
+	    const BinaryFunction& func = BinaryFunction()
+	) : func_(func) { }
+	BinaryFunction::result_type operator() (
+	    BinaryFunction::first_argument_type* const& x,
+	    BinaryFunction::second_argument_type* const& y
+	) const {
+	    return func_(*x, *y);
+	}
+    protected:
+	BinaryFunction func_;
+    };
+
+    template &lt;class BinaryFunction&gt;
+    inline binary_dereference&lt;BinaryFunction&gt;
+    dereference2 (const BinaryFunction& func) 
+    {
+	return binary_dereference&lt;BinaryFunction&gt;(func);
+    }
+
+    //
+    // populate deque&lt;int*&gt;
+    //
+
+    deque&lt;int*&gt; deque1;
+
+    //
+    // now we sort ...
+    //
+    sort(
+	deque1.begin(), deque1.end(), 
+	binary_dereference&lt;less&lt;int&gt; &gt; (less&lt;int&gt;())
+    );
+
+    //
+    // or use the adapter
+    //
+    sort(
+	deque1.begin(), deque1.end(), 
+	dereference2 (less&lt;int&gt; ())
+    );
+
+</pre>
+
+To use a <tt>set</tt>, you could always do the following:
+
+<pre>
+
+    typedef binary_dereference&lt;less&lt;int&gt; &gt; ip_compare;
+    typedef set&lt;int*, ip_compare&gt; ip_set;
+
+</pre>
+
+Or, the following is even more structured:
+
+<pre>
+
+    template &lt;class BinaryFunction, class Modifier&gt;
+    class binary_arg_modifier : binary_function&lt;
+	Modifier::argument_type,
+	Modifier::argument_type,
+	BinaryFunction::result_type&gt; 
+    {
+    public:
+	binary_arg_modifier(
+	    const BinaryFunction& func = BinaryFunction(),
+	    const Modifier& modifier = Modifier()
+	) : func_(func), modifier_(modifier) { }
+	BinaryFunction::result_type operator() (
+	    const Modifier::argument_type& x,
+	    const Modifier::argument_type& y
+	) const {
+	    return func_(modifier_(x), modifier_(y));
+	}
+    protected:
+	BinaryFunction func_;
+	Modifier modifier_;
+    };
+
+    template &lt;class BinaryFunction, class Modifier&gt;
+    inline binary_arg_modifier&lt;BinaryFunction, Modifier&gt;
+    arg_modifier2 (const BinaryFunction& func, const Modifier& modifier) 
+    {
+	return binary_arg_modifier&lt;BinaryFunction, Modifier&gt;(func, modifier);
+    }
+
+
+    template &lt;class T&gt;
+    struct dereference : unary_function&lt;T*, T&gt; {
+	T operator() (const T* x) const { return *x; }
+    };
+
+
+    //
+    // populate deque&lt;int*&gt;
+    //
+
+    deque&lt;int*&gt; deque1;
+
+    //
+    // now we sort ...
+    //
+
+    sort(
+	deque1.begin(), deque1.end(), 
+	binary_arg_modifier&lt; less&lt;int&gt;, dereference&lt;int&gt;  &gt; ()
+    );
+
+    //
+    // or use the adapter
+    //
+    sort(
+	deque1.begin(), deque1.end(), 
+	arg_modifier2 (less&lt;int&gt; (), dereference&lt;int&gt; ())
+    );
+
+</pre>
+
+You can of course use for <tt>set</tt>, <tt>map</tt>, etc as well.
+
+<pre>
+
+    typedef binary_arg_modifier&lt; less&lt;int&gt;, dereference&lt;int&gt; &gt; ip_compare;
+    typedef set&lt;int*, ip_compare&gt; ip_set;
+    
+    ip_set set1;
+
+</pre>
+
+
+<a name=gen_functions><h2>General Functions: what and how</h2></a>
+General functions are useful when you want to operate on each of the 
+objects in a container in sequence, for example using <tt>for_each</tt>
+algorithm. Let's say, we have a list of appointments and every day we'd
+like to print out the ones for that day are. Here's a tentative approach:
+
+<pre>
+    
+    class Appointment {
+    public:
+	//
+	// define all the usual members ...
+	//
+
+	bool today(Date const& date) const;
+    private:
+	//
+	// private stuff here.
+	//
+    };
+
+    typedef list&lt;Appointment&gt; Appointments;
+    Appointments appt_book;
+
+    //
+    // define a general function 
+    //
+    void print_todays_appt(Appointment& const appt) {
+	if (appt.today(date))
+	    print_appt(appt);
+    }
+
+    
+    //
+    // and here's how it's used.
+    //
+
+    for_each(appt_book.begin(), appt_book.end(), print_todays_appt);
+
+</pre>
+
+<p>
+
+Another common scenario is when you would like to modify each of the
+container elements within a given range; eg., let's say you would like
+to negate all the elements of the list. The following code shows how:
+
+<p>
+
+<pre>
+    
+    //
+    // define an appropriate algorithm that will modify the element
+    // in place calling the supplied function object.
+    //
+    template &lt;class OutputIterator, class UnaryOperation&gt;
+    void modify_element(OutputIterator first, OutputIterator last,
+			     UnaryOperation op) {
+	while (first != last) {
+	    *first = op(*first);
+	    ++first;
+	}
+    }
+    
+    list&lt;int&gt; list1;
+    //
+    // populate list1 with what-not.
+    //
+
+    modify_element(list1.begin(), list1.end(), negate&lt;int&gt;());
+
+</pre>
+
+<p>
+<!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><a href=#functions>Predicates, Comparators and General Functions</a>
+<br>
+<!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><a href=#index>Back to index</a>
+<hr>
+
+<a name=iterators><h1>STL iterators</h1></a>
+
+<a name=iterator_end><h2>what does <tt>iterator::end()</tt> return?</h2></a>
+For any STL (compliant) container, <tt>iterator::end()</tt> points to a
+location <em>one beyond</em> the <em>last</em> item in the container, and
+hence is an &quot;invalid pointer&quot;; <em> <tt>iterator::end()</tt>
+does not point to the last item in the container</em>, rather it points to
+the location where the next item would go into the container if you were
+to use <tt>push_back</tt>.
+
+<p>
+Why point beyond the end of the container? Why not point at the
+<em>last</em> item? The reason is quite simple: Remember that STL
+containers emulate (or try to as faithfully as possible) C pointer
+semantic and <tt>end()</tt> returns the equivalent of C <b>0</b> pointer.
+<p>
+Consider how else you would do the following if <tt>end()</tt> instead
+returned the last item in the container.
+<p>    
+<pre>
+	MyMap::const_iterator it = my_map.find(key);
+	if (it == my_map.end())
+	    no_such_key();
+	else
+	    found_key();
+</pre>
+<p>
+or,
+<pre>
+	bool empty(const STL_Container& container) {
+	    return container.begin() == container.end();
+	}
+</pre>
+<p>
+<ul>
+<li> <tt>STL_Container::begin()</tt> returns the <b>first</b> item in the 
+    container if it exists or <tt>end()</tt> otherwise.
+<li> <tt>STL_Container::end()</tt> returns <b>one-past the end</b> of the 
+    container.
+</ul>
+
+<hr>
+<!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><a href=#iterators>STL iterators</a> 
+<br>
+<!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><a href=#index>Back to index</a>
+<hr>
+
+<a name=const_iterator><h2>Const'ness of iterators</h2></a>
+Make sure that iterators follow the const'ness (or lack thereof) of the
+containers. Most compilers utter absolutely confusing errors messages when
+you try to use a non-const iterator with a const container. Consider the
+following:
+
+<hr>
+
+<PRE>
+<STRONG>#include</STRONG> &lt;<!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><A HREF="#stl.h">stl.h</A>&gt;
+
+<STRONG>void</STRONG> foo<STRONG>(</STRONG><STRONG>const</STRONG> list<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>&amp;</STRONG> list1<STRONG>)</STRONG> <STRONG>{</STRONG>
+    list<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>::</STRONG>iterator it <STRONG>=</STRONG> list1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>for</STRONG><STRONG>(</STRONG><STRONG>;</STRONG> it <STRONG>!=</STRONG> list1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG> <STRONG>++</STRONG>it<STRONG>)</STRONG> <STRONG>{</STRONG>
+        <STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+<STRONG>}</STRONG>
+</PRE>
+<hr>
+<p>
+and here's the error message from GNU C++ 2.6.3:
+<p>
+<hr>
+
+<PRE>
+g<STRONG>++</STRONG> <STRONG>-</STRONG>g <STRONG>-</STRONG>I<STRONG>/</STRONG>usr<STRONG>/</STRONG>local<STRONG>/</STRONG>ospace <STRONG>-</STRONG>I<STRONG>/</STRONG>usr<STRONG>/</STRONG>local<STRONG>/</STRONG>ospace<STRONG>/</STRONG>include  <STRONG>-</STRONG>c const_iterator<STRONG>.</STRONG>cc <STRONG>-</STRONG>o const_iterator<STRONG>.</STRONG>o
+const_iterator<STRONG>.</STRONG>cc: In function `<STRONG>void</STRONG> foo<STRONG>(</STRONG><STRONG>const</STRONG> <STRONG>class</STRONG> list<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG> <STRONG>&amp;</STRONG><STRONG>)</STRONG>'<STRONG>:</STRONG>
+const_iterator<STRONG>.</STRONG>cc:5: no matching function <STRONG>for</STRONG> call to `list_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>::</STRONG>list_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG> <STRONG>(</STRONG>list_const_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>)</STRONG>'
+<STRONG>/</STRONG>usr<STRONG>/</STRONG>local<STRONG>/</STRONG>ospace<STRONG>/</STRONG>ospace<STRONG>/</STRONG>stl<STRONG>/</STRONG>list<STRONG>.</STRONG>h:5: candidates are: list_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>::</STRONG>list_iterator<STRONG>(</STRONG><STRONG>const</STRONG> list_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG> <STRONG>&amp;</STRONG><STRONG>)</STRONG>
+<STRONG>/</STRONG>usr<STRONG>/</STRONG>local<STRONG>/</STRONG>ospace<STRONG>/</STRONG>ospace<STRONG>/</STRONG>stl<STRONG>/</STRONG>list<STRONG>.</STRONG>h:79:                 list_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>::</STRONG>list_iterator<STRONG>(</STRONG><STRONG>)</STRONG>
+<STRONG>/</STRONG>usr<STRONG>/</STRONG>local<STRONG>/</STRONG>ospace<STRONG>/</STRONG>ospace<STRONG>/</STRONG>stl<STRONG>/</STRONG>list<STRONG>.</STRONG>h:131:                 list_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>::</STRONG>list_iterator<STRONG>(</STRONG>os_list_node<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG> <STRONG>*</STRONG><STRONG>)</STRONG>
+const_iterator<STRONG>.</STRONG>cc:5: in base initialization <STRONG>for</STRONG> <STRONG>class</STRONG> `list_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG>'
+const_iterator<STRONG>.</STRONG>cc:6: no conversion from `list_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG>' and `list_const_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG>' to types with <STRONG>default</STRONG> `<STRONG>operator</STRONG> <STRONG>!=</STRONG>' 
+gmake: <STRONG>*</STRONG><STRONG>*</STRONG><STRONG>*</STRONG> <STRONG>[</STRONG>const_iterator<STRONG>.</STRONG>o<STRONG>]</STRONG> Error 1
+</PRE>
+<hr>
+<p>
+Of course the correct way is to use
+<tt>list&lt;int&gt;::const_iterator</tt> instead as shown here:
+<p>
+
+<hr>
+
+<PRE>
+<STRONG>#include</STRONG> &lt;<!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><A HREF="#stl.h">stl.h</A>&gt;
+
+<STRONG>void</STRONG> foo<STRONG>(</STRONG><STRONG>const</STRONG> list<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>&amp;</STRONG> list1<STRONG>)</STRONG> <STRONG>{</STRONG>
+    list<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>::</STRONG>const_iterator it <STRONG>=</STRONG> list1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>for</STRONG><STRONG>(</STRONG><STRONG>;</STRONG> it <STRONG>!=</STRONG> list1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG> <STRONG>++</STRONG>it<STRONG>)</STRONG> <STRONG>{</STRONG>
+        <STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+<STRONG>}</STRONG>
+</PRE>
+<hr>
+
+<a name=iterator_tags><h2>Using iterator tags</h2></a>
+On occasion, it is useful to dispatch based on the iterator type (mostly
+due to efficiency in my experience). Iterators provide a mechanism 
+called <tt>iterator_category</tt> that allows to overload or specialize
+based on what kind of iterator it is. Let's take the STL <tt>sort</tt>
+algorithm for example; it's is specified to work <em>only</em> containers
+that provide <tt>random-access</tt> iterators, which leaves <tt>list</tt>
+out of it since <tt>list</tt> only provides <tt>bidirectional</tt>
+iterators. The following variation of <tt>sort</tt>, hereby dubbed
+<tt>generalized_sort</tt> lets you sort any container. Note the use
+of <tt>value_type</tt> as well.
+
+<PRE>
+<EM><STRONG>//</STRONG></EM>
+<EM><STRONG>//</STRONG> slightly modified STL standard sort() algorithm to not exclude </EM>
+<EM><STRONG>//</STRONG> containers that do not support Random Access Iterators. Uses the </EM>
+<EM><STRONG>//</STRONG> same interface as HP reference sort(first, last) interface.</EM>
+<EM><STRONG>//</STRONG></EM>
+<EM><STRONG>//</STRONG> This code used with libg++ STL tweaks the infamous "template </EM>
+<EM><STRONG>//</STRONG> unification failed" problem in all version of, so caveat emptore. </EM>
+<EM><STRONG>//</STRONG> OS STL&lt;ToolKit&gt; works around this gcc problem.</EM>
+<EM><STRONG>//</STRONG></EM>
+<EM><STRONG>//</STRONG> Mumit Khan &lt;khan@xraylith.wisc.edu&gt;</EM>
+<EM><STRONG>//</STRONG> </EM>
+<EM><STRONG>//</STRONG></EM>
+<STRONG>#include</STRONG> &lt;<!WA101><!WA101><!WA101><!WA101><!WA101><!WA101><A HREF="#stl.h">stl.h</A>&gt;
+
+<STRONG>template</STRONG> <STRONG>&lt;</STRONG><STRONG>class</STRONG> RandomAccessIterator<STRONG>,</STRONG> <STRONG>class</STRONG> T<STRONG>&gt;</STRONG>
+<STRONG>inline</STRONG> <STRONG>void</STRONG> __generalized_sort <STRONG>(</STRONG>
+    RandomAccessIterator first<STRONG>,</STRONG> 
+    RandomAccessIterator last<STRONG>,</STRONG>
+    random_access_iterator_tag<STRONG>,</STRONG>
+    T<STRONG>*</STRONG>
+<STRONG>)</STRONG> <STRONG>{</STRONG>
+    sort<STRONG>(</STRONG>first<STRONG>,</STRONG> last<STRONG>)</STRONG><STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+<EM><STRONG>//</STRONG></EM>
+<EM><STRONG>//</STRONG> highly inefficient, but proves the point.</EM>
+<EM><STRONG>//</STRONG></EM>
+<STRONG>template</STRONG> <STRONG>&lt;</STRONG><STRONG>class</STRONG> BidirectionalIterator<STRONG>,</STRONG> <STRONG>class</STRONG> T<STRONG>&gt;</STRONG>
+<STRONG>inline</STRONG> <STRONG>void</STRONG> __generalized_sort <STRONG>(</STRONG>
+    BidirectionalIterator first<STRONG>,</STRONG> 
+    BidirectionalIterator last<STRONG>,</STRONG>
+    bidirectional_iterator_tag<STRONG>,</STRONG>
+    T<STRONG>*</STRONG>
+<STRONG>)</STRONG> <STRONG>{</STRONG>
+    deque<STRONG>&lt;</STRONG>T<STRONG>&gt;</STRONG> deque1<STRONG>;</STRONG>
+    copy<STRONG>(</STRONG>first<STRONG>,</STRONG> last<STRONG>,</STRONG> back_inserter<STRONG>(</STRONG>deque1<STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    sort<STRONG>(</STRONG>deque1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> deque1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    copy<STRONG>(</STRONG>deque1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> deque1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> first<STRONG>)</STRONG><STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+<STRONG>template</STRONG> <STRONG>&lt;</STRONG><STRONG>class</STRONG> BidirectionalIterator<STRONG>&gt;</STRONG>
+<STRONG>inline</STRONG> <STRONG>void</STRONG> generalized_sort <STRONG>(</STRONG>
+    BidirectionalIterator first<STRONG>,</STRONG> 
+    BidirectionalIterator last
+<STRONG>)</STRONG> <STRONG>{</STRONG>
+    __generalized_sort<STRONG>(</STRONG>
+        first<STRONG>,</STRONG> last<STRONG>,</STRONG> iterator_category<STRONG>(</STRONG>first<STRONG>)</STRONG><STRONG>,</STRONG> value_type<STRONG>(</STRONG>first<STRONG>)</STRONG>
+    <STRONG>)</STRONG><STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+</PRE>
+
+<hr>
+<p>
+<!WA102><!WA102><!WA102><!WA102><!WA102><!WA102><a href=#iterators>STL iterators</a>
+<br>
+<!WA103><!WA103><!WA103><!WA103><!WA103><!WA103><a href=#index>Back to index</a>
+<hr>
+
+<a name=misc><h1>Miscellaneous examples/notes</h1></a>
+
+<a name=copy_list><h2>Copy between lists: right way and wrong way</h2></a>
+When using <em>copy</em>, <em>remove_copy</em>, et al algorithms that 
+potentially copy from one sequence to another, make sure the target
+container is at least as large as the resultant container is likely to
+get. You have to be extra careful when copying from one list (populated) 
+to another (just defined, so unpopulated).
+
+<p>
+Consider the following:
+
+<pre>
+   list&lt;int&gt; list1;
+   //
+   // populate list1 with what-not.
+   //
+   list&lt;int&gt; list2;
+   // DOESN'T WORK.
+   copy(list1.begin(), list1.end(), list2.begin());  
+
+   // this works because back_list_iterator invokes push_back() which
+   // dynamically resizes the list as appropriate. Note that if the
+   // target were a <em>set</em>, <em>inserter</em> would've been
+   // the appropriate one.
+   copy(list1.begin(), list1.end(), back_list_iterator&lt;int&gt; (list2));
+</pre>
+
+<hr>
+<!WA104><!WA104><!WA104><!WA104><!WA104><!WA104><a href=#misc>Miscellaneous examples/notes</a>
+<br>
+<!WA105><!WA105><!WA105><!WA105><!WA105><!WA105><a href=#index>Back to index</a>
+<hr>
+
+<a name=copy_map><h2>Copy between maps</h2></a>
+Must use an insert_iterator that uses an auxiliary iterator.
+<hr>
+
+<PRE>
+<STRONG>#include</STRONG> &lt;<!WA106><!WA106><!WA106><!WA106><!WA106><!WA106><A HREF="#stl.h">stl.h</A>&gt;
+<STRONG>#include</STRONG> &lt;math.h&gt;
+<STRONG>#include</STRONG> &lt;iostream.h&gt;
+
+<STRONG>typedef</STRONG> map<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>,</STRONG> <STRONG>float</STRONG><STRONG>,</STRONG> less<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG> <STRONG>&gt;</STRONG> MyMap<STRONG>;</STRONG>
+
+<STRONG>void</STRONG> dump_map<STRONG>(</STRONG>ostream<STRONG>&amp;</STRONG> os<STRONG>,</STRONG> <STRONG>const</STRONG> MyMap<STRONG>&amp;</STRONG> map_<STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>for</STRONG><STRONG>(</STRONG>MyMap::const_iterator i <STRONG>=</STRONG> map_<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG> i <STRONG>!=</STRONG> map_<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG> <STRONG>++</STRONG>i<STRONG>)</STRONG> <STRONG>{</STRONG>
+        os <STRONG>&lt;&lt;</STRONG> &quot;<EM>(</EM>&quot; <STRONG>&lt;&lt;</STRONG> <STRONG>(</STRONG><STRONG>*</STRONG>i<STRONG>)</STRONG><STRONG>.</STRONG>first <STRONG>&lt;&lt;</STRONG> &quot;<EM> </EM>&quot; <STRONG>&lt;&lt;</STRONG> <STRONG>(</STRONG><STRONG>*</STRONG>i<STRONG>)</STRONG><STRONG>.</STRONG>second <STRONG>&lt;&lt;</STRONG> &quot;<EM>) </EM>&quot;<STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+<STRONG>}</STRONG>
+
+<STRONG>int</STRONG> main<STRONG>(</STRONG><STRONG>int</STRONG><STRONG>,</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG><STRONG>[</STRONG><STRONG>]</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+    MyMap map1<STRONG>;</STRONG>
+    <STRONG>for</STRONG><STRONG>(</STRONG><STRONG>int</STRONG> i <STRONG>=</STRONG> 1<STRONG>;</STRONG> i <STRONG>&lt;</STRONG> 5<STRONG>;</STRONG> <STRONG>++</STRONG>i<STRONG>)</STRONG>
+        map1<STRONG>[</STRONG>i<STRONG>]</STRONG> <STRONG>=</STRONG> sqrt<STRONG>(</STRONG>i<STRONG>)</STRONG><STRONG>;</STRONG>
+    
+    MyMap map2<STRONG>;</STRONG>
+    <STRONG>for</STRONG><STRONG>(</STRONG>i <STRONG>=</STRONG> 10<STRONG>;</STRONG> i <STRONG>&lt;</STRONG> 15<STRONG>;</STRONG> <STRONG>++</STRONG>i<STRONG>)</STRONG>
+        map2<STRONG>[</STRONG>i<STRONG>]</STRONG> <STRONG>=</STRONG> sqrt<STRONG>(</STRONG>i<STRONG>)</STRONG><STRONG>;</STRONG>
+
+    cerr <STRONG>&lt;&lt;</STRONG> &quot;<EM>==&gt; Map1</EM>&quot; <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+    dump_map<STRONG>(</STRONG>cerr<STRONG>,</STRONG> map1<STRONG>)</STRONG><STRONG>;</STRONG>
+    cerr <STRONG>&lt;&lt;</STRONG> endl <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+    cerr <STRONG>&lt;&lt;</STRONG> &quot;<EM>==&gt; Map2</EM>&quot; <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+    dump_map<STRONG>(</STRONG>cerr<STRONG>,</STRONG> map2<STRONG>)</STRONG><STRONG>;</STRONG>
+    cerr <STRONG>&lt;&lt;</STRONG> endl <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    copy<STRONG>(</STRONG>map2<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> map2<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> 
+        insert_iterator<STRONG>&lt;</STRONG>MyMap<STRONG>&gt;</STRONG> <STRONG>(</STRONG>map1<STRONG>,</STRONG> map1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>)</STRONG>
+    <STRONG>)</STRONG><STRONG>;</STRONG>
+    cerr <STRONG>&lt;&lt;</STRONG> &quot;<EM>==&gt; Map1 += Map2</EM>&quot; <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+    dump_map<STRONG>(</STRONG>cerr<STRONG>,</STRONG> map1<STRONG>)</STRONG><STRONG>;</STRONG>
+    cerr <STRONG>&lt;&lt;</STRONG> endl <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+    <STRONG>return</STRONG> 0<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+</PRE>
+
+<hr>
+<!WA107><!WA107><!WA107><!WA107><!WA107><!WA107><a href=#misc>Miscellaneous examples/notes</a>
+<br>
+<!WA108><!WA108><!WA108><!WA108><!WA108><!WA108><a href=#index>Back to index</a>
+<hr>
+
+<a name=adaptor><h2>Adaptors in STL: <tt>not1</tt>, <tt>stack</tt>, 
+	<tt>queue</tt>, etc</h2></a>
+The adaptors in STL fall in 2 general categories: <em>function</em> adaptors
+and <em>data type</em> adaptors. 
+<p>
+<ol>
+<li> <!WA109><!WA109><!WA109><!WA109><!WA109><!WA109><a href=#func_adaptor> Function adaptors</a>
+<li> <!WA110><!WA110><!WA110><!WA110><!WA110><!WA110><a href=#data_type_adaptor> Data type adaptors</a>
+</ol>
+
+</p>
+<a name=func_adaptor><h3>Function adaptors</h3></a>
+Study the adaptors, such as <tt>not1()</tt>. These are wonderful to create
+new algorithms. <tt>bind2nd</tt>, <tt>bind1st</tt> are great.
+
+<p>
+
+For example, you can create <tt>copy_if</tt> from <tt>remove_copy_if</tt> 
+by negating the predicate that you supply to <tt>remove_copy_if()</tt>.
+ 
+<p>
+<pre>
+    //
+    // fill up a list with some numbers.
+    //
+    const int list1[] = {18, 3, 21, 3, 24, 3};
+    const int npoints = sizeof(list1)/sizeof(list1[0]);
+
+    cout &lt;&lt; endl &lt;&lt; "===&gt; Initial list" &lt;&lt; endl;
+    ostream_iterator&lt;int&gt; citer(cout, "\n");
+    copy(list1, list1 + npoints, citer);
+
+    //
+    // create a new sequence with all elements but 3's from list1. Note
+    // that we initialize the result container to be as large as the
+    // original one and use a simple output iterator.
+    //
+    cout &lt;&lt; endl &lt;&lt; "===&gt; Removing all 3's" &lt;&lt; endl;
+    list&lt;int&gt; list2(npoints);
+    list&lt;int&gt;::iterator iter = remove_copy_if(
+	list1, list1 + npoints, list2.begin(),
+	bind2nd(equal_to&lt;int&gt; (), 3)
+    );
+    copy(list2.begin(), iter, citer);
+    cout &lt;&lt; "===" &lt;&lt; endl;
+
+    //
+    // create a new sequence with all elements from list1, but 3's. Note
+    // that we use a front_insert_iterator in this case.
+    //
+    cout &lt;&lt; endl &lt;&lt; "===&gt; Removing all but 3's" &lt;&lt; endl;
+    list&lt;int&gt; list3;
+    front_insert_iterator&lt;list&lt;int&gt; &gt; out_iter(list3);
+    iter = remove_copy_if(
+	list1, list1 + npoints, out_iter,
+	not1 (bind2nd(equal_to&lt;int&gt; (), 3))
+    );
+    copy(list3.begin(), iter, citer);
+    cout &lt;&lt; "===" &lt;&lt; endl;
+
+</pre>
+<p>
+
+<a name=data_type_adaptor><h3>Data type adaptors</h3></a>
+<tt>Stack</tt>, <tt>Queue</tt>, <tt>Priority Queue</tt> fall in this 
+category; these adaptors allow you to use one of the existing container 
+types that provide certain semantics, such as <tt>push_back</tt>, 
+<tt>push_front</tt> methods or support specific type of iterator such
+as <tt>random_access_iterator</tt>, as <tt>Stacks</tt> and <tt>Queues</tt>.
+For example, you can use either a <tt>list</tt> or a <tt>deque</tt> as
+the underlying container for both <tt>stack</tt> and <tt>queue</tt>, but
+you <em>cannot</em> use a <tt>list</tt> for <tt>priority_queue</tt>
+because <tt>list</tt> does not support a <tt>random_access_iterator</tt>
+needed by <tt>priority_queue</tt> (use a <tt>deque</tt> or a
+<tt>vector</tt> instead). 
+<p>
+
+<b>Performance Note</b>: When you have a choice between a <tt>list</tt> 
+and a <tt>dequeu</tt> for some adaptor, I have found <tt>dequeu</tt> to
+give better, and in some cases, much better, performance.
+
+<p>
+
+<ol>
+<li> <!WA111><!WA111><!WA111><!WA111><!WA111><!WA111><a href=#stack> <tt>Stack</tt></a>
+<li> <!WA112><!WA112><!WA112><!WA112><!WA112><!WA112><a href=#queue> <tt>Queue</tt></a>
+<li> <!WA113><!WA113><!WA113><!WA113><!WA113><!WA113><a href=#pri_queue> <tt>Priority Queue</tt></a>
+</ol>
+
+<p>
+
+<a name=stack><h3><tt>Stack</tt></h3></a>
+You can use any container that supports <tt>push_back</tt> and 
+<tt>pop_back</tt> methods; eg, <tt>list</tt>, <tt>deque</tt>, and
+<tt>vector</tt>.
+<p>
+<hr>
+
+<PRE>
+<STRONG>#include</STRONG> &lt;<!WA114><!WA114><!WA114><!WA114><!WA114><!WA114><A HREF="#stl.h">stl.h</A>&gt;
+<STRONG>#include</STRONG> &lt;iostream.h&gt;
+
+<STRONG>int</STRONG> main <STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>typedef</STRONG> stack<STRONG>&lt;</STRONG>deque<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG> <STRONG>&gt;</STRONG> IntStack<STRONG>;</STRONG>
+    IntStack istack<STRONG>;</STRONG>
+    istack<STRONG>.</STRONG>push <STRONG>(</STRONG>31<STRONG>)</STRONG><STRONG>;</STRONG>
+    istack<STRONG>.</STRONG>push <STRONG>(</STRONG>87<STRONG>)</STRONG><STRONG>;</STRONG>
+    istack<STRONG>.</STRONG>push <STRONG>(</STRONG>13<STRONG>)</STRONG><STRONG>;</STRONG>
+    istack<STRONG>.</STRONG>push <STRONG>(</STRONG>29<STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>while</STRONG> <STRONG>(</STRONG><STRONG>!</STRONG>istack<STRONG>.</STRONG>empty <STRONG>(</STRONG><STRONG>)</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+        cout <STRONG>&lt;&lt;</STRONG> istack<STRONG>.</STRONG>top <STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+        istack<STRONG>.</STRONG>pop <STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+    <STRONG>return</STRONG> 0<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+</PRE>
+<hr>
+<p>
+And the output:
+<p>
+<hr>
+<pre>
+29
+13
+87
+31
+</pre>
+<hr>
+
+
+<p>
+<a name=queue><h3><tt>Queue</tt></h3></a>
+You can use any container that supports <tt>push_back</tt> and 
+<tt>pop_front</tt> methods; eg, <tt>list</tt> and <tt>deque</tt>.
+<p>
+<hr>
+
+<PRE>
+<STRONG>#include</STRONG> &lt;<!WA115><!WA115><!WA115><!WA115><!WA115><!WA115><A HREF="#stl.h">stl.h</A>&gt;
+<STRONG>#include</STRONG> &lt;iostream.h&gt;
+
+<STRONG>int</STRONG> main <STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>typedef</STRONG> queue<STRONG>&lt;</STRONG>deque<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG> <STRONG>&gt;</STRONG> IntQueue<STRONG>;</STRONG>
+    IntQueue iqueue<STRONG>;</STRONG>
+    iqueue<STRONG>.</STRONG>push <STRONG>(</STRONG>31<STRONG>)</STRONG><STRONG>;</STRONG>
+    iqueue<STRONG>.</STRONG>push <STRONG>(</STRONG>87<STRONG>)</STRONG><STRONG>;</STRONG>
+    iqueue<STRONG>.</STRONG>push <STRONG>(</STRONG>13<STRONG>)</STRONG><STRONG>;</STRONG>
+    iqueue<STRONG>.</STRONG>push <STRONG>(</STRONG>29<STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>while</STRONG> <STRONG>(</STRONG><STRONG>!</STRONG>iqueue<STRONG>.</STRONG>empty<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+        cout <STRONG>&lt;&lt;</STRONG> iqueue<STRONG>.</STRONG>front<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+        iqueue<STRONG>.</STRONG>pop <STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+    <STRONG>return</STRONG> 0<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+</PRE>
+<hr>
+<p>
+And the output:
+<p>
+<hr>
+<pre>
+31
+87
+13
+29
+</pre>
+<hr>
+
+<p>
+<a name=pri_queue><h3><tt>Priority Queue</tt></h3></a>
+You can use any container that supports <tt>push_back</tt> and 
+<tt>pop_back</tt> methods <b>and</b> supports a <tt>random access
+iterator</tt>; eg, <tt>vector</tt> and <tt>deque</tt>.
+<p>
+<hr>
+
+<PRE>
+<STRONG>#include</STRONG> &lt;<!WA116><!WA116><!WA116><!WA116><!WA116><!WA116><A HREF="#stl.h">stl.h</A>&gt;
+<STRONG>#include</STRONG> &lt;iostream.h&gt;
+
+<STRONG>int</STRONG> main <STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>typedef</STRONG> priority_queue<STRONG>&lt;</STRONG>deque<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>,</STRONG> less<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG> <STRONG>&gt;</STRONG> IntPQueue<STRONG>;</STRONG>
+    IntPQueue ipqueue<STRONG>;</STRONG>
+    ipqueue<STRONG>.</STRONG>push <STRONG>(</STRONG>31<STRONG>)</STRONG><STRONG>;</STRONG>
+    ipqueue<STRONG>.</STRONG>push <STRONG>(</STRONG>87<STRONG>)</STRONG><STRONG>;</STRONG>
+    ipqueue<STRONG>.</STRONG>push <STRONG>(</STRONG>13<STRONG>)</STRONG><STRONG>;</STRONG>
+    ipqueue<STRONG>.</STRONG>push <STRONG>(</STRONG>29<STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>while</STRONG> <STRONG>(</STRONG><STRONG>!</STRONG>ipqueue<STRONG>.</STRONG>empty<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+        cout <STRONG>&lt;&lt;</STRONG> ipqueue<STRONG>.</STRONG>top<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+        ipqueue<STRONG>.</STRONG>pop<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+    <STRONG>return</STRONG> 0<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+</PRE>
+<hr>
+<p>
+And the output:
+<p>
+<hr>
+<pre>
+87
+31
+29
+13
+</pre>
+<hr>
+
+
+<hr>
+<!WA117><!WA117><!WA117><!WA117><!WA117><!WA117><a href=#misc>Miscellaneous examples/notes</a>
+<br>
+<!WA118><!WA118><!WA118><!WA118><!WA118><!WA118><a href=#index>Back to index</a>
+<hr>
+
+<a name=remove_erase><h2><tt>remove</tt> <em>vs</em> <tt>erase</tt></h2></a>
+When using algorithms such as <tt>remove</tt> to remove element from a
+sequential container, one must also <tt>erase</tt> the invalidated items
+from the container. <em><tt>remove</tt> does not change the size of the
+container</em>. The following example shows what kind of surprise this can
+bring about.
+<p>
+<hr>
+
+<PRE>
+<STRONG>#include</STRONG> &lt;<!WA119><!WA119><!WA119><!WA119><!WA119><!WA119><A HREF="#stl.h">stl.h</A>&gt;
+<STRONG>#include</STRONG> &lt;iostream.h&gt;
+
+<STRONG>static</STRONG> bool even<STRONG>(</STRONG><STRONG>int</STRONG> i<STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>return</STRONG> i <STRONG>%</STRONG> 2 <STRONG>==</STRONG> 0<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+<STRONG>int</STRONG> main<STRONG>(</STRONG><STRONG>int</STRONG><STRONG>,</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG><STRONG>[</STRONG><STRONG>]</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+    list<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG> list1<STRONG>;</STRONG>
+    <STRONG>for</STRONG><STRONG>(</STRONG><STRONG>int</STRONG> i <STRONG>=</STRONG> 0<STRONG>;</STRONG> i <STRONG>&lt;</STRONG> 10<STRONG>;</STRONG> <STRONG>++</STRONG>i<STRONG>)</STRONG> <STRONG>{</STRONG>
+        list1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>i <STRONG>*</STRONG> i<STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+
+    ostream_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG> out<STRONG>(</STRONG>cout<STRONG>,</STRONG> &quot;<EM> </EM>&quot;<STRONG>)</STRONG><STRONG>;</STRONG>
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM>==&gt; Initial list (x(i) = i**2):              [</EM>&quot;<STRONG>;</STRONG>
+    copy<STRONG>(</STRONG>list1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> list1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> out<STRONG>)</STRONG><STRONG>;</STRONG>
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM>]</EM>&quot; <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    list<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>::</STRONG>iterator end <STRONG>=</STRONG> remove_if<STRONG>(</STRONG>list1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> list1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> even<STRONG>)</STRONG><STRONG>;</STRONG>
+
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM>==&gt; After removing even numbers (Surprise!): [</EM>&quot;<STRONG>;</STRONG>
+    copy<STRONG>(</STRONG>list1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> list1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> out<STRONG>)</STRONG><STRONG>;</STRONG>
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM>]</EM>&quot; <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    list1<STRONG>.</STRONG>erase<STRONG>(</STRONG>end<STRONG>,</STRONG> list1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM>==&gt; After erasing removed numbers:           [</EM>&quot;<STRONG>;</STRONG>
+    copy<STRONG>(</STRONG>list1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> list1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> out<STRONG>)</STRONG><STRONG>;</STRONG>
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM>]</EM>&quot; <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    <STRONG>return</STRONG> 0<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+</PRE>
+<hr>
+
+<p>
+And here's the output:
+<pre>
+
+==> Initial list (x(i) = i**2):              [0 1 4 9 16 25 36 49 64 81 ]
+==> After removing even numbers (Surprise!): [1 9 25 49 81 25 36 49 64 81 ]
+==> After erasing removed numbers:           [1 9 25 49 81 ]
+
+</pre>
+
+<hr>
+
+<hr>
+<!WA120><!WA120><!WA120><!WA120><!WA120><!WA120><a href=#misc>Miscellaneous examples/notes</a>
+<br>
+<!WA121><!WA121><!WA121><!WA121><!WA121><!WA121><a href=#index>Back to index</a>
+<hr>
+
+<a name=list_of_list><h2><tt>List</tt> of <tt>List</tt>'s in STL</h2></a>
+There was a post in c.l.c++ inquiring how to iterate through the members
+of a list when the members are also lists. The following code snippet
+shows how (there is nothing special about a list of lists).
+<hr>
+
+<PRE>
+<EM><STRONG>//</STRONG></EM>
+<EM><STRONG>//</STRONG> Sample STL program to show how to iterate thru list of list's.</EM>
+<EM><STRONG>//</STRONG></EM>
+<STRONG>#include</STRONG> &lt;<!WA122><!WA122><!WA122><!WA122><!WA122><!WA122><A HREF="#stl.h">stl.h</A>&gt;
+<STRONG>#include</STRONG> &lt;iostream.h&gt;
+
+<EM><STRONG>//</STRONG></EM>
+<EM><STRONG>//</STRONG> convenience typedefs to save typing.</EM>
+<EM><STRONG>//</STRONG></EM>
+<STRONG>typedef</STRONG> list<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG> List<STRONG>;</STRONG>
+<STRONG>typedef</STRONG> list<STRONG>&lt;</STRONG>List<STRONG>&gt;</STRONG> ListOfList<STRONG>;</STRONG>
+
+<STRONG>void</STRONG> print_list<STRONG>(</STRONG><STRONG>const</STRONG> List<STRONG>&amp;</STRONG> list1<STRONG>,</STRONG> <STRONG>int</STRONG> id<STRONG>)</STRONG> <STRONG>{</STRONG>
+    ostream_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG> out<STRONG>(</STRONG>cout<STRONG>,</STRONG> &quot;<EM> </EM>&quot;<STRONG>)</STRONG><STRONG>;</STRONG>
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM>list </EM>&quot; <STRONG>&lt;&lt;</STRONG> id <STRONG>&lt;&lt;</STRONG> &quot;<EM>: </EM>&quot;<STRONG>;</STRONG>
+    copy<STRONG>(</STRONG>list1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> list1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> out<STRONG>)</STRONG><STRONG>;</STRONG>
+    cout <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+<STRONG>int</STRONG> main <STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+    ListOfList list_of_list1<STRONG>;</STRONG>
+
+    <EM><STRONG>//</STRONG></EM>
+    <EM><STRONG>//</STRONG> create the list of list: total of 3 lists, each with 4 members.</EM>
+    <EM><STRONG>//</STRONG></EM>
+    <STRONG>for</STRONG><STRONG>(</STRONG><STRONG>int</STRONG> i <STRONG>=</STRONG> 0<STRONG>;</STRONG> i <STRONG>&lt;</STRONG> 3<STRONG>;</STRONG> <STRONG>++</STRONG>i<STRONG>)</STRONG> <STRONG>{</STRONG>
+        List list1<STRONG>;</STRONG>
+        <STRONG>for</STRONG><STRONG>(</STRONG><STRONG>int</STRONG> j <STRONG>=</STRONG> 0<STRONG>;</STRONG> j <STRONG>&lt;</STRONG> 4<STRONG>;</STRONG> <STRONG>++</STRONG>j<STRONG>)</STRONG> <STRONG>{</STRONG>
+            list1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>i <STRONG>*</STRONG> 4 <STRONG>+</STRONG> j<STRONG>)</STRONG><STRONG>;</STRONG>
+        <STRONG>}</STRONG>
+        print_list<STRONG>(</STRONG>list1<STRONG>,</STRONG> i<STRONG>+</STRONG>1<STRONG>)</STRONG><STRONG>;</STRONG>
+        list_of_list1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>list1<STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+
+    cout <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    <EM><STRONG>//</STRONG></EM>
+    <EM><STRONG>//</STRONG> now iterator thru list of lists.</EM>
+    <EM><STRONG>//</STRONG></EM>
+    ListOfList::iterator it <STRONG>=</STRONG> list_of_list1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>for</STRONG><STRONG>(</STRONG><STRONG>int</STRONG> j <STRONG>=</STRONG> 1<STRONG>;</STRONG> it <STRONG>!=</STRONG> list_of_list1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG> <STRONG>++</STRONG>it<STRONG>,</STRONG> <STRONG>++</STRONG>j<STRONG>)</STRONG> <STRONG>{</STRONG>
+        <STRONG>const</STRONG> List<STRONG>&amp;</STRONG> list1 <STRONG>=</STRONG> <STRONG>*</STRONG>it<STRONG>;</STRONG>
+        print_list<STRONG>(</STRONG>list1<STRONG>,</STRONG> j<STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+
+    <STRONG>return</STRONG> 0<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+</PRE>
+
+<hr>
+<p>
+And the output:
+<pre>
+list 1: 0 1 2 3 
+list 2: 4 5 6 7 
+list 3: 8 9 10 11 
+
+list 1: 0 1 2 3 
+list 2: 4 5 6 7 
+list 3: 8 9 10 11 
+</pre>
+<hr>
+
+<hr>
+<!WA123><!WA123><!WA123><!WA123><!WA123><!WA123><a href=#misc>Miscellaneous examples/notes</a>
+<br>
+<!WA124><!WA124><!WA124><!WA124><!WA124><!WA124><a href=#index>Back to index</a>
+<hr>
+
+<a name=sorting><h2>Sorting an STL container</h2></a>
+STL provides a <tt>sort</tt> algorithm to sort any container that
+support <tt>random access</tt> iterators, such as <tt>vector</tt> and
+<tt>deque</tt>. For the containers that do not support random access
+iterators, such as <tt>list</tt>, STL containers typically have a
+<tt>sort</tt> member function that does the job. If you'd rather have
+a single <tt>sort</tt> algorithm that will do the job regardless of the
+iterator type, see <!WA125><!WA125><!WA125><!WA125><!WA125><!WA125><a href=#iterator_tags> here</a> for an example.
+
+<p>
+
+There are 2 things to look out for:
+<ol>
+<li> For containers that support random-access iterators, use the
+    STL <tt>sort</tt> algorithm which uses <em>quicksort</em>.
+<li> If your container objects are non-trivial, you should arm your
+    container object with the appropriate constructors and comparison 
+    operators. See <!WA126><!WA126><!WA126><!WA126><!WA126><!WA126><a href=#class_howto> here</a> for more info.
+</ol>
+<p>
+
+<ul>
+<li> <!WA127><!WA127><!WA127><!WA127><!WA127><!WA127><a href=#sort_list>Sorting a <tt>list</tt> of user defined objects</a>
+<li> <!WA128><!WA128><!WA128><!WA128><!WA128><!WA128><a href=#sort_vector>Sorting a <tt>vector</tt> of user defined 
+    objects</a>
+</ul>
+
+<hr>
+
+
+<a name=sort_list><h3>Sorting <tt>list</tt> of user-defined objects</h3></a>
+<PRE>
+<STRONG>#include</STRONG> &lt;iostream.h&gt;
+<STRONG>#include</STRONG> &lt;stdlib.h&gt;
+<STRONG>#include</STRONG> &lt;<!WA129><!WA129><!WA129><!WA129><!WA129><!WA129><a href=#stl.h>stl.h</a>&gt;
+<STRONG>#include</STRONG> &lt;string.h&gt;
+
+<STRONG>inline</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG> strnew<STRONG>(</STRONG><STRONG>const</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG> str<STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>char</STRONG><STRONG>*</STRONG> newstr <STRONG>=</STRONG> 0<STRONG>;</STRONG>
+    <STRONG>if</STRONG> <STRONG>(</STRONG>str<STRONG>)</STRONG> <STRONG>{</STRONG>
+        newstr <STRONG>=</STRONG> <STRONG>new</STRONG> <STRONG>char</STRONG><STRONG>[</STRONG>strlen<STRONG>(</STRONG>str<STRONG>)</STRONG> <STRONG>+</STRONG> 1<STRONG>]</STRONG><STRONG>;</STRONG>
+        strcpy<STRONG>(</STRONG>newstr<STRONG>,</STRONG> str<STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+    <STRONG>return</STRONG> newstr<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+<STRONG>struct</STRONG> ListElem <STRONG>{</STRONG>
+    <STRONG>int</STRONG> id_<STRONG>;</STRONG>
+    <STRONG>char</STRONG><STRONG>*</STRONG> name_<STRONG>;</STRONG>
+    ListElem<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>:</STRONG>
+        id_<STRONG>(</STRONG>0<STRONG>)</STRONG><STRONG>,</STRONG>
+        name_<STRONG>(</STRONG>strnew<STRONG>(</STRONG>&quot;<EM>unknown</EM>&quot;<STRONG>)</STRONG><STRONG>)</STRONG>
+    <STRONG>{</STRONG> <STRONG>}</STRONG>
+    ListElem<STRONG>(</STRONG><STRONG>const</STRONG> ListElem<STRONG>&amp;</STRONG> elem<STRONG>)</STRONG> <STRONG>:</STRONG>
+        id_<STRONG>(</STRONG>elem<STRONG>.</STRONG>id_<STRONG>)</STRONG><STRONG>,</STRONG>
+        name_<STRONG>(</STRONG>strnew<STRONG>(</STRONG>elem<STRONG>.</STRONG>name_<STRONG>)</STRONG><STRONG>)</STRONG>
+    <STRONG>{</STRONG> <STRONG>}</STRONG>
+    ListElem<STRONG>(</STRONG><STRONG>int</STRONG> id<STRONG>,</STRONG> <STRONG>const</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG> name<STRONG>)</STRONG> <STRONG>:</STRONG>
+        id_<STRONG>(</STRONG>id<STRONG>)</STRONG><STRONG>,</STRONG>
+        name_<STRONG>(</STRONG>strnew<STRONG>(</STRONG>name<STRONG>)</STRONG><STRONG>)</STRONG>
+    <STRONG>{</STRONG> <STRONG>}</STRONG>
+    <STRONG>~</STRONG>ListElem<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG> 
+        <STRONG>delete</STRONG><STRONG>[</STRONG><STRONG>]</STRONG> name_<STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+    ListElem<STRONG>&amp;</STRONG> <STRONG>operator</STRONG><STRONG>=</STRONG> <STRONG>(</STRONG><STRONG>const</STRONG> ListElem<STRONG>&amp;</STRONG> elem<STRONG>)</STRONG> <STRONG>{</STRONG>
+        id_ <STRONG>=</STRONG> elem<STRONG>.</STRONG>id_<STRONG>;</STRONG>
+        <STRONG>delete</STRONG><STRONG>[</STRONG><STRONG>]</STRONG> name_<STRONG>;</STRONG>
+        name_ <STRONG>=</STRONG> strnew<STRONG>(</STRONG>elem<STRONG>.</STRONG>name_<STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+    bool <STRONG>operator</STRONG><STRONG>&lt;</STRONG> <STRONG>(</STRONG><STRONG>const</STRONG> ListElem<STRONG>&amp;</STRONG> elem<STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG>
+        <STRONG>return</STRONG> id_ <STRONG>&lt;</STRONG> elem<STRONG>.</STRONG>id_<STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+    bool <STRONG>operator</STRONG><STRONG>==</STRONG> <STRONG>(</STRONG><STRONG>const</STRONG> ListElem<STRONG>&amp;</STRONG> elem<STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG>
+        <STRONG>return</STRONG> id_ <STRONG>==</STRONG> elem<STRONG>.</STRONG>id_<STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+    <STRONG>void</STRONG> print<STRONG>(</STRONG>ostream<STRONG>&amp;</STRONG> os<STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG>
+        os <STRONG>&lt;&lt;</STRONG> &quot;<EM>(</EM>&quot; <STRONG>&lt;&lt;</STRONG> id_ <STRONG>&lt;&lt;</STRONG> &quot;<EM> </EM>&quot; <STRONG>&lt;&lt;</STRONG> name_ <STRONG>&lt;&lt;</STRONG> &quot;<EM>)</EM>&quot;<STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+<STRONG>}</STRONG><STRONG>;</STRONG>
+
+<STRONG>void</STRONG> print_list<STRONG>(</STRONG>ostream<STRONG>&amp;</STRONG> os<STRONG>,</STRONG> <STRONG>const</STRONG> list<STRONG>&lt;</STRONG>ListElem<STRONG>&gt;</STRONG><STRONG>&amp;</STRONG> list1<STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>for</STRONG><STRONG>(</STRONG>
+        list<STRONG>&lt;</STRONG>ListElem<STRONG>&gt;</STRONG><STRONG>::</STRONG>const_iterator it <STRONG>=</STRONG> list1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+        it <STRONG>!=</STRONG> list1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+        <STRONG>++</STRONG>it
+    <STRONG>)</STRONG> <STRONG>{</STRONG>
+        <STRONG>const</STRONG> ListElem<STRONG>&amp;</STRONG> elem <STRONG>=</STRONG> <STRONG>*</STRONG>it<STRONG>;</STRONG>
+        elem<STRONG>.</STRONG>print<STRONG>(</STRONG>os<STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+<STRONG>}</STRONG>
+
+<STRONG>int</STRONG> main<STRONG>(</STRONG><STRONG>int</STRONG><STRONG>,</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG><STRONG>[</STRONG><STRONG>]</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+    list<STRONG>&lt;</STRONG>ListElem<STRONG>&gt;</STRONG> list1<STRONG>;</STRONG>
+    list1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>ListElem<STRONG>(</STRONG>5<STRONG>,</STRONG> strnew<STRONG>(</STRONG>&quot;<EM>5</EM>&quot;<STRONG>)</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    list1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>ListElem<STRONG>(</STRONG>0<STRONG>,</STRONG> strnew<STRONG>(</STRONG>&quot;<EM>0</EM>&quot;<STRONG>)</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    list1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>ListElem<STRONG>(</STRONG>99<STRONG>,</STRONG> strnew<STRONG>(</STRONG>&quot;<EM>99</EM>&quot;<STRONG>)</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    list1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>ListElem<STRONG>(</STRONG><STRONG>-</STRONG>1<STRONG>,</STRONG> strnew<STRONG>(</STRONG>&quot;<EM>-1</EM>&quot;<STRONG>)</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    list1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>ListElem<STRONG>(</STRONG>31<STRONG>,</STRONG> strnew<STRONG>(</STRONG>&quot;<EM>31</EM>&quot;<STRONG>)</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+
+    cerr <STRONG>&lt;&lt;</STRONG> &quot;<EM>Initial list: </EM>&quot;<STRONG>;</STRONG>
+    print_list<STRONG>(</STRONG>cerr<STRONG>,</STRONG> list1<STRONG>)</STRONG><STRONG>;</STRONG>
+    cerr <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    <EM><STRONG>//</STRONG></EM>
+    <EM><STRONG>//</STRONG> cannot use sort(list1.begin(), list1.end()) here; instead, must use</EM>
+    <EM><STRONG>//</STRONG> sort() member of list class. Hint: lists don't support random access </EM>
+    <EM><STRONG>//</STRONG> iterators.</EM>
+    <EM><STRONG>//</STRONG></EM>
+    list1<STRONG>.</STRONG>sort<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+
+    cerr <STRONG>&lt;&lt;</STRONG> &quot;<EM> Sorted list: </EM>&quot;<STRONG>;</STRONG>
+    print_list<STRONG>(</STRONG>cerr<STRONG>,</STRONG> list1<STRONG>)</STRONG><STRONG>;</STRONG>
+    cerr <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    <STRONG>return</STRONG> 0<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+</PRE>
+
+<hr>
+And here's the output:
+
+<pre>
+
+% ./stl-list-sort
+Initial list: (5 "5")(0 "0")(99 "99")(-1 "-1")(31 "31")
+ Sorted list: (-1 "-1")(0 "0")(5 "5")(31 "31")(99 "99")
+
+</pre>
+
+<hr>
+<!WA130><!WA130><!WA130><!WA130><!WA130><!WA130><a href=#sorting>Sorting an STL container</a>
+<br>
+<!WA131><!WA131><!WA131><!WA131><!WA131><!WA131><a href=#index>Back to index</a>
+<hr>
+
+<a name=sort_vector><h3>Sorting <tt>vector</tt> of user-defined objects</h3></a>
+
+<PRE>
+<STRONG>#include</STRONG> &lt;iostream.h&gt;
+<STRONG>#include</STRONG> &lt;stdlib.h&gt;
+<STRONG>#include</STRONG> &lt;<!WA132><!WA132><!WA132><!WA132><!WA132><!WA132><A HREF="#stl.h">stl.h</A>&gt;
+<STRONG>#include</STRONG> &lt;string.h&gt;
+
+<STRONG>inline</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG> strnew<STRONG>(</STRONG><STRONG>const</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG> str<STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>char</STRONG><STRONG>*</STRONG> newstr <STRONG>=</STRONG> 0<STRONG>;</STRONG>
+    <STRONG>if</STRONG> <STRONG>(</STRONG>str<STRONG>)</STRONG> <STRONG>{</STRONG>
+        newstr <STRONG>=</STRONG> <STRONG>new</STRONG> <STRONG>char</STRONG><STRONG>[</STRONG>strlen<STRONG>(</STRONG>str<STRONG>)</STRONG> <STRONG>+</STRONG> 1<STRONG>]</STRONG><STRONG>;</STRONG>
+        strcpy<STRONG>(</STRONG>newstr<STRONG>,</STRONG> str<STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+    <STRONG>return</STRONG> newstr<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+<STRONG>struct</STRONG> ListElem <STRONG>{</STRONG>
+    <STRONG>int</STRONG> id_<STRONG>;</STRONG>
+    <STRONG>char</STRONG><STRONG>*</STRONG> name_<STRONG>;</STRONG>
+    ListElem<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>:</STRONG>
+        id_<STRONG>(</STRONG>0<STRONG>)</STRONG><STRONG>,</STRONG>
+        name_<STRONG>(</STRONG>strnew<STRONG>(</STRONG>&quot;<EM>unknown</EM>&quot;<STRONG>)</STRONG><STRONG>)</STRONG>
+    <STRONG>{</STRONG> <STRONG>}</STRONG>
+    ListElem<STRONG>(</STRONG><STRONG>const</STRONG> ListElem<STRONG>&amp;</STRONG> elem<STRONG>)</STRONG> <STRONG>:</STRONG>
+        id_<STRONG>(</STRONG>elem<STRONG>.</STRONG>id_<STRONG>)</STRONG><STRONG>,</STRONG>
+        name_<STRONG>(</STRONG>strnew<STRONG>(</STRONG>elem<STRONG>.</STRONG>name_<STRONG>)</STRONG><STRONG>)</STRONG>
+    <STRONG>{</STRONG> <STRONG>}</STRONG>
+    ListElem<STRONG>(</STRONG><STRONG>int</STRONG> id<STRONG>,</STRONG> <STRONG>const</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG> name<STRONG>)</STRONG> <STRONG>:</STRONG>
+        id_<STRONG>(</STRONG>id<STRONG>)</STRONG><STRONG>,</STRONG>
+        name_<STRONG>(</STRONG>strnew<STRONG>(</STRONG>name<STRONG>)</STRONG><STRONG>)</STRONG>
+    <STRONG>{</STRONG> <STRONG>}</STRONG>
+    <STRONG>~</STRONG>ListElem<STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG> 
+        <STRONG>delete</STRONG><STRONG>[</STRONG><STRONG>]</STRONG> name_<STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+    ListElem<STRONG>&amp;</STRONG> <STRONG>operator</STRONG><STRONG>=</STRONG> <STRONG>(</STRONG><STRONG>const</STRONG> ListElem<STRONG>&amp;</STRONG> elem<STRONG>)</STRONG> <STRONG>{</STRONG>
+        id_ <STRONG>=</STRONG> elem<STRONG>.</STRONG>id_<STRONG>;</STRONG>
+        <STRONG>delete</STRONG><STRONG>[</STRONG><STRONG>]</STRONG> name_<STRONG>;</STRONG>
+        name_ <STRONG>=</STRONG> strnew<STRONG>(</STRONG>elem<STRONG>.</STRONG>name_<STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+    bool <STRONG>operator</STRONG><STRONG>&lt;</STRONG> <STRONG>(</STRONG><STRONG>const</STRONG> ListElem<STRONG>&amp;</STRONG> elem<STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG>
+        <STRONG>return</STRONG> id_ <STRONG>&lt;</STRONG> elem<STRONG>.</STRONG>id_<STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+    bool <STRONG>operator</STRONG><STRONG>==</STRONG> <STRONG>(</STRONG><STRONG>const</STRONG> ListElem<STRONG>&amp;</STRONG> elem<STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG>
+        <STRONG>return</STRONG> id_ <STRONG>==</STRONG> elem<STRONG>.</STRONG>id_<STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+    <STRONG>void</STRONG> print<STRONG>(</STRONG>ostream<STRONG>&amp;</STRONG> os<STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG>
+        os <STRONG>&lt;&lt;</STRONG> &quot;<EM>(</EM>&quot; <STRONG>&lt;&lt;</STRONG> id_ <STRONG>&lt;&lt;</STRONG> &quot;<EM> </EM>&quot; <STRONG>&lt;&lt;</STRONG> name_ <STRONG>&lt;&lt;</STRONG> &quot;<EM>)</EM>&quot;<STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+<STRONG>}</STRONG><STRONG>;</STRONG>
+
+<STRONG>void</STRONG> print_vector<STRONG>(</STRONG>ostream<STRONG>&amp;</STRONG> os<STRONG>,</STRONG> <STRONG>const</STRONG> vector<STRONG>&lt;</STRONG>ListElem<STRONG>&gt;</STRONG><STRONG>&amp;</STRONG> vector1<STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>for</STRONG><STRONG>(</STRONG>
+        vector<STRONG>&lt;</STRONG>ListElem<STRONG>&gt;</STRONG><STRONG>::</STRONG>const_iterator it <STRONG>=</STRONG> vector1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+        it <STRONG>!=</STRONG> vector1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+        <STRONG>++</STRONG>it
+    <STRONG>)</STRONG> <STRONG>{</STRONG>
+        <STRONG>const</STRONG> ListElem<STRONG>&amp;</STRONG> elem <STRONG>=</STRONG> <STRONG>*</STRONG>it<STRONG>;</STRONG>
+        elem<STRONG>.</STRONG>print<STRONG>(</STRONG>os<STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+<STRONG>}</STRONG>
+
+<STRONG>int</STRONG> main<STRONG>(</STRONG><STRONG>int</STRONG><STRONG>,</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG><STRONG>[</STRONG><STRONG>]</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+    vector<STRONG>&lt;</STRONG>ListElem<STRONG>&gt;</STRONG> vector1<STRONG>;</STRONG>
+    vector1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>ListElem<STRONG>(</STRONG>5<STRONG>,</STRONG> strnew<STRONG>(</STRONG>&quot;<EM>5</EM>&quot;<STRONG>)</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    vector1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>ListElem<STRONG>(</STRONG>0<STRONG>,</STRONG> strnew<STRONG>(</STRONG>&quot;<EM>0</EM>&quot;<STRONG>)</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    vector1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>ListElem<STRONG>(</STRONG>99<STRONG>,</STRONG> strnew<STRONG>(</STRONG>&quot;<EM>99</EM>&quot;<STRONG>)</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    vector1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>ListElem<STRONG>(</STRONG><STRONG>-</STRONG>1<STRONG>,</STRONG> strnew<STRONG>(</STRONG>&quot;<EM>-1</EM>&quot;<STRONG>)</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    vector1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>ListElem<STRONG>(</STRONG>31<STRONG>,</STRONG> strnew<STRONG>(</STRONG>&quot;<EM>31</EM>&quot;<STRONG>)</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+
+    cerr <STRONG>&lt;&lt;</STRONG> &quot;<EM>Initial vector: </EM>&quot;<STRONG>;</STRONG>
+    print_vector<STRONG>(</STRONG>cerr<STRONG>,</STRONG> vector1<STRONG>)</STRONG><STRONG>;</STRONG>
+    cerr <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    sort<STRONG>(</STRONG>vector1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> vector1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+
+    cerr <STRONG>&lt;&lt;</STRONG> &quot;<EM> Sorted vector: </EM>&quot;<STRONG>;</STRONG>
+    print_vector<STRONG>(</STRONG>cerr<STRONG>,</STRONG> vector1<STRONG>)</STRONG><STRONG>;</STRONG>
+    cerr <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    <STRONG>return</STRONG> 0<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+</PRE>
+
+<hr>
+And here's the output:
+
+<pre>
+
+% ./stl-list-sort
+Initial list: (5 "5")(0 "0")(99 "99")(-1 "-1")(31 "31")
+ Sorted list: (-1 "-1")(0 "0")(5 "5")(31 "31")(99 "99")
+
+</pre>
+
+<hr>
+<!WA133><!WA133><!WA133><!WA133><!WA133><!WA133><a href=#sorting>Sorting an STL container</a>
+<br>
+<!WA134><!WA134><!WA134><!WA134><!WA134><!WA134><a href=#index>Back to index</a>
+<hr>
+
+<a name=shuffle><h2>Shuffling a deck of cards</h2></a>
+Someone asked how to shuffle a deck of cards in c.l.c++ and
+rec.games.bridge a few days and there were lots correct (but
+<em>long</em>) answers using all sorts of tricks to avoid duplicate
+numbers in the random sequence produced. Here's a simple one using STL 
+<tt>random_shuffle</tt>. To do it right, however, you should have a look 
+at the <tt>random_shuffle</tt> (especially <tt>iter_swap</tt>) and make 
+sure the <em>seed</em> is dynamically chosen (eg., use the current clock
+value) instead of the hard coded seed value used in most STL implementations.
+
+<p>
+<hr>
+<PRE>
+<STRONG>#include</STRONG> &lt;<!WA135><!WA135><!WA135><!WA135><!WA135><!WA135><A HREF="#stl.h">stl.h</A>&gt;                <EM><STRONG>//</STRONG> or individual includes if you like</EM>
+<STRONG>#include</STRONG> &lt;iostream.h&gt;
+
+<STRONG>int</STRONG> main<STRONG>(</STRONG><STRONG>int</STRONG><STRONG>,</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG><STRONG>[</STRONG><STRONG>]</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+    <STRONG>const</STRONG> <STRONG>unsigned</STRONG> ncards <STRONG>=</STRONG> 5<STRONG>;</STRONG>
+    <STRONG>int</STRONG> cards<STRONG>[</STRONG>ncards<STRONG>]</STRONG><STRONG>;</STRONG>
+    <STRONG>for</STRONG><STRONG>(</STRONG><STRONG>int</STRONG> i <STRONG>=</STRONG> 0<STRONG>;</STRONG> i <STRONG>&lt;</STRONG> ncards<STRONG>;</STRONG> <STRONG>++</STRONG>i<STRONG>)</STRONG> <STRONG>{</STRONG>
+        cards<STRONG>[</STRONG>i<STRONG>]</STRONG> <STRONG>=</STRONG> i <STRONG>+</STRONG> 1<STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+
+    <EM><STRONG>//</STRONG> print out the initial list (should be 1 ... ncards).</EM>
+    ostream_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG> out<STRONG>(</STRONG>cout<STRONG>,</STRONG> &quot;<EM> </EM>&quot;<STRONG>)</STRONG><STRONG>;</STRONG>
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM>initial: </EM>&quot;<STRONG>;</STRONG>
+    copy<STRONG>(</STRONG>cards<STRONG>,</STRONG> cards <STRONG>+</STRONG> ncards<STRONG>,</STRONG> out<STRONG>)</STRONG><STRONG>;</STRONG>
+    cout <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    <EM><STRONG>//</STRONG> shuffle and print out the shuffled list </EM>
+    random_shuffle<STRONG>(</STRONG>cards<STRONG>,</STRONG> cards <STRONG>+</STRONG> ncards<STRONG>)</STRONG><STRONG>;</STRONG>
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM>shuffled: </EM>&quot;<STRONG>;</STRONG>
+    copy<STRONG>(</STRONG>cards<STRONG>,</STRONG> cards <STRONG>+</STRONG> ncards<STRONG>,</STRONG> out<STRONG>)</STRONG><STRONG>;</STRONG>
+    cout <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    <STRONG>return</STRONG> 0<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+</PRE>
+<hr>
+
+And here's the output:
+<p>
+<hr>
+<pre>
+
+initial: 1 2 3 4 5 
+shuffled: 3 1 5 2 4 
+
+</pre>
+<hr>
+<p>
+<!WA136><!WA136><!WA136><!WA136><!WA136><!WA136><a href=#misc>Miscellaneous examples/notes</a>
+<br>
+<!WA137><!WA137><!WA137><!WA137><!WA137><!WA137><a href=#index>Back to index</a>
+<hr>
+
+<a name=value_type><h2>Deducing type from iterator</h2></a>
+Sometimes it is useful to be able to deduce the type of the container element
+given only the iterator(s) to the container in question. There is a global
+function, <tt>value_type</tt>, just for this purpose. The following code
+snippet shows the usage:
+
+<pre>
+    template &lt;class InputIterator, class T&gt;
+    void __do_something(InputIterator first, InputIterator last, T*) {
+	T tmp;
+	//
+	// now we can create variables of type T!
+	//
+    }
+    
+    template &lt;class InputIterator&gt;
+    void do_something(InputIterator first, InputIterator last) {
+        __do_something(first, last, value_type(first));
+    }
+
+</pre>
+    
+
+<hr>
+<p>
+<!WA138><!WA138><!WA138><!WA138><!WA138><!WA138><a href=#misc>Miscellaneous examples/notes</a>
+<br>
+<!WA139><!WA139><!WA139><!WA139><!WA139><!WA139><a href=#index>Back to index</a>
+<hr>
+
+<a name=pers_stl><h1>Persistent STL</h1></a><p>
+I'm making available an extremely simple and crude implementation of
+Persistent STL using libg++-2.6.2 hacked STL as the base implementation.
+Send <!WA140><!WA140><!WA140><!WA140><!WA140><!WA140><a href=mailto:khan@xraylith.wisc.edu>me</a> email if you'd like 
+to know more about it. My current prototype is based on Texas Persistent
+Store v0.3 from UT-Austin <!WA141><!WA141><!WA141><!WA141><!WA141><!WA141><a href=http://www.cs.utexas.edu/users/oops/> OOPS 
+research group</a>. Click <!WA142><!WA142><!WA142><!WA142><!WA142><!WA142><a href=http://www.xraylith.wisc.edu/~khan/software/stl/persistent/pstl-0.1.1.tar.gz> here
+</a> for a GNU zip'd and tar'd copy of the current prototype (v0.1.1). 
+
+<p>
+<!WA143><!WA143><!WA143><!WA143><!WA143><!WA143><a href=#pers_stl>Persistent STL</a><br>
+<!WA144><!WA144><!WA144><!WA144><!WA144><!WA144><a href=#index>Back to index</a>
+<hr>
+
+<! ******************************************************************** >
+<! *           		A look at ObjectSpace STL&lt;ToolKit&gt;	>
+<! ******************************************************************** >
+<a name=os_stl><h1>A look at ObjectSpace STL&lt;ToolKit&gt;</h1></a>
+
+[A slightly modified excerpt from one of my postings in c.l.c++]
+<p>
+
+I've been using ObjectSpace STL&lt;ToolKit&gt; with gcc-2.6.3 quite heavily in
+the last few weeks and it turns out to be pretty solid. You obviously only
+get what GCC supports, but ObjectSpace did a pretty good job in squeezing
+out everything possible out of GCC in their implementation. I've run into
+a few problems (other than the well-known ones mentioned in the release
+notes), but there are easy work-arounds. Recently I have switched to 
+ObjectSpace STL&lt;ToolKit&lt; with GCC 2.7.0.
+
+<p>
+<b>GCC 2.7.0 users:</b> ObjectSpace is providing bug fixes for STL 
+&lt;ToolKit&gt; version 1.1 to make it work GCC 2.7.0. Please get in touch
+with <!WA145><!WA145><!WA145><!WA145><!WA145><!WA145><a href=mailto:ccs.support@objectspace.com>ObjectSpace tehnical 
+support</a> for more information on how to acquire the fixes.
+
+<p>
+If you're using GCC 2.6.3, two things before you start:
+<ul>
+<li> patch 2.6.3 with the template fix 
+    <!WA146><!WA146><!WA146><!WA146><!WA146><!WA146><a href=ftp://ftp.cygnus.com/pub/g++/gcc-2.6.3-template-fix>
+    ftp://ftp.cygnus.com/pub/g++/gcc-2.6.3-template-fix</a>
+
+    This solves the multiple definition problem.
+    
+<li>
+    learn the art of <!WA147><!WA147><!WA147><!WA147><!WA147><!WA147><a href=#gcc_manual>manual template instantiation</a>
+    if you want to avoid
+    incredible code bloat in reasonable sized programs.
+</ul>
+
+<p>
+If you're using GCC 2.7.0, two things before you start:
+<ul>
+<li> patch 2.7.0 with the template repository fix 
+    <!WA148><!WA148><!WA148><!WA148><!WA148><!WA148><a href=ftp://ftp.cygnus.com/pub/g++/gcc-2.7.0-repo.gz>
+    ftp://ftp.cygnus.com/pub/g++/gcc-2.7.0-repo.gz</a>
+
+    This allows you to use template repositories to instantiate
+    templates.
+    
+<li>
+    learn how to instantiate templates using the Cygnus 
+    <!WA149><!WA149><!WA149><!WA149><!WA149><!WA149><a href=#gcc_repo><i>-frepo</i></a>. 
+</ul>
+
+<p>
+    
+    
+Things in favor of ObjectSpace implementation:
+    
+<ul>
+<li> GREAT install utility, esp if you want to use it for multiple 
+     compilers.
+    
+<li> TONS of example programs. I believe these are now donated to the
+     public domain and archived at the HP STL site (butler.hpl.hp.com).
+    
+<li> Terrific manual. Just the manual is worth the $149 or so you pay for
+     OS STL.
+
+<li> source code (guess it'll be kind of hard not to supply source :-)
+</ul>
+    
+Not so good:
+<ul>
+<li>  Not the greatest telephone support.
+
+<li>  crippled by the limitations of GCC (2.7.0 should make this a lot
+      easier), the least of which are:
+      <ul>
+      <li> no just-used-member instantiation. One side effect is the
+	    extra unnecessary code generated, and the other one that 
+	    is that even you don't use sort on a list, you still have 
+	    to define relation operator &lt;.
+	  
+      <li> Manual instantiation is not uniform across platforms. The 
+	    Utah HP PA GCC release needs some extra instantiations.
+      </ul>
+
+<li>   Some non-standard methods (like <tt>erase()</tt>) and non-standard
+      algorithms (like <tt>release</tt>). The documentation does mention 
+      that these are non-standard, but the index should note that as well.
+
+      Both are trivial to write, and I did to make sure that the code
+      works with other implementations.
+</ul>
+
+Good and bad:
+<ul>
+<li>  OS provides a &lt;stl.h&gt; that includes EVERYTHING. I personally 
+      liked
+      it when I started out, and I recommend the same to newcomers. After
+      you figure out what STL is all about, it's pretty easy to include
+      only the necessary include files. Obvious compile time tradeoff.
+
+      This may not be available in other implementations (eg., ones from 
+      HP and FSF/GNU), but again, trivial to write. See 
+      <!WA150><!WA150><!WA150><!WA150><!WA150><!WA150><a href=#stl.h>here</a> for an example one.
+    
+<li>  Some header file names may be different from other implementations.
+      For example, OS &lt;algorith.h&gt; vs FSF/GNU and HP &lt;algo.h&gt;.
+
+      If you choose to include individual headers instead of the 
+      &lt;stl.h&gt;
+      shabang, watch out for these tiny things if you need portability
+      with other implementations.
+</ul>
+
+overall, it's definitely worth the money.
+
+<hr>
+<!WA151><!WA151><!WA151><!WA151><!WA151><!WA151><a href=#index>Back to index</a>
+<hr>
+
+<! ******************************************************************** >
+<! *           		Template Instantiation with GCC
+<! ******************************************************************** >
+<a name=gcc_templates><h1> Template instantiation with GCC </h1></a>
+
+<p>
+
+If you have templated code (eg., when using STL) and you're stuck with
+GCC, there are three ``somewhat portable'' ways to go (I don't like weird
+#pragma directives that are compiler specific):
+
+<ul>
+<li>  Compile everything with no special flags and let GCC 
+      instantiate everything in sight statically each translation unit.
+      This is great if you're building small applications (or if you have
+      a single source file), but results in incredible code bloat for
+      medium to large applications. 
+<li>  Compile everything with -fno-implicit-templates and manually
+      instantiate the templates. Takes a bit of patience (and a C++
+      demangler, such as c++filt), but certainly doable and it does
+      alleviate the template bloat somewhat. See <!WA152><!WA152><!WA152><!WA152><!WA152><!WA152><a href=#gcc_manual>
+      here </a> for more info.
+<li>  If you're willing to upgrade to GCC version 2.7.0 and apply the 
+      <!WA153><!WA153><!WA153><!WA153><!WA153><!WA153><a href=ftp://ftp.cygnus.com/pub/g++/gcc-2.7.0-repo.gz><i>frepo</i>
+      </a> patch from Jason Merrill of Cygnus Support, you will be
+      pleasantly surprised at how easy template instantiation can be. 
+      See <!WA154><!WA154><!WA154><!WA154><!WA154><!WA154><a href=#gcc_repo> here</a> for more info.
+</ul>
+
+Until I upgraded to GCC 2.7.0, I had been using the first method when
+starting a new project and then migrate to the second one. Now with the
+repository mechanism, I hardly ever do any manual instantiation.
+
+<p>
+
+<! ******************************************************************** >
+<! *           		Visibility of template definitions
+<! ******************************************************************** >
+<a name=gcc_template_visibility><h2> Visibility of template definitions
+    </h2></a>
+
+<p>
+
+One major complication with GCC is that all the template definitions 
+<em>must</em> be visible at the point of instantiation (which may not 
+be the case with Borland, but I wouldn't know about that), and if you have
+the template class members defined in a <tt>.cc</tt> file that is not 
+included in the declaration file (<tt>.h</tt>), then you'll get undefined 
+errors. The simple trick there is to conditionally include the .cc file 
+in the template header <tt>.h</tt> file with some preprocessor directive 
+that gets set for compilers like gcc. Take the following example:
+
+<pre>
+
+=== template.h
+template &lt;class T&gt; 
+class XX {
+public:
+    XX(T t) : t_(t) { }
+    T value() const;		// declaration only, defn not inline.
+private:
+    T t_;
+};
+
+==== template.cc
+#include "template.h"
+
+template &lt;class T&gt;
+T XX&lt;T&gt;::value() const {
+    return t_;
+}
+
+=== main.cc
+
+#include &lt;iostream.h&gt;
+#include "template.h"
+
+int main (int, char*[]) {
+    XX&lt;int&gt; xx(5);
+    cerr &lt;&lt; "value = " &lt;&lt; xx.value() &lt;&lt; endl;
+    return 0;
+}
+===
+
+</pre>
+
+<p>
+
+This will *NOT* work for gcc unless you also include template.cc at the
+end of template.h. You'll get undefined error that looks something like:
+
+<pre>
+    
+    ld: Undefined symbol
+	XX&lt;int&gt;::value(void) const
+    collect2: ld returned 2 exit status
+
+</pre>
+
+To get around this, you can always do the following:
+
+<p>
+
+<pre>
+
+=== template.h
+template &lt;class T&gt;
+class XX {
+public:
+    XX(T t) : t_(t) { }
+    T value() const;
+private:
+    T t_;
+};
+
+#if INCLUDE_TEMPLATE_DEFINITION
+# include "template.cc"
+#endif
+===
+
+</pre>
+
+and somewhere else (config.h or via makefile), define the cpp symbol
+INCLUDE_TEMPLATE_DEFINITION when using GCC. Or something like the
+following should work as well:
+
+<pre>
+
+#if __GNUC__ &lt;= 2 && __GNUC_MINOR__ &lt;= 7
+# define INCLUDE_TEMPLATE_DEFINITION
+#endif
+
+</pre>
+
+Now gcc will be able to do what you need since it can see the definition
+when it tries to instantiate XX&lt;int&gt; in main.cc.
+
+
+<hr>
+<!WA155><!WA155><!WA155><!WA155><!WA155><!WA155><a href=#gcc_template_visibility>Visibility of template
+	definitions</a>
+<br>
+<!WA156><!WA156><!WA156><!WA156><!WA156><!WA156><a href=#index>Back to index</a>
+<hr>
+
+
+<! ******************************************************************** >
+<! *           		Manual Instantiation of templates with GCC
+<! ******************************************************************** >
+<a name=gcc_manual><h2> Manual instantiation of templates with GCC</h2></a>
+
+<p>
+Let's start with a trivial program, where a list is the only STL 
+data type used, specifically list&lt;int&gt;. For the examples here, I'm 
+assuming ObjectSpace STL&lt;ToolKit&gt; with GCC 2.6.3 appropriately
+patched with Jason Merrill template fix (the same idea applies to 
+FSF/GNU STL, but the particular set of templates that need to be
+instantiated may differ due to implementation differences).
+
+<p>
+
+Here's a trivial test program:
+<hr>
+
+<PRE>
+<STRONG>#include</STRONG> &lt;<!WA157><!WA157><!WA157><!WA157><!WA157><!WA157><A HREF="#stl.h">stl.h</A>&gt;                <EM><STRONG>//</STRONG> include everything for simplicity.</EM>
+<STRONG>#include</STRONG> &lt;iostream.h&gt;
+<STRONG>#include</STRONG> &lt;stdlib.h&gt;
+
+<STRONG>int</STRONG> main<STRONG>(</STRONG><STRONG>int</STRONG><STRONG>,</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG><STRONG>[</STRONG><STRONG>]</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+    list<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG> list1<STRONG>;</STRONG>
+    <STRONG>for</STRONG><STRONG>(</STRONG><STRONG>int</STRONG> i <STRONG>=</STRONG> 0<STRONG>;</STRONG> i <STRONG>&lt;</STRONG> 10<STRONG>;</STRONG> <STRONG>++</STRONG>i<STRONG>)</STRONG> <STRONG>{</STRONG>
+        list1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>rand<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+    <STRONG>return</STRONG> 0<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+</PRE>
+
+<hr>
+
+Now running the following compile/link commands:
+
+<p>
+(STL_INCLUDE_DIRS and STL_LIBS depend on your system).
+
+<pre>
+% g++ -fno-implicit-templates -c $(STL_INCLUDE_DIRS) f1.cc
+% g++ -o f1 f1.o $(STL_LIBS) |& c++filt 
+ld: Undefined symbol 
+   list&lt;int&gt;::list(void) 
+   list&lt;int&gt;::push_back(int const &) 
+   list&lt;int&gt;::~list(void) 
+collect2: ld returned 2 exit status
+gmake: *** [f1] Error 1
+</pre>
+
+<p>
+
+So all we have to do is to instantiate the members of list&lt;int&gt; listed 
+above. But the problem is that GCC doesn't allow instantiating individual
+members, so we'll simply instantiate ALL the members for now (until GCC 
+fixes it).
+
+<p>
+
+so now I can create a file template-inst.cc:
+
+<hr>
+
+<PRE>
+<STRONG>#include</STRONG> &lt;<!WA158><!WA158><!WA158><!WA158><!WA158><!WA158><A HREF="#stl.h">stl.h</A>&gt;
+
+<STRONG>template</STRONG> <STRONG>class</STRONG> list<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>;</STRONG>
+</PRE>
+
+<hr>
+
+and compile this w/out -fno-implicit-templates option and link it with
+f1.o and we're in business.
+
+<pre>
+
+% g++ -c $(STL_INCLUDE_DIRS) template-inst.c
+% g++ -o f1 f1.o template-inst.o $(STL_LIBS) |& c++filt 
+% ./f1
+%
+
+</pre>
+
+Note that using -fno-implicit-templates on the manual instantiation file
+will get you into lots of trouble. Try it and see. Something to do with
+some of the static indirect template functions that don't get instantiated
+indirectly when using -fno-implicit-templates flag.
+
+<p>
+
+Now for a bit of reality. Let's say you are going to use the following 
+templated data types in STL:
+    
+<ul>
+<li> list&lt;int&gt;
+<li> deque&lt;int&gt;
+</ul>
+
+<p>
+
+and the following algorithms:
+    
+<ul>
+<li>    copy (to ostream_iterator)
+<li>    copy (list to deque)
+<li>    for_each (on list objects)
+</ul>
+
+<hr>
+
+<PRE>
+<STRONG>#include</STRONG> &lt;<!WA159><!WA159><!WA159><!WA159><!WA159><!WA159><A HREF="#stl.h">stl.h</A>&gt;                <EM><STRONG>//</STRONG> include everything for simplicity.</EM>
+<STRONG>#include</STRONG> &lt;iostream.h&gt;
+<STRONG>#include</STRONG> &lt;stdlib.h&gt;
+
+<STRONG>int</STRONG> main<STRONG>(</STRONG><STRONG>int</STRONG><STRONG>,</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG><STRONG>[</STRONG><STRONG>]</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+    deque<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG> deque1<STRONG>;</STRONG>
+    <STRONG>for</STRONG><STRONG>(</STRONG><STRONG>int</STRONG> i <STRONG>=</STRONG> 0<STRONG>;</STRONG> i <STRONG>&lt;</STRONG> 10<STRONG>;</STRONG> <STRONG>++</STRONG>i<STRONG>)</STRONG> <STRONG>{</STRONG>
+        deque1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>rand<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+
+    ostream_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG> out<STRONG>(</STRONG>cout<STRONG>,</STRONG> &quot;<EM> </EM>&quot;<STRONG>)</STRONG><STRONG>;</STRONG>
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM>==&gt; Deque1: </EM>&quot;<STRONG>;</STRONG>
+    copy<STRONG>(</STRONG>deque1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> deque1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> out<STRONG>)</STRONG><STRONG>;</STRONG>
+    cout <STRONG>&lt;&lt;</STRONG> endl <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    list<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG> list1<STRONG>;</STRONG>
+    copy<STRONG>(</STRONG>deque1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> deque1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> 
+        back_insert_iterator<STRONG>&lt;</STRONG>list<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG> <STRONG>&gt;</STRONG> <STRONG>(</STRONG>list1<STRONG>)</STRONG>
+    <STRONG>)</STRONG><STRONG>;</STRONG>
+
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM>==&gt; List1: </EM>&quot;<STRONG>;</STRONG>
+    copy<STRONG>(</STRONG>list1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> list1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> out<STRONG>)</STRONG><STRONG>;</STRONG>
+    cout <STRONG>&lt;&lt;</STRONG> endl <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    <EM><STRONG>//</STRONG></EM>
+    <EM><STRONG>//</STRONG> This nested (within main) struct is going to cause problems later</EM>
+    <EM><STRONG>//</STRONG> on.</EM>
+    <EM><STRONG>//</STRONG></EM>
+    <STRONG>struct</STRONG> FooBar <STRONG>{</STRONG>
+        <STRONG>void</STRONG> <STRONG>operator</STRONG><STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>(</STRONG><STRONG>int</STRONG> val<STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG>
+            cout <STRONG>&lt;&lt;</STRONG> &quot;<EM> </EM>&quot; <STRONG>&lt;&lt;</STRONG> val<STRONG>;</STRONG>
+        <STRONG>}</STRONG>
+    <STRONG>}</STRONG><STRONG>;</STRONG>
+    cout <STRONG>&lt;&lt;</STRONG> &quot;<EM>==&gt; For_each List1: </EM>&quot;<STRONG>;</STRONG>
+    for_each<STRONG>(</STRONG>list1<STRONG>.</STRONG>begin<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> list1<STRONG>.</STRONG>end<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>,</STRONG> FooBar<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    cout <STRONG>&lt;&lt;</STRONG> endl <STRONG>&lt;&lt;</STRONG> endl<STRONG>;</STRONG>
+
+    <STRONG>return</STRONG> 0<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+
+</PRE>
+<hr>
+<pre>
+% g++ -fno-implicit-templates -c $(STL_INCLUDE_DIRS) f2.cc
+% g++ -o f2 f2.o $(STL_LIBS) |& c++filt 
+ld: Undefined symbol 
+   list&lt;int&gt;::list(void) 
+   deque&lt;int&gt;::deque(void) 
+   deque&lt;int&gt;::begin(void) 
+   copy(list_iterator&lt;int&gt;, list_iterator&lt;int&gt;, ostream_iterator&lt;int&gt;) 
+   copy(deque_iterator&lt;int&gt;, deque_iterator&lt;int&gt;, ostream_iterator&lt;int&gt;) 
+   copy(deque_iterator&lt;int&gt;, deque_iterator&lt;int&gt;, back_insert_iterator&lt;list&lt;int&gt; &gt;) 
+   ostream_iterator&lt;int&gt;::ostream_iterator(ostream &, char *) 
+   deque&lt;int&gt;::end(void) 
+   for_each(list_iterator&lt;int&gt;, list_iterator&lt;int&gt;, main::FooBar) 
+   list&lt;int&gt;::~list(void) 
+   list&lt;int&gt;::begin(void) 
+   list&lt;int&gt;::end(void) 
+   back_insert_iterator&lt;list&lt;int&gt; &gt;::back_insert_iterator(list&lt;int&gt; &) 
+   deque&lt;int&gt;::~deque(void) 
+   deque&lt;int&gt;::push_back(int const &) 
+collect2: ld returned 2 exit status
+gmake: *** [f2] Error 1
+</pre>
+
+<p>
+
+Note the <em>for_each instantiation</em> -- we cannot manually instantiate 
+it because of the <em>main::FooBar</em>, so we simply move FooBar to file 
+scope (not shown here) and redo the compile and link commands.
+
+<p>
+After moving FooBar to file scope in f2.cc:
+
+<p>
+
+<pre>
+% g++ -fno-implicit-templates -c $(STL_INCLUDE_DIRS) f2.cc
+% g++ -o f2 f2.o $(STL_LIBS) |& c++filt 
+ld: Undefined symbol 
+   list&lt;int&gt;::list(void) 
+   deque&lt;int&gt;::deque(void) 
+   deque&lt;int&gt;::begin(void) 
+   copy(list_iterator&lt;int&gt;, list_iterator&lt;int&gt;, ostream_iterator&lt;int&gt;) 
+   copy(deque_iterator&lt;int&gt;, deque_iterator&lt;int&gt;, ostream_iterator&lt;int&gt;) 
+   copy(deque_iterator&lt;int&gt;, deque_iterator&lt;int&gt;, back_insert_iterator&lt;list&lt;int&gt; &gt;) 
+   ostream_iterator&lt;int&gt;::ostream_iterator(ostream &, char *) 
+   deque&lt;int&gt;::end(void) 
+   for_each(list_iterator&lt;int&gt;, list_iterator&lt;int&gt;, FooBar) 
+   list&lt;int&gt;::~list(void) 
+   list&lt;int&gt;::begin(void) 
+   list&lt;int&gt;::end(void) 
+   back_insert_iterator&lt;list&lt;int&gt; &gt;::back_insert_iterator(list&lt;int&gt; &) 
+   deque&lt;int&gt;::~deque(void) 
+   deque&lt;int&gt;::push_back(int const &) 
+collect2: ld returned 2 exit status
+gmake: *** [f2] Error 1
+
+</pre>
+<p>
+
+<hr>
+
+Now create our template-inst.cc file:
+<p>
+
+<hr>
+
+<PRE>
+<STRONG>#include</STRONG> &lt;<!WA160><!WA160><!WA160><!WA160><!WA160><!WA160><A HREF="#stl.h">stl.h</A>&gt;
+<STRONG>#include</STRONG> &lt;iostream.h&gt;
+
+<STRONG>template</STRONG> <STRONG>class</STRONG> list<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>;</STRONG>
+<STRONG>template</STRONG> <STRONG>class</STRONG> list_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>;</STRONG>
+<STRONG>template</STRONG> <STRONG>class</STRONG> back_insert_iterator<STRONG>&lt;</STRONG>list<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG> <STRONG>&gt;</STRONG><STRONG>;</STRONG>
+
+<STRONG>template</STRONG> <STRONG>class</STRONG> ostream_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>;</STRONG>
+
+<STRONG>template</STRONG> <STRONG>class</STRONG> deque<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>;</STRONG>
+<STRONG>template</STRONG> <STRONG>class</STRONG> deque_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>;</STRONG>
+
+<STRONG>template</STRONG> <STRONG>void</STRONG> copy<STRONG>(</STRONG>
+    list_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>,</STRONG> list_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>,</STRONG> ostream_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG>
+<STRONG>)</STRONG><STRONG>;</STRONG> 
+
+<STRONG>template</STRONG> <STRONG>void</STRONG> copy<STRONG>(</STRONG>
+    deque_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>,</STRONG> deque_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>,</STRONG> ostream_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG>
+<STRONG>)</STRONG><STRONG>;</STRONG>
+
+<STRONG>template</STRONG> <STRONG>void</STRONG> copy<STRONG>(</STRONG>
+    deque_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>,</STRONG> deque_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>,</STRONG> back_insert_iterator<STRONG>&lt;</STRONG>list<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG> <STRONG>&gt;</STRONG>
+<STRONG>)</STRONG><STRONG>;</STRONG> 
+
+<STRONG>struct</STRONG> FooBar <STRONG>{</STRONG>
+    <STRONG>void</STRONG> <STRONG>operator</STRONG><STRONG>(</STRONG><STRONG>)</STRONG> <STRONG>(</STRONG><STRONG>int</STRONG> val<STRONG>)</STRONG> <STRONG>const</STRONG> <STRONG>{</STRONG>
+        cout <STRONG>&lt;&lt;</STRONG> &quot;<EM> </EM>&quot; <STRONG>&lt;&lt;</STRONG> val<STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+<STRONG>}</STRONG><STRONG>;</STRONG>
+<STRONG>template</STRONG> <STRONG>void</STRONG> for_each<STRONG>(</STRONG>list_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>,</STRONG> list_iterator<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG><STRONG>,</STRONG> FooBar<STRONG>)</STRONG><STRONG>;</STRONG> 
+</PRE>
+<hr>
+
+<pre>
+
+% g++ -fno-implicit-templates -c $(STL_INCLUDE_DIRS) f2.cc
+% g++ -c $(STL_INCLUDE_DIRS) template-inst.cc
+% g++ -o f2 f2.o template-inst.o $(STL_LIBS) |& c++filt 
+% ./f2
+
+==> Deque1: 1103527590 377401575 662824084 1147902781 2035015474 368800899 1508029952 486256185 1062517886 267834847 
+
+==> List1: 1103527590 377401575 662824084 1147902781 2035015474 368800899 1508029952 486256185 1062517886 267834847 
+
+==> For_each List1:  1103527590 377401575 662824084 1147902781 2035015474 368800899 1508029952 486256185 1062517886 267834847
+
+</pre>
+
+<hr>
+<!WA161><!WA161><!WA161><!WA161><!WA161><!WA161><a href=#gcc_manual>Manual instantiation of templates with GCC</a>
+<br>
+<!WA162><!WA162><!WA162><!WA162><!WA162><!WA162><a href=#index>Back to index</a>
+<hr>
+
+<a name=gcc_repo><h2>Using GCC 2.7.0 template repository mechanism</h2></a>
+
+<p>
+Let's start with a trivial program, where a list is the only STL 
+data type used, specifically list&lt;int&gt;. For the examples here, I'm 
+assuming ObjectSpace STL&lt;ToolKit&gt; with GCC 2.7.0 appropriately
+patched with Jason Merrill template 
+<!WA163><!WA163><!WA163><!WA163><!WA163><!WA163><a href=ftp://ftp.cygnus.com/pub/g++/gcc-2.7.0-repo.gz><i>frepo</i></a>
+patch. It should also work just fine with any other STL implementation
+that happens to work with GCC.
+
+<p>
+
+<ul>
+<li> <!WA164><!WA164><!WA164><!WA164><!WA164><!WA164><a href=#gcc_repo_trivial> A trivial example: 
+    building a simple standalone application</a>
+<li> <!WA165><!WA165><!WA165><!WA165><!WA165><!WA165><a href=#gcc_repo_closure>Providing library closure(s)</a>
+</ul>
+
+<p>
+
+<a name=gcc_repo_trivial><h3> A trivial example: 
+    building a simple standalone application</h3></a>
+
+<p>
+Here's a trivial test program:</a>
+<hr>
+
+<PRE>
+<STRONG>#include</STRONG> &lt;<!WA166><!WA166><!WA166><!WA166><!WA166><!WA166><A HREF="#stl.h">stl.h</A>&gt;                <EM><STRONG>//</STRONG> include everything for simplicity.</EM>
+<STRONG>#include</STRONG> &lt;iostream.h&gt;
+<STRONG>#include</STRONG> &lt;stdlib.h&gt;
+
+<STRONG>int</STRONG> main<STRONG>(</STRONG><STRONG>int</STRONG><STRONG>,</STRONG> <STRONG>char</STRONG><STRONG>*</STRONG><STRONG>[</STRONG><STRONG>]</STRONG><STRONG>)</STRONG> <STRONG>{</STRONG>
+    list<STRONG>&lt;</STRONG><STRONG>int</STRONG><STRONG>&gt;</STRONG> list1<STRONG>;</STRONG>
+    <STRONG>for</STRONG><STRONG>(</STRONG><STRONG>int</STRONG> i <STRONG>=</STRONG> 0<STRONG>;</STRONG> i <STRONG>&lt;</STRONG> 10<STRONG>;</STRONG> <STRONG>++</STRONG>i<STRONG>)</STRONG> <STRONG>{</STRONG>
+        list1<STRONG>.</STRONG>push_back<STRONG>(</STRONG>rand<STRONG>(</STRONG><STRONG>)</STRONG><STRONG>)</STRONG><STRONG>;</STRONG>
+    <STRONG>}</STRONG>
+    <STRONG>return</STRONG> 0<STRONG>;</STRONG>
+<STRONG>}</STRONG>
+</PRE>
+
+<hr>
+
+Now running the following compile/link commands:
+
+<p>
+(STL_INCLUDE_DIRS and STL_LIBS depend on your system).
+
+<pre>
+% g++ -frepo -c $(STL_INCLUDE_DIRS) f1.cc
+% g++ -frepo -o f1 f1.o $(STL_LIBS) 
+collect: recompiling f1.cc
+collect: relinking
+collect: recompiling f1.cc
+collect: relinking
+collect: recompiling f1.cc
+collect: relinking
+%
+</pre>
+<p>
+
+And Voila! Granted, the first time you better go to lunch during build,
+but the subsequent times are much faster. How does it work? Quick answer:
+look in the build directory for f1.rpo and study it. You can get a good 
+feel for what's happenning here by doing the following:
+<UL>
+<li> start afresh, ie., delete f1, f1.o and f1.rpo
+<li> simply compile f1.cc with the -frepo option and copy (not 
+    rename!) the resulting f1.rpo file to another file, say f1.rpo.org
+<li> build the executable f1 as in the example above and now compare the 
+    updated f1.rpo with your saved version). Notice that difference in the
+    first column (the 'O's and the 'C's)
+</ul>
+
+If you'd like a longer explanation, read the source code :-)
+
+<p>
+
+<a name=gcc_repo_closure><h3> Providing library closure(s)</h3></a>
+
+Let's say you're building a library with <i>n</i> C++ source files and
+you would like to provide template closure so that the clients do not have
+to worry about instantiating templates used in/by the library code. The
+simplest method is the following:
+
+<pre>
+
+[
+    build all the object files needed to build the library using the 
+    -frepo option
+]
+% gcc $(CPPFLAGS) $(CXXFLAGS) -frepo -o closure $(OBJS)
+collect: recompiling xx.cc
+collect: relinking
+...
+collect: recompiling xx.cc
+collect: relinking
+[
+    Whole bunch of error messages about unresolved stuff -- ignore
+]
+% ar crv libxyz.a $(OBJS)
+% ranlib libxyz.a
+
+</pre>
+
+Here the link step forces the instantiation of the templates used within
+the library and rebuilds the .o files. Now the clients have to provide 
+the instantiation for only those templates that library does not directly
+use.
+
+<br>[Thanks to Jason Merrill for this info]<br>
+<p>
+
+This forced instantiation is fortunately quite extendible; consider the
+following case:
+<ul>
+<li> Application <i>a</i> needs to link with libraries <i>l1</i> and
+    <i>l2</i>.
+<li> Library <i>l2</i> uses <i>l1</i>, and hence some of the templates in
+   <i>l2</i> are also instantiated in <i>l1</i> if we build them
+   separately using the method described in the previous paragraph.
+</ul>
+<p>
+The fix is quite simple:
+<ul>
+<li> Build <i>l1</i> as in the example case above (ie., force the
+instantiation of all templates used within).
+<li> Build <i>l2</i> with <i>l1</i> on the command line.
+<pre>
+
+% gcc $(CPPFLAGS) $(CXXFLAGS) -frepo -o closure $(L2_OBJS) libl1.a
+collect: recompiling xx.cc
+collect: relinking
+...
+collect: recompiling xx.cc
+collect: relinking
+[
+    Whole bunch of error messages about unresolved stuff -- ignore
+]
+% ar crv libl2.a $(L2_OBJS)
+% ranlib libl2.a
+
+</pre>
+<li> Now link the application with the two libraries, and you're in
+business.
+</ul>
+
+<p>
+
+<hr>
+<!WA167><!WA167><!WA167><!WA167><!WA167><!WA167><a href=#gcc_repo>Using GCC 2.7.0 template repository mechanism</a>
+<br>
+<!WA168><!WA168><!WA168><!WA168><!WA168><!WA168><a href=#index>Back to index</a>
+<hr>
+
+
+<a name=stl.h><h1>An example combined <em>&lt;stl.h&gt;</em> file</h1></a>
+
+<PRE>
+<EM><STRONG>//</STRONG></EM>
+<EM><STRONG>//</STRONG> Suck in the entire (HP implementation derived) STL.</EM>
+<EM><STRONG>//</STRONG> This is very helpful for beginners, and one gets more familiar with</EM>
+<EM><STRONG>//</STRONG> STL, it's easy to figure out which headers to include. Also, different</EM>
+<EM><STRONG>//</STRONG> implementations might have different header names, eg., ObjectSpace</EM>
+<EM><STRONG>//</STRONG> has &lt;algorith.h&gt; and HP has &lt;algo.h&gt; Go figure.</EM>
+<EM><STRONG>//</STRONG></EM>
+
+<STRONG>#ifndef</STRONG> STL_H
+<STRONG>#define</STRONG> STL_H
+
+<STRONG>#include</STRONG> &lt;algo.h&gt;
+<STRONG>#include</STRONG> &lt;function.h&gt;
+<STRONG>#include</STRONG> &lt;iterator.h&gt;
+<STRONG>#include</STRONG> &lt;list.h&gt;
+<STRONG>#include</STRONG> &lt;deque.h&gt;
+<STRONG>#include</STRONG> &lt;map.h&gt;
+<STRONG>#include</STRONG> &lt;pair.h&gt;
+<STRONG>#include</STRONG> &lt;set.h&gt;
+<STRONG>#include</STRONG> &lt;stack.h&gt;
+<STRONG>#include</STRONG> &lt;vector.h&gt;
+
+<STRONG>#endif</STRONG>
+</PRE>
+<hr>
+<!WA169><!WA169><!WA169><!WA169><!WA169><!WA169><a href=#index>Back to index</a>
+<hr>
+
+<a name=resources><h1>Internet resources available</h1></a>
+
+Free STL implementations:
+
+<ol>
+<li> <!WA170><!WA170><!WA170><!WA170><!WA170><!WA170><a href=ftp://butler.hpl.hp.com/stl/stl.zip> HP</a>: This supposedly
+    compiles with Borland C++ 4.5 out of the box. An alternate site
+    is <!WA171><!WA171><!WA171><!WA171><!WA171><!WA171><a href=ftp://ftp.cs.rpi.edu/stl/stl.zip> here </a>.
+<li> <!WA172><!WA172><!WA172><!WA172><!WA172><!WA172><a href=ftp://prep.ai.mit.edu/pub/gnu/libg++-2.6.2.tar.gz>
+    FSF/GNU libg++ 2.6.2</a>: Works with 
+    <!WA173><!WA173><!WA173><!WA173><!WA173><!WA173><a href=ftp://prep.ai.mit.edu/pub/gnu/gcc-2.6.3.tar.gz> GCC 2.6.3</a>
+    or newer. Based on Carsten Bormann's work.
+<li> <!WA174><!WA174><!WA174><!WA174><!WA174><!WA174><a href=ftp://prep.ai.mit.edu/pub/gnu/libg++-2.7.0a.tar.gz>
+    FSF/GNU libg++ 2.7.0a</a>: Works with 
+    <!WA175><!WA175><!WA175><!WA175><!WA175><!WA175><a href=ftp://prep.ai.mit.edu/pub/gnu/gcc-2.7.0.tar.gz> GCC 2.7.0</a>
+    or newer. Based on Carsten Bormann's work.
+<li> <!WA176><!WA176><!WA176><!WA176><!WA176><!WA176><a href=http://www.di.unipi.it/~bagnara/bagnara.html> Bagnara</a>: 
+    Another hacked STL based on HP implementation (modified GNU sources).
+    Works with 
+    <!WA177><!WA177><!WA177><!WA177><!WA177><!WA177><a href=ftp://prep.ai.mit.edu/pub/gnu/gcc-2.6.3.tar.gz> GCC 2.6.3</a>
+    or newer.
+</ol>
+
+<p>
+
+C++ draft standard document:
+
+<ol>
+<li> <!WA178><!WA178><!WA178><!WA178><!WA178><!WA178><a href=http://www.cygnus.com/~mrs/wp-draft/index.html> HTML</a>
+    version of the DWP (courtesy of Mike Stump of Cygnus Support).
+<li> <!WA179><!WA179><!WA179><!WA179><!WA179><!WA179><a href=ftp://research.att.com/dist/stdc++/WP/>PDF and Postscript</a>
+    versions from Bell Labs ftp site.
+</ol>
+
+<p>
+
+Web pages/FTP sites with info on STL:
+
+<p>
+
+<ol>
+<li> <!WA180><!WA180><!WA180><!WA180><!WA180><!WA180><a href=ftp://butler.hpl.hp.com/stl/examples.zip> ObjectSpace
+    examples</a>: ObjectSpace has contributed over 300 examples to the 
+    public domain and these are a very good start for beginners.
+<li> <!WA181><!WA181><!WA181><!WA181><!WA181><!WA181><a href=http://weber.u.washington.edu/~bytewave/bytewave_stl.html>
+    Joseph Y. Laurino's</a> STL page.
+<li> <!WA182><!WA182><!WA182><!WA182><!WA182><!WA182><a href=http://www.cs.rpi.edu/~musser/stl.html> Musser's</a> 
+    STL docs and examples. Very nice.
+<li> <!WA183><!WA183><!WA183><!WA183><!WA183><!WA183><a href=http://www.xraylith.wisc.edu/~khan/software/stl/STL.newbie.html>
+    STL Newbie</a> home site.
+<li> <!WA184><!WA184><!WA184><!WA184><!WA184><!WA184><a href=ftp://butler.hpl.hp.com/stl/stl.faq> Marian Corcoran's</a> 
+    STL FAQ. 
+<li> 
+    <!WA185><!WA185><!WA185><!WA185><!WA185><!WA185><a href=http://www.cs.brown.edu/people/jak/programming/stl-tutorial/home.html> 
+    Jak Kirman's</a> STL Tutorial
+</ol>
+
+<p>
+<hr>
+<!WA186><!WA186><!WA186><!WA186><!WA186><!WA186><a href=#index>Back to index</a>
+<hr>
+
+<a name=ack><h1>Acknowledgments</h1></a>
+Thanks to Kate Hedstrom and Adam Back for providing much of the
+motivation for turning this article into HTML. I am grateful to 
+Jason Merrill and Mike Stump of Cygnus Support for informative posts
+in <tt>comp.lang.c++</tt> and especially for answering my questions on how
+to use the <em>-frepo</em> switch with GCC 2.7.0.
+Some C++ code fragments were converted to HTML using 
+<!WA187><!WA187><!WA187><!WA187><!WA187><!WA187><a href=ftp://tochna.technion.ac.il/pub/staff/dimka/c++2html/c++2html.shar.gz>
+<tt>c++2html</tt></a> written by Dimitry Kloper 
+(dimka@tochna.technion.ac.il). The <!WA188><!WA188><!WA188><!WA188><!WA188><!WA188><a href=http://www.xraylith.wisc.edu/~khan/software/stl/os_examples/examples.html> 
+STL examples </a> were contributed by ObjectSpace and can be found 
+<!WA189><!WA189><!WA189><!WA189><!WA189><!WA189><a href=ftp://butler.hpl.hp.com/stl/examples.zip> here </a>.
+
+<HR>
+
+<p>
+<!WA190><!WA190><!WA190><!WA190><!WA190><!WA190><a href=#index>Back to index</a>
+<br>
+<!WA191><!WA191><!WA191><!WA191><!WA191><!WA191><a href=http://www.xraylith.wisc.edu/~khan/software/CC/CC.html>Up to <em>C++ Class Libraries</em></a>
+<br>
+<!WA192><!WA192><!WA192><!WA192><!WA192><!WA192><a href=http://www.xraylith.wisc.edu/~khan/..>Back to <em>Mumit's Home Page</em></a>
+<br>
+For a GNU zipped tar copy of all files, click <!WA193><!WA193><!WA193><!WA193><!WA193><!WA193><a href=http://www.xraylith.wisc.edu/~khan/software/stl/STL.newbie.tar.gz>
+here</a> (Warning: it's usually never quite up-to-date).
+<br>
+View the <!WA194><!WA194><!WA194><!WA194><!WA194><!WA194><a href=http://www.xraylith.wisc.edu/~khan/software/stl/ChangeLog> ChangeLog </a>.
+<p>
+
+<HR>
+<ADDRESS> Mumit Khan<br> <!WA195><!WA195><!WA195><!WA195><!WA195><!WA195><a href=mailto:khan@xraylith.wisc.edu>
+khan@xraylith.wisc.edu</a><br>
+Last change: 13 Oct 1995
+</ADDRESS>
+
+
+</BODY>

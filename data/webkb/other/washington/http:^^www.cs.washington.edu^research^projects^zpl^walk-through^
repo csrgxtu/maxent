@@ -1,0 +1,384 @@
+Date: Tue, 10 Dec 1996 03:29:24 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+
+<head><title>ZPL Program Walk-Through</title></head>
+
+<body>
+<a name="top"></a>
+
+<h1><!WA0><!WA0><img align=center src="http://www.cs.washington.edu/research/projects/zpl/images/zpl.logo.gif"> ZPL Program Walk-Through</h1>
+
+<hr>
+
+<p> Though ZPL is a new, powerful array language, users of other
+languages such as C, Fortran, Pascal, <i>etc</i>. find it quite
+intuitive after a brief introduction.  Therefore, looking at a sample
+program is, perhaps, the fastest introduction to ZPL. </p>
+
+<p> The accompanying ZPL program solves the Jacobi computation: </p>
+
+<blockquote> <p> <i> <b>Jacobi</b>: Given an array <tt><b>A</b></tt>,
+iteratively replace its elements with the average of their four
+nearest neighbors, until the largest change between two consecutive
+iterations is less than <tt><b>delta</b></tt>. </i> </p> </blockquote>
+
+<p> For this example <tt><b>A</b></tt> will be a two dimensional
+array, and the program will generate its own data: <tt><b>A</b></tt>
+is initialized to 0.0, except for its southern boundary, which is set
+to the constant 1.0 in all positions.  The tolerance
+<tt><b>delta</b></tt> will be 0.0001. </p>
+
+<hr>
+<pre>
+ 1 /*                      Jacobi                                  */
+ 2 
+ 3 program jacobi;
+ 4 
+ 5 config var n       : integer = 10;                -- Declarations
+ 6            delta   : float   = 0.0001;
+ 7 
+<!WA1><!WA1><a href="#region"> 8</a> region     R       = [1..n, 1..n];
+ 9 
+<!WA2><!WA2><a href="#region">10</a> direction  north   = [-1, 0]; south = [ 1, 0];
+11            east    = [ 0, 1]; west  = [ 0,-1];
+12 
+13 procedure jacobi();                               -- Entry point
+<!WA3><!WA3><a href="#var">14</a> var A, Temp : [R] float;
+15     err     :     float;
+16 
+17              begin
+<!WA4><!WA4><a href="#initializations">18</a> [R]              A := 0.0;                        -- Initialization
+19 [north of R]     A := 0.0;
+20 [east  of R]     A := 0.0;
+21 [west  of R]     A := 0.0;
+22 [south of R]     A := 1.0;
+23 
+<!WA5><!WA5><a href="#body">24</a> [R]              repeat                           -- Main body
+25                      Temp := (A@north+A@east+A@west+A@south) / 4.0;
+26                      err  := max&lt;&lt; abs(A-Temp);
+27                      A    := Temp;   
+28                  until err < delta;
+29 
+30 [R]              writeln(A);                      -- Output result
+31              end;
+</pre>
+
+<center> <p>Figure 1: ZPL program for the Jacobi computation. 
+</p></center> <hr>
+
+<p> A quick skim of the Jacobi program shows that it is organized
+pretty much like other programs </p>
+
+<ul>
+  <li> <!WA6><!WA6><a href="#declarations">Declarations</a> (Lines 5-11) </li>
+  <li> Starting point for the executable part of the computation (Line 13) 
+       </li>
+  <li> <!WA7><!WA7><a href="#initializations">Initialization</a> of the 
+       <tt><b>A</b></tt> array (Lines 18-22) </li>
+  <li> <!WA8><!WA8><a href="#body">Iteration loop</a> to compute the result 
+       (Lines 24-28) </li>
+  <li> Result output (Line 30). </li>
+</ul>
+
+<p> The quick look also reveals that assignment is written
+<tt><b>:=</b></tt> rather than <tt><b>=</b></tt> as in C or Fortran,
+and that every statement is terminated by a semicolon.  Comments
+starting with <tt><b>--</b></tt> extend to the end of the line, while
+<tt><b>/*</b></tt> and <tt><b>*/</b></tt> are comment "brackets." </p>
+
+<p> The main thing that is unconventional about ZPL is that it
+computes with whole arrays rather than individual array elements.
+Thus, Line 18 </p>
+
+<pre>
+    [R]      A := 0.0;
+</pre>
+
+<p> sets the entire array <tt><b>A</b></tt> to zero.  No indexing.  No
+looping.  The <tt><b>[R]</b></tt> specifies the region of
+<tt><b>A</b></tt> to be assigned, which in this case is all of
+<tt><b>A</b></tt>.  Compare with similar computations expressed in
+other languages that must manipulate individual elements: </p>
+
+<!-- echris - table -->
+<pre>
+  <b>Fortran 77</b>            <b>C</b>                             <b>Pascal</b>
+     DO 10 I = 1,N      for (i = 0;i < n;i++) {       FOR I:=1 TO N DO
+        DO 10 J = 1,N       for (j = 0;i < n;j++) {       FOR J:=1 TO N DO
+  10 A(I,J) = 0.0               a[i][j] = 0.0;                A[I,J] := 0.0;
+                            }
+                        }
+</pre>
+
+<p> Even Fortran 90, another array language, is more cumbersome
+because of its required range specification: </p>
+
+<pre>
+    A[1:N,1:N] = 0.0                     !FORTRAN 90.
+</pre>
+
+<p> Concepts like "regions," explained momentarily, simplify ZPL,
+because the programmer can think more abstractly, and leave the low
+level details like indexing and looping to the language.  As shown
+below no performance is lost to have this convenience. </p>
+
+<p> The Jacobi program is explained in the following.  It might
+be convenient to </p>
+
+<center><b> clone your window to keep a copy of the program
+visible.</b></center>
+
+<p> A more thorough introduction to ZPL can be found in the <!WA9><!WA9><a
+href="http://www.cs.washington.edu/research/projects/zpl/papers/abstracts/guide.html">ZPL
+Programmer's Guide</a>. </p>
+
+
+<a name="region"></a><a name="var"></a>
+<h2> <a name="declarations"> Regions and Declarations <a> </h2>
+
+<p> A fundamental concept in ZPL is the notion of a <i>region</i>.  A
+region is simply a set of indices.  For example, (Line 8),
+
+<pre>
+    region R = [1..n, 1..n];
+</pre>
+
+specifies the standard indices of an <tt><b>n</b></tt> x
+<tt><b>n</b></tt> array, i.e. the set of ordered pairs {(1,1), (1,2),
+. . ., (<tt><b>n</b></tt>,<tt><b>n</b></tt>)}.  Regions can be used to
+declare arrays, which means the array is defined for those indices.
+Thus, (Line 14),
+
+<pre>
+    var   A, Temp : [R] float;
+</pre>
+
+declares two <tt><b>n</b></tt> x <tt><b>n</b></tt> array variables,
+<tt><b>A</b></tt> and <tt><b>Temp</b></tt>, composed of floating point
+numbers (called "real" in some languages) with indices given by region
+<tt><b>R</b></tt>.  The final variable declaration, (Line 15),
+
+<pre>
+    err: float;
+</pre>
+
+does not mention a region, and so <tt><b>err</b></tt> is declared to
+be a simple scalar variable. </p>
+
+<a name="direction"></a>
+
+<p> The program next declares a set of four directions.  Directions
+are used to transform regions, as in the expression <tt><b>north of
+R</b></tt> (Line 19).  They are vectors with as many elements as the
+region has dimensions.  The four direction declarations, (Lines
+10-11),
+
+<pre>
+    direction  north   = [-1, 0]; south = [ 1, 0];
+               east    = [ 0, 1]; west  = [ 0,-1];
+</pre>
+
+point unit distance in the four cardinal compass directions.  The
+figures below illustrate transformations on region <tt><b>R</b></tt>
+using these directions. </p>
+
+<h2> <a name="initializations"> Initializations </a> </h2>
+
+<p> Regions also allow ZPL computations to be extended to operate on
+entire arrays without explicit looping.  By prefixing a statement with
+a region specifier, which is simply the region name in brackets, the
+operations of the statement are applied to all elements in the array.
+Thus, (Line 18),
+
+<pre>
+    [R]  A := 0.0;
+</pre>
+
+<!-- n&#178 should give you n^2 -->
+
+assigns 0.0 to all n^2 elements of array <tt><b>A</b></tt> with
+indices in <tt><b>R</b></tt>.  </p>
+
+<p> Since many scientific problems have boundary conditions, the
+region specifier can be used to augment arrays with boundaries.
+Extending the array <tt><b>A</b></tt> with boundaries and initializing
+their values is the role of the next four lines, (Lines 19-22), </p>
+
+<pre>
+    [north of R] A := 0.0;
+    [east  of R] A := 0.0;
+    [west  of R] A := 0.0;
+    [south of R] A := 1.0;
+</pre>
+
+<p> The region specifier <b><tt>[</tt><i>d</i><tt> of R]</tt></b>
+defines the index set of a region adjacent to <tt><b>R</b></tt> in the
+<i>d</i> direction; the statement is then applied to the elements of
+the region.  Thus, <tt><b>[north of R]</b></tt> defines the index set
+which is a "0th" row for <tt><b>A</b></tt>, and the assignment
+<tt><b>A := 0.0</b></tt> initializes these elements.  The successive
+effects of these initialization statements are illustrated in Figure
+2.  </p>
+
+<hr>
+<center>
+<!WA10><!WA10><img src="http://www.cs.washington.edu/research/projects/zpl/walk-through/fig2.gif">
+</center>
+
+<center> <p> Figure 2.  Definition and initialization of boundaries 
+for A. </p></center>
+<hr>
+
+<h2> <a name="body"> Program Body </a> </h2>
+
+<p> With the declarations and initialization completed, programming
+the Jacobi computation is simple.  The repeat-loop, which iterates
+until the condition becomes true, has three statements:
+
+<ul>
+  <li> <!WA11><!WA11><a href="#compute">Compute</a> a new approximation by averaging 
+       all elements (Line 25). </li>
+  <li> Determine the <!WA12><!WA12><a href="#max">largest</a> amount of change 
+       between this and the new iteration (Line 26). </li>
+  <li> <!WA13><!WA13><a href="#update">Update</a> <tt><b>A</b></tt> with the new 
+       iteration (Line 27). </li>
+</ul></p>
+
+<p> All statements are executed in the context of the
+<tt><b>R</b></tt> region, since the repeat statement is prefixed by
+the <tt><b>[R]</b></tt> region specifier.  The statements operate as
+follows.</p>
+
+<p> <a name="compute"><b>Averaging</b></a>.  The averaging illustrates
+how explicit array indexing is avoided in ZPL by referring to adjacent
+array elements using the <tt><b>@</b></tt> operator.  The statement,
+(Line 25),
+
+<pre>
+    Temp := (A@north+A@east+A@west+A@south)/4.0;
+</pre>
+
+finds for each element in <tt><b>A</b></tt> the average of its four
+nearest neighbors and assigns the result to <tt><b>Temp</b></tt>.  An
+expression <tt><b>A@</b></tt><i>d</i>, executed in the context of a
+region <tt><b>R</b></tt>, results in an array of the same size and
+shape as <tt><b>R</b></tt> composed of elements of <tt><b>A</b></tt>
+offset in the direction <i>d</i>.  As illustrated in Figure 3,
+<tt><b>A@</b></tt><i>d</i> can be thought of as adding <i>d</i> to
+each index, or equivalently in this case, shifting
+<tt><b>A</b></tt>. </p>
+
+<hr>
+<center>
+<!WA14><!WA14><img src="http://www.cs.washington.edu/research/projects/zpl/walk-through/fig3.gif">
+</center>
+
+<center> <p>Figure 3.  "At" references to <tt><b>A</b></tt> and its
+boundaries executed in the context of a region specifier covering all
+of <tt><b>A</b></tt>; the dots shown in <tt><b>A</b></tt> correspond
+to element (1,1) in the shifted arrays. </p></center> 
+<hr>
+
+<p> The four arrays are combined elementwise, yielding the effect of
+computing for element <i>(i,j)</i> the sum of its four nearest
+neighbors.  This can be seen by the following identities:
+
+<pre>
+    (i,j)@north  =  (i, j) + north  =  (i, j) + (-1, 0)  =  (i-1, j  )
+    (i,j)@east   =  (i, j) + east   =  (i, j) + ( 0, 1)  =  (i  , j+1)
+    (i,j)@west   =  (i, j) + west   =  (i, j) + ( 0,-1)  =  (i  , j-1)
+    (i,j)@south  =  (i, j) + south  =  (i, j) + ( 1, 0)  =  (i+1, j  )
+</pre>
+
+The elements are then each divided by 4.0 and the result is stored
+into <tt><b>Temp</b></tt>.  </p>
+
+<p> <a name="max"><b>Maximum Finding</b></a>.  To compute the largest
+change of any element between the current and the next iteration,
+(Line 26), more elementwise array operations are performed.  The bold
+subexpression,
+
+<pre>
+    err := max&lt;&lt;<b>abs(A-Temp)</b>;
+</pre>
+
+causes the elements of <tt><b>Temp</b></tt> to be subtracted from the
+corresponding elements of <tt><b>A</b></tt>, and then the absolute value
+of each element is found i.e. <tt><b>abs(A[1,1]-Temp[1,1])</b></tt>,
+<tt><b>abs(A[1,2]-Temp[1,2])</b></tt>,. . . ,
+<tt><b>abs(A[n,n]-Temp[n,n])</b></tt>.  This computes the magnitude of
+change of all the elements.  To find the largest among these, a maximum
+reduction (<tt><b>max&lt;&lt;</b></tt>) is performed.  This operation "reduces"
+the entire array to its largest element.  This maximum is then assigned
+to <tt><b>err</b></tt>, a scalar variable, that controls the loop. </p>
+
+<p> <a name="update"><b>Update</b></a>.  The final statement of the
+loop, (Line 27),
+
+<pre>
+    A := Temp;
+</pre>
+
+simply installs <tt><b>Temp</b></tt> as the current value of
+<tt><b>A</b></tt>. </p>
+
+
+<h2> Performance </h2>
+
+<p> Although the ZPL program is written at a high level that relieves
+the programmer of many tedious details, it was not necessary to give
+up performance for this convenience.  The Jacobi program has been
+hand-coded in C and customized to two representative parallel
+computers, the Intel Paragon and the Kendall Square Research KSR-2.
+The results, shown in the accompanying graph, demonstrate that for
+this problem at least, ZPL was just as efficient as a "low level"
+programming solution.  </p>
+
+<hr>
+<center>
+<!WA15><!WA15><img src="http://www.cs.washington.edu/research/projects/zpl/walk-through/jacobi.su.ksr.gif"> <!WA16><!WA16><img src="http://www.cs.washington.edu/research/projects/zpl/walk-through/jacobi.su.par.gif">
+</center>
+
+<!-- Ithaca speedup graph-->
+<center> <p> Figure 4.  Speedup of the Jacobi program for 929 iterations
+(n=512) on the Kendall Square Research KSR-2, the Intel Paragon,
+and a C program handcoded for each machine. </p> </center> <hr>
+
+<p> ZPL programs perform well because the higher level array concepts
+are easier for a compiler to analyze and "understand."  This means
+that the ZPL compiler is frequently successful at finding
+opportunities to optimize the program.  </p>
+
+<p> <b>Summary</b>.  The Jacobi program illustrates fundamental
+properties of ZPL.  Computations are performed on whole arrays,
+avoiding error prone indexing and tedious looping.  Global operations
+like finding the maximum element of an array are provided as language
+primitives.  In general
+
+<blockquote><p><i>ZPL's high level array concepts simply the
+programmer's task and allow the compiler to produce very efficient
+code. </p></i> </blockquote>
+
+ZPL is therefore ideal for array-based scientific and engineering
+computations that require high performance. <p>
+
+
+<!-- put this at the bottom of all pages -->
+
+<inc srv "/research/projects/zpl/footer.html">
+<hr> <p>
+<center>
+[
+<!WA17><!WA17><a href="http://www.cs.washington.edu/research/projects/zpl/">ZPL</a> | 
+<!WA18><!WA18><a href="http://www.cs.washington.edu/">UW CSE</a> |
+<!WA19><!WA19><a href="http://www.cac.washington.edu:1183/">UW</a>
+]
+<address>
+<!WA20><!WA20><A HREF="mailto:zpl-info@cs.washington.edu">zpl-info@cs.washington.edu</a>
+</address>
+</center>
+
+</html>

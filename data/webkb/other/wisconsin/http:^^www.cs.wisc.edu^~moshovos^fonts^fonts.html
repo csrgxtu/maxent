@@ -1,0 +1,149 @@
+Date: Mon, 04 Nov 1996 23:48:41 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 06 Nov 1995 21:09:26 GMT
+Content-length: 4812
+
+<TITLE>Obtaining and installing Greek fonts</TITLE>
+
+<BODY>
+<h3> Disclaimer:</h3>
+This page and the files it points to are local copies of the originals
+from 
+<!WA0><a href="http://www.hyper.gr/makthes/fonts.html">
+www.hyper.gr
+</a>.
+It is provided in the hope that it will help overcome the slow response
+time experienced when accessing www.hyper.gr from "remote" places.
+For comments or suggestions please contact the owner of the page 
+<!WA1><a href="mailto:dimitris@hyper.gr">
+dimitris@hyper.gr
+</a>
+<H2>
+<HR SIZE=4>
+Obtaining and installing Greek fonts
+<HR SIZE=4>
+</H2>
+
+To correctly display the greek WWW pages on your screen, your
+system needs to support Greek according to the standard ISO 8859-7.
+If it doesn't, you need to install a suitable Greek "font". You also
+need to correctly configure your WWW-browser (Netscape, Mosaic etc).
+<p>
+We provide the software and instructions on how to do this on various
+platforms. Note that sofar our solutions enable you to view/print greek
+text (but not actually write Greek on all systems). We would appreciate
+your feedback and expert's opinion to
+<!WA2><a href="mailto:dimitris@hyper.gr">dimitris@hyper.gr</a>
+
+<H2>MS Windows 3.1</H2>
+
+To add greek fonts to your Windows 3.1x system
+<p>
+1) Get the file
+<!WA3><a href="http://www.cs.wisc.edu/~moshovos/fonts/arial.exe">arial.exe</a>
+(165 KB) and execute it in your \WINDOWS\SYSTEM
+directory. It is a self-extracting LHA file that contains greek
+TrueType fonts.
+<p>
+2) Add the "Arial Greek" font to your Windows.
+Select [Main] -> [Control Panel]. In the [Control Panel]
+double-click the [Fonts] icon. Click [Add New Font] and
+select all four "Arial Greek" as the fonts you want to add.
+<p>
+3) In Netscape, from menu [Options] select [Preferences].
+Then, from [Set Preferences On] choose [Fonts and Colors].
+Finally, using the [Choose Font] buttons, select "Arial Greek"
+as your viewing font.
+
+<HR SIZE=4>
+
+<H2>Macintosh / System 7.1 or later</H2>
+
+Get file
+<!WA4><a href="http://www.cs.wisc.edu/~moshovos/fonts/patcher.sit">patcher.sit</a>
+(unpack it with StuffIt) and apply the patch to Netscape 1.1N. You can then
+use your own high-quality greek (non-standard) Mac fonts, which yield
+best results for the moment. (tsaoutos@hyper.gr)
+<p>
+Alternatively, for an ELOT-928 compliant Mac font, get
+<!WA5><a href="http://www.cs.wisc.edu/~moshovos/fonts/hellastimes.sit.hqx">hellastimes.sit.hqx</a>
+(70 KB) and once you've decompressed its contents, drop the font files in
+the System Folder. Select "HellasTimes" as the font to use in Netscape
+and "MacRoman" encoding (Options -> Preferences -> etc). (topalis@euclid.iacm.forth.gr)
+
+<HR SIZE=4>
+
+<H2>DOS</H2>
+<H4>(LYNX or WWW and Unix shell account / terminal sw)</H4>
+
+These solutions REQUIRE a VGA graphics adapter (Hercules etc not supported).
+Get the file
+<!WA6><a href="http://www.cs.wisc.edu/~moshovos/fonts/abcgrl.com">abcgrl.com</a>
+(16 KB) and run it from DOS. It offers support for ISO 8859-7 (ELOT 928)
+and older, obsolete character sets. Switch to ELOT 928 with Alt-3.
+Other options are IBM 851 (Alt-2) and IBM 437 (Alt-1). (lialiamb@hyper.gr)
+<p>
+A more "orthodox" way, using the DOS-supplied programs for handling
+different codepages, uses a CPI file. Get 
+<!WA7><a href="http://www.cs.wisc.edu/~moshovos/fonts/dosgreek.zip">dosgreek.zip</a>
+(12 KB) a ZIP file which contains GAUSS.CPI and GRKEYB.COM.
+To add the Greek Font GAUSS.CPI under DOS 6.xx or DOS 7.0/Win95. (mchris@hyper.gr)
+<p>
+<pre>
+1) Add the following lines to your CONFIG.SYS file:
+
+if you have DOS 7.0/Win95
+	DEVICE=C:\WIN95\COMMAND\DISPLAY.SYS CON=(EGA,,1)
+	COUNTRY=xxx,737,C:\WIN95\COMMAND\COUNTRY.SYS
+
+if you have DOS 6.22 or earlier
+	DEVICE=C:\DOS\DISPLAY.SYS CON=(EGA,,1)
+	COUNTRY=xxx,737,C:\DOS\COUNTRY.SYS
+
+where xxx is your country code.
+	
+
+2) Add the following lines to your AUTOEXEC.BAT file:
+
+if you have DOS 7.0/Win95
+	C:\WIN95\COMMAND\MODE CON CODEPAGE PREPARE=((437) C:\path\GAUSS.CPI)
+	C:\WIN95\MODE CON CODEPAGE SELECT=437
+
+if you have DOS 6.22 or earlier
+	C:\DOS\MODE CON CODEPAGE PREPARE=((437) C:\path\GAUSS.CPI)
+	C:\DOS\MODE CON CODEPAGE SELECT=437
+
+where path is where is the GAUSS.CPI file.
+
+3) Restart the computer.
+
+To Add Greek DOS Keyboard driver add the following line to your
+CONFIG.SYS file:
+
+INSTALL=C:\path\GRKEYB.COM
+
+where "path" is where is the GRKEYB.COM file.
+
+The swap between the Greek and US Keyboard is with Ctrl-Alt-Space.
+</pre>
+<HR SIZE=4>
+
+<H2>X11 Window System Release 5 or later</H2>
+
+Get file
+<!WA8><a href="http://www.cs.wisc.edu/~moshovos/fonts/X11_greek_fonts.tar.z">X11_greek_fonts.tar.z</a>
+(58 KB) and decompress it with GNU gzip.
+<p>
+
+You can find an excellent description on installing Greek under X11 in
+<!WA9><a href="http://www.cs.wisc.edu/~moshovos/fonts/X11-greek.html">[Greek and X11]</a>
+(ngramm@hyper.gr).
+We also recommend that you read
+<!WA10><a href="http://www.duth.gr/gr/grfonts.html">[Greek in WWW]</a>
+by the Democritus University of Thrace. Consult the manual of your
+system for details.
+<HR SIZE=4>
+<!WA11><a href="http://www.cs.wisc.edu/~moshovos/fonts/index.html">Back to main newspage of www.hyper.gr</a>
+<H4> <!WA12><A HREF="http://www.hyper.gr/disclaimer.html">&copy 1995 Hypernet Ltd</A></H4>
+</BODY>

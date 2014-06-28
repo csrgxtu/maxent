@@ -1,0 +1,215 @@
+Date: Wed, 20 Nov 1996 22:33:11 GMT
+Server: Apache/1.0.3
+Content-type: text/html
+Content-length: 8751
+Last-modified: Sun, 17 Nov 1996 13:43:49 GMT
+
+<TITLE>B573, Section 1179: Scientific Computing II</TITLE>
+<body bgcolor="#ffffe0">
+
+<H2>B573: Scientific Computing II</H2>
+<DL>
+<DD> Iterative Solution of Large Scale Systems - Fall 1996
+<DD> B573, Section 1179
+<DD> 2:00-3:20PM, MW
+<DD> 115 Lindley Hall
+</DL>
+
+
+<H4>Contents</H4>
+
+<UL>
+<LI> <!WA0><A HREF="#general">General information</A>
+<LI> <!WA1><A HREF="#description">Course description</A>
+<LI> <!WA2><A HREF="#outline">Tentative course outline</A>
+<LI> <!WA3><A HREF="#assignments">Assignments</A>
+<LI> <!WA4><A HREF="#grading">Grading policies</A>
+<LI> <!WA5><A HREF="#lectures">Lecture notes</A>
+</UL>
+
+<HR>
+
+<A NAME="general"><H2>General Information</H2></A>
+
+<DL>
+<DT> Instructor:
+<UL>
+<li><ADDRESS><!WA6><A HREF="http://www.cs.indiana.edu/hyplan/bramley.html">Randall Bramley</A> /
+<!WA7><A HREF="mailto:bramley@cs.indiana.edu">bramley@cs.indiana.edu</A></ADDRESS>
+<li> email: <EM>bramley.cs.indiana.edu</EM>
+<li> 301A Lindley Hall
+</UL>
+
+<DT> Prerequisites:
+<DD> 
+ Mathematics M343 and one of M303 or M301, and a working knowledge of Fortran, C, or C++.
+Students should be able to write and run programs under a UNIX operating system.
+
+<DT> Textbook:
+<DD> <EM> Iterative Methods for Sparse Linear Systems </EM> by Yousef Saad. <BR>
+  This is intended as a reference work, and the material covered in this
+course is not identical to that in the textbook.
+</DL> 
+
+<H3>Office Hours</H3>
+Same as on the home page:  Mon - Wed, 9:00 - 10:00 AM.
+
+
+<A NAME="description"><H3>Course Description</H3></A>
+This course is for students in the sciences and applied mathematics whose research involves solving
+large sparse linear systems on a computer, and for computer scientists interested in learning
+the computational problems encountered in scientific and engineering codes.
+Sparse linear systems occur in most large scale physical modeling
+programs and often the setting up and solution of them accounts for the majority of the computer time.
+This course will focus on practical methods and their computer implementation,
+with a minimal amount of the underlying mathematical theory.  
+High level tools will be used in order to quickly implement and test methods.
+Existing software will also be used whenever possible,
+to avoid building everything from scratch, and to learn how to use existing software resources.
+Course goals include the ability to understand the influence of computer
+architecture on the choice of methods and data structures,
+the strengths and weaknesses of basic methods, common sources of large sparse linear systems,
+and the resulting implications for choosing methods and implementations.
+Students will finish the semester with a toolkit of solvers that they can
+then use for solving scientific problems, for 
+probing computer architectures, or
+for obtaining a deeper understanding of the methods commonly used in
+scientific computing.
+
+<HR>
+
+<A NAME="outline"><H3>Tentative Course Outline</H3></A>
+<UL>
+<li> A quick start: everything you knew about solving linear systems from your linear algebra course.
+<li> Introduction
+     <UL>
+        <li> Basic linear algebra you haven't seen before
+        <li> Sources of large sparse linear systems
+        <li> Computer architecture basics
+        <li> Data structures and stopping tests
+     </UL>
+<li> Iterative methods: pre-1972 technology
+     <UL>
+        <li> Linear stationary
+        <li> Conjugate gradients (CG): theory
+        <li> CG convergence properties
+        <li> Preconditioning CG
+     </UL>
+<li> Computational kernels and software resources
+     <UL>
+        <li> Expressing iterative methods in terms of  kernel operations
+        <li> Toolkits for sparse system manipulations: Sparskit,  Sparse BLAS
+        <li> Packages:  PetsC, Aztec, SPLIB, Templates
+        <li> Finding and using numerical software from the Net
+     </UL>
+<li> Iterative methods: recent technology
+     <UL>
+        <li> Basic derivation ideas: orthogonalization, restarts, truncation
+        <li> CG on normal equations
+        <li> Generalized Conjugate Residuals, Orthomin(m), GCR(m)
+        <li> Generalized Minimal Residuals, GMRES(m)
+        <li> Bi-conjugate gradients, CG-squared, CG-Stab, QMR
+     </UL>
+<li> Preconditioning and related ideas
+     <UL>
+        <li> Scaling/equilibration
+        <li> Incomplete factorization
+        <li> Polynomial methods and preconditioning
+        <li> Other "preconditioning" methods
+     </UL>
+<li> Crafting a solution strategy
+     <UL>
+        <li> Choice of solvers
+        <li> Choice of preconditioners
+        <li> Choice of stopping test(s)
+        <li> Reading  the literature: judicious use of a jaundiced eye
+     </UL> 
+</UL> 
+
+<HR>
+
+<A NAME="Newsgroup"><H3>Class Newsgroup</H3></A>
+
+The course newsgroup, <!WA8><A NAME=1 HREF="news:ac.csci.b573">ac.csci.b573</A>, will be
+used to post announcements, assignments, corrections, and any exceptions
+to usual office hours.  Use it to post
+questions related to the course or share related information with the
+class.  You are responsible for checking the newsgroup frequently, since
+any changes or corrections to assignments will appear there.
+
+<A NAME="grading"><H3>Grading Policies</H3></A>
+Grades are based on projects involving writing and/or analyzing computer programs.
+Written reports are required for these projects.
+Each assignment will have questions intended to begin your thinking process,
+not end it.  Grading will also be based on the questions you raise and answer in these projects.
+For example, if the question is "Which of the methods A and B is faster,"
+simply saying "A" is not sufficient.  You should also ask the underlying
+question ``What measure of fast is appropriate here?'',  "Why is A faster?", etc.
+Most projects you can tackle in groups.  
+However, you must give full attribution for any outside sources you use for ideas, software, or help.
+Also, I reserve the right to call on any member of the group to
+present/explain/defend/justify the group's work and to base the
+entire group's grade on that member's performance.  So be careful who you team up with!
+
+<H4>Cheating</H4>
+Don't.  You can get away with virtually any lifting or scavenging of material,
+provided you cite the source.  If your citation is "I photocopied another student's
+write-up" then you won't get many points on the assignment, but at least you
+won't be branded with a scarlet "P" and tarred and feathered.
+
+<HR>
+
+<A NAME="assignments"><H3>Assignments</H3></A>
+
+Assignments will be given often; a total of 10-15 will
+be given (depending on the chunk size of each one!).
+
+<UL> 
+<LI> <!WA9><A HREF="http://www.cs.indiana.edu/scicomp/b573/ex1.ps"> Assignment 1</A>
+<LI> <!WA10><A HREF="http://www.cs.indiana.edu/scicomp/b573/ex2.ps"> Assignment 2</A>
+<LI> <!WA11><A HREF="http://www.cs.indiana.edu/scicomp/b573/ex3.ps"> Assignment 3</A>
+<LI> <!WA12><A HREF="http://www.cs.indiana.edu/scicomp/b573/ex4.ps"> Assignment 4</A>
+Be sure to make the modifications that were specified in class lecture,
+designed to make your life easier!
+<LI> <!WA13><A HREF="http://www.cs.indiana.edu/scicomp/b573/ex5.ps"> Assignment 5</A>
+<LI> <!WA14><A HREF="http://www.cs.indiana.edu/scicomp/b573/ex6.ps"> Assignment 6</A> on GMRES(m).
+<LI> <!WA15><A HREF="http://www.cs.indiana.edu/scicomp/b573/ex7.ps"> Assignment 7</A> on projectors.
+<LI> <!WA16><A HREF="http://www.cs.indiana.edu/scicomp/b573/ex8.ps"> Assignment 8</A> on the composite step
+CGSTAB algorithm of Chan and Szeto.
+</UL>
+
+
+<HR>
+
+<A NAME="lectures"><H3>Lecture Notes</H3></A>
+
+This is not a full or complete set of lecture notes; in the
+words of a not-so-great philosopher, "You had to be there".
+If you miss a lecture,
+be sure to check with other students in the class for what went on.
+These are in Postscript, since latex2html still is not up to snuff
+for papers with lots of math symbols.
+
+<UL> 
+<LI> <!WA17><A HREF="http://www.cs.indiana.edu/scicomp/b573/conv.ps">Conventions and Notation</A>
+<LI> <!WA18><A HREF="http://www.cs.indiana.edu/scicomp/b573/class.ps">Classifications of Problems and Methods</A>
+<LI> <!WA19><A HREF="http://www.cs.indiana.edu/scicomp/b573/origins.ps">Origins of Linear Problems</A>
+<LI> <!WA20><A HREF="http://www.cs.indiana.edu/scicomp/b573/memory.ps">Memory Systems and Performance</A>
+<LI> <!WA21><A HREF="http://www.cs.indiana.edu/scicomp/b573/pipelining.ps">Pipelining and Performance</A>
+<LI> <!WA22><A HREF="http://www.cs.indiana.edu/scicomp/b573/blas.html">The BLAS</A>
+<LI> <!WA23><A HREF="http://www.cs.indiana.edu/scicomp/b573/ds.ps">Sparse Matrix Data Structures</A>
+<LI> <!WA24><A HREF="http://www.cs.indiana.edu/scicomp/b573/cg0.ps">Conjugate Gradient Algorithm: Part 0</A>
+<LI> <!WA25><A HREF="http://www.cs.indiana.edu/scicomp/b573/ls.ps">Linear Stationary Methods</A>
+<LI> <!WA26><A HREF="http://www.cs.indiana.edu/scicomp/b573/cheby.ps">Chebyshev Method and Residual Polynomials</A>
+<LI> <!WA27><A HREF="http://www.cs.indiana.edu/scicomp/b573/cg.ps">Conjugate Gradient Algorithm: Part 1</A>
+<LI> <!WA28><A HREF="http://www.cs.indiana.edu/scicomp/b573/tools.html">Toolboxs for Iterative Methods</A>
+<LI> <!WA29><A HREF="http://www.cs.indiana.edu/scicomp/b573/iccg.ps">Preconditioning: CG</A>
+<LI> <!WA30><A HREF="http://www.cs.indiana.edu/scicomp/b573/leastsq.ps">Least Squares Problems and Algorithms</A>
+<LI> <!WA31><A HREF="http://www.cs.indiana.edu/scicomp/b573/meth1.ps">Nonsymmetric Methods I: GCR, Orthomin, GMRES</A>
+<LI> <!WA32><A HREF="http://www.cs.indiana.edu/scicomp/b573/precond.ps">Preconditioning: Nonsymmetric Solvers</A>
+<LI> <!WA33><A HREF="http://www.cs.indiana.edu/scicomp/b573/matlab.html">MATLAB Information</A>
+<LI> <!WA34><A HREF="http://www.cs.indiana.edu/scicomp/b573/proj.ps">Projectors, Lanczos Algorithm, and Bi-CG Methods</A>
+<LI> <!WA35><A HREF="http://www.cs.indiana.edu/scicomp/b573/iter.eps">An Idiosyncratic View of Nonsymmetric Solvers</A>
+<LI> <!WA36><A HREF="http://www.cs.indiana.edu/scicomp/b573/perm.eps">Basic Matrix Reordering</A>
+</UL>
+

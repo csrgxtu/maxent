@@ -1,0 +1,76 @@
+Server: Netscape-Enterprise/2.0a
+Date: Tue, 14 Jan 1997 21:35:27 GMT
+Accept-ranges: bytes
+Last-modified: Mon, 13 May 1996 14:55:02 GMT
+Content-length: 2294
+Content-type: text/html
+
+<HTML>
+<HEAD>
+<title>
+Boussinesq Bubbles
+</title>
+<BODY bgcolor="#ffffff">
+<H2>
+<UL>
+Investigation of singularities in Boussinesq convection
+<HR>
+<Center> Michael Minion </Center>
+<HR>
+</UL>
+</H2>
+<H4>
+<!WA0><IMG SRC="http://math.nyu.edu/postdocs/minion/res/color_bubbles.gif" ALT="COLOR BUBBLE">
+<P> 
+The figure above was produced using a Godunov/Projection method
+applied to the two-dimensional equations for Boussinesq convection.
+The initial conditions for this computation were taken from
+a paper by E and Shu and consist of a smooth "bubble" of density
+in a zero flow field.  As the bubble begins to rise, strong
+fronts in the density field form (shown by the contour lines in the
+figure) and vorticity is baroclinically produced along this front
+(shown by the color shading).
+As the numerical method begins to under-resolve the flow, the
+density front destabilizes and rolls up under the influence
+of the vorticity.  Because of the experience gained from
+studying the appearance of <!WA1><a href="http://math.nyu.edu/postdocs/minion/res/under.html">spurious vortices</a>
+ in under-resolved flows
+the correctness of the front roll-up is questionable despite
+the fact that it is consistent with the evolution of the bubble.
+
+In order to investigate this problem further I have developed
+adaptive mesh refinement techniques for the Boussinesq equations.
+Below is an example of a simulation using initial conditions from
+the paper of Siggia and Pumir.
+</P>
+<!WA2><IMG SRC="http://math.nyu.edu/postdocs/minion/res/s3ac.gif" ALT="REFINED BUBBLE">
+<P>
+<P>
+<H3> Impact: </H3>
+Besides providing an excellent test problem for the development,
+improvement and evaluation of adaptive mesh refinement methods
+for incompressible flow, I hope to also shed some light on
+the open and sometimes controversal question as to whether or
+not the two-dimensional Boussinesq equations admit finite
+time singularities.
+</P>
+<H2> References </H2>
+<UL>
+<LI>
+   Weinan E and Chi-Wang Shu,	
+   <B>Small-scale structures in Boussinesq convection</B>,  
+    <CITE> Physics of Fluids, </CITE>	January 1994.
+<LI>
+   Alain Pumir and Eric D, Siggia,	
+   <B>Development of singular solutions to the axisymmetric Euler equations</B>
+    <CITE> Physics of Fluids, </CITE>July 1992.
+</li>
+<LI>
+A paper containing results from my study is in preparation.
+</LI>
+<P>
+<!WA3><A HREF="http://math.nyu.edu/postdocs/minion/index.html"> 
+To Michael Minion's Homepage</A>
+</P>
+
+

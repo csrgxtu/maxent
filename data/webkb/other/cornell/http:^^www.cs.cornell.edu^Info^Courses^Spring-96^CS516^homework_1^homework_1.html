@@ -1,0 +1,29 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 16-Dec-96 23:50:46 GMT
+Content-Type: text/html
+Content-Length: 2435
+Last-Modified: Tuesday, 06-Feb-96 18:31:34 GMT
+
+<!-- This file was created with the fm2html filter.
+The filter is copyright Norwegian Telecom Research and
+was programmed by Jon Stephenson von Tetzchner. -->
+
+
+<TITLE>Homework 1</TITLE>
+<CENTER><H1><A NAME="HDT0"><B>Homework 1</A></H1></CENTER>
+<center>  </B>Handed out: Tue, Jan 22nd</center>
+<center>  Due: Tue, Jan 29th, 10am, Upson 4105b</center>
+<P>  
+<P>  This assignment <B>must</B> be done in <B>groups of two</B>. Hand in one solution per group (printed, not manuscript).
+<P>  
+<P>  You are, as so often, sitting on an Xterm and remotely logged into some random slow machine. You wonder how fast this turtle really is. As so often, the system files only give cryptic model numbers. So you decide to run a few experiments yourself. (The main goal of this homework is to get you familiar with taking precise measurements.)
+<H1> 1  Measure processor speed</H1>
+<P>  Write a "10-line" program that measures the instruction execution rate of your processor. On SunOS use gettimeofday to take measurements.
+<P>  Hints: You probably want to write a very tight loop. You probably also want to count the instructions in the loop using the compiler disassembly. You probably also want to make sure you time enough iterations to dwarf measurement overheads and few enough to avoid time-slice problems.
+<P>  Run your benchmark on two different sparcstations and on one other "interesting" machine. Hand in your 10-line program, evidence that you are counting instructions correctly, and the results in MIPS. (Total one page max.)
+<H1>Measure cache characteristics</H1>
+<P>  Let's assume you want to run large simulations and therefore you are particularly interested in the memory hierarchy on the machines you found. Write a "1-page" program that allows you to determine the following cache characteristics: number of levels of cache, size of each cache, associativity of each cache, and block size of each cache.
+<P>  Hints: don't write a program that prints the answers, instead, allocate a large array (use malloc) and stomp all over it in various well-crafted patterns. Time how long it takes per array access (again using many iterations). Graph the results and draw conclusions.
+<P>  Run your benchmark on two different sparcstations, at least one of which should have two levels of cache. Hand in your program (one page of enscript -r2G max), the results/plots, and an explanation of the results (one page of explanations max).
+

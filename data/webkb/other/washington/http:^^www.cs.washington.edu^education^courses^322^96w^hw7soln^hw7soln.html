@@ -1,0 +1,168 @@
+Date: Wed, 08 Jan 1997 20:39:25 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE>CSE 322  
+Assignment 7 Solution Set  
+Wednesday, February 21, 1996</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value="CSE 322  
+Assignment 7 Solution Set  
+Wednesday, February 21, 1996">
+<meta name="keywords" value="hw7soln">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ <BR> <HR><A NAME=tex2html1 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.washington.edu/general/latex2html_icons//next_motif.gif"></A>   <IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.washington.edu/general/latex2html_icons//up_motif_gr.gif">   <IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.washington.edu/general/latex2html_icons//previous_motif_gr.gif">         <BR>
+<B> Next:</B> <A NAME=tex2html2 HREF="node1.html">   About this document </A>
+<BR> <HR> <P>
+<P>
+<H1>CSE 322  
+Assignment 7 Solution Set  
+Wednesday, February 21, 1996</H1>
+<P><STRONG></STRONG><P>
+<P><STRONG></STRONG><P>
+<P>
+<OL><LI> 
+<OL><LI> 
+(<IMG  ALIGN=BOTTOM ALT="" SRC="img1.gif">) First we'll show that 
+for all <IMG  ALIGN=MIDDLE ALT="" SRC="img2.gif"> and <IMG  ALIGN=MIDDLE ALT="" SRC="img3.gif">,
+if <IMG  ALIGN=MIDDLE ALT="" SRC="img4.gif">, then
+<IMG  ALIGN=BOTTOM ALT="" SRC="img5.gif"> for all <IMG  ALIGN=MIDDLE ALT="" SRC="img6.gif"> by
+induction on <b>n</b>:
+<P>
+ <b> Basis:</b> Suppose <IMG  ALIGN=MIDDLE ALT="" SRC="img7.gif">.
+The only way this could be true is if <b>A = B</b> and <IMG  ALIGN=BOTTOM ALT="" SRC="img8.gif">.
+Certainly, <b>A</b> derives <b>A</b> in zero steps, so <IMG  ALIGN=BOTTOM ALT="" SRC="img9.gif">
+in the base case.
+<P>
+ <b> Inductive Hypothesis:</b> Assume for all <IMG  ALIGN=MIDDLE ALT="" SRC="img10.gif">
+and <IMG  ALIGN=MIDDLE ALT="" SRC="img11.gif">
+that <IMG  ALIGN=MIDDLE ALT="" SRC="img12.gif"> implies <IMG  ALIGN=BOTTOM ALT="" SRC="img13.gif">.
+<P>
+ <b> Inductive Step:</b> 
+Consider some <IMG  ALIGN=MIDDLE ALT="" SRC="img14.gif">, <IMG  ALIGN=MIDDLE ALT="" SRC="img15.gif"> where 
+<IMG  ALIGN=MIDDLE ALT="" SRC="img16.gif">. Since <b>|x| = n+1</b>,
+<b>x = ay</b> for some <IMG  ALIGN=MIDDLE ALT="" SRC="img17.gif"> and <IMG  ALIGN=MIDDLE ALT="" SRC="img18.gif">.
+The computation must have been 
+<IMG  ALIGN=MIDDLE ALT="" SRC="img19.gif"> 
+for some <IMG  ALIGN=MIDDLE ALT="" SRC="img20.gif"> where <IMG  ALIGN=MIDDLE ALT="" SRC="img21.gif">.
+By the construction of <b>M</b> from <b>G</b>, this means that there must be
+a production <IMG  ALIGN=BOTTOM ALT="" SRC="img22.gif"> in <b>P</b>.  Also, by the induction 
+hypothesis, since <IMG  ALIGN=MIDDLE ALT="" SRC="img23.gif">, we know 
+that <IMG  ALIGN=MIDDLE ALT="" SRC="img24.gif">.  Thus,
+<IMG  ALIGN=MIDDLE ALT="" SRC="img25.gif">.
+<P>
+Thus, for all <IMG  ALIGN=MIDDLE ALT="" SRC="img26.gif">, <IMG  ALIGN=MIDDLE ALT="" SRC="img27.gif">, <IMG  ALIGN=MIDDLE ALT="" SRC="img28.gif">,
+<IMG  ALIGN=MIDDLE ALT="" SRC="img29.gif"> implies <IMG  ALIGN=BOTTOM ALT="" SRC="img30.gif">.
+<P>
+(<IMG  ALIGN=BOTTOM ALT="" SRC="img31.gif">) Next we'll show that 
+for all <IMG  ALIGN=MIDDLE ALT="" SRC="img32.gif"> and <IMG  ALIGN=MIDDLE ALT="" SRC="img33.gif">,
+if <IMG  ALIGN=BOTTOM ALT="" SRC="img34.gif">, then 
+<IMG  ALIGN=MIDDLE ALT="" SRC="img35.gif"> for all <IMG  ALIGN=MIDDLE ALT="" SRC="img36.gif"> by
+induction on <b>n</b>:
+<P>
+ <b> Basis:</b> Suppose that <IMG  ALIGN=BOTTOM ALT="" SRC="img37.gif">.
+The only way this could be true is if <b>A = B</b> and <IMG  ALIGN=BOTTOM ALT="" SRC="img38.gif">.
+Since <IMG  ALIGN=MIDDLE ALT="" SRC="img39.gif">, the base case is true.
+<P>
+ <b> Inductive Hypothesis:</b> Assume for all <IMG  ALIGN=MIDDLE ALT="" SRC="img40.gif">
+and <IMG  ALIGN=MIDDLE ALT="" SRC="img41.gif">
+that <IMG  ALIGN=BOTTOM ALT="" SRC="img42.gif"> implies <IMG  ALIGN=MIDDLE ALT="" SRC="img43.gif">.
+<P>
+ <b> Inductive Step:</b> 
+Consider some <IMG  ALIGN=MIDDLE ALT="" SRC="img44.gif">, <IMG  ALIGN=MIDDLE ALT="" SRC="img45.gif"> where 
+<IMG  ALIGN=BOTTOM ALT="" SRC="img46.gif">. Since <b>n+1 &gt; 0</b> and <b>G</b> is a
+regular grammar of the restricted form given in class, 
+we know that the first step of the derivation involves a
+production of the form <IMG  ALIGN=BOTTOM ALT="" SRC="img47.gif"> where <IMG  ALIGN=MIDDLE ALT="" SRC="img48.gif">
+is the first character of <b>x</b> and <IMG  ALIGN=MIDDLE ALT="" SRC="img49.gif">.  Thus, the derivation
+looks like <IMG  ALIGN=MIDDLE ALT="" SRC="img50.gif"> where <b>x = ay</b>.
+This means that <IMG  ALIGN=MIDDLE ALT="" SRC="img51.gif">, so by the induction
+hypothesis, <IMG  ALIGN=MIDDLE ALT="" SRC="img52.gif">.  In addition,
+by our construction of <IMG  ALIGN=BOTTOM ALT="" SRC="img53.gif"> and the fact that
+<IMG  ALIGN=MIDDLE ALT="" SRC="img54.gif">, <b>C</b> must be in <IMG  ALIGN=MIDDLE ALT="" SRC="img55.gif">,
+and so <IMG  ALIGN=MIDDLE ALT="" SRC="img56.gif">.  Therefore,
+<IMG  ALIGN=MIDDLE ALT="" SRC="img57.gif">.
+<P>
+Thus, for all <IMG  ALIGN=MIDDLE ALT="" SRC="img58.gif">, <IMG  ALIGN=MIDDLE ALT="" SRC="img59.gif">, <IMG  ALIGN=MIDDLE ALT="" SRC="img60.gif">,
+<IMG  ALIGN=BOTTOM ALT="" SRC="img61.gif"> implies <IMG  ALIGN=MIDDLE ALT="" SRC="img62.gif">.
+<P>
+<LI> 
+Proof that <IMG  ALIGN=MIDDLE ALT="" SRC="img63.gif">:
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img64.gif"><P>
+<P>
+Proof that <IMG  ALIGN=MIDDLE ALT="" SRC="img65.gif">:
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img66.gif"><P>
+If <IMG  ALIGN=MIDDLE ALT="" SRC="img67.gif">, since <b>G</b> is regular then <IMG  ALIGN=BOTTOM ALT="" SRC="img68.gif"> for some <IMG  ALIGN=MIDDLE ALT="" SRC="img69.gif"> where <IMG  ALIGN=MIDDLE ALT="" SRC="img70.gif">.
+If <IMG  ALIGN=BOTTOM ALT="" SRC="img71.gif">, then  <IMG  ALIGN=BOTTOM ALT="" SRC="img72.gif"> and <IMG  ALIGN=MIDDLE ALT="" SRC="img73.gif"> where <b>A=S</b>.  In either case
+we have for some <IMG  ALIGN=MIDDLE ALT="" SRC="img74.gif">:
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img75.gif"><P>
+<P>
+Thus, <b>M</b> accepts exactly <IMG  ALIGN=MIDDLE ALT="" SRC="img76.gif">.
+<P>
+</OL>
+<P>
+<LI> Number 12 on page 164.
+<P>
+<OL><LI> The state transition table of <b>M</b>:
+<P>
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img77.gif"><P>
+<P>
+<LI>
+All the possible computations of the string <b>aaabb</b> are given 
+below.  Computations that terminate with errors 
+(those that have no successor configurations and have not
+processed the entire input string) are marked with <IMG  ALIGN=MIDDLE ALT="" SRC="img78.gif">:
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img79.gif"><P>
+<P>
+<LI> Since <IMG  ALIGN=MIDDLE ALT="" SRC="img80.gif"> is a final state and <IMG  ALIGN=MIDDLE ALT="" SRC="img81.gif">, 
+the string <b>aaabb</b> is in <IMG  ALIGN=MIDDLE ALT="" SRC="img82.gif">.
+<P>
+<LI>  <IMG  ALIGN=MIDDLE ALT="" SRC="img83.gif"> is one regular expression
+that describes <IMG  ALIGN=MIDDLE ALT="" SRC="img84.gif">.  This comes from the fact that
+you can get to <IMG  ALIGN=MIDDLE ALT="" SRC="img85.gif"> with a string of the form <IMG  ALIGN=BOTTOM ALT="" SRC="img86.gif"> 
+or <IMG  ALIGN=BOTTOM ALT="" SRC="img87.gif">.  From
+<IMG  ALIGN=MIDDLE ALT="" SRC="img88.gif">, we can hop to <IMG  ALIGN=MIDDLE ALT="" SRC="img89.gif"> and back to <IMG  ALIGN=MIDDLE ALT="" SRC="img90.gif"> with <IMG  ALIGN=BOTTOM ALT="" SRC="img91.gif"> any
+number of times.  This describes all the possible 
+paths to <IMG  ALIGN=MIDDLE ALT="" SRC="img92.gif">, so we have 
+<IMG  ALIGN=MIDDLE ALT="" SRC="img93.gif"> which simplifies
+to the above regular expression.
+</OL>
+<P>
+<LI> Here is an NFA that accepts exactly the strings
+described by <IMG  ALIGN=MIDDLE ALT="" SRC="img94.gif">:
+<P>
+<center>
+<IMG SRC="hw7dfa3.gif">
+</center>
+<P>
+<LI> Here is a DFA that accepts the strings ending in <b>abaa</b>:
+<P>
+<center>
+<IMG SRC="hw7dfa4a.gif">
+</center>
+<P>
+Here is an NFA with 6 transitions that accepts the same:
+<P>
+<center>
+<IMG SRC="hw7dfa4b.gif">
+</center>
+<P>
+</OL><BR> <HR>
+<UL> 
+<LI> <A NAME=tex2html3 HREF="node1.html#SECTION00010000000000000000">   About this document ... </A>
+</UL>
+<BR> <HR><A NAME=tex2html1 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.washington.edu/general/latex2html_icons//next_motif.gif"></A>   <IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.washington.edu/general/latex2html_icons//up_motif_gr.gif">   <IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.washington.edu/general/latex2html_icons//previous_motif_gr.gif">         <BR>
+<B> Next:</B> <A NAME=tex2html2 HREF="node1.html">   About this document </A>
+<BR> <HR> <P>
+<BR> <HR>
+<P><ADDRESS>
+<I>James Fix <BR>
+Wed Feb 21 14:07:42 PST 1996</I>
+</ADDRESS>
+</BODY>

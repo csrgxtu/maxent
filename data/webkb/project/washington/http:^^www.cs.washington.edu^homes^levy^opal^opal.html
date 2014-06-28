@@ -1,0 +1,94 @@
+Date: Thu, 21 Nov 1996 20:32:01 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Wed, 15 Nov 1995 23:21:19 GMT
+Content-length: 2596
+
+<html>
+
+<head>
+        <title>The OPAL Operating System Project</title>
+</head>
+
+<body>
+
+<h1>
+Opal
+</h1> <p>
+
+<hr>
+The Opal project is exploring a new operating system structure, tuned
+to the needs of complex applications, such as CAD/CAM, where a number
+of cooperating programs manipulate a large shared persistent database
+of objects.  In Opal, all code and data exists with in a single, huge,
+shared address space.  The single address space enhances sharing and
+cooperation, because addresses have a unique (for all time)
+interpretation.  Thus, pointer-based data structures can be directly
+communicated and shared between programs at any time, and can be
+stored directly on secondary storage without the need for translation.
+This structure is simplified by the availability of a large address
+space, such as those provided by the DEC Alpha, MIPS R4000,
+HP/PA-RISC, and IBM RS6000.
+</p>
+
+<p>
+Protection in Opal is independent of the single address space;
+each Opal thread executes within a <i>protection domain</i>
+that defines which virtual pages it has the right to access.
+The rights to access a page can be easily transmitted from one
+process to another.  The result is a much more flexible protection
+structure,  permitting different (and dynamically changing)
+protection options depending on the trust relationship
+between cooperating parties.  We believe that this organization can
+improve both the structure and performance of complex, cooperating
+applications.
+
+<p>
+An Opal prototype has been built for the DEC Alpha platform on top of
+the Mach operating system.
+<hr>
+
+<h2>
+<dl><b>Information Sources</b></dl>
+</h2>
+
+<UL>
+<li> 
+<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><a href="http://www.cs.washington.edu/homes/levy/opal/opalpapers.html">List of Opal-related papers</a>. <p>
+</UL>
+
+
+
+<dl><b>Faculty Members</b></dl>
+
+
+<UL>
+<li> <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href="http://www.cs.washington.edu/people/faculty/levy.html">Hank Levy</a> <p>
+<li> <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.cs.washington.edu/people/faculty/lazowska">Ed Lazowska</a> <p>
+
+<li>  <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a href="http://www.cs.duke.edu/~chase/">Jeff Chase</a> (Duke University) <p>
+
+</UL>
+
+
+
+<dl><b>Current Graduate Students</b></dl>
+
+
+<UL>
+<li> <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a href="http://www.cs.washington.edu/homes/feeley">Mike Feeley</a> <p>
+<li> <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href="http://www.cs.washington.edu/homes/tiwary">Ashutosh Tiwary</a> <p>
+<li> <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a href="http://www.cs.washington.edu/homes/nara/home-page.html">Vivek Narasayya</a> <p>
+<li> <!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><a href="http://www.cs.washington.edu/homes/dylan">Dylan McNamee</a> <p>
+</UL>
+
+
+<dl><b>Related Information</b></dl>
+
+<ul>
+<li> <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><a href="http://www.cs.dartmouth.edu/cs_archive/sasos/sasos.html">Single 
+address space mailing list archive</a>.<p>
+</ul>
+
+
+</html>

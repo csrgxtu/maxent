@@ -1,0 +1,349 @@
+Date: Mon, 11 Nov 1996 17:52:37 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 08 Nov 1996 17:29:43 GMT
+Content-length: 10301
+
+<HTML>
+<HEAD>
+<TITLE>Classes</TITLE>
+</HEAD>
+
+<BODY>
+
+<H3>Classes</H3>
+
+<P>A class is an extension of a struct.  I will introduce classes slowly
+by extending the functionality of structs, which we studied last week.
+
+<P>One of the most apparent differences between a class and a struct
+is that, in addition to having "data members" like a struct, a class
+can have "member functions" or "methods".  We can think about these
+member functions as being operations that all objects that belong to
+the class can do.  For example, imagine that we wanted to augment our
+Alien struct that we declared last week so that every Alien is capable
+of giving a greeting.  We would declare our class as so:
+
+<PRE WIDTH=80><BLOCKQUOTE><CODE>
+const int MAXSTR = 20;
+
+class Alien
+{
+  public:
+    char name[MAXSTR];
+    char homePlanet[MAXSTR];
+    int numLegs;
+    int isDeadly;
+
+    void greet(char who[]);
+};
+</CODE></BLOCKQUOTE></PRE>
+Notice that we have added an additional member, called
+<EM>greet</EM> to the class Alien.  Unlike the other members, this
+member is not declared to be a variable or array.  This member is a
+prototype for a function which takes an array of characters and
+produces no return value.  We have also added the word public which we
+will talk about later.
+
+
+<P>Now, a prototype is only <EM>half</EM> of a function.  We need to
+give a function definition.  It could look like this:
+
+<PRE WIDTH=80><BLOCKQUOTE><CODE>
+void Alien::greet (char who[])
+{
+  cout &lt;&lt; "Hello " &lt;&lt; who
+	&lt;&lt; ", my name is " &lt;&lt; name
+	&lt;&lt; " and I am from " &lt;&lt; homePlanet
+	&lt;&lt; ".\nLet's be friends for ever!\n";
+}
+</CODE></BLOCKQUOTE></PRE>
+
+This looks a lot like a normal function definition.  We have a return
+type (void), we have a parameter list (char who[]) and we have some
+code making up the function body.  What is different is the function
+name <EM>Alien::greet</EM>.  In our class declaration, our prototype
+has only the name <EM>greet</EM>.  What's going on here?  Well, it is
+possible that more than one class might have a method (member
+function) called greet.  For example, there might be a Robot class and
+it might have a greet method too.  In order to specify <EM>which</EM>
+greet method we are providing the body for, we need to give the class
+name.  That is why our function is called <EM>Alien::greet</EM>.  You
+can read this name as meaning "the greet method for the Alien class."
+The :: thing is called the "scope resolution operator."  This is
+because it is used to specify that its second operand (in this case
+"greet") is the one specified in the "scope" of its first operand (in
+this case "Alien").  The :: is used whenever we want to grab a part of
+a class.  We will see additional uses for the :: operator later.
+
+<P>Some of you might be saying, hold on one second, we are using the
+variables "name" and "homePlanet" in the greet method without them
+being declared in the method body.  This is ok.  We will see what this
+means soon.
+
+<P>We have defined the greet method for the Alien class.  Now we
+just need to call it.  Suppose we have a couple of Aliens.
+
+<PRE WIDTH=80><BLOCKQUOTE><CODE>
+// this appears somewhere, maybe in main...
+Alien yoda;
+Alien darth;
+</CODE></BLOCKQUOTE></PRE>
+
+We have not yet talked about initializing objects.  For the time
+being, assume that yoda has name "Yoda" and home planet "Dagobah" and
+darth has name "Lord Vader" and home planet "the Death Star".  We can
+call the greet functions for both by the code:
+
+<PRE WIDTH=80><BLOCKQUOTE><CODE>
+...
+// this appears somewhere, maybe in main...
+yoda.greet("Dad");
+darth.greet("Mom");
+...
+</CODE></BLOCKQUOTE></PRE>
+
+We call a method for a particular object (variable) by using "the dot
+operator".  We have done this before with file streams (remember
+cin.getline() and fin.getline()?).  We have also seen this as a way of
+accessing the data members of structs.  Basically, the dot operator is
+used whenever we want to grab a piece of an object (contrast with
+scope resolution operator).  The first line says 'call the greet
+method for the yoda object with the argument "Dad"' the second line
+says 'call the greet method for the darth object with the argument
+"Mom"'.  You can also think of these lines as being like messages to
+the objects.  We first tell yoda to greet Dad and then we tell darth
+to greet Mom.  The reason that we call variables like yoda and darth
+"objects" is that they are, in an abstract sense, entities that can
+receive messages and interact with each other.
+
+<P>When we make the calls, the variables "name" and "homePlanet" will
+correspond to whichever object makes the call.  When yoda is asked to
+greet Dad he will be from Dagobah.  When darth is asked to greet Mom
+he will be from the Death Star.  The above two calls generate the
+screen output:
+
+<PRE WIDTH=80><BLOCKQUOTE><CODE>
+Hello Dad, my name is Yoda and I am from Dagobah.
+Let's be friends for ever!
+Hello Mom, my name is Lord Vader and I am from the Death Star.
+Let's be friends for ever!
+</CODE></BLOCKQUOTE></PRE>
+
+<P>Exercise: extend the class declaration to include a method called
+mutate which takes an integer and returns nothing.  Write a method
+definition for mutate which adds its integer argument to the aliens
+number of legs, "mutating" it.  It should accept negative arguments.
+At no time should an Alien's numLegs drop below zero.
+
+(<!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~turnidge/cs302/classes-ex1.html">Solution</A>).
+
+<H3>Constructors</H3>
+
+<P><EM>Below this point these notes are written for my lecture.  They
+are very terse and will likely not make sense.  I am leaving them here
+because it doesn't make sense to remove them:</EM>
+
+<P>First example:
+
+<PRE WIDTH=80><BLOCKQUOTE><CODE>
+class Alien
+{
+  public:
+    char name[MAXSTR];
+    char homePlanet[MAXSTR];
+    int numLegs;
+    int isDeadly;
+
+    Alien(char nm[], char home[], int legs, int deadly);
+    void greet(char who[]);
+    void mutate(int moreLegs);
+};
+
+Alien::Alien (char nm[], char home[], int legs, int deadly)
+{
+    strcpy(name, nm);
+    strcpy(homePlanet, home);
+    numLegs = legs;
+    isDeadly = deadly;
+}
+</CODE></BLOCKQUOTE></PRE>
+
+
+<P>Overloaded:
+
+<PRE WIDTH=80><BLOCKQUOTE><CODE>
+class Alien
+{
+  public:
+    char name[MAXSTR];
+    char homePlanet[MAXSTR];
+    int numLegs;
+    int isDeadly;
+
+    Alien();
+    Alien(char nm[], char home[], int legs, int deadly);
+    void greet(char who[]);
+    void mutate(int moreLegs);
+};
+
+Alien::Alien ()
+{
+    //set to reasonable defaults
+    name[0] = '\0';
+    homePlanet[0] = '\0';
+    numLegs = 0;
+    isDeadly = 0;
+}
+
+Alien::Alien (char nm[], char home[], int legs, int deadly)
+{
+    strcpy(name, nm);
+    strcpy(homePlanet, home);
+    numLegs = legs;
+    isDeadly = deadly;
+}
+</CODE></BLOCKQUOTE></PRE>
+
+Point: why don't we call strcpy (name, "") instead?
+
+<P>Two constructors.  Talk about how we decide which to call (parameters,
+types, of args).  Typical overloaded function.  Show example:
+
+<PRE WIDTH=80><BLOCKQUOTE><CODE>
+  //in main or some other function...
+  Alien Generra;  // No init values, calls lame-o constructor.
+  Alien Gamera ("Gamera", "Tokyo 7", 2, 1);
+</CODE></BLOCKQUOTE></PRE>
+Points to ponder: Why doesn't Generra have the ()'s?  What would
+happen if it did?
+
+<P>No args constructor is called default constructor.  Good idea to
+have one because you probably will want it. (E.g. when you make an
+array of classes!)
+
+<P>You can use = to assign one whole class to another:
+
+<PRE WIDTH=80><BLOCKQUOTE><CODE>
+Generra = Gamera;
+</CODE></BLOCKQUOTE></PRE>
+
+You can also call the constructor explicitly to make an anaonymous
+value of a certain type and assign it:
+
+<PRE WIDTH=80><BLOCKQUOTE><CODE>
+Generra = Alien("ET", "Home", 2, 0);
+</CODE></BLOCKQUOTE></PRE>
+
+
+<H3>Alien::</H3>
+
+
+<P>Example where I use it to resolve name clash in constructor:
+
+<PRE WIDTH=80><BLOCKQUOTE><CODE>
+Alien::Alien (char name[], char homePlanet[], int numLegs, int isDeadly)
+{
+    strcpy(Alien::name, name);
+    strcpy(Alien::homePlanet, homePlanet);
+    Alien::numLegs = numLegs;
+    Alien::isDeadly = isDeadly;
+}
+</CODE></BLOCKQUOTE></PRE>
+
+<P>Constant member: 
+
+<PRE WIDTH=80><BLOCKQUOTE><CODE>
+class Alien
+{
+  public:
+    // ...
+
+    const int killer = 1;
+    const int lamb = 0;
+    // ...
+};
+</CODE></BLOCKQUOTE></PRE>
+
+Can use the killer and lamb constants in our Alien methods.  Can also
+use them in calls:
+
+<PRE WIDTH=80><BLOCKQUOTE><CODE>
+    Alien Yoda("Yoda", "Dagobah", 2, Alien::killer);
+</CODE></BLOCKQUOTE></PRE>
+
+<P>This way we can hide the "magic number".  Point: why can't we do this
+with non-constants?
+
+<H3>Friday's Class</H3>
+
+<H2>Public v. Private</H2>
+
+<P>Talk about the separation of implementation and interface.  It
+would help to have an example of two different ways of doing the same
+thing.  Preferably something I have shown before.
+
+<P>Define impl and intf
+
+<P>Idea: provide a common interface that hides the details of
+implementation.  This way we can replace code later.
+
+<P>Can also avoid things like: yoda.numLegs = -2; //semantic error.
+
+<P>Tell them how.  Tell them what it means.  Give some decls.  Show
+accessors/constructors.  
+
+<PRE WIDTH=80><BLOCKQUOTE><CODE>
+void Alien::Read ()
+{
+	char YorN;
+	
+	cout << "Enter the Alien's Name > ";
+	cin >> ws;
+	cin.getline (name, 20);
+	cout << "Enter Home World > ";
+	cin.getline (homePlanet, 20);
+	cout << "Enter Number of Legs > ";
+	cin >> numLegs;
+	cout << "Is " << lifeForm.name << " deadly? (y/n) > ";
+	cin >> YorN;
+	isDeadly = (toupper(YorN) == 'Y');
+}
+</CODE></BLOCKQUOTE></PRE>
+Contrast with:
+<PRE WIDTH=80><BLOCKQUOTE><CODE>
+void ReadInAlien (Alien &lifeForm)
+{
+	char YorN;
+	
+	cout << "Enter the Alien's Name > ";
+	cin >> ws;
+	cin.getline (lifeForm.name, 20);
+	cout << "Enter Home World > ";
+	cin.getline (lifeForm.homePlanet, 20);
+	cout << "Enter Number of Legs > ";
+	cin >> lifeForm.numLegs;
+	cout << "Is " << lifeForm.name << " deadly? (y/n) > ";
+	cin >> YorN;
+	lifeForm.isDeadly = (toupper(YorN) == 'Y');
+}
+</CODE></BLOCKQUOTE></PRE>
+
+<H3>Accessor Functions</H3>
+
+Tips: Make all member variables private, define accessor functions,
+use the assignment operator.
+
+<H3>Reworks</H3>
+
+<P>Skyline.  Alien catalog.  Hangman.
+<P>(not covered yet: The "this" object)
+
+
+<HR>
+Last modified: Fri Nov  8 11:29:42 1996 by Todd Turnidge
+<ADDRESS>
+  <!WA1><!WA1><!WA1><A HREF="http://www.cs.wisc.edu/~turnidge/turnidge.html">turnidge@cs.wisc.edu</A>
+</ADDRESS>
+</BODY>
+</HTML>

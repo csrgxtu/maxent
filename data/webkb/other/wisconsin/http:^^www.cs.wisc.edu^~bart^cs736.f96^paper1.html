@@ -1,0 +1,171 @@
+Date: Tue, 05 Nov 1996 00:31:19 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 09 Sep 1996 18:40:27 GMT
+Content-length: 5615
+
+<html>
+<head>
+<title>CS 736 - Advanced Operating Systems - Fall 1996</title>
+</head>
+
+<body>
+<table border=0 width=100% align=center>
+<tr>
+<td width=25%><td width=50% align=center>
+<b>UNIVERSITY OF WISCONSIN-MADISON
+<br>
+Computer Sciences Department</b>
+<td width=25%>
+<tr>
+<tr>
+<td>
+<b>CS 736
+<br>
+Fall 1996 </b>
+<td><td align=right><b>Bart Miller</b>
+<tr>
+<td>
+<td align=center><b>CS 736: Advanced Operating Systems</b>
+<td>
+</table>
+
+<center>
+<h1>Paper Assignment #1</h1>
+<h3>(Due: Wednesday, September 25)</h3>
+</center>
+
+
+<h2>Description</h2>
+The goal of this assignment is to think about and describe the memory
+management facility of a new and powerful computer.
+You will use the ideas that you have read about, and apply these to a
+different environment.
+<p>
+The computer that you are thinking about will have some
+interesting characteristics.
+First, it will be a multiprocessor, with 1-16 CPU's.
+There will be many CPU's sharing the same memory (see figure below).
+This computer will support parallel programs consisting of many processes
+cooperating in a single computation.
+Parallel programs will share memory to communicate and use a mechanism such
+as semaphores, spin-locks, or monitors to synchronize.
+Second, it will have a large physical memory.
+It will be common to see machines with 256 megabytes (or more) of RAM, with
+4-16 KB page frames.
+These large memories will be useful in supporting applications in AI, graphics,
+vision, CAD, and databases.
+<p>
+Remember:
+<i>large page frames and physical memory</i>
+and
+<i>lots of sharing</i>.
+<p>
+You are to describe how the Working Set concept can help to efficiently
+allocate the memory and CPU's in this workstation design.
+There are two areas that you will address.
+First, how can you use the concept of Working Set to efficiently execute
+parallel programs.
+For example, we might have a simple producer/consumer pair of processes.
+How can we schedule the CPU's and memory to make this program execute well?
+What about more complex computations made up of many processes?
+What about the competition between several parallel programs for resources?
+How do we define resource demand and balance set?
+How do you define the last referenced time for a page shared by many
+processes?
+<p>
+Second, how does the large address space affect resource scheduling?
+Is memory scheduling a dead issue?
+Do applications with extremely large memory demands change the way we allocate
+memory?
+What about the cost of gathering scheduling information and storing tables?
+<p>
+You paper will make design decisions that may require data about the type of
+programs that will run on the workstation and how these programs will behave.
+You should describe what information you need and
+how you will go about collecting the information to
+make these design decisions.
+You should also describe how you will verify these decisions and how you will
+set the parameters of the various policies that you design.
+<p>
+As you are thinking about your design, you should think about the
+goal and features of previous systems.
+Which of these goals are no longer important?
+What are the significant differences of this new computer from ones that we
+have read about?
+You will, of course, want to consider what goals are still important.
+Can you use solutions from the past or will you satisfy these goals in new
+ways?
+
+<center>
+<BR>
+<!WA0><IMG ALIGN=CENTER SRC="http://www.cs.wisc.edu/~bart/cs736.f96/multi.gif" ALT="Multicomputer Figure">
+<BR>
+</CENTER>
+
+<h2>Constraints</h2>
+<p>
+The paper should be at most 6 pages, 10 point font, double-spaced,
+single-sided and 1 inch margins.
+The paper must contain the following parts:
+<dl>
+<dt>Title:
+<dd>
+The title should be descriptive and fit in one line across the page.
+Interesting titles are acceptable, but avoid overly cute ones.
+<dt>Abstract:
+<dd>
+This is the paper in brief.
+It is 
+<b>not</b>
+a description of the paper.
+It should state the basic contents and conclusions of the paper.
+It is an advertisement that will draw the reader to your paper, without
+being misleading.
+It should be complete enough to understand what will be covered in the paper.
+Avoid phrases such as "The paper describes...."
+This is a technical paper and not a mystery novel; don't be afraid of giving
+away the ending.
+<dt>Body:
+<dd>
+This is the main part of the paper.
+It should include an introduction that prepares the reader for the
+remainder of the paper.
+Assume that the reader is knowledgeable about Working Set and operating
+systems.
+The introduction should motivate the rest of the discussion and outline
+the approach.
+The main part of the paper should be split into reasonable sections.
+The last part of the body is the conclusion.
+This is a discussion of what the reader should have learned from the
+paper.
+You can repeat things stated earlier in the paper, but only to the extent
+that they contribute to the final discussion.
+<dt>References:
+<dd>
+You must cite each paper that you have referenced.
+This section appears at the end of the paper.
+<dt>Figures:
+<dd>
+A paper without figures, graphs, or diagrams is boring.
+A rule of thumb is one figure for each 3 or 4 pages.
+These figures should (typically) take up only a small portion of
+a page.
+Your paper <b>must</b> have figures.
+</dl>
+<p>
+Do not redescribe the assignment; address the issues described above.
+The paper must be written using correct English  grammar.
+There should be no spelling mistakes.
+A paper that is difficult to read or has poor grammar
+will be returned ungraded.
+Remember the word of the day: pithy.
+
+<hr>
+<H4>
+Last modified:
+Mon Sep  9 13:40:25 CDT 1996
+by
+<!WA1><a href="http://www.cs.wisc.edu/~bart">bart</a></b>
+</H4>
+</body>

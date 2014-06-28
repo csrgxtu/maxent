@@ -1,0 +1,156 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 16-Dec-96 23:20:47 GMT
+Content-Type: text/html
+Content-Length: 5822
+Last-Modified: Saturday, 17-Feb-96 00:31:58 GMT
+
+<HEAD>
+<TITLE>CS 664:  Problem Set 1</TITLE>
+</HEAD>
+<BODY>
+<h1> CS 664:  Problem Set 1 : Stochastic Stereo Vision </h1>
+
+A postscript copy of the <a href="ps1/ps1.ps">assignment</a>.<p>  
+
+IMPORTANT: for problem 6, you should look at the postscript of the
+handout, and not the photocopied handouts in class, since the images
+were blackened out by the photocopying process.
+
+ 
+<dt><b>Test Images.</b> You should make your own test images, in addition to the ones here.  The problem set is finalized, you need only submit the results for these two images below.    
+<dd> 
+<ul>
+
+<li><a href="ps1/lrand.pgm">left</a> and <a
+href="ps1/rrand.pgm">right</a> random dot stereogram, as seen in Fig.1
+of assignment.
+
+<li><a href="ps1/ltree.pgm">left</a> and <a
+href="ps1/rtree.pgm">right</a> images from a stereo camera.  You
+should submit the results starting from a zeroed disparity map and
+using this <a href="ps1/dtree.psm">starting map</a>(If you are using a
+linux or NT on an IBM, you should use this <a
+href="ps1/dtree-linux.psm">big-endian short image</a>).  (The map
+was generated using a simple windowing sum of squared differences
+method).  Be sure to use a value of Delta = 10 , otherwise this
+disparity map will have the wrong size.
+
+</UL>
+<h3>Using the ADT image libraries</h3>
+  The following versions of the library are available
+<ul>
+<li> SunOS
+<ul> 
+<li>available on the cs dept machines as ~robotlab/new/lib/libadt.a, with the appropriate header files in ~robotlab/new/include/adt/ .  <b>DO NOT use -DSVR4 on your command line</b>.
+<li>Sunlab: located in ~jmiller/664/libadt.a, with header files in ~jmiller/664/include.  
+<li>Other locations: <a href="ps1/libadt.a">library</a> and <a href="ps1/adt-include.tgz">header files</a>.
+</ul>
+<li> Solaris
+<ul>
+
+<li>available on the cs dept machines as
+~robotlab/new/lib/libadt-svr4.a, with the appropriate header files in
+~robotlab/new/include/adt/ , <b>be sure to include -DSVR4 on your command
+line</b>.
+
+<li>Sunlab: you won't need the Solaris version.
+
+<li>Other locations: <a href="ps1/libadt-svr4.a">library</a> and <a href="ps1/adt-include.tgz">header files</a>.
+</ul>
+
+
+<li>Linux: Here is the (ELF) <a href="ps1/libadt-linux.a">library</a>
+and a tarfile containing the <a href="ps1/includes.tgz">header files</a>.
+
+<li> <a href="http://www.tc.cornell.edu/~ckline/lib-adt-aix3.2.5.tar.gz">AIX 3.2.5</a> (thanks to Christoper Kline), here is a <a href="ps1/ckline.txt">copy</a> of the email he sent me.
+
+<li>Windows NT: I've changed my mind, the chances of easily getting
+Visual C++ code to compile with another compiler is minimal.  If you
+want to use gcc then maybe we can talk, debates to
+jmiller@cs.cornell.edu.
+
+</ul>
+
+
+<h3>Problem Set 1: MINI-FAQ</h3>
+
+<UL>
+
+ <li> <em>If the maximum absolute value of disparity is 8, then the
+disparity image should lose only 4 pixels on each side (because of the
+Cyclopean model), not 8 as mentioned in the HW assignment.  This would
+yield a disparity image that is 632x480.</em> <br>
+
+ Yes, I mixed this one up.  It should only be 4 pixels on each side,
+when using the cyclopean model.  If you correct the mistake, be sure
+to double the Delta constant to 20 when using the tree images, so that
+the disparity map I gave you will be the right size.
+
+<li><em> What is the termination condition?</em><br>
+
+When the average of the demon energy is near zero.  The demon
+energy can temporarily be zero, but the average will not be zero
+unless the system is near equilibrium.  Since the average is near
+zero, the standard deviation has to be near zero and therefore the
+ration of the two is nearly 1 (see equation 10 in Barnard Paper).
+
+The termination condition is NOT zero energy for the system, any
+interesting answer should have non-zero energy.
+
+
+<li><em> How can I make my own test images? </em> <br>
+
+Answer 1: write a program to generate the images.  Answer 2:
+generate them in matlab, there are a set of matlab .m files in
+~jmiller/prog/matlab/robotlab, read the documentation.  A simple image is:
+<tt>
+<pre>
+A = rand([40 40]);                         %background
+B = rand([20 20]);                         %moving object
+C = A; D = A;                              %copy background
+C(11:30,11:30) = B;                        %copy forground
+D(13:32,11:30) = B;                        %copy forground shift by 2
+imSaveF('IMAGE_GRAY',C*255,'left.pgm');    %save images, note we multiply
+imSaveF('IMAGE_GRAY',D*255,'right.pgm');   % by 255 since gray images have
+                                           % values 0..255 and rand generates
+                                           % values in 0..1 range
+</pre>
+</tt>
+
+
+<li><em> What does ergodic mean? </em> <br>
+
+A good <a href="ps1/ergodic.txt">answer</a> to this was recently posted to sci.image.processing.  
+
+<li> <em> What are areas have optimization techniques been applied to?</em> <br>
+<pre>
+image restoration and reconstruction [Grimson 1981; Terzopoulos 1983a;
+Geman and Geman 1984; Leclerc 1989; Hung et al. 1991]
+
+shape from shading [Ikeuchi and horn 1981]
+
+stereo, motion and optical flow [Ullman 1979a; Horn and Schunck 1981'
+Hildreth 1984; Murray and Buxton 1987; Barnard Jain 1987]
+
+texture [Hassner and Slansky 1980; Kashyap et al. 1982; Cross and Kain
+1983]
+
+edge detection [Torre and Poggio 1986; Tan et al. 1992],
+
+image segmentation [Silverman and Cooper 1988; Li 1990a],
+
+perceptual grouping [Lowe 1985; Mohan and Nevatia 1989;
+Herault and Horaud 1993], 
+
+interpretation of line drawings [Leclerc and
+Fischler 1992], 
+
+object matching and recognition [Fischler and Elschlager 1973; Davis
+1979; Shapiro and Haralick 1981; Bhanu and Faugeras 1984 ; Ben-Arie
+and Meiri 1987 ; Modestino and Zhang 1989 ; nasrabadi et al. 1990 ;
+Wells III 1991 ; Friedland and Rosenfeld 1992 ; Li 1992a ; Li 1994a]
+
+pose estimation [Haralick et al. 1989]
+</pre>
+</UL>

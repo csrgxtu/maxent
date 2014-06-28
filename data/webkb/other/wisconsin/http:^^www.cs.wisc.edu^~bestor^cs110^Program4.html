@@ -1,0 +1,133 @@
+Date: Mon, 11 Nov 1996 17:57:22 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Tue, 30 Apr 1996 23:02:58 GMT
+Content-length: 6953
+
+<HTML>
+
+<HEAD>
+<TITLE>CS 110 Section 2 - Program #4</TITLE>
+</HEAD>
+
+<BODY>
+
+<H2><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~bestor/cs110/cs110.html#assignments" ><!WA1><!WA1><!WA1><IMG SRC="http://www.cs.wisc.edu/~bestor/icons/arrowleft.gif" WIDTH=15 HEIGHT=15></A> Program #4 - Array of Numbers</H2>
+
+<HR>
+
+<DL>
+   <DT>Due Date:
+   <DD>Friday 5/10/96, 1:00 pm<P>
+
+   <DT>Grade:
+   <DD>25% of your final grade.<P>
+
+   <DT>Text Covered:
+   <DD>Chp. 1, 2, 3, 4, 6 and 7.<P>
+
+   <DT>Problem Description:
+   <DD>For this program you will read in a list of 10 <TT>INTEGER</TT> values from the user, entered one per line.  These values will be read into an <EM>array of integers</EM>. After reading in all the numbers your program will perform a series of operations on the array.  The operations that you will implement are:<P>
+
+<OL>
+<LI>Find the <STRONG>minimum</STRONG> and <STRONG>maximum</STRONG> value in the array.
+<LI>Count the number of <STRONG>prime</STRONG> numbers in the array. That is, how many numbers are only divisible by themselves and 1.
+<LI>Print whether the array is in strictly <STRONG>ascending</STRONG> or <STRONG>descending</STRONG> order, or neither.  That is, check each adjacent pair of numbers in the array to see if they are in order.
+</OL>
+
+This assignment uses <EM>user-defined functions</EM> and <EM>user-defined subroutines</EM> (Chp 6) and <EM>one-dimensional arrays</EM> (Chp 7).  All the input will be read from the keyboard and the results will be written directly to the screen (i.e. no files).<P>
+
+   <DT>Example:
+   <DD>If the user enters the following 10 <TT>INTEGER</TT> values
+<LISTING>
+	14
+	9
+	5
+	21
+	35
+	10
+	16
+	11
+	66
+	65
+</LISTING>
+<P>
+then your program should display (hint: use this to check your results)<P>
+<LISTING>
+	The minimum value is   5
+	The maximum value is  66
+	There are  2 prime numbers
+	The numbers are neither ascending nor descending
+</LISTING>
+<P>
+
+   <DT>Program Design:
+
+<DD>To find the minimum and maximum number in the array, assume the first number in the array is the current min/max and then go through the rest of the array and compare each number with the current min/max and re-assign these values accordingly (e.g. similar to finding the minimum time in Program #2).  Note: the numbers can be both positive and negative <TT>INTEGER</TT>s.<P>
+
+To count the number of primes go through the array and for each number check to see if it is a prime number or not; i.e. see if any value besides 1 and the number itself evenly divides into it.  If the number turns out to be prime then increment a counter accordingly.<P>
+
+To determine if the list of numbers is in strictly ascending or descending order, go through each pair of numbers in the array.  If the second number is greater than or equal to the first then the list must necessarily <STRONG>not</STRONG> be in descending order. If the second number is less than or equal to the first then the list must necessarily <STRONG>not</STRONG> be in ascending order. Not: it only takes <STRONG>one pair</STRONG> of numbers in the wrong order to make the whole list not ascending/descending.<P>
+
+   <DT>Program Structure:
+   <DD>Your program must first read in the 10 numbers into a <EM>one-dimensional array</EM> using a <TT>DO</TT> loop.  After reading in the array then pass the array to the relevant user-defined function/subroutine to calculate the results.  Each operation will be performed by a separate user-defined function/subroutine.  They are:<P>
+
+<DL>
+   <DT><TT>MINMAX</TT>:
+   <DD>Find the minimum and maximum value in the array.  This subroutine is passed in the array of integers and passes out both the minimum and maximum value.<P>
+   <DT><TT>PRIME</TT>:
+   <DD>Counts the number of prime numbers in the array. This function is passed in the array of integers and returns the total number of primes.<P>
+   <DT><TT>UPDOWN</TT>:
+   <DD>Determines whether the array is in strictly ascending order, strictly descending order or neither.  Note: two adjacent numbers that are the same are not considered ascending nor descending.  This function is passed in the array of integers and returns whether the numbers are ascending, descending or neither.
+</DL>
+<P>
+
+  I suggest writing the <TT>MINMAX</TT> function first because it is the easiest, then <TT>PRIME</TT> which is a little harder, and finally <TT>UPDOWN</TT> because it requires the most thought.  Once you have debugged each function/subroutine and got it working then move on to the next one.  <STRONG>Don't</STRONG> attempt to write everything and debug it all at once; instead do it one piece at a time.  This one of the biggest advantages of writing user-defined functions and subroutines!<P>
+
+   <DT>What to Hand In:
+   <DD>Hand in this assignment online by copying your FORTRAN <EM>source code</EM> file (e.g. "program4.for") and the <EM>compiled executable</EM> file (e.g. "program4.exe") to your handin directory.  You also have to hand in a printed copy of your FORTRAN <EM>source code</EM> file and the <EM>screen output</EM> when your program is run with the four sets of test data given in the gradesheet.<P>
+
+   <DT>Gradesheet:
+   <DD>The following gradesheet will be used to grade this assignment.  Please take a close look at it to make sure you do everything that is required.  Note that you will be graded on correct output for the input values given below, so before handing it in you <STRONG>must</STRONG> run your program with these values and manually check that your program gives the correct results in every case.<P>
+
+   <PRE>
+Correct Output                                        [20]
+   5,11,20,31,44,60,79,99,123,148               [5]
+   148,123,99,79,60,44,31,20,11,5               [5]
+   10,73,-32,34,86,27,36,-1,2,92                [5]
+   55,99,34,-8,52,28,-44,17,50,86               [5]
+
+User Interface                                        [4]
+   Useful prompts for each number               [2]
+   Meaningful display of results                [2]
+
+Implementation                                        [18]
+   Correct use of functions, subroutines
+        and arguments                           [4]
+   Correct use of arrays                        [4]
+   Correct use of IF/THEN/ELSE/END IF statement [3]
+   Correct use of DO/END DO loop                [3]
+   Meaningful variable names                    [2]
+   Indenting and neatness                       [2]
+
+Documentation                                         [8]
+   Program description                          [3]
+   Function and subroutine descriptions         [3]
+   Variable and argument definitions            [2]
+__________________________________________________________
+
+Total (25%)                                           [50]
+   </PRE>
+   <P>
+</DL>
+
+</BODY>
+
+<HR>
+
+<ADDRESS>
+<H5>Copyright &copy 1996 <!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~bestor/bestor.html">Gareth S. Bestor</A> (<!WA3><!WA3><!WA3><A HREF="mailto:bestor@cs.wisc.edu">bestor@cs.wisc.edu</A>).  Last modified April 30, 1996.</H5>
+</ADDRESS>
+
+</HTML>
+

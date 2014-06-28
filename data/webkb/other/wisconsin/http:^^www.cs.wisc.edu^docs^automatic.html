@@ -1,0 +1,53 @@
+Date: Tue, 05 Nov 1996 21:47:52 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 19 Sep 1994 21:05:08 GMT
+Content-length: 1910
+
+<HTML>
+<HEAD>
+<TITLE>Automaticly indexed documents</TITLE>
+</HEAD>
+<BODY>
+
+<H1>Automatically Indexed Documents</H1>
+
+The Web server runs a script three times a day to check for HTML files with
+special names in people's home directories.  If these files exist, they are
+linked into master lists for easy accessibility.  The auto-indexed pages
+currently include:
+
+<UL>
+  <LI> <!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="#homepages">``Home'' or ``signature'' pages</A>
+  <LI> <!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="#classes">Classes pages</A>
+</UL>
+
+<A NAME="homepages"><H2>``Home'' or ``signature'' pages</H2></A>
+
+Directories of Computer Sciences
+<!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/directories/facstafflist.html">Faculty and Research Staff</A>,
+<!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="http://www.cs.wisc.edu/directories/gradlist.html">Graduate Students</A>, and
+<!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="http://www.cs.wisc.edu/directories/csmajors.html">Undergraduate Majors</A> are 
+automatically generated. Links to home pages are included for
+every file with the name 
+<TT>~<EM>username</EM>/public/html/<EM>username</EM>.html</TT> in the 
+<!WA5><!WA5><!WA5><!WA5><!WA5><A HREF="http://www.cs.wisc.edu/csl/faq/software/afs.html">AFS</A> filesystem.  (This isn't true
+yet.  Currently only those accounts that fit into the above lists are
+indexed.  We will be adding a catch-all ``other'' list soon.)
+<P>
+Remember that our server translates <TT>~</TT><EM>username</EM> to 
+<TT>~<EM>username</EM>/public/html</TT>, so the URL for user Joe's homepage, 
+for example, would be <TT>http://www.cs.wisc.edu/~joe/joe.html</TT>, even 
+though it is stored in the filesystem at <TT>~joe/public/html/joe.html</TT>.
+<P>
+
+<A NAME="classes"><H2>Class pages</H2></A>
+
+Pages for <!WA6><!WA6><!WA6><!WA6><!WA6><A HREF="http://www.cs.wisc.edu/directories/classes.html">classes</A> are looked for 
+in two places.  The first is any file
+matching the pattern <TT>~cs(course_number)-(section)/public/html/cs(course_number)</EM>.html</TT>.  The second is any with the same name,
+but in the course instructor's account instead of the course account.  The
+second form is the only one available to cs302 instructors.  <P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,86 @@
+Date: Tue, 10 Dec 1996 03:27:57 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Sat, 28 Sep 1996 04:44:41 GMT
+Content-length: 3333
+
+<html>
+<head><title>Java Measurements on x86</title></head>
+<body>
+
+<h1>Java Measurements on x86</h1>
+
+This page contains a set of measurements of Sun's Java 1.0 interpreter
+executing on a Pentium Pro running Windows NT.  We had originally
+measured Java on the x86 platform because no Java interpreter was yet
+available for the alpha platform.  For consistency in the ASPLOS VII
+paper, we switched to the alpha when a Java port became available.
+But since we have the x86 measurements, we would also like to make
+them available to those who are interested.  If you are interested
+in the tool that we used to help collect these measurements on the x86,
+take a look at the Etch home page.  <p>
+
+The tables and figures below roughly correspond to the tables and
+figures that appeared in the final version of the ASPLOS VII paper.
+However, since they are the tables and figures that were in the
+submitted version of the paper, they are presented in a slightly
+different format from the final version.  <p>
+
+The system on which we performed our measurements was a 150 MHz
+Pentium Pro workstation running Windows NT 3.51.  The C
+microbenchmarks and the Java interpreter were compiled using Microsoft
+Visual C++ 4.0.  Also note that, even though the Java measurements
+were from an x86 system, the measurements for the other interpreters
+are still from the alpha system. <p>
+
+<hr>
+
+<img src="micro.gif" align="middle"> <p>
+
+<b>Table 1: </b> Microbenchmark results.  This table shows the
+slowdown of each microbenchmark relative to the equivalent operation
+implemented in C.  Each microbenchmark ran for at least five seconds
+per trial.  Each number presented is the average of 20 runs.  Standard
+deviations were no more than 10\% and were usually under 5%. <p>
+
+<hr>
+
+<img src="bench-desc.gif" align="middle"> <p>
+
+<b>Table 2: </b> This table shows baseline performance measurements of
+the interpreters running a set of representative programs, along with
+two benchmark programs written in C.  The % Fetch/Decode column shows
+the percentage of native instructions due to fetching and decoding
+virtual commands.  Native instructions per virtual command is simply
+the total number of instructions executed divided by the number of
+virtual commands. It includes fetch/decode overhead, as well as any
+other program overheads. <p>
+
+<hr>
+
+<img src="inst-per-vc1.gif"> <img src="inst-per-vc2.gif"> <p>
+
+<b>Figures 1 and 2: </b> (These two figures from the final paper were
+compiled from the data shown in these six graphs.)  Java native
+instruction count distributions for categories of Java virtual
+commands.  Each category represents the total number of native
+instructions executed while interpreting virtual commands in that
+category during the execution phase.  Successive categories are
+cumulative with respect to previous categories.  The percentage after
+each category name denotes the number of times that virtual commands
+in that category were executed as a percentage of all virtual commands
+executed.
+
+<hr>
+
+<h3>Figures 3 and 4</h3>
+
+We do not have any corresponding results for Figure 3 because we don't
+have a Pentium Pro simulator with which to perform the equivalent
+experiment.  Similarly, we did not perform any cache simulations on
+Java executing on the x86. <p>
+
+</body>
+<hr> 
+<address>rocky@cs.washington.edu</address>
+</html>

@@ -1,0 +1,330 @@
+Date: Wed, 20 Nov 1996 22:48:47 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+Content-length: 9945
+Last-modified: Wed, 20 Nov 1996 19:48:35 GMT
+
+<html>
+<head>
+<TITLE>Systems Programming Home Page</TITLE>
+</head>
+<BODY BGCOLOR="#ffffff">
+<h1>Systems Programming Home Page</h1>
+<h2>66-431 Fall, 1996</h2>
+
+
+Last updated November 20, 1996</i>
+<hr>
+<b> The optional final exam for this course is scheduled for
+Monday Afternoon, Dec. 16. at 2:00 PM.  It will be 
+75 minutes, open book/open notes.</b>
+<hr>
+
+<b> Alert: </b> I have made some modifications to the spec for
+project 6.  Read the changes by clicking 
+<!WA0><a href="http://www.cs.rpi.edu/courses/sysprog/proj6/about.html"> here </a>
+<p>
+<h3>Contents</h3>
+<ul>
+<li><!WA1><a href = "#Course Information">Course Information</a>
+<li><!WA2><a href = "#Grading">Grading</a>
+<li><!WA3><a href = "#Schedule">Schedule</a>
+<li><!WA4><a href = "#Projects">Projects</a>
+<li><!WA5><a href = "http://www.cs.rpi.edu/courses/sysprog/samples.html">Sample programs from first half of class</a>
+<li><!WA6><a href = "http://www.cs.rpi.edu/courses/sysprog/xsamples.html">Sample Motif programs</a>
+<li><!WA7><a href = "http://www.cs.rpi.edu/courses/sysprog/young">Code from the Text</a>
+<li><!WA8><a href = "http://www.cs.rpi.edu/courses/sysprog/motif.html">Other Motif and X resources</a>
+<li><!WA9><a href = "http://www.cs.rpi.edu/courses/sysprog/exam1.html">Exam information</a>
+<li><!WA10><a href = "http://www.cs.rpi.edu/courses/sysprog/kerberos.html"> Kerberos resources</a>
+<li><!WA11><a href = "http://www.cs.rpi.edu/courses/sysprog/afs/index.html">AFS Notes</a>
+<li><!WA12><a href = "#Misc">Miscellaneous resources</a>
+</ul>
+<hr>
+<h3> <a NAME="Course Information"> Course Information</a> </h3>
+<dl compact>
+<dt>Instructor: 
+<dd>Robert Ingalls, Executive Officer, Computer Science Dept.<br>
+            133 Amos Eaton<br>
+            Phone 518-276-2819<br>
+	    email: <i><!WA13><a href="mailto:ingalr@rpi.edu">ingalr@rpi.edu</a></i>
+	    or <i><!WA14><a href="mailto:ingallsr@cs.rpi.edu">ingallsr@cs.rpi.edu
+	    </a></i><br>
+            Office Hours: Tu Th 1:30 - 3:30
+
+
+<dt>Texts: 
+<dd><!WA15><a href = "http://www.aw.com/cp/APUE.html"> 
+            <b>Advanced Programming in the Unix Environment</b></a><br>
+            by W. Richard Stevens<br>
+            Addison Wesley, 1992
+<p>
+<dd>        <!WA16><a href="http://www.prenhall.com/013/123802/12380-2.html">
+            <b>The X Window System: Programming and Applications with Xt</a>
+            </b><br>
+            by Douglas A. Young<br>
+            Prentice Hall, 1994
+<p>
+<dt>Teaching Assistants:
+<dd>Lakshmi Bhat<br>
+    Amos Eaton 208, 518-276-8265<br>
+    email: <i><!WA17><a href="mailto:bhatl@cs.rpi.edu">bhatl@cs.rpi.edu</a></i><br>
+    Office Hours: M W 2:00-3:30<p>
+    Corey Bufi<br>
+    Amos Eaton 108, 518-276-6907<br>    
+    email: <i><!WA18><a href="mailto:bufic@cs.rpi.edu">bufic@cs.rpi.edu</a></i><br>
+    Office Hours: M W 12:00 - 2:00
+</dl>
+
+This course introduces students to the basic concepts of systems
+programming, including system calls, files and I/O, process
+management, interprocess communication, networking, concurrent
+programming, and graphics using X windows.  Particular
+emphasis will be placed on the implementation of these concepts in
+Unix, but other operating system implementations will also be covered.
+<p>
+<b>Prerequisites:</b> Students are assumed to be able to program in C and
+to have a basic understanding of data structures and assembler language
+programming.
+<hr>
+<h3><a Name="Grading">Grading</a></h3>
+There will be two tests, and six programming
+assignments.  Each of the tests will count 24% of the course grade,
+the program assignments will be of varying weights depending on
+their degree of difficulty, but they will total 52%.
+There will be no make-up exams.  However, there will be an optional
+comprehensive final exam which can be used to replace a missing test or
+project or your lowest test or project.
+<p>
+<b>Academic Integrity:</b> All programs submitted must be your own work,
+and you are expected to develop your programs independently.  You may
+receive as much help as you wish on the use of the operating system,
+text editors, debuggers, file transfer protocols and so on.  You may
+consult with other members of the class about interpreting the
+assignment, and you may get help in finding bugs, but not fixing bugs,
+but you are not allowed to look at or copy another person's code or
+discuss design decisions with others, and you cannot show your code to
+others.  Students found to be in violation of these guidelines will
+fail the project, and will be reported to the dean.
+<p>
+<b>Programming assignments:</b> This is a programming intensive course,
+and students are expected to be strong C programmers.  Assignments may
+be done in either C or C++.  While you may use whatever platforms or
+compilers you wish to develop your code, all code submitted must run
+on <b>both</b> Sun and AIX platforms on RCS and must compile without errors
+or significant warnings using <tt>gcc -Wall ...</tt>. Assignments will
+be submitted by e-mailing source code to the TA (multiple files should
+be bundled using <tt> shar</tt>).  You must submit a make file with each
+assignment.  There will be ten point per day penalty for lateness.
+<hr>
+<h3><a Name="Schedule">Schedule</h3>
+<i>This schedule is tentative and should not be taken too literally.
+I will sometimes be ahead of this, sometimes 
+behind it, and sometimes completely off of it.</i>
+<table>
+<caption>Schedule of Topics</caption>
+<tr>
+<th>Date</th>
+<th>Topics</th>
+<th>Reading</th>
+</tr>
+<tr>
+<td>Tu Aug 27</td>
+<td>Unix standards, Posix, debugging, shar</td>
+<td>Stevens Ch 1,2</td>
+</tr>
+<tr>
+<td>Th Aug 29</td>
+<td>Structure of a C program, compiling, linking,
+make, libraries, concept of a system call, errno
+</td>
+<td>Stevens, Ch. 7</td>
+</tr>
+<tr>
+<td>Tu Sep 3</td>
+<td>I/O, Files, file system calls</td>
+<td>Stevens, Ch 3</td>
+</tr>
+<tr>
+<td>Th Sep 5</td>
+<td>Files and directories, more system calls</td>
+<td>Stevens, Ch 4,5,6</td>
+</tr>
+<tr>
+<td>Tu Sep 10</td>
+<td>Process concepts fork, exec, etc.</td>
+<td>Stevens, Ch 8</td>
+</tr>
+<tr>
+<td>Th Sep 12</td>
+<td>process group relations, daemon processes</td>
+<td>Stevens, Ch 9</td>
+</tr>
+<tr>
+<td>Tu Sep 17</td>
+<td>Signals</td>
+<td>Stevens, Ch 10</td>
+</tr>
+<tr>
+<td>Th Sep 19</td>
+<td>Interprocess Communication, Pipes, FIFOs</td>
+<td>Stevens, Ch 14</td>
+</tr>
+<tr>
+<td>Tu Sep 24</td>
+<td>Concurrency Concepts</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Th Sep 26</td>
+<td>Concurrency in Unix, semaphores, file locks, shared memory</td>
+<td>Stevens, Ch 14</td>
+</tr>
+<td>Tu Oct 1</td>
+<td>Examples, a postscript printer, a database library</td>
+<td>Stevens Ch 16, 17</td>
+</tr>
+<tr>
+<td>Th Oct 3</td>
+<td>The Client Server model, sockets</td>
+<td><!WA19><a href="http://www.cs.rpi.edu/courses/sysprog/sockets/sock.html">Online reading</a>
+</tr>
+<tr>
+<td>Tu Oct 8</td>
+<td>More on sockets, the Internet, review</td>
+<td>none   </td>
+</tr>
+<tr>
+<td>Th Oct 10</td>
+<td>Exam</td>
+<td> none  </td>
+</tr>
+<tr>
+<td>Th Oct 17</td>
+<td> Design of Clients and Servers</td>
+<td>   </td>
+</tr>
+<tr>
+<td>Tu Oct 22</td>
+<td>Intro. to networking, protocol stacks</td>
+<td>   </td>
+</tr>
+<tr>
+<td>Th Oct 24</td>
+<td>The Internet, IP</dt>
+<td>  </td>
+</tr>
+<tr>
+<td>Tu Oct 29</td>
+<td>TCP and UDP</td>
+<td>  </td>
+</tr>
+<tr>
+<td>Th Oct 31</td>
+<td>Security, Kerberos</td>
+<td> </td>
+</tr>
+<tr>
+<td>Tu Nov 5</td>
+<td>Overview of the X window system</td>
+<td>Young, Ch 1,2,3</td>
+</tr>
+<tr>
+<td>Th Nov 7</td>
+<td>Primitive Motif Widgets</td>
+<td>Young, Ch 4</td>
+</tr>
+<tr>
+<td>Tu Nov 12</td>
+<td>Manager Widgets</td>
+<td>Young, Ch 5</td>
+</tr>
+<tr>
+<td>Th Nov 14</td>
+<td>Menus and dialogs</td>
+<td>Young Ch 6,7</td>
+</tr>
+<tr>
+<td>Tu Nov 19</td>
+<td>Events</td>
+<td>Young, Ch 8</td>
+</tr>
+<tr>
+<td>Th Nov 21</td>
+<td>Graphics, color, fonts, bitmaps</td>
+<td>Young, Ch 9-13</td>
+</tr>
+<tr>
+<td>Tu Nov 26</td>
+<td>Creating your own widgets</td>
+<td>Young Ch 14, 15</td>
+</tr>
+<tr>
+<td>Tu Dec 3</td>
+<td>Review</td>
+<td> </td>
+</tr>
+<tr>
+<td>Th Dec 5</td>
+<td>Exam</td>
+<td>  </td>
+</tr>
+</table>
+<hr>
+<p>
+<h3><a Name="Projects">Projects</h3>
+
+<b>General Project Guidelines</b>  All projects should follow
+guidelines for good programming practices.  Here is my list.
+<ul>
+<li> Your program should have a comment at the top with your name,
+login id, a brief description of what the program is, and any
+special compiling instructions.
+<li> <tt>main()</tt> should be like an executive in a company; it
+should not do any work, but it should delegate work to other functions
+<li> Most functions should be short, and each should do only one thing.
+No function should ever be more than 50 lines.
+<li> Each function should have a brief comment describing what it
+does.
+<li> It is not necessary to comment every line, and if your code is well
+written, it should not require a lot of in-line commenting.  However,
+you should use comments to describe any unusual code or hard to follow
+code or complicated code, and describe any non-obvious variables.
+<li> variables and functions should have meaningful names, but you can
+use single letters like <tt>i</tt> for loop counters and such.
+<li> You should check the return code for any system call that can
+fail and have an appropriate error handler.
+<li> Your code should have enough error checking so that no matter
+what the user does, your program will not seg fault or loop forever,
+or do other strange things.  It is very hard to
+make your program idiot proof; idiots are very clever.
+<li> All code must be written by you and you alone, except that you
+can use and modify any sample code from the text or from class as long
+as you provide credit to the source.
+</ul>
+
+<p>
+<ul>
+<li><!WA20><a href="http://www.cs.rpi.edu/courses/sysprog/proj1/about.html"> About Project 1 </a><br>
+<li><!WA21><a href="http://www.cs.rpi.edu/courses/sysprog/proj2/about.html"> About Project 2 </a><br>
+<li><!WA22><a href="http://www.cs.rpi.edu/courses/sysprog/proj3/about.html"> About Project 3 </a><br>
+<li><!WA23><a href="http://www.cs.rpi.edu/courses/sysprog/proj4/about.html"> About Project 4 </a><br>
+<li><!WA24><a href="http://www.cs.rpi.edu/courses/sysprog/proj5/about.html"> About Project 5 </a><br>
+<li><!WA25><a href="http://www.cs.rpi.edu/courses/sysprog/proj6/about.html"> About Project 6 </a><br>
+</ul>
+<hr>
+<p>
+If you have problems or suggestions - send mail to <i>
+<!WA26><a href="mailto:sysprog@cs.rpi.edu">sysprog@cs.rpi.edu</a></i>.
+<hr>
+
+
+
+
+<h3><a Name="Misc">Miscellaneous Resources</h3>
+
+At the request of one of the students, here is a link to 
+<!WA27><a href="http://www.es.net/hypertext/rfcs.html">a list of all of the 
+RFCs</a> (Request for Comments).  This contains protocols for many common
+network services as well as other standards for the Internet.
+
+</body>

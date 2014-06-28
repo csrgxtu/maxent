@@ -1,0 +1,84 @@
+Server: Netscape-Commerce/1.12
+Date: Tuesday, 26-Nov-96 00:06:34 GMT
+Last-modified: Thursday, 15-Jun-95 00:38:19 GMT
+Content-length: 3135
+Content-type: text/html
+
+<!doctype html public "-//W30//DTD W3 HTML 2.0//EN">
+
+<HTML>
+
+
+<TITLE>PROGRAMMING METHODOLOGY GROUP</TITLE>
+
+<center>
+<!WA0><A HREF="http://www.pmg.lcs.mit.edu/"><!WA1><IMG SRC=http://www.lcs.mit.edu/web_project/Brochure/pmg/pmgline.gif></a>
+</center>
+<p>
+<center>
+<table border>
+<tr>
+	<td><!WA2><img src=http://www.lcs.mit.edu/web_project/Brochure/pmg/liskov.gif></td>
+	<td width=100 rowspan=2><br></td>
+	<td><!WA3><img src=http://www.lcs.mit.edu/web_project/Brochure/pmg/shrira.gif></td>
+</tr>
+<tr>
+<td> <!WA4><A HREF="http://www.pmg.lcs.mit.edu/~liskov/index.html"><address><b>Barbara Liskov</b></a>,<br>NEC Professor <br>of Software Science and Engineering</address>
+	</td><td><address><b>Liuba Shrira</b>,<br>Research Associate</address></td>
+</tr>
+</table>
+</center>
+<body>
+<p>
+
+The Programming Methodology group is focused on distributed
+computing. Specific challenges include making it easier for
+programmers to implement distributed applications, and
+supporting secure and convenient data- and code-sharing in
+distributed environments.
+<p>
+Our current research is illustrated by <!WA5><A HREF="http://www.pmg.lcs.mit.edu/Thor.html">Thor</a>, an
+object-oriented database system. Thor provides users with a
+universe of objects that are stored reliably and are highly
+likely to be accessible when needed; to achieve these
+goals, object storage is replicated. Objects in the
+universe can be shared by client programs written in
+different programming languages; controlled sharing is
+provided via an access control mechanism.
+<p>
+Clients can locate objects either by navigation or through
+queries. Each object has an encapsulated state and a set of
+methods. Users can extend Thor by defining new object types
+and new implementations of these types; the definitions are
+given in a new object-oriented programming language called
+<!WA6><A HREF="http://www.pmg.lcs.mit.edu/Theta.html">Theta</a>. Clients interact with Thor by calling methods of
+objects; calls run inside Thor to ensure that the objects
+cannot be corrupted by misbehaving client programs, which
+might be implemented in languages with unsafe features
+(such as explicit pointer arithmetic). Thor is being
+installed on DEC Alphas connected by a local area network.
+<p>
+Other work includes Harp, a highly available file system
+that runs inside a network file server such as NFS; clients
+continue to use the file server as usual, but files are
+replicated at several server machines. If one machine
+crashes, the system is reconfigured on-the-fly and users
+still have access to their files. The replication technique
+used in Harp is also being used in Thor.
+<p>
+Future plans include the use of Thor as a basis for
+distributed implementation of applications. Such
+applications are now based on the client-server model, in
+which components explicitly exchange messages. We will soon
+conduct experiments to confirm our belief that practical
+distributed applications will become easier by using Thor
+as a "blackboard" on which clients write information, such
+as a request for a kind of service.
+
+
+</BODY>
+<p>
+<!WA7><a href="http://www.lcs.mit.edu/web_project/Brochure/contents.html"><!WA8><img align=left src=http://www.lcs.mit.edu/web_project/Brochure/icons/contents_motif.gif></a>
+<!WA9><a href="http://www.lcs.mit.edu/web_project/Brochure/pdos/pdos.html"><!WA10><img align=left src=http://www.lcs.mit.edu/web_project/Brochure/icons/previous_group_motif.gif></a>
+<!WA11><a href="http://www.lcs.mit.edu/web_project/Brochure/sig/sig.html"><!WA12><img align=left src=http://www.lcs.mit.edu/web_project/Brochure/icons/next_group_motif.gif></a>
+</HTML>

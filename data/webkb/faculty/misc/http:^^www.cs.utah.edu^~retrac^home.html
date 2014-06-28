@@ -1,0 +1,342 @@
+Date: Thu, 21 Nov 1996 21:21:57 GMT
+Server: Apache/1.1.1+
+Content-type: text/html
+Content-length: 13004
+Last-modified: Sun, 07 Jan 1996 23:05:27 GMT
+
+<html>
+<head>
+<title>John B. Carter</title>
+</head>
+
+<body>
+
+<!WA0><img src="http://www.cs.utah.edu/~retrac/photo.gif"></a>
+
+<hr>
+<h1>John B. Carter</h1>
+<b>Assistant Professor</b><br>
+<b>Computer Science Department</b><br>
+<b>University of Utah</b><br><br>
+
+<hr>
+
+Professor Carter joined the Department of Computer Science in January 1993.
+His research interests include operating systems, parallel and distributed
+computing, and multiprocessor computer architecture.  Of particular
+interest are scalable shared memory architecture designs, both hardware and
+software.  Dr. Carter is co-leading two ARPA-sponsored research projects:
+the <!WA1><a href="http://www.cs.utah.edu/projects/avalanche">Avalanche scalable multiprocessor
+architecture</a> design effort and the <!WA2><a href="http://www.cs.utah.edu/projects/flexmach">Fast
+and Flexible Mach-Based Systems</a> effort (aka Mach 4).  The development
+of an efficient and highly portable distributed shared memory system, <!WA3><a
+href="http://www.cs.utah.edu/projects/flexmach/quarks.html">Quarks</a>, is part of this effort.
+
+<p>
+
+While a graduate student at Rice University, he designed, implemented, and
+evaluated <em>Munin</em>, a distributed shared memory system that allows
+shared memory parallel programs to be executed efficiently on distributed
+memory multiprocessors.  He has also worked on <em> high speed bulk data
+communication protocols.</em><p>
+
+<p>
+
+For the Fall Quarter of 1995, I will be teaching the <!WA4><a
+href="http://www.cs.utah.edu/~cs506"> Introduction to Operating Systems
+course, CS506</a>.  Meeting times are Tuesday-Thursday from 1:10pm-2:35pm
+in EMCB 102.
+
+<hr>
+
+<dt><h2>Current Research Projects</h2>
+
+<dl>
+<!WA5><a href="http://www.cs.utah.edu/projects/avalanche">
+<!WA6><img alt = "o" src = "http://www.cs.utah.edu/icons/blueball.gif"></a>
+<b>Avalanche Scalable Multiprocessor Design:</b>
+
+The goal of this project to develop an integrated cache, memory, and
+communication architecture that significantly reduces the latency of both
+distributed shared memory and message passage multiprocessor communication.
+The core processor of Avalanche will be the forthcoming PA-RISC 8000 CPU.
+We are designing a new <em>Context Sensitive Cache Controller Unit</em>
+that will support a flexible suite of cache coherence protocols for DSM
+applications and provide context sensitive injection of incoming data into
+the appropriate level of the memory hierarchy in order to minimize message
+latency.
+
+Primary research collaborators:
+<!WA7><a href="http://www.cs.utah.edu/~ald">Al Davis</a>,
+<!WA8><a href="http://www.cs.utah.edu/~kuramkot">Ravindra Kuramkote</a>, and
+<!WA9><a href="http://www.cs.utah.edu/~chenchi">Chen-Chi Kuo</a>.
+Other research collaborators:
+<!WA10><a href="http://www.cs.utah.edu/~swanson">Mark Swanson</a>,
+<!WA11><a href="http://www.cs.utah.edu/~stoller">Leigh Stoller</a>,
+<!WA12><a href="http://www.cs.utah.edu/~yih">Benny Yih</a>, and
+<!WA13><a href="http://www.sics.se/~ans/index.shtml">Ashley Saulsbury</a>.
+</dl>
+
+<dl>
+<!WA14><a href="http://www.cs.utah.edu/projects/flexmach">
+<!WA15><img alt = "o" src = "http://www.cs.utah.edu/icons/blueball.gif"></a>
+<b>Fast and Flexible Mach-Based Systems:</b>
+The goal of this project is to develop an operating system that provides a
+much higher degree of flexibility than traditional operating systems, and
+to use that added flexibility to circumvent the performance/functionality
+tradeoffs that thwart traditional highly-decomposed, microkernel-based
+operating systems.  Important components of this work are a module
+management service, lightweight and decomposed Mach kernel functionality,
+aggressive exploitation of interprocess sharing, and efficient distributed
+shared memory (see below).  We will maintain backward compatibility where
+practical, and freely distribute an unencumbered version of the entire
+system.
+Primary research collaborators:
+<!WA16><a href="http://www.cs.utah.edu/~lepreau">Jay Lepreau</a>,
+<!WA17><a href="http://www.cs.utah.edu/~mike">Mike Hibler</a>,
+<!WA18><a href="http://www.cs.utah.edu/~law">Jeff Law</a>, and
+<!WA19><a href="http://www.cs.utah.edu/~baford">Bryan Ford</a>.
+</dl>
+
+<dl>
+<!WA20><a href="http://www.cs.utah.edu/projects/flexmach/quarks.html">
+<!WA21><img alt = "o" src = "http://www.cs.utah.edu/icons/blueball.gif"></a>
+<b>Quarks Distributed Shared Memory System:</b>
+The goal of this project is to develop an efficient, portable, and freely
+available distributed shared memory system to support the shared memory
+programming style on distributed memory multiprocessors and networks of
+workstations.
+Ideally, Quarks will eventually do for distributed shared memory what PVM
+did for message passing -- make it relatively easy to use, pervasive
+(ported to a wide array of systems), and reasonably efficient.
+For more on our motivation, take a look at my
+<!WA22><a href="http://www.cs.utah.edu/~retrac/hotos95.ps.Z">HOTOS '95 position paper</a>.
+An <!WA23><a href="http://www.cs.utah.edu/projects/flexmach/quarks.html">
+<b>Alpha release</b></a> of Quarks is currently available that runs on SunOS
+4.1/SPARC machines, but ports are in progress to 68K BSD boxes,
+HP-UX/PA-RISC, IRIX 5.2/MIPS, and the Mach operating system.
+Primary research collaborators:
+<!WA24><a href="http://www.cs.utah.edu/~khands">Dilip Khandekar</a> and
+<!WA25><a href="http://www.cs.utah.edu/~kamb">Linus Kamb</a>.
+
+<p>
+Here is a copy of the slides for my OSDI '94 <!WA26><a href="http://www.cs.utah.edu/~retrac/osditut.eps.Z">
+tutorial on distributed shared memory</a> minus some of the graphs,
+which I will incorporate soon.
+
+</dl>
+
+<p>
+
+<hr>
+
+<h2>Significant Past Research Projects</h2>
+
+<dl><!WA27><img alt = "o" src = "http://www.cs.utah.edu/icons/blueball.gif">
+<b>Munin Distributed Shared Memory System:</b>
+
+Munin was the first software distributed shared memory system to explore
+the potential performance benefits of using a relaxed consistency model.
+Among Munin's novel features were a software implementation of the release
+consistency model, the first <em>multiple writer</em> memory consistency
+protocol to address the problem of <em>false sharing</em>, support for
+multiple consistency protocols (including user-supplied protocols), and an
+update timeout mechanism to reduce the communication overhead of write
+update protocols.  For shared memory programs with moderate to high degrees
+of sharing, Munin achieved far greater performance (speedup) than
+conventional distributed shared memory systems, usually within 10% of hand
+coded message passing performance.  Many of the features and ideas first
+developed in Munin have appeared in subsequent DSM systems.  Primary
+research collaborators: <!WA28><a
+href="http://www.cs.rice.edu/CS/faculty/willy.html">Willy Zwaenepoel</a>
+and <!WA29><a href="http://www.cs.rice.edu/CS/faculty/jkb.html">John Bennett</a>.
+Here is a copy of my <!WA30><a href="http://www.cs.utah.edu/~retrac/carter-thesis.ps.Z">dissertation</a> concerning Munin.
+</dl>
+
+<dl><!WA31><img alt = "o" src = "http://www.cs.utah.edu/icons/blueball.gif">
+<b>Optimistic Bulk Data Transfer Protocol:</b>
+
+The key insight exploited in this effort was that when the first packet in
+a `blast' of bulk data is received by a node, it is highly likely that no
+packet outside the `blast' will arrive before the last bulk data packet is
+received.  As such, upon receipt of the first packet in a blast of bulk
+data, the network device layer should set things up to optimize this case.
+This optimization, which was independently observed by Van Jacobson and
+incorporated into TCP/IP, resulted in 9.2 Mbps bulk data transfer rates
+between two SUN-3/50's on a 10 Mbps Ethernet.  At the time, the best TCP/IP
+implementations achieved under 5 Mbps bulk data transfer rates.
+
+Primary research collaborators:
+<!WA32><a href="http://www.cs.rice.edu/CS/faculty/willy.html">Willy Zwaenepoel</a>.
+</dl>
+
+<p>
+
+<hr>
+
+<h2>Selected Publications</h2>
+
+<dl>
+
+<!WA33><a href="http://www.cs.utah.edu/~retrac/tocs95.ps.Z"><!WA34><img alt = "o" src = "http://www.cs.utah.edu/icons/redball.gif"></a>
+J.B. Carter, J.K. Bennett, and W. Zwaenepoel.
+<!WA35><a href="http://www.cs.utah.edu/~retrac/tocs95.ps.Z">
+"Techniques for Reducing Consistency-Related Communication in
+Distributed Shared Memory Systems," </a>
+<i>ACM Transactions on Computer Systems</i>,
+pp. 205-243, Vol. 13, No. 3, August 1995.
+<p>
+
+<!WA36><a href="http://www.cs.utah.edu/~retrac/jpdc95.ps.Z"><!WA37><img alt = "o" src = "http://www.cs.utah.edu/icons/redball.gif"></a>
+J.B. Carter,
+<!WA38><a href="http://www.cs.utah.edu/~retrac/jpdc95.ps.Z">
+"Design of the Munin Distributed Shared Memory System,"</a>
+To appear in the special issue of the
+<i>Journal of Parallel and Distributed Computing</i>
+on distributed shared memory, 1995.
+<p>
+
+<!WA39><a href="http://www.cs.utah.edu/~retrac/hpca95.ps.Z"><!WA40><img alt = "o" src = "http://www.cs.utah.edu/icons/redball.gif"></a>
+A. Saulsbury, T. Wilkinson, J. Carter, A. Landin.
+<!WA41><a href="http://www.cs.utah.edu/~retrac/hpca95.ps.Z">"An Argument for Simple COMA,"</a>
+To appear in the <i>Future Generation Computer Systems (FGCS)</i> journal.
+Also in the <em>Proceedings of the First Annual Symposium on High Performance
+Computer Architecture</em>, pp. 276-285, January 1995.
+<p>
+
+<!WA42><a href="http://www.cs.utah.edu/~retrac/hotos95.ps.Z"><!WA43><img alt = "o" src="http://www.cs.utah.edu/icons/redball.gif"></a>
+J.B. Carter, D. Khandekar, and L. Kamb,
+<!WA44><a href="http://www.cs.utah.edu/~retrac/hotos95.ps.Z">
+"Distributed Shared Memory: Where We Are and Where We Should Be Headed,"</a>
+In the <i>Proceedings of the Fifth Workshop on Hot Topics in Operating
+          Systems</i>,
+pp. 119-122, May 1995.
+<p>
+
+<!WA45><a href="http://www.cs.utah.edu/~retrac/avalanche-overview.ps.Z"><!WA46><img alt = "o" src="http://www.cs.utah.edu/icons/redball.gif"></a>
+J.B. Carter, A. Davis, R. Kuramkote, C.-C. Kuo, L.B. Stoller, and M. Swanson,
+<!WA47><a href="http://www.cs.utah.edu/~retrac/avalanche-overview.ps.Z">
+"Avalanche: A Communication and Memory Architecture for
+Scalable Parallel Computing,"</a>
+University of Utah technical report.
+<p>
+
+<!WA48><a href="http://www.cs.utah.edu/~retrac/avalanche-cache.ps.Z"><!WA49><img alt = "o" src = "http://www.cs.utah.edu/icons/redball.gif"></a>
+J.B. Carter, R. Kuramkote, and C.-C. Kuo,
+<!WA50><a href="http://www.cs.utah.edu/~retrac/avalanche-cache.ps.Z">
+"Reducing Consistency Traffic and Cache Misses in
+the Avalanche Multiprocessor,"</a>
+University of Utah technical report.
+<p>
+
+<!WA51><a href="http://www.cs.utah.edu/~retrac/sico.ps.Z"><!WA52><img alt = "o" src = "http://www.cs.utah.edu/icons/redball.gif"></a>
+A. Saulsbury, J.B. Carter, and A. Landin,
+<!WA53><a href="http://www.cs.utah.edu/~retrac/sico.ps.Z">"SiCO: A Simple COMA Implementation,"</a>
+Swedish Institute of Computer Science technical report.
+<p>
+
+<!WA54><a href="http://www.cs.utah.edu/~retrac/wwos-iv.ps.Z"><!WA55><img alt = "o" src = "http://www.cs.utah.edu/icons/redball.gif"></a>
+J.B. Carter, B.A. Ford, M. Hibler, R. Kuramkote, J. Law, J. Lepreau,
+D.B. Orr, L. Stoller, and M. Swanson.
+<!WA56><a href="http://www.cs.utah.edu/~retrac/wwos-iv.ps.Z">
+"FLEX: A Tool for Building Efficient and Flexible Systems,"</a>
+In the <em>Proceedings of the Fourth Workshop on Workstation Operating
+Systems (WWOS)</em>, October 1993.
+<p>
+
+<!WA57><a href="http://www.cs.utah.edu/~retrac/compcon93.ps.Z"><!WA58><img alt = "o" src = "http://www.cs.utah.edu/icons/redball.gif"></a>
+J.B. Carter, A. Cox, S. Dwarkadas, E. Elnozahy, D. Johnson, P. Keleher, S.
+Rodrigues, W. Yu, and W. Zwaenepoel.
+<!WA59><a href="http://www.cs.utah.edu/~retrac/compcon93.ps.Z">
+"Network Multicomputing Using Recoverable Distributed Shared Memory,"</a>
+In the <em>Proceedings of COMPCON '93</em>, pp. 519-527, February 1993.
+<p>
+
+<!WA60><a href="http://www.cs.utah.edu/~retrac/wwos-iii.ps.Z"><!WA61><img alt = "o" src = "http://www.cs.utah.edu/icons/redball.gif"></a>
+J.B. Carter, A. Cox, D. Johnson, and W. Zwaenepoel.
+<!WA62><a href="http://www.cs.utah.edu/~retrac/wwos-iii.ps.Z">
+"Distributed Operating Systems Based on a Protected Global
+ Virtual Address Space,"</a>
+In the <em>Proceedings of the Third Workshop on Workstation Operating Systems
+           (WWOS)</em>, May 1992.
+<p>
+
+<!WA63><a href="http://www.cs.utah.edu/~retrac/sosp91.ps.Z"><!WA64><img alt = "o" src = "http://www.cs.utah.edu/icons/redball.gif"></a>
+J.B. Carter, J.K. Bennett, and W. Zwaenepoel.
+<!WA65><a href="http://www.cs.utah.edu/~retrac/sosp91.ps.Z">"Implementation and Performance of Munin,"</a>
+In <em>Proceedings of the Thirteenth Symposium on Operating Systems
+Principles (SOSP)</em>, pp. 152-164, October 1991.
+<p>
+
+<!WA66><a href="http://www.cs.utah.edu/~retrac/isca90.ps.Z"><!WA67><img alt = "o" src = "http://www.cs.utah.edu/icons/redball.gif"></a>
+ J.K. Bennett, J.B. Carter, and W. Zwaenepoel.
+<!WA68><a href="http://www.cs.utah.edu/~retrac/isca90.ps.Z">
+"Adaptive Software Cache Management for Distributed Shared
+ Memory Architectures,"</a>
+In <em>Proceedings of the 17th International Symposium on Computer
+Architecture (ISCA)</em>, pp. 125-135, May 1990.
+<p>
+
+<!WA69><a href="http://www.cs.utah.edu/~retrac/sigmetrics89.ps.Z"><!WA70><img alt = "o" src = "http://www.cs.utah.edu/icons/redball.gif"></a>
+J.B. Carter and W. Zwaenepoel.
+<!WA71><a href="http://www.cs.utah.edu/~retrac/sigmetrics89.ps.Z">
+"Optimistic Implementation of Bulk Data Transfer Protocols,"</a>
+In <em>Proceedings of the 1989 Sigmetrics Conference</em>,
+pp. 61-69, May 1989.
+<p>
+
+</dl>
+
+
+<hr>
+<h2>Selected Research Awards</h1>
+
+<dl>
+
+<!WA72><img alt = "o" src = "http://www.cs.utah.edu/icons/blueball.gif">
+"Investigating a Hybrid Function and Data Shipping Environment,"
+National Science Foundation, 1993-1996, PI.<p>
+
+<!WA73><img alt = "o" src = "http://www.cs.utah.edu/icons/blueball.gif">
+"Fast and Flexible Mach-based Systems," ARPA, 1994-1997, co-PI
+(PI: J. Lepreau).<p>
+
+<!WA74><img alt = "o" src = "http://www.cs.utah.edu/icons/blueball.gif">
+"Communication and Memory Architectures for Scalable Parallel Computing,"
+ARPA, 1994-1997, co-PI (PI: Al Davis).
+
+</ol>
+<p>
+
+<hr>
+
+<b>Work Address</b>
+<dl>
+<dt>3190 <!WA75><a href="http://www.cs.utah.edu/~retrac//~stoller/meb.html">Merrill Engineering Building</a>
+<dt><!WA76><a href="http://www.cs.utah.edu/~retrac//index.html">Department of Computer Science</a>
+<dt><!WA77><a href="http://www.utah.edu/HTML_Docs/UofU_Home.html">
+	University of Utah</a>
+<dt><!WA78><a href="http://www.cs.utah.edu/~retrac//~mike/utah.html">Salt Lake City, Utah</a> 34112
+<dt><b>email:</b> retrac@cs.utah.edu
+<dt><b>phone:</b> (801) 585-5474
+<dt><b>fax:</b> (801) 581-5843 or (801) 585-3743
+<p>
+</dl>
+
+<b>Home Address</b>
+<dl>
+<dt><!WA79><a href="http://www.cs.utah.edu/~retrac/house.ps">414 South Douglas Street</a> (The figure depicts my upstairs rental unit - I'm a slumlord!)
+<dt><!WA80><a href="http://www.cs.utah.edu/~retrac//~mike/utah.html">Salt Lake City, Utah</a> 34102
+<dt><b>phone:</b> (801) 583-8410
+<p>
+</dl>
+
+My <!WA81><a href="gopher://porter.cs.utah.edu:79/0retrac">finger</a> file.<br>
+
+<address>John Carter &lt;retrac@cs.utah.edu&gt;<br>
+
+<hr>
+<address><!WA82><a href = "http://www.cs.utah.edu/csinfo/mailweb.html">webmaster@cs.utah.edu</a><br>
+Last modified Sat Jan 28 1994</address>
+</body>
+</html>

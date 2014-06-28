@@ -1,0 +1,123 @@
+Date: Tue, 14 Jan 1997 20:10:07 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+Content-length: 4873
+Last-modified: Thu, 14 Nov 1996 19:26:25 GMT
+
+il  <html>
+        <head>
+        <title>Program 2 Assignment  Page </title>
+        </head>
+        <body>
+        <center><h1> Program 2 Assignment   Page</h1></center><br><hr>
+<p>
+
+11/1/96
+<bR><br>
+<h2>PROGRAM 2a:  DUE Fri.  noon  - part-A only</h2><br><br>
+
+This program will consist of several  parts, with part 2a due Fri.<br><br>
+
+<h3>Part-A:  due 10/25 at Noon</h3><br><blockquote>
+      You will write three FORTRAN Subroutines:<br>
+     1   CMPXMP: <blockquote> This procedure accepts four real parameters
+and returns two real parameters:
+<br><blockquote>
+            1) R1IN<br>
+            2) I1IN<br>
+            3) R2IN<br>
+            4) I2IN<br>
+            5) R3OUT<br>
+            6) I3OUT<br></blockquote>
+R1IN and I1IN are the real and imaginary components of a complex 
+number we 
+will call z1.  R2IN and I2IN are likewise component of z2, R3out and I3OUT 
+is the 
+output complex number z3.  CMPXMP will calculate z3=z1 * z2.  This is 
+performed as follows:
+<br>
+let z1 be represented as R1+i(I1)or (R1,I1) <br>
+then z1*z2 = R1*R2-I1*I2 + i(R1*I2+R2*I1) or <br>(  R1*R2-I1*I2, 
+R1*I2+R2*I1 )
+ <br>
+
+
+</blockquote>
+      2  CMPXAD:<blockquote>
+This subprogram also accepts 4 real and returns two real parameters.  It 
+will interpret the first two ( as did CMPXMP) parameters as the real and 
+imaginary components of a complex number z1, and the next two as z2 and 
+the 
+last two as z3.  The procedure will do a complex add of z1 to z2 and 
+return their complex sum in z3.  Complex add is defined as follows:
+let z= R+iI
+z1+z2 =(R1+R2) +i(I1+I2)
+
+<br></blockquote>           
+      3  CMPXMD: <blockquote><p> This will accept two real input 
+parameters and 
+return one real output parameter.<br>
+The first two will be the real and imaginary components of a complex 
+number 
+z and the last one will be the return value (a real scalar) which will 
+contain the modulus of z.  Modulus is a way of describing the "size" of a 
+complex number.  It is the distance of the point (R, I) from the the 
+origin of the complex plane (the real, imaginary axes).  It is calculated 
+as:<br>
+let z=R+iI be a complex number<BR>
+|z|=modulus(z)= sqrt(R^2 + I^2) 
+                
+                 </blockquote></blockquote>
+<p>
+You should carefully document the program source, using the BREAK 
+subroutine one Page 301 of your text as a model.  Your external 
+documentation should consist of three sets, one for each subprogram.  You 
+will have<blockquote>1) a description of the subprogram<br>
+                     2) the input parameters and their types<br>
+                     3) the output parameters and their types<br>
+                     4) and a test PLAN!! <br>
+</blockquote>
+You will be responsible for writing a driver program to test the 
+subprograms.  This may be done in one program for all the subprograms or 
+you may write separate drivers if you wish.
+<br>
+<hr>
+<h3>Part-B:  due 11/06/96 at MidNight</h3><br><blockquote>
+      You will write three FORTRAN Functions and change one of 
+the above Subroutines to a Function:<br>
+<blockquote>
+1)<blockquote>  Modify CMPXMD to be a REAL function taking two parameters 
+(R1in,I1in).</blockquote>
+2)<blockquote> <p> Write a REAL function Rvalid(MIN,MAX, PROMPT) that prompts 
+the user with "PROMPT"  (which is a string parameter), then reads a real 
+input, checks that it is greater than min and less than max, if so,returns the 
+real value read, otherwise produces a helpfull error message and repeats the 
+above steps.  MIN, MAX are real parameters, PROMPT is a string.</blockquote>
+3) <blockquote> <p> Write an INTEGER fuction Ivalid(MIN,MAX, PROMPT).  This 
+function is exactly the same as 2) above,but MIN, MAX and the function are 
+INTEGER.</blockquote>
+4)<blockquote> <p> Write an INTEGER function ARRGTR(A,N, VALUE) where 
+:<blockquote>
+REAL A(*)    ///an array of reals </blockquote> 
+<blockquote>INTEGER N     /// the array size</blockquote>
+<blockquote>REAL VALUE    /// a real number to be used as a search 
+argument</blockquote><BR>
+This function returns the index (subscript) of the first array member that is 
+> VALUE.  If there is no such element, it returns N+1.  That is, ARRGTR 
+returns the subscript I for the first A(I) > VALUE. 
+<BR>
+</blockquote>
+Only internal documentation is required.  You do need to produce a clear 
+statement of what each function does and provide a clear description of the 
+return value and the input parameters.  You are to provide a driver program to 
+test (I heartily recommend that you produce a test plan, not to be handed in, 
+but to guide you to a complete test of the functions) .  Please hand in as a 
+single script file, sent as message text (^R in compose message).
+</blockquote>
+
+
+<hr>
+<H3><!WA0><a href="http://sac.uky.edu/~risumn0/cs222/mandel.txt">PROGRAM 2C Assignment--Almost finished with Fortran!</a></h3>
+
+<br>NO  More parts to follow.  We are doing some FUN stuff now!.
+</body></html>

@@ -1,0 +1,360 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 19:02:37 GMT
+Content-Type: text/html
+Content-Length: 14145
+Last-Modified: Thursday, 02-May-96 10:38:48 GMT
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!-- cs674 Final Project Short Report 5/1/96 -->
+<!-- Alfred Hong -->
+<!------------------------------------------------------------>
+
+<head>
+
+<title>Regular Language to SQL Query Translation</title>
+
+</head>
+
+<body>
+
+<!------------------------------------------------------------>
+
+<p align=center>
+
+<h2 align=center>
+Translation of Regular Questions into SQL Constructs<br>
+</h2>
+
+<h4 align=center>
+<small>COM S 674 Final Project Report - Spring 1996 </small><br><p>
+Alfred Hong<br>
+May 1, 1996<br></h4>
+
+<hr>
+
+<!------------------------------------------------------------>
+
+<h3><a name="Contents">Table of Contents </a><br></h3>
+<ul>
+<li><a href="#Description">Problem Description </a>
+<li><a href="#Approach">General Approach </a>
+<li><a href="#Results">Results and Evaluation </a>
+<li><a href="#Discussion">Discussion, Conclusion, and Future/a>
+<li><a href="#Refs">References</a>
+</ul>
+
+<hr>
+
+<!------------------------------------------------------------>
+
+<h3><a name="Description">Problem Description</a></h3><p>
+
+	Web sites today that provide a query front-end to a backend database 
+	are done mostly via keyword or categorical search forms.  These 
+	search parameters are preselected and usually "inhuman."  Since the
+	query parameters are preselected, the answers are fixed and static 
+	to the user.  Replacing these fixed query forms with a natural 
+	language query front-end could make things more human, more natural, 
+	and more flexible.  A "middleware" mechanism that converts a natural 
+	language question into the backend database language to perform the 
+	user's query request might do the job.  Since relational databases 
+	are very popular, SQL will be the target database language for 
+	conversion. <p>
+
+<a href="#Contents"><i>-->Table of Contents </i></a><p>
+
+<hr>
+
+<!------------------------------------------------------------>
+
+<h3><a name="Approach">General Approach</a></h3><p>
+
+	The approach in general involves: <p>
+
+	<ol>
+	<li><a href="#app1">Identifying a target domain </a> for testing of 
+		concepts, 
+	<li><a href="#app2">Researching possible techniques</a> for dealing 
+		with the problem,
+	<li>Implementation using questions the author came up with,
+	<li><a href="#Results">Testing out implementations</a>, and
+	<li>Refinement and retesting</a>.
+	</ol> <p>
+
+	<p>
+
+	<h4><a name="app1">Identifying Target Domain </h4><p>
+
+	Natural language processing is a difficult subject.  To tackle the 
+	focus of this project, a specific domain is chosen for ideas and 
+	code-testing.  The domain of querying for flight schedules is thus 
+	chosen.  <p>
+
+	Using sample schedule information from USAir's flight schedule 
+	database, the following relational database table definition and 
+	record shows the type of information that is dealt with.  <p>
+
+	<code>
+	FLTS( toCity, fromCity, beginDate, endDate, leaveTime, arriveTime, 
+	flightNum, frequency, stops, stopCities, meals, fare ) <p>
+
+	( "San Francisco, CA", Ithaca, NY", "052396", "062296", "635A", 
+	"1159A", "E5361/63", "X7", 1, "PHL", "B", 524 )
+	</code> <p>
+
+	<a name="assumptions">
+	With the domain specified, certain assumptions are made to simplify 
+	the task of natural language question to SQL construct translation: 
+	</a><p>
+
+	<ul>
+	<li><b>Focus on simple queries</b>:  user's usually do not ask 
+		complex SQL queries that involve not exists or groupings 
+		for instance
+	<li><b>Time and dates</b>: these need special treatment because of the 
+		variety and complexity of formats used
+	<li><b>Query against one database table only</b>: dealing with 
+		multiple tables is a complex task because of ambiguity 
+		resolution difficulties with table joins
+	<li><b>Punctuations</b>: not dealt with
+	<li><b>One sentence questions only</b>
+	</ul>
+
+	<p>
+
+	<h4><a name="app2">Techniques Researched </h4><p>
+
+	Several possible concepts/techniques to tackle the problem were 
+	looked at: <p>
+
+	<ol>
+	<li>WH-, GAP, and semantic features;
+	<li>Bottom-up chart-parsing with semantic features;
+	<li>Procedural semantics and question answering, conversational agents;
+	<li>Information retrieval concepts; and
+	<li>Template matching.
+	</ol>
+
+	<p>
+
+	Of these techniques, although some tests were initially done with 
+	using WH- and GAP features (not with flight schedules), the extra 
+	WH- and GAP features are really not necessary for the problem.  Simple
+	bottom-up chart-parsing with semantic features suffice.  <p>
+
+	The idea of using some combination of question answering, 
+	conversational agents, information retrieval concepts, and template 
+	matching came about from the realization that the number of synonyms 
+	and phrasings possible for asking for a flight schedule is actually 
+	quite diverse, requiring a rather large lexicon for a small domain. <p>
+
+	<p>
+
+<a href="#Contents"><i>-->Table of Contents </i></a><p>
+
+<hr>
+
+<!------------------------------------------------------------>
+
+<h3><a name="Results">Results and Evaluation</a></h3><p>
+
+<h4>Bottom-Up Chart-Parsing with Semantic Features</h4><p>
+
+Because of the nice structured format of SQL queries, flight schedule 
+questions can be directly mapped to that of parts of SQL queries.  As shown in 
+Table 1, <i>for San Francisco</i> can be mapped to the <i>WHERE 
+destCity = "San Francisco"</i> construct, and <i>for May 28</i> can be mapped 
+to the <i>WHERE departDate = "0528"</i> construct.  <p>
+
+<TABLE BORDER>
+  <CAPTION>Table 1. Translation Mapping for the Sentence <i>What flights 
+	are available for San Francisco from Ithaca for May 28?</i></CAPTION>
+  <TR><TH>Sentence<TH>SQL
+  <TR><TH ALIGN=LEFT>What flights are available<TD>SELECT flights
+  <TR><TH ALIGN=LEFT><TD>FROM schedules
+  <TR><TH ALIGN=LEFT>for San Francisco<TD>WHERE destCity = "San Francisco" AND
+  <TR><TH ALIGN=LEFT>from Ithaca<TD>departCity = "Ithaca" AND
+  <TR><TH ALIGN=LEFT>for May 28<TD>departDate = "0528"
+</TABLE> <p>
+
+The following is the result from parsing the sentence "What are the departure
+times for houston tomorrow":  <p>
+
+<pre>
+S176:&lt;S(((<b>SELECT</b>(((<b>TIME</b> ?V18) ?V25 <b>DEPART</b>) 
+	((<b>TOMORROW</b> ?V18) ?V25 <b>IAH</b>)))) (1 WH-PRO116) 
+	(2 VP175))&gt; from 0 to 8 <p>
+</pre> <p>
+
+        Sample questions for testing were solicited from users given that they 
+        need to purchase a ticket to San Francisco tomorrow from Ithaca.  The 
+        following are example questions.  <p>
+
+        <code>
+         1. What are the available arrival times for Miami for tomorrow? <p>
+         2. What are the departure times for Houston for tomorrow? <p>
+         3. How many stops are there to San Francisco for flight 400? <p>
+         4. When does flight E5361 arrive in Orlando today? <p>
+         5. What is the cheapest flight available to San Francisco tomorrow? 
+                <p>
+         6. Can you book me the cheapest flight I can take to San Francisco
+                tomorrow? <p>
+         7. Do I need to stay a Saturday night to get the lowest fares? <p>
+         8. How many flights do you have available going to San Francisco 
+                tomorrow? <p>
+         9. Can you check tomorrow's flight schedule to San Francisco for me? 
+                <p>
+        10. I need to fly to San Francisco tomorrow.  Is there any flights 
+                available? <p>
+        </code> <p>
+
+        Question types 1-5 can be parsed, but not the others for reasons 
+	mainly of not anticipating certain words and different sentential 
+	structures. For results, see the <a href="output">results 
+	documentation</a> and <a href="newlex">grammar+lexicon code</a>.  <p>
+
+	As a note, questions 5 and 6 involve the realization that the "cheap" 
+	concept means a SELECT MIN(FARE) operation is needed.  Question 7 is 
+	a yes/no type question.  Question 8 involves a COUNT operation, and 
+	question 10 has 2 sentences that violates the 
+	<a href="#assumptions">defined assumptions</a>.  <p>
+
+<h4>Question Answering + Conversational Agents + Information Retrieval + 
+Template Matching</h4><p>
+
+The results of the bottom-up chart-parsing method could be improved with 
+further refinement as non-anticipated sentential constructs are discovered. 
+This is not ideal, however, which motivates the search for other means of 
+tackling the problem. <p>
+
+Questions are often asked in bits and pieces; this is quite true for querying 
+flight schedules.  This requires the flight schedule answering system to be 
+aware of what has been asked in a session, then results can be further refined 
+by the user with several questions.  Viewed in this way, multiple sentences 
+would not be a major problem since it is allowed.  <p>
+
+Even though the number of synonyms required are quite large, a lexicon need to 
+exhaustively cover all possibilities that the user may present to the system. 
+For example, "flight", "flight schedule", "schedule", "reservation" refer to 
+the same thing; other inferences are possible through other combinations of 
+words with helper words and different word arrangements.  For instance, "to go 
+to miami" in the context of flight schedules implies flying to miami.  To 
+parse all possible combinations of questions also require a large number of 
+rules.  <p>
+
+The sentences <i>I need to fly to San Francisco tomorrow.  Is there any flight 
+available?</i> and the sentence <i>Is there any flight available to San 
+Francisco tomorrow?</i> are the same queries.  Notice, however, that key 
+phrases are the same: <i>to San Francisco</i>, <i>tomorrow</i>, and <i>any 
+flight</i>.  The idea is that if these can be identified, then maybe sentence 
+boundaries and syntactic structure are not as important, and the lexicon  
+need to concentrate only on key words/phrases.  <p>
+
+<img src="interface.gif" align=middle><p>
+Fig. 1. Interface of Flight Schedule Query Application
+<p>
+
+To test the idea out, a Tcl/TK application has been written (Fig. 1).  <p>
+
+As shown, there are several parts to the interface.  The user inputs 
+queries, clicks on the <i>Analyze</i> button, and key words/phrases are 
+extracted from the input and stored.  Extraction of key concepts is done by 
+regular expression matching with a built-in lexicon that ignores irrelevant 
+words (akin to <i>stop-lists</i> in information extraction) in the context of 
+flight schedule query.  In the figure, the history text box shows that the 
+concepts <i>flights</i>, <i>atlanta</i>, and <i>tomorrow</i> are extracted 
+from the Q1 sentence which is shown directly under the Q1 line.  (Actually, 
+the extraction of <i>to atlanta</i> instead of just <i>atlanta</i> would be 
+better for indicating atlanta as a destination city.)  Q2 is a 
+followup question that requests for flights to <i>houston</i> instead.  
+The extracted information then is used to do template matching to SQL 
+syntax (this has not been implemented yet). <p>
+
+The user can input successively to refine or change their queries until the 
+<i>Reset</i> button is chosen to restart a new session.  Using Tcl/TK also 
+makes it easy to interface to a Web page with a backend relational database 
+engine<a href="#ref2">[2]</a>.  <p>
+
+Evaluation of this application can not be done since it has not been 
+completely developed yet.  However, the pattern matching and key concept 
+extraction component certainly show promise at this point.  <p>
+
+Thus with a combination of question answering, conversational agents, 
+information retrieval, and template matching techniques, maybe the flight 
+schedule query problem can be dealt with feasibly.  <p>
+
+<a href="#Contents"><i>-->Table of Contents </i></a><p>
+
+<hr>
+
+<!------------------------------------------------------------>
+
+<h3><a name="Discussion">Discussion, Conclusion, and Future </a></h3><p>
+
+There are other problems that were overlooked.  What if the user mistype 
+their questions?  What if the user does not follow correct English grammar 
+rules?  In this case, current forms-based methods of flight-schedule query 
+on the Web are definitely at an advantage.  Then again, these Web sites are 
+limited and return relatively large sets of data that require further 
+interpretation on the part of the user.  </p>
+
+In general, natural language processing is a difficult subject.  Even with 
+a specific domain chosen, problems are abound.  In terms of the bottom-up 
+chart-parser method, if<p>
+
+<ul>
+<li>a lexicon that deals with all possible flight schedule scenarios is used; 
+<li>dates, times, and flight numbers are given special identification 
+	parameters; 
+<li>city names with multiple words are given special treatment; and
+<li>grammar rules are refined by repeated testing; 
+</ul> <p>
+
+then a full-proof flight-schedule query system could be possible.  <p>
+
+However, even if the sentences could be parsed, the parsed result can not 
+be used readily; integrating such a system with a web front-end is not 
+straightforward because of the resident LISP back-end used for the 
+chart-parsing.  Even if it is done, it is rather resource intensive.  This 
+led to researching other possible ways to make it more feasible.  Hopefully 
+the alternative method embodied by the Tcl/TK application as discussed in 
+the previous section will prove to be promising.  <p>
+
+<h4>Future Work</h4><p>
+
+<ul>
+<li>Interface LISP and the grammar+lexicon to a web page,
+<li>Continue work on Tcl/TK application over the summer.
+</ul>
+
+<p>
+
+<a href="#Contents"><i>-->Table of Contents </i></a><p>
+
+<hr>
+
+<!------------------------------------------------------------>
+
+<h3><a name="Refs">References </a></h3><p>
+
+<dl>
+<dt><a name="ref1">[1]</a>
+	<dd>Allen, James.  <i>Natural Language Understanding</i>.  2nd ed.  
+	Benjamin/Cummings, Redwood City, CA.  1995.
+
+<dt><a name="ref2">[2]</a>
+	<dd>Almasi, G., et al.  "Web* -- A Technology to Make Information 
+	Available on the Web."  In <i>Proceedings of the Fourth Workshop on 
+	Enabling Technologies: Infrastructure for Collaborative Enterprises 
+	(WET ICE '95) (Apr. 20-22, 1995, Berkeley Springs, West Virginia)</i>. 
+	IEEE Computer Society Press, Los Alamitos, CA, pp. 147-153.
+</dl>
+
+<a href="#Contents"><i>-->Table of Contents </i></a><p>
+
+<!------------------------------------------------------------>
+
+</body>
+</html>
+

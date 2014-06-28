@@ -1,0 +1,122 @@
+Date: Mon, 11 Nov 1996 17:25:22 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Tue, 20 Feb 1996 13:25:27 GMT
+Content-length: 2251
+
+<html>
+<head>
+<title>CS 537 - Quiz #2</title>
+</head>
+
+<body>
+<table border=0 width=100% align=center>
+<tr>
+<td width=25%><td width=50% align=center>
+<b>UNIVERSITY OF WISCONSIN-MADISON
+<br>
+Computer Sciences Department</b>
+<td width=25%>
+<tr>
+<tr>
+<td>
+<b>CS 537
+<br>
+Spring 1996 </b>
+<td><td align=right><b>Bart Miller</b>
+<tr>
+<td>
+<td align=center><b>Quiz #2</b>
+<br>
+Wednesday, February 14
+<td>
+</table>
+
+<h2>Too much of too much milk</h2>
+Following is a solution to the
+<i>N</i>
+bottle Too Much Milk problem using semaphores.
+The problem is to have a refrigerator that we will try to keep full
+with
+<i>N</i>
+bottles of milk.
+<p>
+You live in a Co-op with many roommates.
+Each time a roommate comes home, they check the refrigerator to see if
+milk is needed.
+If so, they go to the store and buy a bottle.
+Each person only buys one bottle at a time.
+<p>
+Each roommate will be a process.
+The procedure
+<tt>MilkCheck</tt>
+is executed by each roommate process when arriving home.
+This procedure has the roommate check the refrigerator, and buy
+milk if necessary.
+<ul>
+<li>
+The solution should make sure that if a roommate arrives home and milk
+is needed, that they buy a bottle.
+<li>
+It should also make sure that you never have more than
+<i>N</i>
+bottles of milk in the refrigerator at any one time.
+<li>
+<i>
+Important:
+Try to minimize the time that any roommate process stays idle around
+the refrigerator.
+In other words, don't force a roommate to
+wait idle while another roommate is at the store.
+</i>
+</ul>
+<p>
+The program below is not quite correct.
+You are to fix this program so that is satisfies the above criteria.
+<p>
+The <b>bold face</b> text has been added to correct the problem.
+<p>
+<table width=100% border=1 align=center>
+<tr><td>
+
+<b>Initialization</b>
+<pre>
+semaphore mutex(<b>1</b>);
+int numberOfBottles = 0;
+int numberOfShoppers = 0;
+</pre>
+<tr><td>
+<pre>
+
+MilkCheck ()
+{
+	mutex.P();
+
+	if ((numferOfBottles + numberOfShoppers) <b><</b> N) {
+
+		numberOfShoppers++;
+
+		<b>mutex.V();</b>
+
+		BuyABottleOfMilk();
+
+		<b>mutex.P();</b>
+
+		numberOfBottles++;
+
+		numberOfShoppers--;
+	}
+
+	mutex.V();
+}
+</pre>
+</table>
+
+<hr>
+<H4>
+Last modified:
+Tue Feb 13 08:36:53 CST 1996
+by
+<a href="http://www.cs.wisc.edu/~bart">bart</a></b>
+</H4>
+</body>

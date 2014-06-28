@@ -1,0 +1,114 @@
+Date: Tue, 05 Nov 1996 21:47:19 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 26 Aug 1996 16:13:13 GMT
+Content-length: 4107
+
+<html>
+<head>
+<title>Quince Testing Ground</title>
+</head>
+<body>
+<h1>Quince - <i>the Internet's Ultimate Wordgame</i></h1>
+<!WA0><A HREF="#beta">[Beta Testers]</A>
+<!WA1><A HREF="#problems">[Known Problems]</A>
+<!WA2><A HREF="#rules">[Rules of the Game]</A>
+<hr>
+<center>
+
+<APPLET CODEBASE = "java" CODE="Quince.class" height = 550 width = 640> 
+</APPLET>
+
+</center>
+<hr><a name="beta">
+<h1>Welcome Quince Beta Testers!</h1>
+
+This is a work in progress.  Some features are obviously not
+implemented yet.  Most notably, I haven't written the Quince server;
+so what you see is just a dumb front-end.  Please <!WA3><A
+HREF="mailto:ben@cs.wisc.edu">mail me</A> if you find any bugs or have
+constructive criticism of any kind (other than to get a life!).<br><br>
+Thanks for your feedback,<br>
+<br>
+Ben.
+
+<hr>
+<h2>Beta-Testers Hall of Fame</h2>
+The following folks have either found bugs or made helpful suggestions leading to improvements in the game: 
+	<ul>
+	Daniel Prince, Chris Lukas, Felix Teitelbaum
+	</ul>
+These Quince heros will be credited on the "About" screen in the final version.
+
+<hr><a name="problems">
+<h2>Known Problems</h2>
+<h3>Netscape 3.0 for Unix</h3>
+	<ul>
+	<li> Deletion from the word list is broken. 
+	</ul>
+<h3>Explorer 3.0 for Win95</h3>
+	<ul>
+	<li> There seem to be occasional white stripes across the board and the
+timer -- they're covered by the board/timer, but they show just a little
+at the sides.  Hard to describe...  I couldn't figure out a pattern to
+when they appear and disappear. -Dan Prince
+	</ul>
+
+<hr><a name="rules">
+<h2>Rules of the Game</h2>
+	<ul>
+	<li> Goal: find as many words on the board as you can in three minutes.
+	<li> Valid words consist of a sequence of neighboring tiles from the board.
+	<li> The neighbors of a tile are the tiles bordering it in all directions - vertically, horizontally, and diagonally.
+	<li> A tile may not be re-used in spelling a word.
+	<li> Words must be four letters or longer.
+	<li> If playing Euclidian, edge tiles have fewer than eight neighbors.  
+	<li> If playing non-Euclidian, the neighbors of an edge tile are considered to "wrap around" the board.
+	</ul>
+
+<h2>Entering Words</h2>
+	<ul>
+	<li> Enter words either by dragging them out on the board or typing
+	  	  them into the text box below the board.
+   <li> Erroneously entered words can be deleted from the word list by selecting the mistake and pressing <i>Delete</i> or <i>Backspace</i>.
+	<li> When dragging out a word, you can back up by dragging over the tile just before the tail of your selection.
+	<li> When dragging out a word, wou can press and hold the <i>Shift</i> key to disable selection; this is useful when selecting wrapped words in Non-Euclidian mode.
+	<li> Clicking on the word list to the right of the screen displays the word on the board.
+	<li> Clicking on the buttons beneath the board has the following effects:
+		<ul>
+		<li> "<" - rotates the board counter-clockwise
+		<li> "-" - flips the board vertically 
+		<li> ">" - rotates the board clockwise
+		</ul>
+	</ul>
+
+<h2>Sequence of Play</h2>
+	<ul>
+	<li> When you first enter Quince, a dialog box appears asking you to provide a name for yourself and select a language (English only at first).
+	<li> Browse the channels of the Quince server with the channel selector.
+	<li> When you find a game that you what to join, click on the "Join" button.
+	<li> When that game enters a new round, you can begin playing.
+
+	<li> At the conclusion of a round, a window will appear that shows:
+		<ul>
+			<li> The words found by each player not found by any other player.
+			<li> All the words found by the Quince server.
+			<li> Words found by a player, but not by any other player or by the Quince server are flagged as questionable.
+			<li> Point summaries for all players.
+		</ul>
+	<li> You have 30 seconds to review the results of a round before the next round begins.
+	</ul>
+
+<h2>Scoring</h2>
+	<ul>
+	<li> Points are only awarded for words that you find that no other player found.
+	<li> 1 point for a four-letter word
+	<li> 2 points for a five-letter word
+	<li> 3 points for a six-letter word
+	<li> etc...
+	</ul>
+
+</body>
+</html>
+
+

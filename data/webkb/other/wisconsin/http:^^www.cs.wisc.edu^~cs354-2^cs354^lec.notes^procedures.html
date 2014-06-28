@@ -1,0 +1,893 @@
+Date: Tue, 05 Nov 1996 20:50:00 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 16 Oct 1996 15:43:09 GMT
+Content-length: 21536
+
+<html>
+<head>
+<title> Lecture notes - Chapter 9 - Procedures</title>
+</head>
+
+<BODY>
+<h1> Chapter 9 -- Procedures</h1>
+
+<pre>
+
+All about Procedures
+--------------------
+
+an introduction to procedures
+
+why have procedures?
+  -- reuse of code simplifies program writing
+  -- modular code facilitates modification
+  -- allows different programmers to write different parts of the
+     same program
+  -- etc.
+
+Assembly languages typically provide little or no support for
+  procedure implementation.
+
+So, we get to build a mechanism for implementing procedures out
+of what we already know.
+
+
+
+
+First, some terms and what we need.
+
+In Pascal:
+
+      begin
+	.
+	.
+	.
+       x := larger(a, b);      CALL
+	.
+	.
+	.
+      end.
+                  HEADER     PARAMETERS
+      function larger (one, two: integer): integer;
+      begin
+	 if ( one > two ) then
+	   larger := one             BODY
+	 else
+	   larger := two
+      end;
+
+In C:
+
+      {
+	.
+	.
+	.
+       x = larger(a, b);      CALL
+	.
+	.
+	.
+      }
+               HEADER     PARAMETERS
+      int larger (int one, int two)
+      {
+	 if ( one > two )
+	   larger = one;             BODY
+	 else
+	   larger = two;
+      }
+
+
+
+Steps in the execution of the procedure:
+    1. save return address
+    2. procedure call
+    3. execute procedure
+    4. return
+
+
+   what is return address?        instruction following call
+
+   what is procedure call?        jump or branch to first instruction
+				  in the procedure
+
+   what is return?                jump or branch to return address
+
+
+MAL implementation of SAL procedure call:
+
+
+	   la  $5, rtn1
+	   b proc1                 # one procedure call
+     rtn1: # next instruction here
+	    .
+	    .
+	    .
+	   la  $5, rtn2
+	   b proc1                 # another procedure call
+     rtn2: # next instruction here
+
+	    .
+	    .
+	    .
+
+   proc1:    # 1st instruction of procedure here
+	     .
+	     .
+	     .
+	     jr $5
+
+
+jr is a new instruction --
+      It does an unconditional branch (jump, actually) to the address
+      contained in the register specified.
+
+
+
+
+
+
+MIPS R2000 (MAL, actually) provides a convenient instruction for procedure
+calls.  
+	    jal  procname
+
+    does 2 things
+     1.  it places the address of the instruction following it
+	 into register $ra ($31).  (The choice of 31 is arbitrary, but
+	 fixed.)
+     2.  it branches (jumps) to the address given by the label (procname).
+
+
+
+
+the example re-written:
+
+
+             jal proc1
+	     .
+	     .
+	     .
+	     jal proc1
+	     .
+	     .
+	     .
+
+
+   proc1:    # 1st instruction of procedure here
+	     .
+	     .
+	     .
+	     jr $ra   # $ra is the alias for $31
+
+
+
+
+one problem with this scheme.  What happens if a procedure
+calls itself (recursion), or if a procedure calls another
+procedure (nesting) (using jal)?
+
+       The value in register $31 gets overwritten with each
+       jal instruction.  Return addresses are lost.  This
+       is an unrecoverable error!
+
+
+What is needed to handle this problem is to have a way to
+save return addresses as they are generated.  For a recursive
+subroutine, it is not known ahead of time how many times
+the subroutine will be called.  This data is generated
+dynamically; while the program is running.
+
+The best way to save dynamically generated data is on a stack.
+
+SYSTEM STACK
+------------
+  A stack is so frequently used in implementing procedure call/return,
+  that many computer systems predefine a stack, the SYSTEM STACK.
+
+
+  STATIC -- can be defined when program is written (compile time)
+  DYNAMIC -- is defined when a program is executed (run time)
+
+      in this case, it is the amount of storage that cannot be
+      determined until run time.
+
+  The size of the system stack is very large.  In theory, it should
+  be infinitely large.  In practice, it must have a size limit.
+
+ address  |         |
+    0     | your    |
+          | program |
+          | here    |
+          |         |
+          |         |
+          |         |
+          |         |
+          |         |
+          | system  |  / \
+  very    | stack   |   |  grows towards smaller addresses
+ large    | here    |   |
+ addresses
+
+
+
+    terminology:
+
+       Some people say that this stack grows DOWN in memory.
+       This means that the stack grows towards smaller memory
+       addresses.  Their picture would show address 0 at the
+       bottom (unlike my picture).
+
+       DOWN and UP are vague terms, unless you know what the
+       picture looks like.
+
+ The MIPS system stack is defined to grow towards smaller
+ addresses, and the stack pointer points to an empty location
+ at the top of the stack.  The stack pointer is register $29,
+ also called $sp, and it is defined before program execution
+ begins.
+
+
+ push, in MAL:
+
+    sw   $?, ($sp)       # the ? is replaced by whateger register
+    sub  $sp, $sp, 4     # contains the data to be pushed.
+
+       OR
+
+    sub  $sp, $sp, 4
+    sw   $?, 4($sp)
+
+ pop, in MAL:
+   
+    add $sp, $sp, 4    # the ? is replace by a register number
+    lw  $?, ($sp)
+
+       OR
+
+    lw  $?, 4($sp)
+    add $sp, $sp, 4
+
+
+  NOTE:  if $sp ($29) is used for any other purpose, then the stack pointer
+         is lost.
+
+
+
+An example of using the system stack to save return addresses:
+
+     jal doit
+     .
+     .
+     .
+     jal doit
+     .
+     .
+     .
+
+doit:  sw $ra, ($sp)       # save return address
+       sub $sp, $sp, 4
+
+      .
+      .
+      .
+       jal another         # this would overwrite the return
+                           # address if it had not been saved.
+      .
+      .
+      .
+
+       add $sp, $sp, 4     # restore return address
+       lw $ra, ($sp)
+       jr $ra
+
+
+
+about STACK FRAMES (ACTIVATION RECORDS)
+---------------------------------------
+
+from a compiler's point of view, there are a bunch of things
+that should go on the stack relating to procedure call/return.
+They include:
+     return address (register)
+     parameters
+     other various registers
+
+Each procedure has different requirements for numbers of
+  parameters, their size, and how many registers (which ones)
+  will need to be saved on the stack.  So, we compose a
+  STACK FRAME or ACTIVATION RECORD that is specific to a
+  procedure.
+
+
+Space for a stack frame gets placed on the stack each time
+a procedure is called, and taken off the stack each time a
+return occurs.  These stack frames are pushed/popped
+DYNAMICALLY (while the program is running).
+
+
+example:
+  jal  A
+  jal  B
+  .
+  .
+
+A:  jal C
+    jal D
+    jr $ra
+
+B:  jal D
+    jr $ra
+
+C:  jal E
+    jr $ra
+
+D:  jr $ra
+
+E:  jr $ra
+
+
+              show stack for a trace through this calling sequence
+
+
+
+
+The code (skeleton) for one of these procedures:
+A:  jal C
+    jal D
+    jr $ra
+
+
+
+
+
+A:  sub $sp, $sp, 20     # allocate frame for A
+    sw  $ra, 16($sp)     # save A's return address
+
+    jal C
+    jal D
+
+    lw  $ra, 16($sp)     # restore A's return address
+    add $sp, $sp, 20     # remove A's frame from stack
+    jr $ra               # return from A
+
+
+
+
+Some notes on this:
+-- the allocation and removal of a frame should be done within
+   the body of the procedure.  That way, the compiler does not
+   need to know the size of a procedure's frame.
+-- Accesses to A's frame are done via offsets from the stack pointer.
+
+
+
+parameter passing.
+------------------
+
+parameter = argument
+
+Just as there is little/no support for implementing procedures
+in many assembly languages, there is little/no support for passing
+parameters to those procedures.
+
+Remember, when it comes to the implementation,
+	 --  convention
+	 --  its up to the programmer to follow the conventions
+
+
+
+Passing parameters means getting data into a place set aside
+for the parameters.  Both the calling program and the procedure
+need to know where the parameters are.
+
+	The calling program places them there, and possibly uses
+	values returned by the procedure.  The procedure uses
+	the parameters.
+
+
+a note on parameter passing --
+  a HLL specifies rules for passing parameters.  There are basically
+  2 types of parameters.
+
+  Note that a language can offer 1 or both types.
+    
+
+    call by value -- what C has.  In Pascal, these are parameters
+	declared without the var in front of the variable name.
+	Fortran doesn't have this type of parameter.
+
+	The parameter passed may not be modified by the procedure.
+	This can be implemented by passing a copy of the value.
+	What call by value really implies is that the procedure can
+	modify the value (copy) passed to it, but that the value
+	is not changed outside the scope of the procedure.
+
+    call by reference -- what Fortran has.  In Pascal, these are
+        "var type" parameters.
+
+	The parameter passed to the subroutine can be modified,
+	and the modification is seen outside the scope of the
+	subroutine.  It is sort of like having access to global
+	variable.
+
+
+There are many ways of implementing these 2 variable types.
+If call by value is the only parameter type allowed, how
+can we implement a reference type parameter?
+   Pass the address of the variable as the parameter.  Then
+   access to the variable is made through its address.  This
+   is what is done in C.
+
+
+
+Simplest mechanism -- registers
+-------------------------------
+
+the calling program puts the parameter(s) into specific registers,
+and the procedure uses them.
+
+  example:
+
+	     .
+	     .
+	     .
+	add  $4, $20, $0     # put parameter in register 4
+	jal decrement
+	move $20, $4         # recopy parameter to its correct place.
+	     .
+	     .
+	     .
+   decrement:   add  $4, $4, -1
+		jr $ra
+
+
+Notes:   -- This is a trivial example, since the procedure is 1 line
+	    long.
+	 -- Why not just use $20 within the procedure?
+		1. convention -- parameters are passed in specific registers.
+                2. same procedure could be used to decrement the value
+		   in other registers -- just copy the value to register $4
+		   first, and copy it out afterwards.
+
+
+historically more significant mechanism:  parameters on stack
+					 ---------------------
+
+place the parameters to a procedure (function) in the activation
+record for the procedure.
+
+    sub $sp, $sp, 8   # allocate space for parameters
+    sw  $9, 8($sp)    # place parameter 1 into AR of proc
+    sw  $18, 4($sp)   # place parameter 2 into AR of proc
+    jal proc
+    .
+    .
+    .
+    proc:
+    sub $sp, $sp, 12  # allocate remainder of AR for proc
+		      # assume fixed size (too big) activation record
+    lw  $10, 20($sp)  # retrieve parameter 1 for use
+    lw  $11, 16($sp)  # retrieve parameter 2
+
+                      # use parameters in procedure calculations
+
+    add $sp, $sp, 20  # remove AR of proc
+    jr  $ra
+
+
+
+
+calling program:  allocates space for parameters
+		  places parameters into stack
+		  calls procedure
+		  deallocates remainder of AR of procedure
+
+procedure:        allocates AR (or remainder of AR)
+		  deallocates AR of procedure (or at least most of it)
+
+
+
+MIPS convention -- when passing parameters in registers,
+the first 4 parameters are passed in registers $4-7.
+  Then, ANY and ALL procedures use those registers for their parameters.
+
+
+If there are nested subroutine calls, and registers $4-7 are
+used for parameters, the values would be lost (just like the
+return address would be lost for  'jal' if not saved).  There are
+2 possible solutions.
+
+  1.  For non-recursive nested calls, each procedure has associated
+  with it a section of memory.  Before a nested call is made,
+  the current parameters are stored in that memory.  After the return
+  from the nested call, the current values are restored.
+
+  2.  For recursive calls, current parameters are stored on the stack before
+  a nested call.   After the return from the nested call, the
+  current parameters are restored.
+
+
+  here's a general layout of how this second option is used
+  (with 4 or fewer parameters):
+
+	procedure layout:
+	    allocate remainder of AR
+	    put return address on stack into AR of procedure
+
+	    procedure calculations
+
+	    to set up a call to proc2,
+	       place current parameters (in $4-7) into AR of procedure
+	       allocate AR for proc2
+	       set up parameters to proc2 in $4-7
+	       call proc2 (jal proc2)
+	       copy any return values out of $2-3, $4-7
+	       pop current parameters from stack back to $4-7
+
+	    more procedure calculations (presumably using procedure's
+	      parameters which are now back in $4-7)
+
+	    get procedure's return address from AR
+	    return (jr $ra)
+
+
+	       
+
+more about parameter passing.
+
+  a trivial example that contains nested calls, so saves
+  current parameters on the stack:
+
+  # a set of procedures that do the following,
+  # if a < b, then switch a with b and decrement both
+
+
+  # a is in register 20
+  # b is in register 21
+
+  .text
+
+            sub $8, $20, $21
+	    bgtz $8, othercode
+	    move $a0, $20           # place parameters in registers
+	    move $a1, $21    
+	    jal s_and_d
+	    move $20, $a0           # copy out return values
+	    move $21, $a1    
+ othercode: 
+
+	    done
+
+ # switch is a procedure to switch its 2 parameters, and then
+ #   decrement each of the 2 parameters
+ #   $a0 ($4) -- first parameter
+ #   $a1 ($5) -- second parameter
+ #   $8 -- temporary for switching
+ s_and_d:   sub  $sp, $sp, 20     # allocate frame for switch
+	    sw   $ra, 20($sp)     # save return address on stack
+
+	    move $t0, $a0         # switch the 2 parameters
+	    move $a0, $a1         # $t0 is register 8 ($8)
+	    move $a1, $t0
+
+	    jal decrement         # the value to decrement is already
+				  # in $4.
+	    sw $a0, 16($sp)       # place current parameter in frame
+	    add $a0, $a1, $0      # set up parameter in $4
+	    jal decrement
+	    add $a1, $a0, $0      # copy return value
+	    lw $a0, 16($sp)       # restore current parameter
+
+	    lw $ra, 20($sp)       # get return address
+	    jr $ra
+
+# procedure decrement subtracts 1 from its parameter
+#   $4 -- parameter to be decremented
+decrement:  addi $a0, $a0, -1
+	    jr $ra
+
+
+
+Summary and other ideas:
+ 1.  use registers 
+     + easy, and don't have to store data in memory (faster)
+     - limited number of registers
+     - doesn't work for recursion, and must be careful when 
+       using it where there are nested subroutines
+ 2. use some registers, and place the rest on the stack
+     + since many procedures have few parameters, get the advantages
+       of (1) most of the time.
+     - lots of "data shuffling"
+ 3. put all parameters on the stack (an unsophisticated compiler might
+    do this)
+     + simple, clean method (easy to implement)
+     - lots of stack operations (meaning slow, since the stack is in
+       memory)
+ 4. put parameters in memory set aside for them
+     + simple, clean method
+     - lots of memory operations (slow)
+     - doesn't work for recursion
+
+Note: whatever you do, try to be consistant.  Don't use all 4 methods
+      in the same program.  (Its poor style.)
+
+
+
+
+
+about frame pointers
+      --------------
+
+
+The stack gets used for more than just pushing/popping stack frames.
+During the execution of a procedure, there may be a need for temporary
+storage of variables.  The common example of this is in expression
+evaluation.
+ Example:      high level language statement
+		 Z = (X * Y) + (A/2) - 100
+   The intermediate values of X*Y and A/2 must be stored somewhere.
+On older machines, register space was at a premium.  There just weren't
+enough registers to be used for this sort of thing.  So, intermediate
+results (local variables) were stored on the stack.
+
+They don't go in the stack frame of the executing procedure; they
+are pushed/popped onto the stack as needed.
+
+
+So, at one point in a procedure, parameter 6 might be at 16($sp)
+
+
+  |       |
+  ---------
+  |       |<- $sp
+  ---------
+  |       | ---
+  ---------   |
+  |       |   |
+  ---------   |
+  |       |   |--- procedure's frame
+  ---------   |
+  |param 6|   |
+  ---------   |
+  |       |   |
+  --------- ---
+  |       |
+  ---------
+
+
+and, at another point within the same procedure, parameter 6 might be
+at 20($sp)
+
+  ---------
+  |       |<- $sp
+  ---------
+  | temp2 |
+  ---------
+  | temp1 |
+  ---------
+  |       | ---
+  ---------   |
+  |       |   |
+  ---------   |
+  |       |   |--- procedure's frame
+  ---------   |
+  |param 6|   |
+  ---------   |
+  |       |   |
+  --------- ---
+  |       |
+  ---------
+
+
+
+All this is motivation for keeping an extra pointer around that does
+not move with respect to the current stack frame.  
+
+Call it a FRAME POINTER.  Make it point to the base of the current
+frame:
+
+  ---------
+  |       |<- $sp
+  ---------
+  | temp2 |
+  ---------
+  | temp1 |
+  ---------
+  |       | ---
+  ---------   |
+  |       |   |
+  ---------   |
+  |       |   |--- procedure's frame
+  ---------   |
+  |param 6|   |
+  ---------   |
+  |       |<- frame pointer 
+  --------- ---
+  |       |
+  ---------
+
+Now items within the frame can be accessed with offsets from the
+frame pointer, AND the offsets do not change within the procedure.
+
+
+parameter 6 will be at -4(frame pointer)
+A new register is needed for this frame pointer.  Pick one.
+(The chapter arbitrarily chooses $16, but it could be any register.)
+
+parameter 6 is at -4($16)
+
+
+NOTE:  
+
+ -- The frame pointer must be initialized at the start of
+every procedure, and restored at the end of every procedure.
+ -- The MIPS architecture doesn't really allocate a register for a
+frame pointer.  It has something else that it calls a "virtual frame
+pointer," but it isn't really the same as described here.  On the
+MIPS, all data with a stack frame is accessed via the stack pointer, $sp.
+
+
+
+
+New problem:
+  What happens if you've got lots of variables, and your procedure
+  runs out of registers to put them in.  This occurs when you are
+  following the conventions for register usage, and you shouldn't
+  overwrite the values in certain registers.
+
+  Most common solution:  store register values temporarily on the
+                         stack in AR.
+
+
+Two types:
+
+CALLEE SAVED
+   a procedure clears out some registers for its own use
+
+   register values are preserved across procedure calls
+
+   MIPS calls these SAVED registers, and designates $s0-s8 for this
+   useage.
+
+   $s0-$s8 are aliases for $16-$23, $30
+
+   the called procedure saves register values in its AR,
+     uses the registers for local variables,
+       restores register values before it returns.
+
+
+CALLER SAVED
+   the calling program saves the registers that it does not want a
+    called procedure to overwrite
+
+   register values are NOT preserved across procedure calls
+
+   MIPS calls these TEMPORARY registers, and designates $t0-t9 for this
+   useage.
+
+   $t0-$t8 are aliases for $8-15, $24-$25
+
+   procedures use these registers for local variables, because
+     the values do not need to be preserved outside the scope
+     of the procedure.
+
+
+
+
+
+
+what the mechanisms should look like from the compiler's
+point of view:
+
+
+THE CODE:
+
+   call setup
+   procedure call
+   return cleanup
+   .
+   .
+   .
+procedure:  prologue
+
+            calculations
+
+            epilogue
+
+
+
+
+CALL SETUP
+  place current parameters into current stack frame
+  save any temporary registers that need to be preserved across the
+     procedure call
+  allocate space for ALL parameters frame (AR) for procedure to be called
+     (move $sp to give enough space for the procedure's parameters)
+  place first 4 parameters to procedure into $a0-$a3
+  place remainder of parameters to procedure into newly allocated space
+
+
+
+
+PROLOGUE
+  allocate space for remainder of stack frame
+  save return address in stack frame
+  copy needed parameters from stack frame into registers
+  save any needed saved registers into current stack frame
+
+
+EPILOGUE
+  restore (copy) return address from stack frame into $ra
+  restore from stack frame any saved registers (saved in prologue)
+  de-allocate stack frame (or most of it)
+     (move $sp so the space for the procedure's frame is gone)
+
+
+RETURN CLEANUP
+  copy needed return values and parameters from $v0-v1, $a0-a3, or stack
+     frame to correct places
+  de-allocate remainder of procedure's stack frame
+     (move $sp so the space for the procedure's frame is gone)
+  restore any temporary registers from stack frame (saved in call setup)
+
+
+
+
+
+REVISITING PROCEDURES.
+
+
+What needs to be done depends on HLL.
+The order is fairly consistent.
+What is done by caller/callee varies from implementation to implementation.
+
+
+Needed:
+ --> items to go in activation record.
+
+   return address
+   frame pointer
+   parameters
+   local variables  --|  may be some overlap here
+   saved registers  --|
+
+
+ --> mechanism
+
+ before procedure CALL
+ 1.  caller gets parameters into correct location
+ 2.  space is allocated for part of activation record
+ then
+ 3.  control is transfered to procedure
+
+ before procedure RETURN
+ 1.  put return values into correct location
+ 2.  restore anything that needs to be restored (return address, callee
+     saved registers, frame pointer)
+ 3.  remove activation record
+ then
+ 4.  jump to return location
+
+
+some guidelines:
+
+ -- if parameters passed on stack, want them "between" caller and
+    callees activation records.
+
+ -- use of frame pointer reduces amount of code.  It gives a better
+    level of abstraction.
+
+ -- depending on conventions and implementations, the amount of
+    space allocated for activation record may be different then
+    the amount of space removed.
+	
+	If callee allocates space, and parameters are on stack.
+
+	If caller and callee each allocate some of the space.
+
+ -- MIPS:
+      always allocate space in activation record for all parameters,
+      even if there are less than 4.
+
+</pre>
+

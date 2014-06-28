@@ -1,0 +1,78 @@
+Date: Tue, 14 Jan 1997 23:49:58 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Thu, 02 May 1996 23:47:01 GMT
+Content-length: 3717
+
+<html>
+<head>
+   <title>file:///Untitled</title>
+   <meta name="Author" content="">
+   <meta name="GENERATOR" content="Mozilla/2.01Gold (Win32)">
+</head>
+<body text="#000000" bgcolor="#C0C0C0" link="#0000EE" vlink="#551A8B" alink="#FF0000" background="happy.gif">
+
+<h1><font COLOR="#000080">Research Areas of Chung-Kuan Cheng</font></h1>
+
+<ul type=disc>
+<li><font COLOR="#000080"><font SIZE=+2><!WA0><a href="http://www-cse.ucsd.edu/users/kuan/research.html#Partitioning, Placement, and">Partitioning,
+Placement, and Floorplanning</a></font></font></li>
+
+<li><font COLOR="#000080"><font SIZE=+2><!WA1><a href="http://www-cse.ucsd.edu/users/kuan/research.html#Routing">Routing
+and Interconnect Optimization</a></font></font></li>
+
+<li><font COLOR="#000080"><font SIZE=+2><!WA2><a href="http://www-cse.ucsd.edu/users/kuan/research.html#Switching">Switching
+Network Design</a></font></font></li>
+</ul>
+
+<p>Prof. Chung-Kuan Cheng's research interests lie in the following areas
+in VLSI CAD: partitioning, placement and floorplanning, routing and interconnect
+optimization, and switching network design as applied to rapid-prototyping
+systems using FPGAs.</p>
+
+<h3><font COLOR="#000080">Partitioning, Placement, and Floorplanning</font><a name="Partitioning, Placement, and"></a></h3>
+
+<p>We plan to build a hierarchical partitioning package. Our system will
+be able to accept general formats such as VHDL and XNF, and has the options
+to call several of our partitioning packages to perform the specific tasks.
+The package groups components into clusters with the goal of reducing the
+number of inter-cluster nets, especially nets on the critical path. The
+clustering can also consider physical layout so that the routability, performance,
+and power dissipation are optimized. The phases of clocks are also examined
+in clustering to ensure correct timing.</p>
+
+<p>We plan to build a performance-driven floorplanning tool for building
+block layout placement. In addition to considering maximum path delay,
+layout area and aspect ratio, the floorplanner will also accurately estimate
+and minimize the routing congestion so that the resulting floorplan will
+have a high likelihood of being routable without further modifications.
+In addition, the floorplanner will be capable of handling flexible and
+preplaced blocks, and a wide variety of I/O-pin constraints.</p>
+
+<h3><font COLOR="#000080">Routing <a name="Routing"></a>and Interconnect
+Optimization</font></h3>
+
+<p>As we go further into deep-submicron process technologies, the traditional
+gate delay-dominated delay pattern will be replaced by one that's dominated
+by interconnect (or wire) delay. Thus, how to route and optimize the interconnection
+wires on the chip to optimize performance becomes a critical issue.</p>
+
+<p>Recently, moment matching has emerged as a promising tool in interconnect
+optimization. Moment matching is useful not only in circuit simulation,
+but has the potential to be integrated with routing algorithms to take
+care of the constraints <i>automatically</i>. We are investigating ways
+to incorporate moment matching (and general circuit simulation) into routing
+algorithms, so that this integration can be as smooth and painless as possible.</p>
+
+<h3><font COLOR="#000080">Switching <a name="Switching"></a>Network Design</font></h3>
+
+<p>In board-level emulation systems using FPGAs, the switching network
+plays an important role. Its job is to interconnect the chips on the board,
+so that the wire contention probability is minimized. The goal of our research
+is to devise an architecture that's suitable for use in rapid-prototyping
+(RP) systems. Current-generation RP systems have stringent pin-count limitations
+for the FPGAs; as a result, there are usually not enough pins for I/O,
+and this will cause severe problems for large designs.</p>
+
+</body>
+</html>

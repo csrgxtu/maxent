@@ -1,0 +1,468 @@
+Date: Mon, 11 Nov 1996 17:19:17 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 16 Sep 1996 18:51:54 GMT
+Content-length: 17163
+
+<HTML>
+
+<HEAD>
+<TITLE>CS 110 Section 2 Lecture Notes - Week 2</TITLE>
+</HEAD>
+
+<BODY>
+
+<H2><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~tick/cs110.html#text" ><!WA1><!WA1><!WA1><IMG SRC="http://www.cs.wisc.edu/~tick/icons/arrowleft.gif" WIDTH=15 HEIGHT=15></A> Lecture Notes - Week 2</H2>
+
+<HR>
+
+<DL>
+   <DT>Topic:
+   <DD>Program structure.  Constants and variables.  Arithmetic expressions.  The assignment statement.  Built-in functions.  Unformatted input and output.  Errors.
+
+   <DT>Text:
+   <DD>Chp. 2.1 - 2.8
+
+   <DT>Notes:
+   <DD>
+
+   <HR>
+
+   <CENTER>
+   <H3>Fortran Line Structure</H3>
+   </CENTER>
+
+   <UL>
+      <LI>FORTRAN programs are composed of <EM>lines</EM>, with one <EM>statement</EM> per line.
+      <LI>Each line has four sections:
+         <OL>
+            <LI>Column 1 is the <EM>comment</EM> field.
+            <LI>Columns 2-5 is the <EM>line label</EM>.
+            <LI>Column 6 is the <EM>continuation marker</EM>.
+            <LI>Columns 7-72 is the actual Fortran <EM>statement</EM>.
+         </OL><P>
+
+         <LISTING>
+	 1 2 3 4 5 6 7 8 9 10 11 12 13 14 ... 72
+	+-+-------+-+---------------------------+
+	 C  label  +         statement
+	</LISTING>
+   </UL>
+
+   <H4>Comment Field</H4>
+   <UL>
+      <LI>Comments are indicated by having a "<TT>C</TT>" (or "<TT>*</TT>") in column 1.
+      <LI>Comments take up the whole line. Everything on the line is ignored by the compiler.
+      <LI>Comments explain what your program code is doing in plain English.
+      <LISTING>
+	 C Compute the total cost from the
+	 C unit cost and quantity ordered
+	       TOTCST = UNTCST * QUANTY
+      </LISTING>
+   </UL>
+
+   <H4>Continuation Marker</H4>
+   <UL>
+      <LI>If a statement is too long to fit in the 72 columns then it can be split over two or more lines.
+      <LI>Put a "<TT>+</TT>" in column 6 to indicate that the line is a continuation of the previous line.
+      <LISTING>
+	 C Display the total cost
+	       PRINT *, 'The total cost is',
+	      +          TOTCST, 'dollars'
+      </LISTING>
+   </UL>
+
+   <H4>FORTRAN Statements</H4>
+   <UL>
+      <LI>All your FORTRAN statements must start in at least column 7 (helpful hint: change your tab setting to 6 characters).  Do <STRONG>not</STRONG> write any FORTRAN statements starting in columns 1 to 6.
+      <LI><EM>Right:</EM>
+      <LISTING>
+	  1 2 3 4 5 6 7 8 9 10 11 12 13 14 ... 72
+	 +---------+-+---------------------------+
+	              TOTCST = UNTCST * QUANTY
+      </LISTING>
+      <LI><EM>Wrong:</EM>
+      <LISTING>
+	  1 2 3 4 5 6 7 8 9 10 11 12 13 14 ... 72
+	 +---------+-+---------------------------+
+	  TOTCST = UNTCST * QUANTY
+      </LISTING>
+      <LI>Anything past column 72 is <EM>ignored</EM> by the compiler.  If your lines are too long then split them over two lines with a continuation marker.
+   </UL>
+
+   <HR>
+
+   <CENTER>
+   <H3>FORTRAN Program Structure</H3>
+   </CENTER>
+   <UL>
+      <LI>All FORTRAN programs have the same overall structure:
+      <BLOCKQUOTE>
+	 <EM>Program Header</EM><BR>
+	 <EM>Variable Declarations</EM><BR>
+         <EM>Main Executable Section</EM><BR>
+         <TT>STOP</TT><BR>
+         <TT>END</TT><BR>
+      </BLOCKQUOTE>
+   </UL>
+
+   <H4>Program Header</H4>
+   <UL>
+      <LI>Gives the name of the program.
+         <LISTING>
+	      PROGRAM ENCIPH
+         </LISTING>
+   </UL>
+
+   <H4>STOP</H4>
+   <UL>
+      <LI>Tells the program to stop running and return to MS-DOS.
+   </UL>
+
+   <H4>END</H4>
+   <UL>
+      <LI>Tells the compiler that this is the last statement in the program and it should stop compiling.
+   </UL>
+
+   <HR>
+
+   <CENTER>
+   <H3>FORTRAN Variables</H3>
+   </CENTER>
+
+   <H4>Variable Names</H4>
+   <UL>
+      <LI><EM>Variables</EM> store important values that your program will use or hold intermediate results.
+      <LISTING>
+	     TOTCST = UNTCST * QUANTY
+      </LISTING>
+      <LI>Variable names must start with a letter, contain only uppercase letters or digits, and no longer than <EM>six</EM> characters.
+      <LI><EM>Right:</EM>
+      <LISTING>
+	 TOTCST, QUANTY, INDEX2
+      </LISTING>
+      <LI><EM>Wrong:</EM>
+      <LISTING>
+	 TotalCost, 2B_Or_Not_2B
+      </LISTING>
+   </UL>
+
+   <H4>Variable Types</H4>
+   <UL>
+      <LI>You must explicitly specify the <EM>type</EM> of each variable; i.e. what sort of value it will store.
+      <LI>The most common variable types are:
+      <UL>
+         <LI><TT>REAL</TT> - a real number with a decimal point and fractional part.
+         <LI><TT>INTEGER</TT> - a positive or negative integer number (no decimal places).
+         <LI><TT>CHARACTER</TT> - one or more characters (e.g. a word or name).
+      </UL>
+   </UL>
+
+   <H4>Variable Declarations</H4>
+   <UL>
+      <LI>Specify the variable <EM>type</EM> followed by the variable <EM>name(s)</EM>.
+      <LISTING>
+	      REAL TOTCST, UNTCST
+	      INTEGER QUANTY
+	      INTEGER INDEX2
+      </LISTING>
+      <LI>For character variables you must also specify the maximum length of the character string (optional if just one character long).
+      <LISTING>
+	      CHARACTER *9 NAME
+	      CHARACTER CHAR
+      </LISTING>
+      <LI><STRONG>WARNING:</STRONG> If you don't explicitly specify the type of each variable then it will be declared a default type according to the <EM>I-N Rule</EM> (see Pg. 35). <STRONG>You must always explicitly declare every variable</STRONG>.
+   </UL>
+
+   <H4>Constants</H4>
+   <UL>
+      <LI>If the value of a variable is known when you write the program and it never changes (e.g. Pi) then turn it into a <EM>constant</EM> with the <TT>PARAMETER</TT> statement.
+      <LISTING>
+	      REAL PI
+	      PARAMETER (PI = 3.141593)
+      </LISTING>
+      <LI>A variable turned into a constant cannot be re-assigned a new value later on.
+      <LI>The <TT>PARAMETER</TT> statement immediately follows the variable declaration.
+   </UL>
+
+   <HR>
+
+   <CENTER>
+   <H3>Assignment Statement</H3>
+   </CENTER>
+   <UL>
+      <LI>To store a value to a variable you have declared use the <EM>assignment statement</EM>.
+      <LISTING>
+	      variablename = expression
+      </LISTING>
+      <LI>The variable is always on the <EM>left-hand</EM> side of the assignment statement.
+      <LI><EM>Right:</EM>
+      <LISTING>
+	      TOTCST = UNTCST * 1.25
+      </LISTING>
+      <LI><EM>Wrong:</EM>
+      <LISTING>
+	      UNTCST * 1.25 = TOTCST
+      </LISTING>
+      <LI>The variable being assigned can also be part of the expression on the right-hand side.
+      <LISTING>
+	      COUNT = COUNT + 1
+      </LISTING>
+      <LI>First, the whole expression is evaluated to get the result, then the result is stored in the variable.
+      <LI>The assignment statement does <STRONG>not</STRONG> mean <EM>variable equals expression</EM> but rather <EM>variable gets-assigned-the-value-of expression</EM>.  This is a subtle but important difference.
+   </UL>
+
+   <HR>
+
+   <CENTER>
+   <H3>Arithmetic Expressions</H3>
+   </CENTER>
+
+   <H4>Aritmetic Operators</H4>
+   <UL>
+      <LI>FORTRAN supports all the standard mathematical operators:
+      <UL>
+         <LI><TT>*</TT> - multiplication
+         <LI><TT>/</TT> - division
+         <LI><TT>+</TT> - addition
+         <LI><TT>-</TT> - subtraction
+         <BR>and also<BR>
+         <LI><TT>**</TT> - exponential (e.g. b^2 is written as <TT>b**2</TT>)
+      </UL>
+      <LI><EM>Example</EM>: translate the following quadratic equation into FORTRAN
+      <BLOCKQUOTE>
+         2x^2 - 5x + 7 = y
+      </BLOCKQUOTE>
+      is written as
+      <LISTING>
+	      Y = 2*X**2 - 5*X + 7
+      </LISTING>
+   </UL>
+
+   <H4>Operator Precedence</H4>
+   <UL>
+      <LI>Operators are evaluated in order of their <EM>precedence</EM>.  If several operators have the same precedence then they are evaluated <EM>left-to-right</EM>.
+      <UL>
+         <LI><EM>First</EM>: exponental <TT>**</TT>
+         <LI><EM>Second</EM>: multiplication <TT>*</TT> and division <TT>/</TT>
+         <LI><EM>Last</EM>: addition <TT>+</TT> and subtraction <TT>-</TT>
+      </UL>
+      <LI>To over-ride the default precedence use <EM>parenthesis</EM> (...)
+      <PRE>
+	     b - c
+	 a = -----
+	     d - e
+      </PRE>
+      <LI><EM>Right:</EM>
+      <LISTING>
+	      A = (B - C) / (D - E)
+      </LISTING>
+      <LI><EM>Wrong:</EM>
+      <LISTING>
+	      A = B - C / D - E
+      </LISTING>
+      <LI><STRONG>EXCEPTION:</STRONG> Consecutive exponents are evaluated <EM>right-to-left</EM>. Example:
+       <BLOCKQUOTE>
+          y = x^(z^2)
+       </BLOCKQUOTE>
+       <BR>can be written as<BR>
+       <LISTING>
+	  Y = X**Z**2
+       </LISTING>
+   </UL>
+
+   <H4>Arithmetic Functions</H4>
+   <UL>
+      <LI>FORTRAN has many built-in arithmetic functions (see Pg. 64 and Appendix A):
+      <UL>
+        <LI><TT>SQRT</TT> - square root
+        <LI><TT>SIN</TT> - sine root
+        <LI><TT>COS</TT> - cosine
+        <LI><TT>TAN</TT> - tangent
+        <LI><TT>EXP</TT> - e^x
+        <LI><TT>ALOG</TT> - natural logarithm
+        <LI><TT>ALOG10</TT> - logarithm base 10
+        <LI><TT>NINT</TT> - round a <TT>REAL</TT> number to nearest <TT>INTEGER</TT>
+      </UL>
+      <LI>Functions can be used in any arithmetic expression.
+      <LISTING>
+	      Y = EXP(4.5) + TAN(X + 2*SQRT(X))
+      </LISTING>
+      <LI>The <EM>arguments</EM> of a function can be either values, variables or even arithmetic expressions and are enclosed in parentheses (...).
+      <LI>Some functions have more than one argument separated by commas.
+      <LISTING>
+	      A = B + MOD(C, 4)
+      </LISTING>
+   </UL>
+
+   <H4>Type Matching</H4>
+   <UL>
+      <LI>The <EM>type</EM> of an expression should match the <EM>type</EM> of the variable the result is going to be stored in.
+      <LISTING>
+	 integer-variable = integer-expression
+	 real-variable = real-expression
+      </LISTING>
+      <LI>If the types <EM>mismatch</EM> then the expression is automatically converted to match the type of the variable, <EM>truncating</EM> any decimal places if necessary.
+      <LISTING>
+	 REAL X
+	 INTEGER I
+
+	 X = 6.6 * 1.6		(10.56)
+	 X = 6.6 / 1.6		(4.1256)
+	 I = 6.6 / 1.6		(10)
+	 I = 6.6 / 1.6		(4)
+      </LISTING>
+      <LI>For all the operators, if <STRONG>both</STRONG> the operands are type <TT>INTEGER</TT> then the result is also type <TT>INTEGER</TT>.  If either operand is type <TT>REAL</TT> then the result is type <TT>REAL</TT>.
+
+      <LI><STRONG>WARNING:</STRONG> With division, if both the operands are type <TT>INTEGER</TT> then the result is automatically truncated to an <TT>INTEGER</TT> also!
+      <LISTING>
+	 2.0/3 = 0.66666
+	 2/3   = 0 (!)
+      </LISTING>
+      <LI><STRONG>IMPORTANT:</STRONG>Always check the argument and return types for functions so you know whether or not your results will be truncated.
+   </UL>
+
+   <H4>REAL Numbers</H4>
+   <UL>
+      <LI><TT>REAL</TT> numbers can be written in either <EM>decimal</EM> or <EM>scientific</EM> notation.
+      <UL>
+         <LI>decimal: 12.3	
+         <LI>scientific: 0.123E+2 (i.e. 0.1234*10^2)
+      </UL>
+      <LI>By default <TT>REAL</TT> numbers are printed in <EM>decimal</EM> notation.
+   </UL>
+
+   <H4>Rounding Errors</H4>
+   <UL>
+      <LI>Numbers are stored inside the computer in <EM>binary</EM> format (i.e. as powers of 2)
+      <BLOCKQUOTE>
+         10 base 10 = 2^3 + 2^1 = 1010 base 2
+      </BLOCKQUOTE>
+      <LI>Most fractions cannot be represented precisely in binary (e.g. 0.1) so instead the closest approximimation in base 2 is stored.  Therefore, most <TT>REAL</TT> numbers are not stored precisely on <STRONG>any</STRONG> computer.
+      <BLOCKQUOTE>
+         0.1 * 10.0 does not equal 1.0 (e.g. = 0.999998)
+      </BLOCKQUOTE>
+      <LI><STRONG>IMPORTANT:</STRONG> Always use <TT>INTEGER</TT> values and variables whenever possible because these are stored precisely. Only use <TT>REAL</TT> values if you absolutely have to.
+   </UL>
+
+   <H4>CHARACTER Strings</H4>
+   <UL>
+      <LI>To assign a value to a <TT>CHARACTER</TT> variable it must be either another <TT>CHARACTER</TT> variable or a string enclosed in single apostrophes.
+      <LISTING>
+	      CHARACTER *10 NAME1, NAME2
+
+	      NAME1 = 'John Doe'
+	      NAME2 = NAME2
+      </LISTING>
+      <LI>The apostrophes are not stored in the variable.  To store an apostrophe inside and string type in <EM>two</EM> apostrophes.
+      <LISTING>
+	      NAME1 = 'John''s dog'			(John's dog)
+      </LISTING>
+      <LI>If the string is shorter than the variable then then variable is <EM>padded</EM> with blanks (denoted by a <TT>"#"</TT>).
+      <LISTING>
+	      NAME1 = 'John Doe'			(John Doe##)
+      </LISTING>
+      <LI>If the string is longer than the variable then the excess characters are ignored; i.e. the string is <EM>truncated</EM>.
+      <LISTING>
+	      NAME1 = 'John Doesnt'			(John Doesn)
+      </LISTING>
+   </UL>
+
+   <HR>
+
+   <CENTER>
+   <H3>Input and Output</H3>
+   </CENTER>
+
+   <H4>Unformatted Output</H4>
+   <UL>
+      <LI>To display results on the screen use the <TT>PRINT</TT> statement.
+      <LISTING>
+	      PRINT *, TOTCST
+      </LISTING>
+      <LI>To print multiple items on the same line separate them by commas.
+      <LISTING>
+	      PRINT *, X, ' plus ', Y, ' equals ', X+Y
+      </LISTING>
+      <LI>You can print values, variables, arithmetic expressions or <TT>CHARACTER</TT> strings.
+      <LI>The next <TT>PRINT</TT> statement prints on the next line, not on the end of the previous one.
+      <LI>Always <EM>prompt</EM> the user before asking him/her to type something in. Otherwise when they run your program they will not know that the computer is waiting for them to enter a value.
+      <LISTING>
+	      PRINT *, 'Please enter the cost of the item'
+	      READ *, UNTCST
+      </LISTING>
+   </UL>
+
+   <H4>Unformatted Input</H4>
+   <UL>
+      <LI>To read in data entered at the keyboard by the user use the <TT>READ</TT> statement.
+      <LISTING>
+	      READ *, UNTCST
+      </LISTING>
+      <LI>You always read in a <EM>variable</EM> you are specifying where the value is to be stored.  You <STRONG>never</STRONG> read in expressions or literal values.
+      <LI>The user must press the <STRONG>ENTER</STRONG> or <STRONG>RETURN</STRONG> key when he/she has finished entering in a line of data at the keyboard.
+      <BLOCKQUOTE>
+	 27<STRONG>ENTER</STRONG>
+      </BLOCKQUOTE>
+      <LI>To read in multiple values entered on the same line specify several variable separate by commas.
+      <LISTING>
+	      READ *, DAY, MONTH, YEAR
+      </LISTING>
+      <LI>If the user enters multiple values on the same line he/she does <STRONG>not</STRONG> separate them by commas but uses spaces instead.
+      <BLOCKQUOTE>
+	 11  20  67<STRONG>ENTER</STRONG>
+      </BLOCKQUOTE>
+      <LI>The values the user types in must be entered in the same order and be the same type as the variables in the <TT>READ</TT> statement.
+   </UL>
+
+   <H4>Reading CHARACTER Strings</H4>
+   <UL>
+      <LI>When reading in <TT>CHARACTER</TT> strings from the keyboard the user must surround them by apostrophes.
+      <BLOCKQUOTE>
+	 'Gareth Bestor'<STRONG>ENTER</STRONG>
+      </BLOCKQUOTE>
+      <LI>This may be undesirable and it can be avoided by using <EM>formatted</EM> input which we will discuss later (see Program #0 for an example).
+   </UL>
+   <H4>Types of Errors</H4>
+   <UL>
+   <LI>Syntax Error: compile time problem. Computer has no idea how to
+translate part of your program. Misspelling words (starting the first line
+with PROBLAM instead of PROGRAM, for example), using keywords (such as REAL)
+as variable name, nonsense characters on lines are common examples.<p>
+   <LI>Semantic Error: compile time problem. Lines can be translated
+individually, but it doesn't make sense with regard to the entire program. For
+example, typing IMPLICIT NONE and then trying to use a variable name not
+delcared yet.<p>
+   <LI>Run-Time Error: run-time problem. Everything translates fine, but when
+running there are certain steps the computer itself cannot do. Saying Y = Z/0,
+for example, is a legal statement but the computer cannot divide by 0. It will
+compile, but fail running when the program reached this point.<p>
+   <LI>Line-position Error: can be any type of error, or none. Occurs when
+line rules not obeyed. Can result in many things; example, if we had
+<BLOCKQUOTE>
+READ *,......<EM>ad nauseum</EM>,B,C
+</BLOCKQUOTE>
+and the B was on the 72nd column, rest of the line would be ignored, and
+you'd still have a legal statement (not reading in C may cause a problem later
+in the program, though). If the B was on the 71st column, however, then only
+the C would be ignored, and you'd have a syntax error (READ cannot end with a
+comma). <p>
+   <LI>Logical Error: occurs at run-time (sort of). Nothing wrong with the
+program, but it's not doing what you wanted. The computer is doing just what
+it's told, but you've written the program incorrectly. The hardest and most
+annoying to correct (and why it's important to have the algorithm correct in
+your head and on paper before you start typing it in)  
+   </UL>
+</DL>
+
+</BODY>
+
+<HR>
+
+<ADDRESS>
+<H5>Copyright &copy 1996 Modified from <!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~bestor/bestor.html">Gareth S. Bestor</A> (<!WA3><!WA3><!WA3><A HREF="mailto:bestor@cs.wisc.edu">bestor@cs.wisc.edu</A>).  Last modified September 16, 1996.</H5>
+</ADDRESS>
+
+<HR>
+
+</HTML>

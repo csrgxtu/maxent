@@ -1,0 +1,283 @@
+Date: Tue, 10 Dec 1996 21:39:28 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Thu, 08 Jun 1995 17:02:11 GMT
+Content-length: 11288
+
+<html>
+<head>
+<title>
+CSE 590H Course Project: 
+</title>
+</head>
+<body>
+<h1>Organizing Web Documents In A Desktop</h1>
+<h2>Andrew Calkins and <a href="index.html">Joe Sherman</a></h2><hr>
+
+<h2>Motivation</h2>
+<p>The World Wide Web provides addressing and resource naming
+conventions that permit several kinds of computer resources to be
+shared globally.  These resources include:
+<ul>
+<li>Hypertext and hypermedia documents
+<li>Still images and movies
+<li>Interactive menus, buttons and dialogs
+<li>File transfer
+</ul>
+
+<p>Access to these resources is available through application software
+known as Web <em>viewers</em> or <em>browsers</em>.  There is no inherent,
+centralized organization to the Web.  As a result, Web indexes and search
+mechanisms have been developed.  Users are free to build their own
+hypertext index or save pointers to Web pages in lists (e.g. Mosaic's
+<em>Hot List</em> or Netscape's <em>Bookmark</em> feature).  These lists are
+controlled by menus included in the browser's interface.
+
+<p>The NSF has designated the integration of Web browsers into the client
+workstation desktop as a
+<a href="http://www.cc.gatech.edu/gvu/nsf-ws/report/Visualization.html#HDR3">
+research priority for the World Wide Web</a>.
+This integration would eliminate the lack of symmetry between a user's
+local files, documents and services, and those available on the World Wide
+Web.  If done right, we believe, it would assist the user in the
+organization and access of this content so that items found once could
+be easily found again.
+
+<hr>
+
+<h2>What Does "Integrate Into The Desktop" Mean?</h2>
+<p>The NSF's research priorities don't explain in detail the phrase,
+"integrate into the desktop".  For this project we will assume that
+"desktop" refers to user interface software such as:
+<ul>
+<li>Microsoft Windows Program Manager and File Manager
+<li>Apple Macintosh Finder
+<li>X Windows window managers (mwm, twm, ...)
+</ul>
+<p>These user interfaces provide the following services, to varying
+degress:
+<ul>
+<li>Organize, view, present available files, resources, documents
+<li>Launch applications, tasks, projects
+<li>Permits user to personalize <em>their</em> workstation
+</ul>
+
+<hr>
+
+<h2>How Do We Organize Resources Today?</h2>
+
+<p>In today's "desktop" interfaces there are different ways of organizing
+and displaying local and Web resources:</p>
+
+<h3>Local Resources</h3>
+
+<ul>
+<li>Hierarchical file systems
+<li>Hierarchical viewers (2D and 3D)
+<li>Nested "folders"
+<li>Program groups
+<li>Varying degrees of support for direct manipulation ("drag-and-drop")
+</ul>
+
+<h3>Web Resources</h3>
+
+<ul>
+<li>Hot list (with or without limited nesting)
+<li>Bookmarks (with or without limited nesting)
+<li>Menu driven or dialog driven control
+<li>...or we write our own HTML pages
+</ul>
+
+<hr>
+
+<h2>Problems</h2>
+
+<p>Before discussing what exactly is meant by "integration of a browser
+into a desktop," let's list some of the problems casual users seem to have
+using the Web.  In each case, let's also ask if this problem might appear
+with any distributed, decentralized collection of resources.
+
+<p>We first noticed several of these problems watching a user navigate
+the Web while trying to build a set of Web pages to serve as a topic
+tutorial.</p>
+
+<ul>
+<li>There is no support for direct-manipulation arrangement of Web views.
+Today's browsers have at most only primitive mechanisms for organizing
+Web resources according to personal preference.  Hot lists are hierarchical
+but menu-driven and non-visual.  Bookmarks have similar limitations.
+Marc Andreeson, "inventor" of Mosaic and founder of Netscape, admitted
+in a recent talk that "indexing, navigational aides and content
+organization will quickly supersede current layout and design issues"
+and that "ultimately, user will have complete control over how content is
+viewed."
+<li>Cumbersome menus prohibit "on-the-fly" organization.
+<li>Users often spend time finding the same page more than once.
+Accessing a Web page you've seen before is not quick and painless.
+Some people can remember long URL strings, many people can't.  Hotlists
+and bookmarks help, but as these grow in size, they become difficult to
+manage.  In a <a href="590h3.html">brief experiment</a> where a person was
+instructed to locate and arrange Web pages, the subject often had to locate
+the page several times because he had forgotten the URL.
+<li>Users must remember and type URLs.
+<li>Home page uses may conflict.  Is the purpose of a home page to
+organize the owner's view of the Web?  Or is the purpose to let others
+know about the owner and the owner's interests?  These are not the same
+goals.
+</ul>
+
+<hr>
+
+<h2>Preliminary User Studies on Organization and Navigation</h2>
+
+<a name="study"></a>
+<p>To focus on the ways in which a user retains and organizes access to
+Web documents, we studied a novice Web user in a
+<a href="./study-1.html>quick usability test</a>.
+
+<hr>
+
+<h2>Initial Investigations</h2>
+
+<p>We thought about repeated access to Web pages, and how a person
+organizes pointers to Web resources for future retrieval.  It seemed to us
+that many of the direct manipulation techniques included in current
+computer"desktops" could be applied to Web resources.  In this manner
+access to the Web would be "integrated" into the desktop.</p>
+
+<p>In the next section we'll try to explain how this would work.
+Comments and suggestions are welcome.</p>
+
+<p>Later on we'll have more to say regarding the desktop metaphor.
+
+<p>The following ideas guided our design:
+
+<ul>
+<li>Leverage interactions with current desktop software.</li>
+<li>Visualize Web similar to storage devices (like disks).</li>
+<li>Use icons to represent Web pages</li>
+<li>Use hierachical or nested views to organized Web pages.</li>
+<li>Provide direct-manipulation operations on Web page icons.</li>
+<li>Activate icon to launches pages.</li>
+<li>Icons can be generated and saved to desktop view</li>
+</ul>
+
+<hr>
+
+<a name="proto"></a>
+<h2>Paper Prototype Design</h2>
+<p>We've included a description and drawings to
+<a href="./design-1.html">tour our design</a>.
+
+<hr>
+
+<h2>User Study With Prototype</h2>
+
+<a name="study2"></a>
+<p>We invited out test subject to play with our paper prototype.
+<a href="study-2.html">Our observations and her suggestions</a>
+are described in this section.
+
+<hr>
+
+<h2>Discussion</h2>
+
+<p>In one sense, integrating Web access into the computer desktop
+really means integrating Web "objects" into other applications on the
+desktop.  The desktop serves to organize and launch the computer's
+resources in support of some activity.  Many common task can be
+initiated by direct manipulation techniques that move a document onto
+icons representing available services (like "Printer" or "Mailbox").
+
+<p>Newer platforms are capable of supporting 3D interfaces
+(see VRML and Hot Java).  This work could be implemented in a 3D interface,
+but would not take advantage of perspective, eye position and viewing
+direction.  Several 3D hierachy views could be used to visualize the
+user's organization of Web documents.  3D visualization may be more
+useful for navigation and exploration of the Web than organization.
+
+<hr>
+
+<h2>Metaphors</h3>
+
+<p>We haven't tried to apply a novel, reality-based metaphor.
+That may be either a curse or a blessing.
+Instead we've decided to extend the popular "desktop" metaphor.
+We feel that this metaphor, in several of its implementations, has
+assumed a "form of life" of its own almost separate from physical
+desktops.  Computer users today for the most part are familiar with
+some desktop GUI.  The use of folders to organize directory trees has
+proven useful in desktops, even though physical file folders are not
+often hierarchies.
+
+<p>We have envisioned an extension to these
+metaphors that attempts to make network resources appear similar to
+local resources.  This has already been done to some extent with
+prporietary networks and research prototypes, but not specifically with
+the Web.
+
+<p>What we've envisoned is consistent with standalone computer desktops.
+We need however to address network delay and reliability in accessing network
+resources.  In what way would a user accept asynchronous activities
+(for example, would it make sense to delegate something to an "agent"
+or dispatch it, and ask for an interruption upon completion?).
+
+<p>This approach retains the key problem interfacing with a large or deep
+hierarchy.  Items deep in the hierarchy are hard to see.  A "Find File"
+or "Search" tool is usually provided to help users find what they have
+buried.
+
+<p>In class we mentioned several metaphors for Web access that differ
+greatly from the desktop metaphor:  The Web as an ocean, the Web as a
+highway, for example.  We discussed these metaphors and decided that
+they have more use as metaphors for navigation and browsing (e.g. "fishing",
+"trawling", "wandering", "road trip").  When applied to organization
+problem, they don't appear to offer assistance.  In real life we cannot
+arrange the ocean or the interstate highway system to suit our own
+needs.</p>
+
+<hr>
+
+<h2>Summary</h2>
+
+<p>We have discussed several extensions to this approach:
+<ol>
+<li>The drag-and-drop mechanism could be used to connect documents and
+objects to services.  The objects and the services could be local or
+remote.  Example objects include movies, audio, pictures, spreadsheets
+and commodities for sale.  Services could include viewers, word processors,
+spreadsheet applications, mailers, printers, fax software, shopping and
+purchasing software, and personal organizers.
+<li>The Web information structure could be extended to support these
+additional object types.  This would associate services with objects
+similar to the MIME concept.  Default operations for direct manipulation
+could be associated with the service/object combination.
+<li>The desktop appears to be a suitable way for users to organize their
+personal views of the Web.  But it does not seem to provide an ideal
+metaphor for exploration or navigation.  Metaphors appropriate for
+explorations are still needed.
+<li>The interface could support personal annotations by overlaying the
+document page with "Post-It" type annotations that could be stuck anywhere
+on the document.  These would be associated with, and accessible from,
+the document icon.  They would be stored locally and attached whenever
+the document was referenced.
+</ol>
+<p>Our approach could suggest modifications to the Web information structure
+and HTML.  Authors and users often collect links into a page that
+acts as a directory or folder.  Often these pages have no content of their
+own, or may contain personal annotations.  What if HTML were extended
+to incorporate directories or folders (instead of logical types like
+ordered and unordered lists)?  Browsing software and viewers could then
+support presentation metaphors suited more for organiztion than for
+reading.  As an extension it would neither force authors to use it nor
+viewing software to present it differently from a document.
+<p>We feel that Web viewing software can be easily enhanced to support
+dynamic, personalized organization.  Leveraging existing desktop software
+is a natural way to do this.
+</body>
+<hr>
+<address>
+<a href="index.html">Joseph M. Sherman</a><br>
+Last modified:  Friday, May 5th, 1995.
+</address>
+</html>

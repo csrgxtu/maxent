@@ -1,0 +1,305 @@
+Date: Mon, 11 Nov 1996 17:25:15 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 29 Feb 1996 16:13:50 GMT
+Content-length: 6112
+
+<html>
+<head>
+<title>CS 537 - Quiz #4</title>
+</head>
+
+<body>
+<table border=0 width=100% align=center>
+<tr>
+<td width=25%><td width=50% align=center>
+<b>UNIVERSITY OF WISCONSIN-MADISON
+<br>
+Computer Sciences Department</b>
+<td width=25%>
+<tr>
+<tr>
+<td>
+<b>CS 537
+<br>
+Spring 1996 </b>
+<td><td align=right><b>Bart Miller</b>
+<tr>
+<td>
+<td align=center><b>Quiz #4</b>
+<br>
+Wednesday, February 28
+<td>
+</table>
+
+<h2>Messages: Readers/Writers Revisited</h2>
+
+You are to write the code to implement the access control for the
+<b>n readers/1 writer</b>
+problem.
+You will use
+<b>message passing</b>,
+as defined in the class notes and lecture,
+as your synchronization mechanism (i.e., you <i>cannot</i> use monitors
+or semaphores).
+<p>
+Each <i>client</i> process that wants to read or write shared database will
+use the <tt>StartRead()/EndRead()</tt> or
+<tt>StartWrite()/EndWrite()</tt>, as appropriate.
+These procedures are described below.
+<p>
+<hr>
+You are to write the four client procedures,
+<i>plus</i> the code for a server process.
+<hr>
+<dl>
+<dt><tt>StartRead():</tt>
+<dd>This procedure is called by a client process before it
+wants to have read access to the shared database.
+This procedure will not return until it is safe to read the data.
+Note that the actual reading of the data is not done in this procedure.
+<dt><tt>EndRead():</tt>
+<dd>This procedure is called after a client process is done reading the
+shared database.
+<dt><tt>StartWrite():</tt>
+<dd>This procedure is called by a client process before it
+wants to have write access to the shared database.
+This procedure will not return until it is safe to write to the data.
+Note that the actual writing of the data is not done in this procedure.
+<dt><tt>EndWrite():</tt>
+<dd>This procedure is called after a client process is done writing the
+shared database.
+</dl>
+<p>
+It might be useful to refer to Section 7 of the lecture notes.
+For this problem, do <b>not</b> be concerned with whether the readers or
+writers get more priority.
+
+<h3>Solution: Version 1</h3>
+Here's a good, general solution.
+It may be a bit more complex than some of you used, but it has some useful
+characteristics.
+<p>
+The most interesting characteristic is
+that each client has its own mailbox for response.
+Having separate client mailboxes allows the clients to run on different
+hosts in a network.
+<p>
+Note that I didn't write any queuing routines in my code.
+By clever use of the message system (in this example, by using <i>two</i>
+message sends for each start request), I was able to use the implicit queuing
+provided by the mailboxes.
+<p>
+<table width=100% border=1 align=center>
+<tr><td>
+
+<pre>
+void StartRead()
+{
+    char mboxname[MAXNAMESIZE];
+
+    MakeMboxName (mboxname);
+    send ("request", STARTREAD);
+    send ("start-read", mboxname);
+    receive (mboxname, buff);
+}
+</pre>
+<tr><td>
+<pre>
+void EndRead()
+{
+    send ("request", ENDREAD);
+}
+</pre>
+<tr><td>
+<pre>
+void StartWrite()
+{
+    char mboxname[MAXNAMESIZE];
+
+    MakeMboxName (mboxname);
+    send ("request", STARTWRITE);
+    send ("start-write", mboxname);
+    receive (mboxname, buff);
+}
+</pre>
+<tr><td>
+<pre>
+void EndWrite()
+{
+    send ("request", ENDWRITE);
+}
+</pre>
+<tr><td>
+<pre>
+void MakeMboxName (char *mboxname)
+{
+    sprintf (mboxname, "mbox.%d", getpid());
+    CreateMailboxName (mboxname);
+}
+</pre>
+</table>
+
+<table width=100% border=1 align=center>
+<tr><td>
+<pre>
+void ReaderWriterServer ()
+{
+    int value;
+    int AR=0, WR=0, AW=0, WW=0;
+    char mboxname[MAXNAMESIZE];
+
+    CreateMailboxName ("request");
+    CreateMailboxName ("start-read");
+    CreateMailboxName ("start-write");
+
+    while (1) {
+	Receive ("request", &value)
+	if (VALUE == STARTREAD) {
+	    if (AW + WW == 0) {
+		AR++;
+		Receive ("start-read", mboxname);
+		Send (mboxname, 0);
+	    } else {
+		WR++
+	    }
+	} else if (VALUE == STARTWRITE) {
+	    if (AW == 0) {
+		AW++;
+		Receive ("start-write", mboxname);
+		Send (mboxname, 0);
+	    } else {
+		WW++;
+	    }
+	} else if (VALUE == ENDREAD) {
+	    AR--;
+	    if (((AR == 0) and (WW > 0)) {
+		AW++;
+		WW--;
+		Receive ("start-write", mboxname);
+		Send (mboxname, 0);
+	    }
+	} else if (VALUE == ENDWRITE) {
+	    AW--;
+	    if (WW>0) {
+		AW++;
+		WW--;
+		Receive ("start-write", mboxname);
+		Send (mboxname, 0);
+	    } else {
+		while (WR>0) {
+		    AR++;
+		    WR--;
+		    Receive ("start-read", mboxname);
+		    Send (mboxname, 0);
+		}
+	    }
+	}
+    }
+}
+</pre>
+</table>
+<h3>Solution: Version 2</h3>
+<p>
+Here's a slightly simpler one.
+This version has the client processes sharing mailboxes.  This type
+of approach is valid, but not as useful since it work work if the client
+processes are on different hosts in a network.
+
+<table width=100% border=1 align=center>
+<tr><td>
+
+<pre>
+void StartRead()
+{
+    send ("request", STARTREAD);
+    receive ("oktoread, 0);
+}
+</pre>
+<tr><td>
+<pre>
+void EndRead()
+{
+    send ("request", ENDREAD);
+}
+</pre>
+<tr><td>
+<pre>
+void StartWrite()
+{
+    MakeMboxName (mboxname);
+    send ("request", STARTWRITE);
+    receive ("oktowrite, 0);
+}
+</pre>
+<tr><td>
+<pre>
+void EndWrite()
+{
+    send ("request", ENDWRITE);
+}
+</pre>
+</table>
+
+<table width=100% border=1 align=center>
+<tr><td>
+<pre>
+void ReaderWriterServer ()
+{
+    int value;
+    int AR=0, WR=0, AW=0, WW=0;
+    char mboxname[MAXNAMESIZE];
+
+    CreateMailboxName ("request");
+    CreateMailboxName ("oktoread");
+    CreateMailboxName ("oktowrite");
+
+    while (1) {
+	Receive ("request", &value)
+	if (VALUE == STARTREAD) {
+	    if (AW + WW == 0) {
+		AR++;
+		Send ("oktoread, 0);
+	    } else {
+		WR++
+	    }
+	} else if (VALUE == STARTWRITE) {
+	    if (AW == 0) {
+		AW++;
+		Send ("oktowrite, 0);
+	    } else {
+		WW++;
+	    }
+	} else if (VALUE == ENDREAD) {
+	    AR--;
+	    if (((AR == 0) and (WW > 0)) {
+		AW++;
+		WW--;
+		Send ("oktowrite", 0);
+	    }
+	} else if (VALUE == ENDWRITE) {
+	    AW--;
+	    if (WW>0) {
+		AW++;
+		WW--;
+		Send ("oktowrite", 0);
+	    } else {
+		while (WR>0) {
+		    AR++;
+		    WR--;
+		    Send ("oktoread", 0);
+		}
+	    }
+	}
+    }
+}
+</pre>
+</table>
+<hr>
+<H4>
+Last modified:
+Thu Feb 29 10:13:49 CST 1996
+by
+<a href="http://www.cs.wisc.edu/~bart">bart</a></b>
+</H4>
+</body>

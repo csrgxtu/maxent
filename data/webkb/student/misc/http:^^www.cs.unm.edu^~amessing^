@@ -1,0 +1,225 @@
+Date: Tue, 26 Nov 1996 17:47:56 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Fri, 19 Jul 1996 19:12:52 GMT
+Content-length: 9013
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+<title>Adam's Homepage</title>
+</head>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Beginning of JavaScript Applet -------------------
+
+/* Copyright (C)1996 Web Integration Systems, Inc. DBA Websys, Inc.
+   All Rights Reserved.
+
+   This applet can be re-used or modified, if credit is given in 
+   the source code.
+   Chris Skinner, January 30th, 1996.
+   Hacked for CNNfn by RD, Jan. 31, 1996
+*/
+
+function scrollit_r2l(seed)
+{
+        var m1  = "Hi, this is Adam . . .";
+        var m2  = " . . . don't you love cheap Web gimmicks . . .";
+        var m3  = " . . . doesn't it piss you off that I have taken over your status bar . . . ";
+        var m4  = " . . . now you can't see where an URL leads . . .";
+        var m5  = " . . . surely its worth it to listen to my inane babble . . .";
+
+        
+        var msg=m1+m2+m3+m4+m5;
+        var out = " ";
+        var c   = 1;
+
+        if (seed > 100) {
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                timerTwo=window.setTimeout(cmd,50);
+        }
+        else if (seed <= 100 && seed > 0) {
+                for (c=0 ; c < seed ; c++) {
+                        out+=" ";
+                }
+                out+=msg;
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                    window.status=out;
+                timerTwo=window.setTimeout(cmd,50);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;
+                        var cmd="scrollit_r2l(" + seed + ")";
+                        window.status=out;
+                        timerTwo=window.setTimeout(cmd,50);
+                }
+                else {
+                        window.status=" ";
+                }
+        }
+}
+// -- End of JavaScript code -------------- -->
+</SCRIPT>
+
+<BODY bgcolor=#ffffff onLoad="timerONE=window.setTimeout('scrollit_r2l(100)',100);">
+<!WA0><IMG  WIDTH=122 HEIGHT=156 SRC = "http://www.cs.unm.edu/~amessing/gif/adam.gif" align = left alt =
+"Picture of Me">
+<h1>Adam's Homepage</h1>
+
+
+Hi, I'm a graduate student here in the Department of Computer Science
+at the University of New Mexico.  I'm working for <!WA1><a
+href="http://www.cs.unm.edu/~ackley/">Dave Ackley</a> as an R.A.  I could tell you what I
+was working on, but then I would have to kill you.  Haven't really had
+time to work on a homepage as much as I would have liked.  You can
+however get my <!WA2><a href="http://www.cs.unm.edu/~amessing/resume.html">resume (CV)</a>.  You might prefer the
+<!WA3><a href="http://www.cs.unm.edu/~amessing/resume.ps">PostScript version</a> if you plan on printing it.  <br><br><br>
+
+<p>
+
+<!WA4><IMG  WIDTH=128 HEIGHT=126 SRC="http://www.cs.unm.edu/~amessing/gif/SFILogo-trans.gif" align = right alt =
+"Santa Fe Institute Logo"> <h3>Academic Interests</h3>
+
+Generally I am interested in computers and how they can make my life
+better.  That interest takes a lot of different forms.  I like HCI,
+new approaches to computation and techniques to describe them.  I am
+also interesting in using computer modelling as a tool to better
+understand the natural world, especially if this understanding can in
+turn be leveraged to build better computer systems.  In this vein I
+worked at <!WA5><A href="http://www.santafe.edu/">The Santa Fe Institute</A>
+last year where I worked on evolving Cellular Automata (you can look
+at my <!WA6><a href="http://www.santafe.edu/~amessing/">homepage</a> there
+to see what I was up to.)
+
+
+<p> <!WA7><IMG  WIDTH=117 HEIGHT=121 SRC="http://www.cs.unm.edu/~amessing/gif/lightning_fist.gif" align = left
+alt = "Cyber Rights Now"> <h3>Politics <!WA8><a href ="http://www.eff.org/blueribbon.html"><!WA9><IMG  WIDTH=19 HEIGHT=30 SRC = "http://www.cs.unm.edu/~amessing/gif/blue-rib.gif"></a>
+<!WA10><a href ="http://www.privacy.org/ipc/"><!WA11><IMG  WIDTH=19 HEIGHT=30 SRC = "http://www.cs.unm.edu/~amessing/gif/gold-key.gif"></a> </h3>
+
+I am really quite concerned with the recent <!WA12><a
+href="http://www.yahoo.com/Government/Politics/Censorship/Censorship_and_the_Net/">censorship</a>
+activities, such as the Telecommunications Reform Bill, on the <!WA13><a
+href="http://www.eff.org/pub/Alerts/index.html#exon">'net</a> and <!WA14><a
+href="http://bronze.ucs.indiana.edu/~quinnjf/censor.html">writ
+large</a>.  I also try to keep track of a few other issues, most
+importantly to me are <!WA15><a
+href="http://www.yahoo.com/Government/Law/Privacy/">privacy</a> and
+other <!WA16><a
+href="http://www.yahoo.com/Society_and_Culture/Civil_Rights/">civil
+liberties</a>, especially <!WA17><a
+href="http://www.yahoo.com/Business_and_Economy/Organizations/Public_Interest_Groups/Electronic_Freedom/">electronic
+freedom</a>.  In addition I believe that the Drug War and the <!WA18><a
+href="gopher://gopher.well.sf.ca.us/00/Politics/piss.list">hiring
+practices</a> which accompany is a threat to civil rights.
+
+<p>
+
+I am a member of the <!WA19><a href="http://www.eff.org/">Electronic Frontier
+Foundation</a> and the <!WA20><a href="http://www.aclu.org/">American Civil
+Liberties Union</a> as well as the <!WA21><a
+href="http://www.acm.org/">Association for Computing Machinery</a>.  I
+also support the <!WA22><a href="http://www.privacy.org/ipc/">Internet Privacy
+Coalition</a>, the <!WA23><a href="http://www.lpf.org/">League for Programming
+Freedom</a>, the <!WA24><a href="http://www.cs.pdx.edu/~trent/gnu/">Free
+Software Foundation/GNU</a>, and the <!WA25><a
+href="http://www.hks.net/cpunks/">cypherpunk</a> ideal. <p>
+
+
+<!WA26><a href="http://www.cs.unm.edu/~amessing/photo/photoCD/adam-climbing-ouray.jpg"><!WA27><IMG  HEIGHT=150 WIDTH=150 SRC="http://www.cs.unm.edu/~amessing/photo/photoCD/adam-climbing-ouray-small.jpg" align =
+right alt = "Ice Climbing in Ouray"></a><h3>Recreation</h3>
+
+I enjoy most outdoor activities, especially [rock, ice, mountain] <!WA28><a
+href="http://www.cs.unm.edu/~amessing/climb/index.html">climbing</a> and <!WA29><a
+href="http://www.cs.unm.edu/~amessing/photo/photo.html">taking pictures thereof</a>.  I have always
+lived quite near the wilderness and plan on moving back if this whole
+global village, telecommuting thing comes true.  Heck, these days even
+the <!WA30><a href="http://www.gorp.com/aac/aachome.htm">American Alpine
+Club</a> and the <!WA31><a href
+="http://www.sportsite.com/accessfund/">Access Fund</a> are online.  I
+just joined both this year.
+
+<p>
+
+I have a fondness for <!WA32><a
+href="http://www.teleport.com/~dgs1300/brewpubs.html#OrBpubs">nice
+beer</a>.  In particular I find Bridgeport Special (only availiable at
+their brewpub that I know of) and Pintail ESB, Full Sail Pilsner,
+Widmer Hefeweizen and Sierra Nevada Porter to be very pleasing.  While
+I think that their quality control has slipped in recent years I also
+enjoy an occasional Ruby from the McMenamins (I would recommend the
+smaller places that still brew their own beer on site.); how I miss
+the Pacific Northwest.  Fundamentaly I guess I am just another typical
+West-coast, high-quality-of-life, slacker.
+
+<p>
+
+<H3>Travel</H3>
+
+I am planning to take a <!WA33><a href="http://www.cs.unm.edu/~amessing/travel/trip.html">trip</a> to<!WA34><a
+href="http://sunsite.nus.sg/asiasvc.html" > South-East Asia</a>, <!WA35><a
+href="http://www.yahoo.com/Regional/Countries/New_Zealand/" >New
+Zealand</a>, and <!WA36><a
+href="http://www.yahoo.com/Regional/Countries/Australia/"
+>Australia</a> within the next year.  I spent some of my formative
+years in New Zealand, so I am really looking forward to visting.  Any
+advice/reccomendations appreciated.
+
+<DT><H3>Web Resources</H3> Despite my rather
+feeble web page, I really do think that the WWW is a useful tool.  If
+I had more time, I might make more use of these tools and resources.
+    <DL><p>
+        <DT><!WA37><A
+        HREF="http://www.w3.org/hypertext/WWW/Tools/Filters.html">HTML converters</A>
+        <DT><!WA38><A
+        HREF="http://oneworld.wa.com/htmldev/devpage/dev-page.html">OneWorld/SingNet WWW and HTML Developer's JumpStation - ver 2.0 (21 Oct 1994)</A>
+	    
+        <DT><!WA39><A HREF="http://www.cs.cmu.edu/~tilt/cgh/">Composing Good HTML</A>  
+	<DD>A nice essay by my friend <!WA40><A
+	HREF="http://www.cs.cmu.edu/~tilt/">J. Eric Tilton</A> about
+	writing HTML.
+
+        <DT><!WA41><A HREF="http://www.santafe.edu:80/~nelson/tools/">html-helper-mode</A>  
+	<DD>An emacs mode written by my partner in crime at SFI, <!WA42><A
+HREF="http://www.santafe.edu/~nelson/">Nelson Minar</A> which makes
+writing HTML a bit less painful.
+	    
+    </DL>
+
+<p>
+
+Uh, if you are interested you can get my <!WA43><a
+href="http://www.cs.unm.edu/~amessing/bookmarks.html/">current
+bookmarks</a>.  I know that's kind of lame, just throwing those all
+out there without comments and all, sorry 'bout that.  You can also
+take a peek at my <!WA44><a href="http://www.cs.unm.edu/~amessing/news/">Gnus Adaptive Scoring Files</a> if
+you like.  I think that these are examples of nice simple ways that
+people can share knowledge.
+
+<p>
+
+<p> 
+
+<h3>Vital Signs:</h3>
+<p>
+
+<address><b>Adam Messinger</b><br>c/o Computer Science Department<br>Farris Engineering Center<br>University of New Mexico<br>Albuquerque, NM 87131<br>(505)
+277-6509 (office)<br>(505) 255-3989
+(home)<br>amessing@cs.unm.edu<br>
+<!WA45><a href="http://www.cs.unm.edu/~amessing/pgp.asc">PGP Key</a>
+</address>
+<hr>
+    
+<!WA46><a href="http://www.cs.unm.edu/~amessing/copyright.html">Copyright &copy
+    1991-96</a>,
+    <address><!WA47><a href="http://www.cs.unm.edu/~amessing/">Adam M. Messinger &lt;amessing@cs.unm.edu&gt;</a></address>
+<!-- hhmts start -->
+Last modified: Sun May  5 11:05:35 MDT 1996
+<!-- hhmts end -->
+</body>
+
+</html>

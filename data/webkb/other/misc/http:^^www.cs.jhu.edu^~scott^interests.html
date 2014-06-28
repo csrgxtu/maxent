@@ -1,0 +1,149 @@
+Date: Wed, 15 Jan 1997 00:18:02 GMT
+Server: NCSA/1.5.1
+Last-modified: Fri, 15 Dec 1995 17:24:12 GMT
+Content-type: text/html
+Content-length: 6373
+
+<title> Scott Smith's Research Interests </title>
+
+<h1> Scott Smith's Research Interests</h1> 
+
+
+There has been a large body of important foundational research done in
+the area of programming language semantics.  My goal is the practical
+application of this work to full-featured programming languages,
+languages that have features such as memories, object-orientedness,
+rich notions of type, exceptions, and concurrency.  Such a theory
+should include as its products a rich theory of equivalence on
+programs, as well as logics of programs.
+
+<p>
+
+There are three reasons why this line of research is important.  First
+and most obviously, it allows full-featured languages to be
+unambiguously specified and remove flaws from their design.  I do not
+believe we will ever be able to prove all programs correct, but we
+certainly should be able to prove all language designs sound.  Second,
+a semantic approach can effectively be used to clean up
+inconsistencies in language design, and to provide compiler writers
+and programmers with concrete notions of program equivalence and
+logical assertions about programs to clarify their activities.  Lastly
+(and the topic that interests me most now), novel ideas in language
+design and analysis can be effectively pursued in this framework,
+because it is possible to carefully develop the ideas for extremely
+small languages and scale them up, something that is not possible if a
+working compiler must always be an objective.
+
+<p>
+
+Some of the big challenges remaining beyond scaling up existing
+results include modelling dynamic systems (those which dynamically
+allocate new memory or other objects), open systems (a system where
+not all of the computation is occurring locally), and object-oriented
+systems.
+
+<p>
+
+<hr>
+<h1> Active Research Areas </h1>
+<p>
+
+<p><h3>Constrained Types for Object-Oriented Programming Languages</h3>
+My main research interest now is in the area of constrained typing.
+Constrained types are particularly interesting because
+
+<ul>
+<li> They naturally generalize Hindley-Milner type inference to a form
+based subtyping instead of type equality.
+
+<li> The types inferred are very expressive: they appropriately type
+binary methods in object-oriented programming languages.
+</ul>
+
+Our <!WA0><a href="ftp://ftp.cs.jhu.edu/pub/scott/sptio.ps.Z"> OOPSLA '95
+paper</a> introduces constrained types with some examples; for the
+full technical details, see our <!WA1><a
+href="ftp://ftp.cs.jhu.edu/pub/scott/ooinfer.ps.Z"> MFPS paper</a>.
+
+<p>
+More details on this work may be found on the <!WA2><a href =
+"http://www.cs.jhu.edu/hog/"> Hopkins Objects Group</a> home page.
+
+<p><h3>Distributed Object-Oriented Programming</h3> 
+
+Another project I have been involved with concerns
+distributed/concurrent object-oriented computation.  This project has
+been performed in collaboration with Gul Agha, Ian Mason, and Carolyn
+Talcott.  Here are a few features of what we have accomplished thus
+far.
+
+<ul>
+<li> A rigorous reworking of the Actor model of computation
+<li> Operational semantics of executions given.
+<li> Only fair executions considered, for unfair executions never
+arise in practice.
+<li> Observational equivalence and methods for proving observational
+equivalence in the presence of fairness are defined.
+<li> Explicit, dynamic modeling of external agents and their
+interactions. 
+</ul>
+<p>
+The latter two are, we believe, the key contributions, as little
+current research addresses these issues. 
+<!WA3><a href = "ftp://ftp.cs.jhu.edu/pub/scott/ffac.ps.Z"> Here</a> is 
+a paper on this topic.
+
+<hr>
+<h1> Less Active Research Areas </h1>
+
+<p><h3>Semantics for Typed Object-Oriented Programming</h3> Developing
+a sound semantics for typed notions of inheritence is a long-standing
+research problem.  We believe state is a critical component of OOP,
+and we thus directly model objects with state.  Most of the current
+research in typing OOP has been for purely functional languages.
+Although this gives a good first approximation to the problem, enough
+progress has been made in this arena that it is time to work directly
+over a language with state.  Our paper in <!WA4><a
+href="ftp://ftp.cs.jhu.edu/pub/scott/itoopls.ps.Z"><it>Lisp and
+Symbolic Computation</it></a> represents our (final?) statement on
+this topic.
+
+
+<h3>Towards Complete Operational Semantics</h3><p> The aim of this
+project is to accomplish a degree of unification between operational
+and denotational approaches to programming language semantics by
+recasting classic denotational concepts inside a purely operational
+framework.  These concepts include notions of ordering <it>a <=
+b</it>, directed set, complete partial order, monotonicity,
+continuity, least fixed point principle, finite element,
+omega-algebraicity, and fixed point induction.  The purpose of this
+approach is to give full faithful semantics to languages for which
+denotational semantics fails.  To date this approach has been
+developed for functional languages, and preliminary extensions to
+languages with memories have shown possibilities.  The problem of
+finite elements for languages with memories is currently open,
+however.  <!WA5><a href = "ftp://ftp.cs.jhu.edu/pub/scott/fosdt.ps.Z">
+Here</a> is a paper on this topic.
+
+<p><h3>Asynchronous Digital Circuit Synthesis</h3> 
+
+In collaboration with Amy Zwarico we have defined a formal language
+for specifying asynchronous digital circuits that is based on Hoare's
+CSP, and verified a translation of these circuits to hardware devices
+(collections of gates).  The translation was proven correct by
+defining a formal operational notion of equivalence, and incrementally
+translating the specification to the circuit in small steps that
+preserve equivalence.  Numerous informal arguments of correctness of
+similar synthesis methods exist, but this work is the first complete,
+rigorous proof of correctness of such a method.  Some other features
+of this work include the following.
+
+<ul>
+<li> The translation is defined by a set of rewrite rules, broken into five phases.
+<li> A new notion of "translational equivalence" is defined to state how 
+a translation preserves meaning when the language itself is changing.
+<li> Only fair executions considered, for gates are inherently fair.  
+This is some of the first work in circuit theory to consider fairness.
+</ul>
+<!WA6><a href = "ftp://ftp.cs.jhu.edu/pub/scott/ccsdac.ps.Z">  Here</a>
+ is a paper on this topic.

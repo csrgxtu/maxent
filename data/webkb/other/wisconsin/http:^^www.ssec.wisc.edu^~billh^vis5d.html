@@ -1,0 +1,281 @@
+Date: Mon, 11 Nov 1996 20:59:32 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+Content-length: 10030
+Last-modified: Tue, 05 Nov 1996 19:22:32 GMT
+
+<HTML>
+
+<HEAD>
+<TITLE>Vis5D Home Page</TITLE>
+</HEAD>
+
+
+<BODY>
+
+<H1><P ALIGN=CENTER>Vis5D</H1>
+
+<H2>Introduction</H2>
+
+Vis5D is a system for interactive visualization of large 5-D gridded
+data sets such as those made by numeric weather models.  One can make
+isosurfaces, contour line slices, colored slices, volume renderings,
+etc of data in a 3-D
+grid then rotate and animate the image in real time.  There's also a
+feature for wind/trajectory tracing, a way to make text anotations for
+publications, etc.<P>
+
+Here's a screen shot of Vis5D:<p>
+
+<IMG src="http://www.ssec.wisc.edu/~billh/vis5d.gif">
+<BR>
+
+Click <A HREF="http://www.ssec.wisc.edu/~billh/vis5d1.gif"> here </A>
+or <A HREF="http://www.ssec.wisc.edu/~billh/vis5d2.gif"> here </A>
+for more sample images.<P>
+
+Vis5D was written by the
+<A HREF="http://www.ssec.wisc.edu/~billh/vis.html"> Visualization Project</A>
+at the University of Wisconsin-Madison
+<A HREF="http://www.ssec.wisc.edu/"> Space Science and Engineering Center</A>
+(SSEC) by
+<A HREF="http://www.ssec.wisc.edu/~billh/homepage1.html"> Bill Hibbard </A> and
+<A HREF="http://www.ssec.wisc.edu/~brianp/homepage1.html"> Brian Paul </A>
+with the help of:<p>
+
+<ul>
+<li>Andre Battaiola of CPTEC, Sao Paulo, Brazil
+<li>Dave Santek of the SSEC
+<li>Marie-Francoise Voidrot-Martinez of the French Meteorology Office.
+<li>Dave Kamins and Jeff Vroom of Stellar Computer, Inc.
+<li>Simon Baas and Hans de Jong of the Netherlands for the HP/VOGL port
+<li>Pratish Shah of Kubota Computer for the Kubota port
+<LI>Mike Stroyan of HP for the PEX support
+</ul>
+
+The development of Vis5D was supported by the NASA Marshall Space Flight
+Center<P>
+
+
+<BR>
+<H2>System Requirements</H2>
+
+Vis5D 4.2, the most recent version, works with the following systems:<p>
+
+<UL>
+<LI><B>Silicon Graphics</B> workstations with IRIX 4.x or later.
+    Multiple CPUs are used when present.
+<LI><B>IBM RS/6000</B> workstations with AIX 3 or later.  OpenGL-based
+     3-D hardware is supported.
+<LI><B>Sun</B> workstations with SunOS 5.x or later.
+<LI><B>HP</B> workstations with HP-UX A.09.01 or later.  PEX-based 3-D
+    hardware is supported.
+<LI><B>DEC Alpha</B> workstations with OSF/1 V1.3 or later.
+<LI><B>IBM PC compatibles</B> with Linux v1.2 or later.  90MHz Pentium or
+    faster CPU recommended.
+</UL>
+
+Notes:
+<UL>
+<LI>At least 32 MB of RAM is recommended in all cases.
+<LI>At least 8-bit color is needed, 24-bit color is recommended.
+<LI>On systems without 3-D hardware rendering is done in software with the
+    <A HREF="http://www.ssec.wisc.edu/~billh/bp/Mesa.html">Mesa</A> library.
+    3-D graphics hardware is highly recommended.
+</UL>
+
+The size of your memory determines the size of data set you can visualize.
+You should have two bytes of memory for each point in your data set in
+order to have maximum interactivity.  However, you can visualize larger
+data sets with reduced interactivity.<p>
+
+
+<BR>
+<H2>How to get Vis5D</H2>
+
+Vis5D is available by anonymous ftp from
+<A HREF="ftp://iris.ssec.wisc.edu/pub/vis5d">iris.ssec.wisc.edu/pub/vis5d</A>.
+The distribution consists of two files:
+<UL>
+<LI><A HREF="ftp://iris.ssec.wisc.edu/pub/vis5d/vis5d-4.2.tar.Z">
+    vis5d-4.2.tar.Z</A> - source code and documenation (5.4MB)
+<LI><A HREF="ftp://iris.ssec.wisc.edu/pub/vis5d/vis5d-data.tar.Z">
+    vis5d-data.tar.Z</A> - sample data sets, map files, topography
+     files (4.7MB)
+</UL>
+
+If you've used Vis5D in the past you do not need the vis5d-data.tar.Z file
+since you should already have the files it contains.<P>
+
+The <A HREF="ftp://iris.ssec.wisc.edu/pub/vis5d/README"> README </A>
+file contains the complete Vis5D documentation including compilation and
+installation instructions (section 2).<P>
+
+Manual ftp operation:<p>
+
+<pre>
+% <B>ftp iris.ssec.wisc.edu</B>
+Connected to iris.ssec.wisc.edu
+Name:  <B>anonymous</B>
+Guest login ok, type your name as password.
+Password:  <B>myname@address</B>
+ftp> <B>cd pub/vis5d</B>
+ftp> <B>asc</B>
+ftp> <B>get README</B>
+ftp> <B>bin</B>
+ftp> <B>get vis5d-4.2.tar.Z</B>
+ftp> <B>get vis5d-data.tar.Z</B>
+ftp> <B>bye</B>
+</pre>
+
+Precompiled Vis5D executables (along with map and topography files) are
+available for the following systems:<p>
+
+<ul>
+<li> <a href="ftp://iris.ssec.wisc.edu/pub/vis5d-4.2/vis5d.irix5.viewer.tar.Z">SGI / IRIX 5.x</a>
+<li> <a href="ftp://iris.ssec.wisc.edu/pub/vis5d-4.2/vis5d.irix4.viewer.tar.Z">SGI / IRIX 4.x</a>
+<li> <a href="ftp://iris.ssec.wisc.edu/pub/vis5d-4.2/vis5d.ibm.viewer.tar.Z">IBM R6000 / AIX</a>
+<li> <a href="ftp://iris.ssec.wisc.edu/pub/vis5d-4.2/vis5d.hp.viewer.tar.Z">HP / HP-UX</a>
+<li> <a href="ftp://iris.ssec.wisc.edu/pub/vis5d-4.2/vis5d.hp-pex.viewer.tar.Z">HP / HP-UX (PEX)</a>
+<li> <a href="ftp://iris.ssec.wisc.edu/pub/vis5d-4.2/vis5d.alpha.viewer.tar.Z">DEC Alpha / OSF1</a>
+<li> <a href="ftp://iris.ssec.wisc.edu/pub/vis5d-4.2/vis5d.sunos5.viewer.tar.Z">SUN / SunOS 5.x</a>
+<li> <a href="ftp://iris.ssec.wisc.edu/pub/vis5d-4.2/vis5d.linux.viewer.tar.Z">Pentium / LINUX</a>
+</ul>
+
+Your Web browser will ask where to put the file and what to name it.  Put
+it in the directory where you want to install Vis5D, and name it vis5d.tar
+(your browser should automatically uncompress the file).  Then enter the
+command "tar -xvf vis5d.tar" (make sure you're in the dirctory where you
+want to install Vis5D).  Now Vis5D is installed.  You can get rid of the
+tar file by entering the command "rm vis5d.tar".<P>
+
+<H3>Installing Linux on your PC</H3>
+
+You can run Vis5D on your PC if you install the Linux operating system.
+It is a freeware version of Unix and you can find everything you need to
+know about it at <a href="http://sunsite.unc.edu/mdw/linux.html">The
+Linux Documentation Project Home Page</a>.  Note that about 2/3 of the way
+down the page you'll find a list of commercial Linux products that make
+installation easy.<p>
+
+
+<H3>If you are in Europe</H3>
+
+Recently, users in Europe have had problems with low bandwidth to North
+American ftp servers.  The
+<A HREF="http://www.dkrz.de">Deutsches Klimarechenzentrum</A>
+has offered to serve as a mirror site for our software.  Here are links
+to the files available:
+
+<UL>
+<LI><A HREF="ftp://ftp.dkrz.de/pub/visu/ssec/vis5d-4.2/README">Vis5D README</A>
+<LI><A HREF="ftp://ftp.dkrz.de/pub/visu/ssec/vis5d-4.2/vis5d-4.2.tar.Z">
+    vis5d-4.2.tar.Z</A>
+<LI><A HREF="ftp://ftp.dkrz.de/pub/visu/ssec/vis5d-4.2/vis5d-data.tar.Z">
+    vis5d-data.tar.Z</A>
+<LI><A HREF="ftp://ftp.dkrz.de/pub/visu/ssec/vis5d-4.2/vis5d.irix5.viewer.tar.Z">SGI / IRIX 5.x executable and map files</A>
+<LI><A HREF="ftp://ftp.dkrz.de/pub/visu/ssec/vis5d-4.2/vis5d.irix4.viewer.tar.Z">SGI / IRIX 4.x executable and map files</A>
+<LI><A HREF="ftp://ftp.dkrz.de/pub/visu/ssec/vis5d-4.2/vis5d.ibm.viewer.tar.Z">IBM RS/6000 / AIX executable and map files</A>
+<LI><A HREF="ftp://ftp.dkrz.de/pub/visu/ssec/vis5d-4.2/vis5d.hp.viewer.tar.Z">HP / HP-UX executable and map files</A>
+<LI><A HREF="ftp://ftp.dkrz.de/pub/visu/ssec/vis5d-4.2/vis5d.alpha.viewer.tar.Z">DEC Alpha / OSF/1 executable and map files</A>
+<LI><A HREF="ftp://ftp.dkrz.de/pub/visu/ssec/vis5d-4.2/vis5d.sunos5.viewer.tar.Z">Sun / SunOS 5.x executable and map files</A>
+<LI><A HREF="ftp://ftp.dkrz.de/pub/visu/ssec/vis5d-4.2/vis5d.linux.viewer.tar.Z">PC / Linux executable and map files</A>
+<LI><A HREF="ftp://ftp.dkrz.de/pub/visu/ssec/vis5d-4.2/">or browse the site</A>
+</UL>
+
+Manual ftp operation:<p>
+
+<PRE>
+% <B>ftp ftp.dkrz.de</B>
+Connected to info.dkrz.de
+Name:  <B>anonymous</B>
+Guest login ok, type your name as password.
+Password:  <B>myname@address</B>
+ftp> <B>cd pub/visu/ssec/vis5d-4.2</B>
+ftp> <B>asc</B>
+ftp> <B>get README</B>
+ftp> <B>bin</B>
+ftp> <B>get vis5d-4.2.tar.Z</B>
+ftp> <B>get vis5d-data.tar.Z</B>
+ftp> <B>bye</B>
+</PRE>
+
+
+Your Web browser will ask where to put the file and what to name it.  Put
+it in the directory where you want to install Vis5D, and name it vis5d.tar
+(your browser should automatically uncompress the file).  Then enter the
+command "tar -xvf vis5d.tar" (make sure you're in the dirctory where you
+want to install Vis5D).  Now Vis5D is installed.  You can get rid of the
+tar file by entering the command "rm vis5d.tar".<P>
+
+
+<BR>
+<H2>Serving and Viewing Vis5D Files Via the Web</H2>
+
+In order to make it easy for modelers to examine each other's data sets,
+we have defined Vis5D files as a medium for exchanging information on the
+World Wide Web.  Links to Vis5D files can be embedded in Web pages (just as
+links to GIF files can be embedded in web pages), and Mosaic can
+automatically invoke Vis5D to view them (just as it automatically invokes
+xv to view GIF files).<p>
+
+Click
+<a href="http://www.ssec.wisc.edu/~billh/view5d.html">here</a>
+to find out how to do it.<p>
+
+
+
+<BR>
+<H2>Getting Help</H2>
+
+Vis5D is free software and as such we do not provide real support
+for it.  However, we will be happy to answer questions and/or help with
+minor problems (preferably by email).<P>
+
+Email can be sent to
+Bill Hibbard at
+<A HREF="mailto:whibbard@macc.wisc.edu">whibbard@macc.wisc.edu</A>.<P>
+
+U.S. Mail can be sent to:<p>
+<PRE>
+Space Science and Engineering Center
+University of Wisconsin - Madison
+1225 W. Dayton St.
+Madison, WI  53706
+</PRE>
+
+There is a Vis5D mailing list.  To subscribe to it send Bill or Brian a message
+asking to be subscribed.  To post to the list address your message to vis5d-list@
+ssec.wisc.edu.<P>
+
+
+<BR>
+<H2>Other links</H2>
+
+The <A HREF="vis5d-faq.html">Vis5D FAQ</A>
+may answer a question you have about installing or using Vis5D.<P>
+
+The <A HREF="script.html">Vis5D scripting
+document</A> describes the new Tcl scripting interface in Vis5D 4.2<P>
+
+The <A HREF="api.html">Vis5D API document</A>
+describes the internal programming interface to Vis5D.  This is intended for
+programmers only.<P>
+
+Check out how the
+<a href="http://java.meteor.wisc.edu/vis5d-oper.html">UW-NMS</a>
+group is using Vis5D to visualize operational forecasts.<p>
+
+We also have a home page for
+<a href="http://www.ssec.wisc.edu/~billh/visad.html">VisAD</a>
+.<p>
+
+
+
+
+
+<HR>
+Last updated on April 12, 1996.
+
+</BODY>
+</HTML>

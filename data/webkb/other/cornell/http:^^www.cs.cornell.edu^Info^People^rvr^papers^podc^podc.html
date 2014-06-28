@@ -1,0 +1,81 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 24-Nov-96 23:04:49 GMT
+Content-Type: text/html
+Content-Length: 4200
+Last-Modified: Monday, 15-May-95 16:19:29 GMT
+
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!- Converted with LaTeX2HTML 0.6.4 (Tues Aug 30 1994) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds ->
+<P>
+<HEAD>
+<TITLE>A Framework for Protocol Composition in Horus</TITLE>
+<meta name="description" value="A Framework for Protocol Composition in Horus">
+<meta name="keywords" value="podc">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+</HEAD>
+<BODY><P>
+ <BR> <HR><A NAME=tex2html9 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.cornell.edu/Info/People/rvr/icons//next_motif.gif"></A> <IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.cornell.edu/Info/People/rvr/icons//up_motif_gr.gif"> <IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.cornell.edu/Info/People/rvr/icons//previous_motif_gr.gif">   <BR>
+<B> Next:</B> <A NAME=tex2html10 HREF="node1.html"> Introduction</A>
+<BR> <HR> <P>
+<P>
+10000
+10000
+<P>
+<H1>A Framework for Protocol Composition in Horus</H1>
+<P><STRONG>
+Robbert van Renesse, Kenneth P. Birman, Roy Friedman, <BR>Mark Hayden, and David A. Karr
+<BR><BR>Dept. of Computer Science <BR>Cornell University
+<A NAME=tex2html1 HREF="footnode.html#20"><IMG ALIGN=BOTTOM ALT="gif" SRC="http://www.cs.cornell.edu/Info/People/rvr/icons//foot_motif.gif"></A>
+</STRONG><P>
+<H3>Abstract:</H3>
+<EM>The Horus system supports a communication architecture that treats
+protocols as instances of an abstract data type.
+This approach encourages developers to
+partition complex protocols into simple microprotocols, each of which
+is implemented by a protocol layer.
+Protocol layers can be stacked on top of each
+other in a variety of ways, at run-time.
+First, we describe the classes of protocols that can be supported this way.
+Next, we present the Horus object model that we designed for
+this technology, and the interface between the layers that makes it all
+work.  We then present an example layer that implements a group
+membership protocol.  Next, we show how, given a set of required properties,
+an appropriate stack can be constructed.  We look at an example stack of
+protocols, which provides fault-tolerant, totally ordered communication
+between a group of processes.
+The work contributes a standard framework for protocol development and
+experimentation, provides a high performance implementation of the
+virtual synchrony model, and introduces a methodology for increasing the
+robustness of the protocol development process.
+<P>
+</EM><P>
+<P>
+<BR> <HR>
+<UL> 
+<LI> <A NAME=tex2html11 HREF="node1.html#SECTION00010000000000000000"> Introduction</A>
+<LI> <A NAME=tex2html12 HREF="node2.html#SECTION00020000000000000000"> Classes of Protocols</A>
+<LI> <A NAME=tex2html13 HREF="node3.html#SECTION00030000000000000000"> Horus Objects</A>
+<LI> <A NAME=tex2html14 HREF="node4.html#SECTION00040000000000000000"> Common Protocol Interface</A>
+<LI> <A NAME=tex2html15 HREF="node5.html#SECTION00050000000000000000"> Example: A Membership Protocol</A>
+<LI> <A NAME=tex2html16 HREF="node6.html#SECTION00060000000000000000"> Protocol Properties and Inheritance</A>
+<LI> <A NAME=tex2html17 HREF="node7.html#SECTION00070000000000000000"> Example: A Typical Protocol Stack</A>
+<LI> <A NAME=tex2html18 HREF="node8.html#SECTION00080000000000000000"> Reference Implementation Effort</A>
+<LI> <A NAME=tex2html19 HREF="node9.html#SECTION00090000000000000000"> The End-to-End Argument</A>
+<LI> <A NAME=tex2html20 HREF="node10.html#SECTION000100000000000000000"> Performance and Overhead</A>
+<LI> <A NAME=tex2html21 HREF="node11.html#SECTION000110000000000000000"> Status and Challenges</A>
+<LI> <A NAME=tex2html22 HREF="node12.html#SECTION000120000000000000000"> Related Work</A>
+<LI> <A NAME=tex2html23 HREF="node13.html#SECTION000130000000000000000"> Conclusion</A>
+<UL> 
+<LI> <A NAME=tex2html24 HREF="node14.html#SECTION000131000000000000000"> Acknowledgements</A>
+</UL> 
+<LI> <A NAME=tex2html25 HREF="node15.html#SECTION000140000000000000000">References</A>
+<LI> <A NAME=tex2html26 HREF="node16.html#SECTION000150000000000000000">  <em>About this document ...</em> </A>
+</UL>
+<BR> <HR>
+<P><ADDRESS>
+<I> Robbert VanRenesse <BR>
+Mon May 15 12:16:43 EDT 1995</I>
+</ADDRESS>
+</BODY>

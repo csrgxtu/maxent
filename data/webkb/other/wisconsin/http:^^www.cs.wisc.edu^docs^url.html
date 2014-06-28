@@ -1,0 +1,168 @@
+Date: Tue, 05 Nov 1996 21:47:55 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 19 Jan 1995 17:35:08 GMT
+Content-length: 7401
+
+<HTML>
+<HEAD>
+<TITLE>URLs and the CS Web Server</TITLE>
+</HEAD>
+<BODY>
+
+<P> <H2>URLs and the CS Web Server</H2>
+
+<P> <H3>Introduction</H3>
+
+<P> One of the design features of the Web is ``hypertext.''  Hypertext is the
+idea of creating a link from part of one document to another part of a 
+document (either the same document, or a different one).  The concept is 
+really no different than a cross-reference, but the referenced document
+is available to the user in an instant.
+
+<P> In a hypertext system some standard method of specifying links must be
+created.  The designers of the Web decided that for their needs, the most
+appropriate way to specify the start of a link was to mark a section of a
+document with special tags (see the <!WA0><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/docs/htmltutorial.html#links">HTML 
+tutorial</A>).  Specifying the ``destination'' of the link was more 
+complicated, because each part of each document on the internet had to
+have a unique ``name''.  To solve the problem, they created the <EM>Uniform
+Resource Identifier</EM> or <EM>URI</EM> specification.  The syntax of
+URIs was designed to be:
+
+<DL>
+  <DT> <EM>Extensible</EM>.  
+  <DD> That is, new kinds of links can be added if necessary.
+  <DT> <EM>Complete</EM>.  
+  <DD> It is possible to specify any naming scheme within a URI.
+  <DT> <EM>Printable</EM>
+  <DD> Any URI uses only 7-bit ASCII characters, and is designed to
+       be easily readable.
+</DL>
+
+<P> The URI specification was in turn used to write specifications for 
+the naming of documents or services available through existing 
+internet protocols.  These initial specifications were named
+<EM>Uniform Resource Locators</EM> or <EM>URLs</EM>.  In this document
+we discuss some of the commonly used URL specifications.
+
+<P> <H3>The CS http server and relative URLs</H3>
+
+<P> When people talk about putting documents on the Web, they are usually
+referring to putting their document in the namespace of a <EM>Hypertext
+Transfer Protocol</EM> or <EM>HTTP</EM> server.  HTTP was designed to
+satisfy the curious needs of the Web, namely the quick, anonymous retrieval 
+of documents.
+
+<P> The http server provides each user with their own
+Web namespace, starting in the directory <TT>~/public/html</TT>.  The
+server has the permissions of any other user, so the files in this 
+directory must be readable by any user.  We will describe what the full
+URL of this namespace later in this document. 
+
+<P> URLs are similar to pathnames in a file-system, and just as with pathnames
+it is possible to construct relative URLs.  In a Unix shell, pathnames name
+files relative to a ``working directory.''  URLs name documents relative to
+the URL of the document a link is being made <EM>from</EM>.  Roughly speaking,
+if when you make a link from document <EM>a</EM> to document <EM>b</EM> and
+you leave out parts of the URL for <EM>b</EM>, those parts will be copied from
+the URL that was used to retrieve <EM>a</EM>.  
+
+<P> For example, if I have a document called <TT>home.html</TT>, and I want
+to make a link from it to another document called <TT>todo.html</TT>, I can
+simply use the relative URL ``<TT>todo.html</TT>''.  If I have a third 
+document in a subdirectory <TT>data</TT> called <TT>results.html</TT>, I 
+can use the relative URL ``<TT>data/results.html</TT>'' to link to
+it from <TT>home.html</TT> (URLs generally use the ``/'' character to 
+separate directory names, just like Unix).  To link from 
+<TT>data/results.html</TT> to <TT>home.html</TT> you could use the 
+relative URL ``<TT>../home.html</TT>''.
+
+<P> The name the http server uses for each user's web names pace is
+``<TT>/~<EM>username</EM>/</TT>''.  Remember that this points to the 
+subdirectory <TT>~<EM>username</EM>/public/html/</TT> and not to 
+<TT>~<EM>username</EM>/</TT>.  If you wanted to link to my home page
+from a document in your directory, you could use the relative URL
+``<TT>/~keeper/keeper.html</TT>''.  
+
+<P> <H3>Full URLs</H3>
+
+<P> To link to a file or service that is not on the CS http server, you
+need to know its full URL.  To link to documents on other http servers, 
+a full URL looks like the following:
+
+<BLOCKQUOTE><PRE>http://<EM>fqdn</EM>/<EM>pathname</EM></PRE></BLOCKQUOTE>
+
+<P> Where <EM>fqdn</EM> is the ``fully-qualified domain name'' (as in
+<TT>www.cs.wisc.edu</TT>).  (Sometimes a server will be running on a port
+other than the standard one, in which case you follow the <EM>fqdn</EM> 
+with a colon and the port number, as in <TT>monty.cs.wisc.edu:1080</TT>.)
+The full URL for the home page of the CS department is:
+
+<BLOCKQUOTE><PRE>http://www.cs.wisc.edu/</PRE></BLOCKQUOTE>
+
+<P> The home page is located at the root of the tree.  The full URL for my 
+home page is:
+
+<BLOCKQUOTE><PRE>http://www.cs.wisc.edu/~keeper/keeper.html</PRE></BLOCKQUOTE>
+
+<P> Another useful URL type is <TT>ftp</TT>, which allows you to link to files
+on anonymous FTP servers.  The format is exactly the same as <TT>http</TT>
+URLs, except <TT>http</TT> becomes <TT>ftp</TT>.  The URL for the 
+<TT>condor</TT> directory on the CS FTP server is:
+
+<BLOCKQUOTE><PRE>ftp://ftp.cs.wisc.edu/condor/</PRE></BLOCKQUOTE>
+
+<P> <H2>Access Control, Tricks, and Details</H2>
+
+<P> <H3>Linking to parts of documents</H3>
+
+<P> To create a link to a specific part of a document, that document must
+be written in HTML, and contain a named anchor (see the 
+<!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.wisc.edu/docs/htmltutorial.html#links">tutorial</A>).  The URL would simply be the
+URL of the file followed by a hash mark (``#'') and the name of the anchor.
+If the anchor is in the same document the URL is just 
+``<TT>#<EM>anchorname</EM></TT>''.  
+
+<P> <H3>Access Control</H3>
+
+<P> The http server provides an access control system similar to the
+<!WA2><!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/csl/faq/software/afs.html#acl">access control lists</A> in AFS, but 
+because all the files are already on AFS you should use it rather than the 
+server to <!WA3><!WA3><!WA3><!WA3><A HREF="http://www.cs.wisc.edu/csl/faq/software/afs.html#set_acl">protect your files</A>.
+
+<P> <H3>Mapping documents to directories</H3>
+
+<P> Normally when the server gets a request for the URL of a directory it
+returns a list of files.  However, if a file named <TT>index.html</TT> 
+exists in the directory it is sent instead.  The CS home page is stored in
+the file <TT>index.html</TT> in the root directory.  Many people like to
+make a link from <TT>index.html</TT> to their home page (as in 
+<TT> ln -s <EM>username</EM>.html index.html</TT>) so that when the URL
+
+<BLOCKQUOTE><PRE>http://www.cs.wisc.edu/~<EM>username</EM>/</PRE></BLOCKQUOTE>
+
+<P> is requested their home page is returned.
+
+<P> <H3>Searching directly with URLs</H3>
+
+<P> Each Web browser has a method for sending a search string to a remote 
+server, and many Web services rely on this search string.  Luckily, the
+method used for sending the string is to translate and append it to the 
+URL of the service preceded by a question mark.  The translation changes
+spaces to plus signs (``+'') and encodes other seldom-used special characters
+in hexadecimal.  The finger script on our server uses this feature.  To 
+make a link that fingers a user from a document on our server, you can 
+use the relative URL:
+
+<BLOCKQUOTE><PRE>/cgi-bin/finger?<EM>username</EM></PRE></BLOCKQUOTE>
+
+<P> <H2>Related Documents</H2>
+
+If you want to continue learning about URLs a list of other references 
+is <!WA4><!WA4><!WA4><!WA4><A HREF="http://www.cs.wisc.edu/docs/otherdocs.html#url">here</A>.  You might also want to continue
+reading <!WA5><!WA5><!WA5><!WA5><A HREF="http://www.cs.wisc.edu/docs/">our documents</A>.
+
+
+</BODY>
+</HTML>

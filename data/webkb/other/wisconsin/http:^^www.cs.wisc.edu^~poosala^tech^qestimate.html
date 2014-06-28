@@ -1,0 +1,99 @@
+Date: Mon, 04 Nov 1996 23:50:00 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 07 Feb 1996 19:01:30 GMT
+Content-length: 3428
+
+<HTML>
+<HEAD>
+<title> Research </title>
+</HEAD>
+<H1>Brief description of work</H1>
+
+<BODY>
+<PRE>
+	Words are flowing out like endless rain into a paper cup,
+	They slither while they pass, they slip away across the universe
+</PRE>
+
+<ul>
+<h2> <!WA0><img alt="o" src="http://www.cs.wisc.edu/~poosala/tech/redball.gif"> Query Result Size Estimation</h2>
+Query optimizers make certain assumptions about the distribution of data in
+the database in order to estimate the selectivities of various query operators.
+For complex (multi-join) queries, errors in these estimates tend to propagate
+exponentially, possibly resulting in suboptimal plans being chosen.  This problem
+has become serious even in well-established commerical optimizers.  Some form of
+histograms that approximate data distributions has thus become necessary.  We
+have identified the optimal histograms for estimating result sizes of queries
+with multiple joins and arbitrary selections.  These histograms are formed based
+on statistics collected from the database, and the resources to do this, mainly
+catalog space and collection time, are very limited in a commerical environment.
+To address this, we have also identified a version of the above histograms that
+are near optimal and can be constructed very efficiently.  
+<br>
+<h3> Applications</h3>
+Query Optimization, Query Design (User Interfaces).
+</ul>
+
+<hr>
+
+<ul>
+<h2>  <!WA1><img alt="o" src="http://www.cs.wisc.edu/~poosala/tech/redball.gif"> Query Cost Estimation</h2>
+An equally critical issue is the estimation of query costs.  We are currently
+designing a unified data structure, which would capture information about
+physical clustering of data on disk pages in addition to data distributions.
+The structure is as compact as a histogram and will estimate both sizes and
+costs of widely varied operators (e.g., unclustered index scans, or intermediate
+joins on RIDs).  We are studying the optimality and practicality of this
+structure, hoping that the results will make a variety of estimation algorithms
+unnecessary, while providing better estimates of both result sizes and query
+costs.  
+<br>
+<h3> Applications</h3> 
+Query Optimization, Query Design (User Interfaces), Physical Database Design, Load Balancing.
+</ul>
+<hr>
+
+
+<ul>
+<h2> <!WA2><img alt="o" src="http://www.cs.wisc.edu/~poosala/tech/redball.gif"> Other Problems </h2> 
+Other problems that we investigated include estimation for parallel join load 
+balancing, result sizes of additional operators, parallel query optimization.
+<br>
+</ul>
+<hr>
+
+<ul>
+<h2> <!WA3><img alt="o" src="http://www.cs.wisc.edu/~poosala/tech/redball.gif"> Implementations </h2>
+<ol>
+<li> Designed and implemented efficient algorithms for computing and using histograms
+for size estimation in the DB2-6000 optimizer. <br> <br>
+<li> Designed and implemented the size estimation module for the Precis Query Profiler,
+used by the Lockheed Martin Missiles and Space Company. <br><br>
+</ol>
+
+</body>
+
+<hr>
+<hr>
+
+<body>
+
+<h2> <!WA4><A HREF="http://www.cs.wisc.edu/~poosala/tech/pub.html" 
+<i>Publications</i></A></h2>
+
+
+<P> If you would like to get a copy of the postscript of any of the publications e-mailed to you, please fill in the form below and click on the button.
+
+<h3> Please, include your e-mail address and the document name in the mail. </h5> Thanks.
+
+<!WA5><FORM ACTION="http://www.cs.wisc.edu/cgi-bin/mailto/poosala@cs.wisc.edu" METHOD=POST>
+<INPUT TYPE="hidden" NAME="Subj" VALUE="Paper Request">
+<INPUT TYPE="text" NAME="Msg" SIZE=110,5>
+
+<P> <INPUT TYPE="submit" VALUE="Mail above note to vishy">
+<INPUT TYPE="reset" VALUE="Clear text">
+</FORM>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+Date: Tue, 10 Dec 1996 03:34:02 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Thu, 26 Jan 1995 02:19:32 GMT
+Content-length: 4848
+
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!- Converted with LaTeX2HTML 0.6.4 (Tues Aug 30 1994) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds ->
+<P>
+<HEAD>
+<TITLE>Implementing multi-level queries <BR>in a database environment for
+  vision research<A NAME=tex2html1 HREF="footnode.html#2"><IMG ALIGN=BOTTOM ALT="gif" SRC="http://www.cs.washington.edu/homes/speed/figs/foot_motif.gif"></A></TITLE>
+<meta name="description" value="Implementing multi-level queries in a database environment for
+  vision research">
+<meta name="keywords" value="devr-toc">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+</HEAD>
+<BODY><P>
+ <BR> <HR><A NAME=tex2html6 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.washington.edu/homes/speed/figs/next_motif.gif"></A> <IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.washington.edu/homes/speed/figs/up_motif_gr.gif"> <IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.washington.edu/homes/speed/figs/previous_motif_gr.gif"> <A NAME=tex2html8 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="contents" SRC="http://www.cs.washington.edu/homes/speed/figs/contents_motif.gif"></A>  <BR>
+<B> Next:</B> <A NAME=tex2html7 HREF="node1.html">Contents</A>
+<BR> <HR> <P>
+<P>
+<H1>Implementing multi-level queries <BR>in a database environment for
+  vision research<A NAME=tex2html1 HREF="footnode.html#2"><IMG ALIGN=BOTTOM ALT="gif" SRC="http://www.cs.washington.edu/homes/speed/figs/foot_motif.gif"></A></H1>
+<P><STRONG>Rex Jakobovits, Linda Shapiro, Steven Tanimoto <BR>
+  Department of Computer Science and Engineering, FR-35<BR>University of Washington<BR>Seattle, Washington 98195<BR></STRONG><P>
+<P><STRONG></STRONG><P>
+<H3>Abstract:</H3>
+<EM>  The Database Environment for Vision Research (DEVR) is an
+  entity-oriented scientific database system based on a hierarchical
+  relational data model (HRS).  This paper describes the design and
+  implementation of the data definition language, the application
+  programmer's interface, and the query mechanism of the DEVR system.
+<P>
+  DEVR provides a dynamic data definition language for modeling image
+  and vision data, which can be integrated with existing image
+  processing and vision applications.  Schema definitions can be fully
+  interleaved with data manipulation, without requiring recompilation.
+  In addition, DEVR provides a powerful application programmer's
+  interface that regulates data access and schema definition,
+  maintains indexes, and enforces type safety and data integrity.
+<P>
+  The system supports multi-level queries based on recursive
+  constraint trees.  A set of HRS entities of a given type is filtered
+  through a network of constraints corresponding to the parts,
+  properties, and relations of that type.  Queries can be constructed
+  interactively with a menu-driven interface, or they can be
+  dynamically generated within a vision application using the
+  programmer's interface.  Query objects are persistent and reusable.
+  Users may keep libraries of query templates, which can be built
+  incrementally, tested separately, cloned, and linked together to
+  form more complex queries.
+</EM><P>
+<P>
+<BR> <HR>
+<UL> 
+<LI> <A NAME=tex2html9 HREF="node1.html#SECTION00010000000000000000">Contents</A>
+<LI> <A NAME=tex2html10 HREF="node2.html#SECTION00020000000000000000"> INTRODUCTION</A>
+<LI> <A NAME=tex2html11 HREF="node3.html#SECTION00030000000000000000"> THE HRS DATA MODEL</A>
+<UL> 
+<LI> <A NAME=tex2html12 HREF="node4.html#SECTION00031000000000000000"> Components of the HRS</A>
+<LI> <A NAME=tex2html13 HREF="node5.html#SECTION00032000000000000000"> Example application: TRIBORS</A>
+</UL> 
+<LI> <A NAME=tex2html14 HREF="node6.html#SECTION00040000000000000000"> IMPLEMENTING THE HRS</A>
+<UL> 
+<LI> <A NAME=tex2html15 HREF="node7.html#SECTION00041000000000000000"> The Schema class</A>
+<LI> <A NAME=tex2html16 HREF="node8.html#SECTION00042000000000000000"> The Entity class</A>
+</UL> 
+<LI> <A NAME=tex2html17 HREF="node9.html#SECTION00050000000000000000"> APPLICATION PROGRAMMER'S INTERFACE</A>
+<LI> <A NAME=tex2html18 HREF="node10.html#SECTION00060000000000000000"> THE QUERY SYSTEM</A>
+<UL> 
+<LI> <A NAME=tex2html19 HREF="node11.html#SECTION00061000000000000000"> Query model: constraint trees</A>
+<LI> <A NAME=tex2html20 HREF="node12.html#SECTION00062000000000000000"> Implementation of the query model</A>
+</UL> 
+<LI> <A NAME=tex2html21 HREF="node13.html#SECTION00070000000000000000"> Conclusion</A>
+<LI> <A NAME=tex2html22 HREF="node14.html#SECTION00080000000000000000">References</A>
+<LI> <A NAME=tex2html23 HREF="node15.html#SECTION00090000000000000000">  <em>About this document ...</em> </A>
+</UL>
+<A HREF="devr.ps"> also available in postscript </A>
+<BR> <HR>
+<P><ADDRESS>
+<I> Rex Jakobovits <BR>
+Mon Jan 16 19:29:35 PST 1995</I>
+</ADDRESS>
+</BODY>

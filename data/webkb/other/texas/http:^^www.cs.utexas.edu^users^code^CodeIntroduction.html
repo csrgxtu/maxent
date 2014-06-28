@@ -1,0 +1,73 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Friday, 17-Jan-97 00:26:57 GMT
+Content-Type: text/html
+Content-Length: 4925
+Last-Modified: Wednesday, 13-Mar-96 03:06:23 GMT
+
+<HTML>
+<HEAD>
+<TITLE>An Introduction to CODE</TITLE>
+</HEAD>
+<BODY>
+<!WA0><IMG ALT="" SRC="http://www.cs.utexas.edu/users/code/CODE-banner.gif">
+<p>
+<p>
+<HR SIZE=5 ALIGN=center WIDTH=50%>
+<CENTER><H3>Introduction to CODE</H3></CENTER>
+<CENTER><EM>CODE Tutorial</EM></CENTER>
+<p>
+<HR SIZE=5 ALIGN=center WIDTH=50%>
+<p>
+
+<hr align=left width=50%>
+<h3>Overview</h3>
+
+CODE is a visual parallel programming system. It can be thought of as a <em>framework</em>, allowing a user to compose sequential code into a parallel program. The fundamental idea is that users create parallel programs by drawing and annotating graphs. A graph is a diagram that consists of <B>nodes</B> (represented by icons in CODE) and <B>arcs</B> that interconnect the nodes. Such a diagram shows a computation's communication structure. Nodes represent computations and arcs represent the flow of data from one computation to another. Parallel programs are then created by composing nodes into graphs -- users draw the nodes and then interconnect them with arcs.<p>
+
+Here is the standard way of creating a program with CODE: first, the user draws the graph that shows the parallel program's communication structure. Then the user annotates this graph by filling in forms that describe properties of the nodes and arcs in the graph. For example, the user must specify the sequential computation a node performs. Finally, the user runs the program, which CODE translates, compiles, and executes.<p>
+
+<hr align=left width=50%>
+<h3>A Simple Example</h3>
+
+When a user first runs CODE, an empty window appears. The graph may then be drawn in this window. CODE graphs can contain several different node types which have different meanings and uses. Each different node type is represented by a different icon. The most important type of node is a <B>computation node</B>, which represents a sequential computation. These nodes may be composed to form parallel programs by drawing arcs which define the data flow between them. The figure below shows a complete CODE program that uses only computation nodes and arcs.<p>
+
+<CENTER><!WA1><IMG ALT="CODE program" SRC="http://www.cs.utexas.edu/users/code/fig2-1.gif"></CENTER><P>
+
+This program integrates a function over an interval by dividing the interval in half and integrating over each piece separately. The results are added to form the final answer. The program consists of four computation nodes. The arcs represent data created by one computation and needed by another. When the program runs, it first executes (or "fires") the computation node called <TT>Split_Interval</TT> which divides the interval in half and sends the endpoints of the sub-intervals to each of the <TT>Integ_Half</TT> nodes.<p>
+
+These nodes integrate a function over the interval they receive from <TT>Split_Interval</TT>. They can run in parallel with each other since there are no arcs between them. The node <TT>Sum_and_Print</TT> waits for the results of these two integrations and then prints their sum.<p>
+<br>
+<hr align=left width=50%>
+<h3>Annotating the Graph</h3>
+
+Drawing the graph is the first part of creating a CODE program; annotating it comes next. Where the graph defines the parallel structure of the program, the annotations define aspects of the program like what computations are performed, under what conditions a node may fire, data types defined for the program, etc. Annotations are added by filling out each object's annotation form. The figure below shows the annotation form for the computation node <TT>Split_Interval</TT>. (Note: annotation forms are displayed by using the <b>information tool</B> (the "i" in the upper left-hand corner of the screen above) and clicking on the CODE object.)<p>
+
+<CENTER><!WA2><IMG ALT="CODE program" SRC="http://www.cs.utexas.edu/users/code/fig2-2.gif"></CENTER><P>
+
+Notice that the "Start Node" option is selected. This means that this node is the first one to be executed when the program begins. There is only one start node allowed. Likewise, only one "Stop Node" is allowed, and when it fires, the program execution ends.<p>
+
+The sequential computation defined by this node is part of the "Specification." This specification also includes the mapping between data on the incoming and outgoing arcs and local data used by the computation, as well as conditions under which the node is allowed to fire. We will discuss the details of specifications in the next section.<p>
+
+<BR>
+
+<HR ALIGN=center WIDTH=50% SIZE=3>
+<CENTER>
+<EM><FONT SIZE="-1">
+
+<!WA3><A HREF="http://www.cs.utexas.edu/users/code/Welcome.html"><!WA4><IMG BORDER=0 ALIGN=middle ALT="Introduction" SRC="http://www.cs.utexas.edu/users/code/previous-button.gif">home page</A>
+
+<!WA5><IMG BORDER=0 ALT="o" ALIGN=middle SRC="http://www.cs.utexas.edu/images/stanford/ball2.blue.gif">
+
+<!WA6><A HREF="http://www.cs.utexas.edu/users/code/CodeSpecifications.html">specifications<!WA7><IMG BORDER=0 ALT="" ALIGN=middle SRC="http://www.cs.utexas.edu/users/code/next-button.gif"></A>
+
+
+</FONT></EM>
+</CENTER>
+<p>
+
+<HR>
+<!WA8><IMG ALIGN=center ALT="" SRC="http://www.cs.utexas.edu/users/code/CODE-banner.gif">
+<FONT SIZE="-1"><ADDRESS>Introduction to CODE / <!WA9><A HREF="mailto:emery@cs.utexas.edu">emery@cs.utexas.edu</A> / Last updated 15 August 1995</ADDRESS></FONT>
+</BODY>
+</HTML>

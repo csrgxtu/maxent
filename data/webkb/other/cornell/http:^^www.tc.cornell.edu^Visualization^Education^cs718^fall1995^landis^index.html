@@ -1,0 +1,1184 @@
+Date: Mon, 16 Dec 1996 22:15:24 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 15 Dec 1995 21:05:39 GMT
+Content-length: 58986
+
+<html>
+<title>Sean Landis' Fall 718 Context-Based Image Retrieval Project Page</title>
+<head>
+<h1>Sean Landis' CS718 Project, Fall 1995</h1>
+</head>
+
+<body>
+
+<!WA0><!WA0><!WA0><!WA0><IMG SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/line_blu.gif"><br>
+<h1 align=center><i>Content-Based Image Retrieval Systems for Interior Design</i></h1>
+<!WA1><!WA1><!WA1><!WA1><IMG SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/line_blu.gif"><br>
+<br><br>
+<h2>Table of Contents</h2>
+<!WA2><!WA2><!WA2><!WA2><a href="#Introduction">Introduction</a>
+<br>
+<!WA3><!WA3><!WA3><!WA3><a href="#Background">Background</a><br>
+..........<!WA4><!WA4><!WA4><!WA4><a href="#Manual Image Analysis">Manual Image Analysis</a><br>
+..........<!WA5><!WA5><!WA5><!WA5><a href="#Automated Image Analysis">Automated Image Analysis</a><br>
+..........<!WA6><!WA6><!WA6><!WA6><a href="#Image Features">Image Features</a><br>
+..........<!WA7><!WA7><!WA7><!WA7><a href="#Indexing and Queries">Indexing and Queries</a><br>
+<!WA8><!WA8><!WA8><!WA8><a href="#Current Research">Current Research</a><br>
+..........<!WA9><!WA9><!WA9><!WA9><a href="#Feature Extraction">Feature Extraction</a><br>
+..........<!WA10><!WA10><!WA10><!WA10><a href="#Query Specification">Query Specification</a><br>
+..........<!WA11><!WA11><!WA11><!WA11><a href="#Distance Metrics">Distance Metrics</a><br>
+..........<!WA12><!WA12><!WA12><!WA12><a href="#Indexing">Indexing</a><br>
+..........<!WA13><!WA13><!WA13><!WA13><a href="#Extensibility">Extensibility</a><br>
+..........<!WA14><!WA14><!WA14><!WA14><a href="#Artificial Intelligence">Artificial Intelligence</a><br>
+..........<!WA15><!WA15><!WA15><!WA15><a href="#Maximizing Domain Knowledge">Maximizing Domain Knowledge</a><br>
+<!WA16><!WA16><!WA16><!WA16><a href="#Project Overview">Project Overview</a><br>
+..........<!WA17><!WA17><!WA17><!WA17><a href="#Project Definition">Project Definition</a><br>
+<!WA18><!WA18><!WA18><!WA18><a href="#Implemention">Implemention</a><br>
+..........<!WA19><!WA19><!WA19><!WA19><a href="#Storage Manager">Storage Manager</a><br>
+..........<!WA20><!WA20><!WA20><!WA20><a href="#Analysis Manager">Analysis Manager</a><br>
+..........<!WA21><!WA21><!WA21><!WA21><a href="#Query Manager">Query Manager</a><br>
+..........<!WA22><!WA22><!WA22><!WA22><a href="#Display Manager">Display Manager and the User Interface</a><br>
+....................<!WA23><!WA23><!WA23><!WA23><a href="#Image Menu">Image Menu</a><br>
+....................<!WA24><!WA24><!WA24><!WA24><a href="#View Menu">View Menu</a><br>
+..........<!WA25><!WA25><!WA25><!WA25><a href="#Query by Color Algorithms">Query by Color Algorithms</a><br>
+..........<!WA26><!WA26><!WA26><!WA26><a href="#Query by Pattern Algorithms">Query by Pattern Algorithms</a><br>
+<!WA27><!WA27><!WA27><!WA27><a href="#Results">Results</a><br>
+..........<!WA28><!WA28><!WA28><!WA28><a href="#Color Queries">Color Queries</a><br>
+..........<!WA29><!WA29><!WA29><!WA29><a href="#Pattern Queries">Pattern Queries</a><br>
+..........<!WA30><!WA30><!WA30><!WA30><a href="#User Interface">User Interface</a><br>
+..........<!WA31><!WA31><!WA31><!WA31><a href="#Design">Design</a><br>
+..........<!WA32><!WA32><!WA32><!WA32><a href="#Limitations">Limitations</a><br>
+<!WA33><!WA33><!WA33><!WA33><a href="#Conclusions">Conclusions</a><br>
+..........<!WA34><!WA34><!WA34><!WA34><a href="#Usefulness">Usefulness</a><br>
+..........<!WA35><!WA35><!WA35><!WA35><a href="#Future Work">Future Work</a><br>
+<!WA36><!WA36><!WA36><!WA36><a href="#References">References</a><br>
+<br>
+<!WA37><!WA37><!WA37><!WA37><IMG SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/line_col.gif"><br>
+
+<H2><a name="Introduction">Introduction</a></H2>
+
+Computers are beginning to replace photographic archives as the preferred
+form of repository. Computer-based image repositories provide a flexibility 
+that cannot be attained with collections of printed images. Recently there has 
+been an explosion in the number of images available to computer users.
+As this number increases, users require more sophisticated methods of retrieval.
+Content-based image retrival (CBIR) promises to fill this requirement.
+<p>
+There are many diverse areas where CBIR can play a key role in the use of
+images<!WA38><!WA38><!WA38><!WA38><a href="#ref1">[1]</a>:<br>
+<br>
+<!WA39><!WA39><!WA39><!WA39><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Art galleries and museum management</b> <br>
+<!WA40><!WA40><!WA40><!WA40><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Architectural and engineering design</b> <br>
+<!WA41><!WA41><!WA41><!WA41><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Interior design</b> <br>
+<!WA42><!WA42><!WA42><!WA42><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Remote sensing and natural resource management</b> <br>
+<!WA43><!WA43><!WA43><!WA43><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Geographic information systems</b> <br>
+<!WA44><!WA44><!WA44><!WA44><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Scientific database management</b> <br>
+<!WA45><!WA45><!WA45><!WA45><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Weather forecasting</b> <br>
+<!WA46><!WA46><!WA46><!WA46><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Retailing</b> <br>
+<!WA47><!WA47><!WA47><!WA47><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Fabric and fashion design</b> <br>
+<!WA48><!WA48><!WA48><!WA48><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Trademark and copyright database management</b> <br>
+<!WA49><!WA49><!WA49><!WA49><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Law enforcement and criminal investigation</b> <br>
+<!WA50><!WA50><!WA50><!WA50><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Picture archiving and communication systems</b> <br>
+<!WA51><!WA51><!WA51><!WA51><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Education</b> <br>
+<!WA52><!WA52><!WA52><!WA52><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Entertainment</b> <br>
+<p>
+
+With so many applications, CBIR has attracted the attention of researchers 
+across several disciplines.
+<br>
+<br> 
+<!WA53><!WA53><!WA53><!WA53><IMG SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/line_col.gif"><br>
+<H2><a name="Background">Background</a></H2>
+
+Content-based retrieval is based on an understanding of the 
+semantics of the objects in a collection. Semantic analysis is performed
+when the object is inserted into the collection.
+Given a semantic representation of the objects in a collection,
+a user can compose a query that retrieves a set of objects with
+similar semantics. Query analysis is usually performed on an index structure that
+summarizes the data in the collection.
+<p>
+Content-based image retrieval is the semantic analysis and
+retrieval of images. Semantic 
+analysis may involve manual intervention, or it may be entirely 
+automated. Manual analysis involves human
+interpretation to associate semantic properties with an image.
+Automated semantic analysis extracts image features that are 
+correlated with some semantic meaning of the image. Both analysis methods
+have their advantages and their drawbacks.
+
+<h3> <a name="Manual Image Analysis">Manual Image Analysis</a> </h3>
+
+Traditional databases use text key words as labels to efficiently access 
+large quantities text data. Even complex text data can be automatically
+summarized and labeled using natural language processing and artificial 
+intelligence<!WA54><!WA54><!WA54><!WA54><a href="#ref5">[5]</a>. 
+<p>
+When the data are images rather than text, summarizing the data with labels
+becomes considerably more difficult. For example, consider a repository of
+news photographs. A user may wish to pose a query such as
+
+<blockquote><em> Give me all new photographs containing a US President and a 
+communist leader.</em></blockquote>
+
+To support queries like this, images require labeling that indicates
+the people in the images, their title, their nationality,
+and their political alignment.
+<p>
+It is not known how humans can process electromagnetic signals and convert
+them into highly detailed semantic interpretations. Therefore, human analysis
+is required to generate labels that support sophisticated queries like the 
+one above. But there are problems with human analysis:<br>
+<dl>
+<dt><!WA55><!WA55><!WA55><!WA55><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Personal perspective</b>
+	<dd> One person's interpretation
+	of the important features of an image may not match another person's
+	interpretation. Personal perspective leads to variance in image analysis and labeling.
+<dt><!WA56><!WA56><!WA56><!WA56><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Domain mismatch</b>
+	<dd> A person's domain of interest may influence image feature selection 
+	and analysis.
+<dt><!WA57><!WA57><!WA57><!WA57><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Interface expressiveness</b>
+	<dd>Human-computer
+	interfaces provide a limited bandwidth of expressive capability. 
+	Image analysis os limited by the expressiveness of the interface.
+<dt><!WA58><!WA58><!WA58><!WA58><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Data entry errors</b>
+	<dd>Humans are error-prone, especially 
+	when set to a task which is tedious or redundant.<br>
+</dl>
+Because of these, and other problems, it is best to 
+automate image analysis as much as possible. Where intervention is required,
+the user should be limited to a set of unambiguous choices. 
+
+<h3> <a name="Automated Image Analysis">Automated Image Analysis</a> </h3>
+
+Automated image analysis calculates approximately invariant statistics
+which can be correlated to the semantics of the image data. Example 
+statistics are color histograms, invariants
+of shape moments, and edges. Statistical analysis is useful because it provides
+information about the image without fickle and costly human interaction. 
+<p>
+Despite its appeal, automated image analysis suffers drawbacks. The primary 
+problem with statistical analysis is that extracted features can
+only support a very specific type of query. The features apply to
+a particular domain, but they are not useful for posing general purpose
+queries against diverse data sets.
+<p>
+Consider an image database indexed by color histogram. For each image, a feature vector is
+generated such that each element of the vector represents the percentage of a color
+quantum found in the image. A three element vector could have quantums representing
+red, green, and blue (in practice a color feature vector requires more than three elements). 
+The feature vector for an image contains the quantized
+percentage of red, green, and blue. The more quantums available,
+the greater the accuracy of the feature vector and the greater the cost of indexing and
+comparison.
+<p>
+If the database contained fabric images, a color histogram would be a powerful way
+to pose a query. A user interested designing a men's casual shirt for spring 
+wants bright, spring-like colors. The query is posed with the desired color mix, and
+all fabrics containing similar mixes of the specified colors are retrieved.
+On the other hand, if the database contained news photographs as described earlier,
+then color histograms would not be very useful. The semantics of the images in the
+database do not correlate well with color histograms. 
+
+<h3> <a name="Image Features">Image Features</a></h3>
+
+An image feature is a piece of semantic information extracted from the image. There are
+several properties for measuring the quality of a feature:<br>
+<dl>
+<dt><!WA59><!WA59><!WA59><!WA59><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Capacity</b>
+	<dd>The number of distinguishable images that can be 
+		represented<!WA60><!WA60><!WA60><!WA60><a href="#ref7">[7]</a>. 
+<dt><!WA61><!WA61><!WA61><!WA61><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Maximal Match Number</b>
+	<dd>The maximum number of images a query could possibly
+		retrieve<!WA62><!WA62><!WA62><!WA62><a href="#ref7">[7]</a>. 
+<dt><!WA63><!WA63><!WA63><!WA63><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Complexity</b>
+	<dd>The amount of computation required to determine if two images are similar
+		for a particular feature.
+<dt><!WA64><!WA64><!WA64><!WA64><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Compactness</b>
+	<dd>The amount of space required to store and compare a feature.
+</dl>
+
+Image features can be categorized as either <em>primitive</em> or 
+<em>logical</em><!WA65><!WA65><!WA65><!WA65><a href="#ref1">[1]</a>.
+A primitive feature is a low-level or statistical attribute of an image such as an object 
+boundry or color histogram. Primitive features are
+automatically extracted directly from the image. A logical feature represents an abstract 
+attribute such as the label <em>grass</em> assigned to a region of an image.
+Logical features rely on information beyond that contained in the image.
+<p>
+The delineation between primitive and logical features is not always clear. Consider
+an image which is a 2D representation of a 3D scene containing several objects. 
+Features representing the objects might be either primitive or logical features. If
+the extraction 	generates a feature containing edge information, then it is
+a primitive feature. On the other hand, if the extraction identifies the object by name,
+say by utilizing a model-based approach, it is a logical feature.
+<p>
+Primitive features are often used as the basis for generating logical features. A common 
+CBIR system architecture layers logical feature extraction on top of primitive 
+featue extraction. Primitive
+features are extracted directly from the image to generate a <em>segemented</em> image.
+From this information, more abstract, logical features are generated<!WA66><!WA66><!WA66><!WA66><a href="#ref6">[6]</a>.
+Segementation is the process of dividing the image into regions that correspond to 
+structural units of interest<!WA67><!WA67><!WA67><!WA67><a href="#ref10">[10]</a>. 
+
+<h3> <a name="Indexing and Queries">Indexing and Queries</a></h3>
+
+The goal of indexing is to create a compact summary of the database contents to
+provide an efficient mechanism for retrieval of the data.
+The summary data is based on feature vectors:
+
+<blockquote>
+Since in content based visual databases, all items (images or objects) are represented
+by pre-computed visual features, the key attribute for each image will be a feature
+vector which corresponds to a point in a multi-dimensional feature space; and search
+will be based on similarities between the feature vectors. Therefore, to achieve a
+fast and effective retrieval...requires an efficient multi-dimensional indexing
+scheme<!WA68><!WA68><!WA68><!WA68><a href="#ref11">[11]</a>.
+</blockquote>
+
+Multiple indexing schemes may be required to support queries involving a 
+combination of features. 
+To utilize multiple indexes, a hierarchical approach is often used where each 
+component of a query is applied against an appropriate index. A higher layer merges results
+for presentation to the user.
+<p>
+CBIR queries are posed in a fuzzy fashion. The user is typically interested in results
+according to similarity rather than equality. This requirement influences the indexing 
+scheme, the methods of feature comparison, and the means by which queries are 
+solicited from the user. 
+<p>
+Image similarity is usually determined by computing a distance measure between the
+query and the appropriate feature vectors in the index structure. Similar images
+are ranked according to distance. Thresholding may be used to reduce the number of 
+similar images presented to the user.
+<p> 
+A query is created by composing primitive and logical feature vectors. To present
+a simple and structured query environment, CBIR systems define query classes.
+Some typical query classes 
+are<!WA69><!WA69><!WA69><!WA69><a href="#ref1">[1]</a>:<br>
+
+<dl>
+<dt><!WA70><!WA70><!WA70><!WA70><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Color</b>
+	<dd> A partial histogram is created by specifying colors and 
+		percentages<!WA71><!WA71><!WA71><!WA71><a href="#ref3">[3]</a><!WA72><!WA72><!WA72><!WA72><a href="#ref6">[6]</a>
+		<!WA73><!WA73><!WA73><!WA73><a href="#ref7">[7]</a><!WA74><!WA74><!WA74><!WA74><a href="#ref12">[12]</a><!WA75><!WA75><!WA75><!WA75><a href="#ref13">[13]</a>. 
+<dt><!WA76><!WA76><!WA76><!WA76><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Texture</b>
+	<dd> Texture features include directionality, periodicity, randomness, 
+		roughness, regularity, coarseness, color distribution, contrast, and
+		complexity<!WA77><!WA77><!WA77><!WA77><a href="#ref5">[5]</a><!WA78><!WA78><!WA78><!WA78><a href="#ref12">[12]</a>
+		<!WA79><!WA79><!WA79><!WA79><a href="#ref13">[13]</a>.
+<dt><!WA80><!WA80><!WA80><!WA80><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Sketch</b>
+	<dd> The user creates a sketch representing an outline to be matched against
+		dominant image edges<!WA81><!WA81><!WA81><!WA81><a href="#ref3">[3]<!WA82><!WA82><!WA82><!WA82><a href="#ref12">[12]</a>.
+<dt><!WA83><!WA83><!WA83><!WA83><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Shape</b>
+	<dd> An example shape is created using simple painting tools. The shape is 
+		compared to objects within images for similarity<!WA84><!WA84><!WA84><!WA84><a href="#ref3">[3]</a>
+		<!WA85><!WA85><!WA85><!WA85><a href="#ref4">[4]</a><!WA86><!WA86><!WA86><!WA86><a href="#ref12">[12]</a><!WA87><!WA87><!WA87><!WA87><a href="#ref13">[13]</a>
+<dt><!WA88><!WA88><!WA88><!WA88><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Volume</b>
+	<dd> Volumetric relationships are specified using 3D tools. Feature vectors contain
+		3D information.
+<dt><!WA89><!WA89><!WA89><!WA89><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Spatial constraints</b>
+	<dd> The feature vector contains topological relationships among the objects in an image.
+<dt><!WA90><!WA90><!WA90><!WA90><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Browsing</b>
+	<dd> The user is presented with a structured method of viewing the entire database.
+<dt><!WA91><!WA91><!WA91><!WA91><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Objective features</b>
+	<dd> Objective features are attributes such as date of image acquisition, 
+		light direction, and view
+		direction. These features lend themselves to the methods used in
+		traditional databases<!WA92><!WA92><!WA92><!WA92><a href="#ref5">[5]</a><!WA93><!WA93><!WA93><!WA93><a href="#ref9">[9]</a>.
+<dt><!WA94><!WA94><!WA94><!WA94><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Subjective features</b>
+	<dd> Feature extraction is manual or semi-automatic and is subject to human
+		interpretation. Examples are region labels and 
+		manual object identification<!WA95><!WA95><!WA95><!WA95><a href="#ref5">[5]</a><!WA96><!WA96><!WA96><!WA96><a href="#ref9">[9]</a>.
+<dt><!WA97><!WA97><!WA97><!WA97><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Motion</b>
+	<dd> Motion is applicable to a series of images such as video segments. Motion features 
+		measure movement of objects in the sequences or other movement such
+		as camera viewpoint and camera focal point<!WA98><!WA98><!WA98><!WA98><a href="#ref3">[3]</a>.
+<dt><!WA99><!WA99><!WA99><!WA99><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Text</b>
+	<dd> Either simple or complex text can be associated with images. For the 
+		simple case, traditional database methods can be used. Complex
+		systems use natural language processing and artificial intelligence to
+		reason about text annotations<!WA100><!WA100><!WA100><!WA100><a href="#ref5">[5]</a>.
+<dt><!WA101><!WA101><!WA101><!WA101><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Domain concepts</b>
+	<dd> Domain information lends itself to specific forms of feature vectors and
+		queries. 
+</dl>
+
+Query classes provide a meaningful way for a user to create feature vectors that
+correspond to their notion of image semantics.
+Queries can be composed of multiple query classes. 
+<p>
+An alternative to user-composed queries are queries by example. The user submits
+a query in the form of a prototype image and the system uses the feature vector(s)
+of the appropriate query class(es). Often a session will
+begin with user-composed queries which are then refined through query by example.
+<p>
+To run an interactive query on a system called Query by Image Content (QBIC), 
+click
+<!WA102><!WA102><!WA102><!WA102><A href="http://wwwqbic.almaden.ibm.com"> here.</A> 
+<br> 
+<br>
+
+<!WA103><!WA103><!WA103><!WA103><IMG SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/line_col.gif"><br>
+
+<H2><a name="Current Research">Current Research</a></H2>
+
+There are a large number of researchers exploring CBIR-related topics. 
+I focused on recent work which has been more productive. 
+The following sections describe some of the important topics I studied.
+
+<h3><a name="Feature Extraction">Feature Extraction</a> </h3>
+
+Feature extraction is performed when an image is added to the database. CBIR systems
+provide support for multiple query classes.
+Pickard and Minka<!WA104><!WA104><!WA104><!WA104><a href="#ref5">[5]</a> use 6 different 
+features to characterize images from the MIT Photobook image retrieval system.
+<p>
+The CORE system<!WA105><!WA105><!WA105><!WA105><a href="#ref6">[6]</a>, is a retrieval engine that 
+supports a wide range of features including
+visual browsing, color similarity measures, and text. Primitive features are combined
+to create higer level, logical features they call <em>concepts</em>. 
+<p>
+The QBIC system<!WA106><!WA106><!WA106><!WA106><a href="#ref3">[3]</a><!WA107><!WA107><!WA107><!WA107><a href="#ref12">[12]</a> extracts features
+that support image query classes for color, texture, shape, sketching, location,
+and text. The system also supports a set of video oriented query classes. 
+<p>
+For color histograms, many different extraction methods are used. The first issue
+is the dimension of the color feature vector, e.g., the number of colors. Typical
+numbers range from 64 to 256 dimensions (256 being the number of unique colors
+representable with one byte).
+The higher the dimension of the feature vector, the greater its capacity.
+<p>
+The values in each bin of a color histogram are usually either the total number
+of pixels, or the percentage of pixels for the given color in 
+the entire image.
+ 
+<h3><a name="Query Specification">Query Specification</a></h3>
+
+The papers I read treated query specification as a secondary issue. 
+Researchers recognized the need for simple ways to specify queries. Unlike
+text-based databases where the desired information is retrieved with
+a single query, a suitable image may require many queries. 
+CBIR systems typically return several of the <em>best</em> images for selection
+by the user. Many systems allow the user to select one of these images as an
+example for another query. This is an example of <em>query refinement</em>.
+Researchers are exploring ways of providing easy refinement of queries that
+yield high success.
+<p>
+The use of multiple query classes to compose
+a query interests researchers. 
+Although many systems claim to support composite queries, few of the
+papers explained how to combine query classes successfully.
+
+<h3><a name="Distance Metrics"</a>Distance Metrics</h3>
+
+Most image query classes rely on similarity metrics rather than exact matching. 
+Distance metrics produce a relative distance between two image feature vectors.
+A threshold is used to determine if two features are similar.
+In many cases, the user can control the threshold to relax or constrain a query.
+<p>
+Every distance metric has advantages and drawbacks. For example, 
+Stricker<!WA108><!WA108><!WA108><!WA108><a href="#ref7">[7]</a> analyzes two common distance metrics, the L1 and
+L2 (euclidean) norms. The <a name="L1 norm">L1 norm</a> computes the distance <em>d</em> 
+between two <em>n</em> element color histograms <em>H</em> and <em>I</em> as:
+
+<br>
+<p align=center>
+<!WA109><!WA109><!WA109><!WA109><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/L1.jpg">
+</p>
+
+And the <a name="L2 norm">L2 norm</a> is computed as:
+
+<br>
+<p align=center>
+<!WA110><!WA110><!WA110><!WA110><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/L2.jpg">
+</p>
+
+Stricker states that "Using the L1-metric results in false negatives, i.e., not all 
+the images with similar color composition are retrieved because the L1-metric does
+not take color similarity into account. Using a metric similar to the L2-metric
+results in false positives, i.e., histograms with many non-zero bins are close to
+any other histogram and thus are retrieved always."
+<p>
+The QBIC system<!WA111><!WA111><!WA111><!WA111><a href="#ref12">[12]</a> uses a 64 or 256 dimension color histogram where
+each <em>i</em>-th element is the percentage of color <em>i</em>. The distance 
+between histogram <em>r</em> and database image histogram <em>q</em> is
+computed as <em>(r - q)T A(r - q)</em>. Where <em>T</em> is the transpose operator.
+The locations <em>a(i,j)</em> in <em>A</em> contain the distance between color
+<em>i</em> and color <em>j</em>.
+<p>
+IBM's Ultimedia Manager<!WA112><!WA112><!WA112><!WA112><a href="#ref13">[13]</a> uses a 64-dimensional vector of color
+percentages. Each dimension represents a range in color space. At analysis time
+the color of each pixel is quantized into one of the 64 ranges based on its location
+in RGB space.
+
+<h3><a name="Indexing">Indexing</a></h3>
+
+The predominant CBIR research is in the area of image feature indexing. There are
+many difficult problems to solve. First, image features are typically high dimensional
+requiring complex, multi-dimensional indexing. Second, traditional indexing assumes
+exact matching; similarity matching complicates the indexing structure.
+Finally, it is difficult to combine multi-dimensional, similarity-based indexing
+methods to efficiently support queries composed of mutliple query classes.
+<p>
+By using similarity metrics only for initial indexing, Pickard and 
+Minka<!WA113><!WA113><!WA113><!WA113><a href="#ref5">[5]</a> avoid the problem of combining query classes with
+different metrics. Similarity is encoded into clusters of image regions in a tree
+structure and distance is measured by ancestral distance between clusters. This
+has the effect of normalizing different query classes so they can be treated 
+identically.
+ 
+<h3><a name="Extensibility">Extensibility</a></h3>
+
+Systems must be extensible to overcome the immaturity of indexing methods, 
+query specification, and feature extraction. Most of the important
+work in CBIR lies ahead. 
+<p>
+The importance of extensibility
+was recognized by Wu, et. al.<!WA114><!WA114><!WA114><!WA114><a href="#ref6">[6]</a> when they
+developed CORE based on a generic framework for a multimedia DBMS. To demonstrate
+the flexibility of the architecture, they developed two different applications: a
+computer-aided facial image inference and retrieval system (CAFIIR), and a trademark
+archival and registration system (STAR). A medical information system is currently 
+in development. In their conclusion, they state: "Object orientation is very
+important for a retrieval engine like CORE. One advantage...is an increase in
+the reusability of codes...to increase its reusability and extensibility."
+
+<h3><a name="Artificial Intelligence">Artificial Intelligence</a></h3>
+
+Research focuses on three applications of Artificial Intelligence to CBIR: reasoning
+about logical features, similarity metrics, and index construction and maintenance.
+For example, Pickard and Minka<!WA115><!WA115><!WA115><!WA115><a href="#ref5">[5]</a> apply AI when annotating 
+images to dynamically select
+from multiple feature models based on how the user labels image regions. Their system 
+is also capable of improving the indexing structure based on new positive and negative
+examples.
+<p>
+Wu, et. al.<!WA116><!WA116><!WA116><!WA116><a href="#ref6">[6]</a>, apply fuzzy reasoning to queries where the logical
+features of the query are only partially defined by the user. They also used a
+<em>learning based on experiences</em>
+neural network model to generate self-organizing nodes
+in a content-based index tree. This allows their system to fuse composite feature 
+measures to support complex and fuzzy queries. 
+
+<h3><a name="Maximizing Domain Knowledge">Maximizing Domain Knowledge</a></h3>
+
+Query performance can be drastically improved in cases where assumptions can be made
+about the nature, or domain, of the images in the database. Wu, et. al., observe that 
+"CORE has comprehensive functions. However each application has its domain-specific
+problems." And "In application development, domain expertise must be added to customize
+the indexing and retrieval module."
+<br>
+<br>
+<!WA117><!WA117><!WA117><!WA117><IMG SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/line_col.gif"><br>
+
+<H2><a name="Project Overview">Project Overview</a></H2>
+
+<b> Exploration of CBIR problems in the domain of interior design.</b>
+I am interested in the methods of CBIR which apply to 
+problems faced by interior designers. Interior designers work with paint, wallpaper, 
+fabric, and floor coverings. They also follow general principles of form,
+space, color, and style. Designers and their customers regularly face the
+tedious chore of manually searching for, and matching materials according to
+general design principles and taste. There is an opportunity for a high degree 
+of computer assistence with these tasks.
+<p>
+Designers could compose queries using primitive and logical features and
+specify constraints according to design principles. Results
+of a series of queries, for wallpaper, paint, and carpet, must be
+self-consistent according to designer-specified rules of form, space, color,
+and style. These requirements led my interest toward the following query
+classes:<br>
+<dl>
+<dt> <!WA118><!WA118><!WA118><!WA118><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Color</b> 
+	<dd> Fabric, wallpaper, etc., are often selected based upon color
+		content. This is a perfect application of color histograms.
+<dt> <!WA119><!WA119><!WA119><!WA119><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Texture</b> 
+	<dd> Floor coverings, wallpaper, and fabric all have important textural
+		components ideal for queries based on textural features.
+<dt> <!WA120><!WA120><!WA120><!WA120><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Shape</b> 
+	<dd> Examples of shapes are stripes, plaids, floral and patterns.
+<dt> <!WA121><!WA121><!WA121><!WA121><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Objective features</b> 
+	<dd> Styles such as Victorian could be modeled as objective features.
+<dt> <!WA122><!WA122><!WA122><!WA122><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Subjective features</b> 
+	<dd> Taste, mood, or sensation related design concepts can be specified using subjective
+	feature queries. Examples are: feminine vs. Masculine, cheery, cool, warm, etc.
+<dt> <!WA123><!WA123><!WA123><!WA123><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Text</b> 
+	<dd> Product attributes such as part numbers, supplier information, and first
+	production date are all text features.
+<dt> <!WA124><!WA124><!WA124><!WA124><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bludot.gif"> <b>Domain specific</b> 
+	<dd>The design rules described above are domain specific features.
+</dl>
+
+Query by example is a powerful tool for interior designers. For
+example, given a particular carpet sample, the designer could find window 
+covering that compliments the carpet.
+
+<h3> <a name="Project Definition">Project Definition</a> </h3>
+
+I implemented
+a software prototype that allowed me to explore the following areas: <br>
+<dl>
+<dt><!WA125><!WA125><!WA125><!WA125><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/reddot.gif"> <b>Color</b>
+	<dd> Color is an important feature of the materials interior designers
+	use. Color also allows automatic image analysis. I explored a few
+	implementations of color histogram feature vectors and related
+	similarity metrics.    
+<dt><!WA126><!WA126><!WA126><!WA126><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/reddot.gif"> <b>Pattern</b>
+	<dd> Patterns are also very important to interior designers. I
+	focused on automated feature vector generation using edge detection. 
+<dt><!WA127><!WA127><!WA127><!WA127><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/reddot.gif"> <b>Software Design</b>
+	<dd> One of the difficulties of CBIR systems is that no small number of
+	query classes provide enough flexibility to support interior design. 
+	Further, the technology of image feature vectors, 
+	similarity metrics, and indexing is immature. A
+	real-world system needs to be extensible and configurable. Using
+	object oriented techniques, I designed a system that encapsulates the areas
+	of highest change. I created a framework to support the addition of new query 
+	classes and distance metrics. The framework divides major system 
+	tasks among manager objects that interact through well-defined interfaces. 
+<dt><!WA128><!WA128><!WA128><!WA128><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/reddot.gif"> <b>User Interface</b>
+	<dd> I defined a simple user interface for color histogram queries and
+	provided the ability to query by example using color histograms and shapes.
+<dt><!WA129><!WA129><!WA129><!WA129><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/reddot.gif"> <b>Image Management</b>
+	<dd>Basic to a QBIC system is the ability to efficiently manage the performance,
+	storage, and memory requirements of images. Because of their size and complexity,
+	images have special computation and resource
+	requirements. I have identified some of
+	these issues and suggest some solutions.
+</dl>
+
+I specifically avoided exploring indexing issues in this project.<br>
+<br>
+
+<!WA130><!WA130><!WA130><!WA130><IMG SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/line_col.gif"><br>
+
+<H2><a name="Implementation">Implementation</a></H2>
+
+I implemented a software prototype for the purpose of exploring the details of CBIR.
+The software was written using Microsoft(tm) Visual C++ Compiler, version 2.0. The
+platform was a Intel 486DX2 system running the Windows NT operating system,
+version 3.51. The software architecture is shown in the following block diagram:
+<br>
+<p align=center>
+<!WA131><!WA131><!WA131><!WA131><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/arch.jpg">
+</p>
+<br>
+This architecture is loosely based on CORE<!WA132><!WA132><!WA132><!WA132><a href="#ref6">[6]</a>. Each of the
+<em>managers</em> is implemented as a singleton object; the class
+definition restricts instantiation to only one system-wide object.
+
+<h3> <a name="Storage Manager">Storage Manager</a> </h3>
+
+The Storage Manager provides an interface to the image database. It is responsible for 
+maintaining an in-memory virtual mapping of images and for performing system specific 
+I/O operations. The following class diagram<!WA133><!WA133><!WA133><!WA133><a href="#ref14">[14]</a> depicts the key 
+relationships.
+<br>
+<p align=center>
+<!WA134><!WA134><!WA134><!WA134><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/stormgr.jpg">
+</p>
+
+The <b>StorageManager</b> class, <!WA135><!WA135><!WA135><!WA135><A href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/stormgr.h">stormgr.h</A>, provides 
+member functions to access the image database. A client uses <tt>store()</tt>
+to associate the pixmap in <tt>file</tt> with the <tt>image</tt> object and store
+the image in the database. This function is used by the <b>AnalysisManager</b> to
+process a user request to add an image to the database. It also attaches the
+pixmap to the <tt>image</tt> which allows the <b>AnalysisManager</b> to perform
+feature extractions on the image.
+<p>
+Clients can request a single image using <tt>getImage()</tt>, or the entire image 
+database list using <tt>getImageList()</tt>. The <tt>loadDB()</tt> function is used
+to initialize the <b>StorageManager</b> object.
+<p>
+The current implementation of the <b>StorageManager</b> maintains an unordered list of
+<b>Image</b> objects representing the entire database. In a real system, the
+<b>StorageManager</b> would maintain multiple indices used to retrieve
+images. The <b>Image</b> objects would be at the leaves of the index, e.g., 
+in the case of a tree-based index structure. 
+<p>
+For efficiency, this implementation only loads the pixmap data for an image when
+necessary. The <b>Image</b> object determines when to load the data;
+the task of loading is delegated to the <b>StorageManager</b>.
+<p>
+The <b>Image</b> class, <!WA136><!WA136><!WA136><!WA136><A href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/image.h">image.h</A>, encapsulates the details
+of the pixmap implementation and feature vectors. The system manipulates 
+<b>Image</b> objects for convenience. The <b>Pixmap</b> class provides an interface to 
+a color pixel representation of an image
+(<!WA137><!WA137><!WA137><!WA137><A href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/pixmap.h">pixmap.h</A>). This class allows the implementation of the  on-screen
+image to change without affecting the rest of the code.
+<p>
+The <b>Features</b> class, <!WA138><!WA138><!WA138><!WA138><A href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/features.h">features.h</A>, encapsulates a set
+of feature vectors. This class allows new feature vectors to be added
+as new query classes are added.
+<p>
+Two changes would be required in a production system to efficiently manage memory.
+First, the current implementation only loads pixmaps on demand and never 
+invalidates them. Invalidating pixmaps would conserve large amounts of physical 
+memory. A typical pixmap requires 512 x 512 = 262144
+bytes of memory just to store the image data, assuming 256 colors. Also a
+pixmap has a color table and other overhead making for a total of about
+264000 bytes. 
+<p>
+A second memory saver would be the use of thumbnail versions of the pixmaps. Thumbnails
+are smaller representations, usually 64 x 64 = 4096 bytes, which are used for 
+display. The current system only requires the entire image during feature 
+extraction. Support for thumbnails would either require a time
+tradeoff to reduce a large pixmap when it is loaded into memory, or a disk space tradeoff
+if the thumbnails were generated at load time and stored in the database.
+
+<h3> <a name="Analysis Manager">Analysis Manager</a> </h3>
+
+The Analysis Manager, <!WA139><!WA139><!WA139><!WA139><A href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/analmgr.h">analmgr.h</A> performs
+analysis on images as they are added to the system. The result is a set of feature
+vectors, one for each type of query class. The greatest
+change in a CBIR system is likely to be the addition of new query
+classes. The Analysis Manager provides extensibility via registration of
+feature extractors which generate feature vectors. The class relationships are shown
+in the following class diagram.
+<br>
+<p align=center>
+<!WA140><!WA140><!WA140><!WA140><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/analmgr.jpg">
+</p>
+
+When a user adds a new image to the system, the user interface calls the 
+<tt>analyze()</tt> member function. This function uses the <b>StorageManager</b>
+to create a new <b>Image</b> which it then analyzes by calling <tt>extract()</tt>
+on each installed
+feature extractor. New feature extractor objects are added by calling
+<tt>addFeature()</tt> when the system is initialized.
+<p>  
+The <b>FeatureExtractor</b> abstract class provides an interface definition to be
+used by all feature extractors (<!WA141><!WA141><!WA141><!WA141><A href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/features.h">features.h</A>).
+Concrete feature extractor classes inherit the interface
+and provide implementations appropriate for the needs of the feature vectors they
+generate. A feature extractor object is responsible for analyzing the image, creating
+a <b>FeatureVector</b>, and installing the <b>FeatureVector</b> in the <b>Feature</b>
+object of the <b>Image</b>.
+<p>
+The <b>FeatureExtractor</b> classes play an important role: they encapsulate all 
+important information for a particular query class. When adding a new query class,
+most of the effort is in creating a new subclass of <b>FeatureExtractor</b>. Other
+classes can get query class specific information 
+from feature extractors. For example, the <b>QueryManager</b> calls the
+<tt>similarityFunc()</tt> when comparing two images.
+<p>
+The <b>AnalysisManager</b>, feature extractors, <b>Features</b>, and
+the <b>FeatureVector</b> have an important relationship. At initialization
+time, all the feature extractors are installed into the singleton instance of
+the <b>AnalysisManager</b> (<!WA142><!WA142><!WA142><!WA142><A href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/init.cpp">init.cpp</A>). The <b>AnalysisManager</b>
+tells each feature extractor its position in the set of feature vectors stored in
+the <b>Features</b> objects. It also tells the <b>Features</b> class how many 
+feature vectors every <b>Features</b> object must be capable of storing.
+Every feature extractor implementation knows how large to make the
+data portion of its <b>FeatureVector</b>. By encapsulating knowledge in this fashion,
+new features can easily be added. 
+
+<h3> <a name="Query Manager">Query Manager</a> </h3>
+
+The <b>QueryManager</b> class provides two important functions: the ability to query
+the database, and the ability to maintain a query history
+(<!WA143><!WA143><!WA143><!WA143><A href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/querymgr.h">querymgr.h</A>). The Query Manager accepts a <b>Features</b> 
+object and a <tt>similarityFunc()</tt> from the User Interface and formulates a 
+query. The formulated query is used to retrieve similar images
+from the Storage Manager. A client requests an initialized
+<b>Features</b> object from the <b>AnalysisManager</b>, (which knows the position
+and size information for every feature), and fills it in with the information to be
+matched in the query. The client gets the <tt>similarityFunc</tt> from the feature
+extractor class defined for the query class. 
+<p>
+Similarity functions are static member functions of the derived feature extractor class.
+This is necessary when passing a member function pointer as a function argument.
+They accept two <b>Features</b> objects and compute a distance between them.  
+Similarity functions must return a non-negative value representing the
+distance between the feature vectors. The function can also optionally return a
+value less than zero if the two feature vectors
+are dissimilar. The <b>QueryManager</b> uses the return value to rank
+images by distance. After the <b>QueryManager</b> completes the processing of a query, it passes the
+ranked list of images to the <b>DisplayManager</b> for presentation.   
+<p>
+The current implementation contains similarity functions that only operate upon a 
+single query class. Since the specifics of the similarity computation are external
+to the <b>QueryManager</b> it is possible to provide similarity functions which take
+into account multiple query classes. One way to do this is to provide a
+hierarchy of queries in which the results of one level of queries are passed to
+a different similarity function.
+
+<h3> <a name="Display Manager">Display Manager and the User Interface</a> </h3>
+
+The display manager, <!WA144><!WA144><!WA144><!WA144><A href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/displmgr.h">displmgr.h</A>, is responsible for displaying
+images on the screen and tracking mouse selection of images. 
+This class is closely related to the user interface provided
+by the operating system. It maintains the list of currently displayed images and
+responds to paint messages generated by the window system.
+
+<br>
+<p align=center>
+<!WA145><!WA145><!WA145><!WA145><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/displmgr.jpg">
+</p>
+
+A client of the display manager can submit a list of images by calling 
+<tt>display()</tt>. This will replace the existing list
+of images held by the display manager with the list passed to this function.
+Then the images will be displayed.
+<p>
+Note that the <b>Image</b> lists that many of the manager objects maintain are lists
+of pointers to <b>Image</b> objects. To avoid memory leaks, clients pass a
+<em>deletion policy</em> to the <tt>display()</tt> member function telling
+the <b>DisplayManager</b> how to manage the memory in the image list.
+<p>
+The user interface provides typical menu options according to the Windows(tm) style.
+To see a screen capture showing the application area filled with wallpaper
+images, click <!WA146><!WA146><!WA146><!WA146><A href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/images.jpg"> here</A>.
+Each image has a label which is the name of the database file containing the pixmap.
+
+<h4><a name="Image Menu">Image Menu</a></h4>
+
+The <b>Image</b> menu provides options for adding images and for querying the database. 
+Selecting
+a query option presents a dialog designed to solicit a query for a particular query
+class. For example, the following screen capture shows the dialogs used to compose a
+<!WA147><!WA147><!WA147><!WA147><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/qcolor.jpg"> query by color</a>.
+<p>
+Composing a color query is a multi-step process involving two dialogs. 
+The <b>Query By Color</b> dialog allows the user to specify up to 3 color 
+percentages for the query. To specify each color, the user manipulates the controls
+in the <b>Color</b> dialog. This is a standard Windows dialog that allows selection
+of colors directly from the system color palette. The user may also create up to sixteen
+custom colors.
+<p>
+Once the query is composed, the user presses the <b>OK</b> button and the query is
+submitted to the <b>QueryManager</b>. All similar images will be displayed by the
+<b>DisplayManager</b>.
+  
+<h4><a name="View Menu">View Menu</a></h4>
+
+The <b>View</b> menu provides selections that allow the user to view information about
+the database and its images. The <b>Database</b> item causes the <b>DisplayManager</b>
+to display the entire image database. In a real application, this would be impractical;
+intelligent browsing tools would be necessary for traversing a large set of images.
+<p>
+Selecting the <b>Features...</b> item presents the user with the <b>Image Features</b>
+dialog containing a list box of
+all the image names. The user selects an image and presses the desired button in
+the <b>Display</b> group. The following screen capture shows what happens after the
+<b>ColorHistogram</b> button is <!WA148><!WA148><!WA148><!WA148><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/hist.jpg"> pressed</a>.
+</p>
+The <b>Color Histogram</b> dialog presents two histograms of the selected image. The
+<b>Original Image Histogram</b> is the color histogram of the image as stored in the
+database. Each bar represents the relative number of pixels that are assigned the 
+displayed color. The <b>Total Color Bins</b> field is the number of bins in each
+histogram, and the <b>Total Empty Bins</b> field is the number of bins which do not
+contain any pixels.
+<p>
+The <b>Image Feature Histogram</b> is the histogram of the feature vector. It is
+a quantized version of the original histogram. A high 
+percentage of empty bins in the feature histogram is common.
+<p>
+Selecting the <b>Pattern Histogram</b> button from the <b>Image Features</b>
+dialog, presents the <b>Pattern Histogram</b> <!WA149><!WA149><!WA149><!WA149><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/phist.jpg">dialog</a>. 
+The dialog shows the directional bias of the image. The numbers below each of 
+the three bins represent the relative biases in each direction. The 
+integer values range
+between 0 and 3 representing WEAK, NOT STRONG, STRONG, and VERY STRONG. The dialog
+shows that the image is very strongly biased vertically and strongly biased 
+horizontally.
+<p>
+The <b>Color Values...</b> item on the <b>View</b> menu presents the user with 
+a dialog for viewing the predominant <!WA150><!WA150><!WA150><!WA150><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/clrvalue.jpg"> feature colors</a>.
+The <b>Image Color Values</b> dialog displays the five most prevalent colors, their 
+percentage of distribution,
+and their RGB value. The color and the RGB values shown are the value at 
+the center of each quantization range. This dialog 
+is very useful for testing the quality of the similarity function.
+
+<h3><a name="Query by Color Algorithms">Query by Color Algorithms</a></h3>
+
+When an image is added to the database, the <b>AnalysisManager</b> calls the 
+<tt>extract()</tt> member function on the <b>ColorHistogram</b> object,
+<!WA151><!WA151><!WA151><!WA151><A href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/clrhistx.h">clrhistx.h</A>. This function is responsible for creating
+a query class specific feature vector and installing it in the <b>Image</b>.
+<p>
+<b>ColorHistogram</b> creates a 64-dimensional color histogram feature vector
+similar to the one used in IBM's Ultimedia Manager<!WA152><!WA152><!WA152><!WA152><a href="#ref13">[13]</a>.
+Each element of the feature vector represents a cube-shaped subspace of RGB
+space as shown in the following figure.   
+<br>
+<br>
+<p align=center>
+<!WA153><!WA153><!WA153><!WA153><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/rgb.jpg">
+</p>
+
+Each pixel is quantized into one of the bins. After traversing the image, the
+histogram contains the number of pixels contained in each color cube. Each 
+bin value is then converted to a percentage representing the relative number
+of pixels contained in that color cube.
+<p>
+The similarity function of <b>ColorHistogram</b>
+computes the distance between two histograms using th <!WA154><!WA154><!WA154><!WA154><a href="#L2 norm">L2 norm</a>.
+This distance is compared to a user-definable
+threshold value to determine similarity. The 
+<b>QueryManager</b> uses the return value to order images, most similar first.
+<p>
+The L2 norm only works well on sparse matrices. This is fine when
+the user provides three colors via a <!WA155><!WA155><!WA155><!WA155><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/qcolor.jpg">dialog</a> because only
+entries with values are compared. When querying by example, the similarity function
+ignores small percentages if they are present in both histograms, reducing the 
+problem of false positives due
+to contribution of insignificant differences between histograms.
+<p>
+Query by example requires a larger similarity threshold since it
+usually involves many more comparisons than queries
+via the dialog. For the data I used,
+9.0 to 24.0 worked for three color queries and 25.0 to 40.0 
+was good for query by example.
+
+<h3><a name="Query by Pattern Algorithms">Query by Pattern Algorithms</a></h3>
+
+Query by pattern algorithms automatically recognize the
+directional biases of an image.  
+When an image is added to the database, the <b>AnalysisManager</b> calls the 
+<tt>extract()</tt> member function on the <b>Pattern</b> class, 
+<!WA156><!WA156><!WA156><!WA156><A href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/patternx.h">patternx.h</A>.
+<b>Pattern</b> creates a 3-dimensional feature vector where each element
+contains a percentage of bias in the horizontal, diagonal, and vertical directions.
+<p>
+The pattern extraction algorithm is a multistep process. First it creates
+a greyscale copy of the original image. RGB values are converted to 
+brightness values using the same translation as for black and white television.
+Television images are transmitted using the YIQ color scale. Black and white
+television recievers only display the Y portion, the luminance signal:
+
+<br>
+<br>
+<p align=center>
+<!WA157><!WA157><!WA157><!WA157><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/bright.jpg">
+</p>
+
+The greyscale image is then processed to detect edges using the Sobel 
+operator<!WA158><!WA158><!WA158><!WA158><a href="#ref10">[10]</a>. This method applies two 3 x 3 kernels to the 
+nieghborhood of each pixel to estimate the brightness derivatives 
+<em>dB/dx</em> and <em>dB/dy</em>. For the derivative in the horizontal direction,
+the following kernel is used:
+
+<pre>
+			 1   0  -1
+			 1   0  -1
+			 1   0  -1
+</pre>
+
+And for vertical direction, the following kernel is used:
+
+<pre>
+			 1   1   1
+			 0   0   0
+			-1  -1  -1
+</pre>
+
+Conceptually, a kernel is applied to an image by sliding the kernel over the image
+and summing the products of the values in the kernel with the brightness values under
+them. The result is the derivative, or brightness slope at the pixel under the center
+of the kernel.
+After the application of both kernels to a pixel nieghborhood, the magnitude is computed:
+<br>
+<br>
+<p align=center>
+<!WA159><!WA159><!WA159><!WA159><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/magn.jpg">
+</p>
+
+This value is assigned to the pixel under the center of the kernel. To emphasize the
+edges, the algorithm thresholds the value to black or white. The following image
+is a result of this process:
+
+<p align=center>
+<!WA160><!WA160><!WA160><!WA160><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/sobel.jpg"> <!WA161><!WA161><!WA161><!WA161><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/plaid1.jpg">
+</p>
+
+Finally the edge image is traversed applying the two kernels again. This time the
+derivatives are much stronger in the bias of the image. The direction of the slope is
+determine by:
+
+<br>
+<br>
+<p align=center>
+<!WA162><!WA162><!WA162><!WA162><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/direct.jpg">
+</p>
+
+This is a value between zero and PI. The algorithm quantizes the direction into one
+of the three bins in the histogram. After this process is applied to the entire
+image, the sums in the bins are converted to percentages.
+<p>
+The result is a feature vector containing percentages of bias in horizontal,
+diagonal, and vertical directions. The distance metric ranks the three 
+direction biases as: very strong, strong,
+not strong, and weak. It then computes the <!WA163><!WA163><!WA163><!WA163><a href="#L1 norm">L1 norm</a>
+distance between the two histograms. This distance is compared to a user-definable
+threshold value to determine similarity. The returned distance is used by the 
+<b>QueryManager</b> to order similar images.
+<br>
+<br>
+<!WA164><!WA164><!WA164><!WA164><IMG SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/line_col.gif"><br>
+
+<H2><a name="Results">Results</a></H2>
+
+The results of my project were positive. Using a scanner, I was able
+to produce on-line pixmaps for 50 wallpaper samples. I implemented 
+software that supported both color and pattern based queries of a wallpaper database.
+The software provides an intuitive user interface and supports easy addition of new
+query classes. 
+
+<h3><a name="Color Queries">Color Queries</a></h3>
+
+There are two ways to query the database by color: dialog and
+example. The <b>Query By Color</b> dialog was described <!WA165><!WA165><!WA165><!WA165><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/qcolor.jpg">above</a>.
+A dialog query using three user-selected colors demonstrates the effectiveness of the 
+<!WA166><!WA166><!WA166><!WA166><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/clrdlgex.jpg">query</a>. Three images are returned in order of similarity.
+<p>
+An example-based query uses the color histogram of a displayed wallpaper sample as
+the query key. The user clicks the right mouse button on the desired example and
+is presented with a popup menu. Selecting <b>Query by Color Example</b> will initiate
+the <!WA167><!WA167><!WA167><!WA167><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/clrbyex.jpg">retrieval</a>. <b>STRIPE7.BMP</b> was used as the example
+wallpaper image and the threshold was set at 38.
+
+<h3><a name="Pattern Queries">Pattern Queries</a></h3>
+
+The software currently supports pattern queries by example only. The
+example-based queries are initiated from a popup menu. A query based on wallpaper
+sample <b>PLAID1.BMP</b> results in a set of <!WA168><!WA168><!WA168><!WA168><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/patex.jpg">wallpapers</a>
+containing strong directional bias in vertical and horizontal directions. 
+This query was restricted to display 10 images. 
+<p>
+The current implementation
+does not provide enough capacity to distinguish between directional bias from lines
+and bias from <em>noisy</em> patterns. This would require a more sophisitcated 
+feature extraction algorithm. For example, a smoothing step could be used to supress
+the noise before performing the gradient computations.
+
+<h3><a name="User Interface">User Interface</a></h3>
+
+The user interface is fairly intuitive. The interface presents a familiar 
+environment to the Windows user by following 
+Microsoft Windows interface guidelines. 
+<p>
+A sample user, unfamiliar with image processing, easily navigated through
+the system. The user was confused about the meaning of the
+threshold parameters which must be set as numbers. This confusion
+could be alleviated by presenting a slider control representing a scale of
+relative distance.
+
+<h3><a name="Design">Design</a></h3>
+
+The software design I used takes full advantage of object-oriented principles. The
+key features of the design are:
+<dl>
+<dt><!WA169><!WA169><!WA169><!WA169><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/reddot.gif"> <b>Change is encapsulated</b>
+	<dd> The area of greatest change is the addition of new query classes. This
+	functionality is encapsulated in the feature extractor concrete classes. 
+	A new query class is added by copying an existing feature extractor
+	and modifying it to suit the needs of the new query class.   
+<dt><!WA170><!WA170><!WA170><!WA170><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/reddot.gif"> <b>Implemenation details are encapsulated</b>
+	<dd> Two classes hide implementation details: <b>Pixmap</b> and 
+	<b>StorageManager</b>. To support multiple image types, <b>Pixmap</b> could
+	be converted into an abstract class providing only interface; specific image types
+	would inherit from this class. The <b>StorageManager</b> class hides
+	details of the database and operating system and is responsible
+	for logical image management. In a full-featured application,
+	the <b>StorageManager</b> would delegate system details to another class, and
+	would only manage images.
+<dt><!WA171><!WA171><!WA171><!WA171><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/reddot.gif"> <b>Abstraction is enforced</b>
+	<dd> Abstraction is enforced using well-defined manager classes.
+<dt><!WA172><!WA172><!WA172><!WA172><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/reddot.gif"> <b>Interface inheritance eases expansion</b>
+	<dd> The <b>FeatureExtractor</b> abstract class defines the interface for all
+	concrete feature extractors. Client code can be written
+	to an interface without knowledge of query class-specific details.
+</dl>
+
+Ghese design principles produced an extensible and embeddable system. 
+<p>
+The prototype could be made embeddable by converting it to 
+a server in a client/server arrangement. First, the user interface
+code must be externalized. This code is sensitive to change and properly resides in
+the client application. Second, a client/server communication protocol must be used. 
+In the Microsoft Windows environment, OLE would provide this capability.
+
+<h3><a name="Limitations">Limitations</a></h3>
+
+The limitations of the prototype are performance and resource
+management. Adding a new image to the database takes a long time because of 
+image analysis. Although the current algorithms are not optimized, this step 
+will always be too expensive to perform in real time. A production system would have
+so many feature vectors that a batch processing mechanism would be necessary.
+<p> 
+Image management is too crude for a production system. The entire image
+database is 
+loaded into memory and no mechanism exists for maintaining only 
+a working subset of images.
+There is no support for thumbnail versions of images. The size of an
+image is about 512x512 even though the software always scales down to
+64x64 for display.
+<p>
+The software is a prototype intended for exploring ideas and
+therefore does not contain the polish required in production systems.
+<br>
+<br>
+<!WA173><!WA173><!WA173><!WA173><IMG SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/line_col.gif"><br>
+
+<H2><a name="Conclusions">Conclusions</a></H2>
+
+The project goals were met: a prototype CBIR system was built demonstrating color
+and pattern queries; an intuitive user interface provides ease of use; an 
+object-oriented design supports extensibility and embeddability. 
+
+<h3><a name="Usefulness">Usefulness</a></h3>
+
+With the
+vast number of images available on-line, quality CBIR systems are critical. By
+using the right system, people can quickly find the image they need.
+<p> 
+In the field of interior design, designers and their 
+customers search through hundreds of carpet,
+drapery, paint, and wallpaper samples. Their selections must be combined to create
+a pleasing result. Producing an 
+asthetic result often requires even more searching. 
+<p>
+Through the use of CBIR, designers could access vast amounts of material, (either
+on CD-ROM or in a vendor database), and rapidly create high-quality
+interior decorating solutions. Sophisticated query environments could assist in
+applying practical design constraints to ensure attractive results.
+Expensive sample inventories would be obsolete. Significant savings would be
+passed on to customers.
+
+<h3><a name="Future Work">Future Work</a></h3>
+
+A CBIR system for interior design requires access to large databases of
+flooring, paint, fabric, and wallpaper samples. Efficient
+retrieval from multiple, large, image databases relies on new data representations
+and indexing methods. These methods must support 
+queries composed of multiple query classes.
+<p>
+More and better query classes are needed to support all aspects of interior
+design materials. Classes for color, texture, pattern, and style are needed to 
+create asthetic designs. Text and other attributes are necessary to represent 
+manufacturer information, wear characteristics, cost, etc.
+<p>
+Judicious use of artificial intelligence will improve system performance. Fuzzy logic
+is useful in determining image similarity for certain query classes. 
+Expert systems can be built that assist designers in creating solutions that conform to 
+traditional design idioms.
+<p>
+Finally, sophisticated user interfaces will be needed to give designers the power and
+flexibility their work demands. Users must be able to incrementally build design 
+solutions. The interface must provide access to designers' portfolio so they
+can use and modify past work allowing quick response to customer demands.
+<p>
+There are many challenges ahead for future CBIR systems builders. The field of interior
+design presents its own challenges. The results of my work show promise, but there
+is still much to do.
+<br>
+<br>
+<!WA174><!WA174><!WA174><!WA174><IMG SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/line_col.gif"><br>
+
+<H2><a name="References">References</a></H2>
+<!WA175><!WA175><!WA175><!WA175><IMG alt="o " SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/book.gif">
+<a name="ref1">[1]</a> Venkat N. Gudivada, Vijay V. Raghavan:   
+<em>Content-Based Image Retrieval Systems</em></A>,
+IEEE Computer, September 1995.
+<P>
+
+<!WA176><!WA176><!WA176><!WA176><IMG alt="o " SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/book.gif"> 
+<a name="ref2">[2]</a> A. Desai Narasimhalu: 
+<em>Special section on content-based retrieval</em></a>,
+Multimedia Systems, 1995, 3:1-2.
+<P>
+
+<!WA177><!WA177><!WA177><!WA177><IMG alt="o " SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/book.gif"> 
+<a name="ref3">[3]</a> Flickner, Sawhney, Niblack, et. al.: 
+<em>Query by Image and Video Content: The QBIC System</em> </a>,
+IEEE Computer, September 1995.
+<P>
+
+<!WA178><!WA178><!WA178><!WA178><IMG alt="o " SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/book.gif"> 
+<a name="ref4">[4]</a> Rajiv Mehrotra, James E. Gray: 
+<em>Similar-Shape Retrieval In Shape Data Management</em> </a>,
+IEEE Computer, September 1995.
+<P>
+
+<!WA179><!WA179><!WA179><!WA179><IMG alt="o " SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/book.gif"> 
+<a name="ref5">[5]</a> R. W. Pickard, T. P. Minka: 
+<em>Vision Texture For Annotation</em> </a>,
+Multimedia Systems, 1995, 3:3-14.
+<P>
+
+<!WA180><!WA180><!WA180><!WA180><IMG alt="o " SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/book.gif"> 
+<a name="ref6">[6]</a> J. K. Wu, A. Desai Narasimhalu, B. M. Mehtre, C. P. Lam, Y. J. Gao: 
+<em>CORE: A Content-Based Retrieval Engine for Multimedia Information Systems</em> </a>,
+Multimedia Systems, 1995, 3:25-41.
+<P>
+
+<!WA181><!WA181><!WA181><!WA181><IMG alt="o " SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/book.gif"> 
+<a name="ref7">[7]</a> Markus A. Stricker: 
+<em>Bounds for the discrimination power of color indexing techniques</em> </a>,
+Proceedings SPIE Storage and Retrieval for Image and Video Databases II, 1994, 15-24.
+<P>
+
+<!WA182><!WA182><!WA182><!WA182><IMG alt="o " SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/book.gif"> 
+<a name="ref8">[8]</a> Nagarajan Ramesh, Ishwar K. Sethi: 
+<em>Feature Identification As An Aid to Content-based Image Retrieval</em> </a>,
+Proceedings SPIE Storage and Retrieval for Image and Video Databases III, 1995, 2-11.
+<P>
+
+<!WA183><!WA183><!WA183><!WA183><IMG alt="o " SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/book.gif"> 
+<a name="ref9">[9]</a> Virginia E. Ogle, Micheal Stonebraker: 
+<em>Chabot: Retrieval from a Relational Database of Images</em> </a>,
+IEEE Computer, September 1995, 40-48.
+<P>
+
+<!WA184><!WA184><!WA184><!WA184><IMG alt="o " SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/book.gif"> 
+<a name="ref10">[10]</a> John C. Russ: 
+<em>The Image Processing Handbook</em> </a>,
+Second Edition, CRC Press, 1995.
+<P>
+
+<!WA185><!WA185><!WA185><!WA185><IMG alt="o " SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/book.gif"> 
+<a name="ref11">[11]</a> Hong Jian Zhang and Di Zhong: 
+<em>A Scheme for Visual Feature based Image Indexing</em> </a>,
+Proceedings SPIE Storage and Retrieval for Image and Video Databases III, 1995, 36-46.
+<P>
+
+<!WA186><!WA186><!WA186><!WA186><IMG alt="o " SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/book.gif"> 
+<a name="ref12">[12]</a> Jonathan Ashley, Ron Barber, Myron Flickner, James Hafner,
+Denis Lee, Wayne Niblack, Dragutin Petkovic: 
+<em>Automatic and Semi-Automatic Methods for Image Annotation and Retrieval in
+QBIC</em> </a>,
+Proceedings SPIE Storage and Retrieval for Image and Video Databases III, 1995, 24-35.
+<P>
+
+
+<!WA187><!WA187><!WA187><!WA187><IMG alt="o " SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/book.gif"> 
+<a name="ref13">[13]</a> Harold Treat, Ed Ort, Jean Ho, Mimi Vo, Jing-Song Jang,
+Laura Hall, Frank Tung, Dragutin Petkovic: 
+<em>Searching Images Using Ultimedia Manager</em> </a>,
+Proceedings SPIE Storage and Retrieval for Image and Video Databases III, 1995, 204-213.
+<P>
+
+<!WA188><!WA188><!WA188><!WA188><IMG alt="o " SRC="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/landis/book.gif"> 
+<a name="ref14">[14]</a> James Rumbaugh, Michael Blaha, William Premerlani,
+Frederick Eddy, William Lorensen: 
+<em>Object-Oriented Modeling and Design</em> </a>,
+Prentice Hall, 1991.
+<P>
+
+<hr>
+
+<!WA189><!WA189><!WA189><!WA189><A href="http://www.tc.cornell.edu/Visualization/Education/cs718">
+CS718 Course Description</A>
+<P>
+
+<P>
+<HR>
+<h4><i>Send questions and comments to Sean Landis at 
+<!WA190><!WA190><!WA190><!WA190><A HREF="mailto:scl@isis.com"><em>scl@isis.com</em></a><br>
+
+<em>Last modified 12/7/95 by Sean Landis</em>
+<P>

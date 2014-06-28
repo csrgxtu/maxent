@@ -1,0 +1,159 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Wednesday, 20-Nov-96 19:52:18 GMT
+Content-Type: text/html
+Content-Length: 5924
+Last-Modified: Saturday, 02-Mar-96 21:48:01 GMT
+
+<html>
+<head>
+<title>CUCS IBM SP-2</title></head>
+<body>
+
+<center><h1>Computer Science IBM SP-2</h1></center>
+
+<hr>
+
+
+
+<h2>Using the CUCS SP-2</h2>
+<ul>
+<li>The machine is called <i>granita</i>. The eight nodes are <i>granita1</i>
+through <i>granita8</i>.
+<li>If you have a CUCS login, you can use the SP-2.
+<li>Log into <i>granita1</i> or <i>granita2</i> which we've designated as
+interactive nodes. Shells installed: 
+<code>sh, bsh, csh, ksh, tcsh, bash, tsh</code>. If you experience problems
+during your first login, try to remove operating-system specific stuff
+from your shell configuration file (for example, AIX does not have
+the <code>arch</code> command; you can use <code>uname</code> instead). 
+The file <code>/usr/lpp/bos/README</code> contains 
+information
+about the release of AIX used on our SP-2. In addition to <code>man</code>
+you can use <i>InfoExplorer</i> to get more information about commands
+and usage of the machine. To use this program, set up your remote display 
+properly 
+and type <code>info</code>.
+<li>Use <code>poe</code> to run parallel jobs that use neither Active
+Massages nor Split-C (and <code>info -l pe</code>
+or <code>man poe</code> to read more about <code>poe</code>).
+<li>Read below about how to run parallel programs that use Active Messages
+or Split-C.
+</ul>
+More information about:
+<ul>
+<li><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><a href="http://www.tc.cornell.edu/UserDoc/Hardware/">IBM SP-2
+hardware</a>.
+<li><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href="http://www.tc.cornell.edu">Cornell Theory Center SP-2</a>.
+</ul>
+
+<hr>
+<h2>Homegrown software</h2>
+
+In general, local software is installed in <code>/usr/u/sww</code>. Be
+sure that <code>/usr/u/sww/sp2/bin</code> and 
+<code>/usr/u/sww/sp2/gnu/bin<code> are in your path.
+
+<ul>
+<li><h3>Split-C</h3>
+
+<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.cs.cornell.edu/Info/Projects/Split-C/">Split-C</a> is a simple extension to C for
+parallel computing. It provides a global address space though global
+pointers which can be dereferenced just like regular pointers.
+Split-phase assignment statements allow programmers to hide the latency
+of remote accesses by overlapping computation and communication.
+Examples and makefiles can be found in 
+<code>~sww/sp2/split-c-bench/cu-bench</code>.<p>
+
+Before working with Split-C, source 
+<code>~sww/sp2/etc/sp2-setenv</code>. Users of non-csh shells
+should execute commands in <code>~sww/sp2/etc/sp2-setenv-non-csh</code>.
+To compile Split-C programs, create a <code>Makefile</code>
+(look at samples in various directories in 
+<code>~sww/sp2/split-c-bench/cu-bench</code>) and type <code>gmake</code>.
+You must include <code>Make.split-c</code> in your <code>Makefile</code>!
+Split-C programs are run in the same way as
+Active Messages programs, i.e. using <code>amr</code> scripts
+located in <code>/usr/u/sww/sp-2/bin</code>. For example, to run a program
+<code>foo</code> on 3 processors type <code>amr3 ./foo</code><p>
+
+<li><h3>Debugging Split-C</h3>
+To debug a Split-C program, the following steps need to be done:
+<ul>
+<li> include split-c/debug.h
+<li> insert splitc_debug() as the first statement to be executed after
+splitc_main()
+<li> compile and run your program as described in the previous section
+<li> you will see the following message in node 0 (most commonly run on
+granita1): Debugging Split-C -- hit enter to continue:"
+<li> before hitting return, log onto the node you want to debug (if you
+want to debug the master node, open a new shell)
+<li> go to the directory where your program source is located
+<li> run gdb
+<li> inside gdb, do: <code>file am_run</code>, and then
+<code>attach pid</code>, where pid the
+the proc id of the am_run process on the node being debugged
+<li> hit return on node 0 to let computation proceed
+<li> once you've attached gdb to am_run, am_run is stopped by gdb, and
+you can set breakpoints, look at stack frames, etc.
+</ul><p>
+
+<li><h3>Active Messages</h3>
+
+<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a href="http://www.cs.cornell.edu/Info/Projects/CAM">Active Messages</a> is a low-overhead communication layer
+that offers high-performance communication on many parallel machines.
+A native Active Messages layer (SP2AM) is now available for the SP-2.
+The main performance characteristics of SP2 AM are a one-word round-trip
+latency of 51 us and an asymptotic network bandwidth of 34.3 MB/s.
+<p>
+The SP2AM library is found in <code>/usr/u/sww/sp-2/lib/libsp2gam.a</code>
+and the header file is in <code>/usr/u/sww/sp-2/include</code>. Before
+running programs that use Active Messages, 
+source <code>~sww/sp2/etc/sp2-setenv</code> and read
+<code>/usr/u/sww/sp-2/gam-1.0/doc/RunningPrgms</code>. 
+The <code>amr</code> scripts are located also in 
+<code>/usr/u/sww/sp-2/bin</code>.<p>
+
+<li><h3>MPI</h3>
+
+<!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a href="http://www.mcs.anl.gov/mpi/index.html">MPI</a> is a popular
+message passing interface for portable parallel programs.  We have an
+implementation of MPI (based on the MPICH library) running over
+Active Messages on the SP-2.
+The header files are located in <code>/usr/u/sww/sp-2/include</code>.
+The library file is located in <code>/usr/u/sww/sp-2/lib</code>.
+The easiest way to compile and link is with the script file "ampicc" (which
+is built on top of xlC):
+<p>
+<code>ampicc -O3 foo.c -o foo
+<p>
+You can also compile MPI programs with xlC, gcc, and split-cc (please look
+at the examples
+in the directory ~sww/sp2/ampi/examples for information about this).
+MPI programs are run exactly like
+ordinary Active Messages programs (i.e. "<code>amr4 foo</code>").
+Be sure to source <code>~sww/sp2/etc/sp2-setenv</code>.
+
+</ul><p>
+
+<p>
+
+</ul>
+
+<hr>
+<h2>Other software</h2>
+Software available on granita1 and granita2 also includes 
+tcsh, bash, C Set ++ (xlC), Fortran (xlf), xpdbx, X11, matlab. 
+GNU software installed in
+<code>~sww/sp2/gnu</code> includes 
+emacs, gmake, gcc, g++, gdb, bison. Some of it is 
+replicated locally in /usr/local/gnu/bin.<p>
+
+<hr>
+<h2>Problems</h2>
+
+If you experience difficulties with the SP-2, please contact the SP-2
+czar <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href="http://www.cs.cornell.edu/Info/People/grzes/grzes.html">
+Grzegorz Czajkowski</a>.
+
+</html>

@@ -1,0 +1,213 @@
+Date: Tue, 14 Jan 1997 19:35:44 GMT
+Server: Apache/1.1.1+
+Content-type: text/html
+Content-length: 7743
+Last-modified: Tue, 14 Jan 1997 18:34:21 GMT
+
+<html>
+
+<head>
+<TITLE> Virtual Prototyping of Mechanical Assemblies </TITLE>
+</head>
+
+<body background="IMAGES/back-nice.gif" text="#000000">
+
+<center><h2>
+Virtual Prototyping of Mechanical Assemblies
+</h2></center>
+
+<p>
+
+<center>
+  <!WA0><img src= "http://www.cs.utah.edu/projects/robot/IMAGES/vp-slave-mesh-180H.gif">
+  <!WA1><img src= "http://www.cs.utah.edu/projects/robot/IMAGES/arches.gif">
+  <!WA2><img src= "http://www.cs.utah.edu/projects/robot/IMAGES/sda-master-tom.gif">
+</center>
+
+<P>
+
+Current generation CAD systems provide little support for prototyping
+mechanical assemblies.  We are
+creating an integrated design and simulation system to address this
+problem.  Fundamental to the effort is the investigation of effective
+mechanisms for allowing a designer to interact with an assembly of
+parts in a ``virtual'' manner, prior to creation of any physical
+prototypes.  The designer will be able to touch, hold, and move models
+of parts and assemblies as well as see them in rendered views.  The
+result will be an environment in which part interactions can be
+considered in a more natural manner than is possible with current
+technology.  Part interactions and articulations of high DOF assemblies
+can be considered early in the design process.  Assembly procedures can
+be evaluated at the time when parts are designed, without the need to
+explicitly specify assembly sequences or constraints.  Even greater
+advantages will accrue in the design of devices intended for human use,
+since manipulability can be examined without the need to fabricate a
+physical prototype.  Finally, the virtual display tools that are
+integral to this project will give designers a better appreciation for
+complex part geometry than can be gained from traditional CAD displays,
+which have only limited 3-D information. </p>
+
+<center><!WA3><IMG SRC ="http://www.cs.utah.edu/projects/robot/IMAGES/bar_color.gif"></center>
+
+
+<center>
+<table border="0" cellpadding="10">
+<td width="40%" align="left" valign="top">
+<H3> Faculty </H3>
+<UL>
+  <li> <!WA4><a href = "http://www.cs.utah.edu/~jmh"> John M. Hollerbach</a>, PI
+  <li> <!WA5><a href = "http://www.cs.utah.edu/~cohen">  Elaine Cohen</a>
+  <li> <!WA6><a href = "http://www.sarcos.com/Jacobsen.html">Stephen C. Jacobsen</a>
+  <li> <!WA7><a href = "http://www.cs.utah.edu/~thompson"> William B. Thompson</a>
+</UL>
+</td>
+
+<td width="25%" align="left" valign="top">
+<H3> Staff </H3>
+<UL>
+  <li> <!WA8><a href = "http://www.cs.utah.edu/~fish"> Russ Fish</a>
+</UL>
+</td>
+
+<td width="35%" align="left" valign="top">
+<H3> Graduate Students</H3>
+<UL>
+  <li> <!WA9><a href = "http://www.cs.utah.edu/~freier"> Rodney Freier</a>
+  <li> <!WA10><a href = "http://www.cs.utah.edu/~dejohnso"> David Johnson </a>
+  <li> <!WA11><a href = "http://www.cs.utah.edu/~nahvi"> Ali Nahvi</a>
+  <li> <!WA12><a href = "http://www.cs.utah.edu/~dnelson"> Donald Nelson</a>
+  <li> <!WA13><a href = "http://www.cs.utah.edu/~tthompso"> Thomas Thompson</a>
+</UL>
+</td></tr>
+
+</table></center>
+
+<center><!WA14><IMG SRC ="http://www.cs.utah.edu/projects/robot/IMAGES/bar_color.gif"></center>
+
+<p>
+
+CAD systems for all but the simplest of mechanical parts must be able
+to provide the designer with a clear sense of three-dimensional object
+geometry.  Usually this is done with standard graphical rendering
+techniques involving perspective, shading, and simple animation.  When
+such tools are used for assemblies of parts, we often hear designers
+complain:  ``What I really want to do is get my hands on the parts and
+see how they fit together.''  In fact what is happening is that the
+conventional display technologies are not providing the user with
+sufficient information about the geometry and manipulability of the
+objects in question.
+
+<P>
+
+A key aspect of addressing this limitation is to augment visual
+rendering of geometric models with haptic interfaces which allow direct
+manipulation of modeled objects.  Such interfaces must include accurate
+anthropomorphic geometry and provide realistic force feedback if they
+are to be of real value.  The Sarcos Dextrous Arm Master represents
+arguably the most advanced force-reflecting exoskeleton available
+today.  The upper seven degree-of-freedom arm component matches the
+redundancy of the human arm, while three degrees of freedom are
+provided to the hand; in total, there are 10 degrees of freedom and of
+force reflection per master arm.  In the hand, there is a two
+degree-of-freedom thumb, a fixed forefinger, and a one
+degree-of-freedom flexing index/middle finger.  The Sarcos Dextrous Arm
+is based on hydraulic actuation, which is unmatched for torque density
+and bandwidth for this application.  The result is a master that is
+much more compact and of higher performance than would be possible with
+electric motor drives.
+
+<P>
+
+<center>
+  <!WA15><img src= "http://www.cs.utah.edu/projects/robot/IMAGES/real-engine.gif">
+  <!WA16><img src= "http://www.cs.utah.edu/projects/robot/IMAGES/gear-chain-2.gif">
+</center>
+
+<P>
+
+The pictures above shows a one third scale model for a novel diesel
+engine with one cylinder, two pistons, and four crankshafts and
+represents of the kinds of assemblies that we are working towards
+accommodating in a virtual prototyping system.  The engine involves
+complex and interrelated part motions that should be well understood by
+designers prior to committing to expensive fabrication operations.  A
+full-function virtual prototyping system will let the designer
+manipulate individual parts to see how the entire assembly moves.
+Virtual prototyping furthermore would allow a designer to consider
+possible assembly sequences, modifying parts as necessary to ease the
+assembly process.  Finally, a virtual prototyping system with a
+sufficiently complete model of the human body could be used to validate
+assembly operations for the engine.
+
+<P>
+
+Creating a user interface for virtual prototyping systems
+involves solving three largely independent problems: 
+
+<UL>
+<li><EM>Visual rendering</EM>
+involves creating realistic views of a configuration of parts.
+
+<li>There are two aspects to <EM>haptic rendering</EM>.  The first
+involves giving the user a realistic sensation that he or she is
+actually touching and manipulating physical objects.  The second takes
+motions made by a user and modifies the models specifying the virtual
+world appropriately. 
+
+<li><EM>Contact and interference</EM> computations are
+needed to determine part-to-part and user-to-part interactions in the
+virtual world.  Visual rendering, haptic rendering, and contact and
+interference detection must all exploit knowledge about the nature of
+mechanical assemblies, since general solutions are not likely to be
+viable.
+</UL>
+
+Geometric modeling systems able to support virtual prototyping of
+mechanical assemblies need capabilities beyond those of the typical
+CAD/CAM system.  Not only must it be possible to design and render
+individual parts, but part interactions involving contact, forces, and
+torques must be computable in real-time.  When a designer reaches out
+to ``grab'' a (virtual) part, the system needs to know when contact
+with the part has been made so that appropriate feedback can be
+generated.  Once a solid grip has been established, user feedback must
+reflect object inertial and gravity forces and assembly forces due to
+contact.  For those assemblies capable of articulation, a manipulation
+of one part of the assembly must both cause the appropriate motions in
+other parts of the assembly and reflect appropriate sensations to the
+user.
+
+<P>
+
+<center>
+  <!WA17><img src= "http://www.cs.utah.edu/projects/robot/IMAGES/haptic-requirements.gif">
+</center>
+
+<P>
+
+Standard CAD systems are unable to supply much of the information
+needed to support either assembly operations themselves or the haptic
+rendering required in a virtual prototyping system.
+
+<p>
+<br>
+<hr>
+<center>
+<nobr>
+<!WA18><a href="http://www.cs.utah.edu/projects/robot//"><!WA19><img border=0 src="http://www.cs.utah.edu/projects/icons/dept_cs_button.gif"></a>
+<!WA20><a href="http://www.cs.utah.edu/projects/"><!WA21><img border=0
+src="http://www.cs.utah.edu/projects/icons/research_cs_button.gif"></a>
+<!WA22><a href="http://www.cs.utah.edu/projects/robot">
+        <!WA23><img border=0 src="http://www.cs.utah.edu/projects/icons/vis-rob_cs_button.gif"></a>
+<!WA24><a href="http://www.cs.utah.edu/projects/alpha1">
+        <!WA25><img border=0 src="http://www.cs.utah.edu/projects/icons/alpha1_cs_button.gif"></a>
+
+</nobr>
+</center>
+<hr>
+<!--<address><!WA26><a href =
+"mailto:vision@hayduke.cs.utah.edu">vision@hayduke.cs.utah.edu</a><br>-->
+
+
+</BODY>
+
+</html>

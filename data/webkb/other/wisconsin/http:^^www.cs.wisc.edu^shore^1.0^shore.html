@@ -1,0 +1,147 @@
+Date: Tue, 05 Nov 1996 00:26:33 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Sat, 03 Aug 1996 01:54:50 GMT
+Content-length: 7140
+
+<head>
+<title> Shore Documents </title>
+<body>
+
+<h1>An Overview of the Shore Documentation</h1>
+The Shore distribution comes with a collection of documentation, including
+design documents, tutorials, reference manuals, and manual pages.
+Although there is a large amount of information available, it can sometimes
+be hard to find.  This document provides a set of entry points for navigating
+the online information.  All of the documents here are also available in
+printed form.
+
+<h2> <!WA0><a href="http://www.cs.wisc.edu/shore/1.0/release/release.html"> The Shore Release 1.0 </a> </h2>
+This document gives a brief overview of the contents of the Shore distribution
+package. It specifies the hardware and software requirements for installing and
+running Shore, lists the major packages distributed (including another overview
+of the major documents), and points to information to tell you how to retrieve
+the software, install it, start it running, write your own applications,
+and even extent the Shore server.
+
+<h2> <!WA1><a href="http://www.cs.wisc.edu/shore/1.0/overview/overview.html"> An Overview of Shore </a> </h2>
+This is a version of a paper originally presented at the SIGMOD conference
+on the management of data.
+It describes the goals of the Shore project and a high-level overview of its
+internal structure.
+
+<h2> <!WA2><a href="http://www.cs.wisc.edu/shore/1.0/installation/installation.html"> Shore Software Installation Manual </a> </h2>
+This document describes in detail how to install Shore.
+Shore is distributed in three forms:
+a <em>documentation release</em>, a <em>binary release</em>, and a <em>source
+release</em>.
+The Installation Manual explains how to install the documentation and the
+binary version of Shore, and how to build a new copy of Shore from the source
+release.
+
+<h2> <!WA3><a href="http://www.cs.wisc.edu/shore/1.0/running/running.html"> Configuring and Running the Shore Server </a> </h2>
+Once you have installed Shore or rebuilt it from sources, this manual
+shows how to configure it for your system and start the server running.
+It also explains how to use the feature that allows a Shore database to
+be access like a file system by ``legacy applications'' through the
+NFS interface.
+
+<h2> <!WA4><a href="http://www.cs.wisc.edu/shore/1.0/stree/stree.html"> Getting Started with Shore </a> </h2>
+This tutorial shows how to write Shore application programs by describing
+the persistent data structures in a C++-like data-definition language
+called the <em>Shore Data Language</em> (SDL) and manipulating them with C++
+programs.
+
+<h2> <!WA5><a href="http://www.cs.wisc.edu/shore/1.0/sdlman/sdlman.html"> Shore Data Language Reference Manual </a> </h2>
+This reference manual describes SDL in considerably greater detail.
+
+<h2> <!WA6><a href="http://www.cs.wisc.edu/shore/1.0/dirscan/dirscan.html"> Scanning Directories in a Shore Application </a> </h2>
+The <em> DirScan</em> class provides a convenient interface for scanning
+directories.  This document describes how to use the DirScan class.  The
+Shore release includes a simple example program called <em> shls</em> (``Shore
+<em> ls</em>''), that illustrates the use of the DirScan class.  Shls can be
+found in the <tt>examples/shls</tt> directory of the Shore release.
+
+<h2> <!WA7><a href="http://www.cs.wisc.edu/shore/1.0/poolscan/poolscan.html"> Scanning Pools in a Shore Application </a> </h2>
+The <em> PoolScan</em> class provides a convenient interface for scanning
+through the objects in a pool.  This document describes how to use
+PoolScans, as well as known bugs and limitations of the PoolScan class.
+The Shore release includes three example programs that illustrate pool
+scans.  The examples can be found in the <tt> examples/pscan</tt> directory of
+the Shore release.
+
+<h2> <!WA8><a href="http://www.cs.wisc.edu/shore/1.0/shrc/shrc.html"> Handling Errors in a Shore Application </a> </h2>
+This document describes error handling facilities for Shore applications.
+Shore application writers are encouraged to read 
+<!WA9><a href="http://www.cs.wisc.edu/shore/1.0/stree/stree.html"> Getting Started with Shore </a>
+and look at the example applications before reading
+this document.  The
+<!WA10><a href="http://www.cs.wisc.edu/shore/1.0/sdlman/sdlman.html">
+SDL manual
+</a> </h2>
+and the example programs show the standard
+ways of handling errors in Shore.  This document is intended for
+application writers interested in more details.
+
+
+<h2> <!WA11><a href="http://www.cs.wisc.edu/shore/1.0/sourceguide/sourceguide.html"> Guide to the Shore Source Code </a> </h2>
+This document is a guided tour through the numerous directories of the
+Shore source code.
+It briefly describes the purpose of each directory and how the code in it
+interacts with the rest of the system.
+
+<h2> <!WA12><a href="http://www.cs.wisc.edu/shore/1.0/ssmapi/ssmapi.html"> The Shore Storage Manager Programming Interface </a> </h2>
+The Shore Storage Manager (SSM)
+is a package of libraries
+for building object repository servers and their clients.
+The core library in the package,
+<tt>tt libsm.a</tt>, is a multi-threaded system managing persistent
+storage and caching of un-typed data and indexes.  It provides disk and
+buffer management, transactions, concurrency control and recovery.
+A second library, <tt> libshorecommon.a</tt>, provides many common
+utilities need for implementing both client and servers.  The third
+library, <tt> librpclib.a</tt>, is a slightly modified version (for use
+in a multi-threaded environment) of the Sun RPC package.
+<p>
+We use the term <em> value-added-server</em> (VAS) to refer to systems
+built with the SSM.  A VAS relies on the SSM for the above capabilities
+and extends it to provide more functionality.  One example of a VAS is
+the Shore server, which extends the SSM to provide typed objects with
+permissions and ownership and organizes storage as a tree structured
+name-space.  The overall role of the SSM in Shore is further described in
+<!WA13><a href="http://www.cs.wisc.edu/shore/1.0/overview/overview.html"> An Overview of Shore </a>.
+<p>
+This document provides an overview the SSM facilities and interface.
+Details of the programming interfaces are presented in a set of manual
+pages.  Where each facility is discussed, references are made to the
+appropriate manual pages.
+
+<h2> <!WA14><a href="http://www.cs.wisc.edu/shore/1.0/ssmvas/ssmvas.html"> Writing Value-Added Servers with the Shore Storage Manager </a> </h2>
+A novel feature of Shore is that its server is designed to be easily extended
+to support new applications.
+This tutorial shows how to extend the server through a detailed example,
+the <em>Grid Server</em>.
+
+<h2> <!WA15><a href="http://www.cs.wisc.edu/shore/1.0/glossary/glossary.html"> Glossary of Shore Terms </a> </h2>
+We have attempted to use technical terms in a consisten manner through out
+these documents (and in the source code).
+The <em>Glossary</em> is a concise lexicon of these terms.
+When in doubt, please consult this list.
+
+<h2> <!WA16><a href="http://www.cs.wisc.edu/shore/1.0/plans/plans.html"> Shore Project Plans </a> </h2>
+This document describes what, in the overall plan for Shore, has yet to be
+done, and it describes
+our plans for finishing the Shore project.
+
+<h2> <!WA17><a href="http://www.cs.wisc.edu/shore/1.0/bugreport/bugreport.html"> How to Submit a Problem Report </a> </h2>
+This document describes how to submit a problem report if you find a problem
+with the Shore
+software or documentation. 
+
+<h2><!WA18><a href="http://www.cs.wisc.edu/shore/1.0/man/CONTENTS.html">Manual Pages </a> </h2>
+Shore comes with a large set of manual pages in the traditional Unix style.
+This page lists them all.
+The manual can also be accessed through hot links from the documents listed
+above, from cross-references between the man pages, and from the introduction
+pages listed at the beginning of each section of man pages.
+</body>

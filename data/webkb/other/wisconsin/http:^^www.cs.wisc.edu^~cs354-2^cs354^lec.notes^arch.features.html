@@ -1,0 +1,691 @@
+Date: Tue, 05 Nov 1996 20:49:50 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 30 Aug 1995 21:21:34 GMT
+Content-length: 18006
+
+<html>
+<head>
+<title> Lecture notes - Chapter 13 - Performance features</title>
+</head>
+
+<BODY>
+<h1> Chapter 13 -- performance features</h1>
+
+<pre>
+
+
+Architectural Features used to enhance performance
+--------------------------------------------------
+
+  (loosely following chapter 13)
+What is a "better" computer?  What is the "best" computer?
+  The factors involved are generally cost and performance.
+
+  COST FACTORS: cost of hardware design
+		cost of software design (OS, applications)
+		cost of manufacture
+		cost to end purchaser
+  PERFORMANCE FACTORS:
+		what programs will be run?
+		how frequently will they be run?
+		how big are the programs?
+		how many users?
+		how sophisticated are the users?
+		what I/O devices are necessary?
+
+
+  (this chapter discusses ways of increasing performance)
+
+There are two ways to make computers go faster.
+ 
+ 1. Wait a year.  Implement in a faster/better/newer technology.
+    More transistors will fit on a single chip.
+    More pins can be placed around the IC.
+    The process used will have electronic devices (transistors)
+      that switch faster.
+
+ 2. new/innovative architectures and architectural features.
+
+
+
+
+MEMORY HIERARCHIES
+------------------
+Known in current technologies:  the time to access data
+   from memory is an order of magnitude greater than a
+   CPU operation.
+
+   For example:  if a 32-bit 2's complement addition takes 1 time unit,
+   then a load of a 32-bit word takes about 10 time units.
+
+Since every instruction takes at least one memory access (for
+the instruction fetch), the performance of computer is dominated
+by its memory access time.
+
+  (to try to help this difficulty, we have load/store architectures,
+   where most instructions take operands only from memory.  We also
+   try to have fixed size, SMALL size, instructions.)
+
+
+what we really want:
+   very fast memory -- of the same speed as the CPU
+   very large capacity -- 512 Mbytes
+   low cost -- $50
+
+   these are mutually incompatible.  The faster the memory,
+   the more expensive it becomes.  The larger the amount of
+   memory, the slower it becomes.
+
+What we can do is to compromise.  Take advantage of the fact
+(fact, by looking at many real programs) that memory accesses
+are not random.  They tend to exhibit LOCALITY.
+  LOCALITY -- nearby.
+  2 kinds:
+
+  Locality in time (temporal locality)
+    if data has been referenced recently, it is likely to
+    be referenced again (soon!).
+
+    example:  the instructions with in a loop.  The loop is
+    likely to be executed more than once.  Therefore, each
+    instruction gets referenced repeatedly in a short period
+    of time.
+
+    example: The top of stack is repeatedly referenced within
+    a program.
+
+
+
+  Locality in space (spacial locality)
+    if data has been referenced recently, then data nearby
+    (in memory) is likely to be referenced soon.
+
+    example:  array access.  The elements of an array are
+    neighbors in memory, and are likely to be referenced
+    one after the other.
+
+    example: instruction streams.  Instructions are located
+    in memory next to each other.  Our model for program
+    execution says that unless the PC is explicitly changed
+    (like a branch or jump instruction) sequential instructions
+    are fetched and executed. 
+
+We can use these tendencies to advantage by keeping likely
+to be referenced (soon) data in a faster memory than main
+memory.  This faster memory is called a CACHE.
+
+
+	CPU-cache   <----------------> memory
+
+
+It is located very close to the CPU.  It contains COPIES of
+PARTS of memory.
+
+A standard way of accessing memory, for a system with a cache:
+ (The programmer doesn't see or know about any of this)
+  
+ instruction fetch (or load or store) goes to the cache.
+ If the data is in the cache, then we have a HIT.
+  The data is handed over to the CPU, and the memory access is completed.
+ If the data is not in the cache, then we have a MISS.
+   The instruction fetch (or load or store) is then sent on
+   to main memory.
+
+ On average, the time to do a memory access is
+
+       = cache access time + (% misses  *  memory access time)
+
+This average (mean) access time will change for each program.
+It depends on the program, and its reference pattern, and how
+that pattern interracts with the cache parameters.
+
+
+
+
+cache is managed by hardware
+
+	Keep recently-accessed block -- exploits temporal locality
+
+	Break memory into aligned blocks (lines) e.g. 32 bytes
+		-- exploits spatial locality
+
+	transfer data to/from cache in blocks
+
+	put block in "block frame"
+		state (e.g valid)
+		address tag
+		data
+
+>>>> simple CACHE DIAGRAM here <<<<
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   if the tag is present, and if VALID bit active,
+     then there is a HIT, and a portion of the block is returned.
+
+   if the tag is not present or the VALID bit is not active,
+     then there is a MISS, and the block must be loaded from memory.
+
+     The block is placed in the cache (valid bit set, data written)
+     AND
+     a portion of the block is returned.
+
+
+
+Example
+
+	Memory words:
+
+		0x11c	0xe0e0e0e0
+		0x120	0xffffffff
+		0x124	0x00000001
+		0x128	0x00000007
+		0x12c	0x00000003
+		0x130	0xabababab
+
+	A 16-byte cache block frame:
+
+		state	tag	data (16 bytes == 4 words)
+		invalid	0x????	??????
+
+	lw $4, 0x128
+
+	Is tag 0x120 in cache?  (0x128 mod 16 = 0x128 & 0xfffffff0)
+
+	No, load block
+
+	A 16-byte cache block frame:
+
+		state	tag	data (16 bytes == 4 words)
+		valid	0x120	0xffffffff, 0x00000001, 0x00000007, 0x00000003
+
+	Return 0x0000007 to CPU to put in $4
+
+	lw $5, 0x124
+
+	Is tag 0x120 in cache?
+
+	Yes, return 0x00000001 to CPU
+
+Beyond the scope of this class:
+	block and block frames divided in "sets" (equivalence
+	  classes) to speed lookup.
+	terms: fully-associative, set-associative, direct-mapped
+
+
+Often
+	cache:  instruction cache 1 cycle
+	        data cache 1 cycle
+	main memory 20 cycles
+
+Performance for data references w/ miss ratio 0.02 (2% misses)
+
+        mean access time = cache-access + miss-ratio * memory-access
+			 =       1     +   0.02     *  20
+			 =       1.4
+
+
+Typical cache size is 64K byte given a 64Mbyte memory
+	20 times faster
+	1/1000 the capacity
+	often contains 98% of the references
+
+
+
+
+
+Remember:
+
+recently accessed blocks are in the cache (temporal locality)
+
+the cache is smaller than main memory, so not all blocks are in the cache.
+
+blocks are larger than 1 word (spacial locality)
+
+
+
+
+
+This idea of exploiting locality is (can be) done at many
+levels.  Implement a hierarchical memory system:
+
+  smallest, fastest, most expensive memory         (registers)
+  relatively small, fast, expensive memory         (CACHE)
+  large, fast as possible, cheaper memory          (main memory)
+  largest, slowest, cheapest (per bit) memory       (disk)
+
+
+
+registers are managed/assigned by compiler or asm. lang programmer
+cache is managed/assigned by hardware or partially by OS
+main memory is managed/assigned by OS
+disk managed by OS
+
+
+
+Programmer's model:  one instruction is fetched and executed at
+  a time.
+
+Computer architect's model:  The effect of a program's execution are
+  given by the programmer's model.  But, implementation may be
+  different.
+
+  To make execution of programs faster, we attempt to exploit
+  PARALLELISM:  doing more than one thing at one time.
+
+  program level parallelism:  Have one program run parts of itself
+    on more than one computer.  The different parts occasionally
+    synch up (if needed), but they run at the same time.
+  instruction level parallelism (ILP):  Have more than one instruction
+    within a single program executing at the same time.
+
+PIPELINING  (ILP)
+-----------------
+ concept
+ -------
+   A task is broken down into steps.
+   Assume that there are N steps, each takes the same amount of time.
+
+   (Mark Hill's) EXAMPLE:  car wash
+
+     steps:  P -- prep
+	     W -- wash
+	     R -- rinse
+	     D -- dry
+	     X -- wax
+
+     assume each step takes 1 time unit
+
+     time to wash 1 car (red) = 5 time units
+     time to wash 3 cars (red, green, blue) = 15 time units
+
+     which car      time units
+		1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
+       red      P  W  R  D  X
+       green                   P  W  R  D  X
+       blue                                   P  W  R  D  X
+
+   a PIPELINE overlaps the steps
+
+     which car      time units
+		1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
+       red      P  W  R  D  X
+       green       P  W  R  D  X
+       blue           P  W  R  D  X
+       yellow            P  W  R  D  X
+	  etc.
+
+	 IT STILL TAKES 5 TIME UNITS TO WASH 1 CAR,
+	 BUT THE RATE OF CAR WASHES GOES UP!
+
+
+
+
+   Pipelining can be done in computer hardware.
+
+ 2-stage pipeline
+ ----------------
+  steps:
+    F -- instruction fetch
+    E -- instruction execute (everything else)
+
+
+    which instruction       time units
+			1  2  3  4  5  6  7  8 . . .
+       1                F  E
+       2                   F  E
+       3                      F  E
+       4                         F  E
+
+       
+       time for 1 instruction =  2 time units
+	 (INSTRUCTION LATENCY)
+
+       rate of instruction execution = pipeline depth * (1 / time for     )
+         (INSTRUCTION THROUGHPUT)                           1 instruction
+				     =        2       * (1 /   2)
+				     =   1 per time unit
+
+
+ 5-stage pipeline
+ ----------------
+
+ a currently popular pipelined implementation
+    (R2000/3000 has 5 stages, R6000 has 5 stages (but different),
+     R4000 has 8 stages)
+
+     steps:
+	IF -- instruction fetch
+	ID -- instruction decode (and get operands from registers)
+	EX -- ALU operation (can be effective address calculation)
+	MA -- memory access
+	WB -- write back (results written to register(s))
+
+    which       time units
+instruction   1   2   3   4   5   6   7  8 . . .
+     1        IF  ID  EX  MA  WB
+     2            IF  ID  EX  MA  WB
+     3                IF  ID  EX  MA  WB
+
+    INSTRUCTION LATENCY = 5 time units
+    INSTRUCTION THROUGHPUT = 5 * (1 / 5) = 1 instruction per time unit
+
+
+
+
+unfortunately, pipelining introduces other difficulties. . .
+
+
+ data dependencies
+ -----------------
+
+ suppose we have the following code:
+   lw   $8, data1
+   addi $9, $8, 1
+
+
+   the data loaded doesn't get written to $8 until WB,
+     but the addi instruction wants to get the data out of $8
+     it its ID stage. . .
+
+    which       time units
+instruction   1   2   3   4   5   6   7  8 . . .
+    lw        IF  ID  EX  MA  WB
+			      ^^
+    addi          IF  ID  EX  MA  WB
+		      ^^
+	
+	the simplest solution is to STALL the pipeline.
+	(Also called HOLES, HICCOUGHS or BUBBLES in the pipe.)
+
+    which       time units
+instruction   1   2   3   4   5   6   7   8 . . .
+    lw        IF  ID  EX  MA  WB
+			      ^^
+    addi          IF  ID  ID  ID  EX  MA  WB
+		      ^^  ^^  ^^ (pipeline stalling)
+
+
+   A DATA DEPENDENCY (also called a HAZARD) causes performance to
+     decrease.  
+
+
+
+ more on data dependencies
+ -------------------------
+
+   Read After Write (RAW) --
+     (example given), a read of data is needed before it has been written
+
+   Given for completeness, not a difficulty to current pipelines in
+     practice, since the only writing occurs as the last stage.
+
+         Write After Read (WAR) --
+         Write After Write (WAR) --
+
+
+   NOTE:  there is no difficulty implementing a 2-stage pipeline
+   due to DATA dependencies!
+
+
+
+
+ control dependencies
+ --------------------
+
+ what happens to a pipeline in the case of branch instructions?
+
+ MAL CODE SEQUENCE:
+
+        b  label1
+        addi  $9, $8, 1
+label1: mult $8, $9
+
+    which       time units
+instruction   1   2   3   4   5   6   7  8 . . .
+     b        IF  ID  EX  MA  WB
+			      ^^ (PC changed here)
+    addi          IF  ID  EX  MA  WB
+		  ^^  (WRONG instruction fetched here!)
+	
+
+	whenever the PC changes (except for PC <- PC + 4),
+	we have a CONTROL DEPENDENCY.
+
+	CONTROL DEPENDENCIES break pipelines.  They cause
+	performance to plummet.
+
+	So, lots of (partial) solutions have been implemented
+	to try to help the situation.
+	  Worst case, the pipeline must be stalled such that
+	  instructions are going through sequentially.
+
+	Note that just stalling doesn't really help, since
+	  the (potentially) wrong instruction is fetched
+	  before it is determined that the previous instruction
+	  is a branch.
+
+
+
+
+BRANCHES and PIPELINING
+-----------------------
+ (or, how to minimize the effect of control dependencies on pipelines.)
+
+ easiest solution (poor performance)
+    Cancel anything (later) in the pipe when a branch (jump) is decoded.
+    This works as long as nothing changes the program's state
+    before the cancellation.  Then let the branch instruction
+    finish (flush the pipe), and start up again.
+
+       which       time units
+   instruction   1   2   3   4   5   6   7  8 . . .
+        b        IF  ID  EX  MA  WB
+			         ^^ (PC changed here)
+       addi          IF              IF  ID  EX  MA  WB
+		     ^^ (cancelled) 
+
+ branch Prediction (static or dynamic)
+   add lots of extra hardware to try to help.
+
+   a)  (static)  assume that the branch will not be taken
+       When the decision is made, the hw "knows" if the correct
+       instruction has been partially executed.
+
+       If the correct instruction is currently in the pipe,
+	 let it (and all those after it) continue.  Then,
+	 there will be NO holes in the pipe.
+       If the incorrect instruction is currently in the pipe,
+	 (meaning that the branch was taken), then all instructions
+	 currently in the pipe subsequent to the branch must
+	 be BACKED OUT.
+       
+   b)  (dynamic) A variation of (a).  
+       Have some extra hw that keeps track of which branches have
+       been taken in the recent past.  Design the hw to presume that
+       a branch will be taken the same way it was previously.
+       If the guess is wrong, back out as in (a).
+
+       Question for the advanced student:  Which is better, (a) or (b)? Why?
+
+   NOTE:  solution (a) works quite well with currently popular
+      pipeline solutions, because no state information is changed
+      until the very last stage of an instruction.  As long as
+      the last stage hasn't started, backing out is a matter
+      of stopping the last stage from occuring and getting the
+      PC right.
+
+
+
+
+ separate test from branch
+   make the conditional test and address calculation
+   separate instructions from the one that changes the PC.
+
+   This reduces the number of holes in the pipe.
+
+
+ delayed branch
+   MIPS solution.
+   The concept:  prediction is always wrong
+   sometime.  There will be holes in the pipe when the prediction
+   is wrong.  So the goal is to reduce (eliminate?) the number of
+   holes in the case of a branch.
+
+   The mechanism:
+     Have the effect of a branch (the change of the PC) be delayed
+     until a subsequent instruction.  This means that the instruction
+     following a branch is executed independent of whether the
+     branch is to be taken or not.
+
+     (NOTE: the simulator completely ignores this delayed branch
+      mechanism!)
+
+      code example:
+	
+	  add $8, $9, $10
+	  beq $3, $4,  label
+	  move $18, $5
+	  .
+	  .
+	  .
+    label:  sub $20, $21, $22
+
+
+  is turned into the following by a MIPS assembler:
+	  add $8, $9, $10
+	  beq $3, $4,  label
+	  nop                  # really a pipeline hole, the DELAY SLOT
+	  move $18, $5
+	  .
+	  .
+	  .
+    label:  sub $20, $21, $22
+
+
+
+  If the assembler has any smarts at all, it would REARRANGE
+  the code to be
+	  beq $3, $4,  label
+	  add $8, $9, $10
+	  move $18, $5
+	  .
+	  .
+	  .
+    label:  sub $20, $21, $22
+
+
+  This code can be rearranged only if there are no data
+  dependencies between the branch and the add instructions.
+  In fact, any instruction from before the branch (and after any
+  previous branch) can be moved into the DELAY SLOT, as long as
+  there are no dependencies on it.
+
+
+  Delayed branching depends on a smart assembler (sw) to make
+  the hardware perform at peak efficiency.  This is a general
+  trend in the field of computer science.  Let the sw do more
+  and more to improve performance of the hw.
+
+
+ squashing
+   A fancy name for branch prediction that always presumes the
+   branch will be taken,  and keeps a copy of the PC that will
+   be needed in the case of backing out.
+
+
+
+ condition codes
+   a historically significant way of branching.  Condition codes
+   were used on MANY machines before pipelining became popular.
+
+   4 1-bit registers (condition code register):
+     N -- negative
+     V -- overflow
+     P -- positive
+     Z -- zero
+
+  The result of an instruction set these 4 bits.
+  Conditional branches were then based on these flags.
+
+  Example:  bn label       # branch to label if the N bit is set
+
+  Earlier computers had virtually every instruction set the
+  condition codes.  This had the effect that the test (for
+  the branch) needed to come directly before the branch.
+  Example:  
+	sub r3, r4, r5    # blt $4, $5, label 
+	bn  label
+
+  A performance improvement (sometimes) to this allowed the
+  programmer to explicitly specify which instructions should
+  set the condition codes.  In this way, (on a pipelined machine)
+  the test could be separated from the branch, resulting in
+  fewer pipeline holes due to data dependencies.
+
+
+
+
+
+Amdahl's Law
+------------
+
+(Or why the common case matters most)
+
+speedup = new rate / old rate 
+
+        = old execution time / new execution time
+
+
+We program in some enhancement to part of our program.
+  The fraction of time spent in that part of the code is f.
+  The speedup of that part of the code (f) is S.
+
+  ( Let an enhancement speedup f fraction of the time by speedup S)
+
+speedup = [(1-f)+f]*old time / (1-f) * old time + f/S * old time
+
+	=    1
+	  ---------
+	  1-f + f/S
+
+Examples
+
+	    f	    S		speedup
+	   ---	   ---		-------
+	   95%	   1.10		1.094
+	    5%	   10		1.047
+	    5%	   inf		1.052
+
+
+lim		   1
+		---------	=  1/ 1-f
+S --> inf	1-f + f/S
+	
+	 f	speedup
+	---	-------
+	1%      1.01
+	2%      1.02
+	5%      1.05
+	10%     1.11
+	20%     1.25
+	50%     2.00
+
+
+This says that we should concentrate on the common case!
+
+
+</pre>

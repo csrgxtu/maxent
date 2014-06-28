@@ -1,0 +1,318 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 24-Nov-96 22:48:43 GMT
+Content-Type: text/html
+Content-Length: 9677
+Last-Modified: Sunday, 22-Sep-96 21:08:03 GMT
+
+<HTML>
+<HEAD>
+<TITLE>tt4</TITLE>
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Microsoft Word 2.0z">
+</HEAD>
+<BODY>
+<P>
+<CENTER><B><FONT SIZE=6>CS100</FONT></B></CENTER>
+<P>
+<CENTER><B><FONT SIZE=6>Lecture 4<BR>
+</FONT></B></CENTER>
+<P>
+<FONT SIZE=6>CONCEPTS --- last lecture</FONT>
+<P>
+<FONT SIZE=6>types, user-defined functions, applicative-order
+substitution, recursion<BR>
+</FONT>
+<P>
+<FONT SIZE=6>CONCEPTS --- this lecture</FONT>
+<P>
+<FONT SIZE=6>specifications<BR>
+</FONT>
+<P>
+<FONT SIZE=6>READING</FONT>
+<P>
+<FONT SIZE=6>Teitelbaum, Section 2.10</FONT>
+<P>
+<CENTER><B><FONT SIZE=6>Specification<B>s<BR>
+</B></FONT></B></CENTER>
+<UL>
+<LI><FONT SIZE=6>A <I>specification</I> is a contract between
+a producer and consumers. </FONT>
+</UL>
+<P>
+<FONT SIZE=6></FONT>
+<UL>
+<LI><FONT SIZE=6>Example: electrical outlets</FONT>
+</UL>
+<P>
+<FONT SIZE=6></FONT>
+<UL>
+<LI><FONT SIZE=6>Specification: if you put two pieces of metal
+of the appropriate shape into an outlet, you will get 110 Volts
+at 60 Hz between them</FONT>
+</UL>
+<P>
+<FONT SIZE=6></FONT>
+<UL>
+<LI><FONT SIZE=6>A <I>specification</I> details what the consumer
+can assume about the component, which is what the producer (the
+power company) must deliver.</FONT>
+</UL>
+<P>
+<FONT SIZE=6></FONT>
+<UL>
+<LI><FONT SIZE=6>You can think of a specification as a legally
+binding contract</FONT>
+</UL>
+<P>
+<FONT SIZE=6></FONT>
+<UL>
+<LI><FONT SIZE=6>How the power company generates the power is
+not part of the specification</FONT>
+<UL>
+<LI><FONT SIZE=6>Hydro power, or Coal, or hamsters on treadmills</FONT>
+</UL>
+</UL>
+<P>
+<FONT SIZE=6></FONT>
+<P>
+<CENTER><B><FONT SIZE=6>Software specifications<BR>
+</FONT></B></CENTER>
+<UL>
+<LI><FONT SIZE=6>Functions are software components.</FONT>
+</UL>
+<P>
+<FONT SIZE=6></FONT>
+<UL>
+<LI><FONT SIZE=6>In software, producers are <I>implementors </I>and
+consumers are <I>clients</I>.</FONT>
+</UL>
+<P>
+<FONT SIZE=6></FONT>
+<UL>
+<LI><FONT SIZE=6>When defining a function, you are implementor;
+when using a function, you are client. </FONT>
+</UL>
+<P>
+<FONT SIZE=6></FONT>
+<UL>
+<LI><FONT SIZE=6>A function's specification consists of its <I>signature
+</I>and its <I>correctness specification.</I> </FONT>
+</UL>
+<P>
+<FONT SIZE=5 FACE="Monaco"></FONT>
+<P>
+<FONT SIZE=5 FACE="Monaco">/* exp(x,n) == x^n, for n &gt;= 0.
+*/</FONT>
+<P>
+<FONT SIZE=5 FACE="Monaco">int exp(int x, int n)</FONT>
+<P>
+<FONT SIZE=5 FACE="Monaco">{</FONT>
+<P>
+<FONT SIZE=5 FACE="Monaco"> return (n == 0) ? 1 : exp(x, n-1)
+* x;</FONT>
+<P>
+<FONT SIZE=5 FACE="Monaco">}</FONT>
+<P>
+<I><FONT SIZE=6>signature</FONT></I><FONT SIZE=6>: a function
+taking two int's and returning an int</FONT>
+<P>
+<I><FONT SIZE=6>correctness specification</FONT></I><FONT SIZE=6>:
+if <I>n</I> &gt;= 0, then </FONT><FONT SIZE=5 FACE="Monaco">exp(</FONT><I><FONT SIZE=6>x</FONT></I><FONT SIZE=5 FACE="Monaco">,</FONT><I><FONT SIZE=6>n</FONT></I><FONT SIZE=5 FACE="Monaco">)</FONT><FONT SIZE=6>
+will yield <I>x<SUP>n</SUP></I></FONT>
+<P>
+<FONT SIZE=6> </FONT>
+<P>
+<CENTER><B><FONT SIZE=6>Signatures<BR>
+</FONT></B></CENTER>
+<UL>
+<LI><FONT SIZE=6>The number of parameters that a function takes,
+together with their types, and  the type of the result it returns
+are its <I>signature</I>.</FONT>
+</UL>
+<P>
+<FONT SIZE=6><BR>
+</FONT>
+<UL>
+<LI><FONT SIZE=6>Note that the body of the function doesn't affect
+the signature</FONT>
+</UL>
+<P>
+<FONT SIZE=6></FONT>
+<UL>
+<LI><FONT SIZE=6>In a function application, the number and type
+of the arguments must match the signature.</FONT>
+</UL>
+<P>
+<FONT SIZE=6>exp(5, 3, 1)    is wrongexp(&quot;Hello&quot;, 1)
+  is wrongprintf(exp(5, 1))   is wrong<BR>
+<BR>
+</FONT><CENTER><B><FONT SIZE=6>Correctness Specifications<BR>
+</FONT></B></CENTER>
+<UL>
+<LI><FONT SIZE=6>A <I>correctness specification</I> states <I>what</I>
+a function does without saying <I>how</I> it does it.</FONT>
+</UL>
+<P>
+<FONT SIZE=6>/* == x^n, for n &gt;= 0. */</FONT>
+<UL>
+<LI><FONT SIZE=6>It consists of a <I>precondition</I> and a <I>postcondition</I>
+(this distinction will be clearer in a few weeks).</FONT>
+</UL>
+<P>
+<FONT SIZE=6></FONT>
+<UL>
+<LI><FONT SIZE=6>The <I>precondition </I>restricts the permissible
+arguments, e.g., <I>n</I> </FONT><FONT SIZE=6 FACE="Symbol">&#179;</FONT><FONT SIZE=6>
+0.</FONT>
+</UL>
+<P>
+<FONT SIZE=6></FONT>
+<UL>
+<LI><FONT SIZE=6>The <I>postcondition </I>describes the result
+in terms of the arguments, e.g., <I>x<SUP>n</SUP></I>.</FONT>
+</UL>
+<P>
+<FONT SIZE=6></FONT>
+<UL>
+<LI><FONT SIZE=6>In general, a correctness specification states:</FONT>
+</UL>
+<P>
+<FONT SIZE=6>If the arguments in a function application satisfy
+the precondition, then the application will yield a value that
+satisfies the postcondition.<BR>
+e.g., if <I>n</I> &gt;= 0, then exp(<I>x</I>,<I>n</I>) will yield
+<I>x<SUP>n</SUP>.<BR>
+</I></FONT>
+<UL>
+<LI><FONT SIZE=6>If the precondition is not satisfied, the result
+is not defined, i.e., can be anything (or diverge).</FONT>
+</UL>
+<P>
+<FONT SIZE=6></FONT>
+<UL>
+<LI><FONT SIZE=6>E.g.,  exp(<I>x</I>, <I>n</I>) diverges, for
+<I>n</I> &lt; 0.</FONT>
+</UL>
+<P>
+<FONT SIZE=6><U>exp(5, -1)(-1 == 0)</U> ? 1 : exp(5, -1 - 1) *
+5<U>0 ? 1 : exp(5, -1 - 1) * 5</U>exp(5, <U>-1 - 1</U>) * 5<U>exp(5,
+-2)</U> * 5((<U>-2 == 0)</U> ? 1 : exp(5, -2 - 1) * 5) * 5<U>(0
+? 1 : exp(5, -2 - 1) * 5)</U> * 5exp(5, <U>-2 - 1</U>) * 5 * 5<U>exp(5,
+-3)</U> * 5 * 5...<BR>
+</FONT>
+<UL>
+<LI><FONT SIZE=6>A function should never be called with arguments
+that do not satisfy the precondition.</FONT>
+</UL>
+<P>
+<FONT SIZE=6></FONT>
+<UL>
+<LI><FONT SIZE=6>Because a conditional expression is non-strict,
+evaluating </FONT><FONT SIZE=5 FACE="Monaco">exp(5,0) </FONT><FONT SIZE=6>never
+calls </FONT><FONT SIZE=5 FACE="Monaco">exp(5,-1) </FONT><FONT SIZE=6>in</FONT>
+</UL>
+<P>
+<FONT SIZE=6></FONT><U><FONT SIZE=5 FACE="Monaco">exp(5, 0)<U>(0
+== 0)</U></FONT></U><FONT SIZE=5 FACE="Monaco"> ? 1 : exp(5, 0
+- 1)<U>1 ? 1 : exp(5, 0 - 1)</U>1</FONT>
+<P>
+<CENTER><B><FONT SIZE=6>Implementations<BR>
+</FONT></B></CENTER>
+<UL>
+<LI><FONT SIZE=6>Many implementations can satisfy a given specification.</FONT>
+</UL>
+<P>
+<FONT SIZE=6></FONT><FONT SIZE=5 FACE="Monaco">/* == x^4. */<br>
+int fourth(int x) { return (x * x * x * x); }<BR><br>
+/* == x^4. */<br>
+int fourth(int x) { return (square(square(x))); }
+<BR><br>
+/* == x^4. */<br>
+int fourth(int x) { return (exp(x, 4)); }<BR><br>
+</FONT>
+<UL>
+<LI><FONT SIZE=6>The specification should not describe the implementation,
+which the implementor has freedom to change.</FONT>
+<UL>
+<LI><FONT SIZE=6>This is why specifications are <I>vital</I> to
+the design of large programs!</FONT><CENTER><B><FONT SIZE=6>Use
+of Mathematical Functions</FONT></B></CENTER>
+</UL>
+</UL>
+<P>
+<FONT SIZE=6></FONT>
+<UL>
+<LI><FONT SIZE=6>Can use arbitrary mathematical functions in a
+specification, but &#133;</FONT>
+</UL>
+<P>
+<FONT SIZE=6></FONT>
+<UL>
+<LI><FONT SIZE=6>Be sure the mathematical functions are well-defined
+for all arguments permitted by the precondition.</FONT>
+</UL>
+<P>
+<FONT SIZE=6></FONT>
+<P>
+<FONT SIZE=6>E.g., a minor flaw in<BR>
+/* == x^n, for n &gt;= 0. */<BR>
+because <I>x<SUP>n</SUP></I> is not defined for <I>x</I> = 0 and
+<I>n</I> = 0.<BR>
+</FONT>
+<UL>
+<LI><FONT SIZE=6>Correction</FONT>
+</UL>
+<P>
+<FONT SIZE=6>/* == x^n, for n &gt;= 0,  and x and n not both 0.
+*/<BR>
+</FONT>
+<P>
+<FONT SIZE=6>or<BR>
+</FONT><FONT SIZE=5 FACE="Monaco">/* == x^n, for n &gt;= 0 and
+x != 0, and   == 1, for n == 0 and x == 0. */</FONT>
+<H1><CENTER><FONT SIZE=6>Counting<BR>
+</FONT></CENTER><FONT SIZE=5 FACE="Monaco">/* == id. */<br>
+</FONT><FONT SIZE=6>int count(int lo, int hi, int id) {<br>
+return lo &gt; hi ? id : count(lo + 1, hi, id);<BR>}<br><br>
+</FONT></H1>
+<P>
+<FONT SIZE=6>For example<BR>
+</FONT><U><FONT SIZE=5 FACE="Monaco">count(1, 2, 0)<U>1 &gt; 2</U></FONT></U><FONT SIZE=5 FACE="Monaco">
+? 0 : count(1 + 1, 2, 0)<U>0 ? 0 : count(1 + 1, 2, 0)</U>count(<U>1
++ 1</U>, 2, 0)<U>count(2, 2, 0)2 &gt; 2</U> ? 0 : count(2 + 1,
+2, 0)<U>0 ? 0 : count(2 + 1, 2, 0)</U>count(<U>2 + 1</U>, 2, 0)<U>count(3,
+2, 0)3 &gt; 2</U> ? 0 : count(3 + 1, 2, 0)<U>1 ? 0 : count(3 +
+1, 2, 0)</U>0</FONT>
+<P>
+<CENTER><B><FONT SIZE=6>Sum of squares<BR>
+</FONT></B></CENTER><FONT SIZE=5 FACE="Monaco">/* == lo^2 + (lo+1)^2
++ ... + hi^2. */<br>
+int sumSquares(int lo, int hi){<br>
+</FONT><FONT SIZE=6>return lo &gt; hi ? 0 : square(lo) + sumSquares(lo + 1, 
+hi);<br>}<BR><br>
+</FONT>
+<P>
+<FONT SIZE=6>For example, </FONT><FONT SIZE=5 FACE="Monaco">sumSquares(1,2)</FONT><FONT SIZE=6>
+</FONT><FONT SIZE=6 FACE="Symbol">-></FONT><FONT SIZE=6> 1</FONT><FONT SIZE=5>*1</FONT><FONT SIZE=6>+2</FONT><FONT SIZE=5>*2
+</FONT><FONT SIZE=6 FACE="Symbol">-> </FONT><FONT SIZE=6>5.
+<BR>
+</FONT>
+<P>
+<CENTER><B><FONT SIZE=6>Factorial<BR>
+</FONT></B></CENTER><FONT SIZE=5 FACE="Monaco">/* == lo * (lo+1)
+*... * hi. */<br>
+int multIntegers(int lo, int hi){<br>
+</FONT><FONT SIZE=6>return
+lo &gt; hi ? 1   :  lo * multIntegers(lo + 1, hi);<br>}<BR><br>
+</FONT>
+<P>
+<FONT SIZE=6>For example, </FONT><FONT SIZE=5 FACE="Monaco">multIntegers(1,4)</FONT><FONT SIZE=6>
+</FONT><FONT SIZE=6 FACE="Symbol">-></FONT><FONT SIZE=6> </FONT><FONT SIZE=5 FACE="Monaco">1*2*3*4</FONT><FONT SIZE=5>
+</FONT><FONT SIZE=6 FACE="Symbol">-> </FONT><FONT SIZE=5 FACE="Monaco">24</FONT><FONT SIZE=6>.
+<BR><br>
+</FONT><FONT SIZE=5 FACE="Monaco">/* == n!, n &gt;= 0. */<br>
+int factorial(int n) {<br>
+ return multIntegers(1,n); <br>}<br></FONT>
+</BODY>
+</HTML>

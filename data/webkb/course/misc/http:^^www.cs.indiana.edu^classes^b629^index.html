@@ -1,0 +1,181 @@
+Date: Wed, 20 Nov 1996 22:33:00 GMT
+Server: Apache/1.0.3
+Content-type: text/html
+Content-length: 5873
+Last-modified: Wed, 23 Oct 1996 16:54:25 GMT
+
+<!doctype htmlplus public "-//Internet/RFC xxxx//EN">
+<htmlplus>
+<head>
+<title>B629 (Spring `97) home page</title>
+</head>
+<body>
+<center>
+<h2>B629 (Spring `97)<br> Program Transformation and Programming Environments</h2>
+<p>
+[ <!WA0><a href="#info">General Information</a>
+| <!WA1><a href="#outline">Course Outline</a>
+| <!WA2><a href="#readings">Readings</a>
+| <!WA3><a href="#systems">Systems</a>
+| <!WA4><a href="#assignments">Assignments</a>
+| <!WA5><a href="#projects">Projects</a>
+]
+</center>
+<hr>
+
+<a name="info"><h3>General Information</h3></a>
+
+<p><strong>Course description:</strong> This course is for students
+interested in advanced program manipulation techniques and supporting
+tools.  The course will present methods and techniques of program
+analysis and program transformation, techniques and algorithms for
+programming environments, as well as a survey of current systems in
+this area.  Students will implement program analyses and
+transformations and experiment with programming environments as part
+of the course.
+
+<p><strong>Prerequisites:</strong> one of C311 or B521, one of P423 or
+P523, and a working knowledge of C or Scheme, or instructor's
+permission | <strong>Credits:</strong> 3
+
+<p><strong>Instructor:</strong> <!WA6><a
+href="http://www.cs.indiana.edu/hyplan/liu.html">Y. Annie Liu</a> |
+<strong>Email:</strong> <!WA7><a
+href=mailto:liu@cs.indiana.edu>liu@cs.indiana.edu</a> |
+<strong>Office:</strong> 201E Lindley Hall
+
+<p><strong>Hours:</strong> <font color="#fa0000"> MW 11:15AM-12:30PM,
+in Swain East 240</font> | <strong>Office Hours:</strong> by
+appointment
+<hr>
+
+<a name="outline"><h3>Tentative Course Outline</h3></a>
+<ul>
+<li>Introduction
+    <ul>
+    <li>Program development: an overview
+	<ul> 
+        <li>goals: correctness, efficiency, productivity
+	<li>methods: transformational programming, object-oriented programming,
+  	 step-wise refinement, composable software, ...
+	<li>techniques: specialization, incrementalization, data optimization,
+	 ...
+	<li>tools: compilers, language-based environments, visualization tools,
+	 tool generators, ...
+	</ul>
+    <li>Some simple examples 
+    </ul>
+<li>Program analysis: an overview
+    <ul>
+    <li>goals: program understanding, checking, optimization, refinement,
+     composition, modification, and reuse
+    <li>styles: static vs dynamic,
+	    forward vs backward,
+	    necessary vs sufficient
+    <li>methods:
+	    abstract interpretation, dataflow analysis
+	    (SSA form & CDG, VFG, SESE region & PST, VDG, Slicing), 
+	    type based, projection based, set based, ...
+    <li>applications: 
+         dead code analysis,
+	 redundancy analysis,
+	 strictness analysis,
+	 binding-time analysis,
+	 closure analysis,
+	 update analysis,
+	 sharing analysis,
+	 aliasing analysis,
+	 linearity analysis,
+	 concurrency analysis,
+	 time analysis, ...
+    </ul>
+<li>Program transformation: an overview
+    <ul>
+    <li>kinds:
+     program synthesis, optimization, refinement, composition, 
+     modification, and reuse
+    <li>basics techniques:
+     algebraic simplification, fold/unfold, rewriting, ...
+    <li>program optimization (operation-driven optimization):
+        <ul>
+	<li>composition/fusion: deforestation, unrolling list, tupling, ...
+	<li>specialization: partial evaluation, supercompilation, ...
+	<li>incrementalization: finite differencing,
+	     inplace update,
+	     caching, memoization, tabulation, tupling,
+	     	  thining, 
+             promotion, accumulation, ...
+	</ul>
+    <li>program refinement (data-driven optimization):
+         representation selection, data localizing, staging transformation,
+	 compile-time garbage collection, ...
+    <li>program modification and reuse:
+        parallelizing programs,
+	serializing parallel programs,
+        program integration, ...
+    </ul>
+<li>Programming environments techniques: an overview
+    <ul>
+    <li>syntax:
+     incremental parsing, higher-order abstract syntax, ...
+    <li>semantics/analysis:
+     incremental attribute evaluation,
+     extensions to attribute grammars, e.g.,
+       higher-order, composable, modular, coupled, ...
+    <li>transformation/utilities:
+    second-order pattern matching, unification,
+    language for complex tree transformation,
+    tree rewriting,
+    incremental pretty printing,
+    program tree/database management, ...
+    </ul>
+<li>Program manipulation systems: an overview
+    <ul>
+    <li> catalog:
+    compiler construction tools, frontend and backend generators,
+    attribute grammar based systems,
+    programming environment generators,
+    program transformation systems,
+    specialized utilities
+    <li>   examples:
+      Cornell Synthesizer Generator,
+      Microsoft IP,
+      Reasoning's Refine, Kestrel's KIDS, DTRE, and  Specware,
+      NYU's APTS,
+      Munich CIP,
+      CWI's ASF+SDF,
+      Saarbrucken's OPTRAN and PROSPECTRA,
+      INRIA's Mentor and Centaur,
+      Berkeley's Pan and Ensemble, ... ...
+    </ul>
+<li>The following topics from the above will be covered specially:
+    <ul>
+    <li>program analysis
+     <!--styles, methods, applications -->
+    <li>partial evaluation
+     <!-- binding time analysis, generalized partial evaluation -->
+    <li>incrementalization
+     <!-- finite differencing, caching --> 
+    <li>data driven optimization
+     <!-- data structure selection, staging transformation, 
+     compile-time garbage collection -->
+    <li>programming environments techniques: syntax, semantics, transformation
+    <li>environments and environments generators: SG, IP, Centaur,
+    <li>program transformation systems: APTS, KIDS, OPTRAN,
+    </ul>
+</ul>
+<hr>
+
+<a name="readings"><h3>Readings</h3></a>
+<hr>
+
+<a name="systems"><h3>Systems</h3></a>
+<hr>
+
+<a name="assignments"><h3>Assignments</h3></a>
+<hr>
+
+<a name="projects"><h3>Projects</h3></a>
+<hr>
+<!WA8><a href=mailto:liu@cs.indiana.edu><kbd>liu@cs.indiana.edu</kbd></a>
+Last updated October 22, 1996</body></htmlplus>

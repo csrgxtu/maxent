@@ -1,0 +1,118 @@
+Date: Mon, 16 Dec 1996 22:11:00 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 09 Feb 1996 12:53:33 GMT
+Content-length: 3836
+
+
+<html>
+<head>
+<title>
+CS418 Lab 5
+</title>
+</head>
+
+<body>
+<h2> <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/gifs/teapot.thumb.gif">
+CS 418: Laboratory 5</h2> 
+<h2> Camera and Perspective Transforms</h2>
+
+<b> Introduction. </b><p>
+In this exercise you will rewrite the camera transforms which DX uses inside the Image module.
+You will write the transform <b>Tview*Tpers</b> and apply it to a few simple objects.
+The resulting program will allow you to view the objects in world, view, and 
+screen coordinates. 
+
+
+<b><hr>Procedure:</b>
+<p>
+First you need to download several example files. To do this, click on
+each of the filenames shown below.  When the text window opens, use the
+"save as" option to put the file in your own directory. Name each file with
+the same name as shown below. 
+<ul>
+<li> <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/camera1994template.net"> CameraTemplate.net </a>
+<li> <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/camera1994template.cfg"> CameraTemplate.cfg </a>
+</ul>
+<p>
+
+<b> Part 1: </b>
+CameraTemplate.net
+constructs a simple object made of two cubes and a few 
+spheres (see <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a href="#IMs">Images</a>
+). Fill in the formulas in the 
+<!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab5.program.frag1.gif">
+compute </a>
+modules to simulate the <b>Tview </b> and <b> Tpers</b>
+matrices given in class and in <i>Watt</i> pages 64 and 73. Note that DX used a right-handed
+display system, so you will have to negate the x view coordinate.
+Notice that the program 
+<!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab5.program.frag2.gif">
+computes </a>
+<b> N, V,</b> and<b> U </b> vectors for you based on
+the values of the interactors.
+<i> Note that the images (with the exeception of the world image) are
+incorrect until you fill in the compute modules! </i>
+<p>
+<b> Part 2:</b>
+Add an interactor which independently (of window height) sets the width of the view window. Note 
+that this operation will distort the picture because it maps a rectangular region to a square.
+<p>
+<b> Part 3:</b>
+Convert the viewing frustrum given in the program from view coordinates back to world coordinates 
+(using an inverse camera transform) and collect it with the original objects so that the 
+viewpoint and viewing frustrum are visible in the world coordinate Image window.
+<p>
+There are three Image modules and one Display module so that you can see the world, view, 
+and screen coordinate systems, plus the final view of the object. The Camera-Display 
+modules are hardcoded to view the computed perspective from the correct angle.
+<p>
+The following images are an example of what the program should produce.
+
+<h4><a name="IMs">
+<!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><img align=bottom src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab5.world.image.gif">
+World Coordinates 
+<p>
+<!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><img align=bottom src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab5.view.image.gif">
+View Coordinates <br>
+<p>
+<!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><img align=bottom src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab5.screen.image.gif">
+Screen Coordinates 
+<p>
+<!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><img align=bottom src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab5.image.image.gif">
+Screen Projection</h4>
+<p>
+
+
+<b> <hr> Questions/Writeup:</b>
+<ol>
+<li> Write out the formula from each compute module used for each transformation. 
+Be prepared to demo your synthetic camera, exercising all interactors given in the
+template. The program should include the viewing frustrum in world coordinates. 
+The program should also include the modification for a variable window width.
+As usual, style counts. Your network will be graded on readability and comments.
+<p>
+<li> What happens if a vertex of the object falls in the plane Zv=0?
+<p>
+<li> Remove the clipbox module and explain what you see if the object is behind the viewpoint.
+</ol>
+
+
+<p>
+<!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/gifs/leftarrow.icon.gif">
+Back to <!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/index.html">Main Page</a>
+<br>
+<!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/gifs/rightarrow.icon.gif">
+Go to <!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/lab6.html">Lab 6</a>
+ <P>
+<hr>
+Last modified, 1/24/95, B. Land.
+<! Revision history:
+	Original document: P.Maxfield, 10/94
+>
+<br>
+<!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><IMG SRC="http://www.tc.cornell.edu/copyright.xbm">
+<!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><A HREF="http://www.tc.cornell.edu/ctcCopyright.html"> 
+<i>Copyright Statement </I></A>
+</body> </html>
+

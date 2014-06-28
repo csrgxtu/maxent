@@ -1,0 +1,51 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 21:59:37 GMT
+Content-Type: text/html
+Content-Length: 1659
+Last-Modified: Monday, 09-Dec-96 22:00:09 GMT
+
+<HTML>
+<HEAD>
+<TITLE>Dynamic File Replication</TITLE>
+</HEAD>
+
+<BODY>
+<CENTER>
+<H1>Dynamic File Replication</H1>
+Yongxiang Gao, Rong Tan, Yingjun Wu<BR>
+Department of Computer Sciences<BR>
+University of Texas at Austin<BR>
+</CENTER>
+
+<H2 ALIGN=CENTER>Abstract</H2>
+
+<P>
+The growth of Internet makes it necessary to find a solution to increasing
+accessing latency.  Traditional caching mechanism only
+made copies in the local machine.  However, as we consider the hierarchical
+topology of the network and notice that the local subnet is always much
+faster than the internet links, we add a new cache level between local
+disk and the large-scale network, making copies and storing them in a nearby
+subnet.  Dynamic file replication does this work well.
+We make router the main controller for our system.
+A router gathers file request information while it passes the requests to
+the remote server and makes a replica at its local subnet when the request
+frequency for such file at this router exceeds a threshold.  
+Therefore the following requests 
+will get faster response for they can reach the replica with a shorter
+path.  On the other hand the server load will be relieved a great deal
+because the reduce of data request reaching it.  We made a simulator to
+evaluate the performance of this strategy.  The simulator assumes easy
+model for the network and make random requests to randomly distributed files.
+The result shows that our system performs better than the system without
+replication mechanism up to the factor of 4.
+</P>
+
+<HR SIZE=2 WIDTH="100%">
+
+Click <A HREF="dfr.ps">here</A> for complete postscript version of the 
+document.
+
+</BODY>
+</HTML>

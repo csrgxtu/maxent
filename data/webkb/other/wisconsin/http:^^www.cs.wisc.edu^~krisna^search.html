@@ -1,0 +1,85 @@
+Date: Tue, 05 Nov 1996 21:16:43 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Tue, 06 Aug 1996 05:08:34 GMT
+Content-length: 2566
+
+<HTML>
+<HEAD>
+<TITLE>Search</TITLE>
+<LINK REV="made" HREF="mailto:krishna@cs.wisc.edu">
+</HEAD>
+
+<BODY>
+<H1>Search (using Glimpse)</H1>
+
+You can search the contents of all of my personal Web pages
+rooted at <STRONG>http://www.cs.wisc.edu/~krisna/</STRONG> using
+<EM>Agrep</EM>-style regular expressions.<P>
+
+You can provide search predicates using the entry form provided below.
+The result of the search is a single page containing pointers to all
+pages which match the search predicates provided.  Be sure to escape
+any metacharacters in your search predicates as appropriate.<P>
+
+<HR><BR>
+
+<H2>Search Form</H2>
+
+<!WA0><!WA0><!WA0><!WA0><!WA0><FORM METHOD="GET" ACTION="http://cgi.cs.wisc.edu/scripts/krisna/search">
+
+Search predicate: <INPUT TYPE="text" SIZE=50 NAME="predicate"><P>
+
+<INPUT TYPE="checkbox" NAME="nocase">: Case-insensitive matches.<BR>
+<INPUT TYPE="checkbox" NAME="show-match">: Show matching lines.<P>
+
+<INPUT TYPE="submit" VALUE="Submit">
+<INPUT TYPE="reset" VALUE="Clear">
+
+</FORM>
+
+<HR><BR>
+
+<H2>Miscellaneous Information</H2>
+
+This section is for those who are interested in the details of the
+search procedure.<P>
+
+The <EM>agrep</EM>-style searching is done an a pre-built index (which
+is updated periodically).  Indices are built and searched using the
+<!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://glimpse.cs.arizona.edu/">Glimpse</A> toolkit.
+By default, matches are case-sensitive and the lines that match the
+search predicate are not shown in the output.<P>
+
+Enabling the output of matching lines produces a cluttered display,
+but may sometimes help in narrowing down the search if too many pages
+match the predicate.  An attempt is made to highlight the predicate in
+the matched lines but this is not guaranteed to be always successful
+(for reasons too mundane to go into).<P>
+
+<H2>Problems?</H2>
+
+Remember to escape meta-characters.  This is very important.  The search
+script feeds your predicate to <EM>glimpse</EM> as is.  Any errors from
+<EM>glimpse</EM> are quietly ignored.<P>
+
+The search-indices are currently built on deHTMLized pages.  This means
+that a search predicate will not match HTML keywords unless the actual
+contents of the page would also produce such a match.  However, if you
+enable match output, HTML tags will also be displayed (this is done in
+order to make the searching as fast as possible).<P>
+
+Comments are <!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="mailto:krishna@cs.wisc.edu">welcome</A>.<P>
+
+<HR><BR>
+
+[ <!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="http://www.cs.wisc.edu/~krisna/krisna.html">Krishna Kunchithapadam</A>
+]<P>
+
+<HR><BR>
+
+Last modified Tue Mar 12 07:06:24 CST 1996 by
+<!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="http://www.cs.wisc.edu/~krisna/author.html">KK</A>.<P>
+
+</BODY>
+</HTML>

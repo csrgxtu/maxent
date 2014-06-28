@@ -1,0 +1,95 @@
+Server: Netscape-Communications/1.1
+Date: Wednesday, 20-Nov-96 23:24:58 GMT
+Last-modified: Thursday, 04-Apr-96 16:19:42 GMT
+Content-length: 2979
+Content-type: text/html
+
+<HEAD>
+<TITLE>CSE 333 Home Page</TITLE> 
+<script language="JavaScript">
+
+<!-- Beginning of JavaScript Applet -------------------
+
+function scrollit_r2l(seed)
+{
+        var m1  = "Under Construction!!!";
+        var msg=m1;
+        var out = " ";
+        var c   = 1;
+
+        if (seed > 100) {
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 100 && seed > 0) {
+                for (c=0 ; c < seed ; c++) {
+                        out+=" ";
+                }
+                out+=msg;
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                    window.status=out;
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;
+                        var cmd="scrollit_r2l(" + seed + ")";
+                        window.status=out;
+                        timerTwo=window.setTimeout(cmd,100);
+                }
+                else {
+                        window.status=" ";
+                        timerTwo=window.setTimeout("scrollit_r2l(100)",75);
+                }
+        }
+}
+// -- End of JavaScript code -------------- -->
+
+</script>
+</head>
+<body onLoad="timerONE=window.setTimeout('scrollit_r2l(100)',500);" bgcolor="#ffffff" text="#000000" link="#ff00ff" alink="#ff0000" vlink="#0000ff">
+
+<FONT SIZE=4>
+<H2>CSE 333 Home Page</H2> 
+<H3>Introduction to Parallel Processing - Spring 1996</H3> 
+<p> 
+<center>
+<pre>
+======================== Under Construction ========================
+</pre>
+<!WA0><a href="news://netnews.upenn.edu/upenn.cis.cse333">News Group</a> / 
+<!WA1><A HREF="http://www.seas.upenn.edu/~songwut/333/lectures.html">Lectures</A> /  
+<!WA2><A HREF="http://www.seas.upenn.edu/~songwut/333/homeworks.html">Homeworks/Labs</A> /  
+<!WA3><a href="http://www.seas.upenn.edu/~songwut/333/exams.html">Exams</a> / 
+<!WA4><a href="http://www.seas.upenn.edu/~songwut/333/resources.html">On-line Resources</a> 
+<p>
+</center>
+<p>
+<center>
+<TABLE BORDER Cellpadding=10>
+<tr><td><strong>Midterm</strong></td><td>canceled</td></tr>
+<tr><td><strong>Final</strong></td><td>Thursday, May 9, 8:30-10:00am
+(</blink>50%</blink> of the grade.)</td></tr> 
+<tr><td><strong>Homeworks</strong></td><td>TBA (</blink>50%</blink> of the grade.)</td></tr>    
+<TR><TD>Lecturer</td><td>Val Tannen (<i><!WA5><a href="mailto:val@cis.upenn.edu">val@cis.upenn.edu</a></i>)</td></tr>
+<tr><td>Office</td><td>Moore 561 M 3-4, Th 2:30-3</td></tr>
+<tr><td>Phone</td><td>x8-2665</td></tr>
+<tr><td>Course Administrator</td><td><!WA6><a href = "http://www.cis.upenn.edu/cgi-bin/finger?sdeysher@central.cis.upenn.edu">Susan Deysher</a></td></tr> 
+</table>
+</center>
+
+<h4>Announcements:</h4>
+<ul>
+
+</ul>
+
+<BLINK>I am distributing another homework today (Th 4/4) in class. It
+will be due on Tu 4/16</blink> 
+
+</BODY> 
+
+
+

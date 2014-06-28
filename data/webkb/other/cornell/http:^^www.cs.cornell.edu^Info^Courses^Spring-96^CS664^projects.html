@@ -1,0 +1,72 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 16-Dec-96 23:20:57 GMT
+Content-Type: text/html
+Content-Length: 3313
+Last-Modified: Saturday, 09-Mar-96 21:37:39 GMT
+
+<TITLE>Suggested Projects for CS664 </TITLE> 
+<HEAD><H1>Suggested Projects for CS664 </H1></HEAD> 
+
+
+
+<li> Robotics
+
+<ol>
+<li><em> Edge Clustering</em> Develop algorithm for clustering of
+edges that represent a single object.
+
+<li><em>Performance Simulations</em> Investigate how high-performance vision
+and image processing applications perform on modern architectures, vision
+applications tend to use large data structures (images) that can exhibit both
+good and bad spatial locality.  Ideally, one would have a processor simulator
+that would be configureable: cache size, cache associativity, memory size,
+processor speed, instruction set, etc.  The simulator should be able to
+generate statistics such as cache hit/miss ratio.  Hopefully the simulator
+could be extended to simulate a Shared Memory Multiprocessor (SMMP).  Starting
+from scratch will be very hard, it may be better to adapt an existing program
+to our needs.  Starting points: <a
+href="http://www.cs.washington.edu/research/arch/">UW</a>.
+
+<li><em>Image Databases</em> There is currently a project here at Cornell to
+develop a general purpose image database that will allow "intelligent"
+searching for images based on a large number of image features.  We need
+people to implement different measures, for basics such as texture pattern
+matching to face recognition.  Starting points: <a
+href="http://www.virage.com/vir-res/demos/">the competitors</a>.
+
+<li><em>Camera Gaze Control</em> Create or adapt an existing object tracking
+algorithm so that the output can be used to control the pan/tilt positions of
+a desktop camera.  The robotics lab is developing a relatively-cheap pan/tilt
+hardware for a standard CCD camera.  We would like the user to be able to
+click on a portion of the image and have the camera pan/tilt to keep the
+object centered in focus.  
+
+<li><em>Find a Cool Use for Stereo Vision</em> Existing programs allow us to
+generate good depth maps at near-real time speeds (5-15 FPS).  We would like
+someone to create a "cute" application using the robots or some other platform
+that would use the depth maps to perform some task, such as navigation or
+collision avoidance (these are not actually the same, currently the easiest
+way for the robot to navigate is for it to go until it "crashes" into
+something, back up a little, then turn).  
+
+<li><em>Stereo Camera Calibration</em> Develop a robust, reliable procedure
+for calibrating a pair of stereo cameras, using a feedback loop between the
+output of the cameras as they view a test pattern and their next adjusted
+view.
+
+<li><em>Text Segmentation</em> Develop a system that can detect text in an
+image or series of images.  This is not the same as OCR, where one tries to
+take an image of printed text and recover the text; rather, you should
+concentrate on how to find text in an image.  Typical examples of texts that
+one might want to identify from a video signal include the bylines on network
+news and scores and player stats from sports games.
+
+<li><em>Human Face Segmentation</em> Basically, find the objects in a scene
+that look like human faces.  How many people are there?  How certain is this
+answer?  Starting point: <a
+href="http://www.cfar.umd.edu/ftp/TRs/CVL-Reports-1993/TR3176-Sirohey.ps.Z">
+Univ. Maryland</a>, also work at CMU by Kanade's group.
+
+</ol> 
+

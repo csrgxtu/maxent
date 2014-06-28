@@ -1,0 +1,104 @@
+Date: Tue, 10 Dec 1996 21:47:57 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Fri, 21 Jun 1996 00:11:49 GMT
+Content-length: 4893
+
+<html>
+<head>
+<title>Practical Data Sheet</title>
+</head>
+<body>
+<h1>W. Derrick Weathersby</h1>
+<h2> Practical Data Sheet</h2>
+<p>
+I have many years of software development experience on platforms ranging
+from IBM mainframe computers (4341, 3090) running MVS/TSO, VM/CMS to
+RISC workstations and Personal Computers hosting Unix (AIX, Ultrix, OSF/1,
+Linux, BSDI), NT, OS/2, DOS and Windows.  Additionally, I've developed
+significant WEB applications including an online transaction management
+system, a distributed document server and more.  
+<p>
+Take a look at my <!WA0><a href="http://www.cs.washington.edu/homes/derrick/resume.ps">resume in postscript form</a>.
+<p>
+Here are a list of my signifcant projects or amassed experiences over the
+last decade.
+<p>
+<h2><a name="XSERVER">Shared X-server project</a></h2>
+I led a team of developers in building a distributed, user interface to
+control the sharing of X applications.  The project centered around a
+shared X-server we developed under AIX 3.2 on IBM RS/6000 boxes.  The
+X-server enabled multiple clients to share the interface of arbitrary
+X applications with out being re-written.  The user interface was also
+a distributed, shared application since it had to reflect the changing
+state of the X-server and the entire system (shared session) as a whole.
+<p>
+The interesting challenges were asynchronously changing the state of all
+clients in a session, allowing clients to synchronously change the state
+of the session, "cloning" the user interface for a late arriving client,
+and defining the interface to intuitively display the session state and the
+other participating clients.
+<p>
+<h3>Useful skills</h3>
+<ul>
+<li> Languages:  The entire project was designed in C++
+<li> X:  Xwindows, Xt Intrinsics, Motif
+<li> OS: AIX internals, signals, sockets (UDP and TCP), network programming
+<li> Misc: Developed a user interface prototype generator
+</ul>
+<p>
+<h2><a name="ZPL">Data Parallel Array Langauge and Compiler</a></h2>
+This project was begun in 1993 as a result of the thesis work done by
+Dr. Calvin Lin under the direction of Professor Larry Snyder.  Larry
+has spent many of his research cycles on parallel computation and bringing
+the field up to the level of sequential computation.  He started by
+defining a realistic machine model for parallel computers that captured 
+the salient features having influence on the performance of the machines.
+His machine model is called CTA or Candidate Type Architecture.  
+Larry contended that in order to achieve peak performance on parallel
+machines, applications had to be written to perform well on the CTA.
+Basically, this said that the CTA is a general architecture that programmers
+can utilize when developing and estimating performance of their applications.
+Further, the compiler writers could use the model to generate better
+code.  Calvin demonstrated that applications following the CTA had 
+better predictive qualities in terms of performance and, in fact, would
+perform equivalently relative to similar applications for any machine
+implementing the CTA.
+<p>
+Following the machine model, the Orca language (Orca-C)
+was conceived to help the
+programmers abstract the notions of the CTA.
+Calvin's work was done by hand translating C code to Orca-C.
+Orca-C defined three levels of abstraction to assist the programmer: X, Y
+and Z.  The X level specified task parallelism, the Z level encompassed
+data parallelism and the Y level defined the distribution of data (to
+realize the parallelism).  ZPL stands for Z Programming Level and as the
+name implies, its purpose was to fulfill the data parallel level of
+abstraction.  
+<p>
+ZPL was designed with two major goals:  Efficiency and Portability.  These
+goals often conflict, but have been brought together in matrimony given
+the design methodology of the language.  Basically, the language initially
+started out with features that could be compiled effectively and the
+language idioms only included ones with the "highest" degree of parallelism.
+After all, the language was being targeted for one level of a three
+level abstraction; therefore, there was no pressure for completeness (the
+X level would offer this completeness since task parallelism is much more
+general than data parallelism).  In any event, the language grew 
+carefully with much deliberation with full features.  ZPL is now a
+fully functioning <!WA1><a href=http://www.cs.washington.edu/research/projects/zpl>
+language and compiler</a>.
+<p>
+<h3>Useful skills</h3>
+I've worked on many of the internals of the compiler, including 
+interprocedural analysis (aliases, statically determining index sets --
+ZPL allows index to be inherited through a runtime region stack),
+code generation and AST traversal and minipulation routines.
+<p>
+However, my research has focused on the collective communication routines
+such as broadcasts, scans and reduces. 
+<p>
+<p>
+<center><!WA2><img src="http://www.cs.washington.edu/homes/derrick/pics/construc.gif"></center>
+</body>
+</html>

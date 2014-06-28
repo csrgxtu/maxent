@@ -1,0 +1,84 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 21:57:23 GMT
+Content-Type: text/html
+Content-Length: 2995
+Last-Modified: Sunday, 15-Dec-96 04:41:58 GMT
+
+<TITLE>CS 387H Database System Implementation</TITLE>
+</HEAD>
+
+<BODY> 
+<pre><H2>CS 387H - Database System Implementation</H2>
+  <H3>Fall 1996</H3></pre>
+
+  <H4>Professor : Don Batory 
+  <H4>TA        : Tong Wang
+<hr>
+<h3>
+  <UL> 
+    <LI>     <A href = "syllabus.ps">Syllabus</a> 
+    <LI>     Homeworks</a>
+	     <UL>
+	     <LI> <A HREF = "hw1.ps">Problem Set #1 & Solution</A>
+	     <LI> <A HREF = "hw2.ps">Problem Set #2 & Solution</A>
+	     <LI> <A HREF = "hw3.ps">Problem Set #3 & Solution</A>
+	     </UL>
+    <LI>     <A href = "README">PROJECT</a> ( Please read this first )
+	     <UL>
+	     <LI> Test DML Files for Project #4 
+ 	          <UL>
+		  <LI> <A HREF = "retrieve.dml"> retrieve.dml</A> 
+			& <A HREF = "retrieve.res"> sample output </A>
+		  <LI> <A HREF = "ret_into.dml"> ret_into.dml</A> 
+                        & <A HREF = "ret_into.res"> sample output </A>
+		  <LI> <A HREF = "replace.dml"> replace.dml</A> 
+                        & <A HREF = "replace.res"> sample output </A>
+		  <LI> <A HREF = "append.dml"> append.dml</A> 
+                        & <A HREF = "append.res"> sample output </A>
+		  <LI> <A HREF = "delete.dml"> delete.dml</A> 
+                        & <A HREF = "delete.res"> sample output </A>
+		  </UL>
+             <LI> DML Test Files for Project #5 
+		  <UL>
+                  <LI> <A HREF = "recovery1.dml">recovery1.dml</A> 
+ 		  <LI> <A HREF = "recovery2.dml">recovery2.dml</A>
+		  <LI> <A HREF = "recovery3.dml">recovery3.dml</A>
+		  <LI> <A HREF = "recovery4.dml">recovery4.dml</A>
+                  </UL>
+	     <LI> Raw Data Files for Project #4 and #5
+                  <UL>
+                  <LI> <A HREF = "emp.data"> emp.data</A> 
+                  <LI> <A HREF = "dept.data"> dept.data</A> 
+                  <LI> <A HREF = "student.data"> student.data</A> 
+		  </UL>
+
+	     </UL>
+    <LI> CONTEST<BR>
+         In this contest, I run all MDBs on my benchmark ( a <A HREF = 
+         "benchmark/benchmark.dml">DML script</A> and
+         3 raw data files: <A HREF = "benchmark/emp.data">emp.data</A>, 
+         <A HREF = "benchmark/student.data">student.data</A>, 
+	 <A HREF = "benchmark/dept.data">dept.data</A> ). 
+         /usr/bin/time was used to measure the running time.
+         Since the order of tuples and attributes in each tuple may be
+	 different from one output to another, I wrote a 
+         <A HREF = "benchmark/transform.perl">Perl script</A> to
+	 transform different outputs into the same order so that I can compare 
+         (/usr/bin/diff) them. It turns out that 
+         <A HREF = "benchmark/contest">10 programs</A> passed the
+	 benchmark without any error. Other programs failed to pass for
+	 some reasons. You can test it by yourself, here's a 
+         <A HREF = "benchmark/benchmark.res">sample output</A>.
+ </UL>       
+ </h3>
+ <hr> 
+
+</Body>
+
+<em> Please <A href = "mailto:twang@cs.utexas.edu">email</a> 
+     your suggestions or comments to me<br>
+Dec 96, <a href ="../index.html">  Tong Wang</a> 
+</em>
+
+

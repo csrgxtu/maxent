@@ -1,0 +1,260 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 21:23:02 GMT
+Content-Type: text/html
+Content-Length: 8306
+Last-Modified: Thursday, 19-Sep-96 00:42:49 GMT
+
+<title>PLAPACK </title>
+
+<h1> Parallel Linear Algebra Package (PLAPACK) </h1>
+
+
+<H3><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><img SRC="http://www.cs.utexas.edu/users/sammy/cgi/spy?/users/rvdg/logs/plapack">
+Number of accesses to this page since Sunday Aug. 4, 1996:
+<!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><img ALIGN=bottom src="http://www.cs.utexas.edu/pub/cgi/number.xbm/www/users/rvdg/cgi/wwwlog.plapack.val"></H3>
+
+<h2> Please sign our  <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.cs.utexas.edu/users/sammy/pla/sign-in"> guestbook </a> so we can keep you informed </h2>
+
+The <b> PLAPACK </b> project investigates interfaces and implementations
+of dense and sparse parallel linear algebra libraries.  
+This project is unique in that it concentrates on convenient
+interfaces.  It is our conclusion that this can only be 
+achieved by distributing the <b> vectors </b> in a linear
+system first, which then induces the <b> matrix </b> distribution.
+Justification for this lies in the fact that the physical problem
+leads to a mathematical model, involving two spaces and an operator.
+It is these spaces that represent the problem.  Discretization
+of the mathematical model leads to vectors, which hold the
+solution and right hand side, 
+and the matrix, which is the discretized operator.
+<b> Physically Based Matrix Distribution </b> is based on these
+ideas.  The interface that allows information from the 
+physical problem and/or mathematical model to be passed down
+to the library is called the <b> Physically Distributed Matrix Interface </b>.
+
+If you would like to be kept informed of progress on this library, please
+sign our <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a href="http://www.cs.utexas.edu/users/sammy/pla/sign-in"> guestbook.
+</a>
+
+
+<hr>
+
+The <b> SL_library </b> is a prototype implementation for PLAPACK.
+Here <b> SL </b> stands for <b>S</b>imple <b>L</b>ibrary.  
+It was created in part 
+to investigate techniques required for the PLAPACK library,
+and in part to provide an infrastructure for the course
+<!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a href="http://www.cs.utexas.edu/users/rvdg/395T.96">
+"Parallel Techniques for Numerical Algorithms" </a>
+taught by
+<!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href="http://www.cs.utexas.edu/users/rvdg"> Robert van de Geijn </a> at
+the University of Texas at Austin.
+<p>
+
+<hr> 
+<!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a href="http://www.cs.utexas.edu/users/rvdg/plapack/Guide.ps">
+<h2> Parallel Linear Algebra Package (PLAPACK): <br>
+Release R0.1 (Beta) Users' Guide </h2> </a> 
+Manuscript in preparation, Aug. 1 version.
+
+<!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><a href="http://www.cs.utexas.edu/users/rvdg/plapack/mit.ps">
+<h2> Using PLAPACK: Parallel Linear Algebra Package </h2>
+</a> 
+
+PLAPACK Users' Guide, to be published by MIT Press in 1997.
+Sept. 10, 1996 version.
+
+<b> In preparation.  Notice that we are changing a number of
+calling sequences. Due to the inconsistency between the currently
+available library and this guide, which reflects the next release,
+it is important to sign our <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><a href="http://www.cs.utexas.edu/users/sammy/pla/sign-in"> guestbook, </a> so we can keep
+you informed. </b>
+
+<hr>
+
+<!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><a href="http://www.cs.utexas.edu/users/gunnels/SL_Library/library.html">
+<h2> SL_library: reference manual </h2> </a>
+
+John Gunnels now maintains this manual 
+
+<hr>
+
+<!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><a href="http://www.cs.utexas.edu/users/rvdg/plapack/performance.html">
+<h2> Some recent performance numbers </h2> </a>
+
+<hr>
+
+<h2> Related reading </h2>
+
+<hr> 
+
+<h2> Unpublished Manuscript </h2>
+
+<ul>
+<li> 
+Almadena Chtchelkanova,
+Carter Edwards,
+John Gunnels,
+Robert van de Geijn,
+<!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><a href="http://www.cs.utexas.edu/users/rvdg/papers/TR2.ps">
+"A Comprehensive Approach to Parallel Linear 
+Algebra Libraries," </a> Draft Oct. 9, 1995. <br>
+Currently 75 pages.  Incomplete manuscript
+<p>
+</ul>
+
+<hr>
+
+<h2>PLAPACK Working Notes </h2>
+<ol>
+<li> C. Edwards, P. Geng, A. Patra, and R. van de Geijn, 
+<!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><a href="http://www.cs.utexas.edu/users/rvdg/papers/pbmd.ps">
+"Parallel Matrix
+Decompositions: have we been doing it all wrong?" </a>
+PLAPACK Working Note #1,
+TR-95-39, Department of Computer Sciences, University of
+Texas, Oct. 1995. 
+<p>
+<li>
+Robert van de Geijn and Jerrell Watts
+<!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><a href="http://www.cs.utexas.edu/users/rvdg/abstracts/SUMMA.html"> "SUMMA: Scalable Universal Matrix Multiplication Algorithm,"</a> PLAPACK Working Note #2,
+Department of Computer Sciences, The Unversity of
+Texas, TR-95-13, April 1995. <br>
+Also: LAPACK Working Note #96 , May 1995.  <br>
+Journal version: Concurrency: Practice and Experience, to appear.
+<p>
+<li>
+Brian Grayson and Robert van de Geijn
+<!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><a href="http://www.cs.utexas.edu/users/rvdg/abstracts/SSUMMA.PPL.html"> "A High Performance Parallel
+Strassen Implementation,"</a> PLAPACK Working Note #3,
+<i> Parallel Processing Letters, </i> to appear.
+<p>
+<li> 
+Almadena Chtchelkanova, John Gunnels, Greg Morrow,
+James Overfelt,
+Robert A. van de Geijn,
+<!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><a href="http://www.cs.utexas.edu/users/rvdg/papers/sB_BLAS.ps">
+"Parallel Implementation of  BLAS:
+General Techniques for Level 3 BLAS," </a> PLAPACK Working Note #4,
+TR-95-40, Department of Computer Sciences, University of
+Texas, Oct. 1995. <br>
+Journal version: Concurrency: Practice and Experience, <b> to appear</b>.
+<p>
+<li>
+Almadena Chtchelkanova,
+Carter Edwards,
+John Gunnels,
+Greg Morrow,
+James Overfelt,
+Robert van de Geijn,
+<!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><a href="http://www.cs.utexas.edu/users/rvdg/abstracts/SC96.html"> "Towards Usable and Lean Parallel Linear Algebra Libraries," </a> PLAPACK Working Note #5,
+TR-96-09, Department of Computer Sciences, University of Texas,
+May 1996. <br>
+Conference version: Supercomputing 96, <b> submitted</b>.
+<p>
+</ol>
+<p>
+
+<hr>
+
+<h2> Overhead foils used at the 
+<!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><a href="http://www.netlib.org/utk/papers/sblas-meeting.html">BLAS workshop</a> in Tennessee </h2>
+
+<ul>
+<li> Almadena Chtchelkanova, Carter Edwards, John Gunnels, and Robert van de Geijn,
+<!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><a href="http://www.cs.utexas.edu/users/rvdg/papers/BLAS95.1.ps"> A Comprehensive Approach to Parallel Linear Algebra Libraries</a>, presented by Robert van de Geijn.
+<p>
+<li> Carter Edwards and Robert van de Geijn, <!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><a href="http://www.ticam.utexas.edu/~carter/pdmi_pres.ps.Z"> Physically Distributed Matrix Interface </a> presentated by Carter Edwards.
+<p>
+<li> Almadena Chtchelkanova, John Gunnels, Greg Morrow, James Overfelt,
+   Robert A. van de Geijn, <!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><a href="http://www.cs.utexas.edu/users/rvdg/papers/BLAS95.3.ps"> Parallel Implementation of BLAS: General
+   Techniques for Level 3 BLAS</a>,
+presentated by Almadena Chtchelkanova.
+<p>
+</ul>
+
+<h2> Other Overhead foils </h2>
+
+<ul>
+<li>
+Robert A. van de Geijn,
+<!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><a href="http://www.cs.utexas.edu/users/rvdg/papers/sandia.ps">
+Sandia Slides </a>
+<p>
+<li>
+<!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><a href="http://www.cs.utexas.edu/users/gunnels/SL_Library/rvdg_presents/index.html">
+Color Powerpoint slides </a>
+<p>
+</ul>
+
+<hr> 
+
+<h2> Sponsors </h2>
+
+This project is being funded in part by 
+<ul>
+<li>
+The <!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><a href="http://www.mcs.anl.gov/Projects/PRISM/"> PRISM </a>
+(Parallel Research on Invariant Subspace Methods)
+project, under ARPA grant P-95006.
+<p>
+<li>
+<!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><a href="http://farside.gsfc.nasa.gov/ESS/">
+The NASA High Performance Computing and Communications
+Program's Earth and Space Sciences Project </a>
+under NRA Grant NAG5-2497.
+<p>
+<li>
+<!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><a href="http://farside.gsfc.nasa.gov/ESS/">
+The NASA High Performance Computing and Communications
+Program's Earth and Space Sciences Project 
+</a>
+under NRA Grant NAG5-2511.
+<ul>
+<li>
+Title: Application of Massively Parallel Processing Techniques to Least Squares
+Problems in Satellite Gravity Gradiometry 
+<li>
+Investigators: Dr. Bob E. Schutz, Dr. Srinivas Bettadpur, Gregory A. Baker 
+</ul>
+<p>
+</ul>
+
+<h2> Meet the Team </h2>
+<ul>
+<li> 
+<!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><a href="http://www.ticam.utexas.edu/users/philip"> Philip Alpatov </a>
+<li> 
+<!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><a href="http://www.ae.utexas.edu/~baker"> Greg Baker </a>
+<li> 
+<!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><a href="http://www.cs.utexas.edu/users/almad"> Almadena Chtchelkanova </a>
+<li> 
+<!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><a href="http://www.ticam.utexas.edu/users/jeaton"> Joe Eaton </a>
+<li> 
+<!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><a href="http://www.ticam.utexas.edu/~carter"> Carter Edwards </a>
+<li> 
+<!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><a href="http://www.ticam.utexas.edu/users/murthy"> Murthy Guddati </a>
+<li> 
+<!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><a href="http://www.cs.utexas.edu/users/gunnels"> John Gunnels </a>
+<li> 
+<!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><a href="http://www.cs.utexas.edu/users/sammy"> Sam Guyer </a>
+<li> 
+<!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><a href="http://www.ticam.utexas.edu/~ken"> Ken Klimkowski </a>
+<li> 
+<!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><a href="http://www.cs.utexas.edu/users/lin"> Calvin Lin </a>
+<li> 
+<!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><a href="http://www.ph.utexas.edu/~morrow/home.html"> Greg Morrow</a>
+<li>
+<!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><a href="http://www.ae.utexas.edu/~nagel"> Peter Nagel </a>
+<li> 
+<!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><a href="http://www.ma.utexas.edu/users/overfelt"> James Overfelt </a>
+<li> 
+<!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><a href="http://www.ticam.utexas.edu/~pal"> Michelle Pal </a>
+<li>
+<!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><a href="http://www.cs.utexas.edu/users/rvdg"> Robert van de Geijn </a>
+</ul>
+
+<hr>
+
+

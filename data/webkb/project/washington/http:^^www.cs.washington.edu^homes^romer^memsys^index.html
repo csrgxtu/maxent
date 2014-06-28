@@ -1,0 +1,136 @@
+Date: Thu, 21 Nov 1996 20:32:24 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Mon, 18 Mar 1996 22:50:51 GMT
+Content-length: 5144
+
+<HEAD>
+<TITLE>
+Memory Systems Research at the University of Washington
+</TITLE>
+</HEAD>
+<BODY bgcolor="#ffffff">
+<!-- BACKGROUND="elephant.background.gif" -->
+
+<H1>
+<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><img src="http://www.cs.washington.edu/homes/romer/memsys/elephant.icon.gif">
+Memory Systems Research
+</H1>
+<ADDRESS>
+<!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF = "http://www.cs.washington.edu">
+Department of Computer Science & Engineering </A> <br>
+<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF = "ftp://ftp.u.washington.edu/public/">
+University of Washington, </A> FR-35 <br>
+<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF = "http://www.cs.washington.edu/area/">
+Seattle, WA</A> 98195
+</ADDRESS><br>
+
+
+Welcome to the home page for Memory Systems Research at <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="http://www.cs.washington.edu/">UW CSE</A>.<P>  
+
+<H2>Description </H2>
+Our research group is investigating techniques that use the operating
+system to improve memory system performance.  All of our work shares
+the following features:
+<ul>
+<li>
+  We rely a combination of simple hardware support and operating
+  system modifications to monitor the dynamic behavior of applications.
+<li>
+  These monitoring mechanisms incur a small overhead at runtime, but the
+  information they collect can be used to identify sources of memory
+  system delays such as cache misses and TLB misses.
+<li>
+  By identifying and resolving these bottlenecks, we not only pay for
+  the overhead of the monitoring mechanisms, but also significantly
+  improve overall system performance.
+</ul>
+<p>
+In our most recent project, we explored policies that monitor
+application memory reference patterns in order to identify and resolve
+TLB performance problems.  Poor TLB performance results when the TLB
+is too small to cover the current application's working set.  Several
+modern architectures support superpages: pages whose size is a
+multiple of the system's base page size.  On such systems TLB
+performance can be improved by using larger pages, but at the cost of
+wasted memory due to internal fragmentation.
+<p>
+We simulated several policies that adapt the page size dynamically to
+different regions of an application's address space, constructing
+superpages by copying the component pages to a contiguous region of
+memory.  We developed a policy that monitors TLB misses, and balances
+the potential benefit of having a superpage (a reduction in future TLB
+misses) against the cost of constructing the superpage (an in-memory
+copy).  By constructing superpages only when and where TLB miss
+patterns warrant, this policy attains the TLB performance of large
+pages without their internal fragmentation.
+<p>
+For more details on this project, see our paper <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href="ftp://ftp.cs.washington.edu/homes/romer/isca95.paper.ps">
+     Reducing TLB and Memory Overhead Using Online Superpage Promotion </A>
+     (ISCA '95, to appear).
+<p>
+We're looking for someone to implement these algorithms -- this would make
+a good quals or masters project.
+<br>
+<!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><A href="http://www.cs.washington.edu/homes/romer/memsys/superpage-implementation.html">Project Description</a>.
+<hr>
+
+<h2>People</h2>
+
+Faculty:
+<UL>
+<LI> <!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><A HREF="http://www.cs.washington.edu/homes/bershad/index.html">Brian Bershad</A> <EM>(bershad@cs.washington.edu)</EM></LI>
+<LI> <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><A HREF="http://www.cs.washington.edu/homes/karlin/index.html">Anna Karlin</A> <EM>(karlin@cs.washington.edu)</EM></LI>
+</UL>
+
+Current Students:
+<ul>
+<LI> <!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><A HREF="http://www.cs.washington.edu/homes/dlee/index.html">Dennis Lee</A> <EM>(dlee@cs.washington.edu)</EM></LI>
+<LI> <!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><A HREF="http://www.cs.washington.edu/homes/ohlrich/index.html">Wayne Ohlrich</A> <EM>(ohlrich@cs.washington.edu)</EM></LI>
+<LI> <!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><A HREF="http://www.cs.washington.edu/homes/romer/index.html">Ted Romer</A> <EM>(romer@cs.washington.edu)</EM></LI>
+<LI> <!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><A HREF="http://www.cs.washington.edu/homes/waynew/index.html">Wayne Wong</A> <EM>(waynew@cs.washington.edu)</EM></LI>
+</ul>
+
+<hr>
+<H2>Papers</H2>
+<ul>
+<li>
+<!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><img src="http://www.cs.washington.edu/homes/romer/memsys/skier.icon.gif">
+     <!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><a href="ftp://ftp.cs.washington.edu/homes/romer/isca95.paper.ps">
+     Reducing TLB and Memory Overhead Using Online Superpage Promotion </A>. 
+     Romer, Ohlrich, Karlin, and Bershad.  ISCA '95, to appear.
+<li>
+<!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><img src="http://www.cs.washington.edu/homes/romer/memsys/bus.icon.gif">
+     <!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><a href="ftp://ftp.cs.washington.edu/homes/romer/scml.paper.ps"">
+	Dynamic Page Mapping Policies for Cache Conflict Resolution on 
+	Standard Hardware </A>.
+     Romer, Lee, Bershad, and Chen.  <EM> OSDI </EM>, pp. 255-266.
+<li>
+<!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><img src="http://www.cs.washington.edu/homes/romer/memsys/camel.icon.gif">
+    <!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><a href="http://www.cs.washington.edu/homes/bershad/paper-cml.ps">
+	Avoiding Conflict Misses Dynamically in Large Direct-Mapped Caches </A>.
+     Bershad, Lee, Romer, and Chen.  <EM> ASPLOS </EM> VI, pp. 158-170.
+<li>
+     <!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><a href="http://www.cs.washington.edu/homes/romer/memsys/wayne_wong_quals.ps">
+     A Comparison of the Memory Performance of the MIPS R3000 and DEC
+     Alpha 21064</a>.  Wong.  Ph. D. Quals Project Report, University of
+     Washington.
+<li>
+     <!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><a href="http://www.cs.washington.edu/homes/dlee/mypapers/quals.ps">
+     Instruction Cache Effects of Different Code Reordering Algorithms. </a>
+     Lee.   Ph. D. Quals Project Report, University of Washington.
+
+</ul>
+
+
+<HR>
+<H2> <!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><A HREF=http://www.cs.washington.edu/homes/romer/memsys/memsys.html> Memory Systems Bibliography </A> </H2>
+<hr>
+
+<ADDRESS>
+<!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><a href="http://www.cs.washington.edu/homes/romer">
+Ted Romer</a> (romer@cs.washington.edu)
+</ADDRESS>
+
+</BODY>
+</html>

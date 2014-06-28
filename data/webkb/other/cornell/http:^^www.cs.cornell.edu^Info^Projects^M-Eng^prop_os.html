@@ -1,0 +1,112 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 20:03:35 GMT
+Content-Type: text/html
+Content-Length: 4489
+Last-Modified: Tuesday, 19-Sep-95 17:20:57 GMT
+
+<HTML>
+<HEAD>
+<TITLE>
+Basic Operating Systems projects.
+</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+<IMG SRC="eniac.jpg">
+<H1>Projects for basic Operating Systems Research</h1> 
+</CENTER>
+<HR>
+
+To give students the opportunitycp: No match.
+hands dirty on
+some <EM>real</EM> operating systems research we are offering
+a number of projects based on the 
+<A HREF="http://plan9.att.com/plan9"> plan9 </A>
+distributed operating system and on the 
+<A HREF="http://www.cen.uiuc.edu/~jeske/VSTa/"> VSTA </A>
+public micro kernel. 
+
+<P>
+The main goal of these projects is to get exposure to operating
+systems that are based on novel research principles in contrast
+to operating systems that are build using a more traditional 
+approach like the BSD derivates, Linux or Mach.
+Plan9 and VSTA were chosen for very specific research reasons which will
+become clear when your read their individual sections below. A major
+organizational reason was that these operating systems are available
+for your PC at home at, where they can peacefully co-exist with your other
+architectures. 
+<P>
+Except for some startup activities for the plan9 project, there
+are no other rules to these projects than that they should
+be <STRONG>systems</STRONG> projects. Projects are being
+determined in cooperation between the faculty involved
+and the students who want to do this work. Examples of projects
+are a distributed CD-rom file server for plan9, a process server
+for VSTA, various device drivers for VSTA, a kernel packet filter
+for either of the architectures, etc.
+<P>
+The students who want to subscribe to these projects will need to have a
+solid background in programming in the C language, know how to use
+development tools like make, and have had some exposure to the fundamentals
+of operating systems, networks and distributed systems. Affinity with
+real system work is mandatory.
+<P>
+<h3>Faculty in charge: Werner Vogels, Robbert van Renesse and Thorsten
+von Eicken</h3>
+
+<h2>PLAN9</h2>
+<P>
+Plan 9 is a distributed system. In the most general configuration, 
+it uses three kinds of components:
+terminals that sit on users' desks, file servers that store 
+permanent data, and CPU servers that provide
+faster CPUs, user authentication, and network gateways. 
+These components are connected by various
+kinds of networks, including Ethernet, Datakit, 
+specially-built fiber networks, ordinary modem
+connections, and ISDN. In typical use, users interact with 
+applications that run either on their terminals
+or on CPU servers, and the applications get their data 
+from the file servers, but it's also small enough to
+run by itself on a laptop. It is highly configurable; it 
+escapes from specific models of networked
+workstations and central machine service. 
+<P>
+This project will start up with the installation of plan9
+on a file server and to make a number of machines (PC's and Sparc stations)
+in the department capable of booting plan9 (over the network).
+<P>
+Follow-up activities can be in many areas of plan9, but will involve
+building new servers to support remote devices (running under Unix),
+connecting your home PC running plan9 to the departmental plan9 
+fileserver through dial-in services, and adding a new communication
+mechanism to the plan9 kernel. Other projects can be determined in cooperations
+with the researchers at AT&T Bell Labs.
+<h2>VSTa</h2>
+<P>
+VSTa is an experimental kernel which attempts to blend the design of a 
+microkernel with the system organization of Plan 9. The result is a 
+small privileged kernel running user-mode tasks to provide system 
+services such as device drivers, filesystems, and name registry. Like 
+Plan 9, each service provides a filesystem-like interface.
+VSTa was originally developed by Andrew Valencia and is now placed
+under GNU copyleft.
+<P>
+There are many, many things still to be developed for VSTa, its network
+servers are very new and could be evaluated and improved, device drivers
+need to be written, there is no windowing system, and many more. Also
+existing mechanisms could be replaced or improved, examples are the now
+kernel based process management could be split into a kernel dispatcher and
+a process server. Developing an remote IPC mechanism is another 
+possibility.
+<P>
+Anything is possible in this OS as it is small (fits on 3 floppies, binaries
+<STRONG>and</STRONG> source code), easy to understand and very flexible.
+<P>
+<hr>
+For information about this WWW page contact 
+<A HREF="mailto:vogels@cs.cornell.edu">Werner Vogels</A>
+</BODY>
+</HTML>

@@ -1,0 +1,156 @@
+Date: Tue, 05 Nov 1996 00:16:19 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 12 Sep 1996 23:37:55 GMT
+Content-length: 6101
+
+<title>
+Glew on High-Level Editting
+</title>
+
+<H1>
+Glew on High-Level Editting
+</H1>
+
+I have had a long-time interest in higher level editting operations,
+both for normal programming languages, and for hardware design - HDLs.
+
+<p>
+E.g. the MIT "Programmer's Apprentice".
+
+<p>
+This web page will serve as an achor for my own thoughts on the issue,
+particular for me to record scenarios to which this could apply.
+
+<H2>Semantic Split</H2>
+
+A common operation involves "spliting" a variable or parameter.
+<p>
+E.g. I need to edit GNU Emacs' dynamic abbreviations package to
+provide completion to end of line instead of to end of word.
+Unfortunately, the package presently has a single variable 
+"AbbreviationRegexp" which is using in two different contexts:
+(1) to dtermine the symbol that you are looking at,
+and (2) to determine the expansion.
+
+<p>
+I need to split this regexp so that I can control these capabilities
+separately.
+Unfortunately, there is no way to do this without creating a complete
+copy of a call-tree of several dozen functions.
+And, of course, if I create this copy, then any changes to the original
+will not propagate to my copy, unless I succeed in subverting the original implementation,
+reimplement it in terms of the refined, split, semantics.
+
+<H2>Recursive Parameter Application</H2>
+
+I noticed this possible HLEO (High Level Editting Operation) while
+maintaining my "getnumber" package.
+
+<p> This package relies on recursion to provide a context-sensitive
+number parser that accepts most numeric formats. Each recognizer has
+only limited knowledge of syntax, but recurses through the top level
+recognizer to handle variants, thus obtaining modularity and easy
+extensibility.
+
+<p>Initially, the calling tree looked a bit like:
+<DL>
+<DT><A NAME="Dgetnumber">Dgetnumber</A><DD>
+    <DL>
+    <DT>Dgetnumberlist<DD>
+	<DL>
+	<DT>Numeric formats, like decimal<DD>
+	    terminal - no further calls or recursion
+	<DT>Expression formats, like +<DD>
+	    Recurses through <!WA0><A HREF="#Dgetnumber>Dgetnumber</A>
+	    to handle the subcomponents of the expression, after 
+	    the operator has been recognized.
+	</DL>
+    </DL>
+</DL>
+
+<p>
+When I tried to create a variant of Dgetnumber - not a replacement, just a variant - 
+I realized that I needed another level of indirection.
+Instead of the expression nodes calling Dgetnumber, they needed to call a variable
+TopLevelRecognizer for their recursion.
+To make this MP safe, this variable TopLevelRecognizer should not be a global variable,
+but should be a parameter passed to every function in the calling tree:
+<DL>
+<DT><A NAME="Dgetnumber_Address">Dgetnumber_Address</A><DD>
+	sets <A NAME="#TopLevelRecognizer1">TopLevelRecognizer=Dgetnumber_Address</A>
+	 when it calls Dgetnumberlist
+<DT><A NAME="Dgetnumber">Dgetnumber</A><DD>
+	sets <A NAME="#TopLevelRecognizer2">TopLevelRecognizer=Dgetnumber</A>
+	 when it calls Dgetnumberlist
+    <DL>
+    <DT>Dgetnumberlist(with TopLevelRecognizer=Dgetnumber,...)<DD>
+	<DL>
+	<DT>f(TopLevelRecognizer,...): Numeric formats, like decimal<DD>
+	    terminal - no further calls or recursion
+	<DT>f(TopLevelRecognizer,...): Expression formats, like +<DD>
+	    Recurses through TopLevelRecognizer,
+	    either <!WA1><A HREF="#TopLevelRecognizer1>Dgetnumber_Address</A>
+	    either <A HREF="#TopLevelRecognizer2>Dgetnumber</A>
+	    depending on usage,
+	    to handle the subcomponents of the expression, after 
+	    the operator has been recognized.
+	</DL>
+    </DL>
+</DL>
+
+<p> Therefore, the high level editting operation is
+<em> in this calling tree, take all instances of the explicitly named operation or value X,
+and make them refer to a parameter that is passed along all paths the calling tree. </em>
+Similarly, the reverse operation may occasionally be useful.
+An interactive query framework would help.
+
+<p> Well, I just completed the above edit by hand.  It took me more
+than six (6) hours!!!!  It was complicated by the fact that a semantic
+split of a type needed to be done, and by incomplete type checking of
+function parameters in the C compiler I was using, but this emphasizes
+the point: something that was asa simple to describe as above took an
+excessively long time, because of the attention to detail that could
+be automated.
+
+<H4> Hidden Recursive Parameters </H4>
+
+A more specific example of this arose because I wanted to pass "hidden
+state" that is only useful to one of the lower functions in the
+calling tree.  It is not appropriate to make this extra info an
+explicit parameter, because the information is only of interest to the
+upper level function that set it up, and the lower level function that
+receives it.  None of the intervening levels of functions care about
+what is being passed.
+
+<p> I.e. we want to transparently communicate something between two different levels of
+the calling hierarchy, without affecting (or minimally affecting) the  intermediate layers.
+
+<p> A typical naive solution is to do this with a global variable, but that is not MP  safe.
+
+<p> Again, the "best" solution is to pass the hidden information as a
+parameter through all the intermediate levels. But, in addition to
+creating the parameter, we also need to create the data types that can
+hide what is being passed. Furthermore, because it is quite likely
+that there will need to be multiple, different, such instances of
+communication, it is desirable to create a generic "data hiding
+mechanism: or "call-tree message passing mechanism" that can handle
+several such messages transparently.
+
+<p> All functions in such a calling tree might have a generic
+parameter "CallingTreeMessageList", which would be a composite object,
+e.g. a list, of messages with source, destination addresses, etc.
+
+<p> The high level routine might do something like this
+<pre>
+    call generic-call-tree placing message to specialized-subfunction-variety
+</pre>
+while the receiver might do
+<pre>
+    if I need extra info not in standard call parameters 
+	    scan CallingTreeMessageList to see  if it is there
+</pre>
+
+
+<hr>
+$Header: /u/g/l/glew/public/html/RCS/high-level-editting.html,v 1.2 1995/12/31 07:54:17 glew Exp $

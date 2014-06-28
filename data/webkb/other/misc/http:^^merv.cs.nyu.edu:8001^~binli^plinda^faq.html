@@ -1,0 +1,130 @@
+Date: Tuesday, 14-Jan-97 18:59:33 GMT
+Server: NCSA/1.3
+MIME-version: 1.0
+Content-type: text/html
+Last-modified: Thursday, 07-Nov-96 16:08:58 GMT
+Content-length: 4420
+
+<HTML>
+
+<!-- Author: Bin Li -->
+
+<HEAD>
+<TITLE>PLinda: </TITLE>
+<LINK REV="MADE" HREF="mailto:binli@cs.nyu.edu">
+</HEAD>
+
+<body bgcolor="#ffffff" text="#000070">
+
+<HR SIZE=3>
+<CENTER>
+<H1>Persistent Linda: FAQ</H1>
+</CENTER>
+<P>
+<HR SIZE=3>
+
+Most of these questions are for running PLinda.
+<OL>
+<LI> You are run pl and it says cannot find correct type for your
+machine. Edit the file pl and check that the switch constants
+are correct for your machine --- maybe you are running on Linux2.x
+and the switch we have for Linux is Linux1 so you just need
+to change the 1 to a 2.
+</LI>
+
+<LI> The system freezes after clicking on the boot button of the
+   system from the user interface.
+<P>
+   You will need to rlogin into the machine you ran pl from and
+   kill the process called plm.
+   This problem is caused by one of three problems:
+<blockquote>
+<OL>
+   <LI> .rhosts file does not contain the machine you are running pl from.
+   <LI> You do not have write permission to the directory you are running pl
+      from and therefore the server is blocking. Or the file system is too full.
+   <LI> There is no executable for the server for the architecure you are
+      running pl from or you don't have permission to run it.
+      Check the file ~/plinda/bin/sunos/plinda_server 
+      (change sunos to solaris or hpux depending on your machine type).
+
+</OL>
+</blockquote>
+</LI><P>
+<LI>
+     Do not use the exit function inside of plinda source code.
+     Instead use pl_exit(int val) which will inform the runtime
+     system that the program is gracefully exiting rather than
+     an exit due to a failure.
+</LI><P>
+
+<LI> The system is not able to start daemons on remote machines when
+   you add them to the host pool.
+<p>
+   Check that the .rhosts file has the machine you are running the server
+   on in it.
+<P>
+   Check that you can execute the daemon for that machine type
+   that is the file ~/plinda/bin/sunos/plinda_daemon
+   (change sunos to solaris or hpux depending on your machine type).
+</LI><P>
+<LI> You cannot see your applications in the application select box of the
+   user interface.
+<P>
+   This is probably because they do not have the .exe extension or
+   they are not readable.
+</LI><P>
+<LI> Compilation of your program is deadlocked.
+<p>
+A common error is that you don't have the right parameters in real_main(...).
+A correct real_main(...) should look like this: real_main(int argc, char **argv, char **env).
+</LI><p> 
+<LI> The system is not able to start applications after clicking on them.
+<P>
+The applications are not readable or you have not compiled them for
+all the machines in your host pool. This is very important since the
+system may try to run an application on any machine in the pool.
+Or you need to give the system permission to start an xwindow for the
+application. Type "xhost +" on the console of the machine 
+you are sitting at.
+</LI>
+<p>
+<LI>
+For PLinda2.1a if arg_rdp is called with a tuple pattern that does not
+match the eval tuple, an assert will fail in the server.
+This has been fixed.
+</LI><p>
+<LI>
+     When compiling, you get the message tclMain.o (tkMain.o resp)
+     and tkMaintk3.6.o main multiply defined.  This is because
+     some linkers will pick up all functions rather than just the
+     first. This can usually be fixed with the right flags passed to
+     C++ which will pass them to ld or you can copy the libtcl.a
+     and libtk.a libraries to a private directory, and do
+     ar d libtcl.a tclMain.o and ar d libtk.a tkMain.o which will
+     remove the mains from these two libraries. Make sure to
+     modify the makefile by changing TCL_LIBRARY and TK_LIBRARY to
+     pick up the new versions. If you still get this problem,
+     make sure the TCL_LIBRARY and TK_LIBRARY are before any others
+     in the link line of obj/Makefile.
+</LI><p>
+<LI>
+     When compiling there are warning messages (1) can't convert const
+     gid to gid & in plinda_lib.C, (2) implicit declaration of index,
+     (3) comparison between signed and unsigned in the gnu directory,
+     and (4) long format used for int in the monitor directory.
+     These are ok and should be fixed soon.
+</LI><p>
+</OL>
+<P>
+<!WA0><A HREF="http://merv.cs.nyu.edu:8001/~binli/plinda/index.html"><!WA1><IMG SRC="http://merv.cs.nyu.edu:8001/~binli/gifs/Buttons/home_green.gif"> Back to PLinda homepage.</A>
+<HR SIZE=3>
+
+<ADDRESS>
+Last modified by 
+<!WA2><A HREF="http://merv.cs.nyu.edu:8001/~binli/">Bin Li</A>.
+January 21, 1995.
+</ADDRESS>
+
+</BODY>
+</HTML>

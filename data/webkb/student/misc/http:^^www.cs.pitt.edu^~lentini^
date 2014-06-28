@@ -1,0 +1,202 @@
+Date: Tue, 26 Nov 1996 17:52:33 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Fri, 28 Jun 1996 19:49:15 GMT
+Content-length: 9253
+
+<!DOCTYPE html PUBLIC "-//W3O//DTD HTML 3.0//EN">
+<html>
+<!-- 
+<BODY BACKGROUND="http://www.europa.com/~yyz/textures/aq.jpg">
+<BODY BACKGROUND="aq.jpg">
+-->
+<BODY BGCOLOR=#FFFFE0>
+<head>
+<title> Russell P. Lentini </title>
+</head> <body>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Beginning of JavaScript Applet -------------------
+
+/* Copyright (C)1996 Web Integration Systems, Inc. DBA Websys, Inc.
+   All Rights Reserved.
+
+   This applet can be re-used or modified, if credit is given in 
+   the source code.z
+
+   We will not be held responsible for any unwanted effects due to the 
+   usage of this applet or any derivative.  No warrantees for usability 
+   for any specific application are given or implied.
+
+   Chris Skinner, January 30th, 1996.
+   
+   Hacked for ItalWeb by Elizabeth Spencer-Comoy, Feb 9th 1996.
+*/
+
+function scrollit_r2l(seed)
+{
+        var m1  = "****    H A V E   A   N I C E   D A Y    ";
+        var m2  = "**";
+        var m3  = "*";
+        var m4  = "*";
+
+        var msg=m1+m2+m3+m4;
+        var out = " ";
+        var c   = 1;
+
+        if (seed > 100) {
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 100 && seed > 0) {
+                for (c=0 ; c < seed ; c++) {
+                        out+=" ";
+                }
+                out+=msg;
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                    window.status=out;
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;
+                        var cmd="scrollit_r2l(" + seed + ")";
+                        window.status=out;
+                        timerTwo=window.setTimeout(cmd,100);
+                }
+                else {
+                        window.status=" ";
+                        timerTwo=window.setTimeout("scrollit_r2l(100)",75);
+                }
+        }
+}
+// -- End of JavaScript code -------------- -->
+
+</SCRIPT>
+
+<!--
+<BODY TEXT="#FFFFFF" LINK="#FFFF00" VLINK="#00E7FF" ALINK="#FF0000" BACKGROUND="blkgry.jpg" BGPROPERTIES=FIXED onLoad="timerONE=window.setTimeout('scrollit_r2l(100)',500);">
+-->
+<BODY BGPROPERTIES=FIXED onLoad="timerONE=window.setTimeout('scrollit_r2l(100)',500);">
+
+
+<center><!WA0><img src="http://www.cs.pitt.edu/~lentini/nameT.gif"></center>
+<!--
+<!WA1><img align=middle src="http://www.mmrcorp.com/cgi-bin/rbox/feet"> 
+<!WA2><img align=middle src="http://www.cs.pitt.edu/~lentini/stopT.gif">
+-->
+
+<H3>
+Thanks for stopping by my home page.  I am a graduate student in the <!WA3><a href="http://www.cs.pitt.edu/">Department of Computer Science</a> at the <!WA4><a href="http://www.pitt.edu/">University of Pittsburgh.</a>  My area of concentration is <!WA5><a href="http://www.comlab.ox.ac.uk/archive/comp/ai.html">Artificial Intelligence</a>.<p>
+</h3>
+<h2>
+<!WA6><img align=middle src="http://www.cs.pitt.edu/~lentini/Ducati-851S.P.2.S.gif"> And this will be me if I ever get a job...
+<p>
+</h2>
+<h3>
+
+<!--
+Now you probably want to read my <!WA7><a href="http://www.cs.pitt.edu/cgi-bin/finger.exp?lentini">finger information</a>.<p>
+-->
+If you like you can email me at <i><!WA8><a href="mailto:lentini@cs.pitt.edu">lentini@cs.pitt.edu</a></i> 
+<p>
+I earned my B.S. in <!WA9><a href="http://cs.millersv.edu">Computer Science</a> at <!WA10><a href="http://marauder.millersv.edu">Millersville University</a> and was involved in research at <!WA11><a href="http://zansiii.millersv.edu">Millersville University's Intelligent Machines Laboratory</a>... try running the <!WA12><a href="http://zansiii.millersv.edu:8080/cgi-bin/prolog.html">Heuristic Search Methods PROLOG DEMO!!</a>.
+
+<p>
+<center><!WA13><img src="http://www.cs.pitt.edu/~lentini/biglineT.gif"></center>
+
+</h3>
+<p>
+<h2> Current Research Projects </h2>
+<UL>
+<li><strong>"Scaling up Inductive Machine Learning with Massive Parallelism"</strong><br>
+<i>Masters Project</i>:  NSF-funded project involves inductive rule learning using huge datasets containing both symbolic and numeric data types (check out <!WA14><a href="http://www.ics.uci.edu/~mlearn/Machine-Learning.html">UCI</a> for some machine learning info).  The system being used is <!WA15><a href="http://www.epm.ornl.gov/pvm/pvm_home.html">Parallel Virtual Machine (PVM)</a> running on a <!WA16><a href="http://www.cray.com/PUBLIC/product-info/mpp/CRAY_T3D.html">Cray T3D</a> at the <!WA17><a href="http://pscinfo.psc.edu">Pittsburgh Supercomputing Center</a>.  The principal investigator of the project is <!WA18><a href="http://www.cs.pitt.edu/~buchanan">Dr. Bruce Buchanan</a>, and the project supervisor is John Aronis.
+<p>
+<LI><strong>"Using Machine Learning to Learn Feedback Procedure in Intelligent Game Tutoring Systems"</strong><br>
+The tutoring system will teach the user the winning strategy of the 2-player strategy board game Connections.  The question to be answered is whether machine learning can be used to determine appropriate times to give feedback as well as which type(s) of feedback should be given.  The finished product should be general enough to serve most students well.  The learning method being used is a multilayered feed-forward neural network.<br>
+---> Also working on this project... <!WA19><a href="http://bert.cs.pitt.edu/~karyadi">Iwan K. Tanuwidjaja</a><br>
+---> Click <!WA20><a href="http://www.sc.ist.ucf.edu/~ott/1_2/1_2_1/index.htm">here</a> for more info on intelligent tutoring systems.<br>
+---> Get a list of <!WA21><a href="http://www.lans.ece.utexas.edu/others.html">neural net sites and resources</a>.
+<p>
+<li><strong>"Assessing Human Performance During Combined Visual, Auditory, and Vestibular Stimulation"</strong><br>
+AFOSR-funded project involves providing combined sensory stimulation to improve studies of human spatial orientation and disorientation during multi-sensory input. Response measures include both measures of extraocular movements and straightforward measures of subject performance such as the ability to perform simple arithmetic and to perform visual pattern recognition tasks.  The hardware being used is the <!WA22><a href="http://www.miro.de">miro</a>VIDEO DC20 Professional Digital Video Editing System, the Power DAC 3-D Audio Rendering System from Tucker-Davis Technologies, and an off-vertical axis rotation (OVAR) chair.  This project is being worked on in conjuction with the Balance Disorders Division of the Department of Otolaryngology, <!WA23><a href="http://www.omed.pitt.edu/~omed/homepage2.html">University of Pittsburgh School of Medicine</a>.<br>
+---> Also working on this project... <!WA24><a href="http://bert.cs.pitt.edu/~skyking">John Candee</a>.<br>
+---> You might want to go to the <!WA25><a href="http://balance.eei.upmc.edu:8080">project home page</a> for more info.
+
+</UL>
+<p>
+<center><!WA26><img src="http://www.cs.pitt.edu/~lentini/biglineT.gif"></center>
+<h2>If Dr. Plantinga is reading this....</h2>
+<h4>
+<UL>
+<LI>Height --------  5' 8"
+<LI>Shoe size ------ 9
+</UL>
+</h4>
+
+<P>
+<center><!WA27><img src="http://www.cs.pitt.edu/~lentini/biglineT.gif"></center>
+<h4>
+A great new company that designs and maintains home pages for the web is <!WA28><a href="http://www.cyclomedia.com">Cyclomedia</a>.
+<p>
+
+Or if you want to create your own home page, click <!WA29><a href="http://www.ncsa.uiuc.edu/demoweb/html-primer.html">here</a> to see how.<p>
+
+Check out a <!WA30><a href="http://blitz.cs.pitt.edu">VIRTUAL REALITY project</a> (adapted to the Web by <!WA31><a href="http://www.cs.pitt.edu/~smoke">Sheldon Smoker</a>).
+<p>
+
+Or try running this mpeg <!WA32><a href="http://www.cs.pitt.edu/~lentini/inside.mpg">MOVIE</a>.<br>(Dr. Plantinga and some of his best buddies... A. Einstein, C. Babbage, E. Presly)
+<p>
+
+<!--
+<h2>
+<!WA33><a href="http://www.cs.pitt.edu/~lentini/steph3.html">... and This</a>  is a picture of me and my lady. 
+</h2>
+-->
+
+<p>
+<center><!WA34><img src="http://www.cs.pitt.edu/~lentini/biglineT.gif"></center>
+<h1><center><blink>*** Some other really cool web sites *** </h1></blink></center><p>
+
+<br>
+
+<pre>
+<!WA35><a href="http://www.windows95.com"><!WA36><img align=middle src="http://www.cs.pitt.edu/~lentini/start.gif"></a>				<!WA37><a href="http://www.cs.mun.ca/~slug"><!WA38><img align=middle src="http://www.cs.pitt.edu/~lentini/linux.gif"></a> 
+Want some Windows95 shareware?		If you use Linux, check out
+					St. John's Linux Users Group.
+
+<!WA39><a href="http://www.netins.net/showcase/bcahome"><!WA40><img align=middle src="http://www.cs.pitt.edu/~lentini/pool.gif"></a>				<!WA41><a href="http://akebono.stanford.edu/yahoo/Entertainment/Motorcycles"><!WA42><img align=middle src="http://www.cs.pitt.edu/~lentini/MCG2thn.GIF"></a>
+Billiard Congress of 			Yahoo Motorcycle Web Page
+America Home Page
+
+<!WA43><a href="http://theboys.com/index.html"><!WA44><img align=center src="http://www.cs.pitt.edu/~lentini/cowboys.gif"></a>				<!WA45><a href="http://www.islandnet.com/~mkp/flyers.html"><!WA46><img align=middle src="http://www.cs.pitt.edu/~lentini/Flyers_Logo.gif"></a>
+Dallas Cowboys Web Page			Philadelphia Flyers Web Page
+
+<!WA47><a href="http://www.guitar.net"><!WA48><img align=center src="http://www.cs.pitt.edu/~lentini/lpc3.gif"></a>				<!WA49><a href="http://www.inpgh.com"><!WA50><img align=middle src="http://www.cs.pitt.edu/~lentini/pittsburgh.gif"></a>
+GUITAR.NET!!!				In Pittsburgh Newsweekly ONLINE
+</pre>
+
+<!--
+<p>
+<!WA51><a href="http://www.cis.ksu.edu/~trm/doom.html"><!WA52><img align=middle src="http://www.cs.pitt.edu/~lentini/doombut.gif"></a> A cool Doom Web Page
+-->
+
+<hr>
+<p>
+
+<!--
+Hits since March 19, 1996  <!WA53><IMG SRC="http://www.cs.pitt.edu/~lentini//cgi-bin/Count.cgi?dd=B|df=lentini.dat" ALIGN=middle WIDTH=60 HEIGHT=20 BORDER=0 HSPACE=4>
+<p>
+Click <!WA54><a href="http://www.cs.pitt.edu/~lentini/test.xyz">here</a>
+<p>
+-->
+
+Hits since March 16, 1996  <!WA55><IMG SRC="http://counter.digits.com/wc/-d/4/gusshits" ALIGN=middle WIDTH=60 HEIGHT=20 BORDER=0 HSPACE=4>
+
+...counter provided by <!WA56><a href="http://www.digits.com">Net Digits</a>. 
+
+</body>
+</html>

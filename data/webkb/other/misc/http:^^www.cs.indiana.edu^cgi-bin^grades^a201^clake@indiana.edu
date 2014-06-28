@@ -1,0 +1,87 @@
+Date: Tue, 14 Jan 1997 20:41:20 GMT
+Server: Apache/1.0.3
+Content-type: text/html
+
+<HTML>
+<HEAD>
+<TITLE> Your A201 Grades </TITLE>
+</HEAD>
+<BODY>
+<CENTER><H1>A201 grades</H1></CENTER>
+<P>
+<H3>In the boxes below, please enter in your last name, and your
+ Student ID number.  Then check each box corresponding to the 
+grades you would like to peruse, and 
+when all your information is just right, click on the Get Grades
+ button to do just that.</H3>
+<P>
+<HR>
+<P>
+<!WA0><FORM METHOD="POST">
+<P><STRONG>Your Last Name:</STRONG> <INPUT NAME="name" SIZE=48>
+<P><STRONG>Your SID:</STRONG> <INPUT TYPE=PASSWORD NAME="sid" SIZE=11>
+<P>
+<STRONG>Available Grades:</STRONG>
+<DL>
+<DD> <INPUT TYPE="checkbox" NAME="Lab #1
+"> Lab #1
+
+<DD> <INPUT TYPE="checkbox" NAME="Lab #2
+"> Lab #2
+
+<DD> <INPUT TYPE="checkbox" NAME="Lab #3
+"> Lab #3
+
+<DD> <INPUT TYPE="checkbox" NAME="Lab #4
+"> Lab #4
+
+<DD> <INPUT TYPE="checkbox" NAME="Lab #5
+"> Lab #5
+
+<DD> <INPUT TYPE="checkbox" NAME="Lab #6
+"> Lab #6
+
+<DD> <INPUT TYPE="checkbox" NAME="Lab #7
+"> Lab #7
+
+<DD> <INPUT TYPE="checkbox" NAME="Lab #8
+"> Lab #8
+
+<DD> <INPUT TYPE="checkbox" NAME="Lab tot
+"> Lab tot
+
+<DD> <INPUT TYPE="checkbox" NAME="Pract #1
+"> Pract #1
+
+<DD> <INPUT TYPE="checkbox" NAME="Pract #2
+"> Pract #2
+
+<DD> <INPUT TYPE="checkbox" NAME="Test #1
+"> Test #1
+
+<DD> <INPUT TYPE="checkbox" NAME="Test #2
+"> Test #2
+
+<DD> <INPUT TYPE="checkbox" NAME="Final 
+"> Final 
+
+<DD> <INPUT TYPE="checkbox" NAME="Course
+"> Course
+
+</DL>
+<P>
+<INPUT TYPE="submit" VALUE="Get Grades"> <INPUT TYPE=RESET VALUE="Clear Form">
+</FORM>
+<P>
+<P>
+<HR WIDTH=70%>
+<P>
+For questions about or problems with your grades or using this reporting
+service, please contact <A HREF="mailto:clake@indiana.edu">&lt;clake@indiana.edu&gt;</A>.<P>
+
+Gradebook software by <A HREF="/l/www/hyplan/springer.html">George Springer</A>
+<A HREF="mailto:springer@cs.indiana.edu">&lt;springer@cs.indiana.edu&gt;</A>.
+<BR>
+CGI report interface by <A HREF="/l/www/hyplan/clake.html">Chad Lake</A>
+<A HREF="mailto:clake@cs.indiana.edu">&lt;clake@cs.indiana.edu&gt;</A>.
+</BODY></HTML>

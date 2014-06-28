@@ -1,0 +1,83 @@
+Date: Mon, 11 Nov 1996 17:31:00 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 23 Oct 1995 20:31:24 GMT
+Content-length: 1886
+
+<html>
+<head>
+<title>Comparison of Skeletonization Methods</title>
+</head>
+
+<body>
+<h1>Comparison of Skeletonization Methods</h1>
+<BR>
+<HR SIZE=3>
+<TABLE BORDER=0>
+
+<TR ALIGN=CENTER VALIGN=TOP>
+<TD>
+<IMG WIDTH=323 HEIGHT=243 HSPACE=3 VSPACE=2 SRC="hw1-result/thin/hand.gif"> <BR>
+<H3>Thinning</H3>
+</TD>
+<TD>
+<IMG WIDTH=361 HEIGHT=243 HSPACE=3 VSPACE=2 SRC="hw1-result/thin/hand22.gif"> <BR>
+<H3>Thinning 22.5</H3>
+</TD>
+</TD>
+</TR>
+
+<TR ALIGN=CENTER VALIGN=TOP>
+<TD>
+<IMG WIDTH=323 HEIGHT=243 HSPACE=3 VSPACE=2 SRC="hw1-result/medial-cityblock/hand.gif"> <BR>
+<H3>MAT (City-block)</H3>
+</TD>
+<TD>
+<IMG WIDTH=363 HEIGHT=242 HSPACE=3 VSPACE=2 SRC="hw1-result/medial-cityblock/hand22.gif"> <BR>
+<H3>MAT (City-block) 22.5</H3>
+</TD>
+</TD>
+</TR>
+
+<TR ALIGN=CENTER VALIGN=TOP>
+<TD>
+<IMG WIDTH=323 HEIGHT=243 HSPACE=3 VSPACE=2 SRC="hw1-result/medial-chessboard/hand.gif"> <BR>
+<H3>MAT (Chessboard)</H3>
+</TD>
+<TD>
+<IMG WIDTH=359 HEIGHT=242 HSPACE=3 VSPACE=2 SRC="hw1-result/medial-chessboard/hand22.gif"> <BR>
+<H3>MAT (Chessboard) 22.5</H3>
+</TD>
+</TD>
+</TR>
+
+<TR ALIGN=CENTER VALIGN=TOP>
+<TD>
+<IMG WIDTH=323 HEIGHT=243 HSPACE=3 VSPACE=2 SRC="hw1-result/medial-euclid/hand.gif"> <BR>
+<H3>MAT (Approx. Euclidean)</H3>
+</TD>
+<TD>
+<IMG WIDTH=361 HEIGHT=240 HSPACE=3 VSPACE=2 SRC="hw1-result/medial-euclid/hand22.gif"> <BR>
+<H3>MAT (Approx. Euclidean) 22.5</H3>
+</TD>
+</TD>
+</TR>
+
+
+</TABLE>
+
+<BR>
+<HR SIZE=3>
+<br>
+<H3>Some Observations on the Results</H3><P>
+Notice that the thinning method produces connected skeletons while
+the Medial Axis Transform (MAT) methods do not, even for the approximate
+Euclidean case.  On the other hand, notice that the MAT is relatively
+invariant to orientation of the object, while the thinning method varies
+significantly with orientation.  
+
+<A href="hw1-result/hw1-comments.txt">
+<H3>Bryan's comments on the grading of the assignment</H3>
+</A>
+</body>
+</html>

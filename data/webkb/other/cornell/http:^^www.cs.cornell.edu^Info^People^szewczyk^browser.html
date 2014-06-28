@@ -1,0 +1,65 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 25-Nov-96 00:16:59 GMT
+Content-Type: text/html
+Content-Length: 2651
+Last-Modified: Thursday, 19-Oct-95 19:59:12 GMT
+
+
+<HTML>
+
+<TITLE>MPEG Browser</TITLE>
+<h1>MPEG Browser</h1>
+
+<img allign=top src="picture.gif"></p>
+
+<h2> What is MPEG Browser? </h2>
+
+<p>Until now we could view mpegs just like we could watch
+movies. Unfortunately, we were  unable to take the advantage of
+digital format: I have not seen mpeg players allowing user to skip to
+arbitrary frame, fast forward, rewind, etc. </p>
+
+<p>Even more importantly, the video was basically a sequence of frames
+with no structure. But it is obvious that video higher structure than
+frames: we can partition video into shots, scenes and larger chunks,
+like movies, tv shows, etc. We can also partition the video accoding
+to the content, for example we might want to select a segment of video
+in which a particular actor appears. </p>
+
+<p>Mpeg_browse provides an interface for browsing video. User can play
+video, stop at arbitrary point, fast forward. What is the advantage of
+MPEG Browse over other video players? MPEG Browse adds a very limited,
+yet useful structure to the video: it partitions the video into
+shots. Based on these information, the browser can skip to the next
+shot, much like a CD player can skip to the next song.  The scene
+break algorithm was developed by Ramin Zabih, Justin Miller, and Kavin
+Mai. For more details about the algorithm see .....href......</p>
+
+<p>Mpeg_browse works in two modes: preprocessing and
+browsing. Preprocessing is necessary for two reasons: the algorithm
+for detecting scene breaks doesn't run in real time, and the decoder
+is not fast enough (which means that in order to skip to some place in
+the movie, the user would have to wait about as long as it would take
+to play the sequence). Preprocessing is madatory, since the
+information generated is essential to the work of browser. The
+preprocessing has to be done only once: the information for each mpeg
+file is saved on the disk, in file <i>filename</i>.inf, where the
+<i>filename</i> is the name of the mpeg. </p>
+
+<p> In addition to video browsing mpeg_browse supports a wide variety of
+options, both command line and menu. Most options have no effect after
+the start of the video, but future releases will allow change of
+many options (like dithering, frame rate, or skiping frames) at
+arbitrary times.</p>
+
+<p>Mpeg_browse runs on Linux, SunOS, Solaris, and probably any machine
+other which has wish and can compile Berkeley mpeg_play.</p>
+
+<Center> <h4> Visitors </h4> <img src="count.cgi"></center>
+<p><A href="mpeg_browse.tar.gz">Download distribution of MPEG Browse</A></p>
+
+<p>Send comments and suggestions to <a
+href="mailto:szewczyk@cs.cornell.edu"> Robert Szewczyk
+(szewczyk@cs.cornell.edu)</a> </P>
+

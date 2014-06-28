@@ -1,0 +1,183 @@
+Date: Mon, 11 Nov 1996 17:57:37 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Sun, 07 Apr 1996 23:58:56 GMT
+Content-length: 9123
+
+<HTML>
+
+<HEAD>
+<TITLE>CS 110 Section 2 - Program #2</TITLE>
+</HEAD>
+
+<BODY>
+
+<H2><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~bestor/cs110/cs110.html#assignments" ><!WA1><!WA1><!WA1><IMG SRC="http://www.cs.wisc.edu/~bestor/icons/arrowleft.gif" WIDTH=15 HEIGHT=15></A> Program #2 - Marathon</H2>
+
+<CENTER>
+<!WA2><!WA2><!WA2><IMG SRC="http://www.cs.wisc.edu/~bestor/pictures/marathon.gif">
+</CENTER>
+
+<HR>
+
+<DL>
+   <DT>Due Date:
+   <DD>Friday 4/19/96, 8:50 am<P>
+
+   <DT>Grade:
+   <DD>25% of your final grade.<P>
+
+   <DT>Text Covered:
+   <DD>Chp. 1, 2, 3 and 4.<P>
+
+   <DT>Background:
+   <DD>On June 22 your gallant CS 110 instructor will be running his second marathon - the annual <STRONG>Grandma's Marathon</STRONG> in Duluth, Minnesota.  If you're not familiar with what a <EM>marathon</EM> is, in ancient Greece in 490 BC a soldier ran from the town of Marathon to Athens to bring news of a Greek victory over the Persians.  [Aside: why this news was so important that he ran the entire distance non-stop instead of leasurely taking his time and stopping to celebrate with the odd amphora of wine along the way is a topic of much historical debate].  The Marathon-Athens distance is actually less than 25 miles; the modern distance of 26 miles 385 yards (<EM>26.2 miles</EM>) was established in 1908 at the London Olympics and represents the distance from the royal castle at Windsor to the Olympic stadium.  Although the marathon is considered the highlight and final track and field event of the Summer Olympic Games, there are no men's and women's records for this event because each course is different.<P>
+
+   <DT>Problem Description:
+   <DD>You have been hired by the Grandma's Marathon Organizing Committee to write the computer software for processing the finishing times for this year's event.  At the finish line the <EM>name</EM> and <EM>finishing time</EM> of each runner is entered into a computer.  Your program will read in these values for all the runners and compute various statistics about the race, including the fastest two times.<P>
+
+   Your program should first prompt the user to enter the total number of runners in the marathon and then prompt them to enter the name and finishing time of each runner entered on the same line as shown below.<P>
+   <LISTING>
+	'Name' Hours Minutes Seconds
+   </LISTING>
+For example,
+   <LISTING>
+	5
+	'Ima Slug' 7 55 24
+	'Oprah Winfry' 3 8 16
+	'Hillary Clinton' 4 11 45
+	'Clark Kent' 1 5 10
+	'Gareth Bestor' 3 36 2
+   </LISTING>
+
+      Notes:
+   <UL>
+      <LI>The <EM>name</EM> is entered as a <TT>CHARACTER</TT> string surrounded by single quotes and is at most 20 characters long.
+      <LI>The finishing time is entered as three <TT>INTEGER</TT>s separated by spaces.
+      <LI>Runners are entered in no particular order.  In particular, they are <STRONG>not</STRONG> entered in ascending or descending order of finishing times.
+      <LI>There will always be at least two runners.
+   </UL>
+   <P>
+
+   Your program must read in all this data and compute the following statistics:<P>
+   <OL>
+      <LI>Total number runners.
+      <LI>Name of the first place runner.
+      <LI>Name of the second place runner.
+      <LI>Average finishing time displayed in Hours:Minutes:Seconds format.
+      <LI>Standard deviation of finishing times displayed in Hours:Minutes:Seconds format.
+      <LI>Average pace measured in <EM>minutes per mile</EM> and displayed in Minutes:Seconds format.
+   </OL>
+   <P>
+
+   <DT>Example:
+   <DD>For the race data given above your program should display (hint: use this to check your results)<P>
+   <LISTING>
+	Total number of runners:          5
+	First place: Clark Kent          
+	Second place: Oprah Winfry       
+	Average finishing time:          3:         59:          19
+	Standard Deviation:          2:         29:          28
+	Average pace:          9:         8 minute/mile
+   </LISTING>
+   <P>
+   Don't worry if you get extra spaces in your output as shown above.  <STRONG>Optional Exercise:</STRONG> use <EM>formatted output</EM> as described in Chapter 5 to remove these spaces.<P>
+
+   <DT>Calculations:
+   <DD>For most of the calculations you have to first convert the finishing times from <EM>Hours:Minutes:Seconds</EM> format to the <EM>total number of seconds</EM>.  For displaying some of the results, such as the average finishing time, standard deviation and average pace, you will have to convert a value in total number of seconds back into Hours:Minutes:Seconds.  Hint: you may find the <TT>MOD</TT> function useful for converting a value from total number of seconds to hours, minutes and seconds.  All your results must be dislayed as <TT>INTEGER</TT>s <STRONG>rounded</STRONG> to the nearest second.<P>
+
+   <UL>
+      <LI>To determine the first and second place winners you must remember the <EM>lowest</EM> and <EM>second lowest</EM> finishing times (in total number of seconds) and the corresponding names.  Then each time you read in a new runner check to see if their time is less than either of these values and re-assign them accordingly.<P>
+
+      <LI>To compute the average finishing time first add up all the finishing times (in total number of seconds).  To compute the standard deviation add up all the finishing time values <EM>squared</EM>.  When you have obtained these two sums use the following formulae to compute the mean and standard deviation, where <EM>n</EM> is the total number of runners.<P>
+
+<CENTER>
+<!WA3><!WA3><!WA3><IMG SRC="http://www.cs.wisc.edu/~bestor/cs110/mean.jpg">
+<P>
+<!WA4><!WA4><!WA4><IMG SRC="http://www.cs.wisc.edu/~bestor/cs110/stddev.jpg">
+<P>
+</CENTER>
+
+Although you will compute the mean and standard deviation in total number of seconds, they must be displayed in Hours:Minutes:Seconds format as <TT>INTEGER</TT>s <STRONG>rounded</STRONG> to the nearest second.<P>
+
+      <LI>Runners typically measure their pace in <EM>minutes per mile</EM> (minute/mile) which is the average number of minutes it takes to run one mile.  Use the following formula to compute the average pace.  The pace must be displayed in Minutes:Seconds format as <TT>INTEGER</TT>s <STRONG>rounded</STRONG> to the nearest second.<P>
+
+<CENTER>
+<!WA5><!WA5><!WA5><IMG SRC="http://www.cs.wisc.edu/~bestor/cs110/pace.jpg">
+</CENTER>
+
+  </UL>
+   <P>
+
+   <DT>What to Hand In:
+   <DD>Hand in this assignment online by copying your FORTRAN <EM>source code</EM> file "program2.for" and the <EM>compiled executable</EM> file "program2.exe" to your handin directory.<P>
+
+   You also have to hand in a printed copy of your FORTRAN <EM>source code</EM> file and a printed copy of the <EM>output</EM> when your program is run with the five different sets of test data given in the gradesheet.<P>
+
+   <DT>Gradesheet:
+   <DD>The following gradesheet will be used to grade this assignment.  Please take a close look at it to make sure you do everything that is required.  Note that you will be graded on correct output for the five different sets of input values given below, so before handing it in you <STRONG>must</STRONG> run your program with these values and manually check that your program gives the correct results in all cases.  You must enter each runner in the order given.<P>
+
+   <PRE>
+Correct Output                                          [20]
+   5                                             [4]
+   'Julie Lewis'  4  12  19
+   'John Wiley'  2  18  55
+   'Gareth Bestor'  3  36  2
+   'Barbara McQueen'  3  41  9
+   'Diane Meyers'  2  33  17
+
+   3                                             [4]
+   'Julie Lewis'  4  12  19
+   'Barbara McQueen'  3  41  9
+   'John Wiley'  2  18  55
+
+   3                                             [4]
+   'John Wiley'  2  18  55
+   'Barbara McQueen'  3  41  9
+   'Julie Lewis'  4  12  19
+
+   5                                             [4]
+   'Julie Lewis'  5  12  19
+   'John Wiley'  3  18  55
+   'Gareth Bestor'  4  36  2
+   'Barbara McQueen'  4  41  9
+   'Diane Meyers'  3  33  17
+
+   5                                             [4]
+   'Diane Meyers'  2  55  34
+   'John Wiley'  3  53  9
+   'Barbara McQueen'  4  24  38
+   'Julie Lewis'  2  22  46
+   'Gareth Bestor'  3  36  2
+
+User Interface                                          [6]
+   Useful prompts for the total number of
+      runners and the data for each runner      [2]
+   Meaningful display of the results            [4]
+
+Implementation                                          [16]
+   Correct implementation of formulas           [4]
+   Correct use of IF/THEN/ELSE/END IF statement [4]
+   Correct use of DO/END DO loop                [4]
+   Meaningful variable names                    [2]
+   Indenting and neatness                       [2]
+
+Documentation                                           [8]
+   Program description                          [4]
+   Variable definitions and section comments    [4]
+____________________________________________________________
+
+Total (25%)                                             [50]
+   </PRE>
+   <P>
+</DL>
+
+</BODY>
+
+<HR>
+
+<ADDRESS>
+<H5>Copyright &copy 1996 <!WA6><!WA6><!WA6><A HREF="http://www.cs.wisc.edu/~bestor/bestor.html">Gareth S. Bestor</A> (<!WA7><!WA7><!WA7><A HREF="mailto:bestor@cs.wisc.edu">bestor@cs.wisc.edu</A>).  Last modified April 7, 1996.</H5>
+</ADDRESS>
+
+</HTML>

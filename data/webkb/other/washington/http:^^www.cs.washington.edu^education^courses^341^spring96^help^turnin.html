@@ -1,0 +1,95 @@
+Date: Wed, 08 Jan 1997 21:31:02 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+<title>Using turnin</title>
+</head>
+
+<body>
+
+<h1>Using turnin</h1>
+<hr>
+
+<b>Executive Summary:</b> <i>This document contains information on
+using turnin to submit homework assignments.</i>
+
+<hr>
+
+	We'll be using the 'turnin' program to support electronic submission of
+programming assignments.  The student interface to turnin is straightforward. 
+IMPORTANT: You can must run turnin on the mscc machines for the lisp
+assignments; turnin on other machines (.u and .cs) will not submit your homeworks
+to the expected destination. <P>
+
+Suppose I've finished my problem set, and I'm ready to submit it. To turnin a set
+of files, one types 'turnin file1 file2 ..... filen'.  Turnin will ask you which
+class you are submitting the assignment for; answer cse341.  Here's a transcript
+of what happens when I use turnin to submit the files prob1.cl, bank.cl, and
+menus.lisp. <P>
+
+
+<code>
+turing_38% turnin bank.cl menus.lisp prob1.cl <p>
+
+For this submission, you may enter the course information interactively.<br>
+You are not subscribed to any valid course, here is a list of the courses<br>
+you may use currently:<br>
+          cse341           MS100          cse401          cse473<br>
+Enter course name? [cse341] cse341<br>
+Compressing submitted files... please wait<br>
+Your files have been submitted to cse341, psl1 for grading.<br>
+</code> <P>
+
+
+	If you want to check and see which files you've actually submitted, you
+can give turnin the -v option: <P>
+
+<code>
+turing_39% turnin -v  <P>
+
+For this submission, you may enter the course information
+interactively. 
+You are not subscribed to any valid course, here is a list of the courses<br>
+you may use currently:<br>
+          cse341           MS100          cse401          cse473<br>
+Enter course name? [cse341] cse341<br>
+rw-r--r-- 10107/117    3069 Apr  4 17:15 1996 bank.cl<br>
+rw-r--r-- 10107/117    5119 Apr  4 14:51 1996 menus.lisp<br>
+rw-r--r-- 10107/117    2022 Apr  4 13:45 1996 prob1.cl<br>
+
+</code> <P>
+
+
+	Turnin also takes a -c flag to specify the class.  You can
+also use this interface.  For example: <P>
+
+<code>
+turing_40% turnin -c cse341 bank.cl menus.lisp prob1.cl <br>
+Compressing submitted files... please wait<br>
+Your files have been submitted to cse341, psl1 for grading.<br>
+turing_41% turnin -c cse341 -v<br>
+rw-r--r-- 10107/117    3069 Apr  4 17:15 1996 bank.cl<br>
+rw-r--r-- 10107/117    5119 Apr  4 14:51 1996 menus.lisp<br>
+rw-r--r-- 10107/117    2022 Apr  4 13:45 1996 prob1.cl<br>
+</code>  <P>
+
+	You can run turnin as many times as you want, each time the new
+submission will completely replace the previous submission.  We will
+use the time stamps of the submitted files to determine whether or not
+a submission is late.   <P>
+
+<hr>
+
+<address>
+cse341-webmaster@cs.washington.edu
+</i>(Last update:
+	
+	<!-- see man strftime for full formatting options-->
+	04/06/96 at 12AM
+)<i>
+</address>
+</body>
+</html>
+

@@ -1,0 +1,99 @@
+Date: Fri, 13 Dec 1996 17:06:26 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 30 Oct 1996 19:01:59 GMT
+Content-length: 3111
+
+<HTML>
+<HEAD>
+<TITLE>DEVise Performance</TITLE>
+</HEAD>
+<BODY>
+
+<H1>Performance</H1>
+
+DEVise is designed to handle large amounts of data from the ground up.
+The following discussion assumes that the reader is already familiar
+with the <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A href="http://www.cs.wisc.edu/~devise/devise/model.html">model of visualization</A>. DEVise
+addresses performance as follows:
+
+<UL>
+<LI><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A href="#IO">I/O</A>
+<LI><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A href="#Mapping">Mapping</A>
+<LI><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A href="#Drawing">Drawing GData</A>
+<LI><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A href="#Interface">User Interface</A>
+<LI><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A href="#Program">Program Design</A>
+</UL>
+
+<A name="IO"><H2>I/O</H2></A>
+
+Minimizing the amount of accesses to disk is the goal of improving I/O
+performance. It is not practical to rely on the virtual memory of a
+workstation because thrashing readily occurs when the amount of data
+is large. DEVise addresses I/O performance as follows:
+
+<UL>
+<LI>Buffer Manager: Ranges (not pages) of TData and
+GData are retained in memory buffers. A non-LRU replacement
+policy is used.
+<LI>Query processor: decides which ranges of GData are accessed. It 
+performs binary search for GData when sorted on the X attribute.
+It fetches those GData in overlapping views only once. When the user is idle,
+it converts TData into GData in the background. It can also
+potentially incorporate prefetching and indexing.
+<LI>mapping: reduces storage overhead by storing only those GData
+attributes that change at run time.
+</UL>
+
+<A name="Mapping"><H2>Mapping</H2></A>
+
+Mapping performance is improved as follows:
+
+<UL>
+<LI>compiled mapping: reduces time/space at run time. The time
+is reduced through compilation. The space is reduced through
+storing only those GData attributes that change at run time.
+<LI>Caching: caching GData in the buffer and on disk eliminates the need to
+perform mapping.
+</UL>
+
+<A name="Drawing"><H2>Drawing GData</H2></A>
+
+Drawing performance is improved as follows:
+
+<UL>
+<LI>GData that overlap are drawn just once.
+<LI>At low resolutions, GData are drawn as pixels. This is cheaper than
+drawing complex shapes.
+</UL>
+
+<A name="Interface"><H2>User Interface</H2></A>
+
+The user interface is designed to minimize the user response time:
+
+<UL>
+<LI>The layout mode (See <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><A href="http://www.cs.wisc.edu/~devise/devise/visualQuery.html">visual query</A>.)
+increases response time by not drawing the GData when the user
+constructs a visual query.
+<LI>Coming up for air: The query processor checks user actions periodically,
+possibly aborting existing queries to act upon new user commands.
+</UL>
+
+<A name="Program"><H2>Program Design</H2></A>
+
+The implementation is structured for performance as follows:
+
+<UL>
+<LI>Query abort: The ability to abort query throughout the design
+of the DEVise components allows the user interface to abandon
+existing updates to act on new user commands.
+<LI>Batching: Transferring GData in batches instead of one
+at a time reduces time spent in function calls.
+<LI>Minimizing number of objects: In an object oriented environment,
+everything is instantiated as an object. This is not done in DEVise, which
+must handle large numbers of records.  Instantiating every 
+input record as a shape object impedes performance. 
+</UL>
+
+</BODY>
+</HTML>

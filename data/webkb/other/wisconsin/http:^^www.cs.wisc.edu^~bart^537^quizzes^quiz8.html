@@ -1,0 +1,110 @@
+Date: Mon, 11 Nov 1996 17:25:05 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 17 Apr 1996 19:02:35 GMT
+Content-length: 2065
+
+<html>
+<head>
+<title>CS 537 - Quiz #8</title>
+</head>
+
+<body>
+<table border=0 width=100% align=center>
+<tr>
+<td width=25%><td width=50% align=center>
+<b>UNIVERSITY OF WISCONSIN-MADISON
+<br>
+Computer Sciences Department</b>
+<td width=25%>
+<tr>
+<tr>
+<td>
+<b>CS 537
+<br>
+Spring 1996 </b>
+<td><td align=right><b>Bart Miller</b>
+<tr>
+<td>
+<td align=center><b>Quiz #8</b>
+<br>
+Wednesday, April 17
+<td>
+</table>
+
+<h2>Paging to Disk</h2>
+Consider computer whose operating systems is
+using demand paging.
+We measure the various resource utilizations under a particular workload
+and see:
+<center>
+<table align=center>
+<tr>
+<td>CPU utilization:
+<td>20% of the time
+<tr>
+<td>Paging disk utilization:
+<td>99% of the time
+</table>
+</center>
+<p>
+Which of these (if any) should improve the CPU utilization in these
+circumstances?
+Why or why not?
+<ol>
+<li>
+Get a faster CPU.
+<b><p>
+This system appears to be limited by the speed of the paging disk.
+So, a faster CPU would only
+<i>decrease</i> CPU utilization.
+</b>
+<pre>
+</pre>
+<li>
+Get a bigger disk.
+<b><p>
+The size of the disk would allow large virtual address spaces or
+allow more processes to run, but would not increase CPU utilization.
+It might actually decrease it, if disk head seek time was increased.
+</b>
+<pre>
+</pre>
+<li>
+Get a faster disk.
+<b><p>
+A faster disk would allow paging requests to be handled faster and
+would probably
+<i>increase</i> CPU utilization.
+</b>
+<pre>
+</pre>
+<li>
+Increase the degree of multiprogramming.
+<b><p>
+Increasing multiprogramming
+<i>might</i>
+increase the utilization, if the jobs did not do much paging.
+Most likely, it would just add to the disk queue, further slowing the system
+(decreasing CPU utilization).
+</b>
+<pre>
+</pre>
+<li>
+Decrease the degree of multiprogramming.
+<b><p>
+Decreasing the multiprogramming level would likely <i>increase</i>
+CPU utilization if
+the system was thrashing because too many jobs were competing for the
+page frames.
+</b>
+</ol>
+
+<hr>
+<H4>
+Last modified:
+Wed Apr 17 14:02:29 CDT 1996
+by
+<a href="http://www.cs.wisc.edu/~bart">bart</a></b>
+</H4>
+</body>

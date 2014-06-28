@@ -1,0 +1,435 @@
+Date: Tue, 14 Jan 1997 21:25:51 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Mon, 04 Dec 1995 01:05:01 GMT
+Content-length: 10777
+
+<!--  -->
+<HTML>
+<HEAD>
+<TITLE>Fortran D95 Compiler Overview</TITLE>
+</HEAD>
+
+<! color == rrggbb >
+<! BODY	BGCOLOR=#color	: for background
+	TEXT   =#color	: for text
+	LINK   =#color	: for normal links
+	VLINK  =#color	: for recently followed links 
+	ALINK  =#color	: for ?
+>
+
+
+<BODY>
+<HR>
+<HR>
+<A NAME=1>
+<H1><P ALIGN=CENTER> Fortran D95 Compiler Overview</P></H1>
+
+
+<P ALIGN=CENTER>
+<BR>
+<b>Project Leaders:</b><BR>
+John Mellor-Crummey 
+and Vikram Adve<BR>
+<BR>
+<b>Participants:</b><BR>
+Zoran Budimlic, 
+Alan Carle,
+Kevin Cureton, 
+Gil Hansen, 
+Ken Kennedy,
+Charles Koelbel, 
+Bo Lu, 
+Collin McCurdy,
+Nat McIntosh,
+Dejan Mircevski,
+Nenad Nedeljkovic, 
+Mike Paleczny, 
+Ajay Sethi, 
+Yoshiki Seo,
+Lisa Thomas, 
+Lei Zhou
+</P><BR>
+
+
+<H3>
+<P ALIGN=CENTER>
+<!WA0><A HREF="http://softlib.rice.edu/fortran-tools/fortran-tools.html">Parallel Compiler and Tools Group</A><BR>
+<!WA1><A HREF="http://www.cs.rice.edu/CRPC.html"><i>Center for Research on Parallel Computation</i></A><BR>
+<!WA2><A HREF="http://www.rice.edu/"><i>Rice University</i></A><BR>
+</P>
+</H3>
+<BR>
+<b>Group Mission: </b><BR>
+Develop integrated compiler and tools to support effective machine-independent parallel programming
+<BR>
+<HR>
+<HR>
+<BR>
+
+<A NAME=HEADING16><A NAME=16>
+<b>Contents</b>:
+	<UL>
+	<LI> <!WA3><A HREF="#HEADING15">Compiler Goals</A>
+	<LI> <!WA4><A HREF="#HEADING2">Fortran D95 Language</A>
+	<LI> <!WA5><A HREF="#HEADING3">Fortran D95 Compiler Organization</A>
+	<LI> <!WA6><A HREF="#HEADING17">Compiled Examples</A>
+	</UL>
+
+
+
+
+<P >
+<A NAME=HEADING15><A NAME=15>
+<HR>
+<H2> <P ALIGN=CENTER> Compiler Goals</P></H2>
+<P>
+Serve as an extensible platform for experimental research on compilation
+techniques and programming tools for full applications, including:
+<UL>
+<LI> unified treatment of regular and irregular problems
+<LI> global strategies for computation partitioning
+<LI> parallelism-enhancing and latency-hiding transformations
+<LI> whole-program compilation and interprocedural transformations
+<LI> code generation strategies that approach hand-tuned performance
+<LI> architecture-independent compilation based on machine models
+<LI> message-passing, shared-memory, and hybrid communication models
+<LI> optimization in the presence of resource constraints
+<LI> programming tools that fully support abstract, high-level, programming models
+</UL>
+<P>
+
+
+
+
+<P>
+<A NAME=HEADING2><A NAME=2>
+<HR>
+<H2> <P ALIGN=CENTER> 
+Fortran D95 Language
+</P></H2>
+<P>
+Fortran D95 is designed to support research on
+data-parallel programming in High Performance Fortran (HPF) and to
+explore extensions that would broaden HPF's applicability or enhance
+performance.
+<P>
+ <BR>
+<b>Features</b>
+<UL><LI> Fortran 77 + Fortran 90 array syntax + FORALL + ALLOCATE
+<LI> High Performance Fortran (HPF) data mapping directives for regular problems
+<UL><LI> ALIGN, DISTRIBUTE, REALIGN, REDISTRIBUTE, TEMPLATE, PROCESSORS
+</UL>
+<LI> INDEPENDENT, and ON_HOME<LI> value-based data-mapping directives to support irregular problems
+<LI> experimental support (under development) for
+<UL><LI> parallel input/output, including out-of-core array management
+<LI> complex data structures 
+<LI> structured use of task parallelism
+</UL>
+</UL>
+<P>
+<BR>
+<BR>
+<BR>
+
+
+
+
+
+
+
+
+
+
+<HR>
+<A NAME=HEADING3><A NAME=3>
+<HR>
+<H2> <P ALIGN=CENTER> 
+Fortran D95 Compiler Organization
+</P></H2>
+<pre>
+                                <!WA7><A HREF="#4">Front End</A><BR>
+
+                                <!WA8><IMG SRC="http://www.cs.rice.edu/~mpal/SC95/downa.gif" ALT="v">
+
+
+ Parallelism         <!WA9><A HREF="#5">Preliminary Communication Placement</A><BR>
+                                <!WA10><IMG SRC="http://www.cs.rice.edu/~mpal/SC95/downa.gif" ALT="v">
+
+    and                  <!WA11><A HREF="#6">Computation Partitioning</A><BR>
+Communication            <!WA12><IMG SRC="http://www.cs.rice.edu/~mpal/SC95/downa.gif" ALT="v">    <!WA13><IMG SRC="http://www.cs.rice.edu/~mpal/SC95/upa.gif" ALT="^">
+
+  Placement              <!WA14><A HREF="#7">Communication Refinement</A><BR>
+
+                                <!WA15><IMG SRC="http://www.cs.rice.edu/~mpal/SC95/downa.gif" ALT="v">
+
+
+                             <!WA16><A HREF="#8">Code Generation</A><BR>
+</pre>
+
+<BR>
+
+
+
+
+
+
+<P>
+<A NAME=HEADING4><A NAME=4>
+<HR>
+<H2> <P ALIGN=CENTER> 
+Front End
+</P></H2>
+<P>
+<b>Purpose:</b> interpret HPF directives and compute directives affecting 
+each statement and reference
+<P>
+<b>Directive Processing</b>
+<UL><LI> semantic analysis of directives in program
+<LI> infer canonical synthetic layout directives for 
+all program variables unmentioned in program directives
+<LI> intraprocedural flow-sensitive propagation of 
+(RE)ALIGN, (RE)DISTRIBUTE to statements and array references
+</UL>
+<P>
+<b>Limitations (November 1995)</b>
+<UL><LI> no interprocedural propagation of layout information
+</UL>
+<P>
+<BR>
+
+
+
+
+<P>
+<A NAME=HEADING5><A NAME=5>
+<HR>
+<H2> <P ALIGN=CENTER> 
+Preliminary Communication Placement
+</P></H2>
+<P>
+<b>Purpose:</b>
+provide feedback to the computation partitioner about where
+(conservatively) communication might be needed
+<P>
+<b>Strategy</b> 
+<UL><LI> conservatively assume all references to non-replicated variables
+may need communication 
+<LI>
+hoist communication for a reference to the outermost loop level possible while
+respecting data dependences on the reference or its subscripts
+<LI> conservatively prevent communication from being hoisted out of 
+``non-do-loop'' iterative constructs 
+</UL>
+<P>
+<b>Limitations (November 1995)</b>
+<UL><LI> placement independent of resource constraints
+<LI> no support for pipelining communication to achieve partial parallelism 
+<LI> lacks dataflow placement optimization to
+<UL><LI> eliminate partial redundancies 
+<LI> hide communication latency
+</UL>
+<LI> no inspector placement for irregular data accesses
+</UL>
+<P>
+<BR>
+
+
+
+<P>
+<A NAME=HEADING6><A NAME=6>
+<HR>
+<H2> 
+<P ALIGN=CENTER> 
+Computation Partitioning Selection
+</P> 
+</H2>
+<P>
+<b>Purpose:</b>
+a framework to evaluate and select from several computation partitioning
+alternatives, not restricted to the owner-computes rule.
+<P>
+<b>Approach:</b> explicitly enumerate candidate partitioning
+choices and use explicit cost estimation to select the best partitioning.
+<P>
+<UL><LI> enumerate candidate CP choices for a loop nest (or set of loop nests)
+<!WA17><A HREF="http://www.cs.rice.edu/~mpal/SC95/comp-part.gif">[example]</A>
+<LI> refine communication information for each candidate CP
+<LI> estimate performance of each candidate CP:
+    <UL><LI> load-balance (unimplemented)
+    <LI> communication overhead 
+    </UL>
+<LI> propagate computation partitionings to DO, IF, statements, and
+      computations involving only privatizable variables.
+</UL>
+<P>
+<b>Limitations (November 1995)</b>
+<UL>
+<LI> load balance is not considered
+<LI> ignores message coalescing across loop nests
+<LI> communication cost estimates are very simplistic
+<LI> requires constant loop bounds (but simplistic handling of symbolics
+     will be straightforward)
+</UL>
+<P>
+<BR>
+
+
+
+
+<P>
+<A NAME=HEADING7><A NAME=7>
+<HR>
+<H2> 
+<P ALIGN=CENTER> 
+Communication Refinement
+</P></H2>
+<P>
+<b>Purpose:</b>
+given a computation partition choice, CP, compute a projection of
+the conservatively placed communication w.r.t. CP:
+     <!WA18><A HREF="http://www.cs.rice.edu/~mpal/SC95/comm-place.gif">[example]</A>
+<UL>
+<LI> eliminate communication for references local to that CP
+<LI> eliminate redundant communication by coalescing
+<LI> determine communication pattern
+<LI> perform message coalescing optimization
+</UL>
+<P>
+<b>Limitations (November 1995)</b>
+<UL>
+<LI> assume one single reaching layout per reference
+<LI> conservative unless single processors statement,
+perfect alignment, and same number of distributed dimensions
+<LI> communication pattern recognition is somewhat limited
+<LI> dataflow analysis for eliminating partial redundancies and
+latency hiding not yet fully in place
+</UL>
+<P>
+<BR>
+
+
+
+
+<P>
+<HR>
+<A NAME=HEADING8><A NAME=8>
+<H2> 
+<P ALIGN=CENTER> 
+Code Generation 
+</P></H2>
+
+<b>Principal Functionality</b>
+<!WA19><A HREF="http://www.cs.rice.edu/~mpal/SC95/examples/src/simpletest.html">
+[source for running example]</A>
+<UL>
+<LI>Computation partitioning transformations:
+	<UL>
+	<LI> reduce loop bounds and insert guards where necessary
+<!WA20><A HREF="http://www.cs.rice.edu/~mpal/SC95/examples/generated-code/fragments/reduced.html">
+[example]</A>
+	<LI> separate loop iterations that might access non-local values
+	     to minimize overhead from runtime locality checks
+<!WA21><A HREF="http://www.cs.rice.edu/~mpal/SC95/examples/generated-code/prelin.12.2.95/simpletest-fragments/local-nonlocal.html">
+[example]</A>
+	</UL>
+<LI>Communication generation and storage management:
+	<UL>
+	<LI> compute data sets to send/recv between processor pairs
+	<LI> generate code to pack/unpack buffers and send/recv data
+<!WA22><A HREF="http://www.cs.rice.edu/~mpal/SC95/examples/generated-code/prelin.12.2.95/simpletest-fragments/recv-unpack.html">
+[example]</A>
+	<LI> generate run-time dynamic storage management to cope with dynamic layouts
+<!WA23><A HREF="http://www.cs.rice.edu/~mpal/SC95/examples/generated-code/prelin.12.2.95/simpletest-fragments/storage-mgmt.html">
+[example]</A>
+	<LI> localize and linearize subscripts
+<!WA24><A HREF="http://www.cs.rice.edu/~mpal/SC95/examples/generated-code/fragments/loc-lin.html">
+[example]</A>
+	</UL>
+</UL>
+<P>
+<BR>
+
+
+
+
+
+<b>Current Strategy</b>
+
+<P>
+Except for storage management, all the code generation tasks require
+heavy manipulation of integer sets, especially for compiling regular
+applications for distributed-memory machines. Examples:
+<UL>
+<LI> data to send or recieve for a particular reference, given its
+computation partition
+<LI> a processor's loop iterations that access local or non-local data
+</UL>
+Current implementation uses the Omega library (University of Maryland):
+
+<DL COMPACT><DT><b>(+)</b>
+<DD> arbitrary integer sets
+<DT><b>(+)</b>
+<DD> rich language for mappings between sets
+<DT><b>(+)</b>
+<DD> almost complete set of operations on sets and mappings:
+		(union, intersection, difference, inverse, composition)
+<DT><b>(+)</b>
+<DD> good code-generation and optimization
+<P><DT><b>(-)</b>
+<DD> code generation is slow
+<DT><b>(-)</b>
+<DD> limited support for symbolics
+<P>
+</DL>
+<b>Limitations (November 1995)</b> 
+<UL><LI> run-time resolution guards currently handle only one or 
+all processors per dynamic statement instance
+<LI> lack library support for dynamic remapping
+<LI> current localization and linearization strategy produces
+general, but slow code.
+</UL>
+<P>
+<BR>
+
+
+<P>
+<HR>
+<A NAME=HEADING17><A NAME=17>
+<H2> 
+<P ALIGN=CENTER> 
+Compiled Examples
+</P></H2>
+<UL><LI> simple 1D shift kernel
+<!WA25><A HREF="http://www.cs.rice.edu/~mpal/SC95/examples/src/simpletest.html">[HPF]</A>
+<!WA26><A HREF="http://www.cs.rice.edu/~mpal/SC95/examples/generated-code/final.12.2.95/simpletest.html">[F77+MPI]</A>
+<LI> Jacobi iteration 
+<!WA27><A HREF="http://www.cs.rice.edu/~mpal/SC95/examples/src/jacobi.html">[HPF]</A>
+<!WA28><A HREF="http://www.cs.rice.edu/~mpal/SC95/examples/generated-code/final.12.2.95/jacobi.html">[F77+MPI]</A>
+<LI> Livermore 18 explicit hydrodynamics kernel 
+<!WA29><A HREF="http://www.cs.rice.edu/~mpal/SC95/examples/src/liv18.html">[HPF]</A>
+<!WA30><A HREF="http://www.cs.rice.edu/~mpal/SC95/examples/generated-code/final.12.2.95/expl.html">[F77+MPI]</A>
+<UL>
+<!WA31><A
+HREF="http://www.cs.rice.edu/~mpal/SC95/examples/generated-code/final.12.2.95/expl-non-owned.html">
+<LI>Non owner-computes partitioning fragment</A>
+</UL>
+</UL>
+<P>
+<BR>
+
+
+
+
+
+
+<HR>
+<HR>
+<P>
+<ADDRESS>http://www.cs.rice.edu/~mpal/SC95/index.html</ADDRESS>
+<P>
+<HR>
+<HR>
+</BODY>
+</BODY>
+</HTML>

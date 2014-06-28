@@ -1,0 +1,91 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 07-Jan-97 15:58:16 GMT
+Content-Type: text/html
+Content-Length: 3446
+Last-Modified: Monday, 05-Dec-94 17:18:44 GMT
+
+<title> Partitioning </title>
+
+<h1>Partitioning </h1>
+
+<img  src="partition.gif" ><p>
+
+The abstracts of papers by members of this group in the above area are 
+listed below. Please use the email addresses at the end of each
+abstract to get further details.
+
+<ul>
+
+<li> R. Rajaraman and D.F. Wong.
+<b> Optimal Clustering for Delay Minimization</b>. In
+<cite>Proceedings of the Design Automation Conference</cite>, 
+June 1993. <p>
+
+<blockquote>
+This paper addresses the problem of circuit clustering for delay minimization, subject
+to area capacity constraints. We use the general delay model, for which 
+only heuristic solutions were known. We present an optimum polynomial
+time algorithm for combinational circuits under this model. Our 
+algorithm can be generalized to solve the problem under any monotone
+clustering constraint.
+</blockquote>
+
+<b>Contact:</b> <i>rraj@cs.utexas.edu</i><p>
+
+<li> Honghua Yang and D.F. Wong.
+<b> Circuit Clustering for Delay Minimization
+    under Area and Pin Constraints</b>. In
+<cite>Proceedings of the International Workshop on Field Programmable
+Gate Arrays</cite>, February 1994. <p>
+
+<blockquote>
+We consider the problem of circuit partitioning
+for multiple-chip implementation. One motivation
+for studying this problem is the current needs
+of good partitioning tools for implementing a
+circuit on multiple FPGA chips. We allow replication
+of logic gates as it would reduce circuit delay.
+Circuit partitioning with replication of logic gates
+is also called circuit clustering. In this paper,
+we present a circuit clustering algorithm that minimizes circuit
+delay subject to area and pin constraints on each chip, 
+under the general delay model.
+We developed a repeated network cut technique to find a cluster 
+that is bounded by both area and pin constraints.
+Our algorithm is optimal under either the area constraint only
+or the pin constraint only.
+We tested our algorithm on a set of benchmark circuits 
+and consistently obtained optimal or near-optimal results.
+</blockquote>
+
+<b>Contact:</b> <i>yanghh@cs.utexas.edu</i><p>
+
+<li> Honghua Yang and D. F. Wong.
+<b> Efficient Network Flow Based Min-Cut Balanced Partitioning</b>. In
+<cite>Proceedings of the IEEE International Conference on
+       Computer-Aided Design</cite>, Nov. 1994. <p>
+
+<blockquote>
+We consider the problem of bipartitioning a circuit into two balanced 
+components that minimizes the number of crossing nets.  Previously, 
+the Kernighan and Lin type (K&L) heuristics, the simulated annealing 
+approach, and  the spectral method were given to solve the problem.
+However, network flow techniques were overlooked  as a viable approach 
+to min-cut balanced bipartition due to its high complexity.
+In this paper we propose a balanced bipartition heuristic
+based on repeated max-flow min-cut techniques, and  give an efficient 
+implementation that has the same asymptotic time complexity as that of 
+one max-flow computation.  We implemented our heuristic algorithm in 
+a package called FBB.  The experimental results demonstrate that FBB
+outperforms the K&L heuristics and the spectral method in terms of 
+the number of crossing nets, and the efficient implementation makes it 
+possible to partition large circuit instances with reasonable runtime.
+For example, the average elapsed time for bipartitioning a circuit S35932
+of almost 20K gates is less than 20 minutes.
+</blockquote>
+
+<b>Contact:</b> <i>yanghh@cs.utexas.edu</i><p>
+
+
+</ul>

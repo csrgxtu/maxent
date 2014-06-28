@@ -1,0 +1,100 @@
+Date: Mon, 11 Nov 1996 17:25:08 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 10 Apr 1996 21:32:19 GMT
+Content-length: 1745
+
+<html>
+<head>
+<title>CS 537 - Quiz #7</title>
+</head>
+
+<body>
+<table border=0 width=100% align=center>
+<tr>
+<td width=25%><td width=50% align=center>
+<b>UNIVERSITY OF WISCONSIN-MADISON
+<br>
+Computer Sciences Department</b>
+<td width=25%>
+<tr>
+<tr>
+<td>
+<b>CS 537
+<br>
+Spring 1996 </b>
+<td><td align=right><b>Bart Miller</b>
+<tr>
+<td>
+<td align=center><b>Quiz #7</b>
+<br>
+Wednesday, April 10
+<td>
+</table>
+
+<h2>Paging, Segmentation, and TLB's</h2>
+Consider a virtual memory architecture with the following parameters:
+<ul>
+<li>
+64 bit words
+<li>
+64 bit virtual addresses
+<li>
+8K byte page size
+<li>
+512K segments in a virtual address
+<li>
+4 gigabytes of real memory
+<li>
+page tables are stored in real memory
+<li>
+page tables can start on any byte boundary
+</ul>
+
+<hr>
+
+<p>
+Add a TLB to the memory mapping architecture that is described above.
+This cache should be
+<b>2-way set associative</b>
+and have
+<b>64 rows</b>.
+<ol>
+<li>
+Draw a diagram of the TLB based on the figure on the next page, showing the size of each field in the TLB.
+Indicate how bits of the VA are used for input to the TLB, and describe the
+outputs from the TLB.
+<li>
+How often do you need to flush (clear) the TLB?
+<p>
+<b>On every context switch.</b>
+<p>
+Why?
+<p>
+<b>TLB's contain mappings from virtual to physical addresses.
+If you do not flush the TLB, then the current process may use the
+mappings from the previous one, causing it to access the wrong page frames.</b>
+</ol>
+
+<hr>
+
+<CENTER>
+<BR>
+<IMG ALIGN=CENTER SRC="q6.gif" ALT="Segments & Page Table">
+<BR>
+</CENTER>
+
+<CENTER>
+<BR>
+<IMG ALIGN=CENTER SRC="q7.tlb.gif" ALT="TLB">
+<BR>
+</CENTER>
+
+<hr>
+<H4>
+Last modified:
+Wed Apr 10 16:32:18 CDT 1996
+by
+<a href="http://www.cs.wisc.edu/~bart">bart</a></b>
+</H4>
+</body>

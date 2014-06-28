@@ -1,0 +1,615 @@
+Date: Wed, 20 Nov 1996 22:48:43 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+Content-length: 23349
+Last-modified: Mon, 18 Nov 1996 20:45:44 GMT
+
+<TITLE>CS 66.436 Fall 1996 Data Structures Home Page</TITLE>
+<h1>CS 66.436 Fall 1996 Data Structures Home Page</h1>
+<!-- Changed by: Robert F. Dugan Jr., 30-Sep-1996 -->
+<!-- img src="gif/dstitle.jpg">
+
+<h2>Current Announcements</h2>
+<ul>
+<li><!WA0><a href="http://www.cs.rpi.edu/~dugan/data_structures/project4.html">Homework #4</a> is on-line.  It is due on December 9, 1996 at 11:59:59 PM"
+<li><!WA1><a href="http://www.cs.rpi.edu/~fryp/data_structures/submission_instructions.html"> Submission Instructions </a> for Homework 3
+<li><!WA2><a href="http://www.cs.rpi.edu/~fryp/data_structures/hw3_grading.html"> Grading Criteria </a> for Homework 3.  Stay tuned for submission instructions...
+<li>There was a bug in the timing code for Homework 3.  The calls needed address of time_t variables not the actual variables.
+<li>Patrick Fry's Thursday <!WA3><a href="#PatrickFry">office hours</a> changed to 12:00-1:30PM.
+<li><!WA4><a href="http://www.cs.rpi.edu/~dugan/data_structures/project3.html">Homework #3</a> is on-line.  It is due on
+November 18, 1996 at 11:59:59 PM.
+<li><!WA5><a href="#OldAnnouncements">Previous announcements</a>
+</ul>
+
+<h2>Latest Lecture Notes</h2>
+<ul>
+<li><!WA6><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta_latest.html"> Section 1, Mehta </a>
+<li><!WA7><a href="http://www.cs.rpi.edu/~dugan/data_structures/dugan_latest.html"> Section 2, Dugan </a>
+<li><!WA8><a href="#Syllabus">Previous lecture notes</a>
+</ul>
+
+<h2>Course information</h2>
+<ul>
+<li><!WA9><a href="#Overview">Overview</a>
+<li><!WA10><a href="#Textbook">Textbook</a>
+<li><!WA11><a href="#CourseSections">Course Sections</a>
+<li><!WA12><a href="#ElectronicInfo"> Access to Course Information</a>
+<li><!WA13><a href="#Syllabus">Syllabus</a>
+<li><!WA14><a href="#GradingPolicy"> Grading Policy</a>
+<li><!WA15><a href="#CollaborationPolicy"> Collaboration Policy</a>
+<li><!WA16><a href="#LateWorkPolicy"> Late Work Policy</a>
+</ul>
+
+<h2>Example source code</h2>
+<ul> 
+<li> Source code for the data structures and examples in the
+Weiss textbook are available as a 
+<!WA17><a href="http://www.cs.rpi.edu/~dugan/data_structures/adp-cpp/adp-cpp.tar"> tar file </a> 
+or you can get
+the files <!WA18><a href="http://www.cs.rpi.edu/~dugan/data_structures/adp-cpp"> individually </a>.
+
+<li> STL Sample source code is available as a 
+<!WA19><a href="http://www.cs.rpi.edu/~dugan/data_structures/stl/examples.tar"> tar file </a> 
+or you can get
+the files <!WA20><a href="http://www.cs.rpi.edu/~dugan/data_structures/stl/examples"> individually
+</a>.
+</ul>
+
+<h1><a name="OldAnnouncements"> Previous announcements</a> </h1>
+<ul>
+<li>Homework 2 deadline has been extended to Monday, October 28 11:59:59.
+<li>To submit the second project, run the UNIX shell script:
+        ~goldsd/public/submit         
+from the directory in which your project resides.  This will
+make your homework files accessible to the TA, and will email 
+the location (directory) of those files to the TA.
+See the newsgroup message for details.
+<li>Copies of handouts for section 1 (Mehta),
+lectures 10, 11, 12, and 13, are available in the
+Computer Science office, Amos Eaton, Room 127.
+<li>Updated the file <!WA21><a href="http://www.cs.rpi.edu/~dugan/data_structures/project2/clothes.txt">clothest.txt</a>.  The new file contains vertex entries for the emperor's shoes and cloak which were missing from the original.
+<li><!WA22><a href="http://www.cs.rpi.edu/~dugan/data_structures/project2.html">Homework Two</a> is on-line.  It is due on October 23, 1996 at 11:59:59 PM.
+<li>The last day you can hand in Homework One is Friday October 4, 1996
+at 11:59:59 PM.  You will lose a maximum of 30% off your grade on the
+project if you turn in the program by this date.
+<li>The format of this home page has changed (slightly).  The most
+recent course announcements will be listed in this section; older
+announcements will also be available.
+<li>The deadline for <!WA23><a href="http://www.cs.rpi.edu/~dugan/data_structures/project1.html"> Homework One</a> 
+has been changed to September 25.</a>
+</ul>
+<h1  align=left><a name="Overview">Overview</a></h1>
+<P>
+This course focuses on the basic principles of Data Structures.
+Students learn the basic Data Structures and Algorithms that are used
+in applications throughout Computer Science.  The course begins with a
+thorough review of Object Oriented Programming and C++.  The core Data
+Structures are then introduced including: Pointers, Arrays, Stacks,
+Linked Lists, Trees, Graphs, Hash Tables, and Queues.  These Data
+Structures are then applied to problems like Dictionaries, Discrete
+Event Simulation, Shortest Paths, and Topological Sorting.  Using
+the Data Structures as a base, students then investigate some of the
+fundamental Algorithms of Computer Science.  These include: Sorting,
+Balanced Trees, Graphs, NP-hard problems, Splay Trees, and Memory
+Management.  In addition to course lectures and exams, students will
+also be responsible for four significant programming projects.
+
+<h1  align=left><a name="Textbook">Textbook</a></h1>
+<!WA24><a href="http://205.149.189.56/cseng/authors/weiss/adp-cpp/adp-cpp.html">
+Algorithms, Data Structures, and Problem Solving with C++, by Mark
+Allen Weiss, Addison-Wesley Publishing, ISBN 0-8053-1666-3, hardcover,
+820 pages, 1996.</a>
+
+<h1><a name="CourseSections">Course Sections</a></h1>
+
+<h2>Section 1</h2>
+<h3>Course Time/Location</h3>
+<ul>
+<LI>Course Time: MW 4-5:20 PM 
+<LI>Location: Sage 3101
+</UL>
+<h3>Instructor: Alok Mehta </h3>
+<ul>
+<LI>E-Mail: mehtaa@cs.rpi.edu</LI>
+<LI>Office Hours: MW 5:30-6:30 PM</LI>
+<LI>Office Location: Amos Eaton 218</LI>
+<LI>(Home) Phone:  518-785-7576 (best time to call: 
+evenings, until 10:00 pm)</LI>
+</UL>
+
+<h3><a name="PatrickFry">
+Teaching Assistant: Patrick Fry </a></h3>
+<ul>
+<LI>E-Mail: fryp@cs.rpi.edu</LI>
+<LI>Office Hours: M 10-11:30AM, Th 12-1:30 PM</LI>
+<LI>Office Location: Amos Eaton 211</LI>
+<LI>Office Phone: x 2816</LI>
+</UL>
+
+<h2> Section 2</h2>
+<h3>Course Time/Location</h3>
+<ul>
+<LI>Course Time: MW 9:00-10:20 AM 
+<LI>Location: Sage 3101
+</UL>
+
+<h3>Instructor: Bob Dugan</h3>
+<UL>
+<LI>E-Mail: dugan@rpi.edu</LI>
+<LI>Office Hours: MW 10:30-11:30 AM</LI>
+<LI>Office Location: Amos Eaton 211</LI>
+<LI>Office Phone:  518-276-2816</LI>
+<LI><!WA25><A HREF="http://cs.rpi.edu/~dugan/contact.html">Other Ways of finding Bob</A>
+</ul>
+
+<h3>Teaching Assistant: David Goldschmidt</h3>
+<ul>
+<LI>E-Mail: goldsd@cs.rpi.edu</LI>
+<LI>Office Hours: Tue 5:30-8:30 PM</LI>
+<LI>Office Location: Sage 1112</LI>
+<LI>Office Phone: 518-276-4849 (during office hours only)</LI>
+<LI><!WA26><A HREF="http://www.cs.rpi.edu/~goldsd">Other Ways of finding Dave</A></LI>
+</UL>
+
+<h1  align=left><a name="ElectronicInfo">Accessing Course Information Electronically</a></h1>
+
+<P>
+In order to complete the projects for this course, you will need an
+RCS account.  This is a computer account on the computer systems
+here at RPI.  If you don't have an RCS account you need to contact
+us or the TAs to get one!
+
+<P>
+The course instructors will strive to maintain as much information
+about the course on-line as possible.  To access this information, you
+should be familiar with internet applications such as Email,
+Usenet, and Web Browsing tools.
+
+<P>
+If you don't have experience using these tools, pick up the
+"RCS for DUMMIES" booklet, written by Eta Kappa Nu, and available
+at the VCC Help Desk.  This booklet will help you get started.
+
+<h2>Home Page</h2>
+
+The home page for this course is located at
+<!WA27><a href="http://www.cs.rpi.edu/~dugan/data_structures">
+http://www.cs.rpi.edu/~dugan/data_structures </a>.
+Links to course lecture notes and additional material are accessible from 
+this home page.
+
+<h2>Newsgroup</h2>
+
+<P>
+A newsgroup, 
+<!WA28><a href="news:rpi.courses.Fall96.DataStructures">
+news:rpi.courses.Fall96.DataStructures</a>, 
+has been set up for this course.
+
+<P>
+This is a recommended way to ask a question of your fellow
+class mates... or to ask us or the TAs a question that you think everyone
+would be interested in hearing about... or to post information that
+you think would be useful to the class.
+
+<h2>Email</h2>
+
+<P>
+If you have a personal or private question or concern, then just
+send the instructors or the TAs e-mail, don't post it to the Newsgroup.
+
+<h1  align=left><a name="Syllabus">Course Syllabus</a></h1>
+<BODY>
+<TABLE BORDER=4 CELLPADDING=3 CELLSPACING=8>
+
+<TR ALIGN=CENTER>
+  <TH ROWSPAN=2><!WA29><IMG SRC="http://www.cs.rpi.edu/~dugan/gif/datebook.gif" HEIGHT=64 WIDTH=64></TH>
+  <TH COLSPAN=8>August 1996</TH>
+</TR>
+
+<TR ALIGN=CENTER>
+  <TH> Sunday	</TH>
+  <TH> Monday	</TH>
+  <TH> Tuesday	</TH>
+  <TH> Wednesday</TH>
+  <TH> Thursday	</TH>
+  <TH> Friday	</TH>
+  <TH> Saturday	</TH>
+</TR>
+
+<TR ALIGN=CENTER> <TH>Week 1</TH>
+  <TH align=left valign=top> 25	</TH>
+  <TH align=left valign=top>26 <p>Introduction and Overview <p><!WA30><A href="http://www.lib.rpi.edu/dept/library/reserves/66/66436001/1.pdf">Dugan</a>, <p><!WA31><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect1/lect1.html">Mehta</a></TH>
+  <TH align=left valign=top> 27</TH>
+  <TH align=left valign=top>28 <p>C++ Review, Basic Data Types <p><!WA32><A href="http://www.cs.rpi.edu/~dugan/data_structures/dugan2.html">Dugan</a>, <p><!WA33><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect2/lect2.html">Mehta</a></TH>
+  <TH align=left valign=top> 29	</TH>
+  <TH align=left valign=top> 30	</TH>
+  <TH align=left valign=top> 31	</TH>
+</TR>
+
+</TABLE>
+
+<TABLE BORDER=4 CELLPADDING=3 CELLSPACING=8>
+
+<TR ALIGN=CENTER>
+  <TH ROWSPAN=2><!WA34><IMG SRC="http://www.cs.rpi.edu/~dugan/gif/datebook.gif" HEIGHT=64 WIDTH=64></TH>
+  <TH COLSPAN=8>September 1996</TH>
+</TR>
+
+<TR ALIGN=CENTER>
+  <TH> Sunday	</TH>
+  <TH> Monday	</TH>
+  <TH> Tuesday	</TH>
+  <TH> Wednesday</TH>
+  <TH> Thursday	</TH>
+  <TH> Friday	</TH>
+  <TH> Saturday	</TH>
+</TR>
+
+<TR ALIGN=CENTER> <TH>Week 2</TH>
+  <TH align=left valign=top>1	</TH>
+  <TH align=left valign=top>2 <p>Labor Day <p> NO CLASS</TH>
+  <TH align=left valign=top> 3</TH>
+  <TH align=left valign=top>4 <p>OOPI: Objects, Classes, ADTs <p><!WA35><A href="http://www.cs.rpi.edu/~dugan/data_structures/dugan3.html">Dugan</a>, <p><!WA36><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect3/lect3.html">Mehta</a></TH>
+  <TH align=left valign=top> 5	</TH>
+  <TH align=left valign=top> 6	</TH>
+  <TH align=left valign=top> 7	</TH>
+</TR>
+
+
+<TR ALIGN=CENTER> <TH>Week 3</TH>
+  <TH align=left valign=top> 8	</TH>
+  <TH align=left valign=top>9 <p>OOP II: Templates Inheritance, STL <p><!WA37><a href="http://www.cs.rpi.edu/~dugan/data_structures/dugan4.ps">Dugan</a>, <p><!WA38><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect4/lect4.html">Mehta</a></TH>
+  <TH align=left valign=top> 10	</TH>
+  <TH align=left valign=top>11 <p>Basic Data Structures <p><!WA39><A href="http://www.lib.rpi.edu/dept/library/reserves/66/66436001/4.pdf">Dugan</a>, <p><!WA40><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect5/lect5.html">Mehta</a></TH>
+  <TH align=left valign=top> 12	</TH>
+  <TH align=left valign=top> 13	</TH>
+  <TH align=left valign=top> 14	</TH>
+</TR>
+
+<TR ALIGN=CENTER> <TH>Week 4</TH>
+  <TH align=left valign=top> 15	</TH>
+  <TH align=left valign=top>16 <p>Basic Data Structures (cont.) <p><!WA41><A href="http://www.lib.rpi.edu/dept/library/reserves/66/66436001/5.pdf">Dugan</a>, <p><!WA42><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect6/lect6.html">Mehta</a></TH>
+  <TH align=left valign=top> 17	</TH>
+  <TH align=left valign=top>18 <p>Recursion <p><!WA43><A href="http://www.lib.rpi.edu/dept/library/reserves/66/66436001/6.pdf">Dugan</a>, <p><!WA44><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect7/lect7.html">Mehta</a></TH>
+  <TH align=left valign=top> 19	</TH>
+  <TH align=left valign=top> 20	</TH>
+  <TH align=left valign=top> 21	</TH>
+</TR>
+
+<TR ALIGN=CENTER> <TH>Week 5</TH>
+  <TH align=left valign=top>22	</TH>
+  <TH align=left valign=top>23 <p>Trees, Traversal, Expressions, Game Playing <p><!WA45><A href="http://www.lib.rpi.edu/dept/library/reserves/66/66436001/7.pdf">Dugan</a>, <p><!WA46><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect8/lect8.html">Mehta</a> </TH>
+  <TH align=left valign=top> 24	</TH>
+  <TH align=left valign=top>25 <p>Graphs, Searching, and Traversal Graphs <p><!WA47><A href="http://www.lib.rpi.edu/dept/library/reserves/66/66436001/8.pdf">Dugan</a>, <p><!WA48><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect9/lect9.html">Mehta</a><p><!WA49><A href="http://www.cs.rpi.edu/~dugan/data_structures/project1.html">Homework#1 Due</a></TH>
+  <TH align=left valign=top> 26	</TH>
+  <TH align=left valign=top> 27	</TH>
+  <TH align=left valign=top> 28	</TH>
+</TR>
+
+<TR ALIGN=CENTER> <TH>Week 6</TH>
+  <TH align=left valign=top>29	</TH>
+  <TH align=left valign=top>30  <p>Minimum Spanning Trees, Topological Sorting <p><!WA50><A href="http://www.lib.rpi.edu/dept/library/reserves/66/66436001/10.pdf">Dugan</a>, <p><!WA51><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect10/lect10.html">Mehta</a></TH>
+  <TH align=left valign=top> 	</TH>
+  <TH align=left valign=top> 	</TH>
+  <TH align=left valign=top> 	</TH>
+  <TH align=left valign=top> 	</TH>
+</TR>
+
+</TABLE>
+
+<TABLE BORDER=4 CELLPADDING=3 CELLSPACING=8>
+
+<TR ALIGN=CENTER>
+  <TH ROWSPAN=2><!WA52><IMG SRC="http://www.cs.rpi.edu/~dugan/gif/datebook.gif" HEIGHT=64 WIDTH=64></TH>
+  <TH COLSPAN=8>October 1996</TH>
+</TR>
+
+<TR ALIGN=CENTER>
+  <TH> Sunday	</TH>
+  <TH> Monday	</TH>
+  <TH> Tuesday	</TH>
+  <TH> Wednesday</TH>
+  <TH> Thursday	</TH>
+  <TH> Friday	</TH>
+  <TH> Saturday	</TH>
+</TR>
+
+<TR ALIGN=CENTER> <TH>Week 6</TH>
+  <TH align=left valign=top> 	</TH>
+  <TH align=left valign=top> </TH>
+  <TH align=left valign=top> 1</TH>
+  <TH align=left valign=top>2 <p>Shortest Paths <p><!WA53><A href="http://www.cs.rpi.edu/~dugan/data_structures/dugan11.html">Dugan</a>, <p><!WA54><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect11/lect11.html">Mehta</a></TH>
+  <TH align=left valign=top> 3	</TH>
+  <TH align=left valign=top> 4	</TH>
+  <TH align=left valign=top> 5	</TH>
+</TR>
+
+
+<TR ALIGN=CENTER> <TH>Week 7</TH>
+  <TH align=left valign=top> 6	</TH>
+  <TH align=left valign=top>7 <p>Dictionaries, BSTs, and Hash Tables <!WA55><A href="http://www.cs.rpi.edu/~dugan/data_structures/dugan12.html">Dugan</a>, <p><!WA56><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect12/lect12.html">Mehta</a></TH>
+  <TH align=left valign=top> 8 	</TH>
+  <TH align=left valign=top> 9 <p>Huffman Codes <p><!WA57><A href="http://www.lib.rpi.edu/dept/library/reserves/66/66436001/12.pdf">Dugan</a>, <p><!WA58><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect13/lect13.html">Mehta</a></TH>
+  <TH align=left valign=top> 10	</TH>
+  <TH align=left valign=top> 11	</TH>
+  <TH align=left valign=top> 12	</TH>
+</TR>
+
+<TR ALIGN=CENTER> <TH>Week 8</TH>
+  <TH align=left valign=top> 13	</TH>
+  <TH align=left valign=top>14 <p>Midterm Break <p> NO CLASS </TH>
+  <TH align=left valign=top> 15	</TH>
+  <TH align=left valign=top>16   <p>Discrete Event Simulation <p><!WA59><A href="http://www.lib.rpi.edu/dept/library/reserves/66/66436001/12.pdf">Dugan</a>, <p><!WA60><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect14/lect14.html">Mehta</a></TH>
+  <TH align=left valign=top> 17	</TH>
+  <TH align=left valign=top> 18	</TH>
+  <TH align=left valign=top> 19	</TH>
+</TR>
+
+<TR ALIGN=CENTER> <TH>Week 9</TH>
+  <TH align=left valign=top>20	</TH>
+  <TH align=left valign=top>21 <p>Midterm Exam <p><!WA61><A href="http://www.lib.rpi.edu/dept/library/reserves/66/66436001/0.pdf">Dugan</a>, <p><!WA62><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect15/lect15.html">Mehta</a></TH>
+  <TH align=left valign=top> 22	</TH>
+  <TH align=left valign=top>23 <p>Analysis Of Algorithms <p><!WA63><A href="http://www.cs.rpi.edu/~dugan/data_structures/dugan16.html">Dugan</a>, <p><!WA64><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect16/lect16.html">Mehta</a></TH>
+  <TH align=left valign=top> 24	</TH>
+  <TH align=left valign=top> 25	</TH>
+  <TH align=left valign=top> 26	</TH>
+</TR>
+
+<TR ALIGN=CENTER> <TH>Week 10</TH>
+  <TH align=left valign=top>27	</TH>
+  <TH align=left valign=top>28 <p>Sorting <p><!WA65><A href="http://www.lib.rpi.edu/dept/library/reserves/66/66436001/14.pdf">Dugan</a>, <p><!WA66><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect17/lect17.html">Mehta</a><p><!WA67><a href="http://www.cs.rpi.edu/~dugan/data_structures/project2.html"><b>Homework#2 DUE</b></a></TH>
+  <TH align=left valign=top> 29	</TH>
+  <TH align=left valign=top>30 <p>Sorting (cont.) <p><!WA68><A href="http://www.lib.rpi.edu/dept/library/reserves/66/66436001/15.pdf">Dugan</a>, <p><!WA69><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect18/lect18.html">Mehta</a></TH>
+  <TH align=left valign=top> 31	</TH>
+  <TH align=left valign=top> 	</TH>
+</TR>
+
+</TABLE>
+
+<TABLE BORDER=4 CELLPADDING=3 CELLSPACING=8>
+
+<TR ALIGN=CENTER>
+  <TH ROWSPAN=2><!WA70><IMG SRC="http://www.cs.rpi.edu/~dugan/gif/datebook.gif" HEIGHT=64 WIDTH=64></TH>
+  <TH COLSPAN=8>November 1996</TH>
+</TR>
+
+<TR ALIGN=CENTER>
+  <TH> Sunday	</TH>
+  <TH> Monday	</TH>
+  <TH> Tuesday	</TH>
+  <TH> Wednesday</TH>
+  <TH> Thursday	</TH>
+  <TH> Friday	</TH>
+  <TH> Saturday	</TH>
+</TR>
+
+<TR ALIGN=CENTER> <TH>Week 10</TH>
+  <TH align=left valign=top>  </TH>
+  <TH align=left valign=top>  </TH>
+  <TH align=left valign=top> </TH>
+  <TH align=left valign=top> </TH>
+  <TH align=left valign=top> </TH>
+  <TH align=left valign=top>1</TH>
+  <TH align=left valign=top>2 </TH>
+</TR>
+
+<TR ALIGN=CENTER> <TH>Week 11</TH>
+  <TH align=left valign=top>3 </TH>
+  <TH align=left valign=top>4 <p>Linked Lists <p><!WA71><A href="http://www.lib.rpi.edu/dept/library/reserves/66/66436001/0.pdf">Dugan</a>, <p><!WA72><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect19/lect19.html">Mehta</a></TH>
+  <TH align=left valign=top> 5</TH>
+  <TH align=left valign=top>6 <p>Trees, BST  <p><!WA73><A href="http://www.lib.rpi.edu/dept/library/reserves/66/66436001/0.pdf">Dugan</a>, <p><!WA74><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect20/lect20.html">Mehta</a></TH>
+  <TH align=left valign=top> 7	</TH>
+  <TH align=left valign=top> 8	</TH>
+  <TH align=left valign=top> 9	</TH>
+</TR>
+
+
+<TR ALIGN=CENTER> <TH>Week 12</TH>
+  <TH align=left valign=top> 10	</TH>
+  <TH align=left valign=top>11<p>Graphs <p><!WA75><A href="http://www.lib.rpi.edu/dept/library/reserves/66/66436001/0.pdf">Dugan</a>, <p><!WA76><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect21/lect21.html">Mehta</a></TH>
+  <TH align=left valign=top> 12	</TH>
+  <TH align=left valign=top> 13<p>Graphs (cont.) <p><!WA77><A href="http://www.lib.rpi.edu/dept/library/reserves/66/66436001/0.pdf">Dugan</a>, <p><!WA78><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect22/lect22.html">Mehta</a></TH>
+  <TH align=left valign=top> 14	</TH>
+  <TH align=left valign=top> 15	</TH>
+  <TH align=left valign=top> 16	</TH>
+</TR>
+
+<TR ALIGN=CENTER> <TH>Week 13</TH>
+  <TH align=left valign=top> 17	</TH>
+  <TH align=left valign=top>18 <p>Hash Tables <p><!WA79><A href="http://www.lib.rpi.edu/dept/library/reserves/66/66436001/0.pdf">Dugan</a>, <p><!WA80><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect23/lect23.html">Mehta</a><p><b>
+<!WA81><a href="http://www.cs.rpi.edu/~dugan/data_structures/project3.html">Homework #3</a> DUE
+</b></TH>
+  <TH align=left valign=top> 19	</TH>
+  <TH align=left valign=top>20 <p>Partially Ordered Trees and Heaps <p><!WA82><A href="http://www.lib.rpi.edu/dept/library/reserves/66/66436001/0.pdf">Dugan</a>, <p><!WA83><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect24/lect24.html">Mehta</a></TH>
+  <TH align=left valign=top> 21	</TH>
+  <TH align=left valign=top> 22	</TH>
+  <TH align=left valign=top> 23	</TH>
+</TR>
+
+<TR ALIGN=CENTER> <TH>Week 14</TH>
+  <TH align=left valign=top>24	</TH>
+  <TH align=left valign=top>25 <p>AVL Trees <p><!WA84><A href="http://www.lib.rpi.edu/dept/library/reserves/66/66436001/0.pdf">Dugan</a>, <p><!WA85><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect25/lect25.html">Mehta</a></TH>
+  <TH align=left valign=top> 26	</TH>
+  <TH align=left valign=top>27 <p>Thanksgiving <p>NO CLASS </TH>
+  <TH align=left valign=top> 28	</TH>
+  <TH align=left valign=top> 29	</TH>
+  <TH align=left valign=top> 30	</TH>
+</TR>
+
+</TABLE>
+
+
+<TABLE BORDER=4 CELLPADDING=3 CELLSPACING=8>
+
+<TR ALIGN=CENTER>
+  <TH ROWSPAN=2><!WA86><IMG SRC="http://www.cs.rpi.edu/~dugan/gif/datebook.gif" HEIGHT=64 WIDTH=64></TH>
+  <TH COLSPAN=8>December 1996</TH>
+</TR>
+
+<TR ALIGN=CENTER>
+  <TH> Sunday	</TH>
+  <TH> Monday	</TH>
+  <TH> Tuesday	</TH>
+  <TH> Wednesday</TH>
+  <TH> Thursday	</TH>
+  <TH> Friday	</TH>
+  <TH> Saturday	</TH>
+</TR>
+
+<TR ALIGN=CENTER> <TH>Week 15</TH>
+  <TH align=left valign=top>1  </TH>
+  <TH align=left valign=top>2  <p>Memory Management, Free Lists, Garbage Collection <p> <!WA87><A href="http://www.lib.rpi.edu/dept/library/reserves/66/66436001/0.pdf">Dugan</a>, <p><!WA88><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect26/lect26.html">Mehta</a></TH>
+  <TH align=left valign=top>3  </TH>
+  <TH align=left valign=top>4  <p>Summary and Review <p> <!WA89><A href="http://www.lib.rpi.edu/dept/library/reserves/66/66436001/0.pdf">Dugan</a>, <p><!WA90><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect27/lect27.html">Mehta</a></TH>
+  <TH align=left valign=top>5  </TH>
+  <TH align=left valign=top>6  </TH>
+  <TH align=left valign=top>7 </TH>
+</TR>
+
+<TR ALIGN=CENTER> <TH>Week 16</TH>
+  <TH align=left valign=top>8 </TH>
+  <TH align=left valign=top>9 <p>Final Exam<p> <!WA91><A href="http://www.lib.rpi.edu/dept/library/reserves/66/66436001/0.pdf">Dugan</a>, <p><!WA92><a href="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect28/lect28.html">Mehta</a><p><b>Homework#4 DUE</b></TH>
+  <TH align=left valign=top> </TH>
+  <TH align=left valign=top> </th>
+  <TH align=left valign=top> 	</TH>
+  <TH align=left valign=top> 	</TH>
+  <TH align=left valign=top> 	</TH>
+</TR>
+
+
+</TABLE>
+
+<h1  align=left><a name="GradingPolicy">Grading Policy</a></h1>
+<P>
+Your grade will be based on the following evaluations:
+
+
+<TABLE BORDER=4 CELLPADDING=3 CELLSPACING=2>
+
+<TR ALIGN=CENTER>
+  <TH> Task	</TH>
+  <TH> Weight	</TH>
+  <TH> Section One Average </TH>
+  <TH> Section Two Average </TH>
+</TR>
+
+<TR ALIGN=CENTER>
+   <TH> Homework #1 </TH>
+   <TH> 15 % </TH>
+   <TH> 38/100  </TH>
+   <TH> 48/100  </TH>
+</TR>
+
+<TR ALIGN=CENTER>
+   <TH> Homework #2 </TH>
+   <TH> 15 % </TH>
+   <TH>  </TH>
+   <TH>  </TH>
+</TR>
+
+<TR ALIGN=CENTER>
+   <TH> Homework #3 </TH>
+   <TH> 15 % </TH>
+   <TH>  </TH>
+   <TH>  </TH>
+</TR>
+
+<TR ALIGN=CENTER>
+   <TH> Homework #4 </TH>
+   <TH> 15 % </TH>
+   <TH>  </TH>
+   <TH>  </TH>
+</TR>
+
+<TR ALIGN=CENTER>
+   <TH> Mid-Term Exam </TH>
+   <TH> 20 % </TH>
+   <TH> </TH>
+   <TH> 70/80 </TH>
+</TR>
+
+<TR ALIGN=CENTER>
+   <TH> Final Exam </TH>
+   <TH> 20 % </TH>
+   <TH> </TH>
+   <TH> </TH>
+</TR>
+
+<TR ALIGN=CENTER>
+  <TH rowspan=2> TOTAL	</TH>
+  <TH> 100 %</TH>
+</TR>
+</TABLE>
+<h1  align=left><a name="CollaborationPolicy">Policy on Collaboration</a></h1>
+<p>
+No collaboration is permitted on exams.
+<p>
+You are encouraged to work with other students in the class on the
+assignments.  Useful forms of collaboration include discussing design
+alternatives, details of algorithms and data structures, possible
+sources of reusable code, and help with debugging, compiling,
+makefiles, etc.
+<p>
+You are also encouraged to practice code reuse, with the stipulation
+that any reused code submitted as part of your assignment must be
+clearly and explicitly attributed.  Code that can be reused includes
+that found in the textbooks, code from previous work you have done (in
+this class or others), and code from other books or Internet sites.
+<p>
+You may NOT reuse code written by another student in the class.  
+<p>
+The easiest way to attribute any code that you reuse is with a
+comment.  You must give enough information so that the TAs can find
+the code themselves.  Examples:
+<pre>
+  /* the following code is from p.111 of Weiss textbook */
+  class vector { ...
+
+  /* the following code is from my CS I project, Feb 1995. */
+
+  /* the following code was downloaded from ftp://ftp.cs.rpi.edu/pub/... */
+
+  /* the following code is from the book "Advanced C++" by James Coplien,
+   * Addison-Wesley, 1992, p.152
+   */
+</pre>
+<p>
+Collaboration and discussion does not mean that the assignments may be
+done jointly; each assignment you submit must be 100 percent your own
+work.  You must be especially carefull when discussing another
+student's code (perhaps to help with finding a bug).  DO NOT copy any
+of the code, either on paper or electronically.  DO NOT write any code
+for the other student, even just to fix a typographical error.  DO NOT
+look and another student's code and then sit down and write nearly
+identical (but not quite) code yourself.  DO NOT "paraphrase" code
+from another source and fail to attribute it in a comment.
+<p>
+Any code submitted which the TAs find too similar to another students
+code, or any code which is similar to code from a book or another
+source which has not been properly attributed, will result in a zero
+for the assignment in question and possibly a failing course grade.
+<h1 align=left><a name="LateWorkPolicy">Policy on Late Work</a></h1>
+<P>
+Homeworks are due at 11:59:59 PM, on the due date.  Late homeworks will 
+be accepted with a penalty of 10% per day for 3 days.  After that, the
+project will not be accepted.
+<P>
+Exams are to be taken at the specified date and time.  If you miss the
+exam, you will receive a 0.
+<P>
+Sometimes things happen. If there are circumstances that prevent you
+from meeting your obligations for this course, you need to talk to us
+or the TAs to make arrangements IN ADVANCE.
+<h1  align=left><a name="DroppingCourse">Dropping the Course</a></h1>
+<P>
+We want you to stay in the course!  Please talk to us before you 
+decide to drop.  If things can't work out, the drop
+date is <b>September 30, 1996</a>
+<hr>
+<hr>
+<address>
+<b>Bob Dugan</b> <!WA93><a href="mailto:dugan@rpi.edu">dugan@rpi.edu </a> <br>
+<b>Alok Mehta</b> <!WA94><a href="mailto:mehtaa@cs.rpi.edu"> mehtaa@cs.rpi.edu </a>
+</address>
+</body>

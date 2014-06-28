@@ -1,0 +1,257 @@
+Date: Mon, 11 Nov 1996 17:04:08 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 11 Nov 1996 06:12:28 GMT
+Content-length: 10055
+
+<HTML>
+<HEAD><TITLE>
+CS 302 Program 6
+</TITLE></HEAD>
+
+<BODY>
+
+<center>
+<H1>CS 302 Program 6</H1>
+<H3>Section 10</H3>
+</center>
+<B>Due Date:</B>  <I>Monday, November 11</I>  (see <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~msteele/cs302/prog6-handin.html">
+program 6 hand-in dates</A> special information)
+
+<p> <hr> <p>
+
+The phone service 1-800-DOCTORS has decided to expand their business.
+In addition to their usual service of finding doctors, they will now find
+people dentists and hair dressers as well, and even make the appointments
+for them.  They need to be able to save all of this information, though,
+and everyone is sick and tired of writing stuff down on paper and killing
+trees.  Obviously, the information needs to be stored in a computer.
+Believe it or not, this is where you come in. <p>
+
+You need to write a program that will fill up to three appointments at the
+users request (doctor, dentist, hair).  For each appointment it should
+first ask the user if they want to make that particular appointment.  If
+they do, you should then ask for the relevent time information (month,
+day, hour, minute).  After all  appointments have been made, you should
+print out the user's appointments, with the time either in military or
+standard format (you should ask which they want for each).
+
+<p><hr><p>
+
+A typical run of the program would look something like this:
+<p>
+<blockquote>
+<PRE>
+Do you want to make a doctor's appointment? <b>Y</b>
+Enter the month (1-12): <b>1</b>
+Enter the day of the month (1-30): <b>15</b>
+Enter the hour (0-23): <b>18</b>
+Enter the minute (0-59): <b>0</b>
+
+Do you want to make a dental appointment? <b>N</b>
+
+Do you want to make a hair appointment? <b>Y</b>
+Enter the month (1-12): <b>3</b>
+Enter the day of the month (1-30): <b>13</b>
+Enter the hour (0-23): <b>13</b>
+Enter the minute (0-59): <b>13</b>
+
+Doctor's Appointment:
+Military (M) or Standard (S) time? <b>S</b>
+---------------------------------------------------
+The appointment is on Monday, January 15 at 6:00 PM.
+---------------------------------------------------
+
+Hair Appointment:
+Military (M) or Standard (S) time? <b>M</b>
+---------------------------------------------------
+The appointment is on Wednesday, March 13 at 13:13.
+---------------------------------------------------
+</PRE>
+</blockquote>
+
+<p><hr><p>
+
+There are lots of variables needed to store the information for an
+appointment.  They are as follows:<br>
+<UL>
+<LI>the <b>month</b>: the month of the year (JAN, FEB, MAR, ..., DEC -- 
+	must be an enumerated type)<p>
+<LI>the <b>day of month</b>: the day of the month (to make your life
+	easier, all months of the year will have 30 days, so this should
+	be an integer with legal values of 1-30)<p>
+<LI>the <b>day of week</b>: the day of the week (MON, TUE, ..., SUN -- 
+	must be an enumerated type)<p>
+<LI>the <b>hour of day</b>: the hour of the day (appointments are stored
+	in military time, so this will be an integer between 0 and 23
+	where the 0th hour is between midnight and 1 AM)<p>
+<LI>the <b>minute of hour</b>: the minute of the hour (this is an integer
+	between 0 and 59 -- THIS CAN NOT BE 60!!!)<p>
+<LI><b>filled</b>: whether or not the data for this appointment has been
+	set (must be an enumerated boolean type)<p>
+<p>
+</UL>
+
+There are six variables in all.  Since we are storing three different
+appointments, this would mean 18 variable declarations.  Also, it would be
+nice if we could have our own set of functions just for appointments and
+be able to protect the appointment data from other parts of the program.
+The sane solution to these potential problems is to define and implement
+an Appointment class.  We will then not only get away with only three
+declarations of appointment objects, but will have a nicely modularized
+program.
+<p>
+
+As stated above, you should define an Appointment class.  It must contain
+the six variables for storing the appointment information.  It should also
+contain the following functions:
+<UL>
+
+<LI><b>Appointment</b> (public)
+<UL>
+<LI>this is the constructor
+<LI>it should initialize <b>filled</b> to false to indicate that the
+	appointment has not been set yet 
+</UL><p>
+
+<LI><b>set_day</b> (private)
+<UL>
+<LI> this function will set the day of week variable based upon the
+	current month and day of month 
+<LI>you can assume that January 1 is a Monday and that all months have
+	exactly 30 days
+<LI>since we are dealing with classes, this should not need to have any
+	formal parameters and should not need to return anything
+</UL><p>
+
+<LI><b>read_app</b> (public)
+<UL>
+<LI>this function will fill all of the necessary appointment information 
+<LI>it should first prompt for and read in the <b>month</b>, <b>day of
+	month</b>, <b>hour</b>, and <b>minute</b> and make sure that they 
+	all have legitimate values
+<LI>the hour should be read in military format
+<LI>the month should be read in as an int and then type cast to the month
+	enumerated type
+<LI>it should then set the <b>day of week</b> (by calling <b>set_day</b>
+	-- thus, <b>read_app</b> should not prompt the user for the day
+	of the week)
+<LI>it should then set filled to indicate that the appointment has been set
+</UL><p>
+
+<LI><b>is_filled</b> (public)
+<UL>
+<LI>should return true if the current object's appointment has been set
+	and false otherwise
+<LI>this function is necessary because the filled variable is private
+	and can not be accessed by the caller
+</UL><p>
+
+<LI><b>print_mil_time</b> (private)
+<UL>
+<LI>this function will print the time in military (24 hour) format
+<LI>this should not require any parameters and does not need to return
+	anything
+</UL><p>
+
+<LI><b>print_stan_time</b> (private)
+<UL>
+<LI>this function will print the time in standard (12 hour) format
+<LI>this should not require any parameters and does not need to return 
+	anything
+<LI>remember that midnight is 12AM, noon is 12pm.
+</UL><p>
+
+<LI><b>write_app</b> (public)
+<UL>
+<LI>this function will write out the appointment information
+<LI>it should ask if the user wants the time printed in military or
+	standard format and do appropriate error checking (you will
+	probably want a function to do this)
+<LI>it should then print out the <b>day of week</b>, the <b>month</b>, the
+	<b>day of month</b>
+<LI>the <b>entire</b> name of the month should be written, not just the 
+	number
+<LI>it should then print the time in the format the user requests (by
+	calling one of the two private time print functions)
+</UL><p>
+</UL><br>
+
+Main should not be able to harm any of the class's data, so all variables
+int the class must be made private.  The constructor function, 
+<b>Appointment</b> must be made public (this is a hard and fast rule of
+constructors).  Also, the functions <b>read_app, write_app, </b> and
+<b>is_filled</b> are all called by main and should be made public.  No
+other functions are needed outside the class and the remaining
+functions must therefore remain private.
+<p>
+
+The main part should be relatively simple.  The first thing you need to do
+is declare three objects of type appointment.  For each appointment, you
+should prompt if the user wants to fill that particular appointment (e.g.
+doctor's). If so, call <b>read_app</b> to fill the necessary information.
+After this is done for all three appointments, you should print out each
+appointment that is set (this should be checked by calling   
+<b>is_filled</b>) in a manner similar to the example.
+
+<H3>Suggestions/Final Notes</H3>
+Notice that in both main and within one of the class functions, we have
+the need to read in a character for a yes/no type question and do error
+checking.  This is something that should be done within a function.
+<p>
+When writing a class, it often looks messy to have all of your 
+preconditions and postconditions in the class definition.  What you
+can do instead is the following: <UL>
+<LI>In the class definition, next to the prototypes for each member
+function, write a <I>short</I> description (a line or so) of the function.
+<LI>Above the function definitions for each member function, write a 
+more detailed explanation of how the function works.  It might be a good
+idea to write formal preconditions and postconditions, but if you have
+a less formal description which still thoroughly describes what all of
+the parameters are, what the function returns, and what the function
+does, I'll accept that as well.
+</UL>
+
+As far as organizing your program, my suggestion is to have the enumerated
+types, the class definition, and any function prototypes near the top
+of the program, follwed by a divider, follwed by the main section
+of your code, followed by any auxiliary functions which are not class
+member functions, followed by another divider, followed by your
+class member function definitions.  By a "divider," I mean a comment
+something like this:
+
+<blockquote><PRE>
+/**********************************************************************
+ *                                                                    *
+ *              Member Functions for Appointment Class                *
+ *                                                                    *
+ **********************************************************************/
+</PRE>
+<center><B>OR</B></center>
+<PRE>
+// ----------------------  APPOINTMENT CLASS  -------------------------
+// ----------------------  MEMBER FUNCTIONS   -------------------------
+</PRE>
+<center><B>OR</B></center>
+Any other way you can come up with to visually separate one section of
+your program from another. 
+</blockquote>
+Extra vertical space <I>in addition to</I> (not in place of) a dividing
+line is an excellent idea too.
+<p>
+
+<H3>What To Turn In</H3>
+As usual, I only want both the electronic submission and the printed copy of 
+your source code (the .cpp file).  Also turn in a printed copy of at least
+one sample run of your program which demonstrates that your program works.
+
+<P>
+<hr>
+<!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.wisc.edu/~msteele/cs302/programs.html">
+<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><IMG SRC="http://www.cs.wisc.edu/~msteele/images/hand.gif" alt="<--" ALIGN=MIDDLE> Click here to
+return to the CS 302 section 10 projects page</A>
+<p>Last Modified Wed Nov 6, 1996 by Mike Steele <I>(msteele@cs.wisc.edu)</I>
+<p>
+
+</BODY>
+</HTML>

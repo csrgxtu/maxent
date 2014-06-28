@@ -1,0 +1,31 @@
+Server: Dienst V4-1-1 
+MIME-version: 1.0
+Content-type: text/html
+
+<TITLE>Trace Cache: A Low Latency Approach to High Bandwidth Instruction Fetching </TITLE>
+<H2>Trace Cache: A Low Latency Approach to High Bandwidth Instruction Fetching </H2>
+ Eric Rotenberg,  Steve Bennett and  Jim Smith<BR>
+CS-TR-96-1310<BR>
+April 1996
+<p>
+ Superscalar processors require sufficient instruction fetch bandwidth to feed their highly parallel execution cores. Fetch bandwidth is determined by a number of factors, namely instruction cache hit rate, branch prediction accuracy, and taken branches in the instruction stream. Taken branches introduce the problem of noncontiguous instruction fetching: the dynamic instruction sequence exists in the cache, but the instructions are not in contiguous cache locations. This report considers the problem of fetching noncontiguous blocks of instructions in a single cycle. We propose the trace cache, a special instruction cache that captures dynamic instruction sequences. Each line in the trace cache stores a dynamic code sequence, which may contain one or more taken branches. Dynamic sequences are built up as the program executes. If a predicted dynamic sequence exists in the trace cache, it can be fed directly to the decoders. We investigate other methods for fetching noncontiguous instruction sequences in a single cycle. The Branch Address Cache and Collapsing Buffer achieve high bandwidth by feeding multiple noncontiguous fetch addresses to an interleaved cache and performing complex alignment on the instructions as they come out of the cache. Inevitably, this approach lengthens the critical path through the instruction fetch unit. Extra stages in the fetch pipeline increase branch mispredict recovery time, decreasing overall performance. Our approach moves complexity due to noncontiguous instruction fetching off the critical path and onto the fill side of the trace cache. We compare the performance of the trace cache against other fetch designs. We first consider simple instruction fetching mechanisms that predict only one branch at a time or fetch only up to the first taken branch. We also consider more aggressive methods that are able to fetch beyond multiple taken branches. For integer benchmarks, the trace cache improves performance on average by 34% over the fetch unit limited to one basic block per cycle, and 17% over the fetch unit limited to multiple contiguous basic blocks. The corresponding improvements for floating point benchmarks are 16% and 9%. Further, the trace cache consistently performs better than the other high bandwidth fetch mechanisms studied even if single-cycle fetch latency is assumed across all mechanisms. Simulations with more realistic latencies for the other high bandwidth approaches, based on pipeline stages before and after the instruction cache, show that the trace cache clearly outperforms other approaches: on average, 20% and 10% better than the next highest performer for integer and floating point benchmarks, respectively.<P>
+<hr><p>
+<H2>How to view this document</H2>
+<P><UL>
+<P>
+<LI>Display the <B>whole</B> document in one of the following formats.
+<P><UL>
+<LI><!WA0><A HREF="http://www.cs.wisc.edu/Dienst/Repository/2.0/Body/ncstrl.uwmadison%2fCS-TR-96-1310/postscript">PostScript
+</A> 259525 bytes. (compressed on disk, will be sent uncompressed)
+</UL>
+<BR>
+<LI>
+<!WA1><A HREF="http://www.cs.wisc.edu/Dienst/UI/2.0/Print/ncstrl.uwmadison%2fCS-TR-96-1310">Print or download all or selected pages.
+</A></UL>
+<HR>
+<p>
+<BLOCKQUOTE> You are granted permission for the non-commercial reproduction, distribution,display, and performance of this technical report in any format, BUT thispermission is only for a period of 45 (forty-five) days from the most recenttime that you verified that this technical report is still available fromthe Computer Science Department of the University of Wisconsin - Madison underterms that include this permission.  All other rights are reserved by theauthor(s). </BLOCKQUOTE></p><HR><p>
+[ <!WA2><A HREF="http://www.cs.wisc.edu/Dienst/UI/2.0/Search">Search</A>
+ ]
+<HR>
+<I><!WA3><img align=left  src="http://www.cs.wisc.edu/Dienst/htdocs/image_gif/sm_ncstrl.gif">NCSTRL</I><br><I>This server operates at UW Madison Computer Sciences Technical Reports .</I> <BR><I>Send email to <!WA4><A HREF="mailto: www@cs.wisc.edu">www@cs.wisc.edu</A> </I>

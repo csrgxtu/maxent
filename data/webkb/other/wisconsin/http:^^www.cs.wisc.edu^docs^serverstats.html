@@ -1,0 +1,99 @@
+Date: Mon, 04 Nov 1996 23:54:28 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 27 Jul 1995 09:47:41 GMT
+Content-length: 3643
+
+<HTML>
+<HEAD>
+<TITLE>Statistics for pages on www.cs.wisc.edu</TITLE>
+</HEAD>
+<BODY>
+
+<H2>Statistics for pages on www.cs.wisc.edu</H2>
+
+<P> As of July 1995 users on the departmental computers can receive weekly
+statistics outlining how many times their World Wide Web pages were accessed
+and what other pages on the Web contain links to theirs.
+
+<P> To receive a statistics report, a file called "<TT>.statinfo</TT>" should
+be created in your WWW directory 
+(<EM><TT>~username/public/html/</TT></EM>).  (For projects that have their
+own aliases in the server's configuration files, put the <TT>.statinfo</TT>
+file in the directory pointed to by the alias.) This file should contain a list 
+of addresses, one per line, to whom the statistics should be mailed.  This
+is similar to a <TT>.forward</TT> file, except that the address must be a valid 
+internet mailing address, not a program or file.  The statistics will be 
+sent to each person on the list every Friday night, shortly after midnight.
+
+<P> The statistics file will look something like this:
+<HR>
+<BLOCKQUOTE><PRE>
+From: www@lucy.cs.wisc.edu
+Date: Wed, 26 Jul 95 05:08:46 -0500
+To: keeper@lighthouse.caltech.edu
+Subject: WWW Page Statistics (www.cs.wisc.edu)
+
+The following is a list of relative World Wide Web URLs for files 
+accessed in the past week and located under the directory
+
+/u/k/e/keeper/public/html
+
+Each URL is followed on the same line by the number of hits it received 
+in the past week.  If the information is available, an indented list of 
+pages which contain links to the URL appears below it.
+
+/~keeper (3 hits):
+  http://www.washington.edu:1183/ (2)
+
+/~keeper/ (3 hits):
+  http://www.washington.edu:1183/ (2)
+
+/~keeper/home-sample.html (1 hit):
+  http://www.cs.wisc.edu/~bryan/index.hafh.html (1)
+
+/~keeper/installs.html (3 hits):
+  http://www.cs.wisc.edu/~keeper/keeper.html (1)
+
+/~keeper/keeper.html (10 hits):
+  http://www.cs.wisc.edu/~bryan/index.hafh.html (1)
+  http://www.cs.wisc.edu/csl/lab-staff.html (1)
+  http://www.caltech.edu/people/www.html (1)
+
+/~keeper/nopu.html (1 hit)
+
+/~keeper/pictures/felix.gif (20 hits):
+  http://www.cs.wisc.edu/~samuela/samuela.html (3)
+  http://www.cs.wisc.edu/~pmd/pmd.html (2)
+  http://www.cs.wisc.edu/~masse/masse.html (1)
+  http://www.cs.wisc.edu/~brey/brey.html (4)
+  http://www.cs.wisc.edu/~sbennett/sbennett.html (3)
+  http://www.cs.wisc.edu/~kuong/kuong.html (2)
+  http://www.cs.wisc.edu/~bryan/index.hafh.html (1)
+  http://www.cs.wisc.edu/~fisch/sample.html (1)
+
+/~keeper/server.html (11 hits):
+  http://dpls.dacc.wisc.edu/web_talk.html (5)
+
+/~keeper/todo.html (13 hits):
+  http://www.cs.wisc.edu/~keeper/keeper.html (2)
+  http://www.cs.wisc.edu/~keeper/ (2)
+</BLOCKQUOTE></PRE>
+<HR>
+<P> Note that the list of references includes the links from your own
+documents.  This is intentional.  Also note that adding up the hits on
+all the reference links will often yield a lower number than the total
+hit count of a page.  This is because not all browsers send the 
+URL for the refering page (referring links are a new feature of the HTTP 
+protocol).  Some referring pages may not contain links to the listed 
+page.  This can happen if the maintainer of the referring page removes 
+the link, or more commonly if a user chose "Open" and entered the URL for
+your page while the referring page was loaded into their browser.
+
+<P> Please be careful not to overstate the importance of these numbers.
+If you wish to measure the success of your pages, the number of pages
+linking to it is probably a much better metric than the hit count.  
+Remember, you get the hit before a user has even read the page.  
+
+</BODY>
+</HTML>

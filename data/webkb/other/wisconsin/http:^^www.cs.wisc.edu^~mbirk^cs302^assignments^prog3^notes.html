@@ -1,0 +1,296 @@
+Date: Mon, 11 Nov 1996 17:01:26 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 07 Oct 1996 00:18:37 GMT
+Content-length: 9909
+
+<html>
+<head>
+<title> Notes on the Hangman Programming Assignment </title>
+</head>
+
+<body>
+
+<h2> Notes on the Hangman Programming Assignment </h2>
+
+I have been getting a lot of questions about the Hangman program.  Some
+people have had minor problems getting the string class to work, or
+interpreting a particular error message.  However, others claim to be
+completely lost, and cannot figure out how to approach the problem of
+writing a program to play Hangman.  Maybe I didn't prepare you properly for
+this assignment.  I don't think it is a terribly hard assignment, but I may
+have rushed through the material on the string class.
+
+<p>
+
+So I decided to write a detailed document describing how to do the
+assignment.  Much of the code that you will need to use in your program is
+given to you right here; all you have to do is assemble it into a coherent
+structure and fill in the details.
+
+<p>
+
+<b>Note:</b> The code in this document does not address a small problem:
+treating both upper- and lower-case letters as the same.  Instead, it treats
+the two versions of each letter as totally different letters.  This is not
+correct behavior for the assignment, though.  You are responsible for
+modifying the program to handle upper- and lower-case letters.  If the user
+guesses the letter 'e' (either upper- or lower-case), your program should
+"reveal" all letters 'e' in the secret phrase (both upper- and lower-case).
+However, I recommend that you do this only <i>after</i> you have the rest of
+the program working.
+
+<h3> Basic Implementation </h3>
+
+One way to implement the Hangman game is to keep two strings: the secret
+phrase, and the "partially-revealed" secret phrase.  The secret phrase is
+initialized at the beginning of the program and doesn't change.  The
+partially-revealed secret phrase is the same as the secret phrase, but all
+of the letters are "blanked out".  When the user guesses a letter in the
+secret phrase, the corresponding letter in the partially-revealed secret
+phrase is "unblanked".  For example, say the secret phrase is <tt>Howdy
+Doody!</tt>.  Then the partially-revealed secret phrase will contain the
+string <tt>_____ _____!</tt> - each of the letters has been replaced with the
+underscore character.
+
+<p>
+
+Now, if the user guesses the letter "o", then the partially-revealed secret
+phrase will be modified; for each "o" in the secret phrase <tt>Howdy
+Doody!</tt>, the corresponding character in the partially-revealed secret
+phrase is changed from the underscore character to the letter "o".
+
+<h3> Pseudo-Code </h3>
+
+<ul>
+<li> get random secret phrase
+<li> initialize the "partially revealed phrase"
+<li> initialize number of chances
+<li> display partially revealed secret phrase
+<li> initialize guessed letters to empty string
+</ul>
+<ul>
+<li> loop until out of chances or secret phrase has been guessed
+   <ul>
+   <li> ask user for guess
+   <li> if not a letter
+      <ul>
+      <li> error "Not a letter"
+      </ul>
+   <li> else if already guessed
+      <ul>
+      <li> error "Already guessed"
+      </ul>
+   <li> else
+      <ul>
+      <li> add guess to string of guessed letters
+      <li> if guess is in secret phrase
+         <ul>
+         <li> message "Good guess"
+         <li> reveal matching letters in partially revealed phrase
+         </ul>
+      <li> else
+         <ul>
+         <li> message "Bad guess"
+         <li> subtract one from number of chances
+         </ul>
+      </ul>
+   <li> display partially revealed secret phrase
+   </ul>
+<li> if secret phrase guessed
+   <ul>
+   <li> message "Congratulations"
+   </ul>
+<li> else
+   <ul>
+   <li> message "Sorry, secret phrase was: " secret_phrase
+   </ul>
+</ul>
+
+
+<h3> Get the Random Secret Phrase </h3>
+
+For this program, you "get" the random secret phrase by calling the function
+<tt>random_secret_phrase</tt>.  This function has the following prototype:
+
+<p>
+
+<pre>
+      string random_secret_phrase ();
+</pre>
+
+<p> This prototype tells us that the <tt>random_secret_phrase</tt> function
+has no inputs, and returns (outputs) a string.  So we call this function by
+simply putting an empty pair of parentheses after its name:
+
+<pre>
+      random_secret_phrase ();
+</pre>
+
+However, if we just wrote this line in our program, it would call the
+function, but throw away its return value!  This is definitely not what we
+want.  In general, we must use the return value of a function in some way. 
+For <tt>random_secret_phrase</tt>, its return value is a string which is
+randomly selected from a list.  The appropriate thing to do with this string
+is to store it in a variable, so we can refer to that value whenever we need
+to.
+
+<pre>
+      string secret_phrase = random_secret_phrase ();
+</pre>
+
+This creates a variable <tt>secret_phrase</tt> of type <tt>string</tt>, and
+initializes it with the value returned by the <tt>random_secret_phrase</tt>
+function call.
+
+<h3> Initialize the Partially-Revealed Secret Phrase </h3>
+
+The partially-revealed secret phrase should be the same as the secret
+phrase, but with all letters changed to underscores.  Non-letters, such as
+the space character or punctuation should be left as is.  To decide if a
+character is a letter, us the <tt>isalpha</tt> function.  This function is
+declared in the header file <tt>ctype.h</tt>.  It has the following
+prototype:
+
+<pre>
+      bool isalpha (char ch);
+</pre>
+
+This prototype tells us that the <tt>isalpha</tt> function takes one input,
+a character, and returns a boolean value (true or false).  If the given
+character is a letter, it returns true.
+
+<pre>
+      string partial_phrase = secret_phrase;
+      for (int i = 0; i &lt; partial_phrase.length(); i++) {
+         if ( isalpha (partial_phrase [i]) )
+            partial_phrase [i] = '_';
+      }
+</pre>
+
+This code loops over each of the characters in the partially-revealed secret
+phrase; each character that is a letter is changed to an underscore. Since
+we know the number of characters in the partially-revealed secret phrase is
+<tt>partial_phrase.length()</tt>, we can use a simple counting loop.  We use
+the bracket operator to access each character; the index variable <tt>i</tt>
+tells us which character we are working on.
+
+<h3> Checking Whether a Letter has Already Been Guessed </h3>
+
+To decide if the user has guessed a letter previously, you need to keep
+track of which letters they have already guessed.  This can be done with a
+string that holds all previously-guessed letters.  At the beginning of the
+game, this will be the empty string.  Each time the user guesses a new
+letter, add it to the end of the string.
+
+<p>
+
+To decide whether a letter has already been guessed, use the function
+<tt>char_in_string</tt>.  This function has the following prototype:
+
+<pre>
+      bool char_in_string (char ch, string str);
+</pre>
+
+This tells us that the function has two inputs (one character and one
+string), and returns a boolean (i.e., true or false) value.  If it returns
+true, then one of the characters of the given string is the character
+<tt>ch</tt>.
+
+<p>
+
+So, if you call this function, and supply as inputs the guess and the string
+of previously-guessed letters, it will tell you whether or not the guess has
+been made before.  The function call will look like:
+
+<pre>
+      char_in_string (guess, guessed_letters)
+</pre>
+
+But, as usual, we need to do something with the return value of this
+function!  Since <tt>char_in_string</tt> returns a boolean value, we can use
+the return value as the condition of an if statement:
+
+<pre>
+      if ( char_in_string (guess, guessed_letters) )
+</pre>
+
+<h3> Add Guess to String of Guessed Letters </h3>
+
+<pre>
+       guessed_letters += guess;
+</pre>
+
+Remember that the <tt>+=</tt> is just a shorthand for the following:
+
+<pre>
+      guessed_letters = guessed_letters + guess;
+</pre>
+
+The character <tt>guess</tt> is automatically converted to a string, and the
+<tt>+</tt> operator concatenates the two strings into a single string.
+
+<h3> Checking If the Guess is in the Secret Phrase </h3>
+
+This step is similar to checking whether the guess had been made previously. 
+Use the <tt>char_in_string</tt> function, but instead of searching the
+string of previously-guessed characters, search the secret phrase itself.
+
+<pre>
+      if ( char_in_string (guess, secret_phrase) )
+</pre>
+
+<h3> Reveal the Matching Letters in the Secret Phrase </h3>
+
+When the user guesses a letter which is in the secret phrase, you must
+"unblank" the correct letters in the partially-revealed secret phrase by
+changing them to the guessed letter.  Do this by looping over each character
+in the secret phrase; if that character is the same as the guess, then
+"reveal" the corresponding character in the partially-revealed secret phrase
+by changing it from an underscore to the corresponding character in the
+secret-phrase.
+
+<pre>
+      for (int i = 0; i < secret_phrase.length(); i++) {
+         if (secret_phrase [i] == guess)
+            partial_phrase [i] = secret_phrase [i];
+      }
+</pre>
+
+<h3> Checking whether the Game is Over </h3>
+
+The game ends when either the player has run out of chances or has
+completely guessed the secret phrase.  The first condition can be checked
+with the boolean expression
+
+<pre>
+      num_chances == 0
+</pre>
+
+The second condition can be checked by comparing the secret phrase to the
+partially-revealed secret phrase.  If they are the same, then the player has
+won the game.  This can be checked with the boolean expression
+
+
+<pre>
+      secret_phrase == partial_phrase
+</pre>
+
+The game ends when either of these two boolean expressions is true:
+
+<pre>
+      num_chances == 0 || secret_phrase == partial_phrase
+</pre>
+
+However, the game must continue as long as neither of these conditions is
+true.  Thus the condition in our loop would be:
+
+<pre>
+      while (num_chances > 0 && secret_phrase != partial_phrase) {
+</pre>
+
+<hr>
+<i> <a href="mailto:mbirk@cs.wisc.edu">mbirk@cs.wisc.edu</a> </i>
+
+</body>
+</html>

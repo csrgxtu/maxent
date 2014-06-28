@@ -1,0 +1,115 @@
+Date: Wed, 20 Nov 1996 19:14:38 GMT
+Server: Apache/1.0.3
+Content-type: text/html
+Content-length: 2791
+Last-modified: Fri, 01 Dec 1995 21:56:56 GMT
+
+<HTML><HEAD>
+<TITLE>Algorithms for Quadtree Representation of Matrices</TITLE>
+<LINK REV="made" HREF="mailto:dswise@cs.indiana.edu">
+</HEAD><BODY>
+
+<H2>Algorithms for Quadtree Representation of Matrices</H2>
+
+<STRONG>Description:</STRONG>
+<BLOCKQUOTE>
+Rather than decomposing matrices into rows, columns or tiny blocks,
+we decompose them
+	<!WA0><A HREF="ftp://ftp.cs.indiana.edu/pub/techreports/TR357.ps.Z">
+recursively into quadrants.
+	</A>
+The array becomes a tree which still might be stored sequentially,
+and decompostion of the problem for multiprocessing
+follows the subtrees.
+We explore this structure
+as an exercise of the thesis that functional programming
+is ideal for multiprocessing;
+the resulting algorithms are expressed in C for better performance.
+<BLOCKQUOTE>
+</BLOCKQUOTE>
+Opportunites for ``new'' algorithms abound.
+Sparse matrices have many empty subtrees, and simple algebra there;
+so, uniform algorithms can be applied to both sparse and nonsparse problems.
+Search problems (e.g. pivoting) steer by summary
+information that ``decorates'' interior nodes of the tree.
+Under Gaussian elimination, a nonsingular subtree of any order
+can be eliminated at any step;
+the resulting
+	<!WA1><a href="ftp://ftp.cs.indiana.edu/pub/techreports/TR418.ps.Z">
+``undulant'' pivoting
+	</a>
+has been developed
+for both
+exact and
+	<!WA2><a href="ftp://ftp.cs.indiana.edu/pub/techreports/TR433.ps.Z">
+floating-point decomposition
+	</a>
+.
+</BLOCKQUOTE>
+<P>
+
+<STRONG>Associated Faculty:</STRONG>
+	<!WA3><a href="http://www.cs.indiana.edu/hyplan/dswise.html">
+David S. Wise
+	</a>
+(
+	<!WA4><a href="mailto:dswise@cs.indiana.edu">
+dswise
+	</a>
+),
+	<!WA5><a href="http://www.cs.indiana.edu/hyplan/bramley.html">
+Randall Bramley
+	</a>
+(
+	<!WA6><a href="mailto:bramley@cs.indiana.edu">
+bramley
+	</a>
+).
+<P>
+
+<STRONG>Associated Graduate Students:</STRONG>
+	<!WA7><a href="http://www.cs.indiana.edu/hyplan/jfrens.html">
+Jeremy Frens
+	</a>
+(
+	<!WA8><a href="mailto:jfrens@cs.indiana.edu">
+jfrens
+	</a>
+).
+<P>
+
+<!-- OPTIONAL
+<STRONG>Affiliated Projects:</STRONG>
+List any affiliated projects, here or elsewhere, or people at other
+places involved in the research.  Delete item if not applicable.
+<P>
+-->
+
+<STRONG>Support:</STRONG>
+Supported in part by the
+        <!WA9><a href="http://www.nsf.gov">
+National Science Foundation
+        </a>
+under
+        <!WA10><a href="http://www.nsf.gov:80/cise/cda/in-infra.htm">
+a grant
+        </a>
+numbered
+        <!WA11><a href="http://www.cs.indiana.edu/hyplan/RI92.html">
+CDA93-03189
+        </a>
+.
+<P>
+
+<!-- OPTIONAL
+<STRONG><!WA12><A HREF="http://www.cs.indiana.edu/hyplan/dswise/your_link.html">More information</A></STRONG>
+<P>
+-->
+
+<!WA13><A HREF="http://www.cs.indiana.edu/l/www/research/index.html"><!WA14><IMG SRC="http://www.cs.indiana.edu/hyplan/back.gif">Return to IU Computer Science
+Research</A>
+<!-- or use HREF="http://www.cs.indiana.edu/research/index.html" if your
+     page isn't served by the CS Dept server -->
+
+</BODY></HTML>
+

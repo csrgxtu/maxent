@@ -1,0 +1,111 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 07-Jan-97 15:47:07 GMT
+Content-Type: text/html
+Content-Length: 5655
+Last-Modified: Friday, 12-Apr-96 15:11:20 GMT
+
+<HTML>
+<HEAD>
+<TITLE>Overview of Seuss</TITLE>
+</HEAD>
+<center>
+<H2>Overview of Seuss</H2>
+</center>
+<HR>
+We are currently working on a project, called <b>Seuss</b>.  The
+research proposed in Seuss is based on two observations: (1) the
+applications that will be implemented on networks of processors in the
+future will be significantly more ambitious than the current
+applications (which are mostly involved with transmissions of digital
+data and images), and (2) many of the programming concepts developed
+for databases, object-oriented programming and designs of reactive
+systems can be unified into a concise model of distributed programs
+that can serve as the foundation for designing these future
+applications.
+<p>
+Research in multiprogramming has, traditionally, attempted to
+reconcile two apparently contradictory goals: (1) it should be
+possible to understand a module (e.g., a process or a data object) in
+isolation, without considerations of interference by the other
+modules, and (2) it should be possible to implement concurrent threads
+at a fine level of granularity so that no process is ever locked out
+of accessing common data for long periods of time. The goals are
+in conflict because fine granularity, in general, implies
+considerable interference. The earliest multiprograms (see, for
+instance, the solution to the mutual exclusion problem in Dijkstra
+<a href="#ewd">[0]</a>)
+were trivially small and impossibly difficult to
+understand, because the behaviors of the individual processes could
+not be understood in isolation, and all possible interactions among
+the processes had to be analyzed explicitly.  Since then, much effort
+has gone into limiting or even eliminating interference among
+processes by employing a variety of synchronization mechanisms: locks
+or semaphores, critical regions, monitors and message communications.
+<p>
+Constraining the programming model to a specific protocol (binary
+semaphores or message communication over bounded channels, for
+instance) will prove to be short-sighted in designing complex
+applications. More general mechanisms for interactions among modules,
+that include these specific protocols, are required. Further, for the
+distributed applications of the future, it is essential to devise a
+model in which the distinction between computation and communication
+is removed; in particular, the methods for designing and reasoning
+about the interfaces should be no different from those employed for
+the computations at the nodes of the network.
+<p>
+Seuss fosters a discipline of programming that makes it
+possible to understand a program execution as a single thread of
+control, yet it permits program implementation through multiple
+threads. As a consequence, it is possible to reason about the
+properties of a program from its single execution thread, whereas an
+implementation on a specific platform (e.g., shared memory or message
+communicating system) may exploit the inherent concurrency
+appropriately. A central theorem establishes that multiple execution
+threads implement single execution threads, i.e., any property proven
+for the latter is a property of the former as well.
+<p>
+A major point of departure in Seuss is that there is no built-in
+concurrency and no commitment to either shared memory or
+message-passing style of implementation. No specific communication or
+synchronization mechanism, except the procedure call, is built into the
+model. In particular, the notions of input/output and their
+complementary nature in rendezvous-based communication
+(<a href="#csp">[1]</a> , <a href="#ccs">[2]</a>)
+are outside this model. There is no distinction between computation and
+communication; process specifications and interface specifications are
+not distinguished. Consequently, we do not have many of the
+traditional multiprogramming concepts such as, processes, locking,
+rendezvous, waiting, interference and deadlock, as basic concepts in
+our model. Yet, typical multiprograms employing message passing over
+bounded or unbounded channels can be encoded in Seuss by declaring the
+processes and channels as the components of a program; similarly,
+shared memory multiprograms can be encoded by having processes and
+memories as components. Seuss permits a mixture of either style of
+programming, and a variety of different interaction mechanisms --
+semaphore, critical region, 4-phase handshake, etc. -- can be encoded
+as components.
+<p>
+Seuss proposes a complete disentanglement of the sequential and
+concurrent aspects of programming.  We expect large sections of code
+to be written, understood and reasoned-about as sequential
+programs. <em>We view multiprogramming as a way to orchestrate the
+executions of these sequential programs, by specifying the conditions
+under which each program is to be executed</em>. Typically, several
+sequential programs will execute simultaneously; yet, we can guarantee
+that their executions are non-interfering, and hence, each program may
+be regarded as atomic. We propose an efficient implementation scheme
+that can, using user directives, interleave the individual sequential
+programs with fine granularity without causing any interference.
+<HR>
+<H4>References</H4>
+<A NAME=ewd>[0]</A> E.W.Dijkstra. Solution of a Problem in Concurrent
+Programming Control. <em>Communications of the ACM</em>, 8(9):569,
+1965. <br>
+<A NAME=csp>[1]</A> C.A.R.Hoare. <em>Communicating Sequential
+Processes.</em> Prentice Hall International, London, 1984. <br>
+<A NAME=ccs>[2]</A> R. Milner. <em>Communication and Concurrency.</em>
+International Series in Computer Science, C.A.R.Hoare, Series Editor.
+Prentice-Hall International, London, 1989.
+</BODY>
+</HTML>

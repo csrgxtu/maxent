@@ -1,0 +1,117 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 18:45:07 GMT
+Content-Type: text/html
+Content-Length: 3256
+Last-Modified: Thursday, 12-Sep-96 19:55:30 GMT
+
+<HTML>
+<HEAD>
+<TITLE>Tcl/Tk Knowledge Base</TITLE>
+</HEAD>
+<BODY>
+
+
+This page is intended to be answer general questions for Tcl/Tk
+developers ...
+
+
+<pre>
+
+Q: On Solaris 2.x, linking Tk 4.0 gives me the error:
+
+      Undefined                       first referenced
+       symbol                             in file
+      socket                              /usr/local/X11R6/lib/libX11.so
+      getpeername                         /usr/local/X11R6/lib/libX11.so
+      xdrmem_create                       /usr/local/X11R6/lib/libX11.so
+      gethostbyname                       /usr/local/X11R6/lib/libX11.so
+      ...
+
+A: You need to add "-lsocked -lnsl" to the "LIBS = " line in the Makefile.
+
+----------------------------------------------------------------------
+System Lab Specific:
+
+Q: How do I access the files in my Unix account from my Windows 95 and NT
+   desktop?
+
+A: Open Explorer. Go to the menu "Tools, Map Network Drive" and enter
+   "\\Dawn\<your unix account name>" in the "Path" entry box. For
+   example, I would use in "\\Dawn\ioi". Then, you will be able to
+   access your files from the mapped drive.
+
+   Note that (as of 09/10/96) the server Dawn is not visible in the
+   "Network Neighborhood" list, but steps above work anyway.
+
+Q: How do I use Windows applications in Unix?
+
+A: You can use the "windd" command (/usr/local/bin/windd) to log on an
+   NT machine. Type "windd" in an xterm and the windd desktop will
+   come up.  Type the name of an NT server (such as vulture) in the
+   "Application Server" entry box and press return. That will bring
+   you to the NT login screen.
+
+   Notice that WinDD runs Windows NT 3.51 only but most applications
+   should work without problems. You'll miss the NT 4.0 desktop,
+   though :-)
+
+   Also, WinDD doesn't work on a black-and-white display.
+
+   If you want to increase the size of the WinDD dekstop, try giving
+   the -geometry option when you start windd. E.g. "windd -geometry
+   1024x768".
+
+Q: Where is purify for the different CUCS systems?
+
+A: On Solaris: /opts/pure/bin/purify
+   On SunOS:   /vol/pure/bin/purify
+
+
+----------------------------------------------------------------------
+The answers to the following topics will come up shortly.
+
+Q: How do I maintain binaries of different platforms in the same file system?
+   E.g., I want to compile Tcl/Tk for both SunOS and Solaris, but now I need
+   to do a "make distclean; ./configure" each time I want to compile binaries
+   for a different platform.
+
+A: Use symbolic links. cd ~ioi/wdev and look at the directory
+   structure. I use it to manage four configurations
+   (SunOS+Solaris)*Purify with a single source base.
+
+   More explanations will come up shortly.
+
+Q: What is purify? Why can it help me with my Tcl/Tk development?
+
+
+
+Q: There is no purify on Linux. What alternatives can I use?
+
+Q: What is the -DMEM_DEBUG flag when I compile Tcl?
+
+Q: What is the Tcl/Tk Engineering Manual?
+
+Q: What is CVS?
+
+Q: How do I develop a test suite for my Tcl/Tk applications?
+
+Q: A quick example for writing Tcl/Tk test suites?
+
+Q: How do I compile my Tcl/Tk extension into a shared library?
+
+A: I am working on an example ...
+
+
+Cornell CS Department Specific:
+
+Q: Is there a quick example for CVS?
+
+
+
+
+
+</pre>
+
+</BODY>
+</HTML>

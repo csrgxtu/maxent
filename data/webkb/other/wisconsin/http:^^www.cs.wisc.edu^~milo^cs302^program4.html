@@ -1,0 +1,239 @@
+Date: Mon, 11 Nov 1996 17:13:06 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Tue, 15 Oct 1996 00:23:42 GMT
+Content-length: 8738
+
+<HTML>
+<HEAD>
+<TITLE>Program 4 - CS 302 Fall 1996 - Section 4</TITLE>
+</HEAD>
+<BODY>
+
+<H1 ALIGN=CENTER>
+  <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~cs302">CS 302</A>
+  Fall 1996 - <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.wisc.edu/~milo/cs302.html">Section 4</A>
+</H1> 
+<H2 ALIGN=CENTER>Algebraic Language Programming in C++</H2>
+<H4 ALIGN=CENTER>Instructor: 
+  <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~milo">Milo M. Martin</A> 
+  (milo@cs.wisc.edu)</H4>
+<hr><br>
+
+<H1 ALIGN=CENTER>Program 4</H1>
+<H3 ALIGN=CENTER>Due Monday, October 21, 1996</H3> 
+<hr><br>
+
+<b>Objective</B>: Give the student practice doing file input
+and output.<p>
+
+<H3>Program Description</H3>
+
+You have been hired as a golf pro at the Big Shank country club.
+Big Shank actually consists of 5 different 9-hole golf courses, each of
+which has a separate "par" score.  <p>
+
+(Notes for people unfamiliar with golf: the object of golf is to
+obtain as low a score as possible.  Your score for each hole is the
+total number of shots it takes to get the golf ball in the hole.  Your
+score for the entire round is the sum of your scores for each holes.
+"Par" for a hole is generally the score that a good golfer would
+receive on that hole, and par for the entire course is the sum of the
+pars for each individual hole.  Golfers try to get a score lower than
+par for the course.  For example, each hole in a 9 hole course would
+have a par score.  If par for each hole was 4, then par for the entire
+course would be 36.  If a golfer scored 3 on each hole on that course,
+the golfer would have a score of 27, which is very good, since it is
+less than, or "under" par.  In fact, since 27 - 36 = -9, we say the
+golfer is 9 under par.  If, on the other hand, a golfer scored 5 on
+each hole, the golfer would have a score of 45, and would be 9 over par, which
+is not as good.  Note that 45 - 36 = 9.)<p>
+
+You have been assigned to work at a golf tournament 
+being held at Big Shank.  A number of players are each playing
+one round on each course.  Thus, each player will have 
+a different score for each of the 5 courses. In addition,
+each of the five 9-hole courses at Big Shank has a <i> different </I>
+par score.  All of this data will be stored into an input file.
+The file will have the following form:<p>
+
+<PRE> 
+36 35 36 33 32 
+124 37 33 35 37 35 
+2353 37 35 34 32 33 
+3457 40 31 32 35 28 
+532 32 35 34 34 30 
+-1
+
+</PRE>
+
+
+The first line lists the par score for each of the 5 courses.
+Thus, par for the first course is 36, par for the second is 35,
+and so on.<p>
+
+The next 4 lines list the scores for each
+individual golfer on each course.  The first part of each 
+of these lines is the "golfer id" number, which you may assume
+fits into an int.  You may also assume
+that each ID number is unique. 
+The remaining 5 numbers hold that golfer's
+score for each of the 5 courses.  Thus, the first golfer has
+an ID of 4343, and has scores of 37, 33, 35, 37, and 35.<p>
+
+
+Finally, a -1 is included in the file, which means that 
+the listing of scores is now complete.  When you read in a
+-1 instead of a positive ID, you can assume all the players have
+been listed.  (If there is any input data after the -1, you can 
+ignore it).<P>
+
+NOTE: The data in the actual input files will be different than
+the data given above.  Thus, you may NOT assume anything about
+the number of golfers, the par scores for the 5 rounds, and so on.  <P>  
+
+
+Also, the input file may have a different spacing and line breaks
+than the one listed above.  For example, the above data
+could be present in the input file in the following form:
+
+<PRE> 
+36 
+35      36  33       
+32 
+124 37 33 
+
+35 37 35 
+2353 37       35 34 32 
+33 
+3457    40 31 32 35 28 
+532 
+
+32 
+35 34 34 30 
+-1
+
+</PRE>
+
+Note that the data is the same, the only difference is that
+the spacing and line breaks have changed.<P>
+
+Your job is to:
+<LI> Determine the score for each golfer - that is, the
+golfer's score relative to the par score.  Scores over par 
+should be output with positive numbers, scores below par
+should be output with negative numbers, and an "even par" score
+should be output as 0.
+<LI> Determine the average score for each course, and the 
+average par score for all golfers.
+<LI> Determine who won the tournament and what the winning
+score was.  The winner of the tournament is that person
+with the lowest overall score relative to par.  You may assume
+that there is a unique lowest score - that is, that there
+will not be multiple winners with the same lowest score. 
+<LI> Print all of this information neatly to an output file. 
+<BR><BR>
+Here is how your output file should appear for the sample data
+given above:<p>
+<BR>
+<PRE>
+ Player ID   Round 1   Round 2   Round 3   Round 4   Round 5 Final Par
+       Par        36        35        36        33        32         -
+
+       124        37        33        35        37        35         5
+      2353        37        35        34        32        33        -1
+      3457        40        31        32        35        28        -6
+       532        32        35        34        34        30        -7
+
+     Average     36.50     33.50     33.75     34.50     31.50     -2.25
+
+The winner is player #532 with a score of 7 under par.
+</PRE>
+<BR><BR>
+
+The second line, which begins with Par, lists the par score
+for each of the 5 rounds. <P>
+
+The following
+4 lines list data for each individual golfer.  First,
+the golfer's ID is displayed.  Next, the golfer's scores
+on each of the courses is displayed.  Finally, the golfer's overall "par"
+score is displayed, in the Final Par column.<P>
+
+For example, the golfer with the ID 124 scored 37, 33, 35, 37, and
+35, on rounds 1-5 respectively.  Thus, these scores are listed in the 
+5 "Round" columns.  The sum of these scores (177) is 5 more than
+the sum of the par scores for the 5 courses (172).  Thus, a 5 is displayed
+for golfer 124 in the final par column, where 5 means "5 over par." <p>
+
+The next golfer, with an ID of 2353, scored 37, 35, 34, 32, and 33 in the
+5 rounds.  Thus, that golfer's total score (171), is one <i> less </I> than the 
+par score, so a -1 is recorded as the golfer's final par, signaling 1 under par.<P>
+
+The scores for the remaining 2 golfers are then printed out, as well as their
+final scores (6 and 7 under par).<P>
+
+The line beginning with Average  lists the average 
+total score for each of the 5 courses.  For example, since the 
+average of 37, 37, 40, and 32 is 36.5, 36.50 is printed as the average
+for Round 1.  The remaining averages for the other 4 rounds are
+printed out.  Finally, the average tournament par score for all
+golfers is printed out. <P>
+
+The final line displays the ID of the golfer who won
+as well as that golfer's score relative to par. <P>
+
+
+Note that to receive full credit on this assignment, you must format
+your output file in <i> exactly </i> the same way as the sample above.
+For example, each column should be 10 characters wide, and the averages
+should be displayed with 2 trailing decimal points. <p>
+
+
+We have provided a test input file for you to use, which
+is called "golfin.txt".  You may find it in the r:\public\program4 
+directory.
+Please note that I may use a different input file
+when testing your program, but it will have the same name
+and will be formatted in the same
+way as golfin.txt and the example given above.  <I> You should also
+be sure to make up your own input files to use to test your program as well.</I><P>
+
+You should name the output file produced by your program
+"golfout.txt." <P>
+
+Your solution should use functions where appropriate, but you may not use global
+variables.  You should check to make sure the file was opened correctly.
+You need not do any error checking when you read in the data from 
+the file <B> except </B> for the following: if one of the input
+scores is <I> smaller </i> than the number of holes (9), which is of 
+course impossible, your program should penalize that cheater
+by changing the score on that round to 200.<P>
+
+Your program should print out the following
+statements to the screen:<P>
+<PRE>
+
+Beginning file processing....
+Done with file processing.  Output file written.
+
+</PRE>
+
+
+<p> <H3>What To Turn In</H3> 
+
+Once you have your program working, you should use the test file
+provided, "golfin.txt", as your input file.  Then, print out a copy of
+the "golfout.txt" file your program produces.  <b>Repeat this for your
+own test data. (including the printout)</b> Also print out a copy of
+the C++ source code and submit an electronic copy of your source code
+and executable as described in the project 1 directions.  <p>
+
+<hr>
+<address>
+Created by 
+  <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="http://www.cs.wisc.edu/~stenglei/stenglei.html">Jeremy Stenglein</A>, and
+  <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="http://www.cs.wisc.edu/~dzimm">Dave Zimmerman</A>.
+</Address>
+</BODY>
+</HTML>

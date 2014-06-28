@@ -1,0 +1,1260 @@
+Date: Tue, 10 Dec 1996 14:53:39 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95.1 (Fri Jan 20 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE>Multi-Service Search and Comparison Using the 
+        MetaCrawler</TITLE>
+</HEAD>
+<BODY>
+<H1>Multi-Service Search and Comparison Using the 
+        MetaCrawler</H1>
+Erik Selberg<br>
+Oren Etzioni
+
+<P>
+<H3>Abstract:</H3>
+<EM>Standard Web search services, though useful, are far from ideal.
+There are over a dozen different search services currently in
+existence, each with a unique interface and a database covering a
+different portion of the Web. As a result, users are forced to
+repeatedly try and retry their queries across different services.
+Furthermore, the services return many responses that are irrelevant,
+outdated, or unavailable, forcing the user to manually sift through the
+responses searching for useful information.
+<P>
+This paper presents the
+<!WA0><!WA0><!WA0><!WA0><A NAME=tex2html2 HREF="http://www.cs.washington.edu/research/metacrawler">MetaCrawler</A>,
+a fielded Web service that 
+represents the next level up in the information ``food chain.''  
+The MetaCrawler provides a single, central interface for Web document
+searching.  
+Upon receiving a query, the MetaCrawler posts the query to
+multiple search services in parallel, collates the returned references,
+and loads those references to verify their existence and to ensure that
+they contain relevant information. 
+The MetaCrawler is sufficiently lightweight to reside on a
+user's machine, which facilitates customization, privacy,
+sophisticated filtering of references, and more.
+<P>
+The MetaCrawler also serves as a tool for comparison of diverse search
+services. Using the MetaCrawler's data, we present a ``Consumer
+Reports'' evaluation of six Web search services:
+Galaxy[<!WA1><!WA1><!WA1><!WA1><A HREF="#wwwgalaxy">5</A>], 
+InfoSeek[<!WA2><!WA2><!WA2><!WA2><A HREF="#wwwinfoseek">1</A>], Lycos[<!WA3><!WA3><!WA3><!WA3><A HREF="#wwwlycos">15</A>], Open
+Text[<!WA4><!WA4><!WA4><!WA4><A HREF="#wwwopentext">20</A>], WebCrawler[<!WA5><!WA5><!WA5><!WA5><A HREF="#wwwwebcrawler">22</A>], and
+Yahoo[<!WA6><!WA6><!WA6><!WA6><A HREF="#wwwyahoo">9</A>]. In addition, we also report on the most
+commonly submitted queries to the MetaCrawler.
+</EM>
+<P>
+<H3>Keywords:</H3>
+MetaCrawler, WWW, World Wide Web, search,
+  multi-service, multi-threaded, parallel, comparison
+
+<P>
+<H2><A NAME=SECTION00010000000000000000> Introduction</A></H2>
+<P>
+Web search services such as Lycos and WebCrawler have proven both
+useful and popular.  As the Web grows, the
+number and variety of search services is increasing as well.  Examples
+include: the Yahoo ``net directory''; the Harvest home page search
+service[<!WA7><!WA7><!WA7><!WA7><A HREF="#wwwharvesthomepage">7</A>]; the Query By Image Content 
+service[<!WA8><!WA8><!WA8><!WA8><A HREF="#wwwqbic">12</A>]; the Virtual Tourist[<!WA9><!WA9><!WA9><!WA9><A HREF="#wwwvirtourist">24</A>], a directory
+organized by geographic regions; and more.  Since 
+each service provides an incomplete snapshot of the Web, users are
+forced to try and retry their queries across different indices until
+they find appropriate responses.  The process of querying
+multiple services is quite tedious.  Each service has its own
+idiosyncratic interface which the user is forced to learn.
+Further, the services return many
+responses that are irrelevant, outdated, or unavailable, forcing the
+user to manually sift through the responses searching for useful
+information.
+<P>
+This paper presents the MetaCrawler, a search service that attempts to
+address the problems outlined above.  The premises
+underlying the MetaCrawler are the following:
+<UL><LI> No single search service is sufficient.  Table
+  <!WA10><!WA10><!WA10><!WA10><A HREF="#followedtable">2</A> shows that no single service is 
+  able to return more then 45% of the references followed by users.
+<P>
+<LI> Many references returned by services are irrelevant and can be
+  removed if the user is better able to express the query. Table
+  <!WA11><!WA11><!WA11><!WA11><A HREF="#deathbytable">3</A> shows that up to 75% of the
+  references returned can be removed if the user supplies a more
+  expressive query.
+<P>
+<LI> Low-quality references can be detected and removed fairly
+  quickly. Table <!WA12><!WA12><!WA12><!WA12><A HREF="#benchtime">4</A> shows that an average of about 100 
+  references can be verified in well under 2.5 minutes, while
+  simple collation and ranking takes under 30 seconds.
+<P>
+<LI> These features will be used by the Web's population. The
+  MetaCrawler is receiving over 7000 queries per week, and that number is
+  growing, as shown in Figure <!WA13><!WA13><!WA13><!WA13><A HREF="#usegraph">1</A>.
+<P>
+<LI> The MetaCrawler log
+  facilitates an objective evaluation and comparison of the underlying
+  search services. Tables <!WA14><!WA14><!WA14><!WA14><A HREF="#cctotalhits">5</A>-<!WA15><!WA15><!WA15><!WA15><A HREF="#ccperformance">8</A> detail
+  trade-offs between the services. For example, Lycos returns over 5%
+  more followed references than any other service, yet WebCrawler is
+  the fastest, taking an average of 9.64 seconds to return answers to
+  queries.
+<P>
+</UL>
+<P>
+The MetaCrawler logs also reveal that people search for a
+wide variety of information, from ``A. H. Robins'' to ``zyx
+music.'' While the most common queries are related to sex and
+pornography, these only
+account for under 4% of the total queries submitted to the
+Metacrawler as shown in Table <!WA16><!WA16><!WA16><!WA16><A HREF="#toptenqueries">1</A>. Nearly
+half of all queries submitted are unique.
+<P>
+The remainder of this paper is organized as follows: the design and
+implementation of the MetaCrawler are described in
+Section <!WA17><!WA17><!WA17><!WA17><A HREF="#metacrawler">2</A>.  Experiments to validate the above premises
+are described in Section <!WA18><!WA18><!WA18><!WA18><A HREF="#evaluation">3</A>.  We discuss related
+work in Section <!WA19><!WA19><!WA19><!WA19><A HREF="#relatedwork">4</A>, and our ideas for future work and
+potential impact appear in Section <!WA20><!WA20><!WA20><!WA20><A HREF="#futurework">5</A>. We conclude with
+Section <!WA21><!WA21><!WA21><!WA21><A HREF="#conclusions">6</A>.
+<P>
+
+<P>
+<A NAME=metacrawler></A>
+<H2><A NAME=SECTION00020000000000000000> The MetaCrawler</A></H2>
+
+The
+<!WA22><!WA22><!WA22><!WA22><A NAME=tex2html3 HREF="http://metacrawler.cs.washington.edu:8080">MetaCrawler</A>
+is a free search service used for locating information
+available on the World Wide Web. The MetaCrawler has an interface
+similar to WebCrawler and Open Text in that it
+allows users to enter a search string, or <em> query</em>, and returns a
+page with click-able references or <em> hits</em> to pages available on
+the Web. However, the internal architecture of the MetaCrawler is
+radically different from the other search services.
+<P>
+Standard Web searching consists of three activities:
+<UL><LI> <em> Indexing</em> the web for new and updated pages, a process
+  that demands substantial CPU and network resources.
+<P>
+<LI> <em> Storage</em> of the Web pages retrieved into an index, which
+  typically requires a large amount of disk space.
+<P>
+<LI> <em> Retrieval</em> of pages matching user queries. For most
+  services, this  amounts to returning a ranked list of page
+  references from the stored index.
+</UL>
+<P>
+Standard search services create and store an index of
+the Web as well as retrieve information from that index. Unlike these
+services, the MetaCrawler is a <em> meta-service</em> which uses no
+internal database of its own; 
+instead, it relies on other external search services to provide the
+information necessary to fulfill user queries. The insight
+here is that by separating the retrieval of pages from indexing and
+storing them, a lightweight application such as the MetaCrawler can
+access multiple databases and thus provide a larger number of
+potentially higher quality references than any search service tied to
+a single database.
+<P>
+Another advantage of the MetaCrawler is that it does not
+depend upon the implementation or existence of any one search 
+service.  Some indexing 
+mechanism is necessary for the Web. Typically, this
+is done using automated robots or spiders, which may not necessarily
+be the best choice[<!WA23><!WA23><!WA23><!WA23><A HREF="#kosterrobots">13</A>]. However, the underlying
+architecture of the search services used by the MetaCrawler is
+unimportant. As long as there is no central complete search service
+and several partial search services exist, the
+MetaCrawler can provide the benefit of accessing them simultaneously
+and collating the results.
+<P>
+The MetaCrawler prototype has been publicly accessible since July 7, 1995.
+It has been steadily growing in popularity, logging upwards of 7000
+queries per week and increasing. The
+MetaCrawler currently accesses six services: Galaxy,
+InfoSeek, Lycos, Open Text, WebCrawler, and Yahoo. 
+It works as follows: given a query, the MetaCrawler will submit that
+query to every search service it knows in parallel. These services
+then return a list of references to WWW pages, or hits. Upon
+receiving the hits from every service, the MetaCrawler <em> collates</em>
+the results by merging all hits returned.  Duplicate hits are listed
+only once, but each service that returned a hit is acknowledged.  Expert
+user-supplied sorting options are applied at this time.  Optionally,
+the MetaCrawler will <em> verify</em> the information's existence by
+loading the reference. When the MetaCrawler has loaded a reference, it
+is then able to re-score the page using supplementary query syntax
+supplied by the user.
+<P>
+When the MetaCrawler has finished processing all of the hits, the user
+is presented with a page consisting of a sorted list of
+references. Each reference contains a click-able hypertext link to the
+reference, followed by local page context (if available), a confidence 
+score, verified keywords, and the actual URL of the reference. Each
+word in the search query is automatically boldfaced. So that we may
+determine which references are followed, each click-able link returned
+to the user points not to the reference, but to a script which logs
+that the reference was followed and then refers the user's browser to
+the correct URL.
+<P>
+Querying many services and simply collating results will return more
+results than any one service, but at the cost of presenting the user
+with more irrelevant references. The MetaCrawler is designed to
+increase <em> both</em> the number of hits and relevance of hits
+returned. The MetaCrawler yields a higher
+proportion of <em> relevant</em> hits by using both a powerful query
+syntax as well as expert options so that users can more easily instruct
+the MetaCrawler how to determine the quality of the returned
+references. The query syntax used specifies required and non-desired
+words, as well as 
+words that should appear as a phrase. The expert options allow users
+to rank hits by physical location, such as the user's country, as well
+as logical locality, such as their Internet domain. 
+
+<P>
+<A NAME=details></A>
+<H3><A NAME=SECTION00021000000000000000> User Interface</A></H3>
+<P>
+While giving the user a Web form with added
+expressive power was easy, presenting the user with a form that
+would facilitate  actually using the novel features of the
+MetaCrawler proved to be a challenge. We strove for a balance between
+a simple search form and an 
+expressive one, keeping in mind interface issues mentioned by service
+providers[<!WA24><!WA24><!WA24><!WA24><A HREF="#webcrawlerwww2">23</A>].
+<P>
+In our early designs, we focused
+on syntax for queries with several additional options for improving
+the result. This syntax was similar to InfoSeek's query syntax:
+parentheses were used to define phrases, a plus sign designated a
+required word, and a minus designated a non-desired
+word. For example, to search for 
+``John Cleese,'' naturally requiring that both ``John'' and ``Cleese''
+appear together, the syntax required was the unwieldy <tt> (+John
++Cleese)</tt>. Not surprisingly, we discovered that while most users
+attempted to use the  
+syntax, they often introduced subtle syntactical errors
+causing the resulting search to produce an entirely irrelevant set of
+hits.
+<P>
+In our current design, we have reduced the need for extra syntax, and
+instead ask the user to select the type of search. The three
+options are:
+<UL><LI> <em> Search for words as a phrase:</em><BR> 
+  Treat the query text as a single phrase, and attempt to match the
+  phrase in pages retrieved, e.g. ``Four score and seven years ago.''
+<LI> <em> Search for all words:</em> <BR> 
+  Attempt to find each word
+  of the query text somewhere in the retrieved pages. This is
+  the equivalent of logical ``and.''
+<LI> <em> Search for any words:</em> <BR> 
+  Attempt to find any word
+  of the query text in the retrieved pages. This is the equivalent of
+  logical ``or.''
+</UL>
+The older syntax is still supported, although it is not advertised
+prominently on the main search page, save for the minus sign, which
+was the most widely used element of the query syntax. Since we
+changed the search page to this new design, the number of 
+malformed requests has dropped significantly.
+<P>
+In addition to the query entry box, we maintain various expert options
+which can be activated via menus. The MetaCrawler currently uses two
+menus to provide extra expressiveness. The first describes a coarse
+grain Locality, with 
+options for the user's continent, country, and Internet domain, as
+well as options to select a specific continent. The second menu describes
+the sundry Internet domain types, e.g. <tt> .edu</tt>, <tt> .com</tt>,
+etc. These options allow users to better describe what they are
+looking for in terms of where they believe the relevant information
+will be.
+<P>
+<A NAME=clientserverdesign></A>
+<H3><A NAME=SECTION00022000000000000000> Client-Server Design</A></H3>
+<P>
+Current search services amortize the cost of indexing and storing
+pages over hundreds of 
+thousands of retrievals per day. In order to field the maximal number of
+retrievals, services devote minimal effort to responding to each
+individual query. Increases in server capacity are quickly gobbled
+up by increases in pages indexed and queries per day. As a result,
+there is little time for more sophisticated analysis, filtering, and
+post-processing of responses to queries.
+<P>
+By decoupling the retrieval of pages from indexing and storage, the
+MetaCrawler is able to spend time performing sophisticated analysis
+on pages returned. The MetaCrawler just retrieves data,
+spending no time indexing or storing it. Thus, the MetaCrawler is
+relatively lightweight. The prototype, 
+written in C++, comes to only 3985 lines of code including comments.
+It does not need the massive disk storage to maintain an index nor
+does it need the massive CPU and network resources that other services
+require. Consequently, a MetaCrawler client could reside comfortably
+on an individual user's machine.
+<P>
+An individualized MetaCrawler <i> client</i> that accesses multiple Web
+search services has a number of advantages.  First, the user's machine
+bears the load of the post-processing and analysis of the returned
+references.  Given extra time, post-processing can be quite
+sophisticated.  For example, the MetaCrawler could divide references
+into clusters based on their similarity to each other, or it could
+engage in <i> secondary search</i> by following references to related pages
+to determine potential interest.  Second, the processing can be
+customized to the user's taste and needs.  For example, the user may
+choose to 
+filter advertisements or parents may try to block X-rated pages.
+Third, the MetaCrawler could support scheduled queries (e.g., what's
+new today about the Seattle Mariners?).  By 
+storing the results of previous queries on the user's machine, the
+MetaCrawler can focus its output on new or updated pages.  Finally,
+for pay-per-query services, the MetaCrawler can be programmed with
+selective query policies (e.g., ``go to the cheapest service first''
+or even ``compute the optimal service querying sequence'').
+<P>
+Organizations may choose to have an institutional MetaCrawler with
+enhanced caching capabilities, on the presumption that people within
+an organization will want to examine many of the same pages.  The
+cache could also facilitate local annotations, creating a
+collaborative filtering and information exchange environment of the
+sort described elsewhere [<!WA25><!WA25><!WA25><!WA25><A HREF="#wwwhomr">17</A>].
+<P>
+Finally, while our prototype MetaCrawler depends on the good will of
+the underlying services, a MetaCrawler client would not.  In the
+future, an underlying service may choose to block MetaCrawler
+requests, which are easily identified.  However, it would be
+nearly impossible to distinguish queries issued by a MetaCrawler
+client versus queries made directly by a person.
+<P>
+<H3><A NAME=SECTION00023000000000000000> Common Usage</A></H3>
+<P>
+One of the frequently asked questions regarding search on the
+Internet is ``What are people searching for?'' Table
+<!WA26><!WA26><!WA26><!WA26><A HREF="#toptenqueries">1</A> summarizes the top ten repeated queries out of a
+total of 50,878 queries made from July 7 through September 30. Each
+query in the top ten is related to sex. However, the combined top ten
+queries amount only to 1716 queries out of 50,878 total queries, or
+3.37%. Further, 24,253 queries, or 46.67%, were not repeated.
+<P>
+<hr>
+<BR><STRONG>Table 1:</STRONG> <A NAME=toptenqueries></A>Top Ten Queries Issued to the MetaCrawler<BR>
+<A NAME=137></A>
+<table>
+<tr>
+<th align=center>No.</th>
+<th align=left>Query</th>
+<th align=center>Times Issued</th>
+</tr>
+<tr>
+<td align=center>1</td>
+<td align=left>sex</td>
+<td align=center>533</td>
+</tr>
+<tr>
+<td align=center>2</td>
+<td align=left>erotica</td>
+<td align=center>219</td>
+</tr>
+<tr>
+<td align=center>3</td>
+<td align=left>nude</td>
+<td align=center>217</td>
+</tr>
+<tr>
+<td align=center>4</td>
+<td align=left>porn</td>
+<td align=center>158</td>
+</tr>
+<tr>
+<td align=center>5</td>
+<td align=left>penthouse</td>
+<td align=center>127</td>
+</tr>
+<tr>
+<td align=center>6</td>
+<td align=left>pornography</td>
+<td align=center>112</td>
+</tr>
+<tr>
+<td align=center>7</td>
+<td align=left>erotic</td>
+<td align=center>105</td>
+</tr>
+<tr>
+<td align=center>8</td>
+<td align=left>porno</td>
+<td align=center>89</td>
+</tr>
+<tr>
+<td align=center>9</td>
+<td align=left>adult</td>
+<td align=center>89</td>
+</tr>
+<tr>
+<td align=center>10</td>
+<td align=left>playboy</td>
+<td align=center>67</td>
+</tr>
+</table>
+
+<blockquote>
+``Times Issued'' lists the number of times the corresponding query was
+issued from July 7 through Sept. 30, 1995. Note that while each query
+is sexually related, the combined total amounts to less than 4\% of
+the total queries processed by the MetaCrawler. Also, 46\% of the
+queries issued were unique.
+</blockquote>
+<hr>
+
+<P>
+<A NAME=evaluation></A>
+<H2><A NAME=SECTION00030000000000000000> Evaluation</A></H2>
+<P>
+The MetaCrawler was released publicly on July 7, 1995. Averages and percentages
+presented in this paper are based on the 50,878 completed queries,
+starting on July 7 and ending September 30, except those in reference to
+Open Text, which are based on 19,951 completed queries starting
+September 8, when Open Text was added to the MetaCrawler's
+repertoire. The log results from seven days were 
+omitted due to a service changing its output format, causing that
+service to return no references to the MetaCrawler even though the
+service was available. The MetaCrawler is currently running on a DEC
+Alpha 3000/400 under OSF 3.2.
+<P>
+The first hypothesis we confirmed after we deployed the MetaCrawler
+was that sending queries in parallel and collating the results was
+useful. To confirm this, we used the metric that references followed from
+the page of hits returned by the MetaCrawler contained 
+relevant information. We calculated the  percentage
+of references followed by users for each of the search services.
+Table <!WA27><!WA27><!WA27><!WA27><A HREF="#followedtable">2</A> demonstrates the need for using multiple services;
+while Lycos did return the plurality of the hits that were followed, with
+a 35.43% share (42.17% in the last month recorded), slightly under
+65% of the followed references came from the other five
+services. Skeptical readers may argue that service providers
+could invest in more resources and provide more comprehensive 
+indices to the web. However, recent studies indicate the rate of Web
+expansion and change makes a complete index virtually
+impossible[<!WA28><!WA28><!WA28><!WA28><A HREF="#lycossignidrv">16</A>].
+<p>
+<hr>
+<BR><STRONG>Table 2:</STRONG> <A NAME=followedtable></A>Market Shares of Followed References<BR>
+<A NAME=138></A>
+
+<table>
+<tr>
+<th></th><th align=center>% followed Jul. 7 - Sept. 30</th><th align=center>% followed Sept. 8 - 30</th>
+</tr>
+<tr>
+<th align=left>Lycos           </td><td align=center>  35.43 </td><td align=center> 42.17    </td>
+</tr>
+<tr>
+<th align=left>WebCrawler      </td><td align=center>  30.76 </td><td align=center> 25.74    </td>
+</tr>
+<tr>
+<th align=left>InfoSeek        </td><td align=center>  18.55 </td><td align=center> 15.70    </td>
+</tr>
+<tr>
+<th align=left>Galaxy          </td><td align=center>  17.10 </td><td align=center> 15.60    </td>
+</tr>
+<tr>
+<th align=left>Open Text       </td><td align=center>    n/a </td><td align=center> 14.70    </td>
+</tr>
+<tr>
+<th align=left>Yahoo           </td><td align=center>  10.67 </td><td align=center>  6.59    </td>
+</table>
+
+<blockquote>
+This table shows the percentage each service has of the total followed
+references. References returned by two or more services are included
+under each service, which is why the columns sum to over 100\%.  The 
+table demonstrates that a user who restricts his or her queries to a
+single service will miss most of the relevant references.
+</blockquote>
+<hr>
+<p>
+We then analyzed the data to determine which, if any, of the added
+features of the MetaCrawler were helping users. The metric we used was
+the number of references pruned. Table <!WA29><!WA29><!WA29><!WA29><A HREF="#deathbytable">3</A>
+shows the average number of references removed for each advanced
+option.
+<p>
+<hr>
+<BR><STRONG>Table 3:</STRONG> <A NAME=deathbytable></A>Effect of Features in Removing
+Irrelevant Hits<BR>
+<A NAME=139></A>
+
+<table>
+<tr>
+<th align=left>Feature   </th><th align=center>% of Hits Removed</th>
+</tr>
+<tr>
+<td align=left>Syntax  </td><td align=center> 39.79         </td>
+</tr>
+<tr>
+<td align=left>Dead    </td><td align=center> 14.88         </td>
+</tr>
+<tr>
+<td align=left>Expert  </td><td align=center> 21.49         </td>
+</tr>
+</table>
+
+<blockquote>
+This table shows the percentage of hits removed when a particular
+feature was used. ``Syntax'' refers to queries that were removed
+due to sophisticated query syntax (e.g., minus for undesired words);
+``Dead'' refers to unavailable or inaccessible pages, and ``Expert''
+refers to hits removed due to restriction on the references' origins.
+</blockquote>
+<hr>
+<p>
+Using syntax for required or non-desired
+words typically reduces the number of returned results by 40%. Detecting dead
+pages allowed the removal of another 15%. Finally, the 
+expert options were very successful in removing unwanted
+references. When all of these features are used in conjunction,
+up to 75% of the returned references can be removed.
+<P>
+<H3><A NAME=SECTION00031000000000000000> MetaCrawler Benchmarks</A></H3>
+<P>
+We have shown that the MetaCrawler improves the quality of results
+returned to the user. But what is the performance cost? Table
+<!WA30><!WA30><!WA30><!WA30><A HREF="#benchtime">4</A> shows the average times per query, differentiating
+between having the MetaCrawler simply collate the results or verify them as
+well.
+<p>
+<hr>
+<BR><STRONG>Table 4:</STRONG> <A NAME=benchtime></A>Average Time for MetaCrawler Return
+  Results<BR>
+<A NAME=140></A>
+
+<table>
+<tr>
+<th align=left></th><th align=center>      Wall Clock Time </th><th align=center> User Time </th><th align=center> System Time </th><th align=center> Lag Time </th>
+</tr>
+<tr>
+<th align=left>Collated </td><td align=center>         25.70        </td><td align=center> 0.32      </td><td align=center> 1.87        </td><td align=center>  23.51   </td>
+</tr>
+<tr>
+<th align=left>Verified </td><td align=center>        139.30        </td><td align=center> 22.72     </td><td align=center> 4.50        </td><td align=center>  112.08  </td>
+</tr>
+</table>
+
+<blockquote>
+All times are measured in seconds. 
+``Wall Clock Time'' is the total time taken for an average
+query, and is broken down into User, System, and Lag Time. ``User
+Time'' is the time taken by the MetaCrawler program, 
+``System Time'' the time taken by the operating system, and ``Lag
+Time'' the time taken for pages to be downloaded off the network.
+</blockquote>
+<hr><p>
+
+Table <!WA31><!WA31><!WA31><!WA31><A HREF="#benchtime">4</A> shows that the MetaCrawler finished relatively
+quickly. The 
+average time to return collated results is a little over 5 seconds
+longer than the slowest service as shown by Table
+<!WA32><!WA32><!WA32><!WA32><A HREF="#ccperformance">8</A>. This is to be expected given the percentage of
+the time a service times out, which causes the MetaCrawler to wait for
+a full minute before returning all the results.
+We are pleased with the times reported for verification. Our
+initial prototype typically took five minutes to perform
+verification. We recently began caching retrieved pages for three
+hours, and have found that caching reduces the average
+verification time by nearly one-half. We are confident that this time can
+be further reduced by more aggressive caching as well as 
+improvements in the thread management used by the MetaCrawler.
+<P>
+Since the MetaCrawler was publicly announced, the daily access count
+has been growing at a linear rate. We are also pleased with an
+increased use of the 
+user options. Figure <!WA33><!WA33><!WA33><!WA33><A HREF="#usegraph">1</A> plots
+the data points for the weeks beginning July 7 until September
+30. ``Feature Use by Week'' shows the number of queries where any of
+the MetaCrawler's advanced features, such as verification, were used.
+<P><A NAME=545></A><!WA34><!WA34><!WA34><!WA34><IMG  ALIGN=BOTTOM ALT="" SRC="http://www.cs.washington.edu/research/projects/softbots/papers/metacrawler/www4/html/fig1trans.gif">
+<BR><STRONG>Figure 1:</STRONG> <A NAME=usegraph></A>Queries per week from July 7 - Sept. 30<BR>
+<P>
+<A NAME=servicecomparison></A>
+<H3><A NAME=SECTION00032000000000000000> Search Service Comparison</A></H3>
+<P>
+In addition to validating our claims, the MetaCrawler's logs also
+allow us to present a ``Consumer Reports'' style comparison of the search
+services. We evaluate each service using three metrics:
+<UL><LI> <em> Coverage:</em> How many hits will be returned on average?
+<LI> <em> Relevance:</em> Are hits returned actually followed by users?
+<LI> <em> Performance:</em> How long does each service take, and how often does
+  it time out?
+</UL>
+<H4><A NAME=SECTION00032100000000000000> Coverage</A></H4>
+<P>
+Given a pre-set maximum on the number of hits returned by each
+service, we measured both the percentage of references returned as
+well as references unique to the service that returned them. Thus,
+75% returned with 70% unique shows that on average a service
+returns 75% of its maximum allowed, with 70% of those hits being
+unique.
+<P>
+Tables <!WA35><!WA35><!WA35><!WA35><A HREF="#cctotalhits">5</A> and <!WA36><!WA36><!WA36><!WA36><A HREF="#ccuniquehits">6</A> details our findings
+in terms of raw 
+content. It shows that with default parameters, Open Text returns
+80% of the maximum hits allowed, with nearly 89% of those hits being
+unique. Lycos and WebCrawler follow, also returning over 70%,
+with slightly over 90% of those hits being unique. Yahoo 
+has particularly poor performance on the total hits metric, but this was not
+surprising to us. We included Yahoo on the hypothesis that people search
+for subjects, such as ``Mariners Baseball,'' which Yahoo
+excels at. However, it turned out this hypothesis was incorrect, as
+people tended to use the MetaCrawler to search for nuggets of information, such as ``Ken
+Griffey hand injury.'' Yahoo does not index this type information, and thus
+shows poor content. Presumably, most topic searches go to Yahoo directly.
+<P>
+Although each service returns mostly unique references, it is not
+clear whether those references are useful. Further, unique references are not necessarily unique to a
+service's database, as another service could return that reference
+given a different query string. 
+<p>
+<hr>
+<BR><STRONG>Table 5:</STRONG> <A NAME=cctotalhits></A>Returned References by Service<BR>
+<A NAME=546></A>
+
+<table>
+<tr>
+<th align=left>            </th><th align=center>% of Max Hits Returned </th><th align=center> Ave. Hits Returned / Maximum Allowed </th>
+</tr>
+<tr>
+<th align=left>Open Text   </td><td align=center>80.0          </td><td align=center>  8.0 / 10          </td>
+</tr>
+<tr>
+<th align=left>Lycos       </td><td align=center>76.3          </td><td align=center> 19.1 / 25          </td>
+</tr>
+<tr>
+<th align=left>WebCrawler  </td><td align=center>70.2          </td><td align=center> 17.6 / 25          </td>
+</tr>
+<tr>
+<th align=left>Galaxy      </td><td align=center>56.9          </td><td align=center> 28.4 / 50          </td>
+</tr>
+<tr>
+<th align=left>InfoSeek    </td><td align=center>43.5          </td><td align=center>  4.4 / 10          </td>
+</tr>
+<tr>
+<th align=left>Yahoo       </td><td align=center>11.1          </td><td align=center> 11.1 / 100         </td>
+</tr>
+</table>
+
+<blockquote>
+The first column shows the percentage of the maximum hits allowed that
+each service returned. Each percentage was calculated by dividing the
+average hits 
+returned by the maximum allowed for that service, as shown in the
+second column. This percentage is a measure of how many hits a
+service will provide given a pre-set maximum. The MetaCrawler used
+different maximum values for services, as some had internal maximum
+values, and others would either accept only certain maximums or none
+at all. 
+</blockquote>
+<hr>
+<hr>
+<BR><STRONG>Table 6:</STRONG> <A NAME=ccuniquehits></A>Unique References by Service<BR>
+<A NAME=547></A>
+
+<table>
+<tr>
+<th align=left></th><th align=center>% of Unique Hits Returned          </th>
+</tr>
+<tr>
+<th align=left>Galaxy      </th><td align=center> 99.6            </td>
+</tr>
+<tr>
+<th align=left>Yahoo       </th><td align=center> 92.8            </td>
+</tr>
+<tr>
+<th align=left>Lycos       </th><td align=center> 90.6            </td>
+</tr>
+<tr>
+<th align=left>WebCrawler  </th><td align=center> 90.3            </td>
+</tr>
+<tr>
+<th align=left>Open Text   </th><td align=center> 88.8            </td>
+</tr>
+<tr>
+<th align=left>InfoSeek    </th><td align=center> 79.5            </td>
+</tr>
+</table>
+
+<blockquote>
+This table shows the percentage of references each service
+returned that were unique to that service. 
+</blockquote>
+<hr><p>
+<H4><A NAME=SECTION00032200000000000000> Relevance</A></H4>
+To measure relevance, two metrics are used. The first is which
+service is returning the most references that people follow. This is
+shown by Table <!WA37><!WA37><!WA37><!WA37><A HREF="#followedtable">2</A>. The second metric is what percent
+of references returned by each service are people following. 
+Table <!WA38><!WA38><!WA38><!WA38><A HREF="#ccrelevance">7</A> summarizes these
+calculations. It shows that nearly 6% of all references returned by
+InfoSeek were followed. Lycos, Open Text, and
+WebCrawler follow, each having about 2.5% of their hits
+followed.
+<P>
+This data has two caveats. The first is that the relevant
+information for people may be the list of references itself. For example,
+people who wish to see how many links there are to their home page may
+search on their own name just to calculate this number. The second
+caveat is that these numbers may be skewed by the number of hits
+returned by each service. Thus, while InfoSeek has nearly 6% of its
+results followed, only a total of 13,045 references returned by
+InfoSeek were followed, compared with the 24913 references followed
+that were contributed by Lycos, which on average had only 2.5% of its
+19 hits examined.
+<p>
+<hr>
+<BR><STRONG>Table 7:</STRONG> <A NAME=ccrelevance></A>Relevance of Returned Hits by Service<BR>
+<A NAME=548></A>
+
+<table>
+
+<tr>
+<th align=left></th><th align=center> % of Hits Returned that are Followed </th><th align=center> Total Hits Followed </th>
+</tr>
+<tr>
+<th align=left>InfoSeek    </th><td align=center> 5.89                </td><td align=center> 13,045      </td>
+</tr>
+<tr>
+<th align=left>Lycos       </th><td align=center> 2.56                </td><td align=center> 24,913      </td>
+</tr>
+<tr>
+<th align=left>Open Text    </th><td align=center> 2.51                </td><td align=center>  4,025      </td>
+</tr>
+<tr>
+<th align=left>WebCrawler  </th><td align=center> 2.42                </td><td align=center> 21,631      </td>
+</tr>
+<tr>
+<th align=left>Yahoo       </th><td align=center> 1.33                </td><td align=center>  7,503      </td>
+</tr>
+<tr>
+<th align=left>Galaxy      </th><td align=center> 0.83                </td><td align=center> 12,022      </td>
+</tr>
+</table>
+
+<blockquote>
+This table shows the percentage of followed hits for each
+service. References returned by multiple services
+are counted multiple times. Column 2 shows the actual number of
+references followed for each service. These numbers are out of
+50,878 queries, except Open Text which is out of 19,951 queries. 
+</blockquote>
+<hr><p>
+<H4><A NAME=SECTION00032300000000000000> Performance</A></H4>
+Finally, we measure each service's response time. Table
+<!WA39><!WA39><!WA39><!WA39><A HREF="#ccperformance">8</A> summarizes our findings. It is not surprising,
+although disappointing, to find that average times vary from just
+under 10 seconds to just under 20. The percent of time the services timed out
+is under 5% for all services except Open Text, which is the newest
+and presumably still going through some growing pains. One explanation
+for the length of times taken by these services is that the majority
+of requests are during peak hours. Thus, results are naturally
+skewed towards the times when the services are most loaded. Times
+during non-peak hours are much lower.
+<p>
+<hr>
+<BR><STRONG>Table 8:</STRONG> <A NAME=ccperformance></A>Performance of Services<BR>
+<P><A NAME=549></A>
+
+<table>
+<tr>
+<th align=left>            </th><th align=center>  Ave. Time (sec)  </th><th align=center> % Timed Out </th>
+</tr>
+<tr>
+<th align=left>WebCrawler  </th><td align=center>   9.64            </td><td align=center>   2.30       </td>
+</tr>
+<tr>
+<th align=left>InfoSeek    </th><td align=center>  12.30            </td><td align=center>   3.01       </td>
+</tr>
+<tr>
+<th align=left>Open Text    </th><td align=center>  16.26            </td><td align=center>  14.13       </td>
+</tr>
+<tr>
+<th align=left>Yahoo       </th><td align=center>  18.32            </td><td align=center>   2.28       </td>
+</tr>
+<tr>
+<th align=left>Lycos       </th><td align=center>  18.99            </td><td align=center>   4.87       </td>
+</tr>
+<tr>
+<th align=left>Galaxy      </th><td align=center>  19.52            </td><td align=center>   3.10       </td>
+</tr>
+</table>
+
+<blockquote>
+This table shows the average time in seconds taken by each service to fulfill a
+query. The second column gives the percent of time that the service
+would time out, or fail to return any hits under one minute. 
+</blockquote>
+<hr><p>
+
+<A NAME=relatedwork></A>
+<H2><A NAME=SECTION00040000000000000000> Related Work</A></H2>
+<P>
+Unifying several databases under one interface is far from novel. Many
+companies, such as PLS[<!WA40><!WA40><!WA40><!WA40><A HREF="#wwwpls">21</A>],
+Lexis-Nexis[<!WA41><!WA41><!WA41><!WA41><A HREF="#wwwlexisnexis">14</A>], and Verity[<!WA42><!WA42><!WA42><!WA42><A HREF="#wwwverity">30</A>]
+have invested several 
+years and substantial capital creating systems that can handle and
+integrate heterogeneous databases. Likewise, with the emergence of
+many Internet search services, there have been many different efforts
+to create single interfaces to the sundry databases. Perhaps the most
+widely distributed is CUSI[<!WA43><!WA43><!WA43><!WA43><A HREF="#wwwcusi">18</A>], the Configurable Unified
+Search Index, which is a large form which allows users to select one
+service at a time and query that service. There are also several other
+services much like CUSI, such as the All-in-One Search
+Page[<!WA44><!WA44><!WA44><!WA44><A HREF="#wwwallinone">2</A>], or 
+W3 Search Engine list[<!WA45><!WA45><!WA45><!WA45><A HREF="#wwww3enginelist">19</A>]. Unfortunately, while the
+user has many services on these lists to choose from, there is no
+parallelism or 
+collation. The user must submit queries to each service individually,
+although this task is made easier by having form interfaces to the
+various services on one page.
+<P>
+The Harvest system[<!WA46><!WA46><!WA46><!WA46><A HREF="#harvesttr">6</A>] has many similarities to the
+MetaCrawler; however, rather than using existing databases as they are
+and post-processing the information returned, Harvest uses ``Gatherers''
+to index information and ``Brokers'' to provide different interfaces
+to extract this information. However, while Harvest may have many
+different interfaces to many different internal services, it is still a
+search service like Lycos and WebCrawler, instead of a meta-service like
+MetaCrawler.
+<P>
+There are also other parallel Web search services. Sun Microsystems
+supports a very primitive service[<!WA47><!WA47><!WA47><!WA47><A HREF="#wwwsunmultithreaded">27</A>], and IBM
+has recently announced infoMarket[<!WA48><!WA48><!WA48><!WA48><A HREF="#wwwinfoMarket">11</A>] which, rather
+than integrating similar services with different coverage,
+integrates quite different services, such as
+DejaNews[<!WA49><!WA49><!WA49><!WA49><A HREF="#wwwdejanews">26</A>], a USENET news search service, 
+McKinley[<!WA50><!WA50><!WA50><!WA50><A HREF="#wwwmckinley">29</A>], a clone of Yahoo with some editorial
+ratings on various pages, in addition to Open Text and Yahoo.
+<P>
+The closest work to the MetaCrawler is SavvySearch[<!WA51><!WA51><!WA51><!WA51><A HREF="#wwwsavvy">3</A>], an
+independently created multi-threaded search service released in May
+1995. SavvySearch has a larger repertoire of search services, although
+some are not WWW resource services, such as Roget's
+Thesaurus. SavvySearch's main focus is categorizing users' queries,
+and sending them to the most appropriate subset of its known
+services[<!WA52><!WA52><!WA52><!WA52><A HREF="#dreilingersavvy">4</A>].  
+
+<P>
+Like the MetaCrawler, the Internet Softbot[<!WA53><!WA53><!WA53><!WA53><A HREF="#etzioniuicacm">8</A>] is a
+meta-service that leverages existing services and collates their results.  
+The Softbot enables a human user to state
+what he or she wants accomplished.  The Softbot attempts to
+disambiguate the request and to dynamically determine how and where
+to satisfy it, utilizing a wide range of Internet services.  Unlike
+the MetaCrawler, which 
+focuses on indices and keyword queries, the Softbot accesses
+structured services such as Netfind and databases such as Inspec.  The
+Softbot explicitly represents the semantics of the 
+services, enabling it to chain together multiple services in response
+to a user request.  The Softbot utilizes automatic planning technology
+to dynamically generate the appropriate sequence of service accesses.
+While the MetaCrawler and the Softbot rely on radically different
+technologies, the vision driving both systems is the same.  Both
+seek to provide an expressive and integrated interface to Internet
+services.
+<P>
+<A NAME=futurework></A>
+<H2><A NAME=SECTION00050000000000000000> Future Work</A></H2>
+<P>
+We are investigating how the MetaCrawler will scale to use new
+services. Of particular importance is how to collate results returned
+from different types of Internet indices, such as USENET news and Web
+pages. Also important is determining useful methods for
+interacting with specialized databases, such as the Internet Movie
+Database[<!WA54><!WA54><!WA54><!WA54><A HREF="#wwwmoviedatabase">28</A>]. If the information requested is
+obviously located on 
+some special purpose databases, than it does not make sense to query
+each and every service. We are
+investigating methods that will enable the MetaCrawler to determine
+which services will return relevant data based solely on the query text
+and other data provided by the user.
+<P>
+<A NAME=futuredesign></A>
+<H3><A NAME=SECTION00051000000000000000> Future Design</A></H3>
+<P>
+The existing MetaCrawler prototype can cause a substantial network load when
+it attempts to verify a large number of pages. While one query
+by itself is no problem, multiple queries occurring at the same time
+can cause the system and network to bog down. However, with the
+emergence of universally portable Internet-friendly languages, 
+such as Java[<!WA55><!WA55><!WA55><!WA55><A HREF="#javawhitepaper">10</A>] or Magic
+Cap[<!WA56><!WA56><!WA56><!WA56><A HREF="#genmagicguidetocodewarrior">25</A>], load problems can be lessened
+by having users' machines take on the workload needed to perform their
+individual query, as discussed in Section
+<!WA57><!WA57><!WA57><!WA57><A HREF="#clientserverdesign">2.2</A>. The JavaCrawler, a prototype next
+generation 
+MetaCrawler written in Java, supports most of the  
+features already present in the MetaCrawler. However, instead of users
+running queries on one central service, each user has a local copy of
+the JavaCrawler and uses that copy to directly send queries to
+services. The load caused by verification will be taken by the user's
+machine, rather than the central server. This has
+the added benefit of inserting downloaded pages into the local cache, making
+retrieval of those pages nearly instantaneous. The JavaCrawler is loaded
+automatically from the MetaCrawler home page when visited with a
+Java-compatible browser.
+<P>
+<H3><A NAME=SECTION00052000000000000000> Impact on Search Service Providers</A></H3>
+<P>
+We anticipate that a wide range of
+meta-services like the MetaCrawler will emerge over the next few
+years. However, it is 
+uncertain what the relationship between these meta-services and search
+service providers will be. We envision that this relationship will hinge on
+what form the ``information economy'' used by service providers takes.
+We discuss two different models.
+<P>
+<H4><A NAME=SECTION00052100000000000000> Charge-per-Access</A></H4>
+<P>
+In the charge-per-access model, service providers benefit from
+any access to their database. 
+InfoSeek has already taken this model with their commercial
+service. InfoSeek is financially rewarded regardless of who or what
+sends a query to their commercial database. Many other databases, both
+on and off the Web, also use this model.
+<P>
+The MetaCrawler fits in well with this model.
+Since service providers benefit from any access, the added
+exposure generated by the MetaCrawler is to their advantage. Further,
+this model creates an implicit sanity check on the claims this paper
+makes on the use of its features. In order for the MetaCrawler, or any
+meta-service, to survive in such an economy, it must charge more per
+transaction than the underlying services, as the MetaCrawler will in
+turn have to pay each service for its information. Thus, users must
+be willing to pay the premium for the service. By voting with their
+pocketbook, they can determine if those features are truly desirable.
+<P>
+<H4><A NAME=SECTION00052200000000000000> Advertising</A></H4>
+<P>
+In the advertising model, service providers benefit from sponsors who
+in turn gain benefit from exposure provided by the service.
+Nearly all major search services that do not charge users directly have
+adopted this model, as have many other unrelated services which are
+heavily accessed.
+<P>
+Under this model, the providers' relationship with the
+MetaCrawler can become problematic as the MetaCrawler filters away
+superfluous information such as advertisements. One promising method
+to ensure profitable co-existence
+is to use provider-created interfaces. Providers could create
+an interface for the MetaCrawler to access their service which, in
+addition to returning relevant hits, also 
+returns the appropriate advertisement. Another solution involves the
+MetaCrawler accepting advertisements, and forming a
+profit-sharing relationship with the service providers. We are
+currently investigating these and other methods of mutually beneficial
+co-existence with service providers.
+<P>
+<A NAME=conclusions></A>
+<H2><A NAME=SECTION00060000000000000000> Conclusions</A></H2>
+<P>
+In this paper we have presented the MetaCrawler, a meta-service for Web
+searching with additional features designed to return more references
+of higher quality than standard search services. We demonstrated that
+users follow references reported by a variety of different search
+services, confirming that a single service is not sufficient (Table
+<!WA58><!WA58><!WA58><!WA58><A HREF="#followedtable">2</A>).  Further, due to the expressive power of the
+MetaCrawler's interface, the MetaCrawler was able to automatically
+determine that up to 75% of the hits returned can be discarded. Finally, the
+performance benchmarks and usage logs also show that the features
+provided by the MetaCrawler are both reasonably fast and actually used
+in practice.
+<P>
+The MetaCrawler provides a ``Consumer Reports'' of sorts for Web searchers.
+The individual service data extracted from the MetaCrawler's
+logs is compelling evidence concerning the quality of each service. By
+comparing services using the same query text and recording what
+links users follow, we are able
+to evaluate the services from a user's point of view. As far as we
+know, we are the first to quantitatively compare the
+search services used by MetaCrawler on a large sample of authentic user
+queries.
+<P>
+While it is possible that some MetaCrawler features could be
+integrated into the search services, others are intrinsic to
+meta-services.  By definition, only a meta-service can provide the
+coverage gained by using multiple services. Also, as argued earlier,
+client-side meta-services can offer user and site customizations, and
+absorb the load caused by post-processing of search results. Finally,
+there are some features that do not belong under control of search
+services for purely pragmatic reasons. For example, as more commercial
+search services become available, tools will emerge that select which
+services to use on the basis of cost.  An impartial meta-service such
+as the MetaCrawler avoids the conflict of interest that would arise if
+such a tool were offered by one of the commercial services.
+<P>
+New Web services are constantly being created. As the number and
+variety of services grows, it is natural to group existing services
+under one umbrella.  The MetaCrawler goes further than merely
+organizing services by creating an integrated <em> meta-service</em> that
+moves the interface (and the associated computational load) closer to
+the user.  We believe that this trend of moving up the information
+``food chain'' will continue.  The MetaCrawler is one of the first
+popular meta-services, but many more will follow.
+<P>
+<H2><A NAME=SECTION00070000000000000000> Acknowledgments</A></H2>
+<P>
+The research presented in this paper could not have been accomplished
+without the help of many individuals.  We would like to thank Mary
+Kaye Rodgers, for editing assistance and for putting up with late
+nights. Ruth Etzioni and Ellen Spertus provided comments on an earlier
+draft.  Dan Weld, Rich Segal, Keith Golden, George Forman, and Donald
+Chinn were very vocal and active in testing the early prototypes of
+the MetaCrawler, and Craig Horman and Nancy Johnson Burr were
+extremely helpful and patient in dealing with it when it ran
+amok. Lara Lewis was very helpful in finding references upon
+demand. The Internet Softbot group provided early insight into
+desirable features of the MetaCrawler, and Brian Bershad and Hank Levy
+contributed ideas relating to the impact the MetaCrawler could have on
+the Web. Ken Waln aided in early development for his form patches to
+the WWW C library, and Lou Montulli helped in later development by
+unlocking the secrets of <tt> nph</tt>-scripts and Netscape caching.
+MetaCrawler development was supported by gifts from US West and
+Rockwell International Palo Alto Research. Etzioni's Softbot research
+is supported by Office of Naval Research grant 92-J-1946 and by
+National Science Foundation grant IRI-9357772.
+
+<P>
+<P><A NAME=SECTIONREF><H2>References</H2></A><P>
+<DL COMPACT>
+<DT><A NAME=wwwinfoseek><STRONG>1</STRONG></A><DD>
+InfoSeek Corporation.
+ InfoSeek Home Page.
+ <BR> URL: <!WA59><!WA59><!WA59><!WA59><A NAME=tex2html17 HREF="http://www.infoseek.com"><tt>
+  http://www.infoseek.com</tt></A>.
+<P>
+<DT><A NAME=wwwallinone><STRONG>2</STRONG></A><DD>
+William Cross.
+ All-In-One Internet Search Page.
+ <BR> URL: <!WA60><!WA60><!WA60><!WA60><A NAME=tex2html18 HREF="http://www.albany.net/~wcross/all1srch.html"><tt> http://www.albany.net/&#126;wcross/all1srch.html</tt></A>.
+<P>
+<DT><A NAME=wwwsavvy><STRONG>3</STRONG></A><DD>
+Daniel Dreilinger.
+ Savvy Search Home Page.
+ <BR> URL: <!WA61><!WA61><!WA61><!WA61><A NAME=tex2html19 HREF="http://www.cs.colostate.edu/~dreiling/smartform.html"><tt> http://www.cs.colostate.edu/&#126;dreiling/smartform.html</tt></A>.
+<P>
+<DT><A NAME=dreilingersavvy><STRONG>4</STRONG></A><DD>
+Daniel Dreilinger.
+ Integrating Heterogeneous WWW Search Engines.
+ <BR> URL: <!WA62><!WA62><!WA62><!WA62><A NAME=tex2html20 HREF="ftp://132.239.54.5/savvy/report.ps.gz"><tt>
+  ftp://132.239.54.5/savvy/report.ps.gz</tt></A>, May 1995.
+<P>
+<DT><A NAME=wwwgalaxy><STRONG>5</STRONG></A><DD>
+EINet.
+ Galaxy Home Page.
+ <BR> URL: <!WA63><!WA63><!WA63><!WA63><A NAME=tex2html21 HREF="http://galaxy.einet.net/galaxy.html"><tt>
+  http://galaxy.einet.net/galaxy.html</tt></A>.
+<P>
+<DT><A NAME=harvesttr><STRONG>6</STRONG></A><DD>
+C. Mic Bowman et al.
+ Harvest: A Scalable, Customizable Discovery and Access System.
+ Technical Report CU-CS-732-94, Department of Computer Science,
+  University of Colorado, Boulder, Colorado, March 1995.
+ <BR> URL: <!WA64><!WA64><!WA64><!WA64><A NAME=tex2html22 HREF="http://harvest.cs.colorado.edu/harvest/papers.html"><tt>
+  http://harvest.cs.colorado.edu/harvest/papers.html</tt></A>.
+<P>
+<DT><A NAME=wwwharvesthomepage><STRONG>7</STRONG></A><DD>
+Michael Schwartz et al.
+ WWW Home Pages Harvest Broker.
+ <BR> URL: <!WA65><!WA65><!WA65><!WA65><A NAME=tex2html23 HREF="http://town.hall.org/Harvest/brokers/www-home-pages/"><tt>
+  http://town.hall.org/Harvest/brokers/www-home-pages/</tt></A>.
+<P>
+<DT><A NAME=etzioniuicacm><STRONG>8</STRONG></A><DD>
+O. Etzioni and D. Weld.
+ A softbot-based interface to the internet.
+ <em> CACM</em>, 37(7):72--76, July 1994.
+ <BR> URL: <!WA66><!WA66><!WA66><!WA66><A NAME=tex2html24 HREF="http://www.cs.washington.edu/research/softbots"><tt>
+  http://www.cs.washington.edu/research/softbots</tt></A>.
+<P>
+<DT><A NAME=wwwyahoo><STRONG>9</STRONG></A><DD>
+David Filo and Jerry Yang.
+ Yahoo Home Page.
+ <BR> URL: <!WA67><!WA67><!WA67><!WA67><A NAME=tex2html25 HREF="http://www.yahoo.com"><tt>
+  http://www.yahoo.com</tt></A>.
+<P>
+<DT><A NAME=javawhitepaper><STRONG>10</STRONG></A><DD>
+James Gosling and Henry McGilton.
+ The Java Language Environment: A White Paper.
+ <BR> URL: <!WA68><!WA68><!WA68><!WA68><A NAME=tex2html26 HREF="http://java.sun.com/whitePaper/javawhitepaper_1.html"><tt>
+  http://java.sun.com/whitePaper/javawhitepaper_1.html</tt></A>.
+<P>
+<DT><A NAME=wwwinfoMarket><STRONG>11</STRONG></A><DD>
+IBM, Inc.
+ infoMarket Search Home Page.
+ <BR> URL: <!WA69><!WA69><!WA69><!WA69><A NAME=tex2html27 HREF="http://www.infomkt.ibm.com"><tt>
+  http://www.infomkt.ibm.com</tt></A>.
+<P>
+<DT><A NAME=wwwqbic><STRONG>12</STRONG></A><DD>
+IBM, Inc.
+ Query By Image Content Home Page.
+ <BR> URL: <!WA70><!WA70><!WA70><!WA70><A NAME=tex2html28 HREF="http://wwwqbic.almaden.ibm.com/~qbic/qbic.html"><tt> http://wwwqbic.almaden.ibm.com/&#126;qbic/qbic.html</tt></A>.
+<P>
+<DT><A NAME=kosterrobots><STRONG>13</STRONG></A><DD>
+Martijn Koster.
+ Robots in the Web: threat or treat?
+ <em> ConneXions</em>, 9(4), April 1995.
+<P>
+<DT><A NAME=wwwlexisnexis><STRONG>14</STRONG></A><DD>
+LEXIS-NEXIS.
+ LEXIS-NEXIS Communication Center.
+ <BR> URL: <!WA71><!WA71><!WA71><!WA71><A NAME=tex2html29 HREF="http://www.lexis-nexis.com"><tt>
+  http://www.lexis-nexis.com</tt></A>.
+<P>
+<DT><A NAME=wwwlycos><STRONG>15</STRONG></A><DD>
+Michael Mauldin.
+ Lycos Home Page.
+ <BR> URL: <!WA72><!WA72><!WA72><!WA72><A NAME=tex2html30 HREF="http://lycos.cs.cmu.edu"><tt>
+  http://lycos.cs.cmu.edu</tt></A>.
+<P>
+<DT><A NAME=lycossignidrv><STRONG>16</STRONG></A><DD>
+Michael L. Mauldin and John R. R. Leavitt.
+ Web Agent Related Research at the Center for Machine Translation.
+ In <em> Proceedings of SIGNIDR V</em>, McLean, Virginia, August 1994.
+<P>
+<DT><A NAME=wwwhomr><STRONG>17</STRONG></A><DD>
+Max Metral.
+ Helpful Online Music Recommendation Service.
+ <BR> URL: <!WA73><!WA73><!WA73><!WA73><A NAME=tex2html31 HREF="http://rg.media.mit.edu/ringo/ringo.html"><tt>
+  http://rg.media.mit.edu/ringo/ringo.html</tt></A>.
+<P>
+<DT><A NAME=wwwcusi><STRONG>18</STRONG></A><DD>
+Nexor.
+ CUSI (Configurable Universal Search Interface).
+ <BR> URL: <!WA74><!WA74><!WA74><!WA74><A NAME=tex2html32 HREF="http://pubweb.nexor.co.uk/public/cusi/cusi.html"><tt>
+  http://pubweb.nexor.co.uk/public/cusi/cusi.html</tt></A>.
+<P>
+<DT><A NAME=wwww3enginelist><STRONG>19</STRONG></A><DD>
+University of Geneva.
+ W3 Search Engines.
+ <BR> URL: <!WA75><!WA75><!WA75><!WA75><A NAME=tex2html33 HREF="http://cuiwww.unige.ch/meta-index.html"><tt>
+  http://cuiwww.unige.ch/meta-index.html</tt></A>.
+<P>
+<DT><A NAME=wwwopentext><STRONG>20</STRONG></A><DD>
+Open Text, Inc.
+ Open Text Web Index Home Page.
+ <BR> URL: <!WA76><!WA76><!WA76><!WA76><A NAME=tex2html34 HREF="http://www.opentext.com:8080/omw/f-omw.html"><tt>
+  http://www.opentext.com:8080/omw/f-omw.html</tt></A>.
+<P>
+<DT><A NAME=wwwpls><STRONG>21</STRONG></A><DD>
+Personal Library Software, Inc.
+ Personal Library Software Home Page.
+ <BR> URL: <!WA77><!WA77><!WA77><!WA77><A NAME=tex2html35 HREF="http://www.pls.com"><tt>
+  http://www.pls.com</tt></A>.
+<P>
+<DT><A NAME=wwwwebcrawler><STRONG>22</STRONG></A><DD>
+Brian Pinkerton.
+ WebCrawler Home Page.
+ <BR> URL: <!WA78><!WA78><!WA78><!WA78><A NAME=tex2html36 HREF="http://webcrawler.com"><tt>
+  http://webcrawler.com</tt></A>.
+<P>
+<DT><A NAME=webcrawlerwww2><STRONG>23</STRONG></A><DD>
+Brian Pinkerton.
+ Finding What People Want: Experiences with the WebCrawler.
+ In <em> Proceedings of the Second World Wide Web Conference '94:
+  Mosaic and the Web</em>, Chicago IL USA, October 1993.
+<P>
+<DT><A NAME=wwwvirtourist><STRONG>24</STRONG></A><DD>
+Brandon Plewe.
+ The Virtual Tourist Home Page.
+ <BR> URL: <!WA79><!WA79><!WA79><!WA79><A NAME=tex2html37 HREF="http://wings.buffalo.edu/world"><tt>
+  http://wings.buffalo.edu/world</tt></A>.
+<P>
+<DT><A NAME=genmagicguidetocodewarrior><STRONG>25</STRONG></A><DD>
+Daniel Sears.
+ Guide to CodeWarrior Magic/MPW.
+ Development Release 1<BR> URL: <!WA80><!WA80><!WA80><!WA80><A NAME=tex2html38 HREF="http://www.genmagic.com/MagicCapDocs/CodeWarriorMagic/introduction.html"><tt>
+  http://www.genmagic.com/MagicCapDocs/CodeWarriorMagic/introduction.html</tt></A>, May
+  1995.
+<P>
+<DT><A NAME=wwwdejanews><STRONG>26</STRONG></A><DD>
+DejaNews Research Service.
+ DejaNews Home Page.
+ <BR> URL: <!WA81><!WA81><!WA81><!WA81><A NAME=tex2html39 HREF="http://www.dejanews.com"><tt>
+  http://www.dejanews.com</tt></A>.
+<P>
+<DT><A NAME=wwwsunmultithreaded><STRONG>27</STRONG></A><DD>
+Sun Microsystems, Inc.
+ Multithreaded Query Page.
+ <BR> URL: <!WA82><!WA82><!WA82><!WA82><A NAME=tex2html40 HREF="http://www.sun.com/cgi-bin/show?search/mtquery/index.body"><tt>
+  http://www.sun.com/cgi-bin/show?search/mtquery/index.body</tt></A>.
+<P>
+<DT><A NAME=wwwmoviedatabase><STRONG>28</STRONG></A><DD>
+The Internet Movie Database Team.
+ The Internet Movie Database.
+ <BR> URL: <!WA83><!WA83><!WA83><!WA83><A NAME=tex2html41 HREF="http://www.msstate.edu"><tt>
+  http://www.msstate.edu</tt></A>.
+<P>
+<DT><A NAME=wwwmckinley><STRONG>29</STRONG></A><DD>
+The McKinley Group, Inc.
+ Magellan: McKinley's Internet Directory.
+ <BR> URL: <!WA84><!WA84><!WA84><!WA84><A NAME=tex2html42 HREF="http://www.mckinley.com"><tt>
+  http://www.mckinley.com</tt></A>.
+<P>
+<DT><A NAME=wwwverity><STRONG>30</STRONG></A><DD>
+Verity, Inc.
+ Verity Home Page.
+ <BR> URL: <!WA85><!WA85><!WA85><!WA85><A NAME=tex2html43 HREF="http://www.verity.com"><tt>
+  http://www.verity.com</tt></A>.
+</DL>
+
+<P>
+<H2><A NAME=SECTION00080000000000000000> About the Authors</A></H2>
+<P>
+Erik Selberg, <em>
+  <!WA86><!WA86><!WA86><!WA86><A NAME=tex2html13 HREF="mailto:selberg@cs.washington.edu">selberg@cs.washington.edu</A></em>, <!WA87><!WA87><!WA87><!WA87><A NAME=tex2html15 HREF="http://www.cs.washington.edu/homes/selberg">http://www.cs.washington.edu/homes/selberg</A><BR> 
+Department of Computer Science and Engineering <BR> 
+Box 352350 <BR> 
+University of Washington <BR> 
+Seattle, WA 98195
+<P>
+Erik Selberg is pursuing his Ph.D. in computer science at the
+University of Washington. His primary research area involves World
+Wide Web search, although he also has interests regarding system performance
+and security as well as multi-agent coordination and
+planning. In April, 1995 he created the MetaCrawler, a parallel Web
+search meta-service. He graduated from Carnegie Mellon University in
+1993 with a double major in computer science and logic, and received
+the first Allen Newell Award for Excellence in Undergraduate Research.
+<P>
+Oren Etzioni, <em>
+  <!WA88><!WA88><!WA88><!WA88><A NAME=tex2html14 HREF="mailto:etzioni@cs.washington.edu">etzioni@cs.washington.edu</A></em>, <!WA89><!WA89><!WA89><!WA89><A NAME=tex2html16 HREF="http://www.cs.washington.edu/homes/etzioni">http://www.cs.washington.edu/homes/etzioni</A><BR> 
+Department of Computer Science and Engineering <BR> 
+Box 352350 <BR> 
+University of Washington <BR> 
+Seattle, WA 98195
+<P>
+Oren Etzioni received his bachelor's degree in computer science from
+Harvard University in June 1986, and his Ph.D. from Carnegie Mellon
+University in January 1991.  He joined the University of Washington as
+assistant professor of computer science and engineering in February
+1991.  In the fall of 1991, he launched the Internet Softbots project.
+In 1993, Etzioni received an NSF Young Investigator Award.  In 1995,
+Etzioni was chosen as one of 5 finalists in the Discover Awards for
+Technological Innovation in Computer Software for his work on 
+Internet Softbots.
+<P>
+His research interests include: software agents, machine learning, and
+human-computer interaction.
+<P>
+
+<H2><A NAME=SECTION000100000000000000000>   About this document ... </A></H2>
+<P>
+ <STRONG>Multi-Service Search and Comparison Using the 
+        MetaCrawler</STRONG><P>
+This document was generated using the <!WA90><!WA90><!WA90><!WA90><A HREF="http://cbl.leeds.ac.uk/nikos/tex2html/doc/latex2html/latex2html.html"><STRONG>LaTeX</STRONG>2<tt>HTML</tt></A> translator Version 95.1 (Fri Jan 20 1995) Copyright &#169; 1993, 1994,  <!WA91><!WA91><!WA91><!WA91><A HREF="http://cbl.leeds.ac.uk/nikos/personal.html">Nikos Drakos</A>, Computer Based Learning Unit, University of Leeds. <P> The command line arguments were: <BR>
+<STRONG>latex2html</STRONG> <tt>-split 0 www4-final.tex</tt>. <P>The translation was initiated by Erik Selberg on Mon Oct  9 17:24:12 PDT 1995<BR> <HR>
+<P><ADDRESS>
+<I>Erik Selberg <BR>
+Mon Oct  9 17:24:12 PDT 1995</I>
+</ADDRESS>
+</BODY>

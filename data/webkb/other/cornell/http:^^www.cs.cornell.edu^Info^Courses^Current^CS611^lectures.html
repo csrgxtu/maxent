@@ -1,0 +1,89 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 24-Nov-96 22:40:59 GMT
+Content-Type: text/html
+Content-Length: 6398
+Last-Modified: Sunday, 24-Nov-96 19:20:40 GMT
+
+<HEAD>
+<TITLE>CS611:  Scribed Lecture Notes</TITLE>
+</HEAD>
+<BODY>
+<h1> <!WA0><!WA0><!WA0><!WA0><img align=center src="http://www.cs.cornell.edu/Info/Courses/Current/CS611/lambdahead.gif">CS611:  Semantics of Programming Languages</h1>
+
+<h2> These notes are not intended for distribution outside of class.</h2>
+
+<h2> Notes on Scribing: </h2>
+<ul>
+<li> Each student is responsible for scribing at least two class sessions.
+If your name isn't on here twice, send email to either &Uacute;lfar or me
+to get it on here twice.  
+
+<li> I prefer that you generate a postscript (.ps) file, though html
+     is also okay.  
+
+<li> Scribe notes should be emailed to either &Uacute;lfar or me within 
+     one week of the class.  
+
+<li> It's probably best to only produce one scribe document for each class,
+     so coordinate with the other scribe.
+
+<li> I often have informal notes which you can work from.  Check with me
+     before you start to write up your notes.
+</ul>
+<p>
+
+<h2>List of Scribes and Scribed Lectures:</h2>
+<center>
+<table border=1 align=left cellpadding=6 cellspacing=2>
+<tr align=center><th></th><th>Scribe 1</th><th>Scribe 2</th><th>Notes</th></tr>
+<tr><th align=right>Wed Sep  4</th><td>Steve Zdancewic</td><td>Patrick White</td><td><!WA1><!WA1><!WA1><!WA1><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/9-4.ps">ML 1</a></td></tr>
+<tr><th align=right>Fri Sep  6</th><td>Nikola Valerjev</td><td>Stephanie Weirich</td>
+  <td>ML 2: <!WA2><!WA2><!WA2><!WA2><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/9-6-a.ps">ver. 1</a>, <!WA3><!WA3><!WA3><!WA3><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/9-6-b.ps">ver. 2</a></td></tr>
+<tr><th align=right>Mon Sep  9</th><td>Nikola Valerjev</td><td>Wei-Tsang Ooi</td><td>Lambda 1: <!WA4><!WA4><!WA4><!WA4><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/9-9-a.ps">ver. 1</a>, <!WA5><!WA5><!WA5><!WA5><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/9-9-b.ps">ver. 2</a></td></tr>
+<tr><th align=right>Wed Sep 11</th><td>Sumedh Kanetkar</td><td>Wei-Tsang Ooi</td><td><!WA6><!WA6><!WA6><!WA6><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/9-11.ps">Lambda 2</a></td></tr>
+<tr><th align=right>Fri Sep 13</th><td>Jia Wang</td><td>Zhen Xiao</td><td><!WA7><!WA7><!WA7><!WA7><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/9-13.ps">Lambda 3</a> (must be printed)</td></tr>
+<tr><th align=right>Mon Sep 16</th><td>Adam Florence</td><td>Sumedh Kanetkar</td><td><!WA8><!WA8><!WA8><!WA8><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/9-16.ps">Lambda 4</a></td></tr>
+<tr><th align=right>Wed Sep 18</th><td>Li Li</td><td>Lili Qui</td><td><!WA9><!WA9><!WA9><!WA9><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/9-18.ps">Typed Lambda 1</a></td></tr>
+<tr><th align=right>Fri Sep 20</th><td>Jia Wang</td><td>Zhen Xiao</td><td><!WA10><!WA10><!WA10><!WA10><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/9-20.ps">Typed Lambda 2</a></td></tr>
+<tr><th align=right>Mon Sep 23</th><td>Tobias Mayr</td><td>Patrick White</td><td><!WA11><!WA11><!WA11><!WA11><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/9-23.ps">Church Rosser</a></td></tr>
+<tr><th align=right>Wed Sep 25</th><td>Li Li</td><td>Lili Qui</td><td><!WA12><!WA12><!WA12><!WA12><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/9-25.ps">Strong Normalization</a></td></tr>
+<tr><th align=right>Fri Sep 27</th><td colspan=3>Class cancelled...</td></tr>
+<tr><th align=right>Mon Sep 30</th><td>Adam Florence</td><td>Soochon Radee</td><td><!WA13><!WA13><!WA13><!WA13><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/9-30.ps">Extended Typed Lambda</a></td></tr>
+<tr><th align=right>Wed Oct  2</th><td>Steve Zdancewic</td><td>Stephanie Weirich</td><td><!WA14><!WA14><!WA14><!WA14><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/10-2.ps">Denotation for Typed Lambda</a></td></tr>
+<tr><th align=right>Fri Oct  4</th><td>Walker White</td><td>Ralph Benzinger</td><td><!WA15><!WA15><!WA15><!WA15><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/10-4.ps">Equations and Frames</a></td></tr>
+<tr><th align=right>Mon Oct  7</th><td>Rosen Sharma</td><td>&nbsp;</td><td><!WA16><!WA16><!WA16><!WA16><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/10-7.ps">The Term Frame</a></td></tr>
+<tr><th align=right>Wed Oct  9</th><td>Chris Hawbitzel</td><td>Rosen Sharma</td><td><!WA17><!WA17><!WA17><!WA17><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/10-9.ps">Curry-Howard Isomorphism</a></td></tr>
+<tr><th align=right>Fri Oct 11</th><td>Soochon Radee</td><td>Tugkan Batu</td><td><!WA18><!WA18><!WA18><!WA18><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/10-11.ps">Subst Lemma / F2</a></td></tr>
+e<tr><td colspan=4>Fall break...</td></tr>
+<tr><th align=right>Wed Oct 16</th><td>Dan Brown</td><td>&nbsp;</td><td><!WA19><!WA19><!WA19><!WA19><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/10-16.ps">Intro to F2</a></td></tr>
+<tr><th align=right>Fri Oct 18</th><td>Walker White</td><td>Dan Brown</td><td><!WA20><!WA20><!WA20><!WA20><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/10-18.ps">More on F2</a></td></tr>
+<tr><th align=right>Mon Oct 21</th><td>Chris Hawbitzel</td><td>Dan Brown</td><td><!WA21><!WA21><!WA21><!WA21><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/10-21.ps">Yet more on F2</a></td></tr>
+<tr><th align=right>Wed Oct 23</th><td>Athanasios Kyparlis</td><td>Mihai-Dan Budiu</td><td><!WA22><!WA22><!WA22><!WA22><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/10-23.ps">Well-definedness of F2</a></td></tr>
+<tr><th align=right>Fri Oct 25</th><td>Tom Daley</td><td>Ralph Benzinger</td><td><!WA23><!WA23><!WA23><!WA23><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/10-25.ps">F2, U2 and ML</a></td></tr>
+<tr><th align=right>Mon Oct 28</th><td>Wei Tsang Ooi</td><td>Chris Hawblitzel</td><td><!WA24><!WA24><!WA24><!WA24><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/10-28.ps">Type Inference 1</a></td></tr>
+<tr><th align=right>Wed Oct 30</th><td>Patrick White</td><td>&nbsp;</td><td><!WA25><!WA25><!WA25><!WA25><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/10-30.ps">Type Inference 2</a></td></tr>
+<tr><th align=right>Fri Nov  1</th><td>Sumedh Kanetkar</td><td>Tugkan Batu</td><td><!WA26><!WA26><!WA26><!WA26><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/11-1.ps">PT Thm, ML Inference</a></td></tr>
+<tr><th align=right>Mon Nov  4</th><td>Adam Florence</td><td>Ralph Benzinger</td><td><!WA27><!WA27><!WA27><!WA27><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/11-4.ps">ADTs in F2</a></td></tr>
+<tr><th align=right>Wed Nov  6</th><td>Athanasios Kyparlis</td><td>Mihai-Dan Budiu</td><td><!WA28><!WA28><!WA28><!WA28><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/11-6.ps">More ADTs and F2 w/Exists</a></td></tr>
+<tr><th align=right>Fri Nov  8</th><td>Li Li</td><td>Lili Qiu</td><td><!WA29><!WA29><!WA29><!WA29><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/11-8.ps">Adding Recursion: PCF</a></td></tr>
+<tr><th align=right>Mon Nov 11</th><td>Zhen Xiao</td><td>Jia Wang</td><td><!WA30><!WA30><!WA30><!WA30><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/11-11.ps">PCF, Posets and Cpos</a></td></tr>
+<tr><th align=right>Wed Nov 13</th><td>Steve Zdancewic</td><td>Stephanie Weirich</td><td><!WA31><!WA31><!WA31><!WA31><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/11-13.ps">Cpos and Continuous Funcs.</a></td></tr>
+<tr><th align=right>Fri Nov 15</th><td>David Larkin</td><td>Ilya German</td><td><!WA32><!WA32><!WA32><!WA32><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/11-15.ps">Fixed-Point Thm</a></td></tr>
+<tr><th align=right>Mon Nov 18</th><td>David Larkin</td><td>(JGM)</td><td><!WA33><!WA33><!WA33><!WA33><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/notes/adequacy">Adequacy</a></td></tr>
+<tr><th align=right>Wed Nov 20</th><td>Tobias Mayr</td><td>Tugkan Batu</td><td><!WA34><!WA34><!WA34><!WA34><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/hw7/writeup.ps">Intro to Axiomatic Semantics</a></td></tr>
+<tr><th align=right>Fri Nov 22</th><td>Tom Daley</td><td>Ilya German</td><td>&nbsp;</td></tr>
+<tr><th align=right>Mon Nov 25</th><td>David Larkin</td><td>Soochon Radee</td><td>&nbsp;</td></tr>
+<tr><th align=right>Wed Nov 27</th><td>Athanasios Kyparlis</td><td>Mihai-Dan Budiu</td><td>&nbsp;</td></tr>
+<tr><td colspan=4>Thanksgiving break...</td></tr>
+<tr><th align=right>Mon Dec  2</th><td>Tom Daley</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><th align=right>Wed Dec  4</th><td>Tobias Mayr</td><td>Ilya German</td><td>&nbsp;</td></tr>
+<tr><th align=right>Fri Dec  6</th><td>Nikola Valerjev</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+</table> <br clear=all>
+</center>
+<br>
+<br>
+Back to the <!WA35><!WA35><!WA35><!WA35><a href="http://www.cs.cornell.edu/Info/Courses/Current/CS611/home.html">CS611 homepage.</a>
+
+</BODY>
+

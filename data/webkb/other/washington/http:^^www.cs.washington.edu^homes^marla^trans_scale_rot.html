@@ -1,0 +1,164 @@
+Date: Tue, 10 Dec 1996 17:44:38 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Tue, 05 Mar 1996 23:23:43 GMT
+Content-length: 8011
+
+<html>
+<body bgcolor="#fefefe" link="#cc0000" alink="#ff3300" vlink="#000088">:
+<head>
+	<title>Image Transformations</title>
+</head>
+
+<body>
+
+<h1> <a name="top">Image Transformations</a><br>
+<em>Translation, Scaling, and Rotation </em>
+</h1>
+
+These transformations can be applied to an image using the XFORM programming language and the XLISP-STAT and METIP programming environment. <br>
+<p>
+<em>IMPORTANT NOTE:</em> In this programming environment, the lower-lefthand corner of an image corresponds to pixel coordinates (0,0), and the upper-righthand corner of an image corresponds to pixel coordinates (n-1,m-1) where n is the width and m is the height of the image.
+<hr> <p>
+
+<h1>
+Translation
+</h1>
+
+We translate an image by taking each pixels original coordinates and adding to them a translation amount.  Translation can occur in each dimension.  Since an image has only 2 dimensions, we can translate in the x and y dimensions.  To translate an image by <em>dx</em> and <em>dy</em>, we compute the pixel value P(x,y) in the destination image by finding the pixel value P'(x', y') in the source image where x' and y' are defined as follows.
+(Note: These are mathematical formulas, not LISP expressions).<br>
+<p>
+x' = x + <em>dx</em> <br>
+y' = y + <em>dy</em> <br>
+<p>
+The line of code used in XLISP-STAT to perform this transformation on a source image <em>source1</em> is <br>
+<p>
+(xform '(source1 (+ x <em> dx</em>) (+ y <em> dy</em>))) <br>
+<p>
+where <em>dx</em> and <em>dy</em> are the translation amounts in the x and y dimensions, respectively.  Also, notice that <em>dx</em> and <em>dy</em> can be negative values.  The following example translation moves the image 20 units to the right on the x axis and 30 units down the y axis. <br>
+<p>
+(xform '(source1 (+ x -20) (+ y 30))) <br>
+<p>
+<table>
+<tr>
+<td><img src=mona.gif> </td>
+<td><img src=monaT.gif> </td>
+</tr>
+</table>
+
+<hr> <p>
+
+
+<h1>
+Scaling
+</h1>
+
+We scale an image by taking each pixels original coordinates and multiplying them by a scaling factor.  Scaling can also occur in each dimension.  To scale an image by <em>sx</em> and <em>sy</em>, we compute the pixel value P(x,y) in the destination image by finding the pixel value P'(x', y') in the source image where x' and y' are defined as follows.
+(Note: These are mathematical formulas, not LISP expressions).<br>
+<p>
+x' = x * <em>sx</em> <br>
+y' = y * <em>sy</em> <br>
+<p>
+The line of code used in XLISP-STAT to perform this transformation on a source image <em>source1</em> is <br>
+<p>
+(xform '(source1 (* x <em> sx</em>) (* y <em> sy</em>))) <br>
+<p>
+where <em>sx</em> and <em>sy</em> are the scaling factors in the x and y dimensions, respectively.  Note again that <em>sx</em> and <em>sy</em> can be negative values.  The following illustrates a scaling transformation that stretches the image along the x axis (by a factor of 2) and shrinks the image along the y axis (by a factor of .5).<br>
+<p>
+(xform '(source1 (* x .5) (* y 2))) <br>
+<p>
+<table>
+<tr>
+<td><img src=mona.gif> </td>
+<td><img src=monaS.gif> </td>
+</tr>
+</table>
+
+
+<hr> <p>
+
+
+<h1>
+Rotation
+</h1>
+
+To rotate an image by some angle <em>theta</em> (in radians), we compute the pixel value P(x,y) in the destination image by finding the pixel value P'(x', y') in the source image where x' and y' are defined as follows.
+(Note: These are mathematical formulas, not LISP expressions).<br>
+<p>
+x' = (x * cos <em>theta</em>) - (y * sin <em>theta</em>) <br>
+y' = (x * sin <em>theta</em>) + (y * cos <em>theta</em>) <br>
+<p>
+The line of code used in XLISP-STAT to perform this transformation on a source image <em>source1</em> is <br>
+<p>
+(xform '(source1 (- (* x costheta) (* y sintheta)) (+ (* x sintheta) (* y costheta)))) <br>
+<p>
+Before entering this line of code, it is necessary to define sintheta and costheta.  This can be accomplished with the following 2 lines of code. <br>
+<p>
+(setq costheta (cos <em>theta</em>)) <br>
+(setq sintheta (sin <em>theta</em>)) <br>
+<p>
+If instead of radians, you prefer to use degrees, the following 2 lines of code can replace the above 2 lines. <br>
+<p>
+(setq costheta (cos (/ (* (* <em>theta</em> 2) 3.14) 360))) <br>
+(setq sintheta (sin (/ (* (* <em>theta</em> 2) 3.14) 360))) <br>
+<p>
+The following illustrates a rotation transformation that rotates the image 30 degrees from the y axis (clockwise). <br>
+<p>
+(setq costheta (cos (/ (* (* 30 2) 3.14) 360))) <br>
+(setq sintheta (sin (/ (* (* 30 2) 3.14) 360))) <br>
+(xform '(source1 (- (* x costheta) (* y sintheta)) (+ (* x sintheta) (* y costheta)))) <br>
+<p>
+<p>
+<table>
+<tr>
+<td><img src=mona.gif> </td>
+<td><img src=monaR.gif> </td>
+</tr>
+</table>
+
+<hr> <p>
+
+
+<h1>
+Activities
+</h1>
+
+<h2>
+Multiple Transformations
+</h2>
+Function <em>trans_scale_rot</em> allows you to perform multiple transformations on one source image.  More specifically, it allows you to perform a translation, a scaling, and a rotation on a single image in the specified order.  The function takes five parameters:  the first two parameters, <em>transX</em> and <em>transY</em>, specify the translation amounts; the next two parameters, <em>scaleX</em> and <em>scaleY</em>, specify the scaling factors; and the last parameter, <em>rotTheta</em> specifies the rotation angle in degrees.  The function template follows.  <br>
+<p>
+(trans_scale_rot transX transY scaleX scaleY rotTheta)
+<p>
+The following line of code illustrates the application of this function to an image.  The image is first translated 50 units right on the x axis and 50 units up on the y axis.  It is then scaled by a factor of .5 in the x and y direction (shrinking the image to 1/4 its original size).  Finally, the image is rotated 30 degrees clockwise from the y axis.<br>
+<p>
+(trans_scale_rot -50 -50 2 2 30)
+<p>
+In order to use this function, you must first open three windows by selecting "Child" from the <em>Windows</em> menu.  Then tile the windows by selecting "Tile" from the <em>Windows</em> menu.  The function <em>trans_scale_rot</em> will now put the translated image in window 1, the translated and scaled image in window 2, and the translated, scaled, and rotated image in window 3.  Try using different parameters to the function, and see how they change the resulting images.
+
+<h2>
+Guessing Game
+</h2>
+Find a partner, and have one person be the <em>coder</em> and the other person be the <em>guesser</em>.  While the <em>guesser</em> is looking away from the computer screen, the <em>coder</em> enters either a single transformation or multiple transformations (as defined above).  After the transformed image is computed, the <em>guesser</em> must try to determine what transformation(s) were used to create the resulting image.  You may wish to switch roles as the game progresses, and find some way of scoring how close the <em>guesser</em> gets to the actual transformations the <em>coder</em> entered.
+<p>
+
+<hr> <p>
+
+
+<h1>
+Applications
+</h1>
+
+Many electronic games require you to visualize a shape after it has undergone a given transformation.  For example, the following might be a mental scenario of someone playing Tetris:  "Well, if I move this to the left 3 units, and rotate it once, it will fit in that spot."  The first operation performed was a translation along the x axis by 3 units, and the second operation was a rotation by 90 degrees.  And you thought you were just playing a game! <br>
+<p>
+Geometric transformations also have important real world applications.  For example, an architect may visually apply transformations to some object, say a beam, to figure out its best position in some design.  If the beam isn't quite long enough to fill a gap, it may need to be scaled to increase its length (Of course, this can only be done during the design process on a computer or paper, since we are all aware that you can't stretch a real beam.).  <br>
+<p>
+What other applications can you think of for geometric transformations?
+
+<hr> <p>
+
+<address>This tutorial was created by Marla Baker (marla@cs.washington.edu)</address>
+
+
+<body>
+</html>

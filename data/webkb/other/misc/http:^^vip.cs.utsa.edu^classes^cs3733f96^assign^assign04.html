@@ -1,0 +1,72 @@
+Date: Tue, 14 Jan 1997 20:11:50 GMT
+Server: NCSA/1.5.1
+Last-modified: Tue, 05 Nov 1996 17:21:42 GMT
+Content-type: text/html
+Content-length: 2715
+
+<HEAD>
+<TITLE>CS 3733 Operating Systems Assignment 4</TITLE>
+<BASE HREF="http://vip.cs.utsa.edu/classes/cs3733f96/assign">
+</HEAD>
+<BODY>
+<H2>
+CS 3733 Operating Systems, Fall 1996 Assignment 4 </H2>
+
+<hr>
+
+<LI>Due on November 19 at the beginning of class.<p>
+
+Modify Part 2 of Assignment 3 so that the processes can use signals as follows.<p>
+
+The program should be called <tt>newsbiffsig.c</tt> and should take three
+command line parameters.  These should be the same as the first three
+parameters for <tt>newsbiff</tt> from Assignment 3.  The timeout will not be
+used.
+
+Modify the the program so that the original parent has an array containing
+the process IDs of all of the processes.
+You can use the method you used in ring6 of Part 1 of
+Assignment 3. 
+It should also print its PID when it is entered.
+
+Modify the children so that when a child receives a SIGUSR1 signal
+it prints statistics about what it is monitoring including the
+time it started monitoring and the last time the newsgroup changed.<p>
+
+Modify the original parent so that it too can receive SIGUSR1 but as
+a realtime signal.  The value of the signal will be an integer which
+represents a number between 1 and the number of newsgroups being monitored.
+This corresponds to one of the children.   It can be 
+interpreted as the line number in the file containing the list 
+of newsgroups to be monitored (the second command line parameter).  <p>
+
+When the original parent receives a realtime SIGUSR1 signal with an
+appropriate value, it sends a SIGUSR1 signal to the appropriate child.
+If an inappropriate value is given, a wanring message should be printed
+but the program should continue executing.<p>
+
+When the original parent receives a SIGUSR2 signal it kills
+all of the other processes and exits after printing an appropriate  message.<p>
+
+Modify Program 5.3 from PUP
+so it just takes 2 command line arguments, a process ID and a signal value.
+Call this program <tt>rtkill</tt>.
+It sends a SIGUSR1 signal to the process with the given value.
+You can use this to test your program.<p>
+
+Now modify the children so they keep monitoring forever, even after
+a news article comes in.  When a news article comes in, a message is printed
+giving the name of the newsgroup and the time of modification.
+The process then resets resets its copy of the time of last modification
+so it can continue monitoring and report the next change.<p>
+
+<b>Important:</b><br>
+In this assignment you are creating processes that can live indefinitely
+long.  It is your responsibilty to kill off all of these processes
+before you logout.<p>
+
+This assignment must be done on a machine running Solaris 2.5.
+Use pandora or a machine with name fourxx or fivexx.<p>
+
+<P>
+<hr>

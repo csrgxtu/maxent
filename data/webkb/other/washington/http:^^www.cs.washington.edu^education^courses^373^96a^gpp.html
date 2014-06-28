@@ -1,0 +1,71 @@
+Date: Tue, 10 Dec 1996 16:48:38 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<HTML>
+<HEAD>
+<TITLE>CSE 373 G++ Tips</TITLE>
+</HEAD>
+
+<BODY>
+<H1>Using the g++ Compiler</H1>
+
+<hr>
+<H2>Related Information on C++</H2>
+Here is <a href="http://www.cs.washington.edu/htbin/info2www?(lab/tn161.info)">a primer on C++</a>
+
+<p>
+In class, several students mentioned a desire for some material
+on pointers in C.  Here is a URL for a document dealing specifically
+with pointers in C.
+<a href="http://arachnid.cs.cf.ac.uk/Dave/C/chapter2_12.html#SECTION00120000000000000000">Information about pointers in C.</a>
+
+<p>
+
+<H2>A Test program: "Hello-cse373.cpp"
+</H2>
+Here is a sample C++ program.
+Assume it is in a file named Hello-cse373.cpp.
+<pre>
+#include "iostream.h"
+
+void main(void) {
+ cout << "Hello, CSE 373!";
+ cout << " This is Autumn ";
+ cout <<  1990 + 6;
+}
+</pre>
+
+<H2>Compiling and Running the Program
+</H2>
+
+To compile the program on Entropy or Hilbert, type in the command,
+<pre>
+%  g++ Hello-cse373.cpp
+</pre>
+
+Then to run the program, type
+<pre>
+%  a.out
+</pre>
+
+Note: if you receive the following warning message, ignore it.
+This message seems to reflect a minor problem with the MSCC
+setup.  The user program runs alright anyway.  (On the CSE
+Unix machine that I tried this program on, there was no such
+warning message.)
+
+<pre>
+/bin/ld:
+Warning: Linking some objects which contain exception information sections
+        and some which do not. This may cause fatal runtime exception handling
+        problems (last obj encountered without exceptions was /usr/local/lib/libstdc++.a).
+
+</pre>
+
+
+<address>
+Last modified 14 October 1996 by S. Tanimoto
+</address>
+</BODY>
+</HTML>

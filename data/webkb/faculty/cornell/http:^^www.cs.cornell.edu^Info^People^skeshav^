@@ -1,0 +1,125 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Wednesday, 20-Nov-96 18:57:54 GMT
+Content-Type: text/html
+Content-Length: 4879
+Last-Modified: Tuesday, 12-Nov-96 15:38:38 GMT
+
+<html>
+<head>
+<title>S. Keshav</title>
+</head>
+<body background="keshav/images/blue_paper.gif">
+<h2>S. Keshav</h2>
+<!WA0><!WA0><!WA0><!WA0><img src="http://www.cs.cornell.edu/Info/People/skeshav/images/keshav-3.gif">
+<p>
+Email: <!WA1><!WA1><!WA1><!WA1><a href="mailto:skeshav@cs.cornell.edu">skeshav@cs.cornell.edu</a>
+</p>
+<ul>
+<li> Work: 4107 B Upson Hall, Department of Computer Science, Cornell University, Ithaca NY 14853, 
+<li> Tel: (607) 255 5395, Fax: (607) 255 4428
+<li> Home: 199 Christopher Lane, Ithaca NY 14850, 
+<li> Tel: (607) 257 1804
+<li> <!WA2><!WA2><!WA2><!WA2><a href="mailto:skeshav@cs.cornell.edu">skeshav@cs.cornell.edu</a>
+</ul>
+<p>
+I am currently an Associate Professor in the Computer Science 
+department at Cornell University. Before that, I spent
+five years at <!WA3><!WA3><!WA3><!WA3><a href=http://www.research.att.com>AT&T Bell Laboratories.</a>
+This semester, I am teaching a course called <!WA4><!WA4><!WA4><!WA4><a href=http://www.cs.cornell.edu/Info/People/sharma/cs519>Engineering Computer Networks</a>.
+I am teaching from a textbook I just completed, which will be published
+by <!WA5><!WA5><!WA5><!WA5><a href=http://www.aw.com>Addison-Wesley</a> this December.
+</p>
+<p>
+Most of my research is in
+<!WA6><!WA6><!WA6><!WA6><a href=http://www.cs.cornell.edu/Info/People/skeshav/papers.html#flow>flow and congestion control</a>,
+mostly for connectionless networks (such as the Internet). 
+The one line summary of my thinking is:
+<em>The one true religion is round-robin scheduling and packet-pair flow control</em>.
+Let me explain what that means.
+</p>
+<p>
+Users can contend for a shared resource 
+in one of two ways: first-come-first-served and round robin.
+Unlike first-come-first-served, round robin scheduling automatically 
+allocates fair shares of a resource to users and protects well-behaved users 
+from hogs. If all queueing points in a network implement round-robin, 
+then end-systems can determine their available fair share
+service rate implicitly using the <!WA7><!WA7><!WA7><!WA7><a href=http://www.cs.cornell.edu/Info/People/skeshav/papers.html#packet_pair>packet-pair</a> 
+technique.
+They can then use the time series of rates to do stable and intelligent
+flow control. Thus, round robin does <em>implicit</em> allocation of fair shares,
+and packet_pair does <em>implicit</em> determination of the fair share for flow control.
+In contrast, current proposals in the ATM Forum for flow control do neither
+round robin (considered to be too expensive) nor implicit determination of
+the rate (only possible with round robin). Maybe I was wrong the whole time ;-)
+</p>
+<p>
+I have been working since 1991 in building ATM networks. One of them was 
+<!WA8><!WA8><!WA8><!WA8><a href=http://www.cs.cornell.edu/Info/People/skeshav/papers.html#Xunet>Xunet</a>,
+a wide area ATM network that we built from scratch (routers, switches, all the 
+software), which was operational from 1992 to 1996. The other is 
+<!WA9><!WA9><!WA9><!WA9><a href=http://www.cs.cornell.edu/Info/People/skeshav/native.html>IDLInet</a> in
+collaboration with 
+<!WA10><!WA10><!WA10><!WA10><a href=http://kriti.iitd.ernet.in/menu/iitd-home.html>IIT Delhi</a>, 
+based on no-name PCs and equipment from <!WA11><!WA11><!WA11><!WA11><a href=http://www.fore.com>Fore Systems</a>
+and <!WA12><!WA12><!WA12><!WA12><a href=http://www.zeitnet.com>Zeitnet</a>.
+<!WA13><!WA13><!WA13><!WA13><a href=http://www.cs.cornell.edu/Info/People/skeshav/native.html>IDLInet</a>
+source code is now in the public domain and is available from the 
+<!WA14><!WA14><!WA14><!WA14><a href=http://www.cs.cornell.edu/Info/People/skeshav/native.html>Native-mode ATM home page</a>.
+The key feature in 
+<!WA15><!WA15><!WA15><!WA15><a href=http://www.cs.cornell.edu/Info/People/skeshav/native.html>IDLInet</a> 
+is that the protocol stack is native-mode ATM, that is, an application
+gets to write directly to an ATM virtual circuit. 
+We also support an OS-independent signalling API that is SPANS compliant.
+</p>
+<p>
+Finally, I have been <!WA16><!WA16><!WA16><!WA16><a href=http://www.cs.cornell.edu/Info/People/skeshav/papers.html#cars>goofing off</a> building talking heads (facial animation)
+and a snooping car (the car sends video in nv format on the MBONE, and can
+be driven from a remote site over the Internet).
+</p>
+<hr>
+<h2>Links</h2>
+<p>
+
+<p>
+<h3>Papers</h3>
+<p>
+<!WA17><!WA17><!WA17><!WA17><a href=http://www.cs.cornell.edu/Info/People/skeshav/papers.html>Here</a> is a link
+to my papers. Most papers are available as postscript.
+<p>
+<h3>REAL</h3>
+<p>
+I have been building the REAL packet-level simulator since 1989
+and still maintain it. It has been installed at over 300 sites
+(I have no idea how many people actually use it).
+<!WA18><!WA18><!WA18><!WA18><a href=http://minnie.cs.adfa.oz.au/REAL/index.html>Here</a> is a link to 
+REAL version 4.0. 
+You can also get the simulator from <!WA19><!WA19><!WA19><!WA19><a href=http://www.cs.cornell.edu/Info/People/skeshav/REAL4.0.tar.gz>here</a>.
+The latest version is version 4.0, which I released in Fall '93.
+Version 5 is in the works, includes a Tcl-based GUI, and should be
+out by the end of '96 (if all goes well).
+
+<!WA20><!WA20><!WA20><!WA20><a href=http://www.cs.cornell.edu/Info/People/skeshav/native.html><h3>Native_mode ATM Home Page</h3></a>
+
+<hr>
+<h3>My Name</h3>
+<p>
+In the part of the world I come from (South India, Thanjavur District, to be
+precise), people have only one name. They prefix it with their father's
+only name (and, sometimes, the village name). 
+There is no surname. Thus, my only name is Keshav, and my
+father's name is Srinivasan. Unfortunately, when I fit this round peg into
+the square hole of US custom, my first name is my last, which can be
+confusing!
+</p>
+
+<h3>Quotable Quotes</h3>
+"One ought, every day at least, to hear a little song, read a good poem,
+and, if it were possible, speak a few reasonable words,"
+<em>Johann Wolfgang Von Goethe</em>.
+<p>
+Last updated:
+Tue Nov 12 10:38:11 EST 1996
+</body>
+</html>

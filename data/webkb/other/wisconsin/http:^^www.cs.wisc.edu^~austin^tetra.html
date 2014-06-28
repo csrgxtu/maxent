@@ -1,0 +1,165 @@
+Date: Mon, 11 Nov 1996 20:59:53 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 27 Sep 1995 11:20:38 GMT
+Content-length: 6033
+
+<html>
+
+<head>
+<title>TETRA: A Multi-platform Instruction Trace Analyzer</title>
+</head>
+
+<p>
+<h1>
+TETRA: A Multi-platform Instruction Trace Analyzer
+</h1>
+<p>
+<h2>
+What is TETRA?
+</h2>
+<p>
+TETRA is a tool for evaluating serial program performance under the
+resource and control constraints of fine-grain parallel processors.
+TETRA was written by <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><a
+href="http://www.cs.wisc.edu/~austin/austin.html">Todd Austin</a>
+(austin@cs.wisc.edu).  TETRA's primary advantage to the user is its
+ability to quickly generate performance metrics for yet to be designed
+architectures.  All the user needs to specify is the capabilities of
+the architecture (e.g., number of functional units, issue model,
+etc.), rather than its implementation.
+<p>
+TETRA has many options to parameterize the data, control and resource
+constraints placed on the execution graph it constructs, including
+control over the execution model's:
+<ul>
+<li> memory disambiguation capability
+<li> control model (based either on the CFG or the CDG)
+<li> branch prediction mechanism (e.g., fixed, taken, 2-bit BTB)
+<li> functional unit supply and latencies
+<li> window size (e.g., total reservation stations)
+<li> renaming capability (register or memory)
+</ul>
+<p>
+When constructing execution graphs with limited resources, TETRA
+provides five user selectable schedulers, varying in cost,
+performance, and capability:
+<ul>
+<li> HISTORY scheduler (simulates on-line the capability of an off-line LIST scheduler)
+<li> LIST BEST-FIT scheduler
+<li> LIST FIRST-FIT scheduler
+<li> ROUND-ROBIN scheduler
+<li> RANDOM scheduler
+</ul>
+<p>
+In addition, TETRA provides a number of options describing the
+analyses performed on the constructed execution graph, including
+generation of:
+<ul>
+<li> parallelism profiles
+<li> value sharing distributions
+<li> storage demand profiles
+<li> value lifetime distributions
+<li> disassembled (parallel) instruction traces
+</ul>
+<p>
+The software is very modular, allowing it to be easily used as a test
+bed for new ideas.  TETRA is currently only targeted for MIPS- and
+SPARC-based systems, but porting it to other architectures supported
+by <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href="http://www.cs.wisc.edu/~larus/warts.html">QPT</a> (or
+another capable tracer) requires very little coding (just a few
+constants and an instruction dependency decoder).  There are two
+papers describing the development and application of TETRA, the
+references are in the manual page (and also available on the Web
+page).
+<p>
+Even if you're not interested in the amount of parallelism in serial
+programs, you may still find TETRA useful if you do or are planning to
+do trace analysis, especially with <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a
+href="http://www.cs.wisc.edu/~larus/warts.html">QPT</a>.  Included in
+the source package are useful goodies including: instruction decoders,
+disassemblers, and dependency analyzers with machine-independent
+interfaces (for the MIPS and SPARC architectures), a <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a
+href="http://www.cs.wisc.edu/~larus/warts.html">QPT</a> trace
+generator, a <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a
+href="http://www.cs.wisc.edu/~larus/warts.html">QPT</a> trace decoder,
+a GNUPLOT compatible distribution generator, and a portable fixed size
+heap allocator.
+<p>
+<h2>
+System requirements:
+</h2>
+<p>
+You'll need the following to install TETRA:
+<ul>
+<li> a SPARC- or MIPS-based unix system
+<li> an ANSI C compiler (preferably GNU GCC)
+<li> <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href="http://www.cs.wisc.edu/~larus/warts.html">QPT</a>, program profiler and tracing system written by James Larus
+<li> <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a href="ftp://prep.ai.mit.edu/pub/gnu/binutils-2.5.2.tar.gz">GNU BFD library</a> built for the host architecture
+<li> <!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><a href="ftp://prep.ai.mit.edu/pub/gnu/binutils-2.5.2.tar.gz">GNU LIBERTY library</a>
+</ul>
+<p>
+TETRA has been tested on the following configurations:
+<ul>
+<li> SPARC/SunOS 4.1.3/GNU GCC 2.6.3 (primary testing configuration)
+<li> SPARC/SunOS 4.1.3/Sun ACC 1.0
+<li> MIPS/Ultrix 4.3/GNU GCC 2.6.3
+<li> MIPS/Ultrix 4.3/MIPS CC version 3.0
+</ul>
+<p>
+<h2>
+How do I get TETRA?
+</h2>
+<p>
+The source release for TETRA version 2.0.0 is available via anonymous
+ftp at "ftp.cs.wisc.edu" in the file <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><a
+href="ftp://ftp.cs.wisc.edu/sohi/Code/tetra-2.0.0.tar.Z">"/sohi/Code/tetra-2.0.0.tar.Z"</a>.
+(Clicking on the highlighted file name will fetch the file to your machine.)
+<p>
+<h2>
+How can I learn more about TETRA?
+</h2>
+<p>
+There is a manual page included in the source distribution, which
+includes installation and user's instructions.  In addition, there are
+two papers describing the implementation and application of TETRA.
+<blockquote>
+<!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><a href="ftp://ftp.cs.wisc.edu/tech-reports/reports/93/tr1162.ps.Z">
+  <i>TETRA: Evaluation of Serial Program Performance on Fine-Grain Parallel
+  Processors</i></a>,
+  Todd M. Austin and Gurindar S. Sohi,
+  University of Wisconsin - Madison Technical Report #1162, July 1993.<br>
+<!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><a href="ftp://ftp.cs.wisc.edu/sohi/isca92.ilp.ps.Z">
+  <i>Dynamic Dependency Analysis of Ordinary Programs</i></a>,
+  Todd M. Austin and Gurindar S. Sohi,
+  Proceedings of the 19th Annual International Symposium on Computer
+  Architecture, May 1992.
+</blockquote>
+<p>
+<h2>
+Who made TETRA?
+</h2>
+<p>
+TETRA is the result of research conducted by
+<!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><a href="http://www.cs.wisc.edu/~austin/austin.html">Todd Austin</a>
+and
+<!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><a href="http://www.cs.wisc.edu/~sohi/sohi.html">Guri Sohi</a>
+of the
+<!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><a href="http://www.cs.wisc.edu/~mscalar">Wisconsin Multiscalar Group</a>
+at the
+<!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><a href="http://www.cs.wisc.edu">University of Wisconsin - Madison</a>.
+TETRA was written by
+<!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><a href="http://www.cs.wisc.edu/~austin/austin.html">Todd Austin</a>
+(austin@cs.wisc.edu).  Portions of the code were written and/or
+copyrighted by
+<!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><a href="http://www.cs.wisc.edu/~alain/alain.html">Alain K&auml;gi</a>
+(author of the Fibonacci heap code) and The
+Regents of the University of California (developer the AVL tree code).
+The development of this code was supported by grants from the National
+Science Foundation (grant CCR-9303030 plus software capitalization
+supplement) and the Office of Naval Research (grant N00014-93-1-0465).
+
+<hr>
+<address> Last Updated: September 27, 1995 </address>
+<hr>
+

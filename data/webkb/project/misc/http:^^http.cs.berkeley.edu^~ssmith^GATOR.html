@@ -1,0 +1,153 @@
+Date: Wed, 20 Nov 1996 19:25:33 GMT
+Server: NCSA/1.4
+Content-type: text/html
+Last-modified: Tue, 17 Sep 1996 13:47:47 GMT
+Content-length: 5698
+
+
+<Title> GATOR </Title>
+<H1>GATOR</H1>
+
+<P> This work is part of an <!WA0><a href = "http://www.netlib.org/nse/home.html">
+HPCC </a> project funded by 
+<!WA1><a href = "http://www.netlib.org/nse/curr_hpcc.html"> NASA </a>  to develop a
+state-of-the-art Earth System Model (ESM) that will be comprised of a coupled
+atmosphere and ocean system including chemical tracers
+that are found in, and may be exchanged between, the atmosphere
+and the oceans.  The starting point of the ESM model is the
+<!WA2><a href = "http://www.atmos.ucla.edu/~vwk206/esm.html"> UCLA AGCM</a>, 
+which has been parallelized on different platforms and
+will be coupled with GATOR, a Gas, Aerosol, Transport, and
+Radiation Chemistry model, developed by M. Jacobson, O. Toon, R. Turco, 
+and R. Lu.  The UCLA ESM model will archive and retrieve 
+model output via the
+<!WA3><a href = "http://s2k-ftp.cs.berkeley.edu:8000/cgi-bin/imagemap/s2khome?357,117"> Sequoia </a> database.  
+
+Coupled systems are an important tool for helping scientists
+to understand complex phenomena
+such as El Nino and stratospheric ozone depletion.  
+
+
+<P>
+A parallel version of GATOR is being developed at Berkeley by
+<!WA4><a href = "http://http.cs.berkeley.edu/~demmel"> Jim Demmel</a>
+and <!WA5><a href = "http://http.cs.berkeley.edu/~ssmith"> Sharon Smith </a>.
+GATOR models
+atmospheric chemistry in the Los Angeles Basin, and has been used for
+detailed air pollution studies.  Our task is to parallelize GATOR and
+scale it to the globe.
+
+<P>
+GATOR includes
+both gases and aerosols, modeling
+<DL>
+<DD>gas-phase chemistry; 
+<DD>aqueous-phase chemistry; 
+<DD>radiation transfer;
+<DD>aerosol nucleation, coagulation, growth and evaporation; 
+<DD>horizontal advection and vertical convection;
+<DD>dry and wet deposition; 
+<DD>visibility and emissions. </DL>
+<P>
+
+<H2> The Parallel Version of GATOR </H2>
+
+<P>
+A primary motivation for this research is to provide 
+atmospheric scientists
+with  the best computational means to further their studies of the
+earth's future climate.  Since the UCLA ESM is still evolving,
+it is important that the codes also be portable, so our efforts  
+are thus focused on developing portable, parallel code that
+can be performance tuned for different parallel architectures.
+
+<P>
+The main challenges in parallelizing GATOR are
+overcoming problems due to load imbalance and minimizing 
+the communication costs.   The figure below shows
+the differences in computation that can result in load
+imbalance:
+
+
+<P><A NAME=205>&#160;</A><A NAME=Figglob>&#160;
+</A><!WA6><IMG  ALIGN=BOTTOM ALT="" SRC="http://http.cs.berkeley.edu/~ssmith/SC95/SP2_Load_3d.gif">
+
+<P>
+In the picture,
+the z-axis shows time, while the x and y axis show the
+latitudinal and longitudinal partitioning of the atmosphere into
+block columns.  
+Each processor owns one set of block columns.  The
+difference in time among the processors illustrates the amount
+of computation due to solving ODEs that arise from chemical
+kinetic equations.  The largest amount of computation occurs in
+parts of the globe that are in the summer and daylight, 
+whereas the processors holding atmospheric cells in winter and night     
+require the least amount of computation.  Click <!WA7><a href = "http://http.cs.berkeley.edu/~ssmith/world.gif">
+here</a> to see the ODE solver computation costs for the world.
+
+<P>
+Our solution to the load balancing problem is to use a block-cyclic
+layout which will collect different atmospheric cells from the 
+different parts of the globe together in a single processor.  The
+hope is that each processor will have cells requiring 
+different amounts of computation, but not all of the computationally
+intensive cells at once.   The pictures below illustrate a block
+layout, which does not prevent against load imbalance, and a 
+block-cyclic layout.
+
+<P><A NAME=204>&#160;</A><A NAME=Figpipeline>&#160;</A>
+<!WA8><IMG  ALIGN=BOTTOM ALT="" SRC="http://http.cs.berkeley.edu/~ssmith/mapping_all.gif">
+
+<H2>Performance Modeling and the ESM</H2>
+
+Throughout the design of the parallel implementation of GATOR,
+we used a timing model to help choose between different
+design alternatives that would benefit GATOR both as a stand-alone
+system and as part of the UCLA AGCM.
+The results of this work are reported in: 
+
+<P>
+<DL>
+<DT><A NAME=DemmelSmith><STRONG></STRONG></A><DD>
+J. Demmel and S. L. Smith.
+<!WA9><a href="http://http.cs.berkeley.edu/~ssmith/shpcc.ps">
+Parallelizing a global atmospheric chemical tracer model</a>.
+In <em> Proceedings of the Scalable High Performance Computing
+Conf.</em>, pages 718--725, Knoxville, TN., May 1994.
+</DL>
+
+<P>
+<DL>
+<DD>J. Demmel and S. L. Smith.
+<!WA10><a href="http://http.cs.berkeley.edu/~ssmith/SC95/paper.html"> 
+Performance of a parallel global atmospheric chemical tracer model.</a>
+Submitted to <em> Supercomputing 95 </em>.
+</DL>
+<P>
+
+<H2>EOSDIS</H2>
+<p>
+We are extending our modeling effort to help explore an architecture
+for the <!WA11><A HREF="http://eos.nasa.gov"> Earth Observing System (EOS)</a>. This  
+effort is part of <!WA12><A HREF="http://epoch.CS.Berkeley.EDU:8000/nasa_e2e/">
+"End-to-End Problems in EOSDIS"</A>, a NASA-sponsored multi-year project
+to investigate alternative data management strategies for the EOS. 
+The project involves researchers at 
+the 
+<!WA13><a href="http://http.CS.Berkeley.EDU">Berkeley</a>, 
+<!WA14><a href="http://www.cs.ucla.edu">Los Angeles</a>,
+<!WA15><a href="http://www-cse.ucsd.edu:80/users/pasquale/ResearchProjects/EOSDIS.html"
+>San Diego</a>, and 
+<!WA16><a href="http://www.icess.ucsb.edu/eosdis/eosdis.html">Santa Barbara</a>
+campuses of the University of California. 
+
+<p>
+For some sample views of environmental and climate data,
+courtesy of <!WA17><a href="http://www.icess.ucsb.edu/eosdis/eosdis.html">
+Jeff Dozier</a> at UC Santa Barbara, click
+<!WA18><a href="http://http.cs.berkeley.edu/~ssmith/colorfigs.ps"> here</a>.
+
+<HR>
+last updated on December 12, 1995.
+<ADDRESS>ssmith@CS.Berkeley.EDU</ADDRESS>

@@ -1,0 +1,122 @@
+Date: Tuesday, 26-Nov-96 03:05:15 GMT
+Server: NCSA/1.1
+MIME-version: 1.0
+Content-type: text/html
+Last-modified: Tuesday, 24-Sep-96 22:54:54 GMT
+
+<HTML>
+
+<HEAD>
+<TITLE>Sridhar Bidigalu's Personal Home Page</TITLE>
+<script language ="JavaScript">
+function scrollit(seed)
+{
+        var str1  = "Welcome to Sridhar's Home Page..";
+        var str2  = " This site is still under construction...";
+        var str3  = " Please, check back often.";
+        var str4  = "..";
+        var message = str1+str2+str3+str4;
+
+        var out = " ";
+        var c   = 1;
+
+        if (seed > 100) 
+        {
+                seed--;
+                var cmd="scrollit(" + seed + ")";
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 100 && seed > 0) 
+        {
+                for (c=0 ; c < seed ; c++) 
+                {
+                        out+=" ";
+                }
+                out+=message;
+                seed--;
+                var cmd="scrollit(" + seed + ")";
+                window.status=out;
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 0) 
+        {
+                if (-seed < message.length) 
+                {
+                        out+=message.substring(-seed,message.length);
+                        seed--;
+                        var cmd="scrollit(" + seed + ")";
+                        window.status=out;
+                        timerTwo=window.setTimeout(cmd,100);
+                }
+                else 
+                {
+                        window.status=" ";
+                        timerTwo=window.setTimeout("scrollit(100)",75);
+                }
+        }
+}
+</script>
+</HEAD>
+<BODY>
+<body onLoad="timerONE=window.setTimeout('scrollit(100)',500);" bgcolor="#E0E0E0" text="#000000" link="#0000FF" alink="#FF2020" vlink="#800020">
+
+<DT><B><i>Sridhar Bidigalu</i> </B>
+<DT>Graduate Student
+<DT>Computer Science Department, NMSU
+<DT>2115, College Street, Apt #26
+<DT>Las Cruces, NM-88001
+<DT>(505) 521-0424
+<DT><!WA0><a HREF="mailto:srbidiga@cs.nmsu.edu">srbidiga@cs.nmsu.edu</a>
+<DT><!WA1><a href=mailto:sbidigal@crl.nmsu.edu>sbidigal@crl.nmsu.edu</a>
+<p>
+
+<!WA2><iMG SRC="http://www.cs.nmsu.edu/images/gifs/line.red2.gif" ALT="-----"> <p>
+
+<table border=5>
+    <tr>
+        <td><P>
+<CENTER> I'm a graduate student in <!WA3><A href="http://www.cs.nmsu.edu/"> Computer Science Department</A> at the <!WA4><A href="http://www.nmsu.edu/"> NMSU</A>
+. I received my BS in computer science from the <!WA5><A href="http://www.cba.uh.edu/~kapil/jce.html">Sri Jayachamarajendra College of Enggineering,</A> <!WA6><A href="http://hulk.bu.edu/misc/karnataka/index.html">Karnataka,</A> <!WA7><A href="http://hulk.bu.edu/misc/karnataka/cities/mysore/index.html">Mysore,</A> <!WA8><A href="http://hulk.bu.edu/misc/india/index.html">India</A> in 1993.<P> </CENTER>
+ </td>  
+	<tr>
+        <td> 
+<bold> My research intrests lies in the area of: </bold>
+<P>
+<center>
+<!WA9><A HREF="http://www.cs.nmsu.edu/~srbidiga/cg.html"  onMouseOver="window.status='Exploer this page, and have fun...' ;return true"> Computer Graphics </A><P> 
+<!WA10><A HREF="http://www.cs.nmsu.edu/~srbidiga/obj.html"   onMouseOver="window.
+status='Exploer this page, and have fun...' ;return true">Object oriented programming </A><P>
+<!WA11><A HREF="http://www.cs.nmsu.edu/~srbidiga/xw.html"  onMouseOver="window.status='Exploer this page, and have fun...' ;return true">X-Windows design/development</A><P>
+</center></td>
+<tr>
+
+<td><center>Here is my <!WA12><A HREF="http://www.cs.nmsu.edu/~srbidiga/resume.html">resume</A></center><P></td>
+	<tr>
+        <td> 
+<bold> Among my other intrest are: </bold>
+<P>
+<center>
+<!WA13><A HREF="http://www.cs.nmsu.edu/~srbidiga/swim.html"> Swimming
+</A><P> 
+<bold> Other Sprots: </bold>
+<p>
+<!WA14><A HREF="http://espnet.sportszone.com/ten/"> Tennis </A><P>
+<!WA15><A HREF="http://www.tiac.net/users/parcook/benxx.html"> Soccer </A><P>
+</center></td>
+</table>
+<P>
+
+<!WA16><iMG SRC="http://www.cs.nmsu.edu/images/gifs/line.red2.gif" ALT="-----"> <p>
+
+  <script language="JavaScript">
+  <!--  hide script from old browsers
+    document.write("The current time is "+Date()+"<P>")
+  // end hiding contents -->
+  </script>
+Last updated April 28th, 1996.
+<P>
+
+</BODY>
+
+</HTML>
+

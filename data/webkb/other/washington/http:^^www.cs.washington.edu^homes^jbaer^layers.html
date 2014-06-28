@@ -1,0 +1,375 @@
+Date: Tue, 10 Dec 1996 23:17:33 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Tue, 04 Jun 1996 08:02:30 GMT
+Content-length: 15262
+
+<html>
+<title>Static Layer Analysis for C Programs</title>
+
+<body>
+
+<h1 align = center>
+Static Layer Analysis for C Programs
+</h1>
+
+<p><br><br><p>
+Jeremy Baer
+<br>
+Department of Computer Science and Engineering
+<br>
+University of Washington
+
+<p><br><p>
+<b>Abstract</b>
+<p>
+Principles of a hierarchical or layered approach to software design
+are discussed.  Preliminary work on software tools to allow both the
+enforcement of a layered structure during forward engineering, and
+the extraction of layered structure from pre-existing C language
+source code is presented.
+
+<p><br><p>
+<b>Introduction</b>
+<p>
+
+The idea of layered design is not new to software engineering.  In
+1979 Parnas wrote about building software as layers of virtual
+machines, and defined the "uses" relation for components in a software
+system [P79].  In this paper, he advocates a hierarchical design
+approach in which no component in level 0 uses any other component and
+each component in level <i>i</i> of the hierarchy uses at least one
+component in level <i>i</i> - 1 but no component at a level higher
+than <i>i</i> - 1.  The "uses" relation itself is defined such that
+component A uses component B if the correct operation of A depends
+upon the existence of some correct implementation of B.  Parnas argues
+that if a system is built in such a way that a uses hierarchy exists
+for its components, then each level of that hierarchy comprises a
+usable subset of the complete system.  Clearly this is a desirable
+property for a system to have, particularly from the perspective of
+code reuse and system development in which "families" of similar
+systems are to be developed from the same code base. 
+
+<p>
+
+Another design methodology which Parnas has also written in support of
+is information hiding [P72][P79].  Information hiding and hierarchical or
+layered design structure are essentially orthogonal to one another,
+and both seem to be valuable techniques which can be applied to
+problems in software engineering.  However, while considerable
+language support has been developed for information hiding (there are
+a plethora of object-oriented and object-based languages which allow
+the enforcement of information hiding), little work has been done with
+regard to language support for layered systems.  This paper presents
+some preliminary work on two tools (<b>lcc</b> and <b>lce</b>) to
+allow both the enforcement of a layered structure during forward
+engineering, and the extraction of a layered structure (if one exists)
+from pre-existing C language code.  These tools do not utilize Parnas'
+"uses" relation for establishing layers.  Instead they work with the
+simpler "invokes" relation.  As Parnas points out, although invokes
+and uses often coincide, they are not identical.  Component A may
+<i>invoke</i> component B but not actually depend on the correctness
+of B for its own correct operation.  Similarly, component A may
+<i>use</i> component B without ever directly invoking it.  A simple
+example of this might be if components A and B communicate through the
+setting and reading of global variables.  The invokes relation was
+chosen for simplicity of implementation, and its direct applicability
+to both forward and reverse engineering.  Computing whether a uses
+hierarchy exists for a collection of source files would seem to
+require that one have access to a fairly precise specification of the
+system's components -- in order to determine whether the correct
+operation of component A depends on component B, we must know what the
+correct operation is.  Thus, in order to enable a feasible
+implementation of the tools discussed in this paper, it was decided
+that they would operate on layers over the invokes relation.
+
+<p><br><p> 
+
+<b>Layered C Checker (lcc)</b> 
+<p> 
+lcc is a simple tool intended for use in a forward engineering
+context, in which the enforcement of a layered design structure on the
+development of source code is desired.  lcc checks an annotated C
+program to determine whether or not level boundaries assigned to
+functions are maintained.  It can be set to allow recursive functions,
+since recursive functions would normally be reported as an error (a
+function which calls itself is calling a function on the same level as
+itself, which is contrary to normal layered structure).  Additionally,
+some flexibility may be desired in the number of layers which
+invocations can cross before lcc reports them as errors.  The strict
+definition of a layered system in which a function at level <i>i</i>
+can only call functions at level <i>i</i> - 1 may be easily attainable
+at an abstract level by inserting "dummy" functions at the intervening
+layers across which a multi-layer invocation would otherwise reach,
+but it is typically not desirable to introduce lots of functions in
+the source code itself whose only purpose is to call other functions.
+Thus, lcc may be instructed to allow invocations to cross <i>k</i>
+layers.  There is also an option to allow an invocation to cross any
+number of layers (so long, of course, as it is going from a higher
+level to a lower level).
+
+<p>
+lcc utilizes a very simple (and fairly ad hoc) parsing mechanism both
+to recognize the annotations and to extract the call graph from
+source.  The call graph extractor is perhaps overly simplistic.  It
+builds a graph based solely on tokenized function calls whose textual
+names match one of the functions which is declared in the source.  As
+a result, it completely ignores any invocations which occur through
+the use of function pointers.  It also performs no reachability
+analysis on the code, and may thus include invocations which can never
+happen.  These comments also apply to lce, which will be discussed
+later.
+
+<p>
+Following is some sample output of running a version of lcc on a
+simple program which does not have a strict layered structure, followed
+by a run of lcc on itself (it turns out that lcc itself does have a
+strict layered structure):
+
+<pre>
+896 cindy:layered_c >lcc -2 -l -r foo.c
+Functions by level:
+level 1
+    foo.c: my_abs
+    foo.c: my_fact
+    foo.c: i_power
+    foo.c: d_power
+level 2
+    foo.c: my_cos
+    foo.c: my_exp
+level 3
+    foo.c: my_func
+level 4
+    foo.c: find_root
+level 5
+    foo.c: main
+
+foo.c: Illegal level crossing:
+    my_abs (level 1) invoked from find_root (level 4)
+foo.c: Illegal level crossing:
+    my_abs (level 1) invoked from main (level 5)
+foo.c: Illegal level crossing:
+    my_abs (level 1) invoked from main (level 5)
+Exiting with errors 
+
+897 cindy:layered_c >lcc -l lcc.cc
+Functions by level:
+level 1
+    test.cc: FunctionLookup
+    test.cc: nextTokenStr
+level 2
+    test.cc: HandleError
+    test.cc: FindFunctions
+    test.cc: CheckLayers
+level 3
+    test.cc: main
+
+All level boundaries are maintained!  Cool!
+</pre>
+
+
+
+<p><br><p>
+There are two different approaches which may be taken with respect to
+how annotations are done in lcc.  One approach is to make lcc an
+integral part of the compilation process.  In this approach, a special
+keyword (@level) is added to C in order to allow the assignment of
+levels to different functions.  Directly after each function
+declaration (before the function body), the @level keyword must
+appear, along with a numeric level assignment.  For example:
+
+<pre>
+int foo(double x) @level 3
+{
+    <i>function body</i>
+}
+</pre>
+
+<p>
+If lcc's checking of level boundaries succeeds, then it outputs
+intermediate .c files with the annotations stripped out and execs cc
+or gcc on those files.  This approach has the advantage that it brings
+support for layers closer to the language level.  The disadvantage
+with this approach at the moment stems from the fact that lcc does not
+contain a full C parser.  Thus, syntax errors may confuse lcc, causing
+it to output layer-related errors without telling you about the syntax
+errors.  In fact, in this case it will never actually produce
+intermediate files on which to run a real compiler, so the programmer
+will essentially be stuck with trying to find the error by hand or
+removing all annotations and compiling, neither of which are
+satisfactory solutions.
+
+<p>
+The second approach, which has neither the advantages or disadvantages
+of the first is to view lcc as an optional static checker.  In this
+version of lcc, levels are specified as annotations enclosed in C
+comments.  They still utilize the @level keyword and live in the same
+place in the source code, but since they are in a comment, the source
+code can still be compiled using a regular C compiler.  In this
+approach, the example above now looks like:
+
+<pre>
+int foo(double x) /* @level 3 */
+{
+    <i>function body</i>
+}
+</pre>
+
+<p>
+lcc performs the same basic analysis, except that it now must locate
+these particular comments (since it normally skips all comments) to
+find the annotations.  While the version of lcc using this second
+approach is currently much more usable than the version implementing
+the first approach, it is the author's belief that bringing layer
+support closer to the language level (as in the first approach) is
+ultimately more desirable, given the addition of a complete C parser
+(with the addition of the @layer syntax) to lcc.
+
+
+
+<p><br><p>
+<b>Layered C Extractor (lce)</b>
+<p>
+lce is similar to lcc in that it checks C source code to see if the
+boundaries between levels are maintained.  However, rather than using
+source annotations to determine the level to which a function is
+assigned, lce will automatically generate the mapping of functions to
+levels.  Thus, lce is perhaps more applicable to the process of
+reverse engineering or program understanding than to a forward
+engineering process.  The same options for recursion, invocation layer
+crossing thresholds, etc. from lcc are available in lce.
+
+<p>
+lce works by first extracting a call graph from the source in the same
+manner as lcc.  It then performs a recursive depth-first search of the
+call graph, starting at main.  A level counter is incremented at every
+level of recursion, and if a function is called from the current
+level, the level of the that function is set to 1 + the current level,
+as long as it is not already deeper.  Note that lce assigns levels in
+an inverted order as that normally accepted by lce.  Namely, main() is
+at level 0, and functions lower in the hierarchy are at higher
+numbered levels.  lcc can optionally use this same "inverted" layer
+ordering, but lce uses it exclusively.
+
+<p>
+Performing a depth-first search of the call graph does yield one
+possible assignment of layers -- namely that assignment in which each
+function gets assigned to the highest possible layer in the hierarchy.
+This may not, however, be the optimal assignment of layers.  One might
+imagine, for example, that a desirable scheme for mapping functions to
+layers would be to minimize the number of layers crossed by any
+invocation.  Rather than addressing this in the algorithm itself,
+however, an approach inspired by the reflexion models [MNS95] was taken.
+lce was modified to recognize the @level annotations used by lcc.
+This allows the user to set the levels of certain functions "in stone"
+with an annotation, and then see if the desired level boundaries are
+maintained.  lce fixes only the level of the functions which are
+annotated, and still uses a depth-first search to map levels to the
+rest of the functions.  
+
+<p>
+Following are two sample executions of lce, once on itself, and once
+on the source for the UNIX command agrep.  As it turns out, neither of
+these programs have a strict layered invokes structure.  No invokes
+hierarchy exists for agrep in which no invocations cross less than 4
+level boundaries.  With allowable layer crossings set to 3, there was
+one offending invokes.  To test whether this 4 layer crossing was
+truly necessary, the calling function was annotated to be fixed at one
+level lower than the depth-first search had placed it.  However, when
+the test was re-run, the 4 layers of separation between these two
+functions remained.  The agrep example also illustrates another
+capability of lce which is a side effect of depth-first searching on
+the call graph.  If a function or functions are never visited during
+the depth-first search, it may be that they are never called and lce
+flags this possibility.
+
+<pre>
+898 cindy:layered_c >lce -l -r lce.cc
+Functions by level:
+level 0
+    lce.cc: main
+level 1
+    lce.cc: FindFunctions
+    lce.cc: FindCallgraph
+    lce.cc: AssignLayers
+    lce.cc: CheckLayers
+level 2
+    lce.cc: AssignLayersDFS
+    lce.cc: AddToFnList
+    lce.cc: nextTokenStr
+level 3
+    lce.cc: HandleError
+    lce.cc: FunctionLookup
+
+lce.cc: Illegal level crossing:
+    FunctionLookup (level 3) invoked from FindCallgraph (level 1)
+lce.cc: Illegal level crossing:
+    FunctionLookup (level 3) invoked from FindCallgraph (level 1)
+lce.cc: Illegal level crossing:
+    FunctionLookup (level 3) invoked from AssignLayers (level 1)
+lce.cc: Illegal level crossing:
+    HandleError (level 3) invoked from AssignLayers (level 1)
+lce.cc: Illegal level crossing:
+    FunctionLookup (level 3) invoked from CheckLayers (level 1)
+lce.cc: Illegal level crossing:
+    FunctionLookup (level 3) invoked from CheckLayers (level 1)
+Exiting with errors 
+
+899 cindy:layered_c >lce -4 -r ../hw5/agrep2.04/*.c
+A layered invokes structure exists which satisfies the input constraints!
+
+Note: as far as lce can tell, the following functions will
+never be invoked (though they may be through function pointers):
+    ../hw5/agrep2.04/utilities.c: subset_pset
+    ../hw5/agrep2.04/utilities.c: eq_pset
+
+</pre>
+
+<p><br><p>
+<b>Future Work</b>
+<p>
+Few concrete conclusions can be drawn at this point about the
+usefulness of these tools, as they have yet to be used for any real
+software engineering project.  The purpose of this paper however, has
+been simply to provide some motivation for tools to support the
+development of layered systems, and describe some of the author's
+early attempts at building such tools.
+
+<p>
+There are several directions in which future work would be beneficial.
+The most important direction would be to actually try building some
+non-trivial size programs with a layered design using lcc.  Only by
+doing this will any real measure of the value of these tools be
+attainable.  Some other interesting possibilities for future work
+include:
+
+<ul><li>
+Extend lcc to include a full C parser
+</li><li>
+Explore the support of layers for other languages (particularly those
+that already provide support for a greater degree of structure than C)
+</li><li>
+Explore other ways of grouping layer designations in source code
+</li><li>
+Improve the search capabilities of lce to look for more optimal
+layerings than those obtained from simple depth-first search.
+</li></ul>
+
+
+<p><br><p>
+<b>References</b>
+<p>
+[P72] D. L. Parnas.  On the Criteria To Be Used in Decomposing
+Systems into Modules.  <i>Communications of the ACM</i>, 1053-1058,
+December 1972.
+<p>
+[P79] D. L. Parnas.  Designing Software for Ease of Extension and
+Contraction.  <i>IEEE Transactions on Software Engineering</i>,
+SE5(2):128-138, March 1979.
+<p>
+[MNS95] Gail C. Murphy, David Notkin, and Kevin Sullivan.  Reflexion
+Models: Bridging the Gap between Source and High-Level Models,
+<i>ACM SIGSOFT Software Engineering Notes</i>, 20(4):18-28, October 1995.
+
+</body>
+</html>

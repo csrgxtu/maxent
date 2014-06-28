@@ -1,0 +1,151 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 07-Jan-97 15:47:18 GMT
+Content-Type: text/html
+Content-Length: 5010
+Last-Modified: Saturday, 25-May-96 18:48:47 GMT
+
+<html>
+<head> <title>The UV System</title> </head>
+
+<body>
+<h1> <img align=bot src="../image/uvIcon.gif" alt=""> 
+The UNITY Verifier System </h1>
+<hr>
+
+<h2> Attention </h2>
+
+There is a new home page for the <a href="../uv2/welcome.html"> UV
+System, Version 2</a>. It is still under construction, but you can
+already find useful information on this major upgrade.
+<p>
+
+<hr>
+
+<h2> Introduction </h2>
+
+This page describes the <em> UNITY Verifier system </em> (UV system),
+an interactive symbolic model checker for finite state UNITY programs 
+and propositional UNITY properties.
+
+<p> If you would like to know what model checking for UNITY is all
+about, you may want to have a look at our brief 
+<a href="intro.html">UV System Introduction</a>.
+<p>
+
+<hr>
+
+<a name="Documentation">
+<h2> Documentation </h2>
+The following documents deal with various aspects of the UV system:
+<ul>
+<li> <em>Model Checking for UNITY</em>,
+     Technical Report TR94-31, Department of Computer Sciences,
+     The University of Texas at Austin, December 1994.<br>
+     The report describes the UV system and the UV input
+     language. Available are an
+     <a href="umcAbstract.html">abstract</a>, and a compressed
+     <a href="umc-1-10.ps.gz">postscript</a>
+     version of the report.
+
+<li> <em>The UV System: User Interface Manual</em><br>
+     explains how to install and to use the current revision of
+     the UV system. It is available as a
+     <a href="ftp://ftp.cs.utexas.edu/pub/psp/unity/uv/doc/user-1-18.dvi">
+     dvi </a>
+     version without illustrations, and as a compressed
+     <a href="ftp://ftp.cs.utexas.edu/pub/psp/unity/uv/doc/user-1-18.ps.gz">
+     postscript </a>
+     version containing a few screen shots of the system interface.
+</ul>
+
+<hr>
+
+<a name="Distribution">
+<h2> Software Distribution </h2>
+The current public beta release of the UV system is available as revision
+1.20 in two forms:
+
+<ul>
+<li> the <em>executable archive</em> contains an executable version of the
+     UV system built for Sun SPARC workstations running SunOS 4.1.3 and the
+     X Windows System (X11R5).<br>
+     YOU NEED AN OSF/MOTIF LICENSE FOR ANY COMPUTER YOU WANT TO RUN THIS
+     SOFTWARE ON.<br>
+     You can 
+     <a href="ftp://ftp.cs.utexas.edu/pub/psp/unity/uv/archive/UV-bin-1-20.tar.gz">
+     download</a>
+     the executable archive.
+<li> the <em>source archive</em> contains the UV system sources needed to 
+     build the UV system. The sources are written entirely in C++ using the
+     GNU suite of development tools, X Window System Release 5 and OSF/Motif 
+     Version 2.0.<br>
+     THE SOURCES ARE AVAILABLE UNDER THE GNU PUBLIC LICENSE. YOU NEED THE
+     X WINDOWS AND MOTIF HEADER	FILES AND LIBRARIES INSTALLED ON YOUR COMPUTER
+     AS WELL AS AN OSF/MOTIF LICENSE TO BE ABLE TO BUILD THE UV SYSTEM.<br>
+     You can 
+     <a href="ftp://ftp.cs.utexas.edu/pub/psp/unity/uv/archive/UV-src-1-20.tar.gz">
+     download</a>
+     the source archive.
+</ul>
+
+If you download the system and use it, we would very much like to
+hear from you. Please send your feedback, bug reports, or suggestions to
+the author at <em>markus@cs.utexas.edu</em>. Thank you!
+<p>
+
+<hr>
+
+<a name="History">
+<h2> Version History </h2>
+
+Following is a listing of all distribution releases of the UV system
+with a short description of changes made at each release:
+
+<dl>
+<dt> Revision 1.20 (29-June-1995)
+<dd> Minor revision, fixed a few bugs in the parser related to type
+     checking and constant folding.
+
+<dt> Revision 1.19 (16-March-1995)
+<dd> Extended the input language by the '%interleaved' directive to 
+     specify interleaved BDD indices. Also fixed a bug that caused the 
+     parser to complain about conflicting if-cases in assigment statements
+     when there were none. 
+
+     Until an updated version of the language reference manual will be
+     available, you can find more detailed information about the language
+     extension <a href="CHANGES">here</a>.
+
+<dt> Revision 1.18 (16-February-1995)
+<dd> Fixed a few problems with the parser (internal memory management and
+     handling of empty sections), and made the program 'View' button of
+     the property info dialog work.
+
+<dt> Revision 1.17 (12-January-1995)
+<dd> Added a missing initialization of the memory statistics routines
+     that could lead to erroneous statistics in the memory dialog, and fixed
+     a bug with the strongest invariant computation that could cause
+     problems in the presence of declared specification variables that 
+     were not modified in the program they were declared in.
+
+<dt> Revision 1.16 (2-January-1995)
+<dd> Some minor fixes of interface problems that had gone by unnoticed when
+     we switched from Motif 1.1 to Motif 2.0. The documantation remains
+     unchanged.
+
+<dt> Revision 1.14 (18-December-1994)
+<dd> The initial distribution release.
+</dl>
+
+<hr>
+
+This page was last updated on 25-May-1996.
+
+<address>
+<a href="http:/users/markus"> Markus Kaltenbach </a>
+(markus@cs.utexas.edu)
+</address>
+
+</body>
+</html>

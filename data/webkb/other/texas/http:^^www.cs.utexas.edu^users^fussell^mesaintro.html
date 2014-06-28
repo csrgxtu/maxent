@@ -1,0 +1,96 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Wednesday, 08-Jan-97 16:43:25 GMT
+Content-Type: text/html
+Content-Length: 4076
+Last-Modified: Monday, 22-Jan-96 18:11:33 GMT
+
+<HTML>
+<HEAD>
+<TITLE>Using Mesa</TITLE>
+</HEAD>
+<BODY>
+<BR><HR> <P>
+<CENTER><H2> CS354 </H2></CENTER>
+<CENTER><H2> INTRODUCTION TO COMPUTER GRAPHICS </H2></CENTER>
+<H2><CENTER> Spring, 1996 </H2></CENTER>
+<P>
+<CENTER><H3> Using Mesa</H3></CENTER>
+<P>
+
+The Mesa OpenGL-like 3-D graphics library has been installed for use
+on the CS department public workstations.  There are two flavors of
+public workstations available, the Sparc-5s in Painter Hall and the
+IBMs in both Painter and Taylor. 
+
+<P>
+
+Mesa is a collection of graphics libraries, the <em> MesaGL</em>
+library, the <em> MesaGLU</em> library, the <em> Mesaaux</em> library
+and the <em> Mesatk</em> library.  These are embodied in the files
+<em> libMesaGL.a, libMesaGLU.a, libMesaaux.a,</em> and <em>
+libMesatk.a</em> respectively.   There is also a widget library that
+provides OpenGL widgets similar to SGI's GL widgets.  This is
+in <em> libMesaGLw.a </em>.  We also plan to offer the <em>
+GLUT</em> library from SGI, but this has not been completely installed as yet.
+
+For all machines, the libraries are installed in <em> /p/lib/Mesa</em>.
+There is also a set of common <em> include files</em> to be used with these
+libraries in <em> /p/include/Mesa</em>.  Documentation for the
+libraries is to be found in <em> /p/doc/Mesa</em>, which has four
+subdirectories of interest, <em> mangl, manglu, manglx</em> and <em>
+doc</em>.  The first three contain man pages for <em> MesaGL,
+MesaGLU</em> and <em> MesaGLX</em> respectively, and <em> doc</em>
+contains papers describing these libraries at a higher level.  All of
+these documents are in postscript format, which means that the <em>
+man</em> program cannot be used to read the man pages.  Instead, I
+recommend using the command `gs -- filename.ps' to read these
+postscript files.  The man pages are also available in
+<A HREF = "http://www.digital.com:80/pub/doc/opengl/"> html </A>
+on the web.
+<P>
+
+There is also an extensive set of demo programs available for you to
+look at and play with.  The source code for these can be found in <em>
+/p/src/Mesa/demos, /p/src/Mesa/book</em>,
+<em> /p/src/Mesa/samples</em> and /p/src/Mesa/widgets/demos.  In each of
+these directories there is a subdirectory for each of the deparmental
+machine types.  These contain executable files for
+the demo programs on each type of machine, so you
+should be able to verify that you can execute these demos on whatever
+machine you are using.  Once you have done that, try copying the
+source code for a few of the more interesting programs to your own
+account and building the demos using the <A HREF = "Makefile.dist">
+makefile </A>.  DO NOT attempt to use the makefiles in the <em>
+/p/src/Mesa</em> directory tree, they won't work with the installed
+libraries and include files.  To use our local makefile, you will have
+to uncomment the appropriate lines for the machine you are trying to
+compile on, and you will have to edit the `PROGS =' line to list the
+programs you are trying to compile.  Note that the program names to be
+listed there are the object module names, which should be identical to
+the source filenames with the `.c' extension removed.
+
+<P>
+
+Please report any problems you have in this
+procedure to me, by email, at <em> fussell@cs.utexas.edu</em> and cc
+your message to the TA <em> nishant@cs.utexas.edu</em>.  Also, please
+try this as soon as you can, so that you will quickly learn how to get
+around in Mesa and will be ready to do the programming projects.  You
+might want to try these exercises on several machines before you
+decide what to use.  The IBMs are the fastest processors, but will
+probably be the slowest machines for using Mesa since all graphics
+will have to be done over the net from the server machines to the
+Xstations.  All of these machines run under
+Xwindows, so you should be able to run Mesa on any machine, with a
+window on any other machine on the net.  This is not recommended,
+however, since the net will become a bottleneck.
+
+<P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Donald S. Fussell <BR>
+Mon Jan 22 12:07:43 CDT 1996</I>
+</ADDRESS>
+</BODY>
+</HTML>

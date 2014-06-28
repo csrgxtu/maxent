@@ -1,0 +1,95 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 16-Dec-96 23:50:30 GMT
+Content-Type: text/html
+Content-Length: 6601
+Last-Modified: Tuesday, 27-Feb-96 18:48:42 GMT
+
+<!-- This file was created with the fm2html filter.
+The filter is copyright Norwegian Telecom Research and
+was programmed by Jon Stephenson von Tetzchner. -->
+
+
+<TITLE>Homework 2</TITLE>
+<CENTER><H1><A NAME="HDT0"><B>Homework 2</A></H1></CENTER>
+<center>  </B>Handed out: Tue, Feb 13th</center>
+<center>  Due: Part 1 on Tue, Feb 20th</center>
+<center>  Part 2 on Tue, Feb 27th</center>
+<P>  
+<P>  This assignment <B>must</B> be done in <B>groups of two </B>with a<B> different partner </B>than homework 1.Hand in one solution per group (printed, not manuscript).
+<P>  
+<P>  The little problems below will get you started with writing Split-C programs on the SP-2
+<H1> 1  Measure the LogP parameters for "Split-C/SP2"</H1>
+<P>  Write a program that determines the LogP parameters for the various Split-C remote access primitives. You should determine (produce a table):
+
+<OL>
+<P><LI>the processor overhead on the requesting side
+<BR>
+<P><LI>the processor overhead on the serving side
+<BR>
+<P><LI>the gap between successive requests
+<BR>
+<P><LI>the latency
+<BR></OL>
+
+
+<P>  for the following Split-C primitives:
+
+<DL>
+<DD>  a.  read of an int
+<BR>
+<DD>  b.  write of an int
+<BR>
+<DD>  c.  get of an int
+<BR>
+<DD>  d.  put of an int
+<BR>
+<DD>  e.  store of an int
+<BR></DL>
+
+
+<P>  Remember to always time chunks of code in a loop long enough to overcome the granularity and overhead of the clock.
+<H1> 2  Heat diffusion - a small Split-C application</H1>
+<P>  Write a small Split-C program that simulates the diffusion of heat on a surface of arbitrary shape. Display the simulation in an X window.
+
+<H2>Background</H2>
+<P>  The dissipation of heat in an object is an example of a diffusive process, which is modeled by a differential equation which, if we assume the material is uniform takes the form:
+<P><A HREF="homework_2.fig_3.ps"><IMG SRC="homework_2.fig_3.gif">
+</A>
+<P><A HREF="homework_2.fig_4.ps"><IMG SRC="homework_2.fig_4.gif">
+</A>
+<P>  where <A HREF = "homework_2.fig_5.ps"><IMG SRC="homework_2.fig_5.gif">
+</A>is the temperature of the object at position x at time t.
+<P>  In this problem set, we will look at one and two dimensional objects (wires and plates), but the generalization to 3-D is obvious.
+<H2>Heat Dissipation in a wire</H2>
+<P>  For an infinite wire with an initial temperature distribution of <A HREF = "homework_2.fig_6.ps"><IMG SRC="homework_2.fig_6.gif">
+</A> it can be shown analytically that the temperature distribution at time t=0.25 is 
+<P><A HREF="homework_2.fig_7.ps"><IMG SRC="homework_2.fig_7.gif">
+</A>
+<P>  In order to discretize the problem, we first restict ourselves to a finite length of wire, say from x=-2 to x=2 and divide the wire into N sections of length dx = 4/N.  The temperature function u(x) becomes u[0...N], where we will let segment 0 be centered at x=-2 and segment N be centered at X=2, so segment N/2 is centered at x=0.
+<P>  We will also have finite time steps of length dt.  As a convenient notation, we will write <A HREF = "homework_2.fig_8.ps"><IMG SRC="homework_2.fig_8.gif">
+</A>to mean the temperature of the i-th segment after n time steps.  We may approximate the derivatives by
+<P><A HREF="homework_2.fig_9.ps"><IMG SRC="homework_2.fig_9.gif">
+</A>
+<P><A HREF="homework_2.fig_10.ps"><IMG SRC="homework_2.fig_10.gif">
+</A>
+<P>  and then replace the differential equation by the ``finite difference equation'':
+<P><A HREF="homework_2.fig_2.ps"><IMG SRC="homework_2.fig_2.gif">
+</A>
+
+<P>  which allows us to immediately generate one time step from the previous one:
+<P><A HREF="homework_2.fig_1.ps"><IMG SRC="homework_2.fig_1.gif">
+</A>
+<H2> 2.1  Sequential test</H2>
+<P>  Use the above scheme on our test problem, i.e., take <A HREF = "homework_2.fig_11.ps"><IMG SRC="homework_2.fig_11.gif">
+</A> and run until t = 0.25 holding u[0] = u[N] = 0 for all time.  Compare the results to the analytical solution.  Try it (on a workstation) for N=64, 128, 256, ... each time varying dt by orders of magnitude.  For example, with N=64 try dt = 0.01, 0.001, 0.0001, ... . Hand in a plot of the analytical solution and your experimental one when N=64 and dt=0.001. This approximation scheme is not stable (i.e. the numerical solution will not converge to the true solution) when dt*N*N &gt; 8.  Explain your experimental results using this fact.
+<H2> 2.2  Sequential program for 2-D heat diffusion</H2>
+<P>  The generalization of the heat transfer formula for 2-D problems is (assuming dx=dy): Write a program for your favorite workstation that simulates arbitrary shaped plates on a fixed 2-D grid. The easiest is if you use a bitmap editor to draw 2-D shapes and read that into your program. Then allow the user to enter a "hot-spot" and start simulating. Your program should display the progress of the simulation using X-windows. Display every N-th time-step and allow the user to determine N. Keep the display code simple - you're not doing this to win a graphical design contest. Make your 2-D grid cover an area of x in [-2,2] and y in [-2,2].
+<P><A HREF="homework_2.fig_12.ps"><IMG SRC="homework_2.fig_12.gif">
+</A>
+<H2> 2.3  Parallel 2-D heat diffusion</H2>
+<P>  Parallelize your heat diffusion code. You should "somehow" divide the 2-D grid among the processors and have each processor simulate its subgrid independently. You obviously need to worry about communicating the boudary regions. Also, be sure to choose the grid size and time step wisely so that your solution will converge.
+<P>  Simulate the following shapes: a large disk with a hot spot in the center, a long skinny rectangle placed in the upper part of your 2-D workspace with a hot-spot anywhere, and a barbell with a hot spot in the center of one disk. In each case measure the Mflops you achieve per processor. Also measure the ratio between the busiest and the least busy processor.
+<P>  Note that the part you should parallelize is the actual computation. Don't worry about the initialization or the X-windows display: do that on one processor. For the timings you probably need to turn the display output off (display the first and last time step so you can see that everything worked fine).
+<P>  For 2.2 and 2.3, produce snapshots of your simulation for the three shapes defined above, with t=0, t=ft/4, t=(3/4)*ft, and t=ft (ft is the final time). For each shape, make sure you use the same grid size, time step, and ft for both the sequential and parallel simulation. Please provide us with the URL to a web page with the snapshots (with enough annotations so that we know which plot corresponds to which case). Color printouts are strictly forbidden.
+

@@ -1,0 +1,126 @@
+Date: Mon, 11 Nov 1996 21:42:16 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Tue, 01 Oct 1996 20:08:46 GMT
+Content-length: 4218
+
+<html>
+<head>
+<title> Program 1 </title>
+</head>
+<body>
+<center> <h2> Program 1 </h2> </center>
+<p>
+<ul>
+<li> CS110 Section 7
+<li> TA: Michael Birk
+<li> Assigned: Tue 9/10/96
+<li> Due: Tue 9/17/96
+</ul>
+<p>
+In program 1 you will write a program to calculate Grade Point Average
+(GPA).  You will ask the user to type in the number of classes in which they
+received an A, AB, B, BC, C, D, and F, then print out the number of grade
+points, the number of credits, and the GPA.  For this assignment assume all
+classes are 3 credits.
+<p>
+The number of grade points earned for a class can be calculated
+by multiplying the number of credits of the class by the grade
+earned, using the following scale:
+<p>
+<ul>
+<li> A = 4.0
+<li> AB = 3.5
+<li> B = 3.0
+<li> BC = 2.5
+<li> C = 2.0
+<li> D = 1.0
+<li> F = 0.0
+</ul>
+<p>
+For example, a grade of AB in a 3 credit class would earn 3*3.5 = 10.5
+grade points.  Note that in this system we'll count F's as credits - a F
+should lower the GPA.
+<p>
+<h3> What to Do </h3>
+<p>
+<h4> Part I: Creating the Program </h4>
+<p>
+Run Borland C++ and create a new file in which to type in your source
+code by choosing "File" and then "New" from the menu. (Or use the blank
+window that's already there if there is one.)
+<p>
+Type in your program.  Start with this extremely simple program:
+one which simply prints out your name and cs110 section number.
+<p>
+Then <em>compile</em> and <em>run</em> the program
+by clicking on the small "lightning bolt" icon (or choose "Debug" and then
+"Run" from the menu), as in program 0.  If you have any compiler errors,
+a "Message" window will appear indicating the approximate line number
+and reason for each error.  If you do not understand a particular compiler
+error, ask a consultant for help.
+<p>
+Now extend the program by adding a few statements to it.  First add
+the variable declarations to hold the various user inputs and the
+<tt>cin</tt> statements.  Then compile and run the program to make
+sure this part works.  Then add the part that performs the computation
+and prints the results.  Run this program a few times, entering
+different numbers and checking the results to make sure you don't have
+a "bug."
+<p>
+<h4> Part II: Using the Debugger
+<p>
+In this part, you will learn to use the Borland C++ <em>debugger</em>.
+To use the debugger, press the <tt>F8</tt> function keyboard (or choose
+Debug/Next from the menu).  This will start executing your code
+statement-by-statement.  Note how each time you press the <tt>F8</tt>
+key, it executes the current statement.
+<p>
+Keep "walking" through your program with <tt>F8</tt>.  When you get to
+a <tt>cin</tt> statement, the program will stop and wait for you to
+type the input in the window.  After you type in the input, click on
+that variable name in your program.  Then click the <b>right</b> mouse
+button for a "pop up" menu.  In this menu choose <b>Inspect</b>.  This
+brings up a window which shows you the value of that variable.  Use this
+inspect feature to see how uninitialized variables have "garbage values."
+<p>
+You can use the debugger as many times as you like to investigate the
+various aspects of your program.  (Note: there is nothing to hand in
+for this part.)
+<p>
+<h3> What to Hand In </h3>
+<p>
+You will need to hand in a paper copy of your source code
+and also the printed output.  To print the output, click on the system
+menu box (the small horizontal bar) in the upper-left corener of the
+window which has your program's output.  This brings up a menu - choose
+"Print ..." from this menu.  Make sure that your program prints out
+your name, etc. so that you know which printout is yours!
+<p>
+<h3> Sample Program Output </h3>
+<p>
+<pre>
+John Q. Doe's GPA Program
+CS110 section 7  Program #1
+
+Hello, this program will ask you for your grades and
+then compute your GPA.  It assumes all your classes are
+3 credits.
+
+How many As did you get? 2
+How many ABs did you get? 1
+How many Bs did you get? 0
+How many BCs did you get? 0
+How many Cs did you get? 1
+How many Ds did you get? 0
+How many Fs did you get? 0
+
+You have a total of 40.5 grade points with 12 credits,
+for a GPA of 3.375
+</pre>
+<p>
+<hr>
+<address> <a href="mailto:mbirk@cs.wisc.edu">mbirk@cs.wisc.edu</a> </address>
+
+</body>
+</html>

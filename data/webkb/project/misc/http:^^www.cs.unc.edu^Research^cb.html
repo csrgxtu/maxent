@@ -1,0 +1,180 @@
+Date: Wed, 20 Nov 1996 20:04:05 GMT
+Server: NCSA/1.5.1
+Last-modified: Mon, 11 Nov 1996 22:38:29 GMT
+Content-type: text/html
+Content-length: 6300
+
+<TITLE> Collaboration Bus </TITLE>
+
+<H1> Collaboration Bus</H1>
+<p>
+<STRONG> Sponsors: </STRONG>
+<!WA0><A HREF = "http://www.ito.arpa.mil/">
+DARPA Information Technology Office
+</A>
+</p>
+<STRONG> Faculty </STRONG>:
+<!WA1><A HREF = "http://www.cs.unc.edu/~dewan"> Prasun Dewan, </A>
+<!WA2><A HREF = "http://www.cs.unc.edu/~wahab"> Hussein Abdel-Wahab, </A>
+<!WA3><A HREF = "http://www.cs.unc.edu/~sc"> Siddhartha Chatterjee, </A>
+<!WA4><A HREF = "http://www.cs.unc.edu/~jeffay"> Kevin Jeffay, </A>
+<!WA5><A HREF = "http://www.cs.pdx.edu/~mchugh"> John McHugh, </A>
+<!WA6><A HREF = "http://www.cs.unc.edu/~nyland"> Lars Nyland, </A>
+<!WA7><A HREF = "http://www.cs.unc.edu/~prins"> Jan Prins, </A>
+<!WA8><A HREF = "http://www.cs.unc.edu/~jbs"> John Smith, </A>
+<!WA9><A HREF = "http://www.cs.unc.edu/~stotts"> Dave Stotts </A>
+
+</p>
+
+<STRONG> Students </STRONG>:
+<!WA10><A HREF = "http://www.cs.unc.edu/~clark"> Michele Clark, </A>
+<!WA11><A HREF = "http://www.cs.unc.edu/~meehan"> Mike Meehan, </A>
+<!WA12><A HREF = "http://www.cs.odu.edu/~mohamed"> Emad Eldin Mohamed, </A>
+<!WA13><A HREF = "http://www.cs.unc.edu/~munson"> Jon Munson, </A>
+<!WA14><A HREF = "http://www.cs.unc.edu/~nee"> Peter Nee, </A>
+<!WA15><A HREF = "http://www.cs.unc.edu/~rusev"> Vassil Roussev, </A>
+<!WA16><A HREF = "http://www.cs.unc.edu/~sharma"> Anshu Sharma </A>
+</p>
+<STRONG> Description </STRONG>:
+
+In this project,
+we will address the problem of composing new collaborative
+systems from existing single-user and collaborative systems.
+We propose to develop a new software abstraction,
+called the collaboration bus,
+that makes it easy to compose collaborative systems.
+The collaboration bus will be an extensible infrastructure that provides
+general definitions of collaboration services,
+default implementations of these services,
+rules for interconnecting these services,
+and mechanisms for extending the set of supported services.
+<p>
+The set of generic services supported by the bus will include
+(a) a data model for defining shared workspaces consisting of structured objects;
+(b) a user interface model
+that allows shared objects to be manipulated using
+user interfaces that support
+text, graphics, audio, video, and virtual reality;
+(c) a coupling model that
+enables users in a joint session to share data and user-interface
+objects and controls their interactions to ensure security and
+consistency contraints are not violated;
+(d) migration and replication mechanisms that ensure that
+the bus does not become a bottleneck; 
+and
+(e) real-time services, consisting of scheduling algorithms and network protocols,
+for ensuring real-time coupling among the collaborators.
+collaborative session and making users in a session aware of the
+Previous work has addressed the heterogeneity problem in other domains such
+as software engineering, operating systems, and database systems.
+Our project will extend this research by providing
+an interconnection technology for the collaboration domain.
+It will offer two forms of interoperability:
+(1) inter-service interoperability,
+which will allow existing implementations of different collaboration
+services,
+such as user-interface and real-time services,
+to be combined in new collaborative systems;
+and
+(2) intra-service interoperability,
+which will resolve inconsistencies among different, competing instances
+of the same service,
+such as explicit and implicit schemes for creating joint sessions,
+provided by different existing systems that need to interoperate with each other.
+The following diagram illustrates the capabilities of the collaboration bus.
+
+<p>
+
+<center>
+Click on the picture to see a bigger version.
+</center>
+<center>
+<!WA17><A HREF="http://www.cs.unc.edu/Research/cb/proj_fig_large.gif"><!WA18><IMG SRC="http://www.cs.unc.edu/Research/cb/proj_fig.gif"></A>
+</center>
+
+<p>
+
+The concept of a collaboration bus requires a general abstraction
+that covers the functionality of existing collaborative systems.
+In particular, the bus must define a reference model that
+captures similarities and differences among multiple solutions
+to a problem.
+In addition, it must provide,
+when possible, semantic translation to allow dissimilar
+solutions to the same problem to coexist.
+It must also define composition functions that allow a service
+to be composed with other collaboration services.
+Finally,
+the bus must not become a bottleneck that significantly
+increases the response times of users.
+
+<p>
+
+The following approach will be used in designing, implementing and
+evaluating the bus:
+(a) Identify the services that a collaborative application requires.
+(b) Identify a reference model for each of these services.
+(c) Identify semantics translations and composition functions for
+each of these services.
+(d) Incorporate, into the bus, a default implementation of the service
+and the associated semantic translations and composition functions.
+(e) Develop mechanisms and policies for replicating and migrating
+parts of the bus.
+(f) Develop mechanisms for protecting the operations on the bus.
+(g) Carry out interoperability experiments involving each of these
+services using state-of-the-art existing software.
+
+<p>
+
+Our plans for the next year are to:
+(a) Identify potential clients of the collaboration bus
+and scenarios of how these clients would interoperate with each
+other.
+(b) Characterize real-time requirements of collaborative virtual
+environments based on initial experiments.
+(c) Design version 1 of the
+collaboration bus,
+which will include reference models, semantic translations, and
+composition functions for
+session management,
+coupling,
+and
+virtual environments.
+(d) Start a Java-based implementation of version 1 of the bus.
+
+<H2> Other Project Information </H2>
+
+<!WA19><A HREF = "http://www.cs.unc.edu/Research/cb/icv.ps"> IC & V Meeting Talk Postscript </A> -- one slide per page, works
+with gv. 
+
+<p>
+
+<!WA20><A HREF = "http://www.cs.unc.edu/Research/cb/icv-small.ps"> IC & V Meeting Talk Postscript </A> - 4 slides on one page - does not
+work with gv, use gs or print it.
+
+<p>
+
+<!WA21><A HREF = "ftp://ftp.cs.unc.edu/pub/users/dewan/cb/quad.ps">
+Quad Chart Postscript </A>
+
+<p>
+
+<!WA22><A HREF = "http://www.cs.unc.edu/Research/cb/prog96.html"> Project Summary </A>
+
+<H2> Related Links </H2>
+
+<!WA23><A HREF = "http://www.cs.unc.edu/~dewan/colab.html"> UNC Collaboration Projects
+
+<p>
+
+<!WA24><A HREF = "http://www.ito.arpa.mil/icv/projects.html"> DARPA Intelligent Visualization and
+Collaboration (IC&V) Projects </A>
+
+<P>
+<ADDRESS>
+- Last revised:
+Mon Nov 11 17:36:55 EST 1996
+by <!WA25><a
+href="http://www.cs.unc.edu/~dewan">dewan@cs.unc.edu</a>
+</ADDRESS>
+<P>

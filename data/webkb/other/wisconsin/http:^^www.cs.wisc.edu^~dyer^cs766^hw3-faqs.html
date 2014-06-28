@@ -1,0 +1,117 @@
+Date: Mon, 11 Nov 1996 17:30:50 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Tue, 07 Nov 1995 18:56:24 GMT
+Content-length: 4861
+
+<html>
+<head>
+<title>CS 766 HW #3 Hints and FAQs</title>
+</head>
+
+<body>
+<H1>CS 766 HW #3 Hints and FAQs</H1>
+<P>
+<HR>
+<UL>
+  <LI><B>How is the edge magnitude information in `edge' accessed?</B><BR>
+  The array `edge' should be accessed as edge[row][col].
+  <P>
+
+  <LI><B>My snake points never settle down; is that a problem?</B><BR>
+  It can happen, so it's not necessarily a bug.  It might mean that there
+  are too many snake points.  
+  <P>
+
+  <LI><B>What happens if two consecutive snake points move to the same pixel?</B><BR>
+  There is a problem with the Williams and Shah algorithm in this case.
+  That is, the curvature at each of those points will be undefined if
+  one follows the algorithm to the letter.  To deal with that, you
+  can do the following.  When computing the curvature c at point i,
+  check whether the ith point coincides with the previous and/or the
+  next points.  If it does, set the curvature of the ith point to
+  BIGC, where BIGC is a large constant.  This will ensure that if
+  points i and i+1 are coincident, then for all four points i-1,
+  i, i+1 and i+2, the "if curvature is larger than neighbors" condition
+  of the algorithm will fail and beta won't be changed.
+  (Make sure you use '>' in this condition and not '>=').
+  <P>
+
+  <LI><B>What if snake point i goes to the old position of point i+1 for all i (modulo the total number of snake points)?</B><BR>
+  You do not have to deal with this problem.
+  If it ever happens when you are developing your code or during the
+  demo, you can simply stop the snake and restart with a new snake.
+  <P>
+
+  <LI><B>In MoveSnakePoint, does the parameter `new' refer to Points[jmin], and is the parameter `index' the index i into the `points' array, i.e., the point (vector) v_i to be moved to jmin?</B><BR>
+  The parameter 'new' (the first parameter of MoveSnakePoint) is of type Point.
+  It should contain the value of the coordinates of the new position of a point.
+  But if you are moving, say points[i], you should NOT change points[i] directly
+  and then call<pre>
+       MoveSnakePoint(points[i], points, i, num_points)</pre>
+  Rather, you should create a temporary Point variable, say loc_min, define
+  loc_min.row and loc_min.col appropriately and then call<pre>
+       MoveSnakePoint(loc_min, points, i, num_points)</pre>
+  MoveSnakePoint() is itself supposed to copy the coordinates from loc_min to
+  points[i] in addition to moving the point on the display.
+  <P>
+
+  <LI><B>When calculating the derivatives for Econt and Ecurv, how
+  should the boundary conditions, i.e., when i=0 and i=n, be handled?</B><BR>
+  For this assignment you can assume all contours are closed, and therefore
+  you can use modulo n+1 arithmetic when dealing with snaxel indices.  
+  Hence, v(0) is adjacent to v(n).
+  <P>
+
+  <LI><B>The snake program interface displays poor colors,
+  what's wrong?</B><BR>
+  Your window manager may be setting default color settings differently
+  than needed by the snakes program.  Install a different .fvwmrc file,
+  for example, to change these settings.
+  <P>
+
+  <LI><B>How is Econt calculated?</B><BR>
+  On page 19 in the Williams and Shah paper there is a description of
+  how to compute this term.  There is an error, however.  Since we want
+  this to be a measure of distance, you should use:
+  <pre>
+      -
+    | d - | v  - v   | |
+	     i    i-1
+  </pre>
+  To normalize this value to be in the range [0..1], divide by the
+  largest value of this expression from the 9 values computed for the
+  9 possible positions of v_i in the 3 x 3 neighborhood centered at
+  the current point.   
+  <P>
+
+  <LI><B>For both the continuity and curvature energies, the paper states that
+the value at a point under consideration should be divided by the largest value
+in the neighborhood to which the point may move.  I am interpreting this to
+mean the largest value in the neighborhood around the original snake point.  
+Someone else interpreted this to mean you figure out the largest value in the 
+neighborhood for the point under consideration.  For example:
+
+<pre>
++-+-+-+
+|1|2|3|
++-+-+-+-+   X = the snake point
+|4|*|5| |   * = the point under consideration
++-+-+-+-+
+|6|7|X| |   So, the question is:  which largest value do I use?  The one that
++-+-+-+-+   is computed using the neighborhood around X or do I compute based
+  | | | |   upon the neighborhood of the point under consideration?  So, for
+  +-+-+-+   example, if I wanted to normalize the value computed at *, I would
+	    figure out the largest value at 1,2,3,4,*,5,6,7,X becuase that is
+	    *'s neighborhood.
+</pre>
+Which is correct?</B><BR>
+
+The way I read the paper * should be normalized by using the largest value
+from the 9 values in the 3 x 3 neighborhood centered at X, not *.  Otherwise,
+each point would be normalized differently, making comparison difficult.
+<P>
+
+</UL>
+</body>
+</html>

@@ -1,0 +1,938 @@
+Server: Netscape-Enterprise/2.0a
+Date: Tue, 26 Nov 1996 18:38:23 GMT
+Accept-ranges: bytes
+Last-modified: Tue, 09 Apr 1996 03:41:24 GMT
+Content-length: 41813
+Content-type: text/html
+
+<!- filename:  cse5450.htm ->
+<!- created by: John R. Ellis ->
+<!- last updated on: 8 April 96 ->
+
+<html>
+<a name="CSE5450: Intro to Software Engineering"></a>
+<head>
+<title>CSE5450: Intro to Software Engineering</title>
+</head>
+
+<body bgcolor="#ffffff">
+<a name="top">
+<center><!WA0><img src="http://cs.fit.edu/~ellis/redwhblu.gif"></center><br>
+
+<!WA1><img src="http://cs.fit.edu/~ellis/fitsmall.gif" align="bottom"><center>
+  <strong><h2>CSE5450 - Advanced Software Engineering</h2>
+<h2>Spring 1996</h2></strong></center>
+<hr>
+<ul>
+  <li><!WA2><a href="#Fact Sheet">Fact Sheet</a>
+  <li><!WA3><a href="#Syllabus">Class Syllabus</a>
+  <li><!WA4><a href="#Roles">Project Role Assignments</a>
+  <li><!WA5><a href="#PDRL">Project Deliverable Requirements List</a>
+  <li><!WA6><a href="#Assmt 1">Class Assignment #1</a>
+  <li><!WA7><a href="#Assmt 2">Class Assignment #2</a>
+  <li><!WA8><a href="#Assmt 3">Class Assignment #3</a>
+  <li><!WA9><a href="#Assmt 4">Class Assignment #4</a>
+</ul>
+
+<!-------------------FACT SHEET-------------------------->
+<center><!WA10><img src="http://cs.fit.edu/~ellis/redwhblu.gif"></center><br>
+<a name="Fact Sheet"><Center><h2>Fact Sheet</h2></center></a>
+<p><strong>COURSE TITLE:</strong> Advanced Software Engineering
+<p><strong>COURSE DESIGNATION:</strong> CSE5450-E1
+<p><strong>INSTRUCTOR:</strong> John R. Ellis
+<p><strong>MAIL SLOT:</strong> Crawford Hall, 2nd floor: ELLIS
+<p><strong>PHONE (emergencies only):</strong> (work) 723-3999
+<p><strong>E-MAIL:</strong> jellis@iu.net or john_ellis@mlb.sticomet.com
+<p><strong>OFFICE HOURS:</strong> By appointment.
+<p><strong>CLASSROOM:</strong> A-221
+<p><strong>TIMES:</strong> Tuesday, Thursday, 6:30 - 7:45 PM
+<p><strong>TEXT:</strong>
+<ul>
+  <li><em>The Mythical Man-Month</em>, by Frederick Brooks
+  <li><em>Software Engineering: A Practitioner's Approach, 3rd
+          ed.</em> by Roger Pressman
+</ul>
+<p><strong>COMPUTER SYSTEMS:</strong> Students will be expected to
+communicate with one another and with the instructor via e-mail.
+Those students not otherwise having accounts affording e-mail
+access will be expected to acquire an account on the University's
+Nighthawk (ZACH) for Sun SparcStation (TUCK). Personal Computers
+(PCs) are available in the Crawford Hall third floor lab and in the
+library. The class project development must be performed and the
+target program executed on PCs. Project documents are in PC
+MicroSoft Word 6.0 format. The use of home PCs or PCs at your 
+workplace (if permitted by your employer) is also approved. When
+individual assignments require submittal in machine readable form,
+floppy disk (PC 3.5" HD) must be used.
+<p><strong>GRADING:</strong> You will be graded on your homework
+assignments, participation in class, and two examinations: a
+mid-term and a final. Grading will be based on the following
+relative weights:</p>
+<center><table border>
+    <td align=left>Project Grade (inc. homework) </td>
+    <td align=right>50%</td>
+  <tr>
+    <td align=left>Mid-Term Examination </td>
+    <td align=right>15%</td>
+  <tr>
+    <td align=left>Final Examination </td>
+    <td align=right>30%</td>
+  <tr>
+    <td align=left>Class Participation </td>
+    <td align=right>5%</td>
+  <tr>
+    <td align=left>Total:</td>
+    <td align=right>100%</td>
+</table></center>
+<p><strong>COLLABORATION:</strong> Collaboration or "working together"
+is ESSENTIAL to this course. You are authorized full communication
+with any other class member concerning the project we will be 
+undertaking.
+<p><strong>CONFORMANCE TO STANDARDS:</strong> You will each have an
+area of primary responsibility as part of the class team executing
+the class project. The Quality Assurance Manager and the Configuration
+Manager will enforce the standards for the class. The Independent
+Verification and Validation engineer will further evaluate 
+conformance as an agent of the "customer" (instructor). Conformance
+to the standards is clearly to your benefit, besides which, 
+experience has shown that adherence to standards results in producing
+working programs in less time.
+<p><strong>TURNING IN ASSIGNMENTS:</strong> For each of the
+assignments, you should turn in your solution. To each, attach an
+assignment coversheet that includes your name, student number,
+e-mail address, a telephone number where you can be contacted,
+and a summary of your individual task. Also include any comments
+you want the instructor to see.
+<p><strong>LATE ASSIGNMENTS:</strong> In general, late assignments
+will NOT be accepted. In those cases where the instructor chooses
+to accept them, a severe grading penalty will apply. Remember that
+all of the other students, your development teammates, will depend
+on your contribution to the project.
+<p><strong>CLASS SCENARIO:</strong>
+<blockquote>
+  You have recently been hired by a prestigious software company
+  because the company has just won one of two contracts to upgrade
+  a Government developed training aid called the Low Cost Flight
+  Simulator (LCFS). At the end of the development phase, a single
+  contract will be awarded to the company that wins a competitive
+  product "fly-off" demonstration. Your company's future depends
+  on winning this competition. Your talent-laden tiger team must 
+  develop the upgrade to this product to allow it to win the
+  fly-off. Product maintainability is included in the criteria
+  for final product evaluation. You have 15 working weeks to
+  complete the task and have the upgrade ready for the fly-off
+  demonstration.
+</blockquote>
+<hr>
+-- Return to <!WA11><a href="#top">top</a>, or:<br>
+1. <!WA12><a href="#Fact Sheet">Fact Sheet</a>; 2. <!WA13><a href="#Syllabus">
+  Syllabus</a>; 3. <!WA14><a href="#Roles">Roles</a>; 4. <!WA15><a href="#PDRL">
+  PDRL</a>; 5. <!WA16><a href="#Assmt 1"> Assignment #1</a>; 
+  6. <!WA17><a href="#Assmt 2">Assignment #2</a>; 
+  7. <!WA18><a href="#Assmt 3">Assignment #3</a>; 
+  8. <!WA19><a href="#Assmt 4">Assignment #4</a>.</p> 
+
+
+<!-------------------SYLLABUS-------------------------->
+<center><!WA20><img src="http://cs.fit.edu/~ellis/redwhblu.gif"></center><br>
+<a name="Syllabus"><Center><h2>Course Syllabus</h2></center></a>
+<p><strong>TEXT: </strong>
+<menu>
+  <li>[B]: <em>The Mythical Man-Month</em>, by Fred Brooks
+  <li>[P]: <em>Software Engineering: A Practitioner's Approach</em>,
+         by Roger Pressman
+</menu>
+<p><strong>INSTRUCTOR:</strong> John R. Ellis</p>
+<center><table border>
+    <th align=center>Class</th>
+    <th align=center>Date</th>
+    <th align=center>Pages</th>
+    <th align=center>Topic</th>
+  <tr>
+    <td align=center>1</td>
+    <td align=center>9 Jan 96</td>
+    <td align=center>  </td>
+    <td align=left>- Introduction to Class Project</td>
+  <tr>
+    <td align=center>2</td>
+    <td align=center>11 Jan 96</td>
+    <td align=center>P: 40-64<br>B: 1-26</td>
+    <td align=left>- Life-Cycle Models</td>
+ <tr>
+    <td align=center>3</td>
+    <td align=center>16 Jan 96</td>
+    <td align=center>P: 40-64<br>B: 29-37<br>B: 73-83</td>
+    <td align=left>- Management and Metrics; Project Organization</td>
+ <tr>
+    <td align=center>4</td>
+    <td align=center>18 Jan 96</td>
+    <td align=center>P: 549-594<br>P: 693-710</td>
+    <td align=left>- Controlling Disciplines - QA and CM</td>
+ <tr>
+    <td align=center>5</td>
+    <td align=center>23 Jan 96</td>
+    <td align=center>P: 65-127<br>B: 87-94</td>
+    <td align=left>- Cost, Size, and Manpower Planning</td>
+ <tr>
+    <td align=center>6</td>
+    <td align=center>25 Jan 96</td>
+    <td align=center>P: 173-204<br>B: 41-50<br>B: 61-69</td>
+    <td align=left>- Requirements Analysis and Specification</td>
+ <tr>
+    <td align=center>7</td>
+    <td align=center>30 Jan 96</td>
+    <td align=center>B: 97-103</td>
+    <td align=left>- <em>Requirements Assessment Review</em></td>
+ <tr>
+    <td align=center>8</td>
+    <td align=center>1 Feb 96</td>
+    <td align=center>P: 207-265</td>
+    <td align=left>- Structured Analysis and Object-Oriented Analysis</td>
+ <tr>
+    <td align=center>9</td>
+    <td align=center>6 Feb 96</td>
+    <td align=center> </td>
+    <td align=left>- <em>Configuration Control Board Meeting</em>
+            <br><center>[<em>Assignment #1 due.</em>]</center></td>
+ <tr>
+    <td align=center>10</td>
+    <td align=center>8 Feb 96</td>
+    <td align=center>P: 315-366<br>B: 115-123</td>
+    <td align=left>- Design Concepts and Models</td>
+
+  <tr>
+    <td align=center>11</td>
+    <td align=center>13 Feb 96</td>
+    <td align=center>  </td>
+    <td align=left>- <em>Preliminary Design Review</em></td>
+  <tr>
+    <td align=center>12</td>
+    <td align=center>15 Feb 96</td>
+    <td align=center>P: 367-394</td>
+    <td align=left>- Structured Design</td>
+ <tr>
+    <td align=center>13</td>
+    <td align=center>20 Feb 96</td>
+    <td align=center>P: 395-428</td>
+    <td align=left>- Object-Oriented Design</td>
+ <tr>
+    <td align=center>14</td>
+    <td align=center>22 Feb 96</td>
+    <td align=center> </td>
+    <td align=left>- <em>Team Meetings</em></td>
+ <tr>
+    <td align=center>15</td>
+    <td align=center>27 Feb 96</td>
+    <td align=center> </td>
+    <td align=left>- <em>Critical Design Review</em>
+       <br><center>[<em>Assignment #2 due.</em>]</td>
+ <tr>
+    <td align=center>16</td>
+    <td align=center>29 Feb 96</td>
+    <td align=center> </td>
+    <td align=left>- <em>Mid-Term Examination</em></td>
+ <tr>
+    <td> </td>
+    <td align=center>4-8 Mar 96</td>
+    <td> </td>
+    <td align=center><strong><em>SPRING BREAK!!!</em></strong></td>
+ <tr>
+    <td align=center>17</td>
+    <td align=center>12 Mar 96</td>
+    <td align=center>P: 513-545<br>B: 127-150</td>
+    <td align=left>- Structured Programming and 
+                     Implementation Considerations</td>
+ <tr>
+    <td align=center>18</td>
+    <td align=center>14 Mar 96</td>
+    <td align=center>P: 595-630</td>
+    <td align=left>- Software Testing</td>
+ <tr>
+    <td align=center>19</td>
+    <td align=center>19 Mar 96</td>
+    <td align=center>P: 631-661</td>
+    <td align=left>- Testing Strategies</td>
+ <tr>
+    <td align=center>20</td>
+    <td align=center>21 Mar 96</td>
+    <td align=center>B: 107-112</td>
+    <td align=left>- Formal Technical Reviews</td>
+  <tr>
+    <td align=center>21</td>
+    <td align=center>26 Mar 96</td>
+    <td align=center>  </td>
+    <td align=left>- <em>Team Meetings</em>
+       <br><center>[<em>Assignment #3 due.</em>]</td>
+  <tr>
+    <td align=center>22</td>
+    <td align=center>28 Mar 96</td>
+    <td align=center> </td>
+    <td align=left>- <em>Software Inspection</em></td>
+ <tr>
+    <td align=center>23</td>
+    <td align=center>2 Apr 96</td>
+    <td align=center>P: 481-511</td>
+    <td align=left>- Real-Time Systems</td>
+ <tr>
+    <td align=center>24</td>
+    <td align=center>4 Apr 96</td>
+    <td align=center>P: 713-735</td>
+    <td align=left>- CASE and CASE Tools</td>
+ <tr>
+    <td align=center>25</td>
+    <td align=center>9 Apr 96</td>
+    <td align=center> </td>
+    <td align=left>- Cleanroom Software Engineering</td>
+ <tr>
+    <td align=center>26</td>
+    <td align=center>11 Apr 96</td>
+    <td align=center>B: 179-226</td>
+    <td align=left>- "No Silver Bullet"</td>
+ <tr>
+    <td align=center>27</td>
+    <td align=center>16 Apr 96</td>
+    <td align=center>P: 663-691<br>B: 153-175</td>
+    <td align=left>- Post-Development SW Evolution: Maintenance
+       and Documentation 
+       <br><center>[<em>Assignment #4 due.</em>]</td>
+ <tr>
+    <td align=center>28</td>
+    <td align=center>18 Apr 96</td>
+    <td align=center>B: 229-292</td>
+    <td align=left>- Mythical Man-Month After 20 Years</td>
+ <tr>
+    <td align=center>29</td>
+    <td align=center>23 Apr 96</td>
+    <td align=center> </td>
+    <td align=left>- <em>Artifact Demonstration</em></td>
+ <tr>
+    <td align=center>30</td>
+    <td align=center>25 Apr 96</td>
+    <td align=center>B: 107-112</td>
+    <td align=left>- Post Development Evaluation; Course
+            Evaluations <br>- Review for Final Examination</td>
+</table></center>
+
+<hr>
+-- Return to <!WA21><a href="#top">top</a>, or:<br>
+1. <!WA22><a href="#Fact Sheet">Fact Sheet</a>; 2. <!WA23><a href="#Syllabus">
+  Syllabus</a>; 3. <!WA24><a href="#Roles">Roles</a>; 4. <!WA25><a href="#PDRL">
+  PDRL</a>; 5. <!WA26><a href="#Assmt 1"> Assignment #1</a>; 
+  6. <!WA27><a href="#Assmt 2">Assignment #2</a>; 
+  7. <!WA28><a href="#Assmt 3">Assignment #3</a>; 
+  8. <!WA29><a href="#Assmt 4">Assignment #4</a>.</p>
+
+
+<!-------------------ROLES-------------------------->
+<center><!WA30><img src="http://cs.fit.edu/~ellis/redwhblu.gif"></center><br>
+<a name="Roles"><Center><h2>Project Roles</h2></center></a>
+<center><table border>
+    <th align=center>Role</th>
+    <th align=center>Assigned to:</th>
+    <th align=center>Job Description Summary</th>
+  <tr>
+    <td align=left>Task Leader</td>
+    <td align=center>Parivash<br>(Pari)<br>Jamnia<br>
+         pjamnia@cs.fit.edu</td>
+    <td align=left>Responsible for the creation of the software
+         product. Primary responsibilities include: 1) cost and
+         schedule performance of the team; 2) authoring the
+         requirements and specification document; 3) advising on
+         overall design; and 4) supervising implementation and
+         testing.</td>
+  <tr>
+    <td align=left>Project<br>Administrator</td>
+    <td align=center>Hung Ju<br>(Henry)<br>Cho<br>
+         hcho@cs.fit.edu</td>
+    <td align=left>Responsible for resource allocation and
+         tracking. Primary responsiblities are cost analysis and 
+         control, computer and human resource acquisition and
+         supervision. Collects data and issues bi-weekly 
+         cost/manpower consumption reports and the final report.</td>
+  <tr>
+    <td align=left>Configuration/<br>Data Manager</td>
+    <td align=center>Hsin-Chi<br>(Dillon)<br>Chen<br>
+         hchen@cs.fit.edu</td>
+    <td align=left>Responsible for change control. Primary
+         responsibilities include the configuration management plan,
+         tracking change requests and discrepancy reports, calling
+         and conducting change control board meetings, archiving, and
+         preparing product releases. Also responsible for final
+         preparation of all documentation prior to delivery to 
+         the "customer". Ensures documents are delivered in
+         accordance with program milestones. Establishes the program
+         documentation standard and ensures all documents conform.</td>
+  <tr>
+    <td align=left>Test and<br>Evaluation<br>Engineer</td>
+    <td align=center>Yuh-Sheue<br>(Rosa)<br>Chen<br>
+         rcs12428@cs.fit.edu</td>
+    <td align=left>Responsible for testing and evaluating individual
+         modules and subsystems and for preparing the appropriate
+         test plans and test documentation.</td>
+  <tr>
+    <td align=left>Designer</td>
+    <td align=center>Somrak<br>Bhakdisuparit<br>
+         sbhakdis@winnie.fit.edu</td>
+    <td align=left>Primary responsibility for developing aspects of
+         the design as specified by the Task Leader; includes
+         assessing the impact of alternative implementations
+         for proposed changes.</td>
+  <tr>
+    <td align=left>Implementor</td>
+    <td align=center>Paul<br>Bryer<br>
+         pbryer@cs.fit.edu</td>
+    <td align=left>Primary responsibility is to implement the 
+         individual modules of the design and serve as the technical
+         specialist for the programming language and operating
+         system. During the requirements specification and design
+         stages, the implementor could develop tools and experiment
+         with unfamiliar language features needed for the project.</td>
+</table></center>
+<hr>
+
+-- Return to <!WA31><a href="#top">top</a>, or:<br>
+1. <!WA32><a href="#Fact Sheet">Fact Sheet</a>; 2. <!WA33><a href="#Syllabus">
+  Syllabus</a>; 3. <!WA34><a href="#Roles">Roles</a>; 4. <!WA35><a href="#PDRL">
+  PDRL</a>; 5. <!WA36><a href="#Assmt 1"> Assignment #1</a>; 
+  6. <!WA37><a href="#Assmt 2">Assignment #2</a>; 
+  7. <!WA38><a href="#Assmt 3">Assignment #3</a>; 
+  8. <!WA39><a href="#Assmt 4">Assignment #4</a>.</p>
+
+<!-------------------PROJECT DELIVERABLES-------------------------->
+<center><!WA40><img src="http://cs.fit.edu/~ellis/redwhblu.gif"></center><br>
+<a name="PDRL">
+<center><h2>Project Deliverable Requirements List</h2></center>
+<center><table border>
+    <th align=center>Item Num.</th>
+    <th align=center>Document Name</th>
+    <th aligh=center>Responsibility</th>
+  <tr>
+    <td align=center>A001</td>
+    <td align=left>Software Development Plan</td>
+    <td align=left>Task Leader</td>
+  <tr>
+    <td align=center>A002</td>
+    <td align=left>Software Configuration Management Plan</td>
+    <td align=left>Configuration/Data Manager</td>
+  <tr>
+    <td align=center>A004</td>
+    <td align=left>Program Documentation Standards</td>
+    <td align=left>Configuration/Data Manager</td>
+  <tr>
+    <td align=center>A005</td>
+    <td align=left>Coding Standard / Maintenance Manual</td>
+    <td align=left>Configuration/Data Manager</td>
+  <tr>
+    <td align=center>A006</td>
+    <td align=left>Cost / Schedule Status Report (bi-weekly)</td>
+    <td align=left>Project Administrator</td>
+  <tr>
+    <td align=center>A007</td>
+    <td align=left>Software Requirements Specification</td>
+    <td align=left>Task Leader</td>
+  <tr>
+    <td align=center>A008</td>
+    <td align=left>Interface Requirements Specification</td>
+    <td align=left>Task Leader</td>
+  <tr>
+    <td align=center>A009</td>
+    <td align=left>Software Design Document</td>
+    <td align=left>Designer</td>
+  <tr>
+    <td align=center>A010</td>
+    <td align=left>Test Plan</td>
+    <td align=left>Test and Evaluation Engineer</td>
+  <tr>
+    <td align=center>A011</td>
+    <td align=left>User Manuals
+    <td align=left>Task Leader</td>
+  <tr>
+    <td align=center>A012</td>
+    <td align=left>Code</td>
+    <td align=left>Implementor</td>
+  <tr>
+    <td align=center>A013</td>
+    <td align=left>Test Report</td>
+    <td align=left>Test and Evaluation Engineer</td>
+</table></center>
+<hr>
+
+-- Return to <!WA41><a href="#top">top</a>, or:<br>
+1. <!WA42><a href="#Fact Sheet">Fact Sheet</a>; 2. <!WA43><a href="#Syllabus">
+  Syllabus</a>; 3. <!WA44><a href="#Roles">Roles</a>; 4. <!WA45><a href="#PDRL">
+  PDRL</a>; 5. <!WA46><a href="#Assmt 1"> Assignment #1</a>; 
+  6. <!WA47><a href="#Assmt 2">Assignment #2</a>; 
+  7. <!WA48><a href="#Assmt 3">Assignment #3</a>; 
+  8. <!WA49><a href="#Assmt 4">Assignment #4</a>.</p>
+
+<!-------------------ASSIGNMENT #1-------------------------->
+<center><!WA50><img src="http://cs.fit.edu/~ellis/redwhblu.gif"></center><br>
+<a name="Assmt 1"><Center><h2>Assignment #1</h2></center></a>
+<p><strong>NOTE:</strong> <em>Everyone MUST keep track of the 
+hours spent on project activities. Turn in weekly activity report
+forms to the Project Administrator.</em>
+<h3>Task Leader:</h3>
+<ul>
+  <li> Familiarize yourself with the present design of the Low Cost
+       Flight Simulator (LCFS) program. Write a report on your general
+       impressions of the design and utility of this product. Include
+       a description of the major deficiencies you have found.
+  <li> Review the Requirements Document to ensure that it reflects the
+       present configuration of the product. Identify any requirements
+       that the baselined software fails to satisfy or code features
+       not explicitly required.
+  <li> Establish key project objectives. Specify major project activites
+       (both development and support) and identify key project 
+       milestones. Establish an initial project schedule.
+  <li> Provide the Project Administrator with salary figures for all
+       personnel.
+  <li> Locate at least two references on "cleanroom software development".
+       Provide a short summary of the salient features of this approach,
+       including a projection of its applicability to your project.
+</ul>
+<h3>Project Administrator:</h3>
+<ul>
+  <li> Create Weekly Activity Report (WAR) forms to allow all team
+       members to report their hours expended for specific individual
+       tasks. Coordinate the design of this form with the Task Leader
+       to ensure it captures all costs.
+  <li> Working with the project schedule and salary figures developed
+       by the Task Leader, assign preliminary earned values to each
+       milestone. Plot the planned value of the scheduled milestones
+       against time for the duration of the project (i.e., the 
+       "Budgeted Cost of Work Scheduled" - BCWS line). This becones
+       the baseline program plan.
+  <li> Collect actual costs for the project start-up activities through
+       25 Jan 96 by interviewing each of the team members. Include
+       this initial cost in all project status reports.
+  <li> Prepare an initial Cost-Schedule Status Report (CSSR) that
+       shows the BCWS for the entire project and the initial cost
+       (i.e., initial "Actual Cost of Work Performed" - ACWP).
+  <li> For the duration of the project, collect the Weekly Activity
+       Reports from each team member and prepare CSSRs (updating
+       the ACWP and "Budgeted Cost of Work Performed" - BCWP) every
+       other week. Present the bi-weekly CSSR to the team with hard
+       copies to the Task Leader and the "customer".
+</ul>
+<h3>Configuration/Data Manager:</h3>
+<ul>
+  <li> Investigate and write a short report on the availability of
+       Software Configuration Management (SCM) tools that run on the
+       PC. Make a recommendation to the Task Leader as to whether a
+       SCM tool should be used during the project. If the recommendation
+       is to use a SCM tool, recommend which one.
+  <li> Collect all existing project documents and establish a project
+       library for the other team members. Establish a log to track
+       who has copies of controlled documents. Establish procedures
+       for the distribution and authorization to make changes to the
+       documents.
+  <li> Establish criteria for placing all new documents and code
+       under configuration control.
+  <li> Design the format (hard copy and/or soft copy) for discrepancy
+       reports and change requests.
+  <li> Write a Configuration Management Plan that defines how SCM will
+       be applied to this program. Be sure the plan is complete and
+       covers such topics as baseline definition, change management,
+       etc.
+  <li> Coordinate all SCM plans with the Task Leader. With Task Leader
+       approval, report to the team how SCM will be accomplished during
+       the project, including tools and their use, procedures, use of
+       forms, make-up of the Software Configuration Control Board
+       (SCCB), etc.
+  <li> Evaluate existing program documentation for consistency of 
+       format. Identify common deficiencies and those of individual
+       documents. Prepare a report that documents your findings.
+  <li> Generate a Documentation Standard that defines the required
+       format for all program documents. Consider the effects on
+       current documents.
+  <li> Generate a Coding Standard / Maintenance Manual that describes
+       how all program source code should be formatted to enhance
+       product maintainability. Besides issues relating to readability,
+       be sure to include module identification with program header
+       and logic description with embedded comments, and traceability
+       of implementation back to design documentation.
+</ul>
+<h3>Test and Evaluation Engineer:</h3>
+<ul>
+  <li> Locate papers on testing object-oriented programs. Determine
+       the unique characteristics, if any, of testing OO programs.
+       Coordinate with the Task Leader to establish the target
+       platform configuration for the project product. Determine what
+       testing aids are available for C++ programs on the target
+       platform. Prepare a written report evaluating what you have
+       learned.
+  <li> Generate a Test Plan document that fully describes how software
+       testing will be conducted and documented for the program.
+</ul> 
+<h3>Designer:</h3>
+<ul>
+  <li> Locate papers on software design approaches. Write a brief
+       report that summarizes the differences between Object-Oriented
+       Design and Structured Design.
+  <li> Review any existing program design material. Compare the
+       documented design against the actual code to identify any
+       inconsistencies.
+  <li> Structure the existing design data into a design document that
+       identifies the top-level (architecture) design and detailed
+       design. Update to reflect any inconsistencies you found
+       between the design documentation and the implemented code.
+  <li> As necessary, assist the Team Leader and Implementor in
+       evaluating proposed product changes by suggesting designs
+       (consistent with the current design) to implement those
+       changes.
+</ul>
+<h3>Implementor:</h3>
+<ul>
+  <li> Locate and study references on the Object-Oriented Programming
+       in the C++ programming language. Concentrate on the concepts
+       of the classes and inheritance.
+  <li> Write a short report that summarizes how OO structures are
+       implemented in the C++ language, and make the report available
+       to the Designer and Task Leader.
+  <li> Coordinate the preparation of the Coding Standard / Maintenance
+       Manual with the Configuration/Data Manager.
+  <li> As necessary, assist the Task Leader and Designer in evaluating
+       the implementation impact of suggested designs. Be aware of
+       Commercial-Off-The-Shelf (COTS) and/or public domain/shareware
+       software that is available to the team to assist in the
+       implementation.
+</ul>
+<hr>
+-- Return to <!WA51><a href="#top">top</a>, or:<br>
+1. <!WA52><a href="#Fact Sheet">Fact Sheet</a>; 2. <!WA53><a href="#Syllabus">
+  Syllabus</a>; 3. <!WA54><a href="#Roles">Roles</a>; 4. <!WA55><a href="#PDRL">
+  PDRL</a>; 5. <!WA56><a href="#Assmt 1"> Assignment #1</a>; 
+  6. <!WA57><a href="#Assmt 2">Assignment #2</a>; 
+  7. <!WA58><a href="#Assmt 3">Assignment #3</a>; 
+  8. <!WA59><a href="#Assmt 4">Assignment #4</a>.</p> 
+
+<!-------------------ASSIGNMENT #2-------------------------->
+<center><!WA60><img src="http://cs.fit.edu/~ellis/redwhblu.gif"></center><br>
+<a name="Assmt 2"><Center><h2>Assignment #2</h2></center></a>
+<p><strong>NOTE:</strong> <em>Everyone MUST keep track of the 
+hours spent on project activities. Turn in weekly activity report
+forms to the Project Administrator.</em>
+<p><em>Although individual assignments are due on 27 Feb, most 
+work will have to be done well in advance of this date in order 
+for the project to remain on schedule.</em>
+
+<h3>Task Leader:</h3>
+<ul>
+  <li>Write Change Requests/Discrepancy Report(s) [CR/DRs] against 
+      the Requirements Document and/or source code to reflect 
+      inconsistencies between them. Turn CR/DR in to the 
+      Configuration Manager.
+  <li>Support your CR/DRs at the Software Configuration Control 
+      Board (SCCB) meeting at which they are presented.
+  <li>If the SCCB authorizes changes to the Requirements Document, 
+      log out the document with the Configuration Manager and make 
+      all authorized changes. Return the updated document to the 
+      Configuration Manager.
+  <li>If changes to the code are authorized by the SCCB as the result 
+      of your CR/DRs, coordinate changes with the designer and 
+      implementor, as required.
+  <li>Recommend at least one significant change (not associated with 
+      a discrepancy) for the LCFS product. Turn CR(s) in to the 
+      Configuration Manager.
+</ul>
+
+<h3>Project Administrator:</h3>
+<ul>
+  <li>Collect Weekly Activity Reports (WARs) weekly and prepare 
+      bi-weekly Cost/Schedule Status Reports (C/SSRs) for presentation 
+      to the team & customer with hard copies to the Task Leader and 
+      customer.
+  <li>Discuss the expected “effort remaining” with each team member. 
+      Coordinate remaining tasks with the Task Leader. If necessary, 
+      update the estimated Cost At Completion (EAC).
+</ul>
+
+<h3>Configuration/Data Manager:</h3>
+<ul>
+  <li>Collect CR/DRs from other team members. Log all CR/DRs into 
+      your records, assign numbers, and schedule review at SCCB 
+      meetings.
+  <li>Administer the SCCB meeting(s).
+  <li>Describe your proposed CM Plan with the SCCB. Ensure all team 
+      members understand the  processing you defined in your CM Plan.
+  <li>Coordinate release and re-baselining of other documents to 
+      which the SCCB has authorized changes.
+  <li>Prepare a configuration status report for the customer.
+</ul>
+
+<h3>Test and Evaluation Engineer:</h3>
+<ul>
+  <li>Conduct regression tests of the baselined LCFS program to 
+      determine whether or not the product functions properly and 
+      the test suite (in the test plan) matches the product 
+      capabilities. With the assistance of the implementor, write at 
+      least two original tests to test some section of the product 
+      not covered by the current test suite. Report the results of 
+      testing to the customer.
+  <li>Write CR/DRs against the Test Plan identifying any inadequacies. 
+      Coordinate all proposed changes with the Task Leader to ensure 
+      that the changes will not degrade the quality of the developed 
+      product. Turn CR/DRs in to the Configuration Manager.
+  <li>Support your CR/DRs at the SCCB meeting at which they are 
+      presented.
+  <li>If changes to the test documents are authorized by the SCCB, log 
+      out the document with the Configuration Manager and make all 
+      authorized changes. Return the updated document to the 
+      Configuration Manager.
+</ul>
+
+<h3>Designer:</h3>
+<ul>
+  <li>Write CR/DRs against your Design Document, identifying 
+      inadequacies in their content (especially when compared to the 
+      development requirements). Turn CR/DRs in to the Configuration 
+      Manager.
+  <li>Support your CR/DRs at the SCCB meeting at which they are 
+      presented.
+  <li>If changes to the design documents are authorized by the SCCB, 
+      log out the document(s) with the Configuration Manager and make 
+      all authorized changes. Return the updated document(s) to the 
+      Configuration Manager.
+  <li>Coordinate with the Task Leader regarding the implementation of 
+      any proposed enhancements/changes to the LCFS system. Establish 
+      the feasibility of an implementation, considering technical, 
+      cost, and schedule factors. Be prepared to present (and justify) 
+      your findings to the SCCB when the change(s) is(are) considered.
+</ul>
+
+<h3>Implementor:</h3>
+<ul>
+  <li>Write CR/DRs against the Coding Standard / Maintenance Manual, 
+      reflecting any inadequacies found during your review. Turn CR/DRs 
+      in to the Configuration Manager.
+  <li>Support your CR/DRs at the SCCB meeting at which they are 
+      presented. Justify any proposed changes to the existing standard 
+      in terms of their effects on the existing code and on-going 
+      activities.
+  <li>If changes to the Coding Standard / Maintenance Manual are 
+      authorized by the SCCB, log out the document with the 
+      Configuration Manager and make all authorized changes. Return the 
+      updated document to the Configuration Manager.
+  <li>Assist the Test and Evaluation Engineer in developing new tests.
+  <li>Work with the designer to evaluate the implementation of proposed 
+      changes.
+  <li>Turn in any code that you write in helping other project team 
+      members.
+</ul>
+
+<hr>
+-- Return to <!WA61><a href="#top">top</a>, or:<br>
+1. <!WA62><a href="#Fact Sheet">Fact Sheet</a>; 2. <!WA63><a href="#Syllabus">
+  Syllabus</a>; 3. <!WA64><a href="#Roles">Roles</a>; 4. <!WA65><a href="#PDRL">
+  PDRL</a>; 5. <!WA66><a href="#Assmt 1"> Assignment #1</a>; 
+  6. <!WA67><a href="#Assmt 2">Assignment #2</a>; 
+  7. <!WA68><a href="#Assmt 3">Assignment #3</a>; 
+  8. <!WA69><a href="#Assmt 4">Assignment #4</a>.</p> 
+
+<!-------------------ASSIGNMENT #3-------------------------->
+<center><!WA70><img src="http://cs.fit.edu/~ellis/redwhblu.gif"></center><br>
+<a name="Assmt 3"><Center><h2>Assignment #3</h2></center></a>
+<p><strong>NOTE:</strong> <em>Everyone MUST keep track of the 
+hours spent on project activities. Turn in weekly activity report
+forms to the Project Administrator.</em>
+<p><i>Although individual assignments are due on 26 Mar, most work 
+will have to be done well in advance of this date in order for the 
+project to remain on schedule.</i>
+
+<h3>Task Leader:</h3>
+<ul>
+  <li>Continue to manage the team’s activities.
+   <li>Finalize the requirements statements for all approved requirements changes
+       being added to the LCFS product.    <li>Update the requirements document 
+       to add the customer approved requirements to the product.
+   <li>Prepare a project status report for the customer, which:
+   <ul>
+      <li>Highlights major milestones specified to date and indicates the team’s 
+          ability to meet those milestones. 
+      <li>Identifies milestones remaining through completion of the project.
+      <li>Includes cost data provided by the Project Administrator.
+      <li>Includes a configuration status (status of CR/DRs, etc.) provided by 
+          the Configuration Manager.
+      <li>Includes an evaluation of the management style applied to the project 
+          so far. If it has not been effective, offer suggestions as to how a 
+          change might improve project performance.
+   </ul>
+</ul>
+<h3>Project Administrator:</h3>
+<ul>
+  <li>Continue to collect WARs and provide bi-weekly C/SSRs.
+  <li>Discuss the expected “effort remaining” with each team member. Coordinate 
+      remaining tasks with the Task Leader. If necessary, update the EAC.
+</ul>
+<h3>Configuration/Data Manager:</h3>
+<ul>
+   <li>Continue to maintain documents and code under configuration control. 
+       Maintain records for all CR/DRs.
+   <li>Audit all document and code changes made to date to ensure that only 
+       changes authorized by a CR/DR have been made when items are returned to 
+       configuration control. Provide the Task Leader and customer with an audit 
+       report.
+   <li>Provide the Task Leader with a configuration status report.
+</ul>
+<h3>Test and Evaluation Engineer:</h3>
+<ul>
+  <li>Prepare for the unit, integration, and final testing of the approved 
+      CR/DRs for the LCFS product. Write additional tests to verify sections 
+      you feel are not fully covered by existing tests. Conduct testing of the 
+      LCFS program changes in accordance with the project schedule.
+  <li>Supply new tests to verify any code changes.
+  <li>Report to the Task Leader on the adequacy of your previous product tests 
+      for inclusion in her customer report. Include a recommendation on what 
+      should be done with the LCFS program: release it, change it, etc.
+</ul>
+<h3>Designer:</h3>
+<ul>
+  <li>Complete the design of the approved changes to the LCFS code as authorized 
+      by the SCCB. Coordinate your ideas with the Implementor (the primary user 
+      of these documents).
+  <li>Present your design at the Preliminary Design Review (PDR) and Critical 
+      Design Review (CDR). Respond to any action items that may be assigned during 
+      these reviews.
+  <li>Make necessary updates to the design documents.
+</ul>
+<h3>Implementor:</h3>
+<ul>
+  <li>Implement the approved changes to the LCFS program that are approved by the
+      SCCB and defined by the Designer.
+  <li>Turn in any code that you wrote during this time.
+</ul>
+
+<hr>
+-- Return to <!WA71><a href="#top">top</a>, or:<br>
+1. <!WA72><a href="#Fact Sheet">Fact Sheet</a>; 2. <!WA73><a href="#Syllabus">
+  Syllabus</a>; 3. <!WA74><a href="#Roles">Roles</a>; 4. <!WA75><a href="#PDRL">
+  PDRL</a>; 5. <!WA76><a href="#Assmt 1"> Assignment #1</a>; 
+  6. <!WA77><a href="#Assmt 2">Assignment #2</a>; 
+  7. <!WA78><a href="#Assmt 3">Assignment #3</a>; 
+  8. <!WA79><a href="#Assmt 4">Assignment #4</a>.</p> 
+
+<!-------------------ASSIGNMENT #4-------------------------->
+<center><!WA80><img src="http://cs.fit.edu/~ellis/redwhblu.gif"></center><br>
+<a name="Assmt 4"><Center><h2>Assignment #4</h2></center></a>
+<p><strong>NOTE:</strong> <em>Everyone MUST keep track of the 
+hours spent on project activities. Turn in weekly activity report
+forms to the Project Administrator.</em>
+<p>
+<i>Although individual assignments are due on 23 Apr, most work will 
+have to be done well in advance of this date in order for the project 
+to remain on schedule.</i>
+
+<h3>Task Leader:</h3>
+<ul>
+  <li>Continue to manage the team's activities.
+  <li>Prepare a final project report for the customer.
+     <ul>
+        <li>Summarize the project objectives and describe how your 
+            management plan addressed the objectives. Do you feel that 
+            you managed the development process or were you a victim of 
+            circumstances?
+        <li>Describe the Software Engineering principles that you applied 
+            during the project.
+        <li>Summarize the performance of each of your team members in 
+            fulfilling their individual roles. Be sure to mention things 
+            that they did to demonstrate their understanding of their role 
+            responsibilities.
+        <li>Describe the lessons you learned from this exercise. Suggest 
+            what you might have done differently to improve the success of 
+            the project.
+     </ul>
+</ul>
+<h3>Project Administrator:</h3>
+<ul>
+  <li>Continue to collect WARs and provide bi-weekly C/SSRs.
+  <li>Prepare a final project report for the customer.
+     <ul>
+        <li>Provide a final C/SSR as of 18 Apr 96. Project any remaining 
+            work to show the current EAC.
+        <li>Summarize your activities during the project. Describe how your 
+            efforts contributed to the overall project effectiveness. Do you 
+            feel that your data was considered in making project decisions? 
+            Should it have been?
+        <li>Describes the lessons you learned from this exercise. Suggest 
+            what you might have done differently to improve the success of the 
+            project.
+     </ul>
+</ul>
+<h3>Configuration/Data Manager:</h3>
+<ul>
+  <li>Continue to maintain documents and code under configuration control. 
+      Maintain records for all CR/DRs. Ensure that, at project's end, the 
+      final tested configuration is under formal control.
+  <li>Provide the customer with hard copy/soft copy of all documents 
+      prepared/modified during the project.
+  <li>Prepare a final project report for the customer.
+     <ul>
+        <li>Provide a copy of all CR/DRs submitted during the project. Include 
+            a final disposition report of all CR/DRs.
+        <li>Summarize your activities during the project. Describe how your 
+            efforts contributed to the overall project effectiveness. Do you 
+            feel that your policies in managing the configuration aided or 
+            hindered the progress of the team?
+        <li>Describe the lessons you learned from this exercise. Suggest what 
+            you might have done differently to improve the success of the 
+            project.
+     </ul>
+</ul>
+<h3>Test and Evaluation Engineer:</h3>
+<ul>
+  <li>Continue to perform/document testing associated with code generated 
+      or changed on the project.
+  <li>Lead the final product demonstration.
+  <li>Prepare a final project report for the customer.
+     <ul>
+        <li>Include a description of all testing activities you performed 
+            during the project. Indicate where you found the need for new 
+            test cases and describe the test cases you provided.
+        <li>Describe how your efforts contributed to the overall project 
+            effectiveness. Do you feel that your findings aided or hindered 
+            the progress of the team?
+        <li>Describe the lessons you learned from this exercise. Suggest 
+            what you might have done differently to improve the success of 
+            the project.
+     </ul>
+</ul>
+<h3>Designer:</h3>
+<ul>
+  <li>Prepare a final project report for the customer.
+     <ul>
+        <li>Summarize your activities during the project. Describe how your 
+            efforts contributed to the overall project effectiveness.
+        <li>Describe the design methodology you used for the new software 
+            design. Was the output of this methodology easily understood by 
+            other team members?
+        <li>Describe the lessons you learned from this exercise. Suggest what 
+            you might have done differently to improve the success of the 
+            project.
+     </ul>
+</ul>
+<h3>Implementor:</h3>
+<ul>
+  <li>Continue to support required implementation changes to the product.
+  <li>Prepare a final project report for the customer.
+     <ul>
+        <li>Summarize your activities during the project. Describe the code 
+            that you generated during this project. Describe how your efforts 
+            contributed to the overall project effectiveness.
+        <li>Describe the lessons you learned from this exercise. Suggest what 
+            you might have done differently to improve the success of the 
+            project.
+     </ul>
+</ul>
+
+<hr>
+-- Return to <!WA81><a href="#top">top</a>, or:<br>
+1. <!WA82><a href="#Fact Sheet">Fact Sheet</a>; 2. <!WA83><a href="#Syllabus">
+  Syllabus</a>; 3. <!WA84><a href="#Roles">Roles</a>; 4. <!WA85><a href="#PDRL">
+  PDRL</a>; 5. <!WA86><a href="#Assmt 1"> Assignment #1</a>; 
+  6. <!WA87><a href="#Assmt 2">Assignment #2</a>; 
+  7. <!WA88><a href="#Assmt 3">Assignment #3</a>; 
+  8. <!WA89><a href="#Assmt 4">Assignment #4</a>.</p> 
+
+<center><!WA90><img src="http://cs.fit.edu/~ellis/redwhblu.gif"></center><br>
+</body>
+</html>

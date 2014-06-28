@@ -1,0 +1,111 @@
+Server: Netscape-Communications/1.1
+Date: Tuesday, 14-Jan-97 23:01:09 GMT
+Last-modified: Thursday, 28-Mar-96 23:04:12 GMT
+Content-length: 2366
+Content-type: text/plain
+
+CSE480 Lecture Notes
+February 1, 1996
+
+Remote Procedure Call
+
+picture
+
+Goal: make RPC transparent (i.e., behave just like proc call)
+
+Potential Problems
+- address space
+- parameters
+- failtures
+
+Basic RTC
+- normal procedure call
+- count = read(fd,buf,nbytes)   Fig 2-17
+
+Parameters
+- call-by-value
+- call-by-reference
+- call-by-copy/restore  (e.g., Ada's in/out)
+
+
+RPC implementation uses client stubs in the place
+acutal procedure code (Fig 2-18)
+
+10 steps at client
+
+Parameter Passing
+
+- parameter marschalling -- packing paramenters into a msg
+- n = sum(4,7)   Fig 2-19
+
+- how to handle different data represenations
+  EBCDIC, ASCII, Universial ASCII
+  floating point numbers
+  little endian (bytes from right to left, 486)
+  big endian (bytes from left to right, SPARC)
+  e.g., Fig 2-20    5  "JILL"
+  two approaches
+  i) direct conversion (n * (n-1) translators)
+ ii) cannonical represenation; e.g., XDR
+
+- how to handle pointers
+  address at 1000
+  copy and use internal offset
+  tree structure
+  recursive structure
+
+Dynamic binding
+
+- how to locate a server
+- how to register a server
+- (name, version, handle, unique-id)
+
+RPC Semantics in the Presence of Failures
+
+- goal: RPC behave like local procedure call
+
+1) cannot locate the server
+
+- server down
+- version mismatch
+- raise an exception
+
+2) request msg is lost
+
+- use timer and resend request msg
+
+3) reply msg is lost
+
+- use timer and resent another request
+- server need to tell whether the request is duplicate
+  unless the request is idempotent
+  i) make all request idempotent
+     e.g., read (fd, buf, n)
+           read (fd, buf, pos, n)
+           deposit (money) -- not possible to make it idempotent
+ ii) assign request nos and keep track
+
+4) server crashes after receiving a request
+
+- unique no not enough since cannot know whether or not RPC done
+- Fig 2-24, (b) and (c) cannot be distinguished
+  raise an except if RCP not complete
+  retransmit the reply/request
+
+- Possible Semantics
+  0) do nothing
+  i) at least once
+ ii) at most once
+iii) exactly once (not possible to implement)
+
+5) client crashes after sending a request
+
+- make request and then crash
+- orphan -- computation active not no parent
+- potential problems -- waste cycles, etc.
+- how to deal with orphans
+  i) extermination
+ ii) reincarnation
+iii) expiration
+
+- killing orphans may not be desirable (e.g., hold locks)

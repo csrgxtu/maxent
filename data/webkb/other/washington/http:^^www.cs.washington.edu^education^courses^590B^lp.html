@@ -1,0 +1,82 @@
+Date: Mon, 02 Dec 1996 15:18:34 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+<title>CSE 590B: Graphics Seminar: Linear programming</title>
+</head>
+<body>
+<h2>Linear programming</h2>
+
+
+<em>Oops... Chuck was sick.  Ronen subbed in without slides.  Here's the
+notes he spoke from:</em>
+<dl><dd>
+<pre>
+- Define linear programming  (NR 10.8.1-10.8.5)
+
+    objective function
+    nonnegative values (amount of stuff).
+        combinatorial hard
+        polynomial hard
+
+    define quadratic programming (M 1.11)
+        NP hard
+        algorithms for PSD case
+        (example? mimum distance, M p.26,27)
+
+- geometric interpretation
+    simplex
+    solution on the boundary -- at a vertex
+    (no solution if it's open and maximum "spills"
+
+- define:
+    feasible vector
+    feasible basic vector (vertex)
+
+   (no feasible vectors if it's overconstrained)
+
+- combinatorial problem: which vertex?
+
+
+- slack variables.  turn inequalities into equalities.
+  turn things into standard form.
+
+
+
+- techniques:
+    simplex method -- generally fast, worst-case exponential
+        searches vertices
+    ellipsoid method -- provably polynomial, impractical
+        closes in on vertices
+    karmakar -- provably polynomial, arguably practical
+        searches interior points
+
+
+- do simplex method for reduced form. (NR 10.8.8, 10.8.9)
+
+
+- define linear complementary problem (M 1.6-1.8)
+    note:  square matrix
+           choice of w or z is 0
+
+           no objective function!
+
+
+- turn LP into LCP (M 1.9-1.10)
+
+- turn LCP into quadratic
+    (trivial: minimize sum of w.z.  better be 0!)
+
+- can also turn quadratic into LCP.
+    (too hard!)
+</pre></dl>
+<em>In the above,</em>
+<ul>
+    <li> <tt>NR</tt> refers to NUMERICAL RECIPES
+    <li> <tt>M</tt> refers to K.G.Murty, LINEAR COMPLEMENTARITY
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+Date: Tue, 14 Jan 1997 20:02:28 GMT
+Server: NCSA/1.5.2
+Last-modified: Thu, 01 Feb 1996 16:05:16 GMT
+Content-type: text/html
+Content-length: 2589
+
+<html>
+<head>
+<title>CS111 Spring 96 Procedures Project</title>
+</head>
+<body>
+<h1>CS111 Spring 96</h1>
+<h2>Procedures Project</h2>
+<h3>Due L7</h3>
+<h3>By Louis Steinberg</h3>
+
+The purpose of this assignment is apply what you have learned about
+procedures and parameters to the task of actually writing a program.
+The actual computations will be trivial - the point is to use a good,
+modular structure of procedures, and to use parameters properly to
+communicate data to and from the procedures.<p>
+
+Suppose we have two people (call them Player 1 and Player 2), who have
+played several games of tic tac toe.  They have kept track of how many
+games each player won, and now they want to compute what percent of
+the games they each won.  To make things very simple, we will assume
+that none of the games ended in a tie - that is, one or the other
+player won each time.<p>
+
+Write a program that reads the number of games each player won, and
+prints the percentage each won.  For instance, a run of the program
+might look like this:<p>
+
+<pre>
+    COMPUTE PERCENTAGE OF WINS
+
+    How many games did player 1 win?     4
+    How many games did player 2 win?     8
+
+    Player 1 won 33.3333   % of the games.
+    Player 2 won 66.6666   % of the games.
+</pre>
+<p>
+The numbers 4 and 8 were typed by the person using the program, and the
+rest was printed on the screen by the program.<p>
+
+<b>Hints:</b><p>
+
+<ul>
+<li>Your program does not have to space things exactly this way - e.g. your
+program might print
+
+<pre>
+    How many games did player          1  win?
+</pre>
+
+<li>Your program may print more or less digits for the percentages, e.g.
+it may print 66.66 or 66.666666.
+
+<li>Since there are no ties, the total number of games is just the sum
+of the number of games player 1 won and the number player 2 won.
+
+<li>Make your program as modular as the program on pages 132-133 of the
+textbook.  Your main program should consist of nothing but comments
+and procedure calls.  Also, when your program does essentially the
+same piece of computation or printing more than once, use a procedure
+or function to do the work instead of duplicating the statements that
+do that computation or printing.
+</ul>
+<p>
+Hand in a printout of your program, and a printout of a run of your
+program.<p>
+
+
+<b>****   YOU MUST PUT YOUR NAME, SECTION NUMBER, ID NUMBER, AND TA'S NAME IN A COMMENT AT THE BEGINNING OF YOUR PROGRAM  ****</b><br>
+
+E.g:<p>
+<pre>
+        Program ProcedureProject (input, output);
+        { Bobby Jones }
+        { 1234-56-78}
+        { Section 16 }
+	{ TA: J. Smith}
+</pre>
+<p>
+</body>
+</html>
+

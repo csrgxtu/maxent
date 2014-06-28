@@ -1,0 +1,101 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 20:27:05 GMT
+Content-Type: text/html
+Content-Length: 2760
+Last-Modified: Friday, 26-Apr-96 04:38:31 GMT
+
+<!-- File: HorusStack.html -->
+<!-- Author: David A Karr -->
+<!-- Contents: Demonstration of Horus stacking verification -->
+<!-- Created: Apr 1996 -->
+
+<html>
+<head>
+<title>Find Properties of Horus Stacks</title>
+<link rev="made" href="mailto:karr@cs.cornell.edu (David Karr)">
+</head>
+<body>
+
+<h1>Find Properties of Horus Stacks</h1>
+
+<p>
+<!WA0><!WA0><!WA0><!WA0><a href="http://www.cs.cornell.edu/Info/Projects/HORUS/hardening/validity.html"
+><!WA1><!WA1><!WA1><!WA1><img src="http://www.cs.cornell.edu/Info/Projects/HORUS/hardening/leftarrow.gif" align=center alt="[Back]:"></a>
+See also
+<!WA2><!WA2><!WA2><!WA2><a href="http://www.cs.cornell.edu/Info/Projects/HORUS/hardening/validity.html">Validating the Horus Protocols</a>
+</p>
+
+
+<hr>
+
+<p>
+The tool below allows you to build Horus stacks and see interactively
+what kind of communications properties they will give you.
+</p>
+
+<p>
+In ``Add/delete'' mode,
+click on a ``network'' button (lower right-hand side of the applet)
+to define or redefine which network you'll be working over.
+Click on the ``layers'' buttons at the right to drop new layers
+on top of the stack.
+Click on layers in the stack to delete them.
+Look on the left side to see what kind of properties the designer
+of a user application over this stack might want to provide,
+and the properties that the protocol stack will provide when the
+application provides the checked-off properties.
+(If you see checkboxes, you can click on them to experiment with 
+providing or not providing the requested properties.)
+</p>
+
+<p>
+In ``Document'' mode, clicking on the name of a layer or property
+will produce a window describing the layer or property.
+</p>
+
+<p>
+Try stacking the SIGN and NAK layers on top of UDP.
+Notice that it makes a big difference in which order the layers are
+stacked.
+Notice that CHKSUM and NAK over UDP is not very good (because
+the stack is subject to attacks by an intruder), but if you replace
+UDP with a physically secure network (called Secure in this demo)
+you do better.
+</p>
+
+<p> 
+Notice that you can remove the MaxSend application requirement by
+adding the appropriate-sized FRAG layer on top of NAK.  
+This is the usual approach.
+A less usual approach is to put FRAG directly over the network,
+and layer SIGN (or CHKSUM, depending on the security of your network)
+and NAK on top of that.  Try it.
+</p>
+
+<p>
+<APPLET CODE="HorusStack.class" Height=360 Width=540
+>(The interactive Horus stack property-finder should appear
+in this space.  You must not have the ability to run Java applets.
+Too bad!)
+</APPLET>
+
+<p>
+<!WA3><!WA3><!WA3><!WA3><a href="http://www.cs.cornell.edu/Info/Projects/HORUS/hardening/validity.html"
+><!WA4><!WA4><!WA4><!WA4><img src="http://www.cs.cornell.edu/Info/Projects/HORUS/hardening/leftarrow.gif" align=center alt="[Back]:"></a>
+See also
+<!WA5><!WA5><!WA5><!WA5><a href="http://www.cs.cornell.edu/Info/Projects/HORUS/hardening/validity.html">Validating the Horus Protocols</a>
+</p>
+
+
+<p>
+<hr>
+Copyright Fri Apr 26 00:03:12 EDT 1996 by Cornell University. <br>
+Maintained by
+<!WA6><!WA6><!WA6><!WA6><a href="http://www.cs.cornell.edu/home/karr/karr.html">David A. Karr</a>.
+Send corrections to
+<!WA7><!WA7><!WA7><!WA7><a href="mailto:karr@cs.cornell.edu">karr@cs.cornell.edu</a>.
+</p>
+
+</body>
+</html>

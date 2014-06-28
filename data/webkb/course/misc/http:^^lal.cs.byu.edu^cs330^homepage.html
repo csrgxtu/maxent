@@ -1,0 +1,421 @@
+Date: Wed, 20 Nov 1996 21:56:02 GMT
+Server: Apache/1.0.3
+Content-type: text/html
+Content-length: 12905
+Last-modified: Wed, 18 Sep 1996 05:18:55 GMT
+
+<HTML>
+<HEAD>
+<TITLE>CS 330 Homepage</TITLE>
+
+<!-- describe the document, avoid context sensitive descriptions-->
+<meta name="description" 
+      value="An on-line course on programming language concepts.  The course offers lectures, assignments, and a mosaic of information about programming language design from all over the web.">
+
+<!-- keywords for the document-->
+<meta name="keywords"
+     value="programming language, course">
+
+<!-- should be "document" unless providing a search, then "service"-->
+<meta name="resource-type" 
+      value="document">
+
+<!-- use global for documents to be indexed outside BYU-->
+<meta name="distribution" value="local">
+
+
+</HEAD>
+<BODY BGCOLOR="#F0F0F0">
+</pre>
+
+<CENTER>
+<applet CODEBASE="http://lal.cs.byu.edu/people/windley/classes"
+        code=NavigatorTicker.class width=450 height=32>
+<param name=count value=2>
+<param name=msg0 value="* Welcome to the CS 330 Homepage * \\No Link">
+<param name=msg1 value=" ==>  Fall Semester 1996  <== \\No Link">
+<param name=speed value=7>
+<param name=bgco value=240,240,240>
+<param name=txtco value=0,0,250>
+</applet>
+
+<H1>CS 330: Concepts of Programming Languages</H1>
+<H2>BYU Department of Computer Science <BR>Fall 1996</BR></H2>
+</CENTER>
+
+
+Welcome to CS 330, Concepts of Programming Languages.  This page contains
+information related to the class such as class policies and the syllabus as
+well and the assignments, code from the textbook, and information about
+Scheme and other languages.  Please let 
+<!WA0><A HREF="http://lal.cs.byu.edu/people/windley/windley.html">Dr. Windley</A> 
+know if there's anything we can do to improve it.
+<P>
+
+
+<HR>
+
+<H2>Class Information</H2>
+
+
+
+ <applet width="480" height="25" 
+         codebase="http://lal.cs.byu.edu/people/windley/classes" 
+         code="TabApp">
+    <param name="tabColor" value="ffffa1">
+    <param name="numChildren" value="6">
+    <param name="bgColor" value="f0f0f0">
+
+    <param name="name_0" value="Policies">
+    <param name="url_0" value="policies.html">
+    <param name="frame_0" value="_top">
+
+    <param name="name_1" value="Grades">
+    <param name="url_1" value=<> <!--grades.html-->
+    <param name="frame_1" value="_top">
+
+    <param name="name_2" value="Syllabus">
+    <param name="url_2" value="syllabus.html">
+    <param name="frame_2" value="_top">
+
+    <param name="name_3" value="Printing">
+    <param name="url_3" value="printing.html">
+    <param name="frame_3" value="_top">
+
+    <param name="name_4" value="Students">
+    <param name="url_4" value="students/class-lists.html">
+    <param name="frame_4" value="_top">
+
+    <param name="name_5" value="Facilities">
+    <param name="url_5" value="http://www.cs.byu.edu/info/facilities.html#330Lab">
+    <param name="frame_5" value="_top">
+
+<MENU>
+<LI>   
+<!WA1><A HREF="http://lal.cs.byu.edu/cs330/policies.html">Policies</A>
+<LI>
+<!WA2><A HREF="http://lal.cs.byu.edu/cs330/grades.html">Grades</A>
+<LI>   
+<!WA3><A HREF="http://lal.cs.byu.edu/cs330/syllabus.html">Syllabus</A>
+<LI> 
+<!WA4><A HREF="http://lal.cs.byu.edu/cs330/printing.html">Printing</A>
+<LI> 
+<!WA5><A HREF="http://lal.cs.byu.edu/cs330/students/class-lists.html">Students</A>
+<LI> 
+<!WA6><A HREF="http://www.cs.byu.edu/info/facilities.html#330Lab">Facilities</A>
+<LI> 
+<!WA7><A HREF="http://lal.cs.byu.edu/mlists/whats-new/whats-new.html">Whats New?</A>
+<LI>
+<!WA8><A HREF="http://lal.cs.byu.edu/glossary/CS330-glossary.html">Glossary</A>
+</MENU>
+
+</applet>
+
+
+
+ <applet width="400" height="25" 
+         codebase="http://lal.cs.byu.edu/people/windley/classes" 
+         code="TabApp">
+    <param name="tabColor" value="ffffa1">
+    <param name="numChildren" value="5">
+    <param name="bgColor" value="f0f0f0">
+
+    <param name="name_0" value="Lecture Notes">
+    <param name="url_0" value="lectures/lectures.html">
+    <param name="frame_0" value="_top">
+
+    <param name="name_1" value="Orientation">
+    <param name="url_1" value="orientation/orientation.html">
+    <param name="frame_1" value="_top">
+
+    <param name="name_2" value="Assignments">
+    <param name="url_2" value="assignments/assignments.html">
+    <param name="frame_2" value="_top">
+
+    <param name="name_3" value="Project">
+    <param name="url_3" value="project/project.html">
+    <param name="frame_3" value="_top">
+
+ <!--   <param name="name_4" value="Report">
+ <!--   <param name="url_4" value= > <!--"report/report.html">
+ <!--   <param name="frame_4" value="_top">
+
+
+
+<HR>
+
+<A NAME="orientation">
+<H2>Getting Started</H2>
+</A>
+Survival in this course requires a working knowledge of UNIX commands,
+the Emacs editor, electronic mail (email), and Mosaic. Please <!WA9><A HREF="http://lal.cs.byu.edu/cs330/orientation/orientation.html">read the important information about using these items.</A>.
+<P>
+<HR>
+
+<A NAME="assignments">
+<H2>Assignments</H2>
+</A>
+The regular homework for this course consists of <!WA10><A HREF="http://lal.cs.byu.edu/cs330/assignments/assignments.html">eight assignments.</A> The first is a course orientation assignment.  The remaining seven deal with topics discussed in class.
+
+<P>
+<HR>
+
+<A NAME="project">
+<H2>Project</H2>
+</A>
+There is one <!WA11><A HREF="http://lal.cs.byu.edu/cs330/project/project.html">project</A>,
+which will be broken into two parts for this course. 
+<p>
+(Note: this semester, we will be doing only the first part.)
+<P>
+<HR>
+
+<A NAME=report">
+<H2>Report</H2>
+</A>
+There is <!WA12><A HREF="http://lal.cs.byu.edu/cs330/report/report.html">a group report</A> which you will
+present in class at the end of the semester.
+<P>
+<HR>
+
+<H2>Lectures</H2>
+It is very helpful to <!WA13><A HREF="http://lal.cs.byu.edu/cs330/lectures/lectures.html">
+read through the lectures</A> before they are presented in class, and
+then to take notes
+on them during class.<P>
+
+</applet>
+
+<HR>
+
+<H2>Text</H2>
+
+<!WA14><A HREF="http://lal.cs.byu.edu/cs330/text/text.html">
+Available information about the text, <EM>Essentials of Programming
+Languages</EM></A>, includes all of the source from the text, an errata sheet, and 
+PostScript copies of some of the Chapters.
+
+<P>
+
+
+<HR>
+
+
+<H2>Related Newsgroups</H2> 
+The newsgroup for this class is <!WA15><A
+HREF="news:byu.class.cs330">byu.class.cs330</A>. You may also want to read <!WA16><A HREF="http://lal.cs.byu.edu/cs330/newsgroups.html">other
+newsgroups about programming languages</A>.<P>
+
+Please read the<!WA17><A HREF="http://lal.cs.byu.edu/cs330/orientation/news.html"> information
+about reading newsgroup using Pine.</A> 
+<P>
+
+
+<HR>
+
+
+<H2>Information on Scheme</H2> 
+
+Scheme is a dynamically typed functional language descended from LISP.
+See theses on-line resources about the <!WA18><A HREF="http://www-swiss.ai.mit.edu/scheme-home.html"> Scheme programming language</A>. They are
+very helpful.The Scheme newsgroup is at <!WA19><A HREF="news:comp.lang.scheme"> comp.lang.scheme</a>.
+<UL>
+<!WA20><img src="http://lal.cs.byu.edu/buttons/star.gif">Try this <!WA21><A
+HREF="http://www-swiss.ai.mit.edu/~jar/eval.html"> on-line scheme interpreter</A><!WA22><img src="http://lal.cs.byu.edu/buttons/star.gif">
+<P>
+
+ <P>
+
+</UL>
+<HR>
+
+<H2>Network Resources in Language Design, Research, and Use</H2>
+
+<UL>
+
+
+<A NAME="haskell">
+<LI> <!WA23><A
+HREF="http://www.cs.yale.edu/HTML/YALE/CS/haskell/yale-fp.html">Information
+on the Haskell Programming language, </A> a strongly typed functional
+language with lazy evaluation, is available.  A <!WA24><A
+HREF="http://lal.cs.byu.edu/cs330/sources/haskell-tutorial.ps">tutorial</A> (in PostScript) is also
+available.<P></A>
+
+<LI> Dr. Dave Marshall of <!WA25><A HREF="http://www.cm.cf.ac.uk:/">Cardiff
+University of Wales</A> has a nice set of <!WA26><A
+HREF="http://www.cm.cf.ac.uk:/Dave/C/CE.html">lectures notes on programming
+in C</A>.<P>
+
+<LI>
+<!WA27><img src="http://lal.cs.byu.edu/buttons/star.gif">
+Internet freeware-shareware<!WA28><A HREF="http://felix.unife.it/Root/d-Internet/h-Bigsurf/28-Mac_Programming"> 
+Programming Languages for the MACINTOSH </A>.
+</P>
+
+
+<LI>
+<!WA29><img src="http://lal.cs.byu.edu/buttons/star.gif">
+Jerry Mead of Bucknell University has put together a page with
+many links to interesting languages, such as: <!WA30><a
+href="ftp://ftp.cs.nott.ac.uk/nott-fp/languages/gofer">Gofer</a>, <!WA31><A
+HREF="http://www.cs.nott.ac.uk/Department/Staff/mpj/hugs.html">Hugs</A>,
+,<!WA32><A HREF="http://www.sics.se/ps/sicstus.html">SICStus Prolog</A>, <!WA33><A HREF="http://www.research.digital.com/SRC/modula-3/html/home.html">
+Modula-3</A>, and much more...
+<P>
+
+<LI> The Global Network Academy has put together a self paced course on <!WA34><A
+HREF="http://info.desy.de/pub/uu-gna/html/cc/index.html">Object-Oriented
+Programming in C++</A>  <P>
+
+<LI> 
+Lisp has done quite well over the last ten years: becoming nearly
+standardized, forming the basis of a commercial sector, achieving excellent
+performance, having good environments, able to deliver applications. Yet
+the Lisp community has failed to do as well as it could have. In this paper
+I look at the successes, the failures, and what to do next.  Read all about it in Richard Gabriel's paper  <!WA35><A HREF="http://cbl.leeds.ac.uk/nikos/tex2html/examples/good-bad-win/good-bad-win.html">Lisp: Good News, Bad
+News, How to Win Big</A>.
+ <P>
+
+<LI> SML is a wonderful programming language that has a number of advanced
+concepts.  Try it out!  The <!WA36><A
+HREF="http://www.cs.cmu.edu:8001/afs/cs.cmu.edu/user/jgmorris/web/sml-faq.html">SML
+FAQ list</A> is available here.  <P>
+
+<LI> 
+Functional programming languages are coming into their own and are
+being used to write large pieces of software.  Here is a report about <!WA37><A
+HREF="http://www.cs.cmu.edu/afs/cs.cmu.edu/project/fox/mosaic/HomePage.html">CMU's
+FOX Project</A> which is implementing a real operating system in the
+functional language, <!WA38><a
+href="http://lal.cs.byu.edu/afs/cs.cmu.edu/project/fox/mosaic/intro-notes.ps">SML</a>.
+ <P>
+
+<LI>
+C++ is an object-oriented variant on the C programming language.  Here is a
+<!WA39><a href="http://info.desy.de/user/projects/C++.html">C++ Programming
+Language Page</A> from Germany.
+
+A number of companies are providing free services over the Internet.  Here
+is a forum on C++ run by the <!WA40><A
+HREF="http://www.quadralay.com/home.html">Quadralay
+Corporation</A>
+ <P>
+
+
+<LI> 
+Mark Leone, a graduate student in Carnegie-Mellon University's
+Department of Computer Science, has put together a <!WA41><A
+HREF="http://www.cs.cmu.edu:8001/afs/cs.cmu.edu/user/mleone/web/language-research.html">collection
+of information</A> on programming language design and research.  The page
+contains language sources, bibliographies, and technical reports.
+
+ <P>
+
+
+
+<LI> 
+<EM>PERL</EM> is a programming language used frequently in system
+administration. Here is an introduction called
+<!WA42><A HREF="http://www.cs.cmu.edu:8001/afs/cs/user/rgs/mosaic/perl.html">
+PERL -- Practical Extraction and Report Language
+</A>.  The <!WA43><A
+HREF="http://cui_www.unige.ch/Chloe/FAQ/Perl/index.html">FAQ list</a>
+and a <!WA44><A HREF="ftp://convex.com/pub/perl/"><EM>PERL</EM> software archive
+site </a> are available on-line.
+
+ <P>
+
+
+<LI> 
+This report provides information about literate programming, the art of
+programming so people can read the code:
+<!WA45><A HREF="http://info.desy.de/pub/www/projects/LitProg/glasgow/top.html">
+Top -- The Glasgow System of Literate Programming
+</A>.  <!WA46><A
+HREF="http://info.desy.de/user/projects/LitProg/Course.html">Here</A> is an
+Internet course in literate programming.
+ <P>
+
+
+<LI> 
+Languages can be used for a variety of purposes.  The Manchester
+University in England has done <!WA47><A
+HREF="http://info.mcc.ac.uk/CGU/MSDL/MSDL-intro.html">research</a> on
+using a language to
+describe visual scenes.
+ <P>
+
+
+<LI> 
+Tcl, pronounced "tickle," is a tool command language.  More information
+about <!WA48><A
+HREF="http://cornea.mbvlab.wpafb.af.mil/tcl.html">tcl</a> and
+a <!WA49><A
+HREF="http://www.cs.colorado.edu/homes/arcadia/public_html/adatcl.html">project
+for using tcl inside the Ada programming language</a> is available. A
+<!WA50><A
+HREF="http://www.cis.ohio-state.edu/hypertext/faq/usenet/tcl-faq/top.html">FAQ
+list</a> is also on-line.
+
+ <P>
+
+<LI> 
+An ARPA sponsored research project for parallel C++ for
+supercomputers <!WA51><A HREF="http://www.cica.indiana.edu/sage/home-page.html">
+pC++/Sage++</a> is on the Web.  They are piggy-backed onto
+<!WA52><A HREF="http://www.cica.indiana.edu/home-page.html">CICA, the 
+Center for Innovative Computer Applications</A>   <P>
+
+
+<LI> 
+<!WA53><A HREF="http://legend.gwydion.cs.cmu.edu:8001/">
+DYLAN 
+</A>
+is an object oriented language based on Scheme.  
+ <P>
+
+
+</UL>
+
+ <P>
+<HR>
+<H2>Interesting Things on the World Wide Web</H2> 
+
+Class shouldn't be all directed work!  Get out and explore;
+there are lots of fun things to see and do on the World Wide Web.  <!WA54><A
+HREF="http://lal.cs.byu.edu/cs330/start-points.html">This page</A> contains links to some of them.
+Feel free to surf.
+ <P>
+
+<hr><P> 
+
+
+
+
+<h2>
+<!WA55><a href="http://www.cs.byu.edu/homepage.html">
+<!WA56><img align=MIDDLE src="http://lal.cs.byu.edu/images/buttons/button-home.gif">
+ Go to the BYU CS Department Home Page</a> </h2><p>
+
+<H2><!WA57><A HREF="http://www.cs.byu.edu/info/Systems-help.html">
+<!WA58><img align=MIDDLE src="http://lal.cs.byu.edu/buttons/button-911.gif">
+ Go to the CS Department Help Page</A></H2><P>
+ 
+<ADDRESS>Created Nov 9, 1993</ADDRESS>
+<EM>Updated
+Fri Sep  6 10:01:44 1996
+</EM><ADDRESS>
+by <!WA59><a href="http://lal.cs.byu.edu/people/black/black.html">Paul E. Black
+</a>
+&nbsp;(<!WA60><a href="mailto:black@cs.byu.edu">black@cs.byu.edu</a>)
+
+<P><hr> 
+&copy; 1994-1996, Phillip
+J. Windley.  All rights reserved.  Reproduction of all or part of this work
+is permitted for educational or research use provided that this copyright
+notice is included in any copy. 
+<hr><P> 
+
+</BODY>
+</HTML>

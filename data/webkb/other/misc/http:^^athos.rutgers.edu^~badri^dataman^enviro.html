@@ -1,0 +1,73 @@
+Date: Tue, 14 Jan 1997 18:50:47 GMT
+Server: NCSA/1.5.2
+Last-modified: Fri, 02 Aug 1996 15:26:58 GMT
+Content-type: text/html
+Content-length: 2524
+
+<!doctype html public "html.dtd" -->
+
+<HTML>
+
+<head>
+<TITLE>DATAMAN Lab Configuration</TITLE>
+</head>
+
+<BODY 
+BGCOLOR="#00FFFF" 
+BACKGROUND="backgrnd2.gif" >
+
+<center>
+<h1>  DATAMAN Lab Configuration  </h1>
+<P>
+<HR>
+
+The DATAMAN lab is a part of Department of Computer Science, 
+Rutgers University. The description of hardware equipment and 
+the software being used for research in Mobile Computing is 
+given below: <P>
+
+<h2> Hardware </h2>
+
+We use 386/486 PC-ATs running at 33 MHz for wireless base stations.
+These machines are connected to the Rutgers LCSR network via
+Ethernet. These machines are also equipped with 2 Mbps NCR Wavelan-AT
+cards for wireless communication. Wavelan is an indoor wireless LAN
+which uses spread spectrum technology in the 900MHz ISM band. CSMA/CA 
+is used for the Media Access protocol which provides Ethernet like 
+interface to the higher layers. The range for Wavelan radio 
+transmission is between 100-800 ft depending upon the office environment. 
+We currently have three base stations with overlapping reception areas
+although non-overlapped cells can be simulated by configuring each base
+station to use different MAC layer network ID for radio transmission. <P>
+
+The mobile hosts currently have two different configurations. One
+type is HP Vectra 486 PC-ATs running at 66 MHz which do not have any
+Ethernet (wired network) connection. These use Wavelan-AT cards to 
+communicate with other mobile hosts and base station that are within
+the hearing distance. The other type is Toshiba T1950 series 486 
+laptops running at 40 Mhz. These use PCMCIA Wavelan cards for wireless
+communication which are similar in operation to the Wavelan-AT cards.
+The laptops do not have any Ethernet connection either. <P>
+
+<h2> Operating System </h2>
+
+All the mobile hosts (MHs) and the base stations or the Mobile Support
+Routers (MSRs) run Mach 3.0 micro kernel (MK84) and UX server (UX40)
+which is similar to 4.3 BSD Tahoe release. The MSRs use Mobile IP
+protocol from Columbia University to provide a virtual mobile subnet
+consisting of multiple cells so that the MHs can move across these
+wireless cells without having to change their IP address. The MSRs
+and the MHs also run the msrmicp and mhmicp programs respectively
+which take care of beaconing and registration (Mobile Internetworking
+Control Protocol) for Mobile IP. <P>
+
+
+<HR>
+Last modified: August 1, 1996 <BR>
+<ADDRESS>Julio Cesar Navas 
+(<!WA0><a href=mailto:navas@cs.rutgers.edu>navas@cs.rutgers.edu</a>)</ADDRESS>
+</center>
+
+
+</body>
+</HTML>

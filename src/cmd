@@ -1,0 +1,18 @@
+for nltk maxent
+./MaxentNLTK.py /home/archer/Desktop/thesis/data/spamwords /home/archer/Desktop/thesis/data/Labels-NLTK.mat /home/archer/Desktop/thesis/data/Features-NLTK.mat
+
+for zhangle's maxent
+
+
+spamwords25 4327 emails with nltk's maxent and IIS iterator
+./MaxentNLTK.py /home/archer/Desktop/thesis/data/spamwords25 /home/archer/Desktop/thesis/data/Labels-NLTK.mat /home/archer/Desktop/thesis/data/Features-NLTK.mat
+
+spamwords55 4327 emails with nltk's maxent and IIS iterator
+./MaxentNLTK.py /home/archer/Desktop/thesis/data/spamwords55 /home/archer/Desktop/thesis/data/Labels-NLTK.mat /home/archer/Desktop/thesis/data/Features55.mat
+
+zhangLe's maxent
+./DataMat.py /home/archer/Desktop/thesis/data/spamwords55 /home/archer/Desktop/thesis/data/CSDMC2010_SPAM/CSDMC2010_SPAM/TRAINING-NEW/ /home/archer/Desktop/thesis/data/Features55-Zhangle.mat /home/archer/Desktop/thesis/data/Labels1.mat
+
+maxent -m emailModelZhangLe55 -v -n 4 Features55-Zhangle.mat
+
+

@@ -1,0 +1,61 @@
+Date: Tue, 26 Nov 1996 00:22:00 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Sat, 23 Nov 1996 01:17:07 GMT
+Content-length: 2366
+
+
+<html>
+<head>
+<title>Lazy Receiver Processing (LRP)</title> 
+</head>
+<body bgcolor="#ffffff" text="#003f4d" link= "7F0000" vlink="6f8fFF">
+<!WA0><img src="http://www.cs.rice.edu/CS/Systems/LRP/beastie2.gif"
+      alt=""
+          Align=left>
+<h1>LRP</h1> 
+<hr><p>
+
+     LRP is a new network subsystem architecture based on <em>Lazy
+Receiver Processing</em>. LRP is motivated by the poor performance
+that interrupt-driven network subsystems show under heavy load. Such
+systems give strictly highest priority to packet processing and do not
+correctly account for resources consumed during protocol processing.
+Under conditions of heavy network load , this leads to unfair
+allocation of system resources, scheduling anomalies, and livelock.
+
+<p> LRP properly integrates network processing with the operating
+system's resource allocation scheme. The resources spent in protocol
+processing are accounted for and charged to the application on whose
+behalf this processing is performed.  The system combines early packet
+demultiplexing, early discard of excess packets, and a lazy processing
+model, where packet processing is performed at the receiver's priority
+and just in time to avoid delaying the receiving application.  This
+enables the system to provide stable overload behaviour, fair resource
+allocation, and increased throughput under heavy network load.
+
+<p> A prototype implementation of LRP was constructed by modifying the
+TCP/UDP/IP network subsystem of the 4.4BSD-Lite distribution to
+optionally implement LRP as a new protocol family. The prototype was
+tested and evaluated on a ATM network of SparcStation 20s by
+downloading this code into the SunOS kernel as a loadable kernel
+module. Experiments on this testbed show that under high network load,
+the LRP system is dramatically more stable and yields higher
+throughput than the 4.4BSD network system, without any performance
+degradation under normal conditions. We plan to release our source
+code as soon as licensing issues have been resolved.
+
+<p>
+For more details about LRP refer to an extended version of our OSDI'96 
+paper in <!WA1><a href="http://www.cs.rice.edu/CS/Systems/LRP/final.html">html</a> or to the conference version 
+in <!WA2><a href="http://www.cs.rice.edu/CS/Systems/LRP/osdi96.ps">postscript</a> or contact us at 
+<!WA3><a href="mailto:gaurav@cs.rice.edu">gaurav@cs.rice.edu</a> or 
+<!WA4><a href="mailto:druschel@cs.rice.edu">druschel@cs.rice.edu</a>.
+<p>
+<hr>
+
+<!WA5><A HREF="http://www.cs.rice.edu/CS/Systems/LRP/daemon.html">About the daemon image above...</a>
+
+
+
+

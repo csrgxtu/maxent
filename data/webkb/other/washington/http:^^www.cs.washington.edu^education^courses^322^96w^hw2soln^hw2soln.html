@@ -1,0 +1,105 @@
+Date: Wed, 08 Jan 1997 20:45:22 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE>CSE 322  
+Assignment 2 Solution Set  
+Friday, January 19, 1996</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value="CSE 322  
+Assignment 2 Solution Set  
+Friday, January 19, 1996">
+<meta name="keywords" value="hw2soln">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ <BR> <HR><A NAME=tex2html1 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.washington.edu/general/latex2html_icons//next_motif.gif"></A>   <IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.washington.edu/general/latex2html_icons//up_motif_gr.gif">   <IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.washington.edu/general/latex2html_icons//previous_motif_gr.gif">         <BR>
+<B> Next:</B> <A NAME=tex2html2 HREF="node1.html">   About this document </A>
+<BR> <HR> <P>
+<P>
+<H1>CSE 322  
+Assignment 2 Solution Set  
+Friday, January 19, 1996</H1>
+<P><STRONG></STRONG><P>
+<P><STRONG></STRONG><P>
+<P>
+<OL><LI> 
+Prove that <IMG  ALIGN=MIDDLE ALT="" SRC="img1.gif"> for all <IMG  ALIGN=MIDDLE ALT="" SRC="img2.gif">.
+<P>
+We can prove this by induction on <b>i</b>:
+<P>
+<b>Basis:</b> The statement is true for <b>i = 0</b> because <IMG  ALIGN=BOTTOM ALT="" SRC="img3.gif"> for
+any <b>x</b> and so
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img4.gif"><P>
+<b>Inductive hypothesis:</b> Assume that the statement is true for <b>i=k</b>:
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img5.gif"><P>
+<b>Inductive step:</b> From this we need to show it is true for <b>i=k+1</b>:
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img6.gif"><P>
+By induction, the statement is true for all <IMG  ALIGN=MIDDLE ALT="" SRC="img7.gif">.
+<P>
+<LI> Regular expressions
+<OL><LI> The set of strings over <IMG  ALIGN=MIDDLE ALT="" SRC="img8.gif"> that contain the substring <b>aa</b> exactly once:
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img9.gif"><P>
+<LI> The set of strings over <IMG  ALIGN=MIDDLE ALT="" SRC="img10.gif"> that do not contain the substring <b>aa</b>:
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img11.gif"><P>
+<LI> The set of strings over <IMG  ALIGN=MIDDLE ALT="" SRC="img12.gif"> where the total number of <b>a</b>'s and
+<b>b</b>'s is <b>3</b>:
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img13.gif"><P></OL>
+<P>
+<LI> 
+Consider the equation:
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img14.gif"><P>
+where <b>A</b> and <b>B</b> are fixed sets and <b>X</b> is a set variable.  Assume that
+<b>B</b> is not empty.  
+<OL><LI> Argue that <IMG  ALIGN=BOTTOM ALT="" SRC="img15.gif"> is a solution to the equation.
+<P>
+To do this, we verify that <IMG  ALIGN=MIDDLE ALT="" SRC="img16.gif"> below:
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img17.gif"><P>
+<P>
+<LI> Argue that if <b>X</b> solves the equation, then <IMG  ALIGN=MIDDLE ALT="" SRC="img18.gif">.
+<P>
+Let <b>X</b> be a solution to the equation.
+One way of proving that <IMG  ALIGN=MIDDLE ALT="" SRC="img19.gif"> 
+is by showing that <IMG  ALIGN=MIDDLE ALT="" SRC="img20.gif"> for
+any <IMG  ALIGN=MIDDLE ALT="" SRC="img21.gif">.  Intuitively, we can see this by substituting
+<IMG  ALIGN=BOTTOM ALT="" SRC="img22.gif"> for <b>X</b> into the equation a few times:
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img23.gif"><P>
+First we notice that <IMG  ALIGN=MIDDLE ALT="" SRC="img24.gif"> = X, so it must be true that
+<IMG  ALIGN=MIDDLE ALT="" SRC="img25.gif">.  Similarly, after the first substitution we can say that
+<IMG  ALIGN=MIDDLE ALT="" SRC="img26.gif">, so
+<IMG  ALIGN=MIDDLE ALT="" SRC="img27.gif">.  Thus, for any <b>i</b> we can apply <b>i</b> substitutions to
+get <IMG  ALIGN=MIDDLE ALT="" SRC="img28.gif">. The union of these is also a subset of <b>X</b>, so
+<P><IMG  ALIGN=BOTTOM ALT="" SRC="img29.gif"><P>
+<P>
+
+The answer above is all I really wanted, 
+although to be truly formal we should prove 
+that <IMG  ALIGN=MIDDLE ALT="" SRC="img30.gif"> for all <IMG  ALIGN=MIDDLE ALT="" SRC="img31.gif"> by induction:
+<P>
+<b>Basis:</b> We know that <IMG  ALIGN=MIDDLE ALT="" SRC="img32.gif"> from above.
+<b>Inductive hypothesis:</b> Assume <IMG  ALIGN=MIDDLE ALT="" SRC="img33.gif"> for some <IMG  ALIGN=MIDDLE ALT="" SRC="img34.gif">.
+<b>Inductive step:</b> From the inductive hypothesis, we know that
+<IMG  ALIGN=MIDDLE ALT="" SRC="img35.gif">.  This means there must be some <b>Y</b> where 
+<IMG  ALIGN=BOTTOM ALT="" SRC="img36.gif">.  Substituting this into the equation we get
+<IMG  ALIGN=MIDDLE ALT="" SRC="img37.gif">.  
+From this we can see that that  <IMG  ALIGN=MIDDLE ALT="" SRC="img38.gif">.
+<P>
+Therefore, <IMG  ALIGN=MIDDLE ALT="" SRC="img39.gif"> for all <IMG  ALIGN=MIDDLE ALT="" SRC="img40.gif">.
+<P>
+</OL></OL><BR> <HR>
+<UL> 
+<LI> <A NAME=tex2html3 HREF="node1.html#SECTION00010000000000000000">   About this document ... </A>
+</UL>
+<BR> <HR><A NAME=tex2html1 HREF="node1.html"><IMG ALIGN=BOTTOM ALT="next" SRC="http://www.cs.washington.edu/general/latex2html_icons//next_motif.gif"></A>   <IMG ALIGN=BOTTOM ALT="up" SRC="http://www.cs.washington.edu/general/latex2html_icons//up_motif_gr.gif">   <IMG ALIGN=BOTTOM ALT="previous" SRC="http://www.cs.washington.edu/general/latex2html_icons//previous_motif_gr.gif">         <BR>
+<B> Next:</B> <A NAME=tex2html2 HREF="node1.html">   About this document </A>
+<BR> <HR> <P>
+<BR> <HR>
+<P><ADDRESS>
+<I>James Fix <BR>
+Mon Jan 29 18:15:01 PST 1996</I>
+</ADDRESS>
+</BODY>

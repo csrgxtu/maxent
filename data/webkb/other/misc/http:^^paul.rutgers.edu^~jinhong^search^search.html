@@ -1,0 +1,36 @@
+Date: Wed, 15 Jan 1997 01:25:50 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+Content-length: 1098
+Last-modified: Tue, 05 Nov 1996 06:32:42 GMT
+
+<HTML>
+<HEAD>
+<TITLE>Parallel Internet Search Engine</TITLE>
+</HEAD>
+<body>
+
+<h2>Parallel Internet search engine</h2>
+<br><br>
+
+The idea is to send your query to a server A first, then server A sends
+the query to Alta Vista, Lycos, Yahoo and Webcrawler at the same time.
+Then whichever of the 4 engine response the first, the result will be sent
+to you first, with all the others follow.<br><br>
+The good news is that you'll have fast response time. Espiecially when
+one of the search engine is busy and you have to wait for the result without
+knowing it if you just use normal single search engine.<br>
+The tradeoff is that you'll have to spend some time in communication with
+the server A. But you can have the server installed in your own machine.<br>
+
+<p>
+Below is a parallel search test, sorry if the server(server A) not responce
+because I cannot let it running all the time.<br>
+My server A is a Java application using thread.<br><br>
+<center>
+<!WA0><FORM METHOD=GET action="http://paul.rutgers.edu:6677/">
+<INPUT size=30 name=p><INPUT type=submit value=Search> 
+</form>
+</center>
+</body>
+</html>

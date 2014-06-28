@@ -1,0 +1,109 @@
+Date: Tue, 05 Nov 1996 20:51:50 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 02 Oct 1996 15:00:17 GMT
+Content-length: 3368
+
+<!--This file created 9/29/96 4:43 PM by Claris Home Page version 1.0b1-->
+<HTML>
+<HEAD>
+   <TITLE>JT-P3.html</TITLE>
+   <X-SAS-WINDOW TOP=-8 BOTTOM=347 LEFT=-697 RIGHT=-167>
+</HEAD>
+<BODY>
+
+<H2 ALIGN=CENTER>CS354, Fall 1996</H2>
+
+<H2 ALIGN=CENTER>Program 3, due Monday October 7, before 5pm.</H2>
+
+<BLOCKQUOTE><P><B>Purpose: </B>To learn how to display the MIPS RISC
+internal representation of characters, integers and floating point
+numbers, to practice using the logical and shift instructions in SAL.
+</P>
+
+<P><B>Program description:</B> Write a SAL program that:</P>
+
+<P>(a) reads four characters and stores them in a 32-bit word, then prints
+out the word in hexadecimal,</P>
+
+<P>(b) next reads a floating point number, then prints out the bit
+patterns for the fields S, E and F,</P>
+
+<P>(c) and finally reads an integer, then prints out the 32 bit 2's
+complement form of the integer.</P>
+
+<P><B>Sample run:</B></P>
+
+<code>
+Enter 4 characters: <b>Char</b><br>
+0x43686172<br>
+Enter floating point value: <b>17.15</b><br>
+0 10000011 00010010011001100110011<br>
+Enter integer: <b>130</b><br>
+0000 0000 0000 0000 0000 0000 1000 0010
+</code>
+
+<P><B>Algorithm:</B></P>
+
+<P>(a) Use <code>getc ch</code> to read the four characters,
+where <code>ch</code> is of type <code>.byte</code>, and shift each into a 
+32-bit word as you read them. Write a print
+procedure that accepts the word as input, prints the "0x," and then
+prints out eight hexadecimal digits.</P>
+
+<P>(b) Use <code>get f</code> to read the floating point number,
+where <code>f</code> is of
+type <code>.float</code>. Copy the floating point number to an
+integer variable, and
+then print the three fields of the floating point number
+with one space between the fields.</P>
+
+<P>Note: the <code>get</code> instruction, when used on a variable of type
+<code>.float</code>, automatically stores the variable in IEEE single
+precision FPS format.</P>
+
+<P>(c) Use <code>get i</code> to read the integer, where <code>i</code>
+is of type <code>.word</code>,
+then print the 32 bits of <code>i</code> with one space between groups of
+four bits.</P>
+
+<P><B>Specific requirements for your program:</B></P>
+
+<P>(1) You may assume that you will receive no bad data.
+Assume the user types in four characters followed by a
+return (you need to read the return and discard it).
+Assume the user enters a valid floating point number followed by a return.
+Assume the user next enters a valid integer followed by a return.
+</P>
+
+<P>(2)
+Write and use a procedure that prints a subset of the bits of a 32-bit word
+given parameters that specify which bits.
+Use this procedure for parts (b) and (c) of the program.
+An implementation example of this procedure might be if the 32-bit word
+contained the value
+<br>
+00000000000011000111111110000110
+<br>
+and the subrange of bits to print out was 7..4, then the procedure would
+print the value
+<br>
+1000
+<br>
+Note that implied in this implementation example is a little endian
+numbering of bits.
+</P>
+
+<P><B>Handing in your program:</B> Turn in your program
+(the SAL source code) by running the script
+</P>
+<code>handin3 program3.s</code>
+<br>
+
+<P>just once, where <code>program3.s</code> is the name of the file containing
+your SAL source code. No printouts will be turned in. The TA/Grader
+will run your program several times using different test data.</P>
+</BLOCKQUOTE>
+</BODY>
+</HTML>
+

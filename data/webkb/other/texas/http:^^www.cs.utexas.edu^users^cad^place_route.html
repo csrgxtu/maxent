@@ -1,0 +1,72 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 07-Jan-97 15:58:25 GMT
+Content-Type: text/html
+Content-Length: 2793
+Last-Modified: Wednesday, 30-Nov-94 21:24:48 GMT
+
+<title> FPGA Placement and Routing </title>
+
+<h1> FPGA Placement and Routing</h1>
+
+<img  src="place_route.gif" ><p>
+
+The abstracts of papers by members of this group in the above area are 
+listed below. Please use the email addresses at the end of each
+abstract to get further details.
+
+<ul>
+<li> <a name="tr94-14"> Shashidhar Thakur, D.F. Wong, and S. Muthukrishnan.
+<b> Algorithms for a Switch Module Routing Problem</b>. 
+<cite>Proceedings of the Euro-DAC</cite>, September 1994. </a><p>
+<blockquote>
+We consider a switch module routing problem 
+for symmetric array FPGAs. The work is motivated by
+two applications. The first is that of efficiently
+evaluating switch module designs. The second
+is that of evaluating the routability of global routing
+paths for a placement on this architecture.
+Only an approximate 
+algorithm was previously known for this problem. In this paper, 
+we present an optimal algorithm for the problem based on 
+integer linear programming. Experimental results consistently
+show that our algorithm is very efficient for practical sized
+switch modules. We further improve this technique, by doing
+some pre-processing on the given switch module.
+We also identify interesting special cases of the problem which can be 
+solved optimally in polynomial time.
+</blockquote>
+
+<b>Contact:</b> <i>thakur@cs.utexas.edu</i><p>
+
+<li> <a name="iccad94">Yao-Wen Chang, Shashidhar Thakur, Kai Zhu, D.F. Wong.
+<b> A New Global Routing Algorithm for FPGAs</b>.
+<cite> Proceedings of the IEEE International Conference on
+       Computer-Aided Design</cite>, November 1994. </a><p>
+
+<blockquote>
+
+As in traditional ASIC technologies, FPGA routing usually consists
+of two steps: global routing and detailed routing. Unlike
+existing FPGA detailed routers, which can take full advantage
+of the special structures of the programmable routing
+resources, FPGA global routing algorithms still greatly
+resemble their counterparts in the traditional ASIC
+technologies. In particular, the routing 
+congestion information of a switch block essentially is still measured
+by the numbers of available rows and columns in the switch
+block. Since the internal architecture of a switch block
+decides what can route through the block, the traditional
+measure of routing capacity is no longer accurate. In this
+paper, we present an accurate measure of switch block
+routing capacity. Our new measure considers the
+exact positions of the switches inside a switch block.
+Experiments with a global router based on these ideas
+show an average improvement of 38% in the channel width
+required to route some benchmark circuits using 
+a popular switch block, compared with an
+algorithm based on the traditional methods for congestion control.
+</blockquote>
+
+<b>Contact:</b> <i>yaowen@cs.utexas.edu</i><p>
+</ul>

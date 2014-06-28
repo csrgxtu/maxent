@@ -1,0 +1,590 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 18:54:21 GMT
+Content-Type: text/html
+Content-Length: 25954
+Last-Modified: Wednesday, 21-Aug-96 19:44:20 GMT
+
+<html>
+<head>
+<title>The U-Net Packet Filter</title>
+
+<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><img src = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/switch.gif">
+<h1>The U-Net Packet Filter:  An Extension to U-
+Net over Fast Ethernet</h1>
+
+<h2>Masters of Engineering Project</h2>
+<h2>August 20, 1996</h2>
+<b><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href="http://www.cs.cornell.edu/Info/People/barber">Jonathan Barber</a> (<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href=mailto:barber@cs.cornell.edu>barber@cs.cornell.edu</a>)<br>
+<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a href="http://www.cs.cornell.edu/Info/People/tve/tve.html">Professor Thorsten von Eicken</a><br>
+<p>
+<!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a href="http://www.cs.cornell.edu/">Department of Computer Science</a><br>
+<!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href="http://www.cornell.edu">Cornell University</a></b><p>
+<!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><img src = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/sepbar-6.gif"><p>
+</head>
+<p>
+
+<body>
+
+<h2>1.0  Abstract</h2>
+
+U-Net is high-bandwidth, low-latency network communication protocol that can deliver 
+parallel-computing horsepower to a network of PCs.  In this case, the PCs are 
+connected via a fast ethernet switch.  In its original implementation, 
+computers connected through U-Net communicated through a simple 
+communication scheme.  The U-Net Packet Filter acts as an extension to the 
+original implementation, giving U-Net the capability to communicate 
+using open standards.<p>
+<!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><img src = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/sepbar-6.gif"><p>
+
+<h1>2.0  Overview</h1>
+
+The job of the <i>U-Net Packet Filter (UPF)</i> is to demultiplex in-coming 
+packets to their corresponding U-Net endpoint destinations.  It is designed to 
+demultiplex both <i>connection-oriented</i> and <i>connection-less</i> packets,	 
+depending on the protocol/field combinations.<p>  	
+
+In the case of connection-oriented packets, a channel specifies an endpoint-
+to-endpoint connection (i.e. a connection from one process to another).  If 
+process A connects to process B, then A can only communicate with B, and 
+B can only communicate with A on that channel.  If A wants to communicate 
+with C, then it must open a separate channel.<p>
+
+In the case of connection-less packets, program A can open a broadcast or 
+multicast channel.  Any other process listening on that channel can receive 
+packets sent from A.<p>
+<!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><img src = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/sepbar-6.gif"><p>
+
+<h2>3.0  Design Goals</h2>
+
+The U-Net Packet Filter was designed with two goals in mind:<p>
+<ol>
+<li>Above all, it has to be fast.  The ability to communicate over open 
+standards is useless to U-Net if it can do so only at normal network data-
+rates.<p>
+
+<li>The Packet Filter's topology has to be simplistic, and easily expandable.  
+New filters cannot been written in pseudo-assembly and interpreted.  New 
+filters must programmed into the existing system, however, the packet filter's 
+simplistic structure allows for a certain degree of creativity on the part of the 
+programmer, thereby easing the task of the programming itself.<p>
+</ol>
+
+The subsequent sections in this document discuss in detail the different 
+components and structure of the U-Net Packet Filter, with an eye towards 
+demonstrating that the design goals have been met.<p>
+<!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><img src = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/sepbar-6.gif"><p>
+
+<h2>4.0  Implementation</h2>
+
+The current implementation, as of the date of this document, allows for 4 
+distinct filter types.  They are, Raw U-Net (the simple communication 
+scheme utilized by the original version of U-Net), Raw Ethernet (U-Net 
+purely at the data-link layer), TCP/IP, and UDP/IP.<p>  
+<hr>
+
+<h3>4.1  Elementary Components</h3>
+
+The U-Net Packet Filter is a <i>Directed A-cyclic Graph (DAG)</i>.  
+It is made up of two basic components:<p>
+
+<ol>
+<li><b>The Cell:</b>  this is a data-structure that contains twelve 32-bit word entries.  
+This is the Packet's most basic structure.  The cell is used for storing channel 
+information (such as a channel's field values, such as port numbers and 
+addresses), and it is used as a pointer to other cells and hash table. Cells can 
+be chained together to form doubly-linked lists.  For complete details and 
+usage information on cells in UPF, <!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><a href = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/cell.html">click here</a>.<p>
+
+<li><b>The Hash Table:</b>  provided with a hashing function, these tables are used 
+to spread out U-Net channels over a range of HASH_SIZE.  Each table 
+contains HASH_SIZE pointers to cells.  These cells, as already 
+mentioned, can be chained together in a linked-list.  The combination of cells 
+and hash-tables creates a hashing data-structure with chaining, which is the 
+way in which hash tables are utilized in the current implementation of UPF.<p>  
+</ol>
+<p>
+
+<center>
+<b>Figure 1:  Elemantary UPF Components</b><br>
+<!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><img src = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/components.gif"></center>
+<p>
+
+Together, cells and hash tables are connected together to form a directed a-
+cyclic graph (DAG).  When a packet comes in off of the ethernet wire, each 
+protocol in the composite packet header is broken down into fields.  These 
+fields are then compared to information stored in the cells.  As matches are 
+found, we follow the appropriate path through the DAG.<p>  
+
+The next section breaks down the current architecture of the U-Net Packet 
+Filter, and discusses the protocols it currently supports.
+
+<hr>
+<p>
+
+<h3>4.2  Protocol Hierarchy in the U-Net Packet Filter DAG</h3>
+
+The current implementation supports 4 protocols, two of which are open 
+standards.  The following protocols are broken down has follows:<p>
+<ol>
+
+<li><b>Raw U-Net:</b>  The modified version of U-Net (devtulip.c) is backwards 
+compatible with the original implementation of U-Net.  That is, packets can 
+be demultiplexed to Raw U-Net channels based on the following fields:<p>
+<ul>
+<li>U-Net Code
+<li>U-Net Port number
+</ul>
+<P>
+
+<center>
+<b>Figure 2:  Raw U-Net Ethernet Header</b><br>
+<!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><img src = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/rawunet.gif"></center>
+<p>
+
+These types of channels are not part of the UPF system.  In the event that a 
+Raw U-Net channel is detected, the UPF system is by-passed, and the packet 
+is demultiplexed based strictly on the U-Net port number.  If the ethernet card is 
+running in promiscuous or multicast mode, then only the U-Net Type and U-
+Net-Port identify an endpoint/channel.  These channels are not 
+guaranteed to be unique.
+
+<p><hr><p>
+
+<li><b>Raw Ethernet:</b>  This protocol is similar to the Raw U-Net protocol, in that 
+it is strictly a data-link layer protocol.  Packets are demultiplexed to their 
+corresponding endpoint/channel based on the following fields:<p>
+
+<ul>
+<li>Ethernet Source (Addr)
+<li>Raw Ethernet Type
+</ul>
+
+<center>
+<b>Figure 3:  Raw Ethernet Header</b><br>
+<!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><img src = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/raweth.gif"></center>
+<p>
+
+The combination of these two fields uniquely specify an endpoint (unless 
+the Source Addr is an ethernet multicast or broadcast address).  The ethernet 
+type can be any 16-bit value, provided that it is not a reserved field (e.g. the 
+IP ethernet type is 0x0800, and is a reserved type).<p>  
+
+In the case where the only open channel's consist of Raw U-Net (not in the 
+DAG) or Raw Ethernet channels, the DAG is merely a linked-list of ETH-
+TYPE cells (<!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><a href="http://www.cs.cornell.edu/Info/People/barber/upf-unet/cell.html">see the Cell Specification Page</a>).<p>  
+
+<center>
+<b>Figure 4:  Raw Ethernet in the UPF DAG</b><br>
+<!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><img src = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/rawethDAG.gif"></center>
+<p>
+
+When a Raw Ethernet Packet is received, fields the ethernet source and 
+raw ethernet type are compared with 
+the corresponding cell values for each element in the linked-list,
+until a match is found.  
+For the case(s) in which a large number of Raw Ethernet channels are open, 
+performance may be improved by replacing this linked list with a hash table.
+
+<p><hr><p>
+
+<li><b>TCP/IP (Transmission Control Protocol/Internet Protocol):</b><p>  
+
+This is a composite point-to-point protocol.  The outer protocol is IP, and the 
+inner is TCP.  I refer to this as a single filter, as only both protocols together 
+identify an endpoint.  In reality, they are separate protocols.<p>
+
+The combination of the following fields uniquely identifies a TCP/IP 
+endpoint:<p>
+
+<ul>
+<li> Ethernet Type	 -- Ethernet Protocol  
+<li> IP Version -- IP Protocol
+<li> Transmission Protocol -- IP Protocol (specifies TCP Protocol)
+<li> Destination Port -- TCP Protocol
+<li> Destination Address -- IP Protocol
+<li> Source Address -- IP Protocol
+<li> Source Port -- TCP
+</ul>
+
+<center>
+<b>Figure 5:  TCP/IP Composite Header</b><br>
+<!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><img src = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/ipheader.gif"></center>
+<p>
+
+Notice that fields from three different protocols uniquely identify a channel.  
+This corresponds to a traversal of the packet filter's DAG.  UPF is designed
+to be fast.  This means that in the interests of 
+speed, we want to drop a packet from contention as soon as it is realized that 
+the packet will not demultiplex to any endpoint.<p>  
+
+Of the 7 preceding fields, we know that the packet is not IP if the ethernet 
+type field does not match IP (0x0800).  As an optimization, the IP ethernet 
+cell is always located at the head of the Ethernet-level linked-list.  Since IP 
+demultiplexing is expensive, this results in just a single ethernet-type check.<p>
+
+At this point, we now know the packet is of type IP.  At the next level in the 
+DAG, we check the protocol and the IP version number.  If the protocol is un-
+defined (i.e. is not TCP or UDP, ..., in this case TCP), or if the IP version number 
+does not match the filter's IP version number, the packet is dropped.  Again, this 
+results in traversing a linked-list of protocol cells, or as its referred to in the 
+source code, IP_PROTO cells, until a match is or isn't found.<p>  
+
+<center>
+<b>Figure 6:  At the IP Protocol Level in the UPF DAG</b><br>
+<!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><img src = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/ipprotoDAG.gif"></center>
+<p>
+
+If a match is found, then we descend another level into the DAG.  At this 
+point, we drop the packet if the destination port (TCP Protocol), does not 
+exist in the filter.  Since there can be as many as 2^16 possible ports, we 
+perform a lookup into a hash table.  The hash table itself is connected to the 
+IP_PROTO cell corresponding to the TCP protocol.  The hash function is 
+defined within the source code by the function <i>hash_func_port()</i>.  
+Since it is possible for multiple channels to exist on the same <port, protocol> 
+combination, it might be necessary traverse a hash-chain of 
+IP_CHANNEL_HASH cells.  These cells contain the destionation port number, and 
+pointer to a Channel hash table.<p>
+
+<center>
+<b>Figure 7:  At the TCP/IP Channel Hash Level in the UPF DAG</b><br>
+<!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><img src = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/ipchanhashDAG.gif"></center>
+<p>
+
+The 3 remaining fields, IP Source addr, IP Destination addr, and TCP source 
+port, uniquely identify a TCP channel.  A hash function is then used, defined 
+by the function <i>hash_func_chan()</i> in the source code, to hash into a table 
+connected to the IP_CHANNEL_HASH node.  Again, there can be more 
+than one node connected to a single index in the hash table.  The hash 
+function is meant to spread out the different channel combinations, 
+so that a chain of  IP_CHANNEL nodes will not have to be walked.<p>
+
+<center>
+<b>Figure 8:  At the TCP/IP Channel Level in the UPF DAG</b><br>
+<!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><img src = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/ipchannelDAG.gif"></center>
+<p>
+
+If a match is found in the IP_CHANNEL linked list, we demultiplex the 
+packet to the corresponding endpoint.<p>  
+
+In summary, demultiplexing TCP/IP packets requires traversing the DAG 
+through 3 protocols.
+Note that the current implementation does not support IP fragmentation.  
+This would be a natural extension to TCP/IP, as well as UDP/IP.
+
+<p><hr><p>
+
+<li><b>UDP/IP (User Datagram Protocol):</b><p>  
+
+Traversal of the DAG for UDP/IP is nearly identical to that of 
+TCP/IP.  The difference between the two protocols is that UDP/IP can be 
+connection-less, while TCP/IP is always connection-oriented.  This means 
+that its possible to establish not only unicast channels, but multicast and 
+broadcast channels as well.<p>
+
+Traversal of the DAG for UDP/IP requires the same seven fields that were 
+used in TCP/IP.  The difference is that at channel setup time, a unicast, 
+multicast, or broadcast channel type can be selected. If the user creates a 
+unicast channel, then traversal of the DAG occurs exactly as it did for TCP/IP, 
+except that the transmission protocol is now UDP.<p>  
+
+Choosing to open a multicast channel results in creating a new level of the 
+DAG.  Graph traversal proceeds as it did for TCP/IP, all the way to the 
+IP_CHANNEL node.   In UDP, the IP_CHANNEL node contains an x_cast 
+field, which is set to either UNICAST, MCAST, or BCAST.  If the field is 
+MCAST, then we descend a level to a linked list of IP_MCAST cells.<p>
+
+<center>
+<b>Figure 9:  At the UDP/IP Mulitcast Level in the UPF DAG</b><br>
+<!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><img src = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/multicastDAG.gif"></center>
+<p>
+
+Each node in this linked list corresponding to an IP_CHANNEL with the 
+same address information, but with pointers to different channels.  In the 
+event that a multicast IP_CHANNEL is matched, then we walk the entire 
+IP_MCAST linked list, and demultiplex at each IP_MCAST cell.<p>
+
+If the IP_CHANNEL node is of type BCAST, then we must demultiplex to 
+every active channel on this port (dest_port).  This results in a traversal of 
+every hash-chain for every index in the hash table connected to the 
+IP_CHANNEL_HASH node.  The packet is then demultiplexed to every 
+unicast and multicast channel open on the port.  If another broadcast channel 
+is encountered, it is ignored (since a broadcast is already taking place).<p>
+
+Multicast channels result in demultiplexing to many channels.  This involves 
+copying the entire packet into multiple regions of user memory, for as many 
+multicast channels that are open.  Broadcast channels result in even poorer 
+performance, since the packet must be demultiplexed to every open channel
+on the port.<p> 
+
+In general, multicast and broadcast channels may be useful, but they incur a 
+severe performance overhead.
+</ul>
+
+<hr>
+<p>
+
+<h3>4.3  Wild-Card Channels in IP</h3>
+
+Both TCP/IP and UDP/IP composite protocols support wild-card channels.   
+In order to demultiplex to an endpoint, the minimal requirements specify 
+that the IP ethernet type, the IP Version number, the transport protocol, and a 
+destination port must be specified.  The remaining fields, IP destination 
+address, IP source address, and the source port can remain un-specified (they 
+are declared as a WILD during channel creation).  The combination of 3 
+wild-card fields results in seven distinct wild card priority levels, which are 
+illustrated below.<p>
+
+<center>
+<b>Figure 10:  IP Channel Hash Table Priority Levels</b><br>
+<!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><img src = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/hashprior.gif"></center>
+<p>
+
+The combination of only a WILD IP source address forms the highest 
+priority, while the combination of all WILDS creates the lowest priority.<p>  
+
+Wildcard channels will only pick up packets if there is no matching channel 
+from the next-highest priority level.  This functionality is built into 
+<i>hash_func_chan()</i>.  Each IP_CHANNEL hash table is partitioned into 
+HASH_ENTRIES - 7 indexed hash buckets.  During graph traversal on 
+packet reception, if a packet cannot be demultiplexed via the indexed hash 
+chain, then we traverse each priority level on the corresponding destination 
+port.  If a matching wild-card channel is found, UPF demultiplexes on that 
+channel, and graph traversal ends.  If not, then UPF continues searching each 
+next lowest priority level until they are all exhausted, at which time the 
+packet can be dropped.<p>
+
+Note that UDP Multicast and Broadcast channels are implemented as wild-card 
+channels.  Since the channels are by definition connection-less, the IP source 
+address and source port fields are WILD.  The down-side of this setup is that 
+matching a multicast or broadcast channel requires exactly 3 hash misses (1 
+for the missed index, and 2 for the preceding wild-card priority levels).  If a 
+U-Net parallel program were to rely heavily on IP multicast or broadcast, this 
+scheme may require alteration to boost performance.<p>
+
+<!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><img src = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/sepbar-6.gif"><p>
+
+<h2>5.0  Using UPF with U-Net, Benchmarks, and Demonstration 
+Programs</h2>
+
+You can obtain a copy of the UPF U-Net source tree, by saving 
+<!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><a href = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/upf-unet.tar.gz">this link</a>.  The 
+UPF code is designed to run on a Linux system over Fast Ethernet.  However, 
+it should be extremely portable to any U-Net system running over Fast 
+Ethernet.  This version, has been tested and bench-marked on Linux 1.3.71 
+using the U-Net kernel patch (
+<!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><a href = "http://www.cs.cornell.edu/Info/Projects/U-Net/release-docs/install.html">see the U-Net supporting documentation</a>).<p>  
+
+The source tree contains the following items:<p>
+<ul>
+<li>The source code for the U-Net Packet Filter Extension (./dev-tulip/upf.*)<p>
+
+<li>The modified U-Net device driver (./dev-tulip/devtulip.*) for the SMC tulip
+Fast Ethernet Card.<p>
+
+<li>A User-level interface library to U-Net (./libunet/libunet.*) and some UPF 
+user-level interface routines for creating channels (./libunet/conversion.*)<p>
+
+<li>A Program that demonstrates the functionality of UPF U-Net (./test/
+complex.c)<p>
+
+<li> Several bench-marking Programs to minimum latency (pingpong_*).  
+The completions "*" stand 
+for "unet", "eth", and "ip", for Raw Unet, Raw Ethernet, and IP (TCP), 
+respectively.  These programs can also be found under the ./test directory.<p>
+
+<li>f) The supporting documentation (this document) can found in the 
+directory ./docs .<p>
+</ul>
+<!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><img src = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/sepbar-6.gif"><p>
+
+
+<h2>6.0  Performance Benchmarks</h2>
+The U-Net Packet Filter was evaluated using a 133Mhz Pentium and a 90Mhz Pentium, 
+connected to a Fast Ethernet Switch.  The programs pingpong_unet, pingpong_eth, 
+and pingpong_ip, were used to test the roundtrip times for sending messages
+using Raw Unet, Raw Ethernet, and TCP/IP, respectively.  1000 forty-byte packets 
+were sent per test.  The following results were taken from several runs.<p>
+<ul>
+<li>Roundtrip time for Raw-Unet:  90.55 us/message
+<p>
+<li>Roundtrip time for Raw-Ethernet:  94.30 us/message
+<p>
+<li>Roundtrip time for TCP/IP:  109.50 us/message
+<p>	
+</ul>
+
+Raw-Ethernet performed 4% slower than Raw-Unet.  TCP/IP performed 17% slower than Raw-Unet,
+and 13% slower than Raw-Ethernet.<p>
+
+Raw-Ethernet's performance was about as expected.  Traversal of the DAG is not free,
+and requires some cycles. TCP/IP's performance is a little disappointing, especially since
+the channel test was connection-oriented, and was the only channel open during testing.  
+However, the significant performance drain could be partially attributed to the
+hash lookups implemented with the IP filter.  
+In order to demultiplex to a TCP/IP channel, a packet must 
+traverse through two hash-table lookups.  In its current implementation, both 
+hashing functions use a modulo operator.  The modulo of the hash function is taken against
+the number of available hash buckets.  The use of the modulo operator incurs a large
+expense, and might explain a significant portion of TCP/IP's performance drain.<p>
+
+One way the hash functions can be improved would be to replace the modulo 
+operations with an alternative similar operation, 
+in order to hash a packet into one of the available hash buckets. 
+Rather than use modulo, we could logically <b>and</b> the result of the hash 
+function with a mask corresponding to the <b>log (base 2)</b> 
+of the size of the hash table.  This would perform a function similar to the 
+modulo operation while enormously reducing the
+computational expense of the operation.<p>
+
+There are undoubtably numerous optimizations one can make to the packet filter
+to enhance performance.  This is left as future work.<p>
+
+<!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><img src = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/sepbar-6.gif"><p>
+
+<h2>7.0  How to Go About Adding a New Filter to UPF</h2>
+
+Each filter is some combination of cells and hash tables connected together.  
+In meeting the second design goal, the integration of a new filter to UPF is 
+meant to be modular.  Each module requires at least 3 routines.<p>
+<ol>
+<li><b>add_Protocol():</b> a routine to dynamically add a channel of this prototype 
+to the DAG. If the filter has not been installed for this channel type, then the 
+filter is also installed.  If the add_Protocol() routine fails, then the channel 
+creation up to the point of the error must be un-done.<p>
+
+<li><b>find_Protocol():</b> this routine should be very fast!  Its responsible for 
+demultiplexing packets to their endpoints.<p>
+
+<li><b>deactivate_Protocol():</b> this routine dynamically removes a channel from 
+the DAG, and de-allocates any memory associated with the channel.  If the 
+channel is the last channel of its protocol, then the entire protocol is 
+deactivated. This routine is important for long-running processes, where channels 
+are created and destroyed based on run-time conditions.  Its important that all 
+memory be recycled and accounted for.  This routine is not as important for 
+short-running programs, such as benchmarks, since the 
+<i>upf_shutdown()</i> routine will de-activate the entire DAG data-structure.<p> 
+</ol>
+
+The current implementation supports 4 different filters:  Raw Ethernet, IP, 
+TCP, and UDP.  For each segmented protocol, there are exactly 3 essential 
+routines (see the source code). That is, the aforementioned 3 routines exists for 
+every module.  Actually, there is only one find_Protocol in the UPF system 
+(<i>upf_findchannel()</i>).  However, this routine is broken up into C case statements, 
+essentially breaking down the task of demultiplexing composite 
+headers by protocols.<p>  
+
+The designer of a new filter should feel free to define there own cell types, as 
+is necessitated by the new filter.  The designer should feel free to modify the 
+actual cell structure, if will improve the overall packet filter design, 
+and can also define new hash functions as is needed.<p>
+<!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><img src = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/sepbar-6.gif"><p>
+
+<h2>8.0  Memory Management</h2>
+
+All memory allocatation in the UPF system is chained together off of a 
+pointer on the tulip-device structure.  As new cells and hash-tables are allocated, 
+a new "wastebucket" structure is added to a garbage collecting list of 
+wastebuckets.  Each wastebucket points towards the allocated structure.  Each 
+structure in turn points back to the corresponding waste bucket.  A call to 
+<i>upf_shutdown()</i> results in a traversal to each wastebucket.  At each bucket, 
+the data structure it points to is de-allocated.  Since each structure points to its 
+corresponding wastebucket, a call to <i>upf_deactivate()</i> results in proper 
+maintenance of the watebucket linked-list.
+<p>
+<!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><img src = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/sepbar-6.gif"><p>
+
+<h2>9.0  Other Possible Extensions to UPF</h2>
+
+Througout this document, some possible extensions to UPF have been mentioned.  
+In this section, we will discuss a few more.<p>
+
+The current implementation of UPF handles multicast and broadcast channels.  
+However, in order to properly join a multicast group, a process needs access 
+to an IP multicast to Ethernet address resolver.  The de facto way of doing 
+this now is via IGMP.  Therefore, the addition of an IGMP filter to UPF might 
+be a good idea.<p>
+
+If a group of U-Net processes were to need to dynamically need to create new IP channels,
+then they would also require a way to resolve straight ethernet to IP address translations.
+The addition of the <i>Address Resolution Protocol (ARP)</i> filter to UPF 
+would also make a logical extension.<p>
+
+In general, as many extensions can be made to UPF as is required by the needs
+of the U-Net user(s)<p> 
+<!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><img src = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/sepbar-6.gif"><p>
+
+<h2>10.0  Conclusions</h2>
+
+The attempt to create a packet filter that can be used
+with U-Net was successful.  In doing so, I believe that our original design goals were met. 
+This is, however, a beginning.  There is still a lot work that must be done in
+developing both U-Net, and the U-Net Packet Filter.  Particulary in 
+the case of UPF, performance can be improved.  Improvements to the current
+hashing implementation, and tweaks to the source code in general will 
+probably boost overall perforance of the filters.<p>
+
+<!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><img src = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/sepbar-6.gif"><p>
+
+<h2>11.0  Acknowledgments</h2>
+
+I would like to thank the following individuals for their advice, guidance, and 
+suggestions in designing and developing UPF:<p>
+<ul>
+<li>Gerry Toll
+<li>Werner Vogels
+<li>Anindya Basu
+<li>Theodore Wong
+<li>Professor Thorsten von Eicken.
+</ul>
+<!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><img src = "http://www.cs.cornell.edu/Info/People/barber/upf-unet/sepbar-6.gif"><p>
+
+<h2>12.0  References</h2>
+<ul>
+
+<li> Mary L. Bailey, Burra Gopal, Michael A. Pagels, Larry L. Peterson, 
+Prasenjit Sarkar, "PathFinder:  A Pattern -Based Packet Classifier", 
+Proceedings of the First Symposium on Operating Systems Design and 
+Implementation, Usenix Association, November, 1994.<p>
+
+<li> Thorsten von Eicken, Anindya Basu, Vineet Buch, and Wernel Vogels, 
+"<!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><a href="http://www.cs.cornell.edu/Info/Projects/U-Net/sosp.ps">
+U-Net:  A User-Level Network Interface for Parallel and Distributed 
+Computing></a>", Draft for SOSP-95, Cornell University, August, 1995.<p>
+
+<li> Dawson R. Engler, M Frans. Kaashoek, "DPF:  Fast, Flexible Message 
+Demultiplexing using Dynamic Code Generation", Association for 
+Computing Machinery, Inc., 1996.<p> 
+
+<li> Kamran Husain, Tim Parker, "Linux Unleashed", Sams Publishing,
+Indianapolis, 1995.
+
+<li> Chris Maeda, Brian N. Bershad, "Protocol Service Decomposition for 
+High-Performance Networking", Carnegie Mellon University.<p>
+
+<li> Steven McCane and Van Jacobson, "The BSD Packet Filter:  A new 
+Architecture for User-level Packet Capture", Lawrence Berkeley Laboratory, 
+December, 1992.<p>
+
+<li> Matt Welsh, "<!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><a href = "http://www.ddj.com/ddj/1995/1995.05/welsh.htm">
+Implementing Loadable Kernel Modules for Linux; Loading 
+and unloading kernel modules on a running system</a>", Dr. Jobb's Journal, 
+1995.<p>
+
+<li> Matt Welsh, Thorsten von Eicken, "
+<!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><a href="http://www.cs.cornell.edu/Info/Projects/U-Net">
+U-Net: Protected, User-Level Networking Interface</a>",
+ Cornell University, March, 1996.<p>
+
+<li> Gary R. Wright, W. Richard Stevens, "TCP/IP Illustrated, Volume 1", 
+Addison-Wesley Publishing Company, New York, 1995.<p>
+
+<li>Masonobu Yuhura, Chris Maeda, Brian N. Bershad, J. Eliot B. Moss, 
+"Deultiplexing for Multiple Endpoints and Large Messages", Carnegie 
+Mellon University.<p>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,72 @@
+Date: Tue, 14 Jan 1997 23:23:42 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+Content-length: 2411
+Last-modified: Thu, 24 Oct 1996 22:49:19 GMT
+
+<!doctype html public "-//IETF//DTD HTML//EN">
+<HTML>
+
+<HEAD>
+
+<TITLE>Homework 4</TITLE>
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Word 1.0Z">
+<META NAME="AUTHOR" CONTENT="Samir Das">
+</HEAD>
+
+<BODY>
+
+<H3>Homework 4 </H3>
+
+<H3>Due Nov 5, 1996</H3>
+
+<OL>
+<LI> (10 points) Assume that in DLX (Figure 3.44) <I>all</I>
+arithmetic functional units (such as
+the integer ALU, FP adder, Int/FP multiplier and the Int/FP divider)
+are fully pipelined. All functional units are completely independent,
+i.e., they do not share any of the stages. All functional units
+consume their operands at the very first EX stage. Argue that
+if there are <I>n</I> stages in a functional unit, the latency
+for that unit producing a value and any unit (same or different)
+consuming the same value is <I>n-1</I>; however, the latency for
+that unit producing a value and a store instruction consuming
+the same value as <I> memory data </I> is <I>n-2.</I> (<B>Hint:</B> The
+answer is in the book.) 
+<p>
+Will the same latencies be true if operands
+are <I>not </I>consumed at the very first EX stage? Explain.
+<p>
+<LI> (10 points) Solve problem 4.1.
+<p>
+<LI> (15 points) Solve problem 4.10.
+<p>
+<LI> (10+15+20+20 points) Solve problems 4.14 (a), (b), (c) and (g). 
+<p>
+<b> Hints: </b> For parts (a) and (b) assume the classic pipeline as in
+Figure 3.44 with latencies as suggested. Assume all possible 
+forwarding. 
+<p>
+For part (c), notice that in
+scoreboarding as described in the text, the MEM stage is conspicuously
+absent. Since we need to follow the text, assume that memory accesses
+are made in the EX cycle for load/store in addition to the effective
+address calculation. So any integer operation including loads take only
+4 cycles (ID1,ID2,EX,WB) in the absence of any stalls. Do not track the
+branch as suggested. Assume that it is taken and issue instructions 
+from the next iteration if possible. For scoreboarding the only 
+forwarding you can assume is via the register file, i.e., you can write/read
+the value in the same cycle. Thus to be consistent with given latencies
+assume that the number of EX stages for MULTD and ADDD is 3 (convince
+yourself on this point). You will need this information to figure out
+the instruction execution status when SGTI reaches WB stage.
+<p>
+For part (g), just concentrate on the maximum rate you can issue
+instructions and try to get 2 issues per cycle.
+
+</OL>
+
+</BODY>
+
+</HTML>

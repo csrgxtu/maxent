@@ -1,0 +1,249 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Friday, 21-Feb-97 21:11:07 GMT
+Content-Type: text/html
+Content-Length: 7912
+Last-Modified: Sunday, 26-Jan-97 01:10:00 GMT
+
+<html>
+<head>
+<title>CODE Visual Parallel Programming System</title>
+
+<meta name="description" content="The CODE Visual Parallel Programming System: CODE is a visual parallel programming system, allowing users to compose sequential programs into a parallel one. The parallel program is a directed graph, where data flows on arcs connecting the nodes representing the sequential programs. The sequential programs may be written in any language, and CODE will produce parallel programs for a variety of architectures, as its model is architecture-independent.">
+
+<meta name="keywords" content="CODE, visual programming, parallel programming, dataflow,  graph-oriented, PVM, MPI, Solaris, Cray, POSIX, threads, shared memory, distributed memory, SMP, MIMD, architecture independent">
+
+</head>
+<body bgcolor="#FFFFFF" LINK="#191eee" VLINK="#b90003" ALINK="#a051b7">
+
+<a name="top">
+<a name="overview">
+<center><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><IMG ALIGN=center ALT="[The CODE Visual Parallel Programming System]" SRC="http://www.cs.utexas.edu/users/code/CODE-logo.gif" height=220 width=581></center>
+<p>
+
+<hr>
+
+<table>
+<tr><td valign=top>
+<center>
+<map name=commands>
+<area shape=rect coords="3,16, 144,39" href="Welcome.html#overview">
+<area shape=rect coords="3,40, 144,67" href="Welcome.html#announcements">
+<area shape=rect coords="3,48, 144,96" href="Welcome.html#software">
+<area shape=rect coords="3,97, 144,122" href="Welcome.html#research_group">
+<area shape=rect coords="3,123, 144,148" href="code-publications">
+<area shape=rect coords="3,150, 144,174" href="Welcome.html#contacts">
+</map>
+<!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><img src="http://www.cs.utexas.edu/users/code/CODE-menu.GIF" border=0 usemap="#commands">
+</center>
+<p>
+
+</td>
+<td>
+
+</a>
+<dl>
+<dd>
+<em><font size=-1>
+<nobr>Mastering the lawless science of our law,--<br>
+That <b>code</b>less myriad of precedent,<br>
+That wilderness of single instances.<p>
+-- Alfred Lord Tennyson
+</nobr>
+</font>
+</em>
+<p>
+CODE is a visual parallel programming system, allowing users to compose sequential
+programs into a parallel one. The parallel program is a directed graph, where
+data flows on arcs connecting the nodes representing the sequential programs. The
+sequential programs may be written in any language, and CODE will produce parallel
+programs for a variety of architectures, as its model is architecture-independent.<p>
+
+Click here for <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.cs.utexas.edu/users/code/code2.1b1-screenshot.gif">a screen shot</A>.<p>
+
+<!--
+To learn more about using CODE, read <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="http://www.cs.utexas.edu/users/code/CodeIntroduction.html">the tutorial</A> <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><IMG ALIGN=absmiddle SRC="http://www.cs.utexas.edu/users/code/constru2.gif">.<p>
+-->
+
+The CODE system can produce parallel programs for <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A HREF="http://www.epm.ornl.gov/pvm/pvm_home.html">PVM</A>-based networks of machines as well as for the <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><A HREF="http://www.sequent.com/">Sequent</A> Symmetry. The newest version (pre-release available below) supports the <!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><A HREF="http://www.cray.com">Cray</A>, <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><A HREF="http://www.sun.com/">Sun</A> SMPs, and <!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><A HREF="http://www.mcs.anl.gov/Projects/mpi/index.html">MPI</A>.
+</dl>
+
+</td></tr>
+</table>
+
+<hr>
+
+<center>
+<table width=67%>
+<tr><td>
+
+<a name="announcements">
+<center><h2><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><a href="#top">Announcements</a></h2></center>
+</a></a>
+
+<UL>
+<a name="software">
+<LI><font size=-1><em>(11/14/96)</em></font> <B>A pre-release version of the new CODE is now available (and it's FREE)! </B> Click <!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><a href="http://www.cs.utexas.edu/users/code/License.html">here</a> to download the software.
+<p>
+This is a major new revision of CODE (click here for <!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><a href="http://www.cs.utexas.edu/users/code/code2.1b1-screenshot.gif">a screen shot</A>). It features a sophisticated new user-interface which provides many improvements to the previous version of CODE, making it easier and more pleasant to use. Some of the features include a Mac-like interface (<i>&agrave; la</i> MacDraw), multiple windows for subgraph editing, a hierarchy browser and more.</LI>
+
+<P>
+
+<LI><font size=-1><em>(10/8/96)</em></font> <B>Article on CODE:</b> <!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><a href="http://hpcwire.com/hpcwire.html">HPCwire</a>, the on-line journal of high-performance computing, recently published an article on CODE entitled <!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><a href="http://www.cs.utexas.edu/users/code/CODE-HPCwire-article.html"><em>"Visual Parallel Programming May Come of Age with CODE"</em></a> that they've been kind enough to let us reproduce here.
+<p>
+<p>
+
+<!--
+<LI>A <!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><A HREF="http://www.cs.utexas.edu/users/code/CodeIntroduction.html"><B>CODE Tutorial</B></A> is now on-line, providing an introduction to using CODE <!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><img align=absmiddle src="http://www.cs.utexas.edu/users/code/constru2.gif">.<P>
+-->
+
+<LI>There is a <B>CODE mailing-list</B> for current (and prospective) CODE users so that they will be notified of releases, new backends, etc.</LI>
+To join the mailing list, fill in the form below. (If you <!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><a href="http://www.cs.utexas.edu/users/code/License.html">download CODE</a>, you will also be added to the mailing list.)
+<center>
+<!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><form method="post" action="http://www.cs.utexas.edu/users/code/cgi/addtolist.cgi">
+<table>
+<tr>
+<td>
+First name: <INPUT SIZE=10 NAME="FirstName">
+</td>
+<td>
+Last name: <INPUT SIZE=10 NAME="LastName">
+</td>
+<td>
+E-mail address: <INPUT SIZE=20 NAME="Email">
+</td>
+<td>
+<input type="submit" value="Join">
+</td>
+</tr>
+</table>
+
+</form>
+</center>
+
+<BR>
+
+<!--
+
+<h3>Related Software</h3>
+
+<ul>
+
+<li> <!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><a href="ftp://ftp.cs.utexas.edu/pub/code2/XCodelib"> XCodelib: Component Library System for CODE </a>
+
+</ul>
+
+-->
+
+<p>
+<center><h3><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><a href="#top">Documentation & Publications</a></h3></center>
+
+<!--
+A <!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><A HREF="http://www.cs.utexas.edu/users/code/CodeIntroduction.html">CODE Tutorial</A> is now on-line (in construction).<p>
+-->
+
+These directories of compressed PostScript files are documentation for the previous version of CODE, but are being made available in lieu of new documentation, which is in the preparation stages. Despite the changes in the user interface, these manuals are still quite useful.<p>
+
+<ul>
+
+<li> <!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><a href="ftp://ftp.cs.utexas.edu/pub/code2/Code2.0-UserManual"> CODE 2.0 User's Manual </A>
+
+<li> <!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><a href="ftp://ftp.cs.utexas.edu/pub/code2/Code2.0-ReferenceManual"> CODE 2.0 Reference Manual </A>
+
+</ul>
+
+<p>
+
+<li>Here is a listing of CODE-related <!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><a href="http://www.cs.utexas.edu/users/code/code-publications">publications</a>, including links to PostScript versions of most of them.
+
+<BR>
+</UL>
+
+
+<!--
+<center><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><img align=bottom alt="CODE screen shot" src="http://www.cs.utexas.edu/users/code/Code2.1Screen.gif"></center>
+-->
+
+<p>
+<a name="contacts">
+<center><h2><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><a href="#top">Contact Information</a></h2></center>
+</a>
+For specific comments regarding CODE, send e-mail to Emery Berger at <!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><A HREF="mailto:emery@cs.utexas.edu">emery@cs.utexas.edu</A>. To send snail mail to a group member, address it to:
+<dl>
+<dd>
+Department of Computer Sciences <br>
+The University of Texas at Austin <br>
+Austin, TX 78712-1188 <br>
+</dl>
+
+<p>
+<a name="research_group">
+<center><h2><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><a href="#top">The Research Group</a></h2></center>
+</a>
+
+<ul>
+
+<h3><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><a href="#top">Group Leader</a></h3>
+
+<ul>
+
+<li>Professor <!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><a href="http://www.cs.utexas.edu/users/browne/">James C. Browne</a>
+
+</ul>
+
+<!--
+<h3> Affiliated Faculty Members</h3>
+
+<ul>
+
+<li><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><a href="http://www.cs.utexas.edu/users/UTCS/report/1994/profiles/jwerth.html"> John S. Werth </a>
+
+</ul>
+-->
+<h3><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><a href="#top">Project Manager</a></h3>
+
+<ul>
+<li> <!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><a href="http://www.cs.utexas.edu/users/emery/">Emery Berger</a>
+</ul>
+
+
+<h3><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><a href="#top">Student Members</a></h3>
+
+<ul>
+
+<li> <!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><a href="http://www.cs.utexas.edu/users/dwip/">Dwip Banerjee</a>: <em>Incorporating dynamic data partitioning into the CODE model.</em>
+
+<li> <!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><a href="http://www.cs.utexas.edu/users/ajohn">Ajita John</a>: <em>Developing a programming system based on constraints for automatic parallelization.</em>
+
+<p>
+
+<li> <!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><a href="http://www.cs.utexas.edu/users/code/alumni.html">CODE Alumni </a>
+
+</ul>
+
+</ul>
+
+</td></tr>
+</table>
+
+
+<center>
+<!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><img src="http://www.cs.utexas.edu/users/code/code-icon-trim.gif">
+</center>
+
+<hr>
+<center>
+[<!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><a href="http://www.cs.utexas.edu/users/code/Welcome.html#overview">Overview</a>] [<!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><a href="http://www.cs.utexas.edu/users/code/Welcome.html#announcements">Announcements</a>] [<!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><a href="http://www.cs.utexas.edu/users/code/Welcome.html#software">Software</a>]  
+<br>
+[<!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><a href="http://www.cs.utexas.edu/users/code/Welcome.html#research_group">Researchers</a>] [<!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><a href="http://www.cs.utexas.edu/users/code/code-publications">Publications</a>] [<!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><a href="http://www.cs.utexas.edu/users/code/Welcome.html#contacts">Contacts</a>]
+<hr>
+<!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><a href="http://www.apple.com/whymac"><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><img src="http://www.cs.utexas.edu/users/code/macspin.gif" align=absmiddle border=0></a>
+<p>
+<p>
+<b>
+<FONT SIZE="-1"><ADDRESS>CODE Home Page / <!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><A HREF="mailto:emery@cs.utexas.edu">emery@cs.utexas.edu</A> / Last updated 2 January 1997</ADDRESS></FONT>
+</b>
+<P>
+
+</body>
+</html>

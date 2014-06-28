@@ -1,0 +1,48 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 07-Jan-97 15:55:35 GMT
+Content-Type: text/html
+Content-Length: 1802
+Last-Modified: Monday, 11-Dec-95 16:42:34 GMT
+
+<title>Machine Learning Research Software</title>
+
+<h1>Machine Learning Research Software</h1> 
+<br> 
+We have compiled a group of Common Lisp files for various inductive
+classification algorithms.  These algorithms are intended for research
+purposes and all use the same basic data format and interface.  Also
+included is automatic testing software for running learning curves
+that compare multiple systems and utilities for plotting and
+statistically evaluating the results.  <p>
+
+This software is all available via 
+<!WA0><a href="ftp://ftp.cs.utexas.edu/pub/mooney/ml-progs">anonymous ftp</a>. <p>
+
+
+Current Algorithms: <p>
+
+<ol>
+<li> <b>AQ</b> - An early DNF learner.
+<li> <b>Backprop</b> - The standard multi-layer neural-net learning method.
+<li> <b>Bayes Indp</b> - A simple naive or "idiot's" Bayesian classifier.
+<li> <b>Cobweb</b> - A probabilistic clustering system.
+<li> <b>FOIL</b> - A first-order Horn-clause learner (Prolog and Lisp versions).
+<li> <b>ID3</b> - A decision tree learner with a number of features.
+<li> <b>KNN</b> - A k nearest neighbor (instance-based) algorithm.
+<li> <b>Perceptron</b> - An early one-layer neural-net algorithm.
+<li> <b>PFOIL</b> - A propositional version of FOIL for learning DNF.
+<li> <b>PFOIL-CNF</b> - A propositional version of FOIL for learning CNF.
+</ol>
+
+
+Some sample data sets included are "dna-standard.lisp" and
+"labor-neg.lisp".  The file "data-utilties.lisp" should be loaded
+before any other code.  Comments at the beginning of "universal-tester.lisp" 
+help define the data format and interface standards used.  The file 
+"data-utilities.lisp" also includes a function for converting a data file 
+suitable for Quinlan's C4.5 to a format usable by these algorithms. <p>
+
+
+<hr>
+<address><!WA1><a href="http://www.cs.utexas.edu/users/estlin/">estlin@cs.utexas.edu</a></address>

@@ -1,0 +1,245 @@
+Date: Tue, 05 Nov 1996 20:51:37 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 13 Sep 1996 18:53:11 GMT
+Content-length: 5710
+
+<!--This file created 9/12/96 3:31 PM by Claris Home Page version 1.0b1-->
+<HTML>
+<HEAD>
+   <TITLE>Q1.m.html</TITLE>
+   <X-SAS-WINDOW TOP=42 BOTTOM=397 LEFT=4 RIGHT=534>
+</HEAD>
+<BODY>
+
+<H3 ALIGN=CENTER><B>CS354, Fall 1996</B></H3>
+
+<H3 ALIGN=CENTER><B>Quiz 1, Sections 1 &amp; 3</B></H3>
+
+<H3><B>Name (printed): Name (signed):</B></H3>
+
+<P>&nbsp;</P>
+
+<P>(1) (2 points) What changes would need to be made to the SAL code
+shown in figure 2.7 on page 39 of the text in order to get it to run
+correctly?</P>
+
+<BLOCKQUOTE><P><B>ANSWER</B></P>
+
+<DL>
+   <DD>(a) add "ch: .byte" to the .data section,
+   
+   <DD>(b) change "loop" to "__start"
+</DL></BLOCKQUOTE>
+
+<P>(2, ver 1) (4 points) Translate the following C statement into SAL
+code:</P>
+
+<BLOCKQUOTE><P>A = 1 + B * ( A / B - 5 );</P>
+
+<P><B>ANSWER</B></P>
+
+<BLOCKQUOTE><PRE><TT><CODE>div     temp, A, B
+sub     temp, temp, 5
+mul     temp, B, temp
+add     A, 1, temp</CODE></TT></PRE></BLOCKQUOTE></BLOCKQUOTE>
+
+<P>(2, ver 2) (4 points) Translate the following C statement into SAL
+code:</P>
+
+<BLOCKQUOTE><P>A = B + 55 / ( A * B - 1 );</P>
+
+<P><B>ANSWER</B></P>
+
+<BLOCKQUOTE><PRE><TT><CODE>mul	temp, A, B
+sub	temp, temp, 1
+div	temp, 55, temp
+add	A, B, temp</CODE></TT></PRE></BLOCKQUOTE></BLOCKQUOTE>
+
+<P>(3, ver 1) (2 points) Assuming "a" is of type ".word," what is
+printed by the following SAL code:</P>
+
+<BLOCKQUOTE><PRE><TT>move    a, 468
+div	a, a, 10
+put	a
+rem	a, a, 10
+put	a</TT></PRE>
+
+<P><B>ANSWER</B></P>
+
+<BLOCKQUOTE><P>466</P></BLOCKQUOTE></BLOCKQUOTE>
+
+<P>(3, ver 2) (2 points) Assuming "a" is of type ".word," what is
+printed by the following SAL code:</P>
+
+<BLOCKQUOTE><PRE><TT>move    a, 468
+rem	a, a, 10
+put	a
+div	a, a, 3
+put	a</TT></PRE>
+
+<P><B>ANSWER</B></P>
+
+<BLOCKQUOTE><P>82</P></BLOCKQUOTE></BLOCKQUOTE>
+
+<P>(4) (5 points) Explain the difference between "b x" and "b (y)"
+</P>
+
+<BLOCKQUOTE><P><B>ANSWER</B></P>
+
+<DL>
+   <DD>"b x" causes a branch to the line of the code labeled by "x"
+   while "b (y)" causes a branch to the line of the code whose
+   address has been stored in variable "y"
+</DL></BLOCKQUOTE>
+
+<P>(5, ver 1) (10 points) Write a complete SAL program that will add
+all of the even numbers from 8 to 72 except for multiples of 3. The
+program should print the result and label it using the string "sum =
+." For example, if the sum were 1234, the program would print:</P>
+
+<BLOCKQUOTE><P>sum = 1234</P>
+
+<P><B>ANSWER</B></P>
+
+<BLOCKQUOTE><PRE><TT><CODE>          .data
+sum:      .word                     # running sum
+n:        .word     8               # n = 8 to 72, even
+k:        .word                     # k = n mod 3
+msg:      .asciiz   "sum = "
+&nbsp;
+          .text
+__start:  add     sum, sum, n
+next:     add     n, n, 2           # keep n even
+          rem     k, n, 3
+          beqz    k, next           # skip multiples of 3
+          ble     n, 72, __start
+          puts    msg
+          put     sum
+          putc    '\n"
+          done</CODE></TT></PRE></BLOCKQUOTE></BLOCKQUOTE>
+
+<P>(5, ver 2) (10 points) Write a complete SAL program that will add
+all of the odd numbers from 9 to 105 except for multiples of 5. The
+program should print the result and label it using the string "sum =
+." For example, if the sum were 1234, the program would print:</P>
+
+<BLOCKQUOTE><P>sum = 1234</P>
+
+<P><B>ANSWER</B></P>
+
+<BLOCKQUOTE><PRE><TT><CODE>         .data
+sum:     .word                      # running sum
+n:       .word     9                # n = 9 to 105, odd
+k:       .word                      # k = n mod 5
+msg:     .asciiz   "sum = "
+&nbsp;
+         .text
+__start: add	sum, sum, n
+next:    add	n, n, 2            # keep n odd
+         rem	k, n, 5
+         beqz    k, next            # skip multiples of 5
+         ble	n, 105, __start
+         puts    msg
+         put     sum
+         putc    '\n'
+         done</CODE></TT></PRE></BLOCKQUOTE></BLOCKQUOTE>
+
+<P>(6, ver 1) (2 points) What is 3456 in Roman numeral notation?</P>
+
+<BLOCKQUOTE><P><B>ANSWER</B></P>
+
+<DL>
+   <DD><TT>3000 + 400 + 50 + 6</TT>
+   
+   <DD><TT>MMM CD L VI = MMMCDLVI</TT>
+</DL></BLOCKQUOTE>
+
+<P>(6, ver 2) (2 points) What is 3607 in Roman numeral notation?</P>
+
+<BLOCKQUOTE><P>ANSWER</P>
+
+<DL>
+   <DD><TT>3000 + 600 + 0 + 7</TT>
+   
+   <DD><TT>MMM DC VII = MMMDCVIII</TT>
+</DL></BLOCKQUOTE>
+
+<P>(7, ver 1) (10 points) Convert the following C code to the
+equivalent SAL code, assume all variables are of integer type.</P>
+
+<DL>
+   <DD><TT>if (a &gt; b) </TT>
+   
+   <DL>
+      <DD><TT>++a;</TT>
+   </DL>
+   
+   <DD><TT>else if ( b == 5) </TT>
+   
+   <DL>
+      <DD><TT>a = a * b;</TT>
+   </DL>
+   
+   <DD><TT>else </TT>
+   
+   <DL>
+      <DD><TT>a = 0;</TT>
+   </DL>
+   
+   <DD><TT>printf("%d\n",a);</TT>
+   
+   <P><B>ANSWER</B></P>
+   
+   <BLOCKQUOTE><PRE><TT># SAL code is:
+       ble     a, b, else1
+       add     a, a, 1
+       j       prt
+else1: bne     b, 5, else2
+       mul     a, a, b
+       j       prt
+else2: move    a, 0
+prt:   put     a
+       putc    '\n'</TT></PRE></BLOCKQUOTE>
+</DL>
+
+<P>(7, ver 2) (10 points) Convert the following C code to the
+equivalent SAL code, assume all variables are of integer type.</P>
+
+<DL>
+   <DD><TT>if (a &lt; b) </TT>
+   
+   <DL>
+      <DD><TT>a = a + 2;</TT>
+   </DL>
+   
+   <DD><TT>else if ( b != 5) </TT>
+   
+   <DL>
+      <DD><TT>a = a / b;</TT>
+   </DL>
+   
+   <DD><TT>else </TT>
+   
+   <DL>
+      <DD><TT>++a;</TT>
+   </DL>
+   
+   <DD><TT>printf("%d\n",a);</TT>
+   
+   <P><B>ANSWER</B></P>
+   
+   <BLOCKQUOTE><PRE><TT># SAL code is:
+       bge     a, b, else1
+       add     a, a, 2
+       j       prt
+else1: beq     b, 5, else2
+       div     a, a, b
+       j       prt
+else2: add     a, a, 1
+prt:   put     a
+       putc    '\n'</TT></PRE></BLOCKQUOTE>
+</DL>
+</BODY>
+</HTML>
+

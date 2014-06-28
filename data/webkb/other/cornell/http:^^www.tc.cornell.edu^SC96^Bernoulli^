@@ -1,0 +1,58 @@
+Date: Sun, 01 Dec 1996 20:26:02 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 01 Nov 1996 19:12:16 GMT
+Content-length: 2473
+
+<TITLE> BERNOULLI PROJECT </TITLE>
+<BODY BACKGROUND="./images/bg.gif">
+
+<center>
+<!WA0><!WA0><!WA0><!WA0><IMG  WIDTH=550 HEIGHT=410 SRC="http://www.tc.cornell.edu/SC96/Bernoulli/images/bernoulli.gif" alt=""><p>
+</center>
+<p>
+ The Bernoulli project is building tools for constructing problem
+solving environments (PSEs) for computational science and engineering.
+Many of these applications involve the numerical solution of partial
+differential equations like the Navier-Stokes equations and the
+equations of elasticity. Commonly used solution methods like the
+finite element and finite difference methods convert the problem of
+solving differential equations to that of solving systems of algebraic
+equations, using a process called discretization. The algebraic
+equations themselves can be solved using numerical techniques like
+Gaussian elimination, Krylov space methods and Newton's method.  <p>
+<p>
+ The Bernoulli project integrates breakthroughs in three areas:
+discretization tools,
+<!WA1><!WA1><!WA1><!WA1><a href="http://www.tc.cornell.edu/SC96/Bernoulli/compiler.html"> restructuring compiler technology </a> and 
+<!WA2><!WA2><!WA2><!WA2><a href="http://www.tc.cornell.edu/SC96/Bernoulli/prema/index.html"> runtime systems </a>. 
+<p>
+ The discretization tools are being implemented by Rich Zippel using
+his Weyl symbolic algebra substrate. Weyl extends the data structures
+available in Common Lisp to include objects like matrices, vectors,
+rational functions, rings etc. The discretization toolkit implements
+the weighted residual method which subsumes the finite-element,
+finite-volume and spectral methods. Finite-difference schemes are also
+being implemented.
+<p>
+ The systems of equations produced by discretization can be written in
+the form Ax = b where A is a large, sparse matrix, b is a known
+vector, and x is a vector of unknowns. Such large systems of equations
+can be solved on parallel machines like the IBM SP-2, using solvers
+that exploit the sparsity of matrix A to reduce computation and
+communication requirements. We are developing restructuring compiler
+technology to transform specifications of these solvers (expressed as
+sequential programs operating on dense matrices) to parallel codes
+that exploit sparsity. 
+<p>
+ The target of the compiler is a runtime substrate for parallel
+machines that conforms to the PORTS specification for portability.
+The runtime substrate provides low-latency message passing and a
+global address space on distributed-memory platforms like the IBM
+SP-2. We are experimenting with versions based on MPI and on active
+messages. 
+
+
+<p><hr><address> Copyright &copy Cornell University </address>
+</BODY>
+

@@ -1,0 +1,686 @@
+Date: Tue, 05 Nov 1996 00:32:21 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 16 Aug 1996 15:58:20 GMT
+Content-length: 13462
+
+<html>
+<head>
+<title> Lecture notes - Chapter 2 - SAL</title>
+</head>
+
+<BODY>
+<h1> Chapter 2 -- SAL</h1>
+
+<pre>
+
+ABOUT SAL
+---------
+
+MOTIVATION for SAL:
+     hiding the details of MAL, MIPS asm. lang. (on purpose!)
+     SAL code will look more like HLL code -- to make student's transition
+	  easier.
+     Introducing one more level of abstraction in order to postpone
+	  discussion of several topics.
+
+
+     HLL           SAL         assembly          machine code
+
+
+     each HLL statement maps into 1 or MORE SAL instructions
+     each SAL instruction maps into 1 or MORE MAL instructions
+
+     for this course, there is actually one more layer that
+     students will be given
+
+     HLL        SAL     MAL       TAL      MIPS RISC machine code
+
+
+
+
+SAL
+
+A subset of the functionality of most high level languages --
+     no records/structures
+     no formal arrays (see chapter 7 for their implementation)
+
+What is required by a programming language?
+  declarations
+  arithmetic operations
+  conditional execution (if then else)
+  looping control structures
+  communication w/user. . .(write statement)
+
+
+About SAL:
+ -- one instruction, declaration per line
+ -- comments are anything on a line following `#'
+    (comments may not span lines)
+
+
+
+
+DECLARATIONS
+------------
+
+  - they give information about how much memory space is needed
+  - they assign a name to the memory space
+
+  SAL has 3 basic types: integer, float (real), character
+  can build other types out of these,
+       for example, boolean is really an integer with only 2 defined values.
+  
+  Pascal:
+       var        variablename:  type;
+
+  C:
+       type     variablename;
+
+  SAL:
+       variablename:  type value
+
+
+     type is       .word      if integer
+		   .byte      if character
+		   .float     if real (floating point)
+
+     value is optional -- it gives the variable an initial value
+
+  examples:
+       flag:  .word   0
+
+       counter:   .word   0
+
+       variable3: .word
+
+       e:  .float   2.71828
+
+       uservalue:    .byte
+
+       letter:    .byte 'a'
+
+
+
+other useful rules:
+  -- one declaration per line.
+  -- default initial value is 0.
+
+
+
+DIRECTIVES
+----------
+  a way to give information to the assembler.
+
+  - all directives start with `.' (period)
+
+    examples:
+
+	 .byte
+	 .word
+	 .float
+
+	 .data       # identifies the start of the declaration section
+		     #   there can be more than 1 .data section in
+		     #   a program
+
+
+	 .text       # identifies where instructions are
+		     #   there can be more than 1 .text section in
+		     #   a program
+
+	 .asciiz  "a string.\n"  # places a string into memory
+				 # and null terminates the string.
+
+	 .ascii  "new string."   # places a string into memory
+				 # WITHOUT null termination.
+
+
+
+
+
+ARITHMETIC operations
+----------------------
+
+     SAL             Pascal             C
+
+     move x, y       x := y;           x = y;
+     add x, y, z     x := y + z;       x = y + z;
+     sub x, y, z     x := y - z;       x = y - z;
+     mul x, y, z     x := y * z;       x = y * z;
+     div x, y, z     x := y div z;     x = y / z;
+     rem x, y, z     x := y mod z;     x = y % z;
+
+   NOTES: 1. the operation result depends on the type of the variables.
+	  2. cannot increase the number of operands.
+	  3. y and/or z can be IMMEDIATES
+
+
+   examples:
+
+      move  count, 0
+
+      mult  product, mult1, mult2
+
+      add   sum, 2, addend
+
+
+NOTE:  there are other instructions that implement boolean functions,
+       but we don't cover them yet.
+
+
+
+CONDITIONAL EXECUTION
+---------------------
+  sometimes an instruction (or a set of instructions) should
+  be executed, and sometimes it (they) shouldn't.
+
+  HLL -- simplest form is a go-to.  (Always discouraged.)
+
+
+Pascal if-then-else
+  (a conditional go-to!)
+
+   if (condition) then
+       statement
+   else
+       statement;
+
+
+C if-then-else
+
+   if (condition)
+       statement;
+   else
+       statement;
+
+
+SAL 'ifs' and 'gotos'
+--------------------------------
+    SAL                  Pascal
+
+    b label             goto label;
+    bltz x, label       if x < 0 then goto label;
+    bgtz x, label       if x > 0 then goto label;
+    blez x, label       if x <= 0 then goto label;
+    bgez x, label       if x >= 0 then goto label;
+    beqz x, label       if x = 0 then goto label;
+    bnez x, label       if x <> 0 then goto label;
+    beq x, y, label     if x = y then goto label;
+    bne x, y, label     if x <> y then goto label;
+    blt x, y, label     if x < y then goto label;
+    bgt x, y, label     if x > y then goto label;
+    ble x, y, label     if x <= y then goto label;
+    bge x, y, label     if x >= y then goto label;
+
+
+
+
+EXAMPLE:
+--------
+  Pascal if-then-else:
+
+       if (count < 0) then
+       begin
+	   count := count + 1;
+       end;
+
+  C equivalent:
+
+       if (count < 0)
+	   count = count + 1;
+
+
+SAL equiv to if-then-else:
+
+                bltz count, ifstuff
+	        b endif
+      ifstuff:  add count, count, 1
+      endif:      # next program instruction goes here
+
+	 -- OR --
+
+                bgez count, endif
+	        add count, count, 1
+      endif:      # next program instruction goes here
+
+
+    WHICH ONE OF THESE IS BETTER?
+
+
+
+Structured loops can be built out of IF's and GOTO's
+                                  (test and branch)
+
+EXAMPLES:
+---------
+
+while loop example
+
+  Pascal:
+
+       while ( count > 0 ) do
+       begin
+	   a := a mod count;
+	   count := count - 1;
+       end;
+
+  BAD STYLE Pascal:
+
+       while: if  (count <= 0) then goto endwhile;
+	      a := a mod count;
+	      count := count - 1;
+	      goto while;
+       endwhile:
+
+  C:
+
+       while (count > 0) {
+	   a = a % count;
+	   count --;
+       }
+
+  SAL:
+
+      while: blez  count, endwhile
+             rem a, a, count
+             sub count, count, 1
+             b while
+      endwhile:    # next program instruction goes here
+
+
+
+
+repeat loop example
+
+  Pascal:
+
+       /* do statement until expression is TRUE */
+       repeat
+	   if (a < b) then
+	      a := a + 1;
+	   if (a > b) then
+	      a := a - 1;
+       until a = b;
+
+
+  C:
+       /* do statement while expression is TRUE */
+       /*   when expression is FALSE, exit loop */
+       do {
+	   if (a < b)
+	       a++;
+	   if (a > b)
+	       a--;
+       } while( a != b);
+
+
+  SAL:
+
+      repeat:    bge a, b, secondif
+                 add a, a, 1
+      secondif:  ble a, b, until
+	         sub a, a, 1
+      until:     bne repeat
+
+
+
+while loop example
+  Pascal:
+
+           while (count < limit) and (c = d) do
+	   begin
+	      /* loop's code goes here */
+	   end;
+
+  C:
+
+           while ( (count<limit) && (c==d) )
+           {
+	      /* loop's code goes here */
+           }
+  SAL:
+
+        while:   bge count, limit, endwhile
+                 bne c, d, endwhile
+        
+                 # loop's code goes here
+
+                 b while
+        endwhile:
+
+
+
+
+
+
+
+for loop example
+
+  Pascal:
+
+           for i:= 3 to 8 do
+           begin
+               a := a + i;
+           end;
+
+
+  C:
+
+	   for ( i = 3; i <= 8; i++)
+	   {
+	       a = a + i;
+	   }
+
+  SAL:
+
+                 move i, 3
+        for:     bgt  i, 8, endfor
+                 add  a, a, i
+                 add  i, i, 1
+		 b for
+        endfor:
+
+
+
+COMMUNICATION WITH THE USER (I/O operations)
+--------------------------------------------
+     SAL              Pascal
+
+     put x           write(x);
+     get x           readln(x);
+     puts 'string'   write('string');
+
+SAL doesn't have any oddities about
+testing for eoln or eof.  A carriage return is just another
+character to be read or written.  It is '\n'
+
+get  has the most irregularities!
+---
+  get intvariable
+    places  first integer variable it "finds" into intvariable,
+    then throws away the rest of the line.
+
+    if the first value read does not match the type requested, then
+    the value 0 is placed in variable intvariable.
+    
+  get charvariable
+    placed the first character variable it has into charvariable
+
+EXAMPLES:
+
+  INPUT:
+
+  23 abc
+   -13
+  1234fgh!
+
+  SAL CODE:
+
+     get int1        # int1 <- 23
+     get int2        # int2 <- -13
+     get int3        # int3 <- 1234
+
+  OR:
+
+     get char1       # char1 <- '2'
+     get int1        # int1 <- 3, and throw away rest of line
+     get char2       # char2 <- ' ', there is a space character before
+		     #    the -13
+
+  OR:
+
+     get char1       # char1 <- '2'
+     get char2       # char2 <- '3'
+     get int1        # int1 <- 0, because the first value read (ignoring
+		     #   the white space) is not a digit, so the type does
+		     #   not match.
+
+So, if you want to get more than one non-character value from
+a single line, you must read in character by character, and
+convert to whatever form is desired.  More about this in
+chapter 4.
+
+
+
+
+PROGRAM EXAMPLE:
+----------------
+
+# this simple program adds up 2 integers and prints their sum and products.
+
+   .data
+
+ prompt1:  .asciiz "Enter an integer: "
+ prompt2:  .asciiz "Enter a second integer: "
+ linefeed: .byte '\n'
+ msg1:     .asciiz "The sum of "
+ msg2:     .asciiz " and "
+ msg3:     .asciiz " is "
+ msg4:     .asciiz "The product of "
+ int1:     .word  0
+ int2:     .word  0
+ sum:      .word
+ product:  .word
+
+   .text
+
+      # get the 2 integers from user
+           puts prompt1
+           get int1
+           put linefeed
+           puts prompt2
+           get int2
+           put linefeed
+
+      # calculate the sum and products
+           add sum, int1, int2
+           mul product, int1, int2
+	
+      # print out the sum and products
+           puts msg1
+           put int1
+           puts msg2
+           put int2
+           puts msg3
+           put sum
+           put linefeed
+
+           puts msg4
+           put int1
+           puts msg2
+           put int2
+           puts msg3
+           put product
+           put linefeed
+           done
+
+
+
+Another simple SAL example program
+----------------------------------
+
+# A SAL program to print out a multiplication table
+
+ .data
+start:    .word 0  # entered by user
+finish:   .word 0  # entered by user
+ii:       .word    # loop induction variable
+jj:       .word    # loop induction variable
+product:  .word
+prompt1:  .asciiz "Enter starting value: "
+prompt2:  .asciiz "Enter ending value: "
+newline:  .byte '\n'
+x_symbol: .byte 'X'
+equals:   .byte '='
+space:    .byte ' '
+
+ .text
+
+__start:    puts prompt1                # get user input
+            get  start
+            puts prompt2
+            get  finish
+
+
+            move ii, start
+for:        bgt  ii, finish, all_done   # nested for loop to print out
+            move jj, start              # the table
+nested:     bgt  jj, finish, next_iter
+            mul  product, ii, jj
+
+            # print one line of table
+            put  ii
+            put  space
+            put  x_symbol
+            put  space
+            put  jj
+            put  space
+            put  equals
+            put  space
+            put  product
+            put  newline
+
+            add  jj, jj, 1
+            b    nested
+next_iter:  add ii, ii, 1
+            put  newline
+            b    for
+
+all_done:   done
+
+
+
+PROCEDURES
+----------
+
+SAL has a rudimentary method for procedure call and return.
+There is no mechanism for parameter passing or function return
+values.
+
+
+procedure parts:
+  1. call
+
+     SAL procedure call:
+         b procname
+
+  2. execute procedure
+
+     procname:  #code for procedure goes here
+
+  3. return
+
+     "the hard part"
+     could be a branch, if we had a label for the return place.
+
+
+
+
+
+
+
+            b procname
+   rtn1:     # more code here
+
+
+  procname:  # procedure code here
+         .
+         .
+         .
+            b rtn1
+
+
+    This does not work.  It just jumps to a different place in the
+    code!  It cannot be called from more than one location.
+
+
+
+
+Needed:  an ADDRESS to return to!
+
+Convenient SAL instruction:
+
+       la  var1, label
+
+       la stands for Load Address
+
+       Operation: the address implied by label is placed into var1.
+       NOTE:  var1 must be declared as an integer (.word)
+
+       Notice difference between address and contents of
+       the address.
+
+       label       address      contents
+        aa:          103           6
+        bb:          104           'a'
+        cc:          105          2001
+
+
+       The SAL instruction
+	 la cc, bb
+       changes the table above to be:
+
+       label       address      contents
+        aa:          103           6
+        bb:          104           'a'
+        cc:          105       **  104  **
+
+
+For procedure call and return, save a return address
+before branching to the procedure.
+
+
+             la  procname_ret, rtn1
+	     b procname
+  rtn1:      # more code here
+  .
+  .
+  .
+  procname:  # procedure code here
+             .
+             .
+             .
+             b procname_ret
+
+
+
+
+THIS STILL DOESN'T WORK!
+  It branches to label procname_ret.  But, procname_ret
+  is a variable!  Can't branch to a variable!
+  To solve the problem, there is a special form of the b
+  instruction used just for procedure return.
+
+
+  b  (var1)     #parentheses identify the special form
+
+  branches to the contents of var1, not to var1 itself.
+
+
+So, the complete call/return code is:
+
+
+
+             la  procname_ret, rtn1
+	     b   procname
+  rtn1:      # more code here
+
+  .
+  .
+  .
+
+             la  procname_ret, rtn2
+	     b   procname
+  rtn2:      # more code here
+  .
+  .
+  .
+  procname:  # procedure code here
+             .
+             .
+             .
+             b (procname_ret)
+
+</pre>
+

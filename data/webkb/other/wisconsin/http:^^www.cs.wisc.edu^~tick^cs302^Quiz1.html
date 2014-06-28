@@ -1,0 +1,126 @@
+Date: Wed, 11 Dec 1996 22:33:39 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 19 Sep 1996 15:40:15 GMT
+Content-length: 2719
+
+<HTML>
+
+<HEAD>
+<TITLE>CS 302 Section 70 - Quiz 1</TITLE>
+</HEAD>
+
+<BODY>
+
+<H2><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~tick/cs302.html#assignments" ><!WA1><!WA1><!WA1><IMG SRC="http://www.cs.wisc.edu/~tick/icons/arrowleft.gif" WIDTH=15 HEIGHT=15></A>Quiz #1
+</H2>
+
+<STRONG>Note:</STRONG><EM> This was a more difficult quiz than I'd originally intended. Don't worry if you had some problems with this one; that'll be taken into account when the semester's over.</EM>
+
+<OL>
+<LI>Suppose that inside you computer, the variable FUBAR has the binary value 01100011. What is its decimal value if FUBAR is declared as<br>
+a) INTEGER<PRE>
+
+---------------------------------
+| 0 | 1 | 1 | 0 | 0 | 0 | 1 | 1  |      = 2^6 + 2^5 + 2^1 + 2^0 = 99
+--------------------------------- 
+ 2^7 2^6 2^5 2^4 2^3 2^2 2^1 2^0
+
+
+</PRE>
+b) REAL (4 digit mantissa, 4 digit exponent)<PRE>
+
+  0110     0011 is
+
+1.0110 x 2^0011       = [2^0 + 2^(-2) + 2^(-3)] x 2^3 = 11.0
+
+
+</PRE>
+<LI>Find one type of each error (syntax,semantic,run-time,logical)
+(assume no line-position problems) 
+<PRE>
+	PROGRAM SPAM
+	IMPLICIT NONE
+
+C	Number of Eggs, Sausage, Beans, Spam
+C	Vikings, Dead Frogs, And Health Code Violations 
+	INTEFER EGGS,SAUSAG,BEANS,SPAM
+	INTEGER VIKING,DDFROG,HEALTH
+
+	EGGS = 40
+	SAUSAG = 200
+	BEANS = 100
+	SPAM = 20000
+	EDIBLE = EGGS + SAUSAG + BEANS + SPAM
+
+	VIKING = 20
+	DDFROG = 0
+	HEALTH = 300
+
+	PRINT *,'Edible Food per Viking', VIKING/EDIBLE
+	PRINT *,'(crunchy) Dead Frogs per Viking',DDFROG/VIKING
+	PRINT *,'Health violations per dead frog',HEALTH/DDFROG
+	
+	STOP
+	END
+
+</PRE>
+a) Syntax Error:<PRE>
+    INTEFER instead of INTEGER on line 6
+</PRE>
+b) Semantic Error:<PRE>
+    EDIBLE undeclared
+</PRE>
+c) Run-Time Error:<PRE>
+    HEALTH/DDFROG is dividing by 0
+</PRE>
+d) Logical Error:<PRE>
+    Edible food per dead vikingshould be EDIBLE/VIKING (not VIKING/EDIBLE)
+</PRE>
+
+
+<LI>What would be the value of FUBAR after the following statements:<p>
+a) <PRE>
+CHARACTER*3 FUBAR
+FUBAR = 'CONGRESS'
+
+Only the first three characters can be stored, so FUBAR = 'CON'
+
+</PRE>
+b) <PRE>
+INTEGER FUBAR
+FUBAR = 3.6
+
+Integers truncate, so FUBAR = 3
+
+</PRE>
+c) <PRE>
+INTEGER FUBAR
+FUBAR = MOD(18,5)
+
+The remainder of 18 when divied by 5 is 3.
+
+</PRE>
+d) (Hint: Remember the conversion rules)<PRE>
+REAL FUBAR
+INTEGER X,Y
+FUBAR = 5/3
+
+5 and 3 are integers, so the expression 5/3 = 1
+*Then* we convert to the type of FUBAR, so FUBAR = 1.0
+(Note: to avoid this, you need something like REAL(5)/3, or 5.0/3
+(one operand must be real).
+
+</PRE>
+
+</OL>
+
+</BODY>
+
+<HR>
+
+<ADDRESS>
+<H5>Copyright &copy 1996 <!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~tick/tick.html">Jeff Lampert</A> (<!WA3><!WA3><!WA3><A HREF="mailto:tick@cs.wisc.edu">tick@cs.wisc.edu</A>).  Last modified September 10, 1996.</H5>
+</ADDRESS>
+
+</HTML>

@@ -1,0 +1,94 @@
+Date: Mon, 11 Nov 1996 17:25:10 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 29 Mar 1996 23:16:54 GMT
+Content-length: 1643
+
+<html>
+<head>
+<title>CS 537 - Quiz #6</title>
+</head>
+
+<body>
+<table border=0 width=100% align=center>
+<tr>
+<td width=25%><td width=50% align=center>
+<b>UNIVERSITY OF WISCONSIN-MADISON
+<br>
+Computer Sciences Department</b>
+<td width=25%>
+<tr>
+<tr>
+<td>
+<b>CS 537
+<br>
+Spring 1996 </b>
+<td><td align=right><b>Bart Miller</b>
+<tr>
+<td>
+<td align=center><b>Quiz #6</b>
+<br>
+Wednesday, March 27
+<td>
+</table>
+
+<h2>Paging and Segmentation</h2>
+Consider a virtual memory architecture with the following parameters:
+<ul>
+<li>
+64 bit words
+<li>
+64 bit virtual addresses
+<li>
+8K byte page size
+<li>
+512K segments in a virtual address
+<li>
+4 gigabytes of real memory
+<li>
+page tables are stored in real memory
+<li>
+page tables can start on any byte boundary
+</ul>
+<p>
+Show how a virtual address gets mapped into a real address.
+Be sure to show
+<ol>
+<li>
+how the various fields of each address are interpreted,
+<li>
+the size of each field (in bits),
+<li>
+the maximum number of entries each table could hold,
+and
+<li>
+the maximum size possible for each table (in bytes).
+</ol>
+<p>
+Draw and label a diagram to answer this question.
+<hr>
+
+<CENTER>
+<BR>
+<IMG ALIGN=CENTER SRC="q6.gif" ALT="Segments & Page Table">
+<BR>
+</CENTER>
+
+<i>
+<p>
+The Segment Table has 512K entries times 64 bits (8 bytes), so has a
+maximum size of 4 MB.
+<p>
+Each Page Table has 4G entries times 19 bits (rounded up to 24 bits or 3 bytes),
+so has a maximum size of 12 GB.  Note that the extra bits in each PTE might
+be used for R/W control or valid bits.
+</i>
+
+<hr>
+<H4>
+Last modified:
+Fri Mar 29 13:14:23 CST 1996
+by
+<a href="http://www.cs.wisc.edu/~bart">bart</a></b>
+</H4>
+</body>

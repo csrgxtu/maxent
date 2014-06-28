@@ -1,0 +1,137 @@
+Date: Tue, 05 Nov 1996 00:32:12 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 11 Oct 1996 14:55:46 GMT
+Content-length: 3975
+
+<html>
+<head>
+<title>CS 354 - Quiz #3</title>
+</head>
+
+<body>
+<table border=0 width=100% align=center>
+<tr>
+<td width=25%><td width=50% align=center>
+<td width=25%>
+<tr>
+<tr>
+<td>
+<b>CS 354
+<br>
+Fall 1996 
+<br>
+Section 2 </b>
+<td><td align=right><b>SOLUTION</b>
+<tr>
+<td>
+<td align=center><b>Quiz #3 for Friday October 11</b>
+<br>
+3 questions, 25 points total
+<td>
+</table>
+
+<p>
+<b>1. (9 points) </b> Do the following 8-bit two's complement arithmetic calculations. Show all work. 
+Indicate if overflow occurs by writing the word "overflow"
+next to the calculated result.  Give a 16-bit result for the multiplication.
+<br>
+<code>
+<pre>
+    01011110                    11000000
+  + 11011000                  + 10001111
+ -----------                 -----------
+    00110110                    01001111 OVERFLOW
+
+
+
+
+    01010010                    01110111
+  - 10011000                  x 11110001
+ -----------                 -----------
+  change to addition             negative multiplier, so change problem         
+				    (and sign extend partial products)
+    01100111                                10001001 (-119)
+	+  1                              x 00001111 (  15)
+    --------                             -----------
+    01101000                        1111111110001001
+                                    1111111100010010
+                                    1111111000100100
+                                  + 1111110001001000
+    01010010                      ------------------
+  + 01101000                        1111100100000111 (-1785)
+ -----------
+    10111010  OVERFLOW
+</pre>
+</code>
+<p>
+<b>2. (9 points) </b>  Give an algorithm and then write a SAL code
+fragment (<b>not</b> a whole program)
+that does sign magnitude multiplication (<code>x * y -> z</code>).
+Variables <code>x</code> and <code>y</code> are given values elsewhere in the
+program.
+They contain 32-bit sign magnitude representations.
+The result of the multiplication goes in variable <code>z</code>, which
+is also 32 bits and is initialized (elsewhere in the program) to 0.
+The code should ignore the possiblility of overflow from 32 bits.
+It is OK to modify variables <code>x</code> and <code>y</code>.
+<ul>
+Algorithm:  Do two's complement multiplication on the absolute values
+of x and y.  Then set the sign bit of the result.
+<ul>
+<code>
+<pre>
+.data
+mask1:  .word 0x7fff
+mask2:  .word 0x8000
+.text
+           xor  sign, x, y     # figure out sign of result
+           bgez x, abs_y       # get absolute value of x
+           and  x, mask1, x
+abs_y:     bgez y, multiply    # get absolute value of y
+           and  y, mask1, y
+multiply:  mul  z, x, y        # do multiplication on absolute values
+           bgez sign, all_done
+           or   z, mask2, z    # set sign bit
+all_done:
+</pre>
+</code>
+</ul>
+<br>
+<br>
+<p>
+<b>3. (7 points) </b> 
+Show the result of addition on the following two IEEE single precision floating
+point values.  Use round to nearest for all rounding.
+<br>
+<pre>
+  0 10000100  11000000000000000010100
++ 0 10000111  01000000000000000000011
+-------------------------------------
+<br>
+To align binary points, shift the first addend 7-4=3 places to the
+right, keeping 3 extra digits at the least significant end for later
+rounding.
+
+    10000100  1.11000000000000000010100
+    10000101  0.11100000000000000001010 0
+    10000110  0.01110000000000000000101 00
+    10000111  0.00111000000000000000010 100
+
+Do the addition on the mantissas.
+
+  0.00111000000000000000010 100
++ 1.01000000000000000000011 000
+-------------------------------------
+  1.01111000000000000000101 100
+
+This value is already normalized, so only rounding is left.
+The two values that we could round to are
+  1.01111000000000000000101  and 1.01111000000000000000110 
+
+The result we have is exactly halfway between these two representations.
+So, IEEE round to nearest says choose the one that ends in a 0.
+Therefore, the IEEE single precision result is
+
+  0  10000111  01111000000000000000110 
+</pre>

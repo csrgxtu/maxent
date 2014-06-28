@@ -1,0 +1,85 @@
+Date: Wed, 20 Nov 1996 19:30:21 GMT
+Server: NCSA/1.4
+Content-type: text/html
+Last-modified: Tue, 15 Aug 1995 15:26:42 GMT
+Content-length: 3760
+
+
+<!WA0><IMG ALIGN=CENTER SRC="http://www.cs.ucla.edu/truffles/truffles_summary.gif">
+<H2>Truffles: Secure Flexible File-Sharing Over Wide-Area Networks</H2>
+
+<P>
+Computer users benefit greatly from being able to work
+cooperatively, but they are often limited by constraints of geography, administrative
+boundaries, and the existing state of distributed systems.  Sharing data 
+and setting up shared environments across networks like the Internet are 
+difficult tasks.  The only tools available are primitive and offer limited 
+functionality.  Most cooperation between geographically or administratively
+distant areas is performed solely through electronic mail.
+
+<P>
+The Truffles project seeks to improve the tools available for cooperative
+work.  The first such tool addressed by Truffles is file-sharing.  Since much 
+data is stored as files, the ability to share such data
+flexibly and securely will greatly facilitate the performance of 
+cooperative work.  A file-sharing tool for this environment must handle
+some difficult problems, such as secure transport of data, limited
+trust between the sharing parties, failures of the communications 
+media between partners, difficulty of setting up the shared environment,
+and performance issues.
+
+<P>
+
+The diagram above illustrates a Truffles system working over the Internet.
+Three different sets of files are being shared among four sites
+spread across the country.  One set of files is being shared between
+UCLA and ISI, another between UCLA, ARPA, and TIS's 
+Maryland office, and a third between ARPA and TIS.  The systems involved
+in each relationship can access the files they share, but not the files
+shared with any other system.  Thus, ISI cannot access the files UCLA
+shares with TIS and ARPA.
+
+<P>
+Originally, Truffles  provided this service by marrying two existing 
+technologies: Trusted Information Systems' (TIS) Privacy Enhanced Mail 
+(PEM) and UCLA's Ficus optimistically replicated file system.  PEM 
+allows secure, authenticated, reliable setup services.  Ficus addresses 
+issues of availability of the data and performance by keeping data local.  
+The Truffles project extended these services and created new software to 
+deal with some of the problems discussed previously. 
+
+<P>
+The resulting system demonstrated the feasibility of the concept.  However,
+difficulties regarding the installation of Ficus and PEM, and the legal
+and practical questions of distributing the Ficus kernel (which was based
+on SunOS 4.1.1) limited the practical utility of Truffles.  The ongoing
+work is directed towards producing a public-domain, highly portable,
+easily installable version of Truffles called User-Level Truffles.
+User-Level Truffles will rely on a user-level file replication service
+called <!WA1><A HREF="http://www.cs.ucla.edu/travler/replication.html> Rumor </A>.
+
+<P>
+Other Truffles work will include 
+<LI>developing software that replaces the remaining components of the 
+kernel version of Truffles
+<LI>developing a security model for operation in the Truffles environment
+<LI>verifying that the User-Level Truffles software properly implements
+this security model
+<LI>investigating issues of cooperative work under conditions of limited trust 
+in the Internet environment
+<LI>improving the portability and distributability of the User-Level
+Truffles package.
+ 
+
+<p>
+The Truffles project has been performed entirely under HPCC funding.
+<P>
+Trusted Information Systems maintains a 
+<A HREF = "http://www.tis.com/docs/Research/ult.html> web page </A> that 
+presents their perspective on the Truffles project.
+
+<P>
+<STRONG>Date:</STRONG> August 15, 1995<BR> 
+<STRONG>Technical Contact:</STRONG> Peter Reiher (reiher@cs.ucla.edu)<BR> 
+<STRONG>WWW Contact:</STRONG> Janice Martin (jjmartin@cs.ucla.edu) 
+

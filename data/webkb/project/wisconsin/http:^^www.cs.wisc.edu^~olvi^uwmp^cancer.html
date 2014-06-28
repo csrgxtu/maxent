@@ -1,0 +1,403 @@
+Date: Thu, 07 Nov 1996 19:23:09 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Tue, 10 Sep 1996 22:05:24 GMT
+Content-length: 15138
+
+<HTML>
+<HEAD>
+<TITLE>Machine Learning for Cancer Diagnosis and Prognosis</TITLE>
+</HEAD>
+
+
+<BODY>
+<H1>Machine Learning for Cancer Diagnosis and Prognosis</H1>
+
+<P>
+<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><IMG SRC="http://www.cs.wisc.edu/~olvi/uwmp/92_5622_www.gif" align=middle>
+
+<P>
+
+This page describes various linear-programming-based machine learning
+approaches which have been applied to the diagnosis and prognosis of
+breast cancer.  This work is the result of a collaboration at the
+University of Wisconsin-Madison between
+<!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.wisc.edu/~olvi/olvi.html">Prof. Olvi L. Mangasarian </A>
+of the Computer Sciences Department and
+<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="http://www.biostat.wisc.edu/people/profiles/people/WOLBERG,_WILLIAM_H.html">Dr. William H. Wolberg</A>
+of the departments of Surgery and Human Oncology.
+
+<P>
+
+<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="http://www.cs.wisc.edu/~street/press_rel.html">Here</A> is a copy of the
+press release 
+distributed at the American Cancer Society Science Writers seminar in
+March of 1994.  It provides a good overview of this research.
+
+<P>
+
+<HR>
+
+<H2>Table of Contents</H2>
+<UL>
+  <LI> <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="#diag">Diagnosis</A>
+  <LI> <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A HREF="#prog">Prognosis</A>
+  <LI> <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><A HREF="#bib">Bibliography</A>
+  <LI> <!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><A HREF="#pop">Citation in the Popular Press</A>
+  <LI> <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><A HREF="#lref">Local Related Links</A>
+  <LI> <!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><A HREF="#oref">Other Related Links</A>
+</UL>
+
+
+<HR>
+
+
+<A NAME="diag">
+<H2>Diagnosis</H2>
+</a>
+This work grew out of the desire by Dr. Wolberg to accurately diagnose
+breast masses based solely on a Fine Needle Aspiration (FNA).  He
+identified nine visually assessed characteristics of an FNA sample which 
+he considered
+relevant to diagnosis.  In collaboration with Prof. Mangasarian and
+two of his graduate students, Rudy Setiono and 
+<!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><A HREF="http://www.rpi.edu/~bennek">
+Kristin Bennett</A>, a
+classifier was constructed using the multisurface method (MSM) of pattern 
+separation on these nine features that
+successfully diagnosed 97% of new cases.  The resulting data set is
+well-known as the <!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><A
+HREF="ftp://ftp.cs.wisc.edu/math-prog/cpo-dataset/machine-learn/cancer1/">
+Wisconsin Breast Cancer Data.</A>
+
+<P>
+
+The image analysis work began in 1990 with the addition of 
+<!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><A HREF="http://www.cs.wisc.edu/~street/street.html">Nick Street</A>
+to the research team.  The goal was to diagnose the sample based on a
+digital image of a small section of the FNA slide.  The results of
+this research have been consolidated into a software system known as 
+<b>Xcyt</b>, which is currently used by Dr. Wolberg in his clinical
+practice.  The diagnosis process is now performed as follows:
+<UL>
+  <LI> An FNA is taken from the breast mass.  This material is then
+mounted on a microscope slide and stained to highlight the cellular
+nuclei.  A portion of the slide in which the cells are
+well-differentiated is then scanned using a digital camera and a
+frame-grabber board.
+  <LI> The user then isolates the individual nuclei using <b>Xcyt</b>.
+Using a mouse pointer, the user draws the approximate boundary of
+each nucleus.  Using a computer vision approach known as "snakes",
+these approximations then converge to the exact nuclear boundaries.
+This interactive process takes between two and five minutes per slide.
+<!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><A HREF="http://www.cs.wisc.edu/~street/xcyt1.gif">Here</A> is an image showing
+<b>Xcyt</b> in use. 
+  <LI> Once all (or most) of the nuclei have been isolated in this
+fasion, the program computes values for each of ten characteristics of
+each nuclei, measuring size, shape and texture.  The mean, standard
+error and extreme values of these features are computed, resulting in
+a total of 30 nuclear features for each sample.
+  <LI> Based on a training set of 569 cases, a linear classifier was
+constructed to differentiate benign from malignant samples.  This
+classifier consists of a single separating plane in the space of three
+of the features: Extreme Value of Area, Extreme Value of Smoothness,
+and Mean Value of Texture.  By projecting all the cases onto the
+normal of this separating plane, approximate 
+<!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><A HREF="http://www.cs.wisc.edu/~street/xcyt3.gif">probability densities</A> of
+the benign and 
+malignant points were constructed.  These allow a simple Bayesian
+computation of probability of malignancy for new patients.  These
+densities are shown to the patient, allowing her to judge the
+"confidence" of her diagnosis by comparison to hundreds of previous samples.
+
+</UL>
+
+To date, this system has correctly diagnosed 176 consecutive new
+patients (119 benign, 57 malignant).  In only eight of those cases did
+<b>Xcyt</b> return a "suspicious" diagnosis (that is, an estimated
+probability of malignancy between 0.3 and 0.7). 
+
+<P>
+
+A small subset of the source images used in this research can be found
+<!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><a href = "http://www.cs.wisc.edu/~street/images"> here. </a>  These are very good
+test cases for 
+image segmentation or object recognition algorithms.  If your pet
+segmentation algorithm can automatically identify all of the nuclei in
+these images, please email me (street@cs.wisc.edu) and let's work together.
+
+<P>
+
+<HR>
+
+<A NAME="prog">
+<H2>Prognosis</H2>
+</a>
+
+The second problem considered in this research is that of prognosis,
+the prediction of the long-term behavior of the disease.  We have
+approached prognosis as a function-approximation problem, using input
+features -- including those computed by <b>Xcyt</b> 
+-- to predict a
+time of recurrence in malignant patients, using right-censored data.
+Our solution is termed 
+the Recurrence Surface Approximation method (RSA), and utilizes a linear
+program to construct a surface which predicts time of recurrence for
+new patients.  By examining the actual recurrence of those training cases
+with similar predicted recurrence times, we can plot the probability of
+disease-free survival for various times (out to 10 years) for an
+individual patient.  This capability has been incorporated into
+<b>Xcyt</b> and an example is shown 
+<!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><A HREF="http://www.cs.wisc.edu/~street/xcyt4.gif">here.</A>
+These survival curves plot the probability of disease-free survival versus 
+time (in years).
+The black disease-free survival curve represents all patients in our
+original study; the red curve represents the probability of
+disease-free survival for the sample case.  This particular case therefore
+has an above-average prognosis, with a probability of being disease-free
+after 10 years equal to about 80%.
+
+<P>
+The RSA procedure can also be used to compare the predictive power of
+various prognostic factors.  Our results indicate that precise,
+detailed cytological information of the type provided by <b>Xcyt</b>
+gives better prognostic accuracy than the traditional factors Tumor
+Size and Lymph Node Status.  If corroborated by other researchers,
+this result could remove the need for the often painful axillary lymph 
+node surgery.
+
+<HR>
+<A NAME="bib">
+<H2>Chronological Bibliography</H2>
+</a>
+
+Linked papers are provided in postscript format; if you don't have a 
+postscript viewer, you can download the file (e.g., shift-click in Netscape)
+and print it.  Abstracts are ASCII text.  To obtain papers which are not
+linked, please contact the first author.
+
+<DL>
+
+  <DT> <B> O.L. Mangasarian, R. Setiono and W.H. Wolberg.</B>
+   <DD> Pattern Recognition via Linear Programming: Theory and
+	Application to Medical Diagnosis.  
+	In 
+	<EM> Proceedings of the Workshop on Large-Scale Numerical 
+	Optimization</EM>, 
+	1989, pages 22-31, Philadelphia, PA.  SIAM.
+
+  <DT> <B> O.L. Mangasarian and W. H. Wolberg.</B>
+   <DD> Cancer Diagnosis via Linear Programming. <EM>SIAM News, </EM>
+	Vol. 23, 1990, pages 1 & 18.
+
+  <DT> <B> W.H. Wolberg and O.L. Mangasarian.</B>
+   <DD> Multisurface Method of Pattern Separation for Medical
+	Diagnosis Applied to Breast Cytology. 
+	<EM>Proceedings of the National Academy of Sciences, U.S.A., </EM>
+	Vol. 87, 1990, pages 9193-9196.
+
+  <DT> <B> W.N. Street.</B>
+   <DD> Toward Automated Cancer Diagnosis: An Interactive
+	System for Cell Feature Extraction.
+	Technical Report 1052, Computer Sciences Department, 
+	University of Wisconsin, October 1991.
+
+  <DT> <B> W.H. Wolberg, K.P. Bennett and O.L. Mangasarian.</B>
+   <DD> Brast Cancer Diagnosis and Prognostic Determination 
+	from Cell Analysis.
+	Manuscript, 1992,
+        Departments of Surgery and Human Oncology and
+	Computer Sciences, University of Wisconsin, Madison, WI 53706.
+
+  <DT> <B> W.H. Wolberg, W.N. Street, and O.L. Mangasarian. </B>
+   <DD> <!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><a href="http://www.cs.wisc.edu/~street/aqch93.ps"> Breast Cytology
+	Diagnosis via Digital Image Analysis.  </a> 
+	<EM>Analytical and Quantitative Cytology and Histology,  </EM>
+	Vol. 15 No. 6, pages 396-404, December 1993.
+	(<!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><A HREF="http://www.cs.wisc.edu/~street/aqch93.abs">abstract</A>)
+
+  <DT> <B> W.N. Street, W.H. Wolberg and O.L. Mangasarian.</B>
+   <DD> <!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><a href="http://www.cs.wisc.edu/~street/spie93.ps">
+	Nuclear Feature Extraction For Breast Tumor Diagnosis. </a>
+	In 
+	<EM>IS&T/SPIE 1993 International Symposium on Electronic Imaging: 
+	Science	and Technology, </EM>
+	volume 1905, pages 861-870, San Jose, CA, 1993.
+	(<!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><A HREF="http://www.cs.wisc.edu/~street/spie93.abs">abstract</A>)
+
+  <DT> <B> W.H. Wolberg, W.N. Street, and O.L. Mangasarian.</B>
+   <DD> <!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><a href="http://www.cs.wisc.edu/~street/cl94/"> Machine learning
+	techniques to diagnose breast cancer from fine-needle aspirates.  </a> 
+	<EM>Cancer Letters </EM>
+	Vol. 77, pages 163-171, 1994. 
+	(<!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><A HREF="http://www.cs.wisc.edu/~street/ca_let94.abs">abstract</A>)
+
+  <DT> <B> W. N. Street</B>
+   <DD> <!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><A HREF="ftp://ftp.cs.wisc.edu/math-prog/tech-reports/94-14.ps">
+	Cancer Diagnosis and Prognosis via 
+	Linear-Programming-Based Machine Learning. </A>
+	Ph.D. Dissertation, University of Wisconsin-Madison, August
+	1994. 
+	Available as UW Mathematical Programming Technical Report 94-14.
+	(<!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><A HREF="http://www.cs.wisc.edu/~street/abstract.html">abstract</A>)
+
+<dt> <b> W.H. Wolberg, W.N. Street, D.M. Heisey, and O.L. Mangasarian.  </b>
+  <dd>	<!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><A HREF="http://www.cs.wisc.edu/~street/fn3west.ps">
+	Computerized breast cancer diagnosis and prognosis from fine needle
+	aspirates. </a>
+	<em> Archives of Surgery</em> 1995; 130:511-516.
+	(<!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><A HREF="http://www.cs.wisc.edu/~street/arch_surg95.abs">abstract</A>)
+
+  <DT> <B> W.H. Wolberg, W.N. Street, and O.L. Mangasarian.  </B>
+   <DD> <!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><A HREF="http://www.cs.wisc.edu/~street/aqch95_1/">
+	Image analysis and machine learning applied to breast cancer
+	diagnosis and prognosis.</A>
+	<EM>Analytical and Quantitative Cytology and Histology, </EM>
+	Vol. 17 No. 2, pages 77-87, April 1995.
+	(<!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><A HREF="http://www.cs.wisc.edu/~street/aqch95_1.abs">abstract</A>)
+
+  <DT> <B> W.H. Wolberg, W.N. Street, D.M. Heisey, and O.L. Mangasarian. </B>
+   <DD> <!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><A HREF="http://www.cs.wisc.edu/~street/hu_path95/">
+	Computer-derived Nuclear Features Distinguish Malignant from Benign
+	Breast Cytology.</A>
+	<EM>Human Pathology, </EM>
+	Vol. 26, pages 792-796, 1995.
+	(<!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><A HREF="http://www.cs.wisc.edu/~street/hu_path95.abs">abstract</A>)
+
+  <DT> <B> W.H. Wolberg, W.N. Street, D.M. Heisey, and O.L. Mangasarian. </B>
+   <DD> <!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><A HREF="http://www.cs.wisc.edu/~street/fndiga-p.ps">
+	Computer-derived Nuclear ``Grade'' and Breast Cancer Prognosis.</a>
+	<EM>Analytical and Quantitative Cytology and Histology, </EM>
+	Vol. 17 No. 4, pages 257-264, August 1995.
+	(<!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><A HREF="http://www.cs.wisc.edu/~street/aqch95_2.abs">abstract</A>)
+
+  <DT> <B> O.L. Mangasarian, W.N. Street and W.H. Wolberg.</B>
+   <DD> <!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><a href="ftp://ftp.cs.wisc.edu/math-prog/tech-reports/94-10.ps">
+	Breast cancer diagnosis and prognosis via linear programming. </a>
+	<EM>Operations Research, </EM>
+	43(4), pages 570-577, July-August 1995.
+	Available as UW Mathematical Programming Technical Report 94-10.
+	(<!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><A HREF="http://www.cs.wisc.edu/~street/or95.abs">abstract</A>)
+
+  <DT> <B> W. N. Street, O. L. Mangasarian,  and W.H. Wolberg. </B>
+   <DD> <!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><A HREF="http://www.cs.wisc.edu/~street/mlc95.ps">
+	An inductive learning approach to prognostic prediction.</A>
+	<EM>Proceedings of the Twelfth International Conference on 
+		Machine Learning</EM>, 
+	A. Prieditis and S. Russell, eds., pages 522-530, 
+	Morgan Kaufmann, 1995.
+	(<!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><A HREF="http://www.cs.wisc.edu/~street/mlc95.abs">abstract</A>)
+
+  <DT> <B> M. W. Teague, W. H. Wolberg, W. N. Street, O. L. Mangasarian, 
+	S. C. Call and D. L. Page.</B>
+   <DD> Indeterminate Fine Needle Aspiration of the Breast:
+	Image Analysis Aided Diagnosis.
+	<EM>Cancer</EM>, 
+	submitted.
+	(<!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><A HREF="http://www.cs.wisc.edu/~street/cancer95.abs">abstract</A>)
+
+  <DT> <b> W. N. Street, O. L. Mangasarian, and W. H. Wolberg.</b></DT>
+   <DD> <!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><A HREF="ftp://ftp.cs.wisc.edu/math-prog/tech-reports/96-01.ps">
+	Individual and collective prognostic prediction.</A><BR>
+	Technical Report 96-01, Computer Sciences Department, University of
+	Wisconsin, Madison, WI, January 1996. Submitted to ICML and AAAI conferences.
+	(<!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><A HREF="ftp://ftp.cs.wisc.edu/math-prog/tech-reports/96-01.abs">abstract</A>)
+</DD>
+
+</DL>
+
+
+<HR>
+<A NAME="pop">
+<H2>Citation in the Medical and Popular Press</H2>
+</a>
+<UL>
+  <LI> <EM>News from Medicine</EM> segment, 
+	CNN Prime News, March 12, 1994.
+
+  <LI> Breast Biopsy Without Surgery.
+	Tim Friend,
+	<EM>USA Today,</EM>
+	March 24, 1994.
+
+  <LI> Cancer Detection Imitates Oil Prospecting.
+	Joe Manning,
+	<EM>Milwaukee Sentinel,</EM>
+	March 24, 1994.
+
+  <LI> Analyzing Breast Cancer.
+	<EM>Detroit News,</EM>
+	March 28, 1994.
+
+  <LI> A High-tech Cancer Hunt.
+	Marilynn Marchione,
+	<EM>Milwaukee Journal,</EM>
+	March 28, 1994.
+
+  <LI> Computerized Interpretation of Breast FNA Biopsies: Progress Reported,
+	<EM>Oncology Times,</EM>
+	April 1994.
+
+  <LI> Computer Program Hunts Breast Cancer,
+	Ruth SoRelle,
+	<EM>Houston Chronicle,</EM>
+	April 22, 1994.
+
+  <LI> Computer Program May Improve Interpretation of Aspirate,
+	<EM>Oncology News International,</EM>
+	May 1994.
+
+  <LI> New Data Suggest Needle Biopsies Could Replace Surgical Biopsy
+	for Diagnosing Breast Cancer.
+	<EM>Journal of the American Medical Association,</EM>
+	Medical News & Perspectives column, June 9, 1994, Vol. 271, No. 22.
+
+  <LI> Diagnosis Via Image Analysis and Machine Learning,
+	<EM>Cope,</EM>
+	September/October 1994.
+
+  <LI> Computer Seeks Out Breast Cancer,
+	<EM>Madison Capital Times,</EM>
+	January 17, 1995.
+
+  <LI> Computer-Aided Cancer Prediction,
+	<EM>Los Angeles Times,</EM>
+	January 25, 1995.
+</UL>
+
+
+<HR>
+
+<A NAME="lref">
+<H2>Local Related Links</H1>
+<UL>
+  <LI> <!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><A HREF="http://www.cs.wisc.edu/~olvi/uwmp/uwmp.html"> 
+	UW Mathematical Programming Group</A>
+  <LI> <!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><A HREF="http://www.cs.wisc.edu/~shavlik/uwml.html"> 
+	UW Machine Learning Group</A>
+  <LI> <!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><A HREF="http://www.biostat.wisc.edu/HomePage.html"> 
+	UW Medical School</A>
+</UL>
+
+<HR>
+
+<A NAME="oref">
+<H2>Other Related Links</H1>
+<UL>
+  <LI> <!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><A HREF="http://www.nlm.nih.gov/">
+	The National Library of Medicine (NLM)</A>
+  <LI> <!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><A HREF="http://www.scs.unr.edu/~cbmr/"> 
+	University of Nevada Center for Biomedical Modeling Research</A>
+  <LI> <!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><A HREF="http://cancer.med.upenn.edu/">
+	OncoLink</A>
+  <LI> <!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><A HREF="http://ibc.wustl.edu/">
+	Washington University Institute for Biomedical Computing</A>
+</UL>
+
+<HR>
+
+<ADDRESS>
+  <!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><A HREF="http://www.cs.wisc.edu/~paulb/paulb.html">paulb@cs.wisc.edu</A>
+</ADDRESS>
+</BODY>
+</HTML>

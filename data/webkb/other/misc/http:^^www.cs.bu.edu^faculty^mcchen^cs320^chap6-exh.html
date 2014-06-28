@@ -1,0 +1,109 @@
+Date: Tue, 14 Jan 1997 20:27:51 GMT
+Server: NCSA/1.5
+Content-type: text/html
+
+<TITLE>Concepts in Programming Languages. Chapter 6
+</TITLE>
+
+<H2>Chapter 6: Modeling Objects</H2>
+<H3>
+Block Structured Language (Pascal, C)
+</H3>
+Illustrating Static Link to Lexical Parent
+
+<PRE><TT>
+PROCEDURE foolish ( ... );
+TYPE list = ^cell;  cell = RECORD value:integer; link:list END;
+VAR P1, P2: list;
+
+    FUNCTION product (jj:  integer):integer;
+    VAR kk:  integer;
+    BEGIN
+        IF jj <= 0 THEN product := 1
+        ELSE BEGIN
+            readln(kk);
+            product := kk * product(jj-1);    P1^.value:=P1^.value * kk;
+        END
+    END;
+
+BEGIN (* the executable section of procedure foolish *)
+              P1^.value := 1;
+              P2^.value := product (2);
+
+
+END (* the end of procedure foolish *)
+
+Inputs:    25  7
+</TT></PRE>
+
+The Static link for all invocations of <TT> FUNCTION product </TT> goes to
+<TT> PROCEDURE foolish</TT>, which is its lexical parent.
+The Dynamic link for <TT>product(2)</TT> goes to <TT>foolish</TT>; while
+that of <TT>product(1)</TT> goes to <TT>product (2)</TT> and 
+that of <TT>product(0)</TT> goes to <TT>product(1)</TT>.
+
+<P>
+
+<H3>
+Managing the Stack Memory
+</H3>
+Operations on the Runtime Stack during a function/procedure call:
+<P>
+<OL>
+<LI> The calling program puts the argument values on the stack
+   using the local-allocation pointer.  Typically, the last
+   argument in the function call is loaded on the stack first,
+   followed by the second-last, and so on.  The first argument
+   ends up at the top of the stack.
+   
+<LI> The return address is written at the top of the stack, above
+   the the first argument.
+   
+<LI> The current top-of-stack pointer is copied to the top of the
+   stack.  This will become the new dynamic link field.  The
+   address of this location is stored into the top-of-stack
+   pointer.
+ 
+<LI> The static link for the new frame is written on the stack.
+   This is the same as either the static link or the dynamic
+   link of the calling block.  Code is generated at compile
+   time to copy the appropriate link.
+
+<LI> The local allocation pointer is incremented by enough
+   locations to store the return value and the local variables.
+   If the locals have initializers, those values are also
+   copied.
+
+<LI> Control is transferred to the subroutine.
+</OL>
+
+<P>
+
+<H3>
+Dereferencing a variable
+</H3>
+Different Context:
+
+<OL>
+<LI> The left-hand side of an assignment operator.
+   
+<LI> The right-hand side of an assignment operator.
+   
+<LI> Part of a subscript expression.
+   
+<LI> A pointer expression.
+   
+<LI> A parameter in a function or procedure call.
+</OL>
+
+<P>
+<HR> <!WA0><IMG ALIGN=MIDDLE SRC="http://cs-www.bu.edu/faculty/crovella/icons/next_motif_gr.gif"> <!WA1><IMG ALIGN=MIDDLE SRC="http://cs-www.bu.edu/faculty/crovella/icons/up_motif_gr.gif"> <!WA2><IMG ALIGN=MIDDLE SRC="http://cs-www.bu.edu/faculty/crovella/icons/previous_motif_gr.gif">  <BR>
+<HR> <P>
+<HR>
+
+</BODY>
+<P><ADDRESS>
+<!WA3><A HREF=http://cs-www.bu.edu/faculty/mcchen/main_menu.html
+            >Marina Chen</A>
+</ADDRESS>
+

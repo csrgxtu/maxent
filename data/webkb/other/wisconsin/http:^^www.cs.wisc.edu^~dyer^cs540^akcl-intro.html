@@ -1,0 +1,279 @@
+Date: Mon, 11 Nov 1996 17:26:01 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Sun, 01 Sep 1996 06:41:27 GMT
+Content-length: 9724
+
+<html>
+<head>
+<title> Using GNU Common Lisp on Department Workstations </title>
+</head>
+
+<body bgcolor="#ffffff" vlink="#0060f0" link="#FF3300">
+<h1> Using GNU Common Lisp (GCL)</h1>
+<p>
+<p>
+
+<ol>
+<li> If you have not already created your instructional account on one of the
+departmental workstations used for this class, log in as
+<i>newuser</i> and set it up following the instructions given. It takes
+about half an 
+hour for the account to be created and ready for use.
+<p>
+
+<li> <b>Log in to your account and open two xterm windows</b>.
+In the two windows you should see the default UNIX prompt '>'.
+One window will be used to run the version of Common Lisp
+we will be using called <i>gcl</i>. The other window will be
+used to edit UNIX files containing the Lisp functions and programs
+you write.  
+<p>
+
+<li> <b>Run the GCL interpreter</b> using the command <b>gcl</b> in the
+first window.
+Once invoked, GCL initializes the system, prints a message and enters
+the top-level <i>prompt-read-eval-print</i> loop, using the
+prompt '>'.  You can enter any s-expression for evaluation to this
+prompt.  
+<p>
+
+Since GCL has the same prompt as the default UNIX prompt on the workstations,
+you might want to change the UNIX prompt to be something else. To do this,
+run the shell command (you can put this command in your ".cshrc.local" 
+file to avoid doing it every time):
+<pre>
+     set prompt=whatever-you-like
+</pre>
+<p>
+
+<li> GCL has <b>on-line help facilities</b>.  For example, within GCL:
+<pre>
+    >(help)  ;; introductory help message
+    >(help <i>symbol</i>)  ;; documentation on everything
+        ;; associated with <i>symbol</i>.  E.g., (help 'load)
+    >(help 'step)
+    >(help 'trace)
+    >(help 'compile-file)
+    >(help 'dribble)
+    >(help '<i>any-Lisp-function-that-you-are-interested-in</i>)
+    >(help* <i>string</i>)  ;; documentation on all symbols
+        ;; containing <i>string</i> as a sub-string.  E.g.,
+        ;; (help* "remove") describes the functions <i>remove,
+        ;; remove-if, remove-duplicates</i>, and <i>remove-if-not</i>
+    >(apropos <i>string</i>)  ;; like help*, except only lists the names
+    >(documentation <i>symbol type</i>)  ;; prints online
+        ;; documentation string for the symbol of the given type, if
+        ;; available.
+</pre>
+<p>
+
+You can also use GNU's <i>info</i> facility to access documentation.  A
+<a href="http://www.cs.wisc.edu/csl/texihtml/gcl-2.1/gcl-si_toc.html">
+WWW version</a>
+is available;  in addition, this material may be accessed by the UNIX
+program <i>info</i> (type <B>info</b> at the UNIX prompt) or within
+<b>Emacs</b> (by typing "ESC-x info").
+<p>
+
+<li> <b>Edit your program</b> in a file using a text editor such as
+<b>vi</b> or <b>Emacs</b>.  For example, the following creates a file named
+<i>my-functions.lisp</i> and defines a single Lisp function named
+<i>welcome</i> in it:  
+<pre>
+     UNIX> vi my-functions.lisp
+
+     (defun welcome () (format t "Hello! Welcome."))
+</pre>
+<p>
+
+<li> <b>Emacs commands for Editing Lisp</b>.
+Since <i>Emacs</i> is written in lisp, the command "C-h f function-name"
+will work to describe general lisp functions, as well as the editing
+actions.  <i>Emacs</i> has three lisp modes: <i>emacs-lisp-mode,
+lisp-mode,</i> and <i>lisp-interaction-mode</i>.  The complexities of 
+the <i>Emacs</i> lisp modes are beyond the scope of this introductory 
+document;  however, if <i>Emacs</i> is your editor of choice, its 
+powerful lisp modes are worth investigating.  See
+<A HREF="http://www.cs.wisc.edu/~shavlik/cs540/html/lisp-editing-tips.html">
+Some Tips on Editing Lisp Code</A> for more ideas.
+<p>
+
+<li> <b>Vi Commands for Editing Lisp</b>.
+<br>
+Since there are many ('s and )'s in Lisp programs, you should
+set up 
+<i>vi</i> to aid your entering Lisp functions readably and
+correctly.  There are three options
+of interest:  <i>lisp</i>, which changes the "(" and ")" commands
+to move backward and forward over s-expressions, (2) <i>autoindent</i>,
+which does automatic indenting, and (3) <i>showmatch</i>, which
+shows the matching "(" when a ")" is typed.  To set these you can either
+set them each time you enter <i>vi</i> by doing:
+<pre>
+     :se ai sm lisp
+</pre>
+<p>
+or to have these settings set <i>every</i> time you enter <i>vi</i>, just
+edit the .exrc file in your home directory to include the line:
+<pre>
+     set ai sm lisp
+</pre>
+<p>
+Finally, there is also an operator in <i>vi</i> that realigns existing
+lines as though they had been typed in with <i>lisp</i> and <i>autoindent</i>
+set.  This is the = operator.  Using the command =% at the beginning
+of a function will realign all of the lines in that function. See also
+the use of the (,),{, }, [[ and ]] commands for moving around within
+Lisp functions. Here is a brief explanation to help you try them out.
+The ( and ) commands move backward and forward over 
+s-expressions. The { and } commands are like ( and ) but don't stop at atoms.
+These can be used to skip to the next list, or through a comment quickly.
+The [[ and ]] commands advance and retreat to lines beginning with a (. They
+are useful for dealing with entire function definitions. 
+<p>
+
+<li> <b>Call Vi from Within GCL</b>:
+<p>
+As an alternative to keeping separate windows for <I>vi</I> and GCL,
+we can define a Lisp function "<TT>vi</TT>" which will allow us to 
+call <I>vi</I> from within GCL, and automatically load the changes
+when we're done editing.  To do this, save the contents of
+<A HREF="http://www.cs.wisc.edu/~dyer/cs540/lisp-vi.lisp">
+~dyer/public/html/cs540/lisp-vi.lisp</A> in a file in your own directory,
+and load that file into GCL.
+<P>
+
+<li> In the GCL window, <b>load all of the functions defined in a file into GCL</b>:
+<pre>
+    >(load "my-functions.lisp")
+</pre>
+<p>
+
+While GCL is loading all of the functions in this file
+it does some simple syntax checking
+such as unmatched parentheses and misused punctuation. Your functions will
+not be loaded successfully if it has any of these syntax errors.
+In this case, go back to the <i>vi</i> window, edit your functions, and
+then reload the file in the GCL window.  
+<p>
+
+<li> <b>Run your program in GCL</b>:
+<pre>
+    >(welcome)
+    Hello! Welcome.
+</pre>
+<p>
+If there are any runtime errors, use <i>vi</i> in the other window to modify 
+your program, and then, in the GCL window, reload the file containing
+the program and run it again.
+<p>
+
+<li> <b>Compile your program</b>:
+<pre>
+    >(compile-file "my-functions.lisp")
+    >(load "my-functions.o")
+    >(welcome)
+</pre>
+<p>
+After compiling, an executable file <i>my-functions.o</i> is created in your
+current directory. 
+Debug your program using the interpreter first,
+and compile for the optimized executable code only when everything 
+is debugged.  
+<p>
+
+<li> <b>Make a typescript of a terminal session</b>:
+<P>
+One way is to use <I>dribble</I>:
+<pre>
+    >(dribble file-name-given-as-a-string) ;; start typescript
+    Run programs here plus anything else you want saved
+    >(dribble)  ;; stop typescript
+</pre>
+<p>
+
+Everything displayed on the screen will be saved in the given file
+including both what you type and what the Lisp interpreter responds. 
+<p>
+You can also use the UNIX command <TT>script</TT> <I>filename</I>
+before starting GCL, with the UNIX command <TT>exit</TT> after ending 
+the GCL session.  This appears to give slightly better looking output.
+<P>
+
+<li> <b>Trace or single-step your program</b>.
+<pre>
+     >(trace func-name) ;; trace named function
+     >(untrace func-name) ;; stop tracing named function
+     >(step (func-name parameters-if-any)) ;; single-step mode
+</pre>
+<p>
+
+<li> <b>Exit GCL</b>.
+<pre>
+     >(bye)     ;; Control-d will also stop GCL
+</pre>
+<p>
+
+<A NAME="break-package"><li> <b>Lisp Break Package</b>.</A>
+<br>
+Lisp invokes a "break package" whenever it encounters an error or the 
+user aborts execution. The break package is recognizable as the 
+prompt changes from '>' to '>>'. There are many options for you to
+choose in this package:
+<p>
+
+<i>Break-loop Command Summary ([] indicates optional arg)</i>
+<p>
+<pre>
+:help       this summary
+:bl [j]     show local variables and their values, or
+	      segment of vs if compiled in j stack frames
+              starting at the current one
+:bt [n]     BACKTRACE [n steps]
+:down [i]   DOWN i frames (one if no i)
+:env        describe ENVIRONMENT of this stack frame
+	      (for interpreted).
+:fr [n]     show frame n
+:loc [i]    return i'th local of this frame if its
+	      function is compiled (si::loc i)
+:r          RESUME (return from the current break loop)
+:up [i]     UP i frames (one if no i)
+
+Example: print a backtrace of the last 4 frames
+
+>>:bt 4
+
+Note:  (use-fast-links nil) makes all non system function
+calls be recorded in the stack.   (use-fast-links t) is
+the default
+
+Low level commands:
+------------------
+:p [i]           make current the i'th PREVIOUS frame
+		   (in list show by :b)
+:n [i]           make current the i'th NEXT frame
+		   (in list show by :b)
+:go [ihs-index]  make current the frame corresponding
+		   to ihs-index
+:m               print the last break message
+:c               show function of the current ihs frame
+:q [i]           quit to top level
+:r               resume from this break loop
+:b               full backtrace of all functions and
+		   special forms
+:bs [name]       backward search for frame named 'name'
+:fs  [name]      search for frame named 'name'
+:vs [from] [to]  Show value stack between FROM and TO
+:ihs [from] [to] Show Invocation History Stack
+:bds ['v1 'v2 ..]Show previous special bindings of
+		   v1, v2,.. or all if no v1
+</pre>
+<p>
+
+<li> Be sure to <b>log out</b> of the workstation
+when you leave. Hold down the left mouse button
+and click <i>logout</i>.
+</ol>
+</body>
+</html>

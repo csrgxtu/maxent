@@ -1,0 +1,41 @@
+Date: Tue, 05 Nov 1996 00:31:29 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 07 Oct 1996 10:50:59 GMT
+Content-length: 1209
+
+<TITLE>Error / Warning Codes</TITLE>
+
+<H1>Assignment 1 Error / Warning Codes</H1>
+
+<PRE>
+Code | Meaning
+-----+-----------------------------------------------------------------
+ E1  | No comments 
+ E2  | No output 
+ E3  | Program didn't work 
+ E4  | Failed to check return values from system calls 
+ E5  | Didn't convert from/to network order 
+ E6  | Didn't use gethostbyname
+ E7  | Didn't have correct packet structure (int is not always 4 bytes)
+ E8  | Sent packet without removing gaps
+ E9  | Used a pointer cast vs. memcpy() for extracting data
+ E10 | Sent entire object/structure as packet 
+ E11 | Invalid requests not handled properly 
+ E12 | Didn't initialize length of sockaddr structure before recvfrom() 
+ MF  | Make failed 
+ MW  | Make generated unexplained warnings 
+
+ 
+ No points were deducted for these warnings...
+ ------------------------------------------
+ W1  | Sending 262 bytes everytime, even when the
+	    string field is less than 256 bytes
+ W2  | Using perror at all places, not just after
+	    system calls/library functions
+ W3  | Sendto/recvfrom should not fail on EINTR
+ W4  | Should not hardwire client return address
+ W5  | Server exits on receiving invalid requests
+	   
+</PRE>
+

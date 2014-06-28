@@ -1,0 +1,254 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 07-Jan-97 15:51:38 GMT
+Content-Type: text/html
+Content-Length: 9720
+Last-Modified: Friday, 20-Dec-96 00:03:49 GMT
+
+<title>Algernon and Access-Limited Logic</title>
+<!-- Changed by: Benjamin J. Kuipers, 29-Jul-1996 -->
+<body    bgcolor="#ffffff"  text="#000000"  link="#0000ee" vlink="551a8b" alink="ff0000">
+
+<h1> Algernon and Access-Limited Logic </h1>
+
+Access-limited logic, and its embodiment in a knowledge-representation
+language named Algernon, has been a focus for research in the <!WA0><!WA0><!WA0><!WA0><!WA0><a
+href="http://net.cs.utexas.edu/users/qr/"> Qualitative Reasoning group</a>.
+  <p>
+
+<ul>
+ <li> <!WA1><!WA1><!WA1><!WA1><!WA1><a href="#Overview">Brief overview</a>.
+ <li> <!WA2><!WA2><!WA2><!WA2><!WA2><a href="#Researchers"> Researchers</a>.
+ <li> <!WA3><!WA3><!WA3><!WA3><!WA3><a href="#learning"> Learning About Algernon</a>.
+ <li> <!WA4><!WA4><!WA4><!WA4><!WA4><a href="#references"> References</a>.
+ <li> <!WA5><!WA5><!WA5><!WA5><!WA5><a href="#applications"> Applications</a>.
+ <li> <!WA6><!WA6><!WA6><!WA6><!WA6><a href="#software"> Software</a>.
+ <li> <!WA7><!WA7><!WA7><!WA7><!WA7><a href="#users"> Algernon users</a>.
+</ul>
+
+<h2> <a name="Overview">Brief Overview</a> </h2>
+
+Access-Limited Logic is a language for representing knowledge in the
+computer, and a method for drawing conclusions and answering questions
+from that knowledge.  <p>
+
+Previous languages and methods faced an apparently unsolvable conflict
+between three important values: (1) having a clear and precise
+meaning; (2) being computationally efficient; and (3) being able to
+draw all correct conclusions eventually.  Part of the efficiency
+problem is that, out of a vast amount of knowledge, it is hard to find
+the right facts and rules to bring together.  <p>
+
+Like humans, access-limited logic uses the connections between related
+concepts to focus its search for useful information.  Although it is
+possible to miss connections between concepts that lack an available
+``access path,'' this method gives us values (1) and (2): clarity and
+efficiency.  As for value (3), known as ``completeness'', for a
+language expressive enough for common-sense knowledge, it is
+impossible to draw all correct conclusions efficiently.  However, we
+have shown that access-limited logic has the property of ``Socratic
+completeness'': if a wise tutor asks the right series of questions,
+any correct conclusion can be found (and each question will be
+answered efficiently).  Furthermore, for most common-sense knowledge,
+the series of questions to ask can usually be found efficiently.  <p>
+
+In addition to our theoretical work on Access-Limited Logic, we have
+implemented a system named Algernon that embodies its principles.
+Algernon has been used for the graduate expert systems course at UT,
+for research toward at least four doctoral dissertations, and as a
+research tool at UT, MCC, and Stanford University.  MCC, in turn, has
+distributed Algernon to its shareholders.  <p>
+
+A more <!WA8><!WA8><!WA8><!WA8><!WA8><a href="http://www.cs.utexas.edu/users/qr/algernon-technical.html"> technical discussion of
+Algernon and ALL</a> is also available.
+
+
+<h2> <a name="Researchers"> Researchers </a> </h2>
+
+<ul>
+ <li> <!WA9><!WA9><!WA9><!WA9><!WA9><a href="http://www.cs.utexas.edu/users/kuipers"> Ben Kuipers</a> --- kuipers@cs.utexas.edu
+ <li> <!WA10><!WA10><!WA10><!WA10><!WA10><a href="http://www.cs.utexas.edu/users/hewett"> Micheal Hewett</a> --- hewett@cs.utexas.edu
+ <li> <!WA11><!WA11><!WA11><!WA11><!WA11><a href="http://cirl.uoregon.edu/crawford.html"> James Crawford</a> 
+      --- jc@cs.uoregon.edu
+</ul>
+
+
+
+<h2> <a name="learning">Learning About Algernon</a> </h2>
+
+ <ul>
+  <li> B. J. Kuipers and J. M. Crawford.  1994.
+<!WA12><!WA12><!WA12><!WA12><!WA12><a href="file://ftp.cs.utexas.edu/pub/qsim/algernon/algernon-reference-manual.ps.Z"> 
+Short Algernon Reference Manual (for Algernon version 1.3.0)</a>.
+Unpublished manuscript. <P>
+ <ul>
+  <li> As of this writing (4-18-94), the reference manual may be more recent
+than the file algernon.tar.Z.
+ </ul>
+ <P>
+
+ <li>  B. Kuipers.  1993.  
+<!WA13><!WA13><!WA13><!WA13><!WA13><a href="file://ftp.cs.utexas.edu/pub/qsim/algernon/algernon-for-ES.ps.Z">
+Algernon for Expert Systems</a>.  Unpublished manuscript. <P>
+ <ul>
+  <li>  This evolving document illustrates how to write code in Algernon for
+various useful tasks.
+ </ul>
+
+
+ </ul>
+
+
+<h2> <a name="references">References </a> </h2>
+
+<ul>
+
+  <li> Raman Rajagopalan.  1992.  
+<!WA14><!WA14><!WA14><!WA14><!WA14><a href="file://ftp.cs.utexas.edu/pub/qsim/papers/Rajagopalan-aaai92-tract-reas-wkshp.ps.Z">
+<b>Results of an experiment in domain knowledge base 
+construction: a comparison of the Classic and Algernon knowledge 
+representation systems.</b></a>  <CITE>Working Papers of the AAAI Workshop on Tractable
+Reasoning</CITE>, AAAI-92, San Jose, CA, 1992.
+  <p>
+
+  <li> J. M. Crawford & B. J. Kuipers.  1991.  
+<!WA15><!WA15><!WA15><!WA15><!WA15><a href="file://ftp.cs.utexas.edu/pub/qsim/papers/Crawford+Kuipers-SIGART-91.ps.Z">
+<b>Algernon -- a tractable
+system for knowledge representation.</b></a>  <i>SIGART Bulletin</i> 2(3): 35-44,
+June 1991.
+  <p>
+
+  <li> J. M. Crawford & B. J. Kuipers.  1991.  
+<!WA16><!WA16><!WA16><!WA16><!WA16><a href="file://ftp.cs.utexas.edu/pub/qsim/papers/Crawford+Kuipers-AAAI91.ps.Z">
+<b>Negation and proof by
+contradiction in access-limited logic.</b></a>  In <i>Proceedings of the National
+Conference on Artificial Intelligence (AAAI-91)</i>, AAAI/MIT Press, 1991. 
+  <p>
+
+  <li> J. M. Crawford & B. J. Kuipers.  1991.  
+<!WA17><!WA17><!WA17><!WA17><!WA17><a href="file://ftp.cs.utexas.edu/pub/qsim/papers/Crawford+Kuipers-sowa-91.ps.Z">
+<b>ALL: formalizing access-limited reasoning.</b></a> In John Sowa (Ed.),
+<i>Principles of Semantic Networks</i>, pp. 299-330.  San Mateo, CA:
+Morgan Kaufmann.  <p>
+
+  <li> James Crawford.  1990.
+<!WA18><!WA18><!WA18><!WA18><!WA18><a href="file://ftp.cs.utexas.edu/pub/qsim/papers/Crawford-PhD-91.ps.Z">
+<b>Access-Limited Logic: A Language for
+Knowledge Representation</b></a>.  Doctoral dissertation, Department of
+Computer Sciences, University of Texas at Austin, Austin, Texas.  UT
+Artificial Intelligence TR AI90-141, October 1990.  
+<!WA19><!WA19><!WA19><!WA19><!WA19><a href="file://ftp.cs.utexas.edu/pub/qsim/papers/Crawford-PhD-91-toc.ps.Z">
+[Table of Contents]</a>.
+ <p>
+
+  <li> J. M. Crawford, A. Farquhar, B. J. Kuipers.  1990.  
+<!WA20><!WA20><!WA20><!WA20><!WA20><a href="file://ftp.cs.utexas.edu/pub/qsim/papers/Crawford+Farquhar+Kuipers-AAAI90.ps.Z">
+<b>QPC: a
+compiler from physical models into qualitative differential equations.</b></a>
+<i>Proceedings of the National Conference on Artificial Intelligence
+(AAAI-90)</i>, AAAI/MIT Press, 1990. 
+  <p>
+
+ Revised version in Boi Faltings and
+Peter Struss (Eds.), <i>Recent Advances in Qualitative Physics</i>, MIT
+Press, 1992. <p>
+
+  <li> J. M. Crawford and B. J. Kuipers.  1989.  
+<!WA21><!WA21><!WA21><!WA21><!WA21><a href="file://ftp.cs.utexas.edu/pub/qsim/papers/Crawford+Kuipers-kr-89.ps.Z">
+<b>Toward a theory of access-limited logic for knowledge representation.</b></a>
+In <i>Proceedings of the First International Conference on Principles
+of Knowledge Representation and Reasoning (KR'89)</i>.  Los Altos,
+CA: Morgan Kaufmann.  <p>
+
+</ul>
+
+
+<h2> <a name="applications">Applications </a> </h2>
+
+Several doctoral dissertations have used Algernon as a central part of the 
+implementation.
+
+<ul>
+
+  <li> Adam Farquhar.  1993.  
+<!WA22><!WA22><!WA22><!WA22><!WA22><a href="file://ftp.cs.utexas.edu/pub/qsim/papers/Farquhar-PhD-93.ps.Z">
+<b>Automated modeling of physical systems
+in the presence of incomplete knowledge.</b></a>   University of Texas at
+Austin, Artificial Intelligence Laboratory, Technical Report AI
+93-207.  (Doctoral dissertation, Department of Computer Sciences.)
+  <p>
+
+  <li> Jeff W. Rickel.  1995.  
+<!WA23><!WA23><!WA23><!WA23><!WA23><a href="file://ftp.cs.utexas.edu/pub/qsim/papers/Rickel-PhD-95.ps.Z">
+<B>Automated modeling of complex
+systems to answer prediction questions.</B></a>  Doctoral dissertation,
+Department of Computer Sciences, The University of Texas at Austin.
+(Available as technical report AI95-234.)
+ <P>
+
+  <li> Raman Rajagopalan.  1995.  
+<!WA24><!WA24><!WA24><!WA24><!WA24><a href="file://ftp.cs.utexas.edu/pub/qsim/papers/Rajagopalan-PhD-95.ps.Z">
+<B>Qualitative reasoning about
+dynamic change in the spatial properties of a physical system.</B></a>
+Doctoral dissertation, Department of Computer Sciences, The University
+of Texas at Austin.  (Available as TR AI95-241.)
+ <P>
+
+
+</ul>
+
+
+<h2> <a name="software"> Software </a> </h2>
+
+The source codes for <!WA25><!WA25><!WA25><!WA25><!WA25><a href="http://www.cs.utexas.edu/users/qr/QR-software.html"> Algernon and QPC are
+available</a>.
+ <ul>
+  <li> AT+T Bell Labs has created R++, a rule-based extension to C++,
+       based on the ideas of access-limited logic developed in Algernon.
+       <!WA26><!WA26><!WA26><!WA26><!WA26><a href="http://www.research.att.com/sw/tools/r++/">
+       R++ is available</a> to university researchers.
+ </ul>
+
+
+<h2> <a name="users"> Algernon Users and History </a> </h2>
+
+Ben Kuipers initially conceived of Algernon and Access-Limited Logic
+as a synthesis of frames and logic-based approaches to knowledge
+representation while teaching an undergraduate class on AI programming
+methods.  He has used Algernon as the programming vehicle for his
+Expert Systems class at the University of Texas for a number of years.
+<p>
+
+James Crawford did all of the theory of Access-Limited Logic,
+including inventing the key concept of "Socratic Completeness", and
+did a near-complete reimplementation of Algernon.  Crawford's PhD
+thesis is the definitive description of Access-Limited Logic.  <p>
+
+QPC, our compositional compiler for qualitative models, is implemented
+in Algernon.  This was initially a collaboration between Adam
+Farquhar, James Crawford, and Ben Kuipers, and grew into Adam
+Farquhar's PhD thesis.  <p>
+
+Raman Rajagopalan and Jeff Rickel did their PhD research using QPC,
+and were thus regular Algernon users. <p>
+
+Chinatsu Aone did a PhD thesis in linguistics on the understanding of
+quantified expressions, and used Algernon as the knowledge
+representation language.  She convinced MCC to provide Algernon as one
+of the knowledge representation languages for their NLKB (Natural
+Language Knowledge Base) project.  <p>
+
+Elias Costopoulos implemented Algernon in C++ for the PC.  <p>
+
+Omid Sojoodi-Haghighi implemented the KM system based on the ideas in 
+Access-Limited Logic, though not on Algernon.  KM is currently the
+representation language for the Biology KB group.  <p>
+
+Mike Hewett is investigating ways to make the Algernon implementation
+more robust and efficient.  <p>
+
+
+<hr>
+<!WA27><!WA27><!WA27><!WA27><!WA27><a href="http://www.cs.utexas.edu/users/qr">[QR home]</a>
+
+<address><!WA28><!WA28><!WA28><!WA28><!WA28><a href="http://www.cs.utexas.edu/users/kuipers">BJK</a></address>

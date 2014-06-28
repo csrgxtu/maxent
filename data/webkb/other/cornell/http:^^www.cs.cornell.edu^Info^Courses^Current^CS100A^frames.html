@@ -1,0 +1,74 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 24-Nov-96 22:35:39 GMT
+Content-Type: text/html
+Content-Length: 2092
+Last-Modified: Tuesday, 01-Oct-96 13:50:18 GMT
+
+<!DOCTYPE html PUBLIC "-//Netscape Comm. Corp.//DTD HTML//EN">
+<HTML>
+<HEAD>
+<TITLE>Welcome to the CS 100A Home Page for the Fall of 1996</TITLE>
+
+<SCRIPT LANGUAGE = "JavaScript">
+<!-- Javascript functions
+
+function gettheDate() {
+Todays = new Date();
+TheDate = "" + (Todays.getMonth()+ 1) +" / "+ Todays.getDate() + " / " + 
+Todays.getYear() 
+document.clock.date.value = TheDate;
+}
+// Navigation - Stop
+// Netscapes Clock - Start
+// this code was taken from Netscapes JavaScript documentation at
+// www.netscape.com on Jan.25.96
+
+var timerID = null;
+var timerRunning = false;
+function stopclock (){
+        if(timerRunning)
+                clearTimeout(timerID);
+        timerRunning = false;
+}
+
+function startclock () {
+        // Make sure the clock is stopped
+        stopclock();
+        gettheDate()
+        showtime();
+}
+
+function showtime () {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds()
+        var timeValue = "" + ((hours >12) ? hours -12 :hours)
+        timeValue += ((minutes < 10) ? ":0" : ":") + minutes
+        timeValue += ((seconds < 10) ? ":0" : ":") + seconds
+        timeValue += (hours >= 12) ? " P.M." : " A.M."
+        document.clock.face.value = timeValue;
+        // you could replace the above with this
+        // and have a clock on the status bar:
+        // window.status = timeValue;
+        timerID = setTimeout("showtime()",1000);
+        timerRunning = true;
+}
+// Netscapes Clock - Stop
+// END OF JAVASCRIPT FUNCTIONS -->
+</SCRIPT>
+
+</HEAD>
+<FRAMESET ROWS="90,*" FRAMEBORDER="NO" FRAMESPACING=0 >
+	<FRAME SRC="header.html" NAME="header" SCROLLING="NO" NORESIZE MARGINHEIGHT=0 MARGINWIDTH=0>
+	<FRAMESET COLS="115,*">
+		<FRAME SRC="contents.html" NAME="contents" SCROLLING="AUTO" NORESIZE MARGINHEIGHT=0 MARGINWIDTH=0>
+		<FRAME SRC="courseinfo.html" NAME="home" SCROLLING = "AUTO" NORESIZE MARGINHEIGHT=3 MARGINWIDTH=3>
+	</FRAMESET>
+</FRAMESET>
+
+<NOFRAMES>
+<BODY BGCOLOR = "#FFFFFF" VLINK = "#444444" LINK = "#333333" onLoad = "startclock()">
+</BODY>
+</HTML>

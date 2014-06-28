@@ -1,0 +1,116 @@
+Date: Mon, 11 Nov 1996 17:24:33 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 18 Mar 1996 14:36:23 GMT
+Content-length: 2837
+
+<html>
+<head>
+<title>CS 537 - Problem Set #2</title>
+</head>
+
+<body>
+<table border=0 width=100% align=center>
+<tr>
+<td width=25%><td width=50% align=center>
+<b>UNIVERSITY OF WISCONSIN-MADISON
+<br>
+Computer Sciences Department</b>
+<td width=25%>
+<tr>
+<tr>
+<td>
+<b>CS 537
+<br>
+Spring 1996 </b>
+<td><td align=right><b>Bart Miller</b>
+<tr>
+<td>
+<td align=center><b>Problem Set #2</b>
+<br>
+<!--(Due ?????day, ??????? ??, at 5pm) -->
+<td>
+</table>
+
+<hr>
+
+<h2>Problem 1</h2>
+<p>
+You are designing the memory mapping hardware for a new machine.
+The memory addressing will have segments that are paged.
+The machine has a 64-bit virtual address.
+Each process can have up to 64K (65536) segments, and page size
+is 64K bytes.
+<p>
+The segment tables (ST) and page tables (PT) are stored in main memory.
+ST's and PT's can start at any byte address.
+Each segment table entry (STE) points to a page table.
+<p>
+Each page table entry (PTE) points to a page in real memory.
+Each PTE will also have:
+a "read-enable" bit,
+a "write-enable" bit,
+and a bit that is set on each reference to the page.
+<p>
+This machine will support physical memories up to 64 gigabytes.
+<ol>
+<li>
+Draw a diagram of this memory map.
+Show how the pieces of the virtual address are used to
+reference each of the tables, and to generate the physical address.
+Indicate the size of each field, where it comes from, and where it is used.
+Also indicate where page faults or memory protection traps will be indicated.
+<li>
+How large (in bytes) is a full-sized ST?
+<li>
+Is it a good idea to have a "bounds" field in your STE's?
+Why or why not?
+Should this bounds field be in units of bytes or pages?
+<li>
+What happens if we double the page size (while still keeping a 64
+bit virtual
+address)?
+</ol>
+<h2>Problem 2</h2>
+<ol>
+<li>
+Add a TLB to the memory mapping architecture that you described in Problem 1.
+This cache should be 4-way set associative and will have 256 rows.
+Draw a diagram of the TLB, showing the size of each field in the TLB.
+Indicate how bits of the VA are used for input to the TLB, and describe the
+outputs from the TLB.
+<li>
+How often do you need to flush (clear) the TLB?
+Why?
+What change could you make to the TLB to avoid clearing it?
+</ol>
+<h2>Problem 3</h2>
+<p>
+For each of the following page replacement algorithms, describe a case
+where the algorithm does a poor job in scheduling memory:
+LRU, LFU, FIFO.
+<h2>Problem 4</h2>
+<p>
+Consider a demand paging system.
+We measure the various resource utilizations and see:
+<table align=center>
+<tr><td>CPU utilization<td>20%
+<tr><td>Paging disk<td>99%
+</table>
+<p>
+Which of these (if any) should improve the CPU utilization?
+Why?
+<ol>
+<li>
+Get a faster CPU.
+<li>
+Get a bigger disk.
+<li>
+Get a faster disk.
+<li>
+Increase the degree of multiprogramming.
+<li>
+Decrease the degree of multiprogramming.
+</ol>
+</body>
+</html>

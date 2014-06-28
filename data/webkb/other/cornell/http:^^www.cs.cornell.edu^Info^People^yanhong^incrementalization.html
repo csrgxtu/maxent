@@ -1,0 +1,154 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 16-Dec-96 21:39:08 GMT
+Content-Type: text/html
+Content-Length: 7002
+Last-Modified: Saturday, 29-Jun-96 22:41:27 GMT
+
+<TITLE>Incrementalization</TITLE>
+
+<h1>Incrementalization-</h1>
+<ul><h4>A General Systematic Approach to Efficiency Improvement</h4></ul>
+<hr>
+<h2>Objectives</h2>
+
+<ul> <li> We are engaged in an ambitious effort to <i>derive</i>
+incremental programs automatically (or semi-automatically) from
+non-incremental programs written in standard programming languages.
+This approach contrasts with earlier approaches that aimed to
+incrementally <i>evaluate</i> non-incremental programs.
+
+<p> <li> In essence, every program computes by fixed-point iteration,
+expressed as recursive functions or loops.  This is why loop
+optimizations are so important.  A loop body can be regarded as a
+program <i>f</i> parameterized by an induction variable <i>x</i> that
+is incremented on each iteration by a change operation <i>+</i>.
+Efficient iterative computation relies on effective use of state,
+i.e., computing the result of each iteration using stored results of
+previous iterations.  This is why strength reduction and related
+techniques are crucial for performance.  
+
+<p> <li> Given a program <i>f</i> and an input change operation
+<i>+</i>, a program <i>f'</i> that computes <i>f(x+y)</i> efficiently
+by using the result of the previous computation of <i>f(x)</i> is
+called an <i>incremental version</i> of <i>f</i> under <i>+</i>.
+Sometimes, information other than the result of <i>f(x)</i> needs to
+be maintained and used for efficient incremental computation of
+<i>f(x+y)</i>.  We call a function that computes such information an
+<i>extended version</i> of <i>f</i>.  Thus, the goal of computing
+loops efficiently corresponds to constructing an extended version of a
+program <i>f</i> and deriving an incremental version of the extended
+version under an input change operation <i>+</i>.  
+
+<p> <li> In general, incremental computation aims to solve a problem
+on a sequence of inputs that differ only slightly from one another,
+making use of the previously computed output in computing a new
+output, instead of computing the new output from scratch.  Incremental
+computation is a fundamental issue relevant throughout computer
+software, e.g., optimizing compilers, transformational program
+development, and interactive systems.  </ul>
+
+<P> <HR> <P>
+
+<h2>Results</h2><P>
+
+<ul> <p> <li> Thus far, we have partitioned the problem of deriving
+incremental programs into three subproblems:
+
+<ul> <p> <li> <b>P1.</b> Exploiting the <i>result</i> of <i>f(x)</i>,
+i.e., the return value of <i>f(x)</i>.
+
+<p> <li> <b>P2.</b> Caching, exploiting, and maintaining
+<i>intermediate results</i> of <i>f(x)</i>, i.e., values computed in
+the middle of computing <i>f(x)</i>.
+
+<p> <li> <b>P3.</b> Discovering, computing, exploiting, and
+maintaining <i>auxiliary information</i> of <i>f(x)</i>, i.e.,
+information not computed at all <i>f(x)</i>, that can be inexpensively
+maintained.  </ul>
+
+<p> We summarize here the essence of our methods: 
+
+<p> <li> <b>P1.</b> In <!WA0><!WA0><!WA0><!WA0><a
+href="ftp://ftp.cs.cornell.edu/pub/yanhong/Inc-SCP95.ps.Z">
+"Systematic Derivation of Incremental Programs"</a>, we gave a general
+systematic transformational approach for deriving an incremental
+version <i>f'</i> of a program <i>f</i> under an input change
+<i>+</i>.  The basic idea is to identify in the computation of
+<i>f(x+y)</i> those subcomputations that are also performed in the
+computation of <i>f(x)</i> and whose values can be retrieved from the
+cached result <i>r</i> of <i>f(x)</i>.  The computation of
+<i>f(x+y)</i> is symbolically transformed to avoid re-performing these
+subcomputations by replacing them with corresponding retrievals.  This
+efficient way of computing <i>f(x+y)</i> is captured in the definition
+of <i>f'(x,y,r)</i>.
+
+<p> <li> <b>P2.</b> In <!WA1><!WA1><!WA1><!WA1><a
+href="ftp://ftp.cs.cornell.edu/pub/yanhong/Cir-PEPM95.ps.Z"> "Caching
+Intermediate Results for Program Improvement"</a>, we gave a method,
+called <i>cache-and-prune</i>, for statically transforming programs to
+cache all intermediate results useful for incremental computation.
+The basic idea is to
+
+<ul> <p> <li> <b>I.</b> extend the program <i>f</i> to a program
+<i>f-bar</i> that returns all intermediate results,
+
+<p> <li> <b>II.</b> incrementalize the program <i>f-bar</i> under
+<i>+</i> to obtain an incremental version <i>f-bar'</i> of
+<i>f-bar</i> using our method for P1,
+
+<p> <li> <b>III.</b> analyze the dependencies in <i>f-bar'</i>, then
+prune the extended program <i>f-bar</i> to a program <i>f-hat</i> that
+returns only the useful intermediate results, and prune the program
+<i>f-bar'</i> to obtain a program <i>f-hat'</i> that incrementally
+maintains only the useful intermediate results. </ul>
+
+<p> <li> <b>P3.</b> In <!WA2><!WA2><!WA2><!WA2><a
+href="ftp://ftp.cs.cornell.edu/pub/yanhong/Dai-POPL96.ps.Z">
+"Discovering Auxiliary Information for Incremental Computation"</a>,
+we proposed a approach for finding auxiliary information.  Auxiliary
+information is, by definition, useful information about <i>x</i> that
+is <i>not</i> computed by <i>f(x)</i>.  Where, then, can one find it?
+The key insight of this approach is:
+
+<ul> <p> <li> <b>A.</b> Consider, as candidate auxiliary information
+for <i>f</i>, all intermediate computations of an incremental version
+of <i>f</i> that depend only on <i>x</i>; such an incremental version
+can be obtained using some techniques we developed for solving P1 and
+P2.  (We use techniques developed for solving P1 and P2, instead of
+just P1, so that the candidate auxiliary information includes
+auxiliary information useful for efficiently maintaining the
+intermediate results.) </ul>
+
+<p> How can one discover which pieces of candidate auxiliary
+information are useful and how they can be used?  We proposed:
+
+<ul> <p> <li> <b>B.</b> Extend <i>f</i> with all candidate auxiliary
+information, then apply some techniques used in our methods for P1 and
+P2 to obtain an extended version and an incremental extended version
+that together compute, exploit, and maintain only useful intermediate
+results and useful auxiliary information. </ul>
+
+<p> <li> Thus, on the one hand, one can regard the method for P2 as an
+extension to method for P1; on the other hand, one can regard method
+for P1 as aids for solving P2.  Similarly, on the one hand, one can
+regard the method for P3 as an extension to methods for P1 and P2; on
+the other hand, one can regard methods for P1 and P2 as aids for
+solving P3.  The modular components complement one another to form a
+comprehensive principled approach for incremental computation and
+therefore also for efficient iterative computation generally.
+Although the entire approach seems complex, each module or step is
+simple.
+
+<p> <li> In <!WA3><!WA3><!WA3><!WA3><a
+href="ftp://ftp.cs.cornell.edu/pub/yanhong/Cachet-KBSE95.ps.Z">
+"CACHET: An Interactive, Incremental-Attribution-Based Program
+Transformation System For Deriving Incremental Programs"</a> we
+describe our prototype implementation of these ideas.  </ul>
+
+<hr>
+<address>
+<!WA4><!WA4><!WA4><!WA4><a href="http://www.cs.cornell.edu/home/yanhong/">Y. Annie Liu</a> <kbd>yanhong@cs.cornell.edu</kbd>
+Last updated 6/29/96 </address>
+</body>
+

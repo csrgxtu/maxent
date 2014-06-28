@@ -1,0 +1,285 @@
+Date: Wed, 08 Jan 1997 21:43:00 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+<title>CSE467 Laboratory Assignment #3</title>
+</head>
+
+<body bgcolor="#dddddd"  text="#000000"  link="#0000ee" vlink="501080" alink="ff0000">
+
+<h1>CSE467: Advanced Logic Design</h1>
+<h3>Ted Kehl Fall 1996 </h3>
+
+<hr>
+
+<h3>Lab 3</h3>
+<p>
+<h3>Synario Hierarchy: Mixing Schematics and ABEL-HDL</h3>
+<p>
+<b>Distributed: Oct 18 <br>
+  Schematics/Simulation Due: TA opt<br>
+  (Constructed circuit Due: TA opt)<br>
+  (Functional circuit Due: TA opt</b>)
+<hr>
+<H3>Objectives</H3>
+After completing this lab you will know how to:
+<UL>
+<LI>Use Synario to construct hierarchical circuit schematics
+<LI>Include ABEL programs in schematics as devices
+<LI>Debug synchronous designs using simulation
+<!--<LI>Program PLDs
+<LI>Debug physical circuits
+-->
+</UL>
+
+From now on, you will be working (sometimes rather loosely) in teams
+of four.  The first part of this assignment has you follow a tutorial
+where you should work in groups of two.  In the second part you are
+given a circuit that divides naturally into two parts, each of which
+can be solved individually by half the team and then linked together
+to form a complete solution.
+<p>
+<b>Note:</b> Although the tutorial is rather complete, you may need to
+look in the Synario manuals in the lab to answer questions you may
+have or to use more advanced features.
+
+<H3>I. Tutorial: Topdown Design Using ABEL with Schematics </H3>
+
+This tutorial has you design a counter that counts 1,2,3,..,N where N
+is an input to the counter.  This counter is composed of two component
+modules, a simple counter and a comparator.  The comparator compares
+the endcount to the current count value and causes the counter to
+restart.
+<P>
+<b>Note:</b> You will not be following the tutorial exactly, but we
+will let you know where things diverge.
+
+<H3>II. Design Problem: Serial Communication</H3>
+
+You are to construct a sequential circuit that interfaces a simple
+keypad to an LCD screen.  Characters to be printed on the LCD screen
+will be keyed in using two key presses: one for the first 4-bit nibble
+of the character's code and one for the second 4-bit nibble.  For
+example, to print an "A" one would key in a "4" and a "1".
+
+The circuit you design will communicate values from the keypad to the
+LCD display using your solution to Homework 2, Problem 6, which
+presented a method for bit-serial communication.  You will start by
+designing and simulating your circuit in Synario.  In the next weeks,
+you will program parts of your circuit into PLDs, plug them in and get
+the circuit work.
+
+<P> The figure below shows the components of your system:
+<p>
+(Figure 1)
+
+<h4>The Keypad</h4>
+The first half of the circuit takes values entered on the keypad and
+sends them serially to the second half of the circuit.
+<p>
+The keypad has nine wires: one for each column (5 through 8), one for
+each row (1 through 4), and a common wire (9) to be connected to
+ground (this is the common connection for all the switches).  When a
+key is pressed the corresponding column and row wires are connected to
+the common signal (see the figure below).  Therefore, the keypad is
+called a 2-of-8, 2 of the 8 wires will be active low when a key is
+pressed, the others are pulled high through resistor connections to
+5v.
+
+<p><img src="debounce.jpeg"><p>
+
+<P>
+
+The first part of the task is to convert the 2-of-8-bit value from the
+keypad wires into a 4-bit value plus a "ready" bit.  The 4-bit value
+encodes the key pressed into a binary number (0000 to 1101 for 0
+through 9 followed by A, B, C, and D; 1110 for *; and 1111 for #).
+The ready bit is synchronized to the clock and is asserted high for
+one cycle indicating that a key has been pressed.  The rest of your
+circuit will collect two 4-bit values and send them serially according
+to our protocal across the link to the LCD display circuit.  Also, you
+will need to latch (i.e., store in a register) the first key pressed
+while you wait for the second so it might be a good idea to just latch
+both (this can be done with one or two `373s). 
+
+<H4>The LCD Screen</H4>
+The second half of the circuit receives the data sent bit-serially
+from the keypad and displays the value on the LCD screen.
+<P>
+The display you will be using has a very straightforward interface.
+It takes instructions or data depending on the value of the RS wire.
+The table below shows the instructions you will be using.  Four
+instructions are required to initialize the display for the
+configuration we require (a 1 line by 16 character display).  These
+are shown in the first four lines of the table.  So your control logic
+must be sure to issue these instructions whenever it is reset.
+<P>
+After reset, all you need to do is write characters to the display
+(the fifth line in the table).  These will be displayed immediately by
+the display unit.  Finally, you will hit the reset switch again and
+start entering a new number.  You can find the character codes in the
+display documentation.
+
+<pre>
+Operation	RS	R/W	DB7...DB0
+Clear Display	0	0	0000 0001
+Function Set	0	0	0011 00**
+Display ON	0	0	0000 1100
+Entry Mode Set	0	0	0000 0110
+Write Character	1	0	DDDD DDDD
+Backspace	0	0	0001 00**
+Return Home	0	0	0000 000*
+Read Character	1	1	DDDD DDDD
+</pre>
+
+The timing constraints that must be satisfied when writing information
+into the display are quite straightforward.  Basically, the display
+samples the RS line on the rising edge of the enable signal (E) and DB
+lines on the falling edge of E.  To keep things simple, the set up and
+hold time for RS should be one cycle before and after the rising edge
+of E, respectively.  Similarly for the DB lines and the falling edge
+of E.  The only other timing information of importance is to allow up
+to 1.6ms for the display to actually clear (the internal controllers
+takes some time to actually go and enter 0s in the internal memory of
+the display unit).
+
+<P> Since your project does not need to perform read operations, the
+R/W control line can be tied directly to GND.  For normal character
+write operations, the RS signal should be 1.  To execute a command,
+the RS signal should be 0.  The easiest way to perform a write is by
+asserting the enable signal (E) for one clock cycle during which RS
+and data are both stable.  You must ensure that the number code is
+stable while this is happening.  This shouldn't be a problem as a key
+press takes a lot longer than your circuit will need.  However, you
+should ensure that RS is stable for a cycle before and after the write
+operation is performed.  You will need to do this in your controller's
+finite state machine.  Since the Enable signal is used to clock data
+into the display, it should be hazard-free (no spurious glitches).
+The easiest way to ensure this is to make it a direct output of a
+flip-flop in the PLD.
+
+<h4>Details, Details, Details...</h4> 
+
+Part of designing a circuit to solve a problem is defining what the
+problem is.  Most problem descriptions are hazy, incomplete and
+ambiguous.  One of the tasks of when designing is to turn such a
+description into a precise specification.  Before you begin to design,
+ask yourself what is missing and <b>write down</b> as precise a
+specification as you can.  You may save yourself a lot of work in the
+end.  Document both parts of your circuit design (preferably using
+Word), specifying how the pieces will interact and how you will solve
+each part.  Include this documentation in your Synario project and
+hand it in with your schematics.
+
+<P>
+<B>NOTES:</B>
+<ol>
+<LI> Don't forget to provide a reset input to both halves of your
+circuit.
+<LI> You will have to figure out how to signal the beginning of data
+to separate it from idle time.
+<LI> Decide on a good speed for your clock which suits the LCD
+display.  You might as well simulate at your proposed clock speed.
+(Hint: it should be relatively slow.)
+</ol>
+
+<h4>Entering and Simulating your Design</h4>
+
+Divide each half of your design into reasonably-sized components, such
+as registers and counters and combinational logic that can fit in a
+single PLD.  Draw a top-level schematic for your design, including the
+components that you need.  (Work with your TA if you are not sure how
+to define this hierarchy.)  Use ABEL to specify both your sequential
+(e.g. counters) and combinational (e.g. code converter) components.
+You will find some useful chip definitions in the t:\cse467 directory.
+You can use these in your schematics by first importing them, then
+creating the matching symbol (the tutorial covers this).  You may want
+to do this for other standard chips although you can use PLDs for most
+everything.
+
+<P> You should simulate your designs separately as best you can, and
+then combine the two projects using a new top-level schematic.
+(Start a new project then import the pieces of the two projects.)
+To simulate the complete design, you will need to provide the keypad
+stimulus, which is easy to do on eight inputs, and you will need to
+check that the commands to the LCD display are correct.  For now, you
+will just have to check this by hand.
+
+<P> Here is an example of a Verilog test fixture which uses one
+process to set the "test vectors" and a separate process to generate a
+free-running clock:
+<pre>
+
+// Consistently set the timescale (1 ns) and the precision (1 ns)
+//    Should be set in the top level file (here) because it may be
+//    defaulted differently in separate submodules
+
+`timescale 1 ns/1 ns
+
+// Declare the toplevel module name
+
+module t;
+
+// Include the interface to the schematic and ABEL source
+
+`include "keypad.tfi"
+
+// Initialize the inputs. Then form input stimuli.
+// Because of the way the clock is structured,
+//    it is safe to change inputs at times: 0, 100, 200, 300, etc.
+
+initial
+begin
+   CLK = 0;
+   RESET = 1;
+   {R0,R1,R2,R3} = 0;
+   {C0,C1,C2,C3} = 0;
+   #200 RESET = 0;
+   #1000 {R0,R1,R2,R3} = {1,0,0,0};
+         {C0,C1,C2,C3} = {0,1,0,0};
+   #300  {R0,R1,R2,R3} = {0,0,0,0};
+         {C0,C1,C2,C3} = {0,0,0,0};
+   #300  {R0,R1,R2,R3} = {0,0,1,0};
+         {C0,C1,C2,C3} = {0,0,0,1};
+   #300  {R0,R1,R2,R3} = {0,0,0,0};
+         {C0,C1,C2,C3} = {0,0,0,0};
+end
+
+// This clock has a period of 100 ns. The rising edges occur at
+//   times 50, 150, 250, etc.
+
+always 
+begin
+   #50 CLK = 1;
+   #50 CLK = 0;
+end
+
+endmodule
+</pre>
+
+<H4>Extra Credit</H4>
+
+Many other options can be incorporated into this circuit.  For
+example, you may want to implement a back-space function using the
+code "A0" (10100000).
+
+<H2>Turn in (Due: TA opt)</H2>
+(Turn in the design in one piece.)
+<Ol>
+<LI>Design documentation
+<LI>Printout of Schematics
+<LI>Printout of ABEL modules
+<LI>Printout of simulation waveform <b>annotated</n> to show that
+circuit is working correctly.
+</OL>
+
+</body>
+<address>
+<hr>
+ted@cs.washington.edu
+</address>
+<p>
+</html>
+

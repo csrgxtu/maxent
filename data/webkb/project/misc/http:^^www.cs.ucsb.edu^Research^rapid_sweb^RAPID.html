@@ -1,0 +1,140 @@
+Date: Wed, 15 Jan 1997 00:35:12 GMT
+Server: Apache/1.0.2
+Content-type: text/html
+Content-length: 4871
+Last-modified: Wed, 27 Nov 1996 22:58:50 GMT
+
+<title> RAPID </title>
+
+<!--
+<!WA0><img src="http://www.cs.ucsb.edu/Research/rapid_sweb/rapid.gif">
+<br>
+
+<body background="brushed_aluminum.gif">
+-->
+
+<H1>
+RAPID: Scheduling and Run-Time Support for Parallel Irregular Computations. 
+</H1>
+
+<h7><!WA1><img width=300 align=middle src="http://www.cs.ucsb.edu/Research/space-images/rainbow.gif"></h7>
+
+<h4>
+This project  focuses on the study of
+scheduling algorithms for exploiting data, task and
+loop parallelism, and the development of  run-time support 
+on message-passing architectures.
+The fast scheduling algorithms we have developed provide effective 
+utilization of computing resources for directed acyclic graphs, iterative
+task graphs with and without cycles, and task graphs with data parallelism.
+The main applications are targeted at
+scientific computations such as  sparse matrix factorization arising 
+from numerical solutions to nonlinear equations, adaptive n-body simulations
+using the fast multipole method, and image processing. 
+<p>
+We are developing a run-time system called <b> RAPID </b>
+which integrates automatic scheduling techniques and efficient
+communication schemes for  irregular task computations with mixed
+granularities on message-passing distributed memory machines.
+The system provides a set of library functions  
+for specifying irregular data objects
+and tasks that access these objects.  It extracts a task dependence
+graph from data access patterns, and executes tasks efficiently on a
+distributed memory machine.
+Our experimental results on Cray T3D and Meiko CS-2 indicate
+that the system obtains promising performance in sparse 
+matrix problems for which actual speedups have been hard
+to obtain in the literature. In particular, using the RAPID system
+we have obtained
+good performance for parallel sparse LU/Gaussian elimination
+with partial pivoting, which is an open parallelization problem
+in scientific computing literature. 
+
+<p>
+<b> <h3> Contact persons: </b> 
+<!WA2><a href="http://www.cs.ucsb.edu/~cfu">Cong Fu (cfu@cs.ucsb.edu)</a>, 
+<!WA3><a href="http://www.cs.ucsb.edu/~tyang">Prof. Tao Yang (tyang@cs.ucsb.edu) </a>
+</h3>
+
+
+<H3> Selected Publications </H3>
+<ul>
+
+<P> 
+
+<li> C. Fu and T. Yang,
+<!WA4><a href="http://www.cs.ucsb.edu/~tyang/papers/ICS96.ps">
+Run-time Compilation for Parallel Sparse Matrix Computations, </a>
+in <em> Proc. of the 10th ACM International Conference on Supercomputing</em>,
+Philadelphia, pp. 237-244, May, 1996.
+<!WA5><a href="http://www.cs.ucsb.edu/~cfu/papers/ics96_talk.ps">
+Talk slides. </a>
+<p>
+ 
+<li> C. Fu and T. Yang, <strong> Sparse LU Factorization with Partial Pivoting 
+on Distributed Memory Machines.</strong><em>To appear in ACM/IEEE SuperComputing'96, 
+November, 1996, Pittsburgh.</em>
+<br>
+<!WA6><a href="file://www.cs.ucsb.edu/Research/rapid_sweb//fs/rabbit/cfu/lup_docs/html_ver/sc96/index.htm"> HTML </a> and
+<!WA7><a href="file://www.cs.ucsb.edu/Research/rapid_sweb//fs/rabbit/cfu/lup_docs/html_ver/sc96/fuyang.ps"> Postscript </a>
+<br>
+A long version is the technical report
+<!WA8><a href="http://www.cs.ucsb.edu/TRs/techreports/TRCS96-18.ps">TRCS96-18. </a>
+<p>
+
+<li> C. Fu and T. Yang,
+<!WA9><a href="http://www.cs.ucsb.edu/~cfu/papers/IPPS96.ps">
+Efficient Run-time Support for Irregular Task Computations with Mixed
+Granularities, </a>
+in <em> Proc. of IPPS '96 - 10th Inter. Parallel Processing Symposium </em>, IEEE.
+Hawaii, pp. 823-830, April, 1996.
+<!WA10><a href="http://www.cs.ucsb.edu/~cfu/papers/ipps96_talk.ps">
+Talk slides. </a>
+
+
+<p>
+<LI> C. Fu, T. Yang, and A. Gerasoulis,
+<!WA11><a href="http://www.cs.ucsb.edu/~cfu/papers/irregular95.ps">
+Integrating software pipelining and graph scheduling for iterative
+scientific computing, </a>
+<em> Lecture Notes in Computer Science</em>,
+Proc. of Irregular '95,  Lyon, France, Sept. 1995, pp. 127-141.
+
+<p> 
+<LI> T. Yang, C. Fu, A. Gerasoulis and V. Sarkar, 
+<!WA12><a href="http://www.cs.ucsb.edu/~cfu/papers/ICPP95.ps">
+Mapping
+iterative task graphs on distributed-memory machines.
+</a>
+Proc. of 24th Inter. Conference on
+Parallel Processing, Aug. 1995, Vol II, pp. 151-158.
+
+<P> 
+<li> T. Yang, C. Fu,
+<!WA13><a href="http://www.cs.ucsb.edu/~tyang/papers/TR95-16.ps">
+Heuristic Algorithms for Scheduling Iterative
+Task Computations on Distributed Memory Machines, </a>
+Technical Report TRCS95-16,
+Dept. of Computer Science, UCSB, 1995.
+
+<P> 
+<li> T. Yang, O. Ibarra,
+<!WA14><a href="http://www.cs.ucsb.edu/~tyang/papers/JPDC96_spdp.ps">
+ Performance Prediction in Symbolic Scheduling of Partitioned
+Programs with Weight Variation </a>.
+To appear in Journal of Parallel and Distributed Computing.
+A short version appears in Proceedings of IEEE SPDP'95. 
+
+<p>
+</ul>
+<H3> 
+<!WA15><a href="http://www.cs.ucsb.edu/~tyang/papers/">
+More related publications </H3> </a>
+<HR><!WA16><img src="http://www.cs.ucsb.edu/Research/rapid_sweb/up-arrow.gif">
+<!WA17><a href="http://www.cs.ucsb.edu/Research/PSL.html"> <b>Back to Parallel 
+Systems Lab Home Page </b></a> or
+<!WA18><a href="http://www.cs.ucsb.edu/"> <b>Back to CS Department Home Page </b></a>
+<HR>
+<p>
+
+<h3>You are visitor No. <!WA19><img src= "http://www.engr.wisc.edu/cgi-bin/counter?RAPID_MAIN"> since February 5, 1996.</h3>

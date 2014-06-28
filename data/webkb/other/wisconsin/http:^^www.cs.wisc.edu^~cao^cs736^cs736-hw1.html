@@ -1,0 +1,70 @@
+Date: Mon, 11 Nov 1996 17:32:15 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 25 Jan 1996 08:02:16 GMT
+Content-length: 2384
+
+<html>
+<head>
+<title> CS 736 Assignment #1 (Spring 96)</title>
+</head>
+
+<BODY>
+<h1> CS 736 Assignment #1 (Spring 96)</h1>
+
+<h2>Here is an informal description of assignment #1.</h2>
+
+<b>Step 1:</b> <br>
+Download lmbench from <a href ="cs736-lmbench.tar.Z">here</a>; <br>
+Unpack it, /bin/sh each part;<br>
+Build the benchmark and run it, get results; <p>
+
+<b>Step 2:</b> <br>
+Read the benchmark source and documents;
+<p>
+<b>Step 3:</b> <br>
+Build and run lmbench on a different operating system;
+<p>
+<b>Step 4:</b> <br>
+Write your own routine measuring the following:<br>
+<ol>
+<li>How long does it take to do an integer add op?  (doesn't have
+   to be complicated; you can ignore pipeline or other hardware details.)
+<li>How long does a null procedure call take?  Vary the number of arguments passed;
+<li>Measure system call latency using three different system calls other than write;
+<li>Measure context switch overhead using semaphores, instead of pipes;
+<li>Measure signal handling cost (hint. you can use mprotect);
+<li>Measure page fault handling cost for zero-filled pages, instead of mmaped pages;
+<li>Measure file open/close, creation/deletion latency in directories containing
+	16, 64, 256 and 1024 files, on local file systems and AFS or NFS file
+	systems;
+<li>Measure the latency of file read/write using different approaches:<br>
+	. UNIX read/write system call;<br>
+	. stream io library (i.e. stdio);<br>
+	. mmap;<br>
+   Vary the size of each read/write.
+
+<li>Write a simulator for memory server using TCP/IP and UDP/IP, in which the
+	the client send a request asking for certain buffer page, and the
+	server respond by sending out a page.  Measure the latency of such
+	operations, for page sizes of 4K, 8K and 32K bytes.
+<li>With two or more clients simultaneously asking for service from the
+    simulated memory server, measure the average response time of page requests.
+</ol>
+
+<b>Step 5:</b><br>
+Read the log-structured file system paper (Rosenblum & Ousterhout), 
+section 5.1, reproduce the microbenchmark results on Sun OS.
+<p>
+<br>Bonus points:</b><br>
+Measure anythings that interests you, and report your results.
+<p>
+<br>
+
+<b>What to submit:</b>
+A brief description of what you measured, and how you did it;<br>
+A list of your results; use graphs when appropriate;<br>
+The benchmark routines, with a Makefile showing how to build and run them.<br>
+<p>
+</body>
+

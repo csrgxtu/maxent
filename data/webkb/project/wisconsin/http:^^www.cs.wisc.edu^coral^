@@ -1,0 +1,114 @@
+Date: Thu, 07 Nov 1996 19:22:22 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 11 Oct 1996 06:35:59 GMT
+Content-length: 4398
+
+<HEAD>
+<TITLE>Coral Database Project</TITLE>
+</HEAD>
+
+<BODY>
+<H1>Coral Database Project</H1>
+<hr>
+
+<H3>Document Contents:</H3><P>
+
+<UL>
+<li><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><a HREF="#Objective">Objective</a></li>
+<li><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a HREF="#Overview">Overview</a></li>
+<li><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a HREF="#Release_Info">Release Information</a></li>
+</UL>
+
+<H3>See Also:</H3><P>
+<UL>
+<li><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a HREF="http://www.cs.wisc.edu/coral/coral.papers.html">Publications related to Coral</a></li>
+<li><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a HREF="http://www.cs.wisc.edu/coral/coral.people.html">People working on Coral</a></li>
+<li><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a HREF="http://www.cs.wisc.edu/rsch-info">Other Research at UW-Madison</a></li>
+</UL>
+<hr>
+
+<H2><a NAME="Objective">Objective:</a></H2>
+
+The objective of the CORAL project is to develop a robust and efficient
+deductive database system, and to investigate its use in various 
+application domains. Several of the algorithms underlying the Coral
+system have been developed by members of the group during the duration
+of the project (since 1988).
+<hr>
+
+<H2><a NAME="Overview">Overview:</a></H2>
+
+Coral is a deductive system which supports a rich declarative language,
+and an interface to C++ which allows for a combination of declaritive
+and imperative programming.  The declarative query language supports
+general Horn clauses augmented with complex terms, set-grouping, 
+aggregation, negation, and relations with tuples that contain 
+(universally quantified) variables.  A CORAL declarative program can
+be organized as a collection of interacting modules.  The CORAL
+implementation supports a wide range of evaluation strategies, and
+automatically chooses an efficient evaluation strategy for each module
+in the program. In addition, users are permitted to guide query optimization,
+if desired, by selecting from among a wide range of control choices at
+the level of each module.
+<P>
+The CORAL system provides imperative constructs such as update, insert
+and delete rules. CORAL also has an interface with C++, and users can
+program in a combination of declarative CORAL and C++ extended with
+CORAL primitives. A high degree of extensibility is provided by allowing
+C++ programmers to use the class structure of C++ to enhance the CORAL
+implemenation. CORAL provides support for both main-memory and 
+disk-resident data. Disk-resident data is supported using the
+<!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a HREF="http://www.cs.wisc.edu/exodus/">EXODUS</a>
+storage mananger, which also provides transaction management in a
+client-server environment.
+<hr>
+
+<H2><a NAME="Release_Info">Release Information:</a></H2>
+
+The current release of Coral is Version 1.5, released October 10, 1996.
+To install Coral on your system, then grab the tar file you want. 
+The nobin version contains only the source code, requiring
+you to compile Coral.  The other versions include pre-made binaries for
+the indicated machine type.
+<P>
+ 
+Click on a file to grab it:<P> 
+
+<UL>
+<li><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><a HREF="ftp://ftp.cs.wisc.edu/coral/coral-1.5/README">README</a> : General information.</li>
+<li><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><a HREF="ftp://ftp.cs.wisc.edu/coral/coral-1.5/INSTALL">Installation Manual for Coral</a> : Instructions for installation.</li>
+<p>
+<li><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><a HREF="ftp://ftp.cs.wisc.edu/coral/coral-1.5/coral-1.5.nobin.tar.gz">coral-1.5.nobin.tar.gz</a> : No binaries included.</li>
+<li><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><a HREF="ftp://ftp.cs.wisc.edu/coral/coral-1.5/coral-1.5.hpux.tar.gz">coral-1.5.hpux.tar.gz</a> : HP-UX (series 700) binaries included.</li>
+<li><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><a HREF="ftp://ftp.cs.wisc.edu/coral/coral-1.5/coral-1.5.sun4.tar.gz">coral-1.5.sun4.tar.gz</a> : SunOs 4 binaries included.</li>
+<li><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><a HREF="ftp://ftp.cs.wisc.edu/coral/coral-1.5/coral-1.5.sun5.tar.gz">coral-1.5.sun5.tar.gz</a> : Sun Solaris binaries included.</li>
+<li><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><a HREF="ftp://ftp.cs.wisc.edu/coral/coral-1.5/coral-1.5.sol386.tar.gz">coral-1.5.sol386.tar.gz</a> : PC Solaris binaries included.</li>
+<li><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><a HREF="ftp://ftp.cs.wisc.edu/coral/coral-1.5/coral-1.5.linux.tar.gz">coral-1.5.linux.tar.gz</a> : Linux binaries included.</li>
+</UL>
+
+<p>
+To stay informed of new releases, you can add yourself to Coral's announcemnt
+    <!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><a HREF="http://www.cs.wisc.edu/coral/coral.maillist.html">mailing list</a>
+which recieves announcements of releases and other relevant information.
+Releases are also announced on the newsgroup <B>comp.lang.misc</B>.
+<p>
+
+You may also <!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><a HREF="http://www.cs.wisc.edu/coral/coral.bugreport.html">submit</a> questions, comments,
+    or bug reports for coral.
+<P>
+Or send mail to:
+<Address>
+coral@cs.wisc.edu
+</Address>
+<hr>
+
+<H2>Last Modified:</H2>
+
+October 10, 1996
+<P>
+
+<Address>
+Shawn Flisakowski / flisakow@cs.wisc.edu
+</Address>
+</BODY>

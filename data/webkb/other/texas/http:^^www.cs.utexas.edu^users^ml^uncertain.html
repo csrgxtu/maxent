@@ -1,0 +1,243 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 07-Jan-97 15:56:18 GMT
+Content-Type: text/html
+Content-Length: 10283
+Last-Modified: Wednesday, 28-Aug-96 15:57:24 GMT
+
+<title>Uncertain Reasoning</title>
+
+<h1>Uncertain Reasoning</h1>
+
+To view a paper, click on the open book image. <br> 
+<br>
+
+
+<ol>
+
+<! ===========================================================================>
+
+<a name="rapture-dissertation-96.ps.Z"</a>
+
+<b><li>Combining Symbolic and Connectionist Learning Methods to Refine
+Certainty-Factor Rule-Bases<br></b>
+J. Jeffrey Mahoney<br>
+
+Ph.D. Thesis, Department of Computer Sciences, University of Texas at Austin, May, 1996.<p>
+
+<blockquote>
+This research describes the system RAPTURE, which is designed to
+revise rule bases expressed in certainty-factor format.  Recent
+studies have shown that learning is facilitated when biased with
+domain-specific expertise, and have also shown that many real-world
+domains require some form of probabilistic or uncertain reasoning in
+order to successfully represent target concepts. RAPTURE was designed
+to take advantage of both of these results. <p>
+
+Beginning with a set of certainty-factor rules, along with
+accurately-labelled training examples, RAPTURE makes use of both
+symbolic and connectionist learning techniques for revising the rules,
+in order that they correctly classify all of the training examples. A
+modified version of backpropagation is used to adjust the certainty
+factors of the rules, ID3's information-gain heuristic is used to add
+new rules, and the Upstart algorithm is used to create new hidden
+terms in the rule base. <p>
+
+Results on refining four real-world rule bases are presented that
+demonstrate the effectiveness of this combined approach.  Two of these
+rule bases were designed to identify particular areas in strands of
+DNA, one is for identifying infectious diseases, and the fourth
+attempts to diagnose soybean diseases.  The results of RAPTURE are
+compared with those of backpropagation, C4.5, KBANN, and other
+learning systems.  RAPTURE generally produces sets of rules that are
+more accurate that these other systems, often creating smaller sets of
+rules and using less training time. <p>
+
+</blockquote>
+
+<!WA0><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/rapture-dissertation-96.ps.Z">
+<!WA1><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+<! ===========================================================================>
+
+<a name="banner-proposal-95.ps.Z"</a>
+
+<b><li> Refinement of Bayesian Networks by Combining Connectionist and
+Symbolic Techniques <br></b>
+Sowmya Ramanchandran<br>
+
+Ph.D. proposal, Department of Computer Sciences, University of Texas
+at Austin, 1995. <p>
+
+<blockquote>
+Bayesian networks provide a mathematically sound formalism for
+representing and reasoning with uncertain knowledge and are as such
+widely used. However, acquiring and capturing knowledge in this
+framework is difficult. There is a growing interest in formulating
+techniques for learning Bayesian networks inductively. While the
+problem of learning a Bayesian network, given complete data, has been
+explored in some depth, the problem of learning networks with
+unobserved causes is still open. In this proposal, we view this
+problem from the perspective of theory revision and present a novel
+approach which adapts techniques developed for revising theories in
+symbolic and connectionist representations.  Thus, we assume that the
+learner is given an initial approximate network (usually obtained from
+a expert). Our technique inductively revises the network to fit the
+data better.  Our proposed system has two components: one component
+revises the parameters of a Bayesian network of known structure, and
+the other component revises the structure of the network. The
+component for parameter revision maps the given Bayesian network into
+a multi-layer feedforward neural network, with the parameters mapped
+to weights in the neural network, and uses standard backpropagation
+techniques to learn the weights. The structure revision component uses
+qualitative analysis to suggest revisions to the network when it fails
+to predict the data accurately. The first component has been
+implemented and we will present results from experiments on real world
+classification problems which show our technique to be effective.  We
+will also discuss our proposed structure revision algorithm, our plans
+for experiments to evaluate the system, as well as some extensions to
+the system.
+</blockquote>
+
+<!WA2><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/banner-proposal-95.ps.Z">
+<!WA3><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+<! ===========================================================================>
+
+<a name="banner-icnn-96.ps.Z"</a>
+
+
+<b><li>Revising Bayesian Network Parameters Using Backpropagation<br></b>
+Sowmya Ramachandran and Raymond J. Mooney<br>
+
+<cite>Proceedings of the International Conference on Neural
+Networks (ICNN-96)</cite>, Special Session on Knowledge-Based Artificial
+Neural Networks, Washington DC, June 1996. <p>
+
+<blockquote>
+The problem of learning Bayesian networks with hidden variables is known to
+be a hard problem. Even the simpler task of learning just the conditional
+probabilities on a Bayesian network with hidden variables is hard. In this
+paper, we present an approach that learns the conditional probabilities on
+a Bayesian network with hidden variables by transforming it into a
+multi-layer feedforward neural network (ANN). The conditional probabilities
+are mapped onto weights in the ANN, which are then learned using standard
+backpropagation techniques. To avoid the problem of exponentially large
+ANNs, we focus on Bayesian networks with noisy-or and noisy-and
+nodes. Experiments on real world classification problems demonstrate the
+effectiveness of our technique.
+</blockquote>
+
+<!WA4><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/banner-icnn-96.ps.Z">
+<!WA5><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+
+<! ===========================================================================>
+
+<a name="rapture-ml-94.ps.Z" </a>
+
+<b> <li> Comparing Methods For Refining Certainty Factor Rule-Bases </b> <br> 
+
+J. Jeffrey Mahoney and Raymond J. Mooney <br> 
+
+<cite> Proceedings of the Eleventh International Workshop on Machine
+Learning</cite>, pp. 173-180, Rutgers, NJ, July 1994. (ML-94) <p>
+
+<blockquote>
+This paper compares two methods for refining uncertain knowledge bases using
+propositional certainty-factor rules.  The first method, implemented in the
+RAPTURE system, employs neural-network training to refine the certainties
+of existing rules but uses a symbolic technique to add new rules.  The second
+method, based on the one used in the KBANN system, initially adds a
+complete set of potential new rules with very low certainty and allows
+neural-network training to filter and adjust these rules.  Experimental results
+indicate that the former method results in significantly faster training and
+produces much simpler refined rule bases with slightly greater accuracy.
+</blockquote>
+
+<!WA6><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/rapture-ml-94.ps.Z">
+<!WA7><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+<! ===========================================================================>
+
+<a name="rapture-isiknh-94.ps.Z" </a>
+
+<b> <li> Modifying Network Architectures For Certainty-Factor Rule-Base Revision
+</b> <br>  
+J. Jeffrey Mahoney and Raymond J. Mooney <br> 
+
+<cite> Proceedings of the International Symposium on Integrating
+Knowledge and Neural Heuristics 1994</cite>, pp. 75-85, Pensacola, FL,
+May 1994. (ISIKNH-94) <p>
+
+<blockquote> 
+This paper describes RAPTURE --- a system for revising
+probabilistic rule bases that converts symbolic rules into a
+connectionist network, which is then trained via connectionist
+techniques.  It uses a modified version of backpropagation to refine
+the certainty factors of the rule base, and uses ID3's
+information-gain heuristic (Quinlan) to add new rules.  Work is
+currently under way for finding improved techniques for modifying
+network architectures that include adding hidden units using the
+UPSTART algorithm (Frean).  A case is made via comparison with fully
+connected connectionist techniques for keeping the rule base as close
+to the original as possible, adding new input units only as needed.
+</blockquote>
+
+<!WA8><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/rapture-isiknh-94.ps.Z">
+<!WA9><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+
+
+<! ===========================================================================>
+
+<a name="rapture-connsci-94.ps.Z" </a>
+
+<b> <li> Combining Connectionist and Symbolic Learning to Refine Certainty-Factor 
+Rule-Bases </b> <br> 
+
+J. Jeffrey Mahoney and Raymond J. Mooney <br> 
+
+<cite> Connection Science</cite>, 5 (1993), pp. 339-364. (Special issue on
+Architectures for Integrating Neural and Symbolic Processing) <p>
+
+<blockquote>
+This paper describes Rapture --- a system for revising probabilistic knowledge
+bases that combines connectionist and symbolic learning methods. Rapture uses
+a modified version of backpropagation to refine the certainty factors of a
+Mycin-style rule base and it uses ID3's information gain heuristic to add
+new rules.  Results on refining three actual expert knowledge bases demonstrate
+that this combined approach generally performs better than previous methods.
+</blockquote>
+
+<!WA10><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/rapture-connsci-94.ps.Z">
+<!WA11><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+
+
+<! ===========================================================================>
+
+<a name="rapture-mlw-92.ps.Z" </a>
+
+<b> <li> Combining Symbolic and Neural Learning to Revise Probabilistic Theories </b> <br> 
+
+J. Jeffrey Mahoney & Raymond J. Mooney <br> 
+
+<cite> Proceedings of the 1992 Machine Learning Workshop on Integrated
+Learning in Real Domains</cite>, Aberdeen Scotland, July 1992. <p>
+
+<blockquote>
+This paper describes RAPTURE --- a system for revising probabilistic
+theories that combines symbolic and neural-network learning methods. 
+RAPTURE uses a modified version of backpropagation to refine the certainty
+factors of a Mycin-style rule-base and it uses ID3's information gain heuristic
+to add new rules.  Results on two real-world domains demonstrate that this
+combined approach performs as well or better than previous methods.
+</blockquote>
+
+<!WA12><a href="file://ftp.cs.utexas.edu/pub/mooney/papers/rapture-mlw-92.ps.Z">
+<!WA13><img align=top src="http://www.cs.utexas.edu/users/ml/paper.xbm"></a><p>
+
+
+<hr>
+<address><!WA14><a href="http://www.cs.utexas.edu/users/estlin/">estlin@cs.utexas.edu</a></address>

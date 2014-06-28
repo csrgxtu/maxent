@@ -1,0 +1,107 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 25-Nov-96 00:16:39 GMT
+Content-Type: text/html
+Content-Length: 4952
+Last-Modified: Tuesday, 19-Sep-95 22:26:57 GMT
+
+<TITLE>Suggested Robotlab M.Eng Projects </TITLE> 
+<HEAD><H1>Suggested Robotlab M.Eng Projects </H1></HEAD> 
+
+<li> Robotics
+<ol>
+<li> <em>Wireless <!WA0><!WA0><!WA0><!WA0><a href="http://www.cs.cornell.edu/Info/Projects/csrvl/mobot.html">Robotics</a></em>-Get <!WA1><!WA1><!WA1><!WA1><a href="http://www.cs.cornell.edu/Info/Projects/csrvl/pics/rose.gif">Rosemary</a> to communicate with the Sun workstations using the wireless radio modem, with wireless video (using a cheap box which
+sends an analog video signal over radio (like TV)). Hook this up to
+the ATM video source and build an application of realtime vision
+tracking/etc. with rosemary as the host. (Matt)
+
+<li> <em>Visual <!WA2><!WA2><!WA2><!WA2><a href="http://www.cs.cornell.edu/Info/Projects/csrvl/mobot.html">Robot</a> Navigation</em>-An extension to Tom's project:
+Mapmaking with visual cues. Can use ideas from (1), but the robot
+walks around, and, using depth and position information produces a map
+of the world, uses it to navigate. (Matt) [Tom's project: a set of navigational becons were created for the robots]</ol>
+
+<li> Video Processing and Machine Vision
+<ol>
+
+<li> <em>Automatic Storyboarding</em> - use the <!WA3><!WA3><!WA3><!WA3><a href="http://www.cs.cornell.edu/Info/People/rdz/dissolve.html">dissolve detector</a> code to
+automate generation of movie storyboards, possible outputing html
+pages that show the story board.  (Justin and Ramin)
+
+<li> <em>Parallelization of the Mpeg encoder</em> Write a 'real-time'
+(or at least very fast) Mpeg encoder using the ATM cluster/SP2 and ATM
+video source.  Jon Swartz and Brian Smith were interested in this. (Matt)
+
+<li> <em>Port Split-C to Windows NT</em>. This could prove to be
+non-trivial, as many aspects of the SMP design rely on a UNIX process
+environment, in particular ELF, and shared memory. Use of NT features
+such as threads won't work. (Matt and Justin V.)
+
+<li> <em>Parallel RIVL</em>.  Providing Split-C/Active Messages support
+for RIVL. We'd like RIVL to be the general framework for going image
+computation, display, applications building, etc.  (It should help
+productivity a lot if we have an easy way for people to experiment and
+visualize vision algorithms, instead of writing crufty C programs.)
+This project would provide fine-grain data parallel processing support
+for the RIVL architecture, basically by (a) porting various RIVL
+image-processing primitives to Split-C (for automatic parallelization)
+and (b) allowing users to write new RIVL primitives in Split-C for
+linking into the system. The easiest way to do all of this, I think:
+Port RIVL itself to Split-C (should be easy) and make existing RIVL
+behaviour a subset of the "Split-RIVL" (that is, local processing on
+one machine). (Matt)
+
+<li> <em> Effects of Compression</em> What (empirical) effects do various compression algorithms have on common vision algorithms. (Justin and Ramin)
+
+<li> <em> Edge Clustering</em> Develop algorithm for clustering of
+edges that represent a single object. (Justin and Ramin)
+
+<li> <em> Adobe Photoshop plug-ins</em>(Nawaaz)
+
+
+</ol> 
+
+<li> Algorithms 
+<ol>
+<li> <em>Optimization</em>Create an environment
+for the automatic optimization of highly iterative image
+transformation algorithms using the m4 macro language and perl
+scripts.  Write m4 macros to automatically produce C-code according to
+some set of parameters (like how many times to unroll a loop) and the
+write a perl script to compile the set of programs and determine which
+is the fastest by timing the transformation on some set of images.
+This would greatly speed the production of optimized code for a given
+machine.  I have examples started of this idea for the rank transform.
+
+<li><em> Search-based compilation</em>
+   Modelling compilation as a search problem on a system with constraints :<p>
+The system will consist of
+<ul>	<li> a set of processors
+	<li> a set of memories
+	<li> an interconnect network
+	<li> a set of constraints
+<ul>		<li> number of processors
+		<li> size of memory
+		<li> which processor can access which memories in a cycle
+		<li> ordering imposed by the operations to be performed.
+		<li> etc.
+</ul>
+</ul>
+The code to be parellised will be tight loops and hence small. 
+The idea is to search the space of complied code to find the optimal one.<p>
+This is most probably NP complete, but speed is not the essence here.(Nawaaz)
+
+<li><em> Performance Simulations</em> The simulation is with respect
+to the algorithms we are interested in.  The many aspects that can be
+simulated are : a) Cache -- implement and study cache accesses on
+various algorithms.  Here we assume a single processor.  b) Shared
+Memory Multiprocesssors -- simulate and study the effect of bus
+bandwidth, memory architecture , cache coherence on the system (with
+repect to alogrithms like correlation etc) (Nawaaz)
+
+
+<li><em> DSPs</em> Implementation / Compilation / Code generation for
+DSP chips (MPV?) : This is more specific then <em> Search-based
+compilation</em>. Just to get an idea of what the chips are really
+capable of.
+
+</ol> </ul>

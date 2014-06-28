@@ -1,0 +1,118 @@
+Date: Mon, 11 Nov 1996 17:12:27 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 04 Oct 1996 07:25:42 GMT
+Content-length: 2631
+
+<HTML>
+<HEAD>
+<TITLE>Quiz 2 Solutions - CS 302 Fall 1996 - Section 4</TITLE>
+</HEAD>
+<BODY>
+
+<H4 ALIGN=CENTER>
+  <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~cs302">CS 302</A>
+  Fall 1996 - <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.wisc.edu/~milo/cs302.html">Section 4</A>
+</H4> 
+<H4 ALIGN=CENTER>Quiz 2 Solutions</H4>
+<hr><br>
+
+This quiz is 20 total points.  Please write legibly.  If I can't read
+it, I can't grade it.  You have until 5 minutes after the class period
+ends to finish.
+
+Good luck.
+
+<OL>
+  <LI> (2 points) What does the ``magic'' type ``<TT>const char *</TT>''
+allow us to do?
+
+<br> <br>
+ 
+It allows us to pass a constant character string to a function.
+<br> <br>
+
+  <LI> (2 points)
+
+State one difference between a local variable and a <EM>call-by-value</EM>
+parameter?
+
+        <br> <br> 
+
+<EM>call-by-value</EM> parameters have an initial value obtained from
+an actual parameter from the call to the funciton.  Local variables
+start with an unspecified initial value and thus they need to be
+assigned or explicity initialized before used.
+ 
+ <br> <br>
+
+  <LI> (2 points) What does a <tt>void</tt> keyword at the beginning of a
+function header or prototype mean?
+
+<br><br>
+That function returns no value.
+<br><br>
+
+  <LI> (2 points) Based on what was said in class, when are ``global''
+variables acceptible to use?
+<br><br>
+
+I accepted two answers:  Never or only when they are global <B>constants</B>.
+
+<br><br>
+
+  <LI> (2 points) Give one reason to use a <EM>call-by-reference</EM>(&) parameter.
+ 
+<br><br>
+
+A function needs to give back more information than a single variable.
+<br><br>
+
+  <LI> (5 points) What is the output of the following program?
+
+<PRE>
+#include&ltiostream.h&gt
+
+void height(int total_inches, int& inches, int& feet);
+
+int main() 
+{
+  int my_height = 78;
+  int height_inches, height_feet;
+
+  height(my_height, height_inches, height_feet);
+  cout << "I am " << height_feet << " feet, ";
+  cout << height_inches << " inches tall." << endl;
+}
+
+void height(int total_inches, int& inches, int& feet)
+{
+  inches = total_inches % 12;
+  feet = total_inches / 12;
+}
+</PRE>
+
+<br>
+I am 6 feet, 6 inches tall.
+<br> <br>
+
+
+  <LI> (5 points) Exercise 7, page 184: Write a <tt>void</tt> function
+definition for a function called <tt>add_tax</tt>.  The function
+<TT>add_tax</tt> has two formal parameters: <tt>tax_rate</TT> which is the
+amount of sales tax expressed as a percentage and <tt>cost</tt> which is
+the cost of an item before tax.  The function changes the value of
+<tt>cost</tt> so that it includes sales tax.
+
+
+<pre>
+void add_tax(int tax_rate, int& cost)
+{
+  cost = (1.0 + tax_rate) * cost;
+}
+</pre>
+</OL>
+</BODY>
+</HTML>
+
+

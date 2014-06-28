@@ -1,0 +1,222 @@
+Date: Tue, 05 Nov 1996 00:32:09 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Sat, 28 Sep 1996 19:29:11 GMT
+Content-length: 5230
+
+<!--This file created 9/26/96 8:39 PM by Claris Home Page version 1.0b1-->
+<HTML>
+<HEAD>
+   <TITLE>Q2.m.html</TITLE>
+   <X-SAS-WINDOW TOP=-22 BOTTOM=510 LEFT=-755 RIGHT=-184>
+</HEAD>
+<BODY>
+
+<H3 ALIGN=CENTER><B>CS354, Fall 1996 </B></H3>
+
+<H3 ALIGN=CENTER><B>Quiz 2, Section 1 (9/27), Section 3 (9/25)</B>
+</H3>
+
+<H3><TABLE BORDER=1 CELLPADDING=1 WIDTH="100%">
+   <TR>
+      <TD>
+         <P><B><FONT SIZE=4>Name (printed):</FONT></B>
+      </TD><TD>
+         <P><B><FONT SIZE=4>Name (signed):</FONT></B>
+      </TD></TR>
+</TABLE></H3>
+
+<P><B>Grader:</B></P>
+
+<P><TABLE BORDER=1 CELLPADDING=1 WIDTH="21%">
+   <TR>
+      <TD>
+         <P>Mohammad
+      </TD><TD>
+         <P>&nbsp;
+      </TD></TR>
+   <TR>
+      <TD>
+         <P>Sridevi
+      </TD><TD>
+         <P>&nbsp;
+      </TD></TR>
+   <TR>
+      <TD>
+         <P>Sunlung
+      </TD><TD>
+         <P>&nbsp;
+      </TD></TR>
+</TABLE></P>
+
+<P><B>Total score:</B></P>
+
+<P>(1, ver 1) (2 points) Convert 111<SUB>3</SUB> to base 10.</P>
+
+<BLOCKQUOTE><P><B>ANSWER</B></P></BLOCKQUOTE>
+
+<DL>
+   <DD>1 + 3 + 9 = 13<SUB>10</SUB>
+</DL>
+
+<P>(1, ver 2) (2 points) Convert 333<SUB>9</SUB> to base 10.</P>
+
+<BLOCKQUOTE><P><B>ANSWER</B></P></BLOCKQUOTE>
+
+<DL>
+   <DD>3 + 3 * 9 + 3 * 81 = 273<SUB>10</SUB>
+</DL>
+
+<P>(2, ver 1) (2 points) Convert 45<SUB>10</SUB> to base 2.</P>
+
+<BLOCKQUOTE><P><B>ANSWER</B></P>
+
+<PRE><TT><CODE>45 rem 2 = 1
+45 div 2 = 22
+22 rem 2 = 0
+22 div 2 = 11
+11 rem 2 = 1
+11 div 2 = 5
+5 rem 2 = 1
+5 div 2 = 2
+2 rem 2 = 0
+2 div 2 = 1
+1 rem 2 = 1
+1 div 2 = 0
+&nbsp;
+so we get:</CODE></TT> 101101<SUB>2</SUB></PRE></BLOCKQUOTE>
+
+<P>(2, ver 2) (5 points) Write -45<SUB>10</SUB> as a 32 bit, 2's
+complement number.</P>
+
+<BLOCKQUOTE><P><B>ANSWER</B></P>
+
+<PRE><TT><CODE>45 rem 2 = 1
+45 div 2 = 22
+22 rem 2 = 0
+22 div 2 = 11
+11 rem 2 = 1
+11 div 2 = 5
+5 rem 2 = 1
+5 div 2 = 2
+2 rem 2 = 0
+2 div 2 = 1
+1 rem 2 = 1
+1 div 2 = 0
+&nbsp;
+so we get:</CODE></TT> 45<SUB>10</SUB> = 101101<SUB>2</SUB>
+pad to 32 bits: 0000 0000 0000 0000 0000 0000 0010 1101
+flip bits:      1111 1111 1111 1111 1111 1111 1101 0010
+add 1:          1111 1111 1111 1111 1111 1111 1101 0011 &lt;- ans</PRE>
+</BLOCKQUOTE>
+
+<P>(3, ver 1) (2 points) Convert fac<SUB>16</SUB> to base 8.</P>
+
+<BLOCKQUOTE><P><B>ANSWER</B></P>
+
+<P>fac<SUB>16</SUB> = 1111 1010 1100<SUB>2</SUB> = 111 110 101
+100<SUB>2</SUB> = 7654<SUB>8</SUB></P></BLOCKQUOTE>
+
+<P>(3, ver 2) (2 points) Convert fca<SUB>16</SUB> to base 8.</P>
+
+<BLOCKQUOTE><P><B>ANSWER</B></P>
+
+<P>fca<SUB>16</SUB> = 1111 1100 1010<SUB>2</SUB> = 111 100 111
+010<SUB>2</SUB> = 7712<SUB>8</SUB></P></BLOCKQUOTE>
+
+<P>(4, ver 1) (4 points) Convert 45.40625<SUB>10</SUB> to base 2.
+</P>
+
+<BLOCKQUOTE><P><B>ANSWER</B></P>
+
+<PRE>2 * .40625 = 0.8125
+2 * .81250 = 1.625
+2 * .62500 = 1.25
+2 * .25000 = 0.5
+2 * .50000 = 1.0
+2 * .00000 = 0.0
+&nbsp;
+so we get: 101101.01101<SUB>2</SUB></PRE></BLOCKQUOTE>
+
+<P>(4, ver 2) (5 points) Write 45.40625<SUB>10</SUB> in IEEE FPS
+form.</P>
+
+<BLOCKQUOTE><P><B>ANSWER</B></P>
+
+<PRE>45.40625<SUB>10</SUB> = 101101.01101<SUB>2</SUB> = 1.0110101101 *
+2<SUP>5</SUP>
+E = 5<SUB>10</SUB> + 127<SUB>10</SUB> = 0111 1111<SUB>2</SUB> + 0000
+0101<SUB>2 </SUB>= 1000 0100<SUB>2</SUB>
+so we get: 0 1000 0100 01101011010000000000000 &lt;- "S E F" form
+&nbsp;
+or: 0100 0010 0011 0101 1010 0000 0000 0000 = 0x4235a000 &lt;- display
+form</PRE>
+</BLOCKQUOTE>
+
+<P>(5, ver 1) (3 points) Consider an IEEE floating point
+representation where S is 1 bit, E is 4 bits and F is 7 bits. Write
+the largest positive floating point number in the 0x??? display
+notation.</P>
+
+<BLOCKQUOTE><P><B>ANSWER</B></P>
+
+<PRE><TT><CODE>ans: 0 1110 1111111
+or:  0111 0111 1111
+or:  0x77f</CODE></TT></PRE></BLOCKQUOTE>
+
+<P>(5, ver 2) (3 points) Consider an IEEE floating point
+representation where S is 1 bit, E is 4 bits and F is 7 bits. Write
+the largest negative floating point number in the 0x??? display
+notation.</P>
+
+<BLOCKQUOTE><P><B>ANSWER</B></P>
+
+<PRE><TT><CODE>ans: 1 0001 0000000 is the float just to the left of 0.0
+or:  1000 1000 0000
+or:  0x880</CODE></TT></PRE></BLOCKQUOTE>
+
+<P>(6, ver 1) (2 points each) What is the value of the bit pattern,
+0000 0001 0100 0110, if it represents:</P>
+
+<P>(a) a 16 bit unsigned binary integer?</P>
+
+<BLOCKQUOTE><P><B>ANSWER</B></P></BLOCKQUOTE>
+
+<DL>
+   <DD><TT>ans: 2 + 4 + 64 + 256 = 326<SUB>10</SUB></TT>
+</DL>
+
+<P>(b) two ASCII characters?</P>
+
+<BLOCKQUOTE><P><B>ANSWER</B></P>
+
+<PRE><TT>ans:</TT> 0000 0001 = 1<SUB>16</SUB> = soh, 0100 0110 =
+46<SUB>16</SUB> = F </PRE>
+</BLOCKQUOTE>
+
+<P>(6, ver 2) (3 points each) What is the value of the bit pattern,
+1111 1111 1111 1110, if it represents:</P>
+
+<P>(a) a 16 bit 2's complement integer?</P>
+
+<BLOCKQUOTE><P><B>ANSWER</B></P>
+
+<PRE><TT>the number is negative so,
+flip the bits:</TT> 0000 0000 0000 0001
+add 1:         0000 0000 0000 0010 = 2<SUB>10</SUB>
+ans: -2</PRE></BLOCKQUOTE>
+
+<P>(b) a 16 bit sign magnitude integer (you may leave powers of 2 in
+your answer on this one)?</P>
+
+<BLOCKQUOTE><P><B>ANSWER</B></P>
+
+<PRE><TT>ans: </TT>- 111 1111 1111 1110<SUB>2</SUB>
+let x = 111 1111 1111 1110<SUB>2</SUB>
+so x + 2 = 1000 0000 0000 0000<SUB>2</SUB> = 2<SUP>15</SUP>
+ans: - (2<SUP>15</SUP> - 2)</PRE>
+
+<BLOCKQUOTE><PRE>&nbsp;</PRE></BLOCKQUOTE></BLOCKQUOTE>
+</BODY>
+</HTML>
+

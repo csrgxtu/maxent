@@ -1,0 +1,128 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 25-Nov-96 00:18:01 GMT
+Content-Type: text/html
+Content-Length: 5431
+Last-Modified: Friday, 02-Aug-96 01:36:43 GMT
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN//2.0">
+<HTML>
+<HEAD>
+<TITLE>Help on Searching</TITLE>
+</HEAD>
+<BODY>
+
+<I>NCSTRL Documentation</I>
+<HR>
+<H2>Help on Searching</H2>
+
+You can search for a document with either a <!WA0><!WA0><!WA0><!WA0><A HREF="#simple">simple
+search</A> or a <!WA1><!WA1><!WA1><!WA1><A HREF="#fielded">fielded search</A>.
+
+<H3><A NAME="simple">Simple Search</A></H3>
+
+Simple search consists of a single text entry box on the NCSTRL server
+home page.  Enter keywords in this box <I>(e.g., "digital
+library")</I> to search the author, title,
+and abstract fields of the bibliographic entries for technical
+reports.   The entire
+NCSTRL collection is searched.  The search returns documents whose
+bibliographic entries contain all the words you enter in either the
+author, title, or abstract fields.  
+
+
+
+<H3><A NAME="fielded">Fielded Search</A></H3>
+
+The fielded search form has three logical components.  First, there
+are three text entry fields for bibliographic keyword entry, and two
+radio buttons to specify whether the keywords entered should be
+"anded" or "ored" together.  Second, there is a menu of the publishers
+in the NCSTRL collection, and a check box to use all publishers.
+Finally, there is a text entry field in which you may specify a
+document identifer.  
+ <P>
+To specify search criteria, do the following:
+<OL>
+<LI> If you wish to specify search criteria based on bibliographic
+keywords (author, title or abstract), fill one of the keyword fields (see the <!WA2><!WA2><!WA2><!WA2><A HREF="#rules">rules
+for bibliographic keyword matching</A>) :
+<UL>
+<LI><i>Author</I> - The author's first or last name or names .
+<LI><i>Title</i> - The  words in the title of the document.
+<LI><i>Abstract</i> - The words in the abstract of the document.
+</UL>
+and select the "AND" or "OR" radio button.
+<LI> Select at least one
+of the publishers from the list on the form, or select the
+<i>checkbox</i> to search all publishers.  Unfortunately, each Web
+browser has a different rule for multiple selections in a menu.
+Consult the documentation for your browser for help with this.
+<LI><i>Document Identifier</i> - The identifying "name" of the document,
+unique for any given publisher.  Your entry will be matched against
+any substring of the document identifiers; <i>e.g.,</i> the entry "94"
+will match "94-1435" and "89-194".  A document identifier entry is
+always "anded" to bibliographic keyword entries; <I>i.e.,</I> only
+documents which meet the bibliographic keyword criteria and the
+document name criteria will be returned.
+</OL>
+Please take note <b>that not all documents in the collection have 
+abstracts</B>. 
+If you want your search request to include documents without abstracts, 
+enter your search criteria under <i>Title</i> as well as <i>Abstract</i>.
+<br><br>
+Your search criteria will be rejected if you don't select at least one
+publisher (or the "all" checkbox), and specify at least one
+bibliographic keyword or a document identifier. 
+
+
+<h3> <A NAME="rules">Rules for bibliographic keyword matching</A></h3>
+
+Words that you enter in the three bibliographic keyword fields
+(<i>Author</i>, <i>Title</i>, <i>Abstract</i>) are matched to
+bibliographic entries according to the following rules:
+<ul>
+<li>Each word that you enter matches any word in the respective field
+that begins with respective word.  For example, the word "comp"
+matches "computer", "computation", "comprehensive", etc.
+<P>
+<li>You may choose either the logical connector <tt>AND</tt> or
+<tt>OR</tt> between the bibliographic keyword fields by using one of
+the radio buttons below the fields.  For example, if you select the
+<i>or</i> button and the word "robot" in the <i>Title</i> field and
+"robotics" in the <i>Abstract</i> field, the search will return
+documents that have either "robot" in their titles or "robotics" in
+their abstracts.  If you select the <i>and</i> button, the search will
+return only those documents that have "robot" in their titles and "robotics" in
+their abstracts.
+<P>
+<li>You may also use logical connectors "and" and "or" within fields.
+For example, if you enter "robotics or vision" in the <i>abstract</i> field,
+the search will return documents that have the word "robotics" or
+"vision" in their abstracts.  If you enter "robotics and vision" in the <i>abstract</i> field,
+the search will return documents that have both the word "robotics" and
+"vision" in their abstracts.  Multiple words that are not separated by
+"and" are assumed to be "and" separated.  For example, if you enter
+"computer vision" in the <i>abstract</i> field, the search will return
+documents that have both the words "computer" and "vision" in their
+abstracts.  Finally, you may use parentheses to group words.  For
+example, if you enter "Gries or (Teitelbaum and Field)" in the
+<i>author</i> field, the search will return documents authored by
+"Gries" or by "Teitelbaum" and "Field".
+</ul>
+<b>Note:</b>  Do not use short, common words or single letters in the
+bibliographic keyword fields (<i>e.g.,</i> "the", "a", "s").  You will
+be asked to re-eenter your search if the keyword you enter matches too
+many words in the database.
+
+<P><!WA3><!WA3><!WA3><!WA3><A HREF="http://cs-tr.cs.cornell.edu/Dienst/htdocs/document_menu.html">
+<!WA4><!WA4><!WA4><!WA4><IMG SRC="http://cs-tr.cs.cornell.edu/Dienst/htdocs/image_gif/back.xbm"> 
+Up to Main Information Menu</A>
+<HR>
+<I><!WA5><!WA5><!WA5><!WA5><img align=left  src="http://cs-tr.cs.cornell.edu/Dienst/htdocs/image_gif/sm_ncstrl.gif">
+<B>NCSTRL Documentation</B>
+<BR> Any comments or questions? <BR>Contact us at <!WA6><!WA6><!WA6><!WA6><A 
+HREF="mailto:help@ncstrl.org">help@ncstrl.org.</A> </I>
+
+</BODY>
+</HTML>

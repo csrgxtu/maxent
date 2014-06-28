@@ -1,0 +1,138 @@
+Date: Mon, 16 Dec 1996 22:10:09 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 04 Apr 1996 14:34:59 GMT
+Content-length: 5263
+
+
+<html>
+<head>
+<title>
+CS418 Lab 8
+</title>
+</head>
+
+<body>
+<h2> <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/gifs/teapot.thumb.gif">
+CS 418: Laboratory 8</h2> 
+<h2> Modeling and Scientific Visualization</h2>
+<b> Introduction. </b><p>
+Scientific visualization is a term which refers to the process of converting
+data into pictures. This lab will demonstrate several of the techniques
+of visualization. The techniques will be used to view a simulated landscape, 
+complete with rivers and clouds. The examples shown below are the result
+of calculating:
+<ul>
+<li> A height field, z=f(x,y), and displaying it as landscape.
+The blue is a flat polygon simulating a water surface.<p>
+<!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab8.landscape1.gif"><p>
+<li> A density field d=f(x,y,z) and displaying it as a cloud, either by
+volume rendering or by isosurface extraction followed by polygon rendering.
+<p>
+<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab8.landscape2.gif"> 
+<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab8.landscape3.gif"> <p>
+<li> A set of rivers determined by plotting streamlines of the gradient of
+the height field. The gradient vectorfield and the streamlines are shown also.
+The vectorfield can be considered an "plan view" of the landscape slopes. 
+The third image shows a landscape with about 100 stream start locations.
+<p>
+<!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab8.landscape4.gif">
+<!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab8.vectorfield.gif"><p>
+<!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab8.landscape5.gif"><p>
+</ul>
+
+<b><hr>Procedure:</b> <p>
+
+You will need to download the program
+<ul>
+<li><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/FractalSurface1995.net"> Landscape.net </a>
+<li><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/FractalSurface1995.cfg"> Landscape.cfg </a>
+</ul> <p>
+The program caluclates a 2D field of altitudes to make a landscape.
+It also calculates a 3D scalar field of densities to use as a cloud.
+These two fields are manipulated (e.g. to derive the slope of the
+surface), then visualized. New modules which are used include the:
+<ul>
+<li> Isosurface module which fits polygons to points of equal
+field strength in a 3D field.
+<li> AutoGlyph module which constructs an arrow at every point in
+a vector field
+<li> Streamline module which follows a vector field in its direction of flow.
+<li> Refine module which interpolates points into a field.
+<li> Map module which allows the data in one field to be interpolated onto
+the positions of another field.
+</ul>
+You may want to look at the example programs in
+<code> /usr/lpp/dx/samples/programs/ </code> for further examples that
+use these modules.
+<p>
+<b> <hr> Assignment:</b>
+<p>
+Run the program a few times to see what it does. Try out various options
+on the control panel. Modify the program to add the following features:
+<ul>
+<li> Modify the colors of the rivers by mapping the magnitude of the
+gradient (the slope) onto the streamlines, then coloring them so that
+high slopes regions of the streams are white to simulate rapids, while
+lower slopes are blue. The program as given uses a Map module to map
+altitude to the streamlines. You will need to add another Map module
+and cotrol the colors based on the data component of the field.
+One possible example is shown below. <p>
+<!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab8.landscape6.gif"><p>
+<li> Modify the surface color so that is green near ocean level and white
+at mountain peaks with pale yellow in between. Use the ColorMap module.
+<p><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab8.landscape7.gif"><p>
+
+<li> Modify the river generator to start rivers at regular grid points
+(say 5 by 5) on the surface. Use the Construct module to make a starting
+grid. See the image above with 100 stream starts for an example.
+<p>
+<li> Modify the program to produce "trees" on the surface. The Glyph
+module will produce arrows when given a vector field.
+If the "type" input of the Glyph module is given a geometry (say
+a cone) it will place it at every point on the surface. If you
+use a parametric surface as an input be sure to run it through 
+a Refine module with the "level" input set to "triangles".
+Use an Include module to limit the trees to a band of elevations,
+as shown below.
+You will probably want to use a Reduce module to lower the density 
+of trees on the surface.
+<p>
+<!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab8.landscape8.gif">
+<p>
+<li> Modify the program to produce an animation of the cloud. The animation
+should show the cloud changing from one density distribution to another
+by interplolating between two fixed density functions.
+Make perhaps ten time steps in the sequence.
+</ul>
+<p>
+<!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/student.1996.gifs/lab8.96results.html"> Some results from 1996 </a>.
+<p>
+You will need to demo all of the assigned functions in one modified net
+with the appropriate interactors to control the functions you have added.
+As usual, the style of the program will be graded, as will its function.
+The cloud animation may be in a separate program.
+<p>
+The
+<!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/GradeGuides/Lab8.grade.ps"> Lab 8 grading guide </a>
+will be filled out by a consultant during section to evaluate your work.
+<p>
+
+<p>
+<!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/gifs/leftarrow.icon.gif">
+Back to <!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/index.html">Main Page</a>
+<br>
+<!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/gifs/rightarrow.icon.gif">
+Go to <!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/lab9.html">Lab 9</a>
+ <P>
+<hr>
+Last modified, 2/26/96, B. Land.
+<! Revision history:
+	Original document: P.Maxfield, 10/94
+>
+<br>
+<!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><IMG SRC="http://www.tc.cornell.edu/copyright.xbm">
+<!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><A HREF="http://www.tc.cornell.edu/ctcCopyright.html"> 
+<i>Copyright Statement </I></A>
+</body> </html>
+

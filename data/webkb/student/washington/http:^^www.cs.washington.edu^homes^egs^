@@ -1,0 +1,160 @@
+Date: Thu, 21 Nov 1996 22:51:12 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Tue, 19 Nov 1996 04:57:24 GMT
+Content-length: 6389
+
+<html>
+
+<head>
+	<title>Emin Gun Sirer</title>
+</head>
+<body>
+
+<h1> <a name="top">Emin G&uuml;n Sirer</a><br>
+<tt><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><a href="http://www.cs.indiana.edu/finger/gateway?egs@cs.washington.edu">egs@cs.washington.edu</a></tt>
+</h1>
+
+<address>     
+     <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href="http://www.cs.washington.edu/">Department of Computer Science & Engineering,</a> <br> 
+     <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.washington.edu/">University of Washington,</a> Box 352350, <br>
+     <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a href="http://useattle.uspan.com/">Seattle, WA</a> 98195-2350 USA
+</address>
+
+<hr> <p>
+
+<h2>Background</h2>
+
+<p>
+I'm currently a third year graduate student at the  <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a href="http://www.washington.edu/">University of Washington.</a>
+I grew up in Istanbul, <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href="http://www.cs.washington.edu/homes/egs/turk/turk.html">Turkey</a>, received my B.S.E in Computer Science from 
+ <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a href="http://www.cs.princeton.edu/"> Princeton University</a> 
+in 1993 and am currently working towards a Ph.D. on the 
+<!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><a href="http://www.cs.washington.edu/research/projects/spin/www">SPIN</a>
+project with <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><a href="http://www.cs.washington.edu/homes/bershad/">
+Prof. Brian Bershad</a>. 
+
+<p>
+I spent the summer of '93 at 
+<!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><a href="http://www.research.att.com">AT&T Bell Labs</a>
+working on the
+<!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><a href="http://www.ecf.toronto.edu/plan9/plan9.html">Plan 9</a>
+operating system. I helped build a prototype 3-D display during the
+summer of '91 at the <!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><a href="http://www.nec.com/">NEC Research Center</a> 
+in Princeton, New Jersey.
+Most recently, during the summer of '96, I worked at 
+<!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><a href="http://www.research.digital.com/SRC/home.html">DEC SRC</a> on the
+<!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><a href="http://www.research.digital.com/SRC/vesta/">Vesta 2</a> project.
+
+<h2>Projects</h2>
+
+<p>
+My goal is to develop safe, adaptable and extensible operating systems.
+I developed the threads, scheduling, synchronization, IPC, dynamic linking and
+protection domain subsystems in SPIN. I also wrote the machine specific
+aspects of the SPIN kernel, such as the system call and interrupt paths, and
+some miscellaneous interfaces, such as alarms and mach compatibility support.
+<p>
+The novel 
+aspects of SPIN threads and scheduling are that they provide the means of
+extending a kernel with arbitrary thread implementations and scheduling
+policies. Dynamically linking the extensions into the kernel allows
+us to achieve high-performance. The interface, called strands, is
+designed to be safe and provide fault-isolation.
+<p>
+The novel aspect of the 
+<!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><a href="http://www.cs.washington.edu/homes/egs/index.html#domains">
+SPIN protection domain interface</a> is that it allows
+isolation and safe fine-grain sharing at the same time. Extensions with
+conflicting symbols can be simultaneously active in our system. Further, 
+extensions can hide some of their code and data such that they can be
+assured that no one can possibly access them. The clincher is that extensions
+that want to share code and data can do so with no dynamic protection
+enforcement overhead.
+<p>
+I also implemented a high-performance
+<!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><a href="http://www-spin.cs.washington.edu/">web server</a> on top of the SPIN networking
+stack. The main objectives in its design are reduced http latency and
+minimal load.
+<p>
+I wrote a MIPS instruction set simulator a couple of years ago, called
+<!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><a href="http://www.cs.washington.edu/homes/egs/mipsi/mipsi.html">MIPSI</a>,
+that was robust enough to simulate all the SPEC benchmarks and Standard ML of
+New Jersey. It has been used both as an educational tool and as a research
+platform. This page describes MIPSI's <!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><a href="http://www.cs.washington.edu/homes/egs/mipsi/mipsi.html">features
+and availability.</a>
+
+<h2>Papers</h2>
+<ul>
+<li><a name=domains>
+    <!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><a href="http://www.cs.washington.edu/homes/egs/papers/domains.ps">Safe Dynamic Linking in an Extensible Operating System</a>
+	<dd><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><a href="http://www.cs.arizona.edu/wcsss96/">WCSSS 1996.</a> Describes the SPIN protection and namespace management mechanism.
+	<p>
+<li><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><a href="http://www.cs.washington.edu/homes/egs/papers/m3os.ps">Writing an Operating System Using Modula-3</a>
+	<dd><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><a href="http://www.cs.arizona.edu/wcsss96/">WCSSS 1996.</a> Describes our experience with using Modula-3 to implement SPIN.
+	<p>
+<li> <!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><a href="http://www.cs.washington.edu/homes/egs/papers/spinpaper.ps">Extensibility, Safety and
+     Performance in the <i>SPIN</i> Operating System</a>
+     <dd><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><a href="http://www-ece.rice.edu/SOSP15/">SOSP 1995.</a> A design, implementation and performance paper.
+     <p>
+<li> <!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><a href="http://www.cs.washington.edu/homes/egs/papers/hotos95.ps">Protection is a Software Issue</a>
+     <dd>HotOS 1995. A position paper comparing software and
+	hardware protection mechanisms.
+     <p>
+<li> <!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><a href="http://www.cs.washington.edu/homes/egs/papers/sigops94.ps">
+     <i>SPIN</i> - An Extensible Microkernel for Application-specific
+	 Operating System Services</a>
+     <dd>SIGOPS European Workshop 1994. <!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><a href="http://www.cs.washington.edu/homes/egs/papers/osr.ps">Operating Systems Review</a> version.
+     <p>
+
+<li> <!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><a href="ftp://cs.washington.edu/tr/1994/03/UW-CSE-94-03-03.PS.Z">
+  <i>SPIN</i> - An Extensible Microkernel for Application-specific
+  Operating System Services</a>
+  <dd>University of Washington Technical Report UW-CSE-94-03-03, March 1994.
+  <p>
+
+<li> Measuring Limits of Fine-grained Parallelism
+  <dd> Senior independent work, Princeton University, June 1993.
+</ul>
+
+<h2>Talks</h2>
+<ul>
+<li><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><a name=wcstalk><a href="http://www.cs.washington.edu/homes/egs/papers/wcs.ps">Language Support for Extensible Operating Systems</a>
+	<dd>Slides from the presentation at the first Workshop for Compiler Support for Systems Software.
+	<dd><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><a href="http://www.cs.arizona.edu/wcsss96/">WCSSS 1996</a>, in Tucson, Arizona.
+</ul>
+
+<h2>Interests</h2>
+
+<p>
+Whenever I can find time and opportunity, I do some of the following:
+
+<dl>
+<dd><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><a href="http://community.bellcore.com/mbr/sailing-page.html">
+	<!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><img src="http://www.cs.washington.edu/homes/egs/pics/ship-icon1.gif" ALT="Sailing" WIDTH=95 HEIGHT=75></a>
+    <!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><a href="http://www.dsg.cs.tcd.ie/dsg_people/afcondon/windsurf/windsurf_home.html">
+	<!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><img src="http://www.cs.washington.edu/homes/egs/pics/hanko1.jpg" ALT="WindSurf" WIDTH=95 HEIGHT=75></a>
+<dd>sailing ~~~~~~     windsurfing
+<dd><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><a href="http://www.cs.washington.edu/homes/egs/dive/dive.html">
+	<!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><img src="http://www.cs.washington.edu/homes/egs/pics/dolphins.gif" ALT="Dive" WIDTH=95 HEIGHT=75></a>
+    <!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><a href="http://www.skireport.com/">
+	<!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><img src="http://www.cs.washington.edu/homes/egs/pics/skiing-accident.gif" ALT="Ski" WIDTH=95 HEIGHT=75></a>
+<dd><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><a href="http://www.cs.washington.edu/homes/egs/dive/dive.html">diving</a> ~~~~~~~     skiing
+<dd><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><a href="http://skylands.ibmwr.org/tomk/sbr/tom/moto.html">
+	<!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><img src="http://www.cs.washington.edu/homes/egs/pics/yamaha.gif" ALT="Moto" WIDTH=95 HEIGHT=75></a>
+<dd>biking
+<dd>making outdoor clothing and
+<dd><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><a href="http://www.cs.washington.edu/homes/egs/hobbies/checklists/index.html">hiking.</a>
+</dl>
+
+<p>
+I'm a big Bob Dylan fan.
+	<!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><a href="http://bob.nbr.no/"><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><img src="http://www.cs.washington.edu/homes/egs/pics/bob_profile.gif" ALT="Bob"></a>
+
+<hr>
+<i>
+egs@cs.washington.edu
+</i>
+</body>
+</html>
+

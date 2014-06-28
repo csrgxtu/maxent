@@ -1,0 +1,134 @@
+Date: Tue, 26 Nov 1996 17:53:03 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Fri, 08 Nov 1996 04:00:05 GMT
+Content-length: 3693
+
+<TITLE>Sridhar Komandur's Cyberspace</TITLE>
+<TITLE>The Hindu on Indiaserver</TITLE>
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Beginning of JavaScript Applet -------------------
+/* Copyright (C)1996 Web Integration Systems, Inc. DBA Websys, Inc.
+   All Rights Reserved.
+
+   This applet can be re-used or modified, if credit is given in 
+   the source code. We will not be held responsible for any unwanted 
+   effects due to the usage of this applet or any derivative.  
+   No warrantees for usability for any specific application are given
+   or implied.
+
+   Chris Skinner, January 30th, 1996.
+   Hacked for CNNfn by RD, Jan. 31, 1996
+*/
+
+function scrollit(seed)
+{
+	var m1  = "Hi!,   Welcome to Sridhar Komandur's Home Page ...";
+	var m2  = "                       ";
+	
+	var msg=m1+m2;
+	var out = " ";
+	var c   = 1;
+
+	if (seed > 100) {
+		seed--;
+		var cmd="scrollit(" + seed + ")";
+		timerTwo=window.setTimeout(cmd,100);
+	}
+	else if (seed <= 100 && seed > 0) {
+		for (c=0 ; c < seed ; c++) {
+			out+=" ";
+		}
+		out+=msg;
+		seed--;
+		var cmd="scrollit(" + seed + ")";
+		    window.status=out;
+		timerTwo=window.setTimeout(cmd,100);
+	}
+	else if (seed <= 0) {
+		if (-seed < msg.length) {
+			out+=msg.substring(-seed,msg.length);
+			seed--;
+			var cmd="scrollit(" + seed + ")";
+			window.status=out;
+			timerTwo=window.setTimeout(cmd,100);
+		}
+		else {
+			window.status=" ";
+			timerTwo=window.setTimeout("scrollit(100)",75);
+		}
+	}
+}
+// -- End of JavaScript code -------------- -->
+</SCRIPT>
+</HEAD>
+<BODY>
+<BODY onLoad="timerONE=window.setTimeout('scrollit(100)',500);">
+<BODY BGCOLOR=#FFFFE7 text=#888888>
+<H1><center>Welcome to the Home Page of</center></H1>
+<H1><center>Sridhar Komandur </center></H1> 
+<p>
+<!WA0><img src="http://www.cs.pitt.edu/~komandur/java/kilroy.gif">Thanks for stopping by. I am a Ph.D Student in the <!WA1><a href="http://www.cs.pitt.edu/"> Computer Science Department </a>, <!WA2><a href="http://www.pitt.edu/"> University of Pittsburgh </a>. My advisor is <!WA3><a href="http://www.cs.pitt.edu/~mosse"> Dr. Daniel Mosse'</a>.
+
+<p>
+<!WA4><img src="http://www.cs.pitt.edu/~komandur/java/email_anim.gif" alt="Email">  <!WA5><a href="mailto:komandur@cs.pitt.edu"><blink>komandur@cs.pitt.edu</blink></a> Phone:(412) 624 THIN Fax:(412) 624 8854
+<BR>
+<!WA6><img ALT="Line" src="http://www.cs.pitt.edu/~komandur/java/line.gif" ALIGN="CENTER" >
+<BR>
+<p>
+<H2><center>Research Interests</center></H2>
+
+<UL>
+<LI>Distributed systems 
+   <UL>
+   <LI>Networking and multimedia
+      <UL>
+      <LI><!WA7><a href="http://www.cs.pitt.edu/~komandur/mresearch.html">Multicasting</a>
+      </UL>
+   </UL>
+<LI><H4><!WA8><a href="http://www.cs.pitt.edu/~komandur/papers.html">Publications</a></H4>
+</UL>
+<BR>
+<!WA9><IMG ALT="Line" SRC="http://www.cs.pitt.edu/~komandur/java/line.gif" ALIGN="CENTER">
+<BR>
+<left>
+[<!WA10><a href="http://www.cs.pitt.edu/~komandur/atm.html">ATM</a>]
+[<!WA11><a href="http://www.cs.pitt.edu/~komandur/mcast.html">Multicast</a>]
+[<!WA12><a href="http://www.cs.pitt.edu/~komandur/latex.html">LaTeX</a>] 
+[<!WA13><a href="http://www.cs.pitt.edu/~komandur/csresrc.html">Computer Science Resources</a>]
+[<!WA14><a href="http://www.cs.pitt.edu/~komandur/confhome.html">Some Conference Home Pages</a>]
+<BR><p>
+[<!WA15><a href="http://www.cs.pitt.edu/~komandur/netresearch.html">Net Research Groups</a>]
+[<!WA16><a href="http://www.cs.pitt.edu/~komandur/techrep.html">Technical Reports</a>]
+[<!WA17><a href="http://www.cs.pitt.edu/~komandur/linux.html">Linux, Windows95 and X Links</a>]
+<BR><p>
+[<!WA18><a href="http://www.cs.pitt.edu/~komandur/internet.html">Navigating Internet</a>]
+[<!WA19><a href="http://www.cs.pitt.edu/~komandur/vendor.html">Computer Vendors</a>]
+[<!WA20><a href="http://www.cs.pitt.edu/~komandur/india.html"><!WA21><img src = "http://www.cs.pitt.edu/~komandur/india.gif" width=30 height=17 border=1></a>]
+[<!WA22><a href="http://www.cs.pitt.edu/~komandur/dict.html">Dictionary</a>]
+[<!WA23><a href="http://www.cs.pitt.edu/~komandur/fun.html">Entertainment</a>]
+<BR><p>
+[<!WA24><a href="http://www.cs.pitt.edu/~komandur/misc.html">Miscellaneous</a>]
+[<!WA25><a href="http://www.ncsa.uiuc.edu/demoweb/html-primer.html">Help With HTML</a>]
+[<!WA26><a href="http://michalak.library.cmu.edu/cgi-bin/search/cata">Searching CMU Library Catalog</a>]
+</left>
+<P>
+<HR>
+<!WA27><a href="http://www.cs.cmu.edu/afs/cs.cmu.edu/user/clamen/misc/movies/scheds/movies.html"><STRONG>Pittsburgh Movie Schedule</STRONG>
+</a><BR>
+Number of times this page was loaded since Mar 96: <!WA28><IMG SRC="http://www.cs.pitt.edu/cgi-bin/Count.cgi?dd=B|df=komandur.dat">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

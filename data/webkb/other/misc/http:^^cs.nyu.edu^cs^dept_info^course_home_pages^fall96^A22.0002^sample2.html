@@ -1,0 +1,127 @@
+Date: Tue, 14 Jan 1997 20:08:44 GMT
+Server: NCSA/1.4.1
+Content-type: text/html
+Last-modified: Wed, 20 Nov 1996 01:43:15 GMT
+Content-length: 3812
+
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE>No Title</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value="No Title">
+<meta name="keywords" value="sample2">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ <BR> <HR><!WA0><A NAME=tex2html1 HREF="http://cs.nyu.edu/cs/dept_info/course_home_pages/fall96/A22.0002/node1.html"><!WA1><IMG ALIGN=BOTTOM ALT="next" SRC="http://cs.nyu.edu/icons2/latex2html//next_motif.gif"></A>   <!WA2><IMG ALIGN=BOTTOM ALT="up" SRC="http://cs.nyu.edu/icons2/latex2html//up_motif_gr.gif">   <!WA3><IMG ALIGN=BOTTOM ALT="previous" SRC="http://cs.nyu.edu/icons2/latex2html//previous_motif_gr.gif">         <BR>
+<B> Next:</B> <!WA4><A NAME=tex2html2 HREF="http://cs.nyu.edu/cs/dept_info/course_home_pages/fall96/A22.0002/node1.html">   About this document </A>
+<BR> <HR> <P>
+<P>
+Midterm #2 A22.0002 Afternoon session<BR> 
+ April 24, 1995 Samuel Marateck<BR> 
+ <b> Do any 5 problems and do all the work on the exam sheet</b> <BR>
+<P>
+ <b> Your Name</b><BR>
+<P>
+1. (20 points points) What does the following program produce as output?
+<PRE>PROGRAM one(input, output);
+CONST Blank = ' ';
+VAR J, K:integer;
+BEGIN
+     FOR j:= 1 TO 5 DO
+     BEGIN 
+         write('*':j); 
+         FOR k:= 1 to (6 - j) DO
+         BEGIN
+            write(blank)
+         END;
+         writeln('*'
+      END
+END.
+</PRE>
+<P>
+2. (20 points) Write a program that reads a number <tt> N</tt> (an <tt> integer</tt>)
+from the keyboard and:
+<P>
+(a) Prints all the numbers less than or equal to  <tt> N</tt>
+that are prime numbers. A prime number is one that is divisible only by 1 and 
+the number itself. When a number is divisible by another number 
+there is no remainder. For example, 7 is a prime number because it is not
+divisible by 2, 3, 4, 5, 6.
+<P>
+Hint: Test whether the values of the loop control variable, <tt> J</tt>
+are divisors of <tt> N</tt>.
+Here are some questions that should help you
+do the problem:
+<P>
+Is <tt> N</tt> read before or in the loop?<BR>
+<P>
+If <tt> j</tt> is the loop control
+variable, what is its upper limit?<BR>
+<P>
+What is the test determining whether <tt> j</tt> is a divisor
+of <tt> N</tt>?<BR>
+<P>
+<P>
+<P>
+3. (20 points) What does the following program produce?
+<PRE>PROGRAM two(input, output);
+VAR J:integer;
+    letter:char;
+
+PROCEDURE plot(J:integer);
+VAR I:integer;
+BEGIN
+     FOR I:= 1 TO J DO
+            write('*':i);
+         writeln
+END {plot};
+
+BEGIN
+    FOR letter:= 'a' TO 'e' DO
+    BEGIN
+        J:= ord(letter) - ord('a');
+        plot(j)
+    END  
+END.
+</PRE>
+<P>
+4. (20 points) Evaluate the following (you may use the table on the board):
+<PRE>(a) (3 &lt;= 7) AND NOT (9 = 8)	    (b) NOT (4 &gt;= 5) OR (3 &lt;= 3)
+
+(c) NOT ((5 &lt;= 9) OR  (3 &lt; 2))	    (d) (6 &lt;= 8) OR (3 &gt; 5) OR (3 = 3)
+</PRE>
+<P>
+5. (20 points) What does the following procedure produce for <tt> plot(1,'x')</tt>?
+<PRE>     Procedure plot ( top : Integer; ch:char);
+     Var j : Integer;
+     Begin
+               Case top Of
+                    1 : For j := 1 To 5 Do 
+                              Begin
+                                   Writeln (ch:j, ch:(11 - (2 * j)))
+                              End;
+                    2 : For j := 5 DownTo 1 Do 
+                              Begin
+                                   Writeln (ch:j, ch:(11 - (2 * j)))
+                              End
+               End
+     End;
+</PRE>
+<P>
+6. (20 points) Write a procedure called <tt> MakeX</tt> that produces 
+the block letter X by using procedure <tt> plot</tt> shown in problem 5.
+The block letter should be formed from asterisks (*).
+<P>
+<BR> <HR>
+<UL> 
+<LI> <!WA5><A NAME=tex2html3 HREF="http://cs.nyu.edu/cs/dept_info/course_home_pages/fall96/A22.0002/node1.html#SECTION00010000000000000000">   About this document ... </A>
+</UL>
+<BR> <HR>
+<P><ADDRESS>
+<I>Sam Marateck <BR>
+Tue Nov 19 20:15:29 EST 1996</I>
+</ADDRESS>
+</BODY>

@@ -1,0 +1,90 @@
+Date: Tuesday, 14-Jan-97 22:08:30 GMT
+Server: NCSA/1.3
+MIME-version: 1.0
+Content-type: text/html
+Last-modified: Monday, 17-Jul-95 15:10:19 GMT
+Content-length: 3560
+
+<HEAD>
+<TITLE>The TRAINS Project: 
+  A Case Study in Building a Conversational Planning Agent</TITLE>
+</HEAD>
+<BODY>
+<!WA0><IMG SRC="http://www.cs.rochester.edu/images/urcslogo.gif" ALIGN=MIDDLE>
+<STRONG>TRAINS Technical Note 94-3</STRONG>
+<H1>The TRAINS Project: A case study in building a conversational
+    planning agent</H1>  
+<P>
+<STRONG>
+James F. Allen, Lenhart K. Schubert, George Ferguson, Peter Heeman,
+Chung Hee Hwang, Tsuneaki Kato[1], Marc Light, Nathaniel G.
+Martin, Bradford W. Miller, Massimo Poesio[2], David R. Traum
+</STRONG>
+<P>The TRAINS project has been funded in part by ONR/ARPA grant
+  N00014-92-J-1512, U.S. Air Force--Rome Laboratory research contract
+  F30602-91-C-0010, and NSF grant IRI-90-13160.
+<P>
+This paper appeared in the <em>Journal of Experimental and Theoretical
+AI</em>, <B>7</B>(1995), 7--48.
+<P>
+<H2>Abstract:</H2>
+<EM>The TRAINS  project is an effort to build a conversationally
+  proficient planning assistant. A key part of the project is the
+  construction of the TRAINS  system, which provides the research
+  platform for a wide range of issues in natural language
+  understanding, mixed-initiative planning systems, and representing
+  and reasoning about time, actions and events.  Four years have now
+  passed since the beginning of the project. Each year we have
+  produced a demonstration system that focused on a dialog that
+  illustrates particular aspects of our research.  The commitment to
+  building complete integrated systems is a significant overhead on
+  the research, but we feel it is essential to guarantee that the
+  results constitute real progress in the field. This paper describes
+  the goals of the project, and our experience with the effort so far.
+</EM>
+<P>
+[1] Tsuneaki Kato's address is NTT Information and Communication
+Systems Lab, Kanagawa, JAPAN.<BR>
+[2] Massimo Poesio's address is Centre for Cognitive Science,
+University of Edinburgh, 2 Buccleuch Place, Edinburgh, EH8 9LW
+Scotland, UK.<BR>
+<HR>
+<H2>Table of Contents</H2>
+<UL> 
+<LI><!WA1><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/intro.html">Introduction</A>
+<LI><!WA2><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/task.html">Choosing the Task</A>
+<LI><!WA3><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/agent.html">The TRAINS System as a Conversational Agent</A> 
+<LI><!WA4><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/systems.html">The TRAINS Demonstration Systems</A>
+<LI><!WA5><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/infrastructure.html">The TRAINS System Infrastructure</A>
+  <UL> 
+  <LI><!WA6><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/infra-architecture.html">The TRAINS-93 Architecture</A>
+  <LI><!WA7><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/infra-epilog.html">Episodic Logic</A>
+  <LI><!WA8><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/infra-ebtl.html">The EBTL Representation</A>
+  </UL> 
+<LI><!WA9><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/modules.html">An Overview of the TRAINS Modules</A>
+  <UL> 
+  <LI><!WA10><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/mod-grammar.html">Syntactic and Semantic Rules</A>
+  <LI><!WA11><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/mod-lexical.html">Lexical Processing</A>
+  <LI><!WA12><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/mod-parser.html">The Parser</A>
+  <LI><!WA13><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/mod-deindexing.html">Deindexing</A>
+  <LI><!WA14><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/mod-conversation.html">Conversation Act Analysis</A>
+  <LI><!WA15><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/mod-dialogue.html">The Dialogue Manager</A>
+  <LI><!WA16><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/mod-domain.html">The Domain Plan Reasoner</A>
+  <LI><!WA17><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/mod-execution.html">The Execution Planner</A>
+  </UL> 
+<LI><!WA18><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/other.html">Other Issues</A>
+  <UL> 
+  <LI><!WA19><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/other.html#simulator">The TRAINS Simulator</A>
+  <LI><!WA20><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/other.html#temporal">Temporal Reasoning</A>
+  <LI><!WA21><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/other.html#speech">Speech Repairs</A>
+  </UL> 
+<LI><!WA22><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/discussion.html"> Discussion</A>
+<LI><!WA23><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/refs.html">References</A>
+<LI><!WA24><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/trainstns.html">TRAINS Technical Note Series</A>
+<LI> <!WA25><A HREF="http://www.cs.rochester.edu/research/trains/tn94-3/trainsother.html">Other TRAINS-related Publications</A>
+</UL>
+<HR>
+<ADDRESS>
+<!WA26><A HREF="http://www.cs.rochester.edu/u/ferguson/">George Ferguson</A>
+</ADDRESS>
+</BODY>

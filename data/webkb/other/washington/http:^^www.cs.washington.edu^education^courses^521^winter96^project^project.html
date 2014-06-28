@@ -1,0 +1,139 @@
+Date: Tue, 10 Dec 1996 14:44:06 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<HTML>
+<head>
+<title>CSE 521, Project</title>
+
+</head>
+
+<Body><P>
+
+
+<h1>The Traveling Tourist Problem</h1>
+<pre>
+
+</pre>
+
+It is summer vacation, and you have purchased a Greyhound Bus pass
+allowing you unlimited travel.  Can you visit every city in the United
+States before your vacation ends?  This is the Traveling tourist problem.
+
+<p>
+The CSE 521 course project is to implement algorithms for the
+Traveling Tourist Problem, and test them out on various data sets.
+The <!WA0><a href=http://www.cs.washington.edu/education/courses/521/winter96/project/fastest.html> Speedy Tourist Page </a> keeps track of the
+best tours found on each of the problem instances in the project data
+set.  The <!WA1><a href=http://www.cs.washington.edu/education/courses/521/winter96/project/challenge.html>Challenge Page </a> gives a few
+specific challenges, and <!WA2><a href=http://www.cs.washington.edu/education/courses/521/winter96/project/lower.html>Lower bound page</a> gives
+the best known lower bounds.  Last update: 1/24/96.
+Eric Anderson has developed an 
+<!WA3><a href="http://www.cs.washington.edu/homes/eric/java/TravellingTourist.html">
+applet</a> to animate tours.
+
+<p>
+The Traveling Tourist Problem can be viewed as a politically correct
+version  of the Traveling Salesman Problem, where travel is
+restricted to public transportation.  The TTP is easily shown to be
+NP-complete.   An instance
+of the Traveling Tourist
+Problem is given by providing a schedule, which lists the departure
+time each bus.  The schedules are periodic, so it is only necessary to
+give a single day's schedule.  The goal is to find a
+minimum duration tour which visits every city, and gets back to the
+original city.  A tour is allowed to visit the same city multiple
+times.  Since the problem is NP-complete, it is unlikely that you can
+find an algorithm that efficiently solves large instances.  So it is 
+natural to look for approximation algorithms, which find good (but
+maybe not optimal tours).  Another option is to implement an
+exponential algorithm, and use it to solve small instances of the
+problems.  
+
+<p>
+
+In this project, you should investigate both approaches for the
+Traveling tourist problem.  Try to come up with good approximations,
+and also implement branch and bound to solve smaller instances
+exactly.  There is a lot of literature on the Traveling salesman
+problem, so that suggests a number of approaches.  However, there are
+significant differences between the two problems, so it will be
+necessary to invent new algorithms.
+
+<p>
+
+This project is modelled after various DIMACS Challenges, where researchers 
+were invited to implement algorithms to solve specific problems.  An
+important aspect of the DIMACS Challenges was a publically available
+set of problem instances which made it possible to directly compare
+results.  In this challenge, the problem is to do as well as possible
+on an NP-complete problem, so the two competitions are to come up with
+as good approximations on large instances, and to solve smaller
+instances exactly with a branch and bound algorithm.  As far as I
+know, this isn't a well studied problem, so there should be a chance
+to prove some interesting theorems as well.
+
+
+<p>
+
+<h2> How to Participate </h2>
+
+I welcome participation from outside of my University of Washington, 
+CSE 521 class.  The data
+files and source code are available from the web.  If you can find
+better tours to the official instances, send them to me, and I
+will update the hall of fame.  (I hope to automate this soon.)  I will
+also keep track of lower bound results on various instances.
+
+<h2> <!WA4><a href=http://www.cs.washington.edu/education/courses/521/winter96/project/details.html> Details </a> </h2>
+
+Here are a few details on exactly how the problem is formulated, and
+what a solution is.
+
+
+<h2> <!WA5><a href=http://www.cs.washington.edu/education/courses/521/winter96/project/theory.html> Theory </a> </h2>
+
+I don't know of any results related to this problem (although I haven't 
+looked either).  The theory page will contain some useful theorems, as
+well as pointers to the literature.  Contributions welcome!
+
+
+
+
+<p>
+<h2> <!WA6><a href=http://www.cs.washington.edu/education/courses/521/winter96/project/data.html> Data Sets </a> </h2>
+
+The current data sets were randomly generated, although some of them are 
+based upon the locations for real cities.  Each instance specifies a
+schedule file, a city file, a starting city, and a starting time.
+(I would be interested in receiving real data sets to add to set of
+instances.)
+
+<p>
+
+<h2> <!WA7><a href=http://www.cs.washington.edu/education/courses/521/winter96/project/source.html> Source Code and Support Software </a> </h2>
+
+<p>
+Some source code is available to "use at your own risk".  This code
+handles I/0 and provides some very primitive graphics capabilities.
+There is also an algorithm which finds very bad tours.  You can use the
+showmap, showsch, and showtour programs to examine the data files.
+If you submit a tour, make sure that it conforms to the format of a
+tour file.
+
+<p>
+
+<h2> <!WA8><a href=http://www.cs.washington.edu/education/courses/521/winter96/project/mechanics.html> Mechanics </a> </h2>
+
+For the CSE 521 course project, there are a few rules, regulations, and 
+deadlines.
+
+<p>
+<p>
+
+</body>
+</html>
+
+<address>
+anderson@cs.washington.edu
+</address>

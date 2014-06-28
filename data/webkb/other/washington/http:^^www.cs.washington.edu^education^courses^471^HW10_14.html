@@ -1,0 +1,182 @@
+Date: Mon, 02 Dec 1996 14:54:49 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html><head><!-- This document was created from RTF source by rtftohtml version
+2.6 --><title>HW10_14.ascii.rtf</title></head><body><p>
+<p>
+-- fulladder--<p>
+module fulladder( CarryOut, Result, a, b, c);<p>
+input a, b, c;<p>
+output CarryOut, Result;<p>
+reg CarryOut, Result;<p>
+<p>
+	always @(a or b or c)<p>
+	  {CarryOut, Result} = a + b + c;<p>
+endmodule<p>
+<p>
+-- mux2 --<p>
+module mux2( z, Select, in0,in1);<p>
+input Select, in0, in1;<p>
+output z;<p>
+reg z;<p>
+<p>
+	always @(Select or in0 or in1)<p>
+	   if (Select == 1'b1)<p>
+		z = in1;<p>
+	else if (Select == 1'b0)<p>
+		z = in0;<p>
+	else<p>
+		z = 1'bx;<p>
+endmodule<p>
+<p>
+-- mux4 --<p>
+module mux4( z, Select, in0, in1, in2, in3);<p>
+input [1:0] Select;<p>
+input in0, in1, in2, in3;<p>
+output z;<p>
+reg z;<p>
+<p>
+	always @(Select or in0 or in1 or in2 or in3)<p>
+	   case (Select)<p>
+		2'b00: z = in0;<p>
+		2'b01: z = in1;<p>
+		2'b10: z = in2;<p>
+		2'b11: z = in3;<p>
+		default: z = 1'bx;<p>
+	endcase<p>
+endmodule<p>
+<p>
+-- alu1 --<p>
+module alu1( a, b, CarryIn, Less, Result, <p>
+	CarryOut, Operation, Binvert);<p>
+input a, b, CarryIn, Less;<p>
+output Result, CarryOut;<p>
+input [1:0] Operation;<p>
+input Binvert;<p>
+<p>
+wire t0, t1, t2;<p>
+wire bbar, bb;<p>
+<p>
+and 	g0( t0, a, b);<p>
+or 	g1( t1, a, b);<p>
+not 	g2( bbar, b);<p>
+mux2 g3( bb, Binvert, b, bbar);<p>
+fulladder g4( CarryOut, t2, a, bb, CarryIn);<p>
+mux4 g5( Result, Operation, t0, t1, t2, Less);<p>
+<p>
+endmodule<p>
+<p>
+-- alu1msb --<p>
+module alu1msb( a, b, CarryIn, Less, Result,<p>
+			CarryOut, Operation, Binvert,<p>
+			Set, Overflow);<p>
+input a, b, CarryIn, Less;<p>
+output Result, CarryOut;<p>
+input [1:0] Operation;<p>
+input Binvert;<p>
+output Set, Overflow;<p>
+reg Overflow, Set;<p>
+<p>
+wire t0, t1, t2;<p>
+wire bbar, bb;<p>
+<p>
+and 	g0( t0, a, b);<p>
+or 	g1( t1, a, b);<p>
+not 	g2( bbar, b);<p>
+mux2 g3( bb, Binvert, b, bbar);<p>
+fulladder g4( CarryOut, t2, a, bb, CarryIn);<p>
+mux4 g5( Result, Operation, t0, t1, t2, Less);<p>
+<p>
+always @(CarryIn or CarryOut or t2)<p>
+	begin<p>
+	Overflow = CarryIn ^ CarryOut;<p>
+	Set = Overflow ^ t2;<p>
+end<p>
+endmodule<p>
+<p>
+-- alu32 --<p>
+module alu32( a, b, r, Overflow,<p>
+		Op, Bneg, AllZero);<p>
+input [31:0] a, b;<p>
+output [31:0] r;<p>
+input Bneg;<p>
+input [1:0] Op;<p>
+output Overflow, AllZero;<p>
+reg AllZero;<p>
+<p>
+wire [32:1] c;<p>
+wire Set;<p>
+<p>
+alu1 alu_0( a[0], b[0], Bneg, Set, r[0], c[1], Op, Bneg);<p>
+alu1 alu_1( a[1], b[1], c[1], 1'b0, r[1], c[2], Op, Bneg);<p>
+alu1 alu_2( a[2], b[2], c[2], 1'b0, r[2], c[3], Op, Bneg);<p>
+alu1 alu_3( a[3], b[3], c[3], 1'b0, r[3], c[4], Op, Bneg);<p>
+alu1 alu_4( a[4], b[4], c[4], 1'b0, r[4], c[5], Op, Bneg);<p>
+alu1 alu_5( a[5], b[5], c[5], 1'b0, r[5], c[6], Op, Bneg);<p>
+alu1 alu_6( a[6], b[6], c[6], 1'b0, r[6], c[7], Op, Bneg);<p>
+alu1 alu_7( a[7], b[7], c[7], 1'b0, r[7], c[8], Op, Bneg);<p>
+alu1 alu_8( a[8], b[8], c[8], 1'b0, r[8], c[9], Op, Bneg);<p>
+alu1 alu_9( a[9], b[9], c[9], 1'b0, r[9], c[10], Op, Bneg);<p>
+alu1 alu_10( a[10], b[10], c[10], 1'b0, r[10], c[11], Op, Bneg);<p>
+alu1 alu_11( a[11], b[11], c[11], 1'b0, r[11], c[12], Op, Bneg);<p>
+alu1 alu_12( a[12], b[12], c[12], 1'b0, r[12], c[13], Op, Bneg);<p>
+alu1 alu_13( a[13], b[13], c[13], 1'b0, r[13], c[14], Op, Bneg);<p>
+alu1 alu_14( a[14], b[14], c[14], 1'b0, r[14], c[15], Op, Bneg);<p>
+alu1 alu_15( a[15], b[15], c[15], 1'b0, r[15], c[16], Op, Bneg);<p>
+alu1 alu_16( a[16], b[16], c[16], 1'b0, r[16], c[17], Op, Bneg);<p>
+alu1 alu_17( a[17], b[17], c[17], 1'b0, r[17], c[18], Op, Bneg);<p>
+alu1 alu_18( a[18], b[18], c[18], 1'b0, r[18], c[19], Op, Bneg);<p>
+alu1 alu_19( a[19], b[19], c[19], 1'b0, r[19], c[20], Op, Bneg);<p>
+alu1 alu_20( a[20], b[20], c[20], 1'b0, r[20], c[21], Op, Bneg);<p>
+alu1 alu_21( a[21], b[21], c[21], 1'b0, r[21], c[22], Op, Bneg);<p>
+alu1 alu_22( a[22], b[22], c[22], 1'b0, r[22], c[23], Op, Bneg);<p>
+alu1 alu_23( a[23], b[23], c[23], 1'b0, r[23], c[24], Op, Bneg);<p>
+alu1 alu_24( a[24], b[24], c[24], 1'b0, r[24], c[25], Op, Bneg);<p>
+alu1 alu_25( a[25], b[25], c[25], 1'b0, r[25], c[26], Op, Bneg);<p>
+alu1 alu_26( a[26], b[26], c[26], 1'b0, r[26], c[27], Op, Bneg);<p>
+alu1 alu_27( a[27], b[27], c[27], 1'b0, r[27], c[28], Op, Bneg);<p>
+alu1 alu_28( a[28], b[28], c[28], 1'b0, r[28], c[29], Op, Bneg);<p>
+alu1 alu_29( a[29], b[29], c[29], 1'b0, r[29], c[30], Op, Bneg);<p>
+alu1 alu_30( a[30], b[30], c[30], 1'b0, r[30], c[31], Op, Bneg);<p>
+alu1msb alu_31( a[31], b[31], c[31], 1'b0, r[31], c[32], Op, Bneg,<p>
+		Set, Overflow);<p>
+<p>
+always @(r)<p>
+	AllZero = (r == 32'b0);<p>
+<p>
+endmodule<p>
+<p>
+-- tester --<p>
+module tester;<p>
+<p>
+reg [31:0] a, b;<p>
+reg [1:0] Operation;<p>
+reg Bnegate;<p>
+wire [31:0] Result;<p>
+wire Overflow, AllZero;<p>
+<p>
+alu32 alu( a, b, Result, Overflow, Operation, Bnegate, AllZero);<p>
+<p>
+initial begin<p>
+<p>
+	a = 'h00000000; b = 'h80000001; Bnegate = 1; Operation = 2;<p>
+	$strobe( "a=%h b=%h r=%h Bnegate=%h v=%h op=%h z=%h",<p>
+			a, b, Result, Bnegate, Overflow, <p>
+			Operation, AllZero);<p>
+<p>
+#1<p>
+	a = 'h00000000; b = 'h80000000; Bnegate = 1; Operation = 2;<p>
+	$strobe( "a=%h b=%h r=%h Bnegate=%h v=%h op=%h z=%h",<p>
+			a, b, Result, Bnegate, Overflow, <p>
+			Operation, AllZero);<p>
+#1<p>
+	a = 'h00000001; b = 'hffffffff; Bnegate = 0; Operation = 2;<p>
+	$strobe( "a=%h b=%h r=%h Bnegate=%h v=%h op=%h z=%h",<p>
+			a, b, Result, Bnegate, Overflow, <p>
+			Operation, AllZero);<p>
+#1<p>
+	$finish;<p>
+end<p>
+endmodule<p>
+</body></html>

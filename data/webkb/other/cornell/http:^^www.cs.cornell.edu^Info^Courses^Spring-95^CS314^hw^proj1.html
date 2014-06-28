@@ -1,0 +1,268 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 16-Dec-96 23:18:38 GMT
+Content-Type: text/html
+Content-Length: 8016
+Last-Modified: Monday, 13-Mar-95 14:33:34 GMT
+
+<html>
+<head>
+<title> Project 1: Martix Products </title>
+</head>
+
+<body>
+[<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><a href="http://www.cs.cornell.edu/Info/Courses/Spring-95/CS314/home.html">Back to CS314 Home Page</a>]
+
+<h1> Project 1: Martix Products </h1>
+
+<h3>
+Date Assigned:   February 14, 1994 <br>
+Date Due:   February 28, 1994
+</h3>
+
+<h2> Introduction</h2>
+This project involves writing a small assembly language program for multiplying
+matrices. Your program will gets its input from and send its output to the
+BasePak runtime window.
+
+<H2>Specs</H2>
+<H3> Overview</H3>
+Compute the matrix product <I>AB</I>---technically, <I>AB mod 2^16</I> ---
+where <I>A</I> and <I>B</I> are matrices of 16-bit unsigned integers. The
+minimum matrix size will be  <I>1x1</I>, and the maximum matrix size will
+be <I>16x16</I>.
+
+<h3>Input parameters </h3>
+
+<pre>
+-------------------------------------------------------------------------------------------------------------
+A    m x n matrix of 16-bit unsigned integers     A is the first matrix in the product.     
+B    n x p matrix of 16-bit unsigned integers     B is the second matrix in the product.    
+m    unsigned 8-bit integer                       m is the number of rows in A             
+n    unsigned 8-bit integer                       n is the number of columns in A and the number of rows in B.                      
+p    unsigned 8-bit integer                       p is the number of columns in B          
+
+            m, n, and p satisfy 1 &lt;= m,n,p &lt;= 16
+-------------------------------------------------------------------------------------------------------------
+
+
+</pre>
+
+
+<h3>Output parameters</h3>
+
+<pre>
+-------------------------------------------------------------------------
+C     m x p matrix of 16-bit unsigned integers         C = AB mod 2^16
+-------------------------------------------------------------------------
+
+
+</pre>
+
+<H3>Arithmetic</H3>
+Do all arithmetic over integers mod 2^16, i.e., use unsigned 16-bit integer
+multiplication and addition and take only the low-order word of multiplication
+results.
+
+<H3>User interface</H3>
+The &quot;user interface&quot; of your program will be minimal---this is an
+assembly language program, after all. Your program should prompt the user for
+the parameters <I>m</I>, <I>n</I>, and <I>p</I>, successively, then allow the
+user to enter the values of the elements of the matrix, <I>A</I>, then the
+values of the matrix <I>B</I>. After these values have been entered, your
+program should output the matrices <I>A</I> and <I>B</I> and then output the
+result matrix <I>C</I>. (All numerical input and output should be in base 10.)
+
+<p>
+Matrices should be output in standard order, i.e., a row of elements in the
+matrix should correspond to a row of numbers on the screen. For example, if
+<I>A</I> were a <I>2 x 2</I> matrix with elements a11 = 1, a12 = 2, a21 = 3,
+and a22 = 4, then <I>A</I> would be output as: 
+
+<pre>
+    1 2
+    3 4
+</pre>
+
+Matrices should be input by prompting the user for elements, one at a time, in
+the same order in which they would be output. The text of the prompt should
+include the matrix name and the indices of the element currently being prompted
+for. For example, the matrix <I>A</I> given above would be entered via the
+following exchange (underlined text indicates the program's output,
+non-underlined text indicates the user's input):
+
+<PRE>
+  <U>A[1][1]:</U> 1
+  <U>A[1][2]:</U> 2
+  <U>A[2][1]:</U> 3
+  <U>A[2][2]:</U> 4
+</PRE>
+
+<H2>Sample Run</H2>
+
+A run of your program should look something like the following:
+
+<PRE>
+<U>m</U>: 2
+<U>n</U>: 3
+<U>p</U>: 4
+<U>A[1][1]:</U> 0
+<U>A[1][2]:</U> 1
+<U>A[1][3]:</U> 2
+<U>A[2][1]:</U> 3
+<U>A[2][2]:</U> 4<p>
+<U>A[2][3]:</U> 5
+<U>B[1][1]:</U> 10
+<U>B[1][2]:</U> 11
+<U>B[1][3]:</U> 12
+<U>B[1][4]:</U> 13
+<U>B[2][1]:</U> 14
+<U>B[2][2]:</U> 15
+<U>B[2][3]:</U> 16
+<U>B[2][4]:</U> 17
+<U>B[3][1]:</U> 18
+<U>B[3][2]:</U> 65510
+<U>B[3][3]:</U> 20
+<U>B[3][4]:</U> 21
+A: 
+0 1 2
+3 4 5
+B:
+10 11 12 13
+14 15 16 17
+18 65510 20 21
+Result (A*B):
+50 65499 56 59
+176 65499 200 212
+
+</pre>
+
+which corresponds to:
+<br>
+<!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><img src="http://www.cs.cornell.edu/Info/Courses/Spring-95/CS314/hw/proj1.gif">
+
+<H2>Documentation</H2>
+The usual documentation guidelines (always explain how you're using registers,
+use symbolic constants whenever possible, state the input and output parameters
+of all subroutines, etc.) apply. Your program should have at least 3
+subroutines, one for inputting matrices, one for printing matrices, one for
+multiplying the matrices. Each subroutine should begin with a header that looks
+like this:
+
+<PRE>
+  ;-------------------------------------------------------------------------
+  ;
+  ; &lt;Name of function&gt;
+  ;
+  ; 
+  ; Synopsis
+  ;  &lt;A brief description of what the function does, who calls it,
+  ;   why, and any exceptional conditions.&gt;
+  ;
+  ; HLL description:
+  ;
+  ;  &lt;Put in high level language (e.g., C, pascal, pseudo-code)
+  ;   description of routine here.&gt;
+  ;
+  ; Register usage:
+  ;  &lt;Map out what registers are used for&gt;
+  ;
+  ; Input Conditions:
+  ;  &lt;What should the format of the registers and stack be on entry
+  ;   to the routine?&gt;
+  ;
+  ; Output Conditions:
+  ;  &lt;What will the format of the registers and stack be when the
+  ;   routine returns?&gt;
+  ;
+  ; Stack frame:
+  ;  &lt;What does the stack frame look like? For example:&gt;
+  ;
+  ;    Saved Registers
+  ;       A6 --&gt;  Old A6             0(A6)
+  ;               Return Address     4(A6)
+  ;               Param 1            8(A6)
+  ;               Param 2           12(A6)
+  ;    
+  ;-------------------------------------------------------------------------
+
+
+</PRE>
+
+The subroutine code should immediately follow the subroutine header. Try to
+comment each line and use block comments and blank spaces to separate logical
+sections of the subroutine. For example, here's the code of a routine that
+swaps the two registers D0 and D1 if D1 &lt; D0.
+
+<PRE>
+  SWAP:  
+         ;
+         ; Prolog: Save registers, set up stack frame
+         ;
+         LINK      A6,#0       ; set frame pointer -- no locals
+         MOVEM.L   D2,-(SP)    ; Save registers we'll use.
+   
+         ;
+         ; Compare D0 and D1 to see if we need to do anything.
+         ; If not, then just jump to epilog and leave.
+         ;
+         CMP       D1,D0
+         BLT       DONE
+   
+         ;
+         ; If we get here, D1 &lt; D0.
+         ; Swap the contents of D0 and D1, using D2 as a scratch register
+         ;
+         MOVE.L    D0,D2       ; tmp:= D0
+         MOVE.L    D1,D0       ; D0:= D1
+         MOVE.L    D2,D0       ; D0:= tmp
+   
+         ;
+         ; Epilog: Restore registers, clean up stack frame, return.
+         ;
+  DONE:  MOVEM.L  (SP)+,D2     ; Restore registers, etc.
+         UNLK  A6
+         RTS
+
+
+</PRE>
+
+Try to give a high level description in the function header, a more detailed
+description in the block comments, and a blow-by-blow in the individual line
+comments. Don't just repeat what the code says, if possible.
+
+<p>
+In addition, for this project, be sure you document the following aspects of
+your program:
+
+<UL>
+<LI>your method of laying out matrices in memory.
+<LI>your indexing conventions.
+</UL>
+
+
+<H2> Misc. </H2>
+Your program should check that the values of <I>m</I>, <I>n</I>, and <I>p</I>
+supplied by the user fall within the allowable range.
+
+<p>
+You'll probably need to adapt the 32-bit <I>signed</I> decimal i/o routines in
+the <B>BasePak</B> library for use as 16-bit <I>unsigned</I> routines. (For
+this project, simply taking the low-order word of the return from decin_long
+would be acceptable for inputting 16-bit unsigned integers (though that wouldn't
+be a such a great idea in a <I>real</I> program), and using decout_long will
+work for outputting 16-bit unsigned integers as long as you remember to clear
+the high word of d0.)
+
+<H2>Submitting</H2>
+Hand in the following to the consulting office:
+
+<UL>
+<LI>a hardcopy of your program.
+<LI>a hardcopy of a sample run of your program.
+<LI>an electronic copy of your program (on diskette).
+</UL>
+
+[<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.cs.cornell.edu/Info/Courses/Spring-95/CS314/home.html">Back to CS314 Home Page</a>]
+</body>
+</html>

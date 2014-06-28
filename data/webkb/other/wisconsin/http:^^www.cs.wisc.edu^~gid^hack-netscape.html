@@ -1,0 +1,48 @@
+Date: Mon, 04 Nov 1996 23:46:28 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Sat, 15 Jun 1996 20:33:05 GMT
+Content-length: 1258
+
+<HEAD>
+<TITLE>
+Minor Netscape Hacks
+</TITLE>
+</HEAD>
+<BODY>
+<HTML>
+
+<ANIM KEY=zs7NzcrM1dfG29PM SALT=29PZ HASH=38jT68fN38hZ68lN01HRT2vnWdVX91NZZ1N3>
+
+<H2> Making Netscape do neat tricks</H2>
+
+<p>
+<em>Note: I think this only works on Mozilla 1.x</em>.
+
+<p> Try replacing the string <STRONG>/jwz/</STRONG> with
+<STRONG>~gid/</STRONG> in your netscape binary.  Then reload this page
+and watch the animation when the page loads. (The animation is the thing in
+the upper right corner that does stuff when data's being transferred
+and whatnot).  Use a binary editor to change the strings in the
+executable program.  Emacs works fine, if you have it; try <STRONG>M-x
+binary-overwrite-mode</STRONG> to help avoid typing too many characters.
+Enjoy watching the compass spin round and round.
+
+<p>
+This reminds me of a joke: 
+
+<p>
+<em> What's red and green and goes round and round?</em>
+
+<p>
+<em>A frog in the blender.</em>
+
+<p> Hmmmm.  If you look at <!WA0><a
+href="http://www.netscape.com/people/jwz">jwz's homepage</a>, the
+animation still becomes the compass, even with Netscape 2.x.  There must
+be a way to make this work for normal pages, but it's probably more
+complicated than changing an ascii string in the binary.  Pull out those
+debuggers, folks.
+
+<BODY>
+</HTML>

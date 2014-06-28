@@ -1,0 +1,199 @@
+Date: Wed, 08 Jan 1997 21:29:22 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<HTML>
+<head>
+<title>CSE 341 -- Smalltalk in the PC Lab</title>
+</head>
+
+<body>
+<h1>CSE 341 -- Hints for using Smalltalk in the PC Lab</h1>
+
+<P>
+Here are some hints for using Smalltalk in the PC Lab.
+<p>
+
+<h2> Logging on</h2>
+
+<P>
+To log onto the PCs type: CTRL-ALT-DEL (all at once) you then get a
+prompt. Use your ordinary CS login name. The initial password is
+newuser; you will be asked 
+to change that right away.  Leave the "From" field
+in the login dialog box as it is (set to CSEPCLAB).
+
+<P>
+
+<h2> Starting Smalltalk </h2>
+
+You should now have a screen showing a "Main" area within the program
+manager. Therein you should find an application named "Smalltalk".
+Click on it to start it up (double-click) and a window named "Visual
+Works" will open up. Double-click on that again and Smalltalk will come
+up with the main menu list and a workspace.
+
+<P>
+
+<h2> The Files that Smalltalk Uses </h2>
+
+For the setup directions below to make sense, you should understand a bit
+about which different files Smalltalk uses.  The executable program is
+called the <em>image</em>, and is normally named <code>visual.im</code>.
+This is a large file (over 4 megabytes).  It contains all the code for
+the Smalltalk system, both all the classes that come with the system when
+you start it up, and also any new classes or modifications that you make.
+
+<P> You can inspect the source code for all of the methods provided by the
+system, as well as the source code for the methods that you write.  This
+source code is stored in separate files (not in the image).  The source
+code for the methods provided by the system is in the <em>sources</em>
+file.  This is a read-only file on the network shared by all of the copies
+of Smalltalk.  It is stored in the file
+<pre>
+S:\visual\image\visual.sou
+</pre>
+
+Your source code, for both system classes that you modify and new classes
+that you write, is in your <em>changes</em> file.  All users need to have
+their own private changes file.  The system will automatically put all your
+new code in this changes file.
+
+<P>
+
+Finally, you can explicitly file out a class or a category of classes, and
+put the code into a file.  This will be a small text file, which you save
+on another machine, file into a fresh image, etc.  (We'll call these
+<em>fileout</em> files.)  Also this is the file
+that you should print out to hand in for your assignments.
+
+<h2> Setting up Smalltalk (READ THIS!)</h2>
+
+The following is very important: in order for Smalltalk to work properly
+for you it is essential that you do the following right away, before you
+start making changes to the system.  What you need to do is tell Smalltalk
+about the sources and changes files.
+
+<p>
+Click on the file menu and select "settings". 
+<P>
+
+Modify the sources directory to point to the file
+<pre>
+S:\visual\image\visual.sou
+</pre>
+
+
+Next, modify the changes directory
+to point to a file in your own home directory. Your home directory is
+named <b>z:\username\</b>.  We suggest using the filename
+<pre>
+z:\username\visual.cha
+</pre>
+where you should replace "username" with your login name.
+
+Confirm your choice by clicking on accept.
+<p>
+When you leave Smalltalk you can either just choose exit, which will lose
+the state of your image, or else save the image file so that you can start
+up from where you left off.  To
+save your current image, choose the "save then exit"
+option.  When it prompts you for a file name, replace its suggestion with
+<pre>
+z:\username\visual
+</pre>
+This will save your image in the file visual.im in your directory (it will
+tack on the .im extension automatically).
+<P>
+
+Finally, you need to change the application associated with your image
+file (this will allow you to start up Smalltalk by double clicking on
+your image file in the file manager).  To do this, open the Main
+folder and double click on the File Manager.  Find your image file
+(<code>z:\username\visual.im</code>) and select it by clicking on it
+once.  Then pull down the File menu of the File Manager, and select
+the Associate command.  Change the association from 
+<code>F:\....\bin\OE20.EXE</code> to 
+<code>S:\visual\bin\OE20.EXE</code>. <p>
+
+Since the image file is large, save at most <em>one</em> image file.
+However, the fileout files are small, so you can save as many of them as
+you need. <P>
+
+The PC file systems are not currently backed up on tape.  If you want to be
+safe, you can ftp your fileout files to another machine, such as lynx.
+(Don't ftp the image file, though; it's too big!)
+
+<H2>Starting Smalltalk again</H2>
+
+The next time you want to start Smalltalk (on any of the machines -- it
+doesn't have to be the one you used last time), you can either start from a
+fresh image, or from the image that you've already been working in.  To
+start from the image you've been working in, go to the folder "main", and
+double click on the File Manager.  Then double click on the file
+<code>visual.im</code>.  You can also start from a fresh image at any time
+by following the directions above for setting up Smalltalk.  If you do
+this, delete your old file <code>visual.cha</code> before starting the
+fresh image (otherwise it just keeps growing and growing).
+
+<P>
+You can also load a fileout file into an image to restore code.  To do
+this, open a file list, select the file, and pick "File In" from the middle
+button menu.
+<P>
+
+<h2> Creating directories, viewing files etc. </h2>
+
+To create directories simply start up the file manager from the main
+menu. It will allow you to browse through the file system and create
+and delete files and directories.
+
+<h2> Telnet, ftp and other applications </h2>
+
+These can be found in the accessories folder in the main program menu
+window. Just open that folder and you'll find ftp or telnet which
+allow you to copy files to/from the NT machines and connect to other
+machines. There are also nice little tools such as clocks etc.
+
+<P>
+
+One problem with ftp is that it doesn't seem to know about your current
+directory -- you can get around this by giving the full path name for files
+on the PC.  For example, suppose you have a file <code>squid.st</code> in
+your home directory on the PC, and want to transfer it lynx.  Use this
+command:
+
+<pre>
+put Z:\yourname\squid.st squid.st
+</pre>
+replacing "yourname" with your login name on the PC, of course.
+
+
+<h2> Changing Your Password; Logging out from NT</h2>
+
+To change your password, type CTRL-ALT-DEL (all at once) in any window.
+This will bring up a dialog box that lets you change your password.
+Another use is to see what tasks you have running -- this is useful, for
+example, if you can't log off due to some task currently running.
+
+<P>
+
+To log out from Windows NT go to the file menu of the program manager
+and choose "Logout". If that somehow doesn't seem to work it may be
+the case that you still have applications running. You should then
+first close those and then try again.
+
+<p>
+
+<hr>
+<address>
+Shamelessly stolen from cse341 Autumn '95  <P>
+cse341-webmaster@cs.washington.edu
+</i>(Last update:
+	
+	<!-- see man strftime for full formatting options-->
+	04/26/96 at 10AM
+)<i>
+</address>
+</body>
+</html>

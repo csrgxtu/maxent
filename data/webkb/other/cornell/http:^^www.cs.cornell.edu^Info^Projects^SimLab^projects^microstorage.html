@@ -1,0 +1,47 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 25-Nov-96 00:32:04 GMT
+Content-Type: text/html
+Content-Length: 1612
+Last-Modified: Tuesday, 24-Oct-95 14:01:20 GMT
+
+<TITLE>Microstorage Architecture </TITLE> <P>
+
+<H2>Research Summary</H2>
+A microstorage architecture consists of a microstorage kernel and one
+or more storage servers.  The storage servers rely on the microstorage
+kernel to perform the actual data storage and retrieval.  Each storage
+server implements a storage model that defines a client's view of the
+data in the system, how it is stored, retrieved and manipulated.  File
+systems, object oriented databases and virtual memory subsystems are
+examples of different storage servers that can be constructed on top
+of a microstorage kernel.  Data in the system may be concurrently
+visible via different storage servers.  Microstorage architectures
+provide a flexible interface to storage and a smooth transition from
+traditional file systems to more powerful object oriented storage
+models.  Existing applications can continue to work correctly, without
+any changes, by using a storage server that implements a traditional
+file model on top of data objects that are accessible via more
+powerful storage models.
+<P>
+We are in the process of implementing a microstorage architecture
+called Vista.
+<HR>
+
+<H2> Participants </H2>
+<UL>
+<LI>Dawson Dean
+<LI>Richard Zippel
+</UL>
+
+<HR>
+
+<H2> Publications </H2>
+<UL>
+<LI> D. Dean and R. Zippel, "Vista: A Microstorage Architecture that 
+Implements File Systems and Object Databases, <I>International Workshop in Object Oriented Operating Systems</I>, 
+1993. 
+<P>
+<LI> D. Dean and R. Zippel, "Implementing File Systems and Object Databases 
+in a Microstorage Architecture", 1993.  Cornell Computer Science TR 93-1393.
+</UL>

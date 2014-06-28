@@ -1,0 +1,64 @@
+Date: Tue, 14 Jan 1997 21:46:35 GMT
+Server: NCSA/1.5.2
+Last-modified: Sun, 06 Oct 1996 19:18:29 GMT
+Content-type: text/html
+Content-length: 1914
+
+<HTML>
+<HEAD>
+<TITLE>MPI-FM: MPI for Fast Messages</TITLE>
+</HEAD>
+
+
+<BODY>
+
+<H1>MPI-FM: MPI for Fast Messages</H1>
+
+<H2>Description</H2>
+
+<P>MPI-FM is a high-performance implementation of MPI based on a port of
+<!WA0><A HREF="http://www.mcs.anl.gov/home/lusk/mpich/index.html">MPICH</A>
+to <!WA1><A HREF="http://www-csag.cs.uiuc.edu/projects/comm/fm.html">Fast Messages</A> on the Myrinet.
+MPI-FM a latency of 25 us and a peak bandwidth of 17.5 MB/s, lower
+latency than many commercial MPP's, and respectable bandwidth.  MPI-FM
+outperforms the SP2 version of MPICH for messages smaller than 1KB 
+as shown below.</P>
+
+<P>The performance of MPI-FM shows that MPP-like communication latency
+and bandwidth can be achieved with a network of workstations <EM>at
+the user level</EM> with carefully tuned messaging layers.  Our thanks
+to the MPICH creators who produced an MPI implementation which is both
+efficient and portable.</P>
+
+<H2>Performance</H2>
+
+<P>The graphs below compare MPI-FM on two
+SPARCstation 20/71s with SuperCache to MPICH and MPI-F on the IBM SP2.</P>
+
+<!WA2><A HREF="http://www-csag.cs.uiuc.edu/projects/comm/mpich-fm-latency.gif"><!WA3><IMG SRC="http://www-csag.cs.uiuc.edu/projects/comm/mpich-fm-latency_small.gif"></A>
+<!WA4><A HREF="http://www-csag.cs.uiuc.edu/projects/comm/mpich-fm-bandwidth.gif"><!WA5><IMG SRC="http://www-csag.cs.uiuc.edu/projects/comm/mpich-fm-bandwidth_small.gif"></A>
+ 
+<H2>Documentation</H2>
+
+<UL>
+<LI> <!WA6><A HREF="http://www-csag.cs.uiuc.edu/projects/comm/README.mpifm2.0">README</A> file for MPI-FM 2.0
+</UL>
+
+<H2>Software distributions</H2>
+
+<UL>
+<LI> <!WA7><A HREF="http://www-csag.cs.uiuc.edu/cgi-bin/registration?title=MPI-FM,+version+2.0+%28SunOS%29&download=/projects/comm/mpifm-2.0-sunos.tar.gz&mailto=fast-messages@red-herring.cs.uiuc.edu">MPI-FM, version 2.0 for SunOS</A>
+<LI> <!WA8><A HREF="http://www-csag.cs.uiuc.edu/cgi-bin/registration?title=MPI-FM,+version+2.0+%28Solaris%29&download=/projects/comm/mpifm-2.0-solaris.tar.gz&mailto=fast-messages@red-herring.cs.uiuc.edu">MPI-FM, version 2.0 for Solaris</A>
+</UL>
+
+<HR>
+
+<!WA9><A HREF="http://www-csag.cs.uiuc.edu/projects/comm//">Back to CSAG home page</A>
+
+<P>Last updated 6 October 1996</P>
+<ADDRESS>
+<!WA10><A HREF="mailto:webmaster@www-csag.cs.uiuc.edu">webmaster</A>
+</ADDRESS>
+
+</BODY>
+</HTML>

@@ -1,0 +1,77 @@
+Date: Tue, 05 Nov 1996 21:47:43 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 17 Oct 1994 12:54:35 GMT
+Content-length: 2679
+
+<HTML>
+<HEAD>
+<TITLE>Access control with httpd</TITLE>
+</HEAD>
+<BODY>
+
+<P> <H2>A brief tutorial on access control and httpd</H2>
+
+<P> <H2>Introduction</H2>
+
+<P> Under most circumstances it is not necessary to worry about access
+control when serving web documents because you intend them to be read
+by anyone who cares to.  There might be times, however, when you would
+like to restrict access to your document to a subset of internet users.
+
+<P> In AFS these restrictions can be made using Access Control Lists
+(ACLs).  When people request documents using HTTP there is (usually)
+no way of knowing the usernames of the requesters, let alone authenticating
+them, so access control has to be based on the identity of the 
+requester's machine.  Access control is accomplished through adding
+Limit clauses to <tt>.htaccess</tt> files in the appropriate directories.
+
+<P> <H2>The .htaccess file</H2>
+
+<P> <TT>.htaccess</TT> files are used to make a server act differently 
+when it enters a directory to retrieve a file.  The attributes in a 
+<TT>.htaccess</TT> file apply not only to the directory itself, but to 
+each subdirectory as well.  <tt>.htaccess</tt> files can be used for
+a number of purposes, but we are only concerned with access control in
+this document.  We will describe the two most commonly needed forms 
+of access control in UW CS, and then briefly describe how access control
+lists can be constructed.
+
+<P> <H2>Restricting access to users on CS machines</H2>
+
+<P> To restrict access to your documents to users on CS workstations, you
+can put the following clause into the <tt>.htaccess</tt> file in the
+appropriate directory:
+
+<PRE>&lt;Limit GET&gt;
+order deny,allow
+deny from all
+allow from .cs.wisc.edu 128.105
+&lt;/Limit&gt;</PRE>
+
+<P> This clause will allow access to any machine with a fully qualified 
+domain name that ends with ``.cs.wisc.edu'' or an IP number that 
+starts with ``128.105.''
+
+<P> <H2>Restricting access to users at UW Madison</H2>
+
+<P> To restrict access to your documents to users at UW Madison, you
+can put the following clause into the <tt>.htaccess</tt> file in the
+appropriate directory:
+
+<PRE>&lt;Limit GET&gt;
+order deny,allow
+deny from all
+allow from .wisc.edu 128.105 128.104 144.92
+&lt;/Limit&gt;</PRE>
+
+<P> <H2>General use of access control</H2>
+
+<P> If you want to restrict access to your documents to a specific subset
+of machines you can do so by entering their names or IP numbers on the 
+``<tt>allow from</tt>'' line (see above).  If you need a more detailed
+description you can read the 
+<!WA0><A HREF="http://hoohoo.ncsa.uiuc.edu/docs/setup/access/Overview.html">NCSA 
+httpd documentation on access control</A>.
+</BODY>
+</HTML>

@@ -1,0 +1,96 @@
+Server: Netscape-Enterprise/2.0a
+Date: Tue, 14 Jan 1997 20:01:53 GMT
+Accept-ranges: bytes
+Last-modified: Sun, 15 Sep 1996 22:47:09 GMT
+Content-length: 3012
+Content-type: text/html
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>Flordia Tech, CSE 5257:  Assignment #2</title>
+</head>
+
+<body>
+<h1>CSE 5257:  Assignment #2</h1>
+
+<p>
+<em>Due: Friday, September 13, 1996.</em>
+</p>
+
+
+<p>
+Do one of the following problems:
+</p>
+
+<ul>
+  <li><p>(Kamin and Reingold, 5.13a.)
+      Write a Java program to determine all integers less than
+      3,000,000 with the property that they equal the sum of factorials
+      of their digits; 145=1!+4!+5! for example.
+      </p>
+      
+  <li><p>(Kamin and Reingold, 3.14a.)
+      Write a Java program to determine if someone is obese or not.
+      The Centers of Disease Control in Atlanta, Georgia,
+      determine obesity by computing a person's "body mass index."
+      The body mass index is a person's weight in kilograms divided
+      by the square of his or her height in meters.
+      For men, an index of 27.8 or more is considerd obese;
+      for nopregnant women the cutoff is 27.3.
+      Write a program to read a person's sex, height, and weight,
+      determine the body mass index, and print a message as to obesity.
+      Your program should convert height from inches to meters
+      (one meter is 39.37 inches) and weight
+      from pounds to kilograms (one kilogram is 2.20 pounds).
+      </p>
+      
+  <li><p>(Kamin and Reingold, 3.11.)
+      The musical scale in common use today is the equal-tempered chromatic
+      scale with standard concert pitch of the fourth-octive A being 440 hertz.
+      The twelve notes of each octave are logarithmically spaced.
+      If we number the notes.
+      <pre>
+      1     2     3     4     5    6     7     8     9    10    11     12
+      C  C-sharp  D   E-flat  E    F  F-sharp  G  G-sharp  A  B-flat    B
+      </pre>
+      the following formula relates the note numbers and frequencies in hertz:
+      <pre>
+      log2(Frequency/55) = OctiveNumber + (NoteNumber - 22)/12
+      </pre>
+      where the octave number is according to the standard scheme in which
+      middle C begins at octave nubmer 4.
+      Write a program to read a frequency and print the closest note
+      and octave number.
+
+  <li><p>(Kamin and Reingold, 8.1.)
+      Write a recusive function to compute the Jacobi symbol J(a,n),
+      defined for relatively prime integers a and , a&gt;0 and n&gt;0 by
+      the formula
+      <pre>
+                  1                                  if a=1,
+      J(a,n) =    J(a/2,n)(-1)**((n**2-1)/8)         if a is even,
+                  J(n mod a, a)(-1)**((a-1)(n-1)/4)  ow.
+      </pre>
+
+</ul>
+
+<h2>Turning it in</h2>
+
+<p>
+Use the following command on
+<tt>tuck.cs.fit.edu</tt>
+</p>
+<font size=+1>
+<pre>
+~ryan/bin/mfiles ryan@cs.fit.edu "asgn2" <i>ClassName</i>.java
+</pre>
+</font>
+to mail me your artistic creation.
+
+<hr>
+<address><!WA0><a href="http://www.cs.fit.edu/~ryan/">Ryan Stansifer</a> <!WA1><a href="mailto:ryan@cs.fit.edu">&lt;ryan@cs.fit.edu&gt;</a></address>
+<!-- hhmts start -->
+Last modified: Sun Sep 15 17:47:08 EST 1996
+<!-- hhmts end -->
+</body>
+</html>

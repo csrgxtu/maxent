@@ -1,0 +1,253 @@
+Date: Wed, 20 Nov 1996 22:55:04 GMT
+Server: NCSA/1.5.2
+Last-modified: Thu, 03 Oct 1996 22:57:25 GMT
+Content-type: text/html
+Content-length: 11138
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<TITLE>CS595J--Readings in Multimedia, Digital Audio, and Computer Music</TITLE>
+</HEAD>
+<BODY BGCOLOR="#F0F0F0">
+<CENTER>
+<P>
+<!WA0><IMG SRC="http://www.create.ucsb.edu/images/create.logo1.GIF" HEIGHT=94 WIDTH=432><BR>
+</P>
+<H3>Seminar--Readings in Multimedia, Digital Audio, and Computer Music</H3>
+<P>
+<!WA1><IMG SRC="http://www.create.ucsb.edu/images/line.colorbar.gif" HEIGHT=1 WIDTH=585>
+<P>
+</CENTER>
+
+See also the network news group <!WA2><A HREF = "news:ucsb.engr.compsci.cs595j">ucsb.engr.compsci.cs595j</A>.
+
+<PRE>
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Seminar--Readings in Multimedia, Digital Audio, and Computer Music
+	Course Number:  CS595J
+	Time:           Thursdays, 5:00 - 6:00 PM
+	Place:          2110 Engr I  (CS seminar room)
+	Registration #: 17475
+
+Description
+
+Multimedia technologies are finding more and more uses in computer
+applications and user interfaces. This seminar will survey the technology
+of digital audio signal processing (DASP) and computer music, and discuss
+several of the important topics in these fields. We will discuss the
+technology of digital sound representation, synthesis, processing, and
+recording, as well as topics related to virtual reality, multimedia tools,
+electronic games, and media data transmission. The readings will be taken
+from the leading journals and books in the field, such as "Computer Music
+Journal," "ACM Computing Surveys," "IEEE Computer," and various books and
+conference proceedings. Participants will also have access to a range of
+software tools and WWW resources for optional on-line experimentation.
+
+The topics will include: 
+  -- digital audio signals and their representation;
+  -- analysis/synthesis techniques and software sound synthesis;
+  -- sound localization and the synthesis of localization cues;
+  -- graphical representation of music on computers;
+  -- media data storage, transfer formats, and file systems;
+  -- the MIDI protocol and real-time interaction;
+  -- music composition using computers;
+  -- artificial intelligence, neural nets, genetic algorithms and music;
+  -- object-oriented programming and music;
+  -- real-time sound distribution on LANs and WANs; and
+  -- unanswered questions and open topics.
+
+A detailed course outline and reading list can be found at the URL 
+  http://www.create.ucsb.edu/courses/cs595.html.
+
+Participants will be assumed to be familiar with some high-level programming
+language, software engineering techniques, basic operating systems
+principles, and engineering mathematics ("light" calculus and linear algebra).
+There is no assumed background in music or audio.
+
+The seminar will be lead by Stephen T. Pope (stp@create.ucsb.edu), research
+director of the UCSB Center for Research in Electronic Art Technology
+(CREATE, http://www.create.ucsb.edu/), editor of "Computer Music Journal"
+(CMJ, http://www-mitpress.mit.edu/Computer-Music-Journal), and an active
+music composer and software developer.
+
+   Course Number:  CS595J
+	Time:           Thursdays, 5:00 - 6:00 PM
+	Place:          2110 Engr I  (CS seminar room)
+	Registration #: 17475
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Seminar Outline
+
+Topics:
+  1: Introduction: digital audio signal processing and computer music
+  2: Basic digital audio signals and transformations
+  3: Software sound synthesis and "sound compilers"
+  4: Spatial processing of sound
+  5: Representation of musical signals and data
+  6: Sound compression, transmission and storage formats
+  7: MIDI and real-time control processing
+  8: Music composition using computers
+  9: Practical software for multimedia computing
+  10: The "Real-world"--Conclusions
+
+Details (SUBJECT TO CHANGE):
+
+1: Introduction: digital audio signal processing (DASP) and computer music
+  Digital audio signals and control--theory
+  Psychoacoustics--sound and music perception
+  The mathematics of sampling and quantization
+  Hardware systems for sampling and quantization--ADCs and DACs
+  Who uses DASP (a survey)?
+  Reading: J. A. Moorer DASP survey (CMJ) pp. 4-23
+  Optional reading: Moore (ECM) Ch. 1-2, DePoli chapter in CDCMR, 
+    Psychoacoustics Intro. in ()
+
+2: Software sound synthesis and "sound compilers"
+  Basics of software sound synthesis (SWSS) systems--The Music V family
+  Modern systems: cmusic, csound, cmix, and clm
+  Extending SWSS systems with analysis packages
+  Real-time interaction with SWSS software
+  Reading: Pope SWSS article (CMJ)
+  Optional reading: Schottstaedt CLM article (CMJ), m4c on-line doc., 
+    cmusic on-line doc, Moore (ECM) chapter 3.
+  Software Tools: cmusic, csound, clm, SuperCollider, m4c
+  Exercise: instrument design in a SWSS system
+  Extra credit: Cmusic internals; the port to the Meiko parallel computer
+
+3: Digital audio signals and transformations
+  Digital filters and transforms
+  Analysis/synthesis techniques and vocoders
+  Extended synthesis techniques (LPC, Wavelets, Chaotic, etc.)
+  Physical modeling of acoustical systems
+  Reading: Smith filters in TMM, Dolson Vocoder Tutorial (CARL)
+  Optional reading: SynthBuilder papers (ICMC), Prof. Mitra's work
+  Software Tools: Ein kleiner Filter Compiler, SynthBuilder, phase vocoder
+  Exercise: Digital filter design, analysis/synthesis
+  Extra credit: Evaluate other analysis/synthesis, spatialization techniques
+
+4: Spatial processing of sound
+  Sound localization and the synthesis of localization cues
+  Reverberation and physical room models
+  Spatial filters and the head-related transfer function (HRTF)
+  Spatial encoding--Ambisonics and other techniques
+  Reading: Kendall on Spatialization (CMJ), Ambisonics Spec/FAQ (WWW)
+  Optional reading: Blauert "Spatial Hearing," Wenzel in (Presence), 
+    Puckette/Stautner Spatial Processor (CMJ), APE Doc (ICMC/WWW)
+  Software Tools: spatial localizer, WWW HRTF data
+  Exercise: Spatial reverb design, spatial filters
+  Extra credit: Evaluate spatialization techniques
+
+5: Representation of musical signals and data
+  Score and signal formats--music input languages
+  Representing musical structure and form--analysis and generation
+  Procedural, stochastic, and knowledge-based models of music
+  Knowledge representation and music
+  Graphical representation of music on computers
+  Reading: Garnett chapter (RMS), Pope Smoke Article (OS)
+  Optional reading: Wiggins et al. Music Representation (CMJ), Pope TrTrees (ICMC)
+    Sound File Format FAQ (WWW)
+  Software Tools: scot, score, yamil, Smoke
+  Exercise: Event and music representation examples
+  Extra credit: OO and AI music representations, extended graphical systems
+
+6: Sound compression, transmission and storage formats
+  Compression of digital audio signals
+  Sound storage formats and file systems
+  Sound and the WWW--the Internet and telephones
+  Reading: Pope & Van Rossum article on sound file systems (CMJ)
+  Optional reading: MPEG Spec (WWW), Internet Phone data (WWW), 
+    Compression FAQ, Prof. Gersho's work
+  Software Tools: SoundHack, GIGO, MPEG player
+  Exercise: Compare sound compression, storage, and transmission schemes
+  Extra credit: Trade-offs in sound representation and storage schemes
+
+7: MIDI and real-time control processing
+  MIDI protocol and MIDI hardware
+  The MIDI file format and time representation
+  A MIDI software sampler--sequencers, voice editors, control mappers, etc.
+  Reading: HyperCard MIDI Intro, ZIPI articles (CMJ), Max Description (ICMC/CMJ)
+  Optional reading: MIDI FAQ (WWW), Dannenberg Scheduling (CMJ/ICMC)
+  Software Tools: MIDI viewer, sequencer, Max
+  Exercise: Write a simple sequencer
+  Extra credit: Max programming exercise
+
+8: Music composition using computers
+  Modeling musical data structures and processes
+  Procedural, stochastic, and knowledge-based models of music
+  A sampling of formal models of music used by composers
+  Reading: Loy Survey (CDCMR), Pope Survey (MProc)
+  Optional reading: Schottstaedt Counterpoint (CMJ), Pennycook Survey (CACM)
+  Software Tools: Player, CommonMusic, MODE, others
+  Exercise: Evaluate and compare composition models and software
+  Extra credit: OO and AI models of composition
+
+9: Practical software for multimedia computing
+  HW for multimedia--"SoundBlasters," DACs, and "sound chips"
+  Text-to-speech systems--phoneme synthesis vs. speech synthesis
+  Speech understanding systems--Sphynx/PlainTalk overview
+  Sound distribution on LANs and WANs--NetAudioSystem, RealAudio, nCube
+  Sound and graphics issues in multimedia (sync, BW, master/slave)
+  Reading: Commercial DAC/ADC specs, NetAudio and RealAudio descriptions (WWW)
+  Optional reading: Java Media API (WWW), nCube description, DSP HW specs. (WWW)
+  Software Tools: speech I/O software (Panasonic, MacTalk, etc.), 
+    play/record programs on various platforms, integrated sound/video systems
+  Exercise: Compare various systems' support for speech and non-speech audio
+  Extra credit: text-to-speech and SMPTE syncing
+
+10: The "Real-world"--Conclusions
+  The "all digital recording" studio
+  DASP in media production, computer graphics, virtual reality, music education
+  The state of the art in 1996 and unanswered questions
+  Dream machines for computer music
+  Reading: "State Of The Art" Articles (CMJ, "Dream Machines" Articles (CMJ)
+  Optional reading: Various WWW-based documents
+  Software Tools: StudioFrame, Deck, DIVE VR, Director, game SW
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Readings taken from:
+  "The Computer Music Tutorial," by Curtis Roads, MIT Press, 1996 (CMT)
+  "Foundations of Computer Music," ed. by Curtis Roads and John Strawn, MIT 
+    Press, 1987 (FCM)
+  "The Music Machine," ed. by Curtis Roads, MIT Press, 1989 (TMM)
+  "Elements of Computer Music," by F. R. Moore, Prentice-Hall, 1990 (ECM)
+  "Music Processing," ed. by Goffredo Haus, A-R Editions, 1993 (MP)
+  "Current Directions in Computer Music Research," ed. by Max Mathews, and 
+    John Pierce, MIT Press, 1989 (CDCMR)
+  "Digital Audio Signal Processing," ed. by John Strawn, A-R Editions, 1985 (DASP)
+  "Representations of Musical Signals," ed. by G. De Poli, A. Piccialli, and
+    C. Roads, MIT Press, 1991 (RMS)
+  "Computer Music Journal," ed. by Stephen Pope, MIT Press, periodical (CMJ)
+  "Organised Sound," ed. by Ross Kirk, Cambridge U. Press, periodical (OS)
+  "The Proceedings of the Int'l Computer Music Conferences," annual (ICMC)
+  "ACM Computing Surveys," Computer Music Special Issue, 17(2), 1985 (ACMCS)
+  "Directory of Computer Assisted Research in Musicology," W. Hewlett, and E. 
+    Selfridge-Field, CCARH, annual (CARM)
+  Other materials prepared for the class, or taken off the World-Wide Web (WWW)
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+</PRE>
+
+<P>
+<CENTER>
+<P>
+<!WA3><IMG SRC="http://www.create.ucsb.edu/images/line.note.gif">
+<P>
+<em>
+<!WA4><A HREF="mailto:webmaster@create.ucsb.edu">Send mail to the web master</A>
+<P><!WA5><A HREF="http://www.create.ucsb.edu">Return to the CREATE Home</A>
+<P>
+</em>
+</CENTER>
+<ADDRESS>
+[Stephen Travis Pope <!WA6><IMG SRC="http://www.create.ucsb.edu/images/smile.happy.gif"> stp@create.ucsb.edu]
+<BR>
+Created: 1995.02.08; LastEditDate: 1996.10.03
+</ADDRESS>
+</BODY>
+</HTML>

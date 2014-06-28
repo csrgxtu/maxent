@@ -1,0 +1,430 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 19:45:11 GMT
+Content-Type: text/html
+Content-Length: 15559
+Last-Modified: Saturday, 09-Dec-95 04:57:20 GMT
+
+<HTML>
+<TITLE>ORWELL: Removal of Tracked Objects in Digital Video</TITLE>
+
+<body bgcolor="#ffffff" text="#000000" link="#60a0c0" vlink="#60a0c0" >
+
+
+<BODY>
+<H1><P ALIGN=CENTER>ORWELL: Removal of Tracked Objects in Digital Video</A></H1>
+
+
+<P ALIGN=CENTER><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><a href="http://www.cs.cornell.edu/Info/People/ahong/home.html">Alfred Hong</a>,
+<!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href="http://www.cs.cornell.edu/Info/People/hejik/hejik.html">Heji Kim</a>,
+<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.cs.cornell.edu/Info/People/lhwang/lhwang.html">Lin-hsian Wang</a><p>
+
+<P ALIGN=CENTER>Department of Computer Science<BR>
+324 Upson Hall<BR>
+Cornell University<BR>
+Ithaca, NY 14853-7501 US<BR>
+
+<BR>
+<p>
+<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a href="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/rivl.html"><P ALIGN=CENTER>http://www.cs.cornell.edu/Info/Projects/zeno/rivl/rivl.html</a><p>
+
+<hr>
+<H2><A NAME="toc">Table of Contents</A></H2>
+
+<UL>
+<!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="http://www.cs.cornell.edu/Info/People/hejik/cs631/paper.html#HDR2"><B>1.  INTRODUCTION</B></A>
+<BR>
+
+<!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A HREF="http://www.cs.cornell.edu/Info/People/hejik/cs631/paper.html#HDR3"><B>2.  BACKGROUND INFORMATION</B></A>
+<BR>
+
+<!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><A HREF="http://www.cs.cornell.edu/Info/People/hejik/cs631/paper.html#HDR4"><B>3.  SPECIFICS</B></A>
+
+  <UL>
+ 	<!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><A HREF="http://www.cs.cornell.edu/Info/People/hejik/cs631/paper.html#HDR5">3. 1 Object-Tracking:  Hausdorff Tracker</A>
+	<BR>
+
+	<!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><A HREF="http://www.cs.cornell.edu/Info/People/hejik/cs631/paper.html#HDR6">3. 2 Background-Reconstruction</A>
+	<BR>
+
+	<!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><A HREF="http://www.cs.cornell.edu/Info/People/hejik/cs631/paper.html#HDR7">3. 3 Object-Segmentation</A>
+  </UL>
+
+<!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><A HREF="http://www.cs.cornell.edu/Info/People/hejik/cs631/paper.html#HDR8"><B>4.  EVALUATION</B></A>
+<BR>
+
+<!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><A HREF="http://www.cs.cornell.edu/Info/People/hejik/cs631/paper.html#HDR9"><B>5.  RELATED WORK AND EXTENSIONS</B></A>
+<BR>
+
+<!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><A HREF="http://www.cs.cornell.edu/Info/People/hejik/cs631/paper.html#HDR10"><B>6.  REFERENCES</B></A>
+</UL>
+<p>
+
+<HR>
+
+<H2><A NAME="HDR2">1.  Introduction</A></H2>
+
+Object tracking in a sequence of images 
+can provide a base for a multitude of digital video
+processing applications such as removal of object in the scene.
+Although numerous video-processing editors are available,
+object-tracking and removal (OTR) is mostly a manual process.  
+Using the existing object-tracking feature in <!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><A HREF="http://cs.cornell.edu/Info/Proj
+ects/zeno/rivl/rivl.html">RiVL</A>, we implement a semi-automated application 
+that 
+allows the user to specify and remove an object, then reconstruct the 
+background to result in a new video sequence. Our work primarily focuses on 
+algorithms for the domain of stationary backgrounds with 
+a single moving object. 
+<p>
+In addition to OTR, we also extend this work to segment the tracked-object 
+from the background;
+we can use the resulting segmentation for a variety 
+of video processing effects such as
+overlaying the tracked-object on top of different sequence. 
+The resulting application is an ideal test bed for experimenting with
+various OTR and segmentation algorithms.
+We  reconstruct the background and use different techniques for
+ segmentation as illustrated in the diagram below.
+
+
+</A>
+
+
+<P ALIGN=CENTER><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><img src="http://www.cs.cornell.edu/Info/People/hejik/cs631/digram.gif"><B><A NAME="REF69077"><BR>
+Figure  1:</B> Orwell OTR and Segmentation Overview</P>
+
+The rest of the paper is organized as follows.
+
+<UL>
+<LI>Section 2 provides some background on RiVL and the Hausdorff tracking 
+	algorithm
+<LI>Section 3 discusses vision algorithms we employed to our ends 
+<LI>Section 4 reviews the work we have done
+<LI>Section 5 concludes with current status and future research directions.
+</UL><p>
+
+[Key words: <i>object-tracking, Hausdorff distance, object-removal, segmentation, 
+	    background reconstruction, image filtering</i>]<p>
+
+<H5><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><A HREF="#toc"><-- Table of Contents</A></H5>
+
+<br>
+
+<H2><A NAME="HDR3">2.  Background Information</A></H2>
+
+<H3>RiVL</H3>
+RiVL is a resolution independent video language which
+has video and audio as first class data types. 
+Jonathan Schwartz has implemented RiVL as a Tcl/Tk
+extension for multimedia processing.  
+The high level operators used in RiVL are
+independent of video format and resolution and 
+provides the necessary infrastructure to test our ideas.
+
+<H3>RiVL_GenC</H3>
+RiVL_GenC generates the C code for RiVL functions that
+ need to perform low level 
+image processing routines that are not already 
+included in the RiVL library. 
+The implementations of median and 
+mean filters use the functions generated by RiVL_GenC for pixel-level computations.
+
+<H3><A NAME="Idontknow"> Hausdorff Tracker</A></H3>
+The Hausdorff tracker is a feature-based object tracking system for a 
+continuous sequence of images.
+The model of the tracked object is represented by a binary edge-map
+produced by applying a Canny edge operator over a smoothed version
+of the gray-level image of the input image. 
+Taking advantage of the fact that the motion
+of the object is roughly an affine transformation 
+between any two consecutive frames, 
+the algorithm matches all the possible translations 
+and scales of the model to a specified search window (shown as a red dotted box
+in Figure 2).  Generally, the best match has the most points which overlap 
+with a transformation of the model.
+Since we use this best match as a model for the next image, once the tracker 
+begins to wander, the results can deteriorate quickly.
+<p>
+ 
+<c>
+<P ALIGN=CENTER><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><img src="http://www.cs.cornell.edu/Info/People/hejik/cs631/hausdorff.gif"><B><A NAME="REF69077"><BR>
+Figure  2:</B> Hausdorff tracking algorithm explained</P> </c>
+<p>
+
+
+<p>
+
+<H5><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><A HREF="#HDR3"><-- Background Information</A></H5>
+
+<H5><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><A HREF="#toc"><-- Table of Contents</A></H5>
+
+<H2><A NAME="HDR4">3.  Specifics</A></H2>
+
+This section discusses the implementation of the algorithms 
+accessible from the Orwell Editor.  
+The first subsection discusses object-tracking.  
+The second subsection 
+discusses the background reconstruction algorithms
+assuming a stationary camera, 
+and the third subsection 
+discusses the segmentation algorithms. 
+
+<p>
+
+<H3><A NAME="HDR5">3. 1 Object-Tracking:  Hausdorff Tracker</A></H3>
+The tracker in RiVL returns scale and translation coordinates 
+for each image.  Performance of the tracker depends on setting the 
+correct parameters for the search, i.e. size of the search window, 
+scaling factors, and the forward and backward distance which limits 
+the allowed dissimilarity in a match.  We must make a trade-off between the 
+laxness of the constraints and the processing time required to
+track the object.
+The Hausdorff tracker also works better for larger images.
+</A><p>
+
+<H5><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><A HREF="#HDR3"><-- Background Information</A></H5>
+
+
+<H3><A NAME="HDR6">3. 2 Background Reconstruction</A></H3>
+
+
+We need the background to replace the tracked object
+from the original sequence and to possibly segment the object.
+We experiment with three different approaches to
+background reconstruction: 
+a temporal median filter, a temporal mean filter,
+and a physical space search.
+<p>
+
+</p>
+
+<p> The first two approaches for the background reconstruction are 
+temporal mean filter and the temporal median filter.
+
+</p>
+<H3><A NAME="HDR6">Temporal Mean Filter (TMEF)</A></H3>
+
+<p>	The TMEF technique computes the mean pixel value by taking the 
+arithmetic average of the whole frame sequence and assigns this result to 
+the pixels in the background frame.
+This technique averages out the tracked object in the scene with a possible blurring
+effect.  We implement this filter by averaging each of the RGB values 
+independently.
+</p> 
+
+<H3><A NAME="HDR6">Temporal Median Filter (TMDF)</A></H3>
+
+<p>TMDF builds the background frame by computing the median pixel value from 
+sorting the images in the video sequence. 
+This techniques relies on the assumption that any portion of the tracked object appears in any one particular location in less than half the image frames.  We implement this filter by finding which
+frame has the median using its  gray-level value, and
+then reconstructing the background using the
+corresponding RGB values. 
+</p>
+<p>
+Both temporal filters are pixel
+level operations we wrote in RiVL_Genc.
+RiVL_Genc only allows twenty frames maximum to be entered as input
+to a function, and because medians of medians is not a median,
+we could not implement a true median function over the
+entire video sequence.
+Instead, we compute the median for several different 
+samples -- each sample composing of twenty frames 
+set at equal intervals, and allow the user to decide over
+the best result.
+<p>
+
+<H3><A NAME="HDR6">Physical Space Search</A></H3>
+
+<p>	Physical space search
+finds the frame where the bounding box of the tracked object does not 
+overlap with the one in the currently processed frame, that is
+the part of background needed to replace the object is the 
+one that has not been occupied by the object in the previous 
+frames. 
+Using assumptions of motion continuity, we initially search for the
+the background for the current image near the frame where we found the
+background for the previous frame; this way we can avoid a comprehensive 
+search.  For the initial frame, we must 
+search the entire sequence for all possible background replacements.
+Although we prefer the closest frame that contains the background,
+we also want to find multiple scenes in which the background resides
+in case that another moving object has moved into the background.
+
+It is also possible to partition the bounding box into smaller blocks
+and search for the background in pieces.
+
+<p>
+If we assume a single moving object in the sequence, then
+it is possible to use one frame which has the object removed and the 
+background reconstructed as the background for the entire sequence.
+However, due to shifting lighting levels, it is desirable to reconstruct 
+the scene for every frame or every block of frames.
+
+Figure 3 shows the result of the background covered by the subject's head
+reconstruced.
+<p>
+
+<!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><img src="http://www.cs.cornell.edu/Info/People/hejik/cs631/headless.gif"><B><A NAME="REF69077"><BR></a>Figure  3:</B> Sequence 
+illustrating object-tracking and background reconstruction<p>
+
+<H3><A NAME="HDR7">3. 3 Object Segmentation</A></H3>
+
+<H3>Image Segmentation</H3>
+Segmentation, or separating the tracked object from
+the background, is one of the core problems in vision
+that has yet to be adequately solved for unconstrained
+settings.  We explore motion differencing, second differencing, and
+background subtraction for this classical problem.
+
+<p>
+
+<!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><img src="http://www.cs.cornell.edu/Info/People/hejik/cs631/imdif.gif"><B><A NAME="REF69077"><BR></a>Figure 4:</B> Segmentation methods<p>
+<p>
+
+<H4><A NAME="HDR13">A. Image Differencing</A></H4>
+Motion differencing applies a threshold over two consecutive 
+images to produce a binary image indicating the regions of motion.
+
+We extend motion differencing to use three consecutive frames.  
+With second differencing, we perform a binary <i>AND</i> operation on the
+difference image of the first two frames and the last two frames
+to segment out the moving object in the middle frame.
+Moving objects are more clearly segmented when there exists
+ less overlap of the moving object with itself in consecutive images;
+we choose the three consecutive frames such that there has been 
+sufficient motion.
+
+<p>
+
+<!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><img src="http://www.cs.cornell.edu/Info/People/hejik/cs631/backsub.gif"><B><A NAME="REF69077"><BR></a>Figure 4:</B> Segmentation methods<p>
+<H4><A NAME="HDR14">B. Background Subtraction</H4>
+
+Background subtraction involves application of a threshold over the background with the image containing the moving object.  
+This techniques works well only when used with a faithful copy of the
+background.
+<p>
+
+<H5><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><A HREF="#toc"><-- Table of Contents</A></H5>
+
+<H2><A NAME="HDR8">4.  Evaluation</A></H2>
+
+
+
+<!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><img src="http://www.cs.cornell.edu/Info/People/hejik/cs631/oseq.gif"><br>
+<B>Figure 5:</B> Input video sequence<p>
+<br>
+<br>
+<p>
+We used the above video sequence of 200 frames as one 
+of the inputs for our test. Images were recorded as Motion JPEGS with a Sun Microsystems camera using a Parallax board.
+
+</p>
+<p>
+<br>
+<br>
+<!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><A HREF="http://www.cs.cornell.edu/Info/People/hejik/cs631/meanbkg.gif"><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><img src="http://www.cs.cornell.edu/Info/People/hejik/cs631/thumbmeanbkg.gif"></a> Mean
+<!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><A HREF="http://www.cs.cornell.edu/Info/People/hejik/cs631/medianbkg.gif"> <!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><img src="http://www.cs.cornell.edu/Info/People/hejik/cs631/thumbmedianbkg.gif"></a> Median <br>
+<B>Figure 6:</B> Temporal filter results<p>
+<p>
+The example images above are the results from temporal filters. 
+The reconstructed background image from the mean filter has a slightly
+ visible blurring effect caused by the moving object.  
+As the number of frames in the video increases,
+ this effect will become negligible. We can further
+process the mean filter with a smoothing function, and then a
+sharpening function to further rid of the shadowing effect.
+
+<p>
+<!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><img src="http://www.cs.cornell.edu/Info/People/hejik/cs631/resultbg.gif"><B><BR></a>
+Figure 4:</B> Segmentation results for background subtraction<p>
+<p>
+We choose the "eyeball test", a metric commonly used
+by many vision researchers, to determine the quality of the segmentation.  
+Background subtraction produced the best segmentation
+with the smoothest edges and the least number of holes within
+the object.
+Motion differencing performed the worst
+since it tends to give an irregular outline of the motion and 
+includes portion
+of the background which belongs to the object in the previous image but
+not in the current image: this effect appears as an undesirable
+white outline around the object in the right pair of images below.
+
+The second differencing method shows improved results over regular motion
+differencing, but is still not as solid as background subtraction.
+Second differencing has an advantage over background subtraction
+since reconstructing the background is not necessary.
+Some sort of post-filtering is necessary for all cases to 
+fill in the holes and smooth the edges.
+
+<p>
+<!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><img src="http://www.cs.cornell.edu/Info/People/hejik/cs631/result2nddiff.gif">
+<!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><img src="http://www.cs.cornell.edu/Info/People/hejik/cs631/white.gif">
+
+<!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><img src="http://www.cs.cornell.edu/Info/People/hejik/cs631/resultmdiff.gif"><B><BR></a>
+Figure 5:</B> Segmentation results for second differencing, and motion differencing<p>
+<p>
+
+
+<p> 
+We set out with a two-fold goal, one of object-removal and 
+the other of object-segmentation.
+The overall quality of object-removal depends on the accuracy
+of the Hausdorff tracker and the fidelity of the reconstructed background.  
+We feel we have accomplished OTR as long as the background does exist.
+We have had less success with segmentation, and leave much room for
+future improvements.
+
+<p>
+
+
+<H5><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><A HREF="#toc"><-- Table of Contents</A></H5>
+
+<H2><A NAME="HDR9">5.  Related Work and Extensions</A></H2>
+
+Multimedia and vision are highly experimental areas embodying
+numerous possibilities. Although tracking and object-segmentation are
+active ares of research in vision, there appears to be 
+virtually no established work on automating
+object removal using background reconstruction.
+<p>
+We can extend this project along these orthogonal directions:
+
+<UL>
+<li>solve object removal for a moving camera,
+      to handle zooms and pans
+
+<li>handle subtle problems in object removal such as
+ object's shadow, reflection, etc
+
+<li>integrate Orwell with a full video editor as well as 
+    include more functionalities
+    such as allowing the tracker to backtrack to 
+    reset the object position
+
+<li>refine segmentation with morphological operators.
+</UL>
+
+
+<H5><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><A HREF="#toc"><-- Table of Contents</A></H5>
+
+<H2><A NAME="HDR10">6.  References</A></H2>
+
+<DL>
+	<DT><A NAME="REF98469">[1]  </A><DD><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><A HREF="http://cs-tr.cs.cornell.edu:/TR/CORNELLCS:TR92-1320">Tracking Non-Rigid Objects in Complex Scenes</A>.<em>Proceedings of the Fourth International Conference on Computer Vision</em> (1993), 93-101 (with J.J. Noh and W.J. Rucklidge).
+
+	<DT><A NAME="JAIN">[2]  </A><DD> Jain, Kasturi and Schunck, Machine Vision, McGraw-Hill, 1995. 
+	<DT><A NAME="REF53096">[3]  </A><DD>Ousterhout, John K. Tcl and the Tk Toolkit. Addison-Wesley, Massachusetts, 1994.
+
+	<DT><A NAME="REF18623">[4]  </A><DD> Swartz, Jonathan and Smith, Brian C. 
+<!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/tcl-tk-95.ps">
+RiVL: A Resolution Independent Video Language. </A>
+Submitted to the 1995 Tcl/Tk Workshop, July 1995, Toronto, CA. 
+
+	<DT><A NAME="Salient3">[5] </A><DD> L. Teodosio, W. Bender, Salient Video Stills: Content and Context preserved, Proc. ACM Multimedia, 1993, pp. 39-46. 
+
+</DL>
+
+<H5><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><A HREF="#toc"><-- Table of Contents</A></H5>

@@ -1,0 +1,382 @@
+Date: Tue, 05 Nov 1996 20:57:09 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 31 Oct 1996 21:38:52 GMT
+Content-length: 11952
+
+<html>
+<head>
+<title>CS 537 - Introduction</title>
+</head>
+
+<body bgcolor="#ffffff">
+
+<h1>
+CS 537<br>Lecture Notes<br>Introduction
+</h1>
+
+
+<hr>
+<h2>Contents</h2>
+<ul>
+<li> <!WA0><a href="#history">    History</a>
+<li> <!WA1><a href="#goals">        What is an OS For?</a>
+<li> <!WA2><a href="#bottom-up">    Bottom-up View</a>
+<li> <!WA3><a href="#top-down">    Top-Down View</a>
+<li> <!WA4><a href="#outline">    Course Outline</a>
+</ul>
+
+<hr>
+
+<a name="history"> <h2> History </h2> </a>
+
+<ul>
+    <li>Once computers were expensive and rare.
+    <li>Now they are cheap (<em>or</em> expensive!) and ubiquitous.
+    <li>Hardware trends:
+    <ul>
+        <li>vacuum tubes, core memory, punched cards
+            <dl compact>
+            <dt>-&gt;<dd> transistors, magnetic tapes
+            <dt>-&gt;<dd> integrated circuits, disks
+            <dt>-&gt;<dd> VLSI (computer on a chip)
+            </dl>
+        <li>main frame ($1 million and up)
+            <dl compact>
+            <dt>-&gt;<dd> mini $50K - $1M; workstation $10K - $50K
+            <dt>-&gt;<dd> micro (pc) $1K - $10K
+            <dt>-&gt;<dd> network computer $500 and up (??)
+            </dl>
+    </ul>
+    <li>Software:
+    <ul>
+        <li>Batch system.  One user at a time.  Same person was programmer,
+            operator, and end-user (who wants something done)
+            <dl compact>
+            <dt>-&gt;<dd> multiprogrammed (more than one "job" at a time)
+                (to improve utilization -- e.g. spooling)
+            <dt>-&gt;<dd> time-sharing (multiple interactive users)
+            <dt>-&gt;<dd> single-user pc or ws (come full-circle?)
+            </dl>
+        <li>Other kinds of systems:
+            <ul>
+            <li>Transaction processing (e.g. banking, airlines)
+            <li>Real-time (e.g., missile defense, factory control)
+            <li>Embedded systems (a computer in every toaster)
+            </ul>
+    </ul>
+</ul>
+
+<a name="goals"> <h2>     What is an OS For? </h2> </a>
+<dl>
+    <dt><em>Beautification Principle</em>
+    <dd>
+        The goal of an OS is to make hardware look better than it is.
+        <ul>
+            <li>More regular, uniform (instead of lots of idiosyncratic devices)
+            <li>Easier to program (e.g., don't have to worry about speeds,
+                asynchronous events)
+            <li>Closer to what's needed for applications:
+            <ul>
+                <li>named, variable-length files, rather than disk blocks
+                <li>multiple ``CPU's'', one for each user (in shared system)
+                    or activity (in single-user system)
+                <li>multiple large, dynamically-growing memories (virtual
+                    memory)
+            </ul>
+        </ul>
+    <dt><em>Resource principle</em>
+    <dd>
+        <ul>
+        <li>The goal of an OS is to mediate sharing of scarce resources
+            <dl compact>
+            <dt>Q:<dd>What is a ``resource''?
+            <dt>A:<dd>Something that costs money!
+            </dl>
+        <li>Why share?
+            <ul>
+            <li>expensive devices
+            <li>need to share data (database is an ``expensive device''!)
+            <li>cooperation between people (community is an ``expensive device''!!)
+            </ul>
+        <li>Problems:
+            <ul>
+            <li>getting it to work at all
+            <li>getting it to work efficiently
+                <ul>
+                <li>utilization (keeping all the devices busy)
+                <li>throughput (getting a lot of useful work done per hour)
+                <li>response (getting individual things done quickly)
+                </ul>
+            <li>protection
+                <ul>
+                <li>limiting the effects of bugs
+                    <br>(preventing idiots from ruining it for everyone)
+                <li>preventing unauthorized
+                    <ul>
+                    <li>access to data
+                    <li>modification of data
+                    <li>use of resources
+                    </ul>
+                    (preventing bad guys from ruining it for everyone)
+                </ul>
+            </ul>
+        </ul>
+</ul>
+
+<a name="bottom-up"> <h2> Bottom-up View
+(starting with the hardware)
+</h2> </a>
+<h3>Hardware (summary; more details later)</h3>
+    <ul>
+    <li>components
+        <ul>
+        <li>one or more central processing units (CPU's)
+        <li>main memory (RAM, core)
+        <li>I/O devices
+        <li>bus, or other communication mechanism connects them all together
+        </ul>
+    <li>CPU has PC pointing to next instruction to execute
+        <ul>
+        <li>fetches instructions one at a time from location specified by PC
+        <li>increments PC after fetching instruction; branch instructions
+            can also alter the PC
+        <li>responds to "interrupts" by jumping to a different location
+            (like an unscheduled procedure call)
+        </ul>
+    <li>Memory responds to "load" and "store" requests from the CPU, one at
+        a time.
+    <li>I/O device
+        <ul>
+        <li>Usually looks like a chunk of memory to the CPU.
+        <li>CPU sets options and starts I/O by sending "store" requests
+            to a particular address.
+        <li>CPU gets back status and small amounts of data by issuing "load"
+            requests.
+        <li>Direct memory access (DMA):  Device may transfer large amounts of
+            data directly to/from memory by doing loads and stores
+            just like a CPU.
+        <li>Issues an interrupt to the CPU to indicate that it is done.
+        </ul>
+    </ul>
+<h3>Timing problem</h3>
+    <ul>
+    <li>I/O devices are millions or even billions of times slower than CPU.
+    <li>E.g.:
+        <ul>
+        <li>Typical PC is >10 million instructions/sec
+        <li>Typical disk takes > 10 ms to get one byte from disk
+            ratio: 100,000 : 1
+        <li>Typical typist = 60 wpm = 1 word = 5 bytes/sec = 200 ms
+            = 2 million instructions per key-stroke.  And that
+            doesn't include head-scratching time!
+        </ul>
+    <li>Solution:
+        <pre>
+start disk device
+do 100,000 instructions of other useful computation
+wait for disk to finish
+        </pre>
+    <li>Terrible program to write; debug.  And it would change with a faster
+        disk!
+    <li>Better solution:
+<pre>
+Process 1:
+    for (;;) {
+        start I/O
+        wait for it to finish
+        use the data for something
+    }
+Process 2:
+    for (;;) {
+        do some useful computation
+    }
+</pre>
+        Operating system takes care of switching back and forth between
+            process 1 and process 2 as ``appropriate''.
+            <br>(Question:  which process should have higher priority?)
+    </ul>
+<h3>Space problem</h3>
+    <ul>
+    <li>Most of the time, a typical program is "wasting" most of the memory
+    space allocated to it.
+        <ul>
+        <li>Looping in one subroutine (wasting space allocated
+            to rest of program)
+        <li>Fiddling with one data structure (wasting space allocated to
+            other data structures)
+        <li>Waiting for I/O or user input (wasting all of its space)
+        </ul>
+    <li>Solution: <em>virtual memory</em>
+        <ul>
+        <li>Keep program and data on disk (100-1000 times cheaper/byte).
+        <li>OS automatically copies to memory pieces needed by program
+            <em>on demand</em>.
+        </ul>
+    </ul>
+</ul>
+
+<a name="top-down"> <h2> Top-Down View
+(what does it look like to various kinds of users?)
+</h2> </a>
+<ul>
+    <li>End user.
+        <ul>
+        <li>Wants to get something done (bill customers, write a love letter,
+            play a game, design a bomb).
+        <li>Doesn't know what an OS is (or care!)
+            <br>May not even realize there is a computer there.
+        </ul>
+    <li>Application programmer.
+        <ul>
+        <li>Writes software for end users.  Uses ``beautified'' virtual machine
+            <ul>
+            <li>named files of unlimited size
+            <li>unlimited memory
+            <li>read/write returns immediately
+            </ul>
+        <li>Calls library routines
+            <ul>
+            <li>some really are just subroutines written by someone else
+                <ul>
+                <li>sort an array
+                <li>solve a differential equation
+                <li>search a string for a character
+                </ul>
+            <li>others call the operating system 
+                <ul>
+                <li>read/write
+                <li>create process
+                <li>get more memory
+                </ul>
+            </ul>
+        </ul>
+    <li>Systems programmer (you, at the end of this course)
+        <ul>
+        <li>Creates abstractions for application programmers
+        <li>Deals with real devices
+        </ul>
+</ul>
+
+<a name="outline"> <h2> Course Outline </h2> </a>
+<ol>
+    <li> Processes.
+        <ul>
+        <li>What processes are.
+        <li>Using processes
+            <ul>
+            <li>synchronization and communication
+                <ul>
+                <li>semaphores, critical regions, monitors, conditions,
+                <li>messages, pipes
+                </ul>
+            <li>process structures
+                <ul>
+                <li>pipelines, producer/consumer, remote procedure call
+                </ul>
+            <li>deadlock
+            </ul>
+        <li>Implementing processes
+            <ul>
+            <li>mechanism
+                <ul>
+                <li>critical sections
+                <li>process control block
+                <li>process swap
+                <li>semaphores, monitors
+                </ul>
+            <li>policy (short-term scheduling)
+                <ul>
+                <li>fcfs, round-robin, shortest-job next, multilevel queues
+                </ul>
+            </ul>
+        </ul>
+    <li> Memory
+        <ul>
+        <li>Main-memory allocation
+        <li>Swapping, overlays
+        <li>Stack allocation (implementation of programming languages)
+        <li>Virtual memory hardware
+            <ul>
+            <li>paging, segmentation, translation lookaside buffer
+            </ul>
+        <li>policy
+            <ul>
+            <li>page-replacement algorithms
+                <ul>
+                <li>random, fifo, lru, clock, working set
+                </ul>
+            </ul>
+        </ul>
+    <li> I/O devices
+        <ul>
+        <li>device drivers, interrupt handlers
+        <li>disks
+            <ul>
+            <li>hardware characteristics
+            <li>disk scheduling
+                <ul>
+                <li>elevator algorithm
+                </ul>
+            </ul>
+        </ul>
+    <li> File systems
+        <ul>
+        <li>file naming
+        <li>file structure (user's view)
+            <ul>
+            <li>flat (array of bytes)
+            <li>record-structured
+            <li>indexed
+            <li>random-access
+            <li>metadata
+            <li>mapped files
+            </ul>
+        <li>implementation
+            <ul>
+            <li>structure
+                <ul>
+                <li>linked, tree-structured, B-tree
+                </ul>
+            <li>inodes
+            <li>directories
+            <li>free-space management
+            </ul>
+        </ul>
+    <li> Protection and security
+        <ul>
+        <li>threats
+        <li>access policy
+            <ul>
+            <li>capabilities, access-control lists
+            </ul>
+        <li>implementation
+            <ul>
+            <li>authentication/determination/enforcement
+            <li>encryption
+                <ul>
+                <li>conventional
+                <li>public-key
+                <li>digital signatures
+                </ul>
+            </ul>
+        </ul>
+</ol>
+
+<hr>
+
+<address>
+<i>
+<!WA5><a HREF="mailto:solomon@cs.wisc.edu">
+solomon@cs.wisc.edu
+</a>
+<br>
+Thu Oct 31 15:38:51 CST 1996
+</i>
+</address>
+<br>
+Copyright &#169; 1996 by Marvin Solomon.  All rights reserved.
+
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+Date: Tue, 05 Nov 1996 20:37:12 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Tue, 14 May 1996 16:52:45 GMT
+Content-length: 4077
+
+<HTML>
+<HEAD>
+<TITLE> QPT </TITLE>
+<!-- Changed by: James Larus, 14-May-1996 -->
+</HEAD>
+<BODY>
+<H1> QPT: <BR> A Quick Program Profiling and Tracing System </h1>
+
+<P>
+QPT is an exact and efficient program profiler and tracing system.  It
+rewrites a program's executable file (a.out) by inserting code to
+record the execution frequency or sequence of every basic block
+(straight-line sequence of instructions) or control-flow edge.  From
+this information, another program QPT_STATS can calculate the
+execution cost of procedures in the program.  Unlike the Unix tools
+PROF and GPROF, QPT records exact execution frequency, not a
+statistical sample.  When tracing a program, QPT produces a trace
+regeneration program that reads the highly compressed trace file and
+regenerates a full program trace.
+
+<P>
+When profiling, QPT operates in two modes.  In "slow" mode, it places
+a counter in each basic block in a program--in the same manner as the
+MIPS tool PIXIE.  In "quick" mode, QPT places counters on an
+infrequently-executed subset of the edges in the program's
+control-flow graph.  This placement can reduce the cost of profiling
+by 3--4 times.  Since there is no such thing as a free lunch, quick
+profiling requires more program analysis and consequently slows QPT
+and QPT_STATS.  The additional cost to instrument a program and report
+results, however, is small and is quickly gained back when profiling
+long-running programs.
+
+<P>
+Like other systems such as pixie, QPT can rewrite an executable file to
+record the sequence of instruction and data references.  However, QPT uses
+abstract execution to reduces the overhead of tracing to 2--6 times a
+program's untraced execution cost.  QPT also records a number of semantics
+events--such as loop entry and iteration, function entry and exit, and
+memory allocation and deallocation--that other systems do not identify.
+
+<P>
+
+The original version of this program, QPT, is obsolete and has not been
+maintained for several years.  At that time, it ran under DEC's Ultrix on a
+DECStation (MIPS processor) and Sun's SunOS 4.1.2 on a SPARCstation.
+
+<P>
+QPT2, the new version of QPT, is build on
+<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~larus/eel.html">
+EEL,
+</A>
+a library for editing executable files.  EEL currently runs on SPARC-based
+machines (SunOS and Solaris), though other ports in progress.  The
+machine-specific code in EEL and QPT2 is collected in a few files.  Porting
+to a new machine requires a couple months of effort.
+
+<h2> Documentation </h2>
+<UL>
+<LI>
+The algorithms in QPT are described in:
+Thomas Ball and James R. Larus, "Optimally Profiling and Tracing
+Programs," <EM>ACM Transactions on Programming Languages and Systems
+(TOPLAS)</EM>, vol. 16, no. 4, July 1994, pp. 1319-1360.
+
+<LI>
+Abstract execution is described in:
+James R. Larus, "Abstract Execution: A Technique for Efficiently
+Tracing Programs", Software Practices & Experience, v20, n12,
+December 1990, pp 1241-1258.
+
+<LI>
+QPT is described in:
+James R. Larus, "Efficient Program Tracing," IEEE Computer, 26, 5,
+May 1993, pp 52-61.
+</UL>
+
+<h2> Applications </h2>
+<P>
+David Wood has develop a cache profiler called cprof that uses traces
+from QPT to report the cache misses caused by statements in a program.
+CPROF is available as part of <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href="http://www.cs.wisc.edu/~larus/warts.html">WARTS</a>.
+
+<h2> Obtaining QPT </h2>
+<P>
+QPT is available as part of  <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.cs.wisc.edu/~larus/warts.html">WARTS</a>.
+<P>
+
+QPT and QPT2 are distributed with the full source and a small amount of
+documentation.  QPT and QPT2 are copyrighted by me and is distributed under
+the terms of the WARTS license.  A copy of the license is available on
+ftp.cs.wisc.edu in <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A href="ftp://ftp.cs.wisc.edu/pub/warts/license.ps">
+~ftp/pub/warts/license.ps,</A> or can be obtained by contacting me at the
+address below.
+
+<P>
+<!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a href="http://www.cs.wisc.edu/~larus/larus.html">James Larus</a><br>
+Computer Sciences Department <br>
+1210 West Dayton Street <br>
+University of Wisconsin <br>
+Madison, WI 53706 <br>
+<P>
+larus@cs.wisc.edu <br>
+(608) 262-9519
+
+
+<HR>
+Last modified: May 14 1996 by James Larus
+<ADDRESS>
+  <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A HREF="http://www.cs.wisc.edu/~larus/larus.html">larus@cs.wisc.edu</A>
+</ADDRESS>
+</body>
+</html>

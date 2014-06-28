@@ -1,0 +1,309 @@
+Date: Mon, 11 Nov 1996 17:30:37 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 20 Dec 1995 15:24:37 GMT
+Content-length: 15487
+
+<HTML>
+<HEAD>
+<TITLE>CS 766 Student Projects</TITLE>
+</HEAD>
+
+<BODY>
+<H2>CS 766 Student Projects</H2>
+<BR>
+
+<UL>
+<HR SIZE=5>
+<LI><B>Chris Baum</B><BR>
+<I>Image Warping</I>
+<P>
+A two-pass algorithm for digital image warping is implemented and 
+tested on high quality color images (640 x 480). Input parameters to 
+the algorithm are the source and destination images, and the source 
+and destination meshes. An X-windows widget interface is used to 
+display a pair of images for reference to input the input and output
+meshes. The mesh is interpolated to the size of the images 
+(cubic spline is used in this case). The second step would be to use
+this routine to align images for mosaic splining.
+<HR SIZE=5>
+<LI><B>Todd Bezenek</B> and <B>Yinong Wei</B><BR>
+<I>A Spherical Mosaic System</I>
+<P>
+An image mosaic is a conglomeration of overlapping images in which the
+images fit together so well that their combination is indistinguishable
+from a single, large image of the same subject.  Many efforts have been
+expended to create mosaics with various properties.  In this project, we
+intend to develop a mosaic that allows the user to view an entire three
+dimensional space (in any one direction at a time) in which his position
+is fixed at the center.
+<HR SIZE=5>
+<LI><B>Jon Bodner</B><BR>
+<I>Hand Gesture Histogram Recognition -- Analysis and Improvement</I>
+<P>
+My project is based on the paper "Orientation Histograms for Hand Gesture 
+Recognition" by W. Freeman and M. Roth.  This paper describes a 
+simple algorithm to analyze grey-scale images of hands and recognize the 
+gesture.  Their definition of gesture is static; it refers to the gross 
+hand orientation at a given time.  The algorithm used in the paper is 
+rotation dependent, but it is lighting invariant.
+<P>
+For the first part of my project, I intend to implement the Freeman and 
+Roth algorithm and try it out with several sample images I generate.  The 
+images will be taken in different lighting to mirror the tests performed 
+by Freeman and Roth.
+<P>
+After testing out the correctness of my implementation, I intend to test 
+the limits of the algorithm in two areas: rotation sensitivity and 
+lighting 
+sensitivity.  In particular, I want to explore the limits on lighting 
+insensitivity and depth of the limitation on rotations.
+<P>
+Lighting insensitivity is one of the strongest features of this 
+algorithm.  
+There is no exact quantification given in the paper; it only presents two 
+different lighting levels.  If possible, I would like to measure the 
+ambient light with a light meter and determine the range in which the 
+algorithm performs best.
+<P>
+Testing the limits of rotation is a little harder.  Gestures, by their 
+nature are not rotation invariant.  However, humans use a fuzzy range to 
+match a given hand signal.  It is not clear how wide the recognition 
+range 
+is for Freeman and Roth's algorithm, especially with similar gestures.
+<P>
+Once the range is determined, I would like to implement a fuzzy function 
+which is used to do the matching between the training sets and the 
+gestures 
+to be recognized.  I will then compare the results of this modified 
+version to the results of the original.
+<HR SIZE=5>
+<LI><B>Yanming Cao</B><BR>
+<I>Hand Gesture Recognition</I>
+<P>
+I will 
+implement Freeman's method for hand gesture recognition as described in the
+paper "Orientation Histograms for Hand Gesture Recognition," by W. Freeman 
+and M. Roth, from <I>Proc. Int. Workshop on Automatic Face
+and Gesture Recognition</I>, 1995.
+The algorithm, claimed by the authors simple and fast, uses the histogram of
+local orientation as a feature vector for gesture classification and
+interpolation. It is relatively robust to changes in lighting.
+<HR SIZE=5>
+<LI><B>Nirupama Chandrasekaran</B> and <B>Jamie Jason</B><BR>
+<I>Mosaic Construction using Gaussian Pyramids</I>
+<P>
+The goal of image mosaics is to take a collection of images and
+combine their information in such a way as to obtain a single image.
+During the early stages of this process, images must be registered to
+determine correlation between them.  This registration can be a rather
+expensive and time-consuming process for a class of transformations
+that include both 2D translation and rotation.  In this project we
+plan to investigate coarse-to-fine image registration using
+Gaussian pyramids.
+<P>
+In our project, the first step in image registration is to build
+Gaussian pyramids for the two images we wish to register.  Currently
+we are proposing that the top of the pyramid be an image that is
+approximately 16-by-16 pixels.  Once we have the Gaussian pyramids we
+can begin registering at the coarsest level.  We will then use the
+registration information from a higher level (i.e., coarser) as a hint
+to the next lower level (i.e., finer).  This hint will be used to
+reduce the search space to the 8-neighbors of the corresponding pixel
+in the next lower level.
+<HR SIZE=5>
+<LI><B>Beth Cole</B><BR>
+<I>Hough Transform Variations for the Detection of Circles and Ellipses</I>
+<P>
+My project will consist of a paper on Hough transforms.  The paper will
+begin with a brief introduction to what Hough transforms are followed by
+a short survey of the uses, advantages and disadvantages of the method.
+The second section will introduce a variety of variations on and
+improvements to the original conception.  The third section will examine
+some of these variations with respect to the particular task of identifying
+circles and ellipses as well as additional variations that are particular
+to the task of identifying circles and ellipses.  In conclusion a
+comparison of the suggested methods will be made with suggestions for
+possible further work.
+<HR SIZE=5>
+<LI><B>Joshua Conner</B><BR>
+<I>Shape Recognition through Machine Learning</I>
+<P>
+This project will attempt to move further up the vision hierarchy by 
+combining features into simple concepts.  I will train a neural network
+using simple features such as number of corners and edge lengths, and 
+then determine its ability to classify images into shapes.  Success of 
+the system will be measured in terms of generality of shape which can
+be identified as well as by robustness over a range of inputs.
+<HR SIZE=5>
+<LI><B>Jonathan Goldstein</B> and <B>Marc Shapiro</B><BR>
+<I>Finding Overlapping Simple 2D Shapes using a 
+Really Generalized Hough Transform</I>
+<P>
+The goal of this project is to develop and implement an algorithm to decompose
+an image into a set of overlapping 2D shapes. For instance, we can choose
+circles and rectangles with constant gray levels as primitives. Each circle in
+the decomposed image would be characterized by four parameters: center 
+coordinates (x, y), radius r, and gray level g. A rectangle would have five
+parameters: lower left corner coordinates (x, y), width w, height h, and 
+gray level g. The output of the algorithm is an "in-front-of graph", a partial
+ordering of the shapes found in the image. The result is a compact
+approximation of the image as overlapping shapes.
+<HR SIZE=5>
+<LI><B>Gil Gribb</B><BR>
+<I>What Ever You Need From What Ever Works: Data-Driven Approaches to 
+Intermediate-Level Vision</I>
+<P>
+Real-world application of machine vision techniques has been limited by
+several factors. Most heuristic algorithms rely on several fudge factors
+which are difficult to tune manually. Many physics-based approached make
+simplifying assumptions that significantly reduce performance in
+real-world settings.  Additionally, these algorithms often require accurate
+technical information about the problem, such as camera parameters or
+surface properties. We conjecture that these difficulties can be bypassed
+by learning the target function directly from examples. Previous research
+in this area has primarily focused on window-based approaches, which are
+inherently scale-dependent. These techniques, while effective for 
+low-level vision, suffer from "the curse of dimensionality" when applied 
+to intermediate-level vision task. We propose a family of 
+scale-independent neural network techniques closely related to pyramids, 
+the discrete Fourier transform and the wavelet transform. We (hope to) 
+show that this methodology can be applied to learn shape-from-shading 
+from a small number of examples.  
+<HR SIZE=5>
+<LI><B>Rebecca Hasti</B><BR>
+<I>Hand Gesture Recognition Using Orientation Histograms</I>
+<P>
+A quick and efficient method for computer recognition of hand gestures 
+would be useful in a number of situations.  For example, a system which
+recognized hand gestures in real-time could be used instead of a mouse
+to operate a computer.  For this project, I plan to implement a gesture
+recognition method for static hand gestures using orientation histograms
+described by W. Freeman and M. Roth in "Orientation Histograms for Hand
+Gesture Recognition," Proc. Int. Workshop on Automatic Face and Gesture
+Recognition, 1995.  This method of pattern recognition using orientation
+histograms is relatively simple and fast and somewhat insensitive to 
+scene illumination.
+<HR SIZE=5>
+<LI><B>Kirk Hogenson</B> and <B>Todd Turnidge</B><BR>
+<I>Applications of the Steerable Pyramid</I>
+<P>
+In "The Design and Use of Steerable Filters," Adelson et al. discuss the
+creation of an orientable filter, i.e., a filter that selects a specific
+direction.  This orientable (or "steerable") filter is capable of
+detecting the response of the image to filtering at any desired orientation, 
+based on the result of a few 'basis' filters.
+<P>
+The steerable filter can be extended to select a specific scale as well as
+orientation, yielding a "steerable pyramid filter."  The pyramid is
+roughly analogous to the Laplacian Pyramid in that each level
+corresponds to information at a different scale in the image.  As with
+orientation, image response at any desired scale can be determined from
+the 'basis' scales (i.e., levels in the pyramid).
+<P>
+With such a pyramid, one can accomplish numerous tasks often performed in
+machine vision applications, such as edge and contour detection, adaptive
+noise reduction, and stereo matching.
+<P>
+For our project, we intend to implement such a steerable filter, as well as
+some its applications. 
+<HR SIZE=5>
+<LI><B>Mike James</B><BR>
+<I>Internal Signature Keying: Improving Robustness of a Snake's Local Edge Finder</I>
+<P>
+This project proposes to improve the distraction avoidance capabilities of
+a snake tracking system's without moving up to the global object level. The
+edge localization abilities of the snake are currently achieved at a local
+level, but only look for the strongest edge along a line normal to the snake.
+When tracking an object boundary the snake will be a closed contour. For a solid
+object the pixel values immediately inside the contour are likely to remain
+constant. Viewed along a line normal to the boundary this can be viewed as a
+signature to look for in subsequent search iterations. The local edge finder can
+then be set up to look for this signature, as well as the intensity step signifying
+the boundary. It is hoped that this will help the edge finder avoid picking up on
+potentially stronger background edges that may fall inside the search window.
+<HR SIZE=5>
+<LI><B>Ted Perkins</B><BR>
+<I>Solving Single-Image Random-Dot Stereograms (SIRDS) for Depth</I>
+<P>
+Normal random-dot stereograms work by presenting each eye with
+two separate images; correspondences between the two images allow
+the reconstruction of a depth map based on horizontal disparity
+between corresponding patterns of dots.  SIRDS combine the images
+for both eyes into a single image, relying on semi-periodic random dot
+fields.  A program will be written to 'look' at SIRDS and reconstruct
+a depth map.  The first stage of the problem will scan for potential
+matches for each pixel, and an iterative relaxation scheme will be
+used to arrive at a (hopefully) globally coherent solution.
+<HR SIZE=5>
+<LI><B>Dan Replogle</B><BR>
+<I>Mosaic Construction</I>
+<P>
+The project will construct a mosaic from a set of two images.  The project
+will be modified to handle larger sets of images if time allows.  The project
+will use a 2D transformation model, including translation and rotation. 
+Hierarchical matching will be used.  Matches will be made first at smaller,
+subsampled images, then refined.  Matches that minimize the sum of squared
+differences will be considered the best.    
+<HR SIZE=5>
+<LI><B>Greg Sharp</B><BR>
+<I>Texture Replication</I>
+<P>
+In computer generated images, objects and textures which are difficult to
+model are often copied directly from scanned photographs.  To a large degree,
+the success of this technique depends upon the image quality of the object
+in the original photograph.  For example, objects which are obscured or
+have uneven illumination are not good candidates, because information about
+the shape and/or texture of the object is missing or distorted.
+<P>
+In this paper, we present a algorithm to approximate missing or distorted
+image information for a textured object.  A texture description is recovered
+from a object by identifying texel properties such as texel size, shape,
+density and orientation.  The region of missing or distorted image information
+is then textured by applying a texture replication technique to the region.
+<HR SIZE=5>
+<LI><B>Mark Smucker</B><BR>
+<I>Implementation and Comparison of Three Global Multi-level Thresholding Techniques</I>
+<P>
+My intended project is to implement three different algorithms for
+multilevel thresholding of gray scale images and compare them on
+various images.  The three methods I intend to implement are
+interesting because of their relative newness and considerable
+differences in approaches.  I intend to try and compare them in the
+style done by Lee and Chung for other global thresholding techniques
+besides summarizing and implementing them.
+<P>
+The first algorithm I intend to implement comes from the paper, "A
+fast histogram-clustering approach for multi-level thresholding" by
+Tsai and Chen, which is "computationally fast and efficient" and
+should be a good baseline system to test the other two algorithms
+against since it does not attempt to consider the global
+characteristics of the gray level distribution.  The second algorithm
+takes a connectionist approach while the third uses a simulated
+annealing approach.
+<P>
+Besides the comparison report, one goal of this project is to provide
+code modules that will allow future CS766 students to experiment with
+multilevel thresholding of images.
+<HR SIZE=5>
+<LI><B>Jon Weyers</B><BR>
+<I>Multiple Baseline Stereo with Non-Calibrated Views</I>
+<P>
+I will attempt to apply the Multiple Baseline Stereo method
+(Okutomi and Kanade) to a set of three images, taken from highly
+separated, uncalibrated viewpoints.  This differs from the method
+described in the paper in two ways.  First, I will be testing the
+performance of the method using only two baselines, the minimum
+number necessary for meaningful results.  Second, I will calculate
+the relative lengths of the baselines from "conjugate triples"
+specified interactively by the user, rather than assuming the
+absolute lengths of the baselines are known.  This makes the method
+applicable to snapshots taken from an unmounted camera.  I will
+apply the method to images made using the Apple QuickTake camera,
+displaying results as a gray-level map of relative distances.
+(The exact distance would require exact knowledge of the length
+of the baselines.)
+<HR SIZE=5>
+</UL>
+</BODY>
+</HTML>

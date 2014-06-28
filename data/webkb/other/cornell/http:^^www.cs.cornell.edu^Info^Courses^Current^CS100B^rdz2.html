@@ -1,0 +1,462 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 24-Nov-96 22:48:48 GMT
+Content-Type: text/html
+Content-Length: 17673
+Last-Modified: Tuesday, 03-Sep-96 19:38:27 GMT
+
+<HTML>
+<HEAD>
+<TITLE>tt3</TITLE>
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Microsoft Word 2.0z">
+</HEAD>
+<BODY>
+<P>
+<CENTER><B><FONT SIZE=6>CS100</FONT></B></CENTER>
+<P>
+<CENTER><B><FONT SIZE=6>Lecture <B>2<BR>
+</B></FONT></B></CENTER>
+<P>
+<FONT SIZE=6>REVIEW &oacute; previous lecture</FONT>
+<P>
+<FONT SIZE=6>problem, algorithm, program, language, computer,
+program/data distinction, input/output, execution, trace<BR>
+</FONT>
+<P>
+<FONT SIZE=6>program structure, output statement, conditional
+expression, operators, input function<BR>
+<BR>
+</FONT>
+<P>
+<FONT SIZE=6>CONCEPTS &oacute; this lecture</FONT>
+<P>
+<FONT SIZE=6>expressions: arithmetic, relational, logical, conditional;
+operator precedence and parenthesization; function application;
+convergence &amp; divergence, strict &amp; non-strict evaluation,
+programs; output; libraries<BR>
+</FONT>
+<P>
+<FONT SIZE=6>READING</FONT>
+<P>
+<FONT SIZE=6>Teitelbaum, Sections 2.1&ntilde;2.7</FONT>
+<P>
+<FONT SIZE=6>Roberts, Section 2.1, Section 3.5</FONT>
+<H1><CENTER><FONT SIZE=6>Expressions<BR>
+</FONT></CENTER></H1>
+<P>
+<FONT SIZE=6>&iuml; Familiar from grade school arithmetic.<BR>
+</FONT>
+<P>
+<FONT SIZE=6>(2 </FONT><FONT SIZE=6 FACE="Symbol">&#165;</FONT><FONT SIZE=6>
+3) </FONT><FONT SIZE=6 FACE="Symbol">+</FONT><FONT SIZE=6> (20
+</FONT><FONT SIZE=6 FACE="Symbol">_</FONT><FONT SIZE=6> 5)<BR>
+</FONT>
+<P>
+<FONT SIZE=6>&iuml; Consist of <I>operators</I>, e.g. </FONT><FONT SIZE=6 FACE="Symbol">+</FONT><FONT SIZE=6>,</FONT><FONT SIZE=6 FACE="Symbol">
+&#165;,</FONT><FONT SIZE=6> </FONT><FONT SIZE=6 FACE="Symbol">_</FONT><FONT SIZE=6>,
+and <I>operands</I>, e.g., <I>constants</I>. An operator applied
+to its operands is an <I>application</I>. Sub-expressions are
+parenthesized to indicate structure.<BR>
+</FONT>
+<P>
+<FONT SIZE=6>&iuml; Reduce to a single <I>value</I> by process
+of <I>evaluation</I>.<BR>
+</FONT>
+<P>
+<FONT SIZE=6>(2 </FONT><FONT SIZE=6 FACE="Symbol">&#165;</FONT><FONT SIZE=6>
+3) + (20 </FONT><FONT SIZE=6 FACE="Symbol">_</FONT><FONT SIZE=6>
+5) </FONT><FONT SIZE=6 FACE="Symbol">&#222;</FONT><FONT SIZE=6>
+10<BR>
+</FONT>
+<P>
+<FONT SIZE=6>&iuml; Evaluation of an expression can be <I>traced</I>.
+<BR>
+</FONT>
+<P>
+<U><FONT SIZE=6>(2 </FONT><FONT SIZE=6 FACE="Symbol">&#165;</FONT><FONT SIZE=6>
+3)</FONT></U><FONT SIZE=6> + (20 </FONT><FONT SIZE=6 FACE="Symbol">_</FONT><FONT SIZE=6>
+5)</FONT>
+<P>
+<FONT SIZE=6>6 + <U>(20 </U></FONT><U><FONT SIZE=6 FACE="Symbol">_</FONT><FONT SIZE=6>
+5)</FONT></U>
+<P>
+<U><FONT SIZE=6>6 + 4</FONT></U>
+<P>
+<FONT SIZE=6>10<BR>
+<BR>
+<BR>
+</FONT>
+<P>
+<FONT SIZE=6>The process used in evaluation and tracing is expression
+simplification.<BR>
+</FONT>
+<HR>
+<P>
+<B><FONT SIZE=6>Inside-Out Simplification:</FONT></B><FONT SIZE=6>
+To evaluate expression <I>e</I>, repeatedly replace an innermost
+application <I>e'</I> within <I>e</I> by its value using the appropriate
+rule of arithmetic. Stop when <I>e</I> has been reduced to a single
+value.</FONT>
+<HR>
+<P>
+<FONT SIZE=6>Note: left-to-right evaluation not required.</FONT>
+<H1><CENTER><FONT SIZE=6>Expressions in C &oacute; Operations
+<BR>
+</FONT></CENTER></H1>
+<P>
+<FONT SIZE=6>Binary Operators<BR>
+</FONT>
+<TABLE BORDER=1>
+<TR><TD WIDTH=187><FONT SIZE=6>Operator</FONT></TD><TD WIDTH=60><FONT SIZE=5 FACE="Monaco">+</FONT>
+</TD><TD WIDTH=60><FONT SIZE=5 FACE="Monaco">-</FONT></TD><TD WIDTH=60><FONT SIZE=5 FACE="Monaco">*</FONT>
+</TD><TD WIDTH=60><FONT SIZE=5 FACE="Monaco">/</FONT></TD><TD WIDTH=180><FONT SIZE=5 FACE="Monaco">%</FONT>
+</TD></TR>
+<TR><TD WIDTH=187>Meaning</TD><TD WIDTH=60>+</TD><TD WIDTH=60>-
+</TD><TD WIDTH=60><FONT SIZE=6 FACE="Symbol">&#165;</FONT></TD>
+<TD WIDTH=60><FONT SIZE=6 FACE="Symbol">_</FONT></TD><TD WIDTH=180>remainder
+</TD></TR>
+</TABLE>
+<P>
+<P>
+Examples:<BR>
+<FONT SIZE=5 FACE="Monaco">6 + 1  </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco">
+77 - 2  </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco">
+57 * 2  </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco">
+1414 / 3  </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco">
+414 % 3  </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco">
+2<BR>
+</FONT>
+<P>
+<FONT SIZE=6>Unary Operators<BR>
+</FONT>
+<TABLE BORDER=1>
+<TR><TD WIDTH=187><FONT SIZE=6>Operator</FONT></TD><TD WIDTH=180><FONT SIZE=5 FACE="Monaco">+</FONT>
+</TD><TD WIDTH=180><FONT SIZE=5 FACE="Monaco">-</FONT></TD></TR>
+<TR><TD WIDTH=187>Meaning</TD><TD WIDTH=180>identity</TD><TD WIDTH=180>negation
+</TD></TR>
+</TABLE>
+<P>
+<P>
+Examples:<BR>
+<FONT SIZE=5 FACE="Monaco">-(2 + 3)  </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco">
+-5+(2 * 3)  </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco">
+6<BR>
+<BR>
+</FONT>
+<P>
+<FONT SIZE=6>Relational Operators<BR>
+</FONT>
+<TABLE BORDER=1>
+<TR><TD WIDTH=187><FONT SIZE=6>Operator</FONT></TD><TD WIDTH=60><FONT SIZE=5 FACE="Monaco">&lt;</FONT>
+</TD><TD WIDTH=90><FONT SIZE=5 FACE="Monaco">&lt;=</FONT></TD>
+<TD WIDTH=60><FONT SIZE=5 FACE="Monaco">&gt;</FONT></TD><TD WIDTH=90><FONT SIZE=5 FACE="Monaco">&gt;=</FONT>
+</TD><TD WIDTH=90><FONT SIZE=5 FACE="Monaco">==</FONT></TD><TD WIDTH=90><FONT SIZE=5 FACE="Monaco">!=</FONT>
+</TD></TR>
+<TR><TD WIDTH=187>Meaning</TD><TD WIDTH=60><FONT SIZE=6 FACE="Symbol">&lt;</FONT>
+</TD><TD WIDTH=90><FONT SIZE=6 FACE="Symbol">&#163;</FONT></TD>
+<TD WIDTH=60><FONT SIZE=6 FACE="Symbol">&gt;</FONT></TD><TD WIDTH=90><FONT SIZE=6 FACE="Symbol">&#179;</FONT>
+</TD><TD WIDTH=90><FONT SIZE=6 FACE="Symbol">=</FONT></TD><TD WIDTH=90><FONT SIZE=6 FACE="Symbol">&#185;</FONT>
+</TD></TR>
+</TABLE>
+<P>
+<P>
+&iuml; In C, relational operations are just arithmetic operations:
+they yield integer values.<BR>
+<P>
+&iuml; C interprets 0 as logical &quot;false&quot;. All other
+integers are treated as logical &quot;true&quot;. In particular,
+relational operators use 1 to mean &quot;true&quot;.<BR>
+<P>
+&iuml; Remember that the equality relation is <FONT SIZE=6 FACE="Monaco">==</FONT><FONT SIZE=6>.
+Using </FONT><FONT SIZE=6 FACE="Monaco">=</FONT><FONT SIZE=6>
+means something else in C; never use </FONT><FONT SIZE=6 FACE="Monaco">=</FONT><FONT SIZE=6>
+in an expression.<BR>
+</FONT>
+<P>
+<FONT SIZE=6>Examples:<BR>
+</FONT><FONT SIZE=5 FACE="Monaco">5 == 5  </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco">
+15 &lt; 5  </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco">
+04 &lt; 5  </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco">
+15 &lt;= 5  </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco">
+1</FONT>
+<H1><CENTER><FONT SIZE=6>Expressions in C &oacute; Precedence
+<BR>
+</FONT></CENTER></H1>
+<P>
+<FONT SIZE=6>&iuml; Parentheses can be used to group operators
+explicitly.<BR>
+</FONT>
+<P>
+<FONT SIZE=6>&iuml; In the absence of parentheses, operator groupings
+are determined by operator <I>precedence</I>.<BR>
+</FONT>
+<TABLE BORDER=1>
+<TR><TD WIDTH=127><FONT SIZE=6>High</FONT></TD><TD WIDTH=120>...
+</TD><TD WIDTH=120>...</TD><TD WIDTH=120>...</TD><TD WIDTH=120>Low
+</TD></TR>
+<TR><TD WIDTH=127><FONT SIZE=5 FACE="Monaco">+ - </FONT><FONT SIZE=5>(unary)</FONT>
+</TD><TD WIDTH=120><FONT SIZE=5 FACE="Monaco">* / %</FONT></TD>
+<TD WIDTH=120><FONT SIZE=5 FACE="Monaco">+ - </FONT><FONT SIZE=5>(binary)</FONT>
+</TD><TD WIDTH=120><FONT SIZE=5 FACE="Monaco">&lt; &lt;= </FONT>
+<P>
+<FONT SIZE=5 FACE="Monaco">&gt; &gt;=</FONT>
+</TD><TD WIDTH=120><FONT SIZE=5 FACE="Monaco">== !=</FONT></TD>
+</TR>
+</TABLE>
+<P>
+<P>
+&iuml; An operator with higher precedence groups &quot;more tightly&quot;
+than an operator of lower precedence.<BR>
+<P>
+&iuml; Operators of same precedence group to the left. <BR>
+<P>
+Example:<BR>
+<FONT SIZE=5 FACE="Monaco">1 + 2 * 3 + 4 &lt; - 5 - 6 - 7<BR>
+</FONT>
+<P>
+<FONT SIZE=6>groups as<BR>
+</FONT><FONT SIZE=5 FACE="Monaco">((1 + (2 * 3)) + 4) &lt; (((-5)
+- 6) - 7)</FONT>
+<H1><FONT SIZE=6>The Two Uses of Programs <BR>
+</FONT></H1>
+<P>
+<FONT SIZE=6>&iuml; You can always add parentheses to make the
+intended meaning clear.<BR>
+</FONT>
+<P>
+<FONT SIZE=6>Example: 1+2*3 is the same as 1+(2*3) as far as 
+  the computer is concerned.<BR>
+</FONT>
+<P>
+<FONT SIZE=6>&iuml;  But, to realize that the value of this expression
+is 7 (and not 9) a human needs to remember precedence order.<BR>
+</FONT>
+<P>
+<FONT SIZE=6>&iuml; Programs are written to be executed by computers
+and to be read by humans.  In many respects, the latter is the
+most important part.<BR>
+</FONT>
+<P>
+<FONT SIZE=6>&iuml; My personal rule is to always use parentheses
+if the meaning of the expression is at all ambiguous.  (Extra
+parentheses (never) hurt.)</FONT>
+<H1><FONT SIZE=6>Expressions in C &oacute; Function Applications
+<BR>
+</FONT></H1>
+<HR>
+<P>
+<I><FONT SIZE=5>name</FONT></I><FONT SIZE=5 FACE="Monaco">(<I>arguments</I>)</FONT>
+<HR>
+<P>
+<FONT SIZE=6>&iuml; <I>arguments</I> is a list of expressions
+separated by commas.<BR>
+</FONT>
+<P>
+<FONT SIZE=6>&iuml; The value of this expression is obtained by
+applying function <I>name</I> to the <I>arguments</I>.<BR>
+</FONT>
+<P>
+<FONT SIZE=6>&iuml; The number of arguments in the argument list
+must match the <I>arity</I> of the defined function <I>name</I>.
+<BR>
+</FONT>
+<P>
+<FONT SIZE=6>There are no functions built into C. Functions are
+defined externally by <I>libraries</I>.<BR>
+</FONT>
+<P>
+<FONT SIZE=6>Examples:<BR>
+</FONT><FONT SIZE=5 FACE="Monaco">abs(-3)sqr(3 + 4)GetInteger()hypotenuse(3,
+4)<BR>
+<BR>
+</FONT>
+<H1><CENTER><FONT SIZE=6>Expressions in C &oacute; Conditional
+Expressions<BR>
+</FONT></CENTER></H1>
+<HR>
+<P>
+<I><FONT SIZE=5>condition</FONT></I><FONT SIZE=5 FACE="Monaco">
+? <I>true-exp</I> : <I>false-exp</I></FONT>
+<HR>
+<P>
+<FONT SIZE=6>&iuml; The value of a conditional expression is the
+value of <I>false-exp</I> if <I>condition</I> evaluates to 0,
+or the value of <I>true-exp</I> otherwise.<BR>
+</FONT>
+<P>
+<FONT SIZE=6>&iuml; Since C relational operators use values 1
+and 0 for true and false, this allows a choice of value based
+on the outcome of a relational test. (But <I>condition</I> is
+not limited to relations.)<BR>
+</FONT>
+<P>
+<FONT SIZE=6>Examples:<BR>
+</FONT><FONT SIZE=5 FACE="Monaco">(1 &lt; 2) ? 1 : 2  </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco">
+1(2 &lt; 1) ? 1 : 2  </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco">
+21 + 1 ? 15 : 14  </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco">
+15<BR>
+</FONT>
+<P>
+<FONT SIZE=6>&iuml; First the <I>condition</I> is evaluated, and
+then either the <I>true-exp</I> or the <I>false-exp</I> is evaluated,
+but not both.<BR>
+<BR>
+</FONT>
+<P>
+<CENTER><B><FONT SIZE=6>Convergence and Divergence<BR>
+</FONT></B></CENTER>
+<P>
+<FONT SIZE=6>&iuml; Evaluation of an expression <I>diverges</I>
+if the result of an application is undefined. Evaluation <I>converges</I>
+if it doesn't diverge.<BR>
+</FONT>
+<P>
+<FONT SIZE=6>Example:<BR>
+</FONT><FONT SIZE=5 FACE="Monaco">10 / 0  </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco">
+diverges<BR>
+</FONT>
+<P>
+<FONT SIZE=6>&iuml; An operator is <I>strict</I> if it evaluates
+all of its operands. It is <I>non-strict</I> if it doesn't necessarily
+evaluate all of its operands.<BR>
+</FONT>
+<P>
+<FONT SIZE=6>Example:<BR>
+</FONT>
+<P>
+<FONT SIZE=6 FACE="Monaco">+, -, *, / </FONT><FONT SIZE=6>are
+ strict:<BR>
+</FONT>
+<P>
+<FONT SIZE=5> </FONT><FONT SIZE=6>e.g., </FONT><FONT SIZE=5> </FONT><FONT SIZE=5 FACE="Monaco">0
+* (1 / 0)</FONT><FONT SIZE=5>    </FONT><FONT SIZE=6 FACE="Symbol">&#222;</FONT><FONT SIZE=6>
+diverges<BR>
+</FONT>
+<P>
+<FONT SIZE=6>conditional expressions are</FONT><FONT SIZE=6 FACE="Monaco">
+</FONT><FONT SIZE=6>non-strict:<BR>
+</FONT>
+<P>
+<FONT SIZE=5> </FONT><FONT SIZE=6>e.g.,</FONT><FONT SIZE=5>  </FONT><FONT SIZE=5 FACE="Monaco">1
+? 2 : (3 / 0)</FONT><FONT SIZE=5>   </FONT><FONT SIZE=6 FACE="Symbol">&#222;</FONT><FONT SIZE=6>
+</FONT><FONT SIZE=5 FACE="Monaco">2</FONT>
+<H1><CENTER><FONT SIZE=6>Expressions in C &oacute; Logical Expressions
+<BR>
+</FONT></CENTER></H1>
+<P>
+<FONT SIZE=6>&iuml; Logical operators are used to combine the
+logical values, true and false, in various ways.<BR>
+</FONT>
+<TABLE BORDER=1>
+<TR><TD WIDTH=97><B><FONT SIZE=5>and</FONT></B></TD><TD WIDTH=60><CENTER><FONT SIZE=5>F</FONT></CENTER>
+</TD><TD WIDTH=60><CENTER><FONT SIZE=5>T</FONT></CENTER></TD>
+<TD WIDTH=60></TD><TD WIDTH=90><B><FONT SIZE=5>or</FONT></B></TD>
+<TD WIDTH=60><CENTER><FONT SIZE=5>F</FONT></CENTER></TD><TD WIDTH=60><CENTER><FONT SIZE=5>T</FONT></CENTER>
+</TD><TD WIDTH=60></TD><TD WIDTH=90><B><FONT SIZE=5>not</FONT></B>
+</TD><TD WIDTH=60></TD></TR>
+<TR><TD WIDTH=97><FONT SIZE=5>F</FONT></TD><TD WIDTH=60><CENTER><FONT SIZE=5>F</FONT></CENTER>
+</TD><TD WIDTH=60><CENTER><FONT SIZE=5>F</FONT></CENTER></TD>
+<TD WIDTH=60></TD><TD WIDTH=90><FONT SIZE=5>F</FONT></TD><TD WIDTH=60><CENTER><FONT SIZE=5>F</FONT></CENTER>
+</TD><TD WIDTH=60><CENTER><FONT SIZE=5>T</FONT></CENTER></TD>
+<TD WIDTH=60></TD><TD WIDTH=90><FONT SIZE=5>F</FONT></TD><TD WIDTH=60><CENTER><FONT SIZE=5>T</FONT></CENTER>
+</TD></TR>
+<TR><TD WIDTH=97><FONT SIZE=5>T</FONT></TD><TD WIDTH=60><CENTER><FONT SIZE=5>F</FONT></CENTER>
+</TD><TD WIDTH=60><CENTER><FONT SIZE=5>T</FONT></CENTER></TD>
+<TD WIDTH=60></TD><TD WIDTH=90><FONT SIZE=5>T</FONT></TD><TD WIDTH=60><CENTER><FONT SIZE=5>T</FONT></CENTER>
+</TD><TD WIDTH=60><CENTER><FONT SIZE=5>T</FONT></CENTER></TD>
+<TD WIDTH=60></TD><TD WIDTH=90><FONT SIZE=5>T</FONT></TD><TD WIDTH=60><CENTER><FONT SIZE=5>F</FONT></CENTER>
+</TD></TR>
+</TABLE>
+<P>
+<P>
+&iuml; In C, logical values are represented by 0 and 1, so the
+logical operators are also arithmetic operators.<BR>
+
+<TABLE BORDER=1>
+<TR><TD WIDTH=187>Operator</TD><TD WIDTH=120><FONT SIZE=5 FACE="Monaco">&amp;&amp;</FONT>
+</TD><TD WIDTH=120><FONT SIZE=5 FACE="Monaco">||</FONT></TD><TD WIDTH=120><FONT SIZE=5 FACE="Monaco">!</FONT>
+</TD></TR>
+<TR><TD WIDTH=187>Meaning</TD><TD WIDTH=120><B>and</B></TD><TD WIDTH=120><B>or</B>
+</TD><TD WIDTH=120><B>not</B></TD></TR>
+</TABLE>
+<P>
+<P>
+Examples:<BR>
+
+<TABLE>
+<TR><TD WIDTH=277><FONT SIZE=5 FACE="Monaco">0 &amp;&amp; 0 </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco"> 0</FONT>
+</TD><TD WIDTH=270><FONT SIZE=5 FACE="Monaco">0 || 0 </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco"> 0</FONT>
+</TD><TD WIDTH=180><FONT SIZE=5 FACE="Monaco">! 0 </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco"> 1</FONT>
+</TD></TR>
+<TR><TD WIDTH=277><FONT SIZE=5 FACE="Monaco">0 &amp;&amp; 1 </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco"> 0</FONT>
+</TD><TD WIDTH=270><FONT SIZE=5 FACE="Monaco">0 || 1 </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco"> 1</FONT>
+</TD><TD WIDTH=180><FONT SIZE=5 FACE="Monaco">! 1 </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco"> 0</FONT>
+</TD></TR>
+<TR><TD WIDTH=277><FONT SIZE=5 FACE="Monaco">1 &amp;&amp; 0 </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco"> 0</FONT>
+</TD><TD WIDTH=270><FONT SIZE=5 FACE="Monaco">1 || 0 </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco"> 1</FONT>
+</TD><TD WIDTH=180><FONT SIZE=5 FACE="Monaco">! 2 </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco"> 0</FONT>
+</TD></TR>
+<TR><TD WIDTH=277><FONT SIZE=5 FACE="Monaco">1 &amp;&amp; 1 </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco"> 1</FONT>
+</TD><TD WIDTH=270><FONT SIZE=5 FACE="Monaco">1 || 1 </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco"> 1</FONT>
+</TD><TD WIDTH=180></TD></TR>
+</TABLE>
+<H1>Logical expressions are non-strict, e.g.,<BR>
+</H1>
+
+<TABLE>
+<TR><TD WIDTH=336><FONT SIZE=5 FACE="Monaco">0 &amp;&amp; 1/0 </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco"> 0</FONT>
+</TD><TD WIDTH=270><CENTER><FONT SIZE=5 FACE="Monaco">1 || 1/0 </FONT><FONT SIZE=5 FACE="Symbol">&#222;</FONT><FONT SIZE=5 FACE="Monaco"> 1</FONT></CENTER>
+</TD></TR>
+</TABLE>
+<H1><CENTER>Programs<BR>
+</CENTER></H1>
+<HR>
+<P>
+<FONT SIZE=5>void main(void) { <I>statements</I> }</FONT>
+<HR>
+<P>
+<FONT SIZE=6>&iuml; All programs have this general form.<BR>
+</FONT>
+<P>
+<FONT SIZE=6>&iuml; <I>statements</I> are commands that direct
+the computer to do something.<BR>
+</FONT>
+<P>
+<FONT SIZE=6>&iuml; The statements are executed from left to right
+in order.<BR>
+</FONT>
+<P>
+<FONT SIZE=6>&iuml; The program stops after executing the last
+statement.<BR>
+</FONT>
+<H1><CENTER><FONT SIZE=6>Output<BR>
+</FONT></CENTER></H1>
+<HR>
+<P>
+<FONT SIZE=5>printf( <I>format</I>, <I>expressions</I> );</FONT>
+<HR>
+<P>
+<FONT SIZE=6>&iuml; This is the only statement you need for now.
+<BR>
+</FONT>
+<P>
+<FONT SIZE=6>&iuml; Prints output to a destination, usually a
+window on the screen.<BR>
+</FONT>
+<P>
+<FONT SIZE=6>&iuml; <I>format</I> is a quoted string giving the
+desired form of the output.<BR>
+</FONT>
+<P>
+<FONT SIZE=6>&iuml; <I>expressions</I> are the things to be printed.
+<BR>
+</FONT>
+<P>
+<FONT SIZE=6>&iuml; If there are no <I>expressions, format</I>
+is just a constant string to be output.<BR>
+</FONT>
+<H1><CENTER><FONT SIZE=6> <BR>
+</FONT></CENTER></H1>
+</BODY>
+</HTML>

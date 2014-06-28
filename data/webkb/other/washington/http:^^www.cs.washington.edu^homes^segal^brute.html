@@ -1,0 +1,88 @@
+Date: Tue, 10 Dec 1996 14:53:46 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Wed, 03 Jan 1996 23:13:43 GMT
+Content-length: 3637
+
+<title>Brute</title>
+
+<h1>Brute</h1>
+
+<p><hr size=3><p>
+
+<b>Principal Investigators: </b>
+<!WA0><!WA0><a href="http://www.cs.washington.edu/homes/segal/index.html"> Richard Segal </a> and
+<!WA1><!WA1><a href="http://www.cs.washington.edu/homes/etzioni"> Oren Etzioni </a>.
+
+
+
+
+<h2>Overview</h2>
+
+Brute is an inductive system for performing both data mining and
+classification tasks.  At the core of Brute, is an algorithm for
+efficiently searching the space of conjunctive rules up to a user specified
+depth.  When used for data mining, this core search can identify rules that
+meet a specific search criteria.  When used for classification, the rules
+found by Brute's core search must be combined to form a classifier.  Brute
+supports several mechanisms for building a classifier.<p>
+
+Brute differs from existing data mining and classification algorithms in
+that it uses massive search rather than greedy search.  Massive search can
+avoid many of the pitfalls of greedy search, albeit at additional cost.  <!WA2><!WA2><a
+href="http://www.cs.washington.edu/homes/segal/brute-analysis.html"> Empirical analysis</a> shows that brute
+performs much better than greedy algorithms for data mining and has similar
+performance when used for classification.  Surprisingly, Brute's <!WA3><!WA3><a
+href="http://www.cs.washington.edu/homes/segal/brute-analysis.html"> running time</a> is often quite reasonable.
+
+<h2>Efficiency</h2>
+
+Brute's efficiency is important because of its reliance on massive search.
+Brute was implemented in C to achieve maximum search speed.  Brute can
+process 100,000 rules per second on a 500 item database when run a SPARC-10
+processor.  Brute's running time grows linearly with the number of training examples. <p>
+
+Brute uses several pruning axioms to reduce the size of the space it must
+search.  These axioms are sound in that they only remove portions of the
+search space guaranteed not to contain useful rules.  Brute can commonly
+reduce the search space by a factor of a 1,000 or more.
+
+<h2>Flexibility</h2>
+
+Brute is a highly parameterized algorithm that allows the exploration of
+several different learning algorithms.  Brute's <!WA4><!WA4><a
+href="http://www.cs.washington.edu/homes/segal/brute-options.html"> options</a> allow it to simulate algorithms such
+as BruteDL, Greedy3, Kdl, 1R, and many variations.  This flexibility makes
+Brute a valuable tool for learning research.<p>
+
+Brute supports a wide variety of data formats.  Brute can be used with
+minimal effort on databases from the <!WA5><!WA5><a
+href="http://www.ics.uci.edu/AI/ML/Machine-Learning.html">UCI
+repository</a>, C4.5 databases, and IND databases.  A program is provided
+for automatically creating attribute description files that makes it easy
+to use Brute on new data sets.
+
+<h2>Availability</h2>
+
+Brute is available for both research and commercial uses.  Please contact
+Oren Etzioni <i>(<!WA6><!WA6><a href=mailto:etzioni@cs.washington.edu>etzioni@cs.washington.edu</a>)</i> for licensing details.  
+
+<h2>References</h2>
+
+P. Riddle, O. Etzioni, C. Pearson, and R. Segal.  <!WA7><!WA7><a href="http://www.cs.washington.edu/homes/segal/piaf.ps.gz">
+Process improvement through automated feedback (preliminary report)</a>. In
+<i> Proceedings of the Machine Learning Workshop on Integrated Learning in
+Real-World Domains</i>, July 1992.<p>
+
+P. Riddle, R. Segal, and O. Etzioni.  <!WA8><!WA8><a
+href="ftp://ftp.cs.washington.edu/pub/ai/brute-aai94.ps.Z">
+Representation design and brute-force induction in a Boeing manufacturing
+domain</a>. <i> Applied Artificial Intelligence</i>, 8:125-147, 1994.<p>
+
+R. Segal and O. Etzioni.  <!WA9><!WA9><a
+href="ftp://ftp.cs.washington.edu/pub/ai/brutedl-aaai94.ps.Z"> Learning 
+decision lists using homogeneous rules</a>. In <i> Proceedings of the
+Twelfth National Conference on Artificial Intelligence</i>, July, 1994.<p>
+
+<p><hr size=3>
+<!WA10><!WA10><a href=mailto:segal@cs.washington.edu><address>segal@cs.washington.edu</address></a>

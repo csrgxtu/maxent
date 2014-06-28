@@ -1,0 +1,670 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 24-Nov-96 21:32:38 GMT
+Content-Type: text/html
+Content-Length: 27263
+Last-Modified: Wednesday, 27-Sep-95 23:06:43 GMT
+
+<HTML>
+
+<HEAD>
+<TITLE>
+Query By Humming -- Musical Information Retrieval in an Audio Database
+</TITLE>
+
+<BODY>
+<b>     ACM Multimedia 95 - Electronic Proceedings <br>
+        November 5-9, 1995 <br> San Francisco, California</b>
+<HR>
+
+<H1>
+Query By Humming -- Musical Information Retrieval in an Audio Database
+</H1>
+
+<DL>
+<DT><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><a href="http://www.cs.cornell.edu/Info/People/ghias/home.html">
+Asif Ghias</a></STRONG>
+<DT>
+  <DD>Department of Computer Science
+  <DD>4130 Upson Hall
+  <DD>Cornell University
+  <DD>Ithaca, NY 14853 US
+  <DD>ghias@cs.cornell.edu
+<P>
+
+<DT><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href="http://www.cs.cornell.edu/Info/People/logan/">
+Jonathan Logan</a></STRONG>
+<DT>
+  <DD>Department of Computer Science
+  <DD>4130 Upson Hall
+  <DD>Cornell University
+  <DD>Ithaca, NY 14853 US
+  <DD>logan@ghs.com
+<P>
+
+<DT>David Chamberlin</STRONG>
+<DT>
+  <DD>School of Electrical Engineering
+  <DD>224 Phillips Hall
+  <DD>Cornell University
+  <DD>Ithaca, NY 14853 US
+  <DD>chamberlin@engr.sgi.com
+<P>
+
+<DT><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.cs.cornell.edu/Info/Faculty/Brian_Smith.html">
+Brian C. Smith</a></STRONG>
+<DT>
+  <DD>Department of Computer Science
+  <DD>4130 Upson Hall
+  <DD>Cornell University
+  <DD>Ithaca, NY 14853 US
+  <DD>bsmith@cs.cornell.edu
+<P>
+</DL>
+
+<HR>
+
+<H4> <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="http://www.cs.cornell.edu/Info/Faculty/bsmith/acmcopyright.html"> ACM Copyright Notice </A> </H4> 
+
+<HR>
+
+<H2>Abstract</H2>
+
+The emergence of audio and video data types in databases will require
+new information retrieval methods adapted to the specific
+characteristics and needs of these data types. An effective and natural
+way of querying a musical audio database is by humming the tune of a
+song.  In this paper, a system for querying an audio database by
+humming is described along with a scheme for representing the melodic
+information in a song as relative pitch changes.  Relevant difficulties
+involved with tracking pitch are enumerated, along with the approach we
+followed, and the performance results of system indicating its
+effectiveness are presented.
+
+
+<P>
+
+<HR>
+<H2><A NAME="toc">Table of Contents</A></H2>
+
+<UL>
+<LI><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="#sec:Introduction">Introduction</A>
+<LI><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A HREF="#sec:System">System Architecture</A>
+<LI><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><A HREF="#sec:Tracking">Tracking Pitch in Hummed Queries </A>
+    <UL>
+    <LI> <!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><A HREF="#subsec:Tracking">Tracking pitch</A>
+    </UL>
+<LI><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><A HREF="#sec:Searching">Searching the database 
+<LI><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><A HREF="#sec:Evaluation">Evaluation 
+    <UL>
+    <LI><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><A HREF="#subsec:Robustness">Robustness </A>
+    <LI><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><A HREF="#subsec:Performance">Performance </A>
+    </UL>
+<LI><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><A HREF="#sec:Future">Future directions and Related Work </A>
+<LI><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><A HREF="#sec:References">References </A>
+</UL>
+
+<HR>
+<H2><A NAME="sec:Introduction">Introduction</A></H2>
+
+<P>
+Next generation databases will include image, audio and video data in
+addition to traditional text and numerical data. These data types will
+require query methods that are more appropriate and natural to the type
+of respective data. For instance, a natural way to query an image
+database is to retrieve images based on operations on images or
+sketches supplied as input. Similarly a natural way of querying an
+audio database (of songs) is to hum the tune of a song.
+
+<P>
+Such a system would be useful in any multimedia database containing
+musical data by providing an alternative and natural way of querying.
+One can also imagine a widespread use of such a system in commercial
+music industry, music radio and TV stations, music stores and even for
+one's personal use.
+
+<P>
+In this paper, we address the issue of how to specify a hummed query
+and report on an efficient query execution implementation using
+approximate pattern matching.  Our approach hinges upon the observation
+that melodic contour, defined as the sequence of relative differences
+in pitch between successive notes, can be used to discriminate between
+melodies. Handel <!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><A HREF=#ref:handel>[3]</A> indicates that melodic
+contour is one of the most important methods that listeners use to
+determine similarities between melodies.  We currently use an alphabet
+of three possible relationships between pitches (`U', `D', and `S'),
+representing the situations where a note is above, below or the same as
+the previous note, which can be pitch-tracked quite robustly.  With the
+current implementation of our system we are successfully able to
+retrieve most songs within 12 notes. Our database currently comprises a
+collection of all parts (melody and otherwise) from 183 songs,
+suggesting that three-way discrimination would be useful for finding a
+particular song among a private music collection, but that higher
+resolutions will probably be necessary for larger databases.
+
+<P>
+This paper is organized as follows.  The first section describes the
+architecture of the current system. The second section describes what
+pitch is, why it is important in representing the melodic contents of
+songs, several techniques for tracking pitch we tried and discarded,
+and the method we settled on.  Next we discuss pattern matching as it
+is used in the current implementation of the database.  The last two
+sections describe our evaluation of the current system and specify some
+future extensions that we are considering incorporating in the existing
+system.
+
+<H5><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><A HREF="#toc"><-- Table of Contents</A></H5>
+
+<HR>
+<H2><A NAME="sec:System">System Architecture</A></H2>
+
+<P>
+There are three main components to the our system: a pitch-tracking
+module, a melody database, and a query engine. The architecture is
+illustrated in Figure 1.  Operation of the system is straight-forward.
+Queries are hummed into a microphone, digitized, and fed into a
+pitch-tracking module.  The result, a contour representation of the
+hummed melody, is fed into the query engine, which produces a ranked
+list of matching melodies.
+
+<P>
+<!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><IMG ALT="[IMG]" SRC="http://www.cs.cornell.edu/Info/Faculty/bsmith/query-by-humming/fig1.gif"> 
+<BR>
+<STRONG>Figure 1.</STRONG> System Architecture
+
+<P>
+The database of melodies was acquired by processing public domain MIDI
+songs, and is stored as a flat-file database.  Pitch tracking is
+performed in Matlab, chosen for its built-in audio processing
+capabilities and the ease of testing a number of algorithms within it.
+Hummed queries may be recorded in a variety of formats, depending upon
+the platform-specific audio input capabilities of Matlab. We have
+experimented with 16-bit, 44Khz WAV format on a Pentium system, and
+8-bit, 8Khz AU format on a Sun Sparcstation.  The query engine uses an
+approximate pattern matching algorithm <!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><A HREF=#ref:asifa>[1]</A>,
+described in below, in order to tolerate humming errors.
+
+
+<H5><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><A HREF="#toc"><-- Table of Contents</A></H5>
+<HR>
+<H2><A NAME="sec:Tracking">Tracking Pitch in Hummed Queries </H2>
+
+This section describes how user input to the system (humming) is
+converted into a sequence of relative pitch transitions. A note in the
+input is classified in one of three ways: a note is either the same as
+the previous note (S), higher than previous note (U), or lower than the
+previous note (D). Thus, the input is converted into a string with a
+three letter alphabet (U,D,S). For example, the introductory theme
+Beethoven's 5th Symphony would be converted into the sequence: - S S D
+U S S D (the first note is ignored as it has no previous pitch).
+
+<P>
+To accomplish this conversion, a sequence of pitches in the melody must
+be isolated and tracked. This is not as straight-forward as it sounds,
+however, as there is still considerable controversy over exactly what
+pitch is.  The general concept of pitch is clear: given a note, the
+pitch is the frequency that most closely matches what we hear.
+Performing this conversion in a computer can become troublesome because
+some intricacies of human hearing are still not understood.  For
+instance, if we play the 4th, 5th, and 6th harmonics of some
+fundamental frequency, we actually hear the fundamental frequency, not
+the harmonics even though the fundamental frequency is not present.
+This phenomenon was first discovered by Schouten in some pioneer
+investigations carried out from 1938 to 1940. Schouten studied the
+pitch of periodic sound waves produced by an optical siren in which the
+fundamental of 200Hz was canceled completely.  The pitch of the complex
+tone, however, was the same as that prior to the elimination of the
+fundamental <!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><A HREF=#ref:plomp>[12]</A>
+
+<P>
+Since we were interested in tracking pitch in humming, we examined
+methods for automatically tracking pitch in a human voice. Before we
+can estimate the pitch of an acoustic signal, we must first understand
+how this signal is created, which requires forming a model of sound
+production at the source.  The vibrations of the vocal cords in voiced
+sounds are caused as a consequence of forces that are exerted on the
+laryngeal walls when air flows through the glottis (the gap between the
+vocal cords <!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><A HREF=#note:1>*</A>).  Hess <!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><A
+HREF=#ref:hess>[5]</A> describes a model of the vocal cords as proposed
+by Hirano <!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><A HREF=#ref:hirano>[6]</A>.  For the purposes of this paper
+though, it is sufficient to know that the glottis repeatedly opens and
+closes thus providing bursts of air through the vocal tract.
+
+<P>
+The vocal tract can be modeled as a linear passive transmission system
+with a transfer function H(z).  If we add an additional transfer
+function R(z) which takes into account the radiation, the output
+impedance of the vocal tract can approximately be set to zero.  In the
+neutral position where the vocal tract can be regarded as a uniform
+tube, the resonances of the vocal tract occur at sound wavelengths of
+<!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><IMG ALT="[IMG]" SRC="http://www.cs.cornell.edu/Info/Faculty/bsmith/query-by-humming/eq1.gif"> <BR> With L = 17cm (average value of
+vocal-tract length) and a sound propagation speed of c = 340 m/s, the
+frequencies of these resonances will be:  <!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><IMG ALT="[IMG]"
+SRC="http://www.cs.cornell.edu/Info/Faculty/bsmith/query-by-humming/eq2.gif"> <BR> The frequencies F[k] are called formant
+frequencies.
+
+<P>
+The resulting sound that we hear is considered to be the convolution of
+the excitation pulse created by the glottis and the formant
+frequencies.  Therefore, if we want to model a speech signal, we start
+with a train of excitation pulses as shown in figure 2.  For the
+formant frequencies, use equation (2) with k = 1, 2, or 3.  This gives
+formant frequencies:  F[1] = 500Hz, F[2] = 1500 Hz, and F[3] = 2500
+Hz.  Combining these frequencies and adding an exponential envelope
+produces the formant structure shown in figure 3.  By convolving the
+train of excitation pulses with the formant structure, we get a
+synthesized pitch as shown in figure 4.
+
+<P>
+<!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><IMG ALT="[IMG]" SRC="http://www.cs.cornell.edu/Info/Faculty/bsmith/query-by-humming/fig2.gif">
+<BR>
+<STRONG>Figure 2.</STRONG> Excitation signal used to create the
+synthesized pitch.  The period in the train of excitations is
+T[0]=0.01s making the pitch 100 Hz.
+
+<P>
+<!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><IMG ALT="[IMG]" SRC="http://www.cs.cornell.edu/Info/Faculty/bsmith/query-by-humming/fig3.gif">
+<BR>
+<STRONG>Figure 3.</STRONG> Formant structure created using 500Hz, 1500Hz and
+2500Hz as the formant frequencies.
+
+<P>
+<!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><IMG ALT="[IMG]" SRC="http://www.cs.cornell.edu/Info/Faculty/bsmith/query-by-humming/fig4.gif">
+<BR>
+<STRONG>Figure 4.</STRONG> Synthesized pitch of 100Hz created by convolving
+the train of excitation pulses (spaced by 0.01s) and the formant structure.
+
+<P>
+Now that we have a model of the human voice, how can it be converted to
+pitch?  The most prevalent view on pitch is that what we hear as pitch
+is actually the frequency at which the bursts of air occur.  So if we
+can track those bursts of air we can find the pitch of the segment.
+
+<H3> <A NAME="subsec:Tracking">Tracking pitch</H3>
+We tried three methods for tracking pitch: Autocorrelation, Maximum
+Likelihood, Cepstrum Analysis.
+
+<UL>
+<LI> Autocorrelation 
+
+<P>
+Autocorrelation is one of the oldest of the classical pitch trackers
+<!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><A HREF=#ref:autocor>[7]</A>.
+Autocorrelation isolates and tracks the peak energy levels of the
+signal which is a measure of the pitch. Referring back to figure 3, we see
+that the signal s(n) peaks where the impulses occur. Therefore, tracking
+the frequency of this peaks should give us the pitch of the signal.
+<P>
+In order to get the frequency of these peaks we can employ autocorrelation
+as defined by:
+<BR>
+<!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><IMG ALT="[IMG]" SRC="http://www.cs.cornell.edu/Info/Faculty/bsmith/query-by-humming/eq3.gif">
+<BR>
+
+Unfortunately autocorrelation is subject to aliasing (picking an
+integer multiple of the actual pitch) and is computationally complex.
+We found our implementation of autocorrelation to require approximately
+45 seconds for 10 seconds of 44KHz, 16-bit audio on a 90MHz pentium
+workstation.
+
+<LI>Maximum Likelihood
+
+<P>
+Maximum Likelihood <!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><A HREF=#ref:mlh>[14]</A> is a
+modification of Autocorrelation that increases the accuracy of the
+pitch and decreases the chances of aliasing.
+
+<P>
+Unfortunately, the computational complexity of this method makes
+autocorrelation look blindingly fast.  A straight-forward
+implementation in Matlab takes approximately one hour to evaluate 10
+seconds of audio on a 90MHz Pentium workstation.  With some
+optimizations, we improved the performance to approximately 15 minutes
+per 10 seconds of audio, but this is still far too slow for our
+purposes.  Therefore, we discarded this method.  For a detailed
+explanation of this method, the reader may refer to
+<!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><A HREF=#ref:mlh>[14]</A>.
+
+<LI>Cepstrum Analysis
+
+<P>
+Cepstrum analysis is the definitive classical method of pitch
+extraction.  For an explanation, the reader is directed to Oppenheim
+and Schafer's original work in <!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><A HREF=#ref:opp>[10]</A> or in a more
+compact form in <!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><A HREF=#ref:dtsp>[11]</A>. We found that this method
+did not give very accurate results for humming.
+
+</UL>
+<P>
+The output of these methods can be construed as a sequence of frequency
+estimations for successive pitches in the input. We convert these
+estimates into a three-step contour representation by comparing each
+estimated pitch with the previous one.  In our system adjacent pitches
+are considered the same if they are within a quarter-step of each other
+(on an equal-tempered musical scale), but this parameter is
+adjustable.
+
+<P>
+After analyzing the costs and benefits of these methods, we decided to use a
+modified form of autocorrelation for our implementation.
+
+<H5><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><A HREF="#sec:Tracking"><-- Tracking Pitch in Hummed Queries</A></H5>
+
+<H5><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><A HREF="#toc"><-- Table of Contents</A></H5>
+
+
+<HR>
+<H2><A NAME="sec:Searching">Searching the database </H2>
+<P>
+Having described how the user input (a hummed tune) is converted into a
+string in a 3 letter alphabet, we now discuss our method for searching
+an audio database. Our method of searching the database is simple.
+Songs in the database are preprocessed to convert the melody into a
+stream of U,D,S characters, and the converted user input (the
+<em>key</em>) is compared with all the songs. The pattern-matching uses
+a ``fuzzy'' search to allow for errors within the matches. These errors
+reflect the inaccuracies in the way people hum as well as errors in the
+representation of the songs themselves.
+
+<P>
+For performing the key-search within the database we need an efficient
+approximate pattern matching algorithm. By ``approximate'' we mean that
+the algorithm should be able to take into account various forms of
+errors.
+
+<P>
+Figure 5 summarizes the various forms of  errors anticipated
+in a typical pattern matching scheme.
+
+<P>
+<!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><IMG ALT="[IMG]" SRC="http://www.cs.cornell.edu/Info/Faculty/bsmith/query-by-humming/fig5.gif">
+<BR>
+<STRONG>Figure 5.</STRONG> Three forms of anticipated errors with one
+mismatch
+
+<P>
+The algorithm that we adopted for this purpose is described by
+Baesa-Yates and Perleberg <!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><A HREF=#ref:asifa>[1]</A>. This algorithm
+addresses the problem of string matching with <i>k</i> mismatches. The
+problem consists of finding all instances of a pattern string <i>P = p1
+p2 p3...pm</i> in a text string <i>T = t1 t2 t3...tn</i> such that
+there are at most <i>k</i> mismatches (characters that are not the
+same) for each instance of <i>P</i> in <i>T</i>.  When <i>k = 0</i> (no
+mismatches) we have the simple string matching problem, solvable in
+<i>O(n)</i> time. When <i>k = m</i>, every substring of <i>T</i> of
+length <i>m</i> qualifies as a match, since every character of <i>P</i>
+can be mismatched. Each of the errors in the figure above corresponds
+to <i>k = 1</i>.
+
+<P>
+It is worth mentioning that several algorithms have been developed that
+address the problem of approximate string matching. Running times have
+ranged from <i>O(mn)</i> for the brute force algorithm to <i>O(kn)</i>
+<!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><A HREF=#ref:asifb>[9]</A> or <i>O(n log(m))</i>
+ <!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><A HREF=#ref:asifd>[2]</A>.  The algorithm that we adopted offers better
+performance for average cases than most other algorithms.
+
+<P>
+The worst case for this algorithm occurs when
+<i>P</i> (the key) consists of
+<i>m</i> occurrences of a single distinct character, and
+<i>T</i> (contour representation of song)
+consists of
+<i>n</i> instances of that character.
+In this case the running time is
+<i>O(mn)</i>. However this is neither a common nor
+useful situation for our
+purposes.
+In the average case of an alphabet in which each character is
+equally likely to occur, the running time is
+<BR>
+<!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><IMG ALT="[IMG]" SRC="http://www.cs.cornell.edu/Info/Faculty/bsmith/query-by-humming/eq4.gif">
+<BR>
+where <!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><IMG ALT="[IMG]" SRC="http://www.cs.cornell.edu/Info/Faculty/bsmith/query-by-humming/eq5.gif"> is the size of the alphabet.
+
+<P>
+The database incorporates the key-searching scheme (using pattern
+matching techniques explained above).  We envisioned the following
+design goals for the database. For a given query, the database returns
+a list of songs ranked by how well they matched the query, not just one
+best match. The number of matches that the database should retrieve
+depends upon the error-tolerance used during the key-search. This
+error-tolerance could be set in one of two possible ways: either it can
+be a user-definable parameter or the database can itself determine this
+parameter based on, for example by heuristics that depends on the
+length of the key. This design gives the user an opportunity to perform
+queries even if the user is not sure of some notes within the tune.
+
+<P>
+From the results of the query the user can identify the song of
+interest. If the list is too large, the user can perform a new query on
+a restricted search list consisting of songs just retrieved. A
+consequence of this scheme is that the user can identify sets of songs
+that contain similar melodies.
+
+<H5><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><A HREF="#toc"><-- Table of Contents</A></H5>
+
+
+<HR>
+<H2><A NAME="sec:Evaluation">Evaluation </H2>
+
+<P>
+This section describes the results of an experimental evaluation of
+the system. Our evaluation tested the tolerance of the system with
+respect to input errors, whether from mistakes in the user's
+humming or from problems with the pitch-tracking.
+
+<H3><A NAME="subsec:Robustness">Robustness </H3>
+
+<P>
+The effectiveness of this method is directly related to the accuracy
+with which pitches that are hummed can be tracked and the accuracy of
+the melodic information within the database. Under ideal circumstances,
+we can achieve close to 100%accuracy tracking humming, where ideal
+circumstances mean the user places a small amount of space between each
+note and hits each note strongly. For this purpose, humming short notes
+is encouraged. Even more ideal is for the user to aspirate the notes as
+much as possible, perhaps going so far as to voice a vowel, as in
+``haaa haaa haaa''. We have currently only experimented with male
+voices.
+
+<P>
+The evaluation database currently contains a total of 183 songs. Each
+song was converted from public domain General MIDI sources. Melodies
+from different musical genres were included, including both classical
+and popular music.  A few simple heuristics were used to cut down on
+the amount of irrelevant information from the data, e.g. MIDI channel
+10 was ignored as this is reserved for percussion in the General MIDI
+standard.  However the database still contains a great deal of
+information unrelated to the main theme of the melody. Even with this
+limitation, we discovered that sequences of 10-12 pitch transitions
+were sufficient to discriminate 90%of the songs.
+
+<P>
+As a consequence of using a fast approximate string matching algorithm,
+search keys can be matched with any portion of the melody, rather than
+just the beginning. As the size of the database grows larger, however,
+this may not prove to be an advantage.
+
+<H5><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><A HREF="#sec:Evaluation"><-- Evaluation</A></H5>
+
+<H3><A NAME="subsec:Performance">Performance </H3>
+<P>
+The version of the pitch-tracker using a modified form of
+autocorrelation (<!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><A HREF=#note:2>**</A>) takes between 20 and 45
+seconds on a Sparc 10 workstation to process typical sequences of hummed
+notes. A brute-force search of the database unsurprisingly shows linear
+growth with the size of the database, but remains below 4 seconds for
+100 songs on a Sparc 2. Therefore the search time is currently
+effectively limited by the efficiency of the pitch-tracker.
+
+<P>
+Contour representations for each song are currently stored in separate
+files, so opening and closing files becomes a significant overhead.
+Performance could be improved by packing all the songs into one file,
+or by using a database manager. We plan to modularize our code to make
+it independent of any particular database schema.
+
+<H5><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><A HREF="#sec:Evaluation"><-- Evaluation</A></H5>
+
+<H5><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><A HREF="#toc"><-- Table of Contents</A></H5>
+<HR>
+<H2><A NAME="sec:Future">Future directions and Related Work </A></H2>
+
+<P>
+We plan to improve the performance and speed and robustness of the
+pitch-tracking algorithm by using a cubic-spline wavelet. The cubic
+spline wavelet peaks at discontinuities in the signal (i.e. the air
+impulses). One of the most significant features of the wavelet analysis
+is that it can be computed in <i>O(n)</i> time.  Currently, the pitch
+tracker is the slowest link in our system, so using wavelets for this
+purpose has obvious advantages.
+
+<P>
+The pattern matching algorithm in its present form does not
+discriminate the various forms of pattern matching errors discussed
+earlier, but only accounts for them collectively. Some forms of errors
+may be more common than others depending upon the way people casually
+hum different tunes. For example drop-out errors reflected as dropped
+notes in tunes are more common than transposition or duplication
+errors. Tuning the key-search so that it is more tolerant to drop-out
+errors, for example, may yield better results.
+
+<P>
+The melodic contours of the source songs are currently generated
+automatically from MIDI data, which is convenient but not optimal. More
+accuracy and less redundant information could be obtained by entering
+the melodic themes for particular songs by hand. From a research
+standpoint, an interesting question is how to extract melodies from
+complex audio signals<!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><A HREF=#ref:hawley>[4]</A>.
+
+<P>
+Finally, we would like to characterize the improvement gained by
+increasing the resolution of the relative pitch differences by
+considering query alphabets of three, five and more possible
+relationships between adjacent pitches. Early experiments using an
+alphabet of five relative pitch differences (same, higher, much higher,
+lower, much lower) verified that changes of this sort are promising.
+One drawback of introducing more resolution is that the user must be
+somewhat more accurate in the intervals they actually hum. We will
+explore the various tradeoffs involved. An important issue is precisely
+where to draw the line between notes that are a little higher from the
+previous note and those that are much higher.
+
+<P>
+Previous work on efficiently searching a database of melodies by
+humming seems to be limited. Mike Hawley <!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><A HREF=#ref:hawley>[4]</A>
+briefly discusses a method of querying a collection of melodic themes
+by searching for exact matches of sequences of relative pitches input
+by a MIDI keyboard. We have incorporated approximate pattern matching,
+implementing an actual audio database (of MIDI songs) and most
+significantly by allowing queries to be hummed. Kageyama and Takashima
+<!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><A HREF=#ref:kageyama>[8]</A> published a paper on retrieving melodies
+using a hummed melody in a Japanese journal, but we were unable to
+locate a translated version.
+<H5><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><A HREF="#toc"><-- Table of Contents</A></H5>
+
+<HR>
+<H2><A NAME="sec:Footnotes">Footnotes </A></H2>
+
+<DL>
+<DT> <A NAME=note:1>*</A>
+<DD> The terms vocal folds and vocal chords are more or less used as
+synonyms in the literature.
+
+<DT> <A NAME=note:2>**</A>
+<DD> The modifications include low-pass filtering and
+center-clipping (as described in Sondhi's paper
+<!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><A HREF=#ref:sondhi>[13]</A>) which help
+eliminate the formant structure that generally causes difficulty for
+autocorrelation based pitch detectors.
+
+</DL>
+
+<H5><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><A HREF="#toc"><-- Table of Contents</A></H5>
+<HR>
+<H2><A NAME="sec:References">References </A></H2>
+<DL>
+<DT><A NAME=ref:asifa><B>1</B></A><DD>
+Ricardo A. Baesa-Yates and Chris H. Perleberg.
+Fast and practical approximate string matching.
+<em>Combinatorial Pattern Matching, Third Annual Symposium</em>, pages
+  185-192, 1992.
+
+<DT><A NAME=ref:asifd><B>2</B></A><DD>
+Ricardo Baesa-Yates and G.H. Gonnet.
+Fast string matching with mismatches.
+<em>Information and Computation</em>, 1992.
+
+<DT><A NAME=ref:handel><B>3</B></A><DD>
+Stephen Handel.
+<em>Listening: An Introduction to the Perception of Auditory
+  Events</em>.
+The MIT Press, 1989.
+
+<DT><A NAME=ref:hawley><B>4</B></A><DD>
+Michael Jerome Hawley.
+<em>Structure out of Sound</em>.
+PhD thesis, MIT, September 1993.
+
+<DT><A NAME=ref:hess><B>5</B></A><DD>
+Wolfgang Hess.
+<em>Pitch Determination of Speech Signals</em>.
+Springer-Verlag, Berlin Heidelberg, 1983.
+
+<DT><A NAME=ref:hirano><B>6</B></A><DD>
+M. Hirano.
+Structure and vibratory behavior of the vocal folds.
+In M. Sawashima and F.S. Cooper, editors, <em>Dynamic aspects of
+speech production</em>, pages 13-27. University of Tokyo Press, 1976.
+
+<DT><A NAME=ref:autocor><B>7</B></A><DD>
+L.R. Rabiner J.J. Dubnowski and R.W. Schafer.
+Real-time digital hardware pitch detector.
+<em>IEEE Transactions on Acoustics, Speech and Signal Processing</em>,
+  ASSP-24(1):2-8, Feb 1976.
+
+<DT><A NAME=ref:kageyama><B>8</B></A><DD>
+T. Kageyama and Y. Takashima.
+A melody retrieval method with hummed melody (language: Japanese).
+<em>Transactions of the Institute of Electronics, Information and
+  Communication Engineers D-II</em>, J77D-II(8):1543-1551, August 1994.
+
+<DT><A NAME=ref:asifb><B>9</B></A><DD>
+G. Landau and U. Vishkin.
+Efficient string matching with k mismatches.
+<em>Theoretical Computer Science</em>, 43:239-249, 1986.
+
+<DT><A NAME=ref:opp><B>10</B></A><DD>
+A. V. Oppenheim.
+A speech analysis-synthesis system based on homomorphic filtering.
+<em>J. Acoustical Society of America</em>, 45:458-465, February 1969.
+
+<DT><A NAME=ref:dtsp><B>11</B></A><DD>
+Alan V. Oppenheim and Ronald W. Schafer.
+<em>Discrete-time Signal Processing</em>.
+Prentice Hall, Englewood Cliffs, NJ, 1989.
+
+<DT><A NAME=ref:plomp><B>12</B></A><DD>
+R. Plomp.
+<em>Aspects of tone sensation</em>.
+Academic Press, London, 1976.
+
+<DT><A NAME=ref:sondhi><B>13</B></A><DD>
+M. M. Sondhi.
+New methods of pitch extraction.
+<em>IEEE Trans. Audio Electroacoust. (Special Issue on Speech
+  Communication and Processing-Part II</em>, AU-16:262-266, June 1968.
+
+<DT><A NAME=ref:mlh><B>14</B></A><DD>
+James D. Wise, James R. Caprio, and Thomas W. Parks.
+Maximum likelihood pitch estimation.
+<em>IEEE Trans. Acoustics, Speech, Signal Processing</em>, 24(5):418-423,
+  October 1976.
+
+</DL>
+
+<H5><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><A HREF="#toc"><-- Table of Contents</A></H5>
+<HR>
+</BODY>
+</HTML>

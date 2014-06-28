@@ -1,0 +1,132 @@
+Date: Mon, 02 Dec 1996 14:54:18 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Answer Sheet
+</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.0Gold (X11; I; Linux 2.0.21 i686) [Netscape]">
+</HEAD>
+<BODY>
+
+<H1 ALIGN=CENTER>Answers and Hints to Review Sheet</H1>
+
+<P>
+<HR></P>
+
+<P>1<B>. The trend is that R+M machine tends to have more percentage of
+branch instructions while L/S machines tend to have the lowest percentage
+of branch instructions. The reason is that for every computation task there
+exists a fixed number of branches but the encoding for different kinds of
+machines differs. Because R+M has the most compact encoding, it has the
+highest percentage of branches. </B></P>
+
+<P><B>2. L/S machine:</B></P>
+
+<UL>
+<P><B>LD.W R1, B</B></P>
+
+<P><B>LD.W R2, C</B></P>
+
+<P><B>ADD.2 R3, R2, R1</B></P>
+
+<P><B>ST.W A, R3</B></P>
+
+<P><B>(4 words)</B></P>
+</UL>
+
+<P><B>R/M machine:</B></P>
+
+<UL>
+<P><B>LD.W R1, B</B></P>
+
+<P><B>ADD.2 R1, C</B></P>
+
+<P><B>ST.W A, R1</B></P>
+
+<P><B>(3 words)</B></P>
+</UL>
+
+<P><B>R+M machin:</B></P>
+
+<UL>
+<P><B>ADD.W A, B, C</B></P>
+
+<P><B>( 2 words)</B></P>
+</UL>
+<B></B>
+<P><B>3. Page 151, we get 6.9 instructions gain using the perfect register
+window. So in all, the total execution speed up is 110.9/104 - 1 = 6.6%</B></P>
+<B></B>
+<P><B>4. system call/return: 84*1.5/12 = 10.5</B></P>
+
+<P><B>trap/interrupt: 103*1.5 / 14 = 11.0</B></P>
+
+<P><B>page table entry change: 36*1.5 / 11 = 4.0</B></P>
+
+<P><B>context switch: 135 * 1.5 / 9 = 22.5</B></P>
+<B></B>
+<P><B>5. Basically, instruction run-length is the number of instructions
+between branches. </B></P>
+
+<P><B>One would expect L/S machines to have a larger run-length simply it
+has the lowest percentage of branch intructions. (refer to Question 1)</B></P>
+<B></B>
+<P><B>6. BC, BR, BCR, BRR 0.524 * (0.2 + 0.432)</B></P>
+
+<P><B>+ loop control 0.071&nbsp;* 0.91</B></P>
+
+<P><B>+ procedure call 0.405</B></P>
+
+<P><B>-----------------------</B></P>
+
+<P><B>total = 0.8</B></P>
+<B></B>
+<P><B>7. The centered branch table contains 
+both prefetched instructions and retained preciously
+executed instructions. </B></P>
+
+<P><B>64 words&nbsp;(256 bytes) would be needed for an L/S architecture
+to be at least 50% effective. (refer to figure 3.12)</B></P>
+<B></B>
+<P><B>8. 58.557% of instructions in a program depends for their execution
+on data values computed in the previous three instructions. </B></P>
+
+<P><B>0.586 * 0. 53 = 0.31 cycles.</B></P>
+<B></B>
+<P><B>9. IF/IF/D/EX/MEM/MEM/WB</B></P>
+<B></B>
+<P><B>10. ADD: IF/IF/D/EX /MEM/MEM/WB</B></P>
+
+<P><B>BC: BLANK/IF/IF/D/EX/MEM/MEM/WB</B></P>
+
+<P><B>TARGET: BLANK/BLANK/IF/IF/BLANK/TIF/TIF/D</B></P>
+
+<P><B>INLINE: BLANK/BLANK/IF/IF/BLANK/D</B></P>
+<B></B>
+<P><B>11. ADD: IF/IF/D/EX/MEM/MEM/WB</B></P>
+
+<P><B>ADD: BLANK/IF/IF/D/BLANK/BLANK/EX/MEM/MEM/WB</B></P>
+<B></B>
+<P><B>12. for question 10, we have 1.5 cycles delay( 1 or 2) and for question
+11, we have 2 cycles delay.</B></P>
+<B></B>
+<P><B>13. The previous AG instruction is waiting for the result of the
+former instruction.
+The AG is controlled by the output of the decocde, so a new decode can't
+be stored until AG is finished. </B></P>
+<B></B>
+<P><B>14. Because compilers could make use of it to reorganize the instructions
+so that decoding pipeline delay can be reduced and free instructinons could be 
+executed. </B></P>
+<B></B>
+<P><B>15.  A Run-on instruction is basically an instruction that occupies 
+the execution unit for many cycles than for basic instructions.
+ </B></P>
+
+<P><B>e.g., multiply   or divide  unit. </B></P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,82 @@
+Date: Mon, 11 Nov 1996 17:18:51 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Sat, 26 Oct 1996 22:02:01 GMT
+Content-length: 2650
+
+<HTML>
+
+<HEAD>
+<TITLE>CS 110 Sections 1&2 - Program 0</TITLE>
+</HEAD>
+
+<BODY>
+
+<H2><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~tick/cs110.html#assignments" ><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><IMG SRC="http://www.cs.wisc.edu/~tick/icons/arrowleft.gif" WIDTH=15 HEIGHT=15></A> Program0</H2>
+
+<HR>
+<DL>
+<DT>Due Date:
+<DD>Friday 11/1/96, 5:00 pm<P>
+<DT>Grade:
+<DD>4% of your final grade.<P>
+<DT>Text Covered:
+<DD>None<P>
+<DT>Problem Description:<p>
+<DD>Program0 requires you to do no programming of your own, nor are you required at this point to understand what the program is doing (although it may make a little more sense once you run it). It's simply intended to get you used to using the PC's, MS-DOS, and Microsoft Fortran.
+<p>
+<li>Send me e-mail (tick@cs.wisc.edu) indicating which
+email address you send and receive your mail from. <p>
+<li>You need to be registered for this class in order to be given an account on the Vectras. The account will take about 2 days to set-up after you register. If your account won't be set-up yet by the due date of this program, let me know <STRONG>immediately</STRONG>.<p>  
+<li>Check out <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A href="http://www.cs.wisc.edu/~tick/cs110/Short.html">the basics of using Fortran on the PC's</A>. This will tell you exactly what to do; just read the following comments below, then follow the steps.
+<p>
+<ul>
+<li>Note that step 10 talks about copying additional files. For this program, you'll want to copy a file called prog0.dat (that's a zero, not the letter O) into your working directory.     
+<p>
+<li>When you type this program in, use your name instead of mine where it appears
+near the top of the program. Also, make sure that you type this *exactly*
+as you see it. The C's and line #s must be in the very first column, and
+the rest (i.e. PROGRAM ZERO, IMPLICIT NONE, etc) must be in column 7...Use
+the TAB key to jump to column 7.<p>
+<li>Here is the program to type in (step 13): 
+</ul>
+</dl>
+<PRE>
+C       Jeff Lampert
+C       10/26/96
+C       Program 0
+C       CS110, Section 2
+
+        PROGRAM ZERO
+        IMPLICIT NONE
+        CHARACTER NAME*128
+        CHARACTER BUFFER*20
+
+        OPEN (UNIT = 1, FILE = 'PROG0.DAT' , STATUS = 'OLD')  
+
+        PRINT *,'Please enter your name: '
+        READ '(A)',NAME
+
+2       CONTINUE
+
+           READ(1,4,END=3) BUFFER
+4          FORMAT(A)
+           PRINT *,BUFFER 
+        GOTO 2
+
+3       CONTINUE
+
+        PRINT *, NAME
+        CLOSE(UNIT=1)
+        STOP
+        END
+</PRE>
+</BODY>
+<HR>
+
+<ADDRESS>
+<H5>Copyright &copy 1996 <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="http://www.cs.wisc.edu/~tick/tick.html">Jeff Lampert</A> (<!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="mailto:tick@cs.wisc.edu">tick@cs.wisc.edu</A>).  Last modified October 26, 1996.</H5>
+</ADDRESS>
+
+</HTML>
+

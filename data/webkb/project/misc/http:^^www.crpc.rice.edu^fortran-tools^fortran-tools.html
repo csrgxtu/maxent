@@ -1,0 +1,185 @@
+Date: Tue, 26 Nov 1996 00:18:05 GMT
+Server: NCSA/1.5.1
+Last-modified: Thu, 21 Nov 1996 18:45:06 GMT
+Content-type: text/html
+Content-length: 11211
+
+<!-- comments-->
+<HTML>
+
+<HEAD>
+<title>Fortran Parallel Programming Systems</title>
+</HEAD>
+
+<BODY bgcolor="#ffffff">
+
+<h1>Fortran Parallel Programming Systems</h1>
+<hr>
+<p>
+The Fortran Parallel Programming Systems, or Fortran Tools, project seeks to make parallel computer systems truly usable for Fortran programmers. In this effort, special emphasis is placed on data-parallel programming and scalable parallelism. 
+
+<p>
+
+<h3>On This Page...</h3>
+<p>
+<ul>
+<li> <!WA0><a href = "#OO">Project Overview</a>
+<li> <!WA1><a href = "#LC">Fortran D Language & Compilers</a>
+<ul>
+<li> <!WA2><a href = "#HPF">High Performance Fortran (HPF)</a>
+<li> <!WA3><a href = "#IP">Irregular Problems</a>
+</ul>
+<li> <!WA4><a href = "#DS">The D System</a>
+<li> <!WA5><a href = "#RP">Related Projects</a>
+<li> <!WA6><a href = "#P">People</a>
+</ul>
+<p>
+<h3>Project Home Pages</h3>
+<p> 
+<ul>
+<li> <!WA7><a href = "http://www.mcs.anl.gov/adifor">ADIFOR</a>
+<li> <!WA8><a href = "http://www.crpc.rice.edu/fortran-tools/DSystem/DSystem.html">The D System</a>
+<li> <!WA9><a href = "http://www.crpc.rice.edu/fortran-tools/ParaScope/">ParaScope</a>
+</ul>
+<p>
+<h3>Related Links</h3>
+<p>
+<ul>
+<li> <!WA10><a href = "http://riceinfo.rice.edu/">Rice University home page</a>
+<li> <!WA11><a href = "http://www.cs.rice.edu/CS/compilers/">Rice Compiler Group home page</a>
+<li> <!WA12><a href = "http://www.cs.rice.edu/">Rice Computer Science home page</a>
+<li> <!WA13><a href = "http://www.crpc.rice.edu/CRPC/">Center for Research on Parallel Computation (CRPC) home page</a>
+</ul>
+
+<p>
+<hr>
+<p>
+
+<a name = "OO"><h2>Project Overview</h2></a>
+
+The Fortran Tools effort seeks to make parallel computer systems usable for Fortran programmers. In this effort, special emphasis is placed on data-parallel programming and scalable parallelism. 
+
+<p>
+To achieve this goal, researchers are developing a coordinated
+programming system that includes compilers and tools for Fortran D, an
+extended dialect of Fortran that supports machine-independent data-parallel
+programming. The tools support a variety of parallel programming
+activities, including intelligent editing and program transformation,
+parallel debugging, performance estimation, performance visualization and
+tuning, and automatic data partitioning. 
+
+<p>
+Research efforts also include validation of the compilers and tools on
+realistic applications, as well as investigations of new functionality to
+handle irregular computations, parallel I/O, and automatic differentiation
+using the program analysis infrastructure developed for the project.
+
+<p>
+<a name = "LC"><h2>Fortran D Language and Compilers</h2></a>
+
+<p>
+Existing languages for parallel programming on scalable parallel systems
+are primitive and hard to use. They are primitive in the sense that each
+one reflects the architecture of the target machine for which it is
+intended, making programs written for current parallel systems highly
+machine-dependent. As a result, there is no protection of the programming
+investment on parallel machines -- a program written for one target machine
+may need to be completely rewritten when the next-generation machine is
+available. This situation is the principal impediment to widespread use of
+scalable parallel systems for science and engineering problems. 
+
+<p>
+To address this problem, researchers have developed Fortran D, a set
+of extensions to Fortran 77 and Fortran 90 that permit the programmer to
+specify, in a machine-independent way, how to distribute a program's
+principal data structures among the processors of a parallel system. In
+addition, Fortran D makes programming easier than it is with explicit
+message-passing, because programmers can write codes that use a shared name
+space, independent of the target architecture. Programmers find a shared
+name space easier to use than a distributed name space because data
+placement and access issues can be ignored. Using sophisticated compiler
+techniques, these "high-level" programs can be compiled for both SIMD and
+MIMD parallel architectures.
+
+<p>
+The Fortran D research effort has led to prototype compilers for the Intel
+Paragon and Thinking Machines CM-5 for both Fortran 77D and Fortran 90D.
+In addition, the Fortran 90D compiler has been ported to a number of other
+machines, including the Intel Paragon, nCube/2, and a network of
+workstations. Compilers for other machines, such as the SIMD MasPar MP-2,
+are under development. The strategy for all these compilers is based upon
+deep program analysis, aggressive communication optimization, advanced
+code-generation techniques and the use of sophisticated computation and
+communication libraries. The effectiveness of these methods is being
+evaluated, using a suite of scientific programs developed by affiliated
+researchers at Syracuse University. 
+
+<p>
+<a name = "HPF"><h3>High Performance Fortran (HPF)</h3></a>
+<p>
+Fortran D was a major impetus behind the definition of High Performance Fortran (HPF). The High Performance Fortran Forum, which produced the definition of HPF, includes representatives from industry, academia, and government laboratories. The
+Fortran D compilers produced in part by the Rice Compiler Group are being used as models for several commercial HPF compilers. Thus, the project has established an efficient technology transfer mechanism by which new features in Fortran D,
+once demonstrated, may be included in a future round of HPF definition. (<!WA14><a href = "http://www.erc.msstate.edu/hpff/home.html">HPF home page</a>)
+
+<p>
+<a name = "IP"><h3>Irregular Problems</h3></a>
+<p>
+The Fortran group also works closely with applications scientists and
+engineers working on "irregular" scientific problems, such as computational
+fluid dynamics, computational chemistry, computational biology, structural
+mechanics, and electrical power grid calculations. Key aspects of the
+research associated with irregular scientific problems focuses on the
+development of portable runtime support libraries which (1) coordinate
+interprocessor data movement, (2) manage the storage of, and access to,
+copies of off-processor data, (3) support a shared name space, and (4)
+couple runtime data and workload partitioners to compilers. These runtime
+support libraries are being used to port application codes to a variety of
+multiprocessor architectures and are being incorporated into the Fortran D
+distributed-memory compilers. For a list of technical papers on irregular problems, see the <!WA15><a href = "http://www.crpc.rice.edu/fortran-tools/DSystem/techPapers.html#DCirreg">D System:Technical Papers</a> Web pages.
+
+<p>
+
+<a name = "DS"><h2>The D System</h2></a>
+
+In 1992, researchers at Rice University set out under ARPA funding to build a suite of prototype tools that support development of programs in Fortran D, an abstract, machine-independent parallel programming language. The tools emerging from this research are collectively being called the D System.  To date, research has focused on four key areas: an intelligent editor for Fortran D that provides feedback on the analysis and parallelization performed by a Fortran D compiler developed at Rice; advances in automatic data distribution research performed at Rice; joint work on performance analysis of Fortran D programs with collaborators at the University of Illinois; and overhaul and integration of a program analysis repository with the interprocedural analysis system to provide a firm basis for the development of efficient whole-program analysis tools. (<!WA16><a href = "http://www.crpc.rice.edu/fortran-tools/DSystem/DSystem.html">D System home page</a>)
+<p>
+The D System grew out of a collection of tools called ParaScope, which was initially designed to support development of Fortran programs with explicit parallelism in the form of parallel loops. One difference between ParaScope and the D System is that ParaScope focuses on shared memory machines, whereas the D System is targeted to distributed shared memory (DSM) machines. (<!WA17><a href = "http://www.crpc.rice.edu/fortran-tools/ParaScope/">ParaScope home page</a>)
+<p>
+<a name = "RP"><h2>Related Projects</h2></a>
+Members of the Fortran group are involved in several additional
+collaborations that are capitalizing on the available software
+infrastructure. For instance, researchers at Rice University and Argonne
+National Laboratory are continuing to enhance ADIFOR, an automatic
+differentiation tool for Fortran built upon the ParaScope infrastructure,
+to support sensitivity analysis of large simulation codes for use in
+multidisciplinary design optimization by members of the CRPC Parallel
+Optimization group. (<!WA18><a href = "http://www.mcs.anl.gov/adifor">ADIFOR home page</a>)
+<p>
+The Massively Scalar Compiler Project (MSCP) at Rice is exploiting the interprocedural analysis engine developed for ParaScope and is also investigating interactions between parallelizing transformations and scalar node performance. (<!WA19><a href="http://www.cs.rice.edu/MSCP/MSCP.html">MSCP home page</a>)
+<p>
+The Fortran group is also collaborating with the CRPC Parallel Paradigm Integration project to investigate ways of integrating ParaScope and Fortran D-style data decomposition directives into Fortran M, a modular version of Fortran. Syracuse University is coordinating an ARPA activity to set up a Parallel Compiler Runtime Consortium. This involves other sites and aims to design and implement
+common runtime support for parallel Fortran, C++ and Ada for both data and
+task parallelism. Finally, Rice University is an active collaborator in a project by the Intel Delta Consortium to develop software support for parallel I/O.
+The Fortran project researchers will develop and implement extensions to
+Fortran D that support "out-of-core" arrays, which are too large to fit
+into the main memory of even a massively parallel computer system. 
+
+<p>
+<a name = "P"><h2>People</h2></a>
+Present members of the Fortran Tools effort include <!WA20><a href = "http://www.cs.rice.edu/~adve/">Vikram Adve</a>, <!WA21><a href = "http://www.cs.rice.edu/~carle/">Alan Carle</a>, <!WA22><a href = "http://www.cs.rice.edu/~keith/">Keith Cooper</a>, <!WA23><a href = "http://www.cs.rice.edu/~ken/">Ken Kennedy</a>, <!WA24><a href = "http://www.cs.rice.edu/~chk/">Charles Koelbel</a>, <!WA25><a href = "http://www.cs.rice.edu/~johnmc/">John Mellor-Crummey</a>, <!WA26><a href = "http://www.cs.rice.edu/~linda/">Linda Torczon</a>, and <!WA27><a href = "http://www.rosetta.com/Resume.html">Scott Warren</a>. To "meet" the people behind a specific Fortran Tools project, see the home page for that project.
+<p>
+<hr>
+<p>
+<center> 
+<!WA28><a href = "http://www.mcs.anl.gov/adifor">ADIFOR</a> - <!WA29><a href = "http://www.crpc.rice.edu/fortran-tools/DSystem/DSystem.html">The D System</a> - <!WA30><a href = "http://www.crpc.rice.edu/fortran-tools/ParaScope/">ParaScope</a> - <!WA31><a href = "http://www.cs.rice.edu/">Rice University Computer Science Department</a> <br>
+<!WA32><a href = "http://www.cs.rice.edu/CS/compilers/">Rice Compiler Group</a> - <!WA33><a href = "http://www.crpc.rice.edu/CRPC/">Center for Research on Parallel Computation (CRPC)</a> - <!WA34><a href = "http://riceinfo.rice.edu/">Rice University</a> 
+</center>
+<p>
+<hr>
+<p>
+Updated by <!WA35><a href = "http://www.cs.rice.edu/~dcamp/">Debbie Campbell</a> (<!WA36><A HREF="mailto:dcamp@cs.rice.edu">dcamp@cs.rice.edu</A>)<br>
+http://www.crpc.rice.edu/fortran-tools/fortran-tools.html
+
+
+</BODY>
+</HTML>

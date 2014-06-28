@@ -1,0 +1,370 @@
+Date: Wed, 20 Nov 1996 22:32:27 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Wed, 20 Nov 1996 13:51:16 GMT
+Content-length: 12182
+
+<!DOCTYPE HTML PUBLIC 
+ "-//IETF//DTD HTML 2.0 plus SQ/ICADD Tables//EN" 
+ "html.dtd"
+>
+<HTML>
+<HEAD>
+<TITLE>C343 Home Page</TITLE>
+</HEAD>
+
+<BODY>
+
+<H1>CSci C343:  Data Structures, Fall 1996</H1>
+
+<HR>
+
+<H2>Contents</H2>
+
+<UL>
+<LI> <!WA0><A HREF="#Useful Links">Useful Links</A></LI>
+<P>
+<LI> <!WA1><A HREF="#General Information">General Information</A></LI>
+<LI> <!WA2><A HREF="#Office Hours">Office Hours</A></LI>
+<LI> <!WA3><A HREF="#Communication">Communication</A></LI>
+<LI> <!WA4><A HREF="#Course Content">Course Content</A></LI>
+<br>
+<!WA5><IMG SRC="http://copper.ucs.indiana.edu/~c343/Pictures/new.gif">Check out the <!WA6><A HREF="http://copper.ucs.indiana.edu/~c343/boyer-moore.html"> notes on Boyer-Moore pattern matching</a> .<br>
+
+<LI> <!WA7><A HREF="#Textbooks">Textbooks</A></LI>
+<LI> <!WA8><A HREF="#Participation">Participation</A></LI>
+<LI> <!WA9><A HREF="#Quizzes">Quizzes and Exams</A></LI>
+<LI> <!WA10><A HREF="#Programming Projects">Programming Projects</A></LI>
+<LI> <!WA11><A HREF="#Grading">Grading</A></LI>
+<LI> <!WA12><A HREF="#Eval">Course Evaluation</A></LI>
+<LI> <!WA13><A HREF="#Miscellaneous">Miscellaneous</A></LI> 
+</UL>
+
+<HR>
+
+<H2><A NAME="General Information">General Information</A></H2><DL>
+<DT> Instructor:</DT>
+
+<DD> <!WA14><A HREF="http://www.cs.indiana.edu/hyplan/dswise.html">
+David S. Wise</A>, 
+<!WA15><A HREF="mailto:dswise@cs.indiana.edu">dswise@cs.indiana.edu</A>
+
+</DD>
+<DT> Associate Instructors</DT>
+
+<DD> <!WA16><A HREF="http://www.cs.indiana.edu/hyplan/ecolunga.html">
+Eliana Colunga</A>
+<!WA17><A HREF="mailto:ecolunga@cs.indiana.edu">ecolunga@cs.indiana.edu</A>
+<DD> <!WA18><A HREF="http://www.cs.indiana.edu/hyplan/rudesai.html">
+Rutvik Desai</A>
+<!WA19><A HREF="mailto:rudesai@cs.indiana.edu">rudesai@cs.indiana.edu</A>
+</DD>
+
+<DT> Prerequisite C212 (C++), and corequisite C251.</DT>
+<DD> CSci C212:  Introduction to Computer Science</DD>
+
+<DT> Lecture</DT>
+<DD> Section 1145, MWF, 9:05 - 9:55 a.m., KH 212</DD>
+
+<DT> Discussion sections</DT>
+<DD> Section 1146, W, 3:35 - 4:25pm, BH 142 </DD>
+<DD> Section 1147, R, 8:00 - 8:50am, LH 019 </DD>
+
+<DT> Local newsgroup</DT>
+<DD> <!WA20><A HREF="news:ac.csci.c343" NAME="Newsgroup">ac.csci.c343</A></DD>
+</DL>
+
+<HR>
+
+<H2><A NAME="Office Hours">Office Hours</A></H2><P>
+
+<UL>
+<LI>
+David S. Wise: MT 11:00pm - 12:00 pm in LH 330H
+<!WA21><A HREF="mailto:dswise@cs.indiana.edu">dswise@cs.indiana.edu</A>
+<LI>
+Eliana Colunga: 10-11 MW and 11-12 TR in LH 330I
+<!WA22><A HREF="mailto:ecolunga@cs.indiana.edu">ecolunga@cs.indiana.edu</A>
+<LI>
+Rutvik Desai: 1-2 TR in LH 330I
+<!WA23><A HREF="mailto:rudesai@cs.indiana.edu">rudesai@cs.indiana.edu</A>
+</UL>
+
+<HR>
+
+<H2><A NAME="Communication">Communication</A></H2><P>
+
+The course newsgroup, <!WA24><A HREF="news:ac.csci.c343">ac.csci.c343</A>, will be
+used to post announcements and important information.  Please feel
+free to post questions related to the course, answer the questions of
+others, and share related information with the class.  Do not post
+anonomously. Make a habit of looking for new notes every day.<P>
+
+On individual or immediate matters, contact your instructor or
+associate instructor via email. You might also want to regularly read
+<!WA25><A HREF="news:cs.students">cs.students</A> for postings pertinent to
+students in our CS department.<P>
+
+<HR> 
+
+<H2><A NAME="Course Content">Course Content</A></H2><P>
+
+This course is an introduction to application development in the Unix
+environment using the C++ language.<P>
+
+We will cover the following topics: 
+
+<UL> 
+<LI> Abstract Data Types;</LI>
+<LI> Linear sturctures, stack, queues, dequeues;</LI> 
+<LI> Linear allocation, linked allocation;</LI> 
+<LI> Circular linking, Double linking, Header cells;</LI> 
+<LI> Classic algorithms illustrating good use of these structures;</LI> 
+<LI> Trees, Binary trees, Naturally corresponding binary trees;</LI>
+<LI> Tree traversal: preorder; inorder; postorder.</LI> 
+<LI> <!WA26><A HREF="http://copper.ucs.indiana.edu/~c343/threading.html">Threading of trees</A>:  inorder, level order;</LI> 
+<LI> Arrays:  vectors, matrices, sparse matrices,strings;</LI> 
+<LI> Searching   <!WA27><A HREF="http://copper.ucs.indiana.edu/~c343/boyer-moore.html"> strings</a>, lists;</LI>
+<LI> Storage management:  reference counting, garbage collection;</LI>
+<LI> Searching trees:  AVL trees, B-trees;</LI>
+<LI> Priority queues;</LI>
+<LI> Application "in the rough."  (How to tell the forest from the trees.)</LI>
+</UL> 
+
+A <!WA28><A HREF="http://copper.ucs.indiana.edu/~c343/syllabus.html">detailed course outline</A>, with
+week-by-week course schedule, is available.<P>
+
+<HR>
+
+<H2><A NAME="Textbooks">Textbooks</A></H2>
+
+<UL> 
+<LI> Required 
+
+<UL>
+<LI>Lewis, H.R. and Denenberg, L.,
+<CITE>Data Structures & Their Algorithms</CITE> 3rd ed.,
+Harper Collins (1991).  </LI> 
+
+</UL>
+
+</LI> 
+
+<LI> Reference 
+<UL> 
+<LI>Knuth, D.L., <CITE>Fundamental Algorithms, The Art of
+Computer Programming I</CITE>, 2nd ed.,
+Addison-Wesley, 1973.  </LI> 
+
+<LI>Deitel, H.M. and Deitel, P.J., <CITE>C++ How to Program</CITE>,
+Prentice Hall, 1994.  </LI> 
+
+<LI>Cline, Marshall P. and Lomow, Greg A., <CITE>C++ FAQs</CITE>,
+Addison-Wesley, 1995.</LI> </UL> </LI> 
+
+</UL>
+
+<HR> <H2><A NAME="Participation">Participation</A></H2> Participation
+in the class can take many forms: attendence at lectures and
+discussions, asking and answering questions posed in class and on the
+newsgroup, and participating in group activities during lecture.  In
+addition, there will be homework problems assigned in lecture that
+will be due the following lecture.  These problem sets will be short,
+hand-written and may not always be collected. <P>
+
+
+<HR>
+<H2><A NAME="Quizzes">Quizzes and Exams</A></H2> 
+
+There will two 30-minute quizzes,
+two 50-minute tests, and a two-hour final exam.
+They will be weighted roughly 50:100:200 for a total of 500 points,
+but (if, for instance, one turns out to be inordinately difficult)
+I reserve the right to tune these weights.
+The exams are subjective (written paragraphs, code) mostly, and it is
+difficult to assure that one point on the first quiz is the same
+value as another point on the final exam.<p>
+
+<UL>
+<LI>September 23, quiz</LI>
+<LI>October 7, test</LI>
+<LI>November 8, test</LI>
+<LI>October 25, quiz</LI>
+<LI>December 16, examination</LI>
+</UL>
+<P> The first quiz and the two tests are dates that Professor Wise
+will be absent;  those dates were chosen to avoid
+cumulative disruption of the course.
+Notably, the first is a Jewish holiday, and some others, as well,
+ may be absent;  of course, there shall be a make-up quiz on
+September 24 for any students also affected.
+<P>
+
+The final exam will be held in the regular classroom.  The exam is on
+<UL>
+<LI>Monday, December 16 at 10:15am - 12:15pm</LI>
+</UL>
+<HR>
+
+<H2><A NAME="Grading">Grading</A></H2> 
+
+Grades are calculated as follows: <UL> 
+
+<LI> In-class tests 48% </LI> 
+
+<LI> Participation 4% </LI> 
+
+<LI> Programming Assignments 48% </LI>
+
+</UL>Note: You must pass the final exam to pass the course!<P>
+
+The <!WA29><A
+HREF="http://molerat.cs.indiana.edu:1215/cgi-bin/gb.pl?section=1145">course
+gradebook</A> will be updated regularly. <P>
+
+<HR>
+
+<H2><A NAME="Programming Projects">Programming Projects</A></H2> 
+
+This is the most important component to the course.  There will be a
+programming assigment due almost every week on Thursday or Friday.
+Later in the course you will be able to notice that
+these are structured into two streams,
+and solving an early problem in the stream is necessary
+to easy solutions to the later ones.  Do not fall behind!
+<P>
+
+You will submit your source code electronically using the C343 <!WA30><A
+HREF="http://copper.ucs.indiana.edu/~c343/handin.html"><CODE>handin</CODE></A> program.  This
+<CODE>handin</CODE> program does not
+<!WA31><A HREF="http://copper.ucs.indiana.edu/~c343/compiler.html"> compile</A>,
+run, debug, or test your
+code (that's your job); it merely saves your file in a convenient
+location so your AI can grade it later.
+<P>
+
+All programs must run under cxx.  It is recommended that you use the
+UCS machine named <EM>zinc</EM>.  Programs will be judged on
+correctness, completeness, efficiency, generality, and aesthetics.
+Programs that do not compile will earn zero points.<P>
+
+Program descriptions will appear below as they are assigned.  In
+general, solutions to the programming projects will <EM>not</EM> be
+supplied.<P>
+
+Programs are due by 11:59 p.m. or 4:59 p.m., according to the system clock, on the
+specified date. By default that there
+is no grace period following this deadline.
+Programs submitted late, even just one second, will not be accepted.
+
+
+<HR>
+<UL>
+<LI><!WA32><A HREF="http://copper.ucs.indiana.edu/~c343/Projects/project0.html">Project 0, Due 9/5</A>
+<LI><!WA33><A HREF="http://copper.ucs.indiana.edu/~c343/Projects/project1.html">Project 1, Due 9/12</A>
+    <!WA34><A HREF="http://copper.ucs.indiana.edu/~c343/solutions/program1">(Solution)</A>
+<LI><!WA35><A HREF="http://copper.ucs.indiana.edu/~c343/Projects/project2.html">Project 2, Due 9/19</A> 
+    <!WA36><A HREF="http://copper.ucs.indiana.edu/~c343/solutions/program2">(Solution)</A>
+<LI><!WA37><A HREF="http://copper.ucs.indiana.edu/~c343/Projects/project3.html">Project 3, Due 9/26</A>
+    <!WA38><A HREF="http://copper.ucs.indiana.edu/~c343/solutions/program3">(Solution)</A> - by Thomas Stuckey
+<LI><!WA39><A HREF="http://copper.ucs.indiana.edu/~c343/Projects/project4.html">Project 4, Due 10/4 and 10/11</A>
+    <!WA40><A HREF="http://copper.ucs.indiana.edu/~c343/solutions/program4">(Solution)</A> - by Hongning Wei
+<LI><!WA41><A HREF="http://copper.ucs.indiana.edu/~c343/Projects/project5.html">Project 5, Due 10/18</A>
+    <!WA42><A HREF="http://copper.ucs.indiana.edu/~c343/solutions/program5">(Solution)</A> - by Rafi Dowty
+<LI><!WA43><A HREF="http://copper.ucs.indiana.edu/~c343/Projects/project6.html">Project 6, Due 10/25</A>
+    <!WA44><A HREF="http://copper.ucs.indiana.edu/~c343/solutions/program6">(Solution)</A> - by Konstantine Ishkov
+<LI><!WA45><A HREF="http://copper.ucs.indiana.edu/~c343/Projects/project7.html">Project 7, Due 11/1</A>
+    <!WA46><A HREF="http://copper.ucs.indiana.edu/~c343/solutions/program7">(Solution)</A> - by Linda Vinke
+<LI><!WA47><A HREF="http://copper.ucs.indiana.edu/~c343/Projects/project8.html">Project 8, Due 11/15</A>
+<LI><!WA48><A HREF="http://copper.ucs.indiana.edu/~c343/Projects/project9.html">Project 9, Due 11/25</A>
+<LI><!WA49><A HREF="http://copper.ucs.indiana.edu/~c343/Projects/project10.html">Project 10, Due 12/6</A>
+</UL>
+<P>
+
+<HR>
+
+<H2><A NAME="Eval">Course Evaluations</A></H2>
+
+Course evaluations will be performed electronically.  At some point
+you should receive an email message containing your individual
+password, which you'll need to gain entry into the system.  As the end
+of the semester approaches, we'll provide a link here into the
+evaluation system.<P>
+
+<HR>
+
+<H2><A NAME="Useful Links">Useful Links</A></H2> 
+
+<UL>
+<LI>
+<!WA50><A HREF="http://copper.ucs.indiana.edu/~c211/tutorial1.html">The C211 Tutorial</A>
+
+<LI>
+<!WA51><A HREF="http://copper.ucs.indiana.edu/~c343/handin.html">The 343 Handin Program</A> 
+
+<LI>
+<!WA52><A
+HREF="http://molerat.cs.indiana.edu:1215/cgi-bin/gb.pl?section=1145">Course
+Gradebook</A>
+
+<LI>
+<!WA53><A HREF="news:ac.csci.c343" NAME="Newsgroup">ac.csci.c343</A>
+
+<LI>
+<!WA54><A HREF="http://copper.ucs.indiana.edu/~c343/numrep.html" >Number Representations</A>
+
+<LI>
+<!WA55><A HREF="http://iuaccts.ucs.indiana.edu/open-bin/addrbook/">IU Address Book</A>
+
+<LI> NOTE:  Computer Science Career Day is October 9;  Interview Fair, October 10.
+</UL>
+<HR>
+
+<H2><A NAME="Miscellaneous">Miscellaneous</A></H2>
+
+
+<OL> 
+
+<LI> `Incompletes' are given only because of an unforeseen emergency
+that is preceded by diligent work, not for a pattern of weak performance.
+No student will be allowed to do ``extra work'' to raise his final
+grade or to make up missing work.  The last day (until 4 p.m.) to
+withdraw with an automatic W is Wednesday, October 30, 1996.<P></LI>
+
+<LI> Programs are due on the announced date, because solutions
+may be discussed immediately thereafter;  late assignments would
+be accepted
+only under the conditions similar to what could justify an Incomplete.
+All grades become final one week after the material is returned
+to you. No claims, however justifiable, will be considered after this
+deadline.  If there is a foreseeable
+medical or personal reason requiring you to miss a
+test you must present your excuse in advance and in writing.  In all
+cases, we require some physical proof of your claim.  <P></LI>
+
+<LI> Of course, we encourage discussion and debates over the
+course material, but you are expected to complete all work independently.
+Joint work
+(defined as pen hitting paper or fingers hitting keys)
+of any type is simply not permitted.
+Similarly, we encourage you to use libraries both of books
+and of computer
+programs but, <em>whenever</em>  you use such archival material,
+you must cite
+the source completely.  (Not only is this practice good ethics, but
+a citation is often the most helpful and longest-lived
+documentation for a program.)
+</P><P>
+Read the Computer Science
+Department's <!WA56><A HREF="http://www.cs.indiana.edu/integrity.html">
+<EM>Statement on Academic Integrity</EM></A> to be sure you understand
+the rules under which CS courses operate.  Cases of academic
+dishonesty will be reported to the Office of Student Ethics, a branch
+of the Office of the Dean of Students. </P></LI>
+
+
+</OL>
+<HR>
+
+</BODY>
+</HTML>

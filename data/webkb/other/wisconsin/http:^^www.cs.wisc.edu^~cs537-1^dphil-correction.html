@@ -1,0 +1,191 @@
+Date: Tue, 05 Nov 1996 20:57:28 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 31 Oct 1996 21:38:54 GMT
+Content-length: 7757
+
+<html>
+<head>
+<title>CS 537 - Fix for Project 2</title>
+</head>
+
+<body bgcolor="#ffffff">
+
+<h1>
+Fix for Project 2
+</h1>
+As I mentioned in class, the
+<!WA0><a href="http://www.cs.wisc.edu/~cs537-1/project2.html#details">
+suggested algorithm
+</a>
+for Project 2 algorithm 2
+has a very small change of deadlocking if preemptive scheduling is
+in effect.
+A couple of teams have actually experienced this problem, showing that
+Murphy's law is valid:  If something can go wrong, it eventually will.
+Deadlocks due to the bug have been reported under the Windows Java
+implementation, which has built-in preemptive scheduling.  I do no know if
+anybody has observed them under Solaris, even with the ThreadScheduler.
+<p>
+Disclaimers:
+<ul>
+<li>
+This problem applies <em>only</em> to the second (``hygienic'') algorithm.
+If your algorithm 1 deadlocks, you have some other bug in your program.
+<li>
+You are <em>not</em> required to fix this bug to get full credit for the
+assignment.  I'm only telling your about it in case you're
+having problems tracking down the cause of a deadlock and
+suspect it might be due to this problem.
+<li>
+It is very likely that the deadlock you're seeing is <em>not</em>
+due to this problem, but to some more ``ordinary'' bug in your program.
+If your program deadlocks under Solaris without the ThreadScheduler
+it is <em>certainly</em> because of some other bug.
+(To turn off the ThreadScheduler, simply comment out the line
+<samp><font color="0f0fff">sched.start()</font></samp>.)
+If it deadlocks only under Windows, it is more likely (but not certain)
+that the bug is caused by this problem.
+</ul>
+The problem arises because synchronized methods contain calls to other
+synchronized methods <em>and</em> it is possible to set up a circular
+pattern of calls between distinct objects.
+For example, if A and B are neighboring Philosopher objects,
+A.takeForks() calls B.requestFork(), and B.putForks() calls A.giveFork().
+Suppose thread t1 is preempted while active (not waiting) in A.takeForks(),
+and thread t2 is allowed to enter B.putForks().  At this point,
+t1 is locking A and t2 is locking B.  When t2 calls A.giveFork() it
+will block waiting for A's mutex, and when t1 is subsequently resumed
+and calls B.requestFork() it will block on B's mutex.  At that point
+t1 and t2 are deadlocked.
+<p>
+In today's class (Oct 9), Joni Baker pointed out that this particular
+scenario cannot occur if the code is carefully written to prevent
+duplicate requests, as in the sample code I wrote on the blackboard.
+B.putForks() only calls A.giveFork() if B has previously requested
+the fork from B, but
+A.takeForks() only calls B.requestFork() if A has <em>not</em> previously
+requested it.
+In class, I said that a more complicated scenario could be devised to
+show that deadlock is still possible, but couldn't think of one on the spot.
+It seems to require at least three philosophers.
+<p>
+Consider a circular pattern of philosophers, A, B, and C, each pair sharing
+one fork (i.e., a three-philosopher version of the original dining philosophers 
+problem).
+Assume B is eating, so he has the forks he shares with A and C,
+and A has the fork she shares with C.
+Let t<sub>A</sub>, t<sub>B</sub>, and t<sub>C</sub> represents the threads for philosophers A, B, and C.
+Suppose C gets hungry just before B finishes eating, and A gets hungry just
+after.
+The following sequence of events is possible.
+<ul>
+<li>C gets hungry, so thread t<sub>A</sub> enters C.takeForks() and calls B.requestFork(),
+which returns <samp><font color="0f0fff">false</font></samp> because B is eating.
+<li>Thread t<sub>C</sub> is preempted.
+<li>B finishes eating, so t<sub>B</sub> enters putForks(), and seeing that there is a
+request from C, tries to call C.giveFork().
+Thread t<sub>B</sub> is blocked because t<sub>C</sub> is still active in C.takeForks().
+<li>A gets hungry, so t<sub>A</sub> enters A.getForks().  She already has the fork
+she shares with C, so t<sub>A</sub> tries to call B.requestFork(), but
+is blocked because t<sub>B</sub> is still active in B.putForks().
+<li>Thread t<sub>C</sub> is resumed and tries to call A.getFork().
+</ul>
+At that point the three threads are deadlocked.
+<p>
+Here is the example I couldn't show this morning because there was
+no projector.  This is the original version of takeForks() from
+the TA's solution to the project.
+<pre><font color="0f0fff">
+private synchronized void takeForks() {
+    state = HUNGRY;
+    int forksHave = 0; // Number of forks currently owned
+
+    while (forksHave &lt; forks.length) {
+        for (int i = 0; i &lt; forks.length; i++) {
+            if (forks[i].have)
+                forksHave++;
+            else if (!forks[i].haveRequested) {
+                if (phil[forks[i].neighborId].requestFork(forks[i].forkId)){
+                    forks[i].clean = true;
+                    forks[i].have = true;
+                    forksHave++;
+                }
+                else
+                    forks[i].haveRequested = true;
+                }
+            }
+        }
+        if (forksHave &lt; forks.length) {
+            forksHave = 0;
+            try { wait(); }
+            catch (InterruptedException e)  {}
+        }
+    }
+    state = EATING;
+}
+</font></pre>
+The trick is to split takeForks into two pieces.
+The first, called forksNeeded(), is a <samp><font color="0f0fff">synchronized</font></samp> procedure that
+does all the necessary manipulation of shared variables.  The remaining
+code does not touch any shared variables that ever change,
+so it does not have to be <samp><font color="0f0fff">synchronized</font></samp>.
+<pre><font color="0f0fff">
+/* This procedure finds a fork that this philosopher doesn't have and needs
+to request and returns its index.
+If no such fork exists because all forks are here it returns -1 and sets
+the local state to EATING.
+If no such fork exists because all absent forks have already been requested,
+it waits and tries again. */
+private synchronized int neededFork() {
+    state = HUNGRY;
+
+    for (;;) {
+        int forksHave = 0; // Number of forks currently owned
+        for (int i = 0; i &lt; forks.length; i++) {
+            if (forks[i].have)
+                forksHave++;
+            else if (!forks[i].haveRequested) {
+                forks[i].haveRequested = true;
+                return i;
+            }
+        }
+        if (forksHave == forks.length) {
+            state = EATING;
+            return -1;
+        }
+        try { wait(); }
+        catch (InterruptedException e)  {}
+    }
+}
+
+private void takeForks() {
+    for (;;) {
+        int i = neededFork();
+        if (i == -1)
+            return;
+        if (phil[forks[i].neighborId].requestFork(forks[i].forkId))
+            giveFork(forks[i].forkId); // give myself the fork
+    }
+}
+</font></pre>
+At the end of class, Patrick Gaffney pointed out that there's still
+a danger of a race condition.
+What happens if thread t<sub>A</sub> is preempted in A.takeForks() after its call
+to B.requestFork() has returned <samp><font color="0f0fff">true</font></samp> but before it gets a chance to call
+A.giveFork()?  At this point neither A nor B thinks it has the fork.
+The call B.requestFork() has updated B's data structure to indicate that B
+does not have it, but A.giveFork() has not had a chance to update A's variables
+to show that A has it.
+This is not necessarily a problem, but the code has to be carefully written
+so that it can cope with this unusual situation.
+For example, if t<sub>B</sub> is allowed to run next, it may become hungry, and seeing
+that it no longer has the fork, it may call A.requestFork(), which will
+find that A doesn't have the fork that is being requested.
+At this point, neither philosopher thinks he has the fork.
+
+<hr>
+<br>
+Copyright &#169; 1996 by Marvin Solomon.  All rights reserved.
+</body>
+</html>

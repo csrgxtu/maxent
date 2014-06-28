@@ -1,0 +1,89 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 21:05:18 GMT
+Content-Type: text/html
+Content-Length: 2615
+Last-Modified: Friday, 24-Feb-95 20:49:26 GMT
+
+<HTML> <HEAD> <TITLE>TeX</TITLE> </HEAD> <BODY>
+
+<PRE>
+<H1>			   TeX & Friends FAQ </H1>
+</PRE>
+<IMG SRC="images/line.string.gif">
+
+<PRE>
+<IMG SRC="images/ball.orange.gif"> 1. <A HREF="#01"> How do I get a .ps file? </A>
+<IMG SRC="images/ball.orange.gif"> 2. <A HREF="#02"> What's a good LaTeX2e book? </A>
+<IMG SRC="images/ball.orange.gif"> 3. <A HREF="#03"> I've made my own .fmt file, how do I get TeX to use it? </A>
+<IMG SRC="images/ball.orange.gif"> 4. <A HREF="#04"> How do I get TeX to use the macros in /p/lib/tex/macros? </A>
+<IMG SRC="images/ball.orange.gif"> 5. <A HREF="#05"> How do I get TeX and dvips to use my fonts? </A>
+<IMG SRC="images/ball.orange.gif"> 6. <A HREF="#06"> How do I print a .dvi file?</A>
+</PRE>
+<HR>
+
+<A NAME=01> <H3> 1. How do I get a .ps file? </H3>
+Use the -o flag.
+<P>
+<UL> <UL> dvips foo.dvi -o </UL> </UL>
+<P>
+The above will create a file named foo.ps
+</A>
+
+<HR>
+
+<A NAME=02> <H3> 2. What's a good LaTeX2e book? </H3>
+"The LaTeX Companion" by Goossens, Mittelbach, and Samarin (ISBN
+0-201-54199-8) is a good book.  I was able to get a copy from the
+University CO-OP.
+<P>
+If you know a better one, let me know.
+</A> 
+
+<HR>
+
+<A NAME=03> <H3>3. I've made my own .fmt file, how do I get TeX to use it?</H3>
+The easiest way to do this is to set the <B>TEXFORMATS</B> enviroment
+variable.  Let's say I keep my .fmt files in /u/pkn/tex/lib/formats,
+then I would set <B>TEXFORMATS</B> to:
+<PRE>
+	setenv TEXFORMATS /u/pkn/tex/lib/formats:
+</PRE>
+That would search my directory first and the the default directory
+(/lusr/tex/lib/tex/formats)
+</A>
+
+<HR>
+
+<A NAME=04> <H3>4. How do I get TeX to use the macros in
+/p/lib/tex/macros? </H3>
+You need to set the <B> TEXINPUTS </B> enviroment variable to
+<PRE>
+	setenv TEXINPUTS /p/lib/tex/macros:
+</PRE>
+That will cause TeX to look in /p first, then the current directory,
+and finally in the default directory (/lusr/tex/lib/tex/macros).  If
+you want TeX to look in /p last, put the colon before /p/lib/tex/macros
+</A>
+
+<HR>
+
+<A NAME=05> <H3> 5. How do I get TeX and dvips to use my fonts? </H3>
+You need to set <B> TEXFONTS </B> to the directory with the .tfm files
+in it.  <I> dvips </I> need <B> TEXPKS </B> set to the directory with the .pk
+files in it.
+</A>
+
+<HR>
+
+<A NAME=06> <H3> 6. How do I print a .dvi file? </H3>
+With <B> dvips </B>.  If you have the <B> PRINTER </B> enviroment variable
+set you can just type:
+<PRE>
+	dvips <I>filename</I>
+</PRE>
+Where <I> filename </I> is the name of the .dvi file.  If you don't have
+<B> PRINTER </B> set, use the -P <I>printername </I> flag
+<PRE>
+	dvips -P <I>printername filename </I> 
+</A>

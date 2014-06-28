@@ -1,0 +1,603 @@
+Date: Thu, 07 Nov 1996 19:24:02 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 31 Oct 1996 22:24:20 GMT
+Content-length: 19459
+
+<html>
+<head>
+<title>CS 537 - Introduction to Operating Systems - Fall 1996</title>
+</head>
+
+<body bgcolor="#ffffff">
+
+<h1>
+CS 537<br>Introduction to  Operating Systems<br>Section 1, Fall 1996
+</h1>
+
+<h3>Instructor</h3>
+<p>
+<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><a href="http://www.cs.wisc.edu/~solomon/solomon.html">
+<b>Marvin Solomon</b>
+</a>
+<a name="solomon"> </a>
+<br>
+<i>office:</i>  7397 Computer Sciences<br>
+<i>office hours:</i>  9:00 TR<br>
+<i>office phone:</i>  263-2844<br>
+<i>email address:</i>
+<!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="mailto:solomon@cs.wisc.edu"> solomon@cs.wisc.edu </A>
+<br>
+
+<h3>TA</h3>
+<p>
+<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~mellen/mellen.html">
+<b>Rob Mellencamp</b> <br>
+</A>
+<a name="mellen"> </a>
+<br>
+<i>office:</i>  1349 Computer Sciences<br>
+<i>office hours:</i>  10-11 MWF<br>
+<i>office phone:</i>  262-5340<br>
+<i>email address:</i>
+<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="mailto:mellen@cs.wisc.edu"> mellen@cs.wisc.edu </A>
+<br>
+
+<a name="news"> <h2>News</h2> </a>
+<i> Watch this space for the latest updates.</i> <br>
+
+<dl>
+
+<dt>Oct 31
+<dd>
+The <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a href="http://www.cs.wisc.edu/~cs537-1/midterm.answers.html"> answers to the midterm exam </a>
+and a summary of the scores are now available.
+<p>
+A <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href="http://www.cs.wisc.edu/~cs537-1/grades1.html"> more detailed breakdown</a> of the grade distribution
+is also available.
+
+<dt>Oct 27
+<dd>
+The specification for
+<!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a href="http://www.cs.wisc.edu/~cs537-1/project4.html">
+Project 4
+</a>
+is now avaiable.
+
+<dt>Oct 21
+<dd>
+The due date for Project 3 has been moved to Thursday, Oct 24.
+<p>
+A few typographical errors in the notes on
+<!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><a href="http://www.cs.wisc.edu/~cs537-1/deadlock.html#avoidance"> Deadlock Avoidance </a>
+have been corrected.  Most importantly, the same array
+was being called <samp><font color="0f0fff">D</font></samp> in some places and <samp><font color="0f0fff">M</font></samp> in others.
+It is now called <samp><font color="0f0fff">M</font></samp> in all places.
+<p>
+By popular demand, an <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><a href="http://www.cs.wisc.edu/~cs537-1/midterm.ps"> old midterm exam </a> is
+available for you to look at.
+<font color="#ff000f"><strong>Warning:</strong></font>
+You should take this example with a large grain of salt.
+The exam is from a very long time ago when the course
+used a different text and covered topics in a different order.
+<!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><a href="#midterm">This semester's midterm</a> will likely
+be quite different.
+
+<dt>Oct 15
+<dd>
+The time and place for the Midterm exam have been determined.
+It will be in room 1240 Comp Sci from 7:15 to 9:15 pm on October 23.
+
+<dt>Oct 14
+<dd>
+The specification for
+<!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><a href="http://www.cs.wisc.edu/~cs537-1/project3.html">
+Project 3
+</a>
+is now avaiable.
+
+<dt>Oct 9
+<dd>
+A <!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><a href="http://www.cs.wisc.edu/~cs537-1/dphil-correction.html">discussion</a> of the issues presented
+in class to day is available.
+
+<dt>Oct 8
+<dd>
+A summary of the grades for project 1 are
+<!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><a href="http://www.cs.wisc.edu/~cs537-1/grades1.html"> available</a>.
+
+<dt>Oct 6
+<dd>
+The electronic 
+<!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><a href = "http://www.cs.wisc.edu/~cs537-1/TAstuff/handin.html">hand-in directions</a> for
+program 2 have now been posted.
+
+<dt>Oct 1
+<dd>
+The procedure <samp><font color="0f0fff">giveFork</font></samp> in Algorithm 2 of the
+<!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><a href="http://www.cs.wisc.edu/~cs537-1/project2.html#details">Project 2 specification</a>
+should contain a call to <samp><font color="0f0fff">notify()</font></samp>.
+The web page has been corrected to show this.
+
+<dt>Sept 26
+<dd>
+I've fixed two more bugs in the
+<!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><a href="http://www.cs.wisc.edu/~cs537-1/project2.html">Project 2 specification</a>,
+one minor and one that is more important.
+<p>
+The first caused the Introduction paragraph to be slightly garbled.
+Thanks to Jake Dawley-Carr for pointing this one out.
+<p>
+The second was a line omitted from the sample code for Algorithm I in the
+Programming Details
+<!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><a href="http://www.cs.wisc.edu/~cs537-1/project2.html#details">section</a>.
+After you create a ThreadScheduler, you have to start it
+<pre><font color="0f0fff">
+  ThreadScheduler sched = new ThreadScheduler();
+  sched.start();
+</font></pre>
+This was specified correctly in the later section on the ThreadScheduler, 
+but not in the Details section.  The Web page is now fixed.
+Thanks to Liping Zhang for this one.
+
+<dt>Sept 20
+<dd>
+Test data files for 
+<!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><a href="http://www.cs.wisc.edu/~cs537-1/project2.html">
+Project 2
+</a>
+are now available.
+The directory
+<!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><a href="http://www.cs.wisc.edu/~cs537-1/src">
+~cs537-1/public/src
+</a>
+contains three data files and a Java class for reading them.
+The file
+<!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><a href="http://www.cs.wisc.edu/~cs537-1/src/Graph.java">
+~cs537-1/public/src/Graph.java
+</a>
+contains the definition of the class
+<!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><a href="http://www.cs.wisc.edu/~cs537-1/project2.html#graph">
+<samp><font color="0f0fff">Graph</font></samp>
+</a>
+described in the project specification.
+<p>
+The file
+<!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><a href="http://www.cs.wisc.edu/~cs537-1/src/petersonCyclic.graph">
+~cs537-1/public/src/petersonCyclic.graph
+</a>
+contains the Peterson graph shown in the project specification
+<center><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><img src = "http://www.cs.wisc.edu/~cs537-1/peterson2.gif"> </center>
+As mentioned there, this initial placement of forks is <em>not</em>
+acyclic.
+The file
+<!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><a href="http://www.cs.wisc.edu/~cs537-1/src/petersonAcyclic.graph">
+~cs537-1/public/src/petersonAcyclic.graph
+</a>
+contains the Peterson graph with an acyclic initial placement of forks.
+The file
+<!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><a href="http://www.cs.wisc.edu/~cs537-1/src/star.graph">
+~cs537-1/public/src/star.graph
+</a>
+contains a ``star'' topology, with one central philosopher sharing
+forks with each of nine others.
+
+<dt>Sept 19
+<dd>
+Todd Jenner pointed out two typos in the specification for Project 2<ul>
+   ``The 15 forks ... are the numbers 0 through 15.''</ul>
+should read <ul>
+   ``The 15 forks ... are the numbers 0 through 14.''</ul>
+and in <samp><font color="0f0fff">eat()</font></samp>, <samp><font color="0f0fff">MAXTHINK</font></samp> should be replaced by <samp><font color="0f0fff">MAXEAT</font></samp>.
+<p>
+The 
+<!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><a href="http://www.cs.wisc.edu/~cs537-1/project2.html">
+online version
+</a>
+has been corrected.<br>
+Thanks, Todd.
+<dd>
+<dt>Sept 18
+<dd>
+There was a mistake in the
+<!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><a href="http://www.cs.wisc.edu/~cs537-1/java-tutorial#strings">
+Java tutorial notes
+</a> in the section on Strings.
+In the two-argument version of <samp><font color="0f0fff">String.substring()</font></samp>, the second argument
+is the offset of the end of the substring, not the number of characters
+in the string.
+The notes have been corrected.
+Thanks to Franco Tung Fai Chan for pointing this out.
+<dt>Sept 17
+<dd>
+<ul>
+<li>We occasionally send urgent messages directly to a mailing list
+of students registered for this course.
+There is an <!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><a href="http://www.cs.wisc.edu/~lists/classes/cs537-1list/">
+archive</a> of all messages sent to this list on the web.
+If you are not receiving these messages and think you should be, send
+mail to <!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><a href="mailto:solomon@cs.wisc.edu">solomon@cs.wisc.edu</a>.
+<li>The specification for
+<!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><a href="http://www.cs.wisc.edu/~cs537-1/project2.html">
+Project 2
+</a>
+is now avaiable.
+<li>I have received a few requests for makefiles for Java.
+There is a sample Makefile in <!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><a href="http://www.cs.wisc.edu/~cs537-1/src/Makefile">
+~cs537-1/public/src/Makefile</a>.
+Copy that file to the working directory where your Java source files are
+(remember, you should use a separate directory for each project),
+edit it as described in the comments in it, and then type <samp>make</samp>
+to compile and run your program, or <samp>make classes</samp> to compile
+without running.
+</ul>
+<dt>Sept 13
+<dd>
+Notes on handing in your assignment and simulating 
+preemptive multitasking for the Solaris computers
+have been added <!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><a href="http://www.cs.wisc.edu/~cs537-1/TAstuff/message913.txt">here</a>.
+<dt>Sept 12
+<dd>
+The 
+<!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><a href="http://www.cs.wisc.edu/~cs537-1/java-tutorial.html">
+Java tutorial
+</a>
+is now finished (or about as finished as it's going to get).
+In the section on
+<!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><a href="http://www.cs.wisc.edu/~cs537-1/java-tutorial.html#threads">
+threads,
+</a>
+you will find some helpful hints on how to structure
+<!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><a href="http://www.cs.wisc.edu/~cs537-1/project1.html"> project 1</a>.
+<p>
+You should be aware that there is a weekly seminar on operating systems
+and networking, meeting Mondays at 2:30.
+The first seminar of the semester is Monday the 16th.
+Check
+<!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><a href="http://www.cs.wisc.edu/forms/talks.html">
+the Colloquia and Seminars web page
+</a> for more details.
+<dt>Sept 5
+<dd>
+<!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><a href="#java-book">The Java Book</a> is finally available at the
+University Bookstore!
+<dt>Sept 4
+<dd>
+The beginnings of a
+<!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><a href="http://www.cs.wisc.edu/~cs537-1/java-tutorial.html">
+Java tutorial
+</a> are now available.
+<dt>Sept 4
+<dd>
+To use Java on CS Department Unix workstations, you must create a
+file named <samp>.cshrc.local</samp> in your home directory containing one
+line:
+<pre>
+    set path=($path /s/java/bin)
+</pre>
+To make the change take effect, either type
+<pre>
+    source .cshrc.local
+</pre>
+or simply log out and log back in.
+<dt>Sept 3
+<dd>
+The specification for
+<!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><a href="http://www.cs.wisc.edu/~cs537-1/project1.html"> project 1 </a> is ready.
+<dt>Sept 3
+<dd>The Unix Orientation Sessions, for all new Unix users, are scheduled for
+the following times:
+<table compact boarder=0>
+<tr>
+<td>Tues - Thurs, Sept 3 - 5<td>4 pm and 6pm, room 1221 CS
+<tr>
+<td>Mon - Thurs, Sept 9 - 12<td>4 pm, room 1221 CS
+</table>
+</dl>
+
+Last updated:
+Wed Sep  4 14:10:06 CDT 1996
+</i>
+<p>
+
+<hr>
+<h2>Contents</h2>
+<ul>
+<li> <!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><a href="#news">        News</a>
+<li> <!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><a href="#summary">    Summary</a>
+<li> <!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><a href="#lectures">    Lecture Information</a>
+<li> <!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><a href="#text">        Text</a>
+<li> <!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><a href="#projects">    Projects</a>
+<li> <!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><a href="#grading">    Grading</a>
+<li> <!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><a href="#schedule">    Course Schedule</a>
+<li> <!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><a href="#notes">        Lecture Notes</a>
+</ul>
+
+<hr>
+
+<a name="summary"> <h2> Summary </h2> </a>
+
+CS 537 is intended as a general introduction to the techniques used
+to implement operating systems and related kinds of systems software.
+Among the topics covered will be
+process management (creation, synchronization, and communication);
+processor scheduling;
+deadlock prevention, avoidance, and recovery;
+main-memory management;
+virtual memory management (swapping, paging, segmentation and page-replacement
+algorithms);
+control of disks and other input/output devices;
+file-system structure and implementation;
+and protection and security.
+
+<a name="lectures"> <h2> Lecture Information </h2> </a>
+
+<b>Lecture:</b>  11:00 - 12:15 Tuesday and Thursday, 1221 Computer Sciences
+and Statistics
+<br>
+<b>Discussion:</b>  11:00 - 11:50 Wednesday, 107 Psychology
+
+<p>
+The discussion section is not ``optional'':  it is at least as important as the 
+lectures.
+The primary focus of the Wednesday meetings will be topics related to the
+<!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><a href="#projects">projects</a>
+(including introduction to the
+<!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><a href="#why-java">Java</a>
+programming language), but time will also be available for answering any
+questions you have regarding points raised in the the lectures or the
+text.
+
+<a name="text"> <h2>Text</h2> </a>
+
+<a name="tanenbaum"> <h3>Required</h3> </a>
+
+<b>Modern Operating Systems</b>
+by Andrew S. Tanenbaum,
+Prentice Hall, 1992.
+
+<a name="java-book"> <h3>Strongly Recommended</h3> </a>
+
+<b>The Java Programming Language</b>
+by  Ken Arnold and James Gosling,
+Addison Wesley, 1996.
+
+<a name="java-online"> <h3>Online References</h3> </a>
+
+Lots of additional helpful materials about Java are available on the WEB.
+<p>
+The following references have been collected locally for fast access.
+<ul>
+<li><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><a href="http://www.cs.wisc.edu/~cs537-1/java/tutorial">The Java Tutorial</a>
+<li><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><a href="http://www.cs.wisc.edu/~cs537-1/java/langspec-1.0">The Java Language Specification</a>
+<li><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><a href="http://www.cs.wisc.edu/~cs537-1/java/api">Java API Documentation</a>
+</ul>
+Watch this spot for additional links to the web.
+
+<a name="projects"> <h2>Projects</h2> </a>
+
+<p>
+There will be five programming projects, all in the
+<!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><a href="#why-java">Java</a>
+programming language.
+Sun SparcStation workstations running the Solaris dialect of the Unix
+operating system are provided for your use, but you may use any
+computer to which you have access that implements the Java programming
+language.
+However, if you do not use the Computer Sciences Department's computers, 
+you will be responsible for transferring any required
+data sets or software packages to your computer.
+<p>
+The first assignment will be an easy ``get acquainted'' exercise designed
+to help you become familiar with the computing environment and the
+Java language.
+Subsequent projects will involve
+process synchronization,
+processor scheduling,
+disk scheduling,
+and file-system implementation.
+On all but the first project, students will be required to work in pairs.
+Both members of a pair will receive the same grade on a project.
+Feel free to discuss projects with anyone, but
+<em>
+you must not share code with anyone but your partner.
+</em>
+<font color="#ff000f">
+Cheating will be vigorously punished.
+</font>
+Enough said!
+
+<p>
+Assignments are due at the beginning of class (11 a.m.) on the date
+indicated.
+Over the entire semester, you have
+<b>three late days</b>
+of credit.
+You can use these late days on different assignments (e.g., one day on each
+of three assignments) or all three days on one assignment.
+Late days may <b>not</b> be used for the last assignment.
+
+<a name="why-java"> <h3>Why Java?</h3> </a>
+<p>
+Most students taking this course will be familiar with C++ but not Java.
+Why, then, did we choose Java?
+There are several arguments in favor of it.
+<ul>
+<li><b>Java is a more congenial programming environment.</b>
+Runtime errors such as bad subscripts, null pointers,
+and uninitialized variables cause exceptions caught by the language runtime
+rather than mysterious crashes or random behavior.
+Java <tt>Strings</tt> are <em>much</em> easier to use than <tt>char *</tt>
+arrays.  Garbage collected storage management is <em>extremely</em> handy.
+And more!
+<li><b>Java is very trendy.</b>
+Java had caught on faster than any other new language in history.
+Many of the reasons for Java's growing popularity have little to do with
+the way we will use it in this course (we will discuss these issues in class),
+but a byproduct of this course
+will be knowledge of Java, which is becoming quite a marketable commodity.
+<li><b>Java has ``operating system'' features built in.</b>
+In particular, it is the first widely-used programming language with
+language-level support for concurrency (threads) and synchronization
+(monitors).
+</ul>
+<p>
+On the other hand, switching to a new programming language is always
+a bit dislocating.
+Fortunately, there are excellent resources are available to ease the
+transition.
+<!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><a href="#java-book"><i>The Java Programming Language</i></a>
+by Arnold and Gosling is amazingly good.
+It is neither an introductory programming primer (the authors assume you
+already know how to program)
+nor a reference manual (although a
+<!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><a href="http://www.cs.wisc.edu/~cs537-1/java/langspec-1.0">reference manual</a>
+is available online),
+but a readable introduction to the language, which takes you all to the way
+from getting started to everything you need to write quite sophisticated
+programs in Java.
+This book is available at the University Bookstore.
+You are strongly encouraged to buy it.
+We have also gathered a variety of
+<!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><a href="#java-online">other resources</a> together, including a nice
+<!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><a href="http://www.cs.wisc.edu/~cs537-1/java/tutorial">online tutorial</a>
+about Java programming, and
+<!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><a href="http://www.cs.wisc.edu/~cs537-1/java/api">a reference manual</a>
+for the standard class libraries you will be using.
+
+<a name="grading"> <h2> Grading </h2> </a>
+<p>
+There will be a midterm and a final exam, each of which will count for 25%
+of your grade.
+The midterm will be in the evening of <b>Wednesday, October 23</b>
+from 7:15 to 9:15 pm in room 1240, Computer Sciences and Statistics.
+The final, as scheduled in the timetable, will be <b>Tuesday, December 17</b>
+at 5:05 p.m.
+The first programming project (getting started) will count for 2% of your
+grade.
+The remaining four projects will count for 12% each.
+
+<a name="schedule"> <h2> Course Schedule </h2> </a>
+<p>
+The following schedule is tentative;
+it may be updated later in the semester, so check back here frequently.
+<p>
+<table
+    bgcolor="#e0e0ff"
+    border=3
+    width="100%"
+    align=center
+    cellpadding=1
+    cellspacing=1>
+<tr><td>Sept 3 - 6
+    <td>Introduction
+    <td>Chapter 1
+<tr><td>Sept 10 - Oct 8
+    <td>Processes, Synchronization, Processor Scheduling
+    <td>Chapters 2 and 6
+<tr><td>Sept 17
+    <td><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><a href="http://www.cs.wisc.edu/~cs537-1/project1.html"> Project 1 </a> Due
+    <td>Learning Java
+<tr><td>Oct 10
+    <td><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><a href="http://www.cs.wisc.edu/~cs537-1/project2.html"> Project 2 </a> Due
+    <td>Synchronization
+<tr><td>Oct 10 - Nov 11
+    <td>Memory Management and Virtual Memory
+    <td>Chapter 3
+<tr><td>Oct 22
+    <td><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><a href="http://www.cs.wisc.edu/~cs537-1/project3.html"> Project 3 </a> Due
+    <td>CPU Scheduling
+<tr><td>Oct 23
+    <td><a name="midterm">Midterm Exam</a>
+    <td>Room 1240 Comp Sci.
+<tr><td>Nov 14 - Dec 5
+    <td>I/O Devices, File Systems
+    <td>Chapters 4 and 5
+<tr><td>Nov 14
+    <td><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><a href="http://www.cs.wisc.edu/~cs537-1/project4.html">Project 4 </a> Due
+    <td>Disk Scheduling
+<tr><td>Dec 10 - 12
+    <td>Protection and Security
+    <td>Sections 4.4 and 4.5
+<tr><td>Dec 12
+    <td>Project 5 Due
+    <td>File Systems
+<tr><td>Dec 17
+    <td>Final Exam
+</table>
+
+<a name="notes"> <h2> Lecture Notes </h2> </a>
+<ul>
+    <li><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><a href="http://www.cs.wisc.edu/~cs537-1/intro.html">Introduction</a>
+        <ul>
+        <li> <!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><a href="http://www.cs.wisc.edu/~cs537-1/intro.html#history">    History</a>
+        <li> <!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><a href="http://www.cs.wisc.edu/~cs537-1/intro.html#goals">        What is an OS For?</a>
+        <li> <!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><a href="http://www.cs.wisc.edu/~cs537-1/intro.html#bottom-up">    Bottom-up View</a>
+        <li> <!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><!WA66><a href="http://www.cs.wisc.edu/~cs537-1/intro.html#top-down">    Top-Down View</a>
+        <li> <!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><!WA67><a href="http://www.cs.wisc.edu/~cs537-1/intro.html#outline">    Course Outline</a>
+        </ul>
+    <li> <!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><!WA68><a href="http://www.cs.wisc.edu/~cs537-1/java-tutorial.html">Java for C++ Programmers</a>
+    <li> <!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><!WA69><a href="http://www.cs.wisc.edu/~cs537-1/processes.html">Processes and Synchronization</a>
+        <ul>
+        <li><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><!WA70><a href="http://www.cs.wisc.edu/~cs537-1/processes.html#using"> Using Processes </a>
+        <li><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><!WA71><a href="http://www.cs.wisc.edu/~cs537-1/processes.html#using_what"> What is a Process? </a>
+        <li><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><!WA72><a href="http://www.cs.wisc.edu/~cs537-1/processes.html#using_why"> Why Use Processes </a>
+        <li><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><!WA73><a href="http://www.cs.wisc.edu/~cs537-1/processes.html#using_create"> Creating Processes </a>
+        <li><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><!WA74><a href="http://www.cs.wisc.edu/~cs537-1/processes.html#using_states"> Process States </a>
+        <li><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><!WA75><a href="http://www.cs.wisc.edu/~cs537-1/processes.html#using_sync"> Synchronization </a>
+            <ul>
+            <li><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><!WA76><a href="http://www.cs.wisc.edu/~cs537-1/processes.html#race_conditions"> Race Conditions </a>
+            <li><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><!WA77><a href="http://www.cs.wisc.edu/~cs537-1/processes.html#semaphores"> Semaphores </a>
+            <li><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><!WA78><a href="http://www.cs.wisc.edu/~cs537-1/processes.html#bounded_buffer"> The Bounded Buffer Problem </a>
+            <li><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><!WA79><a href="http://www.cs.wisc.edu/~cs537-1/processes.html#dining_philosophers">The Dining Philosophers </a>
+            <li><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><!WA80><a href="http://www.cs.wisc.edu/~cs537-1/processes.html#monitors">Monitors </a>
+            <li><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><!WA81><a href="http://www.cs.wisc.edu/~cs537-1/processes.html#messages"> Messages </a>
+            </ul>
+        <li> <!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><!WA82><a href="http://www.cs.wisc.edu/~cs537-1/deadlock.html">Deadlock</a>
+            <ul>
+            <li><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><!WA83><a href="http://www.cs.wisc.edu/~cs537-1/deadlock.html#terminology"> Terminology </a>
+            <li><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><!WA84><a href="http://www.cs.wisc.edu/~cs537-1/deadlock.html#detection"> Deadlock Detection </a>
+            <li><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><!WA85><a href="http://www.cs.wisc.edu/~cs537-1/deadlock.html#recovery"> Deadlock Recovery </a>
+            <li><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><!WA86><a href="http://www.cs.wisc.edu/~cs537-1/deadlock.html#prevention"> Deadlock Prevention </a>
+            <li><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><!WA87><a href="http://www.cs.wisc.edu/~cs537-1/deadlock.html#avoidance"> Deadlock Avoidance </a>
+            </ul>
+        <li> <!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><!WA88><a href="http://www.cs.wisc.edu/~cs537-1/scheduling.html">Implementing Processes</a>
+            <ul>
+            <li><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><!WA89><a href="http://www.cs.wisc.edu/~cs537-1/scheduling.html#monitor_impl"> Implementing Monitors </a>
+            <li><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><!WA90><a href="http://www.cs.wisc.edu/~cs537-1/scheduling.html#semaphore_impl"> Implementing Semaphores </a>
+            <li><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><!WA91><a href="http://www.cs.wisc.edu/~cs537-1/scheduling.html#cs_impl"> Implementing Critical Sections </a>
+            <li><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><!WA92><a href="http://www.cs.wisc.edu/~cs537-1/scheduling.html#short_term_sched"> Short-term Scheduling </a>
+            </ul>
+        </ul>
+    <li><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><!WA93><a href="http://www.cs.wisc.edu/~cs537-1/memory.html">Memory Management </a>
+        <ul>
+        <li><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><!WA94><a href="http://www.cs.wisc.edu/~cs537-1/memory.html#core"> Allocating Main Memory </a>
+            <ul>
+            <li><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><!WA95><a href="http://www.cs.wisc.edu/~cs537-1/memory.html#core_algorithms"> Algorithms for Memory Management </a>
+            <li><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><!WA96><a href="http://www.cs.wisc.edu/~cs537-1/memory.html#core_compaction"> Compaction and Garbage Collection </a>
+            <li><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><!WA97><a href="http://www.cs.wisc.edu/~cs537-1/memory.html#core_swapping"> Swapping </a>
+            </ul>
+        </ul>
+    <li><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><!WA98><a href="http://www.cs.wisc.edu/~cs537-1/paging.html">Paging </a>
+    <li><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><!WA99><a href="http://www.cs.wisc.edu/~cs537-1/disksched.html">Disks </a>
+    <li> More to come ...
+</ul>
+<p>
+
+<hr>
+
+<address>
+<i>
+<!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><!WA100><a HREF="mailto:solomon@cs.wisc.edu">
+solomon@cs.wisc.edu
+</a>
+<br>
+Thu Oct 31 16:24:20 CST 1996
+</i>
+</address>
+<br>
+Copyright &#169; 1996 by Marvin Solomon.  All rights reserved.
+
+</body>
+
+</html>

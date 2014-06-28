@@ -1,0 +1,191 @@
+Date: Tue, 10 Dec 1996 16:50:17 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Sat, 05 Oct 1996 00:25:40 GMT
+Content-length: 11228
+
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+<TITLE>CSE 142: Computing at Home</TITLE>
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Microsoft Word 2.03z">
+</HEAD>
+<BODY>
+<H1>CSE/ENGR 142: <BR>
+Computing at Home or Work </H1>
+<P>
+If you own a personal computer, or have access to a computer at
+home, work, or elsewhere on campus, you may be wondering whether
+you can use it for your 142 assignments, instead of the Sieg 323
+lab. The answer is yes, and many students have done so, but quite
+honestly, it is not completely easy. It will certainly help if
+you are already somewhat adept with computers. We have tried to
+organize the course so we will not stand in the way of this, but
+you will be largely on your own in leaping a number of hurdles.
+The added convenience of being able to work at home may compensate
+for this. <BR>
+<P>
+<I>If you plan to use a computer a work, be sure that your employer
+knows and approves. Some employers have a policy against the use
+of company equipment or company time for personal use, but may
+make an exception for education.<BR>
+</I>
+<P>
+In order to be able to work outside the Sieg 323 lab, you need
+to: 
+<OL>
+<LI><!WA0><!WA0><A href=#connected>stay connected</A>, 
+<LI><!WA1><!WA1><A href=#compiler>get a compiler, editor, linker, and debugger</A>,
+<LI><!WA2><!WA2><A href=#transfer>learn how to transfer files</A>, and 
+<LI>learn about certain annoying differences between your computer
+and ours, e.g., different options regarding <!WA3><!WA3><A href="http://www.cs.washington.edu/education/courses/142/c-info/4-byte.html">long ints</A>.
+(Yes, even Mac users.) 
+</OL>
+<H3><A NAME="connected">Stay connected: </A></H3>
+<P>
+No matter where you compute, it is required that you keep in touch
+(a) with what is happening in class, and (b) with announcements
+made through the World Wide Web <!WA4><!WA4><A HREF="http://www.cs.washington.edu/education/courses/142/CurrentQtr/messages.htm">class messages</A>
+and electronic mail. 
+<P>
+For (a), come to lecture and quiz section. If you have to miss
+one or two, check the online lecture notes and ask a friend for
+a synopsis. 
+<P>
+For (b), various approaches are possible: 
+<UL>
+<LI>Come into the lab regularly.
+<LI>Visit another lab on campus regularly. At the time of this
+writing, the Academic Computer Center, at the southwest corner
+of Brooklyn and Pacific, has about 25 PCs running Microsoft Visual
+C++, as well as some Macs running Think C. Both have Netscape.
+They have longer hours than the Sieg 324 lab (24 hour access during
+the academic year, less in summer. See the <!WA5><!WA5><A HREF="http://www.cs.washington.edu/education/courses/142/info/lab_info.htm" >lab schedules</A>.)
+The computer lab in Suzallo has Netscape, but no compilers. <BR>
+</UL>
+<P>
+<B>If you have a computer and appropriate high-speed modem at
+home</B>. You can get an Internet &quot;IP&quot; connection and
+dial into UW.  Then you could use Netscape to access to the class
+Web, whose &quot;URL&quot; is: <TT>http://www.cs.washington.edu/education/courses/142</TT>
+<UL>
+<LI> If you are not on Windows 95: UW Computing and Communications
+provides dialup Internet access (SLIP or PPP) to UW students.
+<!WA6><!WA6><A href="http://www.washington.edu/tech_home/Connect_home.html">Click here</A>
+for details, including directions for obtaining the necessary
+software, either on a floppy or by downloading. You can also find
+these &quot;Dial IP&quot; files, for both PCs and Macintoshes,
+in the Sieg 324 lab. Questions are best directed to the people
+at C&amp;C; their phone numbers and e-mail address can be found
+on their Web pages. <BR>
+<!-- Dropping lynx discussion, due to easy availability of IP --- wlr 6/96 --0--><!-- %3Cli%3E If you do not have Internet access, but do have a modem --0--><!-- you can get --0--><!-- %3Ca href="/education/courses/142/info/dialup.txt"%3Edial-up access%3C/a%3E --0--><!-- (including some --0--><!-- %3Ca href="/education/courses/142/info/modem-pool.txt"%3Etoll-free%3C/a%3E --0--><!--   service outside Seattle) --0--><!-- to university computers, again with appropriate software, --0--><!--  namely a "terminal emulator" such as Kermit. This will --0--><!--  allow you to read electronic mail. There is also a plain text-based --0--><!--  Web browser called "lynx"; it is like Netscape, but cannot show --0--><!--  pictures, or do fancy text-formatting. Lynx is available on --0--><!--  the university "uniform access" unix machines (for example, --0--><!-- homer), and is suitable for use through dialup lines to --0--><!--  read simple Web pages like this one, and most other 142 pages. To run --0--><!-- lynx on homer, for instance, at the "Welcome to Homer" menu --0--><!-- (where you normally type E --0--><!-- for electronic mail), type S to enter Unix commands. (To --0--><!-- return later to --0--><!-- the menu, type %3Ctt%3Eexit%3C/tt%3E.) Type the Unix command --0--><!-- %3Ctt%3Eman lynx%3C/tt%3E --0--><!-- for more information about lynx, --0--><!--  and --0--><!-- %3Cpre%3E --0--><!-- setenv WWW_HOME http://www.cs.washington.edu/education/courses/142/ --0--><!-- lynx %3C/pre%3E --0--><!-- to start lynx and access the 142 course Web. (The setenv --0--><!--  command may be moved to your .login or .cshrc file to avoid --0--><!--  repeatedly typing it.) --0-->
+<LI>If you have Windows 95 at home, you don't need the dial IP
+software - Win95 has networking software built-in. For a quick
+start, look at C&amp;C's <!WA7><!WA7><A HREF="http://www.washington.edu/tech_home/faqs/plaintext/dialip.win95">Win95</A>
+information, as well as the more <!WA8><!WA8><A HREF="http://www.washington.edu/tech_home/Connect_home.html">general information</A>
+as mentioned above.
+</UL>
+<H3><A NAME="compiler">Get a compiler, editor, linker and debugger:
+</A></H3>
+<P>
+For the bulk of the course work, you will need an ANSI C compiler,
+plus associated editor, linker, and debugger. Usually all these
+components will be bundled in one package. The Microsoft Visual
+C++ program is used in Sieg 323. If you have a PC large enough,
+MSVC is strongly recommended. However, it takes up quite a bit
+of disk space and runs best with a fast CPU. MSVC is available
+at the University Bookstore for about $55.00 plus tax. (We tried
+but were unable to arrange an even better discount for students
+of this course). The Borland C++ compiler is another popular tool
+for PCs, but it will not be supported by course staff to the extent
+that MSVC will be.<BR>
+<P>
+For Macintosh, &quot;Think C for Macintosh&quot;, sold by Symantec,
+includes all the needed pieces. It is available at the University
+Book Store with a student price of about $90. If you are planning
+to continue in CSE 143, you will also want a C++ compiler. &quot;Symantec
+C++ for Macintosh&quot; (no, it is not called Think C++) includes
+Think C, as well as C++ and associated tools. The University Book
+Store student price is about $130. These are the products we have
+installed in the Sieg 324 lab and are probably a safe bet for
+home use. (Version 8 is the latest version, for Power-Mac-only.
+We are using version 7 in the lab, and do not yet know whether
+version 8 will work smoothly with version 7.) Many people think
+Metrowerks &quot;Codewarrior&quot; is an even better system, although
+switching its files to/from the Symantec systems in the labs is
+not fully automatic. 
+<P>
+Whatever you buy, our strongly held opinion is that a first-rate
+symbolic debugger will be extremely valuable for this class and
+any subsequent work you do. For the later graphics assignments
+you will find it will be impossible to use DOS-based products
+and difficult or impossible to use older versions of the Borland
+and Microsoft compilers (Borland prior to version 4.0 and Microsoft
+prior to version 1.52). 
+<P>
+(To date, students have not had much luck with Symantec's C++
+product for Windows. We'd suggest you avoid it, unless you already
+own it.) 
+<P>
+<I><B>Before buying any computer product</B></I>, find out about
+compatibility with your existing system.  When you go into the
+store, know at least your computer's CPU type, speed, memory size,
+available hard drive space, and operating system.  Some software
+(including MSVC) requires a CD-ROM for installation.  Read the
+package label carefully.  And <I>caveat emptor</I>. 
+<P>
+You might also be able to use C compilers on the campus Unix machines,
+but we think the lack of suitable graphical user interfaces and
+debuggers will be a <STRONG>huge</STRONG> obstacle. In particular,
+they will be of limited use on the later, graphical, homeworks.
+<P>
+If you do not want to buy a compiler, you can write and edit your
+programs on almost any computer with a simple text editor or word
+processor (saving your file as &quot;plain text&quot;). This may
+let you do the bulk of your typing at home, then bring the file
+to the lab for testing. It may take a little experimentation to
+figure out how to do indentation, tabbing, and/or line-breaking
+appropriately. In general tabs are to be avoided because of the
+different ways in which they are displayed in different contexts,
+in particular what you see may be different from what is displayed
+when you print the output you have turned in. 
+<H3><A NAME="transfer">Transfer files: </A></H3>
+<P>
+For many of the assignments we will provide files to you (sample
+code, a skeleton of the solution, test data, etc.) and expect
+you to provide files to us with your solutions. Outgoing file
+transfer options are about the same as above: bring a disk to
+the lab, or use Netscape, or a comparable browser. To turn in
+files, you can bring a disk to the lab or use Netscape. Note that
+if you have an IBM-compatible, the file transfer issues are complicated
+slightly by the fact that IBMs and Macintoshes use different file
+formats. The lab Macintoshes have &quot;Apple File Exchange&quot;
+software installed, so they can read and write IBM format 3.5&quot;
+floppies (but occasional troubles still arise). 
+<H3><A NAME="mac">Mac file transfer:</A> </H3>
+<P>
+See <!WA9><!WA9><A href="http://www.cs.washington.edu/education/courses/142/info/downloading-macbinaries.html">Downloading Macintosh Binaries </A>for
+more information about downloading Macintosh files without visiting
+the lab. 
+<H3><A NAME="summary">Summary: </A></H3>
+<P>
+In short, it is be possible to work outside of the Sieg 323 Lab.
+We were reasonably careful in setting up the course so we would
+not preclude that possibility. But, you should expect a few headaches,
+and unfortunately it may be difficult to find help. We certainly
+do not know everything about every combination of hardware and
+software! In light of this, we <STRONG>strongly</STRONG> recommend
+that you do the first assignment, <STRONG>at least</STRONG>, in
+our lab, so you have a graceful fallback &quot;just in case,&quot;
+and <STRONG>always</STRONG> allow yourself ample time for final
+testing, debugging, and electronic turn-in, in case bugs or incompatibilities
+show up at that stage. 
+<HR>
+<ADDRESS>
+Comments to: <!WA10><!WA10><A href="http://www.cs.washington.edu/htbin-post/unrestricted/mailto.pl?to=cse142-webmaster@cs.washington.edu&sub=CSE142+Computing+at+Home"><B>cse142-webmaster@cs.washington.edu</B></A>
+(Last Update: <!--#config timefmt="%D" --><!-- see man strftime for full format opts--><!--#echo var="LAST_MODIFIED" -->
+) 
+</ADDRESS>
+</BODY>
+</HTML>

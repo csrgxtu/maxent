@@ -1,0 +1,306 @@
+Date: Wed, 20 Nov 1996 19:44:01 GMT
+Server: Apache-SSL/0.4.3b
+Content-type: text/html
+Content-length: 11717
+Last-modified: Wed, 13 Nov 1996 01:47:11 GMT
+
+<HTML>
+<HEAD>
+<TITLE>
+Amanda, The Advanced Maryland Automatic Network Disk Archiver
+</TITLE>
+<!-- $Id: amanda.html,v 1.3 1996/11/13 01:46:48 iniquity Exp $ -->
+</HEAD>
+<BODY>
+<H1 ALIGN=CENTER> Amanda </H1> <BR>
+<H2 ALIGN=CENTER>
+The Advanced Maryland Automatic Network Disk Archiver <BR>
+Copyright (c) 1991, 1995 University of Maryland at College Park <BR>
+All Rights Reserved.  <BR>
+</H2>
+
+See the file <!WA0><a href="http://www.cs.umd.edu/projects/amanda/COPYRIGHT.html">COPYRIGHT</a> for distribution
+conditions and official warranty disclaimer.
+Amanda was written by <!WA1><a href="http://www.cs.umd.edu/~jds/">James da Silva</a>.
+
+<H2>
+Amanda 2.3.0 ALPHA RELEASE NOTES - May 19, 1996
+</H2>
+
+The latest version of Amanda is always available via anonymous ftp
+from <!WA2><a href="ftp://ftp.cs.umd.edu/pub/amanda/">ftp.cs.umd.edu:/pub/amanda</a>.
+<P>
+
+PLEASE NOTE: THIS SOFTWARE IS BEING MADE AVAILABLE ``AS-IS''. UMD is making
+this work available so that other people can use it.  This software is in
+production use at our home site - the UMCP Department of Computer Science -
+but we make no warranties that it will work for you.  Amanda development is
+unfunded - the author maintains the code in his spare time.  As a result,
+there is no support available other than users helping each other on the
+amanda-users mailing list.  See below for information on the mailing lists.
+
+
+<H2>
+WHAT'S NEW SINCE 2.2.6?
+</H2>
+
+<UL>
+<LI> A number of material bugs fixed, including fixes incorporated into John
+  Stoffel's WPI patches to amanda, which he called 2.2.6.5.
+<LI> Backup files larger than 2 GB now supported.  The current limit is 2^31
+  Kbytes (2 terabytes), which should hold us for a few more years (1/2 :-).
+<LI> Support for GNUTAR-based backups.
+<LI> Support for writing to multiple tapes (sequentially) in one run.
+<LI> Support for multiple backups in parallel from the same client host.
+<LI> Records from the curinfo database can be exported and imported to/from a
+  textual format.  This allows fixing a corrupted database by running the
+  text version through a script and reimporting it.  Individual records or
+  the entire database can be exported/imported.
+</UL>
+
+More details for these new features can be found in docs/WHATS.NEW.
+
+
+<H2>
+WHAT'S LEFT TO DO FOR AMANDA 2.3?
+</H2>
+
+<UL>
+<LI> Release engineering and porting on many platforms.
+<LI> Update and extend the documentation.
+<LI> Archival dumps via "skip-incr" are not doing the right thing.
+<LI> Pick many little nits.
+<LI> Probably lots of other things.
+</UL>
+
+
+<H2>
+WHAT'S NEW SINCE 2.2.5?
+</H2>
+
+<UL>
+<LI> A number of material bugs fixed.
+<LI> A lot of lint picked in the whole package.
+<LI> The documentation is now reasonably up to date.
+<LI> This version has been locally compiled and at least the client side tested
+  on the following systems:
+	SunOS 4.1.3	IRIX 5.2 <BR>
+	Solaris 2.3	BSDI BSD/386 1.1 <BR>
+	Ultrix 4.2	NetBSD 1.0 <BR>
+	DEC OSF/1 2.0	AIX 3.2 <BR>
+  I don't have any HP/UX machines locally to try it on, but I've tracked
+  patches submitted by Neal Becker &lt;neal@ctd.comset.com&gt;, so I'm reasonably
+  confident that 2.2.6 shouldn't be far from the mark on that platform.
+</UL>
+
+
+<H2>
+WHAT'S NEW SINCE 2.1?
+</H2>
+
+Many things have changed since Amanda 2.1.  Here are the major items:
+
+<UL>
+<LI> SYSV shared memory no longer required on server side if mmap is available.
+<LI> Supports GZIP compression.
+<LI> Supports use of mount names as well as device names in disk list
+  (eg "/usr" instead of "sd0g").
+<LI> Amanda now thinks in real-time - you may run it several times a day if 
+  you wish, and it won't get confused.
+<LI> Supports Kerberos 4 security as well as BSD-style .rhosts, including
+  encrypting files over the net.  The Kerberos support is available as a
+  separate add-on package - see the file KERBEROS.HOW-TO-GET on the ftp
+  site.
+<LI> Improved network protocol - faster startup, no longer dump specific,
+  hooks in place for non-dump clients.
+<LI> Client-side checks in amcheck - can check sanity of all client hosts very
+  quickly.
+<LI> Supports multiple holding disks, and load balances between them.
+</UL>
+
+More details are available in docs/WHATS.NEW.
+
+
+<H2>
+WHAT IS AMANDA?
+</H2>
+
+This is an alpha-test release of Amanda, the Advanced Maryland Automatic
+Network Disk Archiver.  Amanda is a backup system designed to archive many
+computers on a network to a single large-capacity tape drive.  This release
+is currently in daily use at the University of Maryland at College Park
+Computer Science Department, backing up all the disks on all the
+workstations in the department: currently over 70 gigabytes of data across
+more than 400 filesystems on more than 146 workstations and servers, using
+a single 5 Gigabyte Exabyte EXB-8500.  Here are some features of Amanda:
+
+<UL>
+  <LI> written in C, freely distributable.
+  <LI> built on top of standard backup software: BSD Unix dump/restore, and
+    later GNU Tar and others.
+  <LI> will back up multiple machines in parallel to a holding disk, blasting
+    finished dumps one by one to tape as fast as we can write files to
+    tape.  For example, a ~2 Gb 8mm tape on a ~240K/s interface to a host
+    with a large holding disk can be filled by Amanda in under 4 hours. 
+  <LI> does simple tape management: will not overwrite the wrong tape.
+  <LI> supports tape changers via a generic interface.  Easily customizable to
+    any type of tape carousel, robot, or stacker that can be controlled via
+    the unix command line.
+  <LI> supports Kerberos 4 security, including encrypted dumps.  The Kerberos
+    support is available as a separate add-on package, see the file
+    KERBEROS.HOW-TO-GET on the ftp site, and the file docs/KERBEROS in this
+    package, for more details.
+  <LI> for a restore, tells you what tapes you need, and finds the proper
+    backup image on the tape for you.
+  <LI> recovers gracefully from errors, including down or hung machines.
+  <LI> reports results, including all errors in detail, in email to operators.
+  <LI> will dynamically adjust backup schedule to keep within constraints: no
+    more juggling by hand when adding disks and computers to network.
+  <LI> includes a pre-run checker program, that conducts sanity checks on both
+    the tape server host and all the client hosts (in parallel), and will
+    send an e-mail report of any problems that could cause the backups to
+    fail.
+  <LI> can compress dumps before sending over net, with either compress or gzip.
+  <LI> can optionally syncronize with external backups, for those large
+    timesharing computers where you want to do full dumps when the system
+    is down in single-user mode (since BSD dump is not reliable on active
+    filesystems): Amanda will still do your daily dumps.
+  <LI> lots of other options; Amanda is very configurable.
+</UL>
+
+
+<H2>
+WHAT ARE THE SYSTEM REQUIREMENTS FOR AMANDA?
+</H2>
+
+Amanda requires a host that is mostly idle at night, with a large capacity
+tape drive (e.g. an EXABYTE or DAT tape).  This becomes the "tape server
+host".  All the computers you are going to dump are the "backup client
+hosts".  The server host can also be a client host.
+
+Amanda works best with one or more large "holding disk" partition on the
+server host available to it for buffering dumps before writing to tape.
+The holding disk allows Amanda to run backups in parallel to the disk, only
+writing them to tape when the backup is finished.  Note that the holding
+disk is not required: without it Amanda will run backups sequentially to
+the tape drive.  Running it this way kills the great performance, but still
+allows you to take advantage of Amanda's other features.
+
+As a rule of thumb, for best performance the holding disk should be larger
+than the dump output from your largest disk partitions.  For example, if
+you are backing up some full gigabyte disks that compress down to 500 MB,
+then you'll want 500 MB on your holding disk.  On the other hand, if those
+gigabyte drives are partitioned into 500 MB filesystems, they'll probably
+compress down to 250 MB and you'll only need that much on your holding
+disk.  Amanda will perform better with larger holding disks.  We use 800 MB
+for our holding disk.
+
+Actually, Amanda will still work if you have full dumps that are larger
+than the holding disk: Amanda will send those dumps directly to tape one at
+a time.  If you have many such dumps you will be limited by the dump speed
+of those machines.
+
+
+<H2>
+WHAT SYSTEMS DOES AMANDA RUN ON?
+</H2>
+
+Amanda should run on any modern Unix system that supports dump, has sockets
+and inetd, and either system V shared memory, or BSD mmap implemented.
+
+In particular, Amanda 2.3.0 has been compiled, and the client side tested
+on the following systems:
+	SunOS 4.1.3	IRIX 5.2
+	SunOS 5.5	BSDI BSD/OS 2.1
+	Ultrix 4.2	NetBSD 1.0
+	DEC OSF/1 3.2	AIX 3.2
+We only run the server side under SunOS 4.1.3, but it compiles on all those
+platforms, and I have no reason at this time to beleive it will not work.
+
+In addition, I have tracked patches for the following systems that we don't
+run in house:
+	FreeBSD
+	Linux
+	HP/UX
+	NextStep
+
+
+<H2>
+HOW DO I GET AMANDA UP AND RUNNING?
+</H2>
+
+    docs/INSTALL	contains general installation instructions.
+    docs/SYSTEM.NOTES	contains system-specific information.
+    docs/KERBEROS	explains installation under Kerberos 4.
+    docs/TAPE.CHANGERS	explains how to customize the changer interface.
+    docs/WHATS.NEW	details new features.
+
+
+<H2>
+WHO DO I TALK TO IF I HAVE A PROBLEM?
+</H2>
+
+Amanda is completely unsupported and made available as-is.  Unfortunately,
+I just don't have the time to answer all user questions and help all new
+sites get started.
+<P>
+I do maintain the following mailing lists for those interested in Amanda:
+<P>
+==> To join a mailing list, DO NOT, EVER, send mail to that list.  Send
+    mail to &lt;listname&gt;-request@cs.umd.edu, or with the following line
+    in the body of the message:
+	subscribe &lt;your-email-address&gt;
+<P>
+    where listname is the following:
+
+<DL>
+<DT>
+    amanda-announce
+<DD>
+        The amanda-announce mailing list is for important announcements
+        related to the Amanda Network Backup Manager package, including new
+        versions, contributions, and fixes.  NOTE: the amanda-users list is
+        itself on the amanda-announce distribution, so you only need to
+        subscribe to one of the two lists, not both.
+	To subscribe, send a message to amanda-announce-request@cs.umd.edu.
+
+<DT>
+    amanda-users
+<DD>
+        The amanda-users mailing list is for questions and general discussion
+        about the Amanda Network Backup Manager.  This package and related
+        files are available via anonymous FTP from ftp.cs.umd.edu in the
+        pub/amanda directory.  NOTE: the amanda-users list is itself on the
+        amanda-announce distribution, so you only need to subscribe to one of
+        the two lists, not both.
+	To subscribe, send a message to amanda-users-request@cs.umd.edu.
+
+<DT>
+    amanda-hackers
+<DD>
+        The amanda-hackers mailing list is for discussion of the
+        technical details of the Amanda package, including extensions,
+        ports, bugs, fixes, and alpha testing of new versions.
+	To subscribe, send a message to amanda-hackers-request@cs.umd.edu.
+</DL>
+
+<H2>
+IS THERE AN ARCHIVE OF THE AMANDA MAILING LISTS?
+</H2>
+
+There is a www archive of each of the amanda mailing lists:
+<li>
+<!WA3><a href="http://www.cs.umd.edu/projects/amanda/amanda-announce">amanda-announce</a>
+<li>
+<!WA4><a href="http://www.cs.umd.edu/projects/amanda/amanda-users">amanda-users</a>
+<li>
+<!WA5><a href="http://www.cs.umd.edu/projects/amanda/amanda-hackers">amanda-hackres</a>
+<P>
+
+That's It.
+<HR>
+<I>Last updated on Tue Nov 12 19:05:56 EST 1996</I>
+<BR>
+Validated Nov/12/96 against HTML 3.0 draft DTD dated 3/24/95.
+</BODY>
+</HTML>

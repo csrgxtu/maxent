@@ -1,0 +1,617 @@
+Date: Tue, 05 Nov 1996 00:32:24 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 30 Aug 1995 21:21:36 GMT
+Content-length: 15349
+
+
+<html>
+<head>
+<title> Lecture notes - Chapter 4 - Data Representation</title>
+</head>
+
+<BODY>
+<h1> Chapter 4 -- representations</h1>
+
+<pre>
+
+ALL ABOUT INTEGER REPRESENTATION.
+---------------------------------
+
+Computers operate on binary values (as a result of being built from
+transistors).
+
+
+there are different binary representations for integers
+possible qualifications:
+  1. positive numbers only
+  2. positive and negative numbers
+  3. ease of human readability
+  4. speed of computer operations
+
+there are 4 commonly known (1 not common) integer reprentations.
+All have been used at various times for various reasons.
+   1. unsigned
+   2. sign magnitude
+   3. one's complement
+   4. two's complement
+   5. biased (not commonly known)
+
+virtually all modern computers operate based on 2's complement
+ representation.  why?
+   1. hardware is faster
+   2. hardware is simpler
+
+
+UNSIGNED
+--------
+the standard binary encoding already given
+
+only positive values
+
+range:   0 to 2**n - 1, for n bits
+
+example:   4 bits, values 0 to 15
+	   n=4, 2**4 -1 is 15
+
+	   binary decimal hex     binary decimal hex
+	   0000      0     0       1000    8      8
+	   0001      1     1       1001    9      9
+	   0010      2     2       1010    10     a
+	   0011      3     3       1011    11     b
+	   0100      4     4       1100    12     c
+	   0101      5     5       1101    13     d
+	   0110      6     6       1110    14     e
+	   0111      7     7       1111    15     f
+
+
+
+SIGN MAGNITUDE
+--------------
+
+a human readable way of getting both positive and negative integers.
+The hw that does arithmetic on sign magnitude integers
+is not fast, and it is more complex than the hw that does arithmetic
+on 1's comp. and 2's comp. integers.
+
+use 1 bit of integer to represent the sign of the integer
+
+    let sign bit of 0 be positive,
+		    1 be negative.
+
+the rest of the integer is a magnitude, uses same encoding
+as unsigned integers
+
+example:  4 bits
+	      0101   is  5
+
+	      1101   is -5
+
+to get the additive inverse of a number, just flip 
+  (not, invert, complement, negate) the sign bit.
+
+range:    -(2**(n-1)) + 1     to    2**(n-1) -1
+               where n is the number of bits
+      
+	  4 bits, -7 to +7
+	  n=4, - 2**3 + 1     to    2**3 - 1
+	       -8 + 1         to     8 - 1
+
+
+because of the sign bit, there are 2 representations for 0.
+This is a problem for hardware. . .
+
+    0000 is 0, 1000 is 0
+    the computer must do all calculations such that they
+    come out correctly and the same whichever representation is used.
+
+
+
+ONE's COMPLEMENT
+----------------
+
+historically important, and we use this representation to get
+  2's complement integers.
+
+Now, nobody builds machines that are based on 1's comp. integers.
+In the past, early computers built by Semour Cray (while at CDC)
+were based on 1's comp. integers.
+
+
+positive integers use the same representation as unsigned.
+     
+     00000 is 0
+     00111 is 7,  etc.
+
+negation (finding an additive inverse) is done by taking a bitwise
+complement of the positive representation.
+
+  COMPLEMENT. INVERT. NOT. FLIP. NEGATE.
+       a logical operation done on a single bit
+	    the complement of 1 is 0.
+	    the complement of 0 is 1.
+
+
+	-1 -->        take +1,    00001
+	      complement each bit 11110
+
+              that is -1.
+
+	      don't add or take away any bits.
+	
+
+
+EXAMPLES:        11100         this must be a negative number.
+			       to find out which, find the additive
+			       inverse!
+		 00011   is +3 by sight,
+			 so 11100 must be -3
+
+
+  things to notice:  1. any negative number will have a 1 in the MSB.
+		     2. there are 2 representations for 0,
+			00000 and 11111.
+
+
+
+TWO's COMPLEMENT
+----------------
+
+a variation on 1's complement that does not have 2 representations for
+0.  This makes the hardware that does arithmetic faster than for the
+other representations.
+
+  a 3 bit example:
+  bit pattern:    100   101  110  111  000  001  010  011
+
+  1's comp:       -3     -2   -1    0   0    1    2    3
+
+  2's comp.:      -4     -3   -2   -1   0    1    2    3
+
+  the negative values are all "slid" down by one, eliminating the 
+  extra zero representation.
+
+
+
+  how to get an integer in 2's comp. representation:
+
+    positive values are the same as for sign/mag and 1's comp.
+    they will have a 0 in the MSB (but it is NOT a sign bit!)
+
+
+    positive:   just write down the value as before
+    negative:
+	      take the positive value    00101 (+5)
+	      take the 1's comp.         11010 (-5 in 1's comp)
+	      add 1                     +    1
+					------
+					 11011 (-5 in 2's comp)
+
+  to get the additive inverse of a 2's comp integer,
+      1.  take the 1's comp.
+      2.  add 1
+
+  to add 1 without really knowing how to add:
+    start at LSB, for each bit (working right to left)
+      while the bit is a 1, change it to a 0.
+      when a 0 is encountered, change it to a 1 and stop.
+
+  EXAMPLE:
+       what decimal value does the two's complement 110011 represent?
+
+       It must be a negative number, since the most significant bit
+       is a 1.  Therefore, find the additive inverse:
+
+	     110011  (2's comp.  ?)
+
+	     001100  (after taking the 1's complement)
+		+ 1
+	     ------
+	     001101  (2's comp.  +13)
+
+	     Therefore, it's additive inverse (110011) must be -13.
+
+
+
+A LITTLE BIT ON ADDING
+----------------------
+  we'll see how to really do this in the next chapter, but here's
+  a brief overview.
+
+
+	carry in  a  b   sum  carry out
+	   0      0  0    0    0
+	   0      0  1    1    0
+	   0      1  0    1    0
+	   0      1  1    0    1
+	   1      0  0    1    0
+	   1      0  1    0    1
+	   1      1  0    0    1
+	   1      1  1    1    1
+
+       a      0011
+      +b     +0001
+      --     -----
+     sum      0100
+
+
+  its really just like we do for decimal!
+    0 + 0 = 0
+    1 + 0 = 1
+    1 + 1 = 2  which is 10 in binary, sum is 0 and carry the 1.
+    1 + 1 + 1 = 3  sum is 1, and carry a 1.
+
+
+
+
+BIASED REPRESENTATION
+---------------------
+
+an integer representation that skews the bit patterns so as to
+look just like unsigned but actually represent negative numbers.
+
+    examples:    given 4 bits, we BIAS values by 2**3 (8)
+
+	  TRUE VALUE to be represented      3
+	  add in the bias                  +8
+					 ----
+	  unsigned value                   11
+
+	  so the bit pattern of 3 in biased-8 representation
+	  will be  1011
+
+      
+
+	  going the other way, suppose we were given a
+	  biased-8 representation as   0110
+
+	  unsigned 0110  represents 6
+	  subtract out the bias   - 8
+				  ----
+	  TRUE VALUE represented   -2
+
+
+    this representation allows operations on the biased numbers
+    to be the same as for unsigned integers, but actually represents
+    both positive and negative values.
+
+    choosing a bias:
+      the bias chosen is most often based on the number of bits
+      available for representing an integer.  To get an approx.
+      equal distribution of true values above and below 0,
+      the bias should be    2 ** (n-1)      or   (2**(n-1)) - 1
+
+
+
+
+SIGN EXTENSION
+--------------
+how to change an integer with a smaller number of bits into the
+same integer (same representation) with a larger number of bits.
+
+this must be done a lot by arithmetic units, so it is best to
+go over it.
+
+by representation:
+  unsigned:             xxxxx   -->   000xxxxx
+	copy the original integer into the LSBs, and put 0's elsewhere
+
+  sign/magnitude:       sxxxx   -->   s000xxxx
+	copy the original integer's magnitude into the LSBs,
+	put the original sign into the MSB, and put 0's elsewhere
+
+  1's and 2's complement:   called SIGN EXTENSION.
+	copy the original integer into the LSBs,
+	take the MSB of original integer and copy it elsewhere.
+
+	example:       0010101
+		   000 0010101
+
+		       11110000
+	      11111111 11110000
+	
+
+OVERFLOW
+--------
+
+sometimes a value cannot be represented in the limited number
+of bits allowed.   Examples:
+    unsigned, 3 bits:    8 would require at least 4 bits (1000)
+    sign mag., 4 bits:   8 would require at least 5 bits (01000)
+
+
+when a value cannot be represented in the number of bits allowed,
+we say that overflow has occurred.  Overflow occurs when doing
+arithmetic operations.
+
+      example:          3 bit unsigned representation
+
+	      011 (3)
+	    + 110 (6)
+	    ---------
+	       ?  (9)     it would require 4 bits (1001) to represent
+			  the value 9 in unsigned rep.
+
+
+
+CHARACTER REPRESENTATION
+------------------------
+
+everything represented by a computer is represented by binary sequences.
+
+A common non-integer needed to be represented is characters.
+We use standard encodings (binary sequences) to repreesent characters.
+
+REMEMEBER:  bit patterns do NOT imply a representation
+
+
+I/O devices work with 8 bit quantities.
+A standard code  ASCII (American Standard for Computer Information
+Interchange) defines what character is represented by each sequence.
+
+  examples:
+    0100 0001  is  41 (hex)  or 65 (decimal).  It represents `A'
+    0100 0010  is  42 (hex)  or 66 (decimal).  It represents `B'
+
+
+    Different bit patterns are used for each different character
+    that needs to be represented.
+
+The code has some nice properties.  If the bit patterns are compared,
+(pretending they represent integers), then `A' < `B'  
+This is good, because it helps with sorting things into alphabetical
+order.
+
+
+Notes:        `a' (61 hex)  is different than `A' (41 hex)
+              `8' (38 hex) is different than the integer 8
+
+    the digits:
+	  `0' is 48 (decimal) or 30 (hex)
+	  `9' is 57 (decimal) or 39 (hex)
+
+
+Because of this, you have to be careful.  Consider the following example:
+
+
+       in1:  .byte
+       result:  .byte
+
+
+	     get in1
+	     add  result, in1, in1
+	     put result
+
+
+
+    suppose the user types `3'
+       result <-  51 + 51 = 102 (decimal)
+
+       put prints out `f', since the ASCII code for 102(decimal) is `f'
+
+
+What we really wanted was more likely this:
+
+       in1:     .byte
+       number:  .word
+       result:  .word
+       out1:    .byte
+
+
+	     get  in1
+	     sub  number, in1, 48
+	     add  result, number, number
+	     add  out1, result, 48
+	     put  out1
+
+  the subtract takes the "bias" out of the character representation.
+  the add puts the "bias" back in.
+
+
+This will only work right if the result is a single digit.
+        (What would happen if it wasn't?)
+
+What we need is an algorithm for translating character strings
+to the integers they represent, and visa versa.
+
+
+ALGORITHM:   character string --> integer
+   the steps:
+
+      for `3' `5' `4'
+
+      read `3'
+      translate `3' to 3
+
+      read `5'
+      translate `5' to 5
+      integer =  3 * 10  + 5 = 35
+
+      read `4'
+      translate `4' to 4
+      integer =  35 * 10  + 4 = 354
+
+  the algorithm:
+     
+     integer = 0
+     while there are more characters
+       get character
+       digit <-  character - 48
+       integer <- integer * 10  + digit
+
+
+ALGORITHM:  integer --> character string
+   the steps:
+   for 354, figure out how many characters there are (3)
+
+   354 div 100 gives 3
+   translate 3 to `3' and print it out
+   354 mod 100 gives 54
+
+   54 div 10 gives 5
+   translate 5 to `5' and print it out
+   54 mod 10 gives 4
+
+   4 div 1 gives 4
+   translate 4 to `4' and print it out
+   4 mod 1 gives 0, so you're done
+
+
+
+
+REPRESENTATION OF FLOATING POINT NUMBERS
+----------------------------------------
+
+computers represent real values in a form similar to that of
+scientific notation.  There are standards which define what the
+representation means so that across computers there will be consistancy.
+
+Note that this is not the only way to represent floating point
+numbers, it is just the IEEE standard way of doing it.
+
+Here's what we do:
+
+the representation
+
+	 -------------------
+	 | S |   E   |  F  |
+	 -------------------
+
+    S is one bit representing the sign of the number
+    E is an 8 bit biased integer representing the exponent
+    F is an unsigned integer
+
+ the true value represented is:
+
+              S        e
+	  (-1)  x f x 2
+
+ where
+	    e = E - bias
+                   n
+	    f = F/2  + 1
+ 
+ for single precision numbers (the emphasis in this class)
+       n = 23
+       bias = 127
+
+
+
+Now, what does all this mean?
+  --> S, E, F all represent fields within a representation.  Each
+      is just a bunch of bits.
+
+  --> S  is just a sign bit.  0 for positive, 1 for negative.
+
+  --> E  is an exponent field.   The E field is a biased-127 representation.
+      So, the true exponent represented is (E - bias).  The radix for
+      the number is ALWAYS 2.
+
+      Note:  Computers that did not use this representation, like those
+	     built before the standard, did not always use a radix of 2.
+	     Example:  some IBM machines had radix of 16.
+
+  --> F  is the mantissa.  It is in a somewhat modified form.  There are
+      23 bits available for the mantissa.  It turns out that if fl. pt.
+      numbers are always stored in their normal form, then the leading
+      bit (the one on the left, or MSB) is always a 1.  So, why store
+      it at all?  It gets put back into the number (giving 24 bits
+      of precision for the mantissa) for any calculation, but we only have
+      to store 23 bits.
+
+      This MSB is called the HIDDEN BIT.
+
+
+An example:   put the decimal number 64.2 into the standard single
+	      precision representation.
+	
+	first step:
+	  get a binary representation for 64.2
+	  to do this, get binary reps. for the stuff to the left
+	  and right of the decimal point separately.
+
+	  64  is   1000000
+
+	  .2 can be gotten using the algorithm:
+
+	  .2 x 2 =  0.4      0
+	  .4 x 2 =  0.8      0
+	  .8 x 2 =  1.6      1
+	  .6 x 2 =  1.2      1
+
+	  .2 x 2 =  0.4      0  now this whole pattern (0011) repeats.
+	  .4 x 2 =  0.8      0
+	  .8 x 2 =  1.6      1
+	  .6 x 2 =  1.2      1
+	    
+
+	    so a binary representation for .2  is    .001100110011. . .
+
+
+
+	Putting the halves back together again:
+	   64.2  is     1000000.0011001100110011. . .
+
+
+      second step:
+	normalize the binary representation. (make it look like
+	scientific notation)
+
+				  6
+	1.000000 00110011. . . x 2
+
+      third step:
+	6 is the true exponent.  For the standard form, it needs to
+	be in biased-127 form.
+
+	      6
+	  + 127
+	  -----
+	    133
+
+	133 in 8 bit, unsigned representation is 1000 0101
+
+	this is bit pattern used for E in the standard form.
+
+      fourth step:
+	the mantissa stored (F) is the stuff to the right of the radix point
+	in the normal form.  We need 23 bits of it.
+
+	  000000 00110011001100110
+
+
+      put it all together (and include the correct sign bit):
+
+	 S     E               F
+	 0  10000101  00000000110011001100110
+
+      the values are often given in hex, so here it is
+
+	 0100 0010 1000 0000 0110 0110 0110 0110
+
+     0x   4    2    8    0    6    6    6    6
+
+
+
+Some extra details:
+
+ -->  Since floating point numbers are always stored in normal
+      form, how do we represent 0?
+
+       (What does the fl. pt. number 0x3f80 0000 represent?)
+
+      We take the bit patterns 0x0000 0000 and 0x8000 0000
+      to represent the value 0.
+
+       (What fl. pt. numbers cannot be represented because of this?)
+
+ -->  Other special values:
+
+       +infinity     0 11111111 00000... (0x7f80 0000)
+       -infinity     1 11111111 00000... (0xff80 0000)
+
+       NaN (Not a Number)     ? 11111111 ?????... 
+	  (S is either 0 or 1, E=0xff, and F is anything but all zeros)
+
+</pre>
+

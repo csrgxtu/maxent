@@ -1,0 +1,90 @@
+Date: Mon, 02 Dec 1996 15:11:05 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+<title>CSE567 Homework Assignment #1</title>
+</head>
+
+<body bgcolor="#dddddd"  text="#000000"  link="#0000ee" vlink="501080" alink="ff0000">
+
+<h1>CSE 567: Principles of Digital Systems Design </h1>
+<h3>Carl Ebeling, Fall 1996 </h2>
+
+<hr>
+
+<h3>Homework 1</h3>
+<p>
+<b>Distributed: Monday Oct. 7 - Due Friday Oct. 11, in class</b>
+<hr>
+<p>
+<ol>
+<li> Prove the following simplification theorems using only axioms and
+theorems T1-6 and T9-10 from the notes:
+
+<pre>
+a. (A+B)(A+B') = A
+
+b. (A+B)(A'+B) = AB+A'B
+</pre>
+
+<li> Use DeMorgan's law to complement:
+<pre>
+ABC+B(C'+D')
+</pre>
+
+<li> Simplify the following using the theorems of Boolean algebra:
+<pre>
+f(X,Y,Z) = (X+Y)(X'+Y+Z)(X'+Y+Z')
+</pre>
+
+<li> Rewrite the following in Product of Sums form, not necessarily
+minimized:
+<pre>
+f(A,B,C,D) = AB + CD + AC' + A'D
+</pre>
+
+<li> Implement the logic function <pre>f(A,B,C,D,E) =  ABCDE </pre>
+using 2-input NAND gates only.  Try to minimize worst-case delay.
+What is the worst-case delay of your circuit assuming each NAND gate
+has a delay of 2 ns?
+
+<p>
+<li> Find a three-variable function that is its own dual.  (This
+highlights the fact that duality and complementation are very
+different.)
+<p>
+<li> A 2-bit comparator compares two 2-bit numbers A and B and
+generates two results, A>B and A=B.<br>
+
+a. Implement a 2-bit comparator.<br>
+
+b. Use the 2-bit comparator that you designed in part (a) to construct
+at 4-bit comparator.<br>
+
+c. Extend the method you used for part (b) to describe how to
+implement an n-bit comparator for arbitrary n.  Assuming that each
+logic gate has a delay of 1 (unit-delay model), what is the delay of
+your n-bit comparator as a function of n?
+
+d. (Extra credit) If your answer for part (c) was not O(logn) then
+find a solution that is.
+
+<p><li> Consider a three-out-of-five majority gate called M5,  whose
+output is 1 if at least three of its five inputs are 1.<br>
+a. Show how to implement a 2-input AND gate using M5 with the inputs
+connected appropriately.<br>
+b. Show how to impement a 3-input OR gate using M5.<br>
+c. Can you use M5 to implement an inverter?
+
+
+</ol>
+</body>
+<address>
+<hr>
+ebeling@cs.washington.edu
+</address>
+<p>
+</html>
+

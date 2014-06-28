@@ -1,0 +1,159 @@
+Date: Mon, 11 Nov 1996 17:25:25 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 07 Feb 1996 18:25:16 GMT
+Content-length: 2712
+
+<html>
+<head>
+<title>CS 537 - Quiz #1</title>
+</head>
+
+<body>
+<table border=0 width=100% align=center>
+<tr>
+<td width=25%><td width=50% align=center>
+<b>UNIVERSITY OF WISCONSIN-MADISON
+<br>
+Computer Sciences Department</b>
+<td width=25%>
+<tr>
+<tr>
+<td>
+<b>CS 537
+<br>
+Spring 1996 </b>
+<td><td align=right><b>Bart Miller</b>
+<tr>
+<td>
+<td align=center><b>Quiz #1</b>
+<br>
+Wednesday, February 7
+<td>
+</table>
+
+<h2>Concurrent and Cooperating Processes</h2>
+For the following two example programs, you are to describe what will be
+the output when each program is run.
+If there is more than one possible output, describe all the possibilities.
+Here are some general <i>important</i> facts:
+<ul>
+<li>
+Each program is made up of two concurrent processes.
+You don't know in what order they will run, nor do you know when the
+dispatcher will switch between processes.
+<li>
+The initialization code (setting the initial values for the shared
+variables), is completed <i>before</i> either of the two processes run.
+<li>
+All the variables (X and Y) are shared between the two processes.
+<li>
+Every time a variable is referenced (appears in an expression),
+it is read from memory.
+<li>
+Every time a variable is set (appears on the lefthand size of an
+assignment operator), it is written to memory.
+<li>
+Reading and writing single words (ints) is atomic.
+</ul>
+<h3>Problem 1</h3>
+<p>
+<table width=100% border=1 align=center>
+<tr>
+<td colspan=2>
+<b>Initialization</b>
+<pre>
+ int X = 0;
+</pre>
+<tr>
+<td width=50% valign=top>
+<b>Process A</b>
+<pre>
+ while (X == 0) {  
+   // do nothing
+ }
+ cout << "a";
+</pre>
+<td width=50% valign=top>
+<b>Process B</b>
+<pre>
+ cout << "b";
+ X = 1;
+</pre>
+<tr>
+<td colspan=2>
+<b>Describe the output here:</b>
+<p>
+<b><pre>
+ba
+</pre>
+
+The while-loop keeps executing until Process B has
+a chance to set X to 1.
+This is called "spinning" or "busy waiting".</b>
+</table>
+
+<h3>Problem 2</h3>
+<p>
+
+<table width=100% border=1 align=center>
+<tr>
+<td colspan=2>
+<b>Initialization</b>
+<pre>
+ int X = 0;
+ int Y = 0;
+</pre>
+<tr>
+<td width=50% valign=top>
+<b>Process A</b>
+<pre>
+ while (X == 0) {  
+   // do nothing
+ }
+ cout << "a";
+ Y = 1;
+ Y = 0;
+ cout << "d";
+ Y = 1;
+</pre>
+<td width=50% valign=top>
+<b>Process B</b>
+<pre>
+ cout << "b";
+ X = 1;
+ while (Y == 0) {  
+   // do nothing
+ }
+ cout << "c";
+</pre>
+<tr>
+<td colspan=2>
+<b>Describe the output here:</b>
+<p>
+<b>The output will be either:
+
+<pre>
+badc
+</pre>
+
+or:
+
+<pre>
+bacd
+</pre>
+
+The difference depends on whether the dispatcher switches
+processes between first time Y is set to 1 and the time that
+Y is set to 0</b>
+</table>
+
+
+<hr>
+<H4>
+Last modified:
+Wed Feb  7 12:25:15 CST 1996
+by
+<a href="http://www.cs.wisc.edu/~bart">bart</a></b>
+</H4>
+</body>

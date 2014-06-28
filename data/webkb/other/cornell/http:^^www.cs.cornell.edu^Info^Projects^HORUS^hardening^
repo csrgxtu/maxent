@@ -1,0 +1,180 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 20:27:15 GMT
+Content-Type: text/html
+Content-Length: 5381
+Last-Modified: Friday, 26-Apr-96 04:37:53 GMT
+
+<!-- File: index.html -->
+<!-- Author: David A Karr -->
+<!-- Contributors: Robbert van Renesse, Mark Hayden, Jason Hickey -->
+<!-- Contents: Presentation of a Project to Harden and Secure Horus -->
+<!-- Created: Jan 1996 -->
+
+<html>
+<head>
+<title>Securing and Hardening the Horus System</title>
+<link rev="made" href="mailto:karr@cs.cornell.edu (David Karr)">
+</head>
+<body>
+
+<h1>Securing and Hardening the Horus System</h1>
+
+<p>
+<strong>
+A joint project by researchers in the
+<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><a href="http://www.cs.cornell.edu/Info/Projects/HORUS/">Horus</a> and
+<!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href="http://www.cs.cornell.edu/Info/Projects/NuPrl/">Nuprl</a> projects at
+<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.cs.cornell.edu/">Cornell University</a>
+and the
+<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a href="http://www.cs.huji.ac.il/labs/transis/transis.html">Transis</a> project at
+<!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a href="http://www.cs.huji.ac.il/">Hebrew University in Jerusalem</a>.
+</strong>
+</p>
+
+<hr>
+
+<h2>Overview</h2>
+
+<p>
+<!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href="http://www.cs.cornell.edu/Info/Projects/HORUS/">Horus</a>
+is an adaptable, multi-purpose group communication toolkit for
+building secure, fault-tolerant applications.  Horus has a modular,
+``LEGO-like'' architecture in which tiny protocol layers are composed at
+run-time into protocol stacks with rich sets of properties.  Horus
+currently includes about forty protocols that can be composed in a large
+number of combinations with varying properties and performance
+characteristics.
+</p>
+
+<p>
+<ul>
+<li><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a href="http://www.cs.cornell.edu/Info/Projects/HORUS/hardening/groups.gif"><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><img
+src="http://www.cs.cornell.edu/Info/Projects/HORUS/hardening/groups-small.gif" align=center alt=""></a>
+See diagram of <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><a href="http://www.cs.cornell.edu/Info/Projects/HORUS/hardening/groups.gif">Horus's group architecture</a>
+(8K GIF image).
+</li>
+<li><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><a href="http://www.cs.cornell.edu/Info/Projects/HORUS/hardening/intercept.gif"><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><img
+src="http://www.cs.cornell.edu/Info/Projects/HORUS/hardening/intercept-small.gif" align=center alt=""></a>
+See diagram of 
+<!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><a href="http://www.cs.cornell.edu/Info/Projects/HORUS/hardening/intercept.gif">layered communication protocols in Horus</a>
+(12K GIF image).
+</li>
+</ul>
+</p>
+
+<h2>Security Infrastructure</h2>
+
+<p>
+We are extending Horus's flexible communication architecture with
+protocols to implement a multi-level security architecture.  In this
+architecture, applications will be made secure by inserting standard
+protocol layers into their communication stacks.  Much of this work
+involves incorporating previous security research into the Horus
+framework, but we are also developing new protocols and techniques
+through our collaboration with 
+<!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><a href="http://www.cs.huji.ac.il/labs/transis/transis.html">Hebrew University of Jerusalem</a>
+<p>
+
+<p>
+<ul>
+<li><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><a href="http://www.cs.cornell.edu/Info/Projects/HORUS/hardening/security.html"><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><img
+src="http://www.cs.cornell.edu/Info/Projects/HORUS/hardening/sec-small.gif" align=center alt=""></a>
+See detailed plans for 
+<!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><a href="http://www.cs.cornell.edu/Info/Projects/HORUS/hardening/security.html">the Horus security infrastructure</a>.
+</li>
+</ul>
+</p>
+
+
+<h2>Validating the Horus Protocols</h2>
+
+<p>
+An important part of the Horus effort is validating the correctness of
+both security and fault-tolerance protocols.  Our methodology for
+validating the Horus protocols involves the following steps:
+<ol>
+<li>A ``reference implementation'' of our system is built in the ML
+programming language.  This implementation compiles into a C
+``production implementation.''
+</li>
+<li>The Horus protocols are specified in a temporal logic.
+</li>
+<li>The small (around 200 lines) ML protocol layers are imported
+directly into the 
+<!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><a href="http://www.cs.cornell.edu/Info/Projects/NuPrl/">Nuprl</a> Proof Development System 
+and formally verified.
+</li>
+</ol>
+</p>
+
+<p>
+<ul>
+<li><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><a href="http://www.cs.cornell.edu/Info/Projects/HORUS/hardening/validity.html"><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><img
+src="http://www.cs.cornell.edu/Info/Projects/HORUS/hardening/valid-small.gif" align=center alt=""></a>
+See detailed plans for 
+<!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><a href="http://www.cs.cornell.edu/Info/Projects/HORUS/hardening/validity.html">the validation of Horus</a>.
+</li>
+</ul>
+</p>
+
+<h2>Timeline</h2>
+
+<p>
+The schedule for this project runs from September 1995 to September 1998.
+</p>
+
+<p>
+<ul>
+<li><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><a href="http://www.cs.cornell.edu/Info/Projects/HORUS/hardening/timeline.gif"><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><img
+src="http://www.cs.cornell.edu/Info/Projects/HORUS/hardening/timeline-small.gif" align=center alt=""></a>
+See diagram of 
+<!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><a href="http://www.cs.cornell.edu/Info/Projects/HORUS/hardening/timeline.gif">the timeline for this project</a> (9K GIF image).
+</li>
+</ul>
+</p>
+
+
+<hr>
+
+<p>
+Contact:
+<ul>
+<li>
+<!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><a href="http://www.cs.cornell.edu/Info/Department/Annual94/Faculty/Birman.html"><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><img
+src="http://www.cs.cornell.edu/home/ken/ken-thumb.gif" align=center alt=""></a>
+<!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><a href="http://www.cs.cornell.edu/Info/Department/Annual94/Faculty/Birman.html">Kenneth P. Birman</a>
+at Cornell (<!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><a href="http://www.cs.cornell.edu/Info/Projects/HORUS/">Horus</a>).
+</li>
+<li>
+<!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><a href="http://www.cs.cornell.edu/home/rvr/rvr.html"><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><img
+src="http://www.cs.cornell.edu/home/rvr/rvr_small.gif" align=center alt=""></a>
+<!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><a href="http://www.cs.cornell.edu/home/rvr/rvr.html">Robbert van Renesse</a> 
+at Cornell (<!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><a href="http://www.cs.cornell.edu/Info/Projects/HORUS/">Horus</a>).
+</li>
+<li>
+<!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><a href="http://www.cs.huji.ac.il/labs/transis/dolev/dolev.html"><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><img
+src="http://www.cs.cornell.edu/Info/Projects/HORUS/hardening/dolev-thumb.gif" align=center alt=""></a>
+<!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><a href="http://www.cs.huji.ac.il/labs/transis/dolev/dolev.html">Danny Dolev</a> 
+at the Hebrew University (<!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><a href="http://www.cs.huji.ac.il/labs/transis/transis.html">Transis</a>).
+</li>
+<li>
+<!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><a href="http://www.cs.cornell.edu/Info/Department/Annual95/Faculty/Constable.html"><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><img
+src="http://www.cs.cornell.edu/home/rc/rc-thumb.gif" align=center alt=""></a>
+<!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><a href="http://www.cs.cornell.edu/Info/Department/Annual95/Faculty/Constable.html">Robert L. Constable</a> 
+at Cornell (<!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><a href="http://www.cs.cornell.edu/Info/Projects/NuPrl/">Nuprl</a>).
+</li>
+</ul>
+</p>
+
+<p>
+<hr>
+Copyright Thu Apr 25 23:42:32 EDT 1996 by Cornell University. <br>
+Maintained by
+<!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><a href="http://www.cs.cornell.edu/home/karr/karr.html">David A. Karr</a>.
+Send corrections to
+<!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><a href="mailto:karr@cs.cornell.edu">karr@cs.cornell.edu</a>.
+</p>
+
+</body>
+</html>

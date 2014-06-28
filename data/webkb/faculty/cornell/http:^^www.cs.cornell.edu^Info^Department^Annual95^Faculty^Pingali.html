@@ -1,0 +1,138 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Wednesday, 20-Nov-96 18:57:29 GMT
+Content-Type: text/html
+Content-Length: 5701
+Last-Modified: Thursday, 30-Nov-95 21:21:15 GMT
+
+<html>
+<head>
+<title>Keshav Pingali
+</title>
+</head>
+<body>
+<!WA0><!WA0><!WA0><!WA0><a href="http://www.cs.cornell.edu/Info/People/pingali/pingali.gif">
+<!WA1><!WA1><!WA1><!WA1><img align=left vspace=3 hspace=15 
+src="http://www.cs.cornell.edu/Info/People/pingali/pingali-thumb.gif">
+</a>
+<h2>
+Keshav Pingali<br>
+Associate Professor<br>
+PhD MIT, 1986 
+</h2>
+<p>
+<hr>
+<p>
+
+My research group works in the areas of programming languages and compilers 
+for parallel architectures.
+<p>
+Our goal is to develop tools for generating parallel code for applications 
+programs that deal with large sparse matrices.  Most scientific 
+applications involve the numerical solution of partial differential 
+equations.  The techniques used almost always produce a system of algebraic 
+equations that involve large sparse matrices.  Unfortunately, existing 
+compiler technology does a poor job of parallelizing sparse matrix 
+programs.  We take a radically different approach to this problem.  Our 
+compiler produces parallel sparse-matrix programs from sequential 
+dense-matrix programs, using information from the user about the sparsity 
+structure of matrices in the program.  This enables us to use tools from 
+the restructuring compiler area.  Preliminary experiments with some Krylov 
+space solvers show that the code produced by our compiler is competitive 
+with hand-parallelized code in libraries like Argonne's PetSc library.  We 
+will extend our approach to direct methods for solving linear systems and 
+to applications that require adaptive mesh refinement.
+<p>
+This project builds on our earlier work on restructuring compilation 
+techniques for dense matrix programs.  We have developed restructuring 
+techniques for compiling programs to distributed memory and non-uniform 
+memory access (NUMA) architectures like the IBM SP-2 and CM-5, where a 
+processor can access local memory faster than non-local memory.  To get 
+good performance, the compiler must not only parallelize but must also 
+ensure locality of reference by matching code and data distribution; when 
+non-local references must be made, block transfers are preferable to many 
+small messages.  We recently developed the best algorithm known for the 
+automatic alignment of computation and data and are incorporating it into 
+our compiler test-bed.  In earlier work, we developed a novel loop 
+restructuring technique called access normalization, which transforms loop 
+nests for increased locality and potential for block transfers, and 
+implemented it in the LAMBDA loop transformation toolkit - our paper 
+summarizing these results won the best paper prize at ASPLOS V.  We worked 
+with Hewlett-Packard to transfer this technology to HP's FORTRAN compiler 
+product line for uniprocessors and multiprocessors.
+<p>
+We have developed new frameworks for program analysis and optimization 
+based on the dependence flow graph (DFG).  The DFG knits together the data 
+and control dependence information of a program, permitting the development 
+of optimization algorithms that generate better code than is possible with 
+competing approaches.  Our results are of independent interest; for 
+example, we recently developed optimal algorithms for control dependence 
+problems, answering a foundational question that had been open for almost 
+a decade.  This work led to the development of a linear-time algorithm for 
+computing the static single assignment (SSA) form of programs.  These 
+results have been incorporated into a number of compilers, including those 
+at IBM, Microsoft, HP, and Flavors.
+<p>
+<hr>
+
+<H2>Professional Activities</H2>
+<ul>
+<li>Panel member and organizer, ACM Symposium on Principles and Practice 
+	of Parallel Programming, 1995
+<li>Member, NSF National Young Investigator (NYI) Awards Panel 
+<li>Consultant: Hewlett Packard Labs, Intel Corporation, Army Ballistic 
+	Research Labs, Odyssey Research, Math Sciences Institute 
+<li>Referee/Reviewer: <EM>ACM TOPLAS, IEEE Transactions on Computers, Journal 
+	of Parallel and Distributed Computing, Journal of Supercomputing, 
+	IEEE Computer</EM>
+<li>Editorial Board, <EM>International Journal of Parallel Programming</EM> 
+</ul>
+
+<H2>Awards</H2>
+<ul>
+<li>National Science Foundation Presidential Young Investigator (1989-1994) 
+<li>IBM Faculty Development Award (1986-88)
+<li>Best paper prize,  ASPLOS V, 1992  
+</ul>
+
+<H2>Lectures</H2>
+<ul>
+<li>Fast algorithms for control dependence problems. Hewlett-Packard 
+	Corporation, Chelmsford,  Massachusetts, January 1995.
+<li>___. Computer Science Department, Wayne State University, Detroit, 
+	Michigan, February 1995.
+<li>___. Rutgers University, New Brunswick, New Jersey, May 1995.
+<li>___. Microsoft Research Laboratories, Redmond, Washington, June 1995.
+</ul>
+
+<H2>Publications</H2>
+<ul>
+<li>Solving alignment using elementary linear algebra. <EM>Proceedings of the 
+	Seventh Annual Workshop on Languages and Compilers for Parallel 
+	Computers (LCPC), Lecture Notes in Computer Science 892,</EM> Ithaca, NY 
+	(August 1994) 46-60  (with David Bau, Induprakas Kodukula, 
+	Vladimir Kotlyar,  and Paul Stodghill).
+<li>APT: a data structure for optimal control dependence computation. 
+	<EM>ACM SIGPLAN '95  Conference on Programming Language Design and 
+	Implementation</EM>  (PLDI June 1995), 171-185 (with Gianfranco Bilardi). 
+</ul>
+
+<p>
+<hr>
+Return to: 
+<dl>
+<dt><!WA2><!WA2><!WA2><!WA2><IMG SRC="http://www.cs.cornell.edu/Icons/redball.gif"> 
+	<!WA3><!WA3><!WA3><!WA3><a href="http://www.cs.cornell.edu/Info/Department/Annual95/Beginning/annual-rpt95-home.html"> 
+	1994-1995 Annual Report Home Page</a>
+<dt><!WA4><!WA4><!WA4><!WA4><IMG SRC="http://www.cs.cornell.edu/Icons/redball.gif"> 
+	<!WA5><!WA5><!WA5><!WA5><a href="http://www.cs.cornell.edu/"> 
+	Departmental Home Page</a>
+<p>
+If you have questions or comments please contact:
+<!WA6><!WA6><!WA6><!WA6><a href="mailto:www@cs.cornell.edu">www@cs.cornell.edu.</a>
+<p>
+<hr>
+Last modified: 24 November 1995 by Denise Moore 
+(denise@cs.cornell.edu).
+</body>
+</html>

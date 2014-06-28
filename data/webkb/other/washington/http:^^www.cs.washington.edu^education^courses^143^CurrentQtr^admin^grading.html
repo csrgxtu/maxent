@@ -1,0 +1,160 @@
+Date: Mon, 02 Dec 1996 14:26:53 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+<title>CSE 143 Grading Policy</title>
+</head>
+<body>
+<h1>CSE 143 Grading Policy</h1>
+
+
+</ul>
+
+<hr>
+
+The grading policy in CSE 143 will be based on two main factors:
+functionality (how well your program works) and software engineering
+(how well your program is constructed).
+<hr>
+
+<h2>Functionality</h2>
+
+The main goal of programming is to create a working program.  However,
+<i>working</i> is generally an extremely vague term, since it all
+depends on what the program is supposed to do.<p>
+
+In many cases, the programs that we assign you will be
+<i>underspecified</i> -- that is, we won't tell you <i>exactly</i> how
+they should work.  Instead, we'll give you a pretty good idea of what
+we expect it to do, leaving decisions about how to handle tricky or
+ambiguous cases up to you.  In this way, you'll turn our partial
+specification into an <i>exact specification</i>.<p>
+
+For example, a partial specification might ask you to write a program
+that draws mazes on the screen, without telling you exactly what input
+you should get from the user or what kind of maze to make.  You might
+decide to draw rectangular mazes with ASCII characters and prompt the
+user for a maze size in terms of characters (see below).  In addition,
+you might detail the way in which the maze should be constructed.  In
+making these decisions, you've created a more exact specification --
+something that explains more precisely how your program should run.<p>
+
+<blockquote>
+
+<hr>
+
+<pre>
+
+How big would you like your maze to be? (rows x columns)
+
+> 4 x 9
+
+Here is your maze:
+
+       _________
+Start  _ ___ __|
+       | | | | |
+       |___|____  End
+
+</pre>
+
+<hr>
+
+</blockquote>
+
+Although there is rarely a single, correct way to handle ambiguities
+in a partial specification, be sure that your full specification is in
+the spirit of the partial specification.  For example, writing a
+program that always generated "mazes" of the following form probably
+isn't what we had in mind:<p>
+
+<blockquote>
+
+<hr>
+
+<pre>
+
+How long would you like your maze to be? (columns)
+
+> 9
+
+Here is your maze:
+
+       _________
+Start  _________  End
+
+</pre>
+
+<hr>
+
+</blockquote><p>
+
+
+The bottom line is that in order to know if your program is working,
+you have to decide what it's supposed to do.  Therefore, your first
+step should be to define a full specification.  You'll generally be
+asked to submit a full specification with your program (in the
+comments or a cover sheet, for example) so that we know what your
+specific goals and choices were.  This should not be a long document,
+but a short, clear description of the program's expected behavior,
+highlighting how it handles ambiguous cases.  By all means, feel free
+to discuss your specification choices with the TAs.<p>
+
+Once you've finished writing the program, you should demonstrate to
+yourself and us that it works by running it on some test cases.
+Generally, we'll supply you with a few test cases that will test
+aspects of your program.  <b>If your program works on our test cases,
+that doesn't necessarily mean that it's correct and you're done!</b>
+Make sure to write a few test cases of your own to check some of those
+ambiguous cases that your full specification describes, and use these
+to demonstrate to us that your program works as you specified.<p>
+
+
+<h2>Software Engineering</h2>
+
+Software engineering is all about how a program is put together -- it
+involves the division of the program into separate, logical modules;
+defining reasonable interfaces between these modules; and commenting
+your code so that it's clear to others (like your TA!) what it
+does.<p>
+
+Remember that based on the stereo analogy, the programs that we're
+looking for are built of multiple modules interacting through clean,
+well-defined interfaces.  We're not looking for the single monolithic
+piece of code that has everything thrown into it without any sense of
+order -- that technique might have some benefits in the stereo world,
+but they rarely do in software.<p>
+
+To this extent, you will be graded on how well your program is
+constructed, in addition to how well it works.  Did you comment so
+that it's clear what your design was?  Did you make reasonable
+decisions as to how the code should be organized and interface between
+modules?  Etc.<p>
+
+All of these things may seem like a pain, or may seem less important
+than "getting the program working," but they are essential in any
+programming environment -- whether it's a group project for a course,
+or a huge Microsoft application.  As programs grow larger and evolve
+over time, their initial structure will often determine how easy they
+are to maintain, debug, and improve.  As backwards as it seems, a
+program that is well structured and documented, but doesn't quite work
+(comment reading: I think the problem is somewhere in this routine),
+is often more impressive than one that works but is completely
+indecipherable.  Strive for the best of both.<p>
+
+
+<h2>Other Questions?</h2>
+
+If you are still unclear on what we're looking for, please consult
+with your TA.<p>
+
+
+<p>
+<hr>
+<address>
+<a href="mailto:cse143-webmaster@cs.washington.edu">cse143-webmaster@cs.washington.edu</a>
+</address>
+</body>
+</html>

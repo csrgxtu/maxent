@@ -1,0 +1,81 @@
+Date: Tue, 05 Nov 1996 21:03:12 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 28 Feb 1996 13:48:16 GMT
+Content-length: 2095
+
+<title>
+	Gnats for Paradise
+</title>
+
+<h1>Gnats for Paradise
+</h1>
+
+This document tells you what you need to know to use
+<!WA0><a href=http://www.cs.wisc.edu/~curt/wgnats/gnats-man.html>gnats</a> for reporting  Paradise bugs.
+
+<h3>Where it is</h3>
+
+<p>
+Gnats is installed in afs under /p/paradise/gnats.  That means
+that everyone has access to the paradise gnats database where the
+problem records are kept.
+<p>
+There are 3 things you can do with gnats: report problems, query the
+problem database, and edit problems.  Gnats provides command line tools
+for all of these things.
+
+<h3>Reporting Problems</h3>
+
+Problems are reported using the 
+<!WA1><a href=http://www.cs.wisc.edu/~curt/wgnats/send-pr.html>
+send-pr program
+</a>.  
+If you run /p/paradise/gnats/bin/send-pr, you will find yourself in
+the vi editor with a problem report template.  You can edit the 
+template, and then do a "write-quit" to send the report to 
+gnats.
+
+<p>
+<b>NOTE</b>:You can try out the system by reporting a problem within
+the test category.
+
+<h3>Querying the Problem Database</h3>
+You can query the problem database using the 
+<!WA2><a href=http://www.cs.wisc.edu/~curt/wgnats/query-pr.html>query-pr program</a>.
+
+
+<h3> Using WebGnats</h3>
+<!WA3><a href=http://www.cs.wisc.edu/~curt/wgnats/webgnats.html>WebGnats</a> is a Web based interface to the gnats reporting and query
+programs.  You can do most everything you need to, through
+the
+<!WA4><a href=http://happy.cs.wisc.edu/cgi-bin/wgnats/menu>WebGnats
+interface</a>.
+
+<p>
+Problem reporting in web gnats is handled through an html form.  Each problem 
+category can have its own form.  This allows different questions to be
+posed for bug reports concerning different parts of the system.
+
+<p>
+In order to edit problems, you'll need to be running WebGnats from
+a workstation with AFS access, and you'll need to have the following
+in your .mailcap file.
+<pre>
+
+x-application/problem_edit; /p/paradise/gnats/bin/problem_edit %s
+
+</pre>
+
+
+<h3> Emacs </h3>
+<p>
+You can use gnats from within emacs by loading the gnats emacs 
+interfaces. The files are located in /p/paradise/gnats/lib/emacs/lisp.
+Look at the file gnats.el in that directory for configuration instructions.
+<hr>
+<address>
+<i>Curt Ellmann <br>
+Paradise Project
+</i>
+</address>

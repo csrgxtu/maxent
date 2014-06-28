@@ -1,0 +1,75 @@
+Date: Tue, 26 Nov 1996 00:40:57 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 29 Apr 1996 23:38:25 GMT
+Content-length: 2746
+
+<TITLE>High Performance Transaction Processing Group</TITLE>
+<!WA0><img src="http://www.cs.sunysb.edu/~gerstl/group/name.xbm" ALT="High Performance Transaction Processing Group">
+<h4>State University of New York at Stony Brook</h4>
+   <!WA1><a href="http://www.cs.sunysb.edu"> Department of Computer Science</a> </h4>
+
+<hr>
+
+<P>Traditional algorithms for controlling concurrent access to shared
+data, by requiring serializable execution, may unduly restrict
+concurrency, and hence performance, in situations where data is
+accessed heavily or distributed, or where transactions run for long
+periods of time.  We are currently investigating the extent to which
+the semantics of transactions (expressed as proofs in a formal system)
+can be exploited to improve performance.  We use semantics in several
+ways: to define a new correctness criterion for concurrent
+(non-serializable) transaction execution, to decompose transactions
+into smaller units so that locks can be released early, and to design a
+new concurrency control that guarantees correct execution when these
+units are interleaved.  We are taking two approaches to transaction
+decomposition.  In the first we decompose a transaction into a sequence
+of steps.  Steps are atomic and isolated and release all conventional
+locks when they complete.  A new concurrency control and lock mode is
+required to implement this approach.  The second approach guarantees
+correctness using only conventional locks, but in a non-two-phase
+fashion.
+
+<P>The algorithms are being implemented in the context of a commercial
+database system and a test bed has been constructed so that a benchmark 
+transaction load can be applied in order to evaluate the ideas.
+
+<P>We are also interested in the use of transaction semantics to better 
+understand problems associated with federated databases and compensation.
+
+
+<hr>
+<h2>Current Projects</h2>
+<!WA2><a href="http://www.cs.sunysb.edu/~gerstl/group/acc.html">Assertional Concurrency Control</a><br>
+<!WA3><a href="http://www.cs.sunysb.edu/~gerstl/group/modular.html">Modular Analysis of Transactions</a>
+<hr>
+<h2>Members</h2>
+<h4>Faculty</h4>
+<!WA4><a href=http://www.cs.sunysb.edu/csdept/Faculty/art/art.html>Art Bernstein</a><br>
+
+<!WA5><a href=http://www.cs.sunysb.edu/~pml>Phil Lewis</a>
+
+<h4>Graduate Students</h4>
+<!WA6><a href=http://www.cs.sunysb.edu/~wleung>Wai-Hong Leung</a><br>
+
+<!WA7><a href=http://www.cs.sunysb.edu/~gerstl>David S. Gerstl</a><br>
+
+<hr>
+<h2>Recent Papers</h2> 
+<LI> High Performance Transaction Systems Using Transaction Semantics,
+A.J. Bernstein and P.M. Lewis, <I>
+Distributed and Parallel Databases, </I> Volume 4, Number 1,
+January 1996
+
+
+
+
+<br>
+<br>
+<!WA8><a href="http://www.cs.sunysb.edu">Return to the department home page</a>
+<hr>
+If you have problems with this page, please send E-mail to:
+<address><!WA9><a href="mailto:gerstl@cs.sunysb.edu">gerstl@cs.sunysb.edu</a></address>
+</BODY>
+</html>
+

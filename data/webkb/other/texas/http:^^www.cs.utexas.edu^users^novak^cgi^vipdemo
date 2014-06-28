@@ -1,0 +1,75 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 07-Jan-97 15:26:02 GMT
+Content-Type: text/html
+Content-Length: 3275
+
+<HTML><HEAD><TITLE>VIP Demo</TITLE></HEAD><BODY>
+<H2>Programming and Problem Solving by Connecting Diagrams</H2>
+
+This is a demonstration of the VIP (View Interactive Programming) program.
+VIP allows the user to create scientific programs or to solve physics
+problems by connecting diagrams that represent physical and
+mathematical principles.  The following example shows a specification
+for calculating the mass of the sun, following Newton's reasoning,
+by equating the gravitational attraction of the sun on the earth with
+the force required to keep the earth in circular motion.
+<P>
+<IMG SRC="../sunmass.gif" ALIGN=bottom ALT=>
+<P>
+When the program is started, a window is created with a command menu
+and input and output areas.  Use the command Output Language to select
+the desired language for the program that is created.  (The actual
+program will be served to you in a file that is presented after the
+demo program is terminated.)  Use the input lines to specify the name
+and type of each input variable, one per line, in the format shown.
+Examples are <CODE>(radius integer)</CODE> and
+<CODE>(speed (units real mph))</CODE>.
+Then select the command New Program to start VIP.
+<P>
+A VIP program is created by connecting diagram boxes that represent
+variables and physical and mathematical principles.  A connection
+signifies that two quantities are equal.  To make a connection,
+click the mouse, once for each end of the connection, on variable boxes
+or on "buttons" associated with diagrams.  To get a useful program, there
+must be a connection to the <CODE>OUTPUT</CODE> box.
+<P>
+The VIP commands are as follows:
+<UL>
+<LI> <CODE>Done        </CODE> Finished; make a program from the diagram.
+<LI> <CODE>Redo        </CODE> Start over.
+<LI> <CODE>Move        </CODE> Move a box.  Click the box you wish to move.
+<LI> <CODE>Delete      </CODE> Delete a box or a connection.
+<LI> <CODE>Geometry    </CODE> Select a new geometric principle box.
+<LI> <CODE>Physics     </CODE> Select a new physical principle box.
+<LI> <CODE>Make Var    </CODE> Make a local variable.
+<LI> <CODE>Specify Type</CODE> Specify the type of a variable.
+        This can also be used to specify units.
+<LI> <CODE>OP          </CODE> Make an operation box, such as
+                               <CODE>+ - * /</CODE>.
+<LI> <CODE>Type-in     </CODE> Type in a numeric constant, with units if
+                               desired.
+<LI> <CODE>Constant    </CODE> Select a predefined constant,
+        such as the speed of light.
+</UL>
+<HR>
+
+<H2>Instructions</H2>
+<FORM METHOD=GET ACTION="nph-vip-action">
+<OL>
+<LI>	You must be logged in to a host running X windows.
+<LI>	Type <CODE>  xhost + www.cs.utexas.edu  </CODE> (exactly as shown
+        at left) in a window on that host
+	to allow this server to write to your display.
+<LI>	Enter your X display name here if needed; you may need to change
+        what is shown in the box to your X display name.  For example,
+        <CODE> myterminal.cs.utexas.edu:0.0 </CODE> <BR>
+	<INPUT TYPE=text SIZE=40 VALUE="128.2.209.145:0.0" NAME=xdspname>
+<LI>	Click <INPUT TYPE=submit VALUE="here"> to start the demo.
+</OL>
+</BODY>
+<address><a href="http://www.cs.utexas.edu/users/novak/index.html">
+Gordon S. Novak Jr.</a></address>
+</HTML>
+</BODY></HTML>
+

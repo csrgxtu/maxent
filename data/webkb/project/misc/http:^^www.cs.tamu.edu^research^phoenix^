@@ -1,0 +1,129 @@
+Date: Tue, 26 Nov 1996 00:46:53 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+Content-length: 4527
+Last-modified: Tue, 29 Oct 1996 21:49:02 GMT
+
+<HTML>
+<HEAD>
+<TITLE>PHOENIX </TITLE>
+</HEAD>
+<BODY>
+<HR SIZE=5>
+<CENTER>
+<H1>Welcome to PHOENIX home page </H1>
+<B></B> <BR><BR>
+</CENTER>
+<HR SIZE=5>
+
+<!WA0><A HREF="http://www.tamu.edu/">
+<!WA1><IMG SRC="http://www.cs.tamu.edu/Images/logos/tamuseal.gif" align="right"> </A>
+
+<!WA2><A HREF="http://www.cs.tamu.edu/research/phoenix//">Department of Computer Science </A><BR>
+<!WA3><A HREF="http://www.cs.tamu.edu/Images/pics/bright_tall.jpg"> H R Bright Building </A><BR>
+<!WA4><A HREF="http://www.tamu.edu/">Texas A&M University </A><BR>
+College Station, 
+Texas 77843-3112.<BR>
+
+<BR> <BR> <BR> <BR><BR> <BR><BR> <BR> <BR>
+
+<!WA5><IMG SRC="http://www.cs.tamu.edu/Images/icons/at_work_icon.gif" align="left"> <EM>Like most homepages 
+this page is also under construction! </EM>
+
+<HR SIZE=5>
+
+<P>The Phoenix project is being carried out at the Distributed Systems Laboratories, at Texas A&M University, Computer Science Department.<P>
+
+Phoenix is an object oriented environment, which will provide fault tolerance 
+capabilities to objects.  Phoenix uses, 
+<!WA6><A HREF="http://www.sun.com:80/cgi-bin/show?tech/projects/spring/index.body/"> 
+Spring Research Distribution </A> from <!WA7><A HREF="http://www.sun.com/">Sun</A>, 
+which is a object oriented distributed operating system, as its base.  
+The aim of Phoenix is to provide fault tolerance to objects in Spring.<P>
+
+The fault tolerance in Phoenix is provided at two levels:
+<OL>
+<LI>Totally user (application) tranparent: At this level the system provides 
+fault tolerance for any (object oriented) application that is developed in Spring.  Fault tolerance is provided without the modification of the source code.  Thus fault tolerance can be provided for a third party object, whose source code is not available.<P>
+
+<LI>Fault Tolerance API: At this level, users specifically develop the
+application to tolerate faults using the library functions provided by Phoenix 
+(application programmers interface - APIs).  This is not totally user 
+transparent, but will have a better performance than the totally user 
+transparent one.
+</OL>
+
+<B>Phoenix Components:</B><P>
+
+
+The major components (inter dependent) of the Phoenix system are:<P>
+<UL>
+<LI>Fault Tolerance support for distributed Objects (provided by FTO Layer): FTO
+layer makes the objects in Phoenix fault tolerant, using checkpointing and
+message logging and object replication.  It does so, with minimal disturbance 
+in the object response time.  It uses the support provided by FTNS and FTC.
+
+<LI>Fault Tolerant Naming Service (provided by FTNS layer): This service helps 
+in finding replicated objects, objects that are moved/restarted because of 
+failures.  This is done transparent to the user.
+ 
+<LI>Fault Tolerant Communication services (provided by FTC Layer): This layer
+provides reliable causally/totally ordered communication support for objects.  It also assists FTO in
+checkpointing and message logging.
+
+<LI> Distributed system health checker (distributed failure detection service):
+This module continuously checks the health of the system in a distributed
+fashion.  It informs Phoenix of the faults in the system.  This layer also
+helps in continuing execution of a failed object/node.
+</UL>
+
+<B>Researchers involved:</B><P>
+
+<!WA8><IMG SRC="http://www.cs.tamu.edu/Images/icons/ball.green.gif" ALIGN="left">
+<!WA9><A HREF="http://www.cs.tamu.edu/faculty/pooch/"> Prof. Dr. Udo W Pooch </A> <P>
+
+<!WA10><IMG SRC="http://www.cs.tamu.edu/Images/icons/ball.green.gif" ALIGN="left">
+<!WA11><A HREF="http://www.cs.tamu.edu/people/ganeshb/">Ganesha Beedubail </A> <P>
+
+<!WA12><IMG SRC="http://www.cs.tamu.edu/Images/icons/ball.green.gif" ALIGN="left">
+<!WA13><A HREF="http://www.cs.tamu.edu/people/anilg/"> Anil Gurijala </A> <P>
+
+<!WA14><IMG SRC="http://www.cs.tamu.edu/Images/icons/ball.green.gif" ALIGN="left">
+<!WA15><A HREF="http://www.cs.tamu.edu/people/anishk/"> Anish Karmarkar </A> <P>
+
+<!WA16><IMG SRC="http://www.cs.tamu.edu/Images/icons/ball.green.gif" ALIGN="left">
+<!WA17><A HREF="http://www.cs.tamu.edu/faculty/willis/"> Willis Marti </A> <P>
+
+<!WA18><IMG SRC="http://www.cs.tamu.edu/Images/icons/ball.green.gif" ALIGN="left">
+<!WA19><A HREF="http://www.cs.tamu.edu/staff/ellenm/"> Ellen Mitchell </A> <P>
+
+<HR SIZE=5>
+<!WA20><A HREF="http://www.cs.tamu.edu/research/phoenix/schedule.html">Phoenix Meeting Schedule and Agenda</A>
+<HR SIZE=5>
+
+<BR>
+
+<!WA21><A HREF="http://www.cs.tamu.edu/research/phoenix/papers_bib.html"> 
+<!WA22><img src="http://www.cs.tamu.edu/Images/buttons/bookwrld.gif" ALIGN="left">
+Papers related to Phoenix </A> <P>
+
+<BR> <BR>
+
+<!WA23><A HREF="http://www.sun.com:80/cgi-bin/show?tech/projects/spring/papers.html"> 
+<!WA24><img src="http://www.cs.tamu.edu/Images/buttons/bookwrld.gif" ALIGN="left">
+Papers on Spring </A> <P>
+
+<BR>
+<HR SIZE=5>
+
+
+<!WA25><A HREF="http://www.cs.tamu.edu/research/phoenix//"> <!WA26><IMG SRC="http://www.cs.tamu.edu/Images/buttons/go_prev_btn.gif">
+Computer Science Dept Home Page</A><P>
+
+<HR SIZE=5>
+If you have any questions/comments/suggestions about Phoenix homepage, send mail to <!WA27><A HREF="http://www.cs.tamu.edu/cgi-bin/personal_mailform?anishk">Anish Karmarkar</A> <BR>
+<EM> Last updated: 18th Oct., 1995.</EM> <BR>
+<HR SIZE=5>
+
+</BODY>
+</HTML>

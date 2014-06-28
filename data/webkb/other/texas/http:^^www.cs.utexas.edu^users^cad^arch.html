@@ -1,0 +1,97 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 07-Jan-97 15:58:21 GMT
+Content-Type: text/html
+Content-Length: 4226
+Last-Modified: Friday, 03-Nov-95 23:35:20 GMT
+
+<title> FPGA Architecture </title>
+
+<h1>FPGA Architecture</h1>
+
+<img  src="arch.gif" ><p>
+
+The abstracts of papers by members of this group in the above area are 
+listed below. Please use the email addresses at the end of each
+abstract to get further details.
+
+<ul>
+<li> Kai Zhu, D.F. Wong and Y.W. Chang.
+<b> Switch Module Design with Application to Two-Dimensional Segmentation
+Design</b>.
+<cite>Proceedings of the IEEE International Conference on 
+       Computer-Aided Design</cite>, Nov. 1993.<p>
+
+<blockquote>
+We address the problem of designing switch
+modules for FPGAs and FPICs to maximize routability
+under area and delay constraints.  The switch module
+design problem is closely related to two-dimensional
+segmentation design for FPGAs and FPICs.
+We study the properties of switch modules and present
+an algorithm for switch module design.
+We also present an algorithm to analyze the routability
+of a given switch module.
+</blockquote>
+
+<b>Contact:</b> <i>yaowen@cs.utexas.edu</i><p>
+
+
+<li> Shashidhar Thakur and D.F. Wong.
+<b> On Designing ULM-Based FPGA Logic Modules</b>.
+<cite>Proceedings of the International Symposium
+on Field Programmable Gate Arrays, </cite> February 1995.
+<p>
+
+<blockquote>
+In this paper, we give a method to design FPGA logic modules,
+based on an extension of classical work on designing Universal Logic 
+Modules (ULM). Specifically, we give a technique to design a
+class of logic modules that specialize to a large number of functions
+under complementations and permutations of inputs, bridging
+of inputs and assignment of 0/1 to inputs.
+Thus, a lot of functions can be implemented using a single logic module.
+The significance of our work lies in our
+ability to generate a large set of such logic modules.
+A choice can be made from this set based on
+design criteria.
+We demonstrate the technique by generating a set of 471 8-input functions
+that have a much higher coverage than the 8-input cells
+employed by Actel's FPGAs. Our functions can specialize to up to
+23 times the number of functions that Actel functions can.
+We also show that by carefully optimizing these functions
+one can obtain multilevel implementations of them that have
+delays within 10% of the delays of Actel modules.
+We demonstrate the effectiveness of these modules in
+mapping benchmark circuits. We observed a 16% reduction in
+area and a 21% reduction in delay using our logic modules
+instead of Actel's on these circuits.
+</blockquote>
+
+<b>Contact:</b> <i>thakur@cs.utexas.edu</i><p>
+
+<li>Shashidhar Thakur and D.F. Wong.</li>
+<b><a href = "http://www.acm.org/todaes/V1N1/L104/paper.ps">
+Series-Parallel Functions and FPGA Logic Module Design</a></b>
+<cite>ACM Transactions on Design Automation of Electronic Systems
+</cite>January 1996.<p>
+<blockquote>
+The need for a two-way interaction between logic synthesis and FPGA logic module design has
+been stressed recently. Having a logic module that can implement many functions is a good idea
+only if one can also give a synthesis strategy that makes efficient use of this functionality.
+Traditionally technology mapping algorithms have been developed after the logic architecture has
+been designed. We follow a dual approach, by focusing on a specific technology mapping
+algorithm, namely the structural tree-based mapping algorithm, and designing a logic module that
+can be mapped efficiently by this algorithm. It is known that the tree-based mapping algorithm
+makes optimal use of a library of functions, each of which can be represented by a tree of AND,
+OR and NOT gates (series-parallel or SP functions). We show how to design a SP function with a
+minimum number of inputs, that can implement all possible SP functions with a specified number of
+inputs. For instance, we demonstrate a 7-input SP function that can implement all 4-input SP
+functions. Mapping results show that, on the average, the number blocks of this function needed to
+map benchmark circuits is 12% less than that for Actel's ACT1 logic modules. Our logic modules
+show a 4% improvement over ACT1, if the block count is scaled to take into account the number
+of transistors needed to implement different logic modules. 
+</blockquote>
+
+<b>Contact:</b> <i>thakur@cs.utexas.edu</i><p>
+</ul>

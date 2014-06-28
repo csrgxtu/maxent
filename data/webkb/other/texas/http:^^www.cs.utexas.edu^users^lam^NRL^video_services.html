@@ -1,0 +1,158 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 07-Jan-97 15:55:09 GMT
+Content-Type: text/html
+Content-Length: 6222
+Last-Modified: Friday, 06-Dec-96 21:06:21 GMT
+
+
+<title> OS and Network support for video services</title>
+<H1> OS and Network support for video services</H1>
+
+<hr>
+
+To support video services on packet switching networks, we are investigating
+the design and implementation of operating system techniques,
+transport protocols, and network switches 
+to enable various types of performance guarantees.  Motivated by variable bit
+rate video which has very large picture-to-picture rate fluctuations, we 
+proposed a new model for packet video.  In the model, we have retained the 
+basic notion of a flow.  Each flow, however, is a sequence of bursts, each 
+of which represents an encoded picture.  
+
+<hr>
+
+We have designed an efficient algorithm, called Burst Scheduling, for switching 
+the transmission of video flows and other types of traffic (e.g., data and audio) 
+in a packet switch.  Burst Scheduling networks provide end-to-end delay 
+guarantees for packets and delay jitter guarantees for bursts to video flows 
+that satisfy a flow specification.  They have the desirable property that 
+guarantees provided to a particular video flow are independent of the behavior 
+of other traffic flows sharing the network, and are thus unaffected by the
+presence of aggressive or misbehaving traffic sources.
+
+<hr>
+
+<H1> Recent papers and technical reports </H1>
+
+	<ul>
+        <li> <b> An algorithm for lossless smoothing of MPEG video</b>
+        <br>
+        Simon S. Lam, Simon Chow, and David K. Y. Yau
+        <br>
+        <cite> Proceedings of ACM SIGCOMM '94, London, August 1994</cite>
+                <ul>
+                <li> <a href = "ftp://ftp.cs.utexas.edu/pub/lam/smooth.ps.Z">
+                <b>compressed postscript file</b></a>
+                </ul>
+	<li> <b> Delay guarantee of Virtual Clock server</b>
+	<br>
+	Geoffrey G. Xie and Simon S. Lam
+	<br>
+	<cite> Technical report TR-94-24, October 6, 1994</cite> 
+	<br>
+	presented at 9th IEEE Workshop on Computer Communications, October 1994;
+        <br>
+        <cite>IEEE/ACM Transactions on Networking, December 1995</cite>
+	<br>
+                <ul>
+                <li> <a href = "ftp://ftp.cs.utexas.edu/pub/lam/tr94-24.ps.Z">
+                <b>compressed postscript file</b></a> revised version, September 24, 1995
+                </ul>
+	<li> <b> Burst Scheduling Networks</b>
+	<br>
+	Simon S. Lam and Geoffrey G. Xie
+	<br>
+	<cite> Technical report TR-94-20, July 29, 1994; second revision, August 31, 1996</cite>
+	<br>
+	(presented at 9th IEEE Workshop on Computer Communications, October 1994)
+	<br>
+                <ul>
+                <li> <a href = "ftp://ftp.cs.utexas.edu/pub/lam/tr94-20.ps.Z">
+                <b>compressed postscript file</b></a>
+                <li> <a href = "ftp://ftp.cs.utexas.edu/pub/lam/infocom95.ps.Z">
+                <b>compressed postscript file of <cite> INFOCOM '95 </cite> version </b></a>
+                </ul>
+        <li> <b> Burst Scheduling networks: Flow Specification and performance guarantees</b>
+        <br>
+        Simon S. Lam and Geoffrey G. Xie
+        <br>
+        <cite> Proceedings NOSSDAV '95 Workshop, Durham, New Hampshire, April 1995 </cite>
+        <br>
+        (extended abstract of Technical report TR-94-20 with more insights)
+	<br>
+                <ul>
+                <li> <a href = "ftp://ftp.cs.utexas.edu/pub/lam/nossdav.ps.Z">
+                <b>compressed postscript file</b></a>
+                </ul>
+
+        <li> <b> Group Priority Scheduling </b>
+        <br>
+        Simon S. Lam and Geoffrey G. Xie
+        <br>
+        <cite> Technical Report TR-95-28, July 21, 1995; revised, January 4, 1996</cite>; to appear in <cite>INFOCOM '96</cite> 
+        <br>
+                <ul>
+                <li> <a href = "ftp://ftp.cs.utexas.edu/pub/lam/tr95-28.ps.Z">
+                <b>compressed postscript file</b></a>
+                <li> <a href = "ftp://ftp.cs.utexas.edu/pub/lam/infocom96.ps.Z">
+                <b>compressed postscript file of <cite> INFOCOM '96 </cite> version </b></a>
+                </ul>
+
+        <li> <b> An Efficient Adaptive Search Algorithm for Scheduling Real-Time Traffic </b>
+        <br>
+        Geoffrey G. Xie and Simon S. Lam
+        <br>
+        <cite> Technical Report TR-95-29, July 21, 1995; revised, February 1996,
+               with a title change</cite>; to appear in <cite>Proc. ICNP '96 </cite>.
+        <br>
+                <ul>
+                <li> <a href = "ftp://ftp.cs.utexas.edu/pub/lam/aheap.ps.Z">
+                <b>compressed postscript file</b></a>
+                </ul>
+
+        <li> <b> Operating System Techniques for Distributed Multimedia </b>
+        <br>
+        David K. Y. Yau and Simon S. Lam 
+        <br>
+        <cite> Technical Report TR-95-36, July 17, 1995; revised, January 2, 1996</cite>.  
+	<br>
+An earlier version 
+               in <cite> IS&T/SPIE Proceedings Multimedia Computing and Networking (MMCN '96)</cite>,
+               January 1996, under a different title.
+        <br>
+                <ul>
+                <li> <a href = "ftp://ftp.cs.utexas.edu/pub/lam/tr95-36.ps.Z">
+                <b>compressed postscript file</b></a>
+                </ul>
+
+        <li> <b> Adaptive Rate-Controlled Scheduling for Multimedia Applications </b>
+        <br>
+        David K. Y. Yau and Simon S. Lam
+        <br>
+        <cite> Technical Report TR-96-17, April 23, 1996; revised, September 1996</cite>.
+        <br>
+               To appear in <cite> ACM Multimedia '96</cite>,
+               Boston, November 1996.
+        <br>
+                <ul>
+                <li> <a href = "ftp://ftp.cs.utexas.edu/pub/lam/tr96-17.ps.Z">
+                <b>compressed postscript file</b></a>
+                </ul>
+
+        <li> <b> Real-Time Block Transfer Under a Link Sharing Hierarchy </b>
+        <br>
+        Geoffrey G. Xie and Simon S. Lam
+        <br>
+        <cite> Technical Report TR-96-19, June 14, 1996 (being revised)</cite>.
+               An abbreviated version to appear in <cite>INFOCOM '97</cite>
+        <br>
+                <ul>
+                <li> <a href = "ftp://ftp.cs.utexas.edu/pub/lam/info97.ps.Z">
+                <b>compressed postscript file of <cite> INFOCOM '97 </cite> version </b></a>
+                </ul>
+
+        </ul>
+
+<hr>
+

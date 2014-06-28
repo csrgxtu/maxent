@@ -1,0 +1,357 @@
+Date: Wed, 20 Nov 1996 19:39:10 GMT
+Server: Apache-SSL/0.4.3b
+Content-type: text/html
+Content-length: 13934
+Last-modified: Sat, 01 Jun 1996 01:33:13 GMT
+
+<HTML>
+
+<HEAD>
+<TITLE>
+The Maruti Project
+</TITLE>
+</HEAD>
+
+<BODY>
+
+<!WA0><IMG SRC="http://www.cs.umd.edu/projects/maruti/umcp-logo.gif" ALT="UMD" ALIGN=MIDDLE>
+<!WA1><IMG SRC="http://www.cs.umd.edu/projects/maruti/maruti-logo.gif" ALT="MARUTI" ALIGN=MIDDLE>
+
+<P>
+
+<I>
+<!WA2><A HREF="http://www.cs.umd.edu/projects/maruti//">Department of Computer Science</A><BR>
+<!WA3><A HREF="http://www.umcp.umd.edu/">University of Maryland</A><BR>
+College Park, Maryland 20742<BR>
+U.S.A.
+</I>
+
+<HR>
+<H3>Index</H3>
+<ul>
+<li><!WA4><a href="http://www.cs.umd.edu/projects/maruti/maruti3-announce.html">Maruti 3.0 Release Announcement</a>.
+<!WA5><img src="http://www.cs.umd.edu/projects/maruti/new_yellow_blue.gif">
+
+<li><!WA6><A HREF="ftp://ftp.cs.umd.edu/pub/sdag/maruti/index.html">Recent publications</A>
+<LI><!WA7><A HREF="http://www.cs.umd.edu/projects/maruti/recent.html">Recent accomplishments</A>
+<li><!WA8><a href="#background">Maruti Background</a>.
+<li><!WA9><a href="#goals">Maruti Design Goals</a>.
+<li><!WA10><a href="#approach">Design Approach and Principles</a>.
+<li><!WA11><a href="#personnel">Maruti Personnel</a>.
+</ul>
+
+<HR>
+
+<CENTER>
+<!WA12><IMG SRC="http://www.cs.umd.edu/projects/maruti/devenv.gif"><br>
+<H2>The Maruti 3.0 System Architecture</H2>
+</CENTER>
+
+<HR>
+
+<A NAME="background"><H3>Background</H3></A>
+
+The purpose of the Maruti project is to create an environment for the
+development and deployment of critical applications with hard real-time
+constraints in a reactive environment. Such applications must be able to
+execute on a platform consisting of distributed and heterogeneous
+resources and operate continuously in the presence of faults.
+
+<P>
+
+The Maruti project started in 1988. The first version of the system was
+designed as an object-oriented system with suitable extensions for
+objects to support real-time operation. The proof-of-concept version of
+this design was implemented to run on top of the Unix operating system
+and supported hard and non-real-time applications running in a
+distributed, heterogeneous environment. The feasibility of the
+fault-tolerant concepts incorporated in the design of Maruti system were
+also demonstrated. No changes to the Unix kernel were made in that
+implementation, which was operational in 1990. We realized that Unix is
+not a very hospitable host for real-time applications, as very little
+control over the use of resources can be exercised in that system without
+extensive modifications to the kernel. Therefore, based on the lessons
+learned from the first design, we proceeded with the design of the
+current version of Maruti and changed the implementation base to
+<!WA13><A HREF="http://www.cs.cmu.edu:8001/afs/cs.cmu.edu/project/mach/public/www/mach.html">CMU Mach</A>
+which permitted more direct control of resources.
+
+<P>
+
+Most recently, we have implemented Maruti directly on 486 PC hardware,
+providing Maruti applications total control over resources. The initial
+version of the distributed Maruti has also been implemented, allowing
+Maruti applications to run across a network in a synchronized, hard
+real-time manner.
+
+<P>
+
+<a name="goals"><H3>Design Goals</H3></a>
+
+The design of a real-time system must take into consideration the primary
+characteristics of the applications which are to be supported. The design
+of Maruti has been guided by the following application characteristics
+and requirements:
+
+<UL>
+
+<LI><B>Real-Time Requirements</B>
+<P>
+The most important requirement for real-time systems is the capability to
+support the timely execution of applications. In contrast with many
+existing systems, next-generation systems will require support for hard,
+soft, and non-real-time applications on the same platform.
+<P>
+
+<LI><B>Fault Tolerance</B>
+<P>
+Many of the mission-critical systems are safety-critical, and therefore
+have fault tolerance requirements. In this context, fault tolerance is the
+ability of a system to support continuous operation in the presence of
+faults.
+<P>
+Although a number of techniques for supporting fault-tolerant systems have
+been suggested in the literature, they rarely consider the real-time
+requirements of the system. A real-time operating system must provide
+support for fault tolerance and exception handling capabilities for
+increased reliability while continuing to satisfy the timing requirements.
+<P>
+
+<LI><B>Distributivity</B>
+<P>
+The inherent characteristics of many systems require that multiple
+autonomous computers, connected through a local area network, cooperate
+in a distributed manner. The computers and other resources in the system
+may be homogeneous or heterogeneous. Due to the autonomous operation of
+the components which cooperate, system control and coordination becomes
+a much more difficult task than if the system were implemented in a
+centralized manner. The techniques learned in the design and
+implementation of centralized systems do not always extend to distributed
+systems in a straightforward manner.
+<P>
+
+<LI><B>Scenarios</B>
+<P>
+Many real-time applications undergo different modes of operation during
+their life cycle. A scenario defines the set of jobs executing in the
+system at any given time. A hard real-time system must be capable of
+switching from one scenario to another, maintaining the system in a safe
+and stable state at all times, without violating the timing constraints.
+<P>
+
+<LI><B>Integration of Multiple Requirements</B>
+<P>
+The major challenge in building operating systems for mission-critical
+computing is the integration of multiple requirements. Because of the
+conflicting nature of some of the requirements and the solutions
+developed to date, integration of all the requirements in a single
+system is a formidable task. For example, the real-time requirements
+preclude the use of many of the fault handling techniques used in other
+fault-tolerant systems.
+
+</UL>
+
+<a name="approach"><H3>Design Approach and Principles</H3></a>
+
+Maruti is a time-based system in which the resources are reserved prior
+to execution. The resource reservation is done on the time line, thus
+allowing for reasoning about real-time properties in a natural way. The
+time-driven architecture provides predictable execution for real-time
+systems, a necessary requirement for critical applications requiring
+hard real-time performance. The basic design approach is outlined below:
+
+<UL>
+
+<LI><B>Resource Reservation for Hard Real-Time Jobs</B>
+<P>
+Hard real-time applications in Maruti have advance resource reservation
+resulting in a priori guarantees about the timely execution of hard
+real-time jobs. This is achieved through a <EM>calendar</EM> data structure
+which keeps track of all resource reservations and the assigned time
+intervals. The resource requirements are specified as early as possible
+in the development stage of an application and are manipulated, analyzed,
+and refined through all phases of application development.
+<P>
+
+<LI><B>Predictability through Reduction of Resource Contention</B>
+<P>
+Hard real-time jobs are scheduled using a time-driven scheduling paradigm
+in which the resource contention between jobs is eliminated through
+scheduling. This results in reduced run time overheads and leads to a high
+degree of predictability. However, not all jobs can be pre-scheduled.
+Since resources may be shared between jobs in the calendar and other jobs
+in the system, such as non-real-time activities, there may be resource
+contention leading to lack of predictability. This is countered by
+eliminating as much of resource contention as possible and reducing it
+whenever it is not possible to eliminate it entirely. The lack of
+predictability is compensated by allowing enough slack in the schedule.
+<P>
+
+<LI><B>Integrated Support for Fault Tolerance</B>
+<P>
+Fault tolerance objectives are achieved by integrating the support for
+fault tolerance at all levels in the system design. Fault tolerance is
+supported by early fault detection and handling, resilient application
+structures through redundancy, and the capability to switch modes of
+operation. Fault detection capabilities are integrated with the
+application during its development, permitting the use of
+application-specific fault detection and fault handling. As fault
+handling may result in violation of temporal constraints, replication
+is used to make the application resilient. Failure of a replica may not
+affect the timely execution of other replicas and thereby the operation
+of the system it may be controlling. Under anticipated load and failure
+conditions, it may become necessary for the system to revoke the
+guarantees given to the hard real-time applications and change its mode
+of operation dynamically so that an acceptable degraded mode of
+operation may continue.
+<P>
+
+<LI><B>Separation of Mechanism and Policy</B>
+<P>
+In the design of Maruti, an emphasis has been placed on separating
+mechanism from policy. Thus, for instance, the system provides basic
+dispatching mechanisms for a time-driven system, keeping the design
+of specific scheduling policies separate. The same approach is
+followed in other aspects of the system. By separating the mechanism
+from the policy, the system can be tailored and optimized to
+different environments.
+<P>
+
+<LI><B>Portability and Extensibility</B>
+<P>
+Unlike many other real-time systems, the aim of the Maruti project has
+been to develop a system which can be tailored to use in a wide variety
+of situations-from small embedded systems to complex mission critical
+systems. With the rapid change in hardware technology, it is imperative
+that the design be such that it is portable to different platforms and
+makes minimal assumptions about the underlying hardware platform.
+Portability and extensibility is also enhanced by using modular design
+with well defined interfaces. This allows for integration of new
+techniques into the design with relative ease.
+<P>
+
+<LI><B>Support of Hard, Soft, and Non-Real-Time in the Same Environment</B>
+<P>
+Many critical systems consist of applications with a mix of hard, soft,
+and non-real-time requirements. Since they may be sharing data and
+resources, they must execute within the same environment. The approach
+taken in Maruti is to support the integrated execution of applications
+with multiple requirements by reducing and bounding the unpredictable
+interaction between them.
+<P>
+
+<LI><B>Support for Distributed Operation</B>
+<P>
+Many embedded systems need several processors to carry out their
+computations. When multiple processors function autonomously, their use
+in hard real-time applications requires operating system support for
+coordinated resource management. Maruti provides coordinated, time-based
+resource management of all resources in a distributed environment
+including the processors and the communication channels.
+<P>
+
+<LI><B>Support for Multiple Execution Environments</B>
+<P>
+Maruti provides support for multiple execution environments to
+facilitate program development as well as execution. Real-time
+applications may execute in the Maruti/Mach or Maruti/Standalone
+environments and maintain a high degree of temporal determinacy. The
+Maruti/Standalone environment is best suited for the embedded
+applications while Maruti/Mach permits the concurrent execution of
+hard real-time and non-real-time Unix applications. In addition, the
+Maruti/Virtual environment has been designed to aid the development
+of real-time applications. In this environment the same code which runs
+in the other two environments can execute while access to all Unix
+debugging tools is available. In this environment temporal accuracy is
+maintained with respect to a <EM>virtual real-time</EM>.
+<P>
+
+<LI><B>Support for Temporal Debugging</B>
+<P>
+When an application executes in the Maruti/Virtual environment its
+interactions are carried out with respect to virtual real-time which is
+under the control of the user. The user may speed it up with respect to
+actual time or slow it down. The virtual time may be paused at any
+instant and the debugging tools used to examine the state of the
+execution. In this way we may debug an application while maintaining all
+temporal relationships, a process we call <EM>temporal debugging</EM>.
+
+</UL>
+
+<a name="personnel"><H3>Principal Investigators</H3></a>
+
+<UL>
+<LI><B><!WA14><A HREF="http://www.cs.umd.edu/users/agrawala/">Dr. Ashok Agrawala</A></B>
+<LI><B><!WA15><A HREF="http://www.cs.umd.edu/users/tripathi/">Dr. Satish Tripathi</A></B>
+</UL>
+
+<H3>Research Programmers</H3>
+
+<UL>
+<LI><B><!WA16><A HREF="http://www.cs.umd.edu/users/morales/">Jan Morales</A></B>
+</UL>
+
+<H3> Current Visitors</H3>
+
+<UL>
+<LI><B>Dr. S.V. Raghavan</B>
+<LI><B>Dr. Dheeraj Sanghi</B>
+</UL>
+
+<H3>Graduate Students</H3>
+
+<UL>
+<LI><B><!WA17><A HREF="http://www.cs.umd.edu/users/aboutabl">Mohamed Said Aboutabl</A></B>
+<LI><B><!WA18><A HREF="http://www.cs.umd.edu/users/ardas">Ardas Cilingiroglu</A></B>
+<LI><B><!WA19><A HREF="http://www.cs.umd.edu/users/seonho">Seonho Choi</A></B>
+<LI><B><!WA20><A HREF="http://www.cs.umd.edu/users/krish">Krishnan K. Kailas</A></B>
+<LI><B><!WA21><A HREF="http://www.cs.umd.edu/users/sylee">Sung Lee</A></B>
+<LI><B><!WA22><A HREF="http://www.cs.umd.edu/users/fwmiller">Frank Miller</A></B>
+<LI><B><!WA23><A HREF="http://www.cs.umd.edu/users/bao">Bao Trinh</A></B>
+</UL>
+
+<H3>Recent Alumni</H3>
+
+<UL>
+<LI><B><!WA24><A HREF="http://www.cs.pitt.edu/~mosse">Daniel Mosse</A></B>,
+Assistant Professor, University of Pittsburgh
+<LI><B><!WA25><A HREF="http://www.cs.umd.edu/users/manas">Manas Saksena</A></B>,
+Assistant Professor, Concordia University
+<LI><B><!WA26><A HREF="http://www.cs.umd.edu/users/ogud">Ólafur Guðmundsson</A></B>,
+Trusted Information Systems
+<LI><B>Nathan Lewis</B>,
+Microsoft Corporation
+<LI><B><!WA27><A HREF="http://www.cs.umd.edu/users/fms">Marat Fayzullin</A></B>,
+<!WA28><A HREF="http://www.freeflight.com/">Aerospace Engineering</A>
+<LI><B>Chia-Mei Chen</B>
+<LI><B>Steve Cheng</B>
+<LI><B><!WA29><A HREF="http://www.cs.umd.edu/users/shyhin">Shyhin Hwang</A></B>
+<LI><B>Jan Rizzuto</B>, Loral
+<LI><B>Bala Srinivasan</B>, Bell Labs
+<LI><B><!WA30><A HREF="http://www.cs.umd.edu/users/jds/">James da Silva</A></B>, <!WA31><A HREF="http://www.tracertech.com/">Tracer Technologies, Inc.</A>
+</UL>
+
+<H3>Contact Information</H3>
+
+<BLOCKQUOTE>
+Dr. Ashok Agrawala<BR>
+<I><!WA32><A HREF="mailto:agrawala@cs.umd.edu">agrawala@cs.umd.edu</A></I><BR>
++1 (301) 405-2525<P>
+<!WA33><A HREF="http://www.cs.umd.edu/projects/maruti//">Department of Computer Science</A><BR>
+<!WA34><A HREF="http://www.umcp.umd.edu/">University of Maryland</A><BR>
+College Park, MD 20742<BR>
+U.S.A.<P>
+Fax: +1 (301) 405-6707
+</BLOCKQUOTE>
+
+<HR>
+
+<ADDRESS>
+Any problems with this HTML document? Contact <!WA35><A HREF="mailto:morales@cs.umd.edu>morales@cs.umd.edu</A>.
+<BR>
+Last modified: May 31, 1996.
+</ADDRESS>
+
+</BODY>
+
+</HTML>

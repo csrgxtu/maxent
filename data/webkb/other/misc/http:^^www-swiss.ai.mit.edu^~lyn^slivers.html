@@ -1,0 +1,197 @@
+MIME-Version: 1.0
+Date: Tuesday, 14-Jan-97 23:48:21 GMT
+Server: NaviServer/2.0 GNNserver/2.1b2
+Content-Type: text/html
+Content-Length: 6217
+Last-Modified: Monday, 18-Dec-95 23:55:45 GMT
+
+<h2>Slivers: Computational Modularity via Synchronized Lazy Aggregates</h2>
+
+<h2>Franklyn Turbak </h2>
+
+<h2>MIT Doctoral Dissertation, Februrary, 1994 </h2>
+
+<h3> Abstract: </h3>
+
+<em>Slivers</em> are a new approach to expressing computations as
+combinations of mix-and-match operators on aggregate data.  Unlike
+other aggregate data models, slivers enable programmers to control
+fine-grained operational aspects of modular programs.  In particular,
+slivers can guarantee that networks of operators exhibit the desirable
+storage behavior and operation scheduling of intricate loops and
+recursions.  For example, slivers can preserve the space efficiency of
+a complex tree algorithm when it is expressed as the superposition of
+simpler tree walks.
+
+<p>
+
+The sliver technique is based on a dynamic model of lock step
+processing that enables combinations of list and tree operators to
+simulate the operational behavior of a single recursive procedure.
+Operational control is achieved through <em>synchronized lazy
+aggregates</em>, dynamically unfolding data structures that constrain how
+the processing of separate operators is interwoven.  The key to the
+technique is the <em>synchron</em>, a novel first-class object that
+allows a dynamically determined number of concurrently executing
+operators to participate in a barrier synchronization.  Slivers embody
+a notion of <em>computational shape</em> that specifies how the
+operational patterns of a process can be composed out of the patterns
+of its components.
+
+<p>
+
+The utility of slivers is illustrated in the context of
+<em>SYNAPSE</em>, a simple language for expressing linear and
+tree-shaped computations.  <em>SYNAPSE</em> is built on top of
+<em>OPERA</em>, a new concurrent dialect of Scheme that incorporates
+the concurrency, synchronization, and non-strictness required by the
+lock step processing model.  The semantics of <em>OPERA</em> are
+explained in terms of <em>EDGAR</em>, a novel graph reduction model
+based on explicit demand propagation.
+
+<p>
+
+<h3> Contents: </h3>
+
+Below are links to individual chapters of the disseration. 
+For a more concise overview of key aspects of the thesis research, please
+see the papers on <!WA0><a href="http://www-swiss.ai.mit.edu/~lyn/slag.html">synchronized lazy aggregates</a>
+and <!WA1><a href="http://www-swiss.ai.mit.edu/~lyn/synchron.html">synchrons</a>.
+
+<ul>
+
+<li> <!WA2><a href="http://www-swiss.ai.mit.edu/~lyn//ftpdir/users/lyn/dissertation/contents.ps.Z">
+     Table of Contents
+     </a>
+
+<li> <!WA3><a href="http://www-swiss.ai.mit.edu/~lyn//ftpdir/users/lyn/dissertation/ack.ps.Z">
+     Acknowledgments
+     </a>
+
+<li> Chapter 1: 
+     <!WA4><a href="http://www-swiss.ai.mit.edu/~lyn//ftpdir/users/lyn/dissertation/overview.ps.Z">
+     Overview
+     </a>
+
+  --  An overview of the dissertation. 
+
+<li> Chapter 2: 
+     <!WA5><a href="http://www-swiss.ai.mit.edu/~lyn//ftpdir/users/lyn/dissertation/slivers.ps.Z">
+     Slivers
+     </a>
+  --  A motivation for sliver decomposition in the context of two
+  monolithic programs: an employee database program and an alpha
+  renaming program.
+
+<li> Chapter 3: 
+     <!WA6><a href="http://www-swiss.ai.mit.edu/~lyn//ftpdir/users/lyn/dissertation/sps.ps.Z">
+     The Signal Processing Style of Programming
+     </a>
+
+  --  A detailed analysis of why existing SPS techniques fail to express
+  desirable operational characteristics of programs.
+
+<li> Chapter 4: 
+     <!WA7><a href="http://www-swiss.ai.mit.edu/~lyn//ftpdir/users/lyn/dissertation/shape.ps.Z">
+     Computational Shape
+     </a>
+
+  --  A presentation of a simple notion of computational shape.  Shapes are
+  described in terms of the time-based ordering induced on the call and
+  return events in the execution of a recursive procedure.
+
+<li> Chapter 5: 
+     <!WA8><a href="http://www-swiss.ai.mit.edu/~lyn//ftpdir/users/lyn/dissertation/slag.ps.Z">
+     Synchronized Lazy Aggregates
+     </a>
+
+  -- An explanation of the lock step processing model underlying the sliver
+  technique. Synchronized lazy aggregates are introduced as a mechanism
+  for guaranteeing that networks of slivers simulate the behavior of a
+  corresponding monolithic procedure.  
+
+
+<li> Chapter 6: 
+     <!WA9><a href="http://www-swiss.ai.mit.edu/~lyn//ftpdir/users/lyn/dissertation/synapse.ps.Z">
+     SYNAPSE: Programming with Slivers and Slags
+     </a>
+
+  --  An illustration of the power of slivers and slags in the context of
+  SYNAPSE, a simple language for manipulating synchronized lists and
+  trees.
+
+
+<li> Chapter 7: 
+     <!WA10><a href="http://www-swiss.ai.mit.edu/~lyn//ftpdir/users/lyn/dissertation/opera.ps.Z">
+     OPERA: Controlling Operational Behavior
+     </a>
+
+  --  A presentation of OPERA, the concurrent dialect of Scheme in which
+  SYNAPSE is embedded.  An informal description of OPERA's concurrency, 
+  synchronization, and non-strictness features is followed by an explanation 
+  of how SYNAPSE is implemented in OPERA. 
+
+
+<li> Chapter 8: 
+     <!WA11><a href="http://www-swiss.ai.mit.edu/~lyn//ftpdir/users/lyn/dissertation/edgar.ps.Z">
+     EDGAR: Explicit Demand Graph Reduction
+     </a>
+
+  --  An overview of EDGAR, an explicit demand graph reduction model that
+  provides an operational semantics for OPERA.  OPERA's concurrency, 
+  synchronization, and non-strictness mechanisms are formally described here.
+
+
+<li> Chapter 9: 
+     <!WA12><a href="http://www-swiss.ai.mit.edu/~lyn//ftpdir/users/lyn/dissertation/experience.ps.Z">
+     Experience
+     </a>
+
+  --  A discussion of the experimental aspects of the research, including
+  the implementation and testing of EDGAR, OPERA, and SYNAPSE.  This chapter 
+  also describes the DYNAMATOR, a graphical program animator that proved 
+  invaluable in the development of the other systems.
+
+
+<li> Chapter 10: 
+     <!WA13><a href="http://www-swiss.ai.mit.edu/~lyn//ftpdir/users/lyn/dissertation/conclusion.ps.Z">
+     Conclusion
+     </a>
+
+  --  A summary of the research, including contributions and future work.
+
+
+<li> <!WA14><a href="http://www-swiss.ai.mit.edu/~lyn//ftpdir/users/lyn/dissertation/bib.ps.Z">
+     Bibliography 
+     </a>
+
+<li> Appendix A:
+     <!WA15><a href="http://www-swiss.ai.mit.edu/~lyn//ftpdir/users/lyn/dissertation/glossary.ps.Z">
+     Glossary
+     </a>
+
+  --  The dissertation introduces a large number of new terms, and uses some 
+  existing terms in a non-standard way.  The glossary is provided to help the 
+  reader adjust to the terminology.
+
+
+</ul>
+
+Select <!WA16><a href ="http://www-swiss.ai.mit.edu/~lyn//ftpdir/users/lyn/dissertation/entire.ps.Z"> here </a>
+for a PostScript viewer on the entire dissertation document. (Warning: it is
+454 pages long with lots of figures!).
+
+
+<h3> Feedback: </h3>
+
+<p>
+
+Send all questions and comments about this work to
+<em>lyn@zurich.ai.mit.edu</em>.
+
+
+
+
+
+
+

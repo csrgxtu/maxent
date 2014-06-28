@@ -1,0 +1,424 @@
+Date: Mon, 11 Nov 1996 17:11:06 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 11 Sep 1996 19:05:54 GMT
+Content-length: 11956
+
+<HTML>
+<HEAD>
+<TITLE>CS 302 Style Guide</TITLE>
+</HEAD>
+
+<BODY>
+<H1>CS 302 Style Guide</H1>
+<H2>Introduction</H2>
+
+As you are aware, compilers do not care what your source code looks
+like as long as it is correct syntax for the language.  So, why does
+it matter what the source code looks like?  It matters because humans
+will also be reading your source code.  In this class your program
+needs to be easily understood by you and by your instructor/grader.
+In other environments your program will need to be understood by
+other members of your programming team, by members of a testing team,
+and by programmers who will be maintaining your code after you leave a
+project.  Thus, good programming style is an important ingredient to
+good software engineering.  The more readable your code, the more
+efficient the software production process will be.<P>
+
+Think of your source code as a document describing your
+implementation.  Like writing a paper, article, or blueprint, you have
+the freedom to make choices regarding how to present your document.
+However, you also know that if you stay within the guidelines of
+popular convention for the type of document you are creating, then
+people reading your document will have an easier time understanding it.
+There is a tension between your creative freedom and the
+conventions dictating your style.  It is your responsibility to find
+an appropriate balance.<P>
+
+<H2>What is Style?</H2>
+
+Style is the format or layout of a program as commented source code.
+In the context of CS 302, we will concentrate on the following aspects:
+
+<ul>
+<li>Indentation
+<li>Placement of Curly Brackets
+<li>Whitespace
+<li>Comments
+<li>Identifier Names
+</ul>
+
+<hr><H2>Indentation</H2>
+  <h3>Fixed Width Indentation</h3>
+  Almost all indentation occurs in fixed width intervals, usually using
+  an interval of a single tab or two or more spaces.  The following example
+  program is indented by four spaces per indentation.<p>
+
+  <pre>
+    // Program 0:    The Bean Counter
+    int main () {
+        int number_of_beans;                // Number of beans (from user)
+        const double bean_weight = 2.051;   // Average bean weight in grams
+        cout << "Please enter the number of beans" << endl;
+        cin >> number_of_beans;
+        if (number_of_beans >= 0) {
+            cout << "Number of Beans: " << number_of_beans << endl;
+            cout << "Average Weight: " << bean_weight << endl;
+            cout << "Total Weight: " << number_of_beans * bean_weight << endl;
+        }   |
+    }   |   |
+    |   |   |
+    |   |   |
+    |   |   +---- Level 2 (indented eight spaces)
+    |   |
+    |   +-------- Level 1 (indented four spaces)
+    |
+    +------------ Level 0 (not indented)
+  </pre>
+
+  I don't care how much you indent, but you must be consistant in your 
+  indenting.  If you indent two spaces from level 0 to level 1, you must
+  indent two more spaces from level 1 to level 2.  Furthermore, if you
+  indent two spaces anywhere in your code, you must indent two spaces
+  everywhere in your code.
+
+  <h3>Level 0</h3>
+
+  The following items begin at level 0:
+
+  <ul>
+  <li>Preprocessor directives (e.g. <tt>#include &lt;iostream.h&gt;</tt>)
+  <li>Function Headers and Class Headers
+  <li>Global Variables (and other global declarations)
+  </ul><p>
+
+  <h3>Level 1+</h3>
+
+  Other statements are indented.  Indent once for being in a function,
+  and once more for each control statement the statement is nested within.
+  Always indent whether or not the control statement uses curly brackets.
+  It is not necessary to indent case labels within a switch statements and
+  public/private labels within class definitions,
+  but you may do so if you wish (see below).<p>
+
+  <ul>
+  <b>if</b>
+  <pre>
+    if (beans == bacon) {
+        beans++;
+        bacon++;
+    }
+  </pre>
+
+  <b>if/else</b>
+  <pre>
+    if (beans == bacon)
+        beans++;
+    else
+        bacon++;
+  </pre>
+
+  <b>while</b>
+  <pre>
+    while (beans == bacon)
+        beans++;
+  </pre>
+
+  <b>do while</b>
+  <pre>
+    do {
+        beans++;
+    } while (beans == bacon);
+  </pre>
+
+  <b>switch (#1)</b>
+  <pre>
+    switch (number_beans) {
+        case 0:
+            cout << "What?  No beans???" << endl;
+            break;
+        default:
+            cout << "Ahhhh" << endl;
+            break;
+    }
+  </pre>
+
+  <b>switch (#2)</b>
+  <pre>
+    switch (number_beans) {
+    case 0:
+        cout << "What?  No beans???" << endl;
+        break;
+    default:
+        cout << "Ahhhh" << endl;
+        break;
+    }
+  </pre>
+  </ul>
+
+<hr><h2>Placement of Curly Brackets</h2>
+  There are several common styles used for lining up curly brackets.
+  The most important thing is to be consistant.  If you use one style 
+  anywhere in your code, you must use the same style everywhere in your code.
+  <p>
+
+  <b>Option 1</b>
+  <pre>
+    header {
+        body
+        body
+    }
+  </pre>
+
+  <b>Option 2</b>
+  <pre>
+    header
+        {
+        body
+        body
+        }
+  </pre>
+
+  <b>Option 3</b>
+  <pre>
+    header
+    {
+        body
+        body
+    }
+  </pre>
+
+<hr><H2>Whitespace</H2>
+  <h3>Vertical Whitespace</h3>
+  A program should have two or more blank lines between functions.
+  Furthur, it should have a single blank line to break up statements
+  within a function into logical units.
+
+  <pre>
+    // Function:     Eat_Beans
+    // Description:  Notice how there are two blank lines between this
+    //               function and the next function.
+    void Eat_Beans (void) {
+      cout << "Burp!" << endl;
+    }
+
+
+    // Function:     Count_Beans
+    // Description:  Notice how the two logical steps of the algorithm 
+    //               are separated using blank lines.
+    int Count_Beans (Carton carton) {
+
+      // Sample the beans database to get the average weight
+      int i;
+      double average = 0;         // Average weight within sample
+      for (i = 0; i < SAMPLE_SIZE; ++i)
+        average += beans_database[rand() % NUM_BEANS].weight();
+      average /= SAMPLE_SIZE;
+
+      // Return total number of beans in carton
+      int total_beans = int (Carton.weight() / average);
+      return total_beans;
+    }
+  </pre>
+
+  <h3>Horizontal Whitespace</h3>
+  There should be a single space between most operators and their operands.
+  For example:
+
+  <pre>
+      // Do it like this:
+      int i = 5 + 8 * (9 - 3);
+      cout << "Hi";
+
+      // Not like this:
+      int i=5+8*(9-3);
+      cout<<"Hi";
+  </pre>
+
+  But some operators, like <tt>++</tt>, <tt>[]</tt> and unary <tt>-</tt>,
+  generally do not take horizontal whitespace.
+
+  <pre>
+      // Do it like this:
+      beans[i++] = -j;
+
+      // Not like this:
+      beans [ i ++ ] = - j;
+  </pre>
+
+<hr><H2>Comments</H2>
+  <h3>Program Header</h3>
+  Each program should have a block of comments at the top of the 
+  file that contains the <tt>main()</tt> function.  These comments must
+  contain the name of the program, your name, your course and section, 
+  the date and your email address.  In addition, you must include 
+  a brief summary of the program that describes what the program does,
+  what kinds of inputs are necessary and any bugs or deficiencies.<p>
+
+  <pre>
+    // Program 0:    The Bean Counter
+    // Name:         Gregory C. Sharp
+    // Class:        CS 302 Section 99
+    // Date:         Jan 1, 1999
+    // E-Mail:       greg@cs.wisc.edu
+    //
+    // Description:  This program calculates the number of navy beans
+    //               in the known universe based on a user's estimate
+    //               of the universal navy bean constant.
+  </pre>
+
+  <h3>File Header</h3>
+  Every other file in a multi file program should have a header.  
+  The file header should include a description of what is contained
+  in the file, and how the code in the file relates 
+  to the rest of the program.
+
+  <pre>
+    // Program 0:    The Bean Counter
+    // File:         Bean.h
+    // Description:  Class definition of the Bean class.
+  </pre>
+
+  <h3>Function Header</h3>
+  Most functions should have a header.  The function header explains 
+  the inputs, outputs and side effects of the function, as well as
+  a short description of what the function does.
+
+  <pre>
+    // Function:     Count_Beans
+    // Inputs:       Weight of beans (in tons)
+    // Outputs:      Number of beans
+    // Description:  Calculates the number of beans based on the
+    //               average weight of a navy bean at sea level.
+    int Count_Beans (double weight) {
+      return int (weight / Bean::Average_Weight());
+    }
+  </pre>
+
+  A related group of small functions can share a single comment.
+
+  <pre>
+    // Function:     User Input Routines
+    // Description:  These utility routines control simple user inputs.
+    int getInt (char *prompt) {
+      int i;
+      cout << prompt;
+      cin >> i;
+      return i;
+    }
+
+    char getYN (char *prompt) {
+      char c;
+      cout << prompt;
+      cin >> c;
+      while (c != 'n' && c != 'N' && c != 'y' && c != 'Y') {
+        cout << "You fool.  You enter Y or N! ";
+        cin >> c;
+      }
+      return c;
+    }
+  </pre>
+
+  <h3>Comments by Object Definitions</h3>
+  Most objects need a comment to describe what the variable does.
+
+  <pre>
+    double weight;        // weight of beans (in tons)
+    double mass;          // mass of beans (in kg)
+  </pre>
+
+  However, temporary variables, loop variables and input variables 
+  should not have a comment.
+
+  <pre>
+    int i;                // Loop variable doesn't need a commment!
+    for (i = 0; i < NUMBER_OF_BEANS; ++i) {
+      double d;           // Input variable doesn't need a commment!
+      cin >> d;
+      bean[i].set_weight (d);
+    }
+  </pre>
+
+  <h3>Comments Embedded in the Code</h3>
+  Comments should be embedded in code for the following reasons.<p>
+
+  <ul>
+  <li>To introduce a logically distinct section of code.
+  <li>To explain an unusual coding technique.
+  </ul><p>
+
+  The following is an example of a function which contains embedded 
+  comments.
+
+  <pre>
+    // Function:     Count_Beans
+    // Description:  First take a sample of the beans database to aproximate
+    //               the weight, and then use this to estimate the total number
+    //               in the carton.
+    //               Return the number of beans.
+    int Count_Beans (Carton carton) {
+
+      // Sample the beans database to get the average weight
+      int i;
+      double average = 0;         // Average weight within sample
+      for (i = 0; i < SAMPLE_SIZE; ++i)
+        average += beans_database[rand() % NUM_BEANS].weight();
+      average /= SAMPLE_SIZE;
+
+      // Return total number of beans in carton
+      int total_beans = int (Carton.weight() / average);
+      return total_beans;
+    }
+  </pre>
+
+<hr><H2>Identifier Names</H2>
+  <h3>Naming Conventions</h3>
+  Most identifiers, including most variables and all functions and classes,
+  should have a descriptive name.  The name need not be long, 
+  but it must relate to the semantic meaning of the identifier.<p>
+
+  <pre>
+  // Do it like this:
+  double starting_location, time, velocity;
+  double location = starting_location + time * velocity;
+
+  // Not like this:
+  double s, t, v;
+  double l = s + t * v;
+  </pre>
+
+  But on the other hand, you should use short (1 letter) identifiers for
+  temporary variables, loop variables and input variables.
+
+  <pre>
+  // Do it like this:
+  int i;
+  for (i = 0; i < MAX_BEANS; i++)
+    beans[i] = new Bean;
+
+  // Not like this:
+  int current_bean;
+  for (current_bean = 0; current_bean < MAX; current_bean++)
+    beans[current_bean] = new Bean;
+  </pre>
+
+  And finally, please use all capital letters for constants.
+
+  <pre>
+  // Do it like this:
+  const int MAX_BEANS = 100;
+
+  // Not like this:
+  const int max_beans = 100;
+  </pre>
+
+<HR>
+Last modified 
+Sat Sep  7 18:39:12 CDT 1996
+by Greg Sharp
+<ADDRESS>
+<!WA0><!WA0><!WA0><a href="mailto:greg@cs.wisc.edu">greg@cs.wisc.edu</a>
+| <!WA1><!WA1><!WA1><a href="http://www.cs.wisc.edu/~greg/greg.html">http://www.cs.wisc.edu/~greg/greg.html</a>
+</ADDRESS>
+</BODY>
+</HTML>

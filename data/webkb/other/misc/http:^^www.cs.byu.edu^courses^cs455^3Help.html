@@ -1,0 +1,340 @@
+Date: Tue, 14 Jan 1997 20:33:26 GMT
+Server: Apache/1.0.5
+Content-type: text/html
+Content-length: 14784
+Last-modified: Wed, 13 Nov 1996 18:52:21 GMT
+
+<HMTL>
+<HEAD>
+
+<TITLE> Tips for Assignment Three</TITLE>
+
+<!--  describe the document, avoid context sensative descriptions >
+<meta name="description"
+      value="Tips for Assignment Three"
+
+<!--  keywords for the document >
+<meta name="keywords"
+      value="byu, graphics, computer, syllabus">
+
+<!--  should be "document" unless providing a search, then "service" >
+<meta name="resource-type"
+      value="document">
+
+<!--  use global for documents to be indexed outside BYU >
+<meta name="distribution"
+      value="local">
+
+</HEAD>
+<BODY>
+<H1>Tips for Assignment Three</H1>
+This page is a collection of hints about how to approach Assignment Three. It 
+is designed to make your life easier by explaining an object oriented approach 
+to the assignment. It is not intended to stifle any of your own creativity in 
+designing classes or algorithms. It is also not a comprehensive list of all 
+algorithms you might use.<BR>
+<BR>
+<STRONG>Note:</STRONG>There is a change to the assignment sheet giving you up 
+to 30 points available on the Rendering section. 
+ 
+<HR>
+
+<H2>Classes</H2>
+Having a few data structures with abstracted operations can make life easier. Though 
+a deep object oriented style is used here, it need not be strictly followed.
+Overloaded operators are not absolutely necessary; member functions can do as well.
+It is also not absolutely necessary that the abstract data types be classes; 
+they can be structures if you are unfamiliar with C++. Nonetheless, I believe 
+that these things are easier to code and understand in C++, and you will probably
+have more fun.    
+<HR>
+<H3>Vector:</H3>
+<UL>
+<LI><STRONG>Data:</STRONG>
+<UL>
+<LI> Array of four floats (or doubles). You can make life easier by making them
+public.
+</UL>
+<LI><STRONG>Operations:</STRONG> 
+<UL>
+<LI><STRONG>Constructor:</STRONG> Initialize fourth coordinate to one (or zero). 
+<LI><STRONG>Length:</STRONG> Returns the magnitude of the vector.
+<LI><STRONG>Unit:</STRONG> Normalizes the vector to unit length. ( or returns a vector which is 
+normalized to unit length.)
+<LI><STRONG>v:</STRONG> Quick Way to send the vector to the graphics system. Note
+that although the array has four elements, there is absolutely no harm in calling 
+v2f() on it.
+</UL>
+<LI><STRONG>Operators:</STRONG>
+<UL>
+<LI><STRONG>dot:</STRONG> dot product of two vectors; a scalar value.
+<LI><STRONG>cross:</STRONG> cross product of two vectors; a third vector. Explanation 
+of a cross product is in your appendix.  
+<LI><STRONG>+ and -:</STRONG> add or subtract two vectors; negate a vector.
+<LI><STRONG>* and /:</STRONG> multiply a matrix times a vector; mutliply or divide by a scalar.
+</UL>
+</UL> 
+Take a look at the object file format information available <!WA0><A HREF="http://www.cs.byu.edu/courses/cs455/images.html">here</A>.
+The vector is an important class for storing three dimensional coordinates. The last
+coordinate in the array is a homogeneous coordinate. This class is adequate for 
+storing both the 3D coordinates for a vertex and the normal at that vertex. These
+are very small but important data structures.<BR>
+<PRE>
+    Point    [ X ]       Direction  [ dX ]        
+   Vector    [ Y ]       Vector     [ dY ]
+             [ Z ]       (normal)   [ dZ ]
+             [ 1 ]                  [  0 ]
+</PRE>
+The homogeneous coordinate should be 1 if the vector represents a point in three
+dimensional space and 0 if it represents a normal vector, which has direction but 
+no position. This clever little trick will prevent the direction vectors from 
+being mangled by transformations; they can be rotated and scaled but not translated.
+They will point in the right direction if they are transformed by the same matrix 
+that transforms the points and then normalized to unit length. NEVER divide by the
+homogeneous coordinate of a direction vector. You can make point and direction 
+vectors separate classes or just remember to treat them a little differently. 
+<HR>
+<H3>Matrix:</H3>
+<UL>
+<LI><STRONG>Data:</STRONG>
+<UL>
+<LI>Four by Four Array of floats( or doubles). 
+</UL>
+<LI><STRONG>Operations:</STRONG> 
+<UL>
+<LI> <STRONG>Constructor:</STRONG> calls Identity.
+<LI> <STRONG>Identity:</STRONG> reset to Identity matrix.
+<PRE>
+           [ 1 0 0 0 ]
+           [ 0 1 0 0 ]
+           [ 0 0 1 0 ]
+           [ 0 0 0 1 ] 
+</PRE>
+<LI> <STRONG>Translate(vector v):</STRONG> Premultiply itself by a matrix that will translate by 
+vector v.
+<LI> <STRONG>Scale( Sx, Sy, Sz):</STRONG> Premultiply by a matrix that will Scale in X by Sx, in 
+Y by Sy, and in Z by Sz. 
+<LI> <STRONG>Rotate( Axis, angle):</STRONG> Premultiply by a matrix that will rotate
+around the specified axis. Note that this can also be done with the next rotate 
+function. 
+<LI> <STRONG>Rotate(vector u, vector v, vector n):</STRONG> Premultiply by a matrix that will rotate
+into a new set of axis, as explained on page 438.
+<LI> <STRONG>Perspective(dist d):</STRONG> Premultiply by a matrix that will perspectivize
+viewing at a distance of d from the view plane. Despite all appearance, this is not a
+hard matrix to build. It's simplicity comes from setting zvp=0 on page 445. I've also
+made a modification so that the z-value will not be lost(keep it; you'll need it). Otherwise,
+the third position on the diagonal would be zero.  
+<PRE>
+           [ 1 0   0  0 ]
+           [ 0 1   0  0 ]
+           [ 0 0   1  0 ]
+           [ 0 0 -1/d 1 ] 
+</PRE>
+
+</UL>
+<LI> <STRONG>Operators:</STRONG>
+<UL>
+<LI><STRONG>*:</STRONG> multiply a matrix times a vector; Concatenate two matrices.
+</UL>
+</UL> 
+<STRONG>NOTE:</STRONG> It will not be acceptable to take shortcuts in concatenating
+matrices or multiplying them times vectors. It is likewise no longer acceptable to 
+ignore the homogeneous coordinate. Any multiplication should be done in full.
+<HR>
+<H3>Others:</H3>
+There are other classes you may consider having:
+<UL>
+<LI><STRONG>Vertex:</STRONG> Contains both point vector and associated normal direction vector.
+<LI><STRONG>Polygon:</STRONG> Contains a list or array of Vertex. 
+<LI><STRONG>PolygonGroup:</STRONG> Contains a bunch of polygons, linked by a common color.  
+<LI><STRONG>Zbuffer:</STRONG> Does Depth Buffer testing, which you will learn in chapter 15.
+<LI><STRONG>LightSource:</STRONG> You'll need at least one point light source to do the shading in 
+Chapter 14. 
+<LI><STRONG>Rgbhue:</STRONG> You might find it useful in shading to have RGB triples
+or colors with even more properties for color calculations.</UL>
+<HR>
+With the matrix and vector class, you can get through quite a bit of the
+assignment in a less painful fashion. You will see how these operations are
+useful as we proceed with the assignment.
+<HR>
+<H2>Steps</H2>
+In this assignment, I found that it was helpful to think of the steps I would
+need to go through to do the assignment. This is starting from the point where you
+have data read in from a file and you are ready to send things through the 
+rendering pipeline.
+
+<HR>
+<H3>Part One: Creating a Viewing Matrix </H3>
+You will need to create a matrix which will do all the transformations necessary.
+This algorithm is designed for perspective projection from an arbitrary angle.
+To do this, you should only need a few parameters, which you can read from a file
+or set somehow. In any case, they must be changeable.  These parameters will be 
+a view reference point (point vector), view point (point vector), and a view
+up vector (direction vector). The view up vector is the V vector mentioned in 12-2
+and is the orientation of the head.<BR>
+<BR>
+There are certain steps to take in creating this matrix:
+<OL>
+<LI>Translate Vp to the origin. Trans(-vp).
+<LI>Rotate the world so that the viewing is down the positive Z-axis. You can
+do this by rotating about three axes, or make life simpler by using the 
+equations on page 438. The N on page 438 is the vector Vrp-Vp, while V is the
+view up vector that you have specified.  You now have a parallel view.
+<LI>Perspectivize the view, using the length of Vrp-Vp as d. The view plane will
+now look as so.
+<PRE> 
+       ___________
+      |   +d|     |
+      |     |     |
+     -d_____|_____+d
+      |    0|     |
+      |     |     |
+      |___-d|_____|  
+</PRE>
+Assuming a 45 degree field of view angle, this is what it should look
+like right now. If you desire a narrower field of view (30 deg is nice), try
+scaling right here by 1/tan(pheta) in x and y.<BR>
+Because the screen coordinates are positive pixel values, if we were to render
+this plane now, we would see only:
+<PRE>
+            ______
+          +d|     |
+            |     |
+            |_____+d
+            
+</PRE>
+We need to fix this by going through steps 4 and 5.
+<LI>Scale the drawing to the viewpoint, taking into account the angle of the 
+field of view. Scale the z value by the same amount, just to make it more 
+numerically stable. 
+<LI>Translate so that the origin of the view plane is centered in the viewport.
+These last two transformations should change the figure above into
+the one below: 
+<PRE>
+                 (XMAX,YMAX) 
+       ___________
+      |           |
+      |           |
+      |           | 
+      |           |
+      |           |
+      |___________|  
+    (0,0)
+</PRE>
+which looks amazingly like the window on your screen.<BR>
+If you are using a windowing system 
+</OL>
+A Graphical Representation of this chain is below:
+<PRE>
+[ Trans ][ Scale ][  Persp  ][   Rot   ][ Trans  ]
+[Center ][   to  ][   d=    ][  Align  ][   Vp   ]
+[in View][  View ][ |Vrp-Vp|][ View on ][   to   ]
+[  Port ][  Port ][         ][ Z  axis ][ Origin ]
+</PRE>
+Unfortunately, the normal direction vector won't be immune to the 
+last translation performed, as I originally thought. Therefore, the
+easiest way to handle the normal vectors is to create another matrix that
+looks like this:
+<PRE>
+              [   Rot   ]
+              [  Align  ]
+              [ View on ]
+              [ Z  axis ]
+</PRE>
+Note that this has just one of the matrices from above. If you do a sheer or
+nonuniform scaling it will need to be in this matrix as well.  
+<HR>
+<H3>Part Two: Rendering</H3>
+There are certain amount of steps you go through to render
+a model on screen.
+<UL>
+<LI>Do a few steps for initialization. 
+<UL>
+<LI>Transform your light source(s) using the same transform you are about to
+use on your polygons. 
+<LI>Initialize your z-buffer to a very large negative value.
+</UL>
+<LI>For each polygon in your model:
+<UL>
+<LI>Transform the vertices and their associated normal direction vectors by the
+matrices that you have laboriously computed in part one. Remember to normalize the 
+normal vectors to unit length and to divide the point vectors by their homogeneous
+coordinate. 
+<LI>Check to see if the polygon points away from you(dZ<0) if doing back-face 
+detection. (The normal to the polygon can be calculated by (v2-v1)X(vn-v1) where 
+v1 .. vn are the vertices of the polygon).
+<LI>Place their transformed edges into the polygon scanfill's edge table.
+<LI>While Rendering a polygon:
+<UL>
+<LI>Interpolate Z values and normal vectors across x and y.
+<LI>For each pixel:
+<OL>
+<LI>Test against z-buffer
+<LI>If Step 1 passes, shade pixel according to equation 14-9 on page 504. You will
+need the point vector(including the z value), and the normal direction vector to
+make this calculation.
+</OL>
+</UL>
+</UL>
+</UL>
+<HR>
+<H3>Change to Polygon Scan Conversion</H3> 
+Accomodating three dimensions will require you to make some changes to your 
+Polygon Scan conversion routines. As near as I have been able to determine, the
+following is a summary of those changes:
+<UL>
+<LI> It must be compatible with your vector class.
+<LI> In additon to a dxPerScan, it should have a dzPerScan and a 
+dNormalDirectionVectorPerScan, which should also be calculated in makeEdgeRec and
+added to the z value and Normal Vector in updateActiveList. 
+<LI>The fill scan function will no longer be as simple as shown. It will be helpful
+in this function to have a dzPerxpixel and a dNormalDirectionVectorPerxpixel which 
+will be added to the z value and Normal Vector each time x is incremented. In 
+each step in x, the point vector will be checked against the Zbuffer and then 
+shaded if it passes. 
+</UL>
+<HR>
+<H3>Shading</H3>
+There should be a few things to keep in mind while shading. The equation which you
+will probably use for shading is equation 14-15 on page 508. You will do this 
+calculation for the R, G, and B components.<BR>
+Note that there seem to be a lot of variables in this equation:
+<UL> 
+<LI>ka,kd,and ks are the ambient, diffuse, and specular coefficients. They are
+properties of the material and should be fractions less than one. You can think 
+of them as the percentage of each kind of light taken into account. ka=.3, kd=.4,
+and ks=.3 signifies that the surface is lighted by 30% ambient light, 40% diffuse 
+light, and 30% specular light. You will need to come up with these.  
+<LI>Sdb and Ssb are the diffuse and specular color of the material. The color that 
+you read in from a file, if any, is the diffuse color. You can come up with an 
+appropriate specular color. For a plastic type object, this is the same as the 
+diffuse color. For a metallic object, it would be closer to white.
+<LI>Iab is the color of the ambient light, while Ilbi is the color of each light 
+source. These are global parameters. 
+<LI>fi(d)  is the attenuation of each light source. One light source can be
+adequate for purposes of this assignment. Although there are several complicated
+equations for light attenuation on page 506, a simple one that works well is
+f(d)=a1/d. You may need to experiment with a1. Mine was WINSIZE/2.
+<LI>ns is an integer exponent (called the phong constant). This is also a property 
+of the material that you should come up with. Page 503 shows the effect of this
+constant. Larger numbers result in sharper highlights.
+<LI> There are some vectors mentioned in the equation( N, H, L). N is the unitized
+normal direction vector that you have laboriously preserved for this calculation, 
+while L is a unitized vector that points out to the light source. With N and L, you 
+can easily calculate any other vector, R or H, that you might need by using the 
+equations on page 503.   
+</UL>
+<HR>
+<H3>Z Buffer</H3>
+A Z buffer is not hard to do. There is just one note here about the Zbuffer, which
+is a big array of z values. Each z value should be initialized to a large negative
+value, not 0 as shown on page 473. It will then work properly to compare the z value
+of a pixel. If the z value is greater than the existing z value, replace the z value
+and draw the pixel. This is a simple test because it is pixel by pixel. 
+<HR>
+Questions about the material on this page? Please <!WA1><A HREF="mailto:mellor@cs.byu.edu">ask.</A>
+<HR>
+Unpublished Copyright Nathan Mellor, 1996. Reproduction permitted for personal
+educational use. 
+</BODY>
+</HTML>

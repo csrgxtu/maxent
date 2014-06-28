@@ -1,0 +1,111 @@
+Date: Tue, 07 Jan 1997 15:42:11 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<title>Benji's ATP research page</title>
+<body    bgcolor="#ffffff"  text="#000000"  link="#0000ee" vlink="551a8b" alink="ff0000">
+
+<h1>ATP research</h1>
+
+<h2>The IPR System</h2>
+
+The IPR system proves theorems in mathematics by <!WA0><!WA0><!WA0><a
+href="http://www.ma.utexas.edu/users/bshults/IPR/knowledge-using.html">using
+a knowledge base</a> of theorems, axioms and definitions.  Rather than
+applying all of its knowledge systematically, the IPR prover picks a
+single bit of information at a time according to its determination of
+the current usefulness of the information.<p>
+
+<b>The IPR Framework</b><p>
+
+IPR uses the tableaux-calculus for first-order logic theorem proving.
+This method has some properties which recommend its use by provers
+which are intended to communicate with non-expert humans.  A branch
+of a tableau can be displayed as a sequent.<p>
+
+The knowledge is stored in the knowledge base in the form of sequents.
+When the theorem prover reaches the q-limit, it chooses a branch of
+the tableau which needs more work and searches the knowledge base for
+the most useful bit of information.  It determines which theorem to
+use by comparing the branch (as a sequent) to the theorems in the
+knowledge base.<p>
+
+The success of the prover on traditionally difficult problems shows
+that this method of storing and fetching theorems has merit.<p>
+
+Two tech reports offer more information about the IPR framework.  [<!WA1><!WA1><!WA1><A
+href="http://www.ma.utexas.edu/users/bshults/IPR/TR-FLAIRS97.ps">Intelligent
+use of a knowledge base in automated theorem proving.</a>,<!WA2><!WA2><!WA2><a
+href="http://www.ma.utexas.edu/users/bshults/IPR/TR-AAR.ps">Challenge
+problems in first-order theories.</a>] I am currently preparing more
+papers for submission.  I will attach some of these reports to this
+page as soon as possible.<p>
+
+<b>The English Interface</b><p>
+
+All of the output from IPR is in English.  When it finds a proof, it
+outputs a description of the steps it took and the theorems it applied
+in a form which might appear in a textbook.
+
+If the user chooses to interact during the theorem-proving process,
+IPR displays each branch of the proof in English.  For example:<p>
+
+<dl>
+<dd>Suppose all of the following:
+<dd>1.  (_B) is a linearly independent subset of the vector space (_V)
+<dd>2.  (_B0) is a basis of the vector space (_V)
+<dd>and show that
+<dd>the union of E and F is a basis of the vector space (_V)
+</dl>
+
+Here, (_B), (_B0) and (_V) represent constants and E and F are
+variables.<p>
+
+<b><!WA3><!WA3><!WA3><a
+href="http://www.ma.utexas.edu/users/bshults/IPR/examples.html">Examples
+of Proofs</a></b><p>
+
+The first hard theorem IPR proved in 1994 was the 101st labeled
+theorem from John Kelley's <i>General Topology</i>:<p>
+
+<em>If a product is locally compact, then each coordinate space is
+locally compact.</em><p>
+
+IPR proved this in the presence of 100 theorems.  Each of the theorems
+were taken from earlier sections of the text related to the predicates
+involved in the theorem.  IPR analyses the knowledge base once for
+each formula in the proof.  When it needs to apply a theorem, it
+compares the usefulness of the theorems to the current situation and
+choses the single theorem which if considers most useful.  In this
+proof, IPR did not use any of the theorems except the three which are
+needed in the proof.  It chose those theorems and found the shortest
+possible proof without wasting any time on the other knowledge.<p>
+
+A second example, this one involving much more complex reasoning, is
+the following:<p>
+
+<em>If S is a Hausdorff topological space, then the diagonal of SXS is
+closed.</em><p>
+
+The proof of this theorem (given a certain knowledge base) requires
+the application of twelve theorems.  The proof also requires some
+equality reasoning and a fairly tricky variable instantiation.  This
+variable instantiation is needed because the proof involves finding an
+open set in SXS containing an arbitrary point in SXS and disjoint from
+the diagonal.<p> In the presence of a knowledge base containing over
+12 theorems, IPR finds this proof in under a minute on my PC at home.<p>
+
+Since my dissertation will be on this topic, expect this part of the
+web to grow.<p>
+
+This work was done as
+part of the <!WA4><!WA4><!WA4><a
+href="http://www.ma.utexas.edu/users/bshults/ATP/home.html">Automated
+Theorem Proving Group</a> at <!WA5><!WA5><!WA5><a
+HREF="http://wwwhost.cc.utexas.edu">The University of Texas at
+Austin.</a><P>
+
+<hr>
+
+<!WA6><!WA6><!WA6><a href="http://www.ma.utexas.edu/users/bshults">Benjamin Shults</a>
+

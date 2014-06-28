@@ -1,0 +1,142 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 07-Jan-97 15:24:19 GMT
+Content-Type: text/html
+Content-Length: 4854
+Last-Modified: Wednesday, 28-Aug-96 18:19:38 GMT
+
+<HEAD>
+<TITLE>Interprocessor Collective Communications Library (iCC)</TITLE>
+</HEAD> 
+
+
+<H1>Interprocessor Collective Communications Library (iCC)</H1>
+<P><b>
+D. Payne, Intel SSD <BR>L. Shuler, Sandia National Laboratories <BR>
+<!WA0><!WA0><a href="http://www.cs.utexas.edu/users/rvdg/index.html">
+R. van de Geijn </a>,
+University of Texas at Austin <BR>
+<!WA1><!WA1><a href="http://www.scp.caltech.edu/~jwatts/">
+J. Watts </a>,
+California Institute of Technology
+</b><P>
+<P><b></b><P>
+<h2>Current version:  Release R2.1.0, March 1, 1995</h2>
+
+<h3> Please sign our <!WA2><!WA2><a href="http://www.cs.utexas.edu/users/rvdg/intercom/icc.html"> guestbook </a> </h3>
+
+<h3>What's new</h3>
+<ul>
+<li>  MPI-like group interface
+<li>  Version of iCC for OSF R1.3 
+<li>  Version of iCC for SUNMOS R1.6
+<li>  New reference manual, that includes group interface
+<li>  New summary, (not yet finished)
+<li> <!WA3><!WA3><a href="http://www.cs.utexas.edu/users/rvdg/intercom/group_example.f">Fortran example for using groups</a>
+<li> <!WA4><!WA4><a href="http://www.cs.utexas.edu/users/rvdg/abstracts/icc_vs_other.html">
+New paper comparing iCC to NX, MPI and BLACS <a>
+<li> <!WA5><!WA5><a href="http://www.cs.utexas.edu/users/rvdg/tutorial.html"> Tutorial
+on Collective Communication (PowerPoint presentation) </a>
+<li> <!WA6><!WA6><a href="http://www.cs.utexas.edu/users/rvdg/intercom/bugs.html"> The first and only (so far) valid bug 
+report since Spring 1994 </a>
+<li> Patch R2.1.0:  Fixes above bug.
+</ul>
+
+<P>
+<H1>Introduction</H1>
+<P>
+
+This page describes the second release of the Interprocessor Collective
+Communications (InterCom) Library, iCC release R2.1.0.  This library
+is the result of an ongoing collaboration between David Payne (Intel
+SSD), Lance Shuler (Sandia National Laboratories), Robert van de
+Geijn (University of Texas at Austin), and Jerrell Watts (California
+Institute of Technology), funded by the Intel Research Council, and 
+Intel SSD.  Previous contributors to this effort include
+Mike Barnett (Univ. of Idaho), Satya Gupta (Intel SSD),
+Rik Littlefield (PNL), and Prasenjit Mitra (now with Oracle).<p>
+
+The library implements a comprehensive approach to collective
+communication.  The results are best summarized by the following
+performance tables 
+
+<h2> Comparison of the various libraries </h2>
+
+The following tables give the ratios of times required
+for completion on 
+a 16x32 mesh Paragon using OSF R1.3 </h2>
+
+
+<PRE><TT>
+              <b> Broadcast </b> </br> </br>
+<b>     bytes   NX/iCC   BLACS/iCC   MPI/iCC    </b> </br>
+<b>   ----------------------------------------- </b> </br>
+<b>        16    1.4         1.0        1.6      </b> </br>
+<b>      1024    1.5         1.0        2.5      </b> </br>
+<b>     65536    5.5         2.9        2.8      </b> </br>
+<b>   1048576   11.3         6.1        7.5       </b> </br>
+</TT></PRE>
+<p>
+
+
+<PRE><TT>
+              <b> Sum-to-All </b> </br> </br>
+<b>     bytes    NX/iCC  BLACS/iCC    MPI/iCC    </b> </br>
+<b>   -----------------------------------------  </b> </br>
+<b>        16     1.0        1.2        2.1      </b> </br>
+<b>      1024     1.0        1.0        2.0      </b> </br>
+<b>     65536    21.1        4.1        6.9      </b> </br>
+<b>   1048576    34.6        5.9       11.8      </b> </br>
+</TT></PRE>
+<p>
+
+Attaining the improvement in performance is as easy as
+linking in a library that automatically translates NX collective
+communication calls to iCC calls.  Furthermore, the iCC library gives
+additional functionality like scatter and gather operations, and more
+general "gopf" combine operations.  <p>
+
+As had been planned, an MPI-like group interface to iCC is now 
+available.  The interface lets the user create and free groups 
+and communicators, and it gives user-defined groups complete 
+access to the high performance routines in the iCC library. <p>
+
+We would like to note that this library is not intended to compete 
+with MPI.  It was started as a research project into techniques 
+required to develop high performance implementations of the MPI
+collective communication calls.  We are making this library available
+as a service to the user community, with the hope that these techniques
+eventually are incorporated into efficient MPI implementations. <p>
+
+<h2> <!WA7><!WA7><a href="http://www.cs.utexas.edu/users/rvdg/intercom/using.html"> Using the library. </a> </h2>
+
+<h2> Manuals </h2>
+
+<ul>
+<li>
+<!WA8><!WA8><a href="file://ftp.cs.utexas.edu/pub/rvdg/intercom/R2.0.0/iCC.reference.ps"> Reference manual </a>
+<li>
+<!WA9><!WA9><a href="file://ftp.cs.utexas.edu/pub/rvdg/intercom/R2.0.0/iCC.summary.ps"> Summary </a>
+</ul>
+
+<h2> How to get iCC </h2>
+
+iCC binaries and manuals are available from 
+<!WA10><!WA10><a href="http://www.netlib.org"> netlib </a> (directory intercom)
+and via anonymous 
+<!WA11><!WA11><a href="file://ftp.cs.utexas.edu/pub/rvdg/intercom/R2.1.0">
+ftp (net.cs.utexas.edu, directory pub/rvdg/intercom/R2.1.0). </a>
+
+<h2><!WA12><!WA12><a href="http://www.cs.utexas.edu/users/rvdg/intercom/pubs.html">Related Publications</a></h2>
+
+<h2><!WA13><!WA13><a href="http://www.cs.utexas.edu/users/rvdg/tutorial.html"> 
+Related Tutorials </a> </h2>
+
+<h2><!WA14><!WA14><a href="http://www.cs.utexas.edu/users/rvdg/intercom/bugs.html"> Bug Reports </a> </h2>
+
+
+<p>
+
+
+
+<!WA15><!WA15><img SRC="http://www.cs.utexas.edu/users/sammy/cgi/spy?/users/rvdg/logs/intercom">

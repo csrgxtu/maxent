@@ -1,0 +1,151 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 21:22:23 GMT
+Content-Type: text/html
+Content-Length: 8952
+Last-Modified: Saturday, 03-Aug-96 23:30:29 GMT
+
+<!doctype HTML>
+<html>
+  <head>
+    <title> Hypertext C-code </title>
+  </head>
+  <body>
+
+  <h1> <img SRC="/users/sammy/images/sams-image-0.5.jpg"> Hypertext C-code Experiment </h1>
+  <hr>
+  This experiment grew out of the observation that the <em> etags
+</em> command (used in conjunction with <em> emacs </em> tags
+functions) builds a general function and type definition cross
+reference for a body of c-code. This tags file can be used to generate
+hypertext versions of the source code. <p>
+  This page is a demonstration of the <em> tags2html </em> utility
+that I wrote. I took a small program, obtained a flow graph (using the
+<em> cflow </em> command ) and then generated hypertext versions of
+the source and flow graph automatically. <p>
+  For more information, send me mail at <a HREF="mailto:sammy@cs.utexas.edu">sammy@cs.utexas.edu </a>
+
+  <hr>
+
+    <h2>flow-graph</h2>
+    <hr>
+    <pre>
+1	<a HREF="bdd_graphics.c.html#bdd_graphics.c.26">display_tree</a>: () <em>void</em>, &lt;bdd_graphics.c 27&gt;
+2		printf: () <em>int</em>, &lt;&gt;
+3		<a HREF="bdd_trees.c.html#bdd_trees.c.73">is_leaf</a>: () <em>int</em>, &lt;tree.h 74&gt;
+4	<a HREF="bdd_graphics.c.html#bdd_graphics.c.231">redraw_bdd_cb</a>: () <em>void</em>, &lt;tree.h 232&gt;
+5		<a HREF="bdd_graphics.c.html#bdd_graphics.c.185">redraw_bdd</a>: () <em>void</em>, &lt;tree.h 186&gt;
+6			XSetLineAttributes: () <em>int</em>, &lt;&gt;
+7			XmStringExtent: () <em>int</em>, &lt;&gt;
+8			XmStringDraw: () <em>int</em>, &lt;&gt;
+9			XDrawRectangle: () <em>int</em>, &lt;&gt;
+10			<a HREF="bdd_trees.c.html#bdd_trees.c.73">is_leaf</a>: 3
+11			XDrawLine: () <em>int</em>, &lt;&gt;
+12	<a HREF="bdd_graphics.c.html#bdd_graphics.c.242">go_away_cb</a>: () <em>void</em>, &lt;bdd_graphics.c 243&gt;
+13		XtParent: () <em>int</em>, &lt;&gt;
+14		XtUnrealizeWidget: () <em>int</em>, &lt;&gt;
+15		<a HREF="bdd_trees.c.html#bdd_trees.c.128">cleanup</a>: () <em>void</em>, &lt;tree.h 129&gt;
+16			<a HREF="bdd_trees.c.html#bdd_trees.c.64">is_top</a>: () <em>int</em>, &lt;tree.h 65&gt;
+17			<a HREF="bdd_trees.c.html#bdd_trees.c.48">split</a>: () <em>void</em>, &lt;tree.h 49&gt;
+18			cfree: () <em>int</em>, &lt;&gt;
+19	<a HREF="bdd_graphics.c.html#bdd_graphics.c.251">build_bdd_cb</a>: () <em>void</em>, &lt;bdd_graphics.c 252&gt;
+20		XmTextGetString: () <em>int</em>, &lt;&gt;
+21		<a HREF="y.tab.c.html#y.tab.c.39">parse_and_build_bdd</a>: () * <em>struct</em>, &lt;bdd_grammer.y 68&gt;
+22			<a HREF="y.tab.c.html#y.tab.c.271">yyparse</a>: () <em>int</em>, &lt;bdd_grammer.y 299&gt;
+23				<a HREF="y.tab.c.html#y.tab.c.55">yyerror</a>: () <em>int</em>, &lt;bdd_grammer.y 83&gt;
+24					printf: 2
+25				<a HREF="lex.yy.c.html#lex.yy.c.114">yylex</a>: () <em>int</em>, &lt;lex.yy.c 114&gt;
+26					setlocale: () * <em>char</em>, &lt;&gt;
+27					<a HREF="lex.yy.c.html#lex.yy.c.511">yylook</a>: () <em>int</em>, &lt;lex.yy.c 512&gt;
+28						<a HREF="lex.yy.c.html#lex.yy.c.912">yywinput</a>: () <em>int</em>, &lt;lex.yy.c 913&gt;
+29							mbsinvalid: () <em>int</em>, &lt;&gt;
+30							mbtowc: () <em>int</em>, &lt;&gt;
+31						<a HREF="lex.yy.c.html#lex.yy.c.932">yywunput</a>: () <em>void</em>, &lt;lex.yy.c 933&gt;
+32							wctomb: () <em>int</em>, &lt;&gt;
+33						<a HREF="lex.yy.c.html#lex.yy.c.822">yyback</a>: () <em>int</em>, &lt;lex.yy.c 823&gt;
+34						<a HREF="lex.yy.c.html#lex.yy.c.941">yywreturn</a>: () <em>int</em>, &lt;lex.yy.c 942&gt;
+35							wcstombs: () <em>unsigned</em> <em>long</em>, &lt;&gt;
+36						<a HREF="lex.yy.c.html#lex.yy.c.927">yywoutput</a>: () <em>void</em>, &lt;lex.yy.c 928&gt;
+37							wctomb: 32
+38					yywrap: () <em>int</em>, &lt;&gt;
+39					<a HREF="bdd_trees.c.html#bdd_trees.c.14">new</a>: () * <em>struct</em>, &lt;tree.h 15&gt;
+40						calloc: () <em>int</em>, &lt;&gt;
+41					atoi: () <em>int</em>, &lt;&gt;
+42					<a HREF="bdd_trees.c.html#bdd_trees.c.153">var_tree</a>: () * <em>struct</em>, &lt;tree.h 154&gt;
+43						<a HREF="bdd_trees.c.html#bdd_trees.c.14">new</a>: 39
+44						<a HREF="bdd_trees.c.html#bdd_trees.c.38">insert</a>: () <em>void</em>, &lt;tree.h 39&gt;
+45					fprintf: () <em>int</em>, &lt;&gt;
+46				<a HREF="bdd_core.c.html#bdd_core.c.129">combine_bdd</a>: () * <em>struct</em>, &lt;tree.h 130&gt;
+47					<a HREF="bdd_core.c.html#bdd_core.c.77">combine</a>: () * <em>struct</em>, &lt;tree.h 78&gt;
+48						<a HREF="bdd_trees.c.html#bdd_trees.c.73">is_leaf</a>: 3
+49						<a HREF="bdd_trees.c.html#bdd_trees.c.95">apply_op</a>: () <em>int</em>, &lt;tree.h 96&gt;
+50							fprintf: 45
+51						<a HREF="bdd_trees.c.html#bdd_trees.c.14">new</a>: 39
+52						<a HREF="bdd_trees.c.html#bdd_trees.c.83">level</a>: () <em>int</em>, &lt;tree.h 84&gt;
+53							<a HREF="bdd_trees.c.html#bdd_trees.c.73">is_leaf</a>: 3
+54						<a HREF="bdd_trees.c.html#bdd_trees.c.38">insert</a>: 44
+55					<a HREF="bdd_core.c.html#bdd_core.c.32">reduce_by_equality</a>: () <em>int</em>, &lt;tree.h 33&gt;
+56						<a HREF="bdd_trees.c.html#bdd_trees.c.73">is_leaf</a>: 3
+57						<a HREF="bdd_core.c.html#bdd_core.c.9">find_reduce_equals</a>: () <em>int</em>, &lt;tree.h 10&gt;
+58							<a HREF="bdd_trees.c.html#bdd_trees.c.73">is_leaf</a>: 3
+59							<a HREF="bdd_trees.c.html#bdd_trees.c.194">eq</a>: () <em>int</em>, &lt;tree.h 195&gt;
+60							<a HREF="bdd_trees.c.html#bdd_trees.c.172">replace</a>: () <em>void</em>, &lt;tree.h 173&gt;
+61								<a HREF="bdd_trees.c.html#bdd_trees.c.48">split</a>: 17
+62								<a HREF="bdd_trees.c.html#bdd_trees.c.38">insert</a>: 44
+63							<a HREF="bdd_trees.c.html#bdd_trees.c.128">cleanup</a>: 15
+64					<a HREF="bdd_core.c.html#bdd_core.c.52">reduce_by_redundancy</a>: () <em>int</em>, &lt;bdd_core.c 53&gt;
+65						<a HREF="bdd_trees.c.html#bdd_trees.c.73">is_leaf</a>: 3
+66						<a HREF="bdd_trees.c.html#bdd_trees.c.172">replace</a>: 60
+67						<a HREF="bdd_trees.c.html#bdd_trees.c.128">cleanup</a>: 15
+68					<a HREF="bdd_trees.c.html#bdd_trees.c.128">cleanup</a>: 15
+69				<a HREF="bdd_trees.c.html#bdd_trees.c.14">new</a>: 39
+70			<a HREF="bdd_trees.c.html#bdd_trees.c.128">cleanup</a>: 15
+71		XtAppCreateShell: () <em>int</em>, &lt;&gt;
+72		XtVaCreateManagedWidget: () <em>int</em>, &lt;&gt;
+73		XtAddCallback: () <em>int</em>, &lt;&gt;
+74		XtRealizeWidget: () <em>int</em>, &lt;&gt;
+75		<a HREF="bdd_graphics.c.html#bdd_graphics.c.151">build_graphics_info</a>: () <em>void</em>, &lt;tree.h 152&gt;
+76			<a HREF="bdd_graphics.c.html#bdd_graphics.c.54">count_levels</a>: () <em>int</em>, &lt;bdd_graphics.c 55&gt;
+77				<a HREF="bdd_trees.c.html#bdd_trees.c.73">is_leaf</a>: 3
+78				<a HREF="bdd_trees.c.html#bdd_trees.c.83">level</a>: 52
+79			<a HREF="bdd_graphics.c.html#bdd_graphics.c.72">count_by_level</a>: () <em>int</em>, &lt;tree.h 73&gt;
+80				<a HREF="bdd_trees.c.html#bdd_trees.c.83">level</a>: 52
+81				<a HREF="bdd_trees.c.html#bdd_trees.c.73">is_leaf</a>: 3
+82			<a HREF="bdd_graphics.c.html#bdd_graphics.c.95">assign_by_level</a>: () <em>void</em>, &lt;tree.h 100&gt;
+83				<a HREF="bdd_trees.c.html#bdd_trees.c.83">level</a>: 52
+84				<a HREF="bdd_trees.c.html#bdd_trees.c.73">is_leaf</a>: 3
+85				XmStringCreateSimple: () <em>int</em>, &lt;&gt;
+86				sprintf: () <em>int</em>, &lt;&gt;
+87		printf: 2
+88		XtSetKeyboardFocus: () <em>int</em>, &lt;&gt;
+89	<a HREF="bdd_graphics.c.html#bdd_graphics.c.285">exit_cb</a>: () <em>void</em>, &lt;bdd_graphics.c 286&gt;
+90		exit: () <em>int</em>, &lt;&gt;
+91	<a HREF="bdd_graphics.c.html#bdd_graphics.c.290">main</a>: () <em>int</em>, &lt;bdd_graphics.c 291&gt;
+92		XtAppInitialize: () <em>int</em>, &lt;&gt;
+93		XtVaCreateManagedWidget: 72
+94		XtAddCallback: 73
+95		XtRealizeWidget: 74
+96		XtSetKeyboardFocus: 88
+97		XtDisplay: () <em>int</em>, &lt;&gt;
+98		XLoadQueryFont: () <em>int</em>, &lt;&gt;
+99		printf: 2
+100		XmFontListCreate: () <em>int</em>, &lt;&gt;
+101		XtAppMainLoop: () <em>int</em>, &lt;&gt;
+102	<a HREF="lex.yy.c.html#lex.yy.c.66">bdd_input</a>: () <em>char</em>, &lt;lex.yy.c 67&gt;
+103		printf: 2
+104	<a HREF="lex.yy.c.html#lex.yy.c.80">bdd_unput</a>: () <em>int</em>, &lt;lex.yy.c 81&gt;
+105		printf: 2
+106	<a HREF="lex.yy.c.html#lex.yy.c.954">yyinput</a>: () <em>int</em>, &lt;lex.yy.c 955&gt;
+107	<a HREF="lex.yy.c.html#lex.yy.c.958">yyoutput</a>: () <em>void</em>, &lt;lex.yy.c 959&gt;
+108	<a HREF="lex.yy.c.html#lex.yy.c.962">yyunput</a>: () <em>void</em>, &lt;lex.yy.c 963&gt;
+109	<a HREF="lex.yy.c.html#lex.yy.c.966">yymbinput</a>: () <em>int</em>, &lt;lex.yy.c 967&gt;
+110		<a HREF="lex.yy.c.html#lex.yy.c.912">yywinput</a>: 28
+111	<a HREF="lex.yy.c.html#lex.yy.c.970">yymboutput</a>: () <em>void</em>, &lt;lex.yy.c 971&gt;
+112		<a HREF="lex.yy.c.html#lex.yy.c.927">yywoutput</a>: 36
+113	<a HREF="lex.yy.c.html#lex.yy.c.974">yymbunput</a>: () <em>void</em>, &lt;lex.yy.c 975&gt;
+114		<a HREF="lex.yy.c.html#lex.yy.c.932">yywunput</a>: 31
+115	<a HREF="lex.yy.c.html#lex.yy.c.978">yymbreturn</a>: () <em>int</em>, &lt;lex.yy.c 979&gt;
+116		<a HREF="lex.yy.c.html#lex.yy.c.941">yywreturn</a>: 34
+    </pre>
+  </body>
+</html>

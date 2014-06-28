@@ -1,0 +1,79 @@
+Date: Mon, 02 Dec 1996 15:18:28 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<title>Data Fitting Slides</title>
+<body bgcolor="ffffff">
+<center>
+<h1>Data Fitting</h1>
+</center>
+
+<hr noshade>
+<blockquote>
+
+<img src="t1.jpg">
+<blockquote>
+<img src="t2.jpg">
+</blockquote>
+<img src="t3.jpg">
+<blockquote>
+<img src="t4.jpg">
+</blockquote>
+<img src="t5.jpg">
+<blockquote>
+<img src="t6.jpg">
+</blockquote>
+<img src="t7.jpg">
+<blockquote>
+<img src="t8.jpg">
+</blockquote>
+<img src="t9.jpg">
+<blockquote>
+<img src="t10.jpg">
+</blockquote>
+
+<hr noshade>
+See Brad's slides here.<p>
+<hr noshade>
+
+<img src="t11.jpg">
+<blockquote>
+<img src="t12.jpg">
+</blockquote>
+
+The a(i)'s have some probability distribution.
+Consider a(i) - atrue -- the real values are placed at the origin.
+This defines the uncertainties of a(0). <p>
+Goal:  find the distribution of a(i) - atrue without knowing
+atrue or having infinite data sets.<p>
+
+<img src="t13.jpg">
+<blockquote>
+
+Consider a world where a(0) is atrue.  
+Hope that that world is not too different from the atrue world.
+In particular, assume that the probability distribution of
+as(i)-a(0) is like a(i)-atrue.
+We can compute as(i)-a(0) and take that to be our answer.
+Each data set yields a point as(i)-a(0).
+Simulate enough sets to get a distribution of parameters.<p>
+
+<img src="t14.jpg">
+</blockquote>
+
+You could analyze the cloud of points to get confidence
+intervals for parameters independently.
+Or you could use a confidence region for all parameters simultaneously.
+You choose the level (68%) and shape.
+It is common to use constant chi-squared shapes around the
+D(0) minimum.<p>
+
+Point: you can learn something about the parameter
+confidences by simulating the phenomenon.<p>
+
+<img src="t15.jpg">
+<blockquote>
+<img src="t16.jpg">
+
+</html>

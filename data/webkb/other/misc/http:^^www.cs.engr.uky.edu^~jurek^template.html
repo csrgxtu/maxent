@@ -1,0 +1,143 @@
+Date: Tuesday, 14-Jan-97 23:22:42 GMT
+Server: NCSA/1.3
+MIME-version: 1.0
+Content-type: text/html
+
+<html>
+<head>
+<TITLE>Jerzy W. Jaromczyk -- Compilers</TITLE>
+</head>
+
+<body>
+
+
+
+
+<H2>Compilers - Semantic Analysis - November 19, 1996 - Lab</H2>
+
+
+<UL>
+<LI> Example documentation
+<!WA0><a href="http://www.cs.engr.uky.edu/~jurek/Compilers/pcp.doc">documentation</a><br>
+<LI> Example manual pages
+<!WA1><a href="http://www.cs.engr.uky.edu/~jurek/Compilers/pcp.manual">manual</a><br>
+<LI> Example grammar.rd
+<!WA2><a href="http://www.cs.engr.uky.edu/~jurek/Compilers/grammar.rd">grammar</a><br>
+<LI> Example test files
+</UL>
+
+<HR>
+<PRE>
+
+program testlevels;
+
+{ the purpose of this program is to test if we can get too many levels  }
+
+
+var x,y,z:integer;
+var a:  array [1..100] of integer;
+
+procedure one;
+
+begin
+   for i := 1 to 100 do
+      a[i] := 0;
+end;
+
+procedure two;
+
+begin
+   for i := 1 to z do
+      a[i] := 7;
+end;
+
+procedure three;
+
+begin
+   for i := z to 100 do
+      a[i] := somenumber;
+end;
+
+procedure four;
+
+begin
+   for i := x to z do
+      a[i] := abignumber;
+end;
+
+procedure five;
+
+begin
+   for i := 100 downto x  do
+      begin
+         a[i] := 3;
+         y := a[i] * z;
+         z := z + 1;
+      end;
+end;
+
+{ we should get a nesting error in this mess}
+
+procedure stacklevels;
+   procedure stack2;
+      procedure stack3;
+         procedure stack4;
+            procedure stack5;
+               procedure stack6;
+                  procedure stack7;
+                     procedure stack8;
+                        procedure stack9;
+                           procedure stack10;
+                              procedure stack11;
+                                 begin
+                                    x := 3 * x;
+                                 end;
+                              begin
+                                 x := 3 * x;
+                              end;
+                           begin 
+                              x := 3 * x;
+                           end;
+                        begin 
+                           x := 3 * x;
+                        end;
+                     begin
+                        x := 3 * x;
+                     end;
+                  begin 
+                     x := 3 * x;
+                  end;
+               begin 
+                  x := 3 * x;
+               end;
+            begin
+               x := 3 * x;
+            end;
+         begin 
+            x := 3 * x;
+         end;
+      begin 
+         x := 3 * x;
+      end;
+   begin 
+      x := 3 * x;
+   end;
+begin 
+   x := 3 * x;
+end;
+   
+
+
+begin
+   one;
+   two;
+   three;
+   four ;
+   five;
+end.
+  
+
+</PRE>
+
+<HR>
+<body>

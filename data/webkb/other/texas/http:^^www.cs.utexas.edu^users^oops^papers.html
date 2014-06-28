@@ -1,0 +1,326 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 07-Jan-97 15:53:49 GMT
+Content-Type: text/html
+Content-Length: 14359
+Last-Modified: Friday, 28-Jun-96 03:51:40 GMT
+
+<HTML>
+
+<head>
+<title>OOPS Group Publications</title>
+</head>
+
+<body>
+
+<h1>OOPS Group Publications</h1>
+
+<ol>
+
+<li> <a name="rttdshrt"> Sheetal V. Kakkad, Mark S. Johnstone, and
+Paul R. Wilson. <b>Portable Runtime Type
+Description for Conventional Compilers</b>.  Submitted to
+USENIX '97.
+
+<blockquote>
+
+Many useful language extensions and support libraries require knowledge of
+the layout of fields within objects at runtime.  Examples include orthogonal
+persistent object stores, garbage collectors, data structure picklers, 
+parameter marshalling schemes, etc.
+<p>
+For clean and efficient implementation as libraries, these systems require
+knowledge of the actual layouts of data objects, which is unavailable in
+most traditionally-compiled and linked programming languages, such as C, C++,
+and Ada.
+<p>
+We present a facility for runtime type description, or
+RTTD, which extracts the low-level layout information from debug output of
+conventional compilers, and makes it available to user programs.  We describe
+the basic strategies of the system, and present details of our interface for
+C++.  We also sketch some extensions we have implemented, including special
+treatment of C++'s virtual function table pointers.
+<p>
+Our implementation is freely available via anonymous ftp.
+</blockquote>
+
+<!WA0><!WA0><!WA0><!WA0><!WA0><a href="ftp://ftp.cs.utexas.edu/pub/garbage/rttdshrt.ps">
+<!WA1><!WA1><!WA1><!WA1><!WA1><img align=bot src="http://www.cs.utexas.edu/icons/doc.xbm" alt=""></a>
+<!WA2><!WA2><!WA2><!WA2><!WA2><a href="ftp://ftp.cs.utexas.edu/pub/garbage/rttdshrt.ps">Postscript
+ <i>(136KB)</i></a>
+<p>
+
+<li> <a name=neely-thesis> Michael Neely. <b>An Analysis of the
+Effects of Memory Allocation Policy on Storage Fragmentation</b>.
+Master's thesis, The University of Texas at Austin, May 1996. </a> <p>
+
+<blockquote>
+The study of dynamic memory allocation has been dominated by
+measurement of performance of allocators with random input streams of
+requests. This study introduces a new methodology that separates the
+issue of policy from implementation and focuses on the effects of
+placement policy on fragmentation.  It studies the effects of policy
+decisions such as object placement, splitting, and coalescing, on
+storage fragmentation. A useful and accurate measurement of
+fragmentation is presented that is based on the amount of waste at the
+point of peak memory usage. We have attempted to pick a representative
+set of allocators from the space of reasonable combinations of known
+policies. The allocators are used in memory allocation simulations to
+determine their respective fragmentation.
+<p>
+Our results show that the best fit (FIFO, LIFO or address-ordered) and
+address-ordered first fit policies yield the lowest fragmentation on
+average (14%), and that the overheads associated with these allocators
+are the largest source of wasted memory. We also explain how best fit
+can be implemented efficiently. A representative set of real program
+allocation traces is used in the simulations, and compared with
+randomized traces, to show that the application's patterns of
+allocation are an important factor in the allocator's performance and
+that studies based on synthetic traces are fundamentally flawed.
+</blockquote>
+
+<!WA3><!WA3><!WA3><!WA3><!WA3><a href="ftp://ftp.cs.utexas.edu/pub/garbage/neely-thesis.ps.gz">
+<!WA4><!WA4><!WA4><!WA4><!WA4><img align=bot src="http://www.cs.utexas.edu/icons/doc.xbm" alt=""></a>
+<!WA5><!WA5><!WA5><!WA5><!WA5><a href="ftp://ftp.cs.utexas.edu/pub/garbage/neely-thesis.ps.gz">Compressed Postscript
+ <i>(184KB)</i></a>
+<p>
+
+<li> <a name="allocsrv"> Paul R. Wilson, Mark S. Johnstone, Michael
+Neely, and David Boles. <b>Dynamic Storage Allocation:
+A Survey and Critical Review</b>. In <cite>International Workshop on 
+Memory Management</cite>, Kinross, Scotland, UK, September 1995. </a> <p>
+
+<blockquote>
+Dynamic memory allocation has been a fundamental part of most computer
+systems since roughly 1960, and memory allocation is widely
+considered to be either a solved problem or an insoluble one.
+In this survey, we describe a variety of memory allocator designs
+and point out issues relevant to their design and evaluation.  We
+then chronologically survey most of the literature on allocators between
+1961 and 1995.  (Scores of papers are discussed, in varying detail,
+and over 150 references are given.)
+<p>
+We argue that allocator designs have been unduly restricted by
+an emphasis on mechanism, rather than policy, while the latter is
+more important;  higher-level <i>strategic</i> issues are still
+more important, but have not been given much attention.
+<p>
+Most theoretical analyses and empirical allocator evaluations to date 
+have relied on very strong assumptions of randomness and independence, 
+but real program behavior exhibits important regularities that must be
+exploited if allocators are to perform well in practice.
+</blockquote>
+
+<!WA6><!WA6><!WA6><!WA6><!WA6><a href="ftp://ftp.cs.utexas.edu/pub/garbage/allocsrv.ps">
+<!WA7><!WA7><!WA7><!WA7><!WA7><img align=bot src="http://www.cs.utexas.edu/icons/doc.xbm" alt=""></a>
+<!WA8><!WA8><!WA8><!WA8><!WA8><a href="ftp://ftp.cs.utexas.edu/pub/garbage/allocsrv.ps">Postscript
+ <i>(923KB)</i></a>
+<p>
+
+<li> <a name="prefetchsim"> Paul R. Wilson, Sheetal Kakkad, and
+Shubhendu S. Mukherjee. <b>Anomalies and Adaptation in the Analysis
+and Development of Prefetching Policies</b>. <cite> Journal of Systems
+and Software</cite>, 27(2):147-153, November 1994. 
+Technical communication.</a> <p>
+
+<blockquote>
+In "Analysis and Development of Demand Prepaging Policies,"
+Horspool and Huberman show that it is possible to
+design prefetching memory policies that preserve a "stack"
+inclusion property, much like LRU, allowing them to simulate
+these policies for all sizes of memory in a single pass through
+a reference trace.  We believe that the details of Horspool and
+Huberman's algorithms introduce unexpected anomalous properties,
+however.  In particular, their policies are not properly
+<i>timescale relative</i>--events occuring on a timescale
+that should only matter to
+some sizes of memory adversely affect replacement decisions
+for memories of very different sizes.  Slight changes to the
+algorithms can restore timescale relativity and make them much
+better-behaved.  In addition, we would like to point out that
+Horspool and Huberman's algorithms actually simulate <i>adaptive</i>
+policies, which may explain some of their unexpectedly positive
+results.  This view suggests that properly timescale-relative
+inclusion-preserving policies can be used to systematically
+evaluate adaptive memory management schemes.
+</blockquote>
+
+<!WA9><!WA9><!WA9><!WA9><!WA9><a href="ftp://ftp.cs.utexas.edu/pub/garbage/prefetchsim.ps">
+<!WA10><!WA10><!WA10><!WA10><!WA10><img align=bot src="http://www.cs.utexas.edu/icons/doc.xbm" alt=""></a>
+<!WA11><!WA11><!WA11><!WA11><!WA11><a href="ftp://ftp.cs.utexas.edu/pub/garbage/prefetchsim.ps">Postscript
+ <i>(123KB)</i></a>
+<p>
+
+<li> <a name="real-time-gc"> Paul R. Wilson and Mark S. Johnstone.
+<b>Real-Time Non-Copying Garbage Collection</b>. Position paper for
+the <cite> 1993 ACM OOPSLA Workshop on Memory Management and Garbage
+Collection</cite>, Washington D.C., September 1993.</a> <p>
+
+<!WA12><!WA12><!WA12><!WA12><!WA12><a href="ftp://ftp.cs.utexas.edu/pub/garbage/GC93/wilson.ps">
+<!WA13><!WA13><!WA13><!WA13><!WA13><img align=bot src="http://www.cs.utexas.edu/icons/doc.xbm" alt=""></a>
+<!WA14><!WA14><!WA14><!WA14><!WA14><a href="ftp://ftp.cs.utexas.edu/pub/garbage/GC93/wilson.ps">Postscript
+ <i>(102KB)</i></a>
+<p>
+
+<li> <a name="gcsurvey"> Paul R. Wilson. <b>Uniprocessor Garbage
+Collection Techniques</b>. In <cite>International Workshop on Memory
+Management</cite>, St. Malo, France, September 1992. (The Proceedings
+has been published as <cite>Springer-Verlag Lecture Notes in Computer
+Science no. 637</cite>). </a> <p>
+
+<blockquote>
+We survey basic garbage collection algorithms, and variations such as
+incremental and generational collection.  The basic algorithms include
+reference counting, mark-sweep, mark-compact, copying, and treadmill
+collection. Incremental techniques can keep garbage collection
+pause times short, by interleaving small amounts of collection work
+with program execution.  Generational schemes improve efficiency and
+locality by garbage collecting a smaller area more often, while
+exploiting typical lifetime characteristics to avoid undue overhead
+from long-lived objects.
+</blockquote>
+
+<!WA15><!WA15><!WA15><!WA15><!WA15><a href="ftp://ftp.cs.utexas.edu/pub/garbage/gcsurvey.ps">
+<!WA16><!WA16><!WA16><!WA16><!WA16><img align=bot src="http://www.cs.utexas.edu/icons/doc.xbm" alt=""></a>
+<!WA17><!WA17><!WA17><!WA17><!WA17><a href="ftp://ftp.cs.utexas.edu/pub/garbage/gcsurvey.ps">Postscript
+ <i>(379KB)</i></a>
+<p>
+
+<li> <a name="bigsurv"> Paul R. Wilson. <b>Uniprocessor Garbage
+Collection Techniques</b>. Draft of much expanded version of the above
+paper. In revision (accepted for <cite>ACM Computing Surveys</cite>).</a> <p>
+
+<blockquote>
+We survery basic garbage collection algorithms, and variations such as
+incremental and generational collection; we then discuss low-level
+implementation considerations and relationships between storage
+management systems, languages, and compilers. Throughout, we attempt
+to present a unified view based on abstract traversal strategies,
+addressing issues of conservatism, opportunism, and immediacy of
+reclamation; we also point out a variety of implemetation details that
+are likely to have significant impact on the performance.
+</blockquote>
+
+<!WA18><!WA18><!WA18><!WA18><!WA18><a href="ftp://ftp.cs.utexas.edu/pub/garbage/bigsurv.ps">
+<!WA19><!WA19><!WA19><!WA19><!WA19><img align=bot src="http://www.cs.utexas.edu/icons/doc.xbm" alt=""></a>
+<!WA20><!WA20><!WA20><!WA20><!WA20><a href="ftp://ftp.cs.utexas.edu/pub/garbage/bigsurv.ps">Postscript
+ <i>(764KB)</i></a>
+<p>
+
+<li> <a name="swizz"> Paul R. Wilson and Sheetal V. Kakkad. <b>Pointer
+Swizzling at Page Fault Time: Efficiently and Compatibly Supporting
+Huge Address Spaces on Standard Hardware</b>. In <cite>International
+Workshop on Object Orientation in Operating Systems</cite>, pages
+364-377, Paris, France, September 1992.</a> <p>
+
+<blockquote>
+Pointer swizzling at page fault time is a novel address translation
+mechanism that exploits conventional address translation hardware.  It
+can support huge address spaces efficiently without long hardware
+addresses; such large address spaces are attractive for persistent
+object stores, distributed shared memories, and shared address space
+operating systems.  This swizzling scheme can be used to provide data
+compatibility across machines with different word sizes, and even to
+provide binary code compatibility across machines with different
+hardware address sizes.
+<p>
+Pointers are translated ("swizzled") from a long format to a shorter
+hardware-supported format at page fault time.  No extra hardware is
+required, and no continual software overhead is incurred by presence
+checks or indirection of pointers.  This pagewise technique exploits
+temporal and spatial locality in much the same way as a normal virtual
+memory; this gives it many desirable performance characteristics,
+especially given the trend toward larger main memories.  It is easy to
+implement using common compilers and operating systems.
+</blockquote>
+
+<!WA21><!WA21><!WA21><!WA21><!WA21><a href="ftp://ftp.cs.utexas.edu/pub/garbage/swizz.ps">
+<!WA22><!WA22><!WA22><!WA22><!WA22><img align=bot src="http://www.cs.utexas.edu/icons/doc.xbm" alt=""></a>
+<!WA23><!WA23><!WA23><!WA23><!WA23><a href="ftp://ftp.cs.utexas.edu/pub/garbage/swizz.ps">Postscript
+ <i>(279KB)</i></a>
+<p>
+
+<li> <a name="texas"> Vivek Singhal, Sheetal Kakkad, and Paul Wilson.
+<b> Texas: An Efficient, Portable Persistent Store</b>. In <cite>
+Persistent Object Systems: Proceedings of the Fifth International
+Workshop on Persistent Object Systems</cite>, pages 11-33, San
+Miniato, Italy, September 1992.</a> <p>
+
+<blockquote>
+Texas is a persistent storage system for C++, providing high
+performance while emphasizing simplicity, modularity and portability.
+A key component of the design is the use of pointer swizzling at page
+fault time, which exploits existing virtual memory features to
+implement large address spaces efficiently on stock hardware, with
+little or no change to existing compilers. Long pointers are used to
+implement an enormous address space, but are transparently converted
+to the hardware-supported pointer format when pages are loaded into
+virtual memory.
+<p>
+Runtime type descriptors and slightly modified heap allocation
+routines support pagewise pointer swizzling by allowing objects
+and their pointer fields to be identified within pages.  If compiler
+support for runtime type identification is not available, a simple
+preprocessor can be used to generate type descriptors.
+<p>
+This address translation is largely independent of issues of data
+caching, sharing, and checkpointing; it employs operating systems'
+existing virtual memories for caching, and a simple and flexible
+log-structured storage manager to improve checkpointing performance.
+<p>
+Pagewise virtual memory protections are also used to detect writes for
+logging purposes, without requiring any changes to compiled code.
+This may degrade checkpointing performance for small transactions with
+poor locality of writes, but page diffing and sub-page logging promise
+to keep performance competitive with finer-grained checkpointing
+schemes.
+<p>
+Texas presents a simple programming interface; an application creates
+persistent object by simply allocating them on the persistent heap.
+In addition, the implementation is relatively small, and is easy to
+incorporate into existing applications. The log-structured storage
+module easily supports advanced extensions such as compressed storage,
+versioning, and adaptive reorganization.
+</blockquote>
+
+<!WA24><!WA24><!WA24><!WA24><!WA24><a href="ftp://ftp.cs.utexas.edu/pub/garbage/texaspstore.ps">
+<!WA25><!WA25><!WA25><!WA25><!WA25><img align=bot src="http://www.cs.utexas.edu/icons/doc.xbm" alt=""></a>
+<!WA26><!WA26><!WA26><!WA26><!WA26><a href="ftp://ftp.cs.utexas.edu/pub/garbage/texaspstore.ps">Postscript
+ <i>(271KB)</i></a>
+<p>
+
+
+<li> <a name="caching-gen-gc"> Paul R. Wilson, Michael S. Lam, and Thomas G.
+Moher.  <b>Caching Considerations for Generational Garbage Collection</b>. 
+<cite> 1992 ACM Symposium on Lisp and Functional Programming</cite>,
+San Francisco, California, June 1992.</a> <p>
+
+<!WA27><!WA27><!WA27><!WA27><!WA27><a href="ftp://ftp.cs.utexas.edu/pub/garbage/cache.ps">
+<!WA28><!WA28><!WA28><!WA28><!WA28><img align=bot src="http://www.cs.utexas.edu/icons/doc.xbm" alt=""></a>
+<!WA29><!WA29><!WA29><!WA29><!WA29><a href="ftp://ftp.cs.utexas.edu/pub/garbage/cache.ps">Postscript
+ <i>(237KB)</i></a>
+
+<p>
+
+
+</ol>
+
+More papers, a bibliography on heap management, and the <!WA30><!WA30><!WA30><!WA30><!WA30><a
+href="ftp://ftp.cs.utexas.edu/pub/garbage/texas/"> source code for
+Texas Persistent Store</a> are available via anonymous ftp at <!WA31><!WA31><!WA31><!WA31><!WA31><a
+href="ftp://ftp.cs.utexas.edu/pub/garbage">
+<b>ftp.cs.utexas.edu:/pub/garbage</b></a>. The 
+<!WA32><!WA32><!WA32><!WA32><!WA32><a href="ftp://ftp.cs.utexas.edu/pub/garbage/README"> README</a> 
+file lists all the available material including subdirectories which
+contain collected papers from the 
+<!WA33><!WA33><!WA33><!WA33><!WA33><a href="ftp://ftp.cs.utexas.edu/pub/garbage/GC91">1991</a> and 
+<!WA34><!WA34><!WA34><!WA34><!WA34><a href="ftp://ftp.cs.utexas.edu/pub/garbage/GC93">1993</a> OOPSLA 
+Garbage Collection and Memory Management Workshops.
+
+<hr>
+
+<address><!WA35><!WA35><!WA35><!WA35><!WA35><a href="http://www.cs.utexas.edu/users/svkakkad">Sheetal V. Kakkad</a></address>
+
+</body>
+
+</HTML>

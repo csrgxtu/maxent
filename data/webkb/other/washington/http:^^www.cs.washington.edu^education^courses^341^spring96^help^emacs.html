@@ -1,0 +1,359 @@
+Date: Wed, 08 Jan 1997 21:30:45 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+<title>Using Emacs</title>
+</head>
+
+<body>
+
+<h1>Using Emacs</h1>
+<h2>a brief introduction</h2>
+
+<hr>
+
+<b>Executive Summary:</b> <i>This document is designed to help you get
+started using emacs.  It contains a listing of some of emacs' most 
+commonly-used and helpful features, as well as a general overview of
+what emacs is all about.</i>
+
+<hr>
+
+<h3>What is Emacs?</h3>
+
+Emacs is an editor, and perhaps the most portable easy-to-use one for
+UNIX systems.  However, it's also one of the most completely flexible,
+user-programmable, vast programming environments you can imagine.  The
+engine behind emacs is a Lisp interpreter (it uses a different dialect
+of Lisp than we learned in class), which allows users to code their
+own routines to customize the environment nicely.  As such, it can be
+an intimidating beast, feeling huge and overly complex, and full of
+options you'll never discover.  The key is to just pretend "what I
+don't know won't hurt me" and use what you find useful.  The more you
+use it, the more you'll learn (for example, today I learned how to
+bind the Control-up arrow key to a specific function in a specific
+emacs mode).  For the purposes of this class, you shouldn't have to
+learn too much about it, and I recommend you don't spend too much time
+trying to figure out the intricacies of emacs (for example, today I
+spent 2 hours figuring out how to bind the Control-up-arrow key to a
+specific function in a specific emacs mode) -- if you need to know
+something and can't figure it out quickly, ask.<p>
+
+
+<h3>Notation</h3>
+
+When talking about emacs, we'll use the notation <i>C-</i> to indicate
+that a key should be pressed while holding down the control key (emacs
+requires this a lot).  For example <b>C-h</b> means hit H while
+holding down the control key.  Similarly, <i>M-</i> means use the Meta
+key.  If you don't have a key called "Meta" usually "Alt", "Alt
+Function", or "Escape" is what you will use.  For example <b>M-x</b>
+means hit X while holding down the Meta key.<p>
+
+Lots of emacs functions take two keystrokes to complete.  For example,
+to exit emacs, use <b>C-x C-c</b> (Control-X followed by
+Control-C).<p>
+
+<p>
+
+<h3>Running emacs</h3>
+
+Emacs can be run in two ways.  One will work on any sort of character
+terminal and makes very few assumptions about what your hardware
+set-up is.  You could run emacs at home on your Vic-20 in this mode,
+for example.  The other assumes that you have an X-terminal, and
+allows you to do fun stuff like use the arrow keys and the mouse.  The
+latter is recommended whenever it's available to you -- it's much
+easier to use.<p>
+
+After logging onto your MSCC account, you run emacs by simply typing:
+
+<ul>
+<code><b>emacs</b></code><p>
+</ul>
+
+If you haven't set up your DISPLAY environment variable, emacs will
+take over the terminal window you're typing in and it'll look like a
+little text editor.  Use <b>C-x C-c</b> to get back out.<p>
+
+To run emacs taking advantage of X, you need to do two things.  First
+tell your display that it's OK for the machine you're running from to
+use its display.  This is done using <i>xhost +</i> followed by the
+name of the machine that you'll be running emacs on.  For example, if
+I'm sitting in 326D at spirit, and wanting to run emacs from an mscc
+machine, I would type:<p>
+
+<ul>
+<code><b>xhost + mscc.ms</b></code>
+</ul>
+
+Next, you have to tell the machine that you're running from which
+display you're at using <i>setenv DISPLAY</i> followed by your display
+name and <i>0.0</i>.  For example in the above situation, from an mscc
+prompt, I would type:<p>
+
+<ul>
+<code><b>setenv DISPLAY spirit.cs:0.0</b></code>
+</ul><p>
+
+Now when you run emacs, it should show up in its own window on your
+display, and you should be able to use the mouse and such.  We'll
+assume this mode of operation for the remainder of this document.<p>
+
+<h3>Emacs Orientation</h3>
+
+When you start up emacs, it will come up with an empty buffer.  At the
+top of the window are some pull-down menus which contain some of the
+common operations.  At the right side is a scroll bar.  Near the
+bottom is a status bar.  Just below that is a line called the
+mini-buffer.<p>
+
+<center>
+<!WA0><img src = "http://www.cs.washington.edu/education/courses/341/spring96/help/emacs.gif"><p>
+
+<b>Figure 1</b> <i>A small emacs window</i><p>
+</center>
+
+
+The status bar tells you what you about the buffer you're looking at.
+The double asterisk (**) indicates that the buffer has been modified
+since it was created or last saved to disk (in this case because I
+typed "test" in it).  Sometimes, you'll see "%%" there.  That means
+the current buffer is read-only, and that you can't type into it.
+Next, the bar says "Emacs:" and tells the name of the buffer
+"*scratch*" -- this is the default buffer when starting up.  Next, it
+tells the mode that this buffer is operating in -- Lisp Interaction
+mode is the default when starting up.  Then it tells what part of the
+buffer you're looking at.  In this case, it contains only the word
+test, so we are seeing "All" of it.<p>
+
+The minibuffer is a small buffer which emacs uses to report error
+conditions to you, and to prompt you for information when
+necessary.<p>
+
+The cursor indicates where your text will appear when you type.  You
+can reposition it using the mouse.<p>
+
+Buffers are the basic unit in emacs.  Each file you edit has its own
+buffer.  There can also be buffers for other purposes -- for example
+the minibuffer is used for emacs-user interactions; you can have a
+buffer in which you're running a Minischeme or Lisp interpreter; etc.
+At any given time, your emacs session will have multiple buffers
+around, although only a few may be visible at a given time.<p>
+
+Each buffer has an associated mode with it which controls the behavior
+of everything you do in it.  For example, if you edit a file with the
+.ml extension, emacs will realize that this is an ML file, and will
+put you in SML mode, which knows how ML programs should be indented.
+Similarly, if you open a .c file, or a .cl file, its buffer will be in
+C-mode or Common Lisp mode, respectively, and know the syntax of that
+language.  In addition to the indentation rules changing based on the
+buffer's mode, Control-key sequences may have different actions,
+additional pull-down menus will typically be added, and different
+sorts of syntax checks will be done for you (like balancing
+parenthesis in Lisp).<p>
+
+The *scratch* buffer is just that -- scratch space for you to type
+anything you want without associating a file with it.<p>
+
+
+<h3>Cancelling and Exiting</h3>
+
+The two most important key sequences to know in Lisp are <b>C-g</b>
+and <b>C-x C-c</b>.  <b>C-g</b> is used to cancel an action that
+you've started, and can be an excellent way to get out of mysterious
+features that you accidentally got yourself into by typing the wrong
+thing.  My rule of thumb is: when in doubt, use <b>C-g</b>.  Sometimes
+I use it several times in a row, just to make sure.  :)<p>
+
+The other thing you'll want to know is how to exit.  Use <b>C-x
+C-c</b>.  Lisp will prompt you if you haven't saved all of your
+buffers, or if you've left any processes (like a Lisp or ML
+interpreter) running.<p>
+
+<h3>The Pull-down menus</h3>
+
+The most recent version of emacs (version 19) came with pull-down
+menus, after years of everyone using Control-key sequences to get
+things done.  The control-key sequences are so engrained in my mind
+(and so much easier, since you don't have to go to the mouse all the
+time) that I usually forget the menus are there.  Lots of the things
+that I'm about to explain to you are bound to be in the menus as well,
+but I don't know for sure.  Anyway, play along with me, and as you
+read, you can check to see if they exist.  Then you can ignore all of
+the control-key sequences I'm about to tell you.<p>
+
+
+<h3>Reading and Writing Files</h3>
+
+I think of emacs as being primarily an editor.  To load a file from
+disk or start editing a new file, use <b>C-x C-f</b> (find file).  In
+the minibuffer, you'll be prompted for a filename.  If it exists, it
+will be loaded.  Otherwise, it'll create a new file for you.  If
+you're not sure of the filename, you can hit SPACE at any time to get
+a list of files which match what you've typed up to that point.  Or
+use TAB for file completion.<p>
+
+To save a file, use <b>C-x C-s</b>.  If there have been any changes,
+the file will be written to disk.  To save it under a different
+filename, use <b>C-x C-w</b> (write file).  You'll be prompted for a
+new name, and the buffer will be renamed (although the original file
+will still exist on disk).<p>
+
+<h3>Moving Around</h3>
+
+Most of the time, you can move the emacs cursor around using the arrow
+keys or mouse.  Sometimes, however, they won't work, and you'll have
+to use the keys: <b>C-f</b>, <b>C-b</b>, <b>C-p</b>, <b>C-n</b> to
+move forwards, back, to the previous line, and to the next line,
+respectively.<p>
+
+To jump to the beginning of a screen line use <b>C-a</b> (First letter
+in the alphabet).  To jump to the end of the line, use <b>C-e</b>.<p>
+
+To move more quickly, use <b>C-v</b> to move down a screenful, and
+<b>M-v</b> to move up a screenful.  Use <b>C-&lt;</b> to move to the
+beginning of a buffer and <b>C-&gt;</b> to move to the end.<p>
+
+I never use these, but to get really fine-grained you can use
+<b>C-{</b> to move up a paragraph and <b>C-}</b> to move down a
+paragraph; <b>M-a</b> to move to the beginning of the previous
+sentence and <b>M-e</b> to move to the end of the next sentence.
+<b>M-b</b> to move back a word and <b>M-f</b> to move forward a word
+(Or <b>M-left</b> and <b>M-right</b>).  Picky picky.<p>
+
+<h3>Marking a Region</h3>
+
+If you can use a mouse with emacs, you can mark a region of text the
+way you would on any system:  clicking and dragging.  The highlight
+tends to disappear after you let go of the button, but the region 
+will still be marked.<p>
+
+Otherwise, you have to mark the region by moving to one end of it and
+hitting <b>C-SPACE</b>.  Emacs will respond with "Mark set".  Then
+move to the other end and do whatever operation you want.  <b>This is
+pretty important:</b> emacs always has a notion of where the last mark
+was set (lots of operations set "the mark" wherever the cursor was
+when the operation was initiated).  Thus, it always has a notion of
+the current region: namely, everything between "the mark" and your
+cursor.  This can be a problem if you accidentally hit "delete" for
+example, because half of your file will disappear without you
+understanding why.  Thank goodness for undo. (read on...)<p>
+
+<h3>Cutting, Copying, and Pasting</b>
+
+One way to cut text in emacs is to use <b>C-k</b> (kill).  I may be
+alone in this, but it's the only way I cut text.  <b>C-k</b> takes out
+the text between the cursor and the end of the line.  If there is no
+text, then it takes out the linefeed and moves the next line up.
+Lines that you kill accumulate to be pasted.<p>
+
+A more conventional way of cutting would be to highlight and use
+<b>C-w</b> (wipe out).  If you're on a machine where you can't use a
+mouse, set the region as described above.<p>
+
+Pasting is done using <b>C-y</b> (yank).<p>
+
+Copying can be done in the X windows way: namely, highlight a region
+with the mouse and then click the middle mouse button to paste.  Or
+you can use <b>M-w</b>.
+
+<h3>Undoing</h3>
+
+Emacs has a phenomenal undo feature: <b>C-x u</b>.  You can undo until
+your fingers turn blue, slowly undoing lots and lots of recent
+keystrokes, commands, and what-have-you.  It remembers quite a lot of
+what you've recently done.<p>
+
+<h3>Working with Buffers</h3>
+
+When you start emacs up, you'll typically only see one buffer and the
+minibuffer.  You can view multiple buffers at once, however, and this
+can be useful for viewing multiple files simultaneously.  <b>C-x 2</b>
+will divide a buffer window in half vertically giving you two buffers,
+each with their own status bar.  Move between the buffers using <b>C-x
+C-o</b> or the mouse.  Similarly, you can cut a buffer horizontally
+using <b>C-x 3</b>.  When editing Lisp or ML, we recommend dividing
+your window in this way so that you can edit in one and run the
+interpreter in the second.<p>
+
+To hide the buffer your cursor's in, use <b>C-x 0</b>.  Or to make the
+buffer your cursor's in fill up the whole window again, use <b>C-x
+1</b>.<p>
+
+To view all the buffers in an emacs session, use <b>C-x C-b</b>.  To
+switch to a different buffer, use <b>C-x b</b> and emacs will prompt
+you for its name.<p>
+
+Normally when you are not viewing a buffer, it's still there though
+it's not visible.  To really drop one from your emacs session, use
+<b>C-x k</b> and supply the name.  If it's modified, emacs will check
+with you before killing it.  This can be useful if you need to get rid
+of a bunch of changes to a file.<p>
+
+You'll notice that emacs uses buffers to report information to you.
+These are typically surrounded with *'s to show that they don't have
+files associated with them.  You can switch between them or kill them
+just like any other buffer.<p>
+
+<h3>Functions/Key Bindings</h3>
+
+Most every function in emacs is implemented somewhere using a Lisp
+routine.  The common routines are bound to Control- and Meta- key
+sequences as we've been describing.  Emacs lets you bind any function
+to any key sequence, which is part of the way in which it's so
+customizable.  For example, in preparation for working with Lisp and
+ML, we've bound some of the most common functions to keys (detailed
+elsewhere).<p>
+
+You can also call functions that are unbound by using <b>M-x</b>.
+This allows you to type the name of the function, which will then be
+executed.  For example, <b>C-v</b> is bound to the "scroll-up"
+function.  You could therefore also scroll up using <b>M-x
+scroll-up</b>.<p>
+
+<h3>Searching/Replacing</h3>
+
+To search forward for a string, use <b>C-s</b>.  To search backwards
+(reverse), use <b>C-r</b>.<p>
+
+To replace all occurrences of a string in a buffer, use <b>M-x
+replace-string</b>.  To replace some instances of a string, use <b>M-x
+query-replace</b> and you'll be prompted at every location of the
+string.<p>
+
+<h3>On-line help</h3>
+
+Emacs has a lot of help available to you using <b>C-h</b>.  You can
+then follow it with a single letter indicating what sort of help you
+want.  <b>?</b> gives you a list of options.  <b>a</b> takes a string
+and lists all the emacs functions related to that string.  <b>k</b>
+lets you type a key sequence, and explains briefly what function that
+key is bound to.  <b>f</b> lets you type the name of a function, and
+it will describe it in detail.  <b>m</b> gives you information about
+the mode of the current buffer (e.g. Common Lisp mode, SML mode, etc.).
+<b>t</b> takes you through a tutorial which is somewhat poorly written
+in comparison with this document.  :)<p>
+
+<h3>Conclusions</h3>
+
+That's about all I can think of right now.  Feel free to email me if
+you want to do something I haven't explained, or have other questions.
+I've put together a summary of the above information on a <!WA1><a href =
+"http://www.cs.washington.edu/education/courses/341/spring96/help/emacs.clip.html">Clip 'n' Save</a> page.<p>
+
+<hr>
+
+<address>
+Shamelessly stolen from cse341 Winter '96  <P>
+cse341-webmaster@cs.washington.edu
+</i>(Last update:
+	
+	<!-- see man strftime for full formatting options-->
+	03/22/96 at 02PM
+)<i>
+</address>
+</body>
+</html>

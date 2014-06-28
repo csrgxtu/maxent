@@ -1,0 +1,523 @@
+Date: Tue, 14 Jan 1997 23:13:28 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+Content-length: 10029
+Last-modified: Wed, 28 Aug 1996 19:38:30 GMT
+
+<!doctype html public "-//IETF//DTD HTML//EN">
+<HTML>
+
+<HEAD>
+
+<TITLE>Data Structures - Lecture 2</TITLE>
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Word 1.0Z">
+<META NAME="AUTHOR" CONTENT="Alok Mehta">
+<META NAME="OPERATOR" CONTENT="Alok Mehta">
+</HEAD>
+
+<BODY>
+
+<H1>Data Structures - Lecture 2</H1>
+
+<UL>
+<LI>C++ Review, Basic Data Types
+</UL>
+
+<H1>Topics</H1>
+
+<UL>
+<LI>Hello World!
+<LI>Data Types, Arrays, Pointers, Functions
+<LI>Operators, Expressions, Statements
+<LI>Input/Output
+<LI>Examples
+<LI>Conventions for C++ Programs/Projects
+<LI>(Optional) Exercises
+</UL>
+
+<H1>References</H1>
+
+<UL>
+<LI>[W] = Weiss, Algorithms, Data Structures, and Problem Solving
+with C++.
+<LI>[H] = Harbison and Steele, C: A Reference Manual, Prentice
+Hall.
+<LI>[O] = Osborne, C++: The Complete Reference.
+<LI>[M] = Musser, Saini, STL Tutorial and Reference Guide.
+</UL>
+
+<H1>Topics</H1>
+
+<H1>Hello World!</H1>
+
+<UL>
+<LI>Reference: [W:Appendix A.1]
+</UL>
+
+<H1>Hello World - Source Code</H1>
+
+<UL>
+<LI><TT>/* File: Hello.cpp */</TT>
+<LI>#include &lt;iostream.h&gt;
+<LI>void main()
+<LI>{
+<LI> cout &lt;&lt; &quot;Hello World&quot;&lt;&lt; endl;
+<LI>}
+</UL>
+
+<H1>Hello World - Compile/Execute</H1>
+
+<UL>
+<LI>Compile &quot;Hello World!&quot;:<BR>
+% g++ -o hello hello.cpp
+<LI>
+<LI>Execute &quot;Hello World!&quot;<BR>
+% hello 
+</UL>
+
+<H1>Topics</H1>
+
+<UL>
+<LI>Data Types, Arrays, Pointers, Functions
+<LI>Reference: [W:Chapter 1, Appendix A]; [H]
+</UL>
+
+<H1>Data Types - Type Categories</H1>
+
+<H1>Void Type</H1>
+
+<UL>
+<LI>Void is a special type.
+<LI>Represents the absence of a data type.
+<LI>A pointer to a void (void *) is treated as a generic pointer.
+<LI>Examples:
+<UL>
+<LI>void main () { &#133; }
+<LI>void * generic_pointer;
+</UL>
+
+</UL>
+
+<H1>Integral Types</H1>
+
+<UL>
+<LI>[signed] char, [unsigned] short [int], [unsigned] int, [unsigned]
+long [int]
+<LI>unsigned char, unsigned short [int], unsigned int, unsigned
+long [int]
+<LI>Examples:
+<LI>signed int index = 7;
+<LI>unsigned long l;
+<LI>int i,j;
+</UL>
+
+<H1>Floating Point Types</H1>
+
+<UL>
+<LI>double
+<LI>float
+<LI>long double
+<LI>Examples:
+<LI>const double pi = 3.14159;
+<LI>extern float x1,y1,x2,y2;
+<LI>static double y;
+</UL>
+
+<H1>Enumeration Types</H1>
+
+<UL>
+<LI>Examples:
+<LI>enum fish { trout, carp, halibut } my_fish;
+<LI>enum boolean { true, false } success;<BR>
+success = true;
+<LI>enum color { red, green blue};<BR>
+...<BR>
+enum color my_favorite, your_favorite;
+</UL>
+
+<H1>Pointer Types (Example)</H1>
+
+<UL>
+<LI>int i = 5;
+<LI>int * ptr;
+<LI>ptr = &amp;i;
+<LI>i = 7;
+<LI>(*ptr) = 2;
+</UL>
+
+<H1>Array Types (Example)</H1>
+
+<UL>
+<LI>double expenditure[365];
+<LI>double * ptr_expenditure = expenditure;
+<LI>expenditure[0] = 75.64;
+<LI>*ptr_expenditure = 32.45;
+<LI>expenditure[20] = 12.87;
+<LI>ptr_expenditure[20] = 17.49;
+<LI>
+</UL>
+
+<H1>Function Types</H1>
+
+<UL>
+<LI>Definition Example:<BR>
+int square (int x) { return x * x; }
+<LI>Declaration Example:<BR>
+extern int square (int x);<BR>
+static int square (int x);
+<LI>Other examples:<BR>
+extern int f(), (*fp)(), (*apf[])();
+</UL>
+
+<H1>Function Example</H1>
+
+<UL>
+<LI>int my_strlen (char * s) {
+<LI> char * ps = s;
+<LI> int cnt = 0;
+<LI> if (s == NULL) { return 0; }
+<LI> while (*ps != NULL) { cnt++; ps++; }
+<LI> return cnt;
+<LI>}
+</UL>
+
+<H1>Functions in C++</H1>
+
+<UL>
+<LI>Overloading of Function Names<BR>
+int Max(int A, int B);<BR>
+float Max (float * floatArray, int sz)
+<LI>Default Parameters<BR>
+float Log (float x, double base=10);<BR>
+log(100) // Log 100 base 10<BR>
+log(100,2) // Log 100 base 2
+<LI>Inline Functions<BR>
+inline int Max(int A, int B) { return (A&lt;B ? B : A); }
+</UL>
+
+<H1>Topics</H1>
+
+<UL>
+<LI>Operators, Expressions, Statements
+<LI>Reference: [W:Appendix A] [H]
+</UL>
+
+<H1>Operators</H1>
+
+<UL>
+<LI>Assignment 
+<LI>Binary
+<LI>Unary
+<LI>Relational
+<LI>Logical
+<LI>Bit
+<LI>Misc
+</UL>
+
+<H1>Assigment Operators</H1>
+
+<UL>
+<LI>Common Operators:<BR>
+<TT>=, +=, -=, *=, /=</TT>
+<LI>Examples:
+<LI><TT>int i,j, k;</TT>
+<LI>i = 4
+<LI>j = k = 3;
+<LI>j += 4;
+<LI>i *= 2;
+</UL>
+
+<H1>Binary Arithmetic Operators</H1>
+
+<UL>
+<LI>Common Operators:<BR>
+<TT>+,  -,  *,  /,  %</TT>
+<LI>Examples:
+<LI><TT>3 + 5</TT>
+<LI>i * 2 + x / y + 10 % 3
+</UL>
+
+<H1>Unary Operators</H1>
+
+<UL>
+<LI>Common Operators:<BR>
+<TT>-, +, ++, --</TT>
+<LI>Examples:<BR>
+<TT>X = -2<BR>
+Y = -X<BR>
+Z = +X<BR>
+W = -(X++) + (--Y) + (Z++)</TT>
+</UL>
+
+<H1>Relational Operators</H1>
+
+<UL>
+<LI><TT>==, !=, &lt;, &gt;, &lt;=, &gt;=</TT>
+<LI>Examples:
+<LI><TT>s == 0</TT>
+<LI>a &lt; b
+<LI>(a &lt; b &lt; c) // Not as expected!
+<LI>if (s=0) {&#133;} // Not as expected!
+</UL>
+
+<H1>Logical Operators</H1>
+
+<UL>
+<LI><TT>&amp;&amp;, ||, !</TT>
+<LI>Examples:
+<LI><TT>if ((a&lt;b) &amp;&amp; (c&lt;d)) { &#133; }</TT>
+<LI>&quot;Short Circuit&quot; Evaluation
+<LI><TT>if ((X!=0) &amp;&amp; (1/X != 3)) { &#133; }</TT>
+</UL>
+
+<H1>Bit Operators</H1>
+
+<UL>
+<LI><TT>~,  &lt;&lt;,  &gt;&gt;,  &amp;,  ^,  |<BR>
+~=, &lt;&lt;=, &gt;&gt;=, &amp;=, ^=, |=</TT>
+<LI>Examples
+<LI><TT>1 &lt;&lt; 4  // 10000</TT>
+<LI>3 &amp; 5  // 011 AND 101 = 001
+</UL>
+
+<H1>Misc. Operators</H1>
+
+<UL>
+<LI>Comma<BR>
+<TT>for (i=1,j=2; i&lt;5; i++,j++)</TT>
+<LI>Conditional<BR>
+N = (s==NULL ? &quot;&lt;NULL&gt;&quot; : s)<BR>
+MIN = (X &lt;= Y ? X : Y)
+<LI>sizeof(type)<BR>
+sizeof(int)
+</UL>
+
+<H1>Expressions</H1>
+
+<UL>
+<LI>Example: <TT>a * b + c</TT>
+<LI>l-value (updatable)
+<LI>r-value (read-only)
+<LI>Precedence
+<LI>Can call other functions
+<LI>Side effects
+</UL>
+
+<H1>Statements</H1>
+
+<UL>
+<LI>if
+<LI>while
+<LI>do
+<LI>for
+<LI>switch
+<LI>break/continue
+</UL>
+
+<H1>If Statement</H1>
+
+<UL>
+<LI>Syntax 1:<BR>
+if ( &lt;expr&gt; ) statement<BR>
+next statement
+<LI>Syntax 2:<BR>
+if ( &lt; expr&gt; ) <BR>
+ statement<BR>
+else<BR>
+ statement<BR>
+next statement
+<LI>Example: if (x==0) x=x+1;
+</UL>
+
+<H1>While Statement</H1>
+
+<UL>
+<LI>Syntax<BR>
+while ( &lt;expr&gt; ) statement<BR>
+next statement
+<LI>Example<BR>
+while (*ps != NULL) { <BR>
+ cnt++; <BR>
+ ps++; <BR>
+}
+</UL>
+
+<H1>Do Statement</H1>
+
+<UL>
+<LI>Syntax<BR>
+<CODE>do<BR>
+ statement<BR>
+while (expression);</CODE>
+<LI>Example<BR>
+do {<BR>
+ prompt_user(&quot;Enter value: &quot;);<BR>
+ response = read_value();<BR>
+} while (! is_valid(response));
+</UL>
+
+<H1>For Statement</H1>
+
+<UL>
+<LI><TT>for (init; test; assignment)<BR>
+ statement<BR>
+next statement</TT>
+<LI>Example<BR>
+for (i=0; i&lt;10; i++) cout &lt;&lt; i &lt;&lt; endl;
+<LI>Nested Loops<BR>
+for (i=0; i&lt;10; i++) <BR>
+ for (j=0; j&lt;10; j++)<BR>
+  cout &lt;&lt; i &lt;&lt; &quot;,&quot; &lt;&lt; j &lt;&lt;endl;
+</UL>
+
+<H1>Switch Statement</H1>
+
+<P>
+Example<BR>
+<CODE>switch (response) {<BR>
+case 'q': exit(0); // quit<BR>
+case 's': process_s(); break;<BR>
+case 'h': process_h(); break;<BR>
+default:<BR>
+ cout &lt;&lt; &quot;Invalid Response\n&quot;;<BR>
+ break;<BR>
+}<BR>
+</CODE>
+<H1>Break/Continue</H1>
+
+<UL>
+<LI><TT>break</TT> exits the innermost loop
+<LI><TT>continue</TT> begins the next iteration
+</UL>
+
+<P>
+Example:<BR>
+<CODE>for (i=0; i&lt;n; i++) {<BR>
+ if (s[i] &lt; 0) break; // exits loop<BR>
+ if (s[i] &gt; 0) continue;<BR>
+ cout &lt;&lt; &quot;s[i]=0 for i=&quot; &lt;&lt; i;<BR>
+}<BR>
+cout &lt;&lt; &quot;i&gt;=n or s[i]&lt;0 for i=&quot; &lt;&lt;
+i;</CODE>
+<H1>Topics</H1>
+
+<UL>
+<LI>Input/Output
+</UL>
+
+<H1>Input/Output</H1>
+
+<UL>
+<LI><CODE>#include &lt;iostream.h&gt;</CODE>
+<LI>Predefined streams:<BR>
+<CODE>cin, cout, cerr, clog</CODE>
+<LI>Examples:<BR>
+<CODE>int x,y;<BR>
+if (cin &gt;&gt; x &gt;&gt; y) {<BR>
+ cout &lt;&lt; &quot;Read: &quot; &lt;&lt; x &lt;&lt; &quot;,&quot;
+&lt;&lt; y;<BR>
+} else {<BR>
+ cerr &lt;&lt; &quot;Invalid Input!&quot; &lt;&lt; endl;<BR>
+}</CODE>
+</UL>
+
+<H1>Errors in Input</H1>
+
+<UL>
+<LI><CODE>cin.eof()</CODE> Returns true on end of file
+<LI><CODE>cin.fail()</CODE>  Returns true on format error
+<LI><CODE>cin.good()</CODE>  Returns true if no error
+<LI><CODE>cin.clear()</CODE>  Clears an error
+</UL>
+
+<H1>Topics</H1>
+
+<UL>
+<!WA0><A HREF="http://www.cs.rpi.edu/~dugan/data_structures/mehta/lect2/sort">Source files for Example Program </A>
+</UL>
+
+<H1>Topics</H1>
+
+<UL>
+<LI>Conventions for C++ Programs/Projects
+<LI>
+</UL>
+
+<H1>Main </H1>
+
+<UL>
+<LI>void main () { &#133; }
+<LI>int main () { &#133; }
+<LI>int main (int argc, char ** argv) { &#133; }
+</UL>
+
+<P>
+Example: main.cpp<BR>
+<CODE>int main (int argc, char ** argv) {<BR>
+ for (int i=0; i&lt;argc; i++) {<BR>
+  cout &lt;&lt; &quot;Argv[&quot; &lt;&lt; i &lt;&lt; &quot;]
+= &quot;<BR>
+   &lt;&lt; argv[i] &lt;&lt; endl;<BR>
+}</CODE>
+<H1>Files</H1>
+
+<UL>
+<LI>Put declarations in Header (.h) Files<BR>
+<CODE>iostream.h, Point.h</CODE>
+<LI>Only header files should be included in other files (#include)
+<LI>Put implementations in Source (.CC, .cpp, or .C) files<BR>
+main.cpp, Point.cpp
+<LI>Write Makefile to create executable
+</UL>
+
+<H1>Makefile Example</H1>
+
+<UL>
+<LI><CODE>CC = g++</CODE>
+<LI>
+<LI>main: main.o Point.o
+<LI> $(CC) -o main main.o Point.o
+<LI>Point.o: Point.h Point.cpp
+<LI> $(CC) -c Point.cpp
+<LI>main.o: Point.h main.cpp
+<LI> $(CC) -c main.cpp
+</UL>
+
+<H1>Header Files</H1>
+
+<UL>
+<LI>Start header file (say Point.h) with:<BR>
+<CODE>#ifndef _Point_h_<BR>
+#define _Point_h_</CODE>
+<LI>End each header file with:<BR>
+#endif // _Point_h_
+</UL>
+
+<H1>Topics</H1>
+
+<UL>
+<LI>(Optional) Exercises
+</UL>
+
+<H1>Optional Exercises</H1>
+
+<UL>
+<LI>Create, Compile, and Link hello.cpp
+<LI>Write Makefile for hello.cpp
+</UL>
+
+<P>
+Write function rot13, to encrypt/decrypt a string.  For example,
+rot13(&quot;abxy&quot;) should return &quot;nokl&quot;.  Note:
+use rot13.h, rot13.cpp
+<UL>
+<LI>Write a main program which rot13's the text in a file.
+<LI>[W] Problem 1.6, 1.14, 1.15
+</UL>
+
+<P>
+
+</BODY>
+
+</HTML>

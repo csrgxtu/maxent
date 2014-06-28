@@ -1,0 +1,311 @@
+Date: Wed, 20 Nov 1996 21:46:05 GMT
+Server: NCSA/1.5
+Content-type: text/html
+
+<HEAD>
+<TITLE>CS 835 - Seminar on Networked Computing Systems</TITLE>
+</HEAD>
+
+<H2>CS 835 - Seminar on Networked Computing Systems <br>
+Fall 1996</H2>
+
+<BODY>
+<EM>Instructors: Professors 
+<!WA0><A HREF="http://cs-www.bu.edu/associates/virgilio/">
+Almeida</A>,
+<!WA1><A HREF="http://cs-www.bu.edu/faculty/best/">
+Bestavros</A>,
+<!WA2><A HREF="http://cs-www.bu.edu/faculty/crovella/">
+Crovella</A>, and
+<!WA3><A HREF="http://cs-www.bu.edu/faculty/djy/">
+Yates</A>.<br>
+Time: Monday 1-3 pm<br>
+Location: MCS B46<br>
+Credit: May be taken as audit, or for up to 4 credits
+</EM>
+
+<H2>Course Description</H2>
+
+This seminar will take a hands-on approach to examining the design of
+current networked computing systems.  In particular we will adopt as our
+case study the software system associated with a World Wide Web server.
+The course will consist of code walk-throughs and lectures.  Code
+walk-throughs will include: at the kernel level
+(namely in <!WA4><A HREF="http://www.linux.org">Linux</A>),
+the network, file system,
+and process scheduling functions; and at the application level,
+one Web server (<!WA5><A HREF="http://www.apache.org">Apache</A>).
+Lectures will cover research issues in server design,
+performance modeling, and simulation techniques.  This seminar will
+be a prerequisite or corequisite for participating in the Commonwealth
+Server Project, which is being led by the instructors; however any
+student who is interested in studying the implementation of a
+networked computer system is invited to attend.  We will be asking
+attendees to be notetakers for a week.  As a notetaker,
+your job is to keep track of the main themes of the 
+discussion and any interesting
+points made by any of the participants.
+
+<P>
+
+Participation in this seminar is by encouragement/consent
+of one of the instructors.
+Students taking this course for credit will be expected to complete a
+related project chosen in consultation with one of the instructors.  The
+project cannot serve also as a Master's project, however, if a two-phase
+proposal is accepted by the instructor the second phase can serve as a MS
+project.  Students may form teams to work on projects, however, the project
+scope must scale linearly with the team size, and work must be explicitly
+load balanced in a fair way.  It's also OK to take this course for no
+credit, but to use it to lead on to an MS project during a subsequent
+semester.
+
+<P>
+
+We will schedule a brownbag (or two) at the end of the semester.
+Each
+student participating will be asked to talk for a short
+time (10 mins) on their project or on a related topic.
+
+<P>
+
+Finally,
+for more information on the Commonwealth Server Project, follow
+<!WA6><A HREF="http://www.cs.bu.edu/faculty/crovella/projects/commonwealth.html">
+this link</A>.
+
+<H2>Course Schedule</H2>
+
+Here's the proposed week-by-week schedule of topics we'd like to cover.
+During weeks 5 through 9 our code walkthroughs will take us through version
+2.0.10 of the <!WA7><A HREF="http://www.linux.org"><b>Linux kernel</b></A>
+(see 
+<tt>linux-2.0.10/</tt> under
+<tt>/sw/course/cs835-f96/</tt>).
+During weeks 10 and 11 our code walkthroughs will be through
+version 1.1.1 of the <!WA8><A HREF="http://www.apache.org"><b>Apache server</b></A>
+(see
+<tt>apache_1.1.1/</tt> in the same place).
+If you're a presenter or a scribe for a particular week,
+please mail your notes
+to <!WA9><A HREF="mailto:djy@cs.bu.edu"><tt>djy@cs.bu.edu</tt></A> so that they can be linked to this home
+page.
+
+<UL>
+<LI> <b> Week 1  (9/9) - Research Problems in Networks and Computer Systems
+</b><br>
+Presenter: Mark Crovella
+<!WA10><A HREF="http://www.cs.bu.edu/faculty/djy/cs835/week1.txt"><b>Notes</b></A>; Scribe: Mark Crovella
+<LI> <b> Week 2  (9/16) - Review of Related Work in Networks and Computer
+                   Systems</b><br>
+Presenters: A. Bestavros, M. Crovella, 
+V. Almeida <!WA11><A HREF="http://www.cs.bu.edu/faculty/best/crs/cs835/F96/notes/1996-09-16.html"><b>Notes</b></A>; 
+Scribe: Alex Sorg <!WA12><A HREF="http://www.cs.bu.edu/faculty/best/crs/cs835/F96/notes/1996-09-16-script.html"><b>Notes</b></A><br>
+References: <EM><!WA13><A HREF="http://www.aris.com/~simmons/dns">DNS tutorial</A></EM>,
+[Alme96], [Katz94], [Kwan95], [Mogu95b]</EM>.
+<LI> <b> Week 3  (9/23) - Whirlwind Tour of a Web Transaction</b><br>
+Presenter: David Yates; Scribe: Paul Barford<br>
+References: <EM>[Padm94],
+<!WA14><A HREF="http://www.apache.org/docs/API.html">Apache API</A>,
+<!WA15><A
+HREF="http://www.ics.uci.edu/pub/ietf/http/draft-ietf-http-v11-spec-01.html">HTTP
+spec</A></EM>
+<LI> <b> Week 4  (9/30) - Networking Tutorial</b><br>
+Presenter: David Yates; Scribe: Paul Barford<br>
+References: 
+<EM><!WA16><A HREF="http://www.cs.buffalo.edu/~milun/unix.programming.html">Socket tutorials and more</A>,
+<!WA17><A HREF="http://Literary.COM/mkp/new/3689/book/node63.html">TCP tutorial</A></EM>
+<LI> <b> Week 5  (10/7) - Networking Walkthrough I</b><br>
+Presenter: David Yates<br>
+References: <EM><!WA18><A HREF="http://www.cs.bu.edu/faculty/djy/cs835/sock_sys.html">Socket and system calls in Linux</A></EM>
+<LI> <b> Week 6  (10/15) - Networking Walkthrough II</b><br>
+Presenter: David Yates
+<LI> <b> Week 7  (10/23) - Networking Walkthrough III</b><br>
+Presenter: David Yates
+<LI> <b> Week 8  (11/11) - Process Scheduling Walkthrough</b><br>
+Presenter: David Yates
+<LI> <b> Week 9  (11/18) - Project Proposals</b><br>
+Presenters: Students
+<LI> <b> Week 10 (11/25) - Filesystem Walkthrough</b><br>
+Presenters: P. Barford, M. Crovella
+<LI> <b> Week 11 (12/2) - Server Code Walkthrough</b><br>
+Presenters: R. Chow, I. Saif, D. Yates
+<LI> <b> Week 12 (12/9)  - Server Workload Characterization and Server Performance Modeling Techniques</b><br>
+Presenter: Virgilio Almeida
+</UL>
+
+<H2>Bibliography</H2>
+
+The <!WA19><A HREF="http://www.cs.bu.edu/groups/oceans">OCEANS Project</A> has a really nice 
+<!WA20><A HREF="http://www.cs.bu.edu/groups/oceans/papers/Bibtex.html">
+bibliograpy in
+BibTex format</A>.  Here are some references out on the Web ...
+<P> 
+
+<EM>[Abra95]</EM> M. Abrams, C. R. Standridge, G. Abdulla, S. Williams, and E. A. Fox, <!WA21><A HREF="http://ei.cs.vt.edu/~succeed/WWW4">
+Caching Proxies: Limitations and Potentials</A>,
+Proc. of 4th Intl. World-Wide Web Conference, December, 1995.
+<BR>
+[AFS96] Transarc Corporation, 
+<!WA22><A href="http://www.transarc.com:80/afs/transarc.com/public/www/Public/ProdServ/Product/AFS/afswp.html">
+The AFS File System in Distributed Computing Environments: White
+Paper</A>, May 1996.
+<br>
+<EM>[Alme96]</EM> V. A. F. Almeida, J. M. de Almeida, and C. S. Murta,
+<!WA23><A HREF="http://cs-www.bu.edu/faculty/djy/cs835/cmgpaper.ps.Z">
+Performance Analysis of a WWW Server</A>,
+Proc. CMG Conference, 1996. <EM>Note: not viewable with ghostview, but
+will print.</EM>
+<BR>
+<EM>[Ande96]</EM> E. Anderson and D. Patterson,
+<!WA24><A HREF="http://cs-www.bu.edu/faculty/djy/cs835/osdi96-mr-submission.ps.Z">
+The Magicrouter: An Application of Fast Packet Interposing</A>,
+1996.
+<BR>
+<EM>[Arli96]</EM> M. F. Arlitt,
+<!WA25><A HREF="ftp://ftp.cs.usask.ca/pub/discus/thesis_arlitt_bw.ps.Z">
+ A Performance Study of Internet Web Servers</A>, MSc. Thesis, June, 1996.
+<BR>
+<EM>[Asam95]</EM> S. Asami, N. Talagala, T. Anderson, K. Lutz, 
+and D. Patterson,
+<!WA26><A HREF="http://cs-www.bu.edu/faculty/djy/cs835/TD10.ps.Z">
+The Design of Large-Scale, Do-It-Yourself RAIDs</A>,
+1995.
+<BR>
+<EM>[Basu95]</EM> A. Basu, V. Buch, W. Vogels, T. von Eicken,
+<!WA27><A HREF="http://www.cs.cornell.edu/Info/Projects/U-Net/sosp.ps">
+U-Net: A User-Level Network Interface
+for Parallel and Distributed Computing</A>,
+Proc. of the 15th ACM Symposium on Operating Systems Principles,
+December, 1995.
+<BR>
+<EM>[Blum96]</EM> M. Blumrich,
+<!WA28><A HREF="http://www.cs.princeton.edu/~mb/thesis.ps">
+Network Interface for Protected, User-Level Communication</A>, PhD. Thesis,
+June 1996.
+<BR>
+<EM>[Bolo96]</EM> J-C. Bolot and P. Hoschka,
+<!WA29><A href="ftp://zenon.inria.fr/rodeo/bolot/96.Web.ps.Z"> 
+Performance engineering of the World Wide Web: Application to dimensionning
+and cache design</A>,
+<!WA30><A href="http://www5conf.inria.fr/Welcome.html"> 
+Proc. of the 5th World-Wide Web Conference</A>, May 1996. 
+<BR>
+<EM>[Dahl96]</EM> M. Dahlin,
+<!WA31><A HREF="http://cs-www.bu.edu/faculty/djy/cs835/dahlin-thesis.ps.Z">
+Serverless Network File Systems</A>,  PhD. Thesis, December 1995.
+<BR>
+<EM>[Drus96]</EM> P. Druschel and G. Banga,
+<!WA32><A HREF="http://cs-www.bu.edu/faculty/djy/cs835/peter-osdi.ps.Z">
+Lazy Receiver Processing: A New Network Subsystem Architecture for
+Server Systems</A>, Proc. of the 2nd OSDI Conference, Oct 1996. 
+<BR>
+<EM>[Dubn96]</EM> C. Dubnicki, L. Iftode, E. Felten and K. Li,
+<!WA33><A HREF="http://www.cs.princeton.edu/~dubnicki/papers/sbl.ps">
+Software Support for Virtual Memory-Mapped Communication</A>,
+Proc. of the 10th International Parallel
+Processing Symposium, April 1996. 
+<BR>
+<EM>[Engl96]</EM> D. R. Engler and M. F. Kaashoek,
+<!WA34><A HREF="http://cs-www.bu.edu/faculty/djy/cs835/engler.ps.Z">
+DPF: Fast, Flexible Message Demultiplexing using Dynamic Code Generation</A>,
+Proc. of ACM Sigcomm, August, 1996.
+<BR>
+<EM>[Katz94]</EM> E. D. Katz,
+M. Butler, and 
+R. McGrath,
+A Scalable HTTP Server: The NCSA Prototype, 
+(<!WA35><A href="http://www.ncsa.uiuc.edu/InformationServers/Conferences/CERNwww94/www94.ncsa.html">HTML</A>,
+<!WA36><A href="http://www.cern.ch/PapersWWW94/ekatz.ps">PostScript</A>),
+<!WA37><A href="http://www.cern.ch/WWW94/Welcome.html"> 
+   Proc. of the 1st Intl. World-Wide Web Conference</A>, May 1994.
+<br>
+<EM>[Kwan95]</EM> T. T. Kwan, R. E. Mcgrath, and D. A. Reed,
+<!WA38><a href="http://www-pablo.cs.uiuc.edu/Papers/WWW.ps.Z">
+User Access Patterns to NCSA's World Wide Web Server</a>,
+(an abridged version appeared in the November 1995 issue of
+<!WA39><a href="http://ada.computer.org:80/pubs/computer/computer.htm">
+IEEE Computer
+</a>)
+<BR>
+<EM>[Mark96]</EM> E. P. Markatos, 
+<!WA40><A href="http://www5conf.inria.fr/fich_html/papers/P1/Overview.html"> 
+     Main Memory Caching of Web Documents</A>, <!WA41><A
+     href="http://www5conf.inria.fr/Welcome.html"> 
+     Proc. of the 5th World-Wide Web Conference</A>, May 1996. 
+<br>
+<EM>[Mitz96]</EM> M. Mitzenmacher,
+<!WA42><A HREF="http://cs-www.bu.edu/faculty/djy/cs835/mitzen-thesis.ps.Z">
+The Power of Two Choices in Randomized Load Balancing</A>, PhD. Thesis, 1996.
+<br>
+<EM>[Mogu95a]</EM> J. C. Mogul,
+<!WA43><A HREF="http://www.research.digital.com/wrl/techreports/abstracts/95.4.html">
+The Case for Persistent-Connection HTTP</A>,
+DEC WRL Research Report 95/4, May 1995.
+<BR>
+<EM>[Mogu95b]</EM> J. C. Mogul,
+<!WA44><A HREF="http://www.research.digital.com/wrl/techreports/abstracts/95.5.html">
+Network Behavior of a Busy Web Server and its Clients</A>,
+DEC WRL Research Report 95/5, October 1995.
+<BR>
+<EM>[Padm94]</EM> V. N. Padmanabhan and J. C. Mogul,
+<!WA45><A HREF="http://www.ncsa.uiuc.edu/SDG/IT94/Proceedings/DDay/mogul/HTTPLatency.html">
+Improving HTTP Latency</A>,
+Proc. of the 2nd Intl. WWW Conference, Oct 1994.
+<BR>
+<EM>[Wall96]</EM> D. A. Wallach, D. R. Engler, and M. F. Kaashoek
+<!WA46><A HREF="http://cs-www.bu.edu/faculty/djy/cs835/wallach.ps.Z">
+ASHs: Application-specific Handlers for High-performance Messaging</A>,
+Proc. of ACM Sigcomm, August, 1996.
+<BR>
+<EM>[Will96]</EM> S. Williams, M. Abrams
+C. R. Standridge, G. Abdulla, and E. A. Fox,
+<!WA47><A HREF="http://ei.cs.vt.edu/~succeed/96sigcomm">
+Removal Policies in Network Caches for World-Wide Web Documents</A>,
+Proc. of ACM Sigcomm, August, 1996.
+<BR>
+<EM>[Yeag96]</EM> N. Yeager and R. McGrath (both of NCSA), 
+<!WA48><A HREF="http://www.ncsa.uiuc.edu/People/nyeager/webserv.html">
+Web Server Technology: The Advanced Guide for World-Wide Web Information
+Providers</A> is a recent book.
+<P>
+
+<H2>Other Interesting Projects</H2>
+
+The <!WA49><A HREF="http://www.cs.bu.edu/groups/oceans">OCEANS Project</A>
+also has a nice collection of
+<!WA50><A HREF="http://www.cs.bu.edu/groups/oceans/misc/Links.html">
+links to interesting projects</A> (please excuse the duplicates below).
+<P>
+
+<!WA51><A HREF="http://www.atmos.uiuc.edu/horizon">
+HORIZON Project</A> at the University of Illinois at Urbana-Champaign.
+<BR>
+<!WA52><A HREF="http://www.cs.cornell.edu/home/mdw/hpc/hpc.html">Linux
+in High-Performance Computing</A>.
+<BR>
+<!WA53><A HREF="http://now.cs.berkeley.edu/index.html">NOW Project</A>
+at the University of California at Berkeley.
+<BR>
+The <!WA54><A HREF="http://www.osf.org/RI">Open Group (formerly OSF) 
+Research Institute</A>, in Cambridge, works on Web and operating system technologies.
+<BR>
+<!WA55><A HREF="http://www-pablo.cs.uiuc.edu/Projects/Mosaic/mosaic.html">PABLO
+Project</A> also at the University of Illinois at Urbana-Champaign.
+<BR>
+<!WA56><A HREF="http://www.cacr.caltech.edu/SIO">Scalable I/O Initiative</A>.
+<BR>
+<!WA57><A HREF="http://www.cs.princeton.edu/shrimp">SHRIMP
+Project</A> at Princeton University.
+<BR>
+<!WA58><A HREF="http://www.cs.cornell.edu/Info/Projects/U-Net">U-Net Project</A>
+at Cornell University.
+<br>
+<!WA59><A HREF="http://www.cs.vt.edu/~chitra/www.html">World Wide Web 
+Traffic Analysis</A> at Virginia Tech.
+
+<PRE><HR>
+Maintainer: <!WA60><A href="http://www.cs.bu.edu/faculty/djy/">David Yates</A>
+Created on: <EM>1996.08.30</EM>
+Updated on: <EM>1996.10.08</EM>
+</PRE>

@@ -1,0 +1,45 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 07-Jan-97 15:25:41 GMT
+Content-Type: text/html
+Content-Length: 1688
+
+<HTML><HEAD><TITLE>Lisp / X Drawing Demo</TITLE></HEAD><BODY>
+<H2>Drawing Program using Interactive X Graphics in Lisp</H2>
+
+This is a demo of the <CODE>draw</CODE> program distributed with the
+<!WA0><a href="http://www.cs.utexas.edu/users/novak/dwindow.html">X Interface for Gnu Common Lisp</a>
+which is available as free software under the Gnu General Public License
+from <CODE> ftp.ma.utexas.edu </CODE>
+<P>
+When the demo is started, a drawing window is created.
+Two menus are presented: a menu of drawing items and a menu of commands.
+Select drawing items and then click the mouse one or more times inside
+the drawing area.
+<P>
+The <CODE>Make LaTeX</CODE> command can be used to create LaTeX commands
+to produce the drawing.  <CODE>LaTeX Mode</CODE> will restrict lines to
+lines that LaTeX can draw.  Note, however, that LaTeX cannot produce all
+the things that can be drawn.  The LaTeX code is served to you in a file
+that is presented after the program terminates.
+
+<HR>
+
+<H2>Instructions</H2>
+<!WA1><FORM METHOD=GET ACTION="http://www.cs.utexas.edu/users/novak/cgi/nph-draw-action">
+<OL>
+<LI>	You must be logged in to a host running X windows.
+<LI>	Type <CODE>  xhost + www.cs.utexas.edu  </CODE> (exactly as shown
+        at left) in a window on that host
+	to allow this server to write to your display.
+<LI>	Enter your X display name here if needed; you may need to change
+        what is shown in the box to your X display name.  For example,
+        <CODE> myterminal.cs.utexas.edu:0.0 </CODE> <BR>
+	<INPUT TYPE=text SIZE=40 VALUE="128.2.209.145:0.0" NAME=xdspname>
+<LI>	Click <INPUT TYPE=submit VALUE="here"> to start the demo.
+</OL>
+</BODY>
+<address><!WA2><a href="http://www.cs.utexas.edu/users/novak/index.html">
+Gordon S. Novak Jr.</a></address>
+</HTML>
+

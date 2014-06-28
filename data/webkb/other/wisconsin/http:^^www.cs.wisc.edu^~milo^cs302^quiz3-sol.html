@@ -1,0 +1,145 @@
+Date: Mon, 11 Nov 1996 17:12:16 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Sat, 02 Nov 1996 21:57:16 GMT
+Content-length: 2370
+
+<HTML>
+<HEAD>
+<TITLE>Quiz 3 Solutions - CS 302 Fall 1996 - Section 4</TITLE>
+</HEAD>
+<BODY>
+
+<H4 ALIGN=CENTER>
+  <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~cs302">CS 302</A>
+  Fall 1996 - <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.wisc.edu/~milo/cs302.html">Section 4</A>
+</H4> 
+<H4 ALIGN=CENTER>Quiz 3 Solutions</H4>
+<hr><br>
+
+This quiz is 20 total points.  Please write legibly.  If I can't read
+it, I can't grade it.  You have until 5 minutes after the class period
+ends to finish.
+
+Good luck.
+
+<OL>
+  <LI> (5 points) Write the <TT>struct</TT> declaration for a
+structure called ``Computer'' which has four member variables: an
+integer <TT>disk_size</TT>, an integer <TT>monitor_size</TT>, a
+character <TT>model_type</TT>, and a double <TT>total_price</TT>.
+
+<PRE>
+struct Computer {
+  int disk_size;
+  int monitor_size;
+  char model_type;
+  double total_price;
+};
+</PRE>
+
+  <LI> (5 points) Rewrite the following function to use switch statement
+instead of a nested if-else statement.  Your code should have no if
+statements.
+
+<PRE>
+int foo(int number, int value) 
+{
+  if (number == 1) {
+    value = value * 2;
+  } else if (number == 3) {
+    value = value + 10;
+  } else if ((number == 4) || (number == 6)) {
+    value = value * value;
+  } else {
+    value = 17;
+  }
+  return value;
+}
+</PRE>
+<br>
+<PRE>
+int foo(int number, int value) 
+{
+  switch (number) {
+  case 1:
+    value = value * 2;
+    break;
+  case 3:
+    value = value + 10;
+    break;
+  case 4:
+  case 6:
+    value = value * value;
+    break;	
+  default:
+    value = 17;
+  }
+  return value;
+}
+</PRE>
+
+  <LI> (5 points) What does the following code display to the screen?
+
+<PRE>
+#include&ltiostream.h&gt
+
+int bar(int number, int value) 
+{
+  if ((number == 1) && (value++ > 0)) {
+    return value + 10;
+  } else {
+    return value;
+  }
+}
+
+int main() 
+{
+  cout << bar(0, 0) << endl;
+  cout << bar(1, 0) << endl;
+  cout << bar(0, 1) << endl;
+  cout << bar(1, 1) << endl;
+}
+</PRE>
+
+<PRE>
+0
+1
+1
+12
+</PRE>
+
+  <LI> (5 points) Rewrite the following function to use a while or
+do-while loop instead of a for loop.
+
+<PRE>
+int factorial(int n) 
+{
+  int counter, fact = 1;
+  for(counter = 1; counter <= n; counter++) {
+    fact *= counter;
+  }
+  return fact;
+}
+</PRE>
+
+<br>
+
+<PRE>
+int factorial(int n) 
+{
+  int counter = 1, fact = 1;
+  while (counter <= n) {
+    fact *= counter;
+    counter++;
+  }
+  return fact;
+}
+</PRE>
+
+</OL>
+
+</BODY>
+</HTML>
+
+

@@ -1,0 +1,201 @@
+Date: Thu, 21 Nov 1996 21:53:14 GMT
+Server: NCSA/1.5
+Content-type: text/html
+
+<html>
+<HEAD><TITLE>Boston Univeristy - Computer Science Dept. - Ph.D Candidate: Keith Kim, Gitae Kim, or Gi Tae Kim : TCP Boston, TCP-Boston</TITLE></HEAD>
+<! body background="paper1.gif"->
+<BODY bgcolor= #D9D9F3>
+<SCRIPT LANGUAGE="JavaScript">
+
+function scrollit_r2l(seed)
+{
+        var mesg1  = "Welcome to the Keith (Gitae) Kim's "; 
+        var mesg2  = "Home Page ..."; 
+        var msg=mesg1+mesg2;
+        var out = " ";
+        var c   = 1;
+        if (seed > 100) {
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 100 && seed > 0) {
+                for (c=0 ; c < seed ; c++) {
+                        out+=" ";
+                }
+                out+=msg;
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                    window.status=out;
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;
+                        var cmd="scrollit_r2l(" + seed + ")";
+                        window.status=out;
+                        timerTwo=window.setTimeout(cmd,100);
+                }
+                else {
+                        window.status=" ";
+                        timerTwo=window.setTimeout("scrollit_r2l(100)",75);
+                }
+        }
+}
+
+</SCRIPT>
+<BODY onLoad="timerONE=window.setTimeout('scrollit_r2l(100)',500);">
+
+<A NAME="top">
+<HR size=5>
+
+<P ALIGN=RIGHT>
+<FONT SIZE=+7>K</FONT><FONT SIZE=+2>EITH</FONT><FONT SIZE=+7> (G</FONT>
+<FONT SIZE=+2>ITAE</FONT><FONT SIZE=+7>) </FONT>
+<FONT SIZE=+7>K</FONT><FONT SIZE=+2>IM</FONT>
+<P ALIGN=RIGHT>
+<!WA0><A href="mailto:kgtjan@cs.bu.edu"><i>kgtjan@cs.bu.edu</i></A>
+<p>
+
+
+<HR size=5>
+<HR size=5>
+
+
+
+Welcome aboard!    I am a Ph.D candidate at
+<!WA1><A HREF = "http://cs-www.bu.edu/"> Computer Science Dept.</A>,
+<!WA2><A href = "http://web.bu.edu"> Boston University</A>.   I am currently 
+a research assistant for
+<!WA3><A href="http://www.cs.bu.edu/faculty/best/Home.html">Prof. Azer Bestavros</A>, who is also my 
+thesis advisor. 
+<p>
+<p>
+<p>
+<p>
+
+<CENTER>
+<TABLE  BORDER=5 CELLPADDING=3>
+<TR><TD><!WA4><IMG SRC = "http://www.cs.bu.edu/students/grads/kgtjan/kgtjan.gif"></TR></TD>
+</TABLE></center>
+<BR>
+<P>
+<HR size=5>
+<LI>
+<H4> <FONT SIZE=+2>Research <!WA5><A HREF = "#philosophy">Philosophy</A> & <!WA6><A HREF = "#domain"> Domain</A></FONT></H4>
+
+<A name="philosophy">
+<UL>
+My three beliefs ...
+<p>
+<UL>
+I believe in `resource dispersion' to improve system performance
+in networked computing environment.  There are other good reasons
+in dispersing systems resource, but I am particularly interested 
+in minimizing the bottleneck effect in networked computing 
+environment through load dispersion.  
+<p>
+I believe in the
+phrase, "The Simpler, The Faster", especially for the switch (router) 
+architectures.  The higher the network bandwidth, the firmer I believe in it -- it does not make much sense to me that, messages stay longer in the switches (routers) while they move faster on the links - no real advantage!   
+<p>
+I also believe
+in `feedback(closed_loop)-based flow controls' even under broadband networks,
+since it provides some form of information on the network, 
+whether the information is old or new.  Recent studies have revealed that the
+observed network traffic is self-similar, i.e., the pattern of network
+traffic is invariant (to some extent)  on the time scales, which signifies that
+the network traffic is long-term predictable.  The utilization of this notion 
+goes against 
+ancient Egypt to control irrigation system for 
+preventing flooding.  I speculate that the idea 
+of using history(i.e., feedback) to predict the future (i.e., congestion) might 
+provide a nicer solution for
+flow control, especially in high-speed networks, if the feedback information is used right.
+
+After all, we live in the world with history that repeats 
+itself -- another self-similarity -- and people learn tomorrow
+from history.  
+</A>
+</UL>
+
+
+
+  
+<p>
+<A name="domain">
+Current research interests include improving the perfomance (especially, in 
+response time for real-time applications) of TCP under ATM and other
+broadband networks.    
+</A>  
+</UL>
+<HR size=5>
+
+<LI>
+<H4><FONT SIZE=+2> Research Groups</FONT></H4>
+<p>
+<UL>
+I am a proud member of <!WA7><A href="http://www.cs.bu.edu/groups/realtime/Home.html">
+Real-Time Systems Group</A> and <!WA8><A href="http://www.cs.bu.edu/groups/oceans/Home.html">
+OCEANS Research Group</A>.
+</UL>
+<P>
+<HR size=5>
+
+<LI>
+<H3><FONT SIZE=+2.2> Current Publications (<!WA9><A HREF = "http://www.cs.bu.edu/students/grads/kgtjan/papers.html">Abstracts</A>) </FONT></H3>
+<P>
+<P>
+<UL>
+"TCP Boston - A Fragmentation-tolerant TCP Protocol for ATM Networks," (with Azer Bestavros)   
+Boston University Computer Science Department, July 1996.   <I>  To be appeared in the Proceedings of IEEE
+INFOCOM'97.</I>
+<BR>
+<!WA10><a href="http://cs-www.bu.edu/techreports/96-014-tcp-boston.ps.Z">postscript version</a>.
+<p>
+"On the Relationship Between File Sizes, Transport Protocols, 
+and Self-Similar Network Traffic"(with Kihong Park and Mark E. Crovella). <I> To be appeared in ICNP'96</I>
+<BR>
+<!WA11><a href="http://www.cs.bu.edu/students/grads/kgtjan/paper-archive/files-protocols/TR-96-016.ps">extended version (technical report TR-96-016)</a>;  <!WA12><a href="http://www.cs.bu.edu/students/grads/kgtjan/paper-archive/files-protocols/icnp96.ps">condensed version (as appeared in ICNP '96)</a>
+<p>
+"The Effects of Traffic
+Self-Similarity on TCP Performance," (with Kihong Park and Mark E. Crovella)   
+Boston University Computer Science Department, April 1996.
+<BR>
+<!WA13><a href="http://www.cs.bu.edu/students/grads/kgtjan/paper-archive/selfsim-tcp.ps">postscript version</a>.
+<p>
+</UL>
+<HR size=5>
+
+<LI>
+<H3><FONT SIZE=+2> <!WA14><A HREF = "http://www.cs.bu.edu/students/grads/kgtjan/hobby">For Leisure, I Do ...</A></FONT></H3>
+<P>
+<HR size=5>
+
+<LI>
+<H3><FONT SIZE=+2> <!WA15><A HREF = "http://www.cs.bu.edu/students/grads/kgtjan/links">Favorite Links</A></FONT></H3>
+<HR size=5>
+<pre><FONT SIZE=-1>
+Boston University
+Computer Science Dept.,
+111 Cummington St, MCS-217
+Boston, MA 02215
+Voice: <i>(617) 353-8924</i>
+FAX:  <i>(617) 353-6457</i>
+Email: <!WA16><A href="mailto:kgtjan@cs.bu.edu"><i>kgtjan@cs.bu.edu</i></A>
+</FONT>
+</pre>
+<HR>
+<center>
+Visitors since August 19, 1996:
+<!WA17><img src="http://www.cs.bu.edu/cgi-bin/Count.cgi?dd=C|df=murad-count.dat" align=absmiddle>
+</center>
+<hr>
+
+<P>
+Updated On: <EM> August 19, 1996.</EM> 
+<HR></center>
+
+

@@ -1,0 +1,96 @@
+Date: Tue, 10 Dec 1996 21:59:35 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Wed, 09 Oct 1996 01:26:54 GMT
+Content-length: 3484
+
+<html>
+
+<head>
+	<title>MIPSI - MIPS Simulator</title>
+</head>
+
+<body>
+
+<h1> <!WA0><img src="http://www.cs.washington.edu/homes/egs/pics/mips-logo.gif" ALT="Logo"><a name="top">MIPSI - MIPS Simulator</a><br>
+</h1>
+<hr>
+
+<h2>Description</h2>
+<p>
+MIPSI is an instruction-level simulator for the <!WA1><a href="http://www.mips.com/Mips_Chip_Rm.html">MIPS</a> family of processors. Its main
+attributes are its simplicity and robustness - mipsi can run SPEC
+benchmarks as well as complicated, on-the-fly code generating programs
+such as the Standard ML of New Jersey without any
+modification. MIPSI runs on big or little endian MIPS boxes and on
+Alpha platforms. On mips based work stations, the slowdown due to
+simulation is about 65 times the speed of native code for 
+most SPEC benchmarks. On an alpha 400 cross-simulating an R3000, the
+slowdown is roughly 4.
+
+<h2>History</h2>
+<p>
+My goal in writing MIPSI was to investigate the amount of fine-grain
+instruction level parallelism available in C and ML programs, and 
+then to find out if alternative garbage collection schemes could
+possibly increase the amount of parallelism. The garbage collector 
+is responsible for the layout of data in garbage collected systems. Thus
+the decisions made by the garbage collector have a big impact on the 
+cache performance of programs. On future architectures with speculative
+execution, such impact is amplified as the speculative forward progress 
+of the processor is interrupted by cache misses. 
+
+<h2>Current Uses</h2>
+<p>
+MIPSI has been used by 
+<!WA2><a href="http://www.cs.princeton.edu/~appel/">Andrew Appel</a>
+and Marcelo Goncalves at Princeton University to investigate garbage
+collection alternatives for future architectures. Here is 
+<!WA3><a href="http://www.cs.princeton.edu/~appel/papers/cache.ps">
+their resulting paper</a>.
+
+
+<p>
+Dean Tullsen has modified MIPSI to simulate the Alpha instruction set, 
+and has been using it, along with Susan Eggers and Hank Levy, to
+investigate <!WA4><a href="http://www.cs.washington.edu/homes/eggers/Research/multithread.html">multithreaded processor architectures</a>.
+
+<p>
+Various classes at the University of Washington have used MIPSI as an
+educational tool. The undergraduate operating systems class has used MIPSI
+to teach students about virtual memory. The undergraduate architecture
+class has used MIPSI to investigate cache architectures, and the
+graduate architecture classes have used MIPSI in numerous ways, from
+examining branch prediction behaviour to measuring instruction mix in
+C++ programs to comparing superscalar and superpipelined architectures.
+
+<h2>Reference</h2>
+The reference for MIPSI that describes the simulator and some of the things
+I did with it is the undergraduate senior report I wrote. Here is the
+reference in bibtex form:
+<pre>
+@UNPUBLISHED{mipsi,
+  AUTHOR=        {Emin Gun Sirer},
+  TITLE=        "{Measuring Limits of Fine-Grain Parallelism}",
+  NOTE=         {Princeton University Senior Project},
+  MONTH=        jun,
+  YEAR=         {1993}
+}
+</pre>
+
+<h2>Availability</h2>
+MIPSI is free for academic/educational uses. If you are interested in
+acquiring it, please let me know by sending a 
+<!WA5><a href="mailto:egs@cs.washington.edu">message</a>. If you have a
+commercial application for MIPSI, please contact me either by 
+<!WA6><a href="mailto:egs@cs.washington.edu">email</a> or by phone
+at (206) 543-5129 and I would be happy to help.
+
+<hr>
+<address>
+<!WA7><a href="http://www.cs.washington.edu/homes/egs">Emin G&uuml;n Sirer</a>
+egs@cs.washington.edu
+</address>
+</body>
+</html>
+

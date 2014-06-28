@@ -1,0 +1,50 @@
+Server: Dienst v4-1-6 
+MIME-version: 1.0
+Content-type: text/html
+
+<TITLE>THE DESIGN AND IMPLEMENTATION OF A PRIVATE MESSAGE SERVICE FOR MOBILE COMPUTERS</TITLE>
+<H2>THE DESIGN AND IMPLEMENTATION OF A PRIVATE MESSAGE SERVICE FOR MOBILE COMPUTERS</H2>
+ David A. Cooper<BR>
+TR95-1539<BR>
+August 24, 1995<BR>
+<p>
+ Even as wireless networks create the potential for access to information from mobile platforms, they pose a problem for privacy. In order to retrieve messages, users must periodically poll the network. The information that the user must give to the network could potentially be used to track that user. However, the movements of the user can also be used to hide the user's location if the protocols for sending and retrieving messages are carefully designed. In this thesis, we will present a protocol for a replicated memory service which allows users to read from memory without revealing which memory locations they are reading. Unlike previous protocols, this protocol is efficient in its use of computation and bandwidth. We will then show how this protocol can be used in conjunction with existing privacy preserving protocols to allow a user of a mobile computer to maintain privacy despite active attacks. Allowing users to retrieve messages anonymously introduces a new problem. In order to limit memory usage, it is necessary to remove old messages from the system. However, since users may become disconnected from the network for periods of time, it is important that the system hold onto messages until they have been retrieved by their intended recipients. The result is a conflict between the system's need for information and users' desire for privacy. We will present the design of a vacation service which we have developed which stores messages for users which are disconnected which does not require users to reveal any private information. Finally, we will describe the implementation of the private message service and discuss the performance estimates that we derived for the system based on experimental results. As we will show, the potential throughput of the private message service is reasonable.<P>
+<hr><p>
+<H2>How to view this document</H2>
+<P><UL>
+<LI>Display an <B>overview</B> of the document in one of the following formats.
+<P><UL>
+<A HREF="/Dienst/UI/2.0/Composite/ncstrl.cornell%2fTR95-1539/1?nsections=5"><LI>Overview of thumbnail pages</A></UL>
+<P>
+<LI>Display a <B>selected page</B> in one of the following formats (document has 120 pages).
+<FORM ACTION=/Dienst/UI/2.0/ShowPage/ncstrl.cornell%2fTR95-1539>
+<INPUT TYPE="hidden" NAME="npages" VALUE=120><SELECT name=format size=1>
+<OPTION value=inline selected>inline gif image
+</SELECT>
+<INPUT NAME="page" TYPE=INT SIZE=4 VALUE=1>
+<INPUT TYPE=submit Value="Display page">
+</FORM>
+<LI>Display the <B>whole</B> document in one of the following formats.
+<P><UL>
+<LI><A HREF="/Dienst/Repository/2.0/Body/ncstrl.cornell%2fTR95-1539/postscript">PostScript
+</A> 917883 bytes.
+</UL>
+<BR>
+<LI>
+<A HREF="/Dienst/UI/2.0/Print/ncstrl.cornell%2fTR95-1539">Print or download all or selected pages.
+</A></UL>
+<HR>
+<p>
+<BLOCKQUOTE> 
+You are granted permission for the non-commercial reproduction, distribution,
+display, and performance of this technical report in any format, BUT this
+permission is only for a period of 45 (forty-five) days from the most recent
+time that you verified that this technical report is still available from
+the Computer Science Department of Cornell University under terms that
+include this permission.  All other rights are reserved by the author(s).
+ </BLOCKQUOTE></p><HR><p>
+[ <A HREF="/Dienst/UI/2.0/Search">Search</A>
+ | <A HREF="http://www.ncstrl.org:8080">Home page</A>
+ ]
+<HR>
+<I><img align=left  src="/Dienst/htdocs/image_gif/sm_ncstrl.gif">NCSTRL</I><br><I>This server operates at Cornell University.</I> <BR><I>Send email to <A HREF="mailto: tech-reports@cs.cornell.edu">tech-reports@cs.cornell.edu</A> </I>

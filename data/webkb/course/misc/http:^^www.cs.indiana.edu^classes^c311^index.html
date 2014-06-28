@@ -1,0 +1,502 @@
+Date: Wed, 20 Nov 1996 22:32:32 GMT
+Server: Apache/1.0.3
+Content-type: text/html
+Content-length: 15646
+Last-modified: Tue, 19 Nov 1996 05:01:05 GMT
+
+<html>
+<title>C311 Fall 1996</title>
+
+<body bgcolor="#ffffe0">
+
+<H2>
+<!WA0><A HREF="http://www.indiana.edu/iub/">Indiana University</A> <!WA1><a
+href="http://www.cs.indiana.edu/">Computer Science Department</a>
+</H2>
+
+<h1>C311 -- Programming Languages -- Fall 1996</h1>
+
+<ul>
+<li> <!WA2><A HREF="#generalinfo">General Information</A>
+
+<li> <!WA3><a href="#overview">Overview</a>
+
+<li> <!WA4><A HREF="#texts">Textbooks</A>
+
+<li> <!WA5><A HREF="#syllabus">Syllabus</A>
+
+<li> <!WA6><A HREF="#assign">Assignments</A>
+
+<li> <!WA7><A HREF="#tools">Tools and Advise</A>
+
+<li> <!WA8><A HREF="#exams">Grading</A>
+
+<li> <!WA9><A HREF="#admin">Administrivia</A>
+
+<li> <!WA10><a href="#eval">Course Evaluation</a>
+
+</ul>
+
+</p>
+
+<p>
+<hr size=2>
+<P>
+
+<h2><A name="classinfo">General Information </A></h2>
+
+<dl>
+<dt> Instructor
+<dd> <!WA11><A HREF="http://www.cs.indiana.edu/hyplan/chaynes.html">
+     Christopher T. (Chris) Haynes</A>, email <!WA12><A
+	HREF="mailto:chaynes@indiana.edu">chaynes@indiana.edu</A> 
+
+<dt> Associate Instructor
+<dd> <!WA13><A HREF="http://www.cs.indiana.edu/hyplan/ggomezes.html">Gustavo
+Gomez</A>, email <!WA14><A HREF="mailto:ggomezes@cs.indiana.edu">ggomezes@cs.indiana.edu</A>
+<dt> Credit Hours
+<dd> 4
+
+<dt> Requirements
+<dd> C335 (Prerequisite) and C343 (Pre- or Corequisite)
+
+<dt> Lecture
+<dd> Section 1139 meets Tuesday and Thursday, 2:30P to 3:45P in LH102
+
+<dt> Discussion Sections
+<dd> 
+     <ul>
+
+       <li> Section 8763 meets Monday, 2:30P to 3:20P in SE245
+
+       <li> Section 1140 meets Wednesday, 2:30P to 3:20P in LI451
+
+     </ul>
+
+<dt> Office Hours 
+<dd> 
+     <dl>
+       <dt> Tuesday
+       <dd> 
+	    <ul>
+	      <li> 1:30A to 2:30P in LH 230F (Chris Haynes)
+	      <li> 2:30A to 3:45P in LH 230F (Chris Haynes)
+	    </ul>
+       <dt> Thursday
+       <dd> 
+	    <ul>
+	      <LI> 9:00A to 12:00A in LH230 (Gustavo Gomez)
+	      <li> 1:30A to 2:30P in LH 230F (Chris Haynes)
+	      <li> 2:30A to 3:45P in LH 230F (Chris Haynes)
+	    </ul>
+     </dl>
+
+<dt> Local newsgroup
+<dd> <!WA15><A HREF="news:ac.c.311">ac.c.311</A>
+
+<DT> Web URL
+<DD> <CODE>http://www.cs.indiana.edu/classes/c311/</CODE>
+
+</dl>
+
+<P><hr size=2><P>
+
+<H2>Catalog Description</H2>
+
+Systematic approach to programming languages.  Relationships among
+languages, properties and features of languages, and the computer
+environment necessary to use languages.
+
+<h2><a name="overview">Overview</a></h2>
+
+This course provides an introduction to the foundations of programming
+languages, allowing a thorough understanding of programming language
+semantics and critical implementation characteristics.  This provides
+the basis for the best choice and use of existing languages, as well
+as language design.  <P>
+
+Interpreters and other language-processing
+programs are used throughout to present the essential elements of
+programming languages in a precise, analytic, manner.  The extensive
+use of interpreters in this course also develops skill in
+<EM>meta-linguistic abstraction</EM> -- a powerful programming paradigm.<P>
+
+To thoroughly understand programming languages (or most any topic), it is
+necessary to have a variety of models, or views, at varying levels of
+abstraction.  In this course we will employ a range of models from very
+high-level (almost mathematical semantics) to very low-level (almost
+assembly language), and emphasize the connections between levels.<P>
+
+Scheme is used as a meta-programming language throughout the course, but
+this course is about fundamentals that are the basis for most programming
+languages, not just Scheme.  Special attention will be given to modeling
+the semantics of the Java language via a series of type checkers and
+interpreters.<P>
+
+(A <!WA16><A HREF="http://www.cs.indiana.edu/classes/c311/p.html">slide presentation</A>, available in <!WA17><A
+HREF="http://www.cs.indiana.edu/classes/c311/intro.html">condensed form</A> summarizes these points and others.)<P>
+
+<H3>Topics include</H3>
+
+<UL>
+<LI> Induction, Recursion, and Scope
+<LI> Direct semantics interpreters
+<LI> Continuation-passing style
+<LI> Continuation-semantics interpreter
+<LI> Imperative form and stack architecture
+<LI> Static and dynamic semantics for object-oriented programming
+<LI> Object-oriented run-time architecture
+</UL>
+<P><hr size=2><P>
+
+<h2><A name="texts">Materials</A></h2>
+
+<DL>
+<DT> Required
+<DD> <i>Essentials of Programming Languages</i>, by Friedman, Wand and
+Haynes.
+This text, known hereafter as <EM>EOPL</EM>,
+should be available in any of the three big textbook
+bookstores (T.I.S, Aristotle's or the I.U. Bookstore), but you may get
+it cheaper if you can find a grad or undergrad student who's
+taken C311 or C511 and is willing to part with it.
+
+<DT> Recommended
+<DD> <i>The Little Schemer</i>, by Friedman and Felleisen.
+This should also be available in the bookstores, and a couple copies
+are on reserve in the Swain Hall library.
+<i>The Little Lisper</i> is older, but similar.
+
+<DT> Other
+<DD> 
+Other materials may be required through the semester.  These
+materials will be announced in class and will be made available
+through the White Rabbit on Indiana (near Kirkwood) and will cost a
+few dollars to cover copying costs.
+
+</DL>
+<P>
+
+<hr size=2>
+
+<h2><A name="syllabus">Syllabus</A></h2>
+
+Read the indicated material for each week <EM>before the week begins</EM>!
+You are not expected to understand the material on first reading, but
+having read it once first you will be much better prepared for class and
+discussion sections.  Read the material for the first two weeks in the
+first week (much of it should be review).  More material on Java will be made 
+available later.
+
+<P>Links in the list below are to the lecture scripts.
+
+<dl>
+<dt> Week of September 2
+<dd> (Re)introduction to Scheme: <EM>EOPL</EM> preface and chapter 1,
+chapter 2 through section 2, and chapter 3 through section 3.
+
+<dt> Week of September 9
+<dd> <!WA18><A HREF="http://www.cs.indiana.edu/classes/c311/script2.txt">Static Properties of Programs</A>:
+<em>EOPL</em>, remainder of chapters 2 and 3.
+
+<DT> Week of September 16
+<DD> Quiz.  Imperative programming: Chapter 4 sections 5 and 6.  
+<!WA19><A HREF="http://www.cs.indiana.edu/classes/c311/script3.txt">Simple interpreters</A>: <EM>EOPL</EM> chapter 5
+through section 2. 
+
+<DT> Week of September 23
+<DD><!WA20><A HREF="http://www.cs.indiana.edu/classes/c311/script4.txt"> Local binding, procedures, and assignment</A>:
+<EM>EOPL</EM>, sections 5.3 through 5.5.
+
+<DT> Week of September 30
+<DD> <!WA21><A HREF="http://www.cs.indiana.edu/classes/c311/script5.txt">Recursion and dynamic scope</A>:  <EM>EOPL</EM>,
+rest of chapter 5. 
+
+<DT> Weeks of October 7
+<DD> <!WA22><A HREF="http://www.cs.indiana.edu/classes/c311/script6.txt">Continuation-passing style</A>: <EM>EOPL</EM>
+chapter 8 sections 1, 2, 3, and 5.
+
+<DT> Week of October 14 
+<DD> <!WA23><A HREF="http://www.cs.indiana.edu/classes/c311/script7.txt">CPS rules</A>: <EM>EOPL</EM> chapter 8 sections 4,
+7, and 8. First exam.
+
+<DT> Week of October 21
+<DD><!WA24><A HREF="http://www.cs.indiana.edu/classes/c311/script8.txt"> Representation-independent
+interpreter, continuations as records, and reified continuations</A>:
+<EM>EOPL</EM> sections 9.1 through 9.3.
+First-class continuations and exception handling.
+
+<DT> Week of October 28
+<DD> <!WA25><A HREF="http://www.cs.indiana.edu/classes/c311/script9.txt">Imperative form and control stack
+architecture</A>: <EM>EOPL</EM> sections 10:1 and 10:2, thoroughly.
+
+<DT> Week of November 4
+<DD> Environment stack architecture: <EM>EOPL</EM>, rest
+of chapter 10 for general information: not responsible for code details.
+<!WA26><A HREF="http://www.cs.indiana.edu/classes/c311/script10.txt">Paramater passing</A>:
+<EM>EOPL</EM> chapter 6; not responsible for material involving arrays.
+
+<DT> Week of November 11
+<DD> Second exam. <!WA27><A HREF="http://www.cs.indiana.edu/classes/c311/script11.txt">Introduction to object-oriented
+programming</A> and <!WA28><A
+HREF="http://www.cs.indiana.edu/hyplan/chaynes/java/talk">Java</A>:
+<EM>EOPL</EM> section 7.1.
+
+<DT> Week of November 18
+<DD> Java programming tutorial.  Static-methods-only Java type checker and 
+interpreter. 
+
+<DT> Week of November 25 
+<DD> Thanksgiving break.
+
+<DT> Week of December 2
+<DD> More object-oriented programming, Java
+style: <EM>EOPL</EM> section 7.2 for general information.
+Also emphasis on the
+importance of virtual member functions in C++, as illustrated by <!WA29><A
+HREF="http://www.cs.indiana.edu/classes/c311/virtual.C">virtual.C</A>.
+
+<DT> Week of December 9
+<DD> Advanced Java topics.
+
+</DL>
+<P>
+<hr size=2>
+<P>
+
+<h2>Classes</h2>
+
+<p> Attendance at discussion sections is mandatory.  Usually, a
+problem or set of problems will be given out at the beginning of
+discussion section and the class will be broken up into small groups
+to solve the problems.  The AI leading the discussion section will go
+between groups answering questions <em>and asking questions</em> about
+the work done so far and about the class material.  Your answers to
+these questions, and your progress on the problems given in discussion
+section, <em>will</em> count toward your final grade. </p> 
+
+<p> Some lectures may also be conducted in this manner, and some other
+lectures will present material not found in the book.  Don't miss
+class! </p>
+
+<hr size=2>
+<P>
+
+<h2><A name="assign">Assignments</A></h2>
+
+<p> For the most part, assignments will be handed in by email to an
+automatic checker with feedback emailed back almost immediately.
+Assignments may be prepared on the system of your choice, but should run
+properly using Chez Scheme version 5.  Homework will be graded by hand,
+but the automatic checker will detect some errors. </p>
+
+<p> An assignment will usually be given each week.  Assignments will
+be added to the list below by 5:00P on Friday and due before 5:00P the next
+Friday. Late assignments will not be accepted.</p>
+
+<center>
+<table border=1 align=center width="90%">
+<th> # <th> Assignment <th> Due <th> Solution
+
+<tr>
+<td align=center> 1
+<td align=center> <!WA30><a href="http://www.cs.indiana.edu/classes/c311/a1.html">Basic Scheme</a>
+<td align=center> F 09/13 @ 5pm
+<td align=center> <!WA31><a href="http://www.cs.indiana.edu/classes/c311/solutions/a1.ss.html">a1.ss</a>
+
+<tr>
+<td align=center> 2
+<td align=center> <!WA32><a href="http://www.cs.indiana.edu/classes/c311/a2.html">Static Properties</a>
+<td align=center> F 09/20 @ 5pm
+<td align=center> <!WA33><a href="http://www.cs.indiana.edu/classes/c311/solutions/a2.ss.html">a2.ss</a>
+
+<tr>
+<td align=center> 3
+<td align=center> <!WA34><a href="http://www.cs.indiana.edu/classes/c311/a3.html">Simple Interpreter</a>
+<td align=center> F 09/27 @ 5pm
+<td align=center> <!WA35><a href="http://www.cs.indiana.edu/classes/c311/solutions/a3.ss.html">a3.ss</a>
+
+<tr>
+<td align=center> 4
+<td align=center> <!WA36><a href="http://www.cs.indiana.edu/classes/c311/a4.html">Procedures and Assignment</a>
+<td align=center> F 10/04 @ 5pm
+<td align=center> <!WA37><a href="http://www.cs.indiana.edu/classes/c311/solutions/a4.ss.html">a4.ss</a>
+
+<tr>
+<td align=center> 5
+<td align=center> <!WA38><a href="http://www.cs.indiana.edu/classes/c311/a5.html">Recursion and Dynamic Scope</a>
+<td align=center> F 10/11 @ 5pm
+<td align=center> <!WA39><a href="http://www.cs.indiana.edu/classes/c311/solutions/a5.ss.html">a5.ss</a>
+
+<tr>
+<td align=center> -
+<td align=center> Exam in class on R 10/17, no assignment
+<td align=center> -
+<td align=center> <!WA40><a href="http://www.cs.indiana.edu/classes/c311/exam1.html">solution</a>
+
+<tr>
+<td align=center> 6
+<td align=center> <!WA41><a href="http://www.cs.indiana.edu/classes/c311/a6.html">CPS Transformation</a>
+<td align=center> F 10/25 @ 5pm
+<td align=center> <!WA42><a href="http://www.cs.indiana.edu/classes/c311/solutions/a6.ss.html">a6.ss</a>
+
+<tr>
+<td align=center> 7
+<td align=center> <!WA43><a href="http://www.cs.indiana.edu/classes/c311/a7.html">CPS with Abstract Continuations</a>
+<td align=center> F 11/1 @ 5pm
+<td align=center> <!WA44><a href="http://www.cs.indiana.edu/classes/c311/solutions/a7.ss.html">a7.ss</a>
+
+<tr>
+<td align=center> 8
+<td align=center> <!WA45><a href="http://www.cs.indiana.edu/classes/c311/a8.html">CPS with Registers and Stacks</a>
+<td align=center> F 11/8 @ 5pm
+<td align=center> <!WA46><a href="http://www.cs.indiana.edu/classes/c311/solutions/a8">solution</a>
+
+<tr>
+<td align=center> -
+<td align=center> Exam in class on R 11/14, no assignment
+<td align=center> -
+<td align=center> <!WA47><a href="http://www.cs.indiana.edu/classes/c311/exam2.html">solution</a>
+
+<tr>
+<td align=center> 9
+<td align=center> <!WA48><a href="http://www.cs.indiana.edu/classes/c311/a9.html">Call by value/Call by reference</a>
+<td align=center> T 11/26 @ 5pm
+<td align=center> -
+
+</table>
+</center>
+<P>
+<hr size=2>
+<P>
+
+<h2><A name="tools">Tools and Advise</A></h2>
+
+Our web has information on <!WA49><A
+HREF="http://www.cs.indiana.edu/proglang/scheme/iucs.html">use of
+Scheme at IU</A>, including emacs support.
+We will be using a few <!WA50><A HREF="http://www.cs.indiana.edu/classes/c311/c311-scheme.html">Scheme extensions</A>
+not mentioned in <EM>EOPL</EM>.
+<P>  
+
+Points will be deducted on the homework, quiz, and exams if the <!WA51><A
+HREF="http://www.cs.indiana.edu/classes/c311/indentation.html">cardinal rules of indentation</A> are violated, so
+make it a habit to follow them whenever you write Scheme code.  This will
+greatly aid your Scheme programming.<P>
+
+Though emacs is a big help, it is strongly suggested that you write
+solutions to all exercises by hand and check them carefully for correctness
+before approaching a computer.  This will give you practice at indentation
+by hand (which is necessary for exams) and, more importantly, it is in most
+cases much easier to find mistakes in this course's exercises by thinking
+about them than by debugging.<P>
+
+The assignments don't count a whole lot toward your grade, but extensive
+experience has shown that students who do not make a serious effort to do
+the assignments independently do poorly on exams.  Experience has also
+shown that if most students spent much more time with paper and pencil
+before approaching a computer, they would spend much less time debugging
+and better understand their programs.  <EM>An hour with a pencil is often
+worth several at the keyboard!</EM> <P>
+
+<hr size=2> <P>
+
+<h2><A name="exams">Grading</A></h2>
+
+<p> The following is a tentative schedule for evaluation, with approximate
+percentage contributions to the final grade.
+
+<ul>
+<LI> Self assessment <!WA52><A HREF="http://www.cs.indiana.edu/classes/c311/zette.html">Quizette</A>; 0 percent.
+
+<li> <!WA53><A HREF="http://www.cs.indiana.edu/classes/c311/quiz.html">Scheme Quiz</A> -- R September 19, in class; 10
+percent.  
+Write, in 30 minutes, several programs similar to those in the first assignment.
+<!WA54><A HREF="http://www.cs.indiana.edu/classes/c311/quiz.ss.html">answers</A>
+
+<li> <!WA55><A HREF="http://www.cs.indiana.edu/classes/c311/exam1.html">Exam One</A> -- R October 17, in class, on
+<EM>EOPL</EM> chapters 1 
+through 5; 20 percent.  A <!WA56><A
+HREF="http://www.cs.indiana.edu/hyplan/chaynes/c311/s96/oldexam1.html">sample
+exam</A> from last spring is available.
+
+<li> <!WA57><a href="http://www.cs.indiana.edu/classes/c311/exam2.html">Exam Two</a> -- R November 14, in class, on
+material covered in 
+class through T November 5 (does not include chapter 6: parameter passing);
+20 percent.  A <!WA58><A
+HREF="http://www.cs.indiana.edu/hyplan/chaynes/c311/s96/oldexam2.html">
+sample exam</A> from last spring is available.
+
+<li> Final Exam -- T December 17, 5P-7P, LH102; 35 percent.  The final
+will cover the whole course, with emphasis on material after the second exam.
+A <!WA59><A HREF="http://www.cs.indiana.edu/hyplan/chaynes/c311/s96/exam3.html">sample
+final</A> from last spring is available.
+
+<LI> Assignments; 10 percent.
+
+<LI> Subjective assessment based on attendance, participation, and
+preparation for lectures and discussion sessions; 5 percent.
+
+</ul>
+
+The sample exams are provided only to provide a general idea of what to
+expect.  The content of the course this semester differs somewhat,
+especially after the second exam.
+<P>
+
+<hr size=2><P>
+
+<h2><A name="admin">Administrivia</A></h2>
+
+<ul>
+
+<li> Incompletes
+<P>
+    An incomplete (I) final grade will be given <i>only</i> by prior
+    arrangement in exceptional circumstances conforming to
+    departmental policy in which the bulk of course work has been
+    completed in passing fashion.
+</p>
+
+<li> Possibly Important Dates
+<P> 
+<ul>
+<li> M September 30 -- Last day to Pass/Fail the course.
+<li> W October 30 -- Last day to drop the course on your own.
+<li> W December 4 -- Last day to drop the course with a Dean's
+approval.
+</ul>
+<P>
+
+<li> Academic integrity
+
+<P>
+For your ethical pleasure, you should read the Computer
+Science Department statement on <!WA60><A
+HREF="http://www.cs.indiana.edu/integrity.html">academic
+integrity</A>.  It's dry, but important. 
+<P>
+
+<hr size=2>
+<P>
+
+<h2><a name="eval">Course Evaluation</a></h2>
+
+<p> Before the end of the semester, please complete the electronic
+Course evaluation forms for
+
+<!WA61><a href="http://iueval.cs.indiana.edu:5281/iueval/cgi-bin/course-form/semester=fall96/course=c311-hayn">Chris Haynes</a>
+
+and your discussion section AI, 
+<!WA62><a
+href="http://iueval.cs.indiana.edu:5281/iueval/cgi-bin/course-form/semester=fall96/course=c311-subr">
+Gustavo Gomez</a>.
+
+
+<p>
+<hr size=2>
+<P>
+
+<ADDRESS><!WA63><A HREF="http://www.cs.indiana.edu/~chaynes">Chris Haynes</A> /
+<!WA64><A HREF="mailto:chaynes@indiana.edu">chaynes@indiana.edu</A></ADDRESS>
+</html>

@@ -1,0 +1,370 @@
+Date: Tue, 14 Jan 1997 23:10:57 GMT
+Server: NCSA/1.5.2
+Last-modified: Wed, 09 Oct 1996 21:49:05 GMT
+Content-type: text/html
+Content-length: 12133
+
+<TITLE>CPS 100 - Assignment 4 - FALL 1996 </TITLE>
+<html>
+<Center>
+<h2> CPS 100 FALL 1996: Assignment #4 </h2>
+
+<p>
+
+<strong>  Due: Monday, Oct. 28 by 8am </strong>
+<p>
+<strong>  Last Date to Turn in: Monday, Nov. 4 by 8am </strong>
+<p>
+<strong> 40 points </strong>
+</Center>
+
+
+<p>
+In your cps100 directory, create a directory called assign4 using the
+mkdir command. Change into the assign4 directory. 
+
+<p>
+In order to do this assignment, you need to copy some files using the 
+following <tt> cp</tt> command (don't forget the trailing period, or dot): 
+
+<pre>
+       cp  ~rodger/cps100/assign4/*  <b>.</b>
+</pre>
+
+<p>
+This command will copy  files 
+into your directory for you to use. 
+If you type <tt> ls</tt> you should see the following files: 
+Makefile, ladder.cc, ladder.h, ladderq.cc, QueueAr.h, QueueAr.cc, 
+and template.cc.
+
+<p>
+For this assignment, you'll be using a database of English five-letter
+words from the Stanford GraphBase (knuth.dat, a list compiled by Don Knuth).  This
+list has about 6,000 words in it.  There is a smaller file of data
+to work with also called words5.dat.
+
+
+<p>
+In your <em>ladder</em> directory, create a link to these data files
+by typing:
+
+<p>
+<pre>
+   ln -s ~rodger/data/knuth.dat  knuth.dat
+   ln -s ~rodger/data/words5.dat  words5.dat
+</pre>
+<p>
+Then you can access these files without specifying a long path-name for
+the files.
+
+<p>
+For the programming problem that follows, you should use the
+style rules discussed in class, which includes meaningful variable names,
+indentation, and  comments (pre and postconditions)
+at the top of the file and for each function. Also include your name,
+date, course, and purpose in a comment at the top of the program.
+
+<hr>
+<h3> Problem: Word Ladder: Turning Stone into Money </h3>
+
+<p>
+The input to the program is the name of a word file.  The user should
+then be prompted for
+two words of the same length (5 characters).
+The output is a sequence of words
+in which consecutive words share all but one letter, starting with the
+first word and ending with the last.
+One letter can be changed to another letter only if the resulting
+symbols form a valid word. For example, to turn stone into money, one possible
+ladder is (replace 't' by 'h', replace 'o' by 'i', etc.):
+<p>
+<center>
+<xmp>
+stone
+shone
+shine
+chine
+chins
+coins
+corns
+cores
+cones
+coney
+money
+</xmp>
+</center>
+<p>
+All of these words can be found in the Knuth file and in a dictionary.
+The user will continue to enter words, and word ladders searched for,
+until either of the words entered is NOT 5 letters in length.
+<p>
+
+<hr>
+<h3>Assignment: Part I</h3>
+
+You are to write a program <em>ladderq.cc</em> that uses a file of 5-letter
+words to find the shortest ladder from one word to another using a
+process outlined below.
+You must develop a class to do this, the class <em>Ladder</em> has been
+started for you,
+but you will need to add more member functions (both public and private).
+<p>
+
+Your program should:
+<UL>
+
+<li> Read and store the words from a file (specified by the user).
+
+<li> Prompt the user to enter two five-letter
+words (and continue to prompt), 
+for each pair of words, output a shortest ladder from the first
+word to the second. If one of the words is not of length 5, your program
+should halt.
+</UL>
+
+A sample run:
+
+<xmp>
+> ladderq
+  Enter filename: words5.dat
+
+  Enter two 5-letter words (length != 5 to end): smart brain
+
+  Here is the ladder:
+  smart
+  start
+  stark
+  stack
+  slack
+  black
+  blank
+  bland
+  brand
+  braid
+  brain
+
+  Enter two 5-letter words (length != 5 to end): angel devil
+  There is no path from angel to devil
+
+  Enter two 5-letter words (length != 5 to end): no more
+>
+</xmp>
+<p>
+ 
+The file knuth.dat has extraneous information in it. Ignore lines that
+begin with *, and only process the first 5 characters on other lines.
+Knuth asks that the file not be altered, hence these restrictions.  Code
+to read this file is included as the member function <em>LoadWords</em>,
+already written for you to use.
+<p>
+
+<hr>
+
+<h3> Algorithm </h3>
+
+To find the shortest ladder, you should use the templated
+Queue class provided (QueueAr, the modified Queue class
+from the Weiss book)
+First, store all of the words from the file in a vector of
+type <em>Wnode *</em> (this is done for you in <em>LoadWords</em>).
+<p>
+
+<xmp>
+   struct Wnode
+   {
+      string word;
+      Wnode * prev;
+   };
+</xmp>
+(this assumes the use of the class <em>string</em> from CPstring.h.  You
+can use some other kind of string if you want).
+<p>
+
+A ladder is found by putting the starting word (or rather 
+a pointer to it) on
+the queue, then putting all words 1 letter away from this word on the
+queue, then putting all words 2 letters away on the queue, then all
+words 3 letters away, etc.  As each word is taken off the queue, if the
+last (target) word is found the process can stop (there may be other
+words on the queue, but they'll be ignored).
+<p>
+A Word <em>w</em> isn't actually stored
+on the queue, a pointer to a struct containing <em>w</em>
+is stored.  The other field of the struct is a pointer to the word
+that is one letter away from <em>w</em> and that caused <em>w</em> to be
+put on the queue (the word's predecessor).  
+For example, if <em>w</em> is <em>house</em>, 
+then pointers to
+structs containing <em> mouse, louse, douse, horse</em> (and so on) are
+enqueued with each struct pointing to <em>house</em> since this word
+preceeded the others and caused them to be enqueued.  The first word
+doesn't have a predecessor.  It's field cannot be 0/NULL since this is
+used for another purpose.  An easy fix is to make the pointer
+self-referential, it points to the struct itself (and this will need to
+be checked when printing ladders).
+<p>
+<strong> More Details </strong>
+<p>
+
+The first word (entered by the user) is looked up in the list of words,
+and a pointer to the struct containing the word is enqueued.  For extra
+credit your program should be able to handle a first word even if the
+word is NOT in the list of words (all other words in the ladder, except
+perhaps for the last, must be in the list of words).
+<p>
+
+Put a pointer to the struct containing the
+word onto the queue (it's a queue of Wnode pointers).  Then repeat the
+dequeue/enqueue process below.
+<p>
+
+Dequeue an element (it's a pointer).  Find all words one letter apart
+from the dequeued word.  If one of these is the target word, you're done
+(or if one of the words is one apart from the target word you're done,
+you can stop early).
+Otherwise enqueue each of the words found 
+<strong>if it hasn't been queued up
+before</strong> (you can use the <em>prev</em>
+pointer fields in a Wnode to determine if a word
+has been enqueued before --- initially all <em>prev</em> fields
+should be set to 0/NULL, this helps determine if a word has been
+enqueued before).  This means each word is enqueued
+at most once.
+<p>
+
+When the target word is derived, you'll need to print out the ladder
+from the first word to the target word.  The <em>prev</em> pointer in
+the Wnode stores information that will allow the ladder to be
+recreated, you may need to use recursion or a vector since the ladder
+will be backwards (but should be printed properly). Alternatively you
+can store the words in an array/vector and print them out in reverse
+without using recursion, but using a loop over the vector.
+<p>
+<hr>
+<h3> Ladder Member Functions </h3>
+
+You must implement the functions described below.  You'll find it useful
+to implement other member functions.  Sometimes the functions should be
+private.  This is the case when a member function is a helper function
+for other member functions, but shouldn't be called by the user.  Making
+a helper function private ensures that only other member functions can
+access the helper function, but client programs cannot.
+<p>
+<UL>
+<li> <em>Clear()</em>, sets all <em>prev</em> fields to 0/NULL.
+<li> <em>FindLadder()</em>, tries to find a ladder between two words that are
+parameters to the function.  <em>FindLadder</em> returns a boolean value
+true if a ladder is found, and false otherwise.  Pass the strings to
+this function as const reference parameters.
+<li> <em>PrintLadder()</em> prints the word ladder.  Private data may be
+needed to store the last node of the ladder (the <em>prev</em> field of 
+the last node can be used to access all other ladder nodes, the first
+node in the ladder has a self-referential pointer).
+</UL>
+<p>
+You'll probably find it useful to write a function <em>IsOneApart()</em>
+that is used to determine if two strings are one letter apart.  To do
+this, count the letters that are equal.  If this is one less than the
+total number of letters in the words, the words are one apart.  This
+function does NOT need to be a member function, it has two strings as
+parameters (const reference) and returns true if the strings are one
+letter apart.  You can just define this function in <em>ladder.cc</em>
+and use it there.
+<p>
+You'll probably want debugging code/member functions to verify what's
+going on.  If you build helping/debugging member functions into your
+class you'll save time in the long run since the member functions can be
+used to help debug code.
+<p>
+You may want to write a separate function to find a word in the vector
+of words (pointers to words) read in.  You can write this code inline
+(rather than making a function out of it), but the function can be
+useful in debugging and developing.
+<p>
+It is advisable that you test out each function you write to make
+sure it works correctly. In order to do so, it would be <b>
+very helpful </b> to create a small data file with about 8 words
+containing a small ladder of size 4 in it for testing. 
+
+
+<h3>Using Templates</h3>
+
+To use the templated Queue class you'll need to do use a file
+called <em>template.cc</em>.
+Template code needs to be seen by the compiler. To this end, all .h and
+.cc files are #included in a separate file <em>template.cc</em>.
+This file is illustrated below.
+
+<xmp>
+   #include "QueueAr.h"
+   #include "QueueAr.cc"
+   #include "ladder.h"
+
+
+   template class Queue<Wnode *>;
+</xmp>
+<p>
+
+If you want several kinds of queues, just put another definition in the
+template.cc file.  Once the template.cc file is compiled to template.o,
+you only need to relink, not recompile, every time you make a change
+in ladder.cc. This will make your recompiles much faster.
+
+<hr>
+
+<h3>Extra Credit (5 pts)</h3>
+
+Write a new version of <em>ladderq.cc</em> called <em>ladXtra.cc</em>.
+This program
+should process the words so that only "good" matches are tried when
+ladders are found.  The preprocessing step will take a long time, but
+word ladders will be found very quickly.
+<p>
+The idea is that for each word, all words one-letter away are determined
+(and stored somehow) when the words are loaded. When looking for
+candidate words to enqueue, only words that are one-letter away (these
+are already known) are checked for previous use.  This saves searching
+through the entire list of words and checking whether each is one letter
+away.  
+
+<hr>
+
+<h3> Submitting Program </h3>
+
+When your programs 
+compile and produce the correct output, create a "README" file
+(please use all capital letters).  Include your name, 
+the date, and an
+estimate of how long you worked on the assignment in the "README"
+file.  You must also include a list of names of all those people
+(students, prof, tas, tutor) with
+whom you consulted on the assignment. See the rules for collaboration
+in the CPS 100 syllabus.
+
+<p>
+To submit your programs electronically type (leave off ladXtra.cc if you
+didn't do the extra credit):
+
+
+<pre>
+   submit100 assign4 README ladderq.cc ladder.h ladder.cc template.cc ladXtra.cc
+</pre>
+
+<p>
+You should receive a message telling you that the program was submitted
+correctly. If it doesn't work try typing <tt> ~rodger/bin/submit100 </tt>
+in place
+of <tt> submit100</tt> above.
+
+<p>
+You can submit by typing <tt>make submit</tt> (or <tt> make
+submitX </tt> if you did the extra credit program) if
+the correct README file
+is in the directory from which you submit.  You can always edit the
+Makefile command submit or submitX to add or change filenames. 
+
+<hr>
+
+</html>
+

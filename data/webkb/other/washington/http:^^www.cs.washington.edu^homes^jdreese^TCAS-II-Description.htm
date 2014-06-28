@@ -1,0 +1,119 @@
+Date: Tue, 10 Dec 1996 14:20:39 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Mon, 26 Feb 1996 05:46:35 GMT
+Content-length: 4911
+
+<HTML>
+<HEAD>
+<TITLE>A Brief Introduction to TCAS II</TITLE>
+<!-- Created by: Jon Damon Reese, 21-Jan-1996 -->
+<!-- Changed by: Jon Damon Reese, 25-Feb-1996 -->
+
+</HEAD>
+<body bgcolor="#b2c7df"  text="#000000"  link="#9600d3" 
+      vlink="#00008a" alink="#000000">
+
+<H1>A Brief Introduction to TCAS II</H1>
+
+<UL>
+
+<BR><LI> An edited excerpt from
+<EM>Introduction to TCAS II</EM>,
+U.S. Department of Transportation, Federal Aviation Administration,
+March 1990:
+
+<blockquote>
+
+<P>After many years of extensive analysis, development, and flight
+evaluation by the Federal Aviation Administration and the aviation
+industry, a solution is available to the problem of reducing the risk
+of midair collisions between aircraft.  This solution is known as the
+Traffic Alert and Collision Avoidance System (TCAS).
+
+<P>TCAS is a family of airborne devices that function independently of the
+ground-based air traffic control (ATC) system, and provide collision 
+avoidance protection for a borad spectrum of aircraft types.
+
+<P>TCAS I provides proximity warning only, to assist the pilot in the
+visual acquisition of intruder aircraft.  It is intended for use by
+smaller commuter aircraft and by general aviation aircraft.
+
+<P>TCAS II provides traffic advisories and resolution advisories
+(recommended escape maneuvers) in a vertical direction to avoid
+conflicting traffic.  Airline aircraft, and larger commuter and
+business aircraft, use TCAS II equipment.
+
+<P>TCAS III, which is still under development, will provide traffic
+advisories and resolution advisories in the horizontal as well as the
+vertical direction to avoid conflicting traffic.
+
+<P>The TCAS concept makes use of the radar beacon transponders
+routinely carried by aircraft for ground ATC purposes.  The level of
+protection provided by TCAS equipment depends on the type of
+transponder the target aircraft is carrying.  It should be noted that
+TCAS provides no protection against aircraft that do not have an
+operating transponder.
+
+</blockquote>
+
+<BR><LI> A sample display (obtained from <A
+HREF="http://www.caasd.org/atca1994/NSCBrochures/html/TCASII.html">here</A>).
+The little white cross in the lower-middle of the display is the
+aircraft that this display is on.  The little red square at starboard
+is another aircraft that TCAS II has issued a resolution advisory on,
+<I>i.e.</I>, it is considered a ``threat''.  The <TT>+03</TT> over the
+threat indicates that the threat is 300 feet above this aircraft.  This
+visual resolution advisory is accompanied by an aural advisory, such as
+``Descend, Descend.''
+
+<P><blockquote>
+<IMG NAME="TCAS II Display" ALIGN=CENTER SRC="images/TCAS_Display.jpg">
+</blockquote>
+
+<BR><LI> TCAS II was originally specified by a <EM>Minimal Operational
+Performance Standard</EM>, abbreviated as--you guessed it--MOPS.  The
+MOPS is composed of two volumes.  Volume I is a textual description of
+the overall system, including hardware and communications algorithms.
+Volume II defines the collision-avoidance logic, and is a combination
+of textual description and pseudocode (called <B>E</B>), the text
+describing the code.  The pseudocode is actually divided into
+``high-level'' and ``low-level'' logic, so the logic is presented in
+three different ways.  The text and high-level logic are not
+rigorously defined, so the low-level logic is the standard with which
+avionics manufacturers must comply.  Here is an example of TCAS II
+low-level logic:
+
+<PRE>
+<U>PROCESS</U> No_weaken_test;
+
+    <U>IF</U> (WL.STATUS <U>NE</U> $NEW)
+        <U>THEN</U> <U>IF</U> (ITF.REVERSE <U>EQ</U> $TRUE)
+                   <U>THEN</U> NOWEAKEN_TIME = P.TRVSNOWEAK;
+                   <U>ELSE</U> NOWEAKEN_TIME = P.TNOWEAK;
+             <U>IF</U> (EVAL(TF.PERMTENT) <U>LE</U> EVAL(OWNTENT))
+                  <U>THEN</U> <U>IF</U> (ITF.TAUR <U>GT</U> MAX(P.STROFIR, P.FRTHR(ITF.LEV,ITF.IFIRM))
+                             <U>THEN</U> OWNTENT = TF.PERMTENT;
+             <U>ELSEIF</U> (TF.PERMTENT(4,5) <U>EQ</U> '10')
+                   <U>THEN</U> <U>CALL</U> CHECK_PROJECTION
+                          <U>IN</U> (ITF.RZ, G.ALIM, OWNTENT)
+                          <U>OUT</U> (INTHR);
+                        <U>IF</U> (INTHR <U>EQ</U> $TRUE)
+                             <U>THEN</U> OWNTENT = TF.PERMTENT;
+                             <U>ELSE</U> <U>IF</U> ((G.TCUR-ITF.TCMD) <U>LT</U> NOWEAKEN_TIME
+                                       <U>OR</U> ITF.IFIRM <U>LT</U> P.MINFIRM)
+                                       <U>THEN</U> OWNTENT = TF.PERMTENT;
+             <U>OTHERWISE</U> <U>IF</U> ((G.TCUR-ITF.TCMD) <U>LT</U> NOWEAKEN_TIME <U>OR</U>
+                            ITF.IFIRM <U>LT</U> P.MINFIRM)
+                            <U>THEN</U> OWNTENT = TF.PERMTENT;
+
+<U>END</U> No_weaken_test;
+</PRE>
+
+</UL>
+
+<BR><HR>
+<ADDRESS> <A Name=Signature HREF="mailto:jdreese@cs.washington.edu">
+     Jon Damon Reese</A></ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,269 @@
+Date: Tue, 26 Nov 1996 18:40:55 GMT
+Server: NCSA/1.5.1
+Last-modified: Tue, 16 Jan 1996 21:09:57 GMT
+Content-type: text/html
+Content-length: 6043
+
+<html>
+<HEAD>
+<TITLE>CS 156:  Parallel and Real-Time Computation</TITLE>
+</HEAD>
+<BODY>
+URL http://www.cs.hmc.edu/~keller/cs156.html
+<H3>
+<!WA0><a href = "http://www.hmc.edu/">Harvey Mudd College</a> Spring 1996
+</H3>
+<H3>
+<!WA1><A HREF="http://www.cs.hmc.edu/index.html">Computer Science</A> 156: Parallel and Real-Time Computation
+</H3>
+<h3>
+Course Personnel:
+</h3>
+<ul>
+<li>Instructor: <!WA2><a href = "http://www.cs.hmc.edu/~keller"> Robert Keller </a>
+242 Olin (4-5 p.m. MTuWTh or by appt.), keller@muddcs, x 18483
+<br>
+<br>
+<li>Secretary: <!WA3><a href = "http://www.cs.hmc.edu/~nancy"> Nancy Mandala</a> 240 Olin (1-5 M-F)  nancy@muddcs, x 18225
+<br>
+<br>
+<li>CS Intern (for account problems, etc.): <!WA4><a href = "http://www.cs.hmc.edu/~tom"> TBD</a>, 101 Beckman, TBD@muddcs, x 73485
+</ul>
+
+<P> <DT><h3>Catalog Description</h3> 
+<P> Characteristics and
+applications of parallel and real-time systems.  Specification
+techniques, architectures, languages, design, and implementation. 3
+credit hours.  
+
+<br><br>
+Prerequisites: Prerequisites: CS 124 and 131.
+3 credit hours.
+<P>
+<h3>Texts</h3>
+<P>
+Michael J. Quinn.  Parallel computing: Theory and practice.  Second Edition.  McGraw-Hill (1994).
+<P>
+Selected references such as papers will be provided.
+
+<P>
+<DT><h3>Course Requirements</h3>
+<P>
+
+There will be two or three programming assignments on parallel
+machines, as well as some written assignments.  Participants will present
+short tutorial lectures on a chosen topic.  Participants will choose a
+project with the instructor's approval, and report the results to
+the class.
+
+<P>
+<h3>CS 152 Topic Outline</h3>
+MQ denotes reading pages in Quinn's book.
+<UL>
+<li>Motivation for parallel computing <b>MQ 1-24</b>
+<ul>
+<li>Response time
+<li>User concurrency
+<li>Throughput
+<li>Fault tolerance
+<li>Logical structuring
+</ul>
+<li>Example parallel applications
+<ul>
+<li>Expression evaluation
+<li>Matrix computations
+<li>Database search
+<li>Sorting
+</ul>
+<li>Measuring and analyzing parallel program performance
+<ul>
+<li>Serial vs. parallel time, speedup
+<li>Efficiency
+</ul>
+<li>Generic models
+<ul>
+<li>Theoretically-Motivated Models
+<ul>
+<li>PRAM (parallel random-access machine) <b>MQ 25-51</b>
+<li>DAG (directed acyclic graph) model
+<li>WT (work-time) model (JaJa)
+<li>BSP (bulk-synchronous parallelism)
+</ul>
+
+<li>Architecturally-Motivated Models
+<ul>
+<li>Interconnection Networks <b>MQ 52-89</b>
+<li>MIMD (multiple-instruction-stream, multiple-data-stream)
+<li>SIMD (single-instruction-stream, multiple-data-stream)
+<li>SPMD (single-program, multiple-data)
+</ul>
+
+<li>Language-Motivated Models
+<ul>
+<li>Dataflow
+<li>Systolic arrays
+<li>Functional programming
+<li>Logic programming (goal trees)
+<li>Object-oriented programming
+</ul>
+</ul>
+
+<li>Architecture Studies <b>MQ 52-89</b>
+<ul>
+
+<li>SIMD architectures
+<ul>
+<li>Connection Machine
+<li>ICL DAP
+<li>Masspar
+</ul>
+
+<li>MIMD architectures
+<ul>
+
+<li>Shared memory
+<ul>
+<li>Sequent Symmetry
+<li>Cray T3D
+</ul>
+
+<li>Partitioned memory
+<ul>
+<li>Paragon
+<li>nCube
+</ul>
+
+<li>NUMA (non-uniform memory access machines)
+<ul>
+<li>BBN butterfly
+<li>Cedar
+</ul>
+<li>Clusters
+</ul>
+
+<li>Other architectures
+<ul>
+<li>Dataflow
+<li>Graph reduction
+<li>VLIW (very-long instruction word machines)
+<li>Systolic arrays
+<li>Neural networks
+</ul>
+</ul>
+<li>Programming
+<ul>
+<li>Low-level
+<ul>
+<li>Review of processes, communication
+<li>Rendezvous
+<li>Unix process management
+<li>Barrier synchronization
+<li>Mach 
+</ul>
+<li>Higher level
+<ul>
+<li>Linda
+<li>Futures
+<li>APL-like operators
+</ul>
+</ul>
+
+<li>Language issues
+<ul>
+<li>Parallel decomposition
+<li>Dataflow analysis
+<li>Grain-size
+<li>Trace scheduling
+</ul>
+<li>Languages <b>MQ 91-130</b>
+<ul>
+<li>Concurrent Functional Languages
+<li>Sisal
+<li>MultiLisp
+<li>Fortran 90, High-Performance Fortran
+<li>Ada 9x
+<li>Concurrent C
+<li>*c, *Lisp
+<li>Concurrent Prolog, Strand
+<li>PVM, MPI
+</ul>
+
+<li>Mapping and scheduling <b>MQ 131-156</b>
+
+<li>Other System issues
+<ul>
+<li>Scalability, Isoefficiency metric (Kumar)
+<li>Cache coherence
+<li>Combining networks
+<li>Load balancing
+<li>Deadlocks
+<li>Fault tolerance
+</ul>
+
+<li>Algorithm Studies
+<ul>
+<li>Elementary <b>MQ 157-177</b>
+<li>Matrix multiplication <b>MQ 178-197</b>
+<li>Fast Fourier Transform <b>MQ 198-216</b>
+<li>Solving Linear Systems <b>MQ 217-254</b>
+<li>Sorting <b>MQ 255-293</b>
+<li>Parallel Search <b>MQ 294-308</b>
+<li>Graph Algorithms <b>MQ 309-335</b>
+<li>Combinatorial Search <b> MQ 336-366</b>
+</ul>
+
+<li>Applications and case studies
+<ul>
+<li>Finite elements
+<li>Parallel logic programs
+<li>Monte Carlo traveling salesman problem
+<li>Many-body simulation
+<li>Theorem proving
+</ul>
+<li>Real-Time Systems
+<ul>
+<li>Characteristics and examples of real-time systems
+<li>Timing and performance issues
+<li>Handling time delays and timeouts
+<li>Deadline specification and scheduling
+<li>Language requirements
+</ul>
+
+<h3>Table of Contents,  Parallel Computing: Theory and Practice </h3>
+
+<ol>
+<li>Introduction
+<li>PRAM Algorithms
+<li>Processor Arrays, Multiprocessors, and Multicomputers
+<li>Parallel Programming Languages
+<li>Mapping and Scheduling
+<li>Elementary Parallel Algorithms
+<li>Matrix Multiplication
+<li>The Fast Fourier Transform
+<li>Solving Linear Systems
+<li>Sorting
+<li>Dictionary Operations
+<li>Graph Algorithms
+<li>Combinatorial Search
+</ol>
+
+<h3>Some additional references</h3>
+<ul>
+<li>Joseph JaJa, An introduction to parallel algorithms, Addision-Wesley 1992.
+<li>Guy E. Blelloch.  Vector models for data-parallel computing, MIT Press 1990.
+<li>Vipin Kumar, et al., Introduction to parallel computing, design and analysis of algorithms, Benjamin/Cummings 1994.
+<li>Geoffrey Fox, et al., Parallel computing works!, Morgan-Kauffman 1994.
+<li>Gregory Pfister, In search of clusters, Prentice-Hall 1995.
+</ul>
+
+<h3><a name = "www_links">
+Worldwide Web Links:</a> </h3>
+<ul>
+<li><!WA5><a href = "http://www.cs.cmu.edu/Web/Groups/scandal/www/research-groups.html">Supercomputing and Parallel Computing Research Groups</a>
+
+</ul>
+
+</ul> 
+RCS $Id: cs156.html,v 1.2 1996/01/16 19:25:55 keller Exp keller $
+
+</html>

@@ -1,0 +1,77 @@
+Date: Mon, 02 Dec 1996 16:00:34 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+ <html>
+
+<TITLE>CSE 473 Assignment 2</TITLE>
+<body>
+
+<H1>CSE 473 Assignment 2<br>
+</h1> 
+
+<p>
+Due Friday, April 5 in class.
+<p>
+
+<P>
+<H2>Reading</H2>
+
+Finish reading Chapter 2.  Also read Dalton's brief
+<a href="CLOS-guide-Dalton.txt"><b>guide to CLOS</b></a>.
+<p>
+Here is the Lisp code for the
+<a href="closdemo.lsp">CLOS demonstration</a>
+that I gave in class on Friday, April 5.
+
+
+<H2>Part 1: A Sequence Predictor</H2>
+
+Do exercise 21 at the end of Chapter 2.
+<p>
+After you get the function NEXT to work as
+described in the book, add one of the following
+additional capabilities:
+<OL>
+<LI> recognition of sequences that are the results
+of interleaving pairs of arithmetic or geometric
+sequences.
+<LI> recognition of periodic sequences (sequences
+where an arbitrary finite sequence is repeated
+over and over).
+<LI> recognition of sequences that are generated
+by counting modulo n in increments of m.
+For example if m = 5 and n = 12, then the sequence
+goes 0, 5, 10, 3, 8, 1, 6, 11, ...
+</OL>
+
+<H2>Part 2: An S-expression Diagrammer.</H2>
+
+Using the Common Graphics capabilities of Allegro
+Common Lisp for Windows, write a function
+DRAW-LIST which takes as its argument an S-expression
+which is a list representing a tree and draws the
+tree on a new window.  One way of doing this is by
+setting up a 2-D array and assigning each node
+to an appropriate row and column, and then plotting
+the node labels and connecting nodes and their children with lines.
+(To see examples of the use of Common Graphics, go into Lisp and
+load some of the examples that are there in the Allegro subdirectory.)
+
+<p>
+For extra credit, make the tree look nice.
+For example, if the tree has symmetrical list structure,
+then the plot should look symmetrical, too, and this
+should hold true for any subtree as well.
+<HR>
+As per Jeremy's request in class on Wednesday, April 3,
+please turn in your solution to the second part of this assignment
+on a PC diskette with your name on the label.
+<HR>
+<address>
+tanimoto@cs.washington.edu
+</address>
+
+</html>
+
+

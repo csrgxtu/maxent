@@ -1,0 +1,279 @@
+Date: Mon, 11 Nov 1996 17:57:54 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 08 May 1996 21:52:58 GMT
+Content-length: 7651
+
+<HTML>
+
+<HEAD>
+<TITLE>CS 110 Section 2 Lecture Notes - Week 8</TITLE>
+</HEAD>
+
+<BODY>
+
+<H2><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~bestor/cs110/cs110.html#text" ><!WA1><!WA1><!WA1><IMG SRC="http://www.cs.wisc.edu/~bestor/icons/arrowleft.gif" WIDTH=15 HEIGHT=15></A> Lecture Notes - Week 8</H2>
+
+<HR>
+
+<DL>
+   <DT>Topic:
+   <DD>Multi-dimensional arrays. Multi-dimensional array arguments. Parallel arrays.<P>
+
+   <DT>Text:
+   <DD>8.1 - 8.3<P>
+
+   <DT>Notes:
+   <DD>
+
+   <HR>
+
+   <CENTER>
+   <H3>Two-Dimensional Arrays</H3>
+   </CENTER>
+
+   <H4>One-Dimensional Arrays</H4>
+   <UL>
+      <LI>1-D arrays have <EM>one subscript</EM>.  The subscript specifies which value in the array you want.
+      <LISTING>
+	INTEGER SCORES(10)
+	...
+	PRINT *, SCORES(3)
+      </LISTING>
+      <LI>View the array as a single <EM>row</EM> of boxes.
+      <LISTING>
+	                SCORES()
+	  1   2   3   4   5   6   7   8   9  10
+	+---+---+---+---+---+---+---+---+---+---+
+	|-15|83 |92 |132|73 | 9 |27 |-54|82 |294|
+	+---+---+---+---+---+---+---+---+---+---+
+      </LISTING>
+      <LI>Only <STRONG>one</STRONG> subscript is needed to uniquely specify any particular position in the array.
+   </UL>
+
+   <H4>Two-Dimensional Arrays</H4>
+   <UL>
+      <LI>2-D arrays have <EM>two</EM> subscripts.
+      <LISTING>
+	arrayname(sizeX,sizeY)
+
+	CHARACTER TICTAC(3,3)
+      </LISTING>
+      <LI>The size of the array (i.e. number of values it can store) equals <EM>sizeX*sizeY</EM>
+      <LISTING>
+	TICTAC(1,1), TICTAC(1,2), TICTAC(1,3), TICTAC(2,1), TICTAC(2,2), TICTAC(2,3), TICTAC(3,1), TICTAC(3,2), TICTAC(3,3),
+      </LISTING>
+	<TT>3*3 = 9</TT> different values!
+      <LI>To access a particular value specify both its subscripts; i.e. the <EM>column</EM> (X coordinate) and <EM>row</EM> (Y coordinate).
+      <LISTING>
+	arrayname(column, row)
+
+	PRINT *, TICTAC(3,2)
+	READ *, TICTAC(X,Y)
+      </LISTING>
+      <LI><STRONG>Important</STRONG>: The order of the subscripts is <STRONG>very</STRONG> important.
+      <LISTING>
+	TICTAC(3,2) .NE. TICTAC(2,3)
+      </LISTING>
+      <LI>View a 2-D array as a <EM>grid</EM>.
+      <LISTING>
+	       TICTAC(X,Y)
+	
+	      +---+---+---+
+	    3 | O | X | X |
+	      +---+---+---+
+	Y = 2 | O | X | O |
+	      +---+---+---+
+	    1 | X | O | O |
+	      +---+---+---+
+	    X = 1   2   3
+      </LISTING>
+      <LI><STRONG>Two</STRONG> subscripts are needed to uniquely specify a position in the grid; i.e. the <EM>column</EM> and <EM>row</EM>.
+      <LI>As with 1-D arrays, subscripts can be <EM>literals</EM>, <EM>variables</EM> or <EM>expressions</EM>, or any combination thereof.
+      <LISTING>
+	TICTAC(COL, 2)
+	TICTAC(1,NINT(-COS(180)*2))
+      </LISTING>
+      <LI>2-D arrays do not have to be <EM>square</EM>.  The number of rows and columns can differ.
+      <LISTING>
+	INTEGER GRADES(10,4)
+	...
+	PRINT *, 'Grades for student',STU
+	DO GRA = 1,4
+	   PRINT *, GRADES(STU,GRA)
+	END DO
+      </LISTING>
+   </UL>
+
+   <HR>
+
+   <CENTER>
+   <H3>2-D Arrays and DO Loops</H3>
+   </CENTER>
+
+   <UL>
+      <LI>1-D arrays are processed with a single <TT>DO</TT> loops whose counter is used as the array subscript.
+      <LISTING>
+	DO COUNT = 1, MAXSIZ
+	   PRINT *, SCORES(COUNT)
+	END DO
+      </LISTING>
+      <LI>2-D arrays are processed with <EM>two</EM> <TT>DO</TT> loops.  Both counters are used as array subscripts.  <STRONG>Important</STRONG>: <TT>DO</TT> loops must be <EM>nested</EM>.
+      <LISTING>
+	DO Y = 3, 1, -1
+	   DO X  1, 3
+	      PRINT *, TICTAC(X,Y)
+	   END DO
+	END DO
+      </LISTING>
+      <LI>Use an <EM>implied DO loop</EM> for the <STRONG>inner</STRONG> loop so that all the values for each row appear on the same line.
+      <LISTING>
+	C     Print rows (Y-axis)
+	      DO 100 Y = 3, 1, -1
+	C        Print columns of each row (X-axis)
+	         PRINT *, (TICTAC(X,Y), X = 1, 3)
+	      END DO
+      </LISTING>
+      <LI><STRONG>Important</STRONG>: outer loop for <EM>rows</EM> Y, inner loop for <EM>columns</EM> X.
+   </UL>
+
+   <HR>
+
+   <CENTER>
+   <H3>2-D Array Arguments</H3>
+   </CENTER>
+   <UL>
+      <LI>To pass 1-D arrays as arguments to a user-defined function/subroutine, pass the array <EM>name</EM> and the array <EM>size</EM>.
+      <LISTING>
+	PRINT *, GETMAX(SCORES, MAXSIZ)
+	...
+	INTEGER FUNCTION GETMAX (LIST, SIZE)
+      </LISTING>
+      <LI>To pass 2-D arrays as arguments, pass the array <EM>name</EM> and <STRONG>both</STRONG> the array sizes <EM>sizeX</EM> and <EM>sizeY</EM>.
+      <LISTING>
+	      SHOW(TICTAC, 3, 3)
+	      ...
+
+	      SUBROUTINE SHOW(BOARD, SIZEX, SIZEY)
+	C     Prints the board on the screen
+
+	C     Declare arguments
+	      INTEGER SIZEX, SIZEY
+	      CHARACTER BOARD(SIZEX, SIZEY)
+
+	C     Print rows (Y-axis)
+	      DO Y = SIZEY, 1, -1
+	         Print columns of each row (X-axis)
+	         PRINT *, (BOARD(X,Y), X = 1, SIZEX)
+	      END DO
+
+	      RETURN
+	      END
+      </LISTING>
+   </UL>
+
+   <HR>
+   <CENTER>
+   <H3>DATA Statement</H3>
+   </CENTER>
+   <UL>
+      <LI>The <TT>DATA</TT> statement provides a convenient way to initialize an array.
+      <LISTING>
+	DATA arrayname / value1, value2, ... /
+
+	INTEGER MAXSIZ
+	PARAMETER (MAXSIZ=8)
+
+	INTEGER SCORES(MAXSIZ)
+	DATA SCORES /83,94,75,39,97,86,91,73/
+      </LISTING>
+      <LI><TT>DATA</TT> statement should appear <EM>immediately</EM> after the array declaration.
+      <LI>Can initialize an array to all the same values, e.g. zero.
+      <LISTING>
+	DATA arrayname / arraysize * value/
+
+	DATA SCORES /MAXSIZ * 0/
+      </LISTING>
+   </UL>
+
+   <H4>Column-Major Order</H4>
+   <UL>
+      <LI>Internally, 2-D arrays are stored as a list of values (e.g. like a long 1-D array) in <EM>column-major order</EM> where each "column" is stored next to each other.  In this case, the "column" is considered to be the first subscript; i.e. <TT>TICTAC(column, row)</TT> 
+      <LISTING>
+	CHARACTER TICTAC(3,3)
+
+	TICTAC(1,1), TICTAC(2,1), TICTAC(3,1), TICTAC(1,2), ...
+      </LISTING>
+      <LI>If <TT>PRINT</TT>, <TT>READ</TT> or <TT>WRITE</TT>the whole array, or initialize it with a <TT>DATA</TT> statement, then array values will be listed in column-major order.
+      <LISTING>
+	      TICTAC(X,Y)
+
+	     +---+---+---+
+	   3 | O | X | X |
+	     +---+---+---+
+	Y= 2 | O | X | O |
+	     +---+---+---+
+	   1 | X | O | O |
+	     +---+---+---+
+	   X = 1   2   3
+
+      </LISTING>
+   For example,
+      <LISTING>
+	PRINT *, TICTAC
+      </LISTING>
+   prints
+      <LISTING>
+	X O O O X O O X X
+      </LISTING>
+   </UL>
+
+   <HR>
+
+   <CENTER>
+   <H3>Parallel Arrays</H3>
+   </CENTER>
+   <UL>
+      <LI>Often have several arrays of the same size storing related values. For example, a student's name, grades, year and GPA.
+      <LISTING>
+	INTEGER NUMSTU
+	PARAMETER (NUMSTU = 50)
+
+	CHARACTER *20 NAME(NUMSTU)
+	INTEGER       GRADES(NUMSTU,4)
+	CHARACTER *2  YEAR(NUMSTU)
+	REAL          GPA(NUMSTU)
+      </LISTING>
+      <LI>Called <EM>parallel arrays</EM> because all the values for a particular student have the <EM>same</EM> subscript.<P>
+
+	e.g. For student #7:
+      <UL>
+          <LI>Name = <TT>NAME(7)</TT>
+          <LI>Grades = <TT>GRADES(7,X)</TT> [X=1..4]
+          <LI>Year = <TT>YEAR(7)</TT>
+          <LI>GPA = <TT>GPA(7)</TT>
+      </UL>
+
+
+      <LISTING>
+	C     Display every student's data
+	      DO S = 1, NUMSTU
+	         PRINT *, 'Name:', NAME(S)
+	         PRINT *, 'Grades:',(GRADES(S,X),X=1,4)
+	         PRINT *, 'Year:', YEAR(S)
+	         PRINT *, 'GPA:', GPA(S)
+	      END DO
+      </LISTING>
+   </UL>
+
+</DL>
+
+</BODY>
+
+<HR>
+
+<ADDRESS>
+<H5>Copyright &copy 1996 <!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~bestor/bestor.html">Gareth S. Bestor</A> (<!WA3><!WA3><!WA3><A HREF="mailto:bestor@cs.wisc.edu">bestor@cs.wisc.edu</A>).  Last modified May 8, 1996.</H5>
+</ADDRESS>
+
+			

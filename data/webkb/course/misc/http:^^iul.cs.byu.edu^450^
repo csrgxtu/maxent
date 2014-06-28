@@ -1,0 +1,127 @@
+Date: Wed, 20 Nov 1996 21:56:32 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Mon, 18 Nov 1996 19:12:06 GMT
+Content-length: 8119
+
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE>
+Introduction to Digital Signal and Image Processing
+</TITLE>
+</HEAD>
+<BODY bgcolor="eeeeee">
+<meta name="description" value="
+Introduction to Digital Signal and Image Processing
+">
+<meta name="keywords" value="450">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+ <BR> <HR><!-- navigation --> <!WA0><a href="http://iul.cs.byu.edu/450/"><!WA1><IMG ALIGN=MIDDLE HEIGHT=32 WIDTH=32 SRC="http://iul.cs.byu.edu/icons/button-book.gif" ALT="beginning"></a> <!WA2><IMG ALIGN=MIDDLE ALT="gif" SRC="http://iul.cs.byu.edu/gifs//left_gr.gif"> <!WA3><A NAME=tex2html47 HREF="http://www.cs.byu.edu"><!WA4><IMG ALIGN=MIDDLE ALT="up" SRC="http://iul.cs.byu.edu/gifs//up.gif"></A> <!WA5><A NAME=tex2html49 HREF="http://iul.cs.byu.edu/450/node1.html"><!WA6><IMG ALIGN=MIDDLE ALT="gif" SRC="http://iul.cs.byu.edu/gifs//right.gif"></A> <!WA7><A NAME=tex2html51 HREF="http://iul.cs.byu.edu/450/node1.html"><!WA8><IMG ALIGN=MIDDLE ALT="contents" SRC="http://iul.cs.byu.edu/gifs//contents.gif"></A>       <!WA9><A HREF="news:byu.class.cs450"><!WA10><IMG ALIGN=MIDDLE SRC="http://iul.cs.byu.edu/icons/news.gif" ALT="News"></A> <BR>
+<br><B> Next:</B> <!WA11><A NAME=tex2html50 HREF="http://iul.cs.byu.edu/450/node1.html">Contents</A>
+<br><B>Up:</B> <!WA12><A NAME=tex2html48 HREF="http://www.cs.byu.edu">BYU CS Department</A>
+<BR> <HR> <P>
+ <H1>
+Introduction to Digital Signal and Image Processing
+</H1>
+<P><STRONG>
+	<!WA13><A NAME=tex2html1 HREF="http://iul.cs.byu.edu/morse/morse.html">Bryan S. Morse, Ph.D.</A> <BR> 
+	<!WA14><A NAME=tex2html2 HREF="http://www.cs.byu.edu/">Department of Computer Science</A> <BR> 
+	<!WA15><A NAME=tex2html3 HREF="http://www.byu.edu/">Brigham Young University</A><BR> 
+	<BR> 
+	Computer Science 450 <BR> 
+	Fall 1996
+</STRONG><P>
+<P>
+These notes are designed to supplement CS 450, 
+an <em> Introduction to Digital Signal and Image Processing</em> course in the 
+<!WA16><A NAME=tex2html4 HREF="http://www.cs.byu.edu">Department of Computer Science</A> at 
+<!WA17><A NAME=tex2html5 HREF="http://www.byu.edu">Brigham Young University</A>.  
+Please <!WA18><A NAME=tex2html6 HREF="mailto:morse@cs.byu.edu">contact the author</A>
+if you have any questions or suggestions.
+<P>
+This document was converted from LaTeX using 
+<!WA19><A NAME=tex2html7 HREF="http://cbl.leeds.ac.uk/nikos/tex2html/doc/latex2html/latex2html.html">latex2html</A>, 
+so there are 
+<!WA20><A HREF="http://iul.cs.byu.edu/450/node50.html#chviewingtips">a few things you may need to do to get it to look nice</A>.
+<P>
+There are also 
+<!WA21><A HREF="http://iul.cs.byu.edu/450/node51.html#chprintingtips">some tips on getting printed copies of these notes</A>.
+<P>
+<b> Note:</b> These on-line notes are still generally under construction
+and <em> will</em> change frequently.
+Please bear with me during this construction phase.
+<P>
+<BR> <HR>
+<UL> 
+<LI> <!WA22><A NAME=tex2html52 HREF="http://iul.cs.byu.edu/450/node1.html#SECTION01000000000000000000">Contents</A>
+<LI> <!WA23><A NAME=tex2html53 HREF="http://iul.cs.byu.edu/450/node2.html#SECTION02000000000000000000"> Course Information</A>
+<UL> 
+<LI> <!WA24><A NAME=tex2html54 HREF="http://iul.cs.byu.edu/450/node3.html#SECTION02100000000000000000"> Course Information and Policies</A>
+<LI> <!WA25><A NAME=tex2html55 HREF="http://iul.cs.byu.edu/450/node4.html#SECTION02200000000000000000"> Class Schedule</A>
+</UL> 
+<LI> <!WA26><A NAME=tex2html56 HREF="http://iul.cs.byu.edu/450/node5.html#SECTION03000000000000000000"> Lectures</A>
+<UL> 
+<LI> <!WA27><A NAME=tex2html57 HREF="http://iul.cs.byu.edu/450/node6.html#SECTION03100000000000000000"> Introduction</A>
+<LI> <!WA28><A NAME=tex2html58 HREF="http://iul.cs.byu.edu/450/node7.html#SECTION03200000000000000000"> Signals and Images</A>
+<LI> <!WA29><A NAME=tex2html59 HREF="http://iul.cs.byu.edu/450/node8.html#SECTION03300000000000000000"> Mathematical Preliminaries - Part 1</A>
+<LI> <!WA30><A NAME=tex2html60 HREF="http://iul.cs.byu.edu/450/node9.html#SECTION03400000000000000000"> Mathematical Preliminaries - Part 2</A>
+<LI> <!WA31><A NAME=tex2html61 HREF="http://iul.cs.byu.edu/450/node10.html#SECTION03500000000000000000"> Mathematical Preliminaries - Part 3</A>
+<LI> <!WA32><A NAME=tex2html62 HREF="http://iul.cs.byu.edu/450/node11.html#SECTION03600000000000000000"> Light, Eyes, Cameras, and Detection Statistics</A>
+<LI> <!WA33><A NAME=tex2html63 HREF="http://iul.cs.byu.edu/450/node12.html#SECTION03700000000000000000"> Information and Signals</A>
+<LI> <!WA34><A NAME=tex2html64 HREF="http://iul.cs.byu.edu/450/node13.html#SECTION03800000000000000000"> Signal Distance and Linear Approximation of Signals</A>
+<LI> <!WA35><A NAME=tex2html65 HREF="http://iul.cs.byu.edu/450/node14.html#SECTION03900000000000000000"> The Harmonic Orthogonal Set</A>
+<LI> <!WA36><A NAME=tex2html66 HREF="http://iul.cs.byu.edu/450/node15.html#SECTION031000000000000000000"> Transformations</A>
+<LI> <!WA37><A NAME=tex2html67 HREF="http://iul.cs.byu.edu/450/node16.html#SECTION031100000000000000000"> Systems and Their Characterization</A>
+<LI> <!WA38><A NAME=tex2html68 HREF="http://iul.cs.byu.edu/450/node17.html#SECTION031200000000000000000"> The Fourier Transform</A>
+<LI> <!WA39><A NAME=tex2html69 HREF="http://iul.cs.byu.edu/450/node18.html#SECTION031300000000000000000"> Common Functions and Properties of the FT</A>
+<LI> <!WA40><A NAME=tex2html70 HREF="http://iul.cs.byu.edu/450/node19.html#SECTION031400000000000000000"> Convolution Theorem, Transfer Functions, and Filtering</A>
+<LI> <!WA41><A NAME=tex2html71 HREF="http://iul.cs.byu.edu/450/node20.html#SECTION031500000000000000000"> Discrete Spatial Sampling and Reconstruction</A>
+<LI> <!WA42><A NAME=tex2html72 HREF="http://iul.cs.byu.edu/450/node21.html#SECTION031600000000000000000"> FFT Algorithm, Other Transforms (DCT, KLT, Wavelets)</A>
+<LI> <!WA43><A NAME=tex2html73 HREF="http://iul.cs.byu.edu/450/node22.html#SECTION031700000000000000000"> Noise</A>
+<LI> <!WA44><A NAME=tex2html74 HREF="http://iul.cs.byu.edu/450/node23.html#SECTION031800000000000000000"> Level Operations</A>
+<LI> <!WA45><A NAME=tex2html75 HREF="http://iul.cs.byu.edu/450/node24.html#SECTION031900000000000000000"> Filtering</A>
+<LI> <!WA46><A NAME=tex2html76 HREF="http://iul.cs.byu.edu/450/node25.html#SECTION032000000000000000000"> Restoration</A>
+<LI> <!WA47><A NAME=tex2html77 HREF="http://iul.cs.byu.edu/450/node26.html#SECTION032100000000000000000"> Human Perception and Displays</A>
+<LI> <!WA48><A NAME=tex2html78 HREF="http://iul.cs.byu.edu/450/node27.html#SECTION032200000000000000000"> Color</A>
+<LI> <!WA49><A NAME=tex2html79 HREF="http://iul.cs.byu.edu/450/node28.html#SECTION032300000000000000000"> Coding</A>
+<LI> <!WA50><A NAME=tex2html80 HREF="http://iul.cs.byu.edu/450/node29.html#SECTION032400000000000000000"> Compression</A>
+<LI> <!WA51><A NAME=tex2html81 HREF="http://iul.cs.byu.edu/450/node30.html#SECTION032500000000000000000"> Video</A>
+<LI> <!WA52><A NAME=tex2html82 HREF="http://iul.cs.byu.edu/450/node31.html#SECTION032600000000000000000"> Detection</A>
+<LI> <!WA53><A NAME=tex2html83 HREF="http://iul.cs.byu.edu/450/node32.html#SECTION032700000000000000000"> Recognition</A>
+<LI> <!WA54><A NAME=tex2html84 HREF="http://iul.cs.byu.edu/450/node33.html#SECTION032800000000000000000"> Correlation</A>
+<LI> <!WA55><A NAME=tex2html85 HREF="http://iul.cs.byu.edu/450/node34.html#SECTION032900000000000000000"> Geometric Operations</A>
+<LI> <!WA56><A NAME=tex2html86 HREF="http://iul.cs.byu.edu/450/node35.html#SECTION033000000000000000000"> Wrap-up and Review</A>
+</UL> 
+<LI> <!WA57><A NAME=tex2html87 HREF="http://iul.cs.byu.edu/450/node36.html#SECTION04000000000000000000"> Assignments</A>
+<UL> 
+<LI> <!WA58><A NAME=tex2html88 HREF="http://iul.cs.byu.edu/450/node37.html#SECTION04100000000000000000"> Assignment 1</A>
+<LI> <!WA59><A NAME=tex2html89 HREF="http://iul.cs.byu.edu/450/node38.html#SECTION04200000000000000000"> Assignment 2</A>
+<LI> <!WA60><A NAME=tex2html90 HREF="http://iul.cs.byu.edu/450/node39.html#SECTION04300000000000000000"> Assignment 3</A>
+<LI> <!WA61><A NAME=tex2html91 HREF="http://iul.cs.byu.edu/450/node40.html#SECTION04400000000000000000"> Assignment 4</A>
+<LI> <!WA62><A NAME=tex2html92 HREF="http://iul.cs.byu.edu/450/node41.html#SECTION04500000000000000000"> Assignment 5</A>
+<LI> <!WA63><A NAME=tex2html93 HREF="http://iul.cs.byu.edu/450/node42.html#SECTION04600000000000000000"> Assignment 6</A>
+</UL> 
+<LI> <!WA64><A NAME=tex2html94 HREF="http://iul.cs.byu.edu/450/node43.html#SECTION05000000000000000000"> Exams</A>
+<UL> 
+<LI> <!WA65><A NAME=tex2html95 HREF="http://iul.cs.byu.edu/450/node44.html#SECTION05100000000000000000"> Exam Topics: Midterm Examination</A>
+<LI> <!WA66><A NAME=tex2html96 HREF="http://iul.cs.byu.edu/450/node45.html#SECTION05200000000000000000"> Exam Topics: Final Examination</A>
+</UL> 
+<LI> <!WA67><A NAME=tex2html97 HREF="http://iul.cs.byu.edu/450/node46.html#SECTION06000000000000000000"> Other Information and Resources</A>
+<UL> 
+<LI> <!WA68><A NAME=tex2html98 HREF="http://iul.cs.byu.edu/450/node47.html#SECTION06100000000000000000"> Glossary</A>
+<LI> <!WA69><A NAME=tex2html99 HREF="http://iul.cs.byu.edu/450/node48.html#SECTION06200000000000000000"> Image Descriptions</A>
+<LI> <!WA70><A NAME=tex2html100 HREF="http://iul.cs.byu.edu/450/node49.html#SECTION06300000000000000000"> Lab Resources</A>
+<LI> <!WA71><A NAME=tex2html101 HREF="http://iul.cs.byu.edu/450/node50.html#SECTION06400000000000000000"> Some Tips on Viewing These Pages</A>
+<LI> <!WA72><A NAME=tex2html102 HREF="http://iul.cs.byu.edu/450/node51.html#SECTION06500000000000000000"> Printing These Notes</A>
+<LI> <!WA73><A NAME=tex2html103 HREF="http://iul.cs.byu.edu/450/node52.html#SECTION06600000000000000000"> Printing Lecture Overheads</A>
+</UL> 
+<LI> <!WA74><A NAME=tex2html104 HREF="http://iul.cs.byu.edu/450/node53.html#SECTION07000000000000000000">   About this document ... </A>
+</UL>
+<BR> <HR>
+<P><ADDRESS>
+&copy; <!WA75><a href="http://iul.cs.byu.edu/morse/morse.html">Bryan S. Morse</a>, 1995-1996
+</ADDRESS>
+</BODY>

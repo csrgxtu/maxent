@@ -1,0 +1,181 @@
+Date: Wed, 11 Dec 1996 22:33:33 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 02 Oct 1996 20:33:39 GMT
+Content-length: 4661
+
+<HTML>
+
+<HEAD>
+<TITLE>CS 302 Section 70 - Quiz 2</TITLE>
+</HEAD>
+
+<BODY>
+
+<H2><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~tick/cs302.html#assignments" ><!WA1><!WA1><!WA1><IMG SRC="http://www.cs.wisc.edu/~tick/icons/arrowleft.gif" WIDTH=15 HEIGHT=15></A>Quiz #2
+</H2>
+
+<OL>
+<LI>Suppose we have a set S of n elements. Also, suppose we wish to put some of these elements into a list L. Our list L is a k-permutation of the set S if
+<BLOCKQUOTE>
+a) L has size k<br>
+b) every element in L is distinct.
+</BLOCKQUOTE>
+For example: S = {0,1,2,3,4,5,6,7,8,9}. A 3-permutation of S is a 3 digit number where no two digits are the same (345 for example). 344, however, would not be a permutation, since the last two digits are the same.<br>
+The mathematical formula for the number of k-permutations when S is size n is
+<BLOCKQUOTE>
+n * (n-1) * (n-2) * (n-3) * ... * (n-k+1)<p>
+</BLOCKQUOTE>
+a) Write a DO/END DO (not a WHILE loop) to calculate this number. Assume n and k are initialized already.
+<b><p><BLOCKQUOTE>
+There are several ways to do it; here's one way:
+
+<PRE>
+ANSWER = 1
+DO I = N, N-K+1 ,-1
+   ANSWER = ANSWER*I
+END DO
+</PRE>
+A different way is by counting up
+<PRE>
+ANSWER = 1
+DO I=0,K-1
+   ANSWER = ANSWER*(N-I)
+END DO
+</PRE>
+Note that this goes to K-1 because (N-K+1) = (N-(K-1)), so I must start at
+0 and end at K-1.<p>
+</BLOCKQUOTE>
+</b>
+b) Write a DO WHILE/END DO loop to do the same. Make the same assumptions as in pt a).
+<b><p><BLOCKQUOTE>
+I'll just do the parallel DO WHILE loop to the first example in pt a):
+<PRE>
+
+ANSWER = 1
+I = N
+DO WHILE(I .GE. N-K+1)
+   ANSWER = ANSWER*I
+   I = I-1
+END DO
+</PRE>
+</b><p>
+</BLOCKQUOTE>
+<LI> What's wrong with these three code fragments? (Both problems are <STRONG>logical</STRONG>errors)<br>
+a)
+<PRE>
+        PRINT *,'Space Shuttle ready to launch'
+	PRINT *,'Begin countdown at what number?'
+	READ *,N
+	DO I=N,1
+	  PRINT *,'T minus',I
+	END DO
+	PRINT *,'BLASTOFF!'
+
+</PRE>
+<BLOCKQUOTE><B>
+Loop wants to count down, needs a -1 on the end<br>
+Should be DO I=N,1,-1
+</B></BLOCKQUOTE>
+b)
+<PRE>
+	PRINT *,'When you were born, the President was '
+	IF (AGE .GE. 4) THEN
+	   PRINT *,'Bill Clinton'
+	ELSE IF (AGE .GE. 8) THEN
+	   PRINT *,'George Bush'
+	ELSE IF (AGE .GE. 16) THEN
+	   PRINT *,'Ronald Reagan'
+	ELSE IF (AGE .GE. 20) THEN
+	   PRINT *,'Jimmy Carter'
+	ELSE IF (AGE .GE. 22) THEN
+	   PRINT *,'Gerald Ford'
+	ELSE IF (AGE .GE. 28) THEN
+	   PRINT *,'Richard Nixon'
+	ELSE
+	   PRINT *,'Whew! Older than I am!'
+	END IF
+
+
+</PRE>
+<BLOCKQUOTE><B>
+These should all be .LE.
+Otherwise, for anyone older or equal to 4, (AGE .GE. 4) will be
+.TRUE., so it'll always print Bill Clinton.
+</B></BLOCKQUOTE>
+c)
+<PRE>
+	LOGICAL DONE
+        DONE = .TRUE.
+	DO WHILE(.NOT. DONE)
+	   PRINT *,'Enter a zero'
+	   READ *,A
+	   IF (A .EQ. 0)
+	     DONE = .TRUE.
+	   ELSE
+	     DONE = .FALSE.
+             PRINT *,'You did not listen'
+	   END IF
+	END DO
+	PRINT *,'Good, you entered a zero'
+
+
+</PRE>
+<BLOCKQUOTE><B>
+The loop will run only while .NOT. DONE is .TRUE., i.e. only while
+DONE is .FALSE., so DONE must be set to .FALSE., not set to .TRUE., at
+the top of the program.
+</B></BLOCKQUOTE>
+<LI>Consider the following Subroutine:
+<PRE>
+
+C	Adds or subtracts 1 from value and reports
+C	if operation was carried out
+	SUBROUTINE ADDSUB1(OPER,VALUE,DONE)
+
+	CHARACTER*3 OPER
+	INTEGER VALUE
+	LOGICAL DONE
+
+	IF (OPER .EQ. 'ADD') THEN
+		VALUE = VALUE + 1
+		DONE = .TRUE.
+	ELSE IF (OPER .EQ. 'SUB') THEN
+		VALUE = VALUE - 1
+		DONE = .TRUE.
+	ELSE
+		DONE = .FALSE.
+	END IF
+	
+	RETURN
+	END
+
+</PRE>
+Which arguments are<br>
+a) Input arguments only 
+<B><BLOCKQUOTE>
+OPER<p>
+OPER is used by the function, but not assigned to. So the value from the main program is used, hence it is an input argument.
+</BLOCKQUOTE></B>
+b) Output arguments only 
+<B><BLOCKQUOTE>
+DONE<p>
+The value of DONE is never used (i.e. found on the right hand side of an expression), so no old value from the main program is used, so this is not an input argument. DONE is, however, assigned to, so that value gets passed out of the function, back to the main program, hence it's an output argument. 
+</BLOCKQUOTE></B>
+c) Both input and output arguments
+<B><BLOCKQUOTE>
+VALUE<p>
+The old value of VALUE is used on the right hand side of VALUE = VALUE + 1
+(i.e. the value of VALUE from the main program). The left hand side now has the new value of VALUE, to be passed back to the main program. So VALUE is both an input argument *and* an output argument.
+</BLOCKQUOTE></B>
+</OL>
+
+</BODY>
+
+<HR>
+
+<ADDRESS>
+<H5>Copyright &copy 1996 <!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~tick/tick.html">Jeff Lampert</A> (<!WA3><!WA3><!WA3><A HREF="mailto:tick@cs.wisc.edu">tick@cs.wisc.edu</A>).  Last modified September 23, 1996.</H5>
+</ADDRESS>
+
+</HTML>

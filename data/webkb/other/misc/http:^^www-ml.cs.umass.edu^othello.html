@@ -1,0 +1,112 @@
+Date: Tue, 14 Jan 1997 21:49:40 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 04 Mar 1996 17:32:13 GMT
+Content-length: 4232
+
+<html>
+<head>
+<title>Learning in Games: Othello, Checkers, and Hearts</title>
+</head>
+
+<body>
+<h1>Learning in Games: Othello, Checkers, and Hearts</h1>
+
+<p>Our interest in these games is mainly from the perspective of
+machine learning and AI search.  That is, we try out different search
+strategies, time management and learning approaches to see what works
+best.  For this purpose, Paul Utgoff describes simple protocols,
+implemented for all three games, that allow programs to play each
+other on request, directly over an internet connection.  The protocols
+are described in a <!WA0><a
+href="ftp://ftp.cs.umass.edu/pub/internet-games/tr-95-67.ps">technical
+report.</a>  Source code implementing the protocols, as well as
+basic player programs, is also available for <!WA1><a
+href="ftp://ftp.cs.umass.edu/pub/internet-games/">anonymous ftp.</a></p>
+
+<p>If you are interested in machine learning for games, you may also
+want to check out <!WA2><a
+href="http://forum.swarthmore.edu/~jay/learn-game/index.html">Jay
+Scott's page.</a></p>
+
+<h2>Othello (or Reversi)</h2>
+
+<p>Reversi, better known as Othello&trade; (a registered trademark of
+Tsukuda Original, licensed by Anjar Co., &copy; 1973, 1990 by Pressman
+Toy Corporation), is an ancient game where two players alternate turns
+flipping two-colored disks on an 8 by 8 grid, according to certain <!WA3><a
+href="http://web.cs.ualberta.ca/~brock/othguide/othellorules.html">rules;</a>
+the player with the most disks on the board at the end of the game is
+the winner.</p>
+
+<p>There are a number of good sources of information on the WWW:</p>
+<ul>
+<li><!WA4><a
+href="http://web.cs.ualberta.ca/~brock/othello.html">Brockington's
+Guide to the Game of Othello,</a> where some of this information is
+from.
+<li><!WA5><a
+href="http://www.yahoo.com/Entertainment/Games/Board_Games/Othello/">Yahoo's</a>
+links to Othello pages, servers, and so on.
+</ul>
+
+<p>To implement your own player, the simplest approach is to get the <!WA6><a
+href="ftp://ftp.cs.umass.edu/pub/internet-games/othello-2.15.tar.gz">source
+code in C</a> for o-admin (the game administrator), o-listen (the
+listening program to start a player remotely), and the basic player
+program (that does random legal moves) and substitute your own
+strategies.
+See the <!WA7><a
+href="ftp://ftp.cs.umass.edu/pub/internet-games/tr-95-67.ps">technical
+report</a> for further details on the protocol, the programs, and some
+related issues.</p>
+
+<p>A special administrator for ladder tournaments is in the works, as
+well as a WWW interface to show games and play human players against
+the programs.</p>
+
+<h2>Checkers</h2>
+
+<p>A similar protocol has now also been developed for <!WA8><a
+href="ftp://ftp.cs.umass.edu/pub/internet-games/checkers-2.2.tar.gz">checkers,</a>
+described in the same <!WA9><a
+href="ftp://ftp.cs.umass.edu/pub/internet-games/tr-95-67.ps">technical
+report.</a></p>
+
+<h2>Hearts</h2>
+
+<p>A third protocol has been developed for <!WA10><a
+href="ftp://ftp.cs.umass.edu/pub/internet-games/hearts-2.03.tar.gz">Hearts</a>--a
+multiplayer card-game.  Details of the protocol and the implementation
+are described in the same <!WA11><a
+href="ftp://ftp.cs.umass.edu/pub/internet-games/tr-95-67.ps">technical
+report.</a></p>
+
+<h2>Other Games</h2>
+
+Some of the above games have variant rule sets (e.g., Russian
+Checkers) that are not currently implemented in the protocols;  it
+should be fairly simple to modify the code to implement other rule
+sets, simply by changing the function that generates legal moves.  If
+you do, please consider making the code available by sending mail to
+<!WA12><a href="http://www-ml.cs.umass.edu/~utgoff/">Paul Utgoff</a> at <!WA13><a
+href="mailto:utgoff@cs.umass.edu">utgoff@cs.umass.edu</a> such that
+the code (and appropriate credit) can be included in the next release.</p>
+
+<p>Similarly, using the internet communication and principles described
+in the <!WA14><a
+href="ftp://ftp.cs.umass.edu/pub/internet-games/tr-95-67.ps">technical
+report,</a> other games can be implemented.
+Please let us know should you decide to do so, such that we can
+provide the appropriate links to the code on this page.</p>
+
+<hr>
+
+Last updated July 21 1995.
+<address>
+<!WA15><a href="http://www-ml.cs.umass.edu/~utgoff/">Paul Utgoff</a> -
+<!WA16><a href="mailto:utgoff@cs.umass.edu">utgoff@cs.umass.edu</a>
+</address>
+URL: http://www.cs.umass.edu/~lrn/othello.html
+</body>
+</html>

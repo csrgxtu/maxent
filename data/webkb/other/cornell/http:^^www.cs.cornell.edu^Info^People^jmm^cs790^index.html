@@ -1,0 +1,113 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 19:20:04 GMT
+Content-Type: text/html
+Content-Length: 4447
+Last-Modified: Friday, 05-Apr-96 16:35:05 GMT
+
+<html>
+<head>
+<title>
+Parallel MPEG Encoding
+</title>
+</head>
+<body bgcolor="#ffffff" text="#000000">
+
+<FONT SIZE = 12>Parallel MPEG Encoding</FONT>.......</i></FONT> by <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><a href="#mulva">MULVA</a> Inc.<br>
+
+<TABLE WIDTH=75%>
+<TR>
+<TD ALIGN=left WIDTH=33%>
+
+<!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.cornell.edu/Info/People/jmm/jmm.html">
+Jeffrey M. Moore</a><br>
+<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="mailto:jmm@cs.cornell.edu">
+<ADDRESS>jmm@cs</ADDRESS></A></TD>
+<TD ALIGN=left WIDTH=33%>
+
+<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="http://www.cs.cornell.edu/Info/People/wwlee/wwlee.html">
+William W. Lee</a><br>
+<!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="mailto:wwlee@cs.cornell.edu">
+<ADDRESS>wwlee@cs</ADDRESS></A></TD>
+<TD ALIGN=left WIDTH=33%>
+
+<!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A HREF="http://www.cs.cornell.edu/Info/People/spdawson/alpha.html">
+Scott P. Dawson</a><br>
+<!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><A HREF="mailto:spdawson@cs.cornell.edu">
+<ADDRESS>spdawson@cs</ADDRESS></A></TD>
+</TR>
+</TABLE>
+<br><br>
+
+<H2><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><IMG SRC="http://www.cs.cornell.edu/Info/People/jmm/graphics/ping.gif">...And just what is this madness???</H2>
+In the beginning in a lab deep in the heart of Upson Hall, there were
+video tapes of classroom lectures.  These tapes were on the shelf
+collecting dust bunnies.  What were we to do about this?  Well, Brian
+Smith decided that he wanted his lectures put online for his students
+to view and thus began using <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><a
+href="http://simon.cs.cornell.edu/Info/Projects/zeno/Projects/Rivl.html">RIVL</a>
+to compress his videos.  He soon realized that compressing every
+lecture would take an inordinate amount of time.  He calculated that
+if we could use every machine in the computer science department, it
+would not take nearly as long to perform this task.  We decided it
+would be fun to help Brian out with his problem, so we came up with an
+<!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><a href="http://www.cs.cornell.edu/Info/People/spdawson/abstract.html">abstract</a> to solve his
+problem.  We all agreed that it was a good place to start.  After some
+time (and a lot of labor) we came up with some code and a <!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><a
+href="http://www.cs.cornell.edu/Info/People/wwlee/opme.report.html">paper</a>
+based on our work which more closely resembles a collection of notes
+than a coherent piece of work.  So, we kept working.  We have now
+arrived at another version of our code.  This version works much
+better than before; it is better, stronger, and faster.  And to this
+end, we have written yet another technical paper to describe exactly
+what we did and why we did it.
+<p>
+
+<H2><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><IMG SRC="http://www.cs.cornell.edu/Info/People/jmm/graphics/ping.gif">...and what do we learn from this?</H2>
+Lots!  We now know the intimate details of how TCL, DP, and RIVL work
+and why performance suffers when certain things are done.  Mastering
+the black art of TCL programming actually took the smallest amount of
+time in comparison to the rest of code.  Squeezing the most
+performance out of a single-threaded, event-driven environment given a
+distributed architecture turned out to be the most time consuming and
+difficult part of the project.  RPC facilities built into DP allowed
+us to easily perform necessary communication between machines to
+distribute work requests.  The combination of the above scripting
+environments helped us to acheive our goals of delivering reliable,
+portable, high performance MPEG encoding.
+<p>
+
+<H2><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><IMG SRC="http://www.cs.cornell.edu/Info/People/jmm/graphics/ping.gif">...and how does it tie in with
+Multimedia Systems?</H2>
+Very well!  The ability to rapidly compress video using all available
+machines makes many new types of video processing possible.  It allows
+animators and movie editors to view their videos more often, thus
+shortening development time.  Because our version of parallel MPEG
+encoding is an integral part of RIVL, it is extremely easy to use.
+<p>
+
+
+<H2><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><IMG SRC="http://www.cs.cornell.edu/Info/People/jmm/graphics/ping.gif">...and how do we measure success?</H2>
+If we are able to compress a large video without becoming old and
+gray, we will have succeeded.
+
+<H2><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><IMG SRC="http://www.cs.cornell.edu/Info/People/jmm/graphics/ping.gif">...and <i>finally</i>, how are we progressing?</H2>
+We are finished with the coding state of the project.  Currently, we
+are working writing a technical report for the project.  Hopefully we
+can pull the main ideas together better than we did earlier.  Some of
+things that could be done to make this project better are:
+<ol>
+<li>Make the worker process into a daemon process.
+<li>Add in support for IP Multi-cast.
+</ol>
+<br><hr><br>
+
+<a name = "mulva">
+<i>MULVA</i> - Name of Jerry Seinfeld's girlfriend which rhymes with a
+part of the female anatomy.<br>
+Courtesy of the "Junior Mint" episode of 
+<!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><A HREF="http://www.nbc.com/entertainment/shows/seinfeld/index.html">Seinfeld</A>.
+<br><br>
+
+</body>
+</html>

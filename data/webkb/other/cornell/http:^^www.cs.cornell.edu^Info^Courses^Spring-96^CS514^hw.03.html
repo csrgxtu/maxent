@@ -1,0 +1,84 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 16-Dec-96 22:03:59 GMT
+Content-Type: text/html
+Content-Length: 3307
+Last-Modified: Wednesday, 22-May-96 21:45:46 GMT
+
+<HEAD>
+<TITLE>CS514: Homework 3</TITLE>
+</HEAD>
+<BODY>
+<H2>CS514: Homework 3</H2>
+<b>Collaboration</b>.
+Collaboration by up to three students is permitted on this assignment.
+When there is such a collaboration, a single solution should be submitted for grading and
+the solution should list the names of the collaborators.
+Other collaborations will be considered violations of Academic Integrity.
+<P>
+<b>Submission Procedure</b>.
+Solutions must be submitted by email to:
+<PRE>
+         cs514@cs.cornell.edu
+</PRE>
+The solution may by formatted as ASCII (i.e. plain text) or postscript.
+<P>
+<b>Due Date</b>.
+We must receive your email by 8:00(am) on <b>Wed., April 3, 1996</b>.
+Late Assignments will not be accepted.
+<H2>Problem Description </H2>
+Read RFC 821, <I>The Simple Mail Transfer Protocol</I>, and RFC 822, 
+<I>Standard for the Format of ARPA-Internet Text Messages</I>. RFCs can be
+retrieved from <B>rs.internic.net</B> using anonymous ftp. A selection
+of the RFCs is available at the departemental machines in the directory
+<I>/vol/doc/InterNet</I>.
+<P>
+<OL>
+<LI> 
+Find out what a <I>domain literal</I> is from RFC 822. Try sending a 
+mail message to yourself using one.
+Include a copy of the message you received in your homework solution.
+Click <A HREF="hw.03.news.html">here</A> for additional hints concerning this part of the
+assignment.
+<P> <LI>
+Excluding the connection establisment and termination, what is the
+minimum number of network round trips to send a small mail message?
+<P> <LI>
+TCP is a full-duplex protocol, yet SMTP uses TCP in a half-duplex 
+fashion. The client sends a command then stops and waits for the reply.
+Why doesn't the client send multiple commands at once--for example, a single write
+that contains the HELO, MAIL, RCPT, DATA and QUIT commands
+(assuming the body isn't too large)?
+<P> <LI>
+Consider an organization that is serviced by a collection of mail transfer agents.
+How can the DNS MX records and preference values be used to implement
+a load balancing scheme for incoming electronic mail?
+</OL>
+<P>
+This assignment requires using ftp to connect to machines outside the CS
+Department firewall.
+There are two options for this:
+<UL>
+<LI> Use <I>ncftp</I>, a new interface to the ftp client. It automatically
+starts a connection in anonymous user mode, so that you do not have to
+type user names and mail addresses. It also requests that the peer machine
+use <I>passive</I> mode when transfering data, thereby allowing data to flow back 
+over the already established TCP connection (and avoiding problems
+with the firewall).
+<P>
+<LI> 
+If the remote ftp server does not support passive mode (something indicated
+if you do not get any response to a "dir" or "get" request) you will
+have to resort to the second option.
+Use <I>ftp</I> to connect to the firewall machine (fw.cs.cornell.edu).
+When the program asks for a user name, respond with 
+"anonymous@remote.machine" but replacing remote.machine with the name of the 
+machine you want to reach. The firewall proxy server will then setup a 
+control connection and manage any future incoming data connections for your. 
+When a password is asked, do <B>not</B> type in your own password but instead type your 
+e-mail address.
+</UL>
+More information can be found in the <I>tips-firewall</I> manual page.
+</BODY>
+
+

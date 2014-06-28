@@ -1,0 +1,75 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 20:35:31 GMT
+Content-Type: text/html
+Content-Length: 2210
+Last-Modified: Wednesday, 28-Aug-96 16:28:46 GMT
+
+<title>Running Allegro CL v4.3</title>
+<!-- Changed by: Mike Hewett, 17-Jul-1996 -->
+<body    bgcolor="#ffffff"  text="#000000"  link="#0000ee" vlink="551a8b" alink="ff0000">
+
+<h1> How to Load and Run Allegro Common LISP (v4.3)</h1>
+
+These instructions pertain to the installation at the University
+of Texas but, except for the file paths, should also be applicable
+to other installations.
+
+<hr>
+
+
+<H2>Setup</H2>
+Allegro Common LISP v4.3 is available on both the IBM machines running
+AIX and the Sun machines running Solaris.  The setup for both machines
+is exactly the same.
+<p>
+If you want to run LISP from the UNIX shell, type <tt>acl</tt>.
+The binary is in the directory <tt>/lusr/bin</tt>.
+<p>
+However, the best way to run LISP is as a subprocess of Emacs.
+To do this you need to make some changes to your <tt>".emacs"</tt>
+file and to your LISP initialization file, <tt>".clinit.cl"</tt>.
+<p>
+<H3>Setting up your UNIX environment</H3>
+<ol>
+<li>Put <tt>/lusr/bin</tt> in your path variable.
+</ol>
+<H3>Setting up the ".emacs" file</H3>
+Add the following lines to the file (by the way, "fi" stands for
+"Franz Incorporated"):
+<tt>
+<ol>
+<li>(setq load-path (cons "/lusr/lib/franz/acl4.3/home/emacs/fi" load-path))
+<li>(autoload 'fi:common-lisp "fi-site-init" "" t)
+<li>(setq fi:common-lisp-image-name "acl")
+</ol>
+</tt>
+<H3>Setting up the ".clinit.cl" file</H3>
+At the end of the file, place the line:
+<tt>
+<ol>
+<li>(start-emacs-lisp-interface)
+</ol>
+</tt>
+The documentation claims that the emacs-lisp interface starts automatically, but I
+find that it doesn't.
+
+<H3>Starting LISP</H3>
+Do the command:  <tt>M-x fi:common-lisp</tt>
+<p>
+
+
+<hr>
+<h2>Running Allegro Common LISP</h2>
+The ACL shell accepts a set of commands.  For example, <tt>:LD</tt>  loads
+a file.
+Here is a <!WA0><!WA0><a href="http://www.cs.utexas.edu/users/qr/allegro-tables.html">list of ACL commands</a>.  Also,
+the Allegro Emacs-Lisp interface defines a set of Emacs commands to manipulate
+files and program components.  Type <tt>ctrl-h m</tt> in a LISP mode buffer
+to list the available commands.
+<hr>
+<!WA1><!WA1><a href="http://www.cs.utexas.edu/users/qr/algernon.html">[Algernon home]</a>
+
+<p>
+<em>This page was created by</em>
+<address><!WA2><!WA2><a href="http://www.cs.utexas.edu/users/hewett">Micheal Hewett</a></address>

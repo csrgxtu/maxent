@@ -1,0 +1,132 @@
+Date: Mon, 16 Dec 1996 22:14:30 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 15 Dec 1995 21:35:38 GMT
+Content-length: 10635
+
+<HTML>
+<head>
+<title>
+CS 718 Project Report
+</title>
+</head>
+<body>
+<H1>Visualization of Diffusely Distributed Pollutants Using Spatially-explicit
+Landscape Models</H2>
+<hr>
+<H2>Table of Contents</H2>
+<UL>
+<p><LI><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A href="#Intro">Introduction</a>
+<p><LI><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A href="#Data">Data Transformation</a>
+<p><LI><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A href="#Visualization">Visualization Procedures</a>
+<p><LI><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A href="#Results">Results</a>
+<p><LI><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A href="#Conclusion">Conclusion</a>
+<p><LI><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A href="#pict&mpg">Figures and MPEG's</a>
+<p><LI><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><A href="#Acknowledge">Acknowledge</a>
+<p><LI><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><A href="#References">References</a>
+</UL>
+<hr>
+
+<a NAME="Intro">
+<h3> Introduction</h3>
+Geographic Information System (GIS) is a powerful tool used in many fields, especially in the environmental monitoring and analysis. However, most of GIS software packages are focus on the analysis, so they often have limited presentation ability. The combination of GIS and scientific visualization enables the researchers in the field of GIS to present the processes and results of their work to the audience in a manner of more realistic sense.
+<p>
+This project visualized the processes and results of a GIS analysis for simulating the distribution of nitric pollutants in a watershed in accordance with the geographic (topological) and environmental conditions. The analysis was done by a team coordinated by Prof. Stephen DeGloria of the <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><a href="http://www.cfe.cornell.edu"> Center for the Environment</a> at Cornell using various GIS software packages and independently developed programs. The goal of this project is to generat a flexible prototype of visualization modules for a typical GIS work using IBM Data Explorer.
+</a>
+<hr>
+
+<a NAME="Data">
+<H3>Data Transformation</H3>
+Like most visualization work, the first task of this project is to acquire all necessary data. The data used in the analysis include the digital elevation models (DEM), hydrology models (runoff, water content...), soil data, landuse types, etc. The hydrology data were collected in a two year series. The results of the analysis consist of the distribution of three nitrogen compounds for the study time series. Each nitric pollutant are simulated in four different layers at the same region of study area.
+<p>
+Since the data came from different sources and the simulation was done by the analysis team using different packages and self-developed programs, the data formats are diverse. In addition, considering the huge data volume and the limitation of data storage in most machines, the data are stored in Cornell Theory Center's <!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><A href="http://www.tc.cornell.edu/UserDoc/Hardware/unitree.html">UniTree mass storage set</A>, and then retrived via AFS whenever needed. After the data were fetched, they were converted into consistent format using several UNIX shell scripts and C programs. One of the purposes of the data conversion is to speed up the data extraction from the two-year master hydrology or nitrogen data, otherwise, it will be time consuming to deal with different formats of different data sets.
+</a>
+<hr>
+
+<a NAME="Visualization">
+<H3>Visualization Procedures</H3>
+Some of the shell scripts and programs used in data conversion were extended to generate the DX input file for various data set, for example <!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/tsai/dem.dx"> DEM.dx</a> for importing the DEM into the DX. These scripts and programs are in a flexible form, so the DX can retrive various data at different time period without changing anything except the right parameters to call the programs and scripts properly.
+<p>
+After importing the data, DX needs to conduct coordinate transformation because DX has a right-hand coordinate system and most of GIS data are in left-hand coordinat systems, some of them are even in their own particular coordinate systems. In addition, since the data came from different sources, they may be collected at different time, and in different cell resolutions. If two or more data sets are involved in one application, the data have to be interpolated and/or manually adjusted to correct the coordinate displacements.
+<p>
+Assume the data are all in correctly correspondent positions, the next step is to construct the prototype of two-dimensional and three-dimensional display. Several color look-up tables have been generated and in the format of DX compatible, these LUT's are for soil, and landuse displays. Hydrology and nitrogen data are colored by the colormap module of DX. However, because most of the distributions of the nitrigen and hydrology data are not linear, a special Log scale scheme was adopted to log transform the data interactively. The log algorithm is described below:<br>
+<!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/tsai/log.gif"><br>
+By adopting this algorithm, the values of data will be scaled to values between 0 (if NewMin is specified as 1.0) to 1. Unfortunately, the results of this log algorithm varies with user sepecified NewMin and NewMax, therefore, different data sets need different parameters to accomplish a reasonable redistribution of the data values.
+<p>
+The last part of the visualization procedures is to provide adjustible animation options for different scenarios. In this project, both two-dimensional and three-dimensional animations are provided.
+<p>
+In order to provide ultimate flexibility, parameters are built in the control panels for users to specify the values interactively. These parameters include file (data) selectors, data layer selectors, coordinate correction parameters, log algorithm parameters, display options, viewing control, etc.
+</a>
+<hr>
+
+<a NAME="Results">
+<H3>Results</H3>
+In addition to the shell scripts and programs in C code mentioned above, several DX nets have been accomplished for this project. They provide visualization and animation functions for different demands. These DX nets are also equiped with control-panel-type user interfaces for inputing and interactively adjusting the data and displays as well as generating images and animations according to different scenarios. The final results are actually dependent on the scenarios. If desired, the visualization outputs of DX can also be redirected into other packages and instruments for post-processing, for example, generating a broadcast quality video tape. I have include several images and animations generated from the DX nets in the <!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><a href="#pict&mpg> Figures and MPEG's</a> section of this report.
+</a>
+<hr>
+
+<a NAME="Conclusion">
+<H3>Conclusion</H3>
+Scientific visualization techniques strengthen the presentation power of GIS. By providing the thorough viewing options in multi-dimensional space, it extends the GIS into another world. Moreover, the interactive adjusting and psudo-real time display changes for examining the data also improve the accuracy of GIS analysis.
+<p>
+The DX nets generated in this project provide the analysis team an alternative to review their work in different perspectives and to present the processes and results in a more effective and understandable way. Since those DX nets were built to provide a prototype for visualizing the GIS work, they can be used to generate various displays and animations in accordance with different purposes. They can also be easily modified for similar GIS analysis projects to adopt.
+<p>
+The tentative future work of this project might be to incorporate the visualization algorithms with the internet utilities, for example, build up the VRML applications in the Web pages.
+</a>
+<hr>
+
+<a NAME="pict&mpg">
+<H3>Pictures and MPEG's</H3>
+<p><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/tsai/images/dem_pers.jpg">A perspective view of colored DEM. <i>Last updated on NOv. 18, 1995</i>
+<p><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/tsai/images/watershed.jpg">The watershed area. <i>Last updated on Nov. 18, 1995</i>
+<p><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/tsai/images/soil.jpg">The soil map. <i>Last updated on Nov. 19, 1995</i>
+<p><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/tsai/images/land1.jpg">Landuse map for test #1. <i>Last updated on Nov. 19, 1995</i>
+<p><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/tsai/images/norg_3d.jpg">Isosurface generate from a volumetric (4-layer) nitrogen data. <i>Last updated on Nov. 26, 1995</i>
+<p><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/tsai/images/norg_slab.jpg">A slice of the organic-nitrogen volume. <i>Last updated on Nov. 26, 1995</i>
+
+<p><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/tsai/images/runoff.f1.jpg"><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><A href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/tsai/images/runoff.f1.1-50.mpg">An animation of the runoff data (day-1 to day-50) for test #1.</A><i>Last updated on Nov. 20, 1995</i>
+<p><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><img src="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/tsai/images/s.f1.jpg"><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><A href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/tsai/images/s.f1.1-50.mpg">An animation of the watercontent changes (day-1 to day-50) for test #1.</A><i>Last updated on Nov. 20, 1995</i>
+<p><LI><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/tsai/images/norg_mean.mpg">Isosurfaces of the mean values of a 30-day sequence of organic-nitrogen data.</a><i>Last updated on Nov. 27, 1995</i>
+<p><LI><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/tsai/images/norg_30frm.mpg">A 30-frame animation of a one-day organic-nitrogen volume from its mean to mean+2std.</a><i>Last updated on Nov. 27, 1995</i> and a similar example for <!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><a href="http://www.tc.cornell.edu/Visualization/Education/cs718/fall1995/tsai/images/nh4_30frm.mpg">the nh4 volume.</a> <i>Last updated on Nov. 27, 1995</i>
+</a>
+<hr>
+
+<a NAME="Acknowledge">
+<H3>Acknowledge</H3>
+This project is conducted in the class of CS-718 Topics in Computer Graphics instructed by <!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><a href="http://www.tc.cornell.edu/~bruce"> Prof. Bruce Land.</a> Thanks Prof. Land's instruction during the semester.
+<p>
+I also want to thank Chris Pelkie at the Visualization Group of Cornell's Theory Center for providing me helpful information about the IBM Data Explorer.
+<p>
+Also thank Prof. Stephen DeGloria for coordinating the GIS work and visualization work for the project, and thank Ms. Wenling Kuo and Mr. Dennis Swaney for providing me the original data.
+</a>
+<hr>
+
+<a NAME="References">
+<H3>References</H3>
+1. Asporth, V., Hakansson, A., Revay, P., "GIS Application for
+Visualization of Streams" in Computers, environment and urban system, Mar.
+1994, p-103.
+<p>
+2. Graf, K. Ch., Suter, M., Nuesch, D., "Perspective terrain
+visualization-A fusion of remote sensing, GIS, and computer graphics." in
+Computers & Graphics, 1994 v18 n6, p-795.
+<p>
+3. Wood, J. D. and Fisher, P.F., "Assesing Interpolation Accuracy in
+Elavation Models.", in IEEE computer graphics and applications, Mar. 1993,
+p-48.
+<p>
+4. Denzer, R., "Graphics for Environmental Decision Making.", in IEEE computer graphics and applications, Mar. 1993,
+p-58.
+<p>
+5. Theresa Rhyne et. al., "Visualizing Environmental Data at the EPA.", in IEEE computer graphics and applications, Mar. 1993,
+p-34.
+<p>
+6. <!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><a href="http://www.tc.cornell.edu/Visualization/tools/dx.html">IBM Data Explorer document.</a>
+</a>
+<hr>
+
+<!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><img src="http://www.tc.cornell.edu/~tsai/images/mail.gif">Your comments are welcome. Please <!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><A href="mailto:ft11@cornell.edu">E-mail me your opinions.</A>
+<hr>
+<!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><a href="http://www.tc.cornell.edu/~tsai/">Fu-an Tsai </a><i>Dec. 12, 1995</i>
+</BODY>
+</HTML>

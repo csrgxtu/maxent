@@ -1,0 +1,55 @@
+Date: Tue, 10 Dec 1996 21:28:54 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Fri, 24 Feb 1995 00:18:44 GMT
+Content-length: 1724
+
+ <html>
+
+<TITLE>Project Status</TITLE>
+<body>
+
+<H1>CSE 552 Project - 
+Entry Consistency on the T3D</H1>
+
+<H2><!WA0><a href="http://www.cs.washington.edu/homes/kapu">Kari Pulli</a> & Peter Van Vleet</H2>
+<P>
+<H2> Abstract</H2>
+This paper presents several strategies for the implementation of an
+entry consistent, distributed shared memory model on the Cray T3D. The
+Cray T3D supports a very fast interconnect and  
+allows direct remote memory accesses. We found that with such fast
+communication, many optimizations useful in the typical distributed
+environment (a relatively slow interconnect) are counter
+productive compared to a simple and straightforward implementation.
+<p>
+
+<H2> <!WA1><a href="http://www.cs.washington.edu/homes/kapu/552/report.ps"> The Paper</a> </H2>
+
+<H2> Project Files </H2>
+A simple hello <!WA2><a href="http://www.cs.washington.edu/homes/kapu/552/code/hello.ec"> program</a>.
+<p>
+The results of our hello <!WA3><a href="http://www.cs.washington.edu/homes/kapu/552/code/hello.c"> program</a> after
+we've run it through our preprocessing perl script.
+<p>
+Our preprocessing perl <!WA4><a href="http://www.cs.washington.edu/homes/kapu/552/code/ecc"> script</a>.
+<p>
+The macro <!WA5><a href="http://www.cs.washington.edu/homes/kapu/552/code/macros.h"> file</a> implementing
+the nitty gritty aspects of entry consistency.
+<p> Our entry consistency library header <!WA6><a href="http://www.cs.washington.edu/homes/kapu/552/code/ec.h"> file</a>.
+<p> Our entry consistency library C <!WA7><a href="http://www.cs.washington.edu/homes/kapu/552/code/ec.c"> code</a>.
+
+<H2>Some Background Reading</H2>
+
+<!WA8><a href="http://www.cs.washington.edu/homes/bershad/osdi94midway.ps">Write Detection for a Distributed Shared
+Memory.</a> Zekauskas, Sawdon and Bershad. A version of this paper will appear
+in the 1994 OSDI Conference.
+<p>
+<!WA9><a href="http://www.cs.cmu.edu:8001/afs/cs/project/midway/WWW/CompCon93.ps">
+The Midway Distributed Shared Memory System </a>
+Bershad, Zekauskas and Sawdon.  IEEE Compcon 93.
+<p>
+<!WA10><a href="http://www.cs.washington.edu/homes/kapu/552/f--.ps">The Cray T3D Address Space and How to Use
+It</a> Numrich. Cray Research Inc. Technical Report 94.
+
+

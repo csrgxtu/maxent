@@ -1,0 +1,144 @@
+Date: Mon, 11 Nov 1996 17:12:42 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 30 Sep 1996 00:31:12 GMT
+Content-length: 3280
+
+<HTML>
+<HEAD>
+<TITLE>Quiz 1 Soultions - CS 302 Fall 1996 - Section 4</TITLE>
+</HEAD>
+<BODY>
+
+<H4 ALIGN=CENTER>
+  <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~cs302">CS 302</A>
+  Fall 1996 - <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.wisc.edu/~milo/cs302.html">Section 4</A>
+</H4> 
+<H4 ALIGN=CENTER>Quiz 1 Solutions</H4>
+<hr><br>
+
+<OL>
+  <LI> (2 points) Briefly define the term "algorithm".
+
+<br> <br>
+  I accepted many answers for this question.  The book's definition
+is ``An algorithm is a sequence of precise instructions that leads to a solution.''
+
+<br> <br>
+
+  <LI> (2 points) State one reason that you might want to use
+       functions in a C++ program.
+
+<br> <br> 
+
+There are many possible answers, some examples are: procedural
+abstraction, breaking a program into simpler parts, code readablity,
+reuseable code, using code that someone else wrote for you, etc.
+
+<br> <br>
+       
+  <LI> (2 points) State one of the three types of programming errors we
+talked about and describe an example of that type.
+
+<br> <br>
+
+The three types are errors are: compile time error, run time error
+and logical error, I also accepted syntax error.  A compile time
+errors is when the compiler can't understand your code, so fails why
+attempting to compile your program.  A run time error is when your
+program fails and crashes when it is executed.  A logical error
+occurs when the program does not report any errors and compile or run
+time, but does not produce the correct results.
+
+<br> <br>
+
+  <LI> (2 points) Declare a variable named "number" of type integer
+and initialize it to be 17.
+
+<br> <br> 
+<TT>int number = 17;</TT>
+<br> <br>
+
+  <LI> (2 points) Declare a constant named "CM_PER_INCH" to be 2.54.
+        <br> <br> 
+
+<TT>const double CM_PER_INCH = 2.54;</TT>
+
+<br> <br>
+
+  <LI> (5 points) What is the output of the following program?
+
+<PRE>
+#include&ltiostream.h&gt
+
+int main() 
+{
+  int counter = 3, value = 2;
+  while (counter < 7) {
+    value = value * 2;
+    cout << "Value is " << value << endl;
+    if ((counter % 2) == 0) { 
+      cout << "Counter is " << counter << endl;
+    }
+    counter++;
+  }
+}
+</PRE>
+
+Answer:
+<PRE>
+Value is 4
+Value is 8
+Counter is 4
+Value is 16
+Value is 32
+Counter is 6
+</PRE>
+
+  <LI> (5 points) Write a function "calculate_score" which calculates
+and returns one team's score of a football game given the number of
+touchdowns, field goals, and extra points that team scored (in that
+order).  In football touchdowns are worth 6 points, field goals are 3
+points, and each extra points is 1 point.  The score can be calculated
+by summing the number of each type of score multiplied by the value of
+that score.
+<p>
+So for example, using your function, I could write the following code
+segment:
+
+<PRE>
+int viking_score, packer_score;
+
+// 3 Touchdowns, 3 field goals, 3 extra points
+viking_score = calculate_score(3, 3, 3); 
+
+// 3 Touchdowns, 0 field goals, 3 extra points
+packer_score = calculate_score(3, 0, 3);
+
+if (viking_score > packer_score) {
+  cout << "Vikings win." << endl;
+} else if (packer_score < viking_score) {
+  cout << "Packers win." << endl;
+} else {
+  cout << "Tie game." << endl;
+}
+</PRE>
+
+Write your code for the function below:
+<p>
+
+
+<PRE>
+int calculate_score(int td, int fg, int ep) 
+{
+  return ((td * 6) + (fg * 3) + ep);
+}
+</PRE>
+
+</OL>
+
+
+</BODY>
+</HTML>
+
+

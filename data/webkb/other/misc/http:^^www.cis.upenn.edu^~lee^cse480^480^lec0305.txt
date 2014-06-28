@@ -1,0 +1,97 @@
+Server: Netscape-Communications/1.1
+Date: Tuesday, 14-Jan-97 20:23:08 GMT
+Last-modified: Thursday, 28-Mar-96 23:09:32 GMT
+Content-length: 2578
+Content-type: text/plain
+
+Atomic Transaction
+
+Example: like a signing contract by two parties, once they both sign,
+         it is in effect.
+
+Ex: Fig 3-14
+Ex: withdraw ($100, my account)
+    deposit  ($100, your account)
+
+The Transaction Model
+
++ no. of independent processes, each of which can fail at random
++ communication reliable (by timeout and retransmission)
+
+Stable Storage
+
+3 types of Storage
+
+i) RAM - volatile, power failure, machine crashes
+ii) disk - survives CPU failures but can be lost in disk head crashes.
+iii) stable storage - designed to survive any failures 
+Fig 3-15
+
+Transaction Primitive
+
+i) Begin-Transaction - Start
+ii) End-Transaction - terminate and commit
+iii) Abort-Transaction - kill and restore old value
+iv) Read
+v) Write
+Fig 3-16
+
+Properties of Transactions
+
+i) Atomic: indivisible from outside
+ii) Consistent: maintain system invariants
+iii) Isolated: no interference from other concurrent transactions
+iv) Durable: committed changes are permanent
+E.g. atomic - append to a file
+     consistent - the law of conservation of money
+	 isolated or serializable
+	 Fig 3-17 (a)-(c)
+           (a) serial
+           (b) not serialized but OK since values are consistent
+           (c) illegal
+
+Nested Transactions
+
+- top-level transaction fork-off children, which may execute one or
+  more subtransactions
+
+- when a subtransaction commit, its results are visible to the parent
+  transactions
+
+- If the parent transaction aborted, committed subtransaction must be
+  undone.
+
+Implementation 
+   how to undo intermediate updates
+
+1) Private Workspace 
+   give a private workspace 
+   copy as needed 
+   Fig 3-18 
+2) Writeahead Log (w intentions list) 
+   files are actually modified in place before changes, a record
+   written to the write log on stable storage which transaction, which
+   file & block, old & new values
+   After the log, files are changed
+   Fig 3-19
+   If commit, a commit record written on log
+   If abort, changes undone (or rollback)
+   The log can also be used for recovering from crashes
+
+Two-Phase Commit Protocol
+
+- how to commit a transaction atomically
+- why is it difficult?
+  The General Paradox
+      two generals want to agree on a time to attack, even though some 
+      messengers do not get through.
+      Impossibility Proof:
+          Assume exist shortest sequence of msgs ...
+
+The goal of commit protocol
++ all the sites agree either to commit (attack) or to abort (not to attack)
+  a transaction
++ Relax the req that the number of msgs used by a commit protocol be bounded
+  by a fixed number of msgs.
+Fig 3-20
+[SiSh94] pp.334-335, 337

@@ -1,0 +1,194 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 20:09:16 GMT
+Content-Type: text/html
+Content-Length: 8162
+Last-Modified: Monday, 20-May-96 18:25:42 GMT
+
+<html>
+<head>
+<title>CS 612 - Final Report</title>
+<body>
+<h2><b>Parallel FFTs </b>
+<br>
+<br>
+</h2>
+<br><b>1.Overview</b>
+<br>
+<br>FFTs are currently calculated in 2 phase cycles, of communication and
+ computation, the number of cycles being equal to the number of dimensions of
+ the problem. The communication phase is a distributed matrix transpose and is
+ implemented with an all-to-all personalized black box function. So a 2
+ dimensional FFT would need 2 cycles (4 phases): 
+<br>
+<br>1d FFT 
+<br>all-to-all (distributed transpose) 
+<br>1d FFT 
+<br>all-to-all (distributed transpose) 
+<br>
+<br>Data is initially distributed such that each processor has an n1xm2
+ (rowsxcolumns) block of the matrix. (i.e. a column block distribution) 
+<br>n1,n2- number of rows,columns of the problem size 
+<br>m1,m2 - n1/p and n2/p respectively 
+<br>p - the number of processors. 
+<br>
+<br>Each process then computes the FFT of its local data and calls the
+ distributed transpose function which results in each processor having a matrix
+ of size n1xm2. The FFT of this matrix is computed followed by another
+ distributed transpose phase. 
+<br>
+<br><b>2. Problems in the communication phase - Motivations</b>
+<br>
+<br>Implementing the distributed transpose operation as a black box can be
+ inefficient due to unused processor cycles while waiting for and sending data
+ and idle floating point units while doing the sends and the recieves. 
+<br>
+<br>The function starts by collecting data for all the processors so that the
+ data is stored linearly and can be sent directly to the other processors. The 
+<i>nth</i> m1 rows (of m2 columns each) goes to the <i>nth</i> processor, so
+ the collecting is done trivially block copying a <underline>column</underline>
+ at a time (the matrix is stored in column major).(B&lt;-A) 
+<br>
+<br>Once that is done, the processor sends out signals to all other processors
+ indicating that it is ready to recieve data from the other processors and then
+ proceeds to send its data to the other processors when it recieves a ready
+ signal from the processors. It then waits for all its incoming data to arrive
+ (A&lt;-B) and then does a transpose on the local buffer. (B&lt;-At) 
+<br>
+<br>a. The recieving end: 
+<br>At the recieving end the processor wastes processor cycles while waiting
+ for data from all processors to arrive so it can do a transpose on the buffer.
+ (Synchronization wait) 
+<br>It also wastes the FPUs (the SP2 has 2) while doing the flow control and
+ load/store operations of data from the network interface to memory since these
+ require only integer arithmetic. 
+<br>
+<br>b. The sending end 
+<br>The sending end suffers a lot of overhead if the message being sent is
+ greater then 8k in length. (see section 4)The thrust here is to break one big
+ message into a number of messages smaller than 8k. 
+<br>
+<br><b>3. Eliminating Synchronization Waits </b>
+<br>
+<br>We try to eliminate synchronization waits by performing operations on the
+ small blocks that are exchanged between processors,thereby shifting stance
+ from collective communication to point-to-point communication. This requires a
+ modification in the initial data distribution to lead to an efficient
+ implementation of the computation, which changes to column cyclic. 
+<br>
+<br>The distributed matrix transpose phase changes to collecting a block for a
+ processor and performing the last part of the computation of cycle 1 on that
+ block before sending it to the processor. As the distribution is column cyclic
+ the data has to be collected in rows of stride p. The processor that recieves
+ the block transposes it and performs the first part of the computation of
+ cycle 2 that is to be applied on that block and &quot;scatters&quot; the data
+ with stride p across the rows. 
+<br>
+<br>
+<img src="cyclic1.gif" width=386 height=771>
+<br>
+<br>
+<br>This loop is unrolled once so that processors do not waste any time waiting
+ for data. That is every time the processor polls the network for an incoming
+ packet it gets the data it needs and can operate on it. (see figure ) 
+<br>
+<br>
+<br>
+<img src="scheduling.gif" width=696 height=626>
+<br>
+<br>
+<br>
+<br>So 2 forms of waiting are eliminated: 
+<br>1 The need to wait for all blocks since we can operate on each block
+ independently 
+<br>2 The need to poll the network for each block since we unroll the loop and
+ schedule the communication so that we get the packet every time we poll the
+ network. 
+<br>
+<br>Once a processor has got all its data it can perform the main body of the
+ computation. 
+<br>
+<br><b>Limitations </b>
+<br>
+<br>We find that the cost of copying the data into and out of the message
+ packets is prohibitive. sAs the data has to be &quot;gathered&quot; before
+ sending and &quot;scattered&quot; after recieving with stride p we can do only
+ an <b>element wise</b> copy of the data and that is very inefficient. 
+<br>
+<br><b>4. Limiting packet size </b>
+<br>
+<br>The implementation of Active Messages over the SP2 sends messages in 8k
+ &quot;chunks&quot;. Messages greater than 8k have to wait for an
+ acknowledgement from the recieving processor before the next chunk can be
+ sent, and therefore suffer the entire roundtrip latency of the network. The
+ call to am_store_async therefore does not return till all chunks have been
+ sent. To avoid this overhead we send packets of size 8k so that am_store_async
+ can return immediately and the processor can get its next packet ready for
+ sending. This allows some parallelism in the send operation. 
+<br>
+<br>Each 8k message is collected from the packet (of size m1xm2 collectd from
+ the matrix as described in the previous section)with row stride r1 and column
+ stride r2. 
+<br>r1= m1/number of rows in 8k packet 
+<br>r2= m2/number of columns in 8k packet 
+<br>
+<br>After collecting a packet the last part of the computation of cycle 1 is
+ applied to it before sending it. At the recieving end each 8k packet is
+ transposed and the first part of the computation of cycle 2 is applied to it
+ followed by a &quot;scatter&quot; operation into the m2xm1 buffer with column
+ stride r1. The elements of each column are copied contiguously. 
+<br>
+<br>This is done a number of times till the m2xm1 buffer has received all its
+ data (or till the sending side has finished sending the m1xm2 buffer). 
+<br>
+<br>
+<br>
+<br>
+<img src="cyclic2.gif" width=656 height=776>
+<br>
+<br>
+<br>
+<br>Note that, as in the previous case the loop is unrolled so that each
+ processor is sending data to 2 processors and recieving data from 2 processors
+ to avoid waiting for packets from the network. 
+<br>
+<br><b>Limitations</b>
+<br>
+<br>We find again the cost of the copying between buffers to be prohibhitive to
+ attaining good efficiency. Note that the copying in this case is more than the
+ copying in the earlier case as we have to collect data with stride p from the
+ main array into the m1xm2 buffer (as in the previous case) and then from there
+ copy data into 8k packets with row and column stride r1 and r2 respectively to
+ be sent through the network. At the recieving end the 8k packet is copied into
+ the m2xm1 buffer with column stride r1. After all the packets have arrived the
+ m2xm1 buffer is merged into the main buffer with a contiguous copy of all
+ columns. A lot of this copying is element wise (except for the copying of the
+ of the 8k packet into the m2xm1 buffer and the m2xm1buffer into the main array
+ which is done column wise) and therefore 
+<br>we cannot take advantage of block copying functions here. 
+<br>
+<br><b>5. Results</b>
+<br>
+<br>
+<br>
+<img src="gtotal.2.1024.gif" width=399 height=396>
+<img src="gcomm.2.1024.gif" width=400 height=396>
+<br>
+<br>
+<br>
+<img src="gtotal.4.1024.gif" width=399 height=393>
+<img src="gcomm.4.1024.gif" width=399 height=396>
+<br>
+<br>
+<br>
+<img src="gtotal.4.2048.gif" width=395 height=395>
+<img src="gcomm.4.2048.gif" width=399 height=396>
+<br>
+<br>
+<br>
+<br><b>6. Conclusions and future work </b>
+<br>
+<br> We have seen that this approach will not work as is due to the copying and
+ computation overhead it introduces. Our next step will be to look into how
+ these overheads can be removed.
+</html>

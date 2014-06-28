@@ -1,0 +1,170 @@
+Date: Thu, 21 Nov 1996 20:32:10 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+
+<head>
+	<title>SPIN</title>
+	<h1>
+        <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><a href="http://www.cs.washington.edu/research/projects/spin/www/external/members.html"><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><img src=http://www.cs.washington.edu/research/projects/spin/www/pics/spinlogo.gif></a><br>
+
+	<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="mailto:spin@cs.washington.edu"><em>spin@cs.washington.edu</em></a>
+</h1>
+</head><p>
+
+
+<hr> 
+<body>
+
+<h1> The <i>SPIN</i> Operating System</h1>
+
+<p>
+<i>SPIN</i> is an extensible operating system kernel that
+supports the dynamic adaptation of system interfaces and
+implementations through direct application control, while still
+maintaining system integrity and inter-application isolation.
+<p>
+<i>SPIN</i> allows applications to load code into the kernel at
+runtime. Because it runs in the kernel, this extension code can access
+hardware and other operating systems services with with almost no
+overhead (basically a procedure call), and data can be passed by
+reference, rather than copied.  The <i>SPIN</i> kernel itself provides
+a core set of interfaces and capabilities to basic resources.  These
+are used by collections of extensions to implement general system
+services such as address spaces, IPC, threads, and networking.  All
+extension code (and most of the kernel) is written in the typesafe language <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A
+HREF="http://www.cs.washington.edu/research/projects/spin/www/external/modula3/index.html">Modula-3</A>. The property of
+typesafety prevents extensions from crashing the system by attempting
+to manipulate arbitrary pieces of code or data. 
+<p>
+<i>SPIN</i> runs on DEC Alpha workstations. We're using it to write
+both specialized applications such as network video systems, as well
+as for supporting general purpose UNIX programs.
+
+<p>
+You can connect to a machine
+running SPIN with the in-kernel SPIN web server 
+<!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="http://www-spin.cs.washington.edu"> here</a>.
+
+<h2> Quick Results </h2>
+<ul>
+This structure allows programs to extend operating system services with
+low overhead. For example, with <i>SPIN</i> running on a 133 MHz Alpha,
+an application can handle and recover from a page fault in 29 microseconds.
+It takes 22 microseconds to create a new thread of control, execute
+it, terminate, and synchronize with its termination (fork/join).  A protected
+procedure call to another extension or to a kernel function takes .13
+microseconds. A cross-machine RPC (application to application) over
+ethernet takes under 600 microseconds; over ATM (on really old
+adapters) it takes less than 450 microseconds. The same  operations
+under Mach or DEC UNIX take up to 30 times longer on the same
+hardware.  Time them yourself (or see our <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a
+href="http://www.cs.washington.edu/research/projects/spin/www/external/bench/latest/index.html">benchmarks</a> page and save
+yourself the effort). 
+</ul>
+
+<h2> Recent reports and papers </h2>
+<ul>
+<dl>
+<dt> <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a HREF="http://www.cs.washington.edu/research/projects/spin/www/papers/OSDI96/eventsOSDI96.ps">
+Dynamic Binding for Extensible Operating Systems </a>
+<dd> An invocation mechanism which provides flexible, efficient, and
+simple way of integrating extensions with an executing system. 
+Appeared in the 2nd OSDI.
+
+
+<dt> <!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><a HREF="http://www.cs.washington.edu/research/projects/spin/www/papers/SOSP95/sosp95.ps">
+Extensibility, Safety and Performance in the <i>SPIN</i> Operating System</a>
+<dd> A design, implementation and performance paper. Appeared in the 15th SOSP.
+
+
+<dt> <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><a href=http://www.cs.washington.edu/research/projects/spin/www/papers/Usenix96/extprotarch.ps>An Extensible Protocol Architecture for
+Application-Specific Networking</a> 
+<dd> A design, implementation and performance paper.  Appeared in 1996
+     Usenix Winter Conference. 
+
+<dt> <!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><a HREF="http://www.cs.washington.edu/research/projects/spin/www/papers/WCS/m3os.ps">
+Writing an Operating System Using Modula-3</a>
+<dd> Describes our experiences using Modula-3 to build a high
+     performance extensible system. Makes clear the distinction between a
+     language and its implementation. 
+
+<dt> <!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><a HREF="http://www.cs.washington.edu/research/projects/spin/www/papers/WCS/language.ps">
+Language Support for Extensible Operating Systems</a> 
+<dd> We've been pretty happy with M3, but we've had to deal with a few
+     shortcomings in order to use the language in a safe extensible
+     operating system. This paper describes how we've addressed those
+     shortcomings. 
+
+<dt> <!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><a HREF="http://www.cs.washington.edu/research/projects/spin/www/papers/WCS/domain.ps">
+Safe Dynamic Linking in an Extensible Operating System</a>
+<dd> Describes the dynamic linker we use to load code into the kernel.
+     Key point is the ability to create and manage linkable namespaces that
+     describe interfaces and collections of interfaces.
+
+<dt> <!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><a HREF="http://www.cs.washington.edu/research/projects/spin/www/papers/WCS/dispatcher.ps">
+Language and Runtime Support for Dynamic Interposition of System Code</a> 
+<dd> Describes the kernel's internal communication and extension
+     facilities. Shows use of dynamic code generation to improve the
+     performance of a critical kernel service. 
+</dl>
+</ul>
+
+<h2> More Information </h2>
+<ul>
+<dl>
+
+<dt> <!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><A HREF="http://www.cs.washington.edu/research/projects/unisw/DynComp/www">Dynamic compilation </a> 
+<dd> Waiting until run time to compile code.
+
+<dt> <!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><a HREF="http://www.cs.washington.edu/research/projects/spin/www/papers/index.html">Paper trail</a>
+<dd> Project Reports, Talks. Papers, etc. 
+
+<dt> <!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><a HREF="http://www.cs.washington.edu/research/projects/spin/www/external/members.html">Project members</a>
+<dd> Who we are.
+
+<dt> <!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><a HREF="http://www.cs.washington.edu/research/projects/spin/www/external/bench/latest/index.html">Benchmarks</a>
+<dd> Interested in the bottom-line? Go here.
+
+<dt> <!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><a HREF="http://www.cs.washington.edu/research/projects/spin/www/external/modula3/index.html">Modula-3</a>
+<dd> Information on Modula-3.
+
+<dt> <!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><a HREF="http://www.cs.washington.edu/research/projects/spin/www/ARPA/index.html">ARPA Project Overview</a>
+<dd> The executive summary and regular reports.  
+
+<dt> <!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><a HREF="http://www.cs.washington.edu/research/projects/spin/www/external/acks.html">Our friends</a>
+<dd> We've gotten a lot of assistance from academia and industry on this
+     project.  This page says who we're involved with. 
+
+<dt> <!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><a HREF="http://www.cs.washington.edu/research/projects/spin/www/external/relwork.html">Some related projects</a> 
+<dd> Pointers to other extensible systems projects.
+
+<dt> <!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><a HREF="http://www.cs.washington.edu/research/projects/spin/www/external/feedback.html">What other people are saying</a>
+<dd> Barbs and Arrows
+
+<dt> 
+<!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><a HREF="file://www.cs.washington.edu/research/projects/spin/www//afs/cs.washington.edu/project/spin/www/Internal/index.html">
+Internal Documentation</a> 
+<dd> The latest status for project members
+
+<DT> <!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><A HREF="http://www.cs.washington.edu/research/projects/spin/www/ProjectsToDo/index.html">Available Projects</A>
+<DD> Projects that could result in Qualifications credit, 
+     a Masters degree, a funded RAship position, or undergraduate
+     project credit. (UW-CS only)
+
+<dt> <!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><a HREF="http://www.cs.washington.edu/research/projects/spin/www/taz/index.html">Our mascot</a>
+<dd> We're encouraged that so many people have decided to adopt our
+mascot as their own.
+</dl>
+</ul>
+
+<HR>
+This page maintained by Brian Bershad.
+<address>
+<!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><a href="mailto:bershad@cs.washington.edu">bershad@cs.washington.edu</a>
+</address>
+
+
+</body>
+</html>

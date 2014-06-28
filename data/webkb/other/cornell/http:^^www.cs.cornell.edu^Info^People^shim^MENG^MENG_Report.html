@@ -1,0 +1,386 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 18:58:27 GMT
+Content-Type: text/html
+Content-Length: 14495
+Last-Modified: Tuesday, 06-Aug-96 02:25:38 GMT
+
+<HTML>
+
+<HEAD><TITLE>Viewing System</TITLE></HEAD>
+
+<BODY BACKGROUND = "wall.gif">
+
+<CENTER><H1>
+<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF = "http://www.cs.cornell.edu/Info/People/shim/MENG/ViewingSystem.html">Viewing System </A><BR>
+<!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF = "http://www.cs.cornell.edu/Info/Department/Meng/">
+Master of Engineering </A> Project <P></H1>
+<H2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF = "http://www.cs.cornell.edu/Info/People/shim/shim.html"> 
+Eric Young-Sang Shim</A> <BR>
+<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF = "http://www.cs.cornell.edu"> Computer Science Department</A>, 
+<!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF = "http://www.cornell.edu"> Cornell University </A><P></H2>
+<H3>Advisor : Professor <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A HREF="http://www.tc.cornell.edu/~bruce/">
+Bruce Land </A> </H3>
+</CENTER>
+<P>
+
+<HR>
+<H2>Table of Contents</H2>
+<UL><H3>
+<LI><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><A HREF="#introduction">Introduction</A>
+<LI><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><A HREF="#equations">Equations</A>
+<LI><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><A HREF="#implementation">Implementation</A>
+<LI><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><A HREF="#howThisWorks">How this program works</A>
+<LI><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><A HREF="#conclusion">Conclusion</A>
+<LI><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><A HREF="#acknowledgement">Acknowledgements</A>
+<LI><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><A HREF="#reference">References</A>
+</H3></UL>
+<HR>
+
+
+
+
+
+
+
+<A NAME="introduction"></A>
+<H2>Introduction</H2>
+<P>
+<!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><IMG ALIGN = LEFT SRC = "http://www.cs.cornell.edu/Info/People/shim/MENG/MENGlogo.gif">
+Although various three-dimentional display devices exist, most
+computer graphics view surfaces are two-dimentional.  Thus a
+three-dimentional pipeline - the jargon term used to describe the
+various processes in converting from three-dimentional world
+coordinate space to a two-dimentional representation - must contain a
+projective transformation and a viewing transformation, the minimum
+requirements to convert a three-dimentional scene to a two-dimentional
+projection.
+<P>
+I have designed and implemented the Viewing System IV which was
+carefully explained in the "3D Computer Graphics" by Alan Watt using 
+<!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><A HREF = "http://java.sun.com"> JAVA </A>. <BR>
+
+All the objects are created in the <B>world coordinate
+system</B> which is conventionally represented as a right-handed
+system.  We can consider a transformation, <I><B>T</B>view</I> from a
+world coordinate system to a viewing coordinate system (<I>Xv, Yv,
+Zv</I>).  Here, in viewing coordinate system, vertices are expressed
+in a left-handed coordinate system with the origin sometimes known as
+the <B>view point</B> or <B>view reference point</B> which is
+represented as the position of a viewer's eye or the position at which
+a virtual camera is placed.  Then, the second transformation,
+<I><B>T</B>pers</I> is applied to project three-dimensional points in
+<B>view space</B> onto the the three-dimensional screen space(<I>Xs,
+Ys, Zs</I>). Then, I projected the vertices from screen space onto the
+projection space which is two-dimentional <B>view plane</B> to
+simulate the camera transformation.  
+<P>
+
+A full viewing system will also determine a <B>view
+volume</B>(truncated view frustum), which is the
+subset of world coordinate space which is to be included in the
+transformation process. As far as a general three-dimensional
+rendering pipeline is concerned, I needed to define a view volume.
+To define this view volume, I needed to specify a near plane, a far
+plane and a view plane window.  The specific plane formula will be
+presented in the <!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><A HREF="#equations">Equations</A> section of this
+report. <BR> 
+
+Since it was very hard to create the view frustum 
+in the world coordinate system, I have created the view frustum
+in the viewing coordinate space and apply inverse <I><B>T</B>view</I>
+matrix to the view frustum that has created in the viewing coordinate
+system.  By doing this, I was able to create the view frustum in the
+world coordinate system.  Also, the three dimentional clipping should
+be performed in the viewing coordinate space. <BR>
+<BR>
+<BR>
+
+<HR>
+
+
+
+<A NAME="equations"></A>
+<H2>Equations</H2>
+<P>
+We need a viewing direction vector N, and up vector V and an optional
+vector U.  The following equations are showing how to obtain these
+vectors. <P>
+<!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><IMG ALIGN = BOTTOM SRC = "http://www.cs.cornell.edu/Info/People/shim/MENG/EQUATIONS/N.gif"> <P>
+N vector is a viewing direction vector and is obtained by calculating
+camera to position subtract camera from position. This N vector is
+used when we calculate the Tview Matrix.<P>
+
+<!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><IMG ALIGN = BOTTOM SRC = "http://www.cs.cornell.edu/Info/People/shim/MENG/EQUATIONS/V.gif"> <P>
+V vector is a up vector. Because B must be perpendicular to N, we need
+a strategy that can take care of this care where the user entered N is
+not perpendicular to M.  Since the user entered V vector is just a
+estimated V vector, we need to calculate the V vector by apply this
+equation. This V vector is also used when we calculate the Tview
+Matrix. <P>
+
+<!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><IMG ALIGN = BOTTOM SRC = "http://www.cs.cornell.edu/Info/People/shim/MENG/EQUATIONS/U.gif"> <P>
+U vector is an optional vector that could be obtained by cross product
+of N and V vector resulting in a left-handed coordinate system. Also,
+this U vector is used when we calculate the Tview Matrix.<P> 
+
+<!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><IMG ALIGN = BOTTOM SRC = "http://www.cs.cornell.edu/Info/People/shim/MENG/EQUATIONS/Tview.gif"> <P>
+<I><B>T</B>view</I> matrix is obtained simply by calculating this
+equation.  This Tview can transform any points in world coordinate
+system into the viewing coordinate system.  T matrix translates the
+object, and B matrix roates the object where <B>T</B> and <B>B</B> are
+the followings. <P> 
+<!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><IMG ALIGN = BOTTOM SRC = "http://www.cs.cornell.edu/Info/People/shim/MENG/EQUATIONS/T.gif"> <P>
+<!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><IMG ALIGN = BOTTOM SRC ="http://www.cs.cornell.edu/Info/People/shim/MENG/EQUATIONS/B.gif"> <P>
+
+Now, we have to have someway to transform from the viewing coordinate
+system into the world coordinate system.  In the case of view frustum
+which was created in the viewing coordinate system, and needed to be
+transformed to world coordinate system. <P>
+<!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><IMG ALIGN = BOTTOM SRC = "http://www.cs.cornell.edu/Info/People/shim/MENG/EQUATIONS/Tview-1.gif"> <P>
+<I><B>T</B>view inverse</I> matrix is obtained simply by calculating this
+equation.  This Tview inverse can transform any points in viewing coordinate
+system into the world coordinate system.  B transpose matrix translates the
+object, and T(-x) matrix roates the object.  <P>
+
+After we have create the object in the world coordinate system, and
+transform the points into the viewing coordinate system, we need to
+transform the points in viewing coordinate system into the screen
+coordinate system again.  By doing this, we are finally be able to
+simulate the camera transformation from world coordinate system to
+screen coordinate system. <P>
+<!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><IMG ALIGN = BOTTOM SRC = "http://www.cs.cornell.edu/Info/People/shim/MENG/EQUATIONS/XYZw.gif"> <P>
+where <P>
+<!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><IMG ALIGN = BOTTOM SRC = "http://www.cs.cornell.edu/Info/People/shim/MENG/EQUATIONS/Tpers.gif"> <P>
+<I><B>T</B>pers</I> matrix is obtained simply by calculating this
+equation.  This <I><B>T</B>pers</I> matrix is consists of d, f and h
+values that the user has entered from the user interface.  d is the
+distance from the camera to the near plane. Incidently, the view plane
+is the same as the near plane in this viewing system.  f is the
+distance from the camera to the far plane.  Finally, the h value is
+the half of the height of the view plane window.   <P>
+
+As I create the view frustum, I should be able to specify the six
+planes. There are Xv, Yv and two Zv values.  Xv specifies the two
+planes of the view frustum.  Yv specifies the top and the bottom planes
+of the view frustum.  And the Zv specifies the front(near plane and
+view plane) plane and the far plane. <P>
+<!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><IMG ALIGN = BOTTOM SRC = "http://www.cs.cornell.edu/Info/People/shim/MENG/EQUATIONS/Xv.gif"> <P>
+<!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><IMG ALIGN = BOTTOM SRC = "http://www.cs.cornell.edu/Info/People/shim/MENG/EQUATIONS/Yv.gif"> <P>
+<!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><IMG ALIGN = BOTTOM SRC = "http://www.cs.cornell.edu/Info/People/shim/MENG/EQUATIONS/Zv1.gif"> <P>
+<!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><IMG ALIGN = BOTTOM SRC = "http://www.cs.cornell.edu/Info/People/shim/MENG/EQUATIONS/Zv2.gif"> <P>
+
+<P>
+<HR>
+
+
+
+<A NAME="implementation"></A>
+<H2>Implementation</H2>
+<P>
+In this project, I have implemented 14 classes which represents each
+objects in this Viewing System.   I will introduce all the classes and
+briefly go over each class' class definition in this section.
+<P>
+<STRONG>Class definitions</STRONG>
+<DL>
+<DT><STRONG>cameraTransformation</STRONG>
+	<DD>The main program.  This class creates all the buttons,
+canvases, text fields. And this class contains user input data,
+<I><B>T</B>view</I>, and <I><B>T</B>pers</I> matrixs.  Also, this
+class initialize all the necessary variables, and handle all the
+events that user entered such as mouse click or enter the value of
+camera location, camera to, V vector, and V, H, F values. 
+<P>
+
+<DT><STRONG>Viewer3D</STRONG>
+	<DD>This class converts the 3D coordinates into the 2D
+coordinates to draw on the canvases.  To show the 3D effect in 2D
+case, this class rotates the object a little bit by y and z axis so
+that the user can see the object as 3D effected.
+<P>
+
+<DT><STRONG>Polygon3D</STRONG>
+	<DD>This class is the base class of any other objects that
+would be displayed on the canvases such as view frustum and cube.
+This class contains all the vertices on all three coordinate systems,
+and the points that would be displayed on the canvases which is called
+view coordinates in this class.
+<P>
+
+<DT><STRONG>ViewFrustum</STRONG>
+	<DD>This class contains all the necessary information about
+the view frustum.  This is extended class from the Polygon3D class
+which means that it contains every thing from the Polygon3D and plus
+whatever view frustum need to have.  Also, this class creates view
+frustum in the viewing coordinate system according to the value of d,
+f, h, camera location and camera to value.
+<P>
+
+<DT><STRONG>Cube</STRONG>
+	<DD>This class contains all the necessary information about
+the cube.  This class is extended class from the Polygon3D
+class. Also, this class creates cube on the origin of the world
+coordinate system according to the length of a edge. 
+<P>
+
+<DT><STRONG>Tview</STRONG>
+	<DD>This class contains all the necessary information about
+the <I><B>T</B>view</I>.  Also, this class creates the
+<I><B>T</B>view</I> by doing the followings<BR>
+	<UL>
+	<LI> Find V, U, N vectors
+	<LI> Create the T matrix
+	<LI> Create the B matrix
+	<LI> Create the <I><B>T</B>view</I> matrix by calculating TB
+	<LI> Create the <I><B>T</B>view inv</I> matrix by calculating
+<B>B</B><I>trnaspose<B>T</B>(-x)</I> 
+	</UL>
+<P>
+
+
+<DT><STRONG>Tpers</STRONG>
+	<DD>This class contains all the necessary information about
+the <I><B>T</B>pers</I>.  Also, this class creates the
+<I><B>T</B>pers</I> according to the d, h and f values that the user
+entered. 
+<P>
+
+
+<DT><STRONG>worldCanvas</STRONG>
+	<DD>This class contains all the necessary information of 
+the world canvas.   Paints the objects in the world coordinate
+system, and handle the rotation of the objects by draging the mouse on
+the world coordinate system.
+<P>
+
+<DT><STRONG>viewCanvas</STRONG>
+	<DD>This class contains all the necessary information of 
+the view canvas.   Paints the objects in the viewing coordinate
+system, and handle the rotation of the objects by draging the mouse on
+the viewing coordinate system.
+<P>
+
+<DT><STRONG>screenCanvas</STRONG>
+	<DD>This class contains all the necessary information of 
+the screen canvas.   Paints the objects in the screen coordinate
+system, and handle the rotation of the objects by draging the mouse on
+the screen coordinate system.
+<P>
+
+<DT><STRONG>projectionCanvas</STRONG>
+	<DD>This class contains all the necessary information of 
+the projection canvas.   Paints the objects in the projection canvas
+in two-dimentional manner.
+
+<P>
+
+<DT><STRONG>Matrix4x4</STRONG>
+	<DD>This class contains the matrix calculation methods.  For
+this class I have partially referenced from the code of Awwwesome
+Webware.
+<P>
+
+<DT><STRONG>Vectorf</STRONG>
+	<DD>This class contains the general vector calculation
+methods.  This class is the base class of Vector4 or any other Vector
+classes. For this class I have partially referenced from the code of
+Awwwesome Webware.
+<P>
+
+<DT><STRONG>Vector4</STRONG>
+	<DD>This class contains the four element vector calculation
+methods.  This class is derived from the Vectorf class. For this class
+I have partially referenced from the code of Awwwesome Webware.
+<P>
+
+</DL>
+
+The detailed code of this project can be obtained by clicking on <!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><A
+HREF = "http://www.cs.cornell.edu/Info/People/shim/MENG/ViewingSystem.tar"> this</A>
+
+<P>
+
+
+<HR>
+
+<A NAME="howThisWorks"></A>
+<H2>How this program works</H2>
+<P>
+If you like to simulate the camera transformation to see how the
+viewing system works, you may press on the viewing system.
+<CENTER><H4><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><A HREF = "http://www.cs.cornell.edu/Info/People/shim/MENG/ViewingSystem.html">Viewing System
+</A></H4></CENTER>
+<P>
+You will see four canvases in the viewing system which are the world
+coordinate canvas, viewing coordinate canvas, screen coordinate canvas
+and the projection coordinate canvas. As a user changes the
+approximated V vector, camera location vector, camera to vector, d, f
+and h values, this program redraws the objects according to the values
+of variables that user entered on all these four canvas appropreately.
+The user needed to press on VIEW button after they have changed the
+values of variables to simulate the camera transformation.
+<P>
+<HR>
+
+
+
+<A NAME="conclusion"></A>
+<H2>Conclusion</H2>
+<P>
+I was able to simulate the camera transformation for viewing system in
+this project.  By simulating the Viewing System IV, I had less
+restriction when I view the object in the world coordinate since I
+could change the camera position and where to look at.  Also, by
+having the view frustum, I didn't have to relying on a two-dimentional
+clipping algorithm to eliminate any information in the view plane that
+falls outside the view plane window.  <P>
+Eventhough this project performs just fine with my initial design, I
+could think of some more features that could make this project works
+even better.  First, adding more objects to view could make it better
+to understand what is going on while viewing the object.  Second,
+diminishing the line brightness when draw the object as it gets deeper
+in Z axis could help the user a lot more to tell which line is in
+front and which one is in the back. <P>
+
+<P>
+<HR>
+
+
+
+<A NAME="acknowledgement"></A>
+<H2>Acknowledgements</H2>
+<P>
+It would have been difficult to finish this project without the greatest
+guidence of Professor <!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><A HREF="http://www.tc.cornell.edu/~bruce/">
+Bruce Land</A>.    I would like to thank him from the deep of my
+heart.   <P>
+I would like to thank my mother, Yeon-Ja Shim, for helping me
+and praying for me to survive from the darkest period of my life.
+Thanks to my brother and sister, Andy Shim and Julie Shim, for supporting
+me and understanding me by financially and mentally.  I, also,
+would like to thank to my friends and cyber-friends in HANA and KIDS. <P>
+Most of all, I would like to dedicate this work to my father, Han-Yong
+Shim who is in heaven, for giving me a strength and courage to
+continue to learn and complete the Masters Degree in Cornell University.
+<BR>
+<BR>
+
+
+<HR>
+
+<A NAME="references"></A>
+<H2>References</H2>
+<P>
+
+[1] Alan Watt, "3D Computer Graphics" Addison-Wesley Publishing Company, 1993.
+<BR>
+<BR>
+
+<BR>
+<BR>
+
+
+
+</HTML>
+

@@ -1,0 +1,501 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 19:52:08 GMT
+Content-Type: text/html
+Content-Length: 23087
+Last-Modified: Friday, 17-May-96 02:19:39 GMT
+
+<HTML> 
+
+<HEAD>
+
+<TITLE>Parallel Object Recognition and Applications to Facial Recognition
+</TITLE>
+<BODY bgcolor="#ffffff" text="#000000">
+</HEAD>
+
+<BODY>
+
+<H1><CENTER><FONT SIZE=10>
+Parallel Object Recognition and Applications to Facial Recognition</FONT><BR>
+Matt Androski, Chris Paradis, &amp; Jody Shapiro</CENTER></H1>
+
+<HR>
+
+<H1>Introduction </H1>
+
+<P>
+This project was an attempt to parallelize a computer vision object
+recognition algorithm. Given a database of edge-detected object
+models and a previously unseen edge-detected image, this algorithm
+attempts to find any and all models which appear in the new image.
+Matching is performed using an approximation of the Hausdorff
+Fraction;  see Figure 1 for a simple example. The image search
+is performed in a hierarchical scheme which attempts to minimize
+comparisons by quickly eliminating regions of the image from consideration.
+<!WA0><!WA0><!WA0><!WA0><A HREF="#references">[1]</A>
+<P>
+<CENTER><!WA1><!WA1><!WA1><!WA1><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/scene.gif"><BR>
+Figure 1 - A previously unseen image containing a model</CENTER>
+<P>
+In this paper we will discuss the pros and cons of different methods
+of parallelization and describe the factors that motivated our
+design decisions. We will then describe our parallel implementation
+using <!WA2><!WA2><!WA2><!WA2><A HREF="http://http.cs.berkeley.edu/projects/parallel/castle/split-c/">Split-C</A>
+in detail;  this will be followed by a performance analysis.  We also
+discuss the suitability of this algorithm for use in facial recognition and
+present our results.  We conclude with a discussion of some possible
+extensions to both the parallel implementation and the facial recognition
+aspects.<BR>
+
+<H1>Approximation to the Hausdorff Fraction </H1>
+
+<P>
+This method uses an approximation to the Hausdorff Fraction to
+measure the similarity between two edge images of the same size.
+This approximation is computed using a subspace representation
+of the two edge images. The distance for which the fraction is
+being computed is factored in by dilating one of the images by
+the distance. For this application, one of the images in the match
+will be a model from a stored database while the other will be
+region of a new image. To create the subspace, we first convert
+each of the model images into a column vector by reading the pixels
+in column major order. We then construct a matrix from these vectors.
+We compute the eigenvectors and eigenvalues of this matrix and
+select the <I>k</I> largest eigenvalues and create a matrix from
+their corresponding eigenvectors. This matrix is used to project
+each of the model images and any region of the new image into
+the subspace. The subspace representation of the two images will
+each be a <I>k</I>-length vector. The primary step in computing
+the approximation to the Hausdorff Fraction is a dot product of
+these two <I>k</I>-length vectors. This method is described in
+detail in <!WA3><!WA3><!WA3><!WA3><A HREF="#references">[1]</A>.<BR>
+
+<P>
+The subspace representations of the database models are precomputed
+and stored along with all of the matrices and data needed to perform
+the projection operation. Regions of the image we are searching
+need to be projected into the subspace during run time. This projection
+operation is computationally very expensive. Therefore, both the
+search algorithm and the parallelization method attempt to minimize
+the number of projections performed. Note that the approximation
+is only accurate to within 0.05 of the true Hausdorff Fraction,
+so final decisions about the relative quality of a match are made
+using the true bi-directional Hausdorff Fraction.<BR>
+
+<H1>Search Algorithm </H1>
+
+<P>
+The search algorithm presented in <!WA4><!WA4><!WA4><!WA4><A HREF="#references">[1]</A> attempts to minimize the
+number of projections and comparisons by performing a coarse-to-fine
+examination of the new image. The new image is subdivided into
+cells where each cell represents a set of translations of the
+model with respect to the image. Each model is translated to the
+center of the cell and compared with that region of the image
+dilated by the radius of the cell (see Figure 2).  This amounts
+to a rough comparison of this model with every possible translation
+in the cell. If the resulting fraction is less than some threshold,
+then the set of translations represented by that cell can be ruled
+out as a match with that model.  If the resulting fraction is
+not below the threshold, then the algorithm subdivides the cell
+into four quadrants and considers each of those. This is repeated
+until the model is ruled out or the algorithm has recursed down
+to the point where each cell is one translation (see Figure 3).
+If a model cannot be ruled out by the approximation at the lowest
+level, then the true bi-directional Hausdorff Fraction is calculated.
+If the model still cannot be ruled out, it is marked as a possible
+match and the fraction and position are stored for later consideration.
+<P>
+<CENTER><!WA5><!WA5><!WA5><!WA5><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/cells.gif"><BR>
+Figure 2 - Image divided up into 24x24 cells with a model translation shown
+</CENTER>
+<P>
+<P>
+<CENTER><!WA6><!WA6><!WA6><!WA6><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/levels.gif"><BR>
+Figure 3 - 24x24 cell is searched depth-first with a coarse-to-fine strategy
+</CENTER>
+Thus the search is depth first and each cell of the image is an
+independent entity. Projections of regions of the new image are
+computed for each cell, at each level. For efficiency, all models
+which passed the test at a higher level are compared to the projection,
+and a list of the survivors is passed to the next lower level.
+The search algorithm is described in detail in <!WA7><!WA7><!WA7><!WA7><A HREF="#references">[1]</A>. <BR>
+
+<H1>Parallelization Issues </H1>
+
+<P>
+The first major task in parallelizing this object recognition
+algorithm was deciding how to distribute the processing amongst
+the processors. One option was to distribute the search cells
+across the processors. Thus each processor would be assigned a
+group of cells and would search each of these cells for all models
+in the database. This method had some attractive features. Cells
+are independent entities as are all image projections associated
+with them. The projections could be computed and used locally
+for each of the models and no communication between processors
+would be necessary. However, this method requires each processor
+to have access to the entire database of models. Our test database
+contained 30 view each of 20 models for a total of 600 models.
+For a database of that size having a complete set of models at
+each processor is not unreasonable. However, any real application would
+require a much larger database which would preclude the use of
+this method.
+<P>
+Our second option was to distribute the models across the processors.
+Thus each processor would have a subset of the models in the database
+and would search every cell in the image for its set of models.
+This method is much more tolerant of a large database than the
+first, but it introduces some significant problems. Each processor
+is searching through all of the cells in the image. As such, every
+processor will need most of the image projections calculated.
+Image projections are very expensive, so having each processor
+compute all of the projections locally is unacceptable. Instead
+it is necessary to have processors store projections in a global
+data structure as they are calculated so other processors can
+access them. This introduces significant network traffic into
+the parallel version. However, since this method can handle a
+large database much more effectively, it became the only choice
+for implementation.
+<P>
+Once this implementation was chosen, we were faced with two primary
+issues in parallelization. One issue was how to efficiently compute
+and share the image projections. To prevent processors from needing
+to access the same projections simultaneously, we stagger the
+starting points of each processor across the image we are searching.
+In an ideal case, the processors will move from cell to cell,
+in lock step, without any conflicts. If two processors happen
+to need the same projection simultaneously, and the projection
+has not yet been calculated, then a simple locking mechanism ensures
+that only one does the calculation while the other waits. So when
+a given processor needs a projection, it first checks to see if
+the projection has been calculated. If so it gets the projection
+and uses it. If it has not been calculated, it locks the projection,
+calculates it, and stores it in the global structure. If it fails
+to lock the projection, then another processor must be computing
+it, so it waits until that computation completes.
+<P>
+The second issue was that of load balance. This issue appeared
+to be deceptively simple since a large quantity of models could
+be easily distributed across many processors. The problem with
+this simple solution arose because of the organization of our
+database. The 30 views of each of the 20 models were stored sequentially
+in the database. A given processor would be assigned most of the
+views of a few objects. If one of those objects appeared in the
+image, that processor would have many more close matches than
+other processors and would recurse more deeply into the image.
+This created a distinct load imbalance. We solved this problem
+by spreading the views of each object across the processors. In
+a real application it would be sensible to store the views of
+an object out of order to solve this problem. With this change in
+place we achieved a much more acceptable load balance. Figure
+4 shows the load balance of the algorithm before and after this
+correction. It is important to note, however, that it is impossible
+to predict which models will cause the deepest searches so there
+will always be a certain amount of load imbalance.<BR>
+<P>
+<CENTER><!WA8><!WA8><!WA8><!WA8><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/loadbal_off.gif" BORDER=1><BR>
+<!WA9><!WA9><!WA9><!WA9><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/loadbal_on.gif" BORDER=1><BR>
+Figure 4 - Load Balancing</CENTER>
+
+<H1>Performance </H1>
+
+<P>
+Once our Split-C implementation was complete, we measured its
+performance on the <!WA10><!WA10><!WA10><!WA10><A HREF="http://www.cs.cornell.edu/Info/Projects/SP-2/">SP-2</A>
+massively parallel processor. We also compiled the sequential
+version for the SP-2 and measured its performance. The graph in
+Figure 5 shows the performance results in terms of speedup over
+the sequential version.
+<P>
+<CENTER><!WA11><!WA11><!WA11><!WA11><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/speedup.gif"></CENTER>
+<P>
+<CENTER>Figure 5 - Speedup vs. Number of Processors</CENTER>
+<P>
+The graph clearly shows that our parallel implementation achieves
+less than ideal performance. Ideal performance would be a speedup
+of N for a test on N processors. These results were not as good
+as we had hoped, so we attempted to identify the source of overhead
+which was limiting our performance. We separately measured the
+time spent in each phase of the search. The breakdown of time
+for different numbers of processors is shown in Figure 6.
+<P>
+<CENTER>
+<!WA12><!WA12><!WA12><!WA12><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/proc1.gif"><!WA13><!WA13><!WA13><!WA13><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/proc2.gif"><BR>
+<!WA14><!WA14><!WA14><!WA14><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/proc4.gif"><!WA15><!WA15><!WA15><!WA15><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/proc8.gif"></CENTER>
+<P>
+<CENTER>Figure 6 - Breakdown of Processing Time</CENTER>
+<P>
+The single processor graph shows that the parallel version, when
+run on one processor performs nearly as well as the sequential
+version. However, when more processors are added, we see that
+the time spent fetching projections from the global structure
+is a significant source of overhead. As the number of processors
+being used increases, the fewer projections are calculated locally,
+so more global accesses are required. The graphs show that the
+overhead associated with fetching projections increases for more
+processors. 
+<P>
+To solve this problem, we would like to fetch the projections
+using a split-phase access and do some other calculations while
+waiting for the data to arrive. However, the nature of the algorithm
+prevents us from knowing in advance which projections we need.
+Thus by the time we know we need a projection we have no other
+calculations to perform while waiting for the data. <BR>
+
+<H1>Experiments With Facial Recognition</H1>
+<P>
+With our parallel implementation complete we began to investigate the
+usefulness of this method for facial recognition.  Our goal was to
+see if the algorithm could successfully find faces in a scene using
+the approximation to the Hausdorff fraction.  One test method we
+considered was inserting face models from our database directly into
+scenes and then seeing if we could match them.  This works well
+but is very artificial.  Instead, we use images that are not in the
+database of the people who do appear in the database to see if we can 
+effectively find those faces.  This is much more representative of
+a real-world situation.
+
+<P>
+We started the construction of our database with a set of 400 images.
+This set consisted of 10 poses each of 40 different people.  We wanted
+to exclude some of these poses from the database so that we could 
+search for them in scenes.  We elected to save the odd-numbered poses 
+for matching and construct the database from the 200 even-numbered poses.
+The resulting database is shown in Figure 7.  We used this database to
+construct a subspace and the needed supporting data as is described in
+<!WA16><!WA16><!WA16><!WA16><A HREF="#references">[1]</A>.  
+
+<P>
+Our next step was to create a set of images to search.  We didn't have
+access to the people who appear in our database, so we decided to create
+synthetic images by inserting the edge images (the ones we kept out of
+the database) into images which contained other faces of roughly the 
+same size.  We attempted to select images which contained a significant
+number of faces and additional clutter to introduce the possibility of
+false matches.
+
+<P>
+We have included several of our synthetic test images and the results of
+our searches on them.  Each set of images includes the original grayscale
+and the corresponding edge image.  Each pair of images following consists
+of the synthetic image created by inserting the face we wish to search for
+and the same image with the best match overlayed in red.  The notation 
+"X/Y" associated with the inserted face indicates that we inserted pose
+Y of person X.  In instances where the search fails to identify the
+correct face, the correct face is shown in blue while the result of the
+search is shown in red.  Coordinates of the match are column followed by
+row with the origin at the top left.  
+
+<CENTER>
+<!WA17><!WA17><!WA17><!WA17><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/db.jpg" BORDER=1><BR>
+Figure 7 - Face database<BR>
+
+<HR>
+<!WA18><!WA18><!WA18><!WA18><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/aero.gif" BORDER=1>
+<!WA19><!WA19><!WA19><!WA19><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/aerosb.gif" BORDER=1><BR>
+Original image and edge-detected version<BR>
+
+<BR>
+<!WA20><!WA20><!WA20><!WA20><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/aero_n15_1_225_10.gif" BORDER=1>
+<!WA21><!WA21><!WA21><!WA21><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/aero_n15_6_226_10.results.gif" BORDER=1><BR>
+Person 15/1 inserted at 225,10.  Found person 15/6 at 226,10.<BR>
+
+<BR>
+<!WA22><!WA22><!WA22><!WA22><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/aero_n18_1_5_10.gif" BORDER=1>
+<!WA23><!WA23><!WA23><!WA23><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/aero_n18_2_5_9.results.gif" BORDER=1><BR>
+Person 18/1 inserted at 5,10.  Found person 18/2 at 5,9.<BR>
+
+<BR>
+<!WA24><!WA24><!WA24><!WA24><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/aero_n20_1_150_120.gif" BORDER=1>
+<!WA25><!WA25><!WA25><!WA25><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/aero_n20_2_150_120.results.gif" BORDER=1><BR>
+Person 20/1 inserted at 150,120.  Found person 20/2 at 150,120.<BR>
+
+<HR>
+<!WA26><!WA26><!WA26><!WA26><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/people.gif" BORDER=1>
+<!WA27><!WA27><!WA27><!WA27><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/peoplesb.gif" BORDER=1><BR>
+Original image and edge-detected version<BR>
+
+<BR>
+<!WA28><!WA28><!WA28><!WA28><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/people_n1_1_200_100.gif" BORDER=1>
+<!WA29><!WA29><!WA29><!WA29><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/people_n39_2_416_61.results.gif" BORDER=1><BR>
+Person 1/1 (blue) inserted at 200,100.  Found person 39/2 (red) at 416/61.<BR>
+
+<BR>
+<!WA30><!WA30><!WA30><!WA30><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/people_n1_1_5_90.gif" BORDER=1>
+<!WA31><!WA31><!WA31><!WA31><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/people_n10_10_408_34.results.gif" BORDER=1><BR>
+Person 1/1 (blue) inserted at 5,90.  Found person 10/10 (red) at 408/34.<BR>
+
+<BR>
+<!WA32><!WA32><!WA32><!WA32><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/people_n30_1_200_100.gif" BORDER=1>
+<!WA33><!WA33><!WA33><!WA33><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/people_n30_10_201_100.results.gif" BORDER=1><BR>
+Person 30/1 inserted at 200,100.  Found person 30/10 at 201,100.<BR>
+<BR>
+
+<HR>
+<!WA34><!WA34><!WA34><!WA34><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/er.gif" BORDER=1>
+<!WA35><!WA35><!WA35><!WA35><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/ersb.gif" BORDER=1><BR>
+Original image and edge-detected version<BR>
+
+<BR>
+<!WA36><!WA36><!WA36><!WA36><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/er_n18_1_210_100.gif" BORDER=1>
+<!WA37><!WA37><!WA37><!WA37><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/er_n18_2_210_99.results.gif" BORDER=1><BR>
+Person 18/1 inserted at 210,100.  Found person 18/2 at 210,99.<BR>
+
+<BR>
+<!WA38><!WA38><!WA38><!WA38><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/er_n18_1_300_100.gif" BORDER=1>
+<!WA39><!WA39><!WA39><!WA39><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/er_n18_2_300_99.results.gif" BORDER=1><BR>
+Person 18/1 inserted at 300,100.  Found person 18/2 at 300,99.<BR>
+
+<HR>
+<!WA40><!WA40><!WA40><!WA40><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/frisbee.gif" BORDER=1>
+<!WA41><!WA41><!WA41><!WA41><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/frisbeesb.gif" BORDER=1><BR>
+Original image and edge-detected version<BR>
+
+<BR>
+<!WA42><!WA42><!WA42><!WA42><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/frisbee_n13_1_260_150.gif" BORDER=1>
+<!WA43><!WA43><!WA43><!WA43><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/frisbee_n13_10_259_151.results.gif" BORDER=1><BR>
+Person 13/1 inserted at 260,150.  Found person 13/10 at 259,151.<BR>
+
+<BR>
+<!WA44><!WA44><!WA44><!WA44><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/frisbee_n1_1_260_150.gif" BORDER=1>
+<!WA45><!WA45><!WA45><!WA45><IMG SRC="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/frisbee_n27_8_82_153.results.gif" BORDER=1><BR>
+Person 1/1 (blue) inserted at 260,150.  Found person 27/8 (red) at 82,153.<BR>
+</CENTER>
+
+<H1>Facial Recognition Results</H1>
+<P>
+The results of our experiments with facial recognition were mixed.  We
+were pleased that often the algorithm successfully selected the correct
+person to match the face in the scene.  However, the algorithm does 
+sometimes fail and incorrectly selects another face, or in rare cases
+something that is not even face.  However, the key result of our tests
+was more subtle.  When we examined all of the possible matches which
+survived the Hausdorff approximation based search, we found that the
+correct result was nearly always present.  
+
+<P>
+Our test set was not large enough to suggest any statistical conclusions,
+but we believe that the search algorithm is effective in quickly eliminating
+non-matches without eliminating good matches.  The final decision as to which 
+element of the database is the best match is made with the true
+Hausdorff approximation.  We believe this is where the algorithm
+fails.  Thus it may be possible to use the approximate Hausdorff
+method to quickly search the image, and then use a more robust 
+face matching algorithm to pick the best match from the survivors.
+The method developed by Turk, et. al <!WA46><!WA46><!WA46><!WA46><A HREF="#references">[3]</A>
+ might be a good choice for this application.
+
+<H1>Conclusions</H1>
+
+<P>
+It has been established that searching a scene for a given set of models 
+can be conducted efficiently by using the approximation to the Hausdorff
+fraction.  In the first part of this project we have shown that this 
+algorithm can be effectively parallelized.  Thus, with enough processors
+at our disposal we can quickly search a new scene for models in the 
+database.
+
+<P>
+Further we have determined that this algorithm can be successfully applied
+to the problem of facial recognition.  Given a database of faces and a 
+scene, it is possible to use this algorithm to search the image for people
+who appear in the database.  This algorithm has potential applications as
+a means of identifying unknown individuals.  This could be used by law
+enforcement agencies for searching criminal records.  Companies could
+use it to verify the identity of employees as part of their security.
+More general problems such as face detection could be addressed with
+a variant of this algorithm which searches for face-like structures in
+a scene.  This work could also be extended to search for a given face
+in a sequence of images.
+
+<H1>Future Work and Improvements </H1>
+
+<P>
+The primary limiting factor in this parallel algorithm is the
+time spent fetching projections from the global structure. As
+we have already stated, predicting the need for a given projection
+would allow us to perform a split-phase access and avoid wasting
+time waiting for the network to supply the data. Future revision
+to this implementation should include some means of projection
+prediction. A simplistic approach would be to fetch all projections
+that might be needed. The danger in this approach is that such
+a scheme would increase network traffic and congestion significantly.
+A proper approach would be to employ something akin to a branch
+prediction scheme with high accuracy.
+<P>
+Another possible approach to improving this algorithm might be
+to use a breadth first search rather than a depth first one. This
+would allow you to accurately predict which projections you would
+need. However, this would also require storage of a list of surviving
+models for each cell at each level as the search proceeds. The
+memory requirements of these lists would be significant and perhaps
+prohibitive.
+<P>
+Yet another solution would be to use the first method of parallelization
+described above. We would distribute the cells across the processors.
+Each processor could compute the projection for its cells as needed
+and store them. The problem of storing all of the models could
+be solved by subdividing the database into model sets. A processor
+would consider only one set at a time. When nearing completion
+of a set, the processor could begin reading the next set from
+a file. This would keep memory requirements to a minimum. However,
+the demands on the file system might become the limiting factor
+in the algorithm with this implementation.
+<P>
+We see three main areas for future work with respect to facial recognition.
+A larger set of test images could be used in an effort to produce real 
+statistics on recognition performance.  However, these statistics will still
+be approximations because facial recognition is inherently non-quantifiable.
+Real test images (as opposed to our synthetically-generated test images) could
+be used.  This would require the people in the database to naturally appear in
+the test images;  most likely a new face database would need to be created.  It
+would also be interesting to see how the search algorithm performs under
+changing lighting conditions. The true Hausdorff fraction that is computed to
+eliminate matches is not necessarily the best measure to use for facial
+recognition.  Edge detected images of faces are not necessarily a good basis
+for final matching.  Perhaps a better method would be to use a greyscale-based
+matching scheme;  the method used in <!WA47><!WA47><!WA47><!WA47><A HREF="#references">[3]</A> might be a
+good candidate.  Certainly, edge-detection based matching appears to be useful
+for quickly and efficiently narrowing the search.
+
+
+
+<A NAME="references">
+<H1>References </H1>
+<OL>
+<LI>Huttenlocker, R.H. Lilien, and C.T. Olson (1996). 
+<!WA48><!WA48><!WA48><!WA48><A HREF="http://www.cs.cornell.edu/Info/People/clarko/papers.html"> Object Recognition Using Subspace Methods.</A>
+
+<LI>Hiroshi Murase and Shree K. Nayar (1995). Visual
+Learning and Recognition of 3D Objects from Appearance. International
+Journal of Computer Vision.
+
+<LI>Matthew Turk and Alex Pentland (1991). 
+<!WA49><!WA49><!WA49><!WA49><A HREF="http://www-white.media.mit.edu:80/vismod/demos/facerec/index.html">
+Eigenfaces for Recognition</A>. Journal of Cognitive Neuroscience, Vol. 3, Number
+
+<LI>David E. Culler, et al (1993) 
+<!WA50><!WA50><!WA50><!WA50><A HREF="http://www.cs.cornell.edu/Info/People/tve/ucb-papers/sc93.ps">
+Parallel Programming in Split-C</A>. Proceedings of Supercomputing '93.
+
+<LI>Chi-Chao Chang, Grzegorz Czajkowski, and Thorsten
+von Eicken (1996).
+<!WA51><!WA51><!WA51><!WA51><A HREF="http://www.cs.cornell.edu/Info/Projects/CAM/sp2.ps.Z">
+Design and Performance of Active Messages on the IBM SP-2.</A>
+
+<LI>Olivetti Research Laboratory
+<!WA52><!WA52><!WA52><!WA52><A HREF="http://www.cam-orl.co.uk/facedatabase.html">Database of Faces</A>
+
+<LI>Carnegie Mellon University
+<!WA53><!WA53><!WA53><!WA53><A HREF="http://www.ius.cs.cmu.edu/IUS/dylan_usr0/har/faces/test/">
+Test Images for Face Detection</A>
+
+</OL>
+
+
+<H1><!WA54><!WA54><!WA54><!WA54><A HREF="http://www.cs.cornell.edu/Info/People/jshapiro/cs664/hauspar.tar.gz">Source Code</A></H1>
+
+</BODY>
+
+</HTML>
+

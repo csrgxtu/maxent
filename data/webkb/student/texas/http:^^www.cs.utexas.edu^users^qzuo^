@@ -1,0 +1,295 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 19:26:15 GMT
+Content-Type: text/html
+Content-Length: 9067
+Last-Modified: Thursday, 11-Jul-96 02:24:59 GMT
+
+
+<HTML>
+
+<HEAD>
+<BODY BACKGROUND="images/wall.gif"></BODY>
+<TITLE>Qiang Zuo (John)'s Home Page</TITLE>
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Beginning of JavaScript Applet -------------------
+/* Copyright (C)1996 Web Integration Systems, Inc. DBA Websys, Inc.
+   All Rights Reserved.
+
+   This applet can be re-used or modified, if credit is given in
+   the source code.
+
+   We will not be held responsible for any unwanted effects due to the
+   usage of this applet or any derivative.  No warrantees for usability
+   for any specific application are given or implied.
+
+   Chris Skinner, January 30th, 1996.
+  
+   Modified by Qiang Zuo, Feb. 20, 1996
+*/
+
+function scrollit_r2l(seed)
+{
+
+        var m1  = "==> WELCOME to my home page. 8-)    ";
+        var m2  = "==> PLEASE feel free to browse around,   ";
+        var m3  = "and/or leave me any comments/suggestions/jokes.    ";
+        var m4  = "==> THANK YOU for visiting, PLEASE come again !! <====<<";
+
+        var msg=m1+m2+m3+m4;
+
+        var out = " ";
+        var c   = 1;
+
+        if (seed > 100) {
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 100 && seed > 0) {
+                for (c=0 ; c < seed ; c++) {
+                        out+=" ";
+                }
+                out+=msg;
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                    window.status=out;
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;
+                        var cmd="scrollit_r2l(" + seed + ")";
+                        window.status=out;
+                        timerTwo=window.setTimeout(cmd,100);
+                }
+                else {
+                        window.status=" ";
+                        timerTwo=window.setTimeout("scrollit_r2l(100)",75);
+                }
+        }
+}
+
+// global variables
+var id, position=0;
+function edoscroller()
+{
+        // variables declaration
+        var i,k,msg="Hello! Welcome! Hello! Welcome!";
+
+        // increase msg
+        k=(100/msg.length)+1;
+        for(i=0;i<=k;i++) msg+=" "+msg;
+
+        // show it to the window
+        document.form2.edoscroller.value=msg.substring(position,position+100)
+;
+
+        // set new position
+        if(position++==100) position=0;
+        // repeat at entered speed
+        id=setTimeout("edoscroller()",100);
+}
+
+// -- End of JavaScript code -------------- -->
+</SCRIPT>
+<BODY onLoad="edoscroller(),timerONE=window.setTimeout('scrollit_r2l(100)',500);">
+
+<script language="LiveScript">
+function WinOpen() {
+   msg=open("","DisplayWindow","toolbar=no,directories=no,menubar=no");
+   msg.document.write("<HEAD><TITLE>Yo!</TITLE></HEAD>");
+   msg.document.write("<CENTER><h1><B>This is really cool!</B></h1></CENTER>"
+);
+}
+
+function hello() {
+   alert("Hello!");
+}
+</script>
+<!a href="" onMouseOver="hello()">
+
+<CENTER>
+<!WA0><!WA0><!WA0><!WA0><form name="form2"><INPUT type="text" name="edoscroller" size="30"><P></form>
+</CENTER>
+</HEAD>
+
+<!-- ====================================================================== -->
+
+<BODY>
+<APP CLASS="JackhammerDuke">
+
+<center>
+<H1>
+<A HREF="/cgi/rwho/qzuo">
+Qiang Zuo (John) 
+</A>
+'s <br> Home Page
+</H1>
+<BR>
+</center>
+
+
+<CENTER>
+<IMG SRC="images/line.colorbar.gif" ALT="________">
+</CENTER>
+<BR>
+
+<h4> 
+<img src="http://home-cgi.ust.hk/cgi-bin/cgiwrap/~lbcys/Count.cgi?df=qzuo.
+dat align=absmiddle">  since 02/20/96.  Thanks for comming. <br>
+<IMG SRC="http://www.cs.uh.edu/cgi-bin/dgclock.cgi?ft=9|fr=6
+9|fg=139|fb=116"
+alt="**:**">: Austin Time </h4>
+  
+<h2><img src="images/r_hand.gif">
+<A HREF = "http://www.cs.utexas.edu/users/qzuo/me.html">
+Who am I</A>: Self Introduction ?</h2>
+I'm currently in the Master program of 
+<A HREF = "http://www.cs.utexas.edu/">Computer Sciences Department</A>,
+<A HREF = "http://www.utexas.edu">University of Texas at Austin</A>.
+Please <a HREF = "http://www.cs.utexas.edu/users/qzuo/me.html"><blink>click here </blink></a>
+for more information.<p> 
+
+<img src="images/line.cut.gif" alt=""><br>
+<H3> <IMG align="center" SRC="images/book.gif">
+S<FONT SIZE=-1>ERIOUS</FONT>
+J<FONT SIZE=-1>UNK</H3></FONT>
+<CENTER>
+   <TABLE BORDER>
+
+   <TR>
+      <TD ALIGN = LEFT>
+          <img src="/images/stanford/ball2.blue.gif" ALT=>
+               <A HREF="class.html"> Computer Courses </A>
+      <TD ALIGN = LEFT>
+          <img src="/images/stanford/ball2.yellow.gif" ALT=>
+               <A HREF="http://www.cs.utexas.edu/users/hseuping/lang.html">
+                 CS Languages </A>
+      <TD ALIGN = LEFT>
+          <img src="/images/stanford/ball2.red.gif" ALT=>
+               <A HREF="http://www.eecs.nwu.edu/unix.html"> About UNIX </A>
+   <TR>
+      <TD ALIGN = LEFT>
+          <img src="/images/stanford/ball2.blue.gif" ALT=>
+               <A HREF="http://www.cs.utexas.edu/users/qzuo/learn.html"> Computer Graphics </A>
+      <TD ALIGN = LEFT>
+          <img src="/images/stanford/ball2.yellow.gif" ALT=>
+               <A HREF="http://www.cs.utexas.edu/users/qzuo/linux.html"> Linux </A>
+      <TD ALIGN = LEFT>
+          <img src="/images/stanford/ball2.red.gif" ALT=>
+               <A HREF="http://www.cs.utexas.edu/users/qzuo/winprog.html">Windows Programming</A>
+   <TR>
+      <TD ALIGN = LEFT>
+          <img src="/images/stanford/ball2.blue.gif" ALT=>
+               <A HREF="http://www.cs.utexas.edu/users/qzuo/X_pro.html">
+                        X Programming </A>
+      <TD ALIGN = LEFT>
+          <img src="/images/stanford/ball2.yellow.gif" ALT=>
+               <A HREF="http://www.cs.utexas.edu/users/hseuping/cst.html">
+                        Technical CS Lib </A>
+      <TD ALIGN = LEFT>
+          <img src="/images/stanford/ball2.red.gif" ALT=>
+               <A HREF="http://www.cs.utexas.edu/users/qzuo/java.html">
+                     Java</A>
+   </TABLE>
+</CENTER>
+
+<br>
+<br>
+<img src="images/line.eyes.gif" alt="">
+<H3> <IMG align="center" SRC="images/world.gif" ALT="">
+R<FONT SIZE=-1>EAL</FONT>
+J<FONT SIZE=-1>UNK</FONT></H3>
+
+<UL>
+  <LI>  <A HREF="sports.html"> Sports </A> 
+  <LI>  <A HREF="games.html"> Games </A>
+  <LI>  <A HREF="news.html"> News </A>
+</UL>
+
+<br>
+<br>
+<img src="images/line.owl.gif" alt="">
+<H3> <IMG align="center" SRC="images/itools.gif" ALT="">
+S<FONT SIZE=-1>TRUGGLE</FONT>
+<FONT SIZE=-1>FOR</FONT>
+L<FONT SIZE=-1>IVING</FONT></H3>
+
+<CENTER>
+   <TABLE BORDER>
+   <TR>
+      <TD ALIGN = LEFT>
+          <img src="/images/stanford/ball.red.gif" ALT=>
+               <A HREF="institute.html"> Institutes </A>
+      <TD ALIGN = LEFT>
+          <img src="/images/stanford/ball.green.gif" ALT=>
+               <A HREF="jobs.html"> Job & Resume </A>
+      <TD ALIGN = LEFT>
+          <img src="/images/stanford/ball.red.gif" ALT=>
+               <A HREF="organization.html"> Organizations </A>
+    <TR>
+      <TD ALIGN = LEFT>
+          <img src="/images/stanford/ball.golf.gif" ALT=>
+               <A HREF="http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/StartingPoints/Net
+workStartingPoints.html"> Net Starting Points </A>
+      <TD ALIGN = LEFT>
+          <img src="/images/stanford/ball.green.gif" ALT=>
+               <A HREF="http://www.pulver.com:80/fwd/">
+                        Free World Dialup Service </A>
+      <TD ALIGN = LEFT>
+          <img src="/images/stanford/ball.red.gif" ALT=>
+               <A HREF="net.html"> Net and Net </A>
+   <TR>
+      <TD ALIGN = LEFT>
+          <img src="/images/stanford/ball.red.gif" ALT=>
+               <A HREF="finance.html"> Finance </A>
+      <TD ALIGN = LEFT>
+          <img src="/images/stanford/ball.green.gif" ALT=>
+               <A HREF="reference.html"> Reference Book </A>
+      <TD ALIGN = LEFT>
+          <img src="/images/stanford/ball.red.gif" ALT=>
+               <A HREF="company.html"> Company Profile </A>
+   </TABLE>
+</CENTER>
+
+<hr>
+
+<!-- H2 Useful links / www.cs.utexas.edu/users/gracs /H2 -->
+<!-- A HREF = "http://www.cs.utexas.edu/users/qzuo/learn.html">Really?</A><BR> -->
+<!-- <A HREF = "http://www.cs.utexas.edu/users/qzuo/maomi.html">Maomi</A><BR> -->
+<!-- <hr> -->
+
+<H2>To Contact Me</H2>
+<ADDRESS>
+<IMG align=buttom SRC="icons/mail2.gif">Campus Addres: 5106 N. Lamar #109, Austin, TX 78751<BR>
+<IMG SRC="icons/phone_yellow.gif" > Campus Phone: +1-(512)-459-9287 (H)<BR>
+Home Address:  9001 S. Braeswood, Apt 1201, Houston, TX 77074 <br>
+Phone       :  +1 (713) 988-4967 <br>
+&lt;<A HREF="mailto:qzuo@cs.utexas.edu">qzuo@cs.utexas.edu</A>&gt; 
+</ADDRESS>
+
+<H3><img align="center" src="images/gbook.gif">
+<a href="http://www.cs.utexas.edu/users/qzuo/guestbook.html"> Guestbook </a> </H3>
+
+<HR>
+
+<IMG SRC="icons/button_construct.gif">
+This page is still underconstruction.<BR>
+<IMG SRC="images/Calvin.gif">Welcome Back<br>
+<h4>
+/<blink><IMG align="center" SRC="images/note01.gif">Last modificat
+ion: 01/22/96.</blink>
+</h4>
+
+<ADDRESS>
+<IMG SRC="icons/smiley.gif"> copyright Qiang Zuo 1995
+</ADDRESS>
+</BODY>
+
+</HTML>
+
+
+
+ 

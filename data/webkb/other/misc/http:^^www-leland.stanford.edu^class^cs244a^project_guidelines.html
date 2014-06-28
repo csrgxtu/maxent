@@ -1,0 +1,192 @@
+Date: Tue, 14 Jan 1997 20:18:01 GMT
+Server: Stronghold/1.3 Ben-SSL/1.3 Apache/1.1.1
+Content-type: text/html
+Content-length: 9546
+Last-modified: Mon, 06 Jan 1997 20:14:01 GMT
+
+<!--
+$Log: project_guidelines.html,v $
+Revision 1.2  1997/01/06 20:14:01  jimge
+Removed reference to Solaria machines
+
+Revision 1.1  1997/01/05 06:16:37  jimge
+Initial revision
+
+-->
+
+<html>
+<head>
+<title>CS244a Programming Assignment Rules and Guidelines</title>
+</head>
+<h1>CS244a Programming Assignment Rules and Guidelines</h1>
+<body>
+This page will give you information about what we expect from you for the
+CS244a programming projects. Please read it carefully before starting
+the first project.
+<p>
+<h2>Background</h2>
+Although the topic of CS244a is networking, the programming projects assume a good
+deal of background with Unix. You will need solid experience with the C programming
+language and at least a working knowledge of Unix file I/O, process management, and signals
+in order to do the programming assigments. If you are not sure you have 
+the necessary skills, please talk to one of the course staff in the first week of
+classes to find out if you should defer taking CS244a until later in your
+curriculum.
+
+<h2>Implementation Rules</h2>
+All projects are to be coded in ANSI C. If you are unsure of the differences between
+ANSI and K&R C, there are a number of books available at the bookstore on ANSI C.
+<p>
+We expect good coding style throughout. This includes good functional decompostion,
+useful comments, and meaningful variable names. Function header comments are
+required. Following these rules is to your advantage as 20 out of 100 points on
+each assigment constitute a style grade (see Grading Policies below).
+<p>
+All of the assignments are designed to be implemented on the Leland cluster in Sweet 
+Hall. Your programs must compile and run on both the SPARC Solaris machines (epic<em>xx</em>)
+and the DEC OSF/1 machines (amy<em>xx</em>). We will be testing your programs on both platforms.
+You may develop on any platform you like, as long as your program 
+also runs on these two platforms.
+<p>
+At times there will be ambiguities in the assignment specifications, or multiple ways
+an assignment can be implemented. As CS244a is an engineering 
+class, we expect you to make reasonable design decisions in these cases. Base your
+decisions on what you know of the assignment as a whole. The TA's may give you
+advice on the tradeoffs of these decisions, but will not make them for you.
+
+<h2>Tools</h2>
+There are several tools on the Leland systems that can make your life considerably
+easier. 
+<p>
+<em>make</em> is a utility used to conditionally recompile your program based on the timestamps
+of the source code, object files, and executable. We expect that everyone in the class
+will have seen a makefile before as they are a permanent fixture of every flavor of
+Unix and most other platforms. If you don't know how to use <em>make</em> or write
+a makefile, learn. We require a makefile to be submitted with each assignment.
+<p>
+<em>gdb</em> is the GNU debugger. <em>gdb</em> is an interactive, source-level debugger. It allows
+you to trace through your code as it executes and examine program state. If your program
+seg faults, it will show you where. Learning to use <em>gdb</em> effectively will save you many
+hours of debugging hell. 
+<p>
+To compile with <em>gdb</em>, simply add the '-g' flag to the gcc command. You can then start
+<em>gdb</em> with your program with the command
+<pre>gdb progname</pre>
+Type 'help' from the <em>gdb</em> prompt for more information.
+<p>
+<em>Purify</em> is a development tool from Pure Software. It checks your program at
+run-time for many common errors. Among other things, it checks for memory leaks,
+references to uninitialized or illegal addresses, and invalid parameters passed to
+system calls. To use Purify, simple preface the command which links your program
+with 'purify'. For example:
+<pre>purify gcc -o myprogram main.o client.o netio.o</pre>
+When you run your program, Purify will start itself in a separate X window and show
+you diagnostics.
+<p>
+<!WA0><a href="http://www-leland.stanford.edu/class/cs244a/Makefile.html">Here</a> is a sample Makefile which illustrates all of the 
+above options.
+<p>
+<h2>Deliverables</h2>
+There are two expected deliverables with each assignment. The first is the source
+code of your implementation. This should include a makefile which builds a program
+of the name specified in the assignment in the current directory. It is important
+to adhere to this requirement as some of the assignments are tested by shell scripts
+and must be graded by hand if your makefile is wrong. If you do not know how to 
+write a makefile, look in the class directory for a sample.
+<p>
+The second deliverable is a project writeup. This file should be called README (all caps)
+if your writeup is a straight text file or README.html if your writeup is in HTML.
+The submit program will not accept your assignment unless one of these files is present.
+and should reside in the same directory as your source code when you submit. This file
+should contain the following:
+<ul>
+<li>An overview of the structure of your code.
+<li>Any design decisions you made and a short justification for them. If you found
+ambiguities in the assignment itself, also list here how they were resolved in your
+implementation.
+<li>Answers to any questions the assignment asks.
+</ul>
+
+<h2>Submission</h2>
+All projects will be submitted electronically. The submit script requires the following
+to be true:
+<p>
+<ul>
+  <li>The current directory must contain a file called <em>Makefile</em>
+  <li>The current directory must contain a file called either <em>README</em> or <em>README.html</em>
+  <li>There must be at least one file with an extension of <em>.c</em>.
+</ul>
+<p>
+If there are any additional required files, these will be listed in the assignment 
+specification and the submit script will check for them as well.
+<p>
+If these conditions are true, the script will submit the required files and all other files
+with an extension of <em>.c</em> or <em>.h</em> in the current directory. Subdirectories
+will not be submitted. Everything needed to compile and run your project should be
+in the current directory.
+<p>
+In order to submit your assignment, enter the following command:
+<pre>/usr/class/cs244a/bin/submit assn#</pre>
+where <em>assn#</em> is the assignment number; i.e. 1, 2, 3, or 4. 
+
+
+
+<h2>Honor Code</h2>
+We will enforce adherence to the Stanford Honor Code as it applies to programming
+assignments. You may use publicly available code from other sources as long as the
+source is noted in the code. Be aware, however, that copying code from the Stevens
+book verbatim is dangerous as not all of the code is strictly ANSI. You may discuss
+the projects with your fellow students, however; you may <em>NOT</em> work together with
+other students or use code written by another student in your assignment. If you
+have any questions about the honor code, please ask one of the course staff. Honor
+code violations are not a laughing matter at Stanford and it is much better to ask
+what might seem like a silly question than to risk your academic career.
+<p>
+<h2>Grading Policies</h2>
+Each assigment is graded from a total of 100 points. All assignments will be
+weighted equally in your final grade. 80 points of the grade will be functionality 
+points and will measure how well your assignment meets the specifications given
+in the assignment handout. The remaining 20 points grade the style of your code
+as specified above. While the functionality points may be contested if you
+think your code was misgraded, the style points are subjective and may not 
+be contested.
+<p>
+As a rule late assignments will not be accepted. Only Professor McKeown can
+grant individual exceptions to this rule; please do not ask the TA's for 
+extensions. In general extensions will only be granted for serious reasons
+such as a family medical emergency. At times there are system problems with
+the Leland cluster which may prevent you from completing your assignment on
+time. In these cases an extension will generally be granted to the entire
+class.
+<h2>References and Resources</h2>
+<em>Unix Network Programming</em> by Stevens is the reference of choice for
+programming the Unix sockets API. There will also be a review session before
+the first assignment is due which will provide an introduction to socket
+programming.
+<p>
+<em>TCP/IP Volume 1: The Protocols</em>, also by Stevens, is an excellent 
+reference to the specification and common implementations of TCP/IP and some
+of the related protocols. Although this book is not a required course text,
+it is an excellent reference. Some of the assignments refer to chapters
+in this book for additional reading.
+<p>
+The RFC's (Request for Comments) are a set of documents which are the 
+absolute reference for Internet standards. The RFC's are numbered sequentially.
+There is an <!WA1><a href="http://www.isi.edu/rfc-editor">RFC web page</a>; you can
+also get the RFC's via <!WA2><a href="ftp://nis.nsf.net/documents/rfc">anonymous FTP</a>.
+Look at <!WA3><a href="ftp://nis.nsf.net/documents/rfc/INDEX.rfc">INDEX.rfc</a> for
+a list of RFC titles.
+<p>
+Each student will be assigned a TA after signing up through the class web 
+page. If you have a question that cannot be answered by any of the class
+materials or the above references, you should contact your TA. The TA's will
+hold office hours in the Sweet Hall; if you are having problems, you may
+want to schedule one of your programming sessions during these hours.
+<hr>
+Please e-mail questions to <!WA4><a href="mailto:cs244a@leland.stanford.edu">cs244a@leland</a>
+<p>
+<em>
+$Id: project_guidelines.html,v 1.2 1997/01/06 20:14:01 jimge Exp $
+</em>
+</body>
+</html> 

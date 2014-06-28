@@ -1,0 +1,194 @@
+Date: Tue, 26 Nov 1996 00:39:21 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 27 May 1996 17:20:17 GMT
+Content-length: 7270
+
+<HTML>
+<HEAD>
+<TITLE> The Computational Vision Lab</TITLE>
+<LINK REV="MADE" HREF="mailto:webmaster@cs.sfu.ca">
+</HEAD>
+<BODY>
+<CENTER>
+<H1>The Computational Vision Lab</H1>
+<HR>
+<CENTER>
+<!WA0><IMG SRC="http://fas.sfu.ca/cs/research/groups/Vision/Images/eyes402-158.jpg" WIDTH="402" HEIGHT="158" ALT="eyes.logo">
+</CENTER>
+<HR>
+<P>
+
+<tr>
+<td align="right"> School of Computing Science, <td width="10"></td></td><td align="left"> Fax: (604) 291-3045, </td>
+</tr><tr>
+<td align="right">Simon Fraser University <td width="10"></td></td><td align="left"> email: funt@cs.sfu.ca </td>
+</tr><tr>
+<td align="right"> Burnaby, B.C. V5A 1S6  Canada <td width="10"></td></td><td align="left"> Physical location: ASB 10865, SFU </td>
+</tr><tr >
+<td><br></td>
+</tr><tr>
+<td align="right"> <!WA1><IMG SRC="http://fas.sfu.ca/css/graphics/small-css-logo.gif" WIDTH="54" HEIGHT="52"> </td>
+<td width="10"></td><td align="left"> A <!WA2><A HREF="http://fas.sfu.ca/css">Centre for Systems Science</A> 
+		  <br> Affiliated Laboratory </td>
+</tr>
+<br>
+</table>
+</CENTER>
+
+
+<HR>
+Members of the Computational Vision Lab at SFU conduct research into 
+machine vision and image processing, with emphasis on computational models
+of colour vision.
+<P>
+Dr. 
+<!WA3><A HREF="http://fas.sfu.ca/cs/people/Faculty/Funt/index.html">Brian Funt</A>
+is the director of the lab.
+<HR>
+<H2>
+<!WA4><IMG ALIGN=LEFT SRC="http://fas.sfu.ca/css/graphics/rightmarblearrow.gif" WIDTH="30" HEIGHT="30">
+Overview </H2>
+<P>
+<CENTER>
+<TABLE ALIGN="CENTER" COLSPACING="10" Border="0">
+<TR><TD>
+<!WA5><IMG ALIGN=LEFT,MIDDLE SRC="http://fas.sfu.ca/cs/research/groups/Vision/Images/a2.0.C.gif" WIDTH="84" HEIGHT="132"> 
+</TD><TD>
+<!WA6><IMG ALIGN=RIGHT,MIDDLE SRC="http://fas.sfu.ca/cs/research/groups/Vision/Images/a2_track.0.gif" WIDTH="84" HEIGHT="132"> 
+</TD></TR>
+</TABLE>
+<br>
+<!WA7><A HREF="http://fas.sfu.ca/cs/research/groups/Vision/gesture.html">
+<H5>
+Images for Automated Gesture Tracking </A>
+</H5>
+</CENTER>
+
+<P> <EM>Computational Vision </EM>can be thought of as enabling
+computers to use visual information.  Like many problems in Artificial
+Intelligence, it's something people do so easily they barely think
+about it, but a very complex problem for a machine.  
+
+
+<P>
+Our primary focus in the Vision Lab at SFU is in understanding
+colour: How are colours perceived? How can colours be reproduced accurately
+on different media? In what ways does colour help in understanding images? 
+Understanding colour is a much more difficult problem than most people
+suspect. Often poor colour rendition results more from our limited
+understanding of colour perception than it does from limitations of our
+colour producing devices. 
+
+<p>
+We subscribe to a computational view of colour; namely, that human
+perception and use of colour can be explored and explained as
+computations.  The fundamental problem of colour is to explain how we
+see colours as relatively stable despite the fact that the light
+reflected into our eyes from an object varies dramatically with the
+light illuminating the object. Colour and computers have become much
+more intertwined in recent years as colour displays and colour
+printers have become more affordable. Since colour is a perceptual,
+not a physical quality, it is crucial to have a good model of how we
+perceive colour in complex environments if we are to get predictable
+results from these devices.
+
+<p>
+
+Colours are difficult to reproduce correctly, but why?  While we've
+all experienced untrue colour while using home video cameras or
+viewing prints from our local photofinisher, now we have colour
+printers frustrating us with colours that look very little like the
+nice colours we previewed on our CRTs.  When the colour doesn't look
+right, it's natural to feel that the printer and monitor are not
+calibrated properly--- and of course perhaps they're not--- but that's
+not the fundamental problem.  The fundamental problem stems from the
+fact that colour reproduction, simply is not a matter of reproducing
+identical physical phenomena, as it is in the case of sound
+reproduction in which a similar pattern of sound waves is recreated,
+but rather a matter of creating perceptual equivalences.
+
+<p>
+For us to build machines that reproduce colours accurately or to make
+effective use of colour in robotics requires that we understand human colour
+perception; and the last decade has produced many interesting new
+computational theories of colour coming from both computer science and
+psychology. A central concern of these theories is to describe how colour
+depends or does not depend on the incident illumination.  A coloured surface
+cannot be seen unless we shine some light on it, but the spectrum of the
+reflected light depends on the product of the spectrum of the incident
+light's spectrum and the surface's reflectance.  It's natural to think of a
+surface's colour as a feature of the surface itself, but the spectrum of the
+light energy reaching the eye has the two factors of illumination and
+reflectance confounded into one. In order to determine the true surface
+properties, the effect of the illumination must be taken into account. 
+
+<P> 
+<h2> Colour Correction Results </H2>
+<P>
+
+<CENTER>
+<!WA8><IMG SRC="http://fas.sfu.ca/cs/research/groups/Vision/Images/result-back-red-small.jpg" WIDTH="303" HEIGHT="226" ALT="correction.results">
+</CENTER>
+
+<P> In the upper left is the image of a scene taken under an orangish,
+tungsten light which has the effect of turning the background overly
+green and the whites a bit yellow. In the bottom right is the target
+image of the same scene but under the standard illumination for which
+the camera is calibrated. Since we cannot always control the
+illumination, our goal is to correct automatically the colours in the
+input image so that they will look like those in the target
+image. (The fuzziness of the images is due to a high JPEG compression
+factor--- concentrate on the colours.)
+
+<P> The top right is a 'corrected' image produced by the standard
+grey-world colour balancing algorithm, which assumes that the average
+of all the colours in the scene is grey.  In the bottom left is the
+much better result produced by our new, more sophisticated algorithm
+developed in the Vision Lab.  As you can see, the result of our new
+algorithm is much closer to the target image than that produced by
+the grey-world algorithm.
+
+<P>
+<!WA9><A HREF="http://fas.sfu.ca/cs/research/groups/Vision/cgi/imagemap.cgi/bbar2">
+<!WA10><IMG SRC="http://fas.sfu.ca/cs/research/groups/Vision/Images/bbar2.gif" BORDER=0 ISMAP WIDTH="468" HEIGHT="68" 
+ALT="Menubar" ></A>
+<HR>
+
+<TABLE border= 0>
+<CAPTION> <H2> Other Links </H2> </CAPTION>
+
+<TR>
+  <TD></TD> <TD WIDTH="10"></TD>
+  <TD> <!WA11><IMG SRC="http://fas.sfu.ca/cs/research/groups/Vision/Images/sfucrest.gif" width="81" height="110"> </TD>
+  <TD WIDTH="10"></TD>
+  <TD> <!WA12><IMG ALIGN=MIDDLE SRC=http://fas.sfu.ca/images/CMPTlogo-halfsize.gif WIDTH="141" HEIGHT="77"> </TD> 
+</TR> 
+
+<TR>
+  <TD> Dynamic <br> Site <br> <!WA13><A HREF="http://fas.sfu.ca/cs/research/groups/Vision/indexform.cgi">Index</A> </TD>
+  <TD WIDTH="10"></TD>
+  <TD> <!WA14><A HREF="http://www.sfu.ca/"> Simon Fraser University <br> Home Page</A></TD>
+  <TD WIDTH="10"></TD>
+  <TD> <!WA15><A HREF="http://fas.sfu.ca/cs"> SFU Computing Science <br> Home Page</A> </TD> 
+</TR>
+
+</TABLE>
+
+<HR>
+<P>
+<FONT SIZE="-1">
+Text-only links:
+<!WA16><A HREF="http://fas.sfu.ca/cs/research/groups/Vision/members.html">  Lab Members </A> | 
+<!WA17><A HREF="http://fas.sfu.ca/cs/research/groups/Vision/Pubs/publications.html">   Publications On-line </A> | 
+<!WA18><A HREF="http://fas.sfu.ca/cs/research/groups/Vision/Vislab-postin/mail2.html">  Mail Feedback </A> | 
+<!WA19><A HREF="http://fas.sfu.ca/cs/research/groups/Vision/links.html">  Links of Interest </A>
+</FONT>
+<P>
+<H5>Page maintained by: 
+<!WA20><A HREF="http://fas.sfu.ca/cs/research/groups/Vision/Brock/brock.html">
+Michael Brockington </A>
+- 
+<!WA21><A HREF="mailto:brocking@sfu.ca">brocking@sfu.ca</A> - May 1996 </H5>
+</BODY>
+</HTML>

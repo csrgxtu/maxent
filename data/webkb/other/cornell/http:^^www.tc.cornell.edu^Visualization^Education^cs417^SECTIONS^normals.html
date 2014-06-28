@@ -1,0 +1,73 @@
+Date: Mon, 16 Dec 1996 23:40:16 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 26 Jun 1995 15:24:13 GMT
+Content-length: 1689
+
+
+<html>
+<head>
+<title>
+Normals
+</title>
+</head>
+
+<body>
+
+<h2>Computing the normal to a surface</h2>
+<hr>
+<b>There are several ways of computing a normal to a surface. 
+</b>
+<hr>
+If the surface
+is defined as a list of triangles then one way of computing the normal
+is to compute the normalized cross-product of two edges of the triangle.
+Three vertices of a triangle are shown below as <b>P1, P2</b> and <b>P3</b>.
+<p>
+<!WA0><!WA0><!WA0><!WA0><img src="http://www.tc.cornell.edu/Visualization/Education/cs417/SECTIONS/normals.diagram.triangle.gif">
+<p>
+If we denote <br>
+<!WA1><!WA1><!WA1><!WA1><img src="http://www.tc.cornell.edu/Visualization/Education/cs417/SECTIONS/normals.eqn.diff.gif">
+<br> then the normal is 
+given by
+<p>
+<!WA2><!WA2><!WA2><!WA2><img src="http://www.tc.cornell.edu/Visualization/Education/cs417/SECTIONS/normals.eqn.triangle.gif">
+<p><hr>
+If the surface is defined as a list of general polygons then the Newell
+method is a good way to calculate the normal. It produces an "average"
+normal if the polygon is not quite planar. It also is not confused by
+co-linear vertices.
+Calculate the following, where m is the number of vertices in the
+polygon.
+The normal is then <i>norm([nx, ny, nz])</i>.
+<p>
+<!WA3><!WA3><!WA3><!WA3><img src="http://www.tc.cornell.edu/Visualization/Education/cs417/SECTIONS/normals.eqn.newell.gif">
+<p><hr>
+If the surface is defined as a parametric equation then differential 
+methods may be used to derive the normal.
+If the equation for a parametric surface is 
+<br>
+<!WA4><!WA4><!WA4><!WA4><img src="http://www.tc.cornell.edu/Visualization/Education/cs417/SECTIONS/normals.eqn.parametric.gif">
+<br>
+where <i> 0&lt;u&lt;1 and 0&lt;v&lt;1</i> are two parameters, then the surface normal
+is given by 
+<br>
+<!WA5><!WA5><!WA5><!WA5><img src="http://www.tc.cornell.edu/Visualization/Education/cs417/SECTIONS/normals.eqn.parametric.normal.gif">
+
+<p>
+<hr>
+Comments about Theory Center online documents are welcome and may be sent to
+<i>doc-comments@tc.cornell.edu</i>.
+ <p>
+
+Last modified, 6/26/95 B. Land. 
+<! Revision history:
+	Original document: P.Maxfield, 10/94
+>
+<p>
+<!WA6><!WA6><!WA6><!WA6><iMG SRC="http://www.tc.cornell.edu/copyright.xbm">
+<!WA7><!WA7><!WA7><!WA7><A HREF="http://www.tc.cornell.edu/ctcCopyright.html"> 
+<i>Copyright Statement </I></A>
+
+</body> </html>
+

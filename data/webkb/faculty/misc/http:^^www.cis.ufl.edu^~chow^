@@ -1,0 +1,125 @@
+Date: Thu, 21 Nov 1996 20:21:07 GMT
+Server: Stronghold/1.3.2 Ben-SSL/1.3 Apache/1.1.1
+Content-type: text/html
+Set-Cookie: Apache=gs3521657848607667362; path=/
+Content-length: 4819
+Last-modified: Tue, 27 Aug 1996 19:11:12 GMT
+
+<htML>
+<HEAD>
+<TITLE>Professor Randy Y. C. Chow Home Page</title>
+</HEAD>
+
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+function scroll_welcome(seed)
+{
+        var m1  = "Welcome to Professor Chow's home page.";
+        var m2  = " . . . This message is displayed by a Java script";
+        var m3  = " . . . Please click to see my current teaching and research";
+        var m4  = " . . . Please click to see my new book on operating systems";
+        var m5  = " . . . Have a nice day . . . Have a nice day.";
+
+        var msg=m1+m2+m3+m4+m5;
+        var out = " ";
+        var c   = 1;
+
+        if (seed > 100) {
+                seed--;
+                var cmd="scroll_welcome(" + seed + ")";
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 100 && seed > 0) {
+                for (c=0 ; c < seed ; c++) {
+                        out+=" ";
+                }
+                out+=msg;
+                seed--;
+                var cmd="scroll_welcome(" + seed + ")";
+                    window.status=out;
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;
+                        var cmd="scroll_welcome(" + seed + ")";
+                        window.status=out;
+                        timerTwo=window.setTimeout(cmd,100);
+                }
+                else {
+                        window.status=" ";
+                        timerTwo=window.setTimeout("scroll_welcome(100)",75);
+                }
+        }
+}
+//-->
+</SCRIPT>
+
+
+<BODY onLoad="timerONE=window.setTimeout('scroll_welcome(10)',500);">
+<BR><!WA0><IMG ALIGN=bottom HSPACE=10  SRC="http://www.cis.ufl.edu/~chow/graphics/chow.jpg"><!WA1><A HREF="http://www.cis.ufl.edu/~chow/voice.au"><!WA2><IMG BORDER=0 HSPACE=5 ALIGN=center SRC="http://www.cis.ufl.edu/~chow/graphics/sound1.xbm"><FONT SIZE=-1> click here for a personal message</FONT></A><P>
+<FONT SIZE=7 COLOR="#0000ff"><EM>Randy Y. C. Chow</EM></FONT><P>
+<FONT SIZE=+2><B>Professor</B> ,<BR>
+<I>Department of Computer & Information Science & Engineering<BR>
+University of Florida, Gainesville</I></FONT><P>
+<HR>
+<TABLE BORDER=0 WIDTH="100%">
+<TR><TD>
+<EM>
+E-Mail : <!WA3><A HREF="mailto:chow@cis.ufl.edu">chow@cis.ufl.edu</A><BR>
+Phone : (352) 392-1487
+</EM>
+<TD><!WA4><IMG ALIGN=left  SRC="http://www.cis.ufl.edu/~chow/graphics/emailed.gif"><BR>
+Room 301, CSE Building<BR>
+University of Florida<BR>
+Gainesville, FL 32611<BR>
+</TR></TABLE>
+
+<HR>
+<!WA5><IMG ALIGN=left HSPACE=10 SRC="http://www.cis.ufl.edu/~chow/graphics/at.work.gif"><EM> <FONT COLOR="#778822">This page is still under construction. If you can not find information you need in here, please send <!WA6><A HREF="mailto:chow@cis.ufl.edu"> me</A> an e-mail.</EM><BR CLEAR=left></FONT>
+<HR>
+<P>
+
+<DL>
+<H3><DT><!WA7><IMG BORDER=0 ALIGN=bottom ALT="*" SRC="http://www.cis.ufl.edu/~chow/graphics/purple.gif"> Current teaching</H3>
+<UL TYPE=disk>
+  <LI><!WA8><A HREF="http://www.cis.ufl.edu/~chow/cop5615.html"> COP 5615 : Operating System Principles </A>
+</UL>
+
+<H3><DT><!WA9><IMG BORDER=0 ALIGN=bottom ALT="*" SRC="http://www.cis.ufl.edu/~chow/graphics/orange.gif"> Current research</H3>
+<UL TYPE=disk>
+  <LI>Computer and Communication Network Security 
+</UL>
+
+<H3><DT><!WA10><IMG BORDER=0 ALIGN=bottom ALT="*" SRC="http://www.cis.ufl.edu/~chow/graphics/green.gif"> <!WA11><A HREF="http://www.cis.ufl.edu/~chow/resume.html">My resume</A></H3>
+
+<H3><DT><!WA12><IMG BORDER=0 ALIGN=bottom ALT="*" SRC="http://www.cis.ufl.edu/~chow/graphics/yellow.gif">My new book</H3>
+<UL TYPE=disk>
+  <LI><!WA13><A HREF="http://www.cis.ufl.edu/~chow/dosa.html">Distributed Operating Systems and Algorithms</A>
+</UL>
+
+<H3><DT><!WA14><IMG BORDER=0 ALIGN=bottom ALT="*" SRC="http://www.cis.ufl.edu/~chow/graphics/red.gif"> Members of the Computer Security Research Group</H3>
+<UL TYPE=disk>
+  <LI><!WA15><A HREF="http://www.cis.ufl.edu/~nemo">Richard Newman-Wolfe</A> &lt <!WA16><A HREF="mailto:nemo@cis.ufl.edu">nemo@cis.ufl.edu</A> &gt , Assistant Professor
+  <LI><!WA17><A HREF="http://www.cis.ufl.edu/~hp0">Hyun Park</A> &lt <!WA18><A HREF="mailto:hp0@cis.ufl.edu">hp0@cis.ufl.edu</A> &gt , Graduate Student
+  <LI><!WA19><A HREF="http://www.cis.ufl.edu/~jz0">Jing Jong</A> &lt <!WA20><A HREF="mailto:jz0@cis.ufl.edu">jz0@cis.ufl.edu</A> &gt , Graduate Student
+  <LI><!WA21><A HREF="http://www.cis.ufl.edu/~sycheng">Hsiao-Yang Cheng</A> &lt <!WA22><A HREF="mailto:sycheng@cis.ufl.edu">sycheng@cis.ufl.edu</A> &gt , Graduate Student
+  <LI><!WA23><A HREF="http://www.cis.ufl.edu/~jselbie">John Robert Selbie</A> &lt <!WA24><A HREF="mailto:jselbie@cis.ufl.edu">jselbie@cis.ufl.edu</A> &gt , Graduate Student
+  <LI><!WA25><A HREF="http://www.cis.ufl.edu/~ors">Ozzie R. Sabina</A> &lt <!WA26><A HREF="mailto:ors@cis.ufl.edu">ors@cis.ufl.edu</A> &gt , Graduate Student
+</UL>
+
+<H3><DT><!WA27><IMG BORDER=0 ALIGN=bottom ALT="*" SRC="http://www.cis.ufl.edu/~chow/graphics/yellow.gif"> Points of interests</H3>
+<UL TYPE=disk>
+  <LI><!WA28><A HREF="http://grove.ufl.edu/~csa">Chinese (Taiwanese) Student Association</A>
+  <LI><!WA29><A HREF="http://www.geminisecure.com">Gemini Computer Inc.</A>
+</DL>
+
+<P><HR>
+<ADDRESS>
+Last revised : 3/15/96<BR>
+Please e-mail to <!WA30><A HREF="mailto:chow@cis.ufl.edu">chow@cis.ufl.edu</A> if you have any questions.
+</BODY>
+</HTML>
+

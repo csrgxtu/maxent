@@ -1,0 +1,304 @@
+Date: Mon, 11 Nov 1996 17:24:43 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 26 Apr 1996 15:22:04 GMT
+Content-length: 9355
+
+<html>
+<head>
+<title>CS 537 - Programming Assignment #3</title>
+</head>
+
+<body>
+<table border=0 width=100% align=center>
+<tr>
+<td width=25%><td width=50% align=center>
+<b>UNIVERSITY OF WISCONSIN-MADISON
+<br>
+Computer Sciences Department</b>
+<td width=25%>
+<tr>
+<tr>
+<td>
+<b>CS 537
+<br>
+Spring 1996 </b>
+<td><td align=right><b>Bart Miller</b>
+<tr>
+<td>
+<td align=center><b>Programming Assignment #3</b>
+<br>
+(Due Wednesday, May 1, at 5pm)
+<td>
+</table>
+
+<h2>Simulating CPU Scheduling Algorithms</h2>
+The goal of this assignment is to evaluate several CPU scheduling algorithms.
+We will use trace data from our local UNIX systems to test these algorithms.
+<p>
+Your assignment is to write a program that reads in the trace data and
+simulates the CPU scheduling.
+You will keep track of various performance statistics and print these out at
+the completion of the trace file.
+<h2>The Trace Files</h2>
+The trace files look similar to the ones you used for Program #1.
+Each line of the trace file will be of the form:
+<pre>
+CommandName StartTime CPUTime IOCount
+</pre>
+Each of these three pieces will be separated by some number of blank characters
+(spaces or tabs).
+<ul>
+<li>
+<i>CommandName</i>
+is a character string (maximum length of 10 characters) that contains
+the name of the program;
+<li>
+<i>StartTime</i>
+is the time in 10 millisecond increments (100ths of a second) since midnight -
+this is the time that the program arrived in the system;
+<li>
+<i>CPUTime</i>
+is the total CPU time, in seconds, used by this
+program;
+<li>
+<i>IOCount</i>
+records the total number of bytes of disk I/O done by this program.
+Disk I/O always occurs in full blocks; blocks are
+8K (8192 bytes).
+We will ignore all other types of I/O (such as network or keyboard/display).
+</ul>
+<p>
+The lines in the trace files are sorted by program starting time.
+
+<h2>Program Information</h2>
+Your program will be structured as a continuous loop that reads trace records
+and advances time.
+
+<h3>Important Events</h3>
+Your program will maintain a notion of current time.
+The "clock" in your simulator will be a variable that holds the value of
+the current time.
+the clock tick will be 1 ms.
+The clock will start at time 0 and advances each time a program runs or
+while the simulated CPU is idle and waiting.
+<p>
+Several things can happen while a simulator is running:
+<ol>
+<li>
+The process that is currently running could complete:
+In this case, you need to update the various performance statistics (see
+below) and remove the process from any run/ready queues.
+<li>
+The process will start a disk I/O:
+In this case, you need to block the process until the I/O is completed.
+<li>
+A disk I/O will complete:
+The process that completed its I/O will be placed back in the appropriate
+run/ready queue.
+<li>
+A new process will arrive (be ready to start):
+In this case, the current time of the simulator matches that the arrival time
+of one or more jobs in the trace file.
+These jobs need to be placed the appropriate ready queues.
+</ol>
+
+<h3>Scheduling Algorithms</h3>
+<p>
+The details of the particular scheduling algorithm (you will implement several)
+should be isolated in a single class.
+All your program, except for the scheduling algorithm, should be the
+same for the different versions.
+<ol>
+<li>
+The first version of your program will implement Round Robin scheduling.
+Each process runs until it completes its time slice, blocks for disk I/O, terminates,
+a disk I/O completes, or another job arrives
+(i.e., if a new process
+arrives or a disk I/O completes
+during the running process's time slice, the running process
+is interrupted).
+You will test this with time slices of 10 ms, 100 ms, and 1000 ms.
+<li>
+The second version of your program will implement Exponential Queues.
+As with RR,
+each process runs until it completes its time slice, blocks for disk I/O, terminates,
+a disk I/O completes, or another job arrives.
+Any time a process is interrupted (by a new process or by I/O completion), it is
+placed back in the queues,
+<i>at the end of the queue</i>,
+for the correct priority.
+You will have 8 priority levels and the base (smallest time slice) will be
+10ms.
+When a process uses its full time slice, you descrease its priority and double
+its slice.
+When a process uses <i>less than half</i> of its time
+slice, you increase its priority
+and half its slice.
+<li>
+The third version of your program will implement STCP scheduling.
+For this version, you will be sorting the ready queue according to how much
+total CPU time remains for each process.
+A newly arrived process or a disk I/O completing will
+preempt the running process
+(so the currently running is interrupted
+and placed back in the queue,
+<i>according to how much CPU time it has remaining</i>).
+</ol>
+
+<h3>Simulator Details</h3>
+Here are some important details:
+
+<ol>
+
+<li>
+For all three versions, a context switch takes 1 ms:
+Taking a process out of execution takes 1 ms and
+starting a process to execute also takes 1 ms.
+
+<li>
+When a process does an I/O operation, it blocks until the operation is
+completed.
+
+<li>
+Each process will perform a certain number I/O operations based on the
+<i>IOCount</i>
+field of it's trace record.
+Since, I/O is always done in blocks on 8K, you round <b>up</b> IOCount to
+the next multiple of 8K:
+<center>
+<tt>IOOperations = trunc ((IOCount + 8191) / 8192)</tt>
+</center>
+
+<li>
+You will use the
+<i>IOOperations</i> count and the
+<i>CPUTime</i>
+field to calculate how often the process will block for I/O.
+Divide the value
+<i>CPUTime</i>
+field by the number of I/O operations (round to the near millisecond).
+Note that we are assuming that I/O operations are evenly distributed
+throughout the execution of a program.
+The I/O operation always occurs at the
+<b>end</b>
+of a CPU burst.
+
+<p>
+If the
+<i>CPUTime</i>
+does not divide evenly by the number of I/O operations,
+then the last CPU burst will be smaller than the other ones and <b>not</b>
+be followed by a disk I/O.
+
+<p>
+If the number of I/O operations is greater than the number of milliseconds of
+<i>CPUTime</i>,
+than the excess I/O operations will all be done at the end of the process (with
+no extra context switches between each operation).
+
+<p>
+Some examples:
+
+<ul>
+<li>
+If the <i>CPUTime</i> is 20 and the number of I/O operations
+is 4, then the process will need to start an I/O operation after each 5 ms of
+execution.
+So, the process will execute 5 ms, then do an I/O, execute another 5 ms,
+then do an I/O, and so on.
+
+<li>
+If the <i>CPUTime</i> is 23 and the number of I/O operations
+is 4, then the process will execute exactly as the above case, with an
+additional 3 ms CPU burst after the last disk I/O.
+
+<li>
+If the <i>CPUTime</i> is 5 and the number of I/O operations is 10, then
+the process will start one I/O operation after each 1 ms of exectution,
+with 6 I/O operations being done together at the end of the last CPU
+burst.
+</ul>
+
+<li>
+Disk I/O operations take exactly the same amount of time: 20 ms each.
+Your computer has one disk and can do only one disk operation at a time.
+As soon as one operation is completed, the next can start (with no time
+in between).
+
+</ol>
+
+<h3>Performance Data</h3>
+Your simulator will keep trace of several performance statistics and print out
+these results when the simulator completes.
+These statistics are:
+
+<ol>
+<li>
+Average Completion Time (ACT):
+For each job, you will calculate how it it took to run.
+The time is the difference between its completion time and arrival time.
+The ACT is the average of this value for all jobs in the trace file.
+
+<li>
+Minimum and Maximum Completion Time:
+You will also compute the minimum and maximum completion times over all
+the jobs.
+
+<li>
+Throughput:
+This is the number of jobs per second.
+Divide the
+number of jobs that were executed
+by
+total running time of the simulator.
+
+<li>
+Utilization:
+This is the amount time spent doing useful computation.
+It does not include idle time or time spent doing context switches.
+Print out the total and as a percentage of the running time of the simulator.
+</ol>
+
+<!--
+For each of the three versions, you will test your simulator on the
+data files in ~cs537/TESTFILES/data.sched1 and ~cs537/TESTFILES/data.sched2.
+-->
+
+<h2>Software Design Issues</h2>
+Good design on this assignment will save you, literally thousands of lines
+of code.
+A crucial class in each version of your program will be the class that does
+the queuing.
+In one version of the program, it does simple FIFO queuing.  In another
+version, it is a priority queue sorted by one of 8 priority levels.
+In the last version, it is a priority queue sorted by remaining CPU time.
+<p>
+All other parts of your program should be the same, so you can re-use them
+for the different versions.
+<p>
+You have plenty of time for this assignment, but don't delay in getting
+started!
+Work on a design and and initial structure for your classes, then come talk
+with me or the TA's.
+
+<h2>Deliverables</h2>
+<p>
+You should hand in a print-out of your program and Makefile.
+Your program listing should include a copy of the code for
+<b>each</b>
+scheduling algorithm, and one copy
+of the code for the rest of the program.
+These should be clearly labeled.
+<p>
+Your simulator should print out the statistics described above for each
+simulator run.
+
+<hr>
+<H4>
+Last modified:
+Fri Apr 26 10:22:03 CDT 1996
+by
+<a href="http://www.cs.wisc.edu/~bart">bart</a></b>
+</H4>
+</body>

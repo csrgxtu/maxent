@@ -1,0 +1,118 @@
+Date: Tue, 14 Jan 1997 22:48:23 GMT
+Server: NCSA/1.4.1
+Content-type: text/html
+Last-modified: Wed, 06 Nov 1996 19:32:45 GMT
+Content-length: 4126
+
+<HTML>
+<HEAD><TITLE>Programming WWW fall'96 -- Assignment #5</TITLE></HEAD>
+
+<BODY>
+Programming for the World-Wide Web <BR>
+Homework 5 <BR>
+Due November 19 <BR>
+
+<p>
+
+You don't have to hand in any code for this assignment.  Just write your answers to the following questions and mail them to the grader, <!WA0><a href="mailto:pechtcha@cs.nyu.edu">Igor</a>.
+<P> 
+When a question asks you to describe a situation, describe in sequence the actions that one or more threads might perform.  For example: "There are two threads.  First, thread 1 does this.  Then thread 2 does these two things.  Then thread 1 does this other thing."
+
+<OL>
+<LI> (1 point). What can go wrong if the code 
+<BLOCKQUOTE><PRE>
+while (<i>condition</i>) 
+  wait();
+</PRE></BLOCKQUOTE>
+is replaced by 
+<BLOCKQUOTE><PRE>
+if (<i>condition</i>) 
+  wait();
+</PRE></BLOCKQUOTE>
+Describe a situation in which this problem occurs.
+
+<LI>   (2 points).  Here is the complete<!WA1><A HREF=http://cs.nyu.edu/cs/dept_info/course_home_pages/fall96/G22.3033.09/http/Vector.java> source code to Java's Vector class.</A> 
+Describe a situation in which the following code returns the element in position 5:
+<BLOCKQUOTE><PRE>
+...
+static void m(Vector v) {
+   i = 3;
+  return v.elementAt(i);
+}
+</PRE></BLOCKQUOTE>
+
+Can the same problem happen with this code? Why or why not?
+<BLOCKQUOTE><PRE>
+static synchronized void m(Vector v) {
+   i = 3;
+  return v.elementAt(i);
+}
+</PRE></BLOCKQUOTE>
+
+Can the same problem happen with this code? Why or why not?
+<BLOCKQUOTE><PRE>
+static void m(Vector v) {
+   int i = 3;
+  return v.elementAt(i);
+}
+</PRE></BLOCKQUOTE>
+
+Can the same problem happen with this code? Why or why not?
+<BLOCKQUOTE><PRE>
+static void m(Vector v) {
+  synchronized (v) {
+     i = 3;
+    return v.elementAt(i);
+  }
+}
+
+</PRE></BLOCKQUOTE>
+<LI> (1 point). The size() method of Vector is not synchronized.  Is this a bug?  Why or why not?  What if elementCount were a long instead of an int? If you think there is a bug, describe a situation that exhibits the bug.
+<BR>
+<LI> (1 point). Assuming that the elementAt() method were not synchronized, describe a situation where a call to it would throw an ArrayIndexOutOfBoundsException saying that the index was negative even though the index was actually positive.
+
+
+<p>
+</OL>
+
+<LI> (5 points). In the lecture, I mentioned that threads could be used to improve the latency for balanced binary tree operations by doing rebalancing in the background.  Design a system for doing this.  You don't have to understand balanced binary trees to do this problem; all you have to know is the following:<P> 
+
+A balanced binary tree is a data structure with three operations: insert, delete and lookup.  Insert puts an item into the tree, delete removes an item, and lookup finds an item based on a key.  Insert and delete can both result in an unbalanced tree.  Such a tree still behaves correctly, but if the unbalancing becomes too severe, performance can suffer. Here are the signatures of these methods: 
+<BLOCKQUOTE><PRE>
+public class BalancedBinaryTree {
+  public synchronized void insert(String key, Object value);
+  public synchronized void delete(String key);
+  public synchronized Object lookup(String key);
+}
+</PRE></BLOCKQUOTE>
+<P> 
+In your design, insert and delete should return immediately after performing their respective operations; they should not wait around for the rebalancing to happen.  Aside from that, the design is up to you. Keep in mind that there might be many threads, each of which may be using many trees. 
+<P> 
+
+You should submit an English-language description of your
+design. Clearly specify all the relevant methods on the
+BalancedBinaryTree class and any other classes you might use.  Don't
+forget to say which methods are synchronized.  For each thread in your
+design, give an approximate priority for the thread, and say whether
+or not it is a daemon thread.  You may supply code snippets if you
+wish, but you must describe everything in English -- a completely
+correct but uncommented implementation is worth zero. Your solution
+will be graded on correctness, efficiency, clarity and good
+object-oriented design.
+
+
+<HR>
+</address>
+Last Updated 11/6/96
+</BODY>
+</HTML>
+
+
+
+
+
+
+
+
+
+

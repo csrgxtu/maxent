@@ -1,0 +1,888 @@
+Date: Tue, 05 Nov 1996 20:57:02 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 31 Oct 1996 21:38:53 GMT
+Content-length: 42275
+
+<html>
+<head>
+<title>CS 537 - Processes</title>
+</head>
+
+<body bgcolor="#ffffff">
+
+<h1>
+CS 537<br>Lecture Notes<br>Processes and Synchronization
+</h1>
+
+
+<hr>
+<h2>Contents</h2>
+<ul>
+<li><!WA0><!WA0><!WA0><!WA0><!WA0><a href="#using"> Using Processes </a>
+<li><!WA1><!WA1><!WA1><!WA1><!WA1><a href="#using_what"> What is a Process? </a>
+<li><!WA2><!WA2><!WA2><!WA2><!WA2><a href="#using_why"> Why Use Processes </a>
+<li><!WA3><!WA3><!WA3><!WA3><!WA3><a href="#using_create"> Creating Processes </a>
+<li><!WA4><!WA4><!WA4><!WA4><!WA4><a href="#using_states"> Process States </a>
+<li><!WA5><!WA5><!WA5><!WA5><!WA5><a href="#using_sync"> Synchronization </a>
+<ul>
+<li><!WA6><!WA6><!WA6><!WA6><!WA6><a href="#race_conditions"> Race Conditions </a>
+<li><!WA7><!WA7><!WA7><!WA7><!WA7><a href="#semaphores"> Semaphores </a>
+<li><!WA8><!WA8><!WA8><!WA8><!WA8><a href="#bounded_buffer"> The Bounded Buffer Problem </a>
+<li><!WA9><!WA9><!WA9><!WA9><!WA9><a href="#dining_philosophers">The Dining Philosophers </a>
+<li><!WA10><!WA10><!WA10><!WA10><!WA10><a href="#monitors">Monitors </a>
+<li><!WA11><!WA11><!WA11><!WA11><!WA11><a href="#messages"> Messages </a>
+</ul>
+</ul>
+
+<hr>
+<p>
+Tanenbaum mixes a presentation of the features of processes of interest
+to programmers creating concurrent programs with discussion of techniques
+for implementing them.  The result is (at least to me) confusing.
+I will attempt to first present processes and associated features from the
+user's point of view with as little concern as possible for questions about
+how they are implemented, and then turn to the question of implementing
+processes.
+
+<a name="using"> <h2> Using Processes </h2> </a>
+<a name="using_what"> <h3> What is a Process? </h3> </a>
+A process is a ``little bug'' that crawls around on the program executing
+the instructions it sees there.
+Normally (in so-called <em>sequential</em> programs) there is exactly one
+process per program, but in <em>concurrent</em> programs, there may be
+several processes executing the same program.
+The details of what constitutes a ``process'' differ from system to system.
+The main difference is the amount of <em>private state</em> associated with
+each process.
+Each process has its own <em>program counter</em>, the register
+that tells it where it is in the program.
+It also needs a place to store the return address when it calls a subroutine,
+so that two processes executing the same subroutine called from different
+places can return to the correct calling points.
+Since subroutines can call other subroutines, each process needs its own
+<em>stack</em> of return addresses.
+<p>
+Processes with very little private memory are called <em>threads</em>
+or <em>light-weight processes</em>.
+At a minimum, each thread needs a program counter and a place to
+store a stack of return addreses; all other values could be stored in
+memory shared by all threads.
+At the other extreme, each process could have its own private memory
+space, sharing only the read-only program text with other processes.
+This essentially the way a Unix process works.
+Other points along the spectrum are possible.
+One common approach is to put the local variables of procedures on the
+same private stack as the return addresses, but let all global variables
+be shared between processes.
+A stack <em>frame</em> holds all the local variables of a procedure, together
+with an indication of where to return to when the procedure returns, and
+an indication of where the calling procedure's stack frame is stored.
+Java follows this approach.
+It has no global variables, but threads all share the same <em>heap</em>.
+The heap is the region of memory used to allocate objects in response to
+<samp><font color="0f0fff">new</font></samp>.
+In short, variables declared in procedures are local to threads,
+but objects are all shared.
+Of course, a thread can only ``see'' an object if it can reach that object
+from its ``base'' object (the one containing its <samp><font color="0f0fff">run</font></samp> method, or
+from one of its local variables.
+<pre><font color="0f0fff">
+    class Foo implements Runnable {
+        Object obj1, obj2;
+        Foo(Object a) { obj1 = a; }
+        public void run() {
+            Object obj3 = new Object();
+            obj2 = new Object();
+            for(int i = 0; i &lt; 1000; i++) // do something
+        }
+    }
+    class Bar {
+        static public void main(String args[]) {
+            Object obj4 = new Object();
+
+            Runnable foo1 = new Foo(obj4);
+            Thread t1 = new Thread(foo1);
+
+            Runnable foo2 = new Foo(obj4);
+            Thread t2 = new Thread(foo2);
+
+            t1.start(); t2.start();
+            // so something here
+        }
+    }
+</font></pre>
+There are three treads in this program, the main thread and two child
+threads created by it.
+Each child thread has its own stack frame for <samp><font color="0f0fff">Foo.run()</font></samp>,
+with space for <samp><font color="0f0fff">obj3</font></samp> and <samp><font color="0f0fff">i</font></samp>.
+Thus there are two copies of the variable <samp><font color="0f0fff">obj3</font></samp>, each of which
+points to a different instance of <samp><font color="0f0fff">Object</font></samp>.
+Those objects are in the shared heap, but since one thread has no
+way of getting to the object created by the other thread, these objects
+are effectively private.
+Similary, the objects pointed to by <samp><font color="0f0fff">obj2</font></samp> are effectively private.
+But both copies of <samp><font color="0f0fff">obj1</font></samp> and the copy of <samp><font color="0f0fff">obj4</font></samp> in the main
+thread all point to the same (shared) object.
+<p>
+Other names sometimes used for processes are <em>job</em> or <em>task</em>.
+<p>
+It is possible to combine threads with processes in the same system.
+For example, when you run Java under Unix, each Java program is run in
+a separate Unix process.
+Unix processes share very little with each other, but the Java threads
+in one Unix process share everything but their private stacks.
+
+<a name="using_why"> <h3> Why Use Processes </h3> </a>
+<p>
+Processes are basically just a programming convenience, but in some settings
+they are such a great convenience, it would be nearly impossible to write
+the program without them.
+A process allows you to write a single thread of code to get some task
+done, without worrying about the possibilty that it may have to wait for
+something to happen along the way.
+Examples:
+<dl>
+<dt>A server providing services to others.
+<dd>One thread for each client.
+<dt>A timesharing system.
+<dd>One thread for each logged-in user.
+<dt>A real-time control computer controlling a factory.
+<dd>One thread for each device that needs monitoring.
+<dt>Networking.
+<dd>One thread for each connection.
+</dl>
+
+<a name="using_create"> <h3> Creating Processes </h3> </a>
+<p>
+When a new process is created, it needs to know where to start executing.
+In Java, a thread is given an object when it is created.
+When it is started, it starts execution at the beginning of the <samp><font color="0f0fff">run</font></samp>
+method of that object.
+In Unix, a new process is started with the <samp><font color="0f0fff">fork()</font></samp> command.
+It starts execution at the statement immediately following the <samp><font color="0f0fff">fork()</font></samp>
+call.
+After the call, both the parent (the process that called <samp><font color="0f0fff">fork()</font></samp>)
+and the child are both executing at the same point in the program.
+The child is given its own memory space, which is initialized with
+<em>an exactly copy</em> of the memory space (globals, stack, heap objects)
+of the parent.
+Thus the child looks like an exact clone of the parent, and indeed, it's
+hard to tell them apart.
+The only difference is that <samp><font color="0f0fff">fork()</font></samp> returns 0 in the child, but a
+non-zero value in the parent.
+<pre><font color="0f0fff">
+    char *str;
+
+    main() {
+        int j;
+        str = &quot;the main program &quot;;
+        j = f();
+        cout &lt;&lt; str &lt;&lt; j &lt;&lt; endl;
+    }
+
+    void f() {
+        int k;
+
+        k = fork();
+        if (k == 0) {
+            str = &quot;the child has value &quot;;
+            return 10;
+        }
+        else {
+            str = &quot;the parent has value &quot;;
+            return 39;
+        }
+    }
+</font></pre>
+This program starts with one process executing <samp><font color="0f0fff">main()</font></samp>.
+This process calls <samp><font color="0f0fff">f()</font></samp>, and inside <samp><font color="0f0fff">f()</font></samp> it calls <samp><font color="0f0fff">fork()</font></samp>.
+Two processes appear to return from <samp><font color="0f0fff">fork()</font></samp>, a <em>parent</em> and
+a <em>child</em> process.
+Each has its own copy of the global global variable <samp><font color="0f0fff">str</font></samp> and its
+own copy of the stack, which contains a frame for <samp><font color="0f0fff">main</font></samp> with
+variable <samp><font color="0f0fff">j</font></samp> and a frame for <samp><font color="0f0fff">f</font></samp> with variable <samp><font color="0f0fff">k</font></samp>.
+After the return from <samp><font color="0f0fff">fork</font></samp> the parent sets its copy of <samp><font color="0f0fff">k</font></samp> to
+a non-zero value, while the child sets its copy of <samp><font color="0f0fff">k</font></samp> to zero.
+Each process then assigns a different string to its copy of the global <samp><font color="0f0fff">str</font></samp>
+and returns a different value, which is assigned to the process' own copy of
+<samp><font color="0f0fff">j</font></samp>.
+Two lines are printed:
+<pre><font color="0f0fff">
+    the parent has value 39
+    the child has value 10
+</font></pre>
+(actually, the lines might be intermingled).
+
+<a name="using_states"> <h3> Process States </h3> </a>
+Once a process is started, it is either <em>runnable</em> or <em>blocked</em>.
+It can become blocked by doing something that explicitly blocks itself (such as
+<samp><font color="0f0fff">wait()</font></samp>) or by doing something that implicitly block it (such 
+as a <samp><font color="0f0fff">read()</font></samp> request).
+In some systems, it is also possible for one process to block anther (e.g.,
+<samp><font color="0f0fff">Thread.suspend()</font></samp> in Java).
+A runnable process is either <em>ready</em> or <em>running</em>.
+There can only be as many running processes as there are CPUs.  One of the
+responsibilities of the operating system, called <em>short-term scheduling</em>
+is to switch processes between <em>ready</em> and <em>running</em> state.
+
+<a name="using_sync"> <h3> Synchronization </h3> </a>
+<a name="race_conditions"> <h4> Race Conditions </h4> </a>
+Consider the following extremely simple procedure
+<pre><font color="0f0fff">
+    void deposit(int amount) {
+        balance += amount;
+    }
+</font></pre>
+(where we assume that <samp><font color="0f0fff">balance</font></samp> is a shared variable.
+If two processes try to call <samp><font color="0f0fff">deposit</font></samp> concurrently, something very bad
+can happen.
+The single statment <samp><font color="0f0fff">balance += amount</font></samp> is really implmented, on most
+computers, buy a sequence of instructions such as
+<pre><font color="0f0fff">
+    Load  Reg, balance
+    Add   Reg, amount
+    Store Reg, balance
+</font></pre>
+Suppose process P1 calls <samp><font color="0f0fff">deposit(10)</font></samp> and process P2 calls <samp><font color="0f0fff">deposit(20)</font></samp>.
+If one completes before the other starts, the combined effect is to
+add 30 to the balance, as desired.
+However, suppose the calls happen at exactly the same time, and the
+executions are interleaved.  Suppose the initial balance is 100, and
+the two processes run on different CPUs.
+One possible result is
+<pre><font color="0f0fff">
+    P1 loads 100 into its register
+    P2 loads 100 into its register
+    P1 adds 10 to its register, giving 110
+    P2 adds 20 to its register, giving 120
+    P1 stores 110 in balance
+    P2 stores 120 in balance
+</font></pre>
+and the net effect is to add only 20 tot he balance!
+<p>
+This kind of bug, which only occurs under certain timing conditions, is
+called a <em>race condition</em>.
+It is an extremely difficult kind of bug to track down (since it
+may disappear when you try to debug it) and may be nearly
+impossible to detect from testing (since it may occur only extremely rarely).
+The only way to deal with race conditions is through very careful
+coding.
+To avoid these kinds of problems, systems that support processes always
+contain constructs called
+<em>synchronization primatives</em>.
+
+<a name="semaphores"> <h4> Semaphores </h4> </a>
+<p>
+One of the earliest and simplest synchronization primitives is the
+<em>semaphore</em>.
+We will consider later how semaphores are implemented, but for now
+we can treat them like a Java object that hides an integer value and
+only allows three operations:
+initialization to a specified value,
+increment,
+or
+decrement.<!WA12><!WA12><!WA12><!WA12><!WA12><a href="#footnote"><sup>1</sup></a>
+<pre><font color="0f0fff">
+    class Semaphore {
+        private int value;
+        public Semaphore(int v) { value = v; }
+        public void up() { /* ... */ }
+        public void down() { /* ... */ };
+    }
+</font></pre>
+There is no operation to read the current value!
+There two bits of ``magic'' that make this seemingly useless class extremely
+useful:
+<ol>
+<li> The value is never permitted to be negative.  If the value is
+zero when a process calls <samp><font color="0f0fff">down</font></samp>, that process is forced to wait
+(it goes into <em>blocked</em> state) until some other process calls <samp><font color="0f0fff">up</font></samp>
+on the semaphore.
+<li> The <samp><font color="0f0fff">up</font></samp> and <samp><font color="0f0fff">down</font></samp> operations are <em>atomic</em>:
+A correct implementation must make it appear that they occur
+<em>instantaneously</em>.
+In other words, two operations on the same semaphore attempted at the
+same time must not be interleaved.
+(In the case of a <samp><font color="0f0fff">down</font></samp> operation that blocks the caller, it is
+the actual decermenting that must be atomic; it is ok if other things happen
+while the calling process is blocked).
+</ol>
+Our first example uses semaphores to fix the <samp><font color="0f0fff">deposit</font></samp> function above.
+<pre><font color="0f0fff">
+    shared Semaphore mutex = new Semaphore(1);
+    void deposit(int amount) {
+        mutex.down();
+        balance += amount;
+        mutex.up();
+    }
+</font></pre>
+We assume there is one semaphore, which we call <samp><font color="0f0fff">mutex</font></samp> (for ``mutual
+exclusion'') shared by all processes.
+The keyword <samp><font color="0f0fff">shared</font></samp> (which is <em>not</em> Java) will be omitted if it
+is clear which variables are shared and which are private (have a separate
+copy for each process).
+Semaphores are useless unless they are shared, so we will omit <samp><font color="0f0fff">shared</font></samp>
+before <samp><font color="0f0fff">Semaphore</font></samp>.
+Also we will abreviate the declaration and initialization as
+<pre><font color="0f0fff">
+    Semaphore mutex = 1;
+</font></pre>
+Let's see how this works.
+If only one process wants to make a deposit, it does <samp><font color="0f0fff">mutex.down()</font></samp>, decreasing
+the value of <samp><font color="0f0fff">mutex</font></samp> to zero, adds its amount to the balance, and returns
+the value of <samp><font color="0f0fff">mutex</font></samp> to one.
+If two processes try to call <samp><font color="0f0fff">deposit</font></samp> at about the same time, one
+of them will get to do the <samp><font color="0f0fff">down</font></samp> operation first (because <samp><font color="0f0fff">down</font></samp> is atomic!).
+The other will find that <samp><font color="0f0fff">mutex</font></samp> is already zero and be forced to wait.
+When the first process finishes adding to the balance, it does <samp><font color="0f0fff">mutex.up()</font></samp>,
+returning the value to one and allowing the other process to complete
+its <samp><font color="0f0fff">down</font></samp> operation.
+If there were three processes trying at the same time,
+one of them would do the <samp><font color="0f0fff">down</font></samp> first, as before, and the other two
+would be forced to wait. When the first process did <samp><font color="0f0fff">up</font></samp>, one of the other
+two would be allowed to complete its <samp><font color="0f0fff">down</font></samp> operation, but then <samp><font color="0f0fff">mutex</font></samp>
+would be zero again, and the third process would continue to wait.
+
+<a name="bounded_buffer"> <h4> The Bounded Buffer Problem </h4> </a>
+Suppose there are <em>producer</em> and <em>consumer</em> processes.
+There may be many of each.
+Producers somehow produce objects, which consumers then use for something.
+There is one <samp><font color="0f0fff">Buffer</font></samp> object used to pass objects from producers to
+consumers.
+We will not show the implementation of <samp><font color="0f0fff">Buffer</font></samp> (it is an easy 367 exercise).
+A <samp><font color="0f0fff">Buffer</font></samp> can hold up to <samp><font color="0f0fff">N</font></samp> objects.
+The problem is to allow concurrent access to the <samp><font color="0f0fff">Buffer</font></samp> by producers
+and consumers, while ensuring that
+<ol>
+<li>The shared <samp><font color="0f0fff">Buffer</font></samp> data structure is not screwed up by race conditions
+in accessing it.
+<li>Consumers don't try to remove objects from <samp><font color="0f0fff">Buffer</font></samp> when it is empty.
+<li>Producers don't try to add objects to the <samp><font color="0f0fff">Buffer</font></samp> when it is full.
+</ol>
+When condition (3) is dropped (the <samp><font color="0f0fff">Buffer</font></samp> is assumed to have infinite
+capacity), the problem is called the <em>Producer-Consumer Problem</em>
+(but Tanenbaum calls the Bounded-Buffer problem ``the Producer-Consumer
+Problem'').
+Here is a solution.
+<pre><font color="0f0fff">
+    shared Buffer b;
+    Semaphore
+        mutex = 1,
+        empty = N,
+        full = 0;
+    
+    class Producer implements Runnable {
+        public void run() {
+            Object item;
+            for (;;) {
+                item = produce();
+                empty.down();
+                mutex.down();
+                b.enter_item(item);
+                mutex.up();
+                full.up();
+            }
+        }
+    }
+    class Consumer implements Runnable {
+        public void run() {
+            Object item;
+            for (;;) {
+                full.down();
+                mutex.down();
+                item = b.remove_item();
+                mutex.up();
+                empty.up();
+            }
+        }
+    }
+</font></pre>
+As before, we surround operations on the shared <samp><font color="0f0fff">Buffer</font></samp> data structure
+with <samp><font color="0f0fff">mutex.down()</font></samp> and <samp><font color="0f0fff">mutex.up()</font></samp> to prevent interleaved changes by
+two processes (which may screw up the data structure).
+The semaphore <samp><font color="0f0fff">full</font></samp> counts the number of objectx in the buffer,
+while the semphore <samp><font color="0f0fff">empty</font></samp> counts the number of free slots.
+The operation <samp><font color="0f0fff">full.down()</font></samp> in <samp><font color="0f0fff">Consumer</font></samp> atomically waits until there is
+something in the buffer and then ``lays claim'' to it by decrementing the
+semaphore.
+Suppose it was replaced by
+<pre><font color="0f0fff">
+    while (b.count == 0) { /* do nothing */ }
+    mutex.down();
+    /* as before */
+</font></pre>
+It would be possible for one process to see that the buffer was non-empty,
+and then have another process remove the last item before it got a chance
+to grab the <samp><font color="0f0fff">mutex</font></samp> semapore.
+<p>
+There is one more fine point to notice here:
+Suppose we revesed the <samp><font color="0f0fff">down</font></samp> operations in the consumer
+<pre><font color="0f0fff">
+    mutex.down();
+    full.down();
+</font></pre>
+and a consumer tries to do these operation when the buffer is empty.
+It first grabs the <samp><font color="0f0fff">mutex</font></samp> semaphore and then blocks on the <samp><font color="0f0fff">full</font></samp>
+semaphore.
+It will be blocked forever because no other process can grab the <samp><font color="0f0fff">mutex</font></samp>
+semaphore to add an item to the buffer (and thus call <samp><font color="0f0fff">full.up()</font></samp>).
+This situation is called <em>deadlock</em>.
+We will study it in length later.
+
+<a name="dining_philosophers"> <h4>The Dining Philosophers</h4> </a>
+There are five philosopher processes numbered 0 through 4.
+Between each pair of philosophers is a fork.
+The forks are also numbered 0 through 4, so that fork <samp><font color="0f0fff">i</font></samp> is between
+philosophers <samp><font color="0f0fff">i-1</font></samp> and <samp><font color="0f0fff">i</font></samp> (all arithmetic on fork numbers and philosopher
+numbers is <em>modulo</em> 5 so fork 0 is between philosophers 4 and 0).
+<center>
+<!WA13><!WA13><!WA13><!WA13><!WA13><img align=top src="http://www.cs.wisc.edu/~cs537-1/dphil1.gif">
+</center>
+Each philosopher alternates between thinking and eating.
+To eat, he needs exclusive access to the forks on both size of him.
+<pre><font color="0f0fff">
+    class Philosopher implements Runnable {
+        int i;    // which philosopher
+        public void run() {
+            for (;;) {
+                think();
+                take_forks(i);
+                eat();
+                put_forks(i)
+            }
+        }
+    }
+</font></pre>
+A first attempt to solve this problem represents each fork as a semaphore:
+<pre><font color="0f0fff">
+    Semaphore fork[5] = 1;
+    void take_forks(int i) {
+        fork[i].down();
+        fork[i+1].down();
+    }
+    void put_forks(int i) {
+        fork[i].up();
+        fork[i+1].up();
+    }
+</font></pre>
+The problem with this solution is that it can lead to deadlock.
+Each philosopher picks up his right fork before he tried to pick up his
+left fork.
+What happends if the timing works out such that all the philosophers
+get hungry at the same time, and they all pick up their right forks
+before any of them gets a chance to try for his left fork?
+Then each philosopher <samp><font color="0f0fff">i</font></samp> will be holding fork <samp><font color="0f0fff">i</font></samp> and waiting
+for fork <samp><font color="0f0fff">i+1</font></samp>, and they will all wait forever.
+<center>
+<!WA14><!WA14><!WA14><!WA14><!WA14><img align=top src="http://www.cs.wisc.edu/~cs537-1/dphil2.gif">
+</center>
+<p>
+There's a very simple solution:
+Instead of trying for the <em>right</em> fork first, try for the <em>lower
+numbered</em> fork first.
+We will show later that this solution <em>cannot</em> lead to deadlock.
+You will be implementing a generalization of this technique in
+<!WA15><!WA15><!WA15><!WA15><!WA15><a href="http://www.cs.wisc.edu/~cs537-1/project2.html">project 2</a>.
+<p>
+This solution, while deadlock-free, is still not as good as it could be.
+Consider again the situation in which all philosophers get hungry at the
+same time and pick up their lower-numbered fork.  Both philosopher
+<samp><font color="0f0fff">0</font></samp> and philosopher <samp><font color="0f0fff">4</font></samp> try to grab fork <samp><font color="0f0fff">0</font></samp> first.
+Suppose philosopher <samp><font color="0f0fff">0</font></samp> wins.
+Since philosopher <samp><font color="0f0fff">4</font></samp> is stuck waiting for fork <samp><font color="0f0fff">0</font></samp>, philosopher <samp><font color="0f0fff">3</font></samp>
+will be able to grab both is forks and start eating.
+<center>
+<!WA16><!WA16><!WA16><!WA16><!WA16><img align=top src="http://www.cs.wisc.edu/~cs537-1/dphil3.gif">
+</center>
+Philosopher <samp><font color="0f0fff">3</font></samp> gets to eat, but philosophers <samp><font color="0f0fff">0</font></samp> and <samp><font color="0f0fff">1</font></samp> are waiting,
+even though neither of them shares a fork with philosopher <samp><font color="0f0fff">3</font></samp>, and
+hence one of them could eat right away.
+<p>
+Dijkstra suggests a better solution.
+He shows how to <em>derive</em> the solution by thinking about
+two goals of any synchronization problem:
+<dl>
+<dt>
+<strong>Safety</strong>
+<dd>
+Make sure nothing <em>bad</em> happens.
+<dt>
+<strong>Liveness</strong>
+<dd>
+Make sure as much <em>good</em> happens, consistent with the safety criterion.
+</dl>
+For each philosopher <samp><font color="0f0fff">i</font></samp> let <samp><font color="0f0fff">state[i]</font></samp> be the <em>state</em> of
+philosopher <samp><font color="0f0fff">i</font></samp>--one of <samp><font color="0f0fff">THINKING</font></samp>, <samp><font color="0f0fff">HUNGRY</font></samp>, or <samp><font color="0f0fff">EATING</font></samp>.
+The safety requirement is that no to adjacent philosophers are simultaneously
+eating.
+The liveness criterion is that there is no philosopher is hungry unless
+one of his neighbors is eating (a hungry philosopher should start eating
+unless the saftey criterion prevents him).
+More formally,
+<dl>
+<dt>
+<strong>Safety</strong>
+<dd>
+For all <samp><font color="0f0fff">i</font></samp>, <samp><font color="0f0fff">!(state[i]==EATING && state[i+1]==EATING)</font></samp>
+<dt>
+<strong>Liveness</strong>
+<dd>
+For all <samp><font color="0f0fff">i</font></samp>, <samp><font color="0f0fff">!(state[i]==HUNGRY && state[i-1]!=EATING && state[i+1]!=EATING)</font></samp>
+</dl>
+<p>
+With this observation, the solution almost writes itself
+(See also Figure 2-20 on page 59 of Tanenbaum.)
+<pre><font color="0f0fff">
+    Semaphore mayEat[5] = { 0, 0, 0, 0, 0};
+    Semaphore mutex = 1;
+    int state[5] = { THINKING, THINKING, THINKING, THINKING, THINKING };
+    void take_forks(int i) {
+        mutex.down();
+        state[i] = HUNGRY;
+        test(i);
+        mutex.up();
+        mayEat[i].down();
+    }
+    void put_forks(int i) {
+        mutex.down();
+        state[i] = THINKING;
+        test(i-1);
+        test(i+1);
+        mutex.up();
+    }
+    void test() {
+        if (state[i]==HUNGRY &amp;&amp; state[i-1]!=EATING &amp;&amp; state[i+1] != EATING) {
+            state[i] = EATING;
+            mayEat[i].up();
+        }
+    }
+</font></pre>
+The method <samp><font color="0f0fff">test()</font></samp> checks for a violation of liveness at position
+<samp><font color="0f0fff">i</font></samp>.
+Such a violation can only occur when philosopher <samp><font color="0f0fff">i</font></samp> gets hungry
+or one of his neighbors finishes eating.
+
+<a name="monitors"> <h4>Monitors</h4> </a>
+<p>
+Although semaphores are all you need to solve lots of synchronization
+problems, they are rather ``low level'' and error-prone.
+As we saw before, a slight error in placement of semaphores (such as
+switching the order of the two <samp><font color="0f0fff">down</font></samp> operations in the Bounded Buffer
+problem) can lead to big problems.
+It is also easy to forget to protect shared variables (such as the bank
+balance or the buffer object) with a <samp><font color="0f0fff">mutex</font></samp> semaphore.
+A better (higher-level) solution is provided by the <em>monitor</em> (also
+invented by Dijkstra).
+<p>
+If you look at the example uses of semaphores above, you see that
+they are used in two rather different ways:
+One is simple mutual exclusion.
+A semephore (always called <samp><font color="0f0fff">mutex</font></samp> in our examples) is associated with
+a shared variable or variables.
+Any piece of code that touches these variables is preceded by <samp><font color="0f0fff">mutex.down()</font></samp>
+and followed by <samp><font color="0f0fff">mutex.up()</font></samp>.
+Since it's hard for a programmer to remember to do this, but easy for
+a compiler, why not let the compiler do the work?<!WA17><!WA17><!WA17><!WA17><!WA17><a href="#footnote">
+<sup>2</sup></a>
+<pre><font color="0f0fff">
+    monitor class BankAccount {
+        private int balance;
+        public void deposit(int amount) {
+            balance += amount;
+        }
+        // etc
+    }
+</font></pre>
+The keyword <samp><font color="0f0fff">monitor</font></samp> tells the compiler to add a field
+<pre><font color="0f0fff">
+        Semaphore mutex = 1;
+</font></pre>
+to the class, add a call of <samp><font color="0f0fff">mutex.down()</font></samp> to the beginning of each method,
+and put a call of <samp><font color="0f0fff">mutex.up()</font></samp> at each return point in each method.
+<p>
+The other way semaphores are used is to block a process when it cannot
+proceed until another process does something.
+For example, a consumer, on discovering that the buffer is empty, has to
+wait for a producer;
+a philosopher, on getting hungry, may have to wait for a neighbor to
+finish eating.
+To provide this facility, monitors can have a special kind of variable
+called a <em>condition variable</em>.
+<pre><font color="0f0fff">
+    class Condition {
+        public void signal();
+        public void wait();
+    }
+</font></pre>
+A condition variable is like a semaphore, with two differences:
+<ol>
+<li>
+A semaphore counts the number of excess <samp><font color="0f0fff">up</font></samp> operations, but a
+<samp><font color="0f0fff">signal</font></samp> operation on a condition variable has no effect unless some
+process is waiting.
+A <samp><font color="0f0fff">wait</font></samp> on a condition variable <em>always</em> blocks the calling
+process.
+<li>
+A <samp><font color="0f0fff">wait</font></samp> on a condition variable <em>atomically</em> does an <samp><font color="0f0fff">up</font></samp> on
+the monitor mutex and blocks the caller.
+In other words if <samp><font color="0f0fff">c</font></samp> is a condition variable <samp><font color="0f0fff">c.wait()</font></samp> is rather
+like <samp><font color="0f0fff">mutex.up(); c.down();</font></samp> except that both operations are done
+together as a single atomic action.
+</ol>
+Here is a solution to the Bounded Buffer problem using monitors.
+<pre><font color="0f0fff">
+    monitor BoundedBuffer {
+        Buffer b;
+        Condition nonfull, nonempty;
+        public void enter_item(Object item) {
+            if (b.isFull())
+                nonfull.wait();
+            b.enter_item(item);
+            nonempty.signal();
+        }
+        public Object remove_item() {
+            if (b.isEmpty())
+                nonempty.wait();
+            item result = b.remove_item();
+            nonfull.signal();
+            return result;
+        }
+    }
+</font></pre>
+In general, each condition variable is associated with some logical condition
+on the state of the monitor (some expression that may be either true or false).
+If a process discovers, part-way through a method, that some logical condition
+it needs is not satisfied, it waits on the corresponding condition
+variable.
+Whenever a process makes one of these condtions true, it signals the
+corresponding condition variable.
+When the waiter wakes up, he knows that the problem that caused him
+to go to sleep has been fixed, and he may immediately proceed.
+For this kind of reasoning to be valid, it is important that nobody
+else sneak in between the time that the signaller does the signal
+and the waiter wakes up.
+Thus, calling <samp><font color="0f0fff">signal</font></samp> blocks the signaller on yet another queue
+and immediately wakes up the waiter (if there are multiple processes
+blocked on the same condition variable, the one waiting the longest
+wakes up).
+When a process leaves the monitor (returns from one of its methods),
+a sleeping signaller, if any, is allowed to continue.
+Otherwise, the monitor mutex is released, allowing a new process to
+enter the monitor.
+In summary, waiters are give precedence over signallers.
+<p>
+This strategy, while nice for avoiding certain kinds of errors, is
+very inefficient.
+As we will see when we consider implemenation, it is expensive to swith
+processes.
+Consider what happens when a consumer is blocked on the <samp><font color="0f0fff">nonempty</font></samp>
+condition variable and a producer calls <samp><font color="0f0fff">enter_item</font></samp>.
+<ul>
+<li> The producer adds the item to the buffer and calls <samp><font color="0f0fff">nonempty.signal()</font></samp>.
+<li> The producer is immediately blocked and the consumer is allowed to
+continue.
+<li>The consumer removes the item from the buffer and leaves the monitor.
+<li>The producer wakes up, and since the <samp><font color="0f0fff">signal</font></samp> operation was the last
+statement in <samp><font color="0f0fff">enter_item</font></samp>, leaves the monitor.
+</ul>
+There is an unnecessary switch from the producer to the consumer and back 
+again.
+<p>
+To avoid this inefficiency, all recent implementations of monitors replace
+<samp><font color="0f0fff">signal</font></samp> with <samp><font color="0f0fff">notify</font></samp>.
+The <samp><font color="0f0fff">notify</font></samp> operation is like <samp><font color="0f0fff">signal</font></samp> in that it awakens a process
+waiting on the condition variable if there is one and otherwise does
+nothing.
+But as the name implies, a <samp><font color="0f0fff">notify</font></samp> is a ``hint'' that the associated logical
+condition might be true, rather than a guarantee that it is true.
+The process that called <samp><font color="0f0fff">notify</font></samp> is allowed to continue.
+Only when it leaves the monitor is the awakened waiter allowed to continue.
+Since the logical condition might not be true anymore, the waiter needs
+to recheck it when it wakes up.
+For example the Bounded Buffer monitor should be rewritten to replace
+<pre><font color="0f0fff">
+    if (b.isFull())
+        nonfull.wait();
+</font></pre>
+with
+<pre><font color="0f0fff">
+    while (b.isFull())
+        nonfull.wait();
+</font></pre>
+<a name="java_monitors">
+<p>
+</a>
+Java has built into it something like this, but with two key differences.
+First, instead of marking a whole class as <samp><font color="0f0fff">monitor</font></samp>, you have to
+remember to mark each method as <samp><font color="0f0fff">synchronized</font></samp>.
+Every object is potentially a monitor.
+Second, there are no explicit condition variables.
+In effect, every monitor has exactly one anonymous condition variable.
+Instead of writing <samp><font color="0f0fff">c.wait()</font></samp> or <samp><font color="0f0fff">c.notify()</font></samp>, where <samp><font color="0f0fff">c</font></samp> is a
+condition variable, you simply write <samp><font color="0f0fff">wait()</font></samp> or <samp><font color="0f0fff">notify()</font></samp>.
+A solution to the Bounded Buffer problem in Java might look like this:
+<pre><font color="0f0fff">
+    class BoundedBuffer {
+        Buffer b;
+        synchronized public void enter_item(Object item) {
+            while (b.isFull())
+                wait();
+            b.enter_item(item);
+            notifyAll();
+        }
+        synchronized public Object remove_item() {
+            while (b.isEmpty())
+                wait();
+            item result = b.remove_item();
+            notifyAll();
+            return result;
+        }
+    }
+</font></pre>
+Instead of waiting on a specific condition variable corresponding to
+the condition you want (buffer non-empty or buffer non-full),
+you simply <samp><font color="0f0fff">wait</font></samp>, and whenever you make either of these conditions true,
+you simply <samp><font color="0f0fff">notifyAll</font></samp>.
+The operation <samp><font color="0f0fff">notifyAll</font></samp> is similar to <samp><font color="0f0fff">notify</font></samp>, but it wakes up
+all the processes that are waiting rather than just the one that
+has been waiting the longest.
+In general, a process has to use <samp><font color="0f0fff">notifyAll</font></samp> rather than <samp><font color="0f0fff">notify</font></samp>, since
+the process that has been waiting the longest may not
+necessarily be waiting for the condition that the notifier just made true.
+In this particular case, you can get away with <samp><font color="0f0fff">notify</font></samp> because there
+cannot be both producers and consumers waiting at the same time.
+
+<a name="messages"> <h4> Messages </h4> </a>
+<p>
+Since shared variables are such a source of errors, why not get rid of
+them altogether?
+In this section, we assume there is no shared memory between processes.
+That raises a new problem.
+Instead of worrying about how to keep processes from interferring with
+each other, we have to figure out how to let them cooperate.
+Systems without shared memory provide message-passing facilities that
+look something like this:
+<pre><font color="0f0fff">
+    send(destination, message);
+    receive(source, messsage_buffer);
+</font></pre>
+The details vary substantially from system to system.
+<dl>
+<dt>
+<strong>Naming</strong>
+<dd>
+How are <samp><font color="0f0fff">destination</font></samp> and <samp><font color="0f0fff">source</font></samp> specified?
+Each process may directly name the other, or there may be some sort of
+<em>mailbox</em> or <em>message queue</em> object to be used as the
+<samp><font color="0f0fff">destination</font></samp> of a <samp><font color="0f0fff">send</font></samp> or the <samp><font color="0f0fff">source</font></samp> of a <samp><font color="0f0fff">receive</font></samp>.
+Some systems allow a <em>set</em> of destinations (called <em>multicast</em>
+and meaning ``send a copy of the message to each destination'')
+and/or a <em>set</em> of sources, meaning ``receive a message from any
+one of the sources.''
+A particularly common feature is to allow <samp><font color="0f0fff">source</font></samp> to be ``any'', meaning
+that the reciever is willing to receive a message from any other process
+that is willing to send a message to it.
+<dt>
+<strong>Synchronization</strong>
+<dd>
+Does <samp><font color="0f0fff">send</font></samp> (or <samp><font color="0f0fff">receive</font></samp>) block the sender, or can it immediately continue?
+One common combination is non-blocking <samp><font color="0f0fff">send</font></samp> together with blocking
+<samp><font color="0f0fff">receive</font></samp>.
+Another possibility is <em>rendezvous</em>, in which both <samp><font color="0f0fff">send</font></samp> and
+<samp><font color="0f0fff">receive</font></samp> are blocking.
+Whoever gets there first waits for the other one.
+When a sender and matching receiver are both waiting, the message is
+transferred and both are allowed to continue.
+<dt>
+<strong>Buffering</strong>
+<dd>
+Are messages copied directly from the sender's memory to the receiver's
+memory, or are first copied into some sort of ``system'' memory in between?
+<dt>
+<strong>Message Size</strong>
+<dd>
+Is there an upper bound on the size of a message?
+Some systems have small, fixed-size messages to send signals or status
+information and a separate facility for transferring large blocks of data.
+</dl>
+These design decisions are not independent.
+For example, non-blocking <samp><font color="0f0fff">send</font></samp> is generally only available in systems
+that buffer messages.
+Blocking <samp><font color="0f0fff">receive</font></samp> is only useful if there is some way to say
+``receive from any'' or receive from a set of sources.
+<p>
+Message-based communication between processes is particularly attractive
+in distributed systems (such as computer networks) where processes are
+on different computers and it would be difficult or impossible to allow
+them to share memory.
+But it is also used in situations where processes <em>could</em> share
+memory but the operating system designer chose not allow sharing.
+One reason is to avoid the bugs that can occur with sharing.
+Another is to build a wall of protection between processes that don't
+trust each other.
+Some systems even combine message passing with shared memory.
+A message may include a pointer to a region of (shared) memory.
+The message is used as a way of transferring ``ownership'' of the region.
+There might be a convention that a process that wants to access some
+shared memory had to request permission from its current owner (by sending
+a message).  The second algorithm of project 2 has this flavor.
+<p>
+Unix is a message-based system (at the user level).
+Processes do not share memory but communicate through
+<em>pipes</em>.<!WA18><!WA18><!WA18><!WA18><!WA18><a href="#footnote"><sup>3</sup></a>
+A pipe looks like an output stream connected to an input stream by
+a chunk of memory used to make a queue of bytes.
+One process sends data to the output stream the same way it would
+write data to a file, and another reads from it the way it would
+read from a file.
+In the terms outlined above,
+naming is indirect (with the pipe acting as a mailbox or message queue),
+<samp><font color="0f0fff">send</font></samp> (called <samp><font color="0f0fff">write</font></samp> in Unix) is non-blocking, while <samp><font color="0f0fff">recieve</font></samp> (called
+<samp><font color="0f0fff">read</font></samp>) is blocking, and there is buffering in the operating system.
+At first glance it would appear that the message size is unbounded, but
+it would actually be more accurate to say each ``message'' is one byte.
+The amount of data sent in a <samp><font color="0f0fff">write</font></samp> or recieved in a <samp><font color="0f0fff">read</font></samp> is unbounded,
+but the boundaries between writes are erased in the pipe:
+If the sender does three writes of 60 bytes each and the receive does
+two reads asking for 100 bytes, it will get back the first 100 bytes the
+first time and the remaining 80 bytes the second time.
+<p>
+
+<!WA19><!WA19><!WA19><!WA19><!WA19><a href="http://www.cs.wisc.edu/~cs537-1/deadlock.html">Continued...</a>
+
+<hr>
+<a name="footnote">
+<sup>1</sup>In the original semaphore, the <samp><font color="0f0fff">up</font></samp> and <samp><font color="0f0fff">down</font></samp> operations
+were called <samp><font color="0f0fff">V()</font></samp> and <samp><font color="0f0fff">P()</font></samp>, respectively, but people had trouble
+remembering which was which.
+Some books call them <samp><font color="0f0fff">signal</font></samp> and <samp><font color="0f0fff">wait</font></samp>, but we will be using those
+names for other operations later.
+<p>
+<sup>2</sup>Monitors are <em>not</em> available in this form in Java.
+We are using Java as a vehicle for illustrating various ideas present
+in other languages.  See <!WA20><!WA20><!WA20><!WA20><!WA20><a href="#java_monitors">below</a> for a similar
+feature that <em>is</em> available in Java.
+<p>
+<sup>3</sup>There are so many versions of Unix that just about any blanket
+statement about it is sure to be a lie.
+Some versions of Unix allow memory to be shared between processes,
+and some have other ways for processes to communicate other than pipes.
+</a>
+<hr>
+
+<address>
+<i>
+<!WA21><!WA21><!WA21><!WA21><!WA21><a HREF="mailto:solomon@cs.wisc.edu">
+solomon@cs.wisc.edu
+</a>
+<br>
+Thu Oct 31 15:38:53 CST 1996
+</i>
+</address>
+<br>
+Copyright &#169; 1996 by Marvin Solomon.  All rights reserved.
+
+</body>
+
+</html>

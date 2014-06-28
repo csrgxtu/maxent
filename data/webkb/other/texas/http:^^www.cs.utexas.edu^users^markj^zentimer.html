@@ -1,0 +1,126 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 22:49:07 GMT
+Content-Type: text/html
+Content-Length: 3653
+Last-Modified: Wednesday, 04-Oct-95 21:09:15 GMT
+
+<HTML>
+<HEAD><title>Zen Timer Code</title></HEAD>
+<BODY>
+<h1>Zen Timer Code</h1>
+
+I have implemented a class library in C++ that uses an undocumented
+feature of the <a href="http://www.intel.com">Intel(tm)</a>
+Pentium(tm) processor to very precisely time your executable code for
+purposes of profiling. Information about this feature and other
+undocumented Pentium features is available
+<a href="http://x86.metronet.com">here.</a> Simultaneous timing of any
+number of routines is supported, as well as suspending and resuming
+the timing at any point during the timed interval.
+
+<p>
+
+This code was inspired by Michael Abrash's excellent book <a
+href="http://www.coriolis.com/devclub/pc_sys.htm#zen_codeop"> Zen of Code
+Optimization</a>.
+
+<p>
+
+My code works by accessing a 64-bit register in the Intel Pentium
+processor that is incremented on every clock cycle.  On a 100 MHZ
+Pentium, this gives a clock resolution of 10 nanoseconds (one cycle),
+and a maximum time interval of about 5,800 years.
+
+<p>
+
+This code keeps track of the minimum, maximum, and average time
+intervals for the pieces of code that you are profiling.  In addition,
+it is possible to specify a dribble file that will record every
+interval of time measured.
+
+<p>
+
+This code has been implemented and tested on a Pentium running Linux
+1.2.13 with gcc 2.7.0 and the GNU assembler version
+cygnus/linux-2.5.2l.15.  To use this code, you must patch your
+assembler with the supplied patch file.
+
+<p>
+
+Click <a href="src/zentimer/zentimer.h">here</a> to download a copy of the
+Zen timer code.
+
+<p>
+
+Click <a href="src/zentimer/patch-for-gas-for-undocumented-opcodes">here</a> to
+download a copy of the patch file for the GNU assembler.
+
+<p>
+
+Click <a href="src/zentimer/test-timer.cc">here</a> to download a test program
+that makes use of the timer code.
+
+<p>
+
+I also developed two useful utilities for use with the Zen Timer.
+The first converts a time dribble file into an ascii (human
+readable) version.
+
+<p>
+
+Click <a href="src/zentimer/time2ascii.cc">here</a> to download the time2ascii
+code.
+
+<p>
+
+The second converts a time dribble file into an ascii histogram file
+(suitable for use with a spreadsheet for example).
+
+<p>
+
+click <a href="src/zentimer/time2histo.cc">here</a> to download the time2histo
+code.
+
+<p>
+
+<h3>An important note on accounting for the overhead caused by the
+timer itself</h3>
+
+<p>
+
+The zen timer introduces some overhead into every timed interval by
+virtue of it having to execute a few instructions to do the profiling.
+In an attempt to account for this overhead, I have defined some macros
+in the file zentimer.h that have overhead values that work for my
+system.
+
+<p>
+
+I have, however, found that there are a number of different factors
+that can affect the overhead introduced by running the timer.  In
+particular, I suggest that you not use x-windows while using the timer
+as it seems to add particularly unpredictable overheads to the timing
+results.  Also, different disks, or a different system board can cause
+these overheads to change.  You should try running the timer on your
+system with my small test program, and see if you get an average
+interval of 0 cycles.  If not, adjust the overhead macros in
+zentimer.h until you do.
+
+</body>
+
+<HR>
+
+<center>
+<ADDRESS>
+  Last updated 10/03/95<br>
+  <strong>Mark Johnstone.</strong><br>
+  Any <a href="mailto:markj@cs.utexas.edu"> suggestions, comments welcome</a>.<br>
+  <a href="http::/www.cs.utexas.edu">Department of Computer Sciences</a><br>
+  at <a href="http::/www.utexas.edu"> UT Austin </a><p>
+
+  Click to send e-mail to <a href="mailto:markj@cs.utexas.edu">
+  Mark Johnstone </a>
+</ADDRESS> 
+
+</html>

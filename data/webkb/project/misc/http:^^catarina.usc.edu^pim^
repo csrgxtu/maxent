@@ -1,0 +1,130 @@
+Date: Tue, 14 Jan 1997 23:31:00 GMT
+Server: NCSA/1.4
+Content-type: text/html
+Last-modified: Wed, 30 Oct 1996 05:19:59 GMT
+Content-length: 4402
+
+<html>
+<head>
+<title>PIM Project</title>
+</head>
+
+<BODY BGCOLOR="#ffffff">
+<center>
+
+<font size=7 color=#ff0000><b>PIM</b></font>
+<br>
+<font size=5><i>Protocol Independent Multicast</i></font>
+<br>
+<!WA0><A HREF="ftp://catarina.usc.edu/pub/pim"><i>go to ftp site</i></A>
+</center>
+
+<hr size=2 noshade width=300>
+
+<h3>Protocol Independent Multicast-Sparse Mode (PIM-SM)</h3>
+
+<h4>Overview</h4>
+
+   Traditional multicast  routing  mechanisms  (e.g.  DVMRP  and
+   MOSPF)  were intended for use within regions where groups are
+   widely represented or bandwidth is universally plentiful. 
+<p>When  group
+   members, and senders to those group members, are distributed
+   sparsely across a wide area, these schemes are not  efficient;  data
+   packets  or  membership report information are periodically sent over
+   many links that do  not lead to receivers or  senders,  respectively.
+   This  characteristic  lead  the  Internet  community  to  investigate
+   multicast   routing   architectures   that   efficiently    establish
+   distribution  trees across wide-area internets, where many groups are
+   sparsely represented and where bandwidth is not  uniformly  plentiful
+   due   to   the  distances  and  multiple  administrations  traversed.
+   Efficiency is evaluated  in  terms  of  the  state,  control  message
+   processing,  and  data  packet  processing required across the entire
+   network in order to deliver data packets to the members of the group.
+<p>
+   The   Protocol   Independent    Multicast--Sparse    Mode    (PIM-SM)
+   architecture:
+<menu>
+<li> maintains the traditional IP multicast  service  model  of
+             receiver-initiated membership;
+<li>  uses  explicit  joins  that  propagate  hop-by-hop   from
+             members' directly connected routers toward the distribution
+             tree.
+<li> builds a shared multicast distribution tree centered at  a
+             Rendezvous Point, and then builds source-specific trees for
+             those sources whose data traffic warrants it.
+<li>  is not dependent on a specific unicast  routing  protocol;
+             and
+<li> uses soft-state mechanisms to adapt to underlying  network
+             conditions and group dynamics.
+</menu>
+
+        The robustness, flexibility,  and  scaling  properties  of  this
+        architecture  make  it well suited to large heterogeneous inter-
+        networks.
+
+<h4>References</h4>
+
+<menu>
+<li><!WA1><A HREF="http://catarina.usc.edu/pim/pimsm">FTP site</A>
+<li><!WA2><A HREF="http://catarina.usc.edu/pim/pimsm/PIM-Arch.ps.gz"> 
+                <strong>Protocol Independent Multicast (PIM): Motivation and
+                Architecture.</strong></a>
+<li><!WA3><A HREF="http://catarina.usc.edu/pim/pimsm/PIM-SMv2.ps.gz"> 
+                <strong>Protocol Independent Multicast - Sparse Mode (PIM-SM):
+                Protocol Specification.</strong></a>
+<li><!WA4><A HREF="http://catarina.usc.edu/ahelmy/pimsm-implem/">Implementation FTP site</A>
+</menu>
+
+<hr>
+
+<h3>Protocol Independent Multicast-Dense Mode (PIM-DM)</h3>
+
+<menu>
+<li><!WA5><A HREF="http://catarina.usc.edu/pim/pimdm/">FTP site</A>
+<li><!WA6><A HREF="http://catarina.usc.edu/pim/pimdm/PIM-DM.ps.gz"> 
+                <strong>Protocol Independent Multicast - Dense Mode (PIM-DM):
+                Protocol Specification.</strong></a>
+</menu>
+
+<hr>
+
+<h3>Interoperability</h3>
+
+<menu>
+<li><!WA7><A HREF="http://catarina.usc.edu/pim/interop/">FTP site</A>
+<li><!WA8><A HREF="http://catarina.usc.edu/pim/interop/pmbr-spec-9-16.ps.gz">
+                <strong>PIM Multicast Border Router (PMBR) specification 
+                for connecting PIM-SM domains to a DVMRP Backbone.</strong></A>
+</menu>
+
+<hr>
+
+<h3>Frequently Asked Questions (FAQ)</h3>
+
+<i>Under Construction !!</i>
+
+<hr>
+
+To subscribe to <i>pim-interest</i> mailing list, send email to <!WA9><A 
+HREF="mailto:pim-interest-request@catarina.usc.edu">pim-interest-request@catarina.usc.edu</A>
+<p>
+To subscribe to <i>pim-implementors</i> mailing list, send email to <!WA10><A 
+HREF="mailto:pim-implementors-request@catarina.usc.edu">pim-implementors-request@catarina.usc.edu</A>
+
+<HR size=2 noshade>
+<table cellpadding=0 cellspacing=0 border=0 width=500>
+<!-- <tr>
+<td align=left>
+<i>Last modified: October 29, 1996</i>
+</td>
+<td align=right>
+<address><!WA11><A HREF="http://www-scf.usc.edu/~ahelmy"
+NAME="signature">Ahmed Helmy</A>
+<!WA12><A HREF="mailto:ahelmy@isi.edu"> ahelmy@isi.edu</A>
+</address>
+</td>
+</tr>
+</table
+</BODY>
+</HTML>

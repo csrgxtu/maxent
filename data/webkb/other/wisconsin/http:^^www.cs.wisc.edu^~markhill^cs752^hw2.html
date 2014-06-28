@@ -1,0 +1,64 @@
+Date: Tue, 05 Nov 1996 00:31:14 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 23 Sep 1996 18:36:51 GMT
+Content-length: 2697
+
+<TITLE>CS/ECE 752 - Homework #2</TITLE>
+<center>
+<h2>CS/ECE 752: Advanced Computer Architecture I<P>
+<P>
+Prof. Mark D. Hill <P>
+T.A. Jeff Shabel <P>
+<P>
+Due: Thurs, Oct. 10<P><P></h2></center>
+
+Pertains to Chapter 5 of the text (Hennessy and Patterson, Computer 
+Architecture: A Quantitative Approach, Second Edition, 1996).  You should 
+work alone.  <B>No late assignments will be accepted.<P>
+
+Problem II.1</B><P> <I>(8 points) Using a trace-driven cache
+simulator.</I> Use <code>dinero</code> to examine a direct-mapped 16K-byte
+unified cache with 16-byte blocks (use the default for other cache
+options) using trace fragment <code>SPEC92/085.gcc.din.Z</code>.  For more
+info, read <code>dinero.man</code> and <code>README</code>.  All files are
+in directory <code>/p/course/cs752-markhill/public/software/dinero</code>. 
+Do not copy the trace file, since it is almost 4MB.  You might want to do
+some test runs with the first 50K references (-z50K) instead of waiting
+for the full simulation.  Do not believe these results too much, since you
+are using only one trace fragment.<BR>
+
+<DL>
+<DD>(a) What is the miss ratio
+of the direct-mapped 16K-byte unified cache with 16-byte blocks?  What is
+the effective access time assuming 5.0 ns to access the cache and a 100.0
+ns miss penalty?<P> 
+
+<DD>(b) Use the assumptions of part (a) except change
+the block size to 32 bytes.  What is the new miss ratio?  The larger block
+size could hurt the miss penalty.  At what miss penalty will this new
+cache have the same effective access time as the cache in part (a)?  Round
+your answer to the nearest 0.1ns.  Ignore cycle-time boundaries.<P>
+
+<DD>(c) Use the assumptions of part (a) except change the associativity to
+2-way.  What is the new miss ratio?  The larger associativity could hurt
+the time to access the cache.  At what cache access time will this 2-way
+cache have the same effective access time as the cache in part (a)?  Round
+your answer to the nearest 0.1 ns.  Ignore cycle-time boundaries.<P>
+
+<DD>(d) When this trace fragment begins, the true contents of the cache in
+part (a) are unknown.  What is the maximum relative error in the miss
+ratio caused by this lack of knowledge?  Explain how you got your
+answer.<P> </DL> <P> <B>Problem II.2</B>
+
+
+<P> <I>(6 points)</I> H&P problem 5.14.<P> 
+
+For part (b), plot the miss ratios for both a direct-mapped and
+fully-associative instruction cache with block size of 32 bytes.  Use
+<code>SPEC92/085.gcc.din.Z</code> as you did in problem #1. Vary the cache
+size from 64 bytes to 4K bytes.  Plot both sets of data on the same graph. 
+Highlight the point at which the cache stops consistently exhibiting this
+behavior as described in the book. 
+
+

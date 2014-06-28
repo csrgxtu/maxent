@@ -1,0 +1,528 @@
+Date: Tue, 14 Jan 1997 19:33:28 GMT
+Server: NCSA/1.5.1
+Last-modified: Wed, 21 Sep 1994 15:14:39 GMT
+Content-type: text/html
+Content-length: 19878
+
+<TITLE>A Prototyping System for Parallel and Distributed Applications</TITLE>
+
+<H2>A Prototyping System for Parallel and Distributed Applications</H2>
+<HR><P>
+
+<A NAME="0"><STRONG>Table of Contents:</STRONG></A><BR><P>
+
+<OL>
+<LI> <!WA0><A HREF="#1"> Principal Investigator.</A>
+<LI> <!WA1><A HREF="#2"> Productivity Measures.</A>
+<LI> <!WA2><A HREF="#3"> Summary of Objectives and Approach.</A>
+<LI> <!WA3><A HREF="#4"> Detailed Summary of Technical Progress.</A>
+<LI> <!WA4><A HREF="#5"> Transitions and DOD Interactions.</A>
+<LI> <!WA5><A HREF="#6"> Software and Hardware Prototypes.</A>
+<LI> <!WA6><A HREF="#7"> List of Publications.</A>
+<LI> <!WA7><A HREF="#8"> Invited and Contributed Presentations.</A>
+<LI> <!WA8><A HREF="#9"> Honors, Prizes or Awards Received.</A>
+<LI> <!WA9><A HREF="#10"> Project personnel promotions obtained.</A>
+<LI> <!WA10><A HREF="#11"> Project Staff.</A>
+<LI> <!WA11><A HREF="#12"> Misc Hypermedia URL.</A>
+<LI> <!WA12><A HREF="#13"> Keywords.</A>
+</OL>
+
+<HR>
+<ADDRESS>
+- Revised: Wed Sep 21 11:14:39 1994 by nyland@cs.unc.edu
+</ADDRESS>
+
+<HR> <P>
+
+
+<!WA13><A NAME="1" HREF="#2"><STRONG>Principal Investigator.</STRONG></A><P>
+
+<UL>
+<LI> <STRONG>PI Name:</STRONG>	        Allen Goldberg
+<UL>
+<LI> <STRONG>PI Institution:</STRONG>	Kestrel Institute
+<LI> <STRONG>PI Phone Number:</STRONG>	(415) 493-6871
+<LI> <STRONG>PI Fax Number:</STRONG>	
+<LI> <STRONG>PI E-mail Address:</STRONG>	goldberg@kestrel.edu
+<LI> <STRONG>PI URL Home Page:</STRONG>	<!WA14><A href="http://kestrel.edu/pub/mosaic/kestrel.html">http://kestrel.edu/pub/mosaic/kestrel.html</A>
+<LI> <STRONG>Grant Title:</STRONG>	A Prototyping System for Parallel and Distributed Applications
+<LI> <STRONG>Grant/Contract Number:</STRONG>	N00014-92-C-0182
+<LI> <STRONG>R&amp;T Number:</STRONG>	3331773-09
+<LI> <STRONG>Reporting Period:</STRONG>	7/1/93 -- 6/30/94
+</UL>
+</UL> <P>
+<UL>
+<LI> <STRONG>PI Name:</STRONG>	        Jan Prins
+<UL>
+<LI> <STRONG>PI Institution:</STRONG>	University of North Carolina
+<LI> <STRONG>PI Phone Number:</STRONG>	(919) 962-1913
+<LI> <STRONG>PI Fax Number:</STRONG>	(919) 962-1799
+<LI> <STRONG>PI E-mail Address:</STRONG>	prins@cs.unc.edu
+<LI> <STRONG>PI URL Home Page:</STRONG>	<!WA15><A HREF="http://www.cs.unc.edu">http://www.cs.unc.edu</A>
+<LI> <STRONG>Grant Title:</STRONG>	A Prototyping System for Parallel and Distributed Applications
+<LI> <STRONG>Grant/Contract Number:</STRONG>	N00014-92-C-0182
+<LI> <STRONG>R&amp;T Number:</STRONG>	3331773-09
+<LI> <STRONG>Reporting Period:</STRONG>	7/1/93 -- 6/30/94
+</UL>
+</UL> <P>
+<UL>
+<LI> <STRONG>PI Name:</STRONG>	        John Reif
+<UL>
+<LI> <STRONG>PI Institution:</STRONG>	Duke University
+<LI> <STRONG>PI Phone Number:</STRONG>	(919) 660-6568
+<LI> <STRONG>PI Fax Number:</STRONG>	(919) 660-6519
+<LI> <STRONG>PI E-mail Address:</STRONG>	reif@cs.unc.edu
+<LI> <STRONG>PI URL Home Page:</STRONG>	<!WA16><A HREF="http://www.cs.duke.edu">http://www.cs.duke.edu</A>
+<LI> <STRONG>Grant Title:</STRONG>	A Prototyping System for Parallel and Distributed Applications
+<LI> <STRONG>Grant/Contract Number:</STRONG>	N00014-92-C-0182
+<LI> <STRONG>R&amp;T Number:</STRONG>	3331773-09
+<LI> <STRONG>Reporting Period:</STRONG>	7/1/93 -- 6/30/94
+</UL>
+</UL>
+
+<P> <HR> <P>
+
+
+<!WA17><A NAME="2" HREF="#3"><STRONG>Productivity Measures.</STRONG></A><P>
+
+<!Comment: the following is an ordered list >
+
+<UL>
+<LI> <B>Number of refereed papers submitted not yet published:</B> 4
+<LI> <B>Number of refereed papers published:</B>		0
+<LI> <B>Number of unrefereed reports and articles:</B>		5
+<LI> <B>Number of books or parts thereof submitted but not published:</B> 2
+<LI> <B>Number of books or parts thereof published:</B>	1
+<LI> <B>Number of project presentations:</B>			18
+<LI> <B>Number of patents filed but not yet granted:</B>	0
+<LI> <B>Number of patents granted and software copyrights:</B> 	0
+<LI> <B>Number of graduate students supported >= 25% of full time:</B> 3 (unc), 1 (duke)
+<LI> <B>Number of post-docs supported >= 25% of full time:</B>	0
+<LI> <B>Number of minorities supported:</B>			0
+</UL>
+
+<P> <HR> <P>
+
+<!WA18><A NAME="3" HREF="#4"><STRONG>Summary of Objectives and Approach.</STRONG></A><P>
+
+<OL>
+<LI> To provide a prototyping-based design methodology
+that supports the architecture-independent development of parallel and
+distributed systems. The Proteus system provides the language and
+tools supporting this methodology. <P>
+
+This work addresses a fundamental problem: naive implementations
+of abstract models of parallel computation lead to impractical
+implementations, whereas machine-specific models lead to
+intractable analysis of even the simplest programs. The goal of
+our work is to provide tools for exploring the design space of a
+parallel application by a process of prototyping and successive
+refinement.
+
+</OL>
+
+<P> <HR> <P>
+
+
+<!WA19><A NAME="4" HREF="#5"><STRONG>Detailed Summary of Technical Progress.</STRONG></A><P>
+
+<!Comment: following is an ordered list >
+<!Comment: each new item in the list starts with a 'LI' at the left margin >
+
+<OL>
+<LI> Development of object-oriented mechanisms for task-parallel communication and
+synchronization. <P>
+Significant progress has been made in language design in the 
+development of an extensible foundation for explicit task parallelism.  
+Communication is through a shared object model in which the access to 
+shared state is controlled through object methods and class directives 
+which constrain mutual exclusion of methods [GPR+94].  Predefined 
+classes such as for single-assignment objects which synchronize a 
+producer with a consumer, together with provisions for private state 
+with barrier synchronization allow the expression of a wide range of 
+parallel computing paradigms, key to providing an expressive and 
+uniform vehicle for refinement. <P>
+
+<LI> Development of methodology for performance prediction in which computing
+model varies with level of refinement; development of improved 
+computational model LogP-HMM. <P>
+To support early analysis of program efficiency and resource utilization we 
+are developing a methodology for performance predicition which uses, as 
+program refinement progresses, increasingly detailed parallel computational 
+models.  The accuracy and confidence of assessment thus increases as the 
+level of architectural detail incorporated into the program increases.  To 
+support the assessment of multi-paradigm programs, different models are 
+used for analysis of code segments following different paradigms, such as 
+the VRAM for data-parallelism and the LogP message-passing, with suitable 
+instrumentation to attach the model to the program.  At the same time, to 
+support more accurate modeling of costs such as cache and I/O, we are 
+developing improved performance models, i.e., a new hybrid model of 
+parallel computation, the LogP-HMM model [LMR94], which fills a gap in the 
+hierachy of refined models by extending a network model (the LogP) with a 
+sequential hierarchical memory model (the HMM).<P>
+
+<LI> Completion and release of the DTRE3 transformation system.
+<P>
+The refinement subsystem of Proteus, called DTRE3, has been completed.
+This system has supported work in transformation of data parallel
+Proteus programs to vector models. A new system called Specware, which
+significantly generalizes DTRE3 is being developed. In addition to
+supporting refinement and generation of C and Lisp code, Specware has
+powerful category-theory-based operations for manipulating diagrams
+(directed graphs) logical theories. The logical theories are used to
+hierarchically define (partial) specifications, architectural
+descriptions, refinements, and other software artifacts. The
+operations are used to compose, refine, and instantiate components to
+build systems. A preliminary version of the Specware has been
+released. <P>
+
+<LI> Participation in the Hiper-D GeoServer demonstration activity.
+<P>
+In November 1993, we participated in a community-wide prototyping
+experiment defined by the Hiper-D program at NSWC as part of their
+next-generation Aegis development effort.  Using Proteus, we developed
+a <!WA20><A HREF="http://www.cs.unc.edu/proteus-demos.html"> series of
+prototypes</A> to explore design approaches to a geometric
+classification problem.  An initial design was elaborated to reflect
+the functional structure of the radar system and the interactions with
+a system operator.  Another prototype explored designs for the system
+in demanding high-traffic situations using a sophisticated parallel
+algorithm.  All prototypes were executable using the Proteus
+interpreter, were rapidly developed, and were judged to have
+contributed useful knowledge about design options to NSWC.  An
+external review of the participating ProtoTech languages in this
+experiment assigned the highest overall score to the Proteus and
+Haskell efforts.<P>
+
+<LI> FY-95 PLANS: 
+<UL>
+<LI>Full development of an integrated task- and data-parallel 
+programming notation.
+
+<LI>Elaboration of a design model for concurrent systems based on
+successive refinement.
+
+<LI>Support for resource requirement estimation using
+multiple refined performance-prediction models.
+
+<LI>Further development of Specware, including integration with
+Proteus.
+
+<LI>Unified, single-step translation of data-parallel applications to 
+vector execution.
+
+<LI>Application development to assist in prototyping methodology description.
+
+<LI>Notational Formalism and Software Support for Real-Time Educational 
+Simulations 
+
+<LI>Participation in the Hiper-D advanced GeoServer prototyping activity.
+</UL>
+</OL>
+
+<P> <HR> <P>
+
+
+<!WA21><A NAME="5" HREF="#6"><STRONG>Transitions and DOD Interactions.</STRONG></A><P>
+
+<!Comment: following is an ordered list >
+<!Comment: each new item in the list starts with a 'LI'  the left margin >
+<!Comment: if you have none to report, then remove the 3 lines below >
+
+<OL>
+
+<LI> Duke and UNC are collaborating with John
+Board in the E.E. Department of Duke University and J. Hermans of the
+Biochemistry Department at UNC in the investigation and implementation
+of parallel Fast Multipole Algorithms (FMA) for molecular dynamics
+simulations.  NCSC and UNC were recently awarded a 5-year $2.5M NIH
+grant for the development and implementation of parallel algorithms
+for molecular dynamics.  The use of Proteus is an integral component
+of this effort.
+
+<LI> Medical Imaging group at UNC is using Proteus to develop sophisticated 
+parallel algorithms for segmenting medical images into physical 
+objects.
+
+<LI> Our FMA code is being examined by others, at Duke University, CMU and
+Brooklyn Polytechnic, as a guide to lead their own implementations.
+
+<LI> Release of Specware to Mitre, Motorola, Air Forces Institute of
+Technology, and Rome Labs. Motorola is specifying and (eventually)
+implementing the kernal of a crypto system using Specware. AFIT
+and Rome Labs are evaluating Specware for use within their research
+programs in software engineering. Mitre is evaluating Specware
+technology.
+
+<LI> Specware, which is described above, requires a UNIX/X environment,
+and Refine (available at low-cost to educational institutions).
+The POC is Maria Pryce, pryce@kestrel.edu, 415-493-6871.
+
+</OL>
+
+<P> <HR> <P>
+
+
+<!WA22><A NAME="6" HREF="#7"><STRONG>Software and Hardware Prototypes.</STRONG></A><P>
+
+<!Comment: following is an ordered list >
+<!Comment: each new item in the list starts with a 'LI'  the left margin >
+<!Comment: if you have none to report, then remove the 3 lines below >
+
+<OL>
+
+<LI> A prototype system for translation of Proteus programs to
+executable parallel code has been developed.
+
+<LI> Enhancement of the Proteus interpreter continues.
+
+</OL>
+
+<P> <HR> <P>
+
+
+<!WA23><A NAME="7" HREF="#8"><STRONG>List of Publications.</STRONG></A><P>
+
+<!Comment: following is an ordered list >
+<!Comment: each new item in the list starts with a 'LI'  the left margin >
+<!Comment: if you have none to report, then remove the 3 lines below >
+
+<OL>
+<LI> 
+Lee Blaine, et. al. SPECWARE User Manual, Kestrel Institute
+Technical Report, June, 1994.
+
+<LI> 
+Rickard E. Faith, Doug L. Hoffman, and David G. Stahl.  UnCvL: The
+University of North Carolina C Vector Library.  Technical Report, May,
+1993.
+
+<LI> 
+Allen Goldberg, Peter Mills, Lars Nyland, Jan Prins, John Reif, and
+James Riely. Specification and Development of Parallel Applications
+using the Proteus System.  Proc.  DIMACS Workshop on 
+Specification of Parallel Algorithms, 1994.
+
+<LI> 
+Allen Goldberg, Jan Prins, John Reif, Rickard Faith, Zhiyong Li, Peter
+Mills, Lars Nyland, Daniel Palmer, and James Riely. The Proteus system
+for the development of parallel applications. Technical report,
+UNC-CH, May 1994.  To be published in the ProtoTech compendium.
+
+<LI> 
+Allen Goldberg, Richard Jullig, Y.V. Srinivas, Refinement of
+Specifications, Kestrel Institute Technical Report, Oct. 1993.
+
+<LI> 
+Jullig, R. and Srinivas, Y.  Describing software architectures
+formally: A case-study using KWIC.  Kestrel Institute Technical
+Report KES.U.94.4, Kestrel Institute, April 1994.
+
+<LI> 
+Jullig, R. and Srinivas, Y. Diagrams for software synthesis.
+Proceedings of the 8th Knowledge-Based Software Engineering
+Conference, IEEE, Chicago, IL, September 20--23, 1993. 
+
+<LI> 
+Gary Levin and Lars Nyland. An introduction to Proteus, version 0.9.
+Technical report, UNC-CH, 1993.
+
+<LI> 
+"Models and Resource Metrics for Parallel and Distributed Computation",
+Z. Li, P. Mills  and J. Reif.   To appear in
+28th Hawaii International Conference on System Sciences (HICSS-28,
+Parallel Algorithms Software Technology Track),
+Maui, Hawaii, January 3-6, 1995.
+
+<LI> 
+P.H. Mills, L.S. Nyland, J.F. Prins, and J.H. Reif.  Software 
+Issues in High-Performance Computing and a Framework for the 
+Development of HPC Applications.  Computer 
+Science Agendas for High-Performance Computing (U. Vishkin, ed.), 
+ACM, 1994.
+
+<LI> 
+Z.  Li, P.H.  Mills, and J.H.  Reif.  Models and Resource Metrics for 
+Parallel and Distributed Computation.  Duke Technical Report, 
+Submitted for publication, 1994.
+
+<LI>
+ Daniel W. Palmer. DPL- data parallel library manual.  Technical
+report, UNC, 1993.
+
+<LI> Qian, X.L. and Allen Goldberg, Referential Opacity in
+Nondeterministic Data Refinement, to appear in ACM Letters on
+Programming Languages and Systems.
+
+<LI> T.C. Wang and Allen Goldberg, KITP-93: An automated inference
+system for program analysis, Proceedings of the Conference on
+Automated Deduction, Nancy, France, June, 1994.
+
+</OL>
+
+<P> <HR> <P>
+
+
+<!WA24><A NAME="8" HREF="#9"><STRONG>Invited and Contributed Presentations.</STRONG></A><P>
+
+<!Comment: following is an ordered list >
+<!Comment: each new item in the list starts with a 'LI'  the left margin >
+<!Comment: if you have none to report, then remove the 3 lines below >
+
+<OL> <LI>
+"Work-efficient Parallel Implementations of Sparse Grid-based
+Computations", Jan Prins, Workshop on Parallel Algorithms for Unstructured and
+Dynamic Problems, DIMACS, Rutgers, NJ. 6/2/93.
+
+<LI>
+"The Proteus System for the Development of Parallel Software", Jan Prins,
+Parallel Software Engineering CRDA, Griffiss AFB, Rome NY. 7/28/93.
+
+<LI> "Targeting Multiple Virtual Machines with the Proteus System", Jan Prins,
+Workshop on Parallel Virtual Machine Concepts, Griffiss AFB, Rome, NY.
+10/4/93.
+
+<LI>
+"Practical Parallel Algorithms for the MasPar MP-1", Jan Prins,
+U.S. Naval Academy, Annapolis, MD. 11/22/93.
+
+<LI> "The Proteus System for the Development of Parallel Algorithms",
+Jan Prins, Workshop on Parallel Algorithms, DIMACS, Rutgers, NJ.
+11/17/93.
+
+<LI> "A Proteus Solution for the Geometric Region Server", Lars
+Nyland, Computer Sciences Corp., Dalgren VA, 12/9/93.
+
+<LI>
+"Parallel Implementations of Molecular Dynamics Simulations", Jan Prins,
+Computational Biology Colloquium Series, NCSC, RTP, NC. 1/27/94.
+
+<LI> "Social Potential Fields: A Distributed Behavioral Control for
+Autonomous Robots", John Reif and H. Wang. Workshop on the Algorithmic
+Foundations of Robotics (WAFR), San Francisco, February, 1994
+
+
+<LI> Distinguished Lecture: "Predictive Computing:An Emerging Paradigm
+for Efficient Computation", John Reif, School of Computer Science,
+April 14, 1994, CMU
+
+
+<LI>
+"The Role of Program Transformations in the Proteus System", Jan Prins,
+IFIP WG10.3 Working Conference on Programming Environments for
+Massively Parallel Computing, Ascona, Switzerland. 4/25/94.
+
+<LI>
+"Models, Control Primitives, and Resource Metrics for Parallel and
+Distributed Computation", J. Reif.  Invited keynote presentation at
+8th International Parallel Processing Symposium (IPPS '94), Cancun,
+Mexico, April 26-29, 1994.
+
+<LI> "Dynamic Parallel Tree Contraction", John Reif and S. R. Tate,
+5th Annual ACM Symposium on Parallel Algorithms and Architectures
+(SPAA'94), Cape May, NJ, June 1994. pp.114-121.
+
+<LI> "O(log^2 n) Time Efficient Parallel Factorization of Dense,
+Sparse Separable, and Banded Matrices", John Reif. 5th Annual ACM
+Symposium on Parallel Algorithms and Architectures (SPAA'94), Cape
+May, NJ, June 1994.
+
+<LI> "Predictive Computing:An Emerging Paradigm for Efficient
+Computation", John Reif, Dartmouth Institute for Advanced Graduate
+Studies(DAGS94), July 5, 1994, Hanover, New Hampshire
+
+
+
+</OL>
+
+<P> <HR> <P>
+
+
+<!WA25><A NAME="9" HREF="#10"><STRONG>Honors, Prizes or Awards Received.</STRONG></A><P>
+
+<!Comment: following is an ordered list >
+<!Comment: each new item in the list starts with a 'LI'  the left margin >
+<!Comment: if you have none to report, then remove the 3 lines below >
+
+<P> <HR> <P>
+
+
+<!WA26><A NAME="10" HREF="#11"><STRONG>Project Personnel Promotions Obtained.</STRONG></A><P>
+
+<!Comment: following is an ordered list >
+<!Comment: each new item in the list starts with a 'LI'  the left margin >
+<!Comment: if you have none to report, then remove the 3 lines below >
+
+<OL>
+<LI> Jan Prins, promoted to tenured Associate Professor.
+</OL>
+
+<P> <HR> <P>
+
+
+<!WA27><A NAME="11" HREF="#12"><STRONG>Project Staff.</STRONG></A><P>
+
+<!Comment: following is an ordered list >
+<!Comment: each new  item in the list starts with a 'LI'  the left margin >
+<!Comment: include yourself, postdocs, contractors, students, secretaries, etc >
+
+<OL>
+<LI> Allen Goldberg, Principal Investigator, Kestrel Institute
+<LI> Jan F. Prins, Principal Investigator, UNC
+<LI> John H. Reif, Principal Investigator, Duke University
+<LI> Stephen Westfold, Senior Scientist, Kestrel Institute
+<LI> Peter H. Mills, Research Associate, Duke University
+<LI> Lars S. Nyland, Research Assistant Professor, UNC
+<LI> Zhiyong Li, Graduate Student, Duke University
+<LI> Rickard Faith, Graduate Student, UNC
+<LI> Daniel Palmer, Graduate Student, UNC
+<LI> James Riely, Graduate Student, UNC
+<LI> Bill Yakowenko, Graduate Student, UNC
+<LI> Madelyn Mann, Secretary, UNC
+<LI> Kenneth Robinson, Secretary, Duke University
+</OL>
+
+<P> <HR> <P>
+
+
+<!WA28><A NAME="12" HREF="#13"><STRONG>Misc Hypermedia.</STRONG></A><P>
+
+<!Comment: following is an ordered list >
+<!Comment: each new  item in the list starts with a 'LI'  the left margin >
+<!Comment: if you have none to report, then remove the 3 lines below >
+<!Comment: include other Web sites that you know which cite your homepage >
+<!Comment: include non-traditional print media such as URL's, video-tapes,... >
+
+<OL>
+
+<LI> <!WA29><A HREF="http://www.cs.unc.edu/proteus.html">The Proteus System Home Page</A>.
+An overview, all publications, software, examples, demonstrations and
+personnel descriptions can be found here.
+
+<LI> Quad-chart for 1994.  Three versions:
+<!WA30><A HREF="http://www.cs.unc.edu/4chart94/4chart94.html">HTML hypermedia (8K bytes)</A>,
+<!WA31><A HREF="http://www.cs.unc.edu/4chart94/4chart94.hqx">Macintosh Powerpoint (17K bytes)</A>,
+and
+<!WA32><A HREF="http://www.cs.unc.edu/4chart94/4chart94.ps">postscript (45K bytes)</A>
+
+<!LI Your_videotape_description_goes_here>
+</OL>
+
+<P> <HR> <P>
+
+
+<!WA33><A NAME="13" HREF="#0"><STRONG>Keywords.</STRONG></A><P>
+
+<!Comment: following is an ordered list >
+<!Comment: each new  item in the list starts with a 'LI'  the left margin >
+
+<OL>
+<LI> Prototype Program Development
+<LI> Parallel Programming
+<LI> Program Transformation
+<LI> Fast Multipole Algorithm (FMA)
+</OL>
+
+<P> <HR> <P>
+
+

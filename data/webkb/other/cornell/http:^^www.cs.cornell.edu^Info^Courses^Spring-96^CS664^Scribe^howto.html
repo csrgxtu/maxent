@@ -1,0 +1,62 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 16-Dec-96 23:20:20 GMT
+Content-Type: text/html
+Content-Length: 2506
+Last-Modified: Tuesday, 06-Feb-96 00:32:05 GMT
+
+<HEAD>
+<TITLE>CS 664:  How to Scribe</TITLE>
+</HEAD>
+<BODY>
+<h1> CS 664:  How to Scribe </h1>
+ 
+This page should provide enough information to get you started.
+Unfortunately, LaTeX can be complicated and has many options, we are
+unable to provide a reference to the LaTeX system itself.  What is
+provided is a commented version of the third lecture scribe's notes.  This
+consists of a few parts:
+
+<ul>
+<li> <b><a href="howto/lec3.tex">lec3.tex</a></b> this is the main LaTeX
+Document.  It is similiar to the main file of a c program, it describes the
+text of the document, it can include other files, and details how other files
+should be "linked" in to make the final postscript output.
+
+<li> <b><a href="howto/graph2.eps">graph2.eps</a> and <a
+href="howto/barn-scene.eps">barn-scene.eps</a></b> these are the figures seen
+in the document, EPS stands for ecapsulated postscript.  Figures can be
+created in a number of ways.  Most people will create figures for the first
+homework by converting PGM format pictures to EPS using the "pnmtops"
+program.  "xfig" is a useful program to create drawings.
+
+<li> <b><a href="howto/lec3.ps">lec3.ps</a></b> the final output, a postscript
+file.
+</ul>
+
+
+  You should first look at the file <a href="howto/lec3.tex">lec3.tex</a>.
+Comments in the source begin with a % symbol.  Typically you will edit this
+file so that it contains your notes.  Then you can "compile" the LaTeX file,
+for example "latex lec3.tex".  This will create a few files, including
+"lec3.aux", "lec3.log", and "lec3.dvi".  The important file is lec3.dvi, this
+is contains the formatted text.  You can view this file using the "xdvi"
+program.  This file will not include any EPS figures that you might add, you
+will need to run "dvips -o lec3.ps lec3.dvi" to create the final postscript
+file, <a href="howto/lec3.ps">lec3.ps</a>.
+
+<h3>Submissions:</h3>
+  Eventually, your going to have to turn the mess in.  What we need is the
+final postscript file, the LaTeX file, and the EPS files for any of the
+figures you created.  If you have an account on the cs or sunlab systems, you
+can just email the locations to jmiller@cs.cornell.edu, otherwise you will
+have to mail me a uuencoded tar file of the files.
+
+<p>
+<h3>References:</h3>
+<ul>
+<li> <a href="http://www.cogs.susx.ac.uk/users/alanje/latex/intro.html">An Introduction to LaTeX</a>
+<li> <a href="http://ugweb.cs.ualberta.ca/~pub/latex.html">A
+Guide to LaTeX</a>
+<li> <a href="http://jasper.ora.com/texhelp/ltx-2.html">LaTeX Commands</a>
+</ul>

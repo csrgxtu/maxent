@@ -1,0 +1,98 @@
+Server: Netscape-Commerce/1.12
+Date: Tuesday, 26-Nov-96 00:06:55 GMT
+Last-modified: Thursday, 15-Jun-95 00:36:02 GMT
+Content-length: 3855
+Content-type: text/html
+
+<!doctype html public "-//W30//DTD W3 HTML 2.0//EN">
+
+<HTML>
+
+
+<TITLE>CONCURRENT VLSI ARCHITECTURE GROUP</TITLE>
+
+<center>
+<!WA0><A HREF="http://www.ai.mit.edu/projects/cva/cva_home_page.html"><!WA1><IMG SRC=http://www.lcs.mit.edu/web_project/Brochure/cva/cvaline.gif></a>
+</center>
+<p>
+<center>
+<table border>
+<tr>
+	<td><!WA2><img src=http://www.lcs.mit.edu/web_project/Brochure/cva/dally.gif></td>
+</tr>
+<tr>
+<td> <!WA3><a href="http://www.ai.mit.edu/people/billd/billd.html"><address><b>William J. Dally</b></a>,<br>Associate Professor <br>of Computer Science and Engineering</address>
+</tr>
+</table>
+</center>
+<body>
+<p>
+
+Much of the work of the Concurrent VLSI Architecture group
+is experimental in nature: We build working chips,
+machines, and programs to test new concepts and gain
+insight in applying VLSI technology to information
+processing. As illustrated by the following examples, our
+projects address parallel computer architecture and
+software, interconnection networks, special-purpose
+processor design, and VLSI design.
+<p>
+The <!WA4><A HREF="http://www.ai.mit.edu/projects/cva/cva_m_machine.html">M-Machine</a> is a multicomputer that will test new
+concepts for controlling multiple function units on a
+single chip, efficient and flexible communication
+primitives, fine-grain protection, and global memory
+systems. The project seeks out methods for exploiting
+instruction-level parallelism within a task and among
+tasks, on the same node and between multiple nodes.
+<p>
+The M-Machine consists of up to 64K nodes connected by a
+high-speed 3-D mesh network. Each node includes a multi-ALU
+processor (MAP) chip and external memory. A MAP chip
+contains 12 arithmetic units, memory management hardware,
+and a network interface. The chip's target performance is
+800 megaFLOPS.
+<p>
+Atomic SEND instructions provide efficient communication by
+transmitting a message out of registers. Messages are
+removed from the network and dispatched by programmable
+software handlers. The memory-system architecture provides
+a global virtual address space in which addresses may be
+translated into local or remote physical locations. 
+Synchronization is provided via tags on memory words.  The
+address spaces of individual threads are separated and
+protected using segments and privileged access pointers.
+<p>
+Our software research seeks to advance the state of the art
+in transforming a sequential application to an efficient
+parallel version. Such transformations (which are now very
+labor-intensive) should be smooth and painless. Our
+compiler will employ both user directives and automatic
+analyses to provide users with precisely the control that
+is needed at each stage of the transformation. This
+combination will allow users to focus first on algorithmic
+concerns, leaving optimization to the compiler. Users may
+then specify directives to improve performance for the few
+critical aspects of the program, possibly using information
+not available to the compiler.
+<p>
+The <!WA5><A HREF="http://www.ai.mit.edu/projects/cva/cva_router.html">Reliable Router</a> 
+is a high-speed, fault-tolerant 2-D
+mesh router VLSI chip for use in massively parallel
+processors; we plan to use the router in parallel computers
+and in network switching hubs. Features include network
+fault tolerance via a link-level retry, plesiochronous
+timing to avoid the need for a global clock, adaptive
+routing for fault and congestion avoidance, virtual
+channels for performance under heavy load, support for
+request/reply protocols, and random/deadline arbitration
+schemes for livelock avoidance. Electrical interconnect
+between routers uses simultaneous bidirectional signaling.
+Bandwidth per port is 400Mb/sec at a chip clock rate of
+100MHz.
+
+</BODY>
+<p>
+<!WA6><a href="http://www.lcs.mit.edu/web_project/Brochure/contents.html"><!WA7><img align=left src=http://www.lcs.mit.edu/web_project/Brochure/icons/contents_motif.gif></a>
+<!WA8><a href="http://www.lcs.mit.edu/web_project/Brochure/cdm/cdm.html"><!WA9><img align=left src=http://www.lcs.mit.edu/web_project/Brochure/icons/previous_group_motif.gif></a>
+<!WA10><a href="http://www.lcs.mit.edu/web_project/Brochure/cag/cag.html"><!WA11><img align=left src=http://www.lcs.mit.edu/web_project/Brochure/icons/next_group_motif.gif></a>
+</HTML>

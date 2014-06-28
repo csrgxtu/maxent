@@ -1,0 +1,268 @@
+Date: Wed, 20 Nov 1996 23:11:31 GMT
+Server: NCSA/1.4
+Content-type: text/html
+
+<HTML> 
+
+<HEAD>
+<LINK REV="made" HREF="mailto:ierardi@langevin.usc.edu">
+<TITLE>CSCI 570: Analysis of Algorithms</TITLE>
+<!-- Changed by: Doug Ierardi,  2-Apr-1996 -->
+</HEAD>
+
+
+
+<BODY TEXT="#000000"
+      BACKGROUND="/graphics/bg/wall2.gif"
+      LINK="#aa0000" VLINK="#800020" ALINK="#0055aa">
+
+<!WA0><IMG SRC="http://langevin.usc.edu/graphics/usc/LogoSeal_GC_small.gif" ALIGN=left>
+<CENTER>
+<H3>COMPUTER SCIENCE 570</H3>
+<H3>ANALYSIS OF ALGORITHMS</H3>
+
+<!WA1><IMG SRC="http://langevin.usc.edu/graphics/lines/narrow_thin_gold.gif" WIDTH=75%></CENTER>
+
+<DL>
+<DT><DD>
+
+This is the home page for Computer Science 570, Analysis of Algorithms.
+During the spring of 1995, this class is taught by 
+<!WA2><A HREF="http://langevin.usc.edu/~ierardi/">Prof. Doug Ierardi</A>.<P>
+<!WA3><a href="#handouts">Handouts</a>, <!WA4><a href="#exams">exams</a> and
+<!WA5><a href="#ps">problem sets</a> may be found below and on linked
+documents.
+
+<P>
+Futher information, including course notes, former exams and handouts,
+for Computer Science 570 may currently be found in the course
+directory (<I>csci570</I>) on <TT>scf.usc.edu</TT>.
+
+<p>
+I'll note here that you may find <!WA6><a href="http://bert.cs.pitt.edu/~kirk/algorithmcourses/">the "algorithms course
+materials on the net"</a> web page valuable and interesting.
+<P>
+<a name="handouts">
+<h3><!WA7><a href="http://langevin.usc.edu/570/grades.html">Grades</a></h3>
+
+<H3>Handouts</H3>
+<UL>
+<LI> <!WA8><A HREF="http://langevin.usc.edu/~csci570/syllabus.ps">Syllabus</A>
+<LI> <!WA9><A HREF="http://langevin.usc.edu/~csci570/handouts/red-black.ps">Red-Black trees</A>
+<LI> <!WA10><A HREF="http://langevin.usc.edu/~csci570/handouts/leftist-heaps.ps">Leftist Heaps</A>
+<LI> <!WA11><A HREF="http://langevin.usc.edu/~csci570/handouts/amortize.ps">Amortized Analysis</A>, including Skew Heaps and Splay Trees
+<LI> <!WA12><A HREF="http://langevin.usc.edu/~csci570/handouts/online.ps">Competative Analysis of Online Algorithms</A>
+</UL>
+<P>
+<H3>Assignments
+	<!WA13><a href="#ps1">1</a>,
+	<!WA14><a href="#ps2">2</a>,
+	<!WA15><a href="#ps3">3</a>,
+	<!WA16><a href="#ps4">4</a> and
+	<!WA17><a href="#ps5">5</a>
+</H3>
+<UL>
+<! PROBLEM SET 1> 
+<a name="ps1">
+<LI> <B>Problem Set 1. </B>
+1.3-7; 
+1-2; 
+2.1-2,3,8;
+2.2-6, 8;
+2-2,3,5;
+3-1;
+4-4,5,7
+<BR>
+<B> Due:</B> January 25, 1996
+<BR>
+<B> Solutions:</B> <!WA18><A href="http://langevin.usc.edu/~csci570/handouts/sol1.ps">here</A>
+<P>
+
+<a name="ps2">
+<! PROBLEM SET 2> 
+<LI> <B>Problem Set 2.</B>
+  <UL>
+  <LI> <EM> (binary heaps) </EM> 7.2-5; 7.5-6
+  <LI> <EM> (binomial heaps) </EM> 20.2-10; 20-1 and -2;
+  <LI> <EM> (red-black trees) </EM> 14-1 and -2; 
+  <LI> Problem on implementing <TT>DecreaseKey</TT> from <!WA19><A HREF="http://langevin.usc.edu/~csci570/handouts/leftist-heaps.ps">handout on leftist heaps</A>.
+  </UL>
+<B> Due:</B> February 9, 1996
+<BR>
+
+<B> Solutions:</B> <!WA20><a href = "http://langevin.usc.edu/570/handouts/sol2.ps">here</a>
+
+<p>
+<a name="ps3">
+<! PROBLEM SET 3> 
+<LI><B>Problem Set 3.</B>
+<ul>
+<li> 18-2,3
+<li> Show that MoveToFront is not <i>c</i>-competitive for any 
+     <i>c &lt 2</i>. (<i>I.e.</i> this is a tight bound.)
+<li> Give a tight bound on the competitiveness of LRU for the 
+     caching problem, assuming that your cache can hold at most
+     <i>k</i> pages. (Here you're counting the number of cache 
+     <i>misses</i>.)
+<li> Read 15.3. Do 15.3-5. 
+<li> Read 22. Do 22-2. 
+<li><!WA21><A HREF="http://langevin.usc.edu/570/PS3.html">A few fun problems.</A>
+</ul>
+<B> Due:</B> Monday, February 26th
+<BR>
+
+<B> Solutions:</B> <!WA22><a href="http://langevin.usc.edu/570/handouts/sol3.ps">here</a>
+<P>
+
+<a name="ps4">
+<! PROBLEM SET 4> 
+<li><B>Problem Set 4.</B>
+<ul>
+<li> A <b>skip list</b> is constructed as follows. 
+Every element has a pointer at level 0, which connects 
+all of them into a sorted linked list.
+For each i > 0, some subset of the elements at level (i-1)
+have level i pointers, which connect them into a 
+sorted linked list.
+<p>
+The structure is constructed as follows. Suppose you're
+given such a list; to insert the next element <i>x</i> into the
+list, search for where it goes in the level 0 list and 
+splice it in. Then
+<pre>
+  i = 1;
+  while (flip() != tails) {
+     add x to the list at level i;
+     i++;
+  }
+</pre>
+<i>Sketch</i> a proof that
+(1) the resulting list has height <i>O(lg n)</i> with
+high probability, assuming that the probability of heads
+is <i>p</i>, 0 &< <i>p</i> &< 1; and 
+(2) inserting or finding an element in a data structure
+constructed in this way requires <i>O(lg n)</i> time.
+<p>
+<li> Suppose that you have access to a biased coin, with
+unknown bias (althogh probability of heads is strictly
+between 0 and 1). Show how to use this coin to simulate 
+a fair coin.
+<p>
+<li> Suppose that i give you a piece of paper with <em>n</em>
+lines drawn across its surface. (They're arbitrarily
+oriented, and each goes from edge to edge.) There's
+a dot drawn somewhere on the paper, representing the
+origin. You repeat the following: choose one of the 
+remaining lines at random, and cut the paper along it.
+Then hold onto the piece that has the dot (origin) and
+throw the rest away. Repeat this until all lines have
+been cut. So you're left with the smallest convex
+region containing the origin that is bounded by the
+given line segments.
+<p>
+<b>Fact.</b> Throughout this process, the total number of
+times that you cut across any of the remaining lines is expected to be
+<i>O(n ln n)</i>. 
+<p>
+Use this fact to design an algorithm which, given <i>n</i>
+half-planes, each containing the origin, computes their 
+intersection in expected time <i>O(n lg n)</i> by incrementally
+adding one half-plane at a time. 
+<p>
+<li> Recall the description of <b>treaps</b> given in class. 
+Briefly, every element has a key and a priority. 
+They are put into a binary tree such that they have
+an inorder ordering (binary search tree property) with
+respect to keys, and a heap ordering with respect to
+priorities.
+A random treap is one where the priorities have been
+assigned randomly. For this problem, we'll just assume
+that the prioirities are given by some random permutation.
+<p>
+<ul>
+<li> Let <i>x</i> be any element and <i>A</i> the set of ancestors of
+<i>x</i> in the random treap. Let <i>X</i> be the length of the path
+from the root to <i>x</i>. Then
+<br>
+<pre>
+X = # {keys < x and in A} 
+    + #{keys > x and in A}
+</pre>
+<br>
+Use this obvious fact to give a <b>precise</b> value for the expected 
+depth of <i>x</i>, when <i>x</i> is the <i>m</i>th largest element in the
+tree. (<i>I.e.</i> solve for the leading constants as well.
+You can tack on a <i>O(1)</i> at the end if you'd like.)
+<p>
+<li>Recall that to insert an element, you proceed
+as in a binary search tree, then attach a random
+priority, and rotate up the tree until heap-ordering
+has been restored.
+<p>
+Argue that the expected number of rotations on an 
+insertion is 2.
+<p>
+<li>
+Deletion in a treap is handled in a rather odd
+way: to delete <i>x</i>, rotate it down the tree until it
+is a leaf and remove it. 
+<p>
+Describe this procedure in more detail. Then show
+that the expected number of rotations is 2. 
+</ul>
+<p>
+</ul>
+<b> Due:</B> Monday March 18th
+<br>
+<b>Solutions:</b> <!WA23><a href="http://langevin.usc.edu/570/handouts/sol4.html">here</a>
+
+<a name="ps5">
+<! PROBLEM SET 5 > 
+<P>
+<li><B>Problem Set 5.</B>
+<ul>
+<li>  34.1-5 
+     <em> Also consider the following variant, which is an optimization problem: 
+     find a match which minimizes the number of characters matched to
+     "gap characters".</em>
+<li> 34.2-4
+<li> This suggestions came up a few times in class:
+    34.4-4
+<li> * 34.5-3
+<li> <b>Graph review:</b> 23.4-3 and 4, 25.2-3
+</ul>
+<b> Due:</B> Thursday April 10th
+<br>
+<b>Solutions:</b> <!WA24><a href="http://langevin.usc.edu/570/handouts/sol5.ps">here</a>
+</UL>
+
+<a name="exams">
+<H3>Exams</H3>
+<ul>
+<li><!WA25><a href="http://langevin.usc.edu/570/midterm-570.ps">take-home midterm exam</a>
+<li>take-home final exam, available <!WA26><a href="http://langevin.usc.edu/570/final.html">in html</a> or
+	<!WA27><a href="http://langevin.usc.edu/570/final-570.ps">in postscript</a>.
+</ul>
+<P>
+
+<H3>Demos</H3>
+If you have a Java-enhanced browser, check these out.
+<UL>
+<LI><!WA28><A href="http://langevin.usc.edu/BST/">Interactive Binary Search Tree Demos</A>
+</UL>
+<a name="ps">
+<CENTER><!WA29><IMG SRC="http://langevin.usc.edu/graphics/lines/narrow_thin_gold.gif" WIDTH=75%>
+
+<BR>
+
+<!WA30><A HREF="mailto:ierardi@cs.usc.edu">DJ Ierardi</A> /
+<!WA31><A HREF="http://langevin.usc.edu/langevin.html">langevin.usc.edu</A>
+<BR> 
+Mon 13 May 1996 at 06:55:06 PM
+
+</CENTER>
+</DL>
+</BODY>
+</HTML>
+
+

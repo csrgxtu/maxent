@@ -1,0 +1,133 @@
+Date: Mon, 16 Dec 1996 22:11:50 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 20 Jun 1996 16:12:46 GMT
+Content-length: 4199
+
+
+<html>
+<head>
+<title>
+CS418 Lab 2
+</title>
+</head>
+
+
+<body>
+<h2><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/gifs/teapot.thumb.gif">
+CS 418: Laboratory 2 </h2> 
+<h2> Parametric Surfaces </h2>
+
+<b> Introduction. </b><p>
+This exercise is concerned with building surfaces for computer graphics. It will
+introduce various types of parametric surfaces. 
+
+<b><hr>Procedure:</b>
+<p>
+First you will need to download two files. To do this, click on
+each of the filenames shown below.  When the text window opens, use the
+"save as" option to put the file in your own directory. Name each file with
+the same name as shown below.
+<ul>
+<li> <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/parametric.1995.net"> parametric.net </a>
+<li> <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/parametric.1995.cfg"> parametric.cfg </a>
+</ul>
+<p>
+After downloading the files, start DX then
+open and execute parametric.net. Each module (when opened) has a one-line
+
+explanation of its function.  One of the 
+<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/Parametric.net.gif"> Compute modules </a>
+performs the
+main
+operation of mapping a 2D grid to 3D coordinates to make the parametric
+surface.
+(The others just produce pi and produce the variables [v,w].)
+<p>
+<b> <hr> Assignment:</b><p>
+
+Quadric surfaces: Modify the Compute in Parametric.net to produce a unit
+sphere.  Use another Compute module to convert the sphere to a
+"superquadric". That is, if the vector [x,y,z] is a quadric surface, then
+[x,y,z]^n is a superquadric surface, where the power of a vector just
+means the power of each term. Try values of n from .2 to 10 or so. You
+will need to handle negative values of x, y, and z in the compute. Make
+the value of n set by an interactor.
+The two images below show a sphere modified by n=.3 and n=3 respectively.
+<p>
+<!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/superquad.3.gif">
+<!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/superquad.3.0.gif">
+<p>
+Figures of rotation: Modify the program to produce a figure of rotation given by
+cylinder radius r=abs(w)+.1 where w is the axis of the rotation.  
+Modify the program to  produce a figure of rotation
+which approximates the shape of a drink bottle. The bottle should have (at least)
+a neck, and a body with a bottom.
+<p>
+Two bottles modeled in spring 1995 are particularly elaborate.
+<ul>
+<li> <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/student.1995.gifs/jh32.bottle.cs418.gif">
+A juice bottle.</a>
+<li> <!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/student.1995.gifs/medcoke.gif" >
+A Coke bottle. </a>
+</ul>
+<p>
+Bottles modeled in 1996.
+<ul>
+<li> <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/student.1996.gifs/rosenberger.2.96.bottle.jpg">
+A beer bottle </a>
+<li> <!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/student.1996.gifs/heitmann.lab2.bottle.gif">
+A vase </a>
+<li> <!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/student.1996.gifs/demers.lab2.bottle.gif">
+A soda bottle </a>
+</ul>
+<p>
+Note that the form a?b:c used in a compute module is a conditional. If a is not equal
+to zero, then do b, else do c. This allows arbitrary functions to be constructed. For
+example, try r=0.2+(w>=0.4?(w-0.4):0.0) to make a funnel.
+<p>
+<!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/funnel.image.gif">
+<p>
+Modify the original Parametric.net program to convert the torus into a
+spiral spring with four complete turns. Animate the spring so that one
+end of the spring remains fixed and the other end undergoes simple
+harmonic motion. The spring should not pass through itself and the motion
+should repeat every 16 frames. Model a sphere which moves sinusoidally<br>
+(that is: <code> x(t) = A*sin(w*t+phi) </code>)<br>
+with the end of the spring and appears to be attached to the spring.
+One frame of an animation is shown below.
+<p>
+<!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/spring.image.gif">
+<p>
+<b>Bugs as of 3/7/95 </b>
+<ul>
+<li> The comment in the Construct module is incorrect. It should read
+"make a 21x21 grid spanning (0,0) to (1,1)".
+</ul>
+
+
+Be prepared to demo and explain the superquadric function, your soda
+bottle and spring animation. 
+<p>
+The
+<!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/GradeGuides/Lab2.grade.ps"> Lab 2 grading guide </a>
+will be filled out by a consultant during section to evaluate your work.
+<p>
+<!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/gifs/leftarrow.icon.gif">
+Back to <!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/index.html">Main Page</a>
+<br>
+<!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/gifs/rightarrow.icon.gif">
+Go to <!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/lab3.html">Lab 3</a>
+
+ <P>
+<hr>
+Last modified, 1/17/96, B. Land.
+<! Revision history:
+	Original document: P.Maxfield, 10/94
+>
+<br>
+<!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><IMG SRC="http://www.tc.cornell.edu/copyright.xbm">
+<!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><A HREF="http://www.tc.cornell.edu/ctcCopyright.html"> 
+<i>Copyright Statement </I></A>
+</body> </html>
+

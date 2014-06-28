@@ -1,0 +1,149 @@
+Date: Mon, 11 Nov 1996 17:13:01 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 21 Oct 1996 16:16:23 GMT
+Content-length: 5325
+
+<HTML>
+<HEAD>
+<TITLE>Program 5 - CS 302 Fall 1996 - Section 4</TITLE>
+</HEAD>
+<BODY>
+
+<H1 ALIGN=CENTER>
+  <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~cs302">CS 302</A>
+  Fall 1996 - <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.wisc.edu/~milo/cs302.html">Section 4</A>
+</H1> 
+<H2 ALIGN=CENTER>Algebraic Language Programming in C++</H2>
+<H4 ALIGN=CENTER>Instructor: 
+  <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~milo">Milo M. Martin</A> 
+  (milo@cs.wisc.edu)</H4>
+<hr><br>
+
+<H1 ALIGN=CENTER>Program 5</H1>
+<H3 ALIGN=CENTER>Due Wednesday, October 30, 1996</H3> 
+<hr><br>
+
+<b>Objective</B>: Give the student practice with <tt>switch</tt>
+statements and <tt>for</tt> loops.<P>
+
+<H3>Program Description</H3>
+<P>
+
+You've been asked by a group of school teachers to help their geometry
+classes learn shapes.  They want to reinforce the ideas of different
+shapes to their students.  To accomplish this, they would like a
+program that displays a number of different shapes and that allows the
+students to enter the size of the shape as well.  Each shape is to be
+printed to the screen using '*' characters, and should be completely
+filled in.  Listed below is a description of how they would like the
+program to run, as well as some examples of the different shapes.  <P>
+
+Your program should have two layers of menus, all implemented with a
+<tt>switch</tt> statement.  The <strong>main menu</strong> consists of
+a request for either a 4-sided shape menu, a 3-sided shape menu, or to
+quit.  The second layer of menus consists of the two separate shape
+menus.  <P>
+      
+
+The <strong>4-sided shape menu</strong> should present 5 choices: draw
+one of four 4-sided shapes (square, rectangle, parallelogram, diamond)
+or to return back to the main menu.
+
+<UL> <LI>A square is a 4-sided shape that has a height the same length
+as its width with right angles between adjacent sides.
+
+<LI>A rectangle is a 4-sided shape that may have different lengths for
+the height and width, but still has right angles between adjacent
+sides.
+
+<LI>A parallelogram is a 4-sided shape with opposite sides parallel
+and of equal length.  For this assignment, we are assuming that the
+requested parallelograms have angles of 45 and 135 degrees only.
+
+<LI>A diamond is represented as a 4-sided shape with each side equal
+in length with the corners pointing up/down and left/right.
+</UL>
+<P>
+
+The following are examples of the four 4-sided shapes:
+
+<PRE>
+*****      *******          ********        *
+*****      *******         ********        ***
+*****      *******        ********        *****
+*****      *******       ********          ***
+*****      *******      ********            *
+</PRE>
+
+Each shape is respectively, a square with sides of length 5, a
+rectangle with sides of height 5 and width 7, a parallelogram with
+height 5 and width 8, and a diamond with sides of length 3.  <P>
+
+After a shape is selected, your program should request for the lengths
+of the shapes sides.  Note that some shapes require only one length
+(square and diamond) and others require two lengths.  <P>
+
+The <strong>3-sided shape menu</strong> should present 5 choices: draw
+one of four 3-sided shapes (all of which are right isosceles
+triangles) or to return back to the main menu.
+
+<UL>
+<LI>A right isosceles triangle has two sides of equal length joined at a right angle.
+</UL>
+
+The following are examples of the four 3-sided shapes:
+
+<PRE>
+    *      *          *****      *****
+   **      **         ****        ****
+  ***      ***        ***          ***
+ ****      ****       **            **
+*****      *****      *              *
+</PRE>
+
+Notice that these are examples of the four types of triangles each
+with sides of length 5.  In addition, we can name the types by where
+the right angle is in relation to the triangle.  Above we have
+lower-right, lower-left, upper-left, and upper-right triangles,
+respectively.  <P>
+
+After a shape is selected, your program should request the length of
+the triangle's sides.  Note that the length is that belonging to the
+sides of equal length, so only one length is needed.  <P>
+
+The drawing of all shapes (3 and 4-sided) should be implemented using
+<tt>for</tt> loops. Each of the eight shapes should have a
+corresponding function (e.g. <tt>void draw_diamond(int length);</tt>
+.)  However, the body of a function may include a call to another
+function; you might want to consider doing this for similar shapes.
+<P>
+
+Once the shape has been drawn, the program should remain at the
+current shape menu, for requesting of additional shapes.  <P>
+
+The following error checks <U>must</U> be implemented to receive full credit:
+<UL>
+<LI>Any improper responses during menu selection should result in the user being notified and the menu being presented again.
+<LI>Valid lengths for all shapes are integer values between 1 and 15 inclusive.
+</UL>
+
+<H3>What To Turn In</H3>
+Once you have your program working you should:
+<OL>
+<LI>Print out a copy of each of the eight possible shapes.
+<LI>Print out a copy of your C++ source code.  
+<LI>Submit an electronic copy of your source code and
+executable as described in the project 1 directions.
+</OL>
+<P>
+
+<hr>
+<address>
+Created by 
+  <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="http://www.cs.wisc.edu/~burnett/burnett.html">Dave Eggleston</A>,
+  Rob Muenzenberger, and
+  <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="http://www.cs.wisc.edu/~msteele/msteele.html">Mike Steele</A>.
+</Address>
+</BODY>
+</HTML>

@@ -1,0 +1,264 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 24-Nov-96 22:43:15 GMT
+Content-Type: text/html
+Content-Length: 10366
+Last-Modified: Monday, 16-Sep-96 20:58:14 GMT
+
+<html>
+
+<head>
+<title>CS 537 - Possible Term Projects</title>
+</head>
+
+<body>
+<h3> Term Projects for CS537</h3>
+All CS537 projects will involve a significant amount
+of coding in C++. If this is something you are not
+familiar with, you should start early on the project.
+The projects will be either on PREDATOR or on MINIBASE.
+A few projects will be stand-alone and require neither
+system. I would rather you did the PREDATOR or the
+stand-alone projects, since you will learn the most
+from these. Those of you who have done CS432 or an
+equivalent introductory database course should not
+do the MINIBASE projects. In all the projects, there
+will be an emphasis on coding according established
+conventions, documenting the code, and code stability
+(i.e. I would rather have you write code that does a few things
+well, rather than do many things in a very unstable fashion).
+
+You should choose your project by the 8th of October,
+but I encourage you to do so earlier and start on your
+projects. There should not be several groups
+working on the same project topics. Also, where
+possible, try to match the projects to your interests,
+and your background. Many projects need 2 persons,
+and if you can find your own groups, that is ideal.
+If you want me to put you in a group with someone else,
+I can do that. In either case, early into the project,
+you will need to identify what each person is going to do,
+and you will be graded individually on the net result.
+
+
+<h2>PREDATOR Projects</h2>
+PREDATOR is a client server DBMS built by me as a
+research prototype. The main research purpose of the
+system is to explore techniques to support a large
+number of data types in an extensible manner (meaning
+that it should be possible to extend the system to support
+fields of a new type -- like video, or image --- without
+changing the system significantly. Part of PREDATOR is
+a relational database system supporting a subset of SQL.
+Most of the course projects will either involve extending
+and enhancing the SQL functionality, or it will involve
+adding support for a new data type.
+
+<ul>
+<li>  Add the OPT++ relational query optimizer  (2 persons)
+<p>
+Currently, PREDATOR does not have a serious query optimizer.
+Instead, it just uses the join order provided in the query.
+This project involves incorporating the OPT++ optimizer
+into PREDATOR. OPT++ is an independent library which can be
+used to customize and design a query optimizer. Work will
+involve finding out about OPT++, integrating it with
+PREDATOR query evaluation, and demonstrating query
+optimization on simple join queries.
+<p>     
+<li>  Develop query plan visualization tool and
+     query execution visualization tool. (2 persons)
+<p>
+ The purpose of this project is to build a graphical
+ tool that displays a query plan (the result of query optimization),
+ and also displays the execution of that plan (possibly
+ by displaying how the computation is proceeding).
+<p>
+<li>  Add path and function indexes. (2 persons)
+<p>
+This project involves getting a good understanding of the way
+indexes are used in query processing. Path indexes are complex
+indexes, which can be implemented on top of the existing simple 
+index functionality in PREDATOR. They are very important in
+object-oriented and object-relational database systems. In
+this project, you will need to provide fully working path
+index capability (specifying an index in SQL, recording its presence
+in the catalogs, using the index if applicable in query optimization,
+and actually retrieving from the index at run-time). This project
+will give you a very good grasp of the internals of query processing
+engines.
+<p>
+<li>  Evaluate the Wisconsin benchmark (2 persons)
+<p> 
+ The Wisconsin benchmark is an industry standard DBMS benchmark that
+is used to measure the performance of a relational DBMS. The project 
+has two parts: first implement GroupBy and OrderBy features that are
+currently not supported in PREDATOR. Second, execute the benchmark,
+and try to enhance the performance to whatever extent is possible.
+This is invaluable experience if you plan to work on performance
+related issues in a real DBMS.
+<p>
+<li>  Evaluate the TPC-D benchmark (2 persons)
+<p>
+ The TPC-D benchmark is an advanced query processing benchmark, and
+some of the functionality for this benchmark is not yet in PREDATOR.
+This project will involve a balance of adding some functionality
+(so that some of the benchmark queries run), and improving the
+performance of those queries. Again, like the previous project,
+this is good exposure to practical benchmarks that people care about.
+<p>
+<li>  Implement an image data type (RIVL) (2 persons)
+<p> 
+PREDATOR already has a very elementary image data type. This
+project will implement a large part of the support for
+images found in RIVL( Brian Smith's multi-media system ),
+with operations to rotate, clip, overlap, etc an image.
+
+<p>
+<li>  Implement an image data type (Vision) (2 persons)
+<p> 
+PREDATOR already has a very elementary image data type. This
+project will involve interacting with Ramin Zabih to
+incorporate his feature extraction algorithms, and use
+these extracted image features to index the image data.
+<p>
+
+<li>  Implement a video data type (1 or 2 persons)
+<p> 
+Add a video data type with support for the various operations
+defined in RIVL (Brian Smith's multi-media system)
+<p>
+<li>  Implement an audio data type (1 or 2 persons)
+<p> 
+This requires some knowledge of audio data, and the likely
+operations on audio. Audio data needs to be added as
+a data type, along with manipulation functions.
+<p>
+<li>  Implement a text document data type (1 or 2 persons)
+<p> 
+Add a document data type, along with NLP operations on
+the document (based on Claire Cardie's work). This will
+require interaction with the NLP people.
+<p>
+<li>  Implement a data type for chemical molecules (1 or 2 persons)
+<p> 
+Pharmeceutical companies have huge databases of chemical
+molecular structures, and much of their research involves
+searching this database for 3-D spatial matches of molecules.
+This project will try to support a molecule structure as
+a data type in the database. Operations on the molecule
+will be based on research that Paul Schuh and others have
+done in this area. The project will involve interactions
+with that group.
+<p>
+<li>  Build a C++ language embedding for PREDATOR (2 persons)
+<p> 
+Any commercial SQL system allows queries to be embedded
+inside a host language (like C, C++, COBOL, etc). This
+project will build a C++ embedding of PREDATOR SQL.
+<p>
+<li>  Integrate external databases into PREDATOR
+<p> 
+PREDATOR has an extensibility mechanism that allows new
+query processing engines to be incorporated into the system.
+This project will extend this mechanism to integrate
+external databases (for instance, an Informix server)
+into PREDATOR.
+<p>
+<li>  Ensure multi-user functionality (1 person)	
+<p>
+PREDATOR is a client-server system, implemented with a multi-threaded
+server. However, the multi-user nature of the system has not been
+tested, and there are several problems. This project will fix all the problems
+and demonstrate multi-user capability.
+<p>
+<li>  Build a full SQL-92 compliant parser,
+         upto the level of type checking and transformations (1 or 2 persons)
+<p> 
+The current version of SQL is a small subset of the ANSI standard.
+This project will make sure that the ANSI standard SQL-92 is 
+implemented to the extent of parsing and type checking. If 2 persons
+work on this, some query transformations will also be required
+in this project.
+<p>
+<li> Implement materialized views/query caching with indexed retrieval
+<p> 
+For quite a while, researchers have suggested that the results of
+queries can be cached for later use in executing another query.
+This project will provide some portion of this functionality.
+Since this is an ongoing topic of research, this project must go
+along with a paper survey of this topic.
+<p>
+</ul>
+<hr>
+
+<h2>MINIBASE Projects</h2>
+<ul>
+<li>  Implement B+ - trees
+<p>
+<li>  Implement Hybrid-Hash Join and Sort-Merge Join
+<p>
+<li>  Implement two new buffer replacement policies
+<p>
+<li>  Implement R-tree Indexes
+<p>
+<li>  Implement Hash-based and Sort-based Aggregation
+<p>
+</ul>
+
+<hr>
+
+<h2>Other Projects</h2>
+<ul>
+<li>  Build a "data-mining" DBMS (2 persons : upto 2 such groups)
+<p>
+Data mining is this exciting new area that blends AI with databases.
+The idea is that there is information or patterns hidden in a database 
+that are not very evident. For instance, from medical databases, various
+statistical patterns can be extracted, or empirical cause-effect rules.
+This project must go with data mining paper survey. The purpose of
+the project is to implement some of the algorithms suggested in the
+literature, and see how they perform.
+<p>
+<li>  Implement data clustering algorithms (2 persons)
+<p>
+This is another aspect of data mining (see above). Here we are looking
+to classify a large amount of data into a few groups or clusters
+based on some properties. The point is to do this efficiently.
+Several algorithms have been proposed in the literature. The project
+will involve implementing a few of them.
+<p>
+<li>  Build standalone System-R optimizer and randomized optimizer (2 persons)
+<p>
+Query optimization is (and has been) a very important topic in database query 
+processing. In this project, you will build a stand-alone query optimizer
+using two or three different approaches. The purpose is to compare
+the alternatives suggested in the literature. This project must go along with
+a paper survey on query optimization.
+<p>
+<li>  Build a simple OLAP (On-Line Analytical Processing) system (2 persons)
+<p>
+OLAP is a very refined form of query processing that involves
+a large amount of precomputation of answers. The queries 
+typically involve several aggregates, and the answers are
+presented graphically.
+<p>
+<li>  Build OLE-DB database components (2 persons)
+<p>
+OLE-DB is a protocol that Microsoft has developed on top of OLE/COM
+to allow multiple databases to connect and interoperate. This
+project will involve using this protocol to build OLE-DB
+compliant database components, and will be built on NT using
+visual C++. Since you will not have a lot of help on Visual C++
+from me or the TA, you should already be familiar with this
+environment if you plan to take on this project.
+<p>
+</ul>
+<hr>
+
+
+<HR>
+</body>
+
+
+</html>

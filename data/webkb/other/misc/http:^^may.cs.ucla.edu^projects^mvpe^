@@ -1,0 +1,92 @@
+Date: Tue, 14 Jan 1997 21:45:03 GMT
+Server: NCSA/1.5.2
+Content-type: text/html
+
+<html>
+<head>
+<meta name="author" content="Richard A. Meyer">
+<title>MVPE</title>
+</head>
+
+<frameset rows=80,*>
+ <frame src="toc.html" scrolling="no" noresize>
+ <frame name="body" src="body.html">
+
+ <noframes>
+ <head>
+<title>MVPE</title>
+<meta name="author" content="Richard A. Meyer">
+</head>
+<body bgcolor="#44446b" link="#FFCCFF" vlink="#00EEDD" alink="#FF00FF" text="#FFFF00">
+
+<center>
+<h1><font size=6>MVP<font size=5>E</font></font></h1>
+<!WA0><img width=60% src="http://may.cs.ucla.edu/icons/cy_bar.gif">
+</center>
+
+The Maisie Visual Programming Environment (MVP<font size=-1>E</font>)
+is an X-windows based graphical front-end for designing parallel
+simulations in <a target="_top" href="../maisie/">Maisie</A>, a parallel
+(message-passing) extension of C.  It is written in C++ using Motif.
+It is similar in intent to OPNET (which simulates networks), and
+SESworkbench.  The primary advantage of MVP<font size=-1>E</font> over
+these commercial systems is its direct use of a parallel simulation
+language.
+
+<p>
+<!WA1><img src="http://may.cs.ucla.edu/projects/mvpe/manual/figures/topology.gif">
+<p>
+
+<h2>Features</h2>
+<ul>
+<li> entities (entity types) are specified using an extended flow
+chart notation <!WA2><a href="http://may.cs.ucla.edu/projects/mvpe/flow.gif">(sample)</a>
+<li> simulations can be designed hierarchically with arbitrary depth
+<li> static communication topology is specified graphically
+<li> automatic code generation, compilation, and execution
+</ul>
+Among the extensions planned for future releases are:
+<ul>
+<li> automatic partitioning
+<li> runtime animation
+<li> metrics collection
+<li> libraries of predefined entities
+</ul>
+The following information is also available.
+<ul>
+<li><!WA3><a href="http://may.cs.ucla.edu/projects/mvpe/prototype.html">Early Prototypes</a>
+<li><!WA4><a href="http://may.cs.ucla.edu/projects/mvpe/rr96_abstract.html">1996 CSD Research Review Poster abstract</a>
+<li><a target="_top" href="manual/">User's Guide</a>
+<li><!WA5><a href="http://may.cs.ucla.edu/projects/mvpe/travler95/">October '95 ARPA/ITO Site Visit -- TRAVLER (cs.ucla and arpa only)</a>
+<li><!WA6><a href="http://may.cs.ucla.edu/projects/mvpe/travler96/">November '96 ARPA/ITO Site Visit -- TRAVLER (cs.ucla and arpa only)</a>
+</ul>
+<p>
+<h2><a name="papers">Papers</a></h2>
+<b>MVP<font size=-1>E</font>: Visual Design of Parallel Simulation Models</b>
+<br>
+Proceedings of the Fourth International Workshop on Modeling, Analysis,
+and Simulation of Computer and Telecommunication Systems, Feb. 1-3, 1996,
+San Jose, CA, pp. 227-230.
+<br>
+(<!WA7><a href="ftp://may.cs.ucla.edu/pub/papers/mascots96-mvpe.ps.gz">Gzipped PostScript</a>)
+<p>
+Abstract: Simulation is an increasingly important aspect of network development, and parallelization of these simulations can result in tremendous time/performance improvements.  However, tools for developing and parallelizaing simulations are sadly lacking.  This paper describes MVP<font size=-1>E</font>, a visual programming environment for parallel simulation design.
+
+<p>
+<!WA8><img width=100% src="http://may.cs.ucla.edu/icons/cy_bar.gif">
+<p>
+
+This research has been funded as part of the
+<a target="_top" href="http://www.wamis.ucla.edu/microsystems.html">WAMIS</a> and 
+<a target="_top" href="http://ficus-www.cs.ucla.edu/travler/">TRAVLER</a> projects.
+(<a target="_top" href="/projects/contracts.html">contract info</a>)
+<hr noshade size=4>
+<address>
+Written by <a target="_top" href="/~meyerr/">Richard A. Meyer</a>
+</address>
+</body>
+
+ </noframes>
+</frameset>
+
+</html>

@@ -1,0 +1,98 @@
+Date: Mon, 11 Nov 1996 17:25:13 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 06 Mar 1996 16:39:58 GMT
+Content-length: 2660
+
+<html>
+<head>
+<title>CS 537 - Quiz #5</title>
+</head>
+
+<body>
+<table border=0 width=100% align=center>
+<tr>
+<td width=25%><td width=50% align=center>
+<b>UNIVERSITY OF WISCONSIN-MADISON
+<br>
+Computer Sciences Department</b>
+<td width=25%>
+<tr>
+<tr>
+<td>
+<b>CS 537
+<br>
+Spring 1996 </b>
+<td><td align=right><b>Bart Miller</b>
+<tr>
+<td>
+<td align=center><b>Quiz #5</b>
+<br>
+Wednesday, March 6
+<td>
+</table>
+
+<h2>Scheduling and Synchronization</h2>
+For each of the following statements, indicate whether you think it is
+probably true (T) or probably false (F).
+Then give a brief (<b>one</b> sentence) reason.
+There is not necessarily a single correct answer to each question, so
+your one sentence explanation is the most important part of your answer.
+<ol>
+<li>
+Small time slices always improve the average response time of a system.
+<table width=90% border=0 align=center>
+<tr><td>
+<b> Probably false:
+Small time slices will <i>sometimes</i> improve the average response
+of the system.
+If the slice is too small, the context switching time will start to
+dominate the useful computation time and everything (including response
+time) will suffer.</b>
+</table>
+<li>
+Monitors are more powerful than semaphores, because monitors automatically
+provide mutual exclusion.
+<table width=90% border=0 align=center>
+<tr><td>
+<b>Probably false:
+While monitors are usually more convenient to use, they are not more
+powerful.
+Since you can simulate semaphores with monitors, monitors are at least
+as powerful as semaphores.
+(Of course, you know that you can also simulate monitors with semaphores,
+so they actually are of equal power.)</b>
+</table>
+<li>
+<i>Process Control Blocks</i> (PCBs) must be stored in the operating
+system kernel, where no process can access them.
+<table width=90% border=0 align=center>
+<tr><td>
+<b>Probably true:
+PCBs must be in a protected part of the memory.
+If users (processes) were allowed to access the PCB, they could change scheduling
+priorities and perhaps access other processes' memory in an unintended manor.</b>
+</table>
+<li>
+Shortest Job First (SJF) or Shortest Completion Time First (SCTF)
+scheduling is difficult to build on a real operating system.
+<table width=90% border=0 align=center>
+<tr><td>
+<b>Probably true:
+SCTF scheduling requires knowledge of how much time a process is going to
+take.
+This requires future knowledge.
+You might require a user to specify the <i>maximum</i> amount of time that
+a process could run (and kill it if it exceeds this amount), then use a
+variant on SCTF.</b>
+</table>
+</ol>
+
+<hr>
+<H4>
+Last modified:
+Wed Mar  6 10:39:11 CST 1996
+by
+<a href="http://www.cs.wisc.edu/~bart">bart</a></b>
+</H4>
+</body>

@@ -1,0 +1,90 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 25-Nov-96 00:19:27 GMT
+Content-Type: text/html
+Content-Length: 4819
+Last-Modified: Thursday, 19-Sep-96 16:34:27 GMT
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!--Converted with LaTeX2HTML 96.1 (Feb 5, 1996) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds -->
+<HTML>
+<HEAD>
+<TITLE>Low-Latency Communication on the IBM RISC System/6000 SP&nbsp;</TITLE>
+<META NAME="description" CONTENT="Low-Latency Communication on the IBM RISC System/6000 SP&nbsp;">
+<META NAME="keywords" CONTENT="main">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+<LINK REL=STYLESHEET HREF="main.css">
+</HEAD>
+<BODY LANG="EN">
+ <A NAME="tex2html24" HREF="node1.html"><IMG WIDTH=37 HEIGHT=24 ALIGN=BOTTOM ALT="next" SRC="icons/next_motif.gif"></A> <IMG WIDTH=26 HEIGHT=24 ALIGN=BOTTOM ALT="up" SRC="icons/up_motif_gr.gif"> <IMG WIDTH=63 HEIGHT=24 ALIGN=BOTTOM ALT="previous" SRC="icons/previous_motif_gr.gif">   <BR>
+<B> Next:</B> <A NAME="tex2html25" HREF="node1.html">Introduction</A>
+<BR> <P>
+<H1 ALIGN=CENTER>Low-Latency Communication on the IBM RISC
+  System/6000 SP<A NAME="tex2html1" HREF="footnode.html#56"><IMG  ALIGN=BOTTOM ALT="gif" SRC="icons/foot_motif.gif"></A>&nbsp;</H1>
+<P ALIGN=CENTER><STRONG>
+<EM>Chi-Chao Chang, Grzegorz Czajkowski, Chris Hawblitzel,</EM> <BR> 
+<EM>and Thorsten von Eicken</EM> <BR> 
+Department of Computer Science <BR> 
+Cornell University <BR> 
+Ithaca, NY 14853 <BR> 
+<EM>{chichao,grzes,hawblitz,tve}@cs.cornell.edu</EM></STRONG></P><P>
+<P ALIGN=CENTER><STRONG></STRONG></P><P>
+<P>
+<H3 CLASS=ABSTRACT>Abstract:</H3>
+<P CLASS=ABSTRACT>The IBM SP is one of the most powerful commercial MPPs, yet, in
+  spite of its fast processors and high network bandwidth, the SP's
+  communication latency is inferior to older machines such as the TMC
+  CM-5 or Meiko CS-2. This paper investigates the use of Active
+  Messages (AM) communication primitives as an alternative to the
+  standard message passing in order to reduce communication overheads
+  and to offer a good building block for higher layers of software.
+<P>
+  The first part of this paper describes an implementation of Active
+  Messages (SP AM) which is layered directly on top of the SP's
+  network adapter (TB2).  With comparable bandwidth, SP AM's low
+  overhead yields a round-trip latency that is 40% lower than IBM
+  MPL's.  The second part of the paper demonstrates the power of AM as
+  a communication substrate by layering Split-C as well as MPI over
+  it. Split-C benchmarks are used to compare the SP to other MPPs and
+  show that low message overhead and high throughput compensate for
+  SP's high network latency.  The MPI implementation is based on the
+  freely available MPICH version and achieves performance equivalent
+  to IBM's MPI-F on the NAS benchmarks.
+</P><P>
+<BR> <HR>
+<UL> 
+<LI> <A NAME="tex2html26" HREF="node1.html#SECTION00010000000000000000">Introduction</A>
+<UL> 
+<LI> <A NAME="tex2html27" HREF="node2.html#SECTION00011000000000000000">Active Messages background</A>
+<LI> <A NAME="tex2html28" HREF="node3.html#SECTION00012000000000000000">SP Overview</A>
+</UL> 
+<LI> <A NAME="tex2html29" HREF="node4.html#SECTION00020000000000000000">Active Messages Implementation</A>
+<UL> 
+<LI> <A NAME="tex2html30" HREF="node5.html#SECTION00021000000000000000">Basic Send and Receive Mechanisms</A>
+<LI> <A NAME="tex2html31" HREF="node6.html#SECTION00022000000000000000">Flow Control</A>
+<LI> <A NAME="tex2html32" HREF="node7.html#SECTION00023000000000000000">Round-trip Latency</A>
+<LI> <A NAME="tex2html33" HREF="node8.html#SECTION00024000000000000000">Bandwidth</A>
+<LI> <A NAME="tex2html34" HREF="node9.html#SECTION00025000000000000000">Overheads</A>
+<LI> <A NAME="tex2html35" HREF="node10.html#SECTION00026000000000000000">Summary and Comparison with MPL</A>
+</UL> 
+<LI> <A NAME="tex2html36" HREF="node11.html#SECTION00030000000000000000">Split-C Application Benchmarks</A>
+<LI> <A NAME="tex2html37" HREF="node12.html#SECTION00040000000000000000">MPI Implementation over Active Messages</A>
+<UL> 
+<LI> <A NAME="tex2html38" HREF="node13.html#SECTION00041000000000000000">Basic Implementation</A>
+<LI> <A NAME="tex2html39" HREF="node14.html#SECTION00042000000000000000">Optimizations</A>
+<LI> <A NAME="tex2html40" HREF="node15.html#SECTION00043000000000000000">MPI Point-to-Point Performance</A>
+<LI> <A NAME="tex2html41" HREF="node16.html#SECTION00044000000000000000">NAS benchmarks</A>
+</UL> 
+<LI> <A NAME="tex2html42" HREF="node17.html#SECTION00050000000000000000">Conclusions</A>
+<LI> <A NAME="tex2html43" HREF="node18.html#SECTION00060000000000000000">Acknowledgements</A>
+<LI> <A NAME="tex2html44" HREF="node19.html#SECTION00070000000000000000">References</A>
+<LI> <A NAME="tex2html45" HREF="node20.html#SECTION00080000000000000000">  About this document ... </A>
+</UL>
+<BR> <HR>
+<P><ADDRESS>
+<I>Chris Hawblitzel <BR>
+Thu Sep 19 12:22:33 EDT 1996</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,182 @@
+Date: Tue, 10 Dec 1996 03:34:55 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>Software Safety (UW) -- Research</title>
+</head>
+
+<body bgcolor="#FFFFFF" >
+
+<P align="center"><img src="safety_masthead.gif" alt="Software Safety at the University of Washington" vspace = "10" hspace = "10">
+
+<p>
+
+<table width=530 border=0>
+  <tr><td><IMG hspace=15 SRC="lib/dot_clear.gif"><BR></td><td width=535>
+
+      Our research is currently centered on building a CAD environment for
+      safety-critical software.  The development environment contains a set
+      of support and analysis tools that work on system and software 
+      specifications written in a language that we believe will support 
+      communication among the various development groups, including system
+      engineers, software engineers, application experts, and human factors
+      (cognitive) engineers. <p>
+
+      The specification language, RSML (Requirements State Machine Language),
+      has a formal foundation and is suitable for automated analysis, but 
+      we have also found it to be readable by application experts with little 
+      training and minimal mathematical background.  One unique aspect of 
+      our approach is that the analysis is performed directly on the system 
+      specification.  Most approaches to formally evaluating systems
+      require the extra and often difficult step of translating the system 
+      design into a mathematical modeling language.  Our executable 
+      model/specification <i> is </i> the system specification, and the 
+      identified hazards and their control requirements are traceable (in 
+      both directions) from the early preliminary hazard identification 
+      through to design and implementation.  As the system development 
+      proceeds, analyses and evaluations can be performed that are 
+      appropriate to the particular development stage.  For more information, 
+      see the original RSML paper, <a href="papers.html#rsml">Requirements
+      Specification for Process-Control Systems</a>.  A paper on the updates
+      to RSML is in preparation. <p>
+
+      RSML was originally developed to specify the system requirements for
+      TCAS II (an aircraft collision avoidance system).  Since that
+      first demonstration of our approach to a real system, we have been
+      extending the modeling language to include intent and design rationale,
+      improving the readability and usability of the models, and developing
+      a suite of automated tools to assist in evaluating the 
+      model/specification for safety.  The major changes to RSML are being
+      made to assist in dealing with the complexity of real systems. 
+      Because understanding the specification is crucial for human detection
+      of errors, we are also experimenting with various types of 
+      visualization techniques to assist the analyst in understanding the 
+      model and the analysis results.  <p>
+
+      Our approach to safety evaluation is based on system safety engineering
+      concepts.  We use standard safety engineering approaches and extend 
+      them to deal with software and human error, and we use automation
+      to enhance our ability to cope with complex systems. Identification, 
+      classification, and evaluation of hazards is done using modeling and 
+      analysis.  To be effective, these models and analysis tools must 
+      consider hardware, software, and human components.  They also need 
+      to include a variety of analysis techniques and orthogonal 
+      approaches: There exists no single safety analysis or evaluation
+      technique that can handle all the aspects of complex systems.
+
+      The safety analysis tools we currently are prototyping and evaluating 
+      include:<p>
+
+      <ul>
+	<li><b>Simulator.</b> RSML specifications can be executed using
+            analyst-supplied scenarios or test cases.  The simulator is 
+            operational but we
+            have a few limitations on the language that we need to relax.
+	    <img vspace=12 src="lib/dot_clear.gif" align=top>
+	    
+	<li><b>Backward Simulation and Fault Tree generation.</b> Backward
+	    simulation starts at a particular system configuration and
+	    identifies the paths that could have led to
+            that configuration.  Starting with a particular hazard, the
+            analyst can use backward simulation to determine whether this 
+            hazard could occur and how.  Information about the states
+            preceding a hazard can be used to eliminate the hazard from the
+            design.  The results of this backward analysis can be presented 
+            in the form of a fault tree.
+	    <img vspace=12 src="lib/dot_clear.gif" align=top>
+
+	<li><b>Consistency and Completeness Checking.</b> This tool
+	    checks RSML specifications for two properties: (1)
+            completeness with respect to a set of criteria related to 
+            robustness (a response is specified for every possible input and
+            input sequence) and (2) consistency (the specification is free
+            from conflicting requirements and undesired nondeterminism). 
+            The method scales up to large systems by decomposing the 
+            specification into smaller, analyzable parts and then using
+            functional composition rules to ensure that verified properties
+            hold for the entire specification.  The tool has been used on
+            the TCAS specification and others.  For more information, see
+	    our paper titled <a
+	    href="papers.html#consistency">Completeness and Consistency
+	    Analysis of State-Based Requirements</a>.  <img vspace=12
+	    src="lib/dot_clear.gif" align=top>
+
+	<li><b>Deviation Analysis.</b>
+	    Deviation Analysis is a new safety analysis technique to aid in
+            identifying specified behavior that may lead to hazardous system
+            states.  The procedure is based on the underlying systems theory
+            that accidents are caused by deviations in system paramenters.
+            Using a formal software or system requirements specification,
+            the analyst provides assumptions about particular deviations in
+            software inputs and the procedure automatically generates the 
+            scenarios in which the analyst's assumptions lead to deviations 
+            in identified safety-critical outputs.  Software Deviation 
+            Analysis incorporates many of the beneficial features of HAZOP 
+            but automates this manual hazard analysis technique and extends 
+            it to handle the complexity and logical nature of computer software.
+	    <img vspace=12 src="lib/dot_clear.gif" align=top>
+
+	<li><b><A HREF = "sda_gui/">Deviation Analysis Interface</A></b>
+            A GUI to aid in the use of software deviation anlaysis.
+	    <img vspace=12 src="lib/dot_clear.gif" align=top> 
+		<BR CLEAR = ALL>
+
+	<li><b>Human-Computer Interface Safety Analysis.</b>
+            These tools are still under development, but our goal is to
+            extend RSML to include the human-computer interface and to
+            apply hazard analysis techniques to this augmented model.
+	    <img vspace=12 src="lib/dot_clear.gif" align=top>
+
+        <li><b>Timing Analysis.</b>  With Professor Alan Shaw, we are
+            exmining how to add timing analysis tools to our toolset.
+	    <img vspace=12 src="lib/dot_clear.gif" align=top>
+      </ul>
+
+      <center>
+      <img src="rsml_ui.jpg" width=522 height=438><br>
+      <img vspace=12 src="lib/dot_clear.gif" align=bottom>
+      <i>A screen snapshot of the requirements engineering environment.</i>
+      </center>
+
+      <p>The requirements engineering environment supports or will support:
+
+      <ul>
+	<li>A <b>graphical user interface</b> for creating,
+	    editing, and browsing specifications.  
+	    <img vspace=12 src="lib/dot_clear.gif" align=top>
+	<li><b>Graphical and textual interfaces</b> to each of the
+	    analysis methods listed above.  This affords interactive
+	    exploration as well as automated batch processing.
+	    <img vspace=12 src="lib/dot_clear.gif" align=top>
+	<li>Both <b>graphical and textual
+	    specification representations</b>.  
+	    <img vspace=12 src="lib/dot_clear.gif" align=top>
+	<li>A <b>pretty printer</b> that produces printed specifications.
+	    <img vspace=12 src="lib/dot_clear.gif" align=top>
+      </ul>
+
+      In addition to TCAS II, we have several other realistic test beds
+      for our analyses and toolkit.  These include an model of an
+      automated highway system from the UCB PATH project, an aircraft
+      flight guidance system from NASA Ames, and a NASA robot. <p>
+
+      Planned:
+      <ul>
+	<li><b>Human-computer interface analysis</b>.<p>
+	<li><b>Improved and new hazard analysis techniques</b>.<p>
+	<li><b>Testing tools</b>.<p>
+	<li><b>More completeness analyses</b>.<p>
+	<li><b>Timing analysis</b>.<p>
+	<li><b>Improved modeling language</b>.<p>
+	<li><b>Demonstration on part of the U.S. air traffic control system</b>.<p>
+      </ul>
+
+      <IMG vspace=7 SRC="lib/dot_clear.gif"><br>
+      <img width=535 height=2 src="lib/dot_red.gif"><br>
+  </td></tr>
+
+</table>
+
+</body> </html>

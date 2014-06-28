@@ -1,0 +1,68 @@
+Date: Tue, 10 Dec 1996 03:21:29 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+
+<head>
+	<title>Presentation of Simulation Results </title>
+</head>
+
+<body>
+<!WA0><img src=http://www.cs.washington.edu/research/projects/lis/chaos/www/chaos.xbm> <p>
+
+<h1> <a name="top">Presentation of Simulation Results</a><br>
+</h1>
+
+<p>
+<hr> <p>
+
+Because the format of presentation of simulation (or experimental) results in
+network routing studies varies greatly, we present these pages as a
+suggestion of standard presentation formats.  The formats were inspired by 
+discussion at <!WA1><a href=http://www.cs.washington.edu/research/projects/lis/chaos/www/pcrcw.html> PCRCW '94 </a>.
+
+There were two main issues discussed:
+<ul>
+<li> Units used to label the X-axis 
+<li> General form of the presented graph(s)
+</ul>
+
+<p><hr><p>
+<h1> Graph Format </h1>
+Two formats were suggested for graphing results.  Paired throughput vs. applied load and latency
+vs. applied load comprise <!WA2><a href=http://www.cs.washington.edu/research/projects/lis/chaos/www/cnf.html> Chaos Normal Form.</a>  A single latency vs. 
+achieved throughput graph makes <!WA3><a href=http://www.cs.washington.edu/research/projects/lis/chaos/www/bnf.html> Burton Normal Form.</a>
+
+Use of only latency (including source queueing) vs. applied load is discouraged because 
+it is impossible to gain any data about performance above saturation using such graphs.
+
+<p><hr><p>
+<h1> Units for Bandwidth/Load </h1>
+
+The literature describing results typically includes graphs of latency or throughput
+vs. applied load.  Many units have been used to express this, including flits injected/cycle,
+flits/ns, bits/cycle, normalized bandwidth, and many others.  Because the many forms
+require conversions to compare with other results, we propose using a single form:  <em> normalized
+bandwidth. </em>
+<p>
+Normalized bandwidth simply expresses the load/throughput as a fraction of the bisection-bandwidth
+limited maximum bandwidth of the network for uniform random traffic.  Essentially, this constraint,
+corresponding to normalized throughput = 1.0, is derived by considering that 50% of uniform random
+traffic crosses the bisection of the network.  Thus, if a network has bisection bandwidth B bits/sec, each 
+node in an N-node network can inject 2B/N bits/sec at the maximum load.  An optimal routing 
+algorithm could handle such a load without before saturating.
+<p>
+Non-uniform or non-random traffic patterns may saturate at different loads than uniform random traffic.
+However, please normalize to the uniform random traffic limit.
+
+<hr>
+
+<!WA4><a href="http://www.cs.washington.edu/research/projects/lis/chaos/www/chaos.html"><!WA5><img src=http://www.cs.washington.edu/research/projects/lis/chaos/www/chaos.xbm></a> Back to the Chaotic Routing Home Page <p>
+
+<p>
+<address>
+kwb@cs.washington.edu
+</address>
+
+</html>

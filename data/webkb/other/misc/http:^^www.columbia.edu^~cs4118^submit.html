@@ -1,0 +1,77 @@
+Date: Tue, 14 Jan 1997 20:23:14 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+Content-length: 3365
+Last-modified: Mon, 02 Sep 1996 03:37:33 GMT
+
+<HTML><HEAD><TITLE>Submit Man Page</TITLE><LINK REV="MADE" HREF="mailto:min@columbia.edu"></HEAD>
+<BODY BGCOLOR="#FFFFFF">
+<CENTER><H1>Submit Man Page</H1></CENTER>
+<H2>Name</H2>
+ <P><CODE>submit</CODE> - electronic submission of homework files
+<H2>Synopsis</H2>
+ <P><B>~cs4118/bin/submit</B> -h
+ <P><B>~cs4118/bin/submit</B> [-a assignment_number] [forced_files ...]
+<H2>Description</H2>
+<CODE>submit</CODE> looks for submittable files in the current working
+directory and recursively searches thorugh all directories within that
+directory, ignoring all binary and potential backup files.  Upon
+confirmation from the user, <CODE>submit</CODE> copies, archives and
+compresses files, and stores them privately in the class account (~cs4118).
+Mail confirming the files submitted is sent to the user.      
+ <P>If you resubmit an assignment, your old assignment is moved to a backup
+location.  If you resubmit more than once, only your last two submissions
+will be kept.  You will be asked whether you really want to resubmit your
+assignment.
+ <P>A number (1-9) can be used with the <CODE>-a</CODE> option to specify a
+particular homework which is being submitted.
+ <P><CODE>forced_files</CODE> are forced into submission even if they would
+ordinarily be ignored.
+ <P>Usually the user will not need to specify <CODE>forced_files</CODE> or
+<CODE>assignment_number</CODE>.  The submit program will submit the current
+due assignment if the <CODE>-a</CODE> is not specified.
+<H2>Options</H2>
+<DL>
+<DT> <B>-h</B>
+<DD> Help option.  Shows options for the program.  Does <B>NOT</B> perform
+a submission. 
+<DT> <B>-a</B>
+<DD> Submit a certain assignment, other than the one currently due.
+</DL>
+
+<H2>Notes</H2>
+ <P>It is generally a good idea to create a separate subdirectory for each
+of your homeworks.  In these homework directories will be any makefiles,
+READMEs, C sources files header files and sample executions.  To submit
+these files just run <CODE>submit</CODE> from within the corresponding
+homework directory.
+<H2>Return Values</H2>
+ <P>Upon successful submission, the user is notified, via email, of the
+successfully submitted files.  Upon failure, the user is instructed to
+notify the <CODE>submit</CODE> administrator of the error codes.  
+
+<H2>Files</H2>
+ <P>~cs4118/bin/submit
+ <P>~cs4118/bin/.submit
+ <P>~cs4118/public_html/submit.html
+ <P>~cs4118/lib/submission.log.? 
+<H2>Example</H2>
+
+<H2>Warnings</H2>
+ <P>Be sure to be on a machine on the <CODE>CUNIX</CODE> cluster.
+ <P>Because of incredible loads on the <CODE>CUNIX</CODE> cluster close to
+submission times, you should leave yourself ample (+30 minutes) time to submit
+your assignments.  The running time of the program should be less than 1 minute
+for normal-sized submissions.
+ <P>Deadlines are enforced by the submission program, and timing is
+enforced by the <CODE>CUNIX</CODE> cluster machines' clock.  Not by your
+watch, or <CODE>cs</CODE> cluster machines.
+ <P>All submissions are logged.
+<H2>Credits</H2>
+ <P>Coded by Min-Yen Kan(<CODE>min@columbia.edu</CODE>) in
+<CODE>perl</CODE>.  Credits to Reggie Delbrune and Sam Fenster for the
+original <CODE>C</CODE> version of the program from <CODE>cs3139</CODE>.
+<HR><H5><!WA0><A HREF="mailto:min@columbia.edu">min@columbia.edu</A> | Version 1.0
+| Created on: Sun Sep  1 22:38:38 EDT 1996
+| Last Modified: Sun Sep  1 22:38:38 EDT 1996
+</H5></BODY></HTML>

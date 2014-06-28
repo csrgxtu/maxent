@@ -1,0 +1,143 @@
+Date: Tue, 05 Nov 1996 20:44:23 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 16 Oct 1996 19:07:56 GMT
+Content-length: 5371
+
+<HEAD> <TITLE>BIRCH</TITLE> </HEAD>
+
+<BODY>
+<H1>BIRCH</H1>
+<hr>
+<H1>Document Outline:</H1><P>
+<UL>
+<LI><!WA0><A HREF="#What">What is BIRCH</a></A>
+<LI><!WA1><A HREF="#New">What is new in BIRCH</a></A>
+<LI><!WA2><A HREF="#Examples">Examples of what BIRCH can do</a></A>
+<LI><!WA3><A HREF="#Publications"> Relevant Publications</a></A>
+<LI><!WA4><A HREF="#Code"> Code</a></A>
+</UL>
+<hr>
+<H2><a NAME="What">What is BIRCH</a></H2>
+BIRCH means "Balanced Iterative Reducing and Clustering using
+Hierarchies". 
+BIRCH is a system designed for doing clustering and density analysis
+for any large dataset with a limited resources (memory or time) while 
+minimizing I/O cost.
+<hr>
+<H2><a NAME="New">What is new in BIRCH</a></H2>
+All previous data clustering or density analysis methods treat each 
+individual data point equally important. So when they are faced with 
+very large datasets, they are all too expensive to scale up. Their 
+running time, clustering quality and (in)sensitivity to data input 
+order hence become very unstable.
+<UL>
+<LI> BIRCH can find a good clustering or density estimation with a 
+<B>single scan</B> of the dataset.
+<LI> BIRCH is <B>linearly scalable</B> with respect to the dataset size.
+<LI> BIRCH does not treat all data points equally important wrt. 
+clustering and density analysis: a <B>dense</B> region can be treated 
+collectively at some level of granularity whereas a <B>sparse</B> region 
+can be treated as outliers and removed from the analysis. </LI>
+<LI> BIRCH uses a compact but accurate description of clusters named 
+<B>Clustering Features (CF's)</B>, and maintain it incrementally in a
+balanced tree structure (CF-tree).  </LI>
+<LI> BIRCH tries to find the best clustering or density estimation
+under the given <B>resources (memory or time)</B>, and allows tradeoff 
+between different resources (memory and time) to achieve similar analysis
+quality.</LI>
+<LI> BIRCH is the first algorithm proposed in database area to 
+<B>handle noises</B>. </LI>
+</UL>
+<hr>
+<H2><a NAME="Examples">Examples of what BIRCH can do</a></H2>
+<H3>(1) Made-up example</H3>
+<PRE>
+<!WA5><IMG ALIGN=TOP SRC="http://www.cs.wisc.edu/~zhang/DS5.dat.gif">
+</PRE>
+The above picture represents an artificial dataset of 100,000 
+tuples. Within it there are 100 clusters, each of which is a normal 
+distribution of 900 tuples, distributed along a sine curve. The rest 
+10,000 (i.e., 10% of total) tuples are uniformly distributed noises.
+<PRE>
+<!WA6><IMG ALIGN=TOP SRC="http://www.cs.wisc.edu/~zhang/DS5.on.gif">
+</PRE>
+Now we apply BIRCH to the above dataset to search for the 100 
+clusters. With 80 kbytes of memory and less than 1 minute on a 
+HP9000 unix workstation, we find the 100 clusters, each of which 
+is plotted as a circle with the number of tuples in it labeled, 
+its centroid as center, and its standard deviation as radius.
+<hr>
+<H3>(2) Real-world application: pixel classification </H3>
+<PRE>
+<!WA7><IMG ALIGN=TOP SRC="http://www.cs.wisc.edu/~zhang/cloudysky1.gif">
+</PRE>
+The above are two similar images of trees with a partly cloudy sky 
+as the background, taken in two different wavelengths. One is in the 
+visible wavelength band (VIS), and another is in the near-infrared 
+band (NIR). Each image contains 512x1024 pixels, and each pixel 
+actually has a pair of brightness values corresponding to VIS and NIR. 
+Soil scientists receive hundreds of such image pairs and try to first
+classify pixels into different categories such as background, sunlit 
+leaves, shadows and branches, and then apply further statistical analysis.  
+<PRE>
+<!WA8><IMG ALIGN=MIDDLE SRC="http://www.cs.wisc.edu/~zhang/tree.gif">
+</PRE>
+BIRCH has been used to help soil scientists classify pixels efficiently.
+The scatter plot of (VIR,NIR) for all pairs of pixels in the image 
+(512x1024 2-d tuples). With 400 kbytes of memory and less than 6 minutes 
+on a HP9000 unix workstation, we can find 6 clusters corresponding to 
+clouds, ordinary part of sky, very bright part of sky, tree branches, 
+shadows on the tree, and sublit leaves.
+The following shows the pixels corresponding to sunlit leaves, tree 
+branches and shadows on the trees classified with BIRCH.
+<hr>
+
+<H2><a NAME="Publications">Relevant Publications</a></H2>
+<UL>
+<LI>
+<!WA9><A HREF="http://www.cs.wisc.edu/~zhang/sigmodpaper.ps"> 
+BIRCH: An Efficient Data Clustering Method for Very Large Databases</A>
+in Proc. of ACM-SIGMOD'96 Int'l Conf. on Data Management, Montreal, Canada.
+</UL>
+
+<UL>
+<LI>
+<!WA10><A HREF="http://www.cs.wisc.edu/~zhang/sigmodworkshop.ps">
+Interactive Classification of Very Large Datasets with BIRCH</A>
+in Proc. of Workshop on Data Mining and Knowledge Discovery 
+(in cooperation with ACM-SIGMOD'96), June 1996, Canada.
+</UL>
+
+<UL>
+<LI>
+<!WA11><A HREF="http://www.cs.wisc.edu/~zhang/kbspaper.ps">
+Data Clustering System BIRCH and Its Applications</A>
+submitted to Data Mining and Knowledge Discovery Journal, June, 1996, U.S.A.
+</UL>
+
+<UL>
+<LI>
+<!WA12><A HREF="http://www.cs.wisc.edu/~zhang/paper.ps">
+Fast Density and Probability Estimations Using CF-Kernel Method for Very
+Large Databases</A>
+technical report.
+</UL>
+
+<hr>
+
+<H2><a NAME="Code">Code</a></H2>
+<UL>
+<LI>
+Source <!WA13><A HREF="http://www.cs.wisc.edu/~zhang/BIRCH.tar.gz"> BIRCH.tar.gz</A>
+</UL>
+<UL>
+<LI>
+Executable for SunOS 5.5 on Generic i86pc <!WA14><A HREF="http://www.cs.wisc.edu/~zhang/birch"> birch</A>
+</UL>
+
+<Address>
+Last Modified: October 30, 1995 by Tian Zhang(zhang@cs.wisc.edu)
+</Address>
+</BODY>
+

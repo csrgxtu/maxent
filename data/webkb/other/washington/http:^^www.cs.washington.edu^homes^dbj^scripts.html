@@ -1,0 +1,209 @@
+Date: Tue, 10 Dec 1996 22:42:47 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Tue, 04 Oct 1994 03:39:12 GMT
+Content-length: 7901
+
+<html>
+<head>
+<title>
+Guidelines For Writing HTTP Server Scripts
+</title>
+
+<body>
+<h1>
+Guidelines For Writing HTTP Server Scripts
+</h1>
+<hr>
+
+This document is intended to be an evolving series of ideas, pointers
+and other information about writing programs that can be executed by
+following a WWW link, with particular emphasis on security issues.<p>
+
+The rest of this document assumes that you already know how to write
+programs. It also doesn't attempt to cover the same ground as
+<a
+href="http://south.ncsa.uiuc.edu/forms.html">NCSA's introduction to
+forms</a>, which should be be considered the starting point for
+explorations of forms. You should also be sure to read the <a
+href="http://hoohoo.ncsa.uiuc.edu/cgi/">Common Gateway Interface
+documentation</a> as well, which describes the interface that the HTTP
+server defines between HTML messages and server-side executables.
+
+<h2>Security</h2>
+
+The potential problems with security cannot be overemphasized. Unlike
+existing network protocols, which generally allow either:
+
+<ul>
+<li> specified users to execute arbitrary code
+<li> arbitrary users to execute specified code
+</ul>
+
+the existence of server-side scripts effectively permits
+
+<ul>
+<li> arbitrary users to execute arbitrary code
+</ul>
+
+although clearly, the scope of "abitrary" in this case is at least
+somewhat reduced (specifically: arbitrary users can execute any
+program installed in a ScriptAlias location prior to the last HTTP
+server restart).<p>
+
+There are some basic features of server-side scripts that if used
+correctly will minimize the potential for security problems:
+
+<ul>
+<li><em>NEVER, EVER</em> treat data received from a remote source as
+    instructions to be executed.
+<li><em>NEVER, EVER</em> assume that necessary arguments are present,
+    and exit gracefully if this is the case. <em>ALWAYS</em> check
+    that such arguments are in fact present.
+<li><em>ALWAYS</em> have the program exit gracefully if it receives
+    arguments it does not understand.
+<li><em>NEVER</em> assume the size of the arguments or the data received
+    by the program. Always check the expected size of these objects
+    or know that the interpreter you are using (awk, sh, for example),
+    will make sane, secure decisions if an overflow occurs.
+<li><em>NEVER</em> trust any claimed remote identity (HTTP does not
+    currently support anything more secure than passwords, which are
+    not very secure at all).
+</ul>
+
+<h2>The Basic Idea</h2>
+
+When you follow a link using a URL of the form:<p>
+
+<pre>
+	http://foo.bar.baz/a/b/c
+</pre>
+
+the HTTP server at foo.bar.baz will check each successively longer
+substring of <code>/a/b/c</code> (ie. <code>/a</code>,
+<code>/a/b</code>, etc.) against the list of "ScriptAliases" defined
+in the server's configuration files. A ScriptAlias looks like this:
+
+<pre>
+ScriptAlias /a /some/other/place/in/the/filesystem/a
+</pre>
+
+which the server interprets to mean: if anyone ever references
+<code>/a/something</code>, then execute
+<code>/some/other/place/in/the/filesystem/a</code> and return its
+output. Note that this implies two things about the executed program:
+it must send a MIME Content-Type header as its first line of output,
+to tell the client (Mosaic) what the output actually is (HTML ? GIF ?
+JPEG ? etc), and then it should send some "useful" output, even if its
+only an "OK, message received" line. See the <code>mail-request</code>
+mentioned below for an example of how to do this.<p>
+
+<em>Only</em> programs located in places referenced by a ScriptAlias
+will ever be executed by the server. In addition, the server caches a
+directory listing of all the programs in each location referenced in a
+ScriptAlias whenever it is started (or <a
+href="http://hoohoo.ncsa.uiuc.edu/docs/setup/admin/KillIt.html">restarted</a>),
+and uses it to check possible server-side programs before executing
+them. This prevents random programs placed in the right place from
+being accessed without a server restart (which only a priviledged user
+can do). <p>
+
+<h2>What about arguments ? What about input ?</h2>
+
+Once the HTTP server has discovered that <code>/a/b</code> is actually
+an executable program in a ScriptAlias location, it executes the
+program, passing it data in two ways.
+
+First of all, any text left over from the URL that has not been "used"
+to find the script will be used to set the value of an environment
+variable named PATH_INFO. In the example above, this would relatively
+simple: PATH_INFO would just be <code>/c</code>. However, near
+arbitrary text can be used here:<p>
+
+<pre>
+http:/foo.bar.baz/a/b/long=4748.39?//limit:=$!!:h+aposto:*&%&^$$#{fhfh}
+</pre>
+
+This will result in PATH_INFO being set to:<p>
+
+<pre>
+/long=4748.39?//limit:=$!!:h+aposto:*&%&^$$#{fhfh}
+</pre>
+
+(note the initial `/'). The main restriction is that spaces are not
+allowed, or rather, will terminate the component of the URL used to
+set PATH_INFO.<p>
+
+In addition, if you are using a forms interface, the values of all the
+<code>&lt;input&gt;</code> and <code>&lt;select&gt</code> tags in the
+form will be made available, as the standard input of the
+program. <p>
+
+<h3>Encoding</h3>
+
+This will be <a
+href="http://info.cern.ch/hypertext/WWW/Addressing/URL/4_Recommentations.html#z1">
+encoded</a> to guarantee safe transmission. This encoding is an
+important issue, because to make reasonable use of the data sent to
+your program, you need to decode it. Fortunately, you don't *have* to
+do this yourself. For the time being, a filter called
+<code>urldecode</code> can be used by your own programs (easily if
+they are an actual shell,awk or perl script) to do the decoding.
+Invoke it as:
+
+<pre>
+/cse/www/htbin-post/urldecode
+</pre>
+
+and it will convert any encoded data read from its standard input into
+its original form on its standard output. At some point, I'll add a
+object module you can link with to do this from a compiled langauge
+like C (although you may get there before me, since the encoding is so
+simple).<p>
+
+More details are available about writing server scripts in the <a
+href="http://hoohoo.ncsa.uiuc.edu/cgi/">Common Gateway Interface
+documentation</a>, where a number of other environment variables that
+are available to the program are described.<p>
+
+<h2>How to do this locally</h2>
+
+Currently, only two areas have been named using ScriptAliases. One of
+them is not currently publically accessible (the filesystem it
+resides on is not exported to the rest of the department's machines).
+The other is intended for use by participants in the 590i seminar
+taking place this quarter:
+
+<pre>
+	/projects/ai/590i/post-bin
+</pre>
+
+An example program, called <code>mail-request</code>, is already there
+(its a shell/awk script). This is the program I use for the interface
+to my <a href=/homes/pauld/music>music collection</a>, so take a look
+at the HTML source for that stuff to see how this is used. I intended
+it to be usable by anyone else, and a for a variety of
+purposes. Suggestions are welcome.<p>
+
+The HTTP daemon will be restarted about 4 times a day, and on the next
+restart after you have placed a program there, you will able to have a
+link to it result in its execution. After that, you can keep changing
+the program in any way you see fit, and the daemon won't care - it
+merely notes prescence or absence.<p>
+
+<em>I want to reiterate that this is potentially a big security issue.
+Please take care in how you handle arguments, how to handle input and
+what your program does or might do</em>.<p>
+
+For the time being, all instances of these programs will run as the
+uid "nobody". Also access to both areas (the private one and the 590i
+area) is currently limited to machines in the .cs.washington.edu
+domain. This restriction is inconvenient, and intended to create a
+temporary breathing space so that we can get more experience with
+potential security issues.<p>
+
+</body>
+<address>
+webmaster@cs.washington.edu
+</address>
+</html>

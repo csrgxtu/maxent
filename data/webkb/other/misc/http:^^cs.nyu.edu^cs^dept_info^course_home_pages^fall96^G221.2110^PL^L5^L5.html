@@ -1,0 +1,745 @@
+Date: Tue, 14 Jan 1997 20:09:18 GMT
+Server: NCSA/1.4.1
+Content-type: text/html
+Last-modified: Sun, 25 Aug 1996 19:28:37 GMT
+Content-length: 16261
+
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
+<!Converted with LaTeX2HTML 95 (Thu Jan 19 1995) by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds >
+<HEAD>
+<TITLE>Lecture 5</TITLE>
+</HEAD>
+<BODY>
+<meta name="description" value="No Title">
+<meta name="keywords" value="L5">
+<meta name="resource-type" value="document">
+<meta name="distribution" value="global">
+<P>
+Lecture #5
+Programming Languages <!WA0><IMG  ALIGN=BOTTOM ALT="" SRC="http://cs.nyu.edu/cs/dept_info/course_home_pages/fall96/G221.2110/PL/L5/img1.gif"> MISHRA 
+<P>
+<HR>
+<H3> G22.2210</H3>
+<P>
+<H1> Programming Languages: PL</H1>
+<P>
+<H3> B. Mishra<BR>
+  New York University.<BR>
+  <BR> 
+  <BR> 
+  <b> Lecture # 5</b><BR>
+</H3>
+<P>
+<H3> ---Slide 1---<BR>
+<em> The ADA Programming Language</em><BR> 
+<b> Language Survey 2</b>
+<P>
+<P>
+<P>
+<UL><LI> <em> Countess Ada Augusta Lovelace</em><BR> 
+<H4>
+ First programmer (hacker) on Babbage's <em> Analytical Engine</em>.
+</H4>
+<P>
+<H4>
+ <LI> Relatively new programming Language (1980) developed by DoD.
+Currently, the only language approved for DoD software project
+<P>
+ <LI> Developed to reduce high cost of <em> designing</em>, <em>
+writing</em> and <em> maintaining</em> DoD software.
+<P>
+ <LI> Major items of software are for ``<b> embedded systems</b>''
+</H4>
+<H5>
+ <UL><LI> Primary purpose is control.
+  <LI> Incorporated in larger systems.
+  <LI> Large software: 50,000--100,000 lines of code
+  <LI> Long-lived systems (10--15 years)
+  <LI> Continuously evolving.
+ </UL>
+<P>
+</H5>
+</UL>
+<P>
+
+---Slide 2---<BR>
+<em> The Design History</em>
+<P>
+<P>
+<P>
+<H4> <UL><LI> 1975: HOLWG (High Order Language Working Group) was established
+       to investigate problems of developing common language for DoD.
+ <LI> 1975--1978: List of requirements:
+       <em> STRAWMAN</em>, <em> WOODENMAN</em>, <em> TINMAN</em>, <em>
+       IRONMAN</em>, <em> Revised IRONMAN</em>, and finally <em>
+       STEELMAN</em> 
+ <LI> Design Competition:<BR> 
+       Winner: Jean Ichbiah, Cii Honeywell Bull
+ <LI> 1987: Ada ISO Standard 8652
+ <LI> 1983--1987: Analysis of Technical Queries by ARG (Ada
+       Rapporteur Group). Resulted in AIs (Ada Issues).
+ <LI> 1988: DOD (and ANSI) established Ada 9X project.
+ <LI> 15 Feb 1995: Ada 95. Core Language + Specialized Annexes
+</UL></H4>
+<P>
+
+---Slide 3---<BR>
+<em> Quick Overview (Ada 83)</em>
+<P>
+<P>
+<P>
+<UL><LI> Strong Typing<BR> 
+<H5>
+       Scalar, Composite, Access, Private &amp; Derived
+</H5>
+<P>
+<LI> Representation Specification
+<P>
+<LI> Standard Control Constructs:<BR> 
+<H5>
+       Structured Language--Pascalish
+</H5>
+<P>
+<LI> Subprograms: Procedures &amp; Functions
+<P>
+<LI> Program Structuring Facilities: Packages
+<P>
+<LI> Generics: Polymorphisms
+<H5>
+       Extends the concept of type and functional abstractions
+</H5>
+<P>
+<LI> Exceptions
+<P>
+<LI> Separate Compilation
+<P>
+<LI> Tasking (Rendezvous)
+<P>
+</UL>
+<P>
+
+---Slide 4---<BR>
+<em> Quick Overview (Ada 95)</em>
+<P>
+<P>
+<P>
+<UL><LI> Object Oriented Programming
+<P>
+<LI> Program Libraries<BR> 
+<H5>
+	(Replaces Ada 83's flat structure by a hierarchy---Visibility
+	Control and Program Extension without recompilation)
+</H5>
+<P>
+<LI> Interfacing<BR> 
+<H5>
+       Graphical User Interface (GUI)---Program Call-back.
+</H5>
+<P>
+<LI> Tasking (Static Monitor)
+<P>
+</UL>
+<P>
+
+---Slide 5---<BR>
+<em> Ada Type System</em>
+<P>
+<P>
+<P>
+<UL><LI> Programmer Defined Types<BR> 
+<H4>
+      Set of values, Applicable set of operations and set of properties,
+      accessible via <code>attributes</code>
+</H4>
+<P>
+<LI> <H4><b> Type Definition</H4></b>
+ <H5> <PRE>  type &lt;identifier&gt; is &lt;type-definition&gt;
+</PRE>
+ </H5>
+<P>
+<LI> <H4><b> Type Binding</H4></b>
+ <H5> <PRE>  &lt;variable&gt; : &lt;type&gt;
+</PRE>
+ </H5>
+<P>
+<LI> <H4> <b> Attributes</H4></b>
+ <H5> <PRE>  &lt;name&gt;'&lt;attribute-identifier&gt;
+</PRE>
+ </H5></UL>
+<P>
+
+---Slide 6---<BR>
+<em> Examples</em>
+<P>
+<P>
+<P>
+<H5> <PRE> type DAY is (MON,TUE,WED,THU,FRI,SAT,SUN);
+    --Enumeration Type
+ TODAY: DAY; TOMORROW: DAY; CURRENT_DAY: DAY;
+
+ HOURS_WORKED: array(DAY'FIRST..DAY'LAST)
+                    of INTEGER;
+
+ if TODAY &lt;= FRI then
+    TOMORROW := DAY'SUCC(TODAY);
+
+ for CURRENT_DAY in DAY'FIRST..DAY'LAST loop
+    ...
+ end loop;
+</PRE>
+</H5>
+<P>
+
+---Slide 7---<BR>
+<em> Primitive Scalar Types</em>
+<P>
+<P>
+<P>
+<UL><LI> Discrete Types<BR> 
+<H4><em>
+ i) Enumeration Types, ii) Character type,<BR> 
+ iii) Boolean Types, iv) Integer Types
+</H4></em>
+<P>
+<LI> Real Types<BR> 
+<H4><em>
+ i) Fixed-Point Types, ii) Floating-Point Types
+</H4></em>
+<P>
+<LI> <b> Note:</b>
+<H4>
+       Integer and Real types together form the <em> numeric types</em>.
+</H4>
+<P>
+<LI> <code>INTEGER</code> <b>=</b>
+<H4>
+      Predefined integer types<BR> 
+      <code>SYSTEM.MIN_INT..SYSTEM.MAX_INT</code>
+</H4>
+<P>
+<LI> Operation<BR> 
+<H5>
+      <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> (Arithmetic operations)<BR> 
+      <code>&lt;</code>, <code>&lt;=</code>, <code>=</code>, <code>/=</code>, <code>&gt;=</code>, <code>&gt;</code>
+      (Logical operations)
+</H5>
+<P>
+</UL>
+<P>
+
+---Slide 8---<BR>
+<em> Discrete Types</em>
+<P>
+<P>
+<P>
+<UL><LI> <b> Note:</b>
+<H5>
+      Characters &amp; Boolean are predefined <em> enumeration types</em>
+<P>
+      Characters <b>=</b> 128 ASCII characters: '<code>A</code>', '<code>B</code>',
+'<code>C</code>', <!WA1><IMG  ALIGN=BOTTOM ALT="" SRC="http://cs.nyu.edu/cs/dept_info/course_home_pages/fall96/G221.2110/PL/L5/img2.gif">
+<P>
+      Booleans <b>=</b> <code>FALSE</code> &amp; <code>TRUE</code>
+</H5>
+<P>
+<LI> <H4>
+       All discrete types are <b> ordered</b>: <code>FALSE</code> <b>&lt;</b>
+<code>TRUE</code>.
+</H4>
+<P>
+<LI> <H4>
+      Discrete type values can be used for <b> indexing</b> &amp; <b>
+iteration over loops</b>.
+</H4>
+<P>
+<LI> <H4>
+      Attributes of Discrete Types (e.g., <code>T</code> )
+</H4>
+<DL ><H5>
+  <DT><code>T'POS</code>:
+<DD> Position Number
+  <PRE>  SUIT'POS(HEARTS) = 0
+</PRE>
+<P>
+  <DT><code>T'VAL</code>:
+<DD> Inverse of <code>POS</code>
+  <PRE>  SUIT'VAL(0) = HEARTS
+</PRE>
+<P>
+  <DT><code>T'SUCC</code>, <code>T'PRED</code>
+<DD>
+<P>
+  <DT><code>T'FIRST</code>, <code>T'LAST</code>
+<DD> 
+</H5>
+<P>
+ </DL></UL>
+<P>
+
+---Slide 9---<BR>
+<em> Real Type</em>
+<P>
+<P>
+<P>
+<UL><LI> <H4><b>
+         Floating Point:<BR> 
+Accuracy is fixed by a <em> relative</em> error bound
+</H4></b>
+<H5> <PRE> type WEIGHT is digits 10;
+</PRE>
+Values have an accuracy of 10 digits.
+</H5>
+<P>
+<LI> <H4><b>
+         Fixed Point:<BR> 
+Accuracy is fixed by a <em> relative</em> error bound
+</H4></b>
+<H5> <PRE> type VOLTAGE is delta 0.1 range 0.0..1.0;
+</PRE>
+Values have an accuracy at least as fine as 0.1.
+</H5>
+<P>
+<LI> Some Attributes<BR> 
+<H4>
+       <code>FX</code> = Fixed Point: <!WA2><IMG  ALIGN=MIDDLE ALT="" SRC="http://cs.nyu.edu/cs/dept_info/course_home_pages/fall96/G221.2110/PL/L5/img3.gif">..<!WA3><IMG  ALIGN=MIDDLE ALT="" SRC="http://cs.nyu.edu/cs/dept_info/course_home_pages/fall96/G221.2110/PL/L5/img4.gif">
+</H4>
+<H5> <PRE>  FX'DELTA, FX'LARGE
+</PRE>
+</H5>
+<P>
+<H4>
+       <code>FL</code> = Floating Point:
+       <!WA4><IMG  ALIGN=MIDDLE ALT="" SRC="http://cs.nyu.edu/cs/dept_info/course_home_pages/fall96/G221.2110/PL/L5/img5.gif">; mantissa has <b>B</b> digits.
+</H4>
+<H5> <PRE>  FL'DIGITS, FL'MANTISSA, FL'EMAX,
+  FL'SMALL, FL'LARGE, FL'EPSILON
+</PRE>
+</H5></UL>
+<P>
+
+<P>
+---Slide 10---<BR>
+<em> Derived Type</em>
+<P>
+<P>
+<P>
+<UL><LI> Specific Type <b>+</b> <em> Constraints</em><BR> 
+<H4>
+    E.g., Range Constraints for scalar
+</H4>
+<P>
+<LI> Examples
+<H5> <PRE>  subtype BYTE_SIZE is INTEGER range -2**7..2**7;
+  subtype CAPS is CHARACTER range 'A'..'Z';
+  subtype &lt;identifier&gt; is &lt;parent-type&gt; range &lt;constraint&gt;;
+</PRE>
+</H5>
+<P>
+<LI> <b> Object Declaration</b>
+<H5> <PRE> X, Y: constant INTEGER range 0..128 = abs(N);
+ &lt;identifier&gt;: &lt;mutability&gt; &lt;type&gt; &lt;constraint&gt;
+          = &lt;init-value&gt;;
+</PRE>
+</H5>
+<P>
+<LI> <H4>
+      Range constraint can be tested at runtime
+</H4>
+<H5> <PRE>  if CURRENT_INPUT not in CAPS then ...
+</PRE>
+</H5></UL>
+<P>
+
+<P>
+---Slide 11---<BR>
+<em> Assignment Statement</em>
+<P>
+<P>
+<P>
+<PRE>         X := Y;
+</PRE>
+<P>
+<UL><LI> <b> Types must match</b>
+ <UL><H4>
+  <LI> Same type name--Not structure. Ada uses <em> name equivalence</em>.
+  <LI> Type checking is at compile time.
+  <LI> Type mismatch <!WA5><IMG  ALIGN=BOTTOM ALT="" SRC="http://cs.nyu.edu/cs/dept_info/course_home_pages/fall96/G221.2110/PL/L5/img6.gif"><BR> 
+      Program considered <em> illegal</em>.
+ </H4>
+ </UL>
+<P>
+ <LI> <b> Subtype constraints</b>
+ <UL><H4>
+  <LI> Compatibility condition: type(X) <!WA6><IMG  ALIGN=MIDDLE ALT="" SRC="http://cs.nyu.edu/cs/dept_info/course_home_pages/fall96/G221.2110/PL/L5/img7.gif"> type(Y) 
+  <LI> Constraint checking is at run time.
+  <LI> Violation raises <code>constraint</code> <em> exception</em>.<BR> 
+     (Program is <b> not</b> illegal.)
+ </H4>
+ </UL></UL>
+<P>
+
+<P>
+---Slide 12---<BR>
+<em> Examples</em>
+<P>
+<P>
+<P>
+<H5> <PRE>  subtype NATURAL is INTEGER range 1..INTEGER'LAST;
+  A: INTEGER;
+  B: FLOAT;
+  C: NATURAL;
+  D: INTEGER range 0..INTEGER'LAST;
+
+  A := B;              --illegal
+  A := INTEGER(B);     --type conversion, legal
+  A := C;              --legal
+  A := D - 3;          --legal
+  A := C + INTEGER(B); --legal
+  C := D;              --constraint exception
+  C := A;              --constraint exception
+</PRE>
+</H5>
+<P>
+
+<P>
+---Slide 13---<BR>
+<em> Arrays</em>
+<P>
+<P>
+<P>
+<UL><LI> <b> Arrays in Ada:</b>
+ <UL><H4>
+  <LI> Fixed Size---Type may be <em> unconstrained</em> at definition
+But bounds must be given at object declaration.
+  <LI> Elements are all of same <em> subtype</em>
+  <LI> Permits: Assignment, Equality Testing, Slicing, <!WA7><IMG  ALIGN=BOTTOM ALT="" SRC="http://cs.nyu.edu/cs/dept_info/course_home_pages/fall96/G221.2110/PL/L5/img8.gif">
+ </H4>
+ </UL>
+<H5> <PRE>subtype NATURAL is INTEGER range 1..INTEGER'LAST;
+type SHORT_STRING is array(1..10) of CHARACTER;
+
+type STRING is
+     array (NATURAL range &lt;&gt;) of CHARACTER;
+
+NAME: STRING(1..10);
+</PRE>
+</H5></UL>
+<P>
+
+---Slide 14---<BR>
+<em> Array Assignment</em>
+<P>
+<P>
+<P>
+<UL><LI> Assigning array <code>B</code> to <code>A</code>: <tt> A := B</tt>
+<H4> <OL><LI> Legal, if type of <code>A</code> is same as type of <code>B</code>.
+<P>
+ <LI> If <code>A</code> has same number of elements as <code>B</code>, then
+<code>B</code> is copied into <code>A</code> <em> positionally</em>---Otherwise, <tt>
+constraint-error exception</tt> is raised.
+ </OL></H4>
+<P>
+<H5> <PRE>declare
+  A: STRING(1..10); B: STRING(11..20);
+begin
+  A := B;
+end;
+</PRE>
+</H5>
+<P>
+<LI> <b> Array Attributes</b><BR> 
+<H4>
+<P><!WA8><IMG  ALIGN=BOTTOM ALT="" SRC="http://cs.nyu.edu/cs/dept_info/course_home_pages/fall96/G221.2110/PL/L5/img9.gif"><P>
+</H4>
+</UL>
+<P>
+
+---Slide 15---<BR>
+<em> Array Indexing &amp; Slicing</em>
+<P>
+<P>
+<P>
+<UL><LI> Array Indexing:
+<H5> <PRE> S: STRING(1..10);
+ S(3) := S(2);
+</PRE>
+</H5>
+<P>
+ <LI> Array Slicing (1D arrays only)
+<H5> <PRE> S(3..7)              --an array object
+ S(3..7) := S(4..8);
+ S := S(2..10) &amp; S(1) -- &amp; == concatenation opn
+</PRE>
+</H5>
+<P>
+ <LI> Array Aggregates:
+<H5> <PRE> type SYM_TAB is array (CHARACTER range &lt;&gt;) of INTEGER;
+ TABLE: SYM_TAB('a'..'c') := (0, 1, 2);
+ TABLE := ('c' =&gt; 2, 'b' =&gt; 1, 'a' =&gt; 0);
+ TABLE := ('c' | 'b' =&gt; 1, others =&gt; 0);
+</PRE>
+</H5></UL>
+<P>
+
+---Slide 16---<BR>
+<em> Records</em>
+<P>
+<P>
+<P>
+<UL><LI> <b> Records in Ada:</b>
+ <UL><H4>
+  <LI> <em> Heterogeneous</em>: Components need not be of same type.
+  <LI> Fields are accessed by component names: E.g.,
+<code>MY_CAR.CAR_MAKE</code>
+  <LI> <em> Variant Records</em> Tag (discriminant) fields cannot be
+changed at run-time.
+  <LI> Permits: Assignment and Equality Testing.
+ </H4>
+ </UL>
+<H5> <PRE> type CAR_MAKE is (FORD, GM, HONDA);
+ subtype CAR_YEAR is INTEGER range 1900..1999;
+ type CAR is
+   MAKE: CAR_MAKE;
+   YEAR: CAR_YEAR;
+ end record;
+
+ MY_CAR: CAR;
+</PRE>
+</H5></UL>
+<P>
+
+---Slide 17---<BR>
+<em> Records (Contd)</em>
+<P>
+<P>
+<P>
+<UL><H4>
+<LI> Records may be <em> nested</em>...<em> initialized</em> at
+declaration.
+ <LI> A record <code>B</code> may be assigned to record <code>A</code>, provided
+they have same type.
+<H5> <PRE>  A, B: CAR;
+  A := B;
+</PRE>
+</H5>
+<P>
+ <LI> Record Aggregates:
+</H4>
+<H5> <PRE>  YOUR_CAR: CAR :=           YOUR_CAR: CAR :=
+     (GM, 1981);                (MAKE =&gt; GM,
+                                 YEAR =&gt; 1981);
+</PRE>
+</H5></UL>
+<P>
+
+---Slide 18---<BR>
+<em> Variant Records</em>
+<P>
+<P>
+<P>
+<UL><H4>
+<LI> Similar to PASCAL variant records:
+ <LI> Except---Type declaration only defines a template; When object
+is declared, <em> discriminant value must be supplied</em>.
+<PRE>     type VEHICLE_TAG is (CAR, TRUCK);
+     type VEHICLE(TAG: VEHICLE_TAG) is record
+       YEAR: MODEL_YEAR := 93;
+       case TAG is
+         when CAR =&gt; COLORS: COLOR_SCHEME;
+         when TRUCK =&gt; AXLES: NATURAL;
+       end case;
+     end record;
+
+     YOUR_TRUCK: VEHICLE(TRUCK);
+     REFRIGERATOR: VEHICLE;      --Illegal
+</PRE>
+<P>
+ <LI> There may be more than one discriminant...But they must all be
+of discrete types....Discriminant can be used as an uninitialized
+constraint.
+<PRE>     type BUFFER(LENGTH: NATURAL) is record
+       POOL: STRING(1..LENGTH);
+     end record;
+</PRE>
+<P>
+</H4>
+</UL>
+<P>
+
+---Slide 19---<BR>
+<em> Access Types</em>
+<P>
+<P>
+<P>
+<UL><H4>
+ <LI> Allow manipulation of pointers.
+ <LI> Allow control of object creation.
+</H4>
+<H5> <PRE>  type STRING_PTR is access STRING;
+  type STRING_10_PTR is access STRING(1..10);
+  P, Q: STRING_PTR; P10: STRING_10_PTR;
+
+  P10 := new STRING(1..10);
+  P10 := new STRING(2..11);    --Constraint Error
+  P10 := new STRING;           --Illegal
+
+  P := new STRING(1..3);       --OK
+  P.all := &quot;BUD&quot;;
+  Q := new STRING(&quot;MUD&quot;);
+  P := Q;
+  P.all := Q.all
+</PRE>
+</H5>
+<H4>
+ <LI> <code>new</code> creates a new object that can be designated by the
+access type.
+</H4>
+<P>
+</UL>
+<P>
+
+---Slide 20---<BR>
+<em> Recursive Types</em>
+<P>
+<P>
+<P>
+<PRE>  type NODE;  --Incomplete Declaration;
+  type NODE_PTR is access NODE;
+
+  type NODE is
+    record
+      DATUM: CHARACTER;
+      NEXT: NODE_PTR;
+    end record;
+</PRE>
+<P>
+
+---Slide 21---<BR>
+<em> Generalized Access Types</em>
+<P>
+<P>
+<P>
+<UL><H4>
+ <LI> Inherent Access to declared objects<BR> 
+	(Not just objects created by allocators)
+</H4>
+<H5> <PRE>  type INT_PTR is access all INTEGER;
+
+  IP: INT_PTR;
+  I: aliased INTEGER;
+  IP := I'Access
+</PRE>
+</H5>
+<H4>
+ <LI> <b> Note:</b> Designated variable must be marked <code>aliased</code>.
+ <LI> <code>Access</code> attribute is only applicable to an object whose
+	lifetime is at least that of the access type.
+ <LI> Avoids ``dangling reference'' problem.
+</H4>
+<H5> <PRE>  type CONST_INT_PTR is access constant INTEGER;
+
+  CIP: CONST_INT_PTR;
+  C: aliased constant INTEGER := 1815;
+  CIP := C'Access
+</PRE>
+</H5>
+<H4>
+ <LI> Access is restricted to read-only
+</H4>
+<P>
+</UL>
+<P>
+
+<P>
+---Slide 22---<BR>
+<em> Control Structures</em>
+<P>
+<P>
+<P>
+<UL><LI> Assignment Statements
+<H5> <PRE>     DISCRIM := (B**2 - 4.0*A*C);
+     TABLE(J) := TABLE(J) + 1;
+     VECTOR := (1..10 =&gt; 0);
+</PRE>
+</H5>
+<P>
+ <LI> Conditional Statements
+<H5> <PRE>   if (A=1) then
+     ...
+   end if;                    case A is
+                                when 1 =&gt; --...;
+   if (A=1) then                when 2 =&gt; --...;
+     --...                      when others =&gt; null;
+   elsif (A=2) then           end case;
+     --...
+   else
+     --...
+   end if;
+</PRE>
+</H5></UL>
+<P>
+
+---Slide 23---<BR>
+<em> Control Structures: Iteration Clause</em>
+<P>
+<P>
+<P>
+<UL><LI> Iteration Statements---Basic Loop
+<H5> <PRE>  loop
+    -- Statements to be repeated
+  end loop;
+</PRE>
+</H5>
+<P>
+ <LI> <em> Iteration Clause</em><BR> 
+<H4>
+	Execution of a basic <code>loop</code> terminates when
+ <OL><LI> <em> The iteration is completed</em> or
+   <LI> <em> A <tt> loop exit</tt> statement is executed</em>
+ </OL>
+</H4>
+<P>
+<H5> <PRE>SUM := 0;                SUM := 0;
+for I in 1..10 loop      for I in reverse 1..10 loop
+ SUM := SUM + A(I);        SUM := SUM + A(I);
+end loop;                end loop;
+
+SUM := 0; I := 1;        SUM := 0; I := 1;
+while I &lt;= 10 loop       loop
+  SUM := SUM + A(I);       exit when I &gt; 10;
+  I := I + 1;              SUM := SUM + A(I);
+end loop;                  I := I + 1;
+                         end loop;
+</PRE>
+</H5></UL>
+<P>
+
+---Last Slide---<BR>
+<em> A Complete Ada Program</em>
+<P>
+<P>
+<P>
+<H5> <PRE>  with I_O_PACKAGE;
+  procedure TEMPERATURE_CONVERSION is
+    use I_O_PACKAGE;
+    -- Convert temp in Fahrenheit to Celsius
+
+    FAHRENHEIT_TEMP; CELSIUS_TEMP: FLOAT;
+  begin
+    GET(FAHRENHEIT_TEMP);
+    CELSIUS_TEMP := (FAHRENHEIT_TEMP - 32.0)*5.0/9.0;
+    PUT(CELSIUS_TEMP);
+  end TEMPERATURE_CONVERSION;
+</PRE>
+</H5>
+<P>
+[End of Lecture #5]
+<P>
+</H3>
+<P>
+<BR> <HR>
+<P><ADDRESS>
+<I>Bud Mishra <BR>
+Thursday October 10 1996</I>
+</ADDRESS>
+</BODY>

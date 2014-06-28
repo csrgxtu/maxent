@@ -1,0 +1,129 @@
+Date: Mon, 11 Nov 1996 17:13:15 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 16 Sep 1996 05:48:12 GMT
+Content-length: 4113
+
+<HTML>
+<HEAD>
+<TITLE>TITLE - CS 302 Fall 1996 - Section 4</TITLE>
+</HEAD>
+<BODY>
+
+<H1 ALIGN=CENTER>
+  <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~cs302">CS 302</A>
+  Fall 1996 - <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.wisc.edu/~milo/cs302.html">Section 4</A>
+</H1> 
+<H2 ALIGN=CENTER>Algebraic Language Programming in C++</H2>
+<H4 ALIGN=CENTER>Instructor: 
+  <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~milo">Milo M. Martin</A> 
+  (milo@cs.wisc.edu)</H4>
+<hr><br>
+
+<H1 ALIGN=CENTER>Program 2</H1>
+<H3 ALIGN=CENTER>Due Wednesday, September 25, 1996</H3> 
+<hr><br>
+
+In program 2, you are a computer programmer who has been hired by
+a local restaurant to write a program for a new computer which will
+replace an old cash register.  
+
+<p>
+The restaurant only has four items on the menu.  You may pick what those
+items are and set prices for them (each item must have a different price).
+You need to keep a running total of what is ordered and keep looping until
+the cash register operator asks the program to print out the total bill.
+Also, you need to keep track of how many of each item are purchased and
+display them in the final bill.  Be creative with the name
+of your restaurant, what sorts of food your restaurant offers, and what
+the prices are (<I>ie, make up your own... don't just copy mine!</I>).
+
+<p>
+Here is an example of what your menu might look like.  The formatting
+does not need to be exactly like this, but all dollar amounts must be
+formatted to 2 decimal places.
+<PRE>
+ 	 The Hamburger Shack
+	 -------------------------------
+	 A.  Hamburger            $1.00
+	 B.  Cheeseburger         $1.20
+	 C.  Double Cheeseburger  $2.40
+	 D.  Bacon Cheeseburger   $2.00
+
+	 Current Subtotal:  $0.00
+	 Enter your selection -->
+</PRE>
+
+<p>
+At this point, the cash register operator might press "A" (or, s/he 
+might press "a".  Your program should do the same thing either way).
+You should add the cost of item A to the running subtotal and ask
+the operator if they are ready to print the final bill (the operator
+will enter "Y", "y", "N", or "n" as an answer).  If the
+operator is not ready to print the bill yet, redisplay the menu 
+with the updated subtotal:
+<PRE>
+	Enter your selection -->  <B>A</B>
+
+	New subtotal is $1.00
+	Would you like to print the bill now (Y or N)?  <B>N</B>
+
+ 	The Hamburger Shack
+	-------------------------------
+	[...print your choices again...]
+
+	Current Subtotal: $1.00
+	Enter your selection --> 
+</PRE>
+
+<p>
+When the operator says that, yes, s/he would like to print out a
+final bill, your program should print out an itemized list of what
+was ordered (and the total cost for each item), the subtotal, the
+sales tax (use 5% for sales tax), and the total (subtotal +
+sales tax).  For example:
+<PRE>
+	[...]
+	Would you like to print the bill now (Y or N)?  <B>Y</B>
+
+	Customer Bill
+	-------------
+	1 Hamburger	      $1.00
+	2 Cheeseburger	      $2.40
+	1 Bacon Cheeseburger  $2.00
+			     ------
+	Subtotal              $5.40
+	Sales Tax             $0.27
+                             ======
+	Amount Due            $5.67
+</PRE>
+
+<p>
+Notice that two cheeseburgers were ordered in this example, so the
+cost is listed as 2 times $1.20, or $2.40.  Also notice that since
+no double cheeseburgers were ordered, they are not mentioned on
+the bill (it does not say "<tt>0 Double Cheeseburger</tt>").  The
+program should stop executing after the final bill is printed.
+
+<p>
+<H3>What To Turn In</H3>
+
+Once you have your program working, use the print capabilities of the
+Borland output window (click on the upper left square in the output window
+and then select "Print") to a create a printout of output which
+demonstrates all of the features of your program.  Your output printout
+should at least demonstrate ordering one of some item, ordering more than
+one of some item, and not ordering any of a third item.  Submit print-outs
+of both your source code and your output and an electronic copy of your
+source code and executable file as before. 
+
+<HR>
+<ADDRESS>
+Created by
+<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF = "http://www.cs.wisc.edu/~msteele">Mike Steele</A>
+, <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF = "http://www.cs.wisc.edu/~milo">Milo Martin</A>
+& <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A HREF="http://www.cs.wisc.edu/~stenglei/stenglei.html">Jeremy Stenglein</A>
+</ADDRESS>
+
+</BODY>
+</HTML>

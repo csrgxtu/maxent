@@ -1,0 +1,72 @@
+Date: Tue, 05 Nov 1996 20:59:06 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 19 Aug 1996 19:36:02 GMT
+Content-length: 2782
+
+<head>
+<title>Paradyn Project Overview</title>
+</head>
+<body>
+<H1>
+<!WA0><!WA0><!WA0><!WA0><!WA0><IMG SRC="http://www.cs.wisc.edu/~paradyn/paradyn.small.gif" ALT="Paradyn Logo" ALIGN=MIDDLE>
+    Paradyn Project Overview Page</H1>
+<hr>
+<H2>Overview</H1>
+
+The Paradyn Parallel Program Performance Tools project is exploring new
+approaches to building scalable tools for parallel program performance.
+<P>
+Traditional performance tools for sequential machines fail to scale to
+large parallel systems.  Normal post-mortem-style tools typically
+collect information about all events that occur during execution; this
+can produce trace data at a rate of several Gigabytes per second on a
+machine with thousands of nodes, a rate which is impossible for a
+performance tool to cope with.  The standard solution to this problem
+is to collect only a small subset of available performance data.
+However, choosing the right set of metrics is difficult or impossible
+to know a priori, and places a large decision-making burden on the
+programmer.
+<P>
+Paradyn takes a new approach, called <em>dynamic instrumentation</em>, 
+that is based
+on dynamically controlling what performance data is to be collected.
+Dynamic instrumentation allows data collection instructions to be inserted
+into an application program during runtime. Paradyn
+is able to look for a variety of performance problems during
+a single execution, while not being overwhelmed with all the available
+data at any one time.  In addition, dynamic instrumentation that has
+not be inserted incurs no overhead, in contrast to instrumentation
+that is staticly-inserted but currently disabled.
+<P>
+Paradyn provides <em>decision support</em> for the tool user.  Paradyn
+assists the user in deciding which bottlenecks to look for; in fact,
+Paradyn can search automatically to isolate performance bottlenecks,
+and then explain them to the user using descriptions or
+visualizations.
+<p>
+Paradyn incorporates a new approach for describing performance
+information to users of high-level parallel languages; Paradyn maps
+performance data between multiple layers of abstraction, and user can
+choose to look at it in terms of high-level language constructs or
+low-level machine structures.
+<p>
+Since Fall 1994, we have been collaborating with the
+<!WA1><!WA1><!WA1><!WA1><!WA1><a href="http://www.cs.wisc.edu/~wwt/">Wisconsin
+Wind Tunnel Project</a>
+to support Paradyn on their Blizzard platform
+(both CM-5 and Cluster of Workstation versions).
+<p>
+A recent <!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.cs.wisc.edu/~wwt/wi_week16nov94.html"><i>Wisconsin Week</i> article</a>
+summarizes our current ARPA funding and has commentary from Profs. Bart Miller
+and Mark Hill.
+<p>
+Paradyn Release 1.1 is available for SunOS, Solaris, AIX, SP2, HP-UX, and
+PVM.
+<p>
+<hr>
+Last modified:
+Mon Aug 19 14:35:57 CDT 1996
+by
+<!WA3><!WA3><!WA3><!WA3><!WA3><a href="http://www.cs.wisc.edu/~bart">bart</a></b>
+</body>

@@ -1,0 +1,85 @@
+Date: Tue, 14 Jan 1997 20:40:52 GMT
+Server: NCSA/1.5.1
+Last-modified: Sun, 22 Sep 1996 15:48:11 GMT
+Content-type: text/html
+Content-length: 1417
+
+<html>
+<head>
+<title>CS6 - Java on the PC</title>
+</head>
+
+<body bgcolor="#eeeeff">
+<font color="black">
+
+
+<body>
+
+<!WA0><IMG SRC="http://www.cs.hmc.edu/~mike/gifs/colorbar.gif">
+<P>
+<center>
+<b> <h2>
+<!WA1><IMG SRC="http://www.cs.hmc.edu/~mike/gifs/flame.gif"> CS6 Java on the PC
+<!WA2><IMG SRC="http://www.cs.hmc.edu/~mike/gifs/flame.gif">
+</h2> </b>
+</center>
+<p>
+A few people have attempted to put Java on their PC's.
+The following is a rough outline of the steps necessary
+to move the
+<b>HMCSupport</b>
+library to a PC
+and to create a working
+<b>CLASSPATH</b>
+once you have installed the 
+<b>1.0.2</b>
+<p>
+<ol>
+<li>
+ftp the directories and all their files
+from
+<b> /home/osiris/cs/cs5/java</b>
+files and store them in 2 directories,
+e.g.,
+<br>
+<b>c:\java\lib\Acme</b>
+and
+<b>c:\java\lib\HMC</b>
+<br>
+Note, that if you use
+<b>ws-ftp</b>
+then entire directories can be ftp'ed
+otherwise, individual files would need to be ftp'ed.
+Look at "The Whole Internet"
+for a discussion of ways to ftp entire directories.
+
+<li>
+Add the line
+<br>
+<b>set classpath=.;c:\java\lib\classes.zip;c:\java\lib</b>
+<br>
+to the <b>autoexec.bat</b> file.
+<br>
+Note:
+the
+<b>classes.zip</b>
+stays "ziped".
+It is part of the jdk.
+
+<li>
+Reboot
+</ol>
+<p>
+Note:
+you can send mail to:
+<b>pc-system-l@hmc.edu</b>,
+the general pc mail list at HMC,
+for any pc related questions and issues.
+<p>
+
+
+<!WA3><IMG SRC="http://www.cs.hmc.edu/~mike/gifs/colorbar.gif">
+<address>Last modified September 20, 1996 by mike@cs.hmc.edu</address>
+</body>
+</html>
+

@@ -1,0 +1,111 @@
+Date: Wed, 08 Jan 1997 21:25:44 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+
+<head>
+<title>LISP quiz sample solution</title>
+</head>
+
+<body>
+
+<OL>
+<LI> <A HREF="problem1-soln.ps">Postscript picture</A>  <P>
+
+<LI> 
+
+<DL>
+<DT> (a)
+<DD> Y is 1 <br>
+      Y is 8 <br>
+      Y is 4 <br>
+
+<DT> (b)
+<DD> 26
+
+<DT> (c)
+<DD> 
+    x = 3 <br>
+    y = 8 <br>
+    z = unbound variable <br>
+
+</DL>  <P>
+
+
+<LI> 
+<pre>
+(defun print-negative-numbers (l)
+  (cond ((null l) nil)
+	(T (let ((tmp (car l)))
+	     (when (and (numberp tmp) (> 0 tmp))
+	       (format t "~a~%" tmp))
+	     (print-negative-numbers (cdr l))))))  <P>
+</pre>
+
+
+<LI> 
+<pre>
+(defun ascending-order-p (l)
+  (cond ((null l) T)
+	(T (ascending-order-p-helper (car l) (cdr l)))))
+
+(defun ascending-order-p-helper (prev l)
+  (cond ((null l) T)
+	(T (let ((new-val (car l)))
+	     (and (< prev new-val)
+		  (ascending-order-p-helper new-val (cdr l)))))))
+</pre> <P>
+
+
+<LI> 
+<DL>
+<DT> (a)
+<DD> 
+<pre>
+(defun account-numbers (a-bank)
+  (mapcar #'(lambda (an-acct) (account-number an-acct))
+	  (bank-accounts a-bank)))
+</pre>  <P>
+
+<DT> (b)
+<DD> 
+<pre>
+(defun find-account (a-bank account-number)
+  (find-if #'(lambda (an-acct) 
+	       (= (account-number an-acct) account-number))
+	   (bank-accounts a-bank)))
+</pre>  <P>
+<DT> (c)
+<DD> 
+<pre>
+(defun make-interest-payer (a-bank account-number)
+  (let ((the-acct (find-account a-bank account-number)))
+    (cond ((eq nil the-acct) #'(lambda (x) ))
+	  (T #'(lambda (interest)
+		 (setf (account-balance the-acct)
+	  	   (* (+ 1 interest) (account-balance the-acct))))))))
+</pre>  <P>
+
+<DT> (d)
+<DD> 
+<pre>
+(defun pay-interest (a-bank amount)
+  (mapc #'(lambda (acct-number)
+	    (funcall (make-interest-payer a-bank acct-number)
+		     amount))
+	(account-numbers a-bank)))
+</pre>  <P>
+</DL>
+</UL>
+
+</OL>
+
+<hr>
+
+<address>
+cse341-webmaster@cs.washington.edu
+</address>
+
+</body>
+</html>

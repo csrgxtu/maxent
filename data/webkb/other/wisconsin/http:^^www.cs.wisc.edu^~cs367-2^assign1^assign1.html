@@ -1,0 +1,92 @@
+Date: Tue, 05 Nov 1996 20:57:57 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 18 Sep 1996 18:25:48 GMT
+Content-length: 7243
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+
+<html>
+
+<head>
+<title>Assignment 1: Handout</title>
+<!-- Changed by: James Larus, 18-Sep-1996 -->
+<meta name="GENERATOR" content="Microsoft FrontPage 1.1">
+</head>
+
+<body>
+<h1 align=center>CS 367 Assignment 1: Introduction to C++</h1>
+<h3 align=center>(Due Date/Time: Thursday, October 3, 1996, 5:00pm)</h3>
+<h2>Introduction</h2>
+<p>The purpose of this first programming assignment is to provide experience with Unix, using a editor (<em>vi</em> or <em>emacs</em>), doing simple C++ programming, and using
+the gnu C++ compiler (<em>g++</em>) and its debugger (<em>gdb</em>). We have provided a partially written (but fully specified!) C++ program. Your job is to complete and
+thoroughly test the program. More specifically, the program implements an abstract data type (ADT) for handling a bounded integer sequence
+(<em>IntSequence</em>). </p>
+<hr>
+<h2>Your Job</h2>
+<p>The IntSequence ADT will represent a sequence of integers by stroring the numbers in an array of integers. The internal representation consists of the current
+length of the sequence plus a statically-sized array of integers that hold the sequence's current contents. The IntSequence type supports five operations, each
+of which takes the integer sequence as its first argument: </p>
+<ul>
+<li><pre>	void clear(IntSequence&amp; seq);</pre>
+</li>
+<li><pre>	void append(IntSequence&amp; seq, int value);</pre>
+</li>
+<li><pre>	int length(IntSequence&amp; seq);</pre>
+</li>
+<li><pre>	void printN(IntSequence&amp; seq, int number);</pre>
+</li>
+<li><pre>	void sort(IntSequence&amp; seq);</pre>
+</li>
+</ul>
+<p>The <samp>clear</samp> operation initializes (or reinitializes) a sequence to be empty (contain zero elements). The <samp>append</samp> operation puts a new value at the end of a
+sequence. The <samp>length</samp> operation returns the number of elements currently in a sequence. The <samp>printN</samp> operation prints the first <em>N</em> values in a sequence,
+where N, the number of values, is an argument to the operation. . The <samp>sort</samp> operation sorts the integers in a sequence into ascending order.</p>
+<p>To make your job as simple and clear as possible, we have provided three files: <!WA0><a href="http://www.cs.wisc.edu/~cs367-2/assign1/intseq.h">intseq.h</a>, <!WA1><a href="http://www.cs.wisc.edu/~cs367-2/assign1/intseq.c">intseq.c</a>, and <!WA2><a href="http://www.cs.wisc.edu/~cs367-2/assign1/prog1.c">prog1.c</a>. The file <!WA3><a href="http://www.cs.wisc.edu/~cs367-2/assign1/intseq.h">intseq.h</a> contains a complete C++
+specification of the ADT-- <em>you should not edit this file</em>. The file <!WA4><a href="http://www.cs.wisc.edu/~cs367-2/assign1/prog1.c">prog1.c</a> contains a complete main routine that serves as a test driver for your ADT
+implementation--<em>you should not edit it eithe</em>r. Your job is to make a copy of the file <!WA5><a href="http://www.cs.wisc.edu/~cs367-2/assign1/intseq.c">intseq.c</a>, which contains stubbed-out functions for the ADT operations,
+and add the actual implementation code. You can then debug and test your code using <em>gdb</em> and the driver routine in <!WA6><a href="http://www.cs.wisc.edu/~cs367-2/assign1/prog1.c">prog1.c</a>. We have provided a small set
+of <!WA7><a href="http://www.cs.wisc.edu/~cs367-2/assign1">test data files</a>, <strong>but you should add more test cases to find the important cases that our files fail to exercise</strong>.</p>
+<hr>
+<h2>How To Sort</h2>
+<p>To write the sorting function, you should use a very simple sorting scheme known as <em>insertion sort</em>. This algorithm sorts an array of data by stepping through
+the array, an element at a time, and keeping everything to the left of the current element sorted. To understand how this approach works, think of the array as
+being laid out from left (element <em>0</em>) to right (element <em>N-1</em>, assuming that the array contains <em>N</em> elements), so the algorithm steps through the array from left to
+right. At each step, the current element is copied out of the array and inserted into its appropriate place in the sorted subarray to the left of the position that it
+was copied from. Inserting the element requires that all elements with greater values than the element be slide one position right to make space. </p>
+<p>An efficiency hint: The tasks of finding the appropriate insertion point for the current element and sliding greater elements to the right can be combined. This
+can be done by scanning left from the position from which the current element was copied, sliding each element one space to the right if its value exceeds that
+of the current element. The insertion point will be known (and a spot will be open) when you either find a lesser value or bump into the left end of the array.</p>
+<hr>
+<h2>What To Turn In</h2>
+<p>You must turn in:</p>
+<ul>
+<li>A copy of all source files, including intseq.c and the other files needed
+to compile your program.</li>
+<li>A file named README that explains exactly what we should do to compile
+your files into an executable program that we can run.</li>
+<li>A listing of your test cases.</li>
+</ul>
+<p>Everything must be turned in electronically (paper copies are
+not acceptable).
+We have created a directory for each student to turn in his or her assignment.
+The following command copies a file into a student's handin directory:</p>
+<BLOCKQUOTE>cp <i>filename</i> ~cs367-2/public/handin/prog1/<i>username</i></BLOCKQUOTE>
+You should replace <i>filename</i> with the name of the file you want to
+submit and replace <i>username</i> by your login name.
+
+<p>REMEMBER: <strong>No late assignments will be accepted!!! </strong>Thus, it is important that you start working soon and finish on time. However, partially finished
+programs are far better than no programs at all, so be sure to turn in whatever you've done -- even if you don't finish the assignment. (However, finishing
+should not be a problem for <em>anyone</em> in this first programming assignment. If you can't finish this assignment, which is a simple &quot;warm-up&quot; exercise, you should
+seriously re-think your decision to take this course. The remaining assignments will all be considerably more challenging.)</p>
+<hr>
+<h2>Finding/Using Our Files</h2>
+<p>Files for CS 367 live in the directory <em>/u/c/s/cs367-2/public/html</em>. The three C++ files that we provide and the test data files, are in a subdirectory of this
+directory called <em>assign1</em>. You should make yourself a copy of the file that you will be modifying, <!WA8><a href="http://www.cs.wisc.edu/~cs367-2/assign1/intseq.c">intseq.c</a>, in an Assignment-1 subdirectory of your home
+directory. To make a subdirectory for this purpose, go to the private subdirectory of your home directory (<samp><tt>cd ~/private</tt></samp>), create a subdirectory there
+(<samp><tt>mkdir assign1</tt></samp>), and <samp>cd</samp> to it (<samp><tt>cd assign1</tt></samp>). You can then copy the code file (<tt>cp ~cs367-2/public/html/assign1/intseq.c</tt>). For the other two files, you should
+create links to our files (e.g., <samp><tt>ln -s ~cs367-2/public/html/assign1/intseq.h .</tt></samp>) so that you will always be using the same definitions and initial test data files as
+everyone else.</p>
+</body>
+
+</html>

@@ -1,0 +1,151 @@
+Date: Tue, 10 Dec 1996 21:39:56 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Fri, 17 Mar 1995 21:58:40 GMT
+Content-length: 5636
+
+<html>
+<head>
+<title>
+A User Interface for Assisted Resource Discovery
+</title>
+</head>
+<body>
+<h1>
+A User Interface for Assisted Resource Discovery
+</h1>
+<p>
+This document continues recent discussions on the User Interface for an
+Intelligent Agent that assists in using the World Wide Web.
+</p>
+<h2>The Problem</h2>
+<p>
+Finding (and using) resources on a large, loosely-organized network can
+be tedious and time-consuming.  Intelligent agent software can assist a
+user, but current user interfaces are either hard to use or do not fully
+exploit the agent's capabilities.
+</p>
+<h2>My Approach</h2>
+<p>
+I want to construct a testbed for
+evaluating different user interfaces for assisted resource discovery.
+The audience consists of casual or "naive" users of information networks
+(i.e. I don't expect them to be able to program or to know predicate logic).
+</p>
+<h2>The UI Research Issues</h2>
+<p>
+What are the User Interface research issues that I want to address?
+</p>
+<h3>Assisted Search</h3>
+<p>
+Is providing a software assistant a natural and easy metaphor for
+generating fruitful searches of large, loosely-organized networks?
+</p>
+<h3>Rapid Convergence</h3>
+<p>What user interface elements of an assisted search contribute to
+a rapid convergence on a result?  How can the user work with the assistant
+to initially specify, then modify the goals of the search?
+</p>
+<h3>Specialized Discovery</h3>
+<p>Is it natural to classify <em>types</em> of resource discovery tasks?
+If so, are there specialized user interface elements that are appropriate
+for these classifications?
+</p>
+<h3>Managing Discovered Resources</h3>
+<p>Once many resources are discovered, how can they be retained and
+managed by the user for future access?  What user interface metaphors
+facilitate effective resource management?  Such metaphors should integrate
+with the assistant (e.g. an assistant should keep the resource location
+current).
+<h2>The Domain</h2>
+<p>
+This work will use a software robot that can understand and navigate the
+World Wide Web.  This is not the only domain.  It is a very well-known
+domain in which easy, frutiful resource discovery is crucial.
+In the World Wide Web domain, a  most common example of resource discovery
+is </em>Search</em>.
+</p>
+<h2>Initial Work Plan</h2>
+<p>
+In general this approach applies to all types of resources and to information
+network services other than discovery.  Ultimately I would like to see
+the most effective user interface techniques tightly integrated into a
+<em>Global Desktop</em> that has built-in software assistants to accomplish
+many chores we would normally want to delegate to human assistants.
+</p>
+<p>
+As a start I will work on adding an assistant-based interface for resource
+discovery on top of the Mosaic World Wide Web browser.  I have considered
+two scenarios:
+</p>
+<h2>Scenario 1</h2>
+<h3>A Mosaic Companion Assistant</h3>
+<p>Scenario 1 would provide a companion application to Mosaic that allows a 
+user to
+search for Web resources.  Initially this would implement a keyword search
+but it would be built with the idea of adding specialized searches later.
+The search is carried out by a software agent (so I presume the UI
+generates a <em>goal</em> that the agent tries to satisfy)
+which returns a collection of Web resources.  The user can then
+<em>tour</em> the results by directing the companion to control Mosaic
+remotely.  While the search is in progress, the user can continue to work
+with Mosaic.
+<p>
+<h3>Advantages</h3>
+<ol>
+<li>A companion application allows the user to remain in control and
+continue working with Mosaic.</li>
+<li>Code that permits remote control of Mosaic has been built locally,
+or is built into the latest release of Mosaic.</li>
+<li>Future UI experimentation can be plugged in and is not limited by
+HTML or Mosaic forms.</li>
+</ol>
+<h3>Disadvantages</h3>
+<ol>
+<li>This scenario requires access to code not installed on each client,
+and not available to a viewer, so use of the project would be limited.</li>
+<li>Since it's not integrated into the viewer, the UI may be seen as a
+"hack" rather than designing a new UI whose focus is the resource discovery
+task.</li>
+</ol>
+<h2>Scenario 2</h2>
+<h3>An Integrated, Assisted Version of Mosaic
+Approach
+</h2>
+<p>
+This approach would provided the same search mechanisms as Scenario 1.
+The UI would be integrated into the Web as another Web page (like
+Webcrawler or Yahoo).  It would also build a keyword-based query for
+a software agent, but using Mosaic forms.  The results would be returned in
+a generated HTML document and the standard hypertext navigation would
+be used to visit the results.
+</p>
+<h3>Advantages</h3>
+<ol>
+<li>Since this scenario uses the standard Mosaic viewer, it would be
+available to a much larger audience.
+<li>Form entry and hypertext navigations are widely understood by users.
+<li>The user does not think of the agent software as an intermediary.</li>
+</ol>
+<h3>Disadvantages</h3>
+<ol>
+<li>This scenario does not provide a fertile UI testbed.  Specifically:</li>
+<ul>
+<li>It would be more difficult to investigate UIs for iterative dialogs
+to rapidly constrain or focus a search.</li>
+<li>It would be more difficult to experiment with metaphors for retaining
+and organizing collections of known resources.</li>
+<li>It would be harder to automate <em>tours</em> of resources.</li>
+</ul>
+<li>While the agent is working, the user does not have control of the
+viewer.</li>
+<li>The user does not think of the agent software as an intermediary.</li>
+</ol>
+</body>
+<hr>
+<address>
+<!WA0><a href="http://www.cs.washington.edu/homes/joebob/index.html">Joseph M. Sherman</a> <br>
+Last modified: 
+Friday, March 17, 1995
+</address>
+</html>

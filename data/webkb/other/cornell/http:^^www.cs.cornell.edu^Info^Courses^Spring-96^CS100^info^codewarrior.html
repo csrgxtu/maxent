@@ -1,0 +1,108 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 16-Dec-96 23:33:46 GMT
+Content-Type: text/html
+Content-Length: 3390
+Last-Modified: Tuesday, 20-Feb-96 22:21:50 GMT
+
+<html>
+
+<head>
+<title> CodeWarrior for CS100 </title>
+</head>
+
+<body>
+
+<h2> Setting Up CodeWarrior for CS100 </h2>
+
+CodeWarrior can be run on your own personal Macintosh.  Copies of
+CodeWarrior 8 can be purchased from the Campus Store.  The CodeWarrior
+installed in the CIT labs is just like the one you would install on
+your Mac, except for a few things we have added -- the CSLib library
+and the CS100 Basic project stationery. <p>
+
+<strong>Note:</strong> These additions were built using CodeWarrior
+version 8, so it is possible that they will not work with earlier
+versions of CodeWarrior (although we have heard from people that they
+do). <p>
+
+Once you have retrieved the CS100 Additions folder, install the
+additions as follows:
+
+<ul>
+
+<li> Open the CS100 Additions folder.  Inside it there is a SimpleText
+file containing instructions similar to these.  There are two folders
+called INTO MacOS Support and INTO (Project Stationery).  The folder
+structure in the CS100 Additions folder is meant to mirror the folder
+structure inside the Metrowerks CodeWarrior folder of your copy of
+CodeWarrior, to make it easy to follow these instructions. <p>
+
+<li> Open your CodeWarrior8 or CW 8 Gold folder.  Open the Metrowerks
+CodeWarrior folder inside it. <p>
+
+<li> Open the INTO MacOS Support folder in the CS100 additions.  Move
+the CS100 Support folder into the MacOS Support folder in your
+Metrowerks CodeWarrior folder. <p>
+
+<li> Open the INTO (Project Stationery) folder.  Move the CS100 Basic
+68K.mu file into the (Project Stationery) folder in your Metrowerks
+CodeWarrior folder. <p>
+
+<li> Open the INTO Proj. Stat. Support folder in the INTO (Project
+Stationery) folder.  Move the <replace me CS100>.c file into the
+Project Stationery Support folder in the (Project Stationery) folder
+of your CodeWarrior. <p>
+
+</ul>
+
+When you open a new project with CodeWarrior, you should now be able
+to select the CS100 Basic 68K stationery.  This will include the CSLib
+library, which should also now be available to you.
+
+<hr>
+
+Click here to get the CS100 Additions folder. <p>
+
+<a href =
+"ftp://ftp.cs.cornell.edu/pub/courses/cs100-s96/CS100Additions.sea.hqx">
+CS100 Additions Folder </a>
+
+<hr>
+
+<h3>Other Machines</h3>
+
+If you have a copy of CodeWarrior for a computer other than the Mac,
+you may still be able to set up the CS100 environment.  However, the
+course staff will not be able support this.
+
+<ol>
+
+<li> Build the CSLib library.  Get the source code for by anonymous
+FTP from Addison-Wesley.  Follow the instructions on page 670 in the
+Roberts textbook (Appendix B, Library Sources).  Compile the source
+code on your machine using CodeWarrior.  (To create the CSLib library
+for CS100 we only compiled the <code>genlib</code>,
+<code>simpio</code>, <code>string</code>, <code>random</code>, and
+<code>exception</code> parts of the library; we left out the graphics
+stuff.  If everything seems to work for your machine, feel free to
+compile all of it.)  Put the compiled library and the library header
+files into the support directory for your CodeWarrior. <p>
+
+<li> Make the CS100 Basic project stationery.  Our project stationery
+is based on the ANSI project stationery, with the CSLib library added.
+Put your project stationery in the project stationery directory of
+your CodeWarrior.
+
+</ol>
+
+</body>
+
+<hr>
+
+<address>
+CS100 Spring 1996 <br>
+pierce@cs.cornell.edu
+</address>
+
+</html>

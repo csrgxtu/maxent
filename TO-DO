@@ -1,0 +1,29 @@
+22/Jun/2014
+Two weeks ago, I had got myself known to the Maximum Entropy Model,
+but when you want to verify that maxent model will work like the
+way u think, it will be difficult. and here is how i try to solve
+this verifying problem one by one.
+
+1, The implementation of the maxent algorithm
+turns out that are bunch of implementations of maxent in several
+languages. here I will use the Python and C++ implementation by
+a researcher called ZhangLe.
+
+2, The data you use to classify
+After Googling around, I decided to use the CSDMC2010 SPAM corpus
+as my dataset, it contains a lot of emails classfied by the
+researcher manually.
+
+3, Retrieve the subject and content from the original email file
+Since the original email file contains email tags, I need to remove
+these tags.
+
+4, Represent the processed file from formal step as a vector.
+for the features you choose, for each email file, you will get an
+vector indicating wheather it is apeared.
+
+5, use maxent trainning the model.
+
+6, use the test dataset test the model.
+
+dataset dekang 0 lin

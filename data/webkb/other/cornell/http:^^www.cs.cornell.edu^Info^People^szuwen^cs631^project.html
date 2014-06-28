@@ -1,0 +1,206 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 19:07:57 GMT
+Content-Type: text/html
+Content-Length: 7129
+Last-Modified: Friday, 08-Dec-95 01:33:07 GMT
+
+<html>
+<title>Sound Editor</title>
+<center>
+<h1>Sound Editor</h1>
+<!WA0><!WA0><!WA0><!WA0><a href="http://www.cs.cornell.edu/Info/People/szuwen/szuwen.html">
+Szu-Wen (Steven) Huang</a>, 
+Jing (Vince) Li, Ting-Chun Janet Liu
+<hr>
+</center>
+<body>
+
+<h2>Introduction</h2>
+This project aims to implement a sampling resolution-independent digital
+audio engineering tool that can be used to create moderately complex
+special effects.  The project should sport an easy-to-use and fairly 
+portable interface across various Unix/X platforms.  The program should
+work reasonably well on all kinds of audio samples, from low-fidelity
+voice to CD quality music.  Ideally, this program should be able to
+utilize commonly-available hardware features such as mono/stereo audio
+playback and recording.
+<p>
+<hr>
+<h2>Deliverables</h2>
+<ol>
+<li>Working software
+<li><!WA1><!WA1><!WA1><!WA1><a href="http://www.cs.cornell.edu/Info/People/szuwen/cs631/final.html">Technical documentation</a>
+</ol>
+<hr>
+<h2>Milestones</h2>
+<ol>
+<li>Algorithms research
+<li>Hardware support and standards research
+<li>User interface in Tcl/Tk and C
+<li>Time domain functions
+<li>Frequency domain related mathematics research
+<li>Frequency domain functions
+</ol>
+<hr>
+<h2>General Operations</h2>
+<strong>Playback</strong>
+<br>
+The program should be able to playback the samples being edited for
+previewing purposes.  This function does not aim to interface with a
+device capable of production-quality audio synthesis.
+<p>
+<strong>Pause</strong>
+<br>
+The program should be able to stop in the middle of a playback.
+<p>
+<strong>Rewind</strong>
+<br>
+The program should be able to return to a certain sample earlier in
+time and resume playback from there.
+<p>
+<strong>Fast Forward</strong>
+<br>
+The program should be able to skip ahead to a certain sample later in
+time and resume playback from there.
+<p>
+<strong>Seek</strong>
+<br>
+The program should be able to start playback at any certain sample in
+the entire sound file, indexed by either playing time (seconds) or
+sample number.
+<p>
+<strong>Record</strong> (Optional)
+<br>
+If hardware support permits, this program should be able to digitize
+samples from an external audio source.  In general, however, this
+program should assume that samples are digitized by another dedicated
+platform because of quality considerations.
+<p>
+<strong>Volume Control</strong>
+<br>
+This program should have the ability to adjust the output volume of
+the playback function appropriately.  If possible, a decibel notation
+should be employed instead of arbitrary volume levels such as 1 to 10.
+<p>
+<strong>Balance</strong> (Optional)
+<br>
+This program should be able to adjust the ratio between playback output
+of the left and right channels on stereo hardware.
+<p>
+<strong>File Operations</strong> (Optional)
+<br>
+Currently, the Sun Audio Format (.au) is deemed most appropriate for
+reasons of portability and ease of programming.  If time permits, support
+should be provided to output resulting samples in the Microsoft Windows
+Wave (.WAV) format, Creative Labs Voice (.VOC) format, and others.
+<p>
+<hr>
+<h2>Monitors</h2>
+The following functions do not alter the input samples in any way, but
+display them in a manner that might be visually useful (and pretty) to
+the audio engineer.
+<p>
+<strong>Raw Waveform</strong>
+<br>
+The program should be able to display the pulse-code modulation (PCM)
+format digitized samples as a waveform in time domain.  Multiple files
+can be open at the same time to allow simple edit operations such as
+<em>Cut</em>, <em>Copy</em>, <em>Paste</em>, and some others that users
+of commercial software would come to expect.
+<p>
+<strong>Spectrum</strong>
+<br>
+The program should display a frequency spectrum synchronized with the
+playback to show the distribution of frequencies.  Right now, we are
+split between the conventional boombox style of discrete frequency
+ranges and quantized intensity levels (dancing LED bars), or a more
+"scientific" high-resolution spectrum display possible only on video
+monitors.  Suggestions are welcome.
+<p>
+<strong>Time/Frequency/Amplitude Histogram</strong>
+<br>
+The program should display a time domain frequency/amplitude graph such
+that time progresses along the x-axis (towards the right side), frequency
+ranges are plotted along the z-axis ("in" and "out"), and amplitude
+plotted along the y-axis (going up).  This display would be useful in
+visualizing amplitude distributions over time.
+<p>
+<hr>
+<h2>Time Domain Operations</h2>
+These functions modify the input waveform in the time domain, and do not
+require a <em>Fast Fourier Transform</em> (FFT) or its inverse to operate.
+All time domain operations can be performed on the entire file or some
+selected subset.  These operations should be resolution-independent.
+<p>
+<strong>Echo</strong>
+<br>
+This function digitally simulates an echo.  It will be implemented by mixing
+several copies of the sample in decreasing strength with a corresponding
+shift in time
+<p>
+<strong>Fade</strong>
+<br>
+These two function incrementally increase or decrease volume over a range
+in time.
+<p>
+<strong>Mix</strong>
+<br>
+This function is the digital simulation of mixing two input sources together,
+and will be implemented with some form of weighted averaging of the samples.
+<p>
+<strong>Backmasking</strong>
+<br>
+This function reverses the waveform in time, such that the last input will
+become the first input, and vice versa.  This function is useful in including
+Satanic messages into rock songs advocating suicide.
+<p>
+<strong>Silence</strong>
+<br>
+This function creates a range of silence.
+<p>
+<strong>Amplitude Scaling</strong>
+<br>
+This function is used to modify the amplitude of a range of samples to
+effect an increase or decrease in volume.
+<p>
+<strong>Resampling</strong>
+<br>
+This function allows an input waveform to be <em>upsampled</em> to a higher
+sampling frequency or <em>downsampled</em> to a lower.  Upsampling is probably
+accomplished by interpolation, and downsampling by tossing away samples.
+<p>
+<hr>
+<h2>Frequency Domain Operations</h2>
+The following operations require processing in the frequency domain.
+<p>
+<strong>Pitch Scaling</strong>
+<br>
+This function can be used to effect a pitch shifting without affecting
+playback speed, useful in making people talk like chipmunks.
+<p>
+<strong>Graphic Equalizer</strong>
+<br>
+This function can be used to enhance or inhibit certain frequency ranges,
+for example, to reduce noise.  Two proposals are being reviewed here, the
+first being the traditional boombox graphic equalizer with sliders, or
+a free-form tool that will automatically curve-fit certain selected points
+and modify the spectrum accordingly.  Suggestions welcome.
+<p>
+<strong>Addition and Subtraction</strong>
+<br>
+This function allows the addition or subtraction of a spectrum with
+another.  This is possibly useful in noise elimination.
+<p>
+<strong>Morphing</strong>
+<br>
+This function can be used to transform one spectrum into another
+incrementally over time.
+<p>
+<hr>
+<address>
+Last updated: December 7, 1995<br>
+Maintained by: <!WA2><!WA2><!WA2><!WA2><a href="mailto:szuwen@cs.cornell.edu">Steven</a>,
+<!WA3><!WA3><!WA3><!WA3><a href="mailto:vince@cs.cornell.edu>Vince</a>, and
+<a href="mailto:janet@cs.cornell.edu>Janet</a>.
+</address>

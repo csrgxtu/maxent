@@ -1,0 +1,89 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 22:44:46 GMT
+Content-Type: text/html
+Content-Length: 1953
+Last-Modified: Monday, 28-Aug-95 20:56:14 GMT
+
+<html>
+<head>
+<title>This is a practice form.</title>
+<link rev=made href="mailto:luxue@cs.utexas.edu">
+</head>
+
+<body>
+
+<FORM METHOD=POST
+        ACTION="http://www.cs.utexas.edu/users/luxue/cgi/reply">
+
+<H2> Welcome to the Order List </h2>
+<hr>
+Please give me the answers to the following questions:
+
+ <P>Your name? <INPUT NAME="name" TYPE=text SIZE="48">
+
+ <P>Your address? <INPUT NAME="addr" TYPE=text SIZE="48">
+
+<P> What do you want to order?
+<OL>
+    <LI>Pizza <INPUT NAME="browsers" TYPE=checkbox VALUE="pizza">
+    <LI>Burger <INPUT NAME="browsers" TYPE=checkbox VALUE="burger">
+    <LI>Fried Chicken <INPUT NAME="browsers" TYPE=checkbox VALUE="chick">
+    <LI>Big Mac <INPUT NAME="browsers" TYPE=checkbox VALUE="mac">
+    <LI>Others <INPUT NAME="others" SIZE=30>
+</OL>
+
+
+Any drinks?
+<SELECT NAME="what-to-drink">
+<OPTION>             Coffee
+<OPTION SELECTED>   Hot Tea
+<OPTION> Cocacola
+<OPTION> Seven-up
+<OPTION> Orange Juice
+</SELECT> <P>
+
+Other things?
+<DL>
+<DD>
+<SELECT NAME="what-to-wear" MULTIPLE SIZE=8>
+<OPTION>T-Shirt
+<OPTION SELECTED>Jeans
+<OPTION>Wool Sweater
+<OPTION SELECTED>Sweatshirt
+<OPTION SELECTED>Socks
+<OPTION>Cotton Sweater
+<OPTION>Rugby Shirt
+<OPTION>Leather Jacket
+<OPTION>Boots
+<OPTION>Running Shoes
+<OPTION>Windbreaker
+<OPTION>Vest
+<OPTION>Cape
+</SELECT>
+</DL>
+
+How would you like to pay?  Choose any one of the following: <P>
+
+<OL>
+<LI> <INPUT TYPE="radio" NAME="paymethod" VALUE="cash" CHECKED> Cash.
+<LI> <INPUT TYPE="radio" NAME="paymethod" VALUE="check"> Check.
+<LI> <I>Credit card:</I>
+<UL>
+<LI> <INPUT TYPE="radio" NAME="paymethod" VALUE="mastercard"> Mastercard.
+<LI> <INPUT TYPE="radio" NAME="paymethod" VALUE="visa"> Visa.
+<LI> <INPUT TYPE="radio" NAME="paymethod" VALUE="americanexpress">
+     American Express.
+</UL>
+</OL>
+
+<P> Thanks for your order. Any comments? <P>
+<TEXTAREA NAME="negative" ROWS=2 COLS=60>I think...</TEXTAREA> <P>
+
+<P><input type=submit> <input type=reset>
+
+</FORM>
+</body>
+</html>
+
+

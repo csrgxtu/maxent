@@ -1,0 +1,358 @@
+Date: Tue, 10 Dec 1996 03:36:31 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Wed, 02 Oct 1996 18:18:37 GMT
+Content-length: 11310
+
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<!-- This file was generated automatically using m4 convenience macros:
+	http://www.cs.washington.edu/homes/forman/src/HMacros.m4
+-->
+<html>
+<head>
+<title>George Forman: Dissertation Research</title>
+<base href="http://www.cs.washington.edu/homes/forman/">
+<meta name="author" content="forman@cs.washington.edu">
+<link rev="made" href="mailto:forman@cs.washington.edu">
+</head>
+<body>
+
+<center><h1>George Forman: Dissertation Research</h1>
+</center>
+
+
+<!WA0><!WA0><!WA0><img alt="================ fractal bar ================" 
+width=566 height=66 
+src="http://www.cs.washington.edu/homes/forman/lib/hr-fractal.star8.gif">
+
+
+<br>
+
+<h2>Overview</h2>
+
+The current focus of my work is on constructing tools to aid in writing
+applications that provide good interactive responsiveness even in
+environments where resource availability is hard to predict or is highly
+dynamic.  Applications that depend on networking (even indirectly, such as
+through a networked file system) may encounter several orders of magnitude of
+bandwidth variability in a mobile computing environment where the interface
+can switch between wireless and wired connections.  Operating systems can not
+effectively hide such great network variation; instead, applications need to
+be flexible about their resource demands if they are to remain usable through
+periods of degraded service.
+
+<p>
+
+<!WA1><!WA1><!WA1><img alt="[graphic: modem vs. Ethernet bandwidth]" 
+width=579 height=182 border=1
+src="http://www.cs.washington.edu/homes/forman/seeit/bps.gif">
+
+
+<p>
+Towards this end, my dissertation research develops an application framework
+and runtime system to express and manage logical units of resource demand
+(concurrency and progressive-quality results), gaining responsiveness at the
+user interface principally by trading off the short-term quality of the
+response.
+
+	For further introductory material, please read the
+
+<!WA2><!WA2><!WA2><a href="http://www.cs.washington.edu/homes/forman/dissertation.abstract.html" 
+>abstract to my dissertation</a>.  The technical details are not yet
+available online.
+
+
+
+<br>
+<br>
+
+<!WA3><!WA3><!WA3><img alt="================ fractal bar ================" 
+width=566 height=66 
+src="http://www.cs.washington.edu/homes/forman/lib/hr-fractal.star4.gif">
+
+
+<p>
+	<b>These pages are no longer maintained</b>
+
+<br>
+<h2>Try out these demos yourself 
+	<font size=-1>(if you're running X Windows)</font>  </h2>
+
+I have implemented a prototype system to test my ideas.  It consists of
+a set of language extensions to C++, a pre-processor to convert these into
+multi-threaded C++ code, and a runtime system to manage the dynamic task graph.
+I have written three interactive applications using this prototype system:
+	a library catalog database browser,
+	a Mandelbrot fractal generator, and
+	a Web browser for photo albums in an incremental-resolution .
+The latter two are available here for demonstration.
+
+<p>
+When system resources are plentiful, it's easy to get good response time.
+It's when resources are scarce that responsiveness support begins to help.
+So, each of these demos is designed to exceed the capacity of our local
+resources.
+
+
+<!WA4><!WA4><!WA4><FORM method=post
+action="http://www.cs.washington.edu/htbin-post/unrestricted/forman/nph-run.demo">
+
+<ol> 
+<li> Which program would you like to run?
+
+<p>
+<INPUT type="radio" name="appname" value="Fractals" checked >
+<b>Fractal Explorer:</b> generates multiple Mandelbrot fractals incrementally
+and concurrently, with the mouse position controlling priority among windows.
+<br>
+<center>
+	
+<!WA5><!WA5><!WA5><img alt="[screen dump of fractal explorer]" 
+width=252 height=164 border=1
+src="http://www.cs.washington.edu/homes/forman/seeit/fractal.explorer.gif">
+
+</center>
+
+<p>
+<INPUT type="radio" name="appname" value="PhotoAlbum">
+<b>Photo Album Browser:</b> downloads a collection of photographs with
+progressively improving quality & prioritization among pictures.
+<br>
+<center>
+	
+<!WA6><!WA6><!WA6><img alt="[screen dump of photo album browser]" 
+width=493 height=89 border=1
+src="http://www.cs.washington.edu/homes/forman/seeit/photo.browser.gif">
+
+</center>
+
+<br>
+<br>
+<li> To permit the application to connect to your display, execute the UNIX command
+<br>
+<tt>xhost +trouble.cs.washington.edu</tt>
+
+
+<br>
+<br>
+<li> Enter your display name (e.g. xterminal.u.washington.edu:0) or IP address 
+(e.g. 12.34.56.78:0):
+<br>
+<INPUT	type="text"	value="you.u.edu:0"	name="DISPLAY">	
+
+<INPUT	type="submit"	value="Execute (read on while it starts up)">
+<br>
+TVTWM users: this demo tickles a fatal bug in tvtwm compiled for DEC Alphas.
+
+<p>
+Note:
+	(1) These applications were meant to run near the user.  If the delay
+between your X server and the application is large, you'll experience delayed
+responsive performance, meaning that you can still control priority, etc.,
+but only slowly.
+	(2) Other students sometime run large simulations on our departmental
+hosts, bringing them to their knees.  You'll know.
+
+</FORM>
+</ol>
+
+
+
+<br>
+<h2>Things to notice and try...</h2>
+
+
+<!WA7><!WA7><!WA7><img alt="================ fractal bar ================" 
+width=566 height=66 
+src="http://www.cs.washington.edu/homes/forman/lib/hr-fractal.star2.gif">
+
+
+<h3>Fractal Explorer Demo:</h3>
+
+<OL>
+
+<LI> First, after reading the directions for operating the program, notice
+that you can zoom in on a fractal while it is still refining.  This ability
+to proceed with only an incomplete result becomes more important as
+variability in system response time increases.  Today, such a feature is only
+implemented for those tasks that are expected to take a long time, but as
+system service time increases in variability this feature needs to be
+implemented for more and more tasks.
+
+<LI> Try zooming in on two fractal windows in rapid succession so that they
+are simultaneously refining their images, then move the mouse over one of
+them.  Notice that the application concentrates its resources on the selected
+fractal.  The other fractal may get some CPU attention when the primary is
+blocked for I/O or thread synchronization.
+
+<LI> Now try the same, but point the mouse outside both windows.  Observe
+that the two fractals improve in resolution at roughly the same rate,
+roughly half as fast as before.
+
+<LI> To try the color enhancement feature, first zoom in on a part of the
+fractal
+	
+<!WA8><!WA8><!WA8><img alt="[low contrast fractal]" 
+width=71 height=46 align=right
+src="http://www.cs.washington.edu/homes/forman/seeit/lo.contrast.gif">
+
+	that has little variation in color, then quickly type 'c' to re-color
+it.  This runs the entire image through a histogram equalization function
+(it's slow).  Notice that this function is run on the successive images
+produced by the fractal generator.
+
+<LI> 
+To illustrate what is going on inside the application, do the following
+in rapid succession: zoom on an area, set the toggle button to open a new
+window when zooming, then type 'c'.  A new window will display the re-colored
+version of the first window.
+
+<br>
+<br>
+	
+<!WA9><!WA9><!WA9><img alt="[diagram of task graph]" 
+width=234 height=195 align=right border=1
+src="http://www.cs.washington.edu/homes/forman/seeit/tgraph.gif">
+
+	This diagram illustrates the task graph that was generated by this
+sequence of user events; the green tasks were added when you typed 'c'.  The
+output from the fractal image generator is consumed both by a display task
+for the first window and by a re-coloring task whose output goes to a second
+display task for the other window.  A series of refined images passes through
+this data-flow graph.
+
+<LI> When a portion of the task graph becomes disconnected from a useful
+output (such as the display or an internal program variable), the runtime
+system prunes it from the graph and garbage collects its associated storage.
+This happens when you zoom in on a fractal that is still refining.  You can't
+witness this at the user interface, except that the resource savings improve
+the performance of the tasks that you care about.
+
+</OL>
+
+
+
+
+<!WA10><!WA10><!WA10><img alt="================ fractal bar ================" 
+width=566 height=66 
+src="http://www.cs.washington.edu/homes/forman/lib/hr-fractal.star.gif">
+
+
+<h3>Photo Album Browser Demo:</h3>
+
+Suppose you want to show a friend at lunch a particular photograph of your
+baby, so you pull out your mobile computer and access your home photo album
+via the wireless network.  Given that downloading all your baby pictures
+would take a long time, you want a photo album browser that downloads and
+displays images incrementally, and that prioritizes bandwidth consumption
+among the photos as you search for the picture.  Imagine this scenario as you
+use the browser- try to find the sunset photograph quickly.  Keep in mind
+that the Internet provides higher bandwidth than a wireless network.  Also,
+the effect of prioritization becomes much more pronounced when the desired
+priorities for the various network connections are communicated to the
+wireless base station.  This has been implemented in an experimental setup,
+but is not available for demo on the Web.
+
+<OL>
+
+<LI> To observe the effect of priority, press return in the URL window to
+restart the downloads, then quickly open two pictures and move the mouse
+over the later one.  Observe that the selected picture gets refined faster
+than the other; this is more obvious in later refinements when the resolution
+is finer.   Each refinement quadruples the number of pixels in the image.
+
+<LI> The application pre-fetches one picture off the edge of the strip.  To
+observe this, restart the downloads, wait for a few resolution improvements
+&amp; note which picture is rightmost on the strip, then scroll to the right
+a few pictures.  Notice the difference in resolution of the first picture to
+the right vs. the others.
+
+</OL>
+
+
+
+<!-- Signature line follows: -->
+<br> 
+<br> 
+<!WA11><!WA11><!WA11><img alt="================================================================" 
+width=600 height=5 
+src="http://www.cs.washington.edu/homes/forman/lib/hr-rainbow.gif">
+
+<br>
+ 
+<address>George H. Forman, gforman@hpl.hp.com
+<br>
+<!WA12><!WA12><!WA12><a href="http://www.cs.washington.edu/homes/forman/"
+>home page</a>
+
+<!WA13><!WA13><!WA13><img alt=" " 
+width=1 height=1 
+src="http://www.cs.washington.edu/homes/forman/lib/dot_clear.gif">
+ 
+<!WA14><!WA14><!WA14><img alt=" " 
+width=1 height=1 
+src="http://www.cs.washington.edu/homes/forman/lib/dot_clear.gif">
+
+<!WA15><!WA15><!WA15><a href="mailto:gforman@hpl.hp.com"
+>mail</a>
+
+<!WA16><!WA16><!WA16><img alt=" " 
+width=1 height=1 
+src="http://www.cs.washington.edu/homes/forman/lib/dot_clear.gif">
+ 
+<!WA17><!WA17><!WA17><img alt=" " 
+width=1 height=1 
+src="http://www.cs.washington.edu/homes/forman/lib/dot_clear.gif">
+
+<!WA18><!WA18><!WA18><a href="http://www.cs.indiana.edu/finger/pugsly.cs.washington.edu/forman"
+>finger</a>
+
+<!WA19><!WA19><!WA19><img alt=" " 
+width=1 height=1 
+src="http://www.cs.washington.edu/homes/forman/lib/dot_clear.gif">
+ 
+<!WA20><!WA20><!WA20><img alt=" " 
+width=1 height=1 
+src="http://www.cs.washington.edu/homes/forman/lib/dot_clear.gif">
+
+<!WA21><!WA21><!WA21><a href="http://wings.buffalo.edu/cgi/xeroxgw?Seattle+WA&47&36&122&19"
+>map</a>
+
+<!WA22><!WA22><!WA22><img alt=" " 
+width=1 height=1 
+src="http://www.cs.washington.edu/homes/forman/lib/dot_clear.gif">
+ 
+<!WA23><!WA23><!WA23><img alt=" " 
+width=1 height=1 
+src="http://www.cs.washington.edu/homes/forman/lib/dot_clear.gif">
+
+<!WA24><!WA24><!WA24><a href="http://www.nnic.noaa.gov/cgi-bin/forecast.do-it?search=Seattle&state=Washington&html=yes&area=Local"
+>weather</a>
+
+<!WA25><!WA25><!WA25><img alt=" " 
+width=1 height=1 
+src="http://www.cs.washington.edu/homes/forman/lib/dot_clear.gif">
+ 
+<!WA26><!WA26><!WA26><img alt=" " 
+width=1 height=1 
+src="http://www.cs.washington.edu/homes/forman/lib/dot_clear.gif">
+
+<!WA27><!WA27><!WA27><a href="http://www.cs.washington.edu/"
+>CS Dept.</a>
+
+<!WA28><!WA28><!WA28><img alt=" " 
+width=1 height=1 
+src="http://www.cs.washington.edu/homes/forman/lib/dot_clear.gif">
+ 
+<!WA29><!WA29><!WA29><img alt=" " 
+width=1 height=1 
+src="http://www.cs.washington.edu/homes/forman/lib/dot_clear.gif">
+
+<!WA30><!WA30><!WA30><a href="http://www.washington.edu/"
+>UW (live picture)</a></address>
+
+<br> Generated: Wed Oct  2 11:18:37 PDT 1996
+</body>	
+</html>
+

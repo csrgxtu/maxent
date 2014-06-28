@@ -1,0 +1,136 @@
+Date: Tue, 14 Jan 1997 22:39:17 GMT
+Server: NCSA/1.5.1
+Last-modified: Wed, 18 Sep 1996 17:50:45 GMT
+Content-type: text/html
+Content-length: 5011
+
+<html>
+<title>EECS 498-2 Assignment 3</title>
+<body bgcolor=#FFFFFF text=#000000>
+<center>
+<h1>EECS 498-2: Assignment 3</h1>
+<h1>Program an Arcade Game</h1>
+<h2>Assigned: September 13, 1996</h2>
+<h2>Due Date: October 4, 1996</h2>
+</center>
+<hr>
+
+For assignment 3 you get to take your first crack at actually
+programming a game.  We will provide you with code (which we'll call
+the Arcade Package) which handles most of the low level messy stuff
+(such as selecting the video mode, setting up a back buffer and page
+flipping).  You have to design a (fairly) simple arcade game, draw the
+graphics and program the inner workings of your game.  You have three
+weeks to create a <b>working</b> arcade game, so design and software
+engineer carefully to make sure you are done.  We expect a game on the
+order of Centipede.
+
+<h3>Grading Criteria</h3>
+
+Your grade on assignment 3 will be based on 4 factors:
+
+<dl> 
+<dt> Is the game fully fuctional?  
+<dd> The most important thing that we're looking for is a working
+game.  If the game is almost but not quite finished or still contains
+bugs your grade will suffer.  When you design your
+game make sure you can finish the project within the three week time
+frame.  Create a schedule and stick to it.
+
+<dt> Is the game nontrivial?
+<dd> You won't get a good grade if your final game is just pong with
+different colors and a bigger paddle.  Your game doesn't have to be
+original (i.e. a clone of a classic arcade game is fine) but it should
+be something you are proud to hand in.
+
+<dt> Is the game well designed?
+<dd> We talked about designing a game and some of the design sins that
+are commonly made.  Make sure you show us that you were paying
+attention in class and learned something.
+
+<dt> Is your code well structured and commented?
+<dd> We will be looking at your code and the easier it is to read and
+follow the better mood we will be in when it comes time to decide on a
+grade.
+</dl>
+
+<h3>Tools</h3>
+
+To do this assignment you will need to use a C/C++ compiler (such as
+Borland C++ 4.2 which is available on CAEN machines), the <!WA0><a
+href="http://ai.eecs.umich.edu/classes/498-2/AP/">Arcade Package</a> (which is available on the class
+webpage), and a paint program (such as the Windows Paint program also
+available on CAEN machines).
+
+<dl>
+<dt> C/C++ Compiler
+<dd> The Borland C/C++ compiler is available on CAEN machines and
+should work well for this project.  Make sure when you create a
+project you set the Platform to DOS (Standard) and the Target Model to
+Large.  If necessary we may have an evening session to introduce people
+to the compiler and the Arcade Package.
+
+<dt> The <!WA1><a href="http://ai.eecs.umich.edu/classes/498-2/AP/">Arcade Package</a>
+<dd> This code has been written specifically for this assignment.  It
+handles all of the low level stuff that is such a pain in game
+programming.  On the class website you will find a simple Pong program
+which was written with the Arcade Package.  All you have to do is
+replace the pong code with your game.<p>
+
+Notes on the Arcade Package:
+<ul>
+<li> The Arcade Package is written in C and C++.
+<li> On Wednesday half of the lecture will be an introduction to the
+Arcade Package.  Please try to look the code over (and perhaps compile
+the Pong program) as this will be an excellent change to ask
+questions.
+<li> Your game will be limited to 320 by 200 pixels and 256 colors.
+<li> The arcade package is somewhat object oriented.  You will be
+creating game objects (i.e. paddles and balls in Pong) and for each
+object writing a number of functions which update the position of the
+object (Update), handle collisions with other objects (You_Hit), and
+draw the object (Draw).  In addition you will get input from the mouse
+or the keyboard.
+</ul>
+
+<dt> Paint Program
+<dd> You will have to create graphics for each of your game objects.
+You can use any paint program which creates PCX files.  The Paint
+program in windows is appropriate as is the shareware program Paint
+Shop Pro.
+</dl>
+
+<h3>What you hand in</h3>
+
+Three weeks from today (which is October 4th) you will hand in the
+following items.
+<ol>
+<li> A floppy disk with your game executable.
+<li> Printouts of all your code.
+<li> A manual for your game.
+<li> A write-up containing an explanation of your code (what the data
+structures are and how the program is organized) and anything special
+that you would like to point out to the grader.
+</ol>
+We will then begin the grueling task of playing all your games.
+
+<h3>Additional Notes</h3>
+
+<ul>
+
+<li> If you have questions about the Arcade Package please bring them
+up in class or email them to both <tt>vanlent@umich.edu</tt> and
+<tt>mikeott@umich.edu</tt>.
+
+<li> If bugs are found in the Arcade Package we will announce them in
+class and on the class webpage.  If you are having a problem please
+check the webpage before emailing for help.
+
+<li> Half of class on Wednesday will be devoted to explaining the
+Arcade Package.  Please don't miss this class.  If you are absolutely
+unable to make it we might be able to set up an appointment to cover
+the material.
+
+</ul>
+</body>
+</html>

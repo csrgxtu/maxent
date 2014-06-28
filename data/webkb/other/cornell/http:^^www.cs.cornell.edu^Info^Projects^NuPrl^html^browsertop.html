@@ -1,0 +1,93 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 25-Nov-96 00:41:04 GMT
+Content-Type: text/html
+Content-Length: 3220
+Last-Modified: Monday, 16-Oct-95 14:09:00 GMT
+
+<TITLE>	Nuprl Theory and Theorem Browser </TITLE>
+
+<H1> Nuprl Theory and Theorem Browser </H1> <P>
+
+The Nuprl proof libraries consist of <I>theorems</I> grouped into
+<I>theories</I>.  If you want to start at the beginning with a
+list of available theories, click the box below: <P>
+
+<FORM ACTION="http://dave.cs.cornell.edu/~eaton/NuPrl/cgi/nuprl-query.cgi" METHOD="POST">
+<INPUT TYPE="submit" VALUE="List Nuprl Theories">
+<INPUT TYPE="hidden" NAME="web-command" VALUE="req-list-theories"> <P>
+
+You may alter parameter settings for <B>List Nuprl Theories</B> below: <P>
+
+<INPUT TYPE="radio" CHECKED NAME="display-flag" VALUE="NONE">
+No display form supression. <BR>
+<INPUT TYPE="radio" NAME="display-flag" VALUE="WWWANNOY">
+Supress all tagged display rules. <BR>
+<INPUT TYPE="radio" NAME="display-flag" VALUE="TEMPLATE">
+Supress all concealing display rules. <P>
+
+Client window width, in characters: 
+<INPUT TYPE="text" NAME="window-width" VALUE="60" SIZE=6 MAXLENGTH=4> <P>
+<INPUT TYPE="reset" VALUE="Reset Settings"> <P>
+</FORM>
+
+<HR> <P>
+
+If you know the name of a particular theory or theorem you'd like
+to examine, you can fill out and submit the following form.
+Please specify either a <B>Theory</B> or <B>Theorem</B> by clicking
+the diamond-shaped box next to the appropriate choice: <P>
+
+<FORM ACTION="http://dave.cs.cornell.edu/~eaton/NuPrl/cgi/nuprl-query.cgi" METHOD="POST">
+Object Name: <INPUT TYPE="text" NAME="object-name" > <P>
+
+<INPUT TYPE="radio" NAME="web-command" VALUE="req-list-theorems" CHECKED>
+Theory. <BR>
+<INPUT TYPE="radio" NAME="web-command" VALUE="req-object">
+Theorem or other Nuprl Object. <P>
+
+<INPUT TYPE="submit" VALUE="Click Here to Submit" > <P>
+
+You may alter parameter settings for <B>Named Nuprl Object</B> below: <P>
+
+<INPUT TYPE="radio" CHECKED NAME="display-flag" VALUE="NONE">
+No display form supression. <BR>
+<INPUT TYPE="radio" NAME="display-flag" VALUE="WWWANNOY">
+Supress all tagged display rules. <BR>
+<INPUT TYPE="radio" NAME="display-flag" VALUE="TEMPLATE">
+Supress all concealing display rules. <P>
+
+Client window width, in characters: 
+<INPUT TYPE="text" NAME="window-width" VALUE="60" SIZE=6 MAXLENGTH=4> <P>
+
+<INPUT TYPE="reset" VALUE="Reset Settings">
+</FORM> <P>
+
+<P> <HR> <P>
+
+The Nuprl system provides a hypertext interface to prepared documents
+that use hypertext references to existing Nuprl objects.  You may
+begin using the hypertext interface by clicking the box below:
+
+<FORM ACTION="http://dave.cs.cornell.edu/~eaton/NuPrl/cgi/nuprl-query.cgi" METHOD="POST">
+<INPUT TYPE="submit" VALUE="Start Hypertext Browser" >
+<INPUT TYPE="hidden" NAME="web-command" VALUE="req-object">
+<INPUT TYPE="hidden" NAME="object-name" VALUE="EXTRAstartOB">
+</FORM> <P>
+
+<P> <HR> <P>
+
+<A HREF="settings-help.html"> <IMG SRC="../icons/info.gif">
+Information about Nuprl/WWW Browser Parameters</A> <P>
+
+<A HREF="hints-help.html"> <IMG SRC="../icons/bulb.gif">
+Some Helpful Hints and Common User Problems</A> <P>
+
+<P> <HR> <P>
+
+<A HREF="browser-help.html"> <IMG SRC="../icons/help.gif">
+Read User Guide for Nuprl/WWW Browser </A> <P>
+
+<A HREF="../index.html"> <IMG SRC="../icons/index.gif">
+ Return to Main Index </A> <P>
+<ADDRESS> Nuprl Project / nuprl@cs.cornell.edu </ADDRESS>

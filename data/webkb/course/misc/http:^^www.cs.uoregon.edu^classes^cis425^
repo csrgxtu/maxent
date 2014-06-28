@@ -1,0 +1,204 @@
+Date: Tue, 26 Nov 1996 19:16:57 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+Content-length: 6311
+Last-modified: Mon, 18 Nov 1996 16:50:45 GMT
+
+<HTML>
+<HEAD>
+<TITLE>cis 425 Principle of Programming Languages</TITLE>
+
+<body bgcolor="#FFFFFF">
+
+<p>
+<center><b>CIS425: Principle of Programming Languages</b></center>
+<p>
+
+<hr> 
+<ul>
+  <li> <b><!WA0><a href="#instructor">Instructor and GTF</a></b>
+  <li> <b><!WA1><a href="#textbook">Textbook and packets</a></b>
+  <li> <b><!WA2><a href="#grade">Grade policy</a></b>
+  <li> <b><!WA3><a href="#Exams">Exams</a></b>
+  <li> <b><!WA4><a href="#objectives">Course objetives</a></b>
+  <li> <b><!WA5><a href="#schedule">Schedule</a></b>
+  <li> <b><!WA6><a href="http://www.cs.uoregon.edu/classes/cis425/Announcements.html">Announcements</a></b>
+  <li> <b><!WA7><a href="http://www.cs.uoregon.edu/classes/cis425/Lectures.html">Lectures</a></b>
+  <li> <b><!WA8><a href="http://www.cs.uoregon.edu/classes/cis425/Assignments.html">Assignments</a></b>
+</ul>
+<hr>
+
+<a name="instructor"><b>Instructor and GTF</b></a>
+
+<ul>
+
+<li> Instructor: Zena Ariola, Room 305, x6-4448, ariola@cs, <!WA9><a href="http://www.cs.uoregon.edu/~ariola"><i>http://www.cs.uoregon.edu/~ariola</i></a>
+<li>Office hours: 11-12 UH or by-appointment
+<p>
+<li> GTF: Yong Xiao, Room 230, x6-1383, xiao@cs.
+<li> Office hours: 13-14 M, 14:30-15:30W or by-appointment
+<p>
+<li> Tutorial hours:17-18U, DES200
+
+</ul>
+
+<hr>
+
+<a name="textbook"><b>Textbook and Packets</b></a>
+
+<ul>
+
+<li> Textbook: <i>Programming Languages, Concepts and Constructs</i>, by Ravi Sethi, Addison-Wesley, 1995.
+<p>
+<li> Packets: 1. Introduction to Standard ML; 2. Lecture Notes
+
+</ul>
+
+<hr>
+
+<a name="grade"><b>Grading Policy:</b>
+
+<ul>
+
+Written assignments (6) will account for 30% of the grade.  
+The midterm will count 30%, the final examination 40%.
+Problem sets are to be solved in groups of two or three,
+and due in class (one copy per group)  on the day indicated on the
+problem set handout.
+		       
+</ul>
+
+<hr>
+
+<a name="Exams"><b>Midterm and Final Exams</b></a>
+
+<ul>
+
+<li> Midterm Exam: Nov. 7, 9:30am, Esslinger 107.
+<p>
+<li> <b>Final Exam: Dec. 9, 10:15am, Willamette Hall 110.</b>
+
+</ul>
+
+<hr>
+<a name="objectives"><b>Course Objectives:</b>
+
+<ul>
+
+The main goal of this course is to introduce you
+to the different aspects of programming languages,
+including their features, type systems, programming style, and
+implementation. We will consider
+th traditional programming languages,
+such as C and Pascal, and more recent languages, such
+as, ML and Java.  You will not become an expert programmer in
+the languages taught in this class. However, you will
+gain the necessary skills to understand the impact of
+language features on both the implementation and
+the abstractions they provide.
+For example, you will be able to understand why Java has gained so
+much interest in both the academic and industrial arena.
+
+We will cover different programming paradigms. Each paradigm provides
+a different way to solve a problem.
+As part of the assignments you will
+be required to program in C++, ML and Prolog.
+
+More specifically, the topics covered are:
+<ul>
+
+<li> <b>Compilation vs Interpretation:</b> advantages and disadvantages
+in terms of speed of execution and memory space.
+Overview of the structure of a compiler.
+<li> <b>Syntax:</b>  what are the legal expressions. Concepts:
+Context free grammars - BNF grammars - Parse trees and
+ambiguity - Abstract syntax trees - Lexical analyzer -
+Parser
+
+<li> <b>Imperative programming (Cobol, Fortran,C, Pascal, Ada):</b> This
+is the closest model to the machine architecture. Concepts:
+Side-effects - Types (static and dynamic, weak and strong) - 
+Scope (static and dynamic) - Parameter passing techniques 
+(call-by-value, call-by-refence, call-by-value-result, call-by-name) - 
+Aliasing - Block-structured languages - 
+Run-time structures ( Stacks vs heap) - Garbage collection
+<li> <b>Object-oriented programming (C++, Java, Eiffel):</b> 
+Support for programming in-the-lage. Concepts:
+Abstraction - Encapsulation - Information hiding - Inheritance -
+Subtyping
+
+<li> <b>Functional programming (Scheme,ML,Haskell,Miranda,Id,Gopher):</b>
+Based on mathematics which gives a theoretical foundation.
+Concepts:
+Strict vs non-strict functions -
+Higher-order functions -
+Currying -
+Lazy vs eager evaluation -
+Innermost vs outermost evaluation -
+Type inference - Type checking -  Overloading - Coercion - Polymorphism -
+Pattern matching
+
+<li> <b>Logic programming (Prolog):</b>
+Important as database query languages.
+Concept:
+Relations vs functions -
+Facts and Rules - Goals - Unification - Backtracking - Cuts
+
+</ul>
+If time allows us we will also study the current techniques for
+specifying the semantics (i.e. the meaning) of a programming language.
+You need to master these techniques if you want to
+reason about properties of your programs.
+
+</ul>
+
+<hr>
+
+<a name="schedule"><b>Schedule</b>
+
+<ul>
+<center> <b>Introduction</b> </center>
+	<ul>
+	<li> <i>Tuesday</i> 10/1, Introduction, Ch. 1 
+	<li> <i>Thursday</i> 10/3, Compilers vs Interpreter, Ch. 2-3.3 
+	<li> <i>Tuesday</i> 10/8, Syntactic structure
+	</ul>
+
+<center> <!WA10><a href="http://www.cs.uoregon.edu/classes/cis425/week6.html"><b>Imperative programming</b></a> </center>
+	<ul>
+	<li> <i>Thursday</i> 10/10, Control abstraction, Data abstraction, Ch. 3, 4 
+	<li> <i>Tuesday</i> 10/15, Types
+	<li> <i>Thursday</i> 10/17, Parameter Passing Techniques, Ch. 5
+	<li> <i>Tuesday</i> 10/22, Storage Management
+	<li> <i>Thursday</i> 10/24, <!WA11><a href="http://www.cs.uoregon.edu/classes/cis425/week3.html">Scope rules</a>
+	</ul>
+
+<center> <b>Object-oriented programming</b> </center>
+	<ul>
+	<li> <i>Tuesday</i> 10/29, Abstraction, Ch. 6
+	<li> <i>Thursday</i> 10/31, Encapsulation, Ch. 7 - except 7.7
+	<li> <i>Tuesday</i> 11/5, Information hiding
+	<li> <i>Thursday</i> 11/7, Java
+	</ul>
+
+<center> <!WA12><a href="http://www.cs.uoregon.edu/classes/cis425/funct01.html"><b>Functional programming</b></a> </center>
+	<ul>
+	<li> <i>Tuesday</i> 11/12, Features of Functional languages, Ch. 8
+	<li> <i>Thursday</i> 11/14, Typed language: <!WA13><a href="http://www.cs.uoregon.edu/classes/cis425/week4.html">ML</a>, Ch. 9 - Packet 1.
+	<li> <i>Tuesday</i> 11/19, Polymorphism in ML, <!WA14><a href="http://www.cs.uoregon.edu/classes/cis425/week5.html">Types and exceptions</a>
+	<li> <i>Thursday</i> 11/21, Untyped language: <!WA15><a href="http://www.cs.uoregon.edu/classes/cis425/week2.html">Scheme</a>, Ch. 10
+	<li> <i>Tuesday</i> 11/26, Data same as programs
+	</ul>
+
+<center> <!WA16><a href="http://www.cs.uoregon.edu/classes/cis425/week10.html"><b>Logic programming</b></a> </center>
+	<ul>
+	<li> <i>Tuesday</i> 12/3, Logic + control, Ch. 11
+	<li> <i>Thursday</i> 12/5, Prolog
+	</ul>
+
+</ul>
+
+<! Address information>
+<hr>
+<address>Maintainer of this page: <!WA17><a href="http://www.cs.uoregon.edu/~xiao">Yong Xiao</a><br>email: <!WA18><A HREF="mailto:xiao@cs.uoregon.edu">xiao@cs.uoregon.edu</A></address>
+</HTML>

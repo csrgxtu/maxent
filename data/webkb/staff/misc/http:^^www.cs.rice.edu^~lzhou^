@@ -1,0 +1,119 @@
+Date: Tue, 26 Nov 1996 00:16:40 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Fri, 06 Sep 1996 16:29:56 GMT
+Content-length: 3483
+
+<!-- prepared by dcamp@cs.rice.edu, with a little help from Homer -->
+<html><head>
+<TITLE>Lei Zhou's Home Page</TITLE>
+</head>
+<CENTER>  <P>
+
+<applet codebase=http://www.cs.rice.edu/~lzhou/applets/
+  code=Ticker.class 
+  width=400 height=40>
+<param name="fontname" value="Helvetica">
+<param name="fontsize" value=24>
+<param name="text" value="Welcome to Lei Zhou's homepage. I am very happy that you drop by!"> 
+</applet>
+
+</CENTER>
+<P>
+
+<APPLET code=ImageLoopItem
+  codebase=http://java.sun.com/applets/applets/ImageLoop/
+  width=80
+  height=70>
+  <PARAM name=nimgs value=10>
+  <PARAM name=img value=duke>
+  <PARAM name=pause value=1000>
+</APPLET>
+
+<applet codebase="http://java.sun.com/applets/applets/NervousText"
+        code=NervousText.class
+        width=500
+        height=50>
+<param name=text value="Hi, how are you doing today?">
+</applet>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Start JavaScript --
+function scrollmsg(msgpos)
+{
+  var sleep=125;
+  var blanks="               ";
+  var msg1="Hello!      ";
+  var msg2="for Internet Wizards, Visionaries, Builders and Doers.";
+  var msg3="Check us out at CRPC!";
+  var msg=blanks+blanks+blanks+blanks+blanks+msg1+blanks+msg2+blanks+msg3;
+  out=msg.substring(msgpos,msg.length);
+  window.status=out;
+  msgpos++;
+  if (msgpos <= msg.length) {
+    var exec="scrollmsg("+msgpos+")";
+    zzz=window.setTimeout(exec,sleep);
+  }
+}
+// -- End JavaScript -->
+</SCRIPT>
+
+<BODY BGCOLOR="#ffffff" onLoad="zzz=window.setTimeout('scrollmsg(1)',1);">
+
+<p>
+<h3>
+You are visitor number
+<!WA0><img
+src="http://www.cs.rice.edu/cgi-bin/Count.cgi?/home/lzhou/public_html/count.dat">
+since January 1, 1996 </h3></center>
+<hr>
+<b>
+
+
+<H1>Lei Zhou</H1>
+
+<P>
+<HR>
+<P>
+In 1994, Lei Zhou (lzhou@cs.rice.edu) joined the Tools for
+Machine-Independent Parallel Scientific Programming effort. He
+graduated <i>magna cum laude</i> from  <!WA1><a href =
+"http://www.pku.edu.cn/">Peking University</a> with a B.S. in
+Mechanics in 1985 and an M.S. in Computer Science in 1987. Then he
+worked at Beijing Software Lab, Chinese Academy of Science for two
+years. He continued his studies in 1990 and got his Ph.D. from the
+University of Paris in 1994, while all his research work had been done
+at <!WA2><a href = "http://www.ensmp.fr">Ecole Nationale Supérieure des
+Mines de Paris</a>. His research interests include performance
+evaluation, compiler design, and human-computer interfaces.  Dr. Zhou
+is a member of <!WA3><A HREF="http://info.acm.org">ACM</a> and 
+<!WA4><A HREF="http://www.ieee.org">IEEE</a>. 
+<P>
+For contact info, <!WA5><A HREF="http://www.cs.indiana.edu/finger/cs.rice.edu/lzhou">finger</A> lzhou@cs.rice.edu.
+<P>
+<UL>
+<LI><!WA6><A HREF="http://www.cs.rice.edu/~lzhou/pubs"></A>Publications
+<P>
+<LI><!WA7><A HREF="http://www.cs.rice.edu/~lzhou/Resume/resume.ps">Curriculum Vitae</A>
+<P>
+<LI>Affiliations
+<UL>
+<LI><!WA8><A HREF="http://www.cs.rice.edu/">Computer Science Department</A> home page
+<LI><!WA9><A HREF="http://www.cs.rice.edu/CRPC.html">Center for Research on
+Parallel Computation (CRPC)</A> home page
+<LI><!WA10><A HREF="http://www.cs.rice.edu/fortran-tools/fortran-tools.html">Fortran Tools</A> home page
+<LI><!WA11><A HREF="http://www.cs.rice.edu/fortran-tools/DSystem/DSystem.html">D System</A> home page
+<LI><!WA12><A HREF="http://www.rice.edu/">Rice University</A> home page
+</UL>
+</UL>
+<P>
+<HR>
+<!WA13><a href=mailto:lzhou@cs.rice.edu><!WA14><img src=http://www.cs.rice.edu/~lzhou/email.gif  border=0 ></a>
+To contact me, please send <!WA15><a href=mailto:lzhou@cs.rice.edu>lzhou@cs.rice.edu</a> an email.
+<!WA16><a href=mailto:lzhou@cs.rice.edu><!WA17><img src=http://www.cs.rice.edu/~lzhou/mailbox.gif  border=0 ></a>
+
+</BODY>
+
+</html>
+
+

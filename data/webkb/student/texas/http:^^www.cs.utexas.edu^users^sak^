@@ -1,0 +1,130 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 19:43:40 GMT
+Content-Type: text/html
+Content-Length: 3911
+Last-Modified: Sunday, 24-Nov-96 06:16:12 GMT
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Sundeep Abraham's Home Page
+</TITLE>
+<BODY TEXT="#FFFFFF" LINK="#FF9900" VLINK="#FF9900",
+BACKGROUND = "images/line.marble1.gif",onLoad="timerONE=window.setTimeout
+('scrollit_r2l(100)',500)">
+
+<P><BR>
+<SCRIPT><!-- Beginning of JavaScript Applet -------------------
+
+/* Copyright (C)1996 Web Integration Systems, Inc. DBA Websys, Inc.
+   All Rights Reserved.
+
+   This applet can be re-used or modified, if credit is given in 
+   the source code.
+
+
+   Chris Skinner, January 30th, 1996.
+   
+   Hacked for CNNfn by RD, Jan. 31, 1996
+*/
+
+function scrollit_r2l(seed)
+{
+        var m1  = "Hi, Welcome to my homepage.     ";
+        var m2  = "          If you want to contact me do it by e-mail. My id is sak@cs.utexas.edu   ";
+        
+        var msg=m1+m2;
+        var out = " ";
+        var c   = 1;
+
+        if (seed > 100) {
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 100 && seed > 0) {
+                for (c=0 ; c < seed ; c++) {
+                        out+=" ";
+                }
+                out+=msg;
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                    window.status=out;
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;
+                        var cmd="scrollit_r2l(" + seed + ")";
+                        window.status=out;
+                        timerTwo=window.setTimeout(cmd,100);
+                }
+                else {
+                        window.status=" ";
+                        timerTwo=window.setTimeout("scrollit_r2l(100)",75);
+                }
+        }
+}
+// -- End of JavaScript code -------------- -->
+
+<!-- begin
+// global variables
+var id,pause=0,position=0;
+function banner() {
+        // variables declaration
+        var i,k,msg="          Welcome to my Home Page....               ";
+        // increase msg
+        k=(50/msg.length)+1;
+        for(i=0;i<=k;i++) msg+=" "+msg;
+        // show it to the window
+        document.form2.banner.value=msg.substring(position,position+50);
+        // set new position
+        if(position++==msg.length) position=0;
+        // repeat at entered speed 
+        id=setTimeout("banner()",100); }
+// end --></SCRIPT>
+</P>
+
+<H1 ALIGN=CENTER><I><!WA0><!WA0><A HREF="http://www.cs.utexas.edu/cgi/finger/sak">Sundeep
+Abraham </A></I></H1>
+
+
+<CENTER><P><!WA1><!WA1><IMG SRC="http://www.cs.utexas.edu/users/sak/images/line.rainbow.gif" HEIGHT=14 WIDTH=559></P></CENTER>
+
+<P><FONT SIZE=+1><I> I am a Masters Student in the 
+<!WA2><!WA2><A HREF="http://www.cs.utexas.edu/">Computer
+Sciences Dept. </A>at <!WA3><!WA3><A HREF="http://wwwhost.cc.utexas.edu">University
+of Texas at Austin. </A>I did my undergraduate studies in Computer Sciences
+and Engineering at <!WA4><!WA4><A HREF="http://www.cs.utexas.edu/users/sak/crec.html">
+Regional Engg College, Calicut </A>in India. </I></FONT></P>
+
+<P><I><FONT SIZE=+1>
+My home country is <!WA5><!WA5><A HREF="http://hulk.bu.edu/misc/india">India </A>.
+In India I hail from the state of <!WA6><!WA6><A HREF="http://www.cs.cmu.edu/afs/cs/
+user/vipin/www/kerala.html">Kerala </A>. </FONT></I></P>
+
+<P><I><FONT SIZE=+1> 
+</P></I></FONT>
+
+
+<P><!WA7><!WA7><IMG SRC="http://www.cs.utexas.edu/users/sak/images/line.colorbar.gif" HEIGHT=1 WIDTH=585></P>
+
+
+<P><I><FONT SIZE=+1>To know how to contact me click <!WA8><!WA8><A HREF="http://
+www.cs.utexas.edu/users/sak/contact.html">here </A></FONT></I></P>
+
+<P><!WA9><!WA9><IMG SRC="http://www.cs.utexas.edu/users/sak/images/line.colorbar.gif" HEIGHT=1 WIDTH=585></P>
+
+
+<P><I><FONT SIZE=+1>This home page is under construction (i.e. I tinker
+with it from time to time). </FONT></I></P>
+
+<P><I>
+Hi, you are visitor number : </I><!WA10><!WA10><IMG 
+SRC="http://www.cs.utexas.edu/pub/cgi/number.xbm/www/users/sak/index.val" 
+HEIGHT=16 WIDTH=96 ALIGN=BOTTOM> </P>
+
+</BODY>
+</HTML>

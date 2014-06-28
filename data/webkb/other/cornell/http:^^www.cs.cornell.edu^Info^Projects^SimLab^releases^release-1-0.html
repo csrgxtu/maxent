@@ -1,0 +1,88 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 25-Nov-96 00:40:11 GMT
+Content-Type: text/html
+Content-Length: 3340
+Last-Modified: Tuesday, 21-Nov-95 20:16:57 GMT
+
+<TITLE>SimLab Release1-0</TITLE>
+<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><IMG SRC="http://www.cs.cornell.edu/Info/Projects/SimLab/images/simlab.gif"> 
+
+<h1> SimLab Software Release </h1>
+
+<p> <h2>Includes Algebra, Topology, and 2D Mesh Generator </h2>
+
+<P> This is the initial release of the SimLab software. This release
+includes mathematical functionality for algebraic and topological
+computations (Weyl), as well as code (using Weyl) for creating
+guaranteed-quality triangulations of planar areas.
+
+<p> <h2> How to get the SimLab software </h2> 
+
+<P> Implemented using
+the Common Lisp Object System (CLOS) in Common Lisp, the release is
+available by ftp as a compressed (gzip) tar file (633820 bytes)
+together with a plain text file "README-1-0" (4732 bytes) that
+describes how to install the software.  These are files are available
+via FTP at the site <b> ftp.cs.cornell.edu</b> in the directory <b>
+/pub/simlab/release/ </b> as <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A
+HREF="ftp://ftp.cs.cornell.edu/pub/simlab/release/r1-0/README">
+README </a> and <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A
+HREF="ftp://ftp.cs.cornell.edu/pub/simlab/release/r1-0/simlab.tar.gz">
+simlab.tar.gz </a>
+
+
+<h2> An illustration of the mesh generation application </h2>
+
+The purpose of a <b> mesh generation </b> algorithm is to take as
+input the boundary <i> B </i> of a region of space <i> R </i>, and
+create as output a triangulation of <i> R. </i>  This process is
+required for a variety of numerical modeling methods, such as the <b>
+finite element method (FEM).</b>  The <b> quality </b> of a given
+triangulation can be measured in a variety of ways, and is important
+for maintaining the numeric stability of the algorithm (such as FEM)
+that use the mesh.  The SimLab code for mesh generation (described <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A
+HREF="http://www.cs.cornell.edu/Info/People/chew/mesh.html">
+here</a>), created by <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a
+HREF="http://www.cs.cornell.edu/Info/People/chew/chew.html"> Paul
+Chew</A>, provides bounds on the minimum and maximum angles of the
+triangles of the mesh.
+
+<p> The process of creating a guaranteed quality mesh is illustrated in
+the following figures.  The first figure illustrates the input.  The
+boundary of the region is drawn in black, while the region for which
+a mesh is required is the area shown in green.  
+<p><h2> The Input</h2> <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><IMG SRC=http://www.cs.cornell.edu/Info/Projects/SimLab/releases/foil0.gif ALIGN=TOP>
+
+<p> The guaranteed quality mesh created by the automatic mesh
+generator is shown below:
+<p><h2> The Output</h2> <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><IMG SRC=http://www.cs.cornell.edu/Info/Projects/SimLab/releases/foilc.gif ALIGN=TOP> 
+
+<p>
+For more information on this use of the SimLab software, see the <!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><A
+HREF="http://www.cs.cornell.edu/Info/Projects/SimLab/madefast/home.html"> MADEFAST </A> pages.
+
+<P>
+All code is copyrighted Cornell University, 1995.
+
+
+<P> This code has been developed by Paul Chew, Paul Jackson, Sekhar
+Muddana, Rick Palmer, Todd Wilson and Richard Zippel in the Simlab
+group at Cornell University.  This material is <b> NOT</B> in the
+Public Domain, but permission to copy this software, to redistribute
+it, and to use it for any purpose is granted, subject to the
+restrictions and understandings described in the <!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><A
+HREF="ftp://ftp.cs.cornell.edu/pub/simlab/release/README">
+README</a> file contained in the distribution.
+
+<P> This work was supported in part by the Advanced Research Projects
+Agency of the Department of Defense under ONR Contract
+N00014-92-J-1989, by ONR Contract N00014-92-J-1839, and in part by the
+U.S. Army Research Office through the Mathematical Science Institute
+of Cornell University.
+
+
+
+
+<ADDRESS> Rick Palmer / rick@cs.cornell.edu </ADDRESS>
+

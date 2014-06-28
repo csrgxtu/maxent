@@ -1,0 +1,155 @@
+Date: Tue, 14 Jan 1997 20:29:29 GMT
+Server: NCSA/1.5
+Content-type: text/plain
+Last-modified: Tue, 27 Feb 1996 16:35:59 GMT
+Content-length: 5695
+
+Notes from Section meeting discussing the assembler.
+
+Two-Pass Assembly.
+
+You will need to write a two-pass assembler.  The first pass will
+note the line numbers for each label.  The second pass will generate
+code, and when branch/call statements are encountered, will use the
+offset from the the current line to the label as noted in pass 1.
+
+So, you will need two loops that pass over the code.  One way to loop
+over the code would be:
+
+line_t ln;
+
+start();
+for (ln = next_line(); END_OF_FILE != ln.format; ln = next_line())
+
+To help do the label calculation I have provided two routines:
+associate() and lookup().  
+
+void associate(char *s, int i);	/* associates string with given integer */
+int  lookup(char *s);		/* returns -1 if string is not found */
+
+associate takes a string and an integer (line number) and stores them.
+lookup() takes a string and returns the associated integer.  It would
+make sense to use associate() in the first pass and lookup() in the
+second pass.
+
+Note that for this code:
+	foo: 	add ....
+		sub ....
+		ba  foo
+
+when you generate code, the number you put into the branch target field
+for the ba instruction would be the number -2.  That is, you encode the
+distance in INSTRUCTIONS between the branch and its target.
+
+Code Generation.
+
+The front end converts all the text of the source file into binary.  In
+particular, numbers will be supplied to you in binary.  You can tell
+that by the fact that they are declared in C as int's.  In C, an int is
+a binary represented integer (in two's complement).
+
+You will need to take binary ints, and place them into the bitfields 
+described in chapter 8 of your book.  To do this in C:
+	Use the << operator to shift bits to the left.  The places
+		on the right will be filled with zeros.
+	Use the | (or) operator to "or" two bit patterns together.
+		This is a good way to combine bit patterns.
+	Use the & operator along with a "mask" bit pattern to set
+		certain bits to 0.   
+
+For example, to put the number -7 into a bit field from position 14 to
+18 in the instruction:
+
+	int instr;    /* the instruction */
+	int num	      /* the number; contains the value -7, say */
+
+	/* at the outset num contains 11111111111111111111111111111001 */
+
+	/* first mask all bits to 0 except those we want to keep */
+	/* this is a pattern of 5 1's since we want to keep 5 bits */
+	num = num & 0x1f;
+
+	/* now num contains 00000000000000000000000000011001 */
+
+	/* now shift the bits to their proper location */
+	num = num << 14;
+
+	/* now num contains 00000000000001100100000000000000 */
+
+	/* now "or" them into the instruction */
+	instr = instr | num;	
+
+
+Finally, when you have filled all the bitfields in the instruction,
+write the bits to stdout as follows:
+
+	fwrite(&instr, sizeof(instr), 1, stdout);
+
+Frequently asked questions about the SPARC assembler project:
+--
+When I run the program I get "Illegal instruction (core dumped)".  Does
+this mean that my assembler is not converting the assembly file
+correctly into machine code?  
+
+Exactly.   Your assembler generated a bit pattern that the processor cannot
+interpret as an instruction.
+--
+Is there any way I can look at the machine code produced by my assembler
+program?  
+
+There are two ways.   First, use "od -X":
+
+% od -X fib.ao
+0000000 9de3bfc0 a0080010 a2102001 a6102001
+0000020 a8100018 10800006 01000000 a4040011
+0000040 a0100011 a2100012 a604e001 80a4c014
+0000060 06bffffb 01000000 b0100012 81c7e008
+0000100 81e80000
+
+The lefthand column is the byte adress of the first word, in octal.  The
+other columns are the binary words in your machine language file.
+
+An even more useful thing to do is to ask gdb to tell you what
+instructions you have generated, using gdb's "disassemble" command.
+
+Load the "runner" into gdb, set a breakpoint at the line that calls
+"pgm", run the program (hitting the breakpoint), use "si" until gdb tells
+you you are in the subroutine you've written, which is called pgm(),
+then "disass" the subroutine (your code).
+
+You should look at the source for "runner" to see how it works to
+understand why this works. 
+--
+What's going to happen when we try to stick a 32 bit number into a 22 
+bit spot, like in a format 2 .... or in format 3, put a 32 bit immediate 
+into a spot that's too small for it? Also, if the address in format 1 is 
+negative, using 2's complement don't we need all those bits?
+
+Take the case of moving a 32 bit number into a 22 bit field.  First
+assume the number is positive.  It's OK to throw away the high 10 bits
+if they are all zero, right?  That is, if the actual value contained in
+the 32-bit field can be represented in 22 bits, then the 10 high order
+bits are zero anyway.  If the number can't be represented in 22 bits
+(bigger than 4M), then there is nothing we can do anyway -- the user has
+to be alerted of an error condition.  So, the answer is, make sure the
+high order bits are zero, and if they are, throw them away, otherwise
+signal an error.
+
+The case of negative numbers is analagous, with 1's replacing 0's in the
+high order positions.   If the negative number can be encoded in 22
+bits, then the 10 high order bits are all 1's and they can be thrown
+away. (Think about it -- to get the positive version of the number we
+would flip the bits, so those ones would become zeroes).
+--
+The "ta" instruction:  This is just one of the family of trap
+instructions, which are format 3 instructions.  Chapter 8 refers to the
+whole set of them as the "ticc" instruction.  Instead of using Chapter 8
+for this instruction, look at p. 386 in Appendix C.
+--
+How can I send an error message to the terminal if output is redirected?
+
+Send your error messages to "stderr" using fprintf:
+	fprintf(stderr, "Error: bad input\n");
+
+
+

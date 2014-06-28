@@ -1,0 +1,77 @@
+Date: Wed, 20 Nov 1996 19:23:15 GMT
+Server: NCSA/1.4
+Content-type: text/html
+Last-modified: Fri, 19 Jul 1996 18:45:06 GMT
+Content-length: 3021
+
+<!WA0><img ALIGN=middle src="http://HTTP.CS.Berkeley.EDU/Research/Projects/parallel/castle/split-c/split-c.gif">
+<TITLE>Split-C</TITLE>
+<H1>Split-C - UC Berkeley, CS Division</H1>
+<HR>
+
+Split-C is a parallel extension of the C programming language that
+supports efficient access to a global address space on current
+distributed memory multiprocessors.  It retains the "small language"
+character of C and supports careful engineering and optimization of
+programs by providing a simple, predictable cost model.  This is in
+stark contrast to languages that rely on extensive program
+transformation at compile time to obtain performance on parallel
+machines.  Split-C programs do what the programmer specifies; the
+compiler takes care of addressing and communication, as well as code
+generation.  Thus, the ability to exploit parallelism or locality is not
+limited by the compiler's recognition capability, nor is there need to
+second guess the compiler transformations while optimizing the program.
+The language provides a small set of global access primitives and simple
+parallel storage layout declarations.  These seem to capture most of the
+useful elements of shared memory, message passing, and data parallel
+programming in a common, familiar context. <P>
+
+Split-C is currently implemented on the Thinking Machines Corp. CM-5,
+the Intel Paragon, the IBM SP-2, and the Meiko CS-2, and is under
+development on the Cray T3D.  All versions are built using the Free
+Software Foundation's GCC and the message passing systems available on
+each machine.  Faster implementations are underway for the Meiko CS-2 
+using the Elan libraries and for networks of workstations using <!WA1><A 
+HREF="http://now.cs.berkeley.edu/AM/active_messages.html">Active Messages</A>.
+It has been used extensively as a teaching tool in parallel computing
+courses and hosts a wide variety of applications.  Split-C may also be
+viewed as a compilation target for higher level parallel languages. <P>
+
+Available documentation for Split-C includes the following:
+
+<UL> 
+
+<LI><!WA2><A HREF="http://HTTP.CS.Berkeley.EDU/Research/Projects/parallel/castle/split-c/split-c.tr.html">Parallel Programming in Split-C</A>, which
+introduces the language through an example (<!WA3><A 
+href="ftp://ftp.cs.berkeley.edu/ucb/CASTLE/Split-C/sc93.ps.Z">PostScript 
+version</A>)
+
+<LI><!WA4><A href="ftp://ftp.cs.berkeley.edu/ucb/CASTLE/Split-C/tutor.ps">Introduction to Split-C</a>, a tutorial introduction to Split-C
+
+<LI><!WA5><A HREF="http://www.cs.berkeley.edu/~chad/meiko.ps">Implementing Split-C on the Meiko CS-2: Preliminary Results</A>
+
+<LI><!WA6><A href="ftp://ftp.cs.berkeley.edu/ucb/CASTLE/Split-C/">Split-C Releases</a>
+
+</UL>
+
+<!WA7><A HREF="http://HTTP.CS.Berkeley.EDU/Research/Projects/parallel/castle/split-c/download.html">Download the Split-C distribution</A> for your platform (Meiko only - other platforms soon to be added)
+<p>
+
+
+Related projects include:
+
+<UL>
+<LI><!WA8><A HREF="http://HTTP.CS.Berkeley.EDU/Research/Projects/parallel/castle/mantis">The Mantis Parallel Debugger</A>
+</UL>
+
+Applications include:
+
+<UL>
+<LI><!WA9><A HREF="http://HTTP.CS.Berkeley.EDU/Research/Projects/parallel/castle/split-c-apps/connect.html">Connected Components</A>
+<LI><!WA10><A HREF="http://HTTP.CS.Berkeley.EDU/Research/Projects/parallel/castle/split-c-apps/sort.html">Sorting</A>
+</UL>
+
+<HR>
+<!WA11><A href="http://http.CS.Berkeley.EDU/">
+<!WA12><img ALIGN=middle src="http://HTTP.CS.Berkeley.EDU/Research/Projects/parallel/castle/campanile.gif"> Back to CS Division Home Page</a>
+<HR>

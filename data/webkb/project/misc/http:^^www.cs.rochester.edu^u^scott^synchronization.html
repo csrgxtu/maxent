@@ -1,0 +1,158 @@
+Date: Wednesday, 20-Nov-96 20:04:46 GMT
+Server: NCSA/1.3
+MIME-version: 1.0
+Content-type: text/html
+Last-modified: Friday, 11-Oct-96 15:30:22 GMT
+Content-length: 6317
+
+<HTML>
+<HEAD>
+<TITLE>High-Performance Synchronization</TITLE>
+</HEAD>
+<BODY BACKGROUND="patterns/yellow_paper.gif">
+<!WA0><IMG ALIGN=MIDDLE SRC="http://images/urcslogo.gif">
+<B>NSF grant CCR-9319445</B>
+<H1>High-Performance Synchronization for Shared-Memory Parallel Programs</H1>
+<BLOCKQUOTE>
+<!WA1><A HREF="http://www.cs.rochester.edu/urcs.html">
+Computer Science Department</A><BR>
+University of Rochester<BR>
+Rochester, NY  14627-0226<BR>
+4-1-94 through 9-30-97<BR>
+</BLOCKQUOTE>
+<P>
+With increases in the size and availability of parallel processors with
+shared-memory programming models, high-performance synchronization is
+becoming increasingly important.
+Several groups, including ours, have demonstrated in recent years that
+software synchronization algorithms can scale well to very large
+numbers of processors, and that they can avoid certain negative
+interactions with high-performance scheduling algorithms.
+We are continuing this research in several directions, including
+(1) mechanisms for cooperative synchronization and scheduling,
+which minimize unnecessary spinning, maximize processor locality, and
+avoid contention for both lock and non-lock data;
+(2) comparative evaluation of alternative mechanisms for atomic update of
+shared data structures, including locks, non-blocking synchronization,
+and function shipping;
+(3) implementation of atomic hardware primitives on scalable
+architectures;
+(4) evaluation of the interaction of synchronization with coherence; and
+(5) new synchronization algorithms.
+
+<H2>Principal Investigator</H2>
+<BLOCKQUOTE>
+<!WA2><A HREF="http://www.cs.rochester.edu/u/scott/home.html">Michael L. Scott</A><BR>
+Associate Professor and Department Chair<BR>
+<tt>scott@cs.rochester.edu</tt><BR>
+716-275-7745
+</BLOCKQUOTE>
+<H2>Recent Graduates</H2>
+<UL>
+<LI><!WA3><A HREF="http://www.cs.rochester.edu/users/grads/kthanasi/">
+Leonidas Kontothanassis</A>
+<LI><!WA4><A HREF="http://www.cs.rochester.edu/users/grads/bob/">
+Bob Wisniewski</A>
+</UL>
+<H2>Graduate Students</H2>
+<UL>
+<LI><!WA5><A HREF="http://www.cs.rochester.edu/u/michael/home.html">
+Maged Michael</A>
+<LI><!WA6><A HREF="http://www.cs.rochester.edu/u/gchunt/home.html">
+Galen Hunt</A>
+<LI><!WA7><A HREF="http://www.cs.rochester.edu/u/srini/home.html">
+Srinivasan Parthasarathy</A>
+</UL>
+<H2>Publications</H2>
+<UL>
+<LI><!WA8><A HREF="http://www.cs.rochester.edu/u/scott/synchronization/pubs.html">Project-specific papers</A>
+<LI><!WA9><A HREF="http://www.cs.rochester.edu/trs/systems-trs.html">
+Systems Technical Report Archive</A>
+</UL>
+<H2>Pseudocode</H2>
+<UL>
+<LI>
+<!WA10><A HREF="http://www.cs.rochester.edu/u/scott/synchronization/pseudocode/ss.html">
+Scalable spinlocks and barriers.</A>
+Includes test-and-set and ticket locks; queue locks; and
+centralized, tree-based, and fft-style (``butterfly'') barriers.
+From the 1991 <i>TOCS</i> paper.
+<LI>
+<!WA11><A HREF="http://www.cs.rochester.edu/u/scott/synchronization/pseudocode/rw.html">
+Scalable busy-wait reader-writer locks.</A>
+Includes reader-preference, writer-preference, and fair locks.
+From the 1991 <i>PPoPP</i> paper.
+<LI>
+<!WA12><A HREF="http://www.cs.rochester.edu/u/scott/synchronization/pseudocode/adaptive.html">
+Scalable adaptive combining tree barriers.</A>
+Combine local-only spinning, logarithmic critical paths, amortization of
+overhead for skewed arrival, and ``fuzziness''.
+From the 1994 <i>IJPP</i> paper.
+<LI>
+Variations on Lamport's fast mutual exclusion lock.  Use no atomic
+instructions other than read and write.
+From UR TR 460 (submitted for publication).
+<LI>
+<!WA13><A HREF="http://www.cs.rochester.edu/u/scott/synchronization/pseudocode/ps_and_sc.html">
+Preemption-safe and scheduler-conscious synchronization algorithms.</A>
+Includes two queue-based mutual exclusion locks; test-and-set and ticket
+locks; a fair, scalable, queue-based reader-writer lock; competitive and
+optimal-time small-scale barriers; and a scalable barrier.
+All algorithms avoid busy-waiting for action by preempted processes,
+including those waiting in line for a FIFO queue or ticket lock.  Most
+employ a widened kernel-user interface.
+Revised from UR TR 550; to appear in <i>ACM TOCS</i>.
+<LI>
+<!WA14><A HREF="http://www.cs.rochester.edu/u/scott/synchronization/pseudocode/heap.html">
+A highly-concurrent multi-lock concurrent priority queue.</a>
+Uses bottom-up insertions and ``bit-reversal'' choice among fringe nodes.
+<LI>
+<!WA15><A HREF="http://www.cs.rochester.edu/u/scott/synchronization/pseudocode/queues.html">
+Fast concurrent queue algorithms.</A>
+We believe these algorithms to be the best concurrent queues available,
+for almost any application.
+</UL>
+<H2>Executable Code</H2>
+<UL>
+<LI>Basic and scalable spinlocks and barriers.
+Code to run on the
+<!WA16><A HREF="ftp://ftp.cs.rochester.edu/pub/packages/scalable_synch/locks_and_barriers/Symmetry.tar.Z">Sequent Symmetry</A>,
+<!WA17><A HREF="ftp://ftp.cs.rochester.edu/pub/packages/scalable_synch/locks_and_barriers/Bfly1.tar.Z">BBN Butterfly 1</A>, and
+<!WA18><A HREF="ftp://ftp.cs.rochester.edu/pub/packages/scalable_synch/locks_and_barriers/TC2000.tar.Z">BBN TC2000</A>.
+<LI>
+Scalable busy-wait reader-writer locks.
+Code to run on the
+<!WA19><A HREF="ftp://ftp.cs.rochester.edu/pub/packages/scalable_synch/read_write.tar.Z">BBN TC2000</A>.
+<LI>
+Scalable adaptive combining tree barriers.
+Code to run on the
+<!WA20><A HREF="ftp://ftp.cs.rochester.edu/pub/packages/scalable_synch/adaptive/Bfly1.tar.Z">
+BBN Butterfly 1</A>,
+<!WA21><A HREF="ftp://ftp.cs.rochester.edu/pub/packages/scalable_synch/adaptive/TC2000.tar.Z">
+BBN TC2000</A>, and
+<!WA22><A HREF="ftp://ftp.cs.rochester.edu/pub/packages/scalable_synch/adaptive/KSR1.tar.Z">
+Kendall Square KSR 1</A>,
+<LI>
+Variations on Lamport's fast mutual exclusion lock.  Code to run on the
+<!WA23><A HREF="ftp://ftp.cs.rochester.edu/pub/packages/scalable_synch/fast/locks_sgi.c">Silicon Graphics Iris</A>.
+<LI>
+Preemption-safe and scheduler-conscious synchronization algorithms.
+Code to run on the
+<!WA24><A HREF="ftp://ftp.cs.rochester.edu/pub/packages/sched_conscious_synch/multi.KSR.tar.Z">Kendall Square KSR 1</A>
+and
+<!WA25><A HREF="ftp://ftp.cs.rochester.edu/pub/packages/sched_conscious_synch/multi.SGI.tar.Z">Silicon Graphics Challenge</A>.
+<LI>
+<!WA26><A HREF="ftp://ftp.cs.rochester.edu/pub/packages/concurrent_heap">
+A highly-concurrent multi-lock concurrent priority queue.</a>
+Code to run on the SGI Challenge.
+<LI>
+<!WA27><A HREF="ftp://ftp.cs.rochester.edu/pub/packages/sched_conscious_synch/concurrent_queues/concurrent_queues.tar.gz"> Fast concurrent queue algorithms</A>.
+Includes SGI Challenge code for our two-lock and non-blocking queues, and
+for previous algorithms by other researchers.
+</UL>
+<HR>
+<ADDRESS>Last Change: 23 August 1996 /
+<!WA28><A HREF="mailto:scott@cs.rochester.edu">scott@cs.rochester.edu</A>
+</ADDRESS>
+</BODY>
+</HTML>

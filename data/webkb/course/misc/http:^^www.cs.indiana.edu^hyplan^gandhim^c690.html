@@ -1,0 +1,1296 @@
+Date: Wed, 20 Nov 1996 22:28:46 GMT
+Server: Apache/1.0.3
+Content-type: text/html
+Content-length: 38204
+Last-modified: Wed, 29 Mar 1995 06:29:08 GMT
+
+<HTML>
+
+<HEAD>
+<TITLE>C690: Managing and Visualizing Multimedia Data</TITLE>
+<LINK REV="made" HREF="mailto:gandhim@indiana.edu">
+</HEAD>
+
+<BODY>
+<H2 ALIGN=CENTER>C690: Managing and Visualizing Multimedia Data</H2>
+
+This seminar introduces user interface and database issues arising in
+multimedia systems.  Specifically, we will look at <EM>data
+modeling</EM>, <EM>data querying</EM> and <EM>data visualization</EM>
+issues relating to audio and video data.  The lectures will cover the
+basic concepts and individual/team projects will explore the practical
+issues.
+
+<A NAME="toc"><H3>Table of Contents (TOC)</H3></A>
+<UL>
+<LI> <!WA0><A HREF="#whatsnew"> What's new</A>
+<LI> <!WA1><A HREF="#general"> General information</A>
+<LI> <!WA2><A HREF="#description"> Course description</A>
+<LI> Lectures
+<UL>
+<LI> <!WA3><A HREF="#lschedule"> Lecture schedule (overview)</A>
+<LI> <!WA4><A HREF="#calendar"> Lecture schedule (details)</A>
+</UL>
+<LI> Projects
+<UL>
+<LI> <!WA5><A HREF="#pschedule"> Project schedule (overview)</A>
+<LI> <!WA6><A HREF="#projecthomes"> Project home pages</A>
+<LI> <!WA7><A HREF="#deliverables"> Project deliverables</A>
+<LI> <!WA8><A HREF="#tools"> Development tools</A>
+</UL>
+<LI> References
+<UL>
+<LI> <!WA9><A HREF="#references"> References (core lectures)</A>
+<LI> <!WA10><A HREF="#referencessl"> References (student lectures)</A>
+</UL>
+</UL>
+
+Please <!WA11><A HREF="mailto:gandhim@indiana.edu">email</A>, if you have any
+comments or suggestions. 
+
+<HR>
+<HR>
+<A NAME="whatsnew"><H3 ALIGN=CENTER>What's new
+<BR><!WA12><A NAME=1 HREF="#toc">(TOC)</A>
+</H3>
+</A>
+
+<DL>
+<DT> <STRONG>March 27</STRONG>
+ <DD> Added a calendar to the 
+<!WA13><A HREF="#calendar"> Lecture schedule (details)</A>
+section to ease navigation.  
+You need to use "netscape11b" to take advantage of this feature.
+
+<DT> <STRONG>February 27</STRONG>
+ <DD> Split the references into 
+<!WA14><A HREF="#references"> References (core lectures)</A> 
+and
+<!WA15><A HREF="#referencessl"> References (student lectures)</A> sections.
+The former section retains the original references. Added 
+<!WA16><A NAME=1 HREF="#toc">(TOC)</A>
+links to ease navigation back to the table of contents.
+
+<DT> <STRONG>February 20</STRONG>
+ <DD> Added more details to the detailed calendar which is now
+accessible using the 
+<!WA17><A HREF="#calendar"> Lecture schedule (details)</A> 
+heading.  Indexed the 
+<!WA18><A HREF="#references"> References</A>
+section using a more conventional citation scheme. Created 
+<!WA19><A HREF="http://www.cs.indiana.edu/hyplan/gandhim/authoring.html">
+A Guide to Authoring HTML Documents</A>.
+
+<DT> <STRONG>February 9</STRONG>
+ <DD> Removed the Project Description section. The projects are now
+described by the <!WA20><A HREF="#projecthomes"> Project Home Pages</A>.
+
+<DT> <STRONG>February 4</STRONG>
+ <DD> Refined the <!WA21><A HREF="#deliverables">Project deliverables</A> and 
+the <!WA22><A HREF="#pschedule">Project schedule</A> sections.
+
+<DT> <STRONG>February 2</STRONG>
+ <DD> Added slide notes for <!WA23><A HREF="#slides"> Object-oriented data
+management</A> -- began reorganization of project specific material
+into <!WA24><A HREF="#projecthomes"> Project Home Pages</A> -- added a <!WA25><A
+HREF="#whatsnew"> What's new</A> and a <!WA26><A HREF="#deliverables">
+Project deliverables</A> section.
+</DL>
+
+<HR>
+<A NAME="general"><H3 ALIGN=CENTER>General Information
+<BR><!WA27><A NAME=1 HREF="#toc">(TOC)</A>
+</H3>
+</A>
+
+<DL>
+<DT> Instructors
+<DD> <!WA28><A NAME=1 HREF="http://www.cs.indiana.edu/people/e/edrbtsn.html">
+	Ed Robertson</A> <BR>
+	<UL> 
+	<LI> Office Hours: MR 10:00-11:00pm
+	<LI> Email: edrbtsn@cs.indiana.edu
+	</UL>
+     <!WA29><A NAME=1 HREF="http://www.cs.indiana.edu/people/v/vgucht.html">
+	Dirk Van Gucht</A> <BR>
+	<UL> 
+	<LI> Office Hours: M 11:15-12:15, W 11:30-12:30
+	<LI> Email: vgucht@cs.indiana.edu
+	</UL>
+     <!WA30><A NAME=1 HREF="http://www.cs.indiana.edu/hyplan/gandhim.html">
+	Munish Gandhi</A> <BR>
+	<UL> 
+	<LI> Office Hours: TR 3:00-4:00pm
+	<LI> Email: gandhim@indiana.edu
+	</UL>
+<DT> Lecture
+<DD> Section 2044, MW 4:00-5:15, WH006<BR>
+<DT> Newsgroup
+<DD> <!WA31><A NAME=1 HREF="news:ac.c.690.mmdb">ac.c.690.mmdb</A>
+</DL> 
+
+<HR>
+<A NAME="description"><H3 ALIGN=CENTER>Course description
+<BR><!WA32><A NAME=1 HREF="#toc">(TOC)</A>
+</H3>
+</A>
+
+This seminar will explore the user interface/database boundary,
+especially in the context of multimedia systems.  The goal is an
+architecture where these separate components share more by way 
+of common concepts and structures and less through procedural interfaces.
+
+<P>
+The intention here is to conceptualize and implement multimedia
+objects having semantically relevant structure amenable to querying
+and manipulation, in contrast to current multimedia systems which lack
+the database perspective of data independence and associated query
+capabilities and to current databases which treat multimedia objects
+as "blobs",  if at all.
+
+<P>
+The seminar will develop prototype implementations which present
+diverse information -- such as movies, sound tracks, and even
+traditional relational data -- within a unified conceptual framework
+and presentation environment.  This implementation will be done by
+teams who bring a variety of experiences to bear on the multifaceted
+issues which will arise. 
+
+<HR>
+<A NAME="lschedule">
+<H3 ALIGN=CENTER>Lecture schedule (overview)
+<BR><!WA33><A NAME=1 HREF="#toc">(TOC)</A>
+</H3>
+</A>
+
+<DL>
+
+<DT> <STRONG>Weeks 1, 2, 3: Introduction and Data Modeling</STRONG> 
+<DD> Introduction -- relational databases -- algebra, calculus and QBE --
+object-oriented databases -- Track data model -- algebra, rule
+language, and visual language
+
+<DT> <STRONG>Weeks 4, 5: Digital Media</STRONG>
+<DD> Digital signal processing -- audio -- digital audio -- video --
+digital video -- audio compression -- video compression 
+
+<DT> <STRONG>Weeks 6, 7: Data Visualization</STRONG>
+<DD> Mental models - human information processing - Metaphors and
+analogies -- Visualizing data: hierarchical, relational, object
+oriented, time-based -- Visualizing queries: boolean, relational,
+object-oriented, time-based
+
+<DT> <STRONG>Weeks 8-11: Student lectures</STRONG>
+<DD> Each student will present a lecture on a topic of their
+choice. (It may relate to the fundamental concepts which underly their
+projects).
+
+<DT> <STRONG>Weeks 12-15: Student projects</STRONG>
+<DD> The students will present the design and implementations for
+their projects.
+
+</DL>
+
+<HR>
+<A NAME="calendar">
+<H3 ALIGN=CENTER>Lecture schedule (details)
+<BR><!WA34><A NAME=1 HREF="#toc">(TOC)</A>
+</H3>
+</A>
+
+<CENTER>
+<TABLE border=3 cellpadding=4>
+  <CAPTION align=bottom>(Messed up? You need to use <B>netscape11b</B>)</CAPTION>
+   <BR>
+  <TR align=center>
+	<th rowspan=2></th>
+	<th colspan=2>1st week</th>
+	<th colspan=2>2nd week</th>
+	<th colspan=2>3rd week</th>
+	<th colspan=2>4th week</th>
+	<th colspan=2>5th week</th>
+  </TR>
+  <TR align=center>
+	<th>M</th>
+	<th>W</th>
+	<th>M</th>
+	<th>W</th>
+	<th>M</th>
+	<th>W</th>
+	<th>M</th>
+	<th>W</th>
+	<th>M</th>
+	<th>W</th>
+  </TR>
+  <TR align=center>
+	<th>January</th>
+	<td>2</td>
+	<td>4</td>
+	<td><!WA35><A HREF="#ls0109">9</A></td>
+	<td><!WA36><A HREF="#ls0111">11</A></td>
+	<td><!WA37><A HREF="#ls0116">16</A></td>
+	<td><!WA38><A HREF="#ls0118">18</A></td>
+	<td><!WA39><A HREF="#ls0123">23</A></td>
+	<td><!WA40><A HREF="#ls0125">25</A></td>
+	<td><!WA41><A HREF="#ls0130">30</A></td>
+	<td>&nbsp;</td>
+  </TR>
+  <TR align=center>
+	<th>February</th>
+	<td>&nbsp;</td>
+	<td><!WA42><A HREF="#ls0201">1</A></td>
+	<td><!WA43><A HREF="#ls0206">6</A></td>
+	<td><!WA44><A HREF="#ls0208">8</A></td>
+	<td><!WA45><A HREF="#ls0213">13</A></td>
+	<td><!WA46><A HREF="#ls0215">15</A></td>
+	<td><!WA47><A HREF="#ls0220">20</A></td>
+	<td><!WA48><A HREF="#ls0222">22</A></td>
+	<td><!WA49><A HREF="#ls0227">27</A></td>
+	<td>&nbsp;</td>
+  </TR>
+  <TR align=center>
+	<th>March</th>
+	<td>&nbsp;</td>
+	<td><!WA50><A HREF="#ls0301">1</A></td>
+	<td><!WA51><A HREF="#ls0306">6</A></td>
+	<td><!WA52><A HREF="#ls0308">8</A></td>
+	<td>13</td>
+	<td>15</td>
+	<td><!WA53><A HREF="#ls0320">20</A></td>
+	<td><!WA54><A HREF="#ls0322">22</A></td>
+	<td><!WA55><A HREF="#ls0327">27</A></td>
+	<td><!WA56><A HREF="#ls0329">29</A></td>
+  </TR>
+  <TR align=center>
+	<th>April</th>
+	<td><!WA57><A HREF="#ls0403"></A>3</td>
+	<td><!WA58><A HREF="#ls0405">5</A></td>
+	<td><!WA59><A HREF="#ls0410">10</A></td>
+	<td><!WA60><A HREF="#ls0412">12</A></td>
+	<td><!WA61><A HREF="#ls0417">17</A></td>
+	<td><!WA62><A HREF="#ls0419">19</A></td>
+	<td><!WA63><A HREF="#ls0424">24</A></td>
+	<td><!WA64><A HREF="#ls0426">26</A></td>
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+  </TR>
+</TABLE>
+</CENTER>
+
+
+<DL>
+
+<A NAME="ls0109">
+<DT> <STRONG>January 9</STRONG>
+<DD> <I>Chia-Lin, Bob: </I>Demonstration of past work
+
+<A NAME="ls0111">
+<DT> <STRONG>January 11</STRONG>
+<DL> 
+<DT> <I>Dirk: </I>Data modeling  
+<DD> 
+These
+<!WA65><A HREF="http://www.cs.indiana.edu/hyplan/gandhim/C690/DirksSlides/datamodeling.ps">slides</A>
+define the concept of a data model, introduce the
+Entity-Relationship model, discuss the representation of
+Entity-Relationship models in relational systems, and discuss the
+representation of relations as physical files.  
+</DL> 
+
+<A NAME="ls0116">
+<DT> <STRONG>January 16</STRONG>
+<DD> <I>Munish: </I>Project Descriptions
+
+<A NAME="ls0118">
+<DT> <STRONG>January 18</STRONG>
+<DL>
+<DT> <I>Dirk: </I>Data manipulation
+<DD> 
+These 
+<!WA66><A HREF="http://www.cs.indiana.edu/hyplan/gandhim/C690/DirksSlides/datamanipulation.ps">slides</A>
+introduce the relational algebra, relational calculus and SQL as
+query languages for relational systems. 
+</DL>
+
+<A NAME="ls0123">
+<DT> <STRONG>January 23</STRONG>
+<DL> 
+<DT> <I>Munish: </I>Track data model
+<DD> 
+The track data model and an algebra for the track data model are
+defined in 
+<!WA67><A HREF="#references"> Gandhi, M and E.L. Robertson. 1994</A>. 
+The algebra is equivalent to a rule language which is defined in
+<!WA68><A HREF="#references"> Gandhi, M, E.L. Robertson and D. Van Gucht. 1995</A>. 
+</DL> 
+
+<A NAME="ls0125">
+<DT> <STRONG>January 25</STRONG>
+<DD> <I>Munish: </I>Implementation of the track data model
+
+<A NAME="ls0130
+<DT> <STRONG>January 30</STRONG>
+<DL>
+<DT> <I>Dirk: </I>Object-oriented databases
+<DD> 
+These
+<!WA69><A HREF="http://www.cs.indiana.edu/hyplan/gandhim/C690/DirksSlides/objectdatamanagement.ps">slides</A>
+introduce basic object data management concepts such as objects,
+methods, class hierarchies, complex objects and query languages.  They
+also discuss implementation aspects of object data management. 
+</DL>
+
+<A NAME="ls0201">
+<DT> <STRONG>February 1</STRONG>
+<DL>
+<DT> <I>Munish: </I>Digital signal processing
+<DD> 
+Chapters 3 and 4 in
+<!WA70><A HREF="#references">Pohlman, K.C. 1989</A>
+describe time sampling, aliasing, quantization and pulse code
+modulation. 
+</DL>
+
+<A NAME="ls0206">
+<DT> <STRONG>February 6</STRONG>
+<DL>
+<DT> <I>Munish: </I>Digital audio
+<DD> 
+Chapter 1 of 
+<!WA71><A HREF="#references">Pohlman, K.C. 1989</A>
+introduces the basics of audio while chapters 4 and 5 indicate how
+systems which record and reproduce digital audio are built.
+</DL>
+
+<A NAME="ls0208">
+<DT> <STRONG>February 8</STRONG>
+<DL>
+<DT> <I>Munish: </I>Digital video
+<DD>
+Chapter 2 of
+<!WA72><A HREF="#references">Watkinson, J. 1990</A>
+introduces the basic principles behind video while chapters 3 and 5
+indicate how digital video may be processed.  
+</DL>
+
+<A NAME="ls0213">
+<DT> <STRONG>February 13</STRONG>
+<DL>
+<DT> <I>Munish: </I>Human computer interaction
+<DD> 
+Chapter 2 of 
+<!WA73><A HREF="#references">Shneiderman, B. 1992</A>
+reviews the GOMS model of user interaction and the SSOA model of user
+knowledge. Chapter 5 of the same discusses direct manipulation
+interfaces. 
+</DL>
+
+
+<A NAME="ls0215">
+<DT> <STRONG>February 15</STRONG>
+<DL>
+<DT> <I>Ed: </I>Visualizing relational queries (QBE)
+<DD>
+An exposition of QBE using examples (!) may be found in
+<!WA74><A HREF="#references">Zloof, M. 1977</A>.
+</DL>
+
+<A NAME="ls0220">
+<DT> <STRONG>February 20</STRONG>
+<DL>
+<DT> <I>Munish: </I>Visualizing boolean queries
+<DD>
+The "picklist" approach to visualizing queries is given in
+<!WA75><A HREF="#references">Weiland, W.J. and Shneiderman, B. 1993</A>,
+while the waterflow metaphor approach is given in 
+<!WA76><A HREF="#references">Young, D. and Shneiderman, B. 1993</A>. 
+An introductory treatment to both these approaches is in chapter 11 of
+<!WA77><A HREF="#references">Shneiderman, B. 1992</A>.  
+
+<DT> <I>Munish: </I>Experimental methodology
+<DD>
+Section II of 
+<!WA78><A HREF="#references">Eberts, R.E. 1994</A>
+devotes itself to the empirical approach to user interface design.  The
+first chapter of this section gives an overview of the experimental
+methodology. 
+A good illustration of the experimental methodology may be found in
+<!WA79><A HREF="#references">Weiland, W.J. and Shneiderman,B. 1993</A>.
+</DL>
+
+<A NAME="ls0222">
+<DT> <STRONG>February 22</STRONG>
+<DD> <I>Munish: </I>Visualizing track queries
+
+<A NAME="ls0227">
+<DT> <STRONG>February 27</STRONG>
+<DL>
+<DT> <I>Arijit Sengupta: </I>Structured Documents as Multimedia Databases
+<DD>
+Documents have been a big source of information for almost all of the
+history of human civilization. However, until recently, information in
+documents was not being used propoerly, because of poor structuring of
+documents. Introduceion to structured documents using "tags" or
+"markups" have majorly changed this situation, and tagged electronic
+texts are becoming more and more widespread as sources of information.
+  <P>
+Markup languages such as SGML (Standard Generalized Markup Language)
+<!WA80><A HREF="#referencessl">Goldfarb, Charles 1990</A> have been introduced
+for creating structured documents, but extracting the information
+based on the structures in the documents is still not a very simple
+issue, and in most cases, it is ad hoc and based on primitive word
+searches.
+  <P>
+This talk would introduce structured documents and SGML, and discuss
+some of the ways of extracting information out of tagged documents. In
+particular, some present directions toward this area would be
+discussed, along with examples, advantages and disadvantages.
+<DT> <I>Lincoln Carr: </I>Querying SGML Documents
+<DD> 
+The Standard Generalized Markup Language, or SGML, and the data type
+definitions, or DTDs, built up from it provide the basis for storing
+documents in a way that allows complex querying.  The Text Encoding
+Initiative, or TEI, uses SGML to create standard DTDs for such
+document types as poetry and drama.<!WA81><A HREF="#referencessl">TEI,
+1994</A> Currently, TEI has encoded a large body of poetry using its
+standards into the English Poetry Database, for which a simple query
+engine is available.  However, since the poems are not marked up using
+the fullest potential of TEI's standard, many useful, more complex
+types of queries are not presently possible.
+</DL>
+
+<A NAME="ls0301">
+<DT> <STRONG>March 1</STRONG>
+<DL>
+<DT> Logic Seminar
+</DL>
+
+
+<A NAME="ls0306">
+<DT> <STRONG>March 6</STRONG>
+<DL>
+<DT> <I>Bob Penrod: </I>The Evolution of Visualization Tools for Large 
+Information Spaces
+<DD> 
+Large information spaces present several problems for
+visualization. Such spaces require tools that visualize <I>all</I> the
+necessary data and facilitate comprehension of global structure. Most
+traditional tools provide a simple window that displays a limited
+extent of data. This is problematic because (1) not all the data is
+concurrently visible, (2) navigation through the data is slow, and (3)
+no attempt at providing context is made.
+ <P> The <I>Perspective Wall</I> <!WA82><A HREF="#referencessl">Mackinlay,
+J.D., Robertson, G.G., Card, S.K, 1991</A> attempts to handle these
+problems by integrating detail and context. We will examine two
+precursors to the <I>Perspective Wall</I>, "generalized fisheye views"
+<!WA83><A HREF="#referencessl">Furnas, G.W., 1986</A> and the "bifocal
+display" <!WA84><A HREF="#referencessl">Spence, R., Apperley, M., 1982</A>,
+focusing in particular on the application of those ideas to <I>
+linear</I> information spaces.
+
+<DT> <I>Weizhen Hu: </I>Interactive Video Technology
+<DD>
+Ordinary video applications only allow users to access and
+replay movies passively. Interactive Video technology
+introduced in 
+<!WA85><A HREF="#referencessl"> Yoshinobu Tonomura, et al. 1994</A>
+allows users to do more operations about the
+video, such as grasping the main idea of the video (fast
+browsing), searching, analyzing, and editing. Three topics are
+talked about here: 1. video segmentation and feature extraction;
+2. Fast Browing method; 3. new video interfaces.
+</DL>
+
+<A NAME="ls0308">
+<DT> <STRONG>March 8</STRONG>
+<DL>
+<DT> <I>Torrin Sanders: </I>Hypermedia Product Evaluation
+<DD> ???
+<DT><I>Xingchun Zheng: </I>An Intelligent Multimedia System
+<DD>
+Hypermedia provides poeple with a new way to combine different media into 
+single artefacts.  These can be developed and marketed in the style of 
+conventional media publications.  Multimedia technologies not only being the 
+presentation of data stored as images, sound and video but also allow the 
+incorporation of media specific input modes(eg. natural language, speech, 
+pen gesture), and the generation of images, sound and video from more 
+abstract formats. <P>
+In <I>Using an Intelligent Agent to Mediate Multibase Information Access </I>
+<!WA86><a href="http://web/inf/rl/ac/uk/people/mdw/42.ps">W Behrendt, E Hutchinson, 
+KG Jeffrey, CA Macnee, MD Wilson (1993)</a>, the MIPS Project 
+<!WA87><a href="http://www.cee.hw.ac.uk/Database/mips/mips.html"> (multimedia 
+presentation system)</a> is introduced in the paper as  a presentation of  
+an open pre-authored hypermedia network stored in the HyTime standard 
+format with  dynamically created web nodes containing answers to conventional 
+database queries. This illustrates how conventional hypermedia tools can be 
+extended to include intelligent automatic generation of multimedia 
+presentations from retrieved data. An example multimodel system(MMI2) is 
+described to illustrate the technologies which could be brought to the 
+market independently. <p>
+
+The above concepts and ideas are still in the research stage.
+</DL>
+
+<A NAME="ls0320">
+<DT> <STRONG>March 20</STRONG>
+<DL>
+<DT> 
+<I>Qizhen Zhang: </I>Video-on-Demand and Database Related Issues: An
+Introduction 
+<DD> 
+Video-on-demand features a new form of information delivery that is
+causing a great commotion in the industries of cable TV,
+telecommunications, personal computers, and software.  In this
+revolution, multimedia database design and management play an
+indispesable role.  This talk briefly describes the architecture, the
+technology, and the experimental implementations of this emerging
+application.  By means of the description, potential database issues
+are explored.  As an example, I am going to discuss <!WA88><A
+HREF="#referencessl">Network Support for Dynamically Scaled Multimedia
+Data Streams</A> in some depth.
+
+<DT> <I>Robert Fahey </I>Video Object Servers and Video On-Demand
+<DD>
+Recently, video on-demand has received quite a bit of attention in the
+media.  However, the media rarely discuss how it will be implemented.
+In this talk, I shall examine the requirements needed to support
+real-time video, and how current technology meets these requirements.
+I will also describe several approaches to providing on-demand video.
+Some issues which will be investigated are: throughput requirements for
+video, throughput and seektime for several secondary storage devices,
+optimization/organization techniques to improve throughput/response time,
+and several types of architectures to support video objects.
+<P>
+This presentation is based on five different papers, ranging from continuous
+media storage to the cost effectiveness of Video On-Demand systems.  These
+papers are: <!WA89><A HREF="#referencessl">Lougher, P. and Shepherd, D. 1993</A>, 
+<!WA90><A HREF="#referencessl">Rangan, P. and Vin, H. 1993</A>,
+<!WA91><A HREF="#referencessl">Federighi, C. and Rowe, L. 1994</A>,
+<!WA92><A HREF="#referencessl">Ghandeharizadeh, S. and Ramos, L. 1993</A>, and
+<!WA93><A HREF="#referencessl">Doganata, Y. and Tantawi, A. 1994.</A>.
+
+</DL>
+
+<A NAME="ls0322">
+<DT> <STRONG>March 22</STRONG>
+<DL>
+<DT> <I>Kaushik Mody:</I> An Introduction to ATM - Asynchronous Transfer Mode
+<DD>
+
+Computer networks have revolutionized the way we communicate and
+interact the data around the world. However with Distributed
+Multimedia becoming norms rather than exception, the existing networks
+are not able to support the high bandwidth and low latency
+requirements of its applications. Asynchronous Transfer Mode, a
+switching and multiplexing technique is described as a technology that
+will allow total flexibility and efficiency to be achieved in
+tomorrow's high speed, multi-service, multimedia networks.  This
+presentation is based on the work by <!WA94><a href="#referencessl"> Ronald
+J. Vetter; David H. C. Du 1995</a> and <!WA95><a
+href="#referencessl">B. G. Kim and P. Wang 1995</a>.
+
+<DT> <I>Alan Keahey:</I> Multi-Resolution Information Display
+<DD> 
+This talk will take a look at some techniques for displaying
+information at more than one level of resolution
+simulataneously. While similar in scope to the recent talk given by
+Bob Penrod, the focus will be more on the details of hyperbolic or
+fisheye views, implementation issues, and possibilities for future
+systems such as multi-focus systems.
+
+</DL>
+
+<A NAME="ls0327">
+<DT> <STRONG>March 27</STRONG>
+<DL>
+<DT> <I>Yong Jiang: </I>Matadata in Video Databases
+<DD> 
+Video is composed of audio-visual information. Providing content based 
+access to video data is essential for the sucessful integration of video 
+into computers. Organizing video for content based access requires the use 
+of video matadata. This papter explores the nature of video matadata. A data 
+model for video databases is presented based on a study of the applilcations 
+of video, the nature of video retrieval requests, and the features of video. 
+The data model is used in the architectural framework of a video database. 
+The current state of technology in video databases is summarized and research 
+issues are highlighted.
+
+<DT> <I>Aditya Khosla: </I>Towards an optimal operating system for multimedia
+<DD> 
+My talk will be based on a survey paper that addresses key issues that an operating system
+needs to possess in order to efficiently handle multimedia systems. The aspects that
+I will discuss include <B>Process Management</B> and related scheduling strategies. I will
+further talk about <B>Resource Management</B> , <B>File Management</B> and <B>Memory
+Management</B> issues in this context, with  alternative algorithms
+examined, and the options that best suit such systems.
+</DL>
+
+<A NAME="ls0329">
+<DT> <STRONG>March 29</STRONG>
+<DL>
+<DT> <I>Chia-Lin Chou: </I>???
+<DD> 
+<DT> <I>Julia Dymshitz: </I> Approaches to database interface design
+<DD> Approaches to human-computer interaction (HCI) can be broadly
+classified into four categories:empirical, predictive modelling,
+cognitive and anthropomorphic <!WA96><A HREF="#referencessl">Eberts,
+R.E. 1994</A>.  Each of these approaches emphasizes a different aspect
+of HCI, although many research studies fall into more than one
+category.<P> Cognitive and anthropomorphic approaches were applied
+extensively to database interface design, producing a number of design
+guidelines.  The usefulness of these guidelines for actual design will
+be discussed in the context of advantages and disadvantages of each
+approach. In addition, two articles (<!WA97><A HREF="#referencessl">Williams,
+M.D. 1984</A> and <!WA98><A HREF="#referencessl">Eberts, R.E. and Bittianda,
+K.P. 1993</A>) will be described in greater detail to illustrate the
+application of cognitive and anthropomorphic methods to database
+interface issues.
+</DL>
+
+<A NAME="ls0405">
+<DT> <STRONG>April 5</STRONG>
+<DL>
+<DT> <I>Arijit Sengupta</I>
+<DT> <I>Lincoln Carr</I>
+</DL>
+
+<A NAME="ls0410">
+<DT> <STRONG>April 10</STRONG>
+<DL>
+<DT> <I>Aditya Khosla</I>
+<DT> <I>Yong Jiang</I>
+</DL>
+
+<A NAME="ls0412">
+<DT> <STRONG>April 12</STRONG>
+<DL>
+<DT> <I>Bob Penrod</I>
+<DT> <I>XingChun Zheng</I>
+</DL>
+
+<A NAME="ls0417">
+<DT> <STRONG>April 17</STRONG>
+<DL>
+<DT> <I>Weizhen Hu</I>
+<DT> <I>Torrin Sanders</I>
+</DL>
+
+<A NAME="ls0419">
+<DT> <STRONG>April 19</STRONG>
+<DL>
+<DT> <I>Kaushik Mody</I>
+<DT> <I>Alan Keahey</I>
+</DL>
+
+<A NAME="ls0424">
+<DT> <STRONG>April 24</STRONG>
+<DL>
+<DT> <I>Julia Dymshitz</I>
+<DT> <I>Chia-Lin Chou</I>
+</DL>
+
+<A NAME="ls0426">
+<DT> <STRONG>April 26</STRONG>
+<DL>
+<DT> <I>Bob Fahey</I>
+<DT> <I>Qizhen Zhang</I>
+</DL>
+
+</DL>
+
+
+<HR>
+<A NAME="pschedule">
+<H3 ALIGN=CENTER>Project schedule (overview)
+<BR><!WA99><A NAME=1 HREF="#toc">(TOC)</A>
+</H3>
+</A>
+
+<DL>
+<DT> <STRONG>Week 2: Selection</STRONG>
+<DD> Select a project.
+
+<DT> <STRONG>Week 4: Proposal</STRONG>
+<DD> Propose the goals for the project
+
+<DT> <STRONG>Week 6: Iteration 1</STRONG>
+<DD> Write a user manual, implement critical elements
+
+<DT> <STRONG>Week 8: Iteration 2</STRONG>
+<DD> Refine user manual, implement significant elements
+
+<DT> <STRONG>Week 10: Iteration 3</STRONG>
+<DD> Implement almost all elements, measure performance
+
+<DT> <STRONG>Week 12: Iteration 4</STRONG>
+<DD> Restructure (if necessary) and complete the implementation.
+
+<DT> <STRONG>Week 14: Integration </STRONG>
+<DD> Integrate system
+
+<DT> <STRONG>Week 16: Delivery </STRONG>
+<DD> Deliver system and user manual
+</DL>
+
+<HR>
+<A NAME="projecthomes">
+<H3 ALIGN=CENTER>Project home pages
+<BR><!WA100><A NAME=1 HREF="#toc">(TOC)</A>
+</H3>
+
+<UL>
+<LI> 
+<!WA101><A
+HREF="http://www.cs.indiana.edu/hyplan/torsande/MMDbasestuff/c690homepage.html"
+>
+Kiosk Enhancements</A>
+<LI> 
+<!WA102><A HREF="http://www.cs.indiana.edu/hyplan/tkeahey/mmdb.html">
+MovieSpace</A>
+<LI> 
+<!WA103><A HREF="http://www.cs.indiana.edu/hyplan/xczheng/moviewall.html">
+MovieWall</A> 
+<LI> 
+<!WA104><A HREF="http://www.cs.indiana.edu/hyplan/faheyr/c690.html">
+PerformanceTrack</A> 
+<LI> 
+<!WA105><A HREF="http://www.cs.indiana.edu/hyplan/asengupt/mmdb/texttrack.html">
+TextTrack</A> 
+<LI> 
+<!WA106><A HREF="http://www.cs.indiana.edu/hyplan/chichou/TDBM/TDBMS.html">
+Track Database Management System (TDBMS)</A>
+</UL>
+
+If you are new to HTML, you may want to look at 
+<!WA107><A HREF="http://www.cs.indiana.edu/hyplan/gandhim/authoring.html">
+A Guide to Authoring HTML Documents</A>.
+
+<HR>
+<A NAME="deliverables">
+<H3 ALIGN=CENTER>Project deliverables
+<BR><!WA108><A NAME=1 HREF="#toc">(TOC)</A>
+</H3>
+</A>
+
+<DL>
+<DT> <STRONG>February 1</STRONG>
+<DD> <I>Brief proposal</I>
+
+<DT> <STRONG>February 15</STRONG>
+<DD> 
+<DL>
+<DT> <I>User manual</I>
+<DD> The user manual will serve two purposes.  First, it will
+serve as a guide for the user using your system.  Second, it will
+serve as a precise specification of your project.  The manual should
+have the following sections which answer the indicated questions
+
+<DL>
+
+<DT> <KBD>System overview</KBD>
+<DD> What does your system do? What does the user gain by using your
+system?
+
+<DT> <KBD>Audience</KBD>
+<DD> Who are the users of your system? Why should the person reading your
+manual read any further?
+
+<DT> <KBD>Graphical user interface</KBD> (for systems with a graphical
+interface) 
+<DD> What are the different areas on the interface? What elements
+exist in each area? How is each element manipulated and how does the
+system respond to each manipulation?  What functionalities is the user
+interface capable of performing?  How does the user interact with the
+interface to achieve each of these functionalities?
+
+<DT> <KBD>Programming interface</KBD> (for systems with a programming
+interface) 
+<DD> What functions are available?  What do they do?  What parameters
+do they take? What is the effect of each parameter? What values are
+returned? 
+</DL> 
+
+<DT> <I>Implementation: Iteration 1</I>
+ <DD> First, identify a set of capabilities to be implemented in this
+iteration.  Second, ensure that your supervisor agrees with you on the
+capabilities by February 8. Finally, implement the functionality by
+the due date. <BR> 
+Here are some criterion which may be used in choosing the capabilities
+for implementation in iteration 1:
+<UL>
+<LI> they must be implementable by the due date,
+<LI> they should constitute a significant element of your system.  
+<LI> they should attack the high risk elements of your system.
+</UL>
+</DL>
+<DT> <STRONG>March 19</STRONG>
+<DD> 
+<DL>
+<DT> <I>User manual</I>
+<DD> Complete your user manual to follow the guidelines above.
+<DT> <I>Implementation: Iteration II</I>
+<DD> Implement <I>more than half</I> of the required functionality.
+</DL>
+<DT> <STRONG>April 2</STRONG>
+<DD> 
+<DL>
+<DT> <I>Design document</I>
+<DD> Prepare your design document
+<DT> <I>Implementation: Iteration III</I>
+<DD> Implement <I>almost all</I> of the desired functionality.
+</DL>
+<DT> <STRONG>April 26</STRONG>
+<DD> 
+<DL>
+<DT> <I>Handin</I>
+<DD> Handin your user manual, design document, and implementation.
+</DL>
+</DL>
+
+<HR>
+<A NAME="tools"><H3 ALIGN=CENTER>Development tools
+<BR><!WA109><A NAME=1 HREF="#toc">(TOC)</A>
+</H3>
+</A>
+
+Here are some starting points for each of the development tools that
+will be used in the projects.
+
+<DL>
+<DT> 
+<STRONG>Digital Media Libraries</STRONG>
+<DD> 
+
+The IRIS Media Libraries provide a digital media software development
+environment that includes audio, video, movie and compression
+libraries. Check out the <I>IRIS Digital Media Programming Guide</I>
+in the <I>IRIS Insight Library</I>. You may also get the contents of
+the above guide in the postscript files <!WA110><A HREF="http://www.cs.indiana.edu/hyplan/gandhim/DMDoc">here</A>. The
+documentation is divided into parts and the contents of each part may
+be obtained by looking at Front.ps.
+
+<DT> 
+<STRONG>OpenInventor</STRONG>
+<DD> 
+
+OpenInventor is a library of objects and methods used to create
+interactive 3D graphics applications.  Check out the <I> Inventor
+Mentor</I> in the <I>IRIS Insight Library.</I>
+
+<DT> 
+<STRONG>Tcl/Tk</STRONG>
+<DD> 
+Parts I and II in the Tcl/Tk <!WA111><A HREF="#references">reference</A> will
+allow  you to  use Tcl/Tk for your applications.  However, if you want
+to extend Tcl/Tk, you will need parts III and IV . Besides the
+book, you may want to subscribe to the newsgroup <!WA112><A NAME=1
+HREF="news:comp.lang.tcl">comp.lang.tcl</A> and read the <!WA113><A
+HREF="http://www.cis.ohio-state.edu/hypertext/faq/usenet/tcl-faq/top.html">
+FAQ</A>. 
+
+<DT> 
+<STRONG>Exodus</STRONG>
+<DD> 
+The Exodus Storage Manager is an object storage management system.
+The User Manual and the Architecture Overview documents in the exodus
+<!WA114><A HREF="http://www.cs.indiana.edu/database/Exodus/Exodus.html"> home page</A>
+are essential documents for understanding the storage
+manager. 
+</UL>
+
+</DL>
+
+
+<HR>
+<A NAME="references">
+<H3 ALIGN=CENTER>References (core lectures)
+<BR><!WA115><A NAME=1 HREF="#toc">(TOC)</A>
+</H3>
+</A>
+
+<DL>
+<DT> <STRONG>Eberts, R.E. 1994</STRONG>
+<DD>
+<I>
+User Interface Design.
+</I>
+Prentice Hall, Englewood Cliffs, New Jersey, 1994.
+<BR>
+<BR>
+
+<DT> <STRONG>Gandhi, M and E. L. Robertson. 1994</STRONG>
+<DD> 
+<!WA116><A HREF="ftp://ftp.cs.indiana.edu/pub/techreports/TR415.ps.Z">
+<I>
+A Data Model for Audio-Video Data.
+</I>
+</A>
+Technical Report #415, Computer Science Department, Indiana University.
+<BR><BR>
+
+<DT> <STRONG>Gandhi, M , E. L. Robertson, and D. Van Gucht. 1995</STRONG>
+<DD> 
+<!WA117><A HREF="http://www.cs.indiana.edu/hyplan/gandhim/sigmod.ps"> 
+<I>
+Modeling and Querying Primitives for Digital Media.
+</I>
+</A>
+Working paper.
+<BR><BR>
+
+<DT> <STRONG>J. D. Mackinlay, G. G. Robertson, S. K. Card. 1991</STRONG>
+<DD> 
+<!WA118><A HREF="http://www.xerox.com/PARC/dlbx/uir-papers/chi91-pw.ps">
+<I>
+The Perspective Wall: Detail and Context Smoothly Integrated
+</I>
+</A>. 
+Proceedings of the ACM SIGCHI Conference on Human Factors in Computing
+Systems.  ACM, April 1991, pp. 173-179.
+<BR><BR>
+
+<DT> <STRONG>Ousterhout, John K. 1994</STRONG>
+<DD>
+<I>
+Tcl and the Tk Toolkit.
+</I>
+Addison-Wesley, 1994.
+<BR><BR>
+
+<DT> <STRONG>Pohlman, K.C. 1989</STRONG>
+<DD>
+<I>
+Principles of Digital Audio (Second Edition).
+</I>
+Howard W. Sams &amp; Company, Indianapolis, 1989.
+<BR><BR>
+
+<DT> <STRONG>R. Rao, S. K. Card, H.D. Jellinek, J. D. Mackinlay,
+G. G. Robertson. 1992</STRONG>
+<DD>
+<!WA119><A HREF="http://www.xerox.com/PARC/dlbx/uir-papers/uist92-final.ps">
+<I>
+The Information Grid: A Framework for Building Information Retrieval
+and Retrieval-Centered Applications.
+</I>
+</A>.
+Proceedings of the ACM Symposium on User Interface Software and
+Technology. ACM Press, November 1992.
+<BR><BR>
+
+<DT> <STRONG>G. G. Robertson, S. K. Card, J. D. Mackinlay. 1991</STRONG>
+<DD> 
+<!WA120><A HREF="http://www.xerox.com/PARC/dlbx/uir-papers/iv-using-3d.ps">
+<I>
+Information Visualization Using 3D Interactive Animation.
+</I>
+</A>  
+Communications of the ACM, v.36, n.4, 1993.
+<BR><BR>
+
+<DT> <STRONG>G. G. Robertson, J. D. Mackinlay, S. K. Card. 1991</STRONG>
+<DD>
+<!WA121><A HREF="http://www.xerox.com/PARC/dlbx/uir-papers/chi91-ct.ps">
+<I>
+Cone Trees: Animated 3D Visualizations of Hierarchical Information.
+</I>
+</A>
+Proceedings of the ACM SIGCHI Conference on Human Factors in Computing
+Systems. ACM, April 1991, pp. 189-194. 
+<BR><BR>
+
+<DT> <STRONG>Shneiderman, B. 1992</STRONG>
+<DD>
+<I>
+Designing the User Interface: Strategies for Effective Human-Computer
+Interaction (Second Edition).  
+</I>
+Addison-Wesley Publishing Company, New York, NY, 1992.
+<BR><BR>
+
+<DT> <STRONG>Watkinson, J. 1994a</STRONG>
+<DD>
+<I>
+The Art of Digital Audio.
+</I>
+Focal Press, 1994.
+<BR><BR>
+
+<DT> <STRONG>Watkinson, J. 1990</STRONG>
+<DD>
+<I>
+The Art of Digital Video.
+</I>
+Focal Press, 1990.
+<BR><BR>
+
+<DT> <STRONG>Watkinson, J. 1994b</STRONG>
+<DD>
+<I>
+The Art of Digital Video (Second Edition)
+</I>
+Focal Press, 1994.
+<BR><BR>
+
+<DT> <STRONG>Weiland, W.J. and Shneiderman, B. 1993</STRONG>
+<DD>
+<I>
+A Graphical Query Interface based on Aggregation/Generalization
+Hierarchies.
+</I>
+Information Systems, Vol 18, No. 4, pp 215-232, 1993.
+<BR><BR>
+
+<DT> <STRONG>Young, D. and Shneiderman, B. 1993</STRONG>
+<DD>
+<I>
+A Graphical Filter/Flow Model for Boolean Queries: an Implementation
+and experiment.
+</I>
+Information Systems, Vol 18, No. 4, pp 215-232, 1993.
+<BR><BR>
+
+<DT> <STRONG>Zloof, M. M. 1977</STRONG>
+<DD>
+<I>
+Query-By-Example: A Data Base Language.
+</I>
+IBM System Journal, v.16, n.4, 1977.
+<BR><BR>
+</DL>
+
+<HR>
+<A NAME="referencessl">
+<H3 ALIGN=CENTER>References (student lectures)
+<BR><!WA122><A NAME=1 HREF="#toc">(TOC)</A>
+</H3>
+</A>
+
+<DL>
+<DT> <STRONG>Goldfarb, Charles 1990</STRONG>
+<DD>
+<I>
+The SGML Handbook
+</I>
+Clarendon Press, Oxford, 1990
+<BR><BR>
+
+<DT> <STRONG>TEI, 1994</STRONG>
+<DD>
+<I>
+Guidelines for Electronic Text Encoding and Interchange
+</I>
+Text Encoding Initiative, University of Virginia, 1994
+<BR><BR>
+
+<DT> <STRONG>Christophides,V; Abiteboul,S; Cluet, S; Scholl,M,1994</STRONG>
+<DD>
+<I>
+From Structured Documents to Novel Query Facilities
+</I>
+Sigmod Record, June 1994, p.313-324
+<BR><BR>
+
+<DT> <STRONG> Gonnet, Gaston H. and Baetza-Yates, R; 1991</STRONG>
+<DD>
+<I>
+Lexicographical Indices for Text: Inverted Files Vs Pat Trees
+</I>
+University of Waterloo Technical Report no. TR-OED-91-01, 1991
+<BR><BR>
+
+<DT> <STRONG>Yoshinobu Tonomura, et al. 1994</STRONG>
+<DD>
+<I>
+"Structured Video Computing",
+</I>
+IEEE MultiMedia, Vol. 1, No. 3, Fall 1994 </A>
+<BR><BR>
+
+<DT> <STRONG>Furnas, G.W., 1986</STRONG>
+<DD>
+<I>
+Generalized Fisheye Views
+</I>
+Proceedings of SIGCHI'86, pp. 16-23. 1986.
+<BR><BR>
+
+<DT> <STRONG>Spence, R. and M. Apperley, 1982</STRONG>
+<DD>
+<I>
+Data Base Navigation: An Office Environment for the Professional
+</I>
+Behaviour and Information Technology, 1(1), pp. 43-54, 1982.
+<BR><BR>
+
+<DT> <STRONG>Hoffman, Don; Speer, Michael; Fernando, Gerard, 1993</STRONG>
+<DD>
+<I>
+Network Support for Dynamically Scaled Multimedia Data Streams
+</I>
+Lecture Notes in Computer Science 846: Network and Operating System Support for Digital Audio and Video, 1993.
+<BR><BR>
+
+<DT> <STRONG>Sims, David, 1994</STRONG>
+<DD>
+<I>
+Video-on-Demand Hinges on Integration
+</I>
+IEEE Software, Nov. 1994, pp. 102-103.
+<BR><BR>
+
+<DT> <STRONG>Miller, Matthew D., 1994</STRONG>
+<DD>
+<I>
+A Scenario for the Deployment of Interactive Multimedia Cable Television Systems in the United States in the 1990's
+</I>
+Proceedings of The IEEE, Vol. 82, No. 4, April 1994, pp. 585-589.
+<BR><BR>
+
+<DT> <STRONG>Zoglin, Richard, 1993</STRONG>
+<DD>
+<I>
+When the Revolution Comes What Will Happen to ...
+</I>
+Time, April 12, 1993, pp. 56-58.
+<BR><BR>
+
+<DT> <STRONG>Lougher, P. and Shepherd, D. 1993</STRONG>
+<DD>
+<I>
+The Design of a Storage Server for Continuous Media
+</I>
+The Computer Journal, vol. 36, no. 1, 1993.
+<BR><BR>
+ 
+<DT> <STRONG>Rangan, P. and Vin, H. 1993</STRONG>
+<DD>
+<I>
+Efficient Storage Techniques for Digital Continuous Multimedia
+</I>
+IEEE Transactions on Knowledge and Data Engineering, vol. 5, no. 4, 1993.
+<BR><BR>
+ 
+<DT> <STRONG>Federighi, C. and Rowe, L. 1994</STRONG>
+<DD>
+<I>
+A Distributed Hierarchical Storage Manager for a Video-on-Demand System
+</I>
+Symp. on Elec. Imaging Sci. & Tech., 1994.
+<BR><BR>
+ 
+<DT> <STRONG>Ghandeharizadeh, S. and Ramos, L. 1993</STRONG>
+<DD>
+<I>
+Continuous Retrieval of Multimedia Data Using Parallelism
+</I>
+IEEE Transactions on Knowledge and Data Engineering, vol. 5, no. 4, 1993.
+<BR><BR>
+ 
+<DT> <STRONG>Ronald, J. Vetter; David, H. C. Du 1995 </STRONG>
+<DD>
+<I>
+ATM Concepts, Architecture and Protocols
+</I>
+COMMUNICATIONS of the ACM, February 1995 - Volume 38, Number 2
+<BR><BR>
+
+<DT> <STRONG>Kim, B. G.; Wang, P 1995 </STRONG>
+<DD>
+<I>
+ATM Network: Goals and Challenges
+</I>
+COMMUNICATIONS of the ACM, February 1995 - Volume 38, Number 2
+<BR><BR>
+
+<DT> <STRONG>Doganata, Y. and Tantawi, A. 1994</STRONG>
+<DD>
+<I>
+Making a Cost-Effective Video Server
+</I>
+IEEE Multimedia, p. 22 - 30, Winter 1994.
+<BR><BR>
+
+<DT> <STRONG>Sarkar, M., Brown, M., 1994</STRONG>
+<DD>
+<I>
+Graphical Fisheye Views
+</I>
+Communications of the ACM, Dec. 1994, Vol 37, No 1
+<BR><BR>
+
+<DT> <STRONG>Mackinlay, J.D., Robertson, G.G., Card, S.K. 1991</STRONG>
+<DD>
+<I>
+Perspective Wall: Detail and Context Smoothly Integrated
+</I>
+Proceedings of SIGCHI'91, pp. 173-179.
+<BR><BR>
+
+<DT><STRONG>W Behrendt, E Hutchinson, KG Jeffrey, CA Macnee, MD Wilson (1993)
+</STRONG>
+<DD><I>Using an Intelligent Agent to Mediate Multibase Information Access
+</I>
+Proceedings of the Workshop on Cooperating Knowledge Based Systems, 
+Keele, September 1993
+<BR><BR>
+
+<DT> <STRONG>Steinmetz, R.,  1995</STRONG>
+<DD>
+<I>
+Analyzing the Multimedia Operating System
+</I>
+IEEE Multimedia, Spring 1995, pages 68-84
+<BR><BR>
+
+<DT> <STRONG>Jain, R., and Hampapur, A., 1994</STRONG>
+<DD>
+<I>
+Metadata in Video Databases
+</I>
+SIGMOD RECORD, Vol.23,NO.4,December 1994
+<BR><BR>
+
+<DT> <STRONG>Eberts, R.E. 1994 </STRONG>
+<DD>
+<I>
+User interface design
+</I>
+Prentice Hall, 1994
+<BR><BR>
+ 
+<DT> <STRONG>Williams, M.D. 1984
+<DD>
+<I>
+What makes RABBIT run?
+</I>
+Int. J. Man-Machine Studies, 21, 333-352
+<BR><BR>
+
+<DT> <STRONG>Eberts, R.E. and Bittianda, K.P. 1993
+<DD>
+<I>
+Preferred mental models for direct manipulation and command-based interfaces
+</I>
+Int. J. Man-Machine Studies, 38, 765-785
+<BR><BR>
+
+</DL>
+
+<HR>
+[
+<!WA123><A HREF="http://www.indiana.edu"> 
+Indiana University</A>
+|
+<!WA124><A HREF="http://www.cs.indiana.edu"> 
+Computer Science</A>
+]
+ <P>
+<!WA125><A HREF="mailto:gandhim@indiana.edu"> 
+<ADDRESS>
+gandhim@indiana.edu
+</ADDRESS>
+</A>
+
+</BODY>
+</HTML>

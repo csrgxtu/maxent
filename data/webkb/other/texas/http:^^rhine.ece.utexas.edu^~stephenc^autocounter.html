@@ -1,0 +1,44 @@
+Date: Mon, 06 Jan 1997 21:45:12 GMT
+Server: NCSA/1.4.1
+Content-type: text/html
+
+<html>
+<title>The AutoCounter</title>
+<body>
+<center><!WA0><img src=http://rhine.ece.utexas.edu/~stephenc/autocounter.jpg align=center alt="The AutoCounter"><br></center>
+
+This is a neat little url that you can include in your HTML pages to generate a spiffy little 'hit-count' odometer.  Simply add the following line to your HTML source code: <br>
+&lt;a 
+href="http://cvrc.ece.utexas.edu/~stephenc/autocounter.html"&gt;&lt;img 
+src="http://rhine.ece.utexas.edu/cgi-bin/users/stephenc/autocounter/autocounter.xbm"&gt;&lt;/a&gt;
+<P>
+And you're good to go.  This program is based on a piece written by Frans van Hoesel and modified by countless others.  I added some extra code that made it non-page specific, so you don't need a different 'autocounter.xbm' for each page.  <P>
+
+I'll be looking at ways to improve the efficincy of the code some more, maybe do some report generation and other statistics as well.  Stuff like who's looking at your page, when they did it, what browsers they used, etc.  It'll be interesting, to say the
+ least. <P>
+
+This is a beta release, so its use is restricted to the *.utexas.edu domain pages.  Others will be able to see your spiffy odometer, but they can't use it themselves unless their page originates from a *.utexas.edu computer.<P>
+
+<blink><!WA1><a href=http://rhine.ece.utexas.edu/~stephenc/disclaimer.html>USE IT AT YOUR OWN RISK</a></blink> , although the only risk I can see is my leaving and the autocounter stops working when they delete my account.<P>
+
+BUG REPORTS 
+<BR>
+So far, the only 'bug' is that browsers may cache the image, or have 'autoload images' unchecked, so the count could appear to be wrong or off on the low side.  I plan on comparing the true number of hits logged by the web server versus the number of time
+s the image is called up.  It should be an interesting statistic... <P>
+Also, it'll treat pages selected as 'http://blah/' and 'http://blah/index.html' differently.  This can be fixed, if I get around to it.  I noticed people who are viewing their own pages by choosing 'file - open local'.  The AutoCounter will give local ref
+erences a different count than web server hits, so view your own pages via the server and youre OK.<P>
+
+<!WA2><a href=http://rhine.ece.utexas.edu/~stephenc/autocounter.html><!WA3><img src="http://rhine.ece.utexas.edu/cgi-bin/users/stephenc/autocounter/autocounter.xbm" ALT="not many "></A>
+people have looked at this page.
+<br>
+
+<!WA4><a href=mailto:stephenc@mail.utexas.edu>Send me mail</a>... look at <!WA5><A href=http://rhine.ece.utexas.edu/~stephenc/resume.html>my resume</A>.... check out <!WA6><a href=http://rhine.ece.utexas.edu/~stephenc/index.html>my homepage</a><br>
+<ADDRESS>
+<I>
+<!WA7><a href=mailto:stephenc@mail.utexas.edu>stephenc@mail.utexas.edu</a>
+</I> </ADDRESS>
+Last modified: Sun Sep 10 04:42:35 1995
+</body>
+</html>
+
+

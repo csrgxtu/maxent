@@ -1,0 +1,151 @@
+Date: Mon, 02 Dec 1996 15:10:31 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>CSE567 Homework Assignment #5</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.01Gold (X11; I; OSF1 V3.2 alpha) [Netscape]">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#DDDDDD" LINK="#0000EE" VLINK="#501080" ALINK="#FF0000">
+
+<H1>CSE 567: Principles of Digital Systems Design </H1>
+
+<H3>Carl Ebeling, Fall 1996 
+<HR></H3>
+
+<H3>Homework 5</H3>
+
+<P><B>Distributed: Wednesday. Nov. 6 Due Friday Nov. 15, in class</B> 
+<HR></P>
+
+<P>You are to work together as teams on this homework. Please look at the
+problems individually first and sketch possible solutions and questions.
+Then meet together and formulate solutions to each if you can, and assign
+the writeup to one or more team members. Then meet again to collate and
+review your solutions before you hand them in. The whole team is responsible
+for understanding the solution to all problems. </P>
+
+<P> For problems involving Verilog code, hand in your code and your simulation
+log (or at least part of it if it's really long). </P>
+
+<OL>
+<P> </P>
+
+<LI>Design two modules, one to do run-length encoding on an input stream
+of bytes and another to do the corresponding run-length decoding. By plugging
+your two modules back-to-back, you should reconstruct the original byte-stream.
+You must design your own protocol for this - there are optimizations you
+can try based on the image compression context. One of the things you must
+worry about is the fact that the compressed stream is not the same length
+as as the original stream. Although it's generally shorter, it might be
+longer depending on your run-length coding. Your circuits must handle any
+possibility of course.<BR>
+<BR>
+Design your circuits using Verilog and use the simulator to show that it
+works.<p>
+</LI>
+
+<LI>Design a circuit that performs a one-level 2D wavelet transform on
+a 16x16 image. The image and the resulting transform are stored in two
+different memory modules. You should store the sub-images you produce as four
+8x8 images in the 16x16 output image.<BR>
+<BR>
+The memories you should use are simple static RAMs with an 8-bit address,
+an 8-bit data input for writes, an 8-bit data output for reads and a single
+R/W control signal which is asserted high when reading and asserted low
+for writing. You should write a Verilog model for this memory. Note that
+it has no clock input. If R/W is asserted (read) then the data output should
+be what the address selects. (If the address changes, so does the data
+out.) If R/W is unasserted (write), then nothing happens until R/W changes
+to high again, at which time the data on the input is written into the
+memory.<BR>
+<BR>
+</LI>
+
+<LI> In this problem, you will design and test a simple cache controller
+using Verilog simulation. This cache is a direct-mapped, read-allocate,
+write-through cache. The controller sits between the processor and the
+cache memory and generates the control signals needed by the processor
+and the memory. The cache controller has the following I/O signals:<BR>
+<BR>
+Inputs: </LI>
+
+<OL>
+<P> </P>
+
+<LI> Read - Processor asserts to request a read. </LI>
+
+<LI> Write - Processor asserts to request a write. (Only one of Read/Write
+can be asserted at once) </LI>
+
+<LI> Address - Processor provides the memory address of word being read
+or written.</LI>
+
+<LI>Hit - The cache tag memory asserts Hit if the memory address is in
+the cache.</LI>
+
+<LI>Reset - Resets the cache controller into an initial state. </LI>
+</OL>
+
+<P>Outputs: </P>
+
+<OL>
+<LI>Ready - Signal to the processor indicating data is present and processor
+can continue. </LI>
+
+<LI>MemRead - Asserted to tell memory to perform a read operation</LI>
+
+<LI>MemWrite - Asserted to tell memory to perform a write operation. Only
+one of MemRead and MemWrite can be asserted at a time. </LI>
+
+<LI>MemAddress - Address to main memory of word being read/written. </LI>
+</OL>
+
+<P>Addresses are word addresses with 4 words per cache line. On each cycle,
+the processor asserts a read or write request (or neither) to the cache controller
+along with the memory address of a word. It then waits for the Ready signal
+to be asserted. A cache tag module checks to see if the address is in the
+cache. If so, it asserts Hit in the next cycle after the Read/Write request
+is asserted. (You do not have to design the cache tag module - assume it's
+there and the Hit signal is asserted appropriately.) Different things happen
+depending on whether a Read or Write has been asserted:</P>
+
+<UL>
+<LI>Read - If Hit is asserted, then Ready should be asserted immediately
+(same clock cycle as Hit). If Hit is not asserted, the controller must
+read the cache line from memory, starting with the requested word. From
+the time MemRead is asserted, it takes 4 cycles before the first word from
+memory is available. After that, it takes only one cycle per word read
+from the same cache line. That is, the controller issues MemRead with the
+address of the first word to be accessed, waits 4 cycles and then issues
+3 more reads, one per cycle with the addresses of the remaining words in
+the cache line. The controller can assert the Ready signal as soon as the
+data from the requested address is available.<BR>
+</LI>
+
+<LI>Write - Writes are easier since cache lines are not allocated on a
+write miss. Whether or not Hit is asserted, the controller issues a write
+to memory for one word. Ready can be asserted immediately, however, without
+waiting for the write to complete, which takes 4 cycles.<BR>
+</LI>
+
+<LI>Read/Write Overlap - Reads and writes that go to memory cannot overlap.
+That is, if there are two read misses in a row, the second set of reads
+to memory must wait until the previous reads have completed. This can happen
+because the controller asserts Ready before completing all the reads from
+the first miss. If a read miss or a write is followed by a read hit, however,
+Ready can be asserted right away since no memory access is required. </LI>
+</UL>
+
+<P>Write a Verilog description for this cache controller and use Verilog-XL
+to test your design. We will provide a driver for your design in a couple
+days.  </P>
+</OL>
+
+<ADDRESS>
+<HR>ebeling@cs.washington.edu </ADDRESS>
+
+</BODY>
+</HTML>

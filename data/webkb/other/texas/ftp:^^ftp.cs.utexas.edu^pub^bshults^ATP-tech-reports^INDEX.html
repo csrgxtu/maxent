@@ -1,0 +1,250 @@
+<html>
+<title>Index</title>
+<h1>Index of /pub/bshults/ATP-tech-reports</h1>
+
+This page describes the contents of this directory in the format:<p>
+
+ file-size file-name<p>
+
+ file-description<p>
+
+Please see <a href="http://www.ma.utexas.edu/users/bshults">my</a> web
+page and that of <a
+href="http://www.ma.utexas.edu/users/bshults/ATP">the ATP group</a> at
+UT.<p>
+
+<hr>
+
+  47277 <a
+href="ftp://ftp.cs.utexas.edu/pub/bshults/ATP-tech-reports/atp-106.ascii">atp-106.ascii</a><p>
+
+JAR 11: pages 293-314, 1993.<p>
+
+<pre>
+                           SET-VAR                            atp.106
+                 W.W. Bledsoe and Guohui Feng                Dec 1991
+                 Computer Science Department
+              The University of Texas at Austin
+                     Austin, Texas 78703</pre>
+
+                                                               
+	
+ABSTRACT: In this paper, we describe the rules of the SET-VAR prover, which
+is an extension of Resolution, and which handles theorems in a subset of 
+second order logic. We also give example proofs using the system, and
+show that the rules are sound.  And we conjecture that the prover is complete
+for a certain extension of first order logic which includes many of the
+theorems of real analysis.  This System is based on an earlier "set variable"
+prover, implemented in natural deduction.<p>
+
+<hr>
+<dt> 406636 <a
+href="ftp://ftp.cs.utexas.edu/pub/bshults/ATP-tech-reports/atp-116.ps">atp-116.ps</a>
+<dt>  89738 <a
+href="ftp://ftp.cs.utexas.edu/pub/bshults/ATP-tech-reports/atp-116.tex">atp-116.tex</a><p>
+
+ A Precondition Prover for Analogy<p>
+                   
+<pre>W.W. Bledsoe 
+Computer Science Department 
+The University of Texas at Austin 
+Austin, Texas 78712</pre>
+
+
+We describe here a prover PC that normally acts as an ordinary theorem
+prover, but which returns a ``precondition'' when it is unable to
+prove the given formula.  If <em>F</em> is the formula attempted to be
+proved and PC returns the precondition <em>Q</em>, then <em>(Q -->
+F)</em> is a theorem (that PC can prove).  This prover, PC, uses a
+<em>Proof-Plan</em>.  In its simplest mode, when there is no
+proof-plan, it acts like ordinary <em>Abduction</em>. We show here how
+this method can be used to derive certain proofs by <em>analogy</em>.
+To do this, it uses a proof-plan from a given <em>guiding</em> proof
+to help construct the proof of a similar theorem, by ``debugging''
+(automatically) that proof-plan.<p>
+
+We show here the analogy proofs of a few simple example theorems and
+one hard pair, Ex4 and Ex4L.  The given proof-plan for Ex4 is used by
+the system to prove automatically Ex4; and that same proof-plan is
+then used to prove Ex4L, during which the proof-plan is ``debugged''
+(automatically).  These two examples are similar to two other, more
+difficult, theorems from the <em>Theory of Resolution</em>, namely GCR
+(the ground completeness of Resolution) and GCLR (the ground
+completeness of Lock Resolution).  GCR and and GCLR have also been
+handled, in essence, by this system but not completed in all their
+details.<p>
+
+<hr>
+  22460 <a
+href="ftp://ftp.cs.utexas.edu/pub/bshults/ATP-tech-reports/atp-119.ascii">atp-119.ascii</a><p>
+
+<pre>
+                                                           ATP 119
+                                                          May 1993
+                SET-VAR Implementation
+                   W. W. Bledsoe
+              Computer Science Department
+                 University of Texas
+                 Austin, Texas 78712</pre>
+
+
+This paper describes an implementation of the SET-VAR proof
+procedure [1].  Te program itself, found in the file, SET-VAR.LISP,
+is written in LISP and attempts to prove theorems in FOL-S a certain 
+extension of First-order logic (see below).  A call to (SET-VAR THM) 
+causes it to attempt to automatically prove the theorem, THM.  
+Even though we believe that SET-VAR is complete for FOL-S, we know that 
+this implementation is not, because we have made several restrictions
+(see below) in order to speed up the search.  But we believe that 
+it still retains most of the generality of SET-VAR itself.<p>
+
+<hr>
+  36777 <a
+href="ftp://ftp.cs.utexas.edu/pub/bshults/ATP-tech-reports/atp-120.ascii">atp-120.ascii</a><p>
+
+<pre>
+     Using SET-VAR to Prove the Heine Borel Theorem
+                W. W. Bledsoe                             ATP 120
+                                                  25 January 1994</pre>
+
+
+<dl>
+<dt>Theorem (Heine-Borel).  If G is a family of open sets on the real line
+<dd>        which cover the closed interval [a,b], then some finite subset
+<dd>        H of G also covers [a,b].<p>
+</dl>
+<hr>
+  43846 <a
+href="ftp://ftp.cs.utexas.edu/pub/bshults/ATP-tech-reports/atp-124.ascii">atp-124.ascii</a><p>
+
+<pre>
+         Heine-Borel Theorem Analogy Example               ATP.124
+                   W. W. Bledsoe                       August 1994</pre>
+
+
+ABSTRACT. <p>
+
+We give here a pair of theorems that we hope to use in our Analogy
+Theorem Proving experiments.  They both are Heine-Borel Theorems,
+the first for the Real Line, R1, and the second for two dimensional
+real space, R2.  The basic idea is to use a proof of the first as
+a guide to produce (automatically) a proof of the second.  We have 
+not yet produced such an automatic proof;  we give these examples
+and the information below, only as material for proceeding with
+the analogy process.  <p>
+
+
+                          CONTENTS<p>
+<ul>
+
+<li>  0. Introduction.
+
+<li>  1. Heine-Borel-1
+
+<li>  2. Heine-Borel-2
+
+<li>  3. Converting the Proof Plan
+
+<li>  4. Remarks
+
+<li> Appendix A. Informal Proof of the Heine-Borel Theorem
+
+<li> Appendix B. LISP version of the Plans given in Sections 1 and 2.
+
+<li> Appendix C. LISP version of an earlier version of Plans for HB1 and HB2.
+
+<li> Appendix D. Examples of difficult FOL theorems  (but easy for humans).
+
+<li> Appendix E. A LINEAR plan for HB1.
+</ul>
+
+<hr>
+ 298173 <a
+href="ftp://ftp.cs.utexas.edu/pub/bshults/ATP-tech-reports/atp-127.ps">atp-127.ps</a><p>
+
+<pre>
+The Creation and Use of a Knowledge Base 
+of Mathematical Theorems and Definitions
+
+Benjamin Shults 
+Department of Mathematics 
+University of Texas at Austin 
+Austin, TX  78712 
+bshults@math.utexas.edu</pre>
+
+IPR is an automatic theorem-proving system intended particularly for
+use in higher-level mathematics.  It discovers the proofs of theorems
+in mathematics applying known theorems and definitions.  Theorems and
+definitions are stored in the knowledge base in the form of sequents
+rather than formulas or rewrite rules.  Because there is more
+easily-accessible information in a sequent than there is in the
+formula it represents, a simple algorithm can be used to search the
+knowledge base for the most useful theorem or definition to be used in
+the theorem-proving process.  This paper describes how the sequents in
+the knowledge base are formed from theorems stated by the user and how
+the knowledge base is used in the theorem-proving process.  An example
+of a theorem proved and the English proof output are also given.<p>
+
+<hr>
+ 273543 <a
+href="ftp://ftp.cs.utexas.edu/pub/bshults/ATP-tech-reports/atp-127a.ps">atp-127a.ps</a><p>
+
+<pre>
+A Framework for the Creation and Use of a Knowledge Base 
+of Mathematical Theorems and Definitions
+
+Benjamin Shults 
+Department of Mathematics 
+University of Texas at Austin 
+Austin, TX  78712 
+bshults@math.utexas.edu</pre>
+
+This paper covers the framework underlying the IPR prover, some of
+whose success is illustrated in ATP-127.  The presentation here is
+more clear than the presentation in ATP-127 but this does not include
+the examples of theorems proved.<p>
+
+Abstract:<p>
+
+A mathematician knows thousands of theorems and definitions and is
+able to choose just the needed results and use them at just the right
+time in the theorem-proving process.  The problem of codifying some
+bit of this process is the topic of this paper.<p>
+
+IPR is an automatic theorem-proving system intended particularly for
+use in mathematics.  It discovers the proofs of theorems in
+mathematics by applying known theorems and definitions from a
+knowledge base.  Theorems and definitions are stored in the knowledge
+base in the form of ``sequents'' rather than formulas or rewrite
+rules.  The sequents---into which a theorem is reduced before being
+put into the knowledge base---consistently mirror the ways a human
+might use the theorem.  Because the data are in this form, natural
+fetching algorithms can be used to search the knowledge base for the
+most useful theorem to be used in the theorem-proving process.<p>
+
+<hr>
+  60458 <a
+href="ftp://ftp.cs.utexas.edu/pub/bshults/ATP-tech-reports/atp-89j.ascii">atp-89j.ascii</a><p>
+
+JAR 6: 341-359, 1990<p>
+
+<pre>
+                                                              ATP 89j
+                                                          24 May 1990
+       CHALLENGE PROBLEMS IN ELEMENTARY CALCULUS
+
+                    W. W. Bledsoe
+              The University of Texas</pre>
+
+
+The following is a list of challenge problems for automated provers.
+They are based on the theorem in calculus that the sum of two 
+continuous functions is continuous (called Lim+).<p>
+
+<hr>
+
+<em>This page is maintained by <a
+href="http://www.ma.utexas.edu/users/bshults">Benjamin Shults</a>.
+Please email me at </em>bshults@math.utexas.edu <em>if you have
+suggestions or further information.</em><p>
+

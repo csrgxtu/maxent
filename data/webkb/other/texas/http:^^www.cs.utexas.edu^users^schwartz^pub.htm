@@ -1,0 +1,348 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 07-Jan-97 15:50:37 GMT
+Content-Type: text/html
+Content-Length: 39253
+Last-Modified: Wednesday, 25-Dec-96 18:50:26 GMT
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+
+<html>
+
+<head>
+<title>SSGRG Publications Page</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 1.1">
+</head>
+
+<body background="background.gif" bgcolor="#FEEBFA" link="#000080">
+<h1><!WA0><img src="http://www.cs.utexas.edu/users/schwartz/logo.gif" align=right hspace=0 width=284 height=172><font color="#00FF00"><!WA1><img src="http://www.cs.utexas.edu/users/schwartz/7blox.gif" align=middle width=80 height=64></font><a name="publications"><font color="#8000FF"><font size=7>Publications</font></font></a></h1>
+<p>The following is a list of publications from our research group (largely listed in order of 
+publication date). Each entry consists of a citation, an abstract, and a hypertext link to 
+the actual paper. <br>
+</p>
+<p><font color="#000000"><font size=3>Related Web Pages:</font><font size=4> </font></font><!WA2><img src="http://www.cs.utexas.edu/users/schwartz/3blox.gif" align=middle width=48 height=36> <!WA3><a href="http://www.cs.utexas.edu">UTCS General</a> <!WA4><img src="http://www.cs.utexas.edu/users/schwartz/3blox.gif" align=middle width=48 height=36> <!WA5><a href="http://www.cs.utexas.edu/users/schwartz/index.html">SSGRG Title Page </a><!WA6><img src="http://www.cs.utexas.edu/users/schwartz/3blox.gif" align=middle width=48 height=36> <!WA7><a href="http://www.cs.utexas.edu/users/schwartz/new_index.html">SSGRG Project Index</a></p>
+<hr>
+<ol>
+<li><!WA8><img src="http://www.cs.utexas.edu/users/schwartz/new.gif" align=bottom width=31 height=12><a name="lrusim">Guillermo Jimenez-Perez and Don Batory</a> <!WA9><a href="ftp://ftp.cs.utexas.edu/pub/predator/lrusim.ps"><b>Memory Simulators and Software Generators</b>,</a> To appear in <cite>1997 
+Symposium on Software Reuse</cite>.<p>We present results on re-engineering a highly tuned and hand-coded memory simulator using the P2 container data structure 
+generator. This application was chosen because synthesizing the simulator's data structures would not exploit P2's primary 
+advantage of automatically applying sophisticated code optimization techniques. Thus we initially believed that using P2 would 
+be an overkill and that P2's generated code would provide no performance advantages over hand coding. On the contrary, we 
+found that P2 produced more efficient code and that it offered significant advantages to software development that we had not 
+previously realized. </p>
+</li>
+<li><!WA10><img src="http://www.cs.utexas.edu/users/schwartz/best.gif" align=right hspace=0 width=88 height=35><!WA11><img src="http://www.cs.utexas.edu/users/schwartz/new.gif" align=bottom width=31 height=12><a name="ieee-icsr">Don Batory and Bart J. Geraci.</a> <!WA12><a href="ftp://ftp.cs.utexas.edu/pub/predator/ieee-icsr.ps"><b>Composition Validation and Subjectivity in GenVoca Generators</b>,</a> 
+To appear in <cite>IEEE Transactions on Software Engineering</cite>, special issue on Software Reuse.<p>GenVoca generators synthesize software systems by composing components from reuse libraries. GenVoca components are 
+designed to export and import standardized interfaces, and thus be plug-compatible, interchangeable, and interoperable with 
+other components. In this paper, we examine two different but important issues in software system synthesis. First, not all 
+syntactically correct compositions of components are semantically correct. We present simple, efficient, and 
+domain-independent algorithms for validating compositions of GenVoca components. Second, components that export and 
+import immutable interfaces are too restrictive for software system synthesis. We show that the interfaces and bodies of 
+GenVoca components are subjective, i.e., they mutate and enlarge upon instantiation. This mutability enables software systems 
+with customized interfaces to be composed from components with &quot;standardized&quot; interfaces. </p>
+</li>
+<li><a name="vivek-thesis">Vivek P. Singhal.</a> <!WA13><a href="ftp://ftp.cs.utexas.edu/pub/predator/vivek-thesis.ps.Z"><b>A Programming Language for Writing Domain-Specific Software System Generators</b>.</a> Ph.D. 
+Dissertation. Department of Computer Sciences, University of Texas at Austin, September 1996. <p>Automating routine programming tasks is an effective way to increase the productivity of software development. Software 
+system generators have the potential to achieve this goal: customized software systems can be quickly and easily assembled 
+from component libraries. Our research demonstrates that for generators to be successful, component libraries must be 
+scalable. Scalability enables libraries to be small, because the components of the library implement distinct and largely 
+orthogonal features. These components can be combined to yield an enormous family of software systems and subsystems. 
+Generators thus become tools for combining components to manufacture these systems and subsystems. In GenVoca, the 
+programming model that forms the foundation of our research, components act as large-scale refinements which simultaneously 
+transform multiple classes from one abstraction to another. Because GenVoca advocates a novel style of program organization, 
+there is little language or tool support for this paradigm. We have developed a programming language called P++, which 
+extends C++ with specialized constructs to support the GenVoca model. It permits components to be treated as 
+transformations which can simultaneously refine several classes in a consistent manner. To validate the utility of this language, 
+we solved a &quot;challenge problem&quot; in software reuse: we reimplemented the Booch C++ Components data structures library as a 
+scalable P++ library. We were able to reduce the volume of code and number of components by approximately a factor of 
+four, without compromising the performance of generated systems. </p>
+</li>
+<li><a name="rosetta">E.E. Villarreal and Don Batory.</a> <!WA14><a href="ftp://ftp.cs.utexas.edu/pub/predator/rosetta.ps"><b>Rosetta: A Generator of Data Language Compilers</b>, </a>To appear in <em>1997 Symposium on 
+Software Reuse</em>. Also, Technical Report TR-96-04, Department of Computer Sciences, University of Texas at Austin, April 
+1996. <p>A data language is a declarative language that enables database users to access and manipulate data. There are families of 
+related data languages; each family member is targeted for a particular application. Unfortunately, building compilers for such 
+languages is largely an ad hoc process; there are no tools and design methods that allow programmers to leverage the design 
+and code of compilers for similar languages, or to simplify the evolution of existing languages to include more features. Rosetta 
+is a generator of relational data language compilers that demonstrates practical solutions to these problems. We explain how 
+domain analysis identifies primitive building blocks of these compilers, and how grammar-based definitions (e.g. GenVoca) of 
+the legal compositions of these blocks yields compact and easily-evolvable specifications of data languages. Rosetta 
+automatically transforms such specifications into compilers. Experiences with Rosetta are discussed. </p>
+</li>
+<li><a name="lprairie">Dinesh Das and Don Batory.</a> <!WA15><a href="ftp://ftp.cs.utexas.edu/pub/predator/lprairie.ps"><b>Synthesizing Rule Sets for Query Optimizers from Components</b>, </a>Technical Report 
+TR-96-05, Department of Computer Sciences, University of Texas at Austin, April 1996. <p>Query optimizers are complex subsystems of database management systems. Modifying query optimizers to admit new 
+algorithms or storage structures is quite difficult, but partly alleviated by extensible approaches to optimizer construction. 
+Rule-based optimizers are a step in that direction, but from our experience, the rule sets of such optimizers are rather 
+monolithic and brittle. Conceptually minor changes often require wholesale modifications to a rule set. Consequently, much can 
+be done to improve the extensibility of rule-based optimizers. As a remedy, we present a tool called Prairie that is based on an 
+algebra of layered optimizers. This algebra naturally leads to a building-blocks approach to rule-set construction. Defining 
+customized rule sets and evolving previously defined rule sets is accomplished by composing building-blocks. We explain an 
+implementation of Prairie and present experimental results that show how classical relational optimizers can be synthesized from 
+building-blocks, and that the efficiency of query optimization is not sacrificed. </p>
+</li>
+<li><a name="compilers">Don Batory.</a> <!WA16><a href="ftp://ftp.cs.utexas.edu/pub/predator/compilers.ps.Z"><b>Software System Generators, Transformation Systems, and Compilers</b>. </a>Working Paper, October 1995. <p>GenVoca generators assemble customized, high-performance software systems automatically from components. In this paper, 
+we explain how GenVoca generators are actually compilers for domain-specific module interconnection languages and that the 
+underlying compilation technology is a special class of transformation systems. </p>
+</li>
+<li><a name="space_tech">Don Batory.</a> <!WA17><a href="ftp://ftp.cs.utexas.edu/pub/predator/space.ps.Z"><b>Software Component Technologies and Space Applications</b>.</a> In <cite>Proceedings of the International 
+Conference on Integrated Micro-Nano Technology for Space Applications</cite>, November 1995. <p>In the near future, software systems will be as reconfigurable than hardware. This will be possible through the advent of 
+software component technologies, which have been prototyped in universities and research labs. In this paper, we outline the 
+foundations for these technologies and suggest how they might impact software for space applications. </p>
+</li>
+<li><a name="oopsla95.position">Lance Tokuda.</a> <!WA18><a href="ftp://ftp.cs.utexas.edu/pub/predator/oopsla95-position-unicron.ps"><b>Program Transformations for Evolving Software Architectures</b>.</a> OOPSLA'95 position paper for 
+workshop on Adaptable and Adaptive Software, 1995. <p>Software evolution is often driven by the need to extend existing software. &quot;Design patterns&quot; express preferred ways to extend 
+object-oriented software and provide desirable target states for software designs. This paper demonstrates that some design 
+patterns can be expressed as a series of parameterized program transformations applied to a plausible initial software state. A 
+software tool is proposed that uses primitive transformations to allow users to evolve object-oriented applications by visually 
+altering design diagrams. </p>
+</li>
+<li><!WA19><img src="http://www.cs.utexas.edu/users/schwartz/best.gif" align=right hspace=0 width=88 height=35><a name="icsr4A">Don Batory.</a> <!WA20><a href="ftp://ftp.cs.utexas.edu/pub/predator/subjectivity-icsr95.ps.Z"><b>Subjectivity and GenVoca Generators.</b></a> In <cite>Proceedings of the International Conference on 
+Software Reuse '96</cite> (Orlando), 1996. See <!WA21><a href="#ieee-icsr">IEEE TSE journal version</a>. Expanded Technical Report <!WA22><a href="ftp://ftp.cs.utexas.edu/pub/predator/tr-95-32.ps.Z">TR-95-32</a>, 
+Department of Computer Sciences, University of Texas at Austin, June 1995. <p>The tenet of subjectivity is that no single interface can adequately describe any object; interfaces to the same object will vary 
+among different applications. Thus, objects with standardized interfaces seem too brittle a concept to meet the demands of a 
+wide variety of applications. Yet, objects with standardized interfaces is a central idea in domain modeling and software 
+generation. Standard interfaces make objects plug-compatible and interchangeable, and it is this feature that is exploited by 
+generators to synthesize high-performance, domain-specific software systems. Interestingly, generated systems have 
+customized interfaces that can be quite different from the interfaces of their constituent objects. </p>
+<p>In this paper, we reconcile this apparent contradiction by showing that the objects (components) in the GenVoca model of 
+software generation are not typical software modules; their interfaces and bodies mutate upon instantiation to a &quot;standard&quot; that 
+is application-dependent. </p>
+</li>
+<li><a name="oopsla95">Don Batory.</a> <!WA23><a href="ftp://ftp.cs.utexas.edu/pub/predator/oopsla95-panel.ps"><b>Issues in Domain Modeling and Software System Generation</b>.</a> OOPSLA'95 position paper for Panel on 
+Objects and Domain Engineering, 1995. <br>
+</li>
+<li><a name="tr-95-26">Don Batory and Jeff Thomas.</a> <!WA24><a href="ftp://ftp.cs.utexas.edu/pub/predator/tr-95-26.ps.Z"><b>P2: A Lightweight DBMS Generator</b>.</a> Technical Report TR-95-26, Department of 
+Computer Sciences, University of Texas at Austin, June 1995. <p>A lightweight database system (LWDB) is a high-performance, application-specific DBMS. It differs from a general-purpose 
+(heavyweight) DBMS in that it omits one or more features and specializes the implementation of its features to maximize 
+performance. Although heavyweight monolithic and extensible DBMSs might be able to emulate LWDB capabilities, they 
+cannot match LWDB performance. </p>
+<p>In this paper, we describe P2, a generator of lightweight DBMSs, and explain how it was used to reengineer a hand-coded, 
+highly-tuned LWDB used in a production system compiler (LEAPS). We present results that show P2-generated LWDBs 
+reduced the development time and code size of LEAPS by a factor of three and that the generated LWDBs executed 
+substantially faster than versions built by hand or using an extensible heavy weight DBMS. </p>
+</li>
+<li><a name="dinesh-thesis">Dinesh Das.</a> <!WA25><a href="ftp://ftp.cs.utexas.edu/pub/predator/das-thesis.ps"><b>Making Database Optimizers More Extensible</b>.</a> Ph.D. Dissertation. Department of Computer Sciences, 
+University of Texas at Austin, May 1995. <p>Query optimizers are fundamental components of database management systems (DBMSs). An optimizer consists of three 
+features: a search space, a cost model, and a search strategy. The experience of many researchers has shown that hard-wiring 
+these features results in an optimizer that is very inflexible and difficult to modify. </p>
+<p>Rule-based optimizers have been developed to alleviate some of the problems of monolithic optimizers. Unfortunately, 
+contemporary rule-based optimizers do not provide enough support to enable database implementers (DBI) to fully realize the 
+potential of open systems. We have identified four requirements that a rule-based optimizer should satisfy to address these 
+needs. First, rules should be specified using high-level abstractions, insulating the DBI from underlying implementation details. 
+Second, rule sets should be easily extensible, with a minimum of reprogramming required. Third, rule sets should be easily 
+reconfigurable, that is, changeable to meet a variety of user needs, interfaces, database schemes, etc. Fourth, rule-based 
+optimizers should be fast, that is, performance should not be sacrificed for the sake of high-level specifications. </p>
+<p>In this dissertation, we describe Prairie, an environment for specifying rules for rule-based optimizers that satisfies all four of the 
+above requirements. The Prairie specification language is presented and we show how it allows a DBI to design an easily 
+extensible rule set for a rule-based optimizer. Experimental results are presented using the Texas Instruments Open ODD 
+optimizer rule set to validate the claim of good performance using Prairie. Finally, a building blocks approach of constructing 
+rule sets is presented; this results in easily reconfigurable rule sets whose features are changeable simply by assembling the 
+blocks in various ways. </p>
+</li>
+<li><!WA26><img src="http://www.cs.utexas.edu/users/schwartz/best.gif" align=right hspace=0 width=88 height=35><a name="adage">Don Batory, Lou Coglianese, Mark Goodwill, and Steve Shaver.</a> <!WA27><a href="ftp://ftp.cs.utexas.edu/pub/predator/adage-arch.ps"><b>Creating Reference Architectures: An 
+Example from Avionics</b>.</a> In <cite>Proceedings of the Symposium on Software Reusability</cite>, Seattle Washington, 
+April 1995. <p>ADAGE is a project to define and build a domain-specific software architecture (DSSA) environment for assisting the 
+development of avionics software. A central concept of DSSA is the use of software system generators to implement 
+component-based models of software synthesis in the target domain. In this paper, we present the ADAGE component-based 
+model (or reference architecture) for avionics software synthesis. We explain the modeling procedures used, review our initial 
+goals, and examine what we were (and were not) able to accomplish. The contributions of our paper are the lessons that we 
+learned; they may be beneficial to others in future modeling efforts. </p>
+</li>
+<li><a name="cia10-95">Don Batory, Lou Coglianese, Steve Shafer, and Will Tracz.</a> <!WA28><a href="ftp://ftp.cs.utexas.edu/pub/predator/cia10-95.ps.Z"><b>The ADAGE Avionics Reference Architecture</b>.</a> In <cite>AIAA 
+Computing in Aerospace-10 Conference</cite>, San Antonio, March 1995. <p>ADAGE is a project to define and build a domain-specific software architecture (DSSA) environment for avionics. A central 
+concept of ADAGE is the use of generators to implement scalable, component-based models of avionics software. In this 
+paper, we review the ADAGE model (or reference architecture) of avionics software and describe techniques for avionics 
+software synthesis. </p>
+</li>
+<li><a name="icde-11">Dinesh Das and Don Batory.</a> <!WA29><a href="ftp://ftp.cs.utexas.edu/pub/predator/icde-11.ps"><b>Prairie: A Rule Specification Framework for Query Optimizers</b>.</a> In <cite>Proceedings 11th 
+International Conference on Data Engineering</cite> (Taipei), March 1995. <p>From our experience, current rule-based query optimizers do not provide a very intuitive and well-defined framework to define 
+rules and actions. To remedy this situation, we propose an extensible and structured algebraic framework called Prairie for 
+specifying rules. Prairie facilitates rule-writing by enabling a user to write rules and actions more quickly, correctly and in an 
+easy-to-understand and easy-to-debug manner. </p>
+<p>Query optimizers consist of three major parts: a search space, a cost model and a search strategy. The approach we take is 
+only to develop the algebra which defines the search space and the cost model and use the Volcano optimizer-generator as our 
+search engine. Using Prairie as a front-end, we translate Prairie rules to Volcano to validate our claim that Prairie makes it 
+easier to write rules. </p>
+<p>We describe our algebra and present experimental results which show that using a high-level framework like Prairie to design 
+large-scale optimizers does not sacrifice efficiency. </p>
+</li>
+<li><a name="ecbs-95">Don Batory, David McAllester, Lou Coglianese, and Will Tracz.</a> <!WA30><a href="ftp://ftp.cs.utexas.edu/pub/predator/ecbs-95.ps.Z"><b>Domain Modeling in Engineering of Computer-Based 
+Systems</b>.</a> In <cite>Proceedings of the 1995 International Symposium and Workshop on Systems Engineering of Computer 
+Based Systems</cite>, Tucson, Arizona, February 1995. <p>Domain modeling is believed to be a key factor in developing an economical and scalable means for constructing families of 
+related software systems. In this paper, we review the current state of domain modeling, and present some of our work on the 
+ADAGE project, an integrated environment that relies heavily on domain models for generating real-time avionics applications. 
+Specifically, we explain how we detect errors in the design of avionics systems that are expressed in terms of compositions of 
+components. We also offer insights on how domain modeling can benefit the engineering of computer-based systems in other 
+domains. </p>
+</li>
+<li><a name="tr-95-06">Lance Tokuda and Don Batory.</a> <!WA31><a href="ftp://ftp.cs.utexas.edu/pub/predator/tr-95-06.ps.Z"><b>Automated Software Evolution via Design Pattern Transformations</b>.</a> In <cite>Proceedings of 
+the 3rd International Symposium on Applied Corporate Computing</cite>, Monterrey, Mexico, October 1995. Also TR-95-06, 
+Department of Computer Sciences, University of Texas at Austin, February 1995. <p>Software evolution is often driven by the need to extend existing software. &quot;Design patterns&quot; express preferred ways to extend 
+object-oriented software and provide desirable target states for software designs. This paper demonstrates that some design 
+patterns can be expressed as a series of parameterized program transformations applied to a plausible initial software state. A 
+software tool is proposed that uses primitive transformations to allow users to evolve object-oriented applications by visually 
+altering design diagrams. </p>
+</li>
+<li><a name="tr-95-04">Jeff Thomas and Don Batory.</a> <!WA32><a href="ftp://ftp.cs.utexas.edu/pub/predator/tr-95-04.ps.Z"><b>P2: An extensible Lightweight DBMS</b>.</a> Technical Report TR-95-04, Department of 
+Computer Sciences, University of Texas at Austin, February 1995. <p>A lightweight database system (LWDB) is a high-performance, application-specific DBMS. It differs from a general-purpose 
+(heavyweight) DBMS in that it omits one or more features and specializes the implementation of its features to maximize 
+performance. Although heavyweight monolithic and extensible DBMSs might be able to emulate LWDB capabilities, they 
+cannot match LWDB performance. </p>
+<p>In this paper, we explore LWDB applications, systems, and implementation techniques. We describe P2, an extensible 
+lightweight DBMS, and explain how it was used to reengineer a hand-coded, highly-tuned LWDB used in a production system 
+compiler (LEAPS). We present results that show P2-generated LWDBs for LEAPS executes substantially faster than versions 
+built by hand or that use an extensible heavyweight DBMS. </p>
+</li>
+<li><!WA33><img src="http://www.cs.utexas.edu/users/schwartz/best.gif" align=right hspace=0 width=88 height=35><a name="tr-95-03">Don Batory and Bart J. Geraci.</a> <!WA34><a href="ftp://ftp.cs.utexas.edu/pub/predator/drc-orlando.ps.Z"><b>Validating Component Compositions in Software System Generators</b>,</a> In 
+<cite>Proceedings of the International Conference on Software Reuse '96</cite> (Orlando), 1996. See <!WA35><a href="#ieee-icsr">IEEE TSE 
+journal version</a>. Also, Expanded Technical Report <!WA36><a href="ftp://ftp.cs.utexas.edu/pub/predator/tr-95-03.ps.Z">TR-95-03</a>, Department of Computer Sciences, University of Texas at 
+Austin, June 1995. <p>Generators synthesize software systems by composing components from reuse libraries. In general, not all syntactically correct 
+compositions are semantically correct. In this paper, we present domain-independent algorithms for the GenVoca model of 
+software generators to validate component compositions. Our work relies on attribute grammars and offers powerful 
+debugging capabilities with explanation-based error reporting. We illustrate our approach by showing how compositions are 
+debugged by a GenVoca generator for container data structures. </p>
+</li>
+<li><a name="sigsoft94">Don Batory, Jeff Thomas, and Marty Sirkin.</a> <!WA37><a href="ftp://ftp.cs.utexas.edu/pub/predator/sigsoft-94.ps"><b>Reengineering a Complex Application Using a Scalable Data Structure 
+Compiler</b>.</a> In <cite>Proceedings of the ACM SIGSOFT '94 Conference</cite> (New Orleans), December 1994. <p>P2 is a scalable compiler for collection data structures. High-level abstractions insulate P2 users from data structure 
+implementation details. By specifying a target data structure as a composition of components from a reuse library, the P2 
+compiler replaces abstract operations with their concrete implementations. </p>
+<p>LEAPS is a production system compiler that produces the fastest sequential executables of OPS5 rule sets. LEAPS is a 
+hand-written, highly-tuned, performance-driven application that relies on complex data structures. Reengineering LEAPS using 
+P2 was an acid test to evaluate P2's scalability, productivity benefits, and generated code performance. </p>
+<p>In this paper, we present some of our experimental results and experiences in this reengineering exercise. We show that P2 
+scaled to this complex application, substantially increased productivity, and provided unexpected performance gains. </p>
+</li>
+<li><a name="millie-thesis">Emilia E. Villarreal.</a> <!WA38><a href="ftp://ftp.cs.utexas.edu/pub/predator/villarreal-thesis.ps"><b>Automated Compiler Generation for Extensible Data Languages</b>.</a> Ph.D. Dissertation. Department of 
+Computer Sciences, University of Texas at Austin, December 1994. <p>To meet the changing needs of the DBMS community, e.g., to support new database applications such as geographic or 
+temporal databases, new data languages are frequently proposed. Most offer extensions to previously defined languages such 
+as SQL or Quel. Few are ever implemented. The maturity of the area of data languages demands that researchers go beyond 
+the proposal stage to have hands-on experience with their languages, if only to separate the good ideas from the bad. Tools 
+and methodologies for building families of similar languages are definitely needed; we solve this problem by automating the 
+generation of compilers for data languages. </p>
+<p>Our work, Rosetta, is based on two concepts. First, underlying the domain of data languages is a common backplane of 
+relational operations. Backplane operations are primitive building blocks for language execution and construction, where a 
+building block has standardized semantics. The definition of a well-designed backplane is implementation-independent; that is, 
+the backplane is defined once but can be used to model arbitrarily many data languages. </p>
+<p>Second, there exist primitive building-blocks for language construction. From our analysis of the database data language 
+domain, we have identified three classes of building-blocks: one class maps language syntax to backplane functions, another 
+builds an internal representation of the backplane operator tree, and a third class manages contextual information. </p>
+<p>For modeling data languages, we define the Rosetta specification language, a grammar-based specification language tailored to 
+our needs with the power to define syntax, map it to the target language, and build an operator tree all in one rule. Thus each 
+rule is a microcosmic model of a language clause which encapsulates input parsing and code generation. </p>
+<p>Our specification language models data languages based on the composition of primitive building blocks for semantics and the 
+customization of the syntax for invoking the compositions. A compiler for a data language is generated by first modeling the 
+language and then compiling the specification. The ease and efficiency with which Rosetta customizes languages derives from 
+the reuse of the backplane operations and the high-level specification supported. </p>
+</li>
+<li><a name="tr-94-28">Don Batory.</a> <!WA39><a href="ftp://ftp.cs.utexas.edu/pub/predator/tr-94-28.ps.Z"><b>The LEAPS Algorithms</b>.</a> Technical Report TR-94-28, Department of Computer Sciences, University of Texas 
+at Austin, November 1994. <p>LEAPS is a state of the art production system compiler that produces the fastest sequential executable OPS5 rule sets. The 
+performance of LEAPS is due to its reliance on complex data structures and search algorithms to speed rule processing. In this 
+paper, we explain the LEAPS algorithms in terms of the programming abstractions of the P2 data structure compiler. </p>
+</li>
+<li><a name="tr-94-26">Don Batory, Bart Geraci, and Jeff Thomas.</a> <!WA40><a href="ftp://ftp.cs.utexas.edu/pub/predator/tr-94-26.ps.Z"><b>Introductory P2 System Manual</b>.</a> Technical Report TR-94-26, Department of 
+Computer Sciences, University of Texas at Austin, November 1994. <p>P2 is a prototype container data structure precompiler. It is a superset of the C language offering container and cursor 
+abstractions as part of the linguistic extensions to C. P2 is based on the GenVoca model of software system generators. This 
+document is the users manual for programming in the P2 language. </p>
+</li>
+<li><a name="tr-94-27">Don Batory, Bart Geraci, and Jeff Thomas.</a> <!WA41><a href="ftp://ftp.cs.utexas.edu/pub/predator/tr-94-27.ps.Z"><b>Advanced P2 System Manual</b>.</a> Technical Report TR-94-27, Department of 
+Computer Sciences, University of Texas at Austin, November 1994. <p>This manual documents how layers are written in P2. There is a special language, XP, which was designed specifically for 
+defining P2 building blocks (i.e., primitive data structure layers). </p>
+</li>
+<li><a name="ieee-sw">Don Batory, Vivek Singhal, Jeff Thomas, Sankar Dasari, Bart Geraci, and Marty Sirkin.</a> <!WA42><a href="ftp://ftp.cs.utexas.edu/pub/predator/ieee-sw-94.ps"><b>The GenVoca Model of 
+Software-System Generators</b>.</a> <cite>IEEE Software</cite>, September 1994. <p>An emerging breed of generators synthesize complex software systems from libraries of reusable components. These 
+generators, called GenVoca generators, produce high-performance software and offer substantial increases in productivity. </p>
+</li>
+<li><a name="domain-modeling-workshop">Don Batory.</a> <!WA43><a href="ftp://ftp.cs.utexas.edu/pub/predator/products.ps.Z"><b>Products of Domain Models</b>.</a> In <cite>Proceedings of ARPA Domain Modeling Workshop</cite>, George Mason 
+University, September 1994. <p>We argue that domain models should produce four basic products: identification of reusable software components, definition of 
+software architectures that explain how components can be composed, a demonstration of architecture scalability, and a direct 
+relationship of these results to software generation of target systems. </p>
+</li>
+<li><a name="sirkin-thesis">Martin J. Sirkin.</a> <!WA44><a href="ftp://ftp.cs.utexas.edu/pub/predator/sirkin-thesis.ps"><b>A Software System Generator for Data Structures</b>.</a> Ph.D. Dissertation. Department of Computer 
+Science and Engineering, University of Washington, March 1994. <p>Although data structures are a fundamental part of most applications, using and writing data structures is time-consuming, 
+difficult, and error-prone. Programmers often select inappropriate data structures for their applications because they do not 
+know which data structure to use, they do not know how to implement a particular data structure, or they do not have an 
+existing implementation of the data structure to use. </p>
+<p>This dissertation describes a model and a technology for overcoming these problems. Our approach is based on non-traditional 
+parameterized types (NPTs). NPTs are an extension to traditional parameterized types (TPTs), which are already familiar to 
+most programmers. Our NPTs are based on the GenVoca domain modeling concepts, vertical parameterization, a consistent 
+high-level interface, and a transformational compiler. </p>
+<p>Our research has led to the construction of a software system generator for data structures called Predator. Predator is able to 
+transform data structure declarations and data structure-independent functions into efficient code. Predator also allows 
+programmers to adjust a data structure's implementation by simply changing its declaration and recompiling. </p>
+<p>This dissertation discusses our model (and how it differs from standard models), our Predator compiler, and the results of our 
+validation efforts. </p>
+</li>
+<li><a name="sigsoft">Don Batory, Vivek Singhal, Jeff Thomas, and Marty Sirkin.</a> <!WA45><a href="ftp://ftp.cs.utexas.edu/pub/predator/sigsoft-93.ps"><b>Scalable Software Libraries</b>.</a> In <cite>Proceedings of the ACM 
+SIGSOFT '93 Conference</cite> (Los Angeles), December 1993. <p>Many software libraries (e.g., the Booch C++ Components, libg++, NIHCL, COOL) provide components (classes) that 
+implement data structures. Each component is written by hand and represents a unique combination of features (e.g. 
+concurrency, data structure, memory allocation algorithms) that distinguishes it from other components. </p>
+<p>We argue that this way of building data structure component libraries is inherently unscalable. Libraries should not enumerate 
+complex components with numerous features; rather, libraries should take a minimalist approach: they should provide only 
+primitive building blocks and be accompanied by generators that can combine these blocks to yield complex custom data 
+structures. </p>
+<p>In this paper, we describe a prototype data structure generator and the building blocks that populate its library. We also 
+present preliminary experimental results which suggest that this approach does not compromise programmer productivity nor 
+the run-time performance of generated data structures. </p>
+</li>
+<li><a name="tr-93-16">Vivek Singhal and Don Batory.</a> <!WA46><a href="ftp://ftp.cs.utexas.edu/pub/predator/tr-93-16.ps.Z"><b>P++: A Language for Software System Generators</b>.</a> Technical Report TR-93-16, 
+Department of Computer Sciences, University of Texas at Austin, November 1993. <p>P++ is a programming language that supports the GenVoca model, a particular style of software design that is intended for 
+building software system generators. P++ is an enhanced version of C++: it offers linguistic extensions for component 
+encapsulation, abstraction, parameterization, and inheritance, where a component is a suite of interrelated classes and functions. 
+This paper describes the motivations for P++, the ideas which underlie its design, the syntax and features of the language, and 
+related areas of research. </p>
+</li>
+<li><a name="wisr-p2">Jeff Thomas, Don Batory, Vivek Singhal, and Marty Sirkin.</a> <!WA47><a href="ftp://ftp.cs.utexas.edu/pub/predator/wisr-93-p2.ps"><b>A Scalable Approach to Software Libraries</b>.</a> In <cite>Proceedings 
+of the 6th Annual Workshop on Software Reuse</cite> (Owego, New York), November 1993. <p>Software libraries offer a convenient and accessible means to achieve the benefits of reuse. The components of these libraries 
+are written by hand, and each represents a unique combination of features that distinguishes it from other components. 
+Unfortunately, as the number of features grows, the size of these libraries grows exponentially, making them unscalable. </p>
+<p>Predator is a research project to develop abstractions and tools to provide the benefits of software libraries without incurring 
+the scalability disadvantages just mentioned. Our approach relies on a careful analysis of an application domain to arrive at 
+appropriate high-level abstractions, standardized (i.e., plug-compatible) interfaces, and layered decompositions. Predator 
+defines language extensions for implementing components, and compilers to automatically convert component compositions 
+into efficient programs. </p>
+</li>
+<li><!WA48><img src="http://www.cs.utexas.edu/users/schwartz/best.gif" align=right hspace=0 width=88 height=35><a name="wisr-p++">Vivek Singhal and Don Batory.</a> <!WA49><a href="ftp://ftp.cs.utexas.edu/pub/predator/wisr-93-p++.ps"><b>P++: A Language for Large-Scale Reusable Software Components</b>.</a> In 
+<cite>Proceedings of the 6th Annual Workshop on Software Reuse</cite> (Owego, New York), November 1993. <p>P++ is a programming language that supports the GenVoca model, a particular style of software design that is intended for 
+building software system generators. P++ is an enhanced version of C++: it offers linguistic extensions for component 
+encapsulation, abstraction, parameterization, and inheritance, where a component is a subsystem, i.e., a suite of interrelated 
+classes and functions. </p>
+</li>
+<li><a name="p1-manual">Marty Sirkin.</a> <!WA50><a href="ftp://ftp.cs.utexas.edu/pub/predator/p1-manual.ps.Z"><b>Predator: A Data Structure Compiler</b>.</a> A manual describing the features and syntax of P1, a prototype data 
+structure compiler (unpublished). </li>
+<li>&#160;</li>
+<li><a name="icse">Marty Sirkin, Don Batory, and Vivek Singhal.</a> <!WA51><a href="ftp://ftp.cs.utexas.edu/pub/predator/icse-15.ps"><b>Software Components in a Data Structure Precompiler</b>.</a> In <cite>Proceedings of 
+the 15th International Conference on Software Engineering </cite>(Baltimore, MD), May 1993, pages 437-446. <p>PREDATOR is a data structure precompiler. that generates efficient code for maintaining and querying complex data 
+structures. It embodies a novel component reuse technology that transcends traditional generic data types. In this paper, we 
+explain the concepts of our work and our prototype system. We show how complex data structures can be specified as 
+compositions of software building blocks, and present performance results that compare PREDATOR output to 
+hand-optimized programs. </p>
+</li>
+<li><a name="tr-92-47">Don Batory, Vivek Singhal, and Jeff Thomas.</a> <!WA52><a href="ftp://ftp.cs.utexas.edu/pub/predator/tr-92-47.ps.Z"><b>Database Challenge: Single Schema Database Management Systems</b>.</a> 
+Technical Report TR-92-47, Department of Computer Sciences, University of Texas at Austin, December 1992. <p>Many data-intensive applications require high-performance data management facilities, but utilize only a small fraction of the 
+power of a general-purpose database system (DBMS). We believe single schema database systems (SSTs), i.e., 
+special-purpose DBMSs that are designed for a single schema and a predeclared set of database operations, are a vital need 
+of today's software industry. The challenge is to create a technology for economically building high-performance SSTs. SST 
+research will combine results from object-oriented databases, persistent object stores, module interconnection languages, 
+rule-based optimizers, open-architecture systems, extensible databases, and generic data types. </p>
+</li>
+<li><a name="tosem">Don Batory and Sean O'Malley.</a> <!WA53><a href="ftp://ftp.cs.utexas.edu/pub/predator/tosem-92.ps"><b>The Design and Implementation of Hierarchical Software Systems with Reusable 
+Components</b>.</a> <cite>ACM Transactions on Software Engineering and Methodology</cite>, 1(4):355-398, October 1992. <p>We present a domain-independent model of hierarchical software system design and construction that is based on 
+interchangeable software components and large-scale reuse. The model unifies the conceptualizations of two independent 
+projects, Genesis and Avoca, that are successful examples of software component/building-block technologies and domain 
+modeling. Building-block technologies exploit large-scale reuse, rely on open architecture software, and elevate the granularity 
+of programming to the subsystem level. Domain modeling formalizes the similarities and differences among systems of a 
+domain. We believe our model is a blue-print for achieving software component technologies in many domains. </p>
+</li>
+<li><a name="ijseke">Don Batory, Vivek Singhal, and Marty Sirkin.</a> <!WA54><a href="ftp://ftp.cs.utexas.edu/pub/predator/ijseke-92.ps"><b>Implementing a Domain Model for Data Structures</b>.</a> <cite>International 
+Journal of Software Engineering and Knowledge Engineering</cite>, 2(3):375-402, September 1992. <p>We present a model of the data structure domain that is expressed in terms of the GenVoca domain modeling concepts. We 
+show how familiar data structures can be encapsulated as realms of plug-compatible, symmetric, and reusable components, 
+and we show how complex data structures can be formed from their composition. The target application of our research is a 
+precompiler for specifying and generating customized data structures. </p>
+</li>
+</ol>
+<hr>
+<p>Last modified: December 24, 1996<br>
+</p>
+<address><!WA55><a href="http://www.cs.utexas.edu/users/dsb">Don Batory</a> <!WA56><a href="mailto:batory@cs.utexas.edu">(batory@cs.utexas.edu)</a> </address>
+</body>
+
+</html>

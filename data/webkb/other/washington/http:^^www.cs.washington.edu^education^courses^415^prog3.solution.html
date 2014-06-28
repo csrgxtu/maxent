@@ -1,0 +1,492 @@
+Date: Mon, 02 Dec 1996 14:42:00 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<HEADER>
+<TITLE>
+CSE 415  Prog. Assignment 3 Sample Solution
+</TITLE>
+</HEADER>
+<BODY>
+<pre>
+;First is the output from the listener(this was done on a mac).
+
+;Welcome to Macintosh Common Lisp Version 3.0!
+;? 
+;;Loading #P"Macintosh HD:Desktop Folder:trig_code.lisp"...
+;? (demonstration idtree features_20)
+;FAMILIARIZATION HEURISTIC
+;SCORE  5  IDENTITY# 5 
+;SIMPLIFICATION HEURISTIC
+;SCORE  0  IDENTITY# 4 
+;SCORE  0  IDENTITY# 1 
+;SCORE  0  IDENTITY# 2 
+;SCORE  0  IDENTITY# 10 
+;SCORE  0  IDENTITY# 6 
+;SCORE  -2  IDENTITY# (5) 
+;SCORE  0  IDENTITY# 3 
+;SCORE  2  IDENTITY# (14) 
+;SCORE  0  IDENTITY# 11 
+;SCORE  -3  IDENTITY# (8) 
+;SCORE  0  IDENTITY# 9 
+;SCORE  0  IDENTITY# 15 
+;SCORE  0  IDENTITY# 12 
+;SCORE  0  IDENTITY# 13 
+;SCORE  0  IDENTITY# 7 
+;BEST SCORE
+;SCORE  2  IDENTITY# (14) 
+;EFFECTIVENESS HEURISTIC
+;SCORE  0  IDENTITY# 4 
+;SCORE  0  IDENTITY# 1 
+;SCORE  0  IDENTITY# 2 
+;SCORE  0  IDENTITY# 10 
+;SCORE  0  IDENTITY# 6 
+;SCORE  8  IDENTITY# 5 
+;SCORE  0  IDENTITY# 3 
+;SCORE  20  IDENTITY# 14 
+;SCORE  0  IDENTITY# 11 
+;SCORE  8  IDENTITY# 8 
+;SCORE  0  IDENTITY# 9 
+;SCORE  0  IDENTITY# 15 
+;SCORE  0  IDENTITY# 12 
+;SCORE  0  IDENTITY# 13 
+;SCORE  0  IDENTITY# 7 
+;BEST SCORE
+;SCORE  20  IDENTITY# 14 
+;NIL
+;? (demonstration idtree features_28)
+;FAMILIARIZATION HEURISTIC
+;SCORE  5  IDENTITY# 5 
+;SIMPLIFICATION HEURISTIC
+;SCORE  0  IDENTITY# 4 
+;SCORE  0  IDENTITY# 1 
+;SCORE  0  IDENTITY# 2 
+;SCORE  0  IDENTITY# 10 
+;SCORE  0  IDENTITY# 6 
+;SCORE  4  IDENTITY# (5) 
+;SCORE  0  IDENTITY# 3 
+;SCORE  0  IDENTITY# 14 
+;SCORE  0  IDENTITY# 11 
+;SCORE  -3  IDENTITY# (8) 
+;SCORE  -3  IDENTITY# (9) 
+;SCORE  0  IDENTITY# 15 
+;SCORE  0  IDENTITY# 12 
+;SCORE  0  IDENTITY# 13 
+;SCORE  0  IDENTITY# 7 
+;BEST SCORE
+;SCORE  4  IDENTITY# (5) 
+;EFFECTIVENESS HEURISTIC
+;SCORE  0  IDENTITY# 4 
+;SCORE  0  IDENTITY# 1 
+;SCORE  0  IDENTITY# 2 
+;SCORE  0  IDENTITY# 10 
+;SCORE  0  IDENTITY# 6 
+;SCORE  32  IDENTITY# 5 
+;SCORE  0  IDENTITY# 3 
+;SCORE  8  IDENTITY# 14 
+;SCORE  0  IDENTITY# 11 
+;SCORE  8  IDENTITY# 8 
+;SCORE  4  IDENTITY# 9 
+;SCORE  0  IDENTITY# 15 
+;SCORE  0  IDENTITY# 12 
+;SCORE  0  IDENTITY# 13 
+;SCORE  0  IDENTITY# 7 
+;BEST SCORE
+;SCORE  32  IDENTITY# 5 
+;NIL
+;? (demonstration idtree features_38)
+;FAMILIARIZATION HEURISTIC
+;SCORE  35  IDENTITY# 4 
+;SIMPLIFICATION HEURISTIC
+;SCORE  1  IDENTITY# (4) 
+;SCORE  0  IDENTITY# 1 
+;SCORE  0  IDENTITY# 2 
+;SCORE  0  IDENTITY# 10 
+;SCORE  0  IDENTITY# 6 
+;SCORE  0  IDENTITY# 5 
+;SCORE  0  IDENTITY# 3 
+;SCORE  0  IDENTITY# 14 
+;SCORE  0  IDENTITY# 11 
+;SCORE  0  IDENTITY# 8 
+;SCORE  0  IDENTITY# 9 
+;SCORE  0  IDENTITY# 15 
+;SCORE  0  IDENTITY# 12 
+;SCORE  0  IDENTITY# 13 
+;SCORE  0  IDENTITY# 7 
+;BEST SCORE
+;SCORE  1  IDENTITY# (4) 
+;EFFECTIVENESS HEURISTIC
+;SCORE  8  IDENTITY# 4 
+;SCORE  0  IDENTITY# 1 
+;SCORE  0  IDENTITY# 2 
+;SCORE  0  IDENTITY# 10 
+;SCORE  0  IDENTITY# 6 
+;SCORE  0  IDENTITY# 5 
+;SCORE  0  IDENTITY# 3 
+;SCORE  0  IDENTITY# 14 
+;SCORE  0  IDENTITY# 11 
+;SCORE  0  IDENTITY# 8 
+;SCORE  0  IDENTITY# 9 
+;SCORE  0  IDENTITY# 15 
+;SCORE  0  IDENTITY# 12 
+;SCORE  0  IDENTITY# 13 
+;SCORE  0  IDENTITY# 7 
+;BEST SCORE
+;SCORE  8  IDENTITY# 4 
+;NIL
+;? 
+
+;NEXT IS my code:
+;
+;  Program #3
+;  CSE 415 - Holden
+;
+; TO TEST YOUR OWN ID - see the //// box below the data structure.
+
+
+;  This program makes a heuristically guided choice of what identity to use 
+;  in proving a new trig identity.  The first piece of code sets up the data 
+;  structure consisting of all the id's which are already known to be true.  
+;  Each id is a sublist off the main list consisting of four items:
+; 1) Features of left side
+; 2) Features of right side
+; 3) Identity number
+; 4) Familiarity score (taken from copy packet 1)
+;
+; Each feature list consists of an atom followed by it's simplification score
+; for that identity.  After the first item's f-score, the next atom, and so on.
+
+(setq IDTREE `(((BF 1) (1 -1) 4 35)
+               ((A -1) (BC 1) 1 17)
+               ((AD 1) (B -1) 2 17)
+               ((AC+B 3 AC -1 B -3) (F -3) 10 8)
+               ((CD 1) (1 -1) 6 6)
+               ((AA+BB 4 AA -2 BB -2) (1 -4) 5 5)
+               ((AE 1) (1 -1) 3 5)
+               ((CC+1 2 CC -2 1 -4) (FF -2) 14 4)
+               ((A+BD 3 A -3 BD -1) (E -3) 11 2)
+               ((AA+ABD 5 AA -3 ABD -1) (1 -5) 8 1)
+               ((ABC+BB 5 ABC -1 BB -3) (1 -5) 9 1)
+               ((DD+1 2 DD -2 1 -4) (EE -2) 15 -2)
+               ((BC+BD 4 BC -2 BD -2) (E -4) 12 -3)
+               ((AC+AD 4 AC -2 AD -2) (F -4) 13 -3)
+               ((ABC+ABD 6 ABC -2 ABD -2) (1 -6) 7 -5)
+              )
+ 
+     )
+
+; Next is the data structure for each identity to be tested.  For each identity,
+; all features are in a single list in the following structure:
+; First is the feature, followed by an integer which = the number of symbols in
+; the atom.  The third element is an integer which indicates where the given 
+; feature is located in the equation:
+; 1 = feature is on the left side only
+; 2 = feature is on both sides 
+; 3 = feature is on the right side only
+; The sequence repeats itself for each feature.  The features are listed in 
+; sequential order by where they are located.  In other words, features which 
+; are on the left side only are first, then those on both sides, and then those
+; on the right side only.
+
+
+(setq features_20 '(AA+AACC 7 1 CC+1 4 1 AACC 4 1 AA 2  1 CC 2 2))
+(setq features_28 '(AA+BB 5 1 AA 2 1 BB 2 2 BBFF 4 3 FF 2 3))
+(setq features_38 '(AF+BF 5 1 A+B 3 1 AF 2 1 BF 2 1 C+1 3 3))
+
+;/////////////////////////////////////////////////////////////////////////////
+; TO TEST YOUR OWN ID, first put it in standard form. Next, make a list of the 
+; features which are in the id on either side.  Next, order them according to 
+; descending weight by the number of symbols.  Then, each feature should be 
+; followed by 2 numbers according to the description above.  Finally, do any 
+; reordering necessary to ensure that the features are in order according to 
+; their third element.  ie - the features on the left side only(1) followed
+; by those on both sides(2) followed by those only on the right side(3).  To
+; test the id, type (demonstration idtree YOUR_ID'S_FEATURE_LIST).  The program
+; will then demonstrate all 3 heuristics.  You can use the 3 listed above this
+; box as examples on how to do the conversion.
+;/////////////////////////////////////////////////////////////////////////////
+
+
+;==============================================================================
+;
+;  Output functions
+;==============================================================================
+
+;"print_cons_cell" takes, as an argument, a list which has already been tested 
+; for NIL and END_OF_LIST.  It prints out the first set of values, tests for the
+; end of the list, and then recursively calls itself if not at the end.  The 
+; format t statement is used to make pretty output on the terminal.  Each 
+; heuristic will put its output in the form of a list of cons cells with 
+; END_OF_LIST as the last element in order to use this function.
+
+(defun print_cons_list (list)
+  (format t "SCORE  ~S  IDENTITY# ~S ~%" (car (car list)) (cdr (car list)))
+  (COND ((EQUAL (SECOND list) 'END_OF_LIST) NIL)
+        ((EQUAL 1 1) (print_cons_list (cdr list))))
+)
+
+;"print_output" takes a given heuristics output(a cons cell list), checks for an
+; empty list, and then calls print_cons_list to do its output.
+
+(defun print_output (list)
+  (COND ((EQUAL list NIL) NIL)
+        ((EQUAL list 'END_OF_LIST) 'NO_SOLUTION)
+        ((EQUAL 1 1) (print_cons_list list)))
+)
+
+;"best_score" scans through a list of cons cells comparing each cons cell's 
+; left child.  By using ><= it finds the left child of greatest value and 
+; returns that value.
+
+(defun best_score (list max_score)
+  (COND ((EQUAL (FIRST list) 'END_OF_LIST) max_score)
+        ((OR (> max_score (car (FIRST list))) 
+             (EQUAL max_score (car (FIRST list))))
+         (best_score (cdr list) max_score))
+        ((< max_score (car (car list))) 
+         (best_score (cdr list) (car (car list)))))
+)
+
+;"best_output" puts a cons cell with the score generated in best_score and its
+; associated id# in a single element cons list with END_OF_LIST following it
+; in order to make use of the print_cons_cell function.
+  
+(defun best_output (list)
+  (format t "~&BEST SCORE~&")
+  (print_cons_list (CONS (ASSOC (best_score list 0) list) '(END_OF_LIST)))
+)
+
+;==============================================================================
+;
+;  Familiarity and Simplification functions
+;==============================================================================
+
+; "match" takes an atom to be compared and searches through a list of features.
+;  In practice it takes a subtree containing either the LS or RS of a known id
+;  and an atom to be matched. It should return the score of the atom matched 
+;  if there's a match and NIL if there is no match.
+
+(defun match (sublist atom)
+  (COND ((EQUAL sublist NIL) NIL)
+        ((EQUAL atom (FIRST sublist)) (SECOND sublist))
+        ((EQUAL 1 1) (match (cdr (cdr sublist)) atom)))
+)
+
+;"idchecker" compares one id to a single feature and determines whether or not
+; there is a match.  If so, it returns a cons cell with 2 items: the id # and 
+; familiarity score of the id. 
+
+(defun idchecker (id atom)
+  (COND ((NOT (EQUAL (match (car id) atom) NIL)) 
+                     (CONS (FOURTH id) (THIRD id)))
+        ((NOT (EQUAL (match (cadr id) atom) NIL)) 2)
+        ((EQUAL 1 1) NIL))
+)
+
+
+; "fam" compares a list of features to each identity's features as it moves down
+; through the list of identities.  When there is a match, it returns the 
+; number and f-score of the identity, as generated in idchecker.
+
+(defun fam (id p_features)
+  (COND ((EQUAL p_features NIL) NIL)
+        ((EQUAL (THIRD p_features) 3) NIL) 
+        ((NOT (EQUAL (idchecker id (car p_features)) NIL))
+                     (idchecker id (car p_features)))
+        ((EQUAL (idchecker id (car p_features)) NIL) 
+                     (fam id (cdr (cdr (cdr p_features))))))
+
+)
+
+; "familiarize" compares a given functions' list of features to a list of 
+; identities.  Since fam prints out the values, this function simply 
+; returns the id number and familiarity score generated in idchecker if a 
+; match is found, and 'NO SOLUTION if there is no match.
+
+(defun familiarization (idlist p_features)
+  (COND ((EQUAL idlist NIL) 'END_OF_LIST)
+        ((NOT (EQUAL (fam (car idlist) p_features) NIL)) 
+               (LIST (fam (car idlist) p_features) 'END_OF_LIST))
+        ((EQUAL 1 1) (familiarization (cdr idlist) p_features)))
+)
+
+
+;==============================================================================
+;
+;  Simplify 
+;==============================================================================
+
+;"simp_idchecker" compares one id to a single feature and determines whether or 
+; not there is a match.  If so, it returns a list with the simplification score
+; of that feature as well as the id # of the identity.  If no match, it returns
+; NIL.
+
+(defun simp_idchecker (id atom)
+  (COND ((NOT (EQUAL (match (car id) atom) NIL)) 
+                     (LIST (match (car id) atom) (THIRD id)))
+        ((NOT (EQUAL (match (cadr id) atom) NIL)) 
+                     (LIST (match (cadr id) atom) (THIRD id)))
+        ((EQUAL 1 1) NIL))
+)
+
+;"simp_fam" compares a list of features to one identity's features as it moves 
+; down through the list of identities.  When there is a match, it returns the 
+; simplification score of that feature and id# of the identity as generated in 
+; the simp_idchecker function.  Since we are only interested in matching to 
+; features on the left side of the problem identity(stated in email on 
+; applicability), we stop when we get to a feature with a location of 3, 
+; meaning it is on the right side only.
+
+(defun simp_fam (id p_features)
+  (COND ((EQUAL p_features NIL) NIL)
+        ((EQUAL (THIRD p_features) 3) NIL)
+        ((NOT (EQUAL (simp_idchecker id (car p_features)) NIL))
+                     (simp_idchecker id (car p_features)))
+        ((EQUAL (simp_idchecker id (car p_features)) NIL) 
+                     (simp_fam id (cdr (cdr (cdr p_features))))))
+
+)
+
+;"simp" recursively calls itself in order to compare a list of features to all
+; of the id's in the idtree.  It uses "simp_fam" to check each id.  The function
+; returns a list of cons cells containing a simplification score and id number
+; for each id which is checked.
+ 
+(defun simp (idlist p_features)
+  (COND ((EQUAL idlist NIL) NIL)
+        ((NOT (EQUAL (simp_fam (car idlist) p_features) NIL)) 
+                     (CONS (simp_fam (car idlist) p_features) 
+                           (simp (cdr idlist) p_features)))
+        ((EQUAL (simp_fam (car idlist) p_features) NIL) 
+                     (CONS (CONS 0 (THIRD (car idlist))) 
+                           (simp (cdr idlist) p_features))))
+) 
+
+;"simplification" is the overall function for the simplification heuristic.  To
+; prepare the list of cons cells(generated by simp) for the output functions, 
+; an END_OF_LIST must be added after the last cons cell.
+
+(defun simplification (idlist p_features)
+  (APPEND (simp idlist p_features) '(END_OF_LIST))
+)
+
+
+
+
+;============================================================================
+;
+; EFFECTIVENESS
+;
+
+;"feature_match" compares one feature(atom) to all the features of a sublist.
+; If it finds a match, it returns a 1.  Otherwise it returns 0.  The sublist,
+; in practice, is either the left or right side of a known identity and the 
+; feature is taken from the identity being proven.
+
+(defun feature_match (sublist atom) 
+  (COND ((NOT (EQUAL (match sublist atom) NIL)) 1)
+        ((EQUAL 1 1) 0))
+) 
+
+;"match_both_idsides" compares a given feature to both the left and right side
+; of a known identity.  It produces a list of 2 integers(1 or 0) which state 
+; whether or not there is a match on the left or right side.
+
+(defun match_both_idsides (id atom)
+  (LIST (feature_match (FIRST id) atom) (feature_match (SECOND id) atom))
+)
+
+;"left_right_both" produces a 2 integer list based on whether or not a feature
+; is in the left or right side of the identity being proven.  The lrb variable
+; is drawn by the calling function from information stored in the to-be-proven
+; identity's feature list.
+  
+(defun left_right_both (lrb)
+  (COND ((EQUAL lrb 1) (LIST 1 0))
+        ((EQUAL lrb 2) (LIST 1 1))
+        ((EQUAL lrb 3) (LIST 0 1)))
+)
+
+
+;"match_one_feature_id" combines the information gained about the left and right
+; sides of the 2 equations and forms a 4 integer list(2 sublists) with this 
+; information
+
+(defun match_one_feature_id (id p_features) 
+  (LIST (match_both_idsides id (FIRST p_features)) 
+        (left_right_both (THIRD p_features)))
+) 
+
+;"desirability" computes the desirability factor which is applicable to each
+; 4 integer list generated in match_one_feature_id.
+
+(defun desirability (list)
+  (COND ((EQUAL list '((1 0) (1 0))) 4)
+        ((EQUAL list '((1 0) (0 1))) 4)
+        ((EQUAL list '((0 1) (1 0))) 4)
+        ((EQUAL list '((0 1) (0 1))) 4)
+        ((EQUAL list '((0 0) (1 0))) 0)
+        ((EQUAL list '((0 0) (0 1))) 0)
+        ((EQUAL list '((0 0) (1 1))) 0)
+        ((EQUAL list '((1 1) (0 1))) 1)
+        ((EQUAL list '((1 1) (1 0))) 1)
+        ((EQUAL list '((1 0) (1 1))) 2)
+        ((EQUAL list '((0 1) (1 1))) 2)
+        ((EQUAL list '((1 1) (1 1))) 4))
+)
+
+;"score_for_feature" computes the score based on how many symbols are in the 
+; feature and the desirability factor.  The function returns an integer which
+; is the multiple of the two.
+
+(defun score_for_feature (id p_features)
+  (* (desirability (match_one_feature_id id p_features)) (SECOND p_features))
+)
+
+;"all_features_one_id" computes the sum of all the scores for features which
+; may be applied to a given id.  This returns an integer which is the sum.
+
+(defun all_features_one_id (id p_features)
+  (COND ((EQUAL p_features NIL) 0)
+        ((EQUAL 1 1) (+ (score_for_feature id p_features) 
+                        (all_features_one_id id (cdr (cdr (cdr p_features)))))))
+)
+ 
+
+;"all_features_one_all_ids" generates a list of cons cells, each one with the 
+; effectiveness score and it's corresponding id # - in that order.
+
+(defun all_features_all_ids (idlist p_features)
+  (COND ((EQUAL idlist NIL) NIL)
+        ((EQUAL 1 1) (CONS (CONS (all_features_one_id (FIRST idlist) p_features)
+                                 (THIRD (car idlist)))
+                           (all_features_all_ids (cdr idlist) p_features))))
+)
+
+;"effectiveness" is the overall function for the simplification heuristic.  To
+; prepare the list of cons cells(generated by all_features_all_ids) for the 
+; output functions, an END_OF_LIST must be added after the last cons cell.
+
+(defun effectiveness (idlist p_features)
+  (APPEND (all_features_all_ids idlist p_features) '(END_OF_LIST))
+)
+
+
+;"demonstration" is used to show all the heuristics when used on a given
+; identity list and to-be-proven identity.
+
+(defun demonstration (idlist p_features)
+  (format t "~&FAMILIARIZATION HEURISTIC~&")
+  (print_output (familiarization idlist p_features))
+
+  (format t "~&SIMPLIFICATION HEURISTIC~&")
+  (print_output (simplification idlist p_features))
+  (best_output (simplification idlist p_features))
+
+  (format t "~&EFFECTIVENESS HEURISTIC~&")
+  (print_output (effectiveness idlist p_features))
+  (best_output (effectiveness idlist p_features))
+
+)
+<\pre>
+<\body>

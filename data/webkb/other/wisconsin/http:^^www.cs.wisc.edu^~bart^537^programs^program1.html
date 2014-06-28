@@ -1,0 +1,186 @@
+Date: Mon, 11 Nov 1996 17:24:54 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 29 Jan 1996 03:03:41 GMT
+Content-length: 4466
+
+<html>
+<head>
+<title>CS 537 - Programming Assignment #1</title>
+</head>
+
+<body>
+<table border=0 width=100% align=center>
+<tr>
+<td width=25%><td width=50% align=center>
+<b>UNIVERSITY OF WISCONSIN-MADISON
+<br>
+Computer Sciences Department</b>
+<td width=25%>
+<tr>
+<tr>
+<td>
+<b>CS 537
+<br>
+Spring 1996 </b>
+<td><td align=right><b>Bart Miller</b>
+<tr>
+<td>
+<td align=center><b>Programming Assignment #1</b>
+<br>
+(Due Thursday, February 8, at 5pm)
+<td>
+</table>
+
+<h2>I/O Processing in C++</h2>
+There are several goals for this assignment.
+First, you will get a chance to familiarize yourself with the C++
+programming language.
+Second, you will learn how to use some of the I/O facilities and library
+functions provided by UNIX and C++.
+Third, you will write code that will be useful for future assignments.
+<p>
+Your assignment is to write a program that takes an input file, reads through
+it line by line, do some simple processing on each line, and then produces
+some output.
+Your program, to be called
+<tt>writer</tt>,
+will be invoked:
+<pre>
+	writer filename
+</pre>
+Your program will open file
+<i>filename</i>
+and process it as described below in
+<a href="#details">Program Details</a>.
+<h2>UNIX Manual Pages</h2>
+You should become familiar with the UNIX manuals and the online
+"man" facility.
+This will be a great help in working on these assignments.
+For example, if you wanted to know how the
+<tt>fork</tt>
+(create process) system call works, you would type:
+<pre>
+	man fork
+</pre>
+The UNIX manual is organized into many sections.
+You will be mainly interested in the first three sections.
+Section 1 is for commands, like
+<tt>ls</tt>,
+<tt>g++</tt>,
+or
+<tt>cc</tt>.
+Section 2 is for UNIX system calls (calls directly to the UNIX kernel),
+such as
+<tt>fork</tt>,
+<tt>open</tt>,
+or
+<tt>read</tt>.
+You will typically not
+use Section 2.
+Most of what you use will be in the UNIX library routines in Section 3.
+These are calls such as
+<tt>atof</tt>,
+or
+<tt>strcpy</tt>.
+More details about the online manual will be given in Discussion Sections.
+<a name="details">
+<h2>Program Details</h2>
+</a>
+Your program will first print out the name of the input file.
+Then it will open a file (perhaps using the
+<tt>ifstream</tt>
+constructor), read each
+line (using the
+<tt>getline</tt> method)
+and process them.
+For more information on C++ input/output, you can read the C++ book or
+type
+<pre>
+	man iostream
+	man fstream
+</pre>
+<p>
+Each line is of the form:
+<pre>
+character-string  number1  number2
+</pre>
+Each of these three pieces will be separated by any number of blank characters
+(spaces or tabs).
+The numbers can have decimal points and fractional parts.
+For each input line, you will print to standard output (using
+<tt>cout <<</tt>)
+a line containing the
+<i>character-string</i>,
+the two numbers, and the sum of the two numbers.
+<p>
+The program will continue until the end of the input file.
+<p>
+UNIX supplies several library routines to make this assignment easier.
+For example, to convert a ASCII string to a number, you can use
+<tt>atoi</tt>
+or
+<tt>atof</tt>
+(pronounced,
+"A to I",
+ASCII to integer, and
+"A to F",
+ASCII to float).
+Use the "man"
+command to look up the details.
+To copy strings, you can use
+<tt>strcpy</tt>;
+to compare strings, you can use
+<tt>strcmp</tt>.
+Do a
+<tt>man string</tt>
+to look up these routines.
+<h2>Command line parameters</h2>
+<p>
+UNIX and C++ make command line parameters easily available.
+The main procedure in your program should look like:
+<pre>
+	#include &lt;iostream.h>
+	#include &lt;fstream.h>
+
+	int
+	main (int argc, char *argv[])
+	{
+
+	    cout << "Program " << argv[0] <<  " first arg=" << argv[1];
+	    . . .
+
+	}
+</pre>
+<p>
+The command line is processed (by the shell) into a list of character strings,
+one for each argument (including the command name).
+You can reference the integer
+<tt>argc</tt>
+to tell you the number of arguments.
+The array
+<tt>argv</tt>
+is the list of strings.
+So, if you typed in the command appearing at the beginning of this assignment,
+<tt>argc</tt> would contain the value 2,
+<tt>argv[0]</tt>
+would contain the string "writer",
+and
+<tt>argv[1]</tt>
+would contain the
+string "filename".
+<h2>Deliverables</h2>
+<p>
+You should hand in a print-out of your program and output from your program
+on the sample files that we will provide.
+We will announce in class where to find these files.
+
+
+<hr>
+<H4>
+Last modified:
+Fri Jan 26 11:26:21 CST 1996
+by
+<a href="http://www.cs.wisc.edu/~bart">bart</a></b>
+</H4>
+</body>

@@ -1,0 +1,135 @@
+Date: Tue, 26 Nov 1996 19:17:45 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+
+<HTML>
+<!-- OWNER_NAME="Michael Perren, University of Oregon" -->
+<!-- MODIFIED_BY="Jens Mache, University of Oregon" -->
+
+<SCRIPT LANGUAGE="JavaScript">
+
+
+<!-- Beginning of JavaScript Applet -------------------
+var loop = 3;
+var delay = 100;
+function MoveMe(base)
+{
+  var msg   = "Change in homework 4 !!! Please read Announcements ... ";
+  var spaces = "                                                                                                         ";
+  var out = " ";
+  var c   = 0;
+  if (base > 100) base=100;
+  if (base <= 100 && base > 0) {
+	out = spaces.substring(0,base);
+	out+=msg;
+	base--;
+	var cmd="MoveMe(" + base + ")";
+	window.status=out;
+	timerTwo=window.setTimeout(cmd,delay);
+  }
+  else if (base <= 0) {
+	if (-base < msg.length) {
+	  out+=msg.substring(-base,msg.length);
+	  base--;
+	  var cmd="MoveMe(" + base + ")";
+	  window.status=out;
+	  timerTwo=window.setTimeout(cmd,delay);
+	}
+	else {
+	  loop--;
+	  if(loop > 0) {
+		timerTwo=window.setTimeout("MoveMe(100)",delay);
+	  }
+	  else                        
+		window.status="Java script: Done ";
+	}
+  }
+}
+
+// -- End of JavaScript code -------------- -->
+
+
+
+</SCRIPT>
+
+<HEAD><TITLE>CIS 199 UNIX</TITLE></HEAD>
+<body onLoad="timerONE=window.setTimeout('MoveMe(500)',100);">
+
+<center>
+<TABLE BORDER>
+<TD NOWRAP ALIGN="CENTER" VALIGN=BASELINE>
+<!WA0><IMG SRC="http://www.cs.uoregon.edu/classes/cis199unix/Pics/unixstar.jpg" ALT="star" ALIGN="MIDDLE"></TD>
+</TABLE>
+</center><p>
+
+
+
+
+<CENTER>
+<H1>CIS 199 UNIX Home Page</H1>
+</CENTER>
+
+<P> Intro to UNIX is a class designed to help undergraduates
+become familiar with the UNIX Operating System and a variety of 
+applications and tools native to the UNIX environment. 
+
+<P> Use this page to receive current class
+information and as an extended reference that points to relevant 
+information on the Net.
+
+<hr>
+<H3>Class Documents</H3>
+
+<UL>
+<LI><blink><!WA1><A HREF="http://www.cs.uoregon.edu/classes/cis199unix/a.shtml">Announcements</A></blink></Li>
+<LI><!WA2><A HREF="http://www.cs.uoregon.edu/classes/cis199unix/course_description.shtml">Course description</A></LI>
+<LI><!WA3><A HREF="http://www.cs.uoregon.edu/classes/cis199unix/schedule.shtml">Course schedule</A></LI>
+<LI><!WA4><A HREF="http://www.cs.uoregon.edu/classes/cis199unix/teaching.shtml">Results of teaching analysis</A></LI>
+<LI><!WA5><A HREF="http://www.cs.uoregon.edu/~coschupr/addcommentcis199.html">writing into the class guestbook</A></LI>
+<LI><!WA6><A HREF="http://www.cs.uoregon.edu/~coschupr/cgi-bin/comment.html">reading the class guestbook</A></LI>
+</UL><p> 
+
+<hr>
+<H3>Class Assignments<!WA7><img src="http://www.cs.uoregon.edu/classes/cis199www/pics/duke.gif">
+</H3>
+
+<UL>
+<LI><!WA8><A HREF="http://www.cs.uoregon.edu/classes/cis199unix/Handouts/handouts.shtml">Handouts</A></LI>
+<LI><!WA9><A HREF="http://www.cs.uoregon.edu/classes/cis199unix/Homeworks/homeworks.shtml">Homeworks</A></LI>
+<LI><!WA10><A HREF="http://www.cs.uoregon.edu/classes/cis199unix/Handouts/5p.shtml">Projects</A></LI>
+</UL>
+
+<hr>
+<H3>References</H3>
+If there are subjects not covered here that you would like to see or you 
+have useful URL's not included here send them to your instructor.<p>
+
+<UL>
+<LI><!WA11><A HREF="http://www.cs.uoregon.edu/htbin/man.cgi">Man Page Search</A></LI>
+<LI><!WA12><A HREF="http://www.cs.uoregon.edu/classes/cis199unix/unix.shtml">UNIX Hints</A></LI>
+<LI><!WA13><A HREF="http://www.cl.cam.ac.uk/texinfodoc/emacs_4.html">Emacs</A></LI>
+<LI><!WA14><A HREF="http://www.cs.uoregon.edu/classes/cis199unix/make.shtml">The make utility</A></LI>
+<LI><!WA15><A HREF="http://www.cs.uoregon.edu/classes/cis199unix/shell.shtml">Shell scripts</A></LI>
+<LI><!WA16><A HREF="http://www.cs.uoregon.edu/classes/cis199unix/perl.shtml">Perl</A></LI>
+<LI><!WA17><A HREF="http://www.cs.dartmouth.edu/gnuplot_info.html">gnuplot</A></LI><P>
+Additional topics FYI:
+<LI><!WA18><A HREF="http://darkwing.uoregon.edu/~lincicum/resource.html">Web authoring & html</A></LI>
+<LI><!WA19><A HREF="http://www.cs.uoregon.edu/classes/cis199unix/cgi.shtml">CGI scripts</A></LI>
+<LI><!WA20><A HREF="http://www.cs.uoregon.edu/classes/cis199unix/java.shtml">JAVA</A></LI>
+<LI><!WA21><A HREF="http://www.cs.uoregon.edu/classes/cis199unix/python.shtml">Python</A></LI>
+<LI><!WA22><A HREF="http://www.cs.uoregon.edu/classes/cis199unix/tcltk.shtml">Tcl/Tk</A></LI>
+</UL>
+
+<hr>
+
+<I>Last modified on 11/22/96, 06:27:05 PM</I><br>
+<I>Jens Mache &nbsp; &nbsp; <!WA23><A HREF="mailto:jens@cs.uoregon.edu">jens@cs.uoregon.edu</A></I>	
+
+<P>
+Up to the <!WA24><A HREF="http://www.cs.uoregon.edu/classes/cis199unix/index.shtml">CIS 199 UNIX Homepage</A><br>
+Up to the <!WA25><A HREF="http://www.cs.uoregon.edu/">UO CIS Dept.</A><br>
+Up to the <!WA26><A HREF="http://www.uoregon.edu/">UO Homepage</A>
+
+
+</BODY>
+</HTML>

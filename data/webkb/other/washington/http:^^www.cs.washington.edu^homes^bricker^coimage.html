@@ -1,0 +1,229 @@
+Date: Tue, 10 Dec 1996 17:44:53 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Fri, 22 Nov 1996 00:43:13 GMT
+Content-length: 8562
+
+<html>
+
+<head>
+	<title>CoImage: Activities using Cooperatively Controlled Objects</title>
+</head>
+
+<body BGCOLOR=#FFFFFF TEXT=#000000>
+
+<table>
+  <tr>
+    <td align=center>
+    <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><img align=left src=http://www.cs.washington.edu/homes/bricker/gif/coop.gif>
+    </td>
+    <td align=left>
+    <h1>
+    CoImage: Activities using Cooperatively Controlled Objects
+    </h1>
+    <P>
+    <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.cs.washington.edu/homes/bricker">Lauren Bricker</A>, <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="http://www.cs.washington.edu/homes/marla">Marla Baker</A>, and <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="http://www.cs.washington.edu/people/faculty/tanimoto">Steve Tanimoto</A><br>
+     <address>     
+       <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a href="http://www.cs.washington.edu/">Department of Computer Science & Engineering,</a> <br> 
+       <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a href="ftp://ftp.u.washington.edu/public/">University of Washington,</a> Box 352350, <br>
+       <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a href="http://www.cs.washington.edu/area/">Seattle, WA</a> 98195-2350 USA
+    </address>
+    </td>
+  </tr>
+</table>
+
+
+<hr> 
+
+<h2>Project Goal</H2>
+
+ <P> 
+The goal of this project is to design and develop a software
+package to support the implementation of collaborative learning
+activities.  This package will include a shell application, an
+application program interface (API), and a hierarchy of objects.  The
+package supports the development of end-user educational programs that
+enforce a tightly synchronized interaction and facilitate
+communication and cooperation between two or more users.
+
+<H2>What is a Cooperatively Controlled Object?</H2>
+
+<H3>Definition of a Cooperatively Controlled Object</H3>
+
+ <P>
+In object-oriented terminology, an object contains state and has
+behavior.  We define a controlled object to be an object containing
+methods which allows users to manipulate properties of that object.  A
+cooperatively controlled object (CCO) is a controlled object which may
+be simultaneously manipulated by one or more users.  CCOs may be
+manipulated using general methods, such as constraints between user
+inputs and application objects.
+
+ <P> 
+A CCO differs from a fine-grained shared object (FGSO) in a
+number of ways.  One major difference is the nature of the
+relationship between the object and how it is controlled.  The more
+complicated this relationship, the more the object is Cooperatively
+Controlled.  One method for quantifying how complicated the control of
+an object is, is by measuring the input degrees of freedom required
+for moving the object.  Thus a CCO has requires more inputs than a
+FGSO.
+
+<H3>Example</H3>
+
+ <P>
+Figure 1 shows an example where a point is controlled by decomposing
+it into its x and y coordinates which are modified by separate users.
+A cooperatively controlled point, on the other hand, may involve a
+more general functional relationship between user inputs and
+controlled properties.  For example, the controlled point could be
+determined by the intersection of two lines controlled by four users,
+each user directly manipulating the location of one of two points on a
+line with a mouse.
+
+<P>
+<!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><img src=http://www.cs.washington.edu/homes/bricker/gif/fgso.gif>
+<P>  
+Figure 1.  Controlling the location of a point using a fine-grained
+sharing technique.
+
+<P>
+<!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><img src=http://www.cs.washington.edu/homes/bricker/gif/cco.gif>
+<P>
+Figure 2.  Cooperatively controlling the location of a point.
+
+<H3>Discussion</H3>
+
+ <P> CCOs and FGSOs are different in how synchronous the actions of
+the users must be.  The interaction between users of a FGSO is not, by
+definition, synchronous.  A CCO, on the other hand, may require more
+than one user to synchronously manipulate the object.  A good example
+of this is a symphony orchestra.  One person could, in principle, record
+the various orchestra parts of a symphony track by track, but the are
+more subtle interactions when a whole group plays the music
+simultaneously.  In order to ensure that users control an object
+synchronously, all users must be informed that their input is needed
+in the manipulation of that object.  For example, if a user wishes to
+manipulate an object, they would select a specific tool and use that
+to modify that object. In the our current design, the user colored
+cursor changes shape to indicate which tool is being used and the
+object will sprout "handles" which matching the user's color to
+signify which users need to "help."
+
+<H2>CoImage Activities</H2>
+ <P> 
+We have currently designed and partially implemented three collaborative 
+activities.  The first one was based on the <!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><A HREF="http://www.cs.washington.edu/research/metip">Mathematics Experiences Through Image Processing (METIP)</A>
+<!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><A HREF="http://www.cs.washington.edu/research/metip/warper.html">Image 
+Warper</A>.  The interface looks very similar, but students can cooperatively 
+interact with a line by each selecting an endpoint and moving them 
+simultaneously.
+
+ <P> 
+<!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><IMG SRC="http://www.cs.washington.edu/homes/bricker/gif/cowarp.gif">
+
+ <P> 
+Our second activity, designed by 
+<!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><A HREF="http://www.cs.washington.edu/homes/marla">Marla Baker</A>, is a 
+collaborative puzzle activity.  Currently each puzzle piece is modified
+by a single user (although users can work simultaneously), but eventually
+users will be forced to rotate each piece together.
+
+ <P> 
+<!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><IMG SRC="http://www.cs.washington.edu/homes/bricker/gif/copuz.gif">
+
+ <P> 
+Our third activity is the cooperative Etch-a-sketch(tm).  In this activity, 
+users manipulate a point to draw a picture on the screen.  Currently the
+point is shared by scroll bars controlling the x and y coordinates, but we will
+soon implement other cooperative control of the drawing point.
+
+ <P> 
+<!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><IMG SRC="http://www.cs.washington.edu/homes/bricker/gif/coetch.gif">
+
+<H2>CoImage on the internet</H2>
+
+ <P> 
+The CCOs described here are not limited to a co-present
+situation.  Eventually these objects will be implemented for distance,
+internet based collaboration.  Until then, you can use a single user version
+of CoImage across the internet by following 
+<!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><A HREF="http://www.cs.washington.edu/homes/bricker/netcoimage.html">these</A>
+ instructions.
+
+<H2>Previous work</H2>
+
+<ul>
+<li><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><a href="http://www.cs.washington.edu/research/metip/coop.html">METIP/MultiIn Multiplayer Activities</a>. 
+
+<li>Lauren's <!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><a href="http://www.cs.washington.edu/homes/bricker/general.ps">generals</a> paper entitled Designs for
+Computer-Supported Cooperative Learning in Mathematics.    
+
+<li>An accepted to <!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><a href="http://www.cica.indiana.edu:80/cscl95">
+CSCL '95</a>  entitled <!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><a href="http://www.cs.washington.edu/homes/bricker/coopact.ps">Multiplayer 
+Activities that Develop Mathematical Coordination</a>.
+
+<li>Lauren's attempt to <!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><a href="http://www.cs.washington.edu/homes/bricker/CSC_cat.html">categorize </a> CSCW/CSCL.
+
+<li>An analysis of a number of collaborative applications from which
+Lauren has derived a list of <!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><a
+href="http://www.cs.washington.edu/homes/bricker/CSC_features.html#others">features</a> they support, and,
+from this, a list of <!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><a
+href="http://www.cs.washington.edu/homes/bricker/CSC_features.html#ours">features</a> we'd like to support.
+
+<LI><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><A HREF="http://www.cs.washington.edu/homes/bricker/edmedia.html">Our</A> paper to <!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><A HREF="http://aace.virginia.edu/aace/conf/edmedia.html">Ed Media '96</A>  entitled CoImage - a Cooperatively Controlled Image Warper
+
+</ul>
+
+<H2>Interesting related web sites</H2>
+
+<ul>
+<li><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><a href="http://www.cica.indiana.edu:80/cscl95">Computer Supported
+Collaborative Learning (CSCL) </a> conference web page.
+
+<li><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><a href="http://www11.informatik.tu-muenchen.de/cscw/yp/">The unOfficial
+Yellow Pages of CSCW</a>  
+
+<li><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><a href="http://market.net/literary/mkp/pages/2410/index.html">Readings in Groupware and Computer-Supported Cooperative Work: Assisting Human-Human Collaboration</a>
+
+<li><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><a href="http://www.covis.nwu.edu/">The CoVis Web Server</a> 
+
+<li>The <!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><a href="http://www.ilog.com:80/ilog/products/server/server.html">Ilog Server</a> and the <!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><a href="http://www.ilog.com:80/ilog/products/broker/broker.html">Ilog Brocker</a>.
+
+<li><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><a href="http://orgwis.gmd.de/">The CSCW Research Group</a> 
+
+<li><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><a href="http://www11.informatik.tu-muenchen.de/cscw/">The CSCW web page from TUM Informatik</a>
+
+
+<li>Boy the University of Calgary has been busy in this area
+
+<ul>
+<li><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><a href="http://www.cpsc.ucalgary.ca/projects/grouplab/home.html">The Grouplab project</a>
+
+<li><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><a href="http://ksi.cpsc.ucalgary.ca:80/articles/WGCollabLearn/">Comparing Constructions through the Web</a>
+
+<li><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><a href="http://Tiger.cpsc.ucalgary.ca/WebGrid/WebGrid.html">WebGrid: a WWW PCP Server</a>
+
+</ul>
+
+<li><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><a href="http://www.icbl.hw.ac.uk/papers/csclw.html">Computer Supported Collaborative Learning Workshop</a>
+
+<li><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><a href="http://acsl.cs.uiuc.edu/kaplan/worlds.html">The wOrlds Project</a>
+</ul>
+
+
+<p> 
+CoImage is supported in part by the Washington Technology Center
+and <!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><A HREF="http://www.arkspace.com">Ark Interface II</A>, a Packard Bell 
+Company.
+
+<body>
+
+
+<p> <hr>
+<address>
+  <!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><a href="http://www.cs.washington.edu/homes/bricker">bricker@cs.washington.edu</a> <br>   
+  Last modified: Fri Mar 30 1995 3:15:00pm pdt
+</address>
+
+</html>

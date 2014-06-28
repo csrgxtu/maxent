@@ -1,0 +1,252 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 20:49:38 GMT
+Content-Type: text/html
+Content-Length: 7375
+Last-Modified: Tuesday, 08-Oct-96 21:43:57 GMT
+
+<HTML>
+<HEAD>
+<TITLE> Solutions for Problems in MidTerm I </TITLE>
+</HEAD>
+<BODY>
+------------------------------------PROBLEM #1---------------------------------------------
+<P>
+Only a single Pascal statement is required, although the computation could be done with a 
+couple of statements instead. <br><BR>
+<PRE>
+program problem1;
+var
+ s1, s2, s3 : string;
+begin
+  writeln('enter s1, the substring');
+  readln(s1);
+  writeln('enter s2, the superstring');
+  readln(s2);
+  s3:=copy(s2, pos(s1,s2), length(s2) - pos(s1,s2) + 1);  { <<<< the statement}
+  writeln('s3 = ',s3);
+  readln;
+end.
+</PRE>
+<br><br>
+
+------------------------------------PROBLEM #2---------------------------------------------
+<P>
+The procedure is all that is needed. <BR><BR>
+<PRE>
+program problem2;
+var
+  s : string;
+  n : integer;
+
+procedure vowelCount (var s: string; var numberOfVowels: integer);
+var
+  i : integer;
+  chr : string;
+begin
+  numberOfVowels := 0;
+  i :=i 1;
+  while i <= length(s) do
+  begin
+    chr := copy(s,i,1);
+    if (chr='a') or (chr='e') or (chr='i') or (chr='o') or (chr='u') then
+      numberOfVowels := numberOfVowels + 1;
+    i := i + 1;
+  end;
+end;
+
+begin
+ writeln('enter a string');
+ readln(s);
+ vowelCount(s,n);
+ writeln('number of vowels is: ',n);
+ readln;
+end.
+</PRE>
+<br><br>
+
+------------------------------------PROBLEM #3---------------------------------------------
+<P>
+The procedure is all that is needed. <BR><BR>
+<PRE>
+program problem3;
+type
+ integerArray = array [1..100] of integer;
+var
+ A : integerArray;
+ n, i : integer;
+
+procedure fib(var fibArray: integerArray; var n: integer);
+var
+ i : integer;
+begin
+ i := 3;
+ fibArray[1] := 1;  { don't worry that n might be less than 2 }
+ fibArray[2] := 1;
+ while i <= n do
+ begin
+   fibArray[i] := fibArray[i-1] + fibArray[i-2];
+   i := i + 1;
+ end;
+end;
+
+begin
+ writeln('enter an integer');
+ readln(n);
+ fib(A, n);
+ writeln('fibonacci of ',n,' is: ');
+ i := 1;
+ while i <= n do
+ begin
+   writeln(A[i]);
+   i := i + 1;
+ end;
+ readln;
+end.
+</PRE>
+<br><br>
+
+------------------------------------PROBLEM #4---------------------------------------------
+<P>
+No, not every Pascal program is an algorithm. All Pascal program meet the first few
+requirements because, to a Pascal Machine, Pascal operations are well ordered, unambiguous, and 
+effectively computable. However, not all Pascal programs meet the last constraint. That is,
+some Pascal programs fail to halt in finite time because they contain an infinite loop,
+such as the following program: <br><br>
+<PRE>
+program infiniteLoop;
+var i : integer;
+begin
+  i := 1;
+  while i = 1 do writeln('I am looping ... ');
+end.
+</PRE>
+<br><br>
+
+
+------------------------------------PROBLEM #5---------------------------------------------
+<P>
+Since we have dealt with array in class, we'll use four arrays to store our information: <BR><br>
+<UL>
+<LI><B>title</B> : stringarray
+<LI><B>artist</B> : stringarray
+<LI><B>recording_studio</B> : stringarray
+<LI><B>no_in_stock</B> : integerarray
+</UL>
+We also need a variable to keep track of the number of unique CDs in the inventory (to know when
+to stop the loop. <BR><BR>
+To print out report a procedure called Print is used.<BR>
+parameters: title, artist, recording_studio :stringarray, no_in_stock: integerarray, index:integer<BR>
+Function: Given an index (location), it prints out the contents of all four arrays at that index.
+<BR><BR>
+To search, we define a procedure search.<BR>
+Parameters: item_searched: string; array_searched: stringarray; position : integer;<BR>
+Function: It goes through the array_searched and gets the position where it finds a match with
+item_searched. It then calls Print to output a report and does this for the entire array.<BR><BR>
+
+By calling search with different parameters (say title_of_CD, and the array title etc.) we can
+perform all the three searches required in this case.<br><BR>
+------------------------------------PROBLEM #6---------------------------------------------
+<P>
+A Database Machine can be built "on top of" a Pascal Machine by writing a Pascal program that
+runs on the Pascal Nachine and implements the operations of the Database Machine. These
+operations might include : add-record, delete-record, search-for-record, and so on.
+<br><br>
+
+------------------------------------PROBLEM #7---------------------------------------------
+<P>
+<PRE>
+program problem7;
+type
+  realArray = array [1..100] of real;
+var
+  Arr : realArray;
+  n: integer;
+  sum, avg : real;
+begin
+  readArray(Arr, n);
+  sumArray(Arr, n, sum);
+  avg := sum / n ;
+  writeln('average is: ',avg);
+  printArray(A, n);
+end.
+</PRE>
+<br><br>
+
+------------------------------------PROBLEM #8---------------------------------------------
+<P>
+<PRE>
+program problem8;
+type
+  integerArray = array [1..100] of integer;
+var
+  Arr : integerArray;
+  n: integer;
+begin
+ {Initialize the array to zeros}
+ n := 1;
+ while n <= 100 do
+ begin
+   A[n] := 0;
+   n := n + 1;
+ end;
+ {enter integers and count their frequency}
+ writeln('enter an integer between 1 and 100, or -1 to stop');
+ readln(n);
+ while n <> -1 do
+ begin
+   A[n] := A[n] + 1;
+   writeln('enter an integer between 1 and 100, or -1 to stop');
+   readln(n);
+ end;
+ {write out the frequency of integers that occurred more than once}
+ n := 1;
+ while n <= 100 do
+ begin
+   if A[n] > 1 then
+      writeln(n, ' occurred ', A[n], ' times.');
+   n := n + 1;
+ end;
+ readln;
+end.
+</PRE>
+<br><br>
+   
+
+------------------------------------PROBLEM #9---------------------------------------------
+<P>
+A procedure's formal parameters may have different names than the actual parameters used in a call
+to the procedure. This is important for making the procedure modular and enabling its reuse. A
+program may use a procedure without knowing the names of the variables that the procedure uses. Also,
+the procedure may be used by many programs, each of which calls the procedure with different 
+actual parameters.
+<br><br>
+
+------------------------------------PROBLEM #10---------------------------------------------
+<P>
+part a. <BR><BR>
+<PRE>
+&lt;sentence&gt; -&gt; &lt;noun phrase&gt;             &lt;verb phrase&gt;
+                                |                               |
+                                v                               v
+                  &lt;determiner&gt;&lt;noun&gt;      &lt;verb&gt;&lt;noun phrase&gt;
+                         |                |                 |              |
+                         v                v                 v              v
+                        the              girl             chases     &lt;determiner&gt;&lt;noun&gt;
+                                                                              |              |
+                                                                              v              v
+                                                                              a             ball
+
+
+</PRE>
+part b. <BR><BR>
+It is conceivable that a grammar checker could be written using such rules. The grammar checker
+would attempt to generate each sentence written with the word processor. Those sentences that
+can be generated using the rules would be deemed to be correct. Those sentences that could not
+be generated with the rules would be deemed incorrect. <BR><BR>
+However, the set of rules would be very large. A complete set of rules for English has not been
+developed. <BR><BR>
+
+
+</BODY>
+</HTML>

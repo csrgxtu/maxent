@@ -1,0 +1,222 @@
+Date: Tue, 26 Nov 1996 03:56:38 GMT
+Server: Apache/1.1.1
+Content-type: text/html
+Content-length: 7911
+Last-modified: Sat, 12 Oct 1996 21:15:43 GMT
+
+<HTML>
+
+<HEAD>
+<TITLE> Jianhua Gong's Home Page </TITLE>
+</HEAD>
+
+<SCRIPT LANGUAGE="JavaScript">
+
+
+<!-- Beginning of JavaScript Applet -------------------
+
+/*
+   Original code (C)1996 Web Integration Systems, Inc. DBA Websys, Inc.
+   All Rights Reserved.  This code can be re-used or modified, if credit
+   is given in the source code.
+
+   Chris Skinner, January 30, 1996.
+
+   Modified by RD @ CNNfn, Jan. 31, 1996
+
+   Modified by Kurt Koller @ MTVOnline, Feb 4, 1996
+
+   Modified by Eric Ludlum @ Core77, Feb 4, 1996
+
+   Disclaimer:  We will not be held responsible for any unwanted effects
+   due to the usage of this applet or any derivative.  No warrantees for
+   usability for any specific application are given or implied.
+
+*/
+
+function scrollit_r2l(seed)
+{
+        var m1  = "Hello ! ";
+        var m2  = "... Welcome to Jianhua Gong's WEBSITE! ";
+        var m3  = "..";
+        var m4  = ". I appreciate your visiting very much ... ";
+  
+        var msg=m1+m2+m3+m4;
+        var out = " ";
+        var c   = 1;
+
+        if (seed > 100) {
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 100 && seed > 0) {
+                for (c=0 ; c < seed ; c++) {
+                        out+=" ";
+                }
+                out+=msg;
+                seed--;
+                var cmd="scrollit_r2l(" + seed + ")";
+                    window.status=out;
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;      
+                var cmd="scrollit_r2l(" + seed + ")";
+                    window.status=out;
+                timerTwo=window.setTimeout(cmd,100);
+        }
+        else if (seed <= 0) {
+                if (-seed < msg.length) {
+                        out+=msg.substring(-seed,msg.length);
+                        seed--;
+                        var cmd="scrollit_r2l(" + seed + ")";
+                        window.status=out;
+                        timerTwo=window.setTimeout(cmd,100);
+                }
+                else {
+                        window.status=" ";
+                        timerTwo=window.setTimeout("scrollit_r2l(100)",75);
+                }
+        }
+}
+}
+
+// -- End of JavaScript code -------------- -->
+
+
+</script>     
+
+<BODY BACKGROUND="image/paper_greenwhite.gif"  onLoad="timerONE=window.setTimeout('scrollit_r2l(100)',500);">
+
+<H1> Jianhua Gong's Webpage </H1>
+Hi, welcome to my home page ...... It's still under heavy construction ...
+<!WA0><IMG ALIGN=MIDDLE SRC="http://paul.rutgers.edu/~jgong/image/construction1.gif"><P>
+<B> ABOUT MYSELF ...<B> <!WA1><IMG ALIGN=MIDDLE SRC="http://paul.rutgers.edu/~jgong/image/devil.gif"><P>
+I am currently a graduate student in the <!WA2><A HREF="http://www.cs.rutgers.edu"> 
+Department of Computer Science</A> at <!WA3><A HREF="http://www.rutgers.edu"> 
+Rutgers University</A>. <BR> 
+I got my BS from Department of Computer Science at <!WA4><A HREF="http://newton.fiu.
+edu:8000/nanda.html"> Nanjing Univesity </A> in <!WA5><A HREF="http://www.cernet.
+edu.cn/"> China </A>in 1993.
+<P>
+For contact info, <!WA6><A HREF="http://www.cs.indiana.edu/finger/paul.rutgers.edu/jgong">finger</A> jgong@paul.rutgers.edu.
+</P>
+<CENTER><!WA7><IMG SRC="http://paul.rutgers.edu/~jgong/image/lemming_skater.gif" width=640></CENTER>
+<H2> Project </H2>
+<UL>
+<!WA8><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif"ALT=>
+    <!WA9><A HREF="http://www.caip.rutgers.edu/multimedia/groupware/">
+      DISCIPLE </A><P> 
+<!WA10><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif"ALT=>
+    <!WA11><A HREF="http://paul.rutgers.edu/~jgong/541.html"> 
+      CS541 project --- Hurtado Health Center Database Management System</A><P>
+</UL>
+
+<CENTER><!WA12><IMG SRC="http://paul.rutgers.edu/~jgong/image/lemming_skater2.gif" width=640></CENTER>
+<H2> Internet Hotlist </H2>
+<UL>
+<!WA13><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif"ALT=>
+     <!WA14><A HREF="http://www.ncsa.uiuc,edu/SDG/Software/Mosaic/StartingPoints/
+    NetworkStartingPoints.html"> Starting Point for Internet Exploration</A><P>
+<!WA15><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif"ALT=>
+     <!WA16><A HREF="http://sunsite.unc.edu/boutell/faq/www_faq.html"> WWW FAQ </A><P>
+<!WA17><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif"ALT=>
+    <!WA18><A HREF="http://paul.rutgers.edu/~jgong/bk.html">
+       My favorite links </A><P>
+<!WA19><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif"ALT=>
+     <!WA20><A HREF="http://paul.rutgers.edu/~jgong/imgbookmarks.html"> Images for WWW Home Page </A><P>
+</UL>
+
+<CENTER><!WA21><IMG SRC="http://paul.rutgers.edu/~jgong/image/lemming_skater3.gif"  width=640></CENTER>
+<H2>  Languages </H2>
+<UL>
+<!WA22><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif">
+     <!WA23><A HREF="http://www.sco.com/Technology/tcl/Tcl.html"> Tcl/Tk </A><P>
+<!WA24><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif">
+     <!WA25><A HREF="http://www.osf.org/motif/index.html"> Motif and 
+     <!WA26><A HREF="http://www.cen.com/mw3/index.html"> MW3: Motif on WWW </A><P>
+<!WA27><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif">
+     <!WA28><A HREF="http://www.eecs.nwu.edu/unix.html"> Unix Reference Book </A><P>
+<!WA29><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif">
+     <!WA30><A href="http://web.nexor.co.uk/public/perl/perl.html"> Perl Page</A><P>
+<!WA31><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif">
+     <!WA32><A HREF="http://www.icce.rug.nl/docs/cplusplus/cplusplus.html"> 
+        C++ Annotations </A><P>
+<!WA33><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif">
+     <!WA34><A HREF="http://csugrad.cs.vt.edu/manuals/libg/libg_toc.html">
+	GNU C++ Library </A><P>
+<!WA35><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif">
+     <!WA36><A HREF="http://www.cs.bham.ac.uk/~jdm/cpp.html#courses">
+	C++ Resources Directory </A><P>
+<!WA37><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif">
+     <!WA38><A HREF="http://arachnid.cs.cf.ac.uk/Dave/C/CE.html">
+        Programming in C </A><P>
+<!WA39><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif">
+     <!WA40><A HREF="http://www.c2.org/~andreww/javascript/"> JavaScript Index </A><P>
+<!WA41><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif">
+     <!WA42><A HREF="http://java.sun.com">Java Home Site</A><P>
+</UL>
+
+<CENTER><!WA43><IMG SRC="http://paul.rutgers.edu/~jgong/image/lemming_skater4.gif"  width=640></CENTER>
+<H2>  Entertainment </H2>
+<UL>
+<!WA44><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif">
+     <!WA45><A HREF="http://sunsit.unc.edu/wm"> Web Museum </A><P>
+<!WA46><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif">
+     <!WA47><A HREF="http://www.infi.net.cool.html"> Cool Site of the Day! </A><P>
+<!WA48><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif">
+     <!WA49><A HREF="http://wwwiz.com/"> wwwiz magazine </A><P>
+<!WA50><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif">
+     <!WA51><A HREF="http://www.yahoo.com/Entertainment/Magazines/
+      Computers_and_Technology/"> Computer magazine </A><P>
+<!WA52><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif">
+     <!WA53><A HREF="http://www.nj.com/starledger/monday"> Star Ledger </A><P>
+</UL>
+<CENTER><!WA54><IMG SRC="http://paul.rutgers.edu/~jgong/image/lemming_skater.gif"  width=640></CENTER>
+<H2> China Related Sites </H2>
+<UL>
+<!WA55><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif"> <!WA56><A HREF="http://www.infocom.net/~gedn/" >
+	Global Chinese Electronic Daily News</A><P> 
+<!WA57><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif"> <!WA58><A HREF="http://www.yahoo.com/Regional/
+	Countries/China/">China Information</A><P>
+<!WA59><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif"> <!WA60><A HREF="http://www.wt.net/~alex/html/
+	media.htm">Chinese Media Information </A><P> 
+<!WA61><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif"> <!WA62><A HREF="http://www.ihep.ac.cn/china.html" >
+	China Home Page</A> <P>     
+<!WA63><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif"> <!WA64><A HREF="http://www.cnd.org/Scenery/
+	index.html">CND Scenery Pictures of China</A><P>
+<!WA65><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif"> <!WA66><A HREF="http://herb.biol.uregina.ca/liu/
+        chn-mag.html"> China Internet Magazine</A><P>
+<!WA67><IMG SRC="http://paul.rutgers.edu/~jgong/image/ball_blue.gif"> <!WA68><A HREF="http://harmony.wit.com/chinascape/">
+ 	Chinese Web Index</A><P>
+</UL>
+<CENTER><!WA69><IMG SRC="http://paul.rutgers.edu/~jgong/image/lemming_skater2.gif"  width=640></CENTER>
+<H2> Contact Information </H2>
+<ADDRESS>
+<!WA70><IMG SRC="http://paul.rutgers.edu/~jgong/image/USmail.gif" width=35 height=35><B>E-mail</B> : 
+<!WA71><A HREF="mailto:jgong@paul.rutgers.edu"> jgong@paul.rutgers.edu </A> <P>
+<!WA72><IMG SRC="http://paul.rutgers.edu/~jgong/image/phone.gif"  ><B>Phone</B> : 
+(908) 699-0818 (Home) <BR>
+<!WA73><IMG SRC="http://paul.rutgers.edu/~jgong/image/penciler.gif" width=35 height=35><B>Mailing Address</B>:<BR>
+<DL>
+<DD>795 Bevier Road <BR>
+<DD>Piscataway, NJ 08854 <BR>
+</DL>
+</ADDRESS>
+
+Number of visit to my homepage, since 03/31/1996 
+<!WA74><IMG ALIGN=middle SRC="http://paul.rutgers.edu/cgi-bin/Count.cgi?df=home.counter"> <BR> <BR>
+</CENTER>
+
+
+
+<I>Last modified: August 4, 1996 </I>
+
+</BODY>
+</HTML>
+
+
+

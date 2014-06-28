@@ -1,0 +1,152 @@
+Date: Tuesday, 26-Nov-96 00:07:35 GMT
+Server: NCSA/1.3
+MIME-version: 1.0
+Content-type: text/html
+Last-modified: Thursday, 24-Oct-96 00:58:00 GMT
+Content-length: 4378
+
+<HTML>
+<!-- Author: Bin Li (Courant, NYU) -->
+<head>
+<title> Persistent Linda Home Page </title>
+<LINK REV="MADE" HREF="mailto:binli@cs.nyu.edu">
+</head>
+
+<body bgcolor="#ffffff" text="#000070">
+
+<CENTER>
+<table border=3 cellpadding=5 cellspacing=0>
+<tr>
+<td align=CENTER>
+<!WA0><A HREF="http://merv.cs.nyu.edu:8001/~binli/plinda/abstract.html">Abstract</A>
+</td>
+
+<td align=CENTER>
+<!WA1><A HREF="http://merv.cs.nyu.edu:8001/~binli/plinda/source.html">Source</A>
+</td>
+
+<td align=CENTER>
+<!WA2><a href="#PEOPLE">People</a>
+</td>
+
+<td align=CENTER>
+<!WA3><a href="http://www.cs.nyu.edu">CS Department</a>
+</td>
+
+<td align=CENTER>
+<!WA4><A HREF = "http://www.cims.nyu.edu">Courant</A>
+</td>
+
+<td align=CENTER>
+<!WA5><A HREF = "http://www.nyu.edu">NYU</A>
+</td>
+</tr>
+</table>
+
+<p>
+
+<H1>Persistent Linda</H1> 
+<H3>A software system for robust distributed/parallel computing.</H3>
+<p><B><!WA6><A HREF="mailto:plinda@cs.nyu.edu">WANT TO WRITE TO US?</A></b><br>
+
+</center>
+
+<BR>
+<H2>Objectives</H2>
+The objectives of the PLinda project are two-fold:
+<UL>
+<LI><!WA7><A HREF="http://merv.cs.nyu.edu:8001/~binli/plinda/objectives.html#OBJ1">Fault tolerant parallel computing</A>
+	    - provide language
+   	   constructs that facilitate
+   	   the design of high performance fault-tolerant parallel programs.
+
+<LI><!WA8><A HREF="http://merv.cs.nyu.edu:8001/~binli/plinda/objectives.html#OBJ2">Harness the aggregate power of idle cycles on networks 
+	   of workstations</A> in a manner that is fault-tolerant and does 
+	   not disturb the owners of the workstations at all.
+	   Our system models non-idleness (e.g. user returns
+  	   to workstation) as failure.
+	   The work being done at the idle workstation is then moved.
+</UL>
+<HR SIZE=3>
+<H2>Applications</H2>
+The major class of PLinda applications are <!WA9><A HREF="http://merv.cs.nyu.edu:8001/~binli/plinda/applications.html#LONG">long-running coarse grain parallel applications.</A>
+<p>
+Example applications:
+<UL>
+<LI><!WA10><A HREF="http://www.nile.utexas.edu/Nile">NILE project</A>
+<LI><!WA11><a href="http://info.gte.com/~kdd/">Data mining</a> (eg. biological pattern discovery)
+</UL>
+<P>
+<HR SIZE=3>
+<H2>Distribution</H2>
+
+<!WA12><A HREF="http://merv.cs.nyu.edu:8001/~binli/plinda/source.html">Source code</A> is available!
+And here is <!WA13><A HREF="http://merv.cs.nyu.edu:8001/~binli/plinda/install.html">how to install</A> it.<br>
+Please refer to the <!WA14><A HREF="http://merv.cs.nyu.edu:8001/~binli/plinda/manual.ps">PLinda User Manual</A> for 
+additional information.
+<P>
+<HR SIZE=3>
+
+<h2><!WA15><A HREF="http://merv.cs.nyu.edu:8001/~binli/plinda/faq.html">FAQ</A></H2>
+<HR SIZE=3>
+
+<H2>Future Work</H2>
+<UL>
+<LI>Debuggers and run-time visualization tools.
+<LI>Software tools for writing parallel/distributed programs.
+<LI>Performance improvements for scientific applications.
+<LI>Programming tools for data mining.
+<LI>A distributed run-time kernel for PLinda.
+<LI>Suggestions -- please feel free to send mail to <!WA16><A HREF="mailto:plinda@cs.nyu.edu">plinda@cs.nyu.edu</A>.
+</UL>
+<HR SIZE=3>
+	
+<H2><A NAME="PEOPLE">People</H2>
+<UL>
+<LI><!WA17><A HREF="http://cs.nyu.edu/cs/faculty/shasha/index.html">Dennis Shasha</A> (Professor) 
+<LI>Brian Anderson (former student)
+<LI><!WA18><A HREF="http://galt.cs.nyu.edu/students/brow7141/">Tom Brown</A> (student)
+<LI><!WA19><A HREF="http://galt.cs.nyu.edu/students/jeong/karp.html">Karp Joo Jeong</A> (former student)  
+<LI><!WA20><A HREF="http://merv.cs.nyu.edu:8001/~binli">Bin Li</A> (student)
+<LI><!WA21><A HREF="http://galt.cs.nyu.edu/students/jihai/">Jihai Qiu</A> (student)
+<LI>Suren Talla (student)
+<LI><!WA22><A HREF="http://galt.cs.nyu.edu/students/wyckoff/">Peter Wyckoff</A> (student)
+</UL>
+<HR SIZE=3>
+<H2>Publications</H2>
+<UL>
+<LI><!WA23><A HREF="http://merv.cs.nyu.edu:8001/~binli/plinda/manual.ps">PLinda User Manual (PostScript)</A>. 
+
+<LI>Karpjoo Jeong. <I>Fault-tolerant Parallel Processing Combining Linda, Chec
+kpointing, and Transactions</I>. 
+Ph.D. Thesis, Department of Computer Science, New York University, 1996.
+(Click here for a <!WA24><A HREF="http://merv.cs.nyu.edu:8001/~binli/plinda/thesis-karp.ps">PostScript</A> version.)
+
+<LI>Karpjoo Jeong and Dennis Shasha. <I>Persistent Linda 2: a transaction/checkpointing approach to fault-tolerant
+Linda</I>. 
+Proceedings of the 13th Symposium on Fault-Tolerant
+Distributed Systems, October 1994. 
+(Click here for a <!WA25><A HREF="http://merv.cs.nyu.edu:8001/~binli/plinda/srds94-plinda.ps">PostScript</A> version.)
+
+<LI>Brian Anderson and Dennis Shasha. <I>Persistent Linda: Linda + Transactions + Query Processing</I>.
+Workshop on
+Research Directions in High-Level Parallel Programming
+Languages, Mont Saint-Michel, France June 1991.
+Published as Springer-Verlag Lecture Notes in Computer
+Science 574.
+(Click here for a <!WA26><A HREF="http://merv.cs.nyu.edu:8001/~binli/plinda/AS91.ps">PostScript</A> version.)
+</UL>
+<HR SIZE=3>
+	
+<H2>Other Fault Tolerant Systems</H2>
+
+<HR SIZE=4>
+
+<ADDRESS>
+Last modified by 
+<!WA27><A HREF="http://merv.cs.nyu.edu:8001/~binli/">Bin Li</A>.
+October 23, 1996.
+</ADDRESS>
+
+</body>
+</HTML>

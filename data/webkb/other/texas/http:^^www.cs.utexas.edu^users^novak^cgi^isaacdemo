@@ -1,0 +1,57 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 07-Jan-97 15:25:54 GMT
+Content-Type: text/html
+Content-Length: 2137
+
+<HTML><HEAD><TITLE>Isaac Demo</TITLE></HEAD><BODY>
+<H2>Isaac: Solving Physics Problems Stated in English</H2>
+<P>
+<IMG SRC="../isaac.gif" ALIGN=bottom ALT=>
+<B> Problem 8 </B>
+<P>
+This is a demonstration of the Isaac program, an Artificial Intelligence (AI)
+program that solves rigid body statics problems stated in English.
+<P>
+There are 37 problems that are predefined.  You can solve one of
+these problems by entering the problem number.
+<P>
+You can also attempt to solve a new problem.  Enter the text of the new
+problem, one sentence per line, in the input area; then select the
+"Try New Problem" command.  However, no serious attempt
+has been made to make Isaac robust for new problems, so not all
+new problems will work.  An example of an underspecified new problem is:
+<CODE>What force is required to lift one end of a pole?</CODE>
+<P>
+When the demo is started, a graphics window and an input window with
+a command menu are created.  (You may have to move one of the windows
+in order to see them both.)  Click the appropriate menu items to
+run the demo.
+
+<HR>
+<a href="/users/novak/ijcai77.html">Representations of Knowledge in a
+Program for Solving Physics Problems,''</a> <cite>Proc. 5th International Joint
+Conference on Artificial Intelligence</cite> (IJCAI-77), Cambridge, MA,
+August 1977, pp. 286-291.
+
+<HR>
+
+<H2>Instructions</H2>
+<FORM METHOD=GET ACTION="nph-isaac-action">
+<OL>
+<LI>	You must be logged in to a host running X windows.
+<LI>	Type <CODE>  xhost + www.cs.utexas.edu  </CODE> (exactly as shown
+        at left) in a window on that host
+	to allow this server to write to your display.
+<LI>	Enter your X display name here if needed; you may need to change
+        what is shown in the box to your X display name.  For example,
+        <CODE> myterminal.cs.utexas.edu:0.0 </CODE> <BR>
+	<INPUT TYPE=text SIZE=40 VALUE="128.2.209.145:0.0" NAME=xdspname>
+<LI>	Click <INPUT TYPE=submit VALUE="here"> to start the demo.
+        Remember to move the top window so you can see the other window.
+</OL>
+</BODY>
+<address><a href="http://www.cs.utexas.edu/users/novak/index.html">
+Gordon S. Novak Jr.</a></address>
+</HTML>
+

@@ -1,0 +1,60 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Monday, 06-Jan-97 20:32:36 GMT
+Content-Type: text/html
+Content-Length: 2164
+Last-Modified: Tuesday, 17-Sep-96 23:28:11 GMT
+
+<HTML><HEAD>
+<TITLE> Program 1 - Interactive Lines and Curves </TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+<H1> Program 1 - Interactive Lines and Curves </H1>
+</CENTER>
+<P>
+<CENTER>
+<H2> Due - October 1 </H2>
+</CENTER>
+<P>
+
+You are to create an interactive program for drawing and erasing line
+segments, circles, and quadratic curves using Bresenham's line and
+circle drawing algorithms and the recursive Bezier/B-spline curve
+algorithm given in class.  Line segments should be specified by giving
+two endpoints on the screen using a mouse.  Circles can be specified
+with a center and a point on the circle, or by two points defining a
+diameter (or by another means if you prefer).  Quadratic curves should
+be specified as a polyline, that is, as a sequence of control points
+given by the mouse.  There must be at least three control points
+provided.  If there are more than three, then new implicit control
+points must be generated to provide the correct number.  For instance,
+for four control points input, a new point midway between the second
+and third control point must be created as the shared control point
+for two consecutive parabolic segments.  For more than four, generate
+this new control point midway between the second and third control
+points, then generate another one midway between the third and fourth
+control points, etc. until you have split every original line segment
+between input control points except the first and last in half with
+the new, generated control points.  You will then have a set of
+control points which can be used to draw a smooth quadratic curve
+fitting the entire sequence of control points.
+
+<P>
+
+Do not use floating point arithmetic for drawing any of these primitives.
+
+<P>
+
+You should be able to erase any primitive by selecting one of its control
+points in addition to doing the drawing specified above.
+
+<P>
+
+Your program should be implemented as a Tcl/Tk widget or equivalent.
+It should be able to handle window expose and resize events and to
+redraw all the primitives at a user's command.  You should not try to
+eliminate holes created in the drawing by any means other than allowing
+the user to redraw.
+
+</BODY> </HTML>

@@ -1,0 +1,223 @@
+Date: Tue, 05 Nov 1996 20:53:02 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 02 Oct 1996 21:22:57 GMT
+Content-length: 7926
+
+<html>
+<head>
+<title>CS 736 - Project List</title>
+</head>
+
+<body>
+<table border=0 width=100% align=center>
+<tr>
+<td width=25%><td width=50% align=center>
+<b>UNIVERSITY OF WISCONSIN-MADISON</b>
+<br>
+<b>Computer Sciences Department</b>
+<td width=25%>
+<tr>
+<tr>
+<td>
+<b>CS 736</b>
+<br>
+<b>Fall 1996</b>
+<td><td align=right><b>Bart Miller</b>
+<tr>
+<td>
+<td align=center><b>CS 736: Advanced Operating Systems</b>
+<td>
+</table>
+
+<center>
+<h1>Project List</h1>
+<h5>(Project Proposal Due: Friday, October 11)
+<br>
+(Midway Interviews: Thursday/Friday, November 14/15)
+<br>
+(Draft Report to Referees: Thursday, December 5)
+<br>
+(Referee Reports to Authors: Tuesday, December 10)
+<br>
+(Final Report Due: Thursday, December 12)</h5>
+</center>
+
+
+<h2>General Comments</h2>
+<p>
+The projects are intended to give you an opportunity to study a
+particular area related
+to operating systems.
+Your project will require a test implementation, measurement study or analysis,
+literature search, and evaluation.
+<p>
+The project suggestions below are briefly stated.
+They are intended to guide you into particular areas and you
+are expected to expand these suggestions into a full project
+descriptions.
+This gives you more freedom in selecting an area and more burden in
+defining your own project.
+There may be more issues listed for a project than you can cover.
+If you have a topic of your own that is not listed below, you should come
+and talk with me so we can work out a reasonable project description. 
+<p>
+You will write a paper that reports on your project.
+This paper will structured as if you were going to submit it to a conference.
+I will provide more details on the project report later in the semester.
+<p>
+You can work in teams of two people (and, in certain cases three people)
+on the project and report.
+
+<h2>Projects</h2>
+
+<h3>(1) Multiprocessor Working Set:</h3>
+As you know from your paper assignment,
+the Working Set (and WSClock) algorithms are difficult to implement for
+shared pages.
+The problem comes from deciding on which process's virtual time to use,
+and how to efficiently store the last reference times.
+One of my RA's (Tia Newhall)
+<!WA0><!WA0><!WA0><!WA0><a href="http://www.cs.wisc.edu/~newhall/wsclockstar.ps">developed
+a promising algorithm</a>
+that approximates the behavior of a shared-page Working Set,
+while being extremely space efficient.
+<p>
+The goal of this project is to carry out a simulation study of this
+algorithm to obtain performance
+results from realistic application programs.
+
+<h3>(2) Core Wars:</h3>
+This project is for two groups:
+<ul>
+<li>
+<i>Group A's</i>
+goal is to develop a program that replicates and protects
+itself.
+It can copy itself to other machines and hide itself using scheduling
+routines and the file system.
+There should typically be only one process running at a time on any given
+host.
+Group A's program should print out an "I'm alive" message about
+every 15 seconds.
+<li>
+<i>Group B's</i>
+goal is to kill the program created by Group A.
+It can use any means at its disposal.
+As with the other group,
+there should typically be only one process running at a time on any given
+host.
+</ul>
+<p>
+Some ground rules:
+(a) Both Group A and B will run their program with the same user ID and on
+the same (agreed upon) set of hosts.
+(b) Each of the programs must be started with only a single command.
+(c) A contest will last 20 minutes; at the end of 20 minutes, if Group A's
+program is running, they win; if A's program is not running, B wins.
+
+<h3>(3) Distributed Shared Memory:</h3>
+In <!WA1><!WA1><!WA1><!WA1><a href="ftp://grilled.cs.wisc.edu/technical_papers/paging.ps.Z">a
+study done a few years ago</a>,
+we (Burger, Hyder, Miller, and Wood) studied
+the behavior of paging and scheduling policies for fine-grained distributed
+shared-memory systems.
+One question is: what do you do when you get a page fault on one node?
+Three reasonable choices are
+(1) gang-context switch, (2) just wait for the page on
+the local processors, but don't schedule anything else (``spin''), or
+(3) let a sequential program run on that faulting node until the page fault
+is satisfied.
+Our study was done by using and modifying the Wisconsin Wind Tunnel on the
+TMC CM-5 parallel computer.
+<p>
+We evaluated the gang-context switch and spin policies, but did not evaluate
+the local context switch policy (called ``Local Under Gang'', or LUG).
+LUG is attractive because it allows the system to use wasted cycles, but
+may not be beneficial if memory, cache, and TLB pollution excessively degrade the
+parallel job's performance.
+The goal of this project would be to extend the study to include LUG.
+
+<h3>(4) More Fuzz:</h3>
+The goal of this project is to evaluate the robustness of various UNIX kernels,
+given an unpredictable calls to their basic kernel functions (system calls).
+Several years ago, we built tools to generate and test programs by feeding
+them random input.
+<!WA2><!WA2><!WA2><!WA2><a href="ftp://grilled.cs.wisc.edu/technical_papers/fuzz.ps.Z">The result of
+this study</a> was that we were able to crash 25-33% of the standard
+UNIX utilities.
+Almost every UNIX manufacturer adopted our Fuzz testing tools as part of their
+release process.
+<!WA3><!WA3><!WA3><!WA3><a href="ftp://grilled.cs.wisc.edu/technical_papers/fuzz-revisited.ps.Z">
+In 1995, we repeated and expanded these tests</a>
+on more platforms and included X-window applications.
+The goal of <b>this</b> semester's
+project is to test OS kernels in a similar way to that we used to
+test application programs.
+<p>
+The basic tool is called the
+<i>fuzz</i>
+generator.
+This is a program that generates a random character stream.
+We used the fuzz generator to attack as many UNIX
+utilities as possible, with the goal of trying to break them.
+For the utilities that broke, we determined the
+the cause of the break.
+There is also a tool called
+<i>ptyjig</i>
+that allows random input to be fed to interactive programs.
+<p>
+The major extension to these tools would be to figure out a way to generate
+random input (random calls and parameters) to the kernel (system) calls
+supplied by the operating system.
+We would like to test a variety of platforms and include non-UNIX systems
+(such as Windows/NT).
+
+<h3>(5) Using Paradyn to Get OS and Hardware Performance Data:</h3>
+The
+<!WA4><!WA4><!WA4><!WA4><a href="http://www.cs.wisc.edu/~paradyn">Paradyn project</a>
+is a research project developing cutting edge performance profiling tools
+for parallel programs.
+Paradyn is unique in that it instruments an application program
+<i>after</i> the application has started running.
+The data collected by Paradyn is specified with our Metric Description
+Language, allowing new kinds of data to be collected without recompiling
+Paradyn or the application.
+<p>
+The goal of this project is to define metrics in Paradyn to collect information
+from new hardware and operating systems sources.
+For example, the IBM SP2 has FLOP counters.
+The Intel P6 and Sun Ultrasparc have more extensive counter resources.
+Using these new metrics (and the existing ones in Paradyn) you would then
+study a few parallel application programs.
+
+<h2>Project Proposal</h2>
+<p>
+The project descriptions listed above a intentionally brief.
+You will need to expand and refine these to develop your own project.
+Different groups may choose the same topic, but have significantly
+different emphases.
+<p>
+Your project proposal will describe your goals, methods, implementation
+outline, evaluation criteria, and resources needed.
+First, you should describe the basic problem that you will be addressing.
+Next, you should provide a more detailed description of how you will approach
+the problem.
+This description should be contain much more detail than the brief paragraphs
+given above.
+You will provide an outline of features that you project will include,
+an implementation plan,
+and
+an evaluation plan.
+<p>
+Project proposals will typically be 3 to 4 double-spaced pages.
+<p>
+
+<hr>
+<H4>
+Last modified:
+Wed Oct  2 08:18:17 CDT 1996
+by
+<!WA5><!WA5><!WA5><!WA5><a href="http://www.cs.wisc.edu/~bart">bart</a></b>
+</H4>
+</body>

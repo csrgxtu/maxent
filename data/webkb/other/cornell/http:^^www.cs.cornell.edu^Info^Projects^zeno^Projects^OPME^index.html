@@ -1,0 +1,112 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 19:13:11 GMT
+Content-Type: text/html
+Content-Length: 4558
+Last-Modified: Thursday, 25-Apr-96 14:52:20 GMT
+
+<html>
+<head><title>Optimal Parallel MPEG Encoding : A Parallel MPEG Encoder in Rivl</title></head>
+<body BGCOLOR="#BBBBBB">
+<table>
+<tr>
+  <td> <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><img src="http://www.cs.cornell.edu/Info/Projects/zeno/images/logo-small.gif"></td>
+  <td> <h2>Optimal Parallel MPEG Encoding</h2></td>
+</table>
+<!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><img src="http://www.cs.cornell.edu/Info/Projects/zeno/images/alum.gif">
+<p>
+<H2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><IMG SRC="http://www.cs.cornell.edu/Info/Projects/zeno/images/ping.gif">...And just what is this madness???</H2>
+In the beginning in a lab deep in the heart of Upson Hall, there were
+video tapes of classroom lectures.  These tapes were on the shelf
+collecting dust bunnies.  What were we to do about this?  Well, Brian
+Smith decided that he wanted his lectures put online for his students
+to view and thus began using <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><a
+href="http://simon.cs.cornell.edu/Info/Projects/zeno/Projects/Rivl.html">RIVL</a>
+to compress his videos.  He soon realized that compressing every
+lecture would take an inordinate amount of time.  He calculated that
+if we could use every machine in the computer science department, it
+would not take nearly as long to perform this task.  We decided it
+would be fun to help Brian out with his problem, so we came up with an
+<!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><a href="http://www.cs.cornell.edu/Info/Projects/zeno/Projects/OPME/abstract.html">abstract</a> to solve his
+problem.  We all agreed that it was a good place to start.  After some
+time (and a lot of labor) we came up with some code and a <!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><a
+href="http://www.cs.cornell.edu/Info/Projects/zeno/Projects/OPME/opme.report.html">paper</a>
+based on our work which more closely resembles a collection of notes
+than a coherent piece of work.  So, we kept working.  We have now
+arrived at another version of our code.  This version works much
+better than before; it is better, stronger, and faster.  And to this
+end, we have written <!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><a
+href="http://www.cs.cornell.edu/Info/Projects/zeno/Projects/OPME/tech_paper.html">another technical paper</a>
+to describe exactly what we did and why we did it.
+<p>
+
+<H2><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><IMG SRC="http://www.cs.cornell.edu/Info/Projects/zeno/images/ping.gif">...and what do we learn from this?</H2>
+Lots!  We now know the intimate details of how TCL, DP, and RIVL work
+and why performance suffers when certain things are done.  Mastering
+the black art of TCL programming actually took the smallest amount of
+time in comparison to the rest of code.  Squeezing the most
+performance out of a single-threaded, event-driven environment given a
+distributed architecture turned out to be the most time consuming and
+difficult part of the project.  RPC facilities built into DP allowed
+us to easily perform necessary communication between machines to
+distribute work requests.  The combination of the above scripting
+environments helped us to acheive our goals of delivering reliable,
+portable, high performance MPEG encoding.
+<p>
+
+<H2><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><IMG SRC="http://www.cs.cornell.edu/Info/Projects/zeno/images/ping.gif">...and how does it tie in with
+Multimedia Systems?</H2>
+Very well!  The ability to rapidly compress video using all available
+machines makes many new types of video processing possible.  It allows
+animators and movie editors to view their videos more often, thus
+shortening development time.  Because our version of parallel MPEG
+encoding is an integral part of RIVL, it is extremely easy to use.
+<p>
+
+
+<H2><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><IMG SRC="http://www.cs.cornell.edu/Info/Projects/zeno/images/ping.gif">...and how do we measure success?</H2>
+If we are able to compress a large video without becoming old and
+gray, we will have succeeded.
+
+<H2><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><IMG SRC="http://www.cs.cornell.edu/Info/Projects/zeno/images/ping.gif">...and <i>finally</i>, how are we progressing?</H2>
+We are finished with the coding state of the project.  Currently, we
+are working writing a technical report for the project.  Hopefully we
+can pull the main ideas together better than we did earlier.  Some of
+things that could be done to make this project better are:
+<ol>
+<li>Make the worker process into a daemon process.
+<li>Add in support for IP Multi-cast.
+</ol>
+<br><hr><br>
+
+<!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><img src="http://www.cs.cornell.edu/Info/Projects/zeno/images/alum.gif">
+<h2>People Working on Optimal Parallel MPEG Encoder</h3>
+<h3>Faculty</h3>
+<ul>
+<!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><img src="http://www.cs.cornell.edu/Info/Projects/zeno/images/greyball.gif">
+ <!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><a href="http://www.cs.cornell.edu/Info/Faculty/Brian_Smith.html">
+ Brian Smith</a>
+ <br><br>
+
+</ul>
+
+<h3>M.Eng Students</h3>
+<ul>
+  <!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><img src="http://www.cs.cornell.edu/Info/Projects/zeno/images/yellowball.gif">
+  <!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><a href ="http://www.cs.cornell.edu/Info/People/spdawson/home.html">Scott Dawson</a>
+  <br><br>
+  <!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><img src="http://www.cs.cornell.edu/Info/Projects/zeno/images/yellowball.gif">
+  <!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><a href ="http://www.cs.cornell.edu/Info/People/wwlee/index.html">William Lee</a>
+  <br><br>
+  <!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><img src="http://www.cs.cornell.edu/Info/Projects/zeno/images/yellowball.gif">
+  <!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><a href ="http://www.cs.cornell.edu/Info/People/jmm/index.html">Jeff Moore</a>
+  <br><br>
+</ul>
+
+<!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><img src="http://www.cs.cornell.edu/Info/Projects/zeno/images/alum.gif">
+<br>
+<!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><a href ="http://www.cs.cornell.edu/Info/Projects/zeno/Welcome.html"><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><img src ="http://www.cs.cornell.edu/Info/Projects/zeno/images/home.gif"></a>
+<!IMG SRC="/cgi-bin/bsmith/nph-count?width=5&link=/Projects/zeno/OPME">
+Visitors since April 25th, 1996
+<!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><IMG SRC="http://counter.digits.com/bin/web_counter?-d&6&mulvaOPME"ALIGN=absmiddle WIDTH=90 HEIGHT=20 BORDER=0>
+</html>

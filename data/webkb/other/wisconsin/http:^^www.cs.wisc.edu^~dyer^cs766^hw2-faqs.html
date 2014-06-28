@@ -1,0 +1,133 @@
+Date: Mon, 11 Nov 1996 17:30:57 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 23 Oct 1995 20:29:37 GMT
+Content-length: 4603
+
+<html>
+<head>
+<title>CS 766 HW #2 Hints and FAQs</title>
+</head>
+
+<body>
+<H1>CS 766 HW #2 Hints and FAQs</H1>
+<p>
+<hr>
+<UL>
+<LI><B>How are the weights in the mask w defined?</B><BR>
+
+The weights used should be based on the values a=.4, b=.25, and c=0.05.
+These should be scaled so that integer arithmetic, not floating point,
+is used in the convolution operation.  A good 1D convolution mask is:
+1 4 6 4 1.  The result must be rescaled by multiplying by 1/16 to obtain the
+right answer.  More correctly, if the result of convolving the above mask
+at a pixel is x, then the rescaled and rounded result should be
+computed as  (x + 8)/16 since division truncates.
+<P>
+
+<LI><B>What does it mean to subtract two images?</B><BR>
+This is a pixel-wise difference operation resulting in another image.
+<P>
+
+<LI><B>How can I create two input images that approximately match
+in scale so that the splining creates a cool image?</B><BR>
+
+<B>vscale</B> can be useful for initially scaling your
+two input images so that the splined result is more interesting.
+<P>
+
+<LI><B>Since the Laplacian images have both positive and negative values,
+with a range of -255 to 255, what is the best way to store these images?</B><BR>
+
+In practice most pixels will have values which are close to 0, so it
+will not usually introduce much error if you truncate the Laplacian values
+that are less than -128 and greater than 127 and store the image as a byte
+per pixel (Vista type SBtye).  
+<P>
+
+<LI><B>How should integer arithmetic operations be performed so as to
+avoid losing precision?</B><BR>
+
+Whenever you do an integer division operation, be sure to compute
+a rounded result by doing (a + (b/2))/b instead of a/b.
+<P>
+
+<LI><B>How are the windows from the two input images determined when the
+images are arbitrary sizes?</B><BR>
+
+After aligning the center pixels of the two input images, there is some n x m
+area where the two overlap.  Make the n x m left image by using the n x m
+window of the first image that is centered on its center point.  Similarly,
+construct an n x m right image from the second input image.  You can either
+use these n x m images as input to your programs (stopping at a level of
+the pyramid where n or m = 1), or else by first padding the n x m images
+to be of size (2**k + 1) x (2**k + 1), although padding will likely introduce
+some artifacts.  
+<P>
+
+<LI><B>How is the Expand operation defined, and why is there a 4 in the
+formula?</B><BR>
+
+Maybe I can answer your question about EXPAND by showing two implementations.
+An "incorrect" implementation is:<BR>
+<pre>
+      tmp = 0
+      for m = -2 to 2
+	for n = -2 to 2
+	    tmp = tmp + w(m,n) * image((row+m)/2, (col+n)/2)
+      store tmp
+</pre>
+<p>
+instead of a "correct" version like:<BR>
+<pre>
+      tmp = 0
+      for m = -2 to 2
+	for n = -2 to 2
+	    if (row+m mod 2 = 0 and col+n mod 2 = 0) then
+	       tmp = tmp + w(m,n) * image((row+m)/2, (col+n)/2)
+      store 4*tmp
+</pre>
+<p>
+In the correct version, suppose row and column are both even, say 10.
+Then you actually use a 3x3 window on the input image [row values: (10-2)/2,
+10/2, (10+2)/2 and column values (10-2)/2, 10/2 and (10+2)/2].  Thus only nine
+of the 25 weights in the kernel are used corresponding to the x's below:<br>
+<pre>
+		x o x o x
+		o o o o o
+		x o x o x
+		o o o o o
+		x o x o x
+</pre>
+and if you consider the weights of those nine locations, they turn out to be:<br>
+<pre>
+            .0025 .0200 .0025    
+            .0200 .1600 .0200   
+            .0025 .0200 .0025  
+</pre>
+summing up to 0.25 exactly.  And thus you should multiply your result by 4 so
+that the effective sum of weights is 1.
+<p>
+
+In the incorrect version (still assuming row and column to be even), you are
+effectively truncating (row+m)/2, (col+n)/2 for m,n = -2..2.  For instance the
+computed row index is same for m = 0 and m = 1 [row/2 = (row+1)/2]. Thus you 
+are still using a 3x3 window on your input image, but some values in this 
+window are repeated.  The effective weights for the window are:<br>
+<pre>
+            .0900 .1950 .0150
+            .1950 .4225 .0325
+            .0150 .0325 .0025 
+</pre>
+summing up to 1.0.  This weight window is obviously very different from
+Burt-Adelson's weights.
+For row odd, column even etc, you can similarly compute the effective weight
+matrices and see that the results are not similar for the two algorithms.
+<p>
+
+The "correct" version tries to interpolate pixel values in the larger (output)
+image by looking at a neighborhood in the smaller (input) image.  It makes
+sense to use a symmetric Gaussian-like weight matrix to do that.
+</UL>
+</body>
+</html>

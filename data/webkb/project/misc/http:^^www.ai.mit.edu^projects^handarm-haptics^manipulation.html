@@ -1,0 +1,424 @@
+Date: Tue, 26 Nov 1996 00:01:31 GMT
+Server: Apache/1.2-dev
+Connection: close
+Content-Type: text/html
+Last-Modified: Tue, 03 Sep 1996 16:28:10 GMT
+ETag: "5d872-3cd8-322c5c9a"
+Content-Length: 15576
+Accept-Ranges: bytes
+
+<title>Vision and Touch Guided Manipulation</title>
+
+<body>
+
+<a name="S0"></a>
+<center>
+<!WA0><img alt="-----" src="http://www.ai.mit.edu/icons/lines/line-bluemarble.gif">
+<p>
+
+<h1>Vision and Touch Guided Manipulation Group</h1>
+<h2>MIT Artificial Intelligence Lab & Nonlinear Systems Lab</h2>
+
+<!WA1><img alt="-----" src="http://www.ai.mit.edu/icons/lines/line-bluemarble.gif">
+<p>
+</center>
+
+<!--------------------------------------->
+<!------------ Intro -------------------->
+<!--------------------------------------->
+
+The Vision and Touch Guided Manipulation group at the <!WA2><a
+href="http://www.ai.mit.edu/">MIT Artificial Intelligence Lab</a>
+conducts research in a wide variety of topics related to manipulator 
+and end effector design, dextrous manipulation, adaptive nonlinear 
+control, and vision guided manipulation.  We employ techniques from 
+various fields including Mechanical Design, Stability Theory, Machine
+Learning, Approximation Theory, and Computer Vision.
+<p>
+
+The group is headed by <!WA3><a
+href="http://www.ai.mit.edu/people/jks/jks.html">Dr. Kenneth
+Salisbury</a> (mechanics) and Professor
+Jean-Jacques E. Slotine (autonomy and vision).  Other groups at
+the MIT AI Lab headed by Ken are the <!WA4><a
+href="http://www.ai.mit.edu/projects/handarm-haptics/haptics.html">Haptic
+Interfaces Group</a> and the <!WA5><a
+href="http://www.ai.mit.edu/projects/handarm-haptics/robothand.html">Robot
+Hands Group</a>.  Professor Slotine also heads the <!WA6><a
+href="http://web.mit.edu/nsl/www/">Nonlinear Systems Laboratory</a>.
+<p>
+
+<!--------------------------------------->
+<!------------ People ------------------->
+<!--------------------------------------->
+
+The people in and associated with the Vision and Touch Guided
+Manipulation Group are:<p>
+
+<ul>
+  <li> Brian Anthony (<i>touch sensing</i>)
+  <li> Mark Cannon (<i>wavelet networks ,graduated</i>)
+  <li> <!WA7><a href="http://www.ai.mit.edu/people/bse/bse.html">Brian
+	Eberman</a> (<i>system integration, ,graduated</i>)
+  <li> <!WA8><a href="http://web.mit.edu/bhoffman/www/home.html">Brian
+	Hoffman</a> (<i>active vision</i>)
+  <li> <!WA9><a href="http://exodus.mit.edu/~jesse/">W. Jesse Hong</a> 
+	(<i>coordination vision-manipulation</i>)
+  <li> <!WA10><a href="http://www.ai.mit.edu/people/madhani/madhani.html">Akhil
+	Madhani</a> (<i>wrist-hand mechanism</i>)
+  <li> G&uumlnter Niemeyer (<i>adaptive control and system integration</i>)
+  <li> Daniel Theobald (<i>visual processing</i>)
+  <li> Ichiro Watanabe (<i>machine learning</i>)
+</ul>
+<p>
+
+<hr>
+<center>
+<!WA11><a href="#S0">[Introduction]</a>
+<!WA12><a href="#S1">[Our Robots]</a>
+<!WA13><a href="#S2">[Our Research]</a>
+<!WA14><a href="#S3">[References]</a>
+</center>
+<hr>
+
+<!--------------------------------------->
+<!------------- Our Robots -------------->
+<!--------------------------------------->
+
+<center>
+<a name="S1"><h1>Introduction to our Robots</h1></a>
+</center>
+
+
+<center>
+<table border=5 cellspacing=5 cellpadding=5>
+<tr>
+<a name="S1.1"><th colspan=2 bgcolor=steelblue>The Whole Arm
+Manipulator</th></a>
+</tr>
+<tr>
+<td>
+The MIT Whole Arm Manipulator (WAM) Arm is a very fast, force 
+controllable robot arm designed in Dr. Salisbury's group at the AI
+Lab.  The concept of "Whole Arm Manipulation" was originally
+aimed at enabling robots to use all of their surfaces to manipulate
+and perceive objects in the environment. Central to this concept (and
+our group's design efforts in general) has been a focus on controlling
+the forces of interaction between robots and the environment.
+To permit this, the WAM arm employs novel cable transmissions which are
+stiff, low friction and backdrivable. This in turn, permits a
+lightweight design.  To achieve good bandwidth in force control while
+in contact with the environment, the arm's design maximizes the lowest
+resonant frequency of the system and employs an impedance matching
+ratio between motor and arm masses. This also enables the arm to
+achieve high accelerations while moving in free space.
+</td>
+<td><!WA15><img src="http://www.ai.mit.edu/projects/handarm-haptics/images/wamdoor.gif" width=240 height=307></td>
+<tr>
+<td colspan=2>
+Prof.  Slotine and his students have developed system architectures
+and control algorithms for both force controlled tasks and tasks
+requiring rapid and accurate free space motion.  The algorithms also
+provide fast and stable adaptation of the arm to large variations in
+loads and environments.
+</td>
+</tr>
+</table>
+</center>
+<p>
+
+<center>
+<table border=5 cellspacing=5 cellpadding=5>
+<tr>
+<a name="S1.2"><th colspan=2 bgcolor=steelblue>The Talon</th></a>
+</tr>
+<tr>
+<td><!WA16><img src="http://www.ai.mit.edu/projects/handarm-haptics/images/wam3-2.gif" width=221 height=336></td>
+<td>
+A new wrist-hand mechanism has been developed and replaces a previous
+forearm mounted system.  The new wrist-hand, known as the Talon,
+provides 3 additional powered freedoms: one for grasping forces and
+two for orientation.  The motors for the device are located in the
+forearm to minimize end-effector mass and maximize its workspace.  The
+grasping mechanism is comprised of a group of 2 fingers which move
+against a group of 3 fingers such that two groups may be made to mesh
+together while encircling objects.  Finger inner surfaces are serrated
+to provide for high contact friction against rough (rock) surfaces,
+and curved to enhance capturing large and small objects.  Fingers may
+deflect compliantly to accomodate to object geometry, and finger
+deflections may be sensed to provide for monitoring grasp state.  We
+also have studied the design of a miniature end-effector suitable for
+grasping small rocks and cylindrical objects.  Similar in spirit to
+the Talon, the new miniature end-effector utilizes slightly different
+kinematics to enlarge its feasible grasping volume.
+</td>
+</tr>
+</table>
+</center>
+<p>
+
+<center>
+<table border=5 cellspacing=5 cellpadding=5>
+<tr>
+<a name="S1.3"><th colspan=2 bgcolor=steelblue>The Fast Eye Gimbals</th></a>
+</tr>
+<tr>
+<td colspan=2>
+A more recent component of our system is our active vision system
+which is comprised of two hi-resolution color CCD cameras with 50mm
+focal length lenses mounted on two degree of freedom gimbals.  We have
+utilized cameras with a narrow field of view to give higher resolution
+images of typical objects. This implies, however, that the cameras
+have to be actuated in order to pan and tilt so that they can cover
+broad scenes, leading to an active vision system, and an associated
+trade-off between controller precision and image resolution
+(narrowness of field of view).
+</td>
+<tr>
+<td><!WA17><img src="http://www.ai.mit.edu/projects/handarm-haptics/images/fegs2.gif" width=288 height=225></td>
+<td>
+The actuators which we have
+implemented were designed in our lab and are known as the Fast Eye
+Gimbals (FEGs).  The FEGs provide directional positioning for our
+cameras using a similar drive mechanism as the WAM.  The two joints
+are cable driven and have ranges of motion of +/- 90 degrees and +/-
+45 degrees in the base and upper joint axes respectively.  These two
+FEGs are currently strategically mounted on ceiling rafters with a
+wide baseline for higher position accuracy using stereo vision
+methods. The independent nature of the FEGs allow us to position each
+one at different locations in order to vary the baseline or
+orientation of the coordinate frame as well as easily add additional
+cameras to provide additional perspectives.
+</td>
+</tr>
+</table>
+</center>
+<p>
+
+<hr>
+<center>
+<!WA18><a href="#S0">[Introduction]</a>
+<!WA19><a href="#S1">[Our Robots]</a>
+<!WA20><a href="#S2">[Our Research]</a>
+<!WA21><a href="#S3">[References]</a>
+</center>
+<hr>
+
+<!---------------------------------------------->
+<!------------------ Our Research -------------->
+<!---------------------------------------------->
+
+<center>
+<a name="S2"><h1>Research Projects</h1></a>
+</center>
+
+<table border=5 cellspacing=5 cellpadding=5>
+<tr>
+<a name="S2.1"><th bgcolor=steelblue>Robust Grasping in Unstructured
+Environments</th></a>
+</tr>
+<tr>
+<td align=center><!WA22><img src="http://www.ai.mit.edu/projects/handarm-haptics/images/picksort.gif" width=478 height=357></td>
+</tr>
+<tr>
+<td>
+One of our current projects, funded by NASA/JPL, is to develop a
+fundamental understanding of the problem of combining real time vision
+and touch sensor data with robot control, to yield robust, autonomous
+and semi-autonomous grasping and grasp-stabilization. The research
+is focused on providing conceptual and experimental support of planned
+and on-going NASA missions utilizing earth-orbiting and planetary
+surface robotics.
+<P>
+
+We have implemented a high-speed active vision system, a
+multi-processor operating system, and basic algorithms for acquisition and
+grasp of stationary spherical and cylindrical objects using coordinated
+robotic vision, touch sensing, and control.  Preliminary experiments on the
+tracking of moving objects have also been completed.  Concurrently,
+research into an integrated wrist-hand design used for
+performing sensor guided grasps, and a preliminary design for a
+next-generation miniature end-effector are being completed.
+</td>
+</tr>
+</table>
+</center>
+<p>
+
+
+<center>
+<table border=5 cellspacing=5 cellpadding=5>
+<tr>
+<a name="S2.2"><th colspan=2 bgcolor=steelblue>Robotic Catching of
+Free Flying Objects</th></a>
+</tr>
+<tr>
+<td colspan=2>
+Another direction of our research, funded by Fujitsu, Furukawa, and
+the Sloan Foundation, is to accomplish real-time robust
+catching of free flying objects.  We are currently focusing on
+spherical balls of various sizes.  We are also
+experimenting with additional objects with different dynamic
+characteristics such as sponge balls, cylindrical cans, and paper
+airplanes.
+</td>
+</tr>
+<tr>
+<td colspan=2 align=center><!WA23><img src="http://www.ai.mit.edu/projects/handarm-haptics/images/wam7-2.gif" width=446
+height=297></td>
+</tr>
+<tr>
+<td colspan=2>
+Our system uses low cost vision processing hardware for simple
+information extraction.  Each camera signal is processed independently
+on vision boards designed by other members of the MIT AI Laboratory
+(the <!WA24><a href="http://www.newtonlabs.com/">Cognachrome Vision Tracking
+System</a>).  These vision boards provide us with the center 
+of area, major axis, number of pixels, and aspect ratio of the color
+keyed image.  The two Fast Eye Gimbals allow us to locate and track
+fast randomly moving objects using "Kalman-like" filtering methods
+assuming no fixed model for the behavior of the motion.  Independent
+of the tracking algorithms, we use least squares techniques to fit
+polynomial curves to prior object location data to determine the
+future path.  With this knowledge in hand, we can calculate a path for
+the WAM to match trajectories with the object to accomplish catching
+and smooth object/WAM post-catching deceleration. 
+<P>
+
+In addition to the basic least squares techniques for path prediction, 
+we study experimentally nonlinear estimation algorithms to give "long term"
+real-time prediction of the path of moving objects, with the goal of robust
+acquisition.  The algorithms are based on stable on-line construction of
+approximation networks composed of state space basis functions localized in
+both space and spatial frequency. As a initial step, we have studied the
+network's performance in predicting the path of light objects thrown in
+air. Further application may include motion prediction of objects rolling,
+bouncing, or breaking up on rough terrains.
+<P>
+
+Some recent successful results for the application of this network
+have been obtain in catching of sponge balls and even paper airplanes!
+</td>
+</tr>
+<tr>
+<td align=center>
+<!WA25><a href="http://www.ai.mit.edu/projects/handarm-haptics/catching.html"><!WA26><img src="http://www.ai.mit.edu/projects/handarm-haptics/images/wamcatch.gif" width=166
+height=250></a><br>Click to view <!WA27><a href="http://www.ai.mit.edu/projects/handarm-haptics/catching.html">WAM
+catching</a>.
+</td>
+<td align=center>
+<!WA28><a href="http://www.ai.mit.edu/projects/handarm-haptics/airplane.html"><!WA29><img src="http://www.ai.mit.edu/projects/handarm-haptics/images/airp-catch.gif" width=168
+height=250></a><br>Click to view <!WA30><a href="http://www.ai.mit.edu/projects/handarm-haptics/airplane.html">WAM Airplane
+catching</a>.
+</td>
+</tr>
+<tr><td>
+&copy 1995 Photo courtesy of <!WA31><a
+href="http://www.scinetphotos.com/">Hank Morgan</a>
+</td></tr>
+</table>
+</center>
+<p>
+
+<hr>
+<center>
+<!WA32><a href="#S0">[Introduction]</a>
+<!WA33><a href="#S1">[Our Robots]</a>
+<!WA34><a href="#S2">[Our Research]</a>
+<!WA35><a href="#S3">[References]</a>
+</center>
+<hr>
+
+<!--------------------------------------->
+<!------------ References --------------->
+<!--------------------------------------->
+
+<center>
+<a name="S3"><h1>Partial List of References</h1></a>
+</center>
+
+<!WA36><IMG SRC="http://www.ai.mit.edu/gifs/ball.red.gif" ALT="*"> 
+<!WA37><A HREF="http://www.ai.mit.edu/projects/handarm-haptics/abstracts/aiaa96-abst.html"><I>Autonomous Rock Acquisition</I></A>,
+D.A. Theobald, W.J. Hong, A. Madhani, B. Hoffman, G. Niemeyer, L.
+Cadapan, J.J.-E. Slotine, J.K. Salisbury, Proceedings of the AIAA
+Forum on Advanced Development in Space Robotics, Madison, Wisconsin,
+August 1-2, 1996.<P>
+
+<!WA38><IMG SRC="http://www.ai.mit.edu/gifs/ball.red.gif" ALT="*"> 
+<!WA39><A HREF="http://www.ai.mit.edu/projects/handarm-haptics/abstracts/iser95-abst.html"><I>Experiments in Hand-Eye
+Coordination Using Active Vision</I></A>, W. Hong and J.J.E. Slotine,
+Proceedings of the Fourth International Symposium on Experimental
+Robotics, ISER'95, Stanford, California, June 30-July 2, 1995.<P>
+
+<!WA40><IMG SRC="http://www.ai.mit.edu/gifs/ball.red.gif" ALT="*"> 
+<!WA41><A HREF="http://www.ai.mit.edu/projects/handarm-haptics/abstracts/hong-msthesis-abst.html"><I>Robotic Catching and
+Manipulation Using Active Vision</I></A>, W. Hong, M.S. Thesis,
+Department of Mechanical Engineering, MIT, September 1995.<P>
+
+<!WA42><IMG SRC="http://www.ai.mit.edu/gifs/ball.red.gif" ALT="*"> 
+<!WA43><A HREF="http://www.ai.mit.edu/projects/handarm-haptics/abstracts/neurocomp95-abst.html"><I>Space-Frequency Localized Basis
+Function Networks for Nonlinear System Estimation and Control</I></A>,
+M. Cannon and J.J.E. Slotine, Neurocomputing, 9(3), 1995.<P>
+
+<!WA44><IMG SRC="http://www.ai.mit.edu/gifs/ball.red.gif" ALT="*"> 
+<!WA45><A HREF="http://www.ai.mit.edu/projects/handarm-haptics/abstracts/adaptvis-abst.html"><I>Adaptive Visual Tracking and
+Gaussian Network Algorithms for Robotic Catching</I></A>, H. Kimura
+and J.J.E. Slotine, DSC-Vol. 43, Advances in Robust and Nonlinear
+Control Systems, Winter Annual Meeting of the ASME, Anaheim, CA, pp.
+67-74, November 1992.<P>
+
+<!WA46><IMG SRC="http://www.ai.mit.edu/gifs/ball.red.gif" ALT="*"> 
+<!WA47><A HREF="http://www.ai.mit.edu/projects/handarm-haptics/abstracts/robotcatch-abst.html"><I>Experiments in Robotic
+Catching</I></A>, B.M. Hove and J.J.E. Slotine,
+Proceedings of the 1991 American Control Conference, Vol. 1, Boston, MA,
+pp. 380-385, June 1991.<P>
+
+<!WA48><IMG SRC="http://www.ai.mit.edu/gifs/ball.red.gif" ALT="*"> 
+<!WA49><A HREF="http://www.ai.mit.edu/projects/handarm-haptics/abstracts/perfadapt-abst.html" ><I>Performance in Adaptive
+Manipulator Control</I></A>, G. Niemeyer and J.J.E. Slotine,
+International Journal of Robotics Research 10(2), December, 1988.<p>
+
+<!WA50><IMG SRC="http://www.ai.mit.edu/gifs/ball.red.gif" ALT="*"> 
+<i>Preliminary Design of a Whole-Arm Manipulation System (WAM)</i>,
+J.K. Salisbury, W.T. Townsend, B.S. Eberman, D.M. DiPietro,
+Proceedings 1988 IEEE International Conference on Robotics and 
+Automation, Philadelphia, PA, April 1988.<P>
+
+<!WA51><IMG SRC="http://www.ai.mit.edu/gifs/ball.red.gif" ALT="*"> 
+<i>The Effect of Transmission Design on Force-Controlled Manipulator
+Performance</i>, W.T. Townsend, PhD Thesis, Department of Mechanical
+Engineering, MIT, April 1988.  See also MIT AI Lab Technical 
+Report 1054.<P>
+
+<!WA52><IMG SRC="http://www.ai.mit.edu/gifs/ball.red.gif" ALT="*"> 
+<i>Whole Arm Manipulation</i>, J.K. Salisbury, Proceedings
+4th International Symposium on Robotics Research, Santa Cruz, CA, August,
+1987.<P>
+
+<!WA53><IMG SRC="http://www.ai.mit.edu/gifs/ball.red.gif" ALT="*"> 
+<!WA54><a href="http://www.ai.mit.edu/projects/handarm-haptics/abstracts/fegthesis-abst.html"><i>Design and Control of a
+Two-Axis Gimbal System for Use in Active Vision</i></a>, N. Swarup,
+S.B. Thesis, Dept. of Mechanical Engineering, MIT, Cambridge, MA,
+1993.<p>
+
+<!WA55><IMG SRC="http://www.ai.mit.edu/gifs/ball.red.gif" ALT="*"> 
+<!WA56><A HREF="http://www.ai.mit.edu/projects/handarm-haptics/abstracts/portvis-abst.html"><I>A High Speed Low-Latency Portable
+Vision Sensing System</I></A>, A. Wright, SPIE, September 1993.<P>
+ 
+
+<hr>
+<center>
+<!WA57><a href="#S0">[Introduction]</a>
+<!WA58><a href="#S1">[Our Robots]</a>
+<!WA59><a href="#S2">[Our Research]</a>
+<!WA60><a href="#S3">[References]</a>
+</center>
+<hr>
+<p>
+
+<i>Maintainer: <!WA61><a href="mailto:jesse@ai.mit.edu">jesse@ai.mit.edu</a>,
+Comments to: <!WA62><a href="mailto:wam@ai.mit.edu">wam@ai.mit.edu</a><br>
+Last Updated: Mon Aug 26 15:18:36 EDT 1996, jesse@ai.mit.edu<br>
+&copy 1996, All rights reserved.
+</i>
+</body>

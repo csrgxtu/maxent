@@ -1,0 +1,174 @@
+Date: Mon, 16 Dec 1996 22:10:44 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Fri, 09 Feb 1996 12:53:53 GMT
+Content-length: 6491
+
+
+<html>
+<head>
+<title>
+CS418 Lab 6
+</title>
+</head>
+
+<body>
+<h2>  <!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/gifs/teapot.thumb.gif">
+CS 418: Laboratory 6</h2> 
+<h2> Phong Lighting</h2>
+
+<b> Introduction. </b><p>
+In this exercise you will code the lighting equation as a
+series of compute statements.
+You will bypass the default illumination model which is built into
+the Image module. By doing this, you will be able to control lighting
+effects directly. For example, you will be able to define a spotlight
+or make the intensity of an object drop off with distance.
+<b><hr>Procedure:</b>
+<p>
+
+First you need to download several example files. To do 
+this, click on each of the filenames shown
+below. When the text window opens, use the "save as" 
+option to put the file in your own directory. Name
+each file with the same name as shown below. 
+<ul>
+<li> <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/Phong1995RV.net"> LightTemplate.net </a>
+<li> <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/Phong1995RV.cfg"> LightTemplate.cfg </a>
+</ul>
+<p>
+
+The program LightTemplate.net implements a spotlight entirely within
+DX using compute modules. Ambient, diffuse and specular terms are
+each computed and added together to obtain the intensity of each point. 
+Follow the flow of the program to see how the intensities are computed.
+For the initial program it is assumed that the light is at a finite
+distance from the objects, but the viewer is very far away in a direction
+<b>V.</b>
+<p>
+Some examples of the program's output are shown below. The first shows
+a spotlight oriented along the y-axis with a "width" of 3.0. 
+(A width of 3.0 means (<b>D dot L</b>)^3.0.)
+The
+small white dot is an icon showing where the light is. The arrow is
+an icon showing the direction of the spotlight.
+<p>
+<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab6.image1.gif">
+<p>
+The next image is the same light position, but with the spotlight
+width=0.0 so that the light is omnidirectional.
+The bright spots on the surfaces near the light are due to a large
+<b>(L dot N) </b> in the diffuse term.        
+Notice that the diffuse reflection has the color of the surface,
+while the specular reflection has the color of the light (white).
+<p>
+<!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab6.image2.gif">
+<p>
+You can turn off the default shading in DX by collecting a single
+AmbientLight with the object you are rendering. An AmbientLight ingores
+normal information. All you see is the color defined for the object as if
+it were lighted from all directions uniformly. The example program
+ constructs a surface, calculates the surface normals,
+then throws away the lighting information to produce an unshaded surface
+(because there is an AmbientLight module). 
+The colors you calculate become the color of the objects in the image module.
+Note that you must use the Camera/Display module to show the image because
+the view-vector, V, must be available to the program. Do not use an Image
+module.Throughout this exercise, leave the viewing distance at infinity,
+that is, leave the Camera module perspective flag at 0.
+<p>
+<ul>
+<li>Modify the program to use the <b>(N dot H)</b> 
+formulation of specular lighting
+rather than <b>(R dot V).</b> Make an interactor to choose which model you
+are using.
+<p>
+<li> All surfaces get more shiny at high angle of incidence.
+Modify the specular term to simulate this effect.
+Below is an example of what the modified program might generate.
+The specular reflection on the vertical plane is releatively diffuse
+because the angle of incidence is near zero.
+The specular reflection from the horizontal plane is narrow because
+the angle of incidence is high (the light is grazing the surface).
+<p><b>Clarification:</b>
+You need to make some part of the specular term dependent on 
+the angle of incidence, arccos(<b>L dot N</b>). The light shown is a
+omnidirectional light.
+The definition of the reflection vector,<b> R</b>, is given on page 19
+of Watt.
+<p>
+<!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab6.image3.gif">
+<p>
+<li>The spotlight as given to you has a "soft" cutoff with angle. Modify
+the program so that instead of dropping off as a power of a cosine, the
+intensity is uniform for angles less than a certain value and zero for
+angles more than that value. (Angle is measured here from the D vector.)
+Include an interactor to choose between the cutoff methods.
+The two images below show a "soft" cutoff spotlight and a "hard" cutoff
+spotlight. Note the jagginess at the edge of the hard cutoff light
+which results from a very abrupt cutoff function.
+Try to minimize the jagginess in your program.
+<p>
+<!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab6.image4.soft.gif">
+<!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab6.image4.hard.gif">
+<p>
+<li> Modify the program to fly the light through a scene consisting of
+a few objects.
+The light should be a spotlight which flys a curved path, with the
+direction of the spotlight tangent to the path for about half the
+flight, then the spotlight should suddenly lock onto one object
+and remain locked for the second half of the flight.
+One frame of a possible animation is shown below.
+<p>
+<!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/labs/labgifs/lab6.image5.gif">
+</ul>
+<p>
+<b> Bugs as of 4/11/95</b>
+<ul>
+<li>
+The term "Ip" in the calculation of the specular term should be moved to
+the final calculation so that Ks*Ip*(R dot V)^n is calculated.
+<li> The Compute module does not understand transform objects, so don't use
+Rotate, Scale, Translate, or Transform modules when you are building
+your scene.
+</ul>
+<b> <hr> Questions/Writeup:</b>
+<p>
+Be prepared to demo all of the functions 
+specified in the first three bullets above:
+ambient lighting, diffuse
+lighting, light position, light directionality, and specular reflections of
+two kinds in one program. All interactors should
+be labeled, have appropriate ranges and step sizes and be in no more than
+two control panels. The code should be well documented and organized.
+<p>
+Be prepared to demo the flying light in a separate program.
+<p>
+<ol>
+<li> What seem to be the differences between the (R dot V) and (N dot H)
+specular lighting models in terms of the appearance of objects.
+<p>
+<li> Write the formula you used to make a surface more shiny at high angles.
+<p>
+<li> Write the formula you used to impelment a sharp cutoff spotlight.
+</ol>
+
+
+<p>
+<!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/gifs/leftarrow.icon.gif">
+Back to <!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/index.html">Main Page</a>
+<br>
+<!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><img src="http://www.tc.cornell.edu/Visualization/Education/cs418/gifs/rightarrow.icon.gif">
+Go to <!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><a href="http://www.tc.cornell.edu/Visualization/Education/cs418/lab7.html">Lab 7</a>
+ <P>
+<hr>
+Last modified, 1/25/95, B.Land.
+<! Revision history:
+	Original document: P.Maxfield, 10/94
+>
+<br>
+<!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><IMG SRC="http://www.tc.cornell.edu/copyright.xbm">
+<!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><A HREF="http://www.tc.cornell.edu/ctcCopyright.html"> 
+<i>Copyright Statement </I></A>
+</body> </html>
+

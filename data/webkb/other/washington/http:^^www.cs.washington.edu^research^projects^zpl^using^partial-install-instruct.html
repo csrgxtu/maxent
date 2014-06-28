@@ -1,0 +1,123 @@
+Date: Mon, 02 Dec 1996 15:21:13 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+<title>ZPL Blurbs: ZPL Compiler Partial Installation Installation Instructions</title>
+</head>
+
+<body>
+
+<h1>ZPL Compiler Partial Installation Instructions</h1>
+<h5>(A ZPL Blurb)</h5>
+
+<hr>
+
+<p>This document describes the requirements and process for setting up a ZPL
+compiler partial installation on a single processor UNIX syste,.  It is
+assumed that you are familiar with the <!WA0><!WA0><!WA0><a href="http://www.cs.washington.edu/research/projects/zpl/using/xxx.html">ZPL Compilation
+Process</a>.  After you have completed the partial installation, you may
+compile ZPL source codes using the <!WA1><!WA1><!WA1><a href="http://www.cs.washington.edu/research/projects/zpl/using/using-zcr.html">Remote ZPL
+Compiler</a> (<tt>zcr</tt>).</p>
+
+<p>The partial installation requires less that half an hour and fewer
+than 2 megabytes of disk space.  The resource economy comes from the
+fact that the ZPL compiler itself is not included in the partial
+installation.  Run-time libraries and configuration files are
+included, but in order to actually compile a ZPL program, you use a
+client stub to connect to the ZPL Net-Compiler server, which
+compiles the program for you.  If you are not sure you want to invest
+the effort, check out the <!WA2><!WA2><!WA2><a href="http://www.cs.washington.edu/research/projects/zpl/web-compiler">Web-Compiler</a>
+first.  </p>
+
+<h2>Requirements</h2>
+<h3>Hardware</h3>
+
+<P>You may perform the partial installation on any UNIX machine. </P>
+
+<P>The process by which you may perform the partial installation on parallel
+machines will be described in another document (that does not yet exist). </P>
+
+<h3>Software</h3>
+
+<ul> <li>Basic UNIX utilities (e.g., sh, make, tar, perl, etc.)</li>
+     <li>ANSI C compiler</li>
+</ul>
+
+<H2>Basics</H2>
+
+<p>Recall the two steps to the <!WA3><!WA3><!WA3><a href="http://www.cs.washington.edu/research/projects/zpl/using/xxx.html">ZPL compilation process</a>.
+First, from a ZPL source program, a collection of C files are
+generated.  Then, the C files are compiled and linked with machine
+dependent and independent run-time libraries to produce an executable
+program.  The partial installation primarily supports the second step.
+The installation includes all the run-time libraries and configuration
+files that select the appropriate compiler, compiler flags, etc.</p>
+
+<h2>Partial Installation</h2>
+
+<p>This section describes how to create a partial installation on your
+hardware.  It is assumed that you are installing on a machine that is
+currently supported (otherwise, you may want to consider undertaking the port;
+see the <!WA4><!WA4><!WA4><a href="http://www.cs.washington.edu/research/projects/zpl/using/xxx.html">Porting the ZPL System</a> document).  The
+installation process involves creating the ZPL project directory hierarchy
+(typically in <tt>/usr/local/zpl</tt>, though it can be anywhere).  This is
+achieved in two steps: (1) FTP a tar file for, and
+(2) compile and link the run-time libraries. </p>
+
+<h3>Download files</h3>
+
+<P>FTP the following compressed tar file. </P>
+
+<ul>
+  <li>Sequential UNIX workstation (<!WA5><!WA5><!WA5><a href="ftp://ftp.cs.washington.edu/pub/orca/misc/home.seq.tar.Z">home.seq.tar.Z</a>)</li>
+</ul>
+
+<p>Uncompress and untar this file in the ZPL project directory
+(e.g., <tt>/usr/local/zpl</tt>).  E.g.,</p>
+
+<pre>
+    zcat home.seq.tar.Z | tar -xvf -
+</pre>
+
+<h3>Compile the run-time libraries</h3>
+
+<p>The first step in compiling the run-time libraries is to set the
+<tt>ZPLTARGET</tt> environment variable to indicate that you want to compile
+for a sequential UNIX workstation. </P>
+
+<PRE>
+    setenv ZPLTARGET seq
+</PRE>
+
+
+<p>To actually build the libraries, move into the directory where you
+untarred the file and type the following.
+
+<PRE>
+    cd home/src
+    zmake all
+    cd seq
+    zmake all
+</PRE>
+
+That's it.  You are all set to use the remote ZPL compiler. </P>
+
+<P>See the <!WA6><!WA6><!WA6><a href="http://www.cs.washington.edu/research/projects/zpl/using/using-zcr.html">Using the Remote ZPL Compiler</a> page
+for an introduction to <tt>zcr</tt>.</p>
+
+<inc srv "/research/projects/zpl/footer.html">
+<hr> <p>
+<center>
+[
+<!WA7><!WA7><!WA7><a href="http://www.cs.washington.edu/research/projects/zpl/">ZPL</a> | 
+<!WA8><!WA8><!WA8><a href="http://www.cs.washington.edu/">UW CSE</a> |
+<!WA9><!WA9><!WA9><a href="http://www.cac.washington.edu:1183/">UW</a>
+]
+<address>
+<!WA10><!WA10><!WA10><A HREF="mailto:zpl-info@cs.washington.edu">zpl-info@cs.washington.edu</a>
+</address>
+</center>
+
+</html>

@@ -1,0 +1,152 @@
+Date: Tue, 05 Nov 1996 22:00:47 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 28 Oct 1996 19:57:56 GMT
+Content-length: 10538
+
+<HTML><HEAD>
+<TITLE>Family Medicine Data Viewer</TITLE>
+</HEAD>
+
+<BODY>
+<!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><IMG ALIGN=left SRC="http://www.fammed.wisc.edu/gifs/fammed.gif">
+<H1>Family Medicine Data Viewer </H1>
+
+<BR>
+
+<P> This page is used for graphically browsing data in <!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><A HREF="http://www.fammed.wisc.edu">Dept. of Family Medicine.</A> The graphs were generated using <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~jussi/devise/devise.html">DEVise</A>. You can view the number of visits, procedures (associated with dollars), diagnosis etc for every day, week, month, year and for each doctor by clicking on teh buttons. You can also see some comparative charts between clinics. The future work on this project includes daily on-line access to the above data, immunization rates by clinic and by doctor, and child bearing studies.  
+<BR>
+<BR>
+The development of this Data Viewer is a collaborative effort between the Department of Family Medicine and the DEVise Project Team in <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="http://www.cs.wisc.edu/"> Computer Sciences Department </A> at the <!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="http://www.wisc.edu/">University of Wisconsin- Madison</A>.   
+<BR><BR><HR>
+</BODY>
+
+<!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><FORM METHOD=POST ACTION="http://fontina.cs.wisc.edu/cgi-fontina/fammed/visits/visits_all_scripts">
+<!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><IMG ALIGN=left SRC="http://www.fammed.wisc.edu/gifs/q_man.gif"> 
+<P> <H3>Visits data: </H3><BR>
+Number of visits vs. time (per day, week, month, yrea). Just click on the check buttons of the clinics you want to see. You can select as many as you want. Clich on "View Data" to see the graph. Then click on the small picture to see a lager picture.<BR><BR>
+
+<P> Clinic: <!--<INPUT TYPE="checkbox" NAME="clinic" VALUE="appleton"> Appleton -->
+	    <INPUT TYPE="checkbox" NAME="clinic" VALUE="beleville" CHECKED> Beleville
+<!--	    <INPUT TYPE="checkbox" NAME="clinic" VALUE="eau_claire"> Eau Claire
+-->
+	    <INPUT TYPE="checkbox" NAME="clinic" VALUE="northeast"> Northeast
+<!--	    <INPUT TYPE="checkbox" NAME="clinic" VALUE="verona"> Verona
+	    <INPUT TYPE="checkbox" NAME="clinic" VALUE="wausau"> Wausau 
+	    <INPUT TYPE="checkbox" NAME="clinic" VALUE="wingra"> Wingra -->
+
+<P> <INPUT TYPE="submit" NAME="visits" VALUE="View Data">
+</FORM>
+
+<!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><IMG SRC="http://www.cs.wisc.edu/~guangshu/pictures/kilryln.gif"> <BR>
+<P> The following is a dynamic version of the above query. You can choose the starting and ending date  which is much more flexible.
+<!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><FORM METHOD=POST ACTION="http://fontina.cs.wisc.edu/cgi-fontina/fammed/visits/test_visits_temp">
+<P> Visit Views: <INPUT TYPE="checkbox" NAME="visits" VALUE="daily" CHECKED> Daily 
+           <INPUT TYPE="checkbox" NAME="visits" VALUE="weekly"> Weekly
+           <INPUT TYPE="checkbox" NAME="visits" VALUE="monthly"> Monthly
+           <INPUT TYPE="checkbox" NAME="visits" VALUE="yearly"> Yearly
+<P> Clinic: <!--<INPUT TYPE="checkbox" NAME="clinic" VALUE="appleton"> Appleton -->
+            <INPUT TYPE="checkbox" NAME="clinic" VALUE="beleville" CHECKED> Beleville
+<!--        <INPUT TYPE="checkbox" NAME="clinic" VALUE="eau_claire"> Eau Claire
+            <INPUT TYPE="checkbox" NAME="clinic" VALUE="northeast"> Northeast
+            <INPUT TYPE="checkbox" NAME="clinic" VALUE="verona"> Verona
+            <INPUT TYPE="checkbox" NAME="clinic" VALUE="wausau"> Wausau -->
+            <INPUT TYPE="checkbox" NAME="clinic" VALUE="wingra"> Wingra
+<P>Starting Date: MMDDYY: <INPUT TYPE="text" NAME="start" SIZE=10 >
+Ending Date: MMDDYY: <INPUT TYPE="text" NAME="end" SIZE=10 >
+
+<P> <INPUT TYPE="submit" NAME="visits" VALUE="View Data">
+</FORM>
+
+<!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><IMG SRC="http://www.cs.wisc.edu/~guangshu/pictures/kilryln.gif"> <BR>
+<!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><FORM METHOD=POST ACTION="http://fontina.cs.wisc.edu/cgi-fontina/fammed/dem/dem_scripts">
+<P> <!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><IMG ALIGN=left SRC="http://www.cs.wisc.edu/~guangshu/pictures/redball.gif"> <H3>Demographic Data: </H3>
+<P> In this form you can view the age/sex distributions of active patients by doctors, by sex of provider and by faculty or residents. Active patients are defined as having visited the clinic in the last two years. 
+<H4>Query Methods</H4>
+        <MENU><INPUT TYPE="checkbox" NAME="by" VALUE="doctor" CHECKED> By each doctor -- You must enter doctor IDs. You can enter more than one DID but they must be separated by ',' <EM>only</EM>. It also shows age/sex data by all the doctors so you can compare each doctor with the clinic average. (2,13,17,19,20,33,34,35,40,41,42,45,48,56,63,66,73,78,79,,80,81,84,85,88,89,91,92,95, 96,97,98,99) <INPUT TYPE="text" NAME="did" SIZE=30> </MENU>
+	<MENU><INPUT TYPE="checkbox" NAME="by" VALUE="all"> By doctors of all status</MENU>
+<!--
+        <MENU><INPUT TYPE="checkbox" NAME="by" VALUE="male" > By male doctors <INPUT TYPE="checkbox" NAME="by" VALUE="female" > By female doctors </MENU>
+        <MENU><INPUT TYPE="checkbox" NAME="by" VALUE="faculty" > By  all faculty doctors 
+	<INPUT TYPE="checkbox" NAME="by" VALUE="malefac" > By  male faculty doctors 
+	<INPUT TYPE="checkbox" NAME="by" VALUE="femalefac" > By  female faculty doctors<BR> 
+	<INPUT TYPE="checkbox" NAME="by" VALUE="resident" > By all resident doctors 
+	<INPUT TYPE="checkbox" NAME="by" VALUE="maleres" > By male resident doctors 
+	<INPUT TYPE="checkbox" NAME="by" VALUE="femaleres" > By female resident doctors </MENU>
+-->
+
+<H4>Clinics: </H4>
+            <!--<MENU><INPUT TYPE="checkbox" NAME="clinic" VALUE="appleton"> Appleton</MENU> -->
+            <MENU><INPUT TYPE="checkbox" NAME="clinic" VALUE="beleville" CHECKED> Beleville</MENU>
+<!--        <MENU><INPUT TYPE="checkbox" NAME="clinic" VALUE="eau_claire"> Eau Claire</MENU>
+-->
+            <MENU><INPUT TYPE="checkbox" NAME="clinic" VALUE="northeast"> Northeast</MENU>
+<!--
+            <MENU><INPUT TYPE="checkbox" NAME="clinic" VALUE="verona"> Verona</MENU>
+            <MENU><INPUT TYPE="checkbox" NAME="clinic" VALUE="wausau"> Wausau</MENU>
+            <MENU><INPUT TYPE="checkbox" NAME="clinic" VALUE="wingra"> Wingra</MENU> -->
+
+<P> <INPUT TYPE="submit"  NAME="dem" VALUE="View Data"><BR><BR>
+</FORM>
+
+
+<!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><IMG SRC="http://www.cs.wisc.edu/~guangshu/pictures/kilryln.gif"> <BR>
+
+
+<!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><FORM METHOD=POST ACTION="http://fontina.cs.wisc.edu/cgi-fontina/fammed/weekly_visits_doc/weekly_visits_doc_scripts">
+<!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><IMG ALIGN=left SRC="http://www.fammed.wisc.edu/gifs/mddoc2.gif">
+<H3>Visits per doctor: </H3><BR>
+<P> To see the number of visits per week for each doctor, enter the doctor ID (DID) in the text area. Then click on "View Data". If you want to see more than one doctor's data, type in each DID and separate the DIDs by "," <EM>only. </EM>  The horizontal line in each view is the average for the view.
+<P> Enter doctor IDs please (2,4,10,11,13,17,19,20,33,34,35,36,38,40,41,42,45, 48,56,63,66,73,77,78, 79,80,81,82,84,85,88,89,91,92,93, 94,95,96,97,98,99):<BR> <INPUT TYPE="text" NAME="doctor" SIZE=30>
+<P> Clinic: <!--<INPUT TYPE="checkbox" NAME="clinic" VALUE="appleton"> Appleton -->
+            <INPUT TYPE="checkbox" NAME="clinic" VALUE="beleville" CHECKED> Beleville
+<!--        <INPUT TYPE="checkbox" NAME="clinic" VALUE="eau_claire"> Eau Claire
+-->
+            <INPUT TYPE="checkbox" NAME="clinic" VALUE="northeast"> Northeast
+<!--
+            <INPUT TYPE="checkbox" NAME="clinic" VALUE="verona"> Verona
+            <INPUT TYPE="checkbox" NAME="clinic" VALUE="wausau"> Wausau 
+            <INPUT TYPE="checkbox" NAME="clinic" VALUE="wingra"> Wingra -->
+<P> Fiscal Year: <INPUT TYPE="checkbox" NAME="year" VALUE="94"> 1994
+          <INPUT TYPE="checkbox" NAME="year" VALUE="95"> 1995
+          <INPUT TYPE="checkbox" NAME="year" VALUE="96" CHECKED> 1996
+<P> <INPUT TYPE="submit" NAME="doctor" VALUE="View Data">
+</FORM>
+<!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><IMG SRC="http://www.cs.wisc.edu/~guangshu/pictures/feather.gif"><BR><BR>
+
+<!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><IMG ALIGN=left SRC="http://www.fammed.wisc.edu/gifs/note03.gif"><BR>
+
+<!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><A HREF="http://www.cs.wisc.edu/~guangshu/icd_cpt.html"> Check out here all the information about ICD9 and CPT codes. </A>
+<BR><BR>
+<!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><IMG ALIGN=MIDDLE SRC="http://www.cs.wisc.edu/~guangshu/pictures/rainline.gif">
+<BR><BR>
+
+<P> <!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><IMG ALIGN=left SRC="http://www.cs.wisc.edu/~guangshu/pictures/redball.gif">Check here for the Madison weather information. The following information are from the <!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><A HREF="http://www.ncdc.noaa.gov/onlineprod/drought/xmgr.html#gr">National Climatic Data Center.</A>
+<!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><FORM METHOD=POST ACTION="http://fontina.cs.wisc.edu/cgi-fontina/fammed/weather/weather.scripts">
+<P> <INPUT TYPE="checkbox" NAME="weather" VALUE="mm" CHECKED> Max and Min Daily Temperature
+    <INPUT TYPE="checkbox" NAME="weather" VALUE="pres" > Daily Average Pressure
+<P> Year: <SELECT NAME="year"> <OPTION SELECTED> 1993 <OPTION> 1994 <OPTION> 1995 <OPTION> 1996 </SELECT>
+<P> <INPUT TYPE="submit" NAME="mm_pres" VALUE="View Data">
+</FORM>
+
+<BR>
+<P> <!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><IMG ALIGN=left SRC="http://www.cs.wisc.edu/~guangshu/pictures/redball.gif"> This might be insteresting for some doctors. The daily minimum temperature and the number of visits are X and Y axis. There is a possibility that the number of visits is affected by the weather.
+<BR> <BR>
+<li><MENU> <!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><A HREF="http://www.cs.wisc.edu/~guangshu/pictures/bel_visits_maxT/bel_daily_min_93.0.gif"> Correlation between visits and minimum daily temperature in 1993 </A> </MENU>
+<li><MENU> <!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><A HREF="http://www.cs.wisc.edu/~guangshu/pictures/bel_visits_maxT/bel_daily_min_94.0.gif">Correlation between visits and minimum daily temperature in 1994 </A> </MENU>
+<li><MENU> <!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><A HREF="http://www.cs.wisc.edu/~guangshu/pictures/bel_visits_maxT/bel_daily_min_95.0.gif">Correlation between visits and minimum daily temperature in 1995 </A> </MENU>
+<li><MENU> <!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><A HREF="http://www.cs.wisc.edu/~guangshu/pictures/bel_visits_maxT/bel_daily_min_96.0.gif">Correlation between visits and minimum daily temperature in 1996 </A>  </MENU>
+<li><MENU> <!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><A HREF="http://www.cs.wisc.edu/~guangshu/pictures/bel_visits_maxT/bel_daily_min_all.0.gif">Correlation between visits and minimum daily temperature from 1993 - 1996 </A>  </MENU>
+<BR><BR>
+
+<!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><IMG ALIGN=left SRC="http://www.cs.wisc.edu/~guangshu/pictures/redball.gif"> <!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><A HREF="http://www.cs.wisc.edu/~guangshu/runDEVise.html"> <H2>Want to run DEVise??   Come here. </H2> </A>
+<HR>
+
+<BR>
+<!--<P> If you have any suggestions or would like to have more information, please contact <!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><A HREF="http://www.fammed.wisc.edu/is/dave.html">Dave Simmons</A>, <!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><A HREF="http://www.cs.wisc.edu/~miron/miron.html">Miron Livny </A>, <!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><A HREF="http://www.cs.wisc.edu/~raghu/raghu.html"> Raghu Ramakrishnan </A> or <!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><A HREF="http://www.cs.wisc.edu/~guangshu/guangshu.html"> Guangshun Chen </A>.  -->
+
+<center><P><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><IMG ALIGN="middle" HSPACE="4in" SRC="http://www.cs.wisc.edu/~guangshu/pictures/mailbox2.gif" ALT""> If you have any suggestions or would like to have more information, please send email to <!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><A HREF="mailto:dsimmons@dfmp.fammed.wisc.edu"> Dave Simmons</A>, <!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><A HREF="mailto:miron@cs.wisc.edu">Miron Livny </A>, <!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><A HREF="mailto:raghu@cs.wisc.edu"> Raghu Ramakrishnan </A> or <!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><A HREF="mailto:guangshu@cs.wisc.edu"> Guangshun Chen </A>. </center>
+<BR><BR>
+<center><i>You are visitor <!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><img src="http://www.cs.wisc.edu/~guangshu/pictures/walkguy.gif"> <!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><img src="http://www.usc.edu/../cgi-bin/counter?cs@dfmp.fammed.wisc.edu&width=4&font=digital">  since July 11, 1996.</i></center>
+</HTML>
+

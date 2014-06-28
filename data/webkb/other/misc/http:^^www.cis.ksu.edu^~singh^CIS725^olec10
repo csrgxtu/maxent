@@ -1,0 +1,94 @@
+Date: Tue, 14 Jan 1997 23:00:32 GMT
+Server: NCSA/1.5.2
+Last-modified: Wed, 25 Sep 1996 21:36:10 GMT
+Content-type: text/plain
+Content-length: 1370
+
+ 
+Routing 
+ - processing nodes (hosts) 
+ - switches 
+ - communication links 
+
+ 
+Datagram routing
+
+   *  each packet is routing independently 
+
+   *  unordered, unreliable
+
+
+
+Virtual Circuit routing
+   *  set up a path for each connection
+
+   *  all messages are sent over this path
+ 
+   *  ordered, reliable
+
+Source Routing 
+
+  *   entire route is determined at the source
+
+  *   message carries the route
+
+  
+ 
+Routing table 
+  -  next hop information 
+      At each node i, 
+        for each destination, what is the next hop 
+
+ 
+
+Routing Algorithms 
+
+     - network as a graph 
+      
+     - each edge has a weight
+
+
+ 
+Shortest path tree 
+
+          b ----------d
+         /|      2    |
+       2/ |           |
+       /  |           |
+      a   | 1         | 1
+       \  |           |
+       3\ |           |
+         \|     2     |
+	  c---------- e
+ 
+    - tree per destination
+
+ 
+ 
+A simple protocol: 
+
+Sink:
+    distance_sink = 0; parent_sink = sink
+    send M(0) to all neighbors;
+    do 
+      receive M(x) from any neighbor j --> skip  
+    od 
+
+Any other node i: 
+     distance_i  = infinity;
+     do 
+       receive M(x) from any neighbor j -->  
+                  if x + weight(i,j) < distance_i
+		     then  distance_i = x + weight(i,j); parent_i := j
+		           send M(distance_i) to all neighbors except j
+    od
+
+
+
+
+ 
+Problems: number of messages
+
+
+
+

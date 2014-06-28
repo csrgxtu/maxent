@@ -1,0 +1,153 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 24-Nov-96 22:44:04 GMT
+Content-Type: text/html
+Content-Length: 6668
+Last-Modified: Thursday, 10-Oct-96 14:15:00 GMT
+
+<html>
+
+<head>
+<title>CS 537 - Sample Questions</title>
+</head>
+
+<body background="pics/fiber.gif">
+<h2> CS 537 - Sample Questions and Answers</h2>
+
+<ul>
+<p><li> <h4>Q.1: Relational Algebra and SQL</h4> 
+Consider the following schema used by the Campus Book Store:
+<ul>
+<li> TOY(<b>toyno</b>, toyname, toytype, color, price)
+<li> BOOK(<b>bookno</b>, bookname, booktype, price)
+<li> MANUF(<b>mname</b>, address, phone)
+<li> STOCK(<b>itemno, mname,</b>, quantity)
+</ul>
+In the above, primary keys are in boldface. You can assume that each
+STOCK.itemno value refers either to a toy or a book (but not to both).
+Each manufacturer can make toys or books or both. Express the following
+queries in the relational algebra and in SQL:
+<ul>
+<li> Print the phone numbers of manufacturers who make a toy of type
+"bicycle" and a book of type "animal story"
+<li> Print the toy types where every known manufacturer makes at least one toy of that type.
+<li> Print the names of manufacturers who make both a toy of type "truck" and a book of type "bedtime story"
+<li> Print the names of purple toys made by "Acme Toy Company" where the store has at least 100 of them in stock
+<li> Print the phone numbers of the manufacturers who make the most expensive book known to the store.
+</ul>
+<a href="new_q123.ps">Answer</a>. (last updated : Thu Oct 10 10:13:56 EDT 1996)
+<p><li> <h4>Q.2: Files</h4> 
+Consider a relation R with 10 attributes, some of variable size. 
+<ul>
+<li> Suggest a record structure for tuples of R.
+<li> Suggest a page structure for pages of R.
+<li> Instead of storing an entire tuple as a record ("horizontal partitioning"
+of a relation), another alternative is store each column value for
+all tuples contiguously ("vertical partitioning"). Why is vertical
+partitioning usually a bad idea?
+<li> The records on a page usually belong to the same relation. Why is it
+a bad idea to store records of multiple relations on the same page?
+<li> Find one counter example to each of the last two questions (i.e.,
+one query for which vertical partitioning is good, and one for which
+it is good to store multiple relations' records on the same page).
+</ul>
+<a href="new_q123.ps">Answer</a>. 
+<p><li> <h4>Q.3: Indexes</h4>
+Consider a B+-tree index.
+<ul>
+<li> Write pseudo code for the insertion algorithm for a leaf page,
+involving splitting in case of overflow.
+<li> Change the pseudo-code to consider redistribution with a neighbor.
+<li> In what cases does each approach make sense: consider many vs few
+concurrent users, desire to minimize disk usage, etc.
+</ul>
+<a href="new_q123.ps">Answer</a>.
+<p><li> <h4>Q.4: Memory Management</h4>
+Consider the LRU replacement policy for a buffer pool.
+<ul>
+<li> Describe a database query processing scenario for which LRU is 
+ideally suited.
+<li> Describe a scenario for which LRU is terrible.
+<li> What is the principle behind LRU, and why does the principle fail
+for the second scenario?
+<li> Is there some way to improve LRU to correctly apply the principle
+(or to work in more cases)?
+</ul>
+<a href="http://www.cs.cornell.edu/Info/People/fabian/Q4.html">Answer</a>.
+<p><li> <h4>Q.5: Memory Management </h4>
+Suppose there is enough main memory (say 1 GB) in the system to hold
+relation R (400 MB) and relation S (400 MB). Now you want to join
+R and S using a nested loops join.
+<ul>
+<li> Is there a difference now between tuple-at-a-time nested loops join
+and page-at-a-time nested loops join?
+<li> How about blocked nested loops join?
+<li> Of all the algorithms we learnt, what would you recommend as the
+best one to use?
+<li> Find a counter-example where your answer to the previous question
+is invalid.
+</ul>
+<a href="http://www.cs.cornell.edu/Info/People/fabian/Q5.html">Answer</a>.
+<p><li> <h4>Q.6: Join Algorithms</h4>
+Consider the problem of joining a 1,000,000 tuple relation R with a 50,000
+tuple relation S. In both relations, 5 tuples fit on a page. The system's
+page size is 1K bytes and the join predicate specifies an equality join
+between attributes R.a and S.b.
+<ul>
+<li> Explain how the GRACE hash join algorithm works.
+<li> What will the total I/O cost be to perform GRACE hash join of R and
+S assuming that there is just enough memory available?
+<li> Discuss the memory needs of GRACE hash join. What is the worst-case
+scenario, and when might this occur?
+<li> Can the GRACE hash join be used to compute a non-equality join? Explain
+why or why not.
+</ul>
+<a href="http://www.cs.cornell.edu/Info/People/fabian/Q6.html">Answer</a>.
+<p><li> <h4>Q.7: Query Processing</h4>
+You are asked to write a duplicate-eliminating projection operation for
+a new relational DBMS. Your boss is an expert on join algorithms and you
+want to impress by adapting join techniques to this problem.
+<ul> 
+<li> How can sorting be used for projection? How would you make efficient
+use of main-memory for this task?
+<li> How can hashing be used, and how would you make efficient use of 
+main-memory for this task?
+<li> Now can you get yourself a promotion by showing your boss that the
+same code can be used for processing aggregates (GROUPBY) as well?
+</ul>
+<a href="http://www.cs.cornell.edu/Info/People/anderson/q7.html">Answer</a>.
+<p><li> <h4>Q.8: Query Optimization</h4>
+The System-R optimizer (Selinger paper) describes one particular query
+optimization algorithm for SQL queries.
+<ul>
+<li> Where is the assumption about uniform distribution of column values
+used? How would you change it if histograms were maintained about the
+column frequency distributions?
+<li> What is the notion of "interesting orders"? If System-R supported
+a GRACE hash join, is there an analogous notion?
+<li> How would you change the cost formulas for access paths to take
+into account the difference between sequential and random I/O?
+<li> What equivalence transformations of the relational algebra
+make join optimization a large search problem?
+<li> Show an example where the System-R optimizer would not even
+consider the optimal query plan.
+</ul>
+<a href="http://www.cs.cornell.edu/Info/People/anderson/q8.html">Answer</a>.
+<p><li> <h4>Q.9: Query Optimization</h4>
+There are several heuristics which are also used in query optimization.
+<ul>
+<li> Demonstrate selection pushdown, and a case where it doesnt work.
+<li> Demonstrate projection pushdwon, and a case where it doesnt work.
+<li> Consider a query with expensive selections and projections, in addition
+to joins. Can you suggest an extension to the System-R optimizer join
+enumeration strategy that will also consider the appropriate
+placement of expensive selections and projections? 
+</ul>
+<a href="http://www.cs.cornell.edu/Info/People/anderson/q9.html">Answer</a>.
+</ul>
+
+<HR>
+</body>
+
+
+</html>

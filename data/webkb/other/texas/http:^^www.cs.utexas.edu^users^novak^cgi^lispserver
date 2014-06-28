@@ -1,0 +1,35 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 07-Jan-97 15:25:50 GMT
+Content-Type: text/html
+Content-Length: 1056
+
+<HTML><HEAD><TITLE>Lisp Server</TITLE></HEAD><BODY>
+<H2>Demonstration of Interactive Lisp</H2>
+
+This is a demo that runs Gnu Common Lisp (GCL) interactively.
+<P>
+When the demo is started, a window and a command menu are created.
+Click in the input area and type an expression, such as
+<CODE> (+ 2 3) </CODE>.
+
+<HR>
+
+<H2>Instructions</H2>
+<FORM METHOD=GET ACTION="nph-lisp-action">
+<OL>
+<LI>	You must be logged in to a host running X windows.
+<LI>	Type <CODE>  xhost + www.cs.utexas.edu  </CODE> (exactly as shown
+        at left) in a window on that host
+	to allow this server to write to your display.
+<LI>	Enter your X display name here if needed; you may need to change
+        what is shown in the box to your X display name.  For example,
+        <CODE> myterminal.cs.utexas.edu:0.0 </CODE> <BR>
+	<INPUT TYPE=text SIZE=40 VALUE="128.2.209.145:0.0" NAME=xdspname>
+<LI>	Click <INPUT TYPE=submit VALUE="here"> to start the demo.
+</OL>
+</BODY>
+<address><a href="http://www.cs.utexas.edu/users/novak/index.html">
+Gordon S. Novak Jr.</a></address>
+</HTML>
+

@@ -1,0 +1,46 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 24-Nov-96 22:46:48 GMT
+Content-Type: text/html
+Content-Length: 624
+Last-Modified: Friday, 08-Nov-96 16:45:05 GMT
+
+<html>
+
+<head>
+<title>CS100B Program 4 Solution</title>
+</head>
+
+<body>
+
+<h1>CS100B Program 4</h1>
+<h2>Solution</h2>
+
+<hr>
+
+I decided to implement my bigint as
+
+<pre>
+#define DIGITS 512
+
+typedef struct {
+   unsigned short array[DIGITS];
+   int digits;
+   } bigint;
+</pre>
+
+I will keep the least significant digit in index 0, and the most significant
+digit in (digits-1).
+<p>
+
+The <a href="bigint.c">implementation</a> of my bigint library.
+<p>
+
+The <a href="p4.c">Sterling's approximation</a> code. Many programs I saw
+used two loops to determine n!. This was very inefficient; you only need one
+loop.
+<p>
+
+</body>
+</html>
+

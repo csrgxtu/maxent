@@ -1,0 +1,258 @@
+Date: Mon, 02 Dec 1996 14:42:19 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<HEADER>
+<TITLE>
+CSE 415  Prog. Assignment 3
+</TITLE>
+</HEADER>
+<BODY>
+<pre>
+CSE 415      Programming Project #3     due May 17, 5pm
+                                        (Use "Turnin" as directed).
+
+        Here are the details I covered in class on Thursday, with a
+more precise description of what you have to do. Some of the last
+message on this is included here:
+
+
+
+        Heuristic Selection of the "Best" Transformation in
+        Proving Trigonometric Identities.
+
+                                                (due Friday May 17)
+
+
+
+        This project involves symbolic problem solving, creation of a
+representation that facilitates implementation, and learning. The learning
+part simply involves being able to use problems that have been solved by
+the program to improve problem solving power later.
+        The problem is to start with five simple trigonometric identities,
+such as tan x = sin x/cos x, cot x = cos x/sin x, cosec x = 1/sin x,
+sec x = 1/cos x, sin^2 x + cos^2 x = 1, and use them as operators to
+transform the left side of a new trig equation, until the right side is
+produced. The problem will be solved at that point.
+        The first thing here is to find a way to represent the problem
+and the operators (including operators which will be added as problems
+are solved), so that programming will be as simple as possible. Then,
+features of the left and right sides of the operators (and of the problem
+identities) have to be chosen, which will help in both deciding which
+operator to apply, and where to apply it.
+        I will cover most of this in class, but you should think about it.
+As an example, given the above five trig identities as operators, how
+would you solve the problems:  Prove that tan x cot x = 1,
+etc. Also, how do you write lisp functions to deal with all possible cases?
+        To implement a problem-solver that would start with the five
+basic identities, prove new identities, and then add those identities to
+the set available for solving future problems, would require more
+programming than you could do in a short time. So, you are going to
+be given a set of initial identities (in standard form) and you will
+have to write a lisp program to select the "best" transformation
+identity for a given problem identity. You will make three, possibly
+different selections, based on three different heuristics.
+        Standard Form:
+
+        Replace sin x with the symbol A, cos x with B, tan x with C,
+        cot x with D, cosec x with E, and sec x with F.
+
+        Remove all "-" signs by moving terms to the other side of
+        the identity; remove all "/" signs by multiplying throughout
+        by the denominator; remove all exponents by repeated
+        multiplication; and remove all integer coefficients by
+        repeated addition.
+        For example, sin^2 x  +  cos^2 x  =  1  would become
+        AA + BB = 1
+
+        The final step is to lexically order each side of the identity
+        and then to switch sides, if necessary, so that the left side
+        is lexically before the right side.
+        Thus, tan x  =  sin x/ cos x  would become  C  =  A/B, and then
+                                                    A  =  BC
+
+        Identities are restricted to trig functions of a single variable.
+        The standard form is a sum of products form, with the product
+        terms lexically ordered. This form greatly reduces the variability
+        of representation for equivalent identities. It is a good example
+        of a general rule in AI:  "Transform problem into a standard form
+        so that the variety of equivalent forms is reduced as far as
+        possible."
+
+        Your program will assume that its inputs are trig identities
+        given in the standard form.
+
+        You will be given a list of identities which can be used as
+        transforms, and one or more identities as problem identities.
+        You should write three functions; one for each of the three
+        heuristic methods defined below. Each function will then have
+        to select the "best" transform identity to be first applied in
+        solving the problem (ie in proving that the left side of the
+        problem identity can be transformed into its right side). The
+        three functions will usually pick different transform identities.
+
+        The three heuristic methods will be named, "Simplification",
+        "Familiarization" and the "Effectiveness Heuristic".
+
+        Simplification Heuristic:
+
+        Here the scoring function is the difference in the number of
+        the symbols on the left and right sides of the transform
+        identity. Before an identity can be selected, one of its sides
+        must be applicable to the left side of the problem identity.
+
+        eg  Problem:  Prove that sin^2x  +  tan^2x  +  cos^2x
+                                 =  sec^2x
+
+            Standard Form:   AA + BB + CC  =  FF
+
+        Here the transform identity AA +  BB  =  1  can be applied
+        to the left side of the problem, P, and the simplification
+        score is 4 (there are 5 symbols on T's left side, including
+        the + sign, and one symbol on T's right side). Applying T
+        to the left side of P will reduce the number of symbols in
+        P by 4.
+                All of the T's with the same greatest score will be
+        selected.
+                Your program has to print out the scores for all of
+        the T identities, for the given problem/s, and the
+        identification numbers of the T identities.
+
+        Familiarization Heuristic:
+
+        The transform identities will be the first 16 identities
+        in the list (Table I) given out in Packet #1. Their id
+        numbers are also listed. You will use a list of these
+        numbers to indicate the "familiarity score" of the
+        transform identities. The first id no in the list show
+        the most familiar identity, the second the next most
+        familiar, etc.
+        The transform identity chosen here will be the one closest
+        to the head of the list, which can be applied to the left
+        side of the problem identity.
+
+        Effectiveness Heuristic:
+
+        This one is more complex and is supposed to provide a score,
+        called E, which is a measure of the applicability of either
+        the left or right sides of the T identity to the left side of
+        the P identity, and also the degree to which the T identity
+        is likely to make the left side of the P identity more like
+        the right side of the P identity. Thus it is an approximate
+        measure of the degree to which T will make the left side of
+        P (the current problem) become closer to the right side of
+        P (the goal).
+
+        Define the feature set of the left side of P to be:
+        the set of single trig objects in Pl ( = P left-side),
+        the set of all different pairs of trig objects in product
+        terms of Pl, and the set of all pairs of product terms
+        in Pl (where any common objects are taken away, "divided
+        out"). Make a feature set for the left side of P, the
+        right side of P, the left side of each T and the right side
+        of each T. (The T feature sets will already be available).
+
+        For each feature, we will use a weight to indicate its
+        complexity. This will be w = sum of symbols in the feature.
+        This will give added importance to matching features which
+        have lots of symbols.
+
+        eg  for the same P as above:  AA + BB + CC  =  FF
+
+            Flp = {A,B,C,AA,BB,CC,AA+BB,AA+CC,BB+CC}
+             w  = {1,1,1, 2, 2, 2,  5,    5,    5  }
+
+             the feature set for the left side of P with the
+             corresponding weight for each feature.
+
+            Frp = {F,FF}
+             w  = {1, 2}
+
+        There will be available, similar feature sets for all of
+        the available T identities.
+
+        The E score is computed by adding together the weights of all
+        features present in T with each weight multiplied by a
+        "desirablity-factor", d, which is intended to show if the
+        single feature associated with a given w is going to help
+        or hinder finding a solution.
+
+        So, to compute E, each feature in Flt  and in Frt is examined,
+        and compared to the feature set of the left and right sides of P.
+        Each such feature, fi will then have its weight, wi, and its
+        desirability factor, di.
+
+        Then E  =  Sum of wi*di  for all features in Flt  and Frt
+
+        To find di, there are various possibilities, a feature could
+        be in the left side of T and not in the right side of T, and
+        it could be in the left side of P and not in the right side of P.
+        This situation will be described by  1 0 1 0
+        This is a very desirable situation, since applying the left side
+        of T to the left side of P will remove a feature from the
+        left side of P, and this feature is not in the right side of P,
+        so this T will help solve the problem.
+
+        The other situations, with their d scores, are:
+
+        1 0 1 0  +4, 0 1 0 1  +4,  1 0 0 1  +4,  0 1 1 0  +4,
+
+	1 0 0 0  -1,  0 1 0 0  -1,  1 1 0 0  -1,  1 1 0 1  +1
+
+	1 1 1 0  +1,  1 1 1 1  +4
+
+	(These d factors are quite arbitrary!)
+
+	Using the same example as before:
+
+	  	P:	AA + BB + CC  =  FF
+
+		Flp = {A,B,C,AA,BB,CC,AA+BB,AA+CC,BB+CC}
+		 w  = {1,1,1, 2, 2, 2,  5,    5,    5
+	 	 
+		Frp = {F,FF}
+		 w  = {1, 2}
+
+	Let's assume that the following T is being scored:
+
+		T:	AA + BB  =  1
+
+		Flt = {A,B,AA,BB,AA+BB}   Frt = {1}
+	         w  = (1,1, 2, 2,  5  }         {1}
+
+
+	The features from T will be scored one at a time, giving
+	for A the situation is  1 0 1 0  here w = 1 and d = +4
+	so the A feature adds +4 to E
+
+	The features, B, AA, BB, AA+BB all have a 1 0 1 0 
+
+	After they are considered, E = 4+4+8+8+20 = 44
+
+	When the feature 1 is considered, it is 0 1 0 0 so d = -1
+	and this contributes -1 to E
+	so the effectiveness score, E, for applying this T to this P
+
+	is  E  =  43
+
+
+	Notes:
+
+	For the familiarity heuristic, use the list:
+
+	L  =  (4 1 2 10 6 5 3 14 11 8 9 15 12 13 7)
+
+	The integers in the list correspond to the first 15 identities
+	in the list from packet #1.
+
+	Problem Identities to be used in your program:
+
+	Find the best T identity , using each of the three above
+	heuristics separately, for each of the following identities:-
+
+	20,  28, and 38
+
+	Your program should print out all of the scores computed and
+	the id no of the T's selected. For each problem, only the 
+	first T has to be found.
+</body>

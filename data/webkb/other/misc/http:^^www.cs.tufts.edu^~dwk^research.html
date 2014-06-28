@@ -1,0 +1,62 @@
+Date: Wed, 15 Jan 1997 00:27:32 GMT
+Server: Apache/1.0.5
+Content-type: text/html
+Content-length: 2236
+Last-modified: Wed, 26 Oct 1994 20:33:03 GMT
+
+<title>David Krumme Research Overview</title> 
+
+My research interests include discrete mathematics, parallel computing,
+and system software.  Some reprints of my publications are available
+as PostScript files.
+<p>
+
+The gossip problem is easy to pose:  each vertex in a graph
+initially holds a unique piece
+of information to be communicated to all other vertices.
+At each time step, a vertex can only communicate with its
+neighbors.
+Information can be freely combined between communication steps.
+Variants of the gossip problem involve minimizing the total number
+of communications or the total time, under a variety of restrictions
+on which communication steps are allowed.
+The following two papers deal mainly with the 
+case where each vertex can only send to or receive from one
+neighbor at a time:
+<UL>
+<LI><!WA0><A href="http://www.cs.tufts.edu/~dwk/gossip.ps">Gossiping in Minimal Time</A> 
+obtains lower and upper bounds on the time to gossip for several
+types of graphs.
+<LI><!WA1><A href="http://www.cs.tufts.edu/~dwk/cubegossip.ps">Fast Gossiping for the Hypercube</A>
+addresses the difficult
+question of finding a good upper bound on the time to gossip in
+the case of the n-dimensional hypercube.
+</UL>
+The following two papers deal with
+the most-studied formulation of the gossip problem in which 
+two-way pairwise communication is possible, so that in each
+communication step a pair of vertices exchange all knowledge:
+<UL>
+<! Add to original, a recognition of publication>
+<LI><!WA2><A href="http://www.cs.tufts.edu/~dwk/reorder.ps">Reordered Gossip Schemes</A> presents a
+simple theorem that subsumes
+and generalizes several major theorems about this type of gossiping,
+and solves an open problem of some twenty years' standing.
+<! Add to original, a recognition of publication>
+<LI><!WA3><A href="http://www.cs.tufts.edu/~dwk/representations.ps">Representations of Gossip Schemes</A> is
+a technical paper establishing a very general notation
+for depicting gossip schemes.
+</UL>
+<P>
+
+My work in parallel programming has mainly involved debugging
+support:
+<UL>
+<! Add to original, a recognition of publication>
+<LI><!WA4><A href="http://www.cs.tufts.edu/~dwk/perils.ps">The Perils of Parallel Programming</A>
+is a case study that lists several distinct kinds of bugs that
+can be encountered with message-passing parallel computers.
+</UL>
+<P>
+
+<address>- David Krumme, krumme@cs.tufts.edu</address>

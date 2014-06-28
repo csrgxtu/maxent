@@ -1,0 +1,342 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 18:48:29 GMT
+Content-Type: text/html
+Content-Length: 34803
+Last-Modified: Monday, 18-Mar-96 00:39:16 GMT
+
+<HTML>
+<TITLE>A Resolution Independent Video Language</TITLE>
+<BODY>
+<b>     ACM Multimedia 95 - Electronic Proceedings <br>
+        November 5-9, 1995 <br> San Francisco, California</b>
+
+<!-- Place an horizontal line. -->
+<HR>
+<H1>A Resolution Independent Video Language*</A></H1>
+<DL>
+<DT><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><a href="http://www.cs.cornell.edu/Info/People/swartz/swartz.html">Jonathan Swartz</a>
+<DT>
+  <DD>Department of Computer Science
+  <DD>4130 Upson Hall
+  <DD>Cornell University
+  <DD>Ithaca, NY 14853-7501 US
+  <DD>swartz@cs.cornell.edu
+<P>
+<DT><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><a href="http://www.cs.cornell.edu/Info/Faculty/Brian_Smith.html">Brian C. Smith</a>
+<DT>
+  <DD>Department of Computer Science
+  <DD>4130 Upson Hall
+  <DD>Cornell University
+  <DD>Ithaca, NY 14853-7501 US
+  <DD>bsmith@cs.cornell.edu</dl>
+<!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><a href="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/rivl.html">http://www.cs.cornell.edu/Info/Projects/zeno/rivl/rivl.html</a><p>
+* This work is supported by funding for the Xerox Design Research
+Institute and the US Air Force, under contract F49620-94-1-0198<p>
+<hr>
+<!-- Place here link to ACM Copyright Notice. -->
+
+<H4> <!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/acmcopyright.html"> 
+ACM Copyright Notice </A> </H4> 
+
+<hr>
+<H2><A NAME="toc">Table of Contents</A></H2>
+<UL>
+<!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#HDR1"><B>ABSTRACT</B></A>
+<BR>
+
+<!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><!WA5><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#HDR2"><B>1.  INTRODUCTION</B></A>
+<BR>
+
+<!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><!WA6><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#HDR3"><B>2.  THE RIVL LANGUAGE</B></A>
+
+<UL>
+<!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><!WA7><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#HDR4">2. 1. Image Operations</A>
+<BR>
+
+<!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><!WA8><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#HDR5">2. 2. Sequence Operations</A>
+</UL>
+
+<!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><!WA9><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#HDR6"><B>3.  THE RIVL INTERPRETER</B></A>
+
+<UL>
+<!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><!WA10><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#HDR7">3. 1 Implementation of Image Computing</A>
+<BR>
+
+<!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><!WA11><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#HDR8">3. 2 Implementation of Sequences</A>
+<BR>
+
+<!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><!WA12><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#HDR9">3. 3 Memory Management</A>
+</UL>
+
+<!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><!WA13><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#HDR10"><B>4.  RELATED AND FUTURE WORK</B></A>
+<BR>
+
+<!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><!WA14><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#HDR11"><B>5.  REFERENCES</B></A>
+</UL>
+
+
+<HR><!-- This file was created with the fm2html filter.The filter is copyright Norwegian Telecom Research and was programmed by Jon Stephenson von Tetzchner.  --><H2><A NAME="HDR1">Abstract</A></H2>
+As common as video processing is, programmers still implement video programs as manipulations of arrays of pixels. This paper presents a language extension called Rivl (pronounced &quot;rival&quot;) where video is a first class data type. Programs in Rivl use high level operators that are independent of video resolution and format, increasing a program's portability, simplifying code reuse, and reducing development time. This paper also describes a Rivl interpreter and the strategies the interpreter uses to optimize Rivl programs. These optimizations include classical programming language optimizations, such as common subexpression elimination and out of order execution, image and video specific optimizations, such as computing only those images that will affect the output, and an optimized memory manager.<p>
+<H2><A NAME="HDR2">1.  Introduction</A></H2>
+In order to support the development of multimedia applications, programming languages should include audio, video, and images as true data types just as characters, text, and numerical values are true data types in today's languages. The operators in a multimedia language should be format independent, so that video and images of different formats can be easily intermixed, like integers and floating point numbers in most modern programming languages. The operators in a multimedia language should be resolution independent, so that high or low resolution input data produces better or worse results, just like single and double precision floating point numbers produce more or less accurate results in numeric computations. Platform independence and code reuse will be a useful side effect of multimedia programming languages, and just as optimizing and parallel compilers can take existing programs and make them run faster, so optimizing multimedia compilers will speed up multimedia programs.<p>
+Rivl (pronounced &quot;rival&quot;) is a language extension and optimizing system designed with these goals in mind. Rivl provides a video data type and video operators that are format and resolution independent. Format independence means that MPEG<!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><!WA15><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#REF21336">[5]</A> video can be freely intermixed with JPEG<!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><!WA16><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#REF68172">[7]</A>, Postscript<!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><!WA17><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#REF59020">[9]</A>, and uncompressed images. Resolution independence means that operations in Rivl (e.g., &quot;cut the first five seconds of the video clip&quot;) are well defined whether the film resolution is 16 or 30 frames per second or the image size is 100x75 or 4000x3000. These features relieve the programmer of tedious, low level details and allow a runtime system to execute a Rivl program quickly on low resolution data for crude output (e.g., for prototyping or debugging) and slowly on high resolution data for more refined output.<p>
+Rivl's approach to video manipulation has significant advantages over current approaches:<p>
+
+<UL>
+<LI>Rivl programs are easier to read, write, and maintain than their low-level counterparts.<BR>
+
+<LI>Rivl code is platform independent.<BR>
+
+<LI>Rivl expresses video and image editing operations in a format and resolution independent way.<BR>
+
+<LI>Rivl separates the description of video operations from their implementation, allowing the Rivl runtime system to improve the execution efficiency of Rivl programs.<BR>
+
+
+
+
+
+
+
+
+</UL>
+
+
+We have implemented an interpreter for Rivl as an extension to the Tcl language <!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><!WA18><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#REF53096">[11]</A>, an approach that allows us to easily embed Rivl in other applications. This paper describes the design and implementation of the Rivl language, the Rivl interpreter, and its optimizer. The rest of the paper is organized as follows. Section 2 illustrates the Rivl language through a series of examples. Section 3 discusses the Rivl interpreter and how it optimizes image and video operations. Section 4 reviews related work, and concludes with current status and future research directions.<p>
+<H5><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><!WA19><A HREF="#toc"><-- Table of Contents</A></H5>
+<H2><A NAME="HDR3">2.  The Rivl Language</A></H2>
+This section illustrates Rivl programs through a series of examples. Since Rivl is an extension of Tcl, Rivl programs have access to all the primitives of the Tcl language. Rivl extends Tcl with two data types: images<!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><!WA20><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#FN1">(1)</A>, which represent still images, and sequences, which represent video segments (a timestamped set of images).<p>
+Table 1 lists some of the Rivl primitives for manipulating images and sequences. The table is divided into five classes:<p>
+
+<UL>
+<LI>Input/output. Currently supported formats include pgm/ppm[<!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><!WA21><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#REF31620">8</A>], JPEG[<!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><!WA22><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#REF68172">7</A>], MPEG[<!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><!WA23><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#REF21336">5</A>], and Postscript[<!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><!WA24><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#REF59020">9</A>]. <BR>
+
+<LI>Geometric. The image operations in this class move and resize the image; the sequence operations speed up, slow down, and temporally shift the sequences.<BR>
+
+<LI>Assembly. This class provides &quot;cut and paste&quot; type operations on images and sequences.<BR>
+
+<LI>Conversion. This class provides functions to convert between images and sequences, and to map image operations over the frames of a sequence.<BR>
+
+<LI>Transforms. Image transforms used in this paper.<BR>
+</UL>
+
+
+Sections 2.1 and 2.2 contain examples that clarify the use of image primitives and sequence primitives, respectively.<p>
+<pre>
+<A NAME="REF64418">Table 1: Image and sequence primitives</A> 
+-----------------------------------------------------------------------------------------------
+Type          Image         Sequence     Description                                             
+              operations    operations                                                           
+
+Input/Output  im_read       seq_read     Read image/sequence from disk                           
+              im_write      seq_write    Write image/sequence to disk                            
+Geometric     im_trans      seq_shift    Translate an image in space / shift a sequence in time  
+              im_scale[C]   seq_scale    Scale an image in space / scale a sequence in time      
+              im_rotate[C]               Rotate an image [C = around its center]                 
+Assembly      im_crop       seq_crop     Crop the specified region to make a new image/sequence  
+              im_concat     seq_concat   Concatenate multiple images/sequences end to end        
+              im_overlay    seq_overlay  Overlay multiple images/sequences in place              
+Conversion    ims_to_seq    seq_to_ims   Convert between a list of images and a sequence         
+                            seq_map      Apply a script to each image in the sequence            
+Transforms    im_fade                    Fade the image by a specified percentage                
+              im_resample                Resample the image at a specified size                  
+              im_blur                    Apply a blur filter to the image                        
+              im_mask                    Make transparent all pixels below a certain intensity   
+                                                                                                 
+-----------------------------------------------------------------------------------------------
+</pre>
+<H3><A NAME="HDR4">2. 1. Image Operations</A></H3>
+Consider the following Rivl fragment:<p>
+<PRE>
+  set image2 [im_scaleC $image1 [expr 1 - $p]]
+  set image3 [im_rotateC $image2 [expr 360 * $p]]
+</PRE>
+<A NAME="REF84651">Program 1:  &quot;Whirlpool&quot; effect</A><p>
+<B></B><I></I> <p>
+image1 is a Rivl image and p is a floating point value between 0 and 1. The first line calls im_scaleC to shrink image1 about its center by a factor of 1-p and assigns the result to image1. The second line calls im_rotateC to rotate image1 about its center by 360*p and again stores the result in image1. Figure 1 shows the effect of this fragment with several values of p.<p>
+The repeated use of set in this fragment is cumbersome. To remedy this problem, we borrowed an idiom from Scheme: any operator with the character &quot;!&quot; appended destructively modifies its first argument. Taking advantage of this notation, we can rewrite program <!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><!WA25><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#REF84651">1</A> as:<p>
+<PRE>
+  im_scaleC! image1 [expr 1 - $p]]
+  im_rotateC! image1 [expr 360 * $p]
+</PRE>
+Notice that the destructive operation omits the &quot;$&quot; in front of its first argument, whereas the non-destructive form requires the &quot;$&quot;. This artifact is caused by the way Tcl implements pass-by-reference, a point we discuss in a related paper [<!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><!WA26><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#REF18623">14</A>].<p>
+More complex effects can be constructed using Tcl constructs for looping, branching, procedure creation, and recursion. The Rivl program in figure 2 creates a fractal (Sierpinski's Gasket) from an arbitrary image.<p>
+<!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><!WA27><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm95.figure.id.12.gif"><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><!WA28><img src="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm95.figure.id.12.gif"><B><A NAME="REF69077"><BR></a>Figure  1:</B> Output from program 1 for p = 0.1, 0.4, 0.7<p>
+<!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><!WA29><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm95.figure.id.1.gif"><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><!WA30><img src="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm95.figure.id.1.gif"><B><A NAME="REF69077"><BR></a>Figure  2:</B> Fractal program and output for n= 1,2,3<p>
+</A><p>
+
+<H5><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><!WA31><A HREF="#HDR3"><-- The Rivl Language</A></H5>
+<H3><A NAME="HDR5">2. 2. Sequence Operations</A></H3>
+A sequence, the Rivl abstraction for video, can be thought of as a set of time-stamped images. Like image commands, sequence commands can be composed to express new operations. For instance, a common video editing operation is assembly, when two sequences are connected and written. The following Rivl fragment assembles the first 10 seconds of the sequence raiders.mpg and the sequence bobo.mpg, writing the result to out.mpg (all files are MPEG format):<p>
+<PRE>
+  set raiders [seq_read raiders.mpg]
+  set bobo [seq_read bobo.mpg]
+  seq_crop! raiders 0.0 10.0
+  seq_write [seq_concat $raiders $bobo] out.mpg
+</PRE>
+An important primitive in Rivl is seq_map. seq_map applies image effects to sequences, executing a given script for each image of a sequence and combining the resulting images into a new sequence. Seq_map is similar to map in Scheme. For example, consider the command<p>
+<PRE>
+  seq_map $clip {im_resample %1 100 75} 
+</PRE>
+Seq_map evaluates the template command (im_resample %1 100 75) on each image in clip, substituting the current image wherever %1 appears in the template. The results are gathered and returned as a new sequence. Thus, this command returns a new sequence containing 100x75 (&quot;thumbnail&quot;) versions of the images in clip.<p>
+Sometimes, rather than applying the same operation on each image in a sequence, it is desirable to vary the operation over time. For example, consider the operation of fading a sequence to black. This effect can be achieved by calling im_fade on each image in the sequence with a parameter that decreases over time. In this case, seq_map must call a procedure with a parameter that indicates the time of the image being modified. To this end, seq_map performs the following additional substitutions:<p>
+
+<UL>
+<LI>%t:      Substitute the time stamp of the current image, in seconds<BR>
+
+<LI>%l:   Substitute the length of the sequence in seconds<BR>
+
+<LI>%p:  Substitute the relative time of the current image: %t divided by %l<BR>
+</UL>
+
+Using this mechanism, fade-to-black can be expressed<p>
+<PRE>
+  seq_map $clip {im_fade %1 [expr 1-%p]} 
+</PRE>
+When combined with sequence assembly operations, seq_map simplifies the expression of effects that are often used in transitions between two parts of a movie. For example, the procedure in figure 3 connects two sequences with a transition. The first parameter, transition, is a script to be passed to seq_map. MovieA &amp; movieB are the two sequences to be joined, and duration is the time (in seconds) to apply the transition effect. Thus, connectWithTransition {im_fade %1 [expr 1-%p]} $jack $jill 5 connects two sequences jack and jill with a five second fade.<p>
+<HR>
+<PRE>
+  proc connectWithTransition {transition movieA movieB duration} {
+    set lengthA [seq_length $movieA]<BR>
+
+    set lengthB [seq_length $movieB]
+    # Untouched parts of first and second movie
+    set begin [seq_crop $movieA 0.0 [expr $lengthA-$duration]]
+    set end [seq_crop $movieB $duration $lengthB]
+    # Apply timed effect to end of first movie; overlay with
+    # beginning of second movie
+    set mid1 [seq_crop $movieA [expr $lengthA-$duration] $lengthA]
+    set mid2 [seq_crop $movieB 0.0 $duration]
+    set middle [seq_overlay [seq_map $mid1 $transition] $mid2]
+  
+    seq_concat $begin $middle $end
+  }
+</PRE>
+<B><BR>Figure  3:</B> Procedure to connect two sequences with an arbitrary transition<p>
+<HR>
+The Rivl language extension thus provides a powerful notation for programming with video. Rivl's high level semantic description of video operations also allows the interpreter to optimize the execution of Rivl programs. The next section describes these optimizations.<p>
+<H5><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><!WA32><A HREF="#HDR3"><-- The Rivl Language</A></H5>
+<H5><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><!WA33><A HREF="#toc"><-- Table of Contents</A></H5>
+<H2><A NAME="HDR6">3.  The Rivl Interpreter</A></H2>
+This section discusses the implementation of the Rivl interpreter. In the first two subsections we discuss the efficient implementation of image and sequence operations. In the third subsection we discuss memory allocation issues for video computing and describe Rivl's custom memory management system. <p>
+<H3><A NAME="HDR7">3. 1 Implementation of Image Computing</A></H3>
+There are two ways to optimize still image computing. First, we must make sure that individual image operations, such as scales, rotations, etc., are efficient. These issues have been addressed at length in the graphics literature, and good algorithms are readily available[<!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><!WA34><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#REF25762">3</A>]. Second, we must be intelligent about which operations we call, in what order, to achieve our final result.<p>
+A feature of Rivl that allows us to exploit the second type of optimization is lazy evaluation, also known as demand-driven execution[<!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><!WA35><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#REF67492">10</A>]. Rivl only computes video data when it is needed for output or display. The result is that at computation time, Rivl can plan a more intelligent computing strategy than if each command were executed immediately and independently. <p>
+The Rivl interpreter alternates between two modes of operation: graph-construction mode and graph-evaluation mode. In graph-construction mode, the interpreter evaluates Rivl programs, recording and storing operations in a directed acyclic graph (DAG) whose edges correspond to images and whose nodes correspond to primitive operations (e.g. scale or overlay). This process is typically very fast, since image operations are recorded but not executed. In effect, the DAG represents a dynamic instruction trace of the Rivl program's execution.<p>
+Consider the following program, which overlays a scaled and rotated version of the image tiger.jpg onto the image flowers.jpg:<p>
+<PRE>
+  set tiger [im_read tiger.jpg]
+  im_scaleC! tiger 0.8
+  im_rotateC! tiger 288.0
+  set flowers [im_read flowers.jpg]
+  im_blur! flowers 5.0
+  im_overlay $tiger $flowers
+  im_write out.jpg
+</PRE>
+Figure 4 shows the graph created by this program. Both im_scaleC and im_rotateC are implemented with a pair of translations surrounding an im_scale or im_rotate; the translations move the origin of the scale and rotate operations to the center of the image.<p>
+<!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><!WA36><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm95.figure.id.4.gif"><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><!WA37><img src="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm95.figure.id.4.gif"><B><A NAME="REF69077"><BR></a>Figure  4:</B> Sample image graph<p>
+</A><p>
+A call to im_write triggers the graph-evaluation mode. In principle, the Rivl interpreter traverses the graph from inputs to output, computing intermediate images until the output image is computed. But before computing the images, the interpreter perform several optimizations. Two optimizations, graph restructuring and result-region calculation, are described below.<p>
+<strong>Graph restructuring.</strong> The first optimization modifies the graph so its output is equivalent, but the computation is more efficient. Such modifications include combining or swapping adjacent nodes. For example, figure 4 contains six adjacent affine transformations. Rivl collapses these nodes into a single affine transform (figure 5a). This optimization improves both the computation speed and the quality of the final image by reducing the number of times the image is resampled.<p>
+<strong>Result-region calculation.</strong> The second optimization, introduced by Shantzis[<!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><!WA38><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#REF67492">10</A>], is to compute only those regions of each intermediate image that affect the final result. In our example program, only a small portion of flowers is visible in the final result (figure 5b, on right). It is sufficient to read in and blur only this portion.<p>
+Rivl calculates 3 regions for intermediate images (i.e. for every edge in the DAG): the have region, the need region, and the result region. The have region at an edge is the region of pixels provided by the edge's left node(s). The need region at an edge is the region of pixels needed by the edge's right node(s). Finally, the result region is the intersection of have and need. This intersection contains all the pixels that both have defined values and affect the final output image. Only the pixels inside the result region need to be computed. Figure 5b shows the regions computed for each intermediate image in our example graph. In particular, only a small region is calculated for each of the two lower images.<p>
+Following these optimizations, the Rivl interpreter computes the graph's result image, writes the image to disk, and returns to processing commands in graph-construction mode.<p>
+<!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><!WA39><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm95.figure.id.14.gif"><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><!WA40><img src="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm95.figure.id.14.gif"><B><A NAME="REF53357"><BR></a>Figure  5:</B> (a) Restructured image graph / (b) Result regions<p>
+</A><p>
+<H5><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><!WA41><A HREF="#HDR6"><-- The Rivl Interpreter</A></H5>
+<H3><A NAME="HDR8">3. 2 Implementation of Sequences</A></H3>
+Our implementation of sequences borrows many ideas from our implementation of images, since many still-image optimizations prove especially beneficial for sequence computing.<p>
+We will use scrolling titles as a sample task to motivate this section. The following program adds scrolling credits to the last 40 seconds of a 240 second (4 minute) movie:<p>
+<PRE>
+  set credits [ims_to_seq [im_mask [im_read credits.ps]]]
+  seq_map! credits {im_trans %1 0.0 [expr -%p*8000]}
+  seq_scale! credits 40.0
+  seq_shift! credits [expr 200.0]
+  set raiders [seq_read raiders.mpg]
+  set outseq [seq_map &quot;$credits $raiders&quot; {im_overlay %1 %2}]
+  seq_write $outseq out.mpg
+</PRE>
+<A NAME="REF62381">Program 2:  Adding scrolling credits to the end of a movie</A><p>
+The titles are stored as a Postscript program that generates a long image (640x8000). The im_mask function makes the titles' background transparent. The program converts the image to a one-second sequence (credits), scrolls credits upwards over time using seq_map, and scales and shifts credits to the desired time range (200-240 sec). The final seq_map overlays the titles onto the raiders movie, and the result is written to the file out.mpg.<p>
+Like image commands, sequence commands are stored in a graph (called the sequence graph) until the sequence is computed (e.g. in response to a seq_write command). Figure 6 shows the sequence graph for program <!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><!WA42><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#REF62381">2</A>, in which each node corresponds with one line of the program. The sequence graph is used to generate a set of image graphs that correspond to the sequence's individual frames.<p>
+<!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><!WA43><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm95.figure.id.17.gif"><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><!WA44><img src="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm95.figure.id.17.gif"><B><A NAME="REF69077"><BR></a>Figure  6:</B> Sequence graph for scrolling titles<p>
+</A><p>
+Suppose we want to compute the frame in the output sequence at time T. We perform two passes over the sequence graph, a backward pass and a forward pass. In the backward pass, we compute a timestamp for each edge. An edge's timestamp indicates the time value at that edge that influences output frame T. As we traverse the graph, each seq_scale and seq_shift node we encounter potentially alters the timestamp. The top of figure 7 shows the timestamps computed for T=220.0.<p>
+In the forward pass, we build an image graph corresponding to output frame T. As we traverse the sequence graph, each seq_read and seq_map node we encounter adds node(s) to the image graph. seq_read uses the timestamp to determine which frame to read; seq_map uses the timestamp when substituting values for %p and %t. The bottom of figure 7 shows the image graph computed for T = 220.0.<p>
+To compute the whole sequence, we repeat the image graph generation algorithm for all relevant output times T, at increment of 1/fps, where fps is the desired frame rate (in frames/sec) of the output sequence. For program 2, T ranges from 0.0 to 240.0. The resulting graphs are merged into a single compound image graph, as shown in figure 8.<p>
+<!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><!WA45><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm95.figure.id.31.gif"><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><!WA46><img src="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm95.figure.id.31.gif"><B><A NAME="REF28898"><BR></a>Figure  7:</B> Generating the image graph for t = 220.0<p>
+</A><p>
+<!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><!WA47><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm95.figure.id.6.gif"><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><!WA48><img src="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm95.figure.id.6.gif"><B><A NAME="REF69077"><BR></a>Figure  8:</B> Image graph for entire sequence<p>
+</A><p>
+The optimizations of section 3.1 are used to process the compound image graph to produce the output images, along with two additional optimizations: image subgraph reuse and direct-transfer detection.<p>
+<strong>Image subgraph reuse.</strong> In figure 8 the subgraph containing im_read(credits.ps) and im_mask is replicated many times. It is more efficient to use a single subgraph with multiple output edges, as shown in figure 9. In this way the pixels of credit.ps are read and masked only once, and the various im_trans nodes share a common input. In general, Rivl detects and merges redundant image subgraphs whenever possible, a form of common subexpression elimination[<!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><!WA49><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#REF11216">1</A>].<p>
+<strong>Direct-transfer detection.</strong> In our example, the first 200 seconds of raiders.mpg appear unchanged in the output. An obvious optimization is to avoid unnecessary decompression and compression by copying the compressed data directly to the output.<p>
+In formats such as MPEG, direct copying is not always possible on every frame, since MPEG sequences contain frames that are encoded as differences from other frames and cannot be decoded in isolation. However, MPEG streams are often divided into groups of pictures (GOPs), usually 15 to 30 frames long, that are independent from other GOPs. When reading and writing MPEG, Rivl transfers groups of pictures directly whenever possible.<p>
+<!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><!WA50><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm95.figure.id.25.gif"><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><!WA51><img src="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm95.figure.id.25.gif"><B><A NAME="REF69077"><BR></a>Figure  9:</B> Image graph for entire sequence with shared subgraph<p>
+</A><p>
+<H5><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><!WA52><A HREF="#HDR6"><-- The Rivl Interpreter</A></H5>
+<H3><A NAME="HDR9">3. 3 Memory Management</A></H3>
+In addition to optimizing image and sequence calculation, the Rivl interpreter contains a custom memory management module to cache previously computed images and cope with very large images.<p>
+To understand the utility of caching images, consider the evaluation of the graph in figure 9. The output of the im_mask node is used many times; it is advantageous to cache this image. The Rivl memory manager detects this case, freeing each image only when it is no longer needed in the current graph evaluation.<p>
+Another issue is whether to store images after a graph evaluation ends. Interactive applications of Rivl often require repeated evaluations of a slightly changing graph. Because the language restricts the way image graphs can be modified, the image associated with an edge remains accurate for the lifetime of the graph and can be cached. Unfortunately, we have no special knowledge about which images to cache for future graph evaluations. In principle, the user can access any edge that was ever created. Mistakenly discarding data is nonfatal, since we can always recompute the data, but such mistakes hurt performance.<p>
+To address this issue, Rivl provides an im_priority command to allow applications to set the priority of an image. The memory manager discards low priority images and keeps high priority images in memory. For instance, a video editor built using Rivl calls im_priority to raise the priority of displayed images, so that the results of special effects can be quickly viewed. We are looking into algorithms and heuristics for automatic priority adjustment. For example, images generated by expensive operations, and images that have been referenced repeatedly in the past, are candidates for high priority.<p>
+The initial implementation of Rivl treated images as indivisible memory buffers. Unfortunately, this representation performed poorly for large images. The Rivl memory manager divides large images into non-overlapping pages of manageable size (figure 10a). Pages are handled as independent entities by the memory manager, allowing an image to be cached in parts. In addition, large images with considerable blank space are efficiently represented by a set of non-contiguous pages (figure 10b).<p>
+<!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><!WA53><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm95.figure.id.38.gif"><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><!WA54><img src="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm95.figure.id.38.gif"><B><A NAME="REF53357"><BR></a>Figure  10:</b> (a) Dividing large image / (b) Representing sparse image<p>
+</A><p>
+To illustrate the utility of Rivl's memory management policy, we consider the execution of the scrolling titles program (program 2) under a standard memory model in which the entire image is read into a virtual memory buffer for the duration of the program. Assuming a 256 color image, this requires 5 MB of storage. In contrast, Rivl accomplishes the task as follows:<p>
+
+<OL>
+<LI>The 640x8000 title region is divided into ten equally sized pages (given Rivl's current maximum page size.)<BR>
+
+<LI>Rivl allocates, loads, and masks each page of data only when necessary. The results of each call to im_mask are cached for future requests.<BR>
+
+<LI>Rivl discards pages as soon as they are no longer needed.<BR>
+</OL>
+
+
+The memory footprint is 1 MB, enough for Rivl to hold two pages at once.<p>
+In summary, the Rivl interpreter uses a variety of strategies to optimize execution of Rivl programs. They are:<p>
+
+<UL>
+<LI>Graph restructuring: Combining or reordering nodes in the graph for speed<BR>
+
+<LI>Result-region calculation: Computing only the parts of an image that affect the output<BR>
+
+<LI>Direct transfer detection: Copying compressed data directly to the output when possible<BR>
+
+<LI>Image subgraph reuse: Sharing common subexpressions in the image graph<BR>
+
+<LI>Image caching: Caching images if they are needed later in the graph evaluation<BR>
+
+<LI>Image subdivision: Dividing large images into manageable pieces<BR>
+</UL>
+
+<H5><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><!WA55><A HREF="#HDR6"><-- The Rivl Interpreter</A></H5>
+<H5><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><!WA56><A HREF="#toc"><-- Table of Contents</A></H5>
+<H2><A NAME="HDR10">4.  Related and Future Work</A></H2>
+Many commercial packages are available that provide software libraries of image manipulation functions. Some use demand-driven execution to achieve similar optimizations as those mentioned in section 3. These include the Pixar system described by Shantzis<!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><!WA57><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#REF67492">[10]</A>, and Silicon Graphics' ImageVisionLibrary<!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><!WA58><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#REF93885">[13]</A>. Holzmann's Popi<!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><!WA59><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#REF73579">[4]</A> allows image transformations to be specified with concise expressions at run-time, a mechanism that permits rapid prototyping of new image primitives. We are adapting this idea to Rivl. None of the above mentioned systems provide language support for motion video.<p>
+Some systems (e.g., Data Explorer<!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><!WA60><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#REF98469">[2]</A> or Khoros<!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><!WA61><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#REF36403">[12]</A>) provide a graphical programming environment where image &quot;programs&quot; are expressed as flowcharts. Although this way of expressing image operations is an improvement over pixel manipulation, the limitations of flowcharts for expressing complex programs are well-known. Furthermore, the support for motion video operations in these systems is limited or non-existent.<p>
+Matthews, Gloor, and Makedon's VideoScheme <!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><!WA62><A HREF="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/mm-95.html#REF98611">[6]</A> combines Apple's QuickTime movie player with a Scheme-based video manipulation language. In VideoScheme the user works with objects close to the underlying implementation of video data, such as pixel arrays and frames. This low-level access gives users considerable flexibility in creating new image operations. For example, algorithms for detecting &quot;cuts&quot; in video can be easily built out of pixel array primitives. In contrast, Rivl's high level of abstraction allows it to exploit delayed computation for improved efficiency, and its resolution independence makes programs more portable.<p>
+Rivl is implemented with 4000 lines of C code and 500 lines of Tcl code. It has been ported to the Sun OS, HPUX, and Linux operating systems. Rivl has been used to build a simple video editor. Rivl and its editor can be found at <!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><!WA63><a href="http://www.cs.cornell.edu/Info/Projects/zeno/rivl/rivl.html">http://www.cs.cornell.edu/Info/Projects/zeno/rivl/rivl.html.</a><p>
+The Rivl language is still evolving. We are extending the core set of Rivl primitives to support other types of video processing, such as image analysis, computer vision, and morphing. With the right primitives, we hope to build a rapid prototyping environment for exploring video content processing.<p>
+We are also building a parallel implementation of the Rivl interpreter using workstation clusters. In this implementation, a Rivl program will run quickly using low resolution images on a small cluster, slowly using high resolution images on a small cluster, and quickly using high resolution images on a large cluster. The interpreter will automatically parallelize the Rivl program, using both coarse grained parallelism (one image / one process) and fine grained parallelism (one image / multiple processes).<p>
+<H5><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><!WA64><A HREF="#toc"><-- Table of Contents</A></H5>
+<H2><A NAME="HDR11">5.  References</A></H2>
+<DL>
+<DT><A NAME="REF11216">[1]  </A><DD>Aho, Sethi and Ullman, Compilers: Principles, Techniques, and Tools, Reading, Mass. Addison-Wesley, 1988, pp. 592-595
+<DT><A NAME="REF98469">[2]  </A><DD>Data Explorer software package. IBM.
+<DT><A NAME="REF25762">[3]  </A><DD>J. D. Foley, et. al., Computer Graphics: Principles and Practice, second edition, Reading, Mass. Addison-Wesley, 1990.
+<DT><A NAME="REF73579">[4]  </A><DD>Holzmann, Gerald J. Popi. AT&amp;T Bell Laboratories. Murray Hill, NJ.
+<DT><A NAME="REF84725">[5]  </A><DD>D. Le Gall, MPEG: a video compression standard for multimedia applications, Communications of the ACM, April 1991, Vol. 34, Num.4, pp. 46-58.
+<DT><A NAME="REF98611">[6]  </A><DD>Matthews, James, Peter Gloor, and Fillia Makedon. &quot;VideoScheme: A Programmable Video Editing System for Automation and Media Recognition.&quot; ACM Multimedia `93 Proceedings, pp. 419-426.
+<DT><A NAME="REF68172">[7]  </A><DD>W. B. Pennebaker, JPEG still image data compression standard, Van Nos and Reinhold, New York, 1992.
+<DT><A NAME="REF31620">[8]  </A><DD>Poskanzer, Jef. The Extended Portable Bitmap Toolkit (PBMPLUS).
+<DT><A NAME="REF59020">[9]  </A><DD>Postscript. Adobe Systems Incorporated, Mountain View, CA.
+<DT><A NAME="REF67492">[10]  </A><DD>Shantzis, Michael. &quot;A Model for Efficient and Flexible Image Computing.&quot; SIGGRAPH `94 Proceedings, pp. 147-154.
+<DT><A NAME="REF53096">[11]  </A><DD>Ousterhout, John K. Tcl and the Tk Toolkit. Addison-Wesley, Massachusetts, 1994.
+<DT><A NAME="REF36403">[12]  </A><DD>Rasure and Kubica, &quot;The Khoros Application Development Environment&quot;, Experimental Environments for Computer Vision and Image Processing, editor H.I Christensen and J.L Crowley, World Scientific 1994. 
+<DT><A NAME="REF93885">[13]  </A><DD>Silicon Graphics Inc. ImageVision Library. Silicon Graphics Inc., Mountain View, CA.
+<DT><A NAME="REF18623">[14]  </A><DD>Swartz, Jonathan and Smith, Brian C. RIVL: A Resolution Independent Video Language. Submitted to the 1995 Tcl/Tk Workshop, July 1995, Toronto, CA. http://www.cs.cornell.edu/Info/Projects/multimedia/rivl/tcl-tk-95.ps
+</DL>
+<H5><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><!WA65><A HREF="#toc"><-- Table of Contents</A></H5>
+<HR><h3>Footnotes</h3><DL COMPACT><DT><A NAME=FN1>(1)</A><DD>The Rivl image type is unrelated to the Tcl/Tk[11] canvas image type.</DL><A NAME="ENDFILE"><PRE> </PRE></A>

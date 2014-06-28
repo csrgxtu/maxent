@@ -1,0 +1,466 @@
+Date: Tue, 26 Nov 1996 18:41:25 GMT
+Server: NCSA/1.5.1
+Last-modified: Tue, 26 Nov 1996 18:36:13 GMT
+Content-type: text/html
+Content-length: 16806
+
+<html>
+<HEAD>
+<TITLE>CS 152:  Neural Networks</TITLE>
+</HEAD>
+<BODY>
+URL http://www.cs.hmc.edu/~keller/cs152f96.html
+<center>
+<H3>
+<!WA0><a href = "http://www.hmc.edu/">Harvey Mudd College</a> Fall 1996
+</H3>
+<H3>
+<!WA1><A HREF="http://www.cs.hmc.edu/index.html">Computer Science</A> 152: Neural Networks
+</H3>
+</center>
+
+<h3>
+Trailer:
+</h3>
+
+Can a computer be <em>taught</em> to read words aloud,
+recognize faces, perform a medical diagnosis,
+drive a car, play a game, balance a pole, predict physical phenomena?
+
+<p>
+The answer to all these is <em>yes</em>.  All these applications and others
+have been demonstrated using
+varieties of the computational model known as "neural networks", the subject of this
+course.
+
+<p>
+The course will develop the theory of a number of neural network models.
+Participants will exercise the theory through both pre-developed computer
+programs and ones of their own design.
+
+<h3>
+Course Personnel:
+</h3>
+<ul>
+  <li>Instructor: <!WA2><a href = "http://www.cs.hmc.edu/~keller"> Robert Keller </a>
+      242 Olin (4-5 p.m. MTuW or by appt.), keller@muddcs, x 18483
+  <br>
+  <br>
+
+  <li>Tutor/Grader: <!WA3><a href = "http://www.cs.hmc.edu/~tkelly/"> T.J. Kelly</a>
+      tkelly@muddcs, x 74860
+  <br>
+  <br>
+
+  <li>Secretary: <!WA4><a href = "http://www.cs.hmc.edu/~nancy"> Nancy Mandala</a> 240 Olin (1-5 M-F)  nancy@muddcs, x 18225
+  <br>
+  <br>
+
+  <li>System administrator: <!WA5><a href = "http://www.cs.hmc.edu/~quay"> Quay Ly</a> 101 Beckman quay@muddcs, x 73474
+  <br>
+</ul>
+
+<P>
+<DT><h3>Catalog Description</h3>
+<P>
+Modeling, simulation, and analysis of artificial neural networks.
+Relationship to biological neural networks.  Design and optimization of
+discrete and continuous neural networks.  Backpropagation, and other gradient
+descent methods.  Hopfield and Boltzmann networks.  Unsupervised learning.
+Self-organizing feature maps.  Applications chosen from function approximation,
+signal processing, control, computer graphics, pattern recognition, time-series
+analysis.  Relationship to fuzzy logic, genetic algorithms, and artificial
+life.
+<br><br>
+Prerequisites: Biology 52 and Mathematics 73 and 82, or permission of
+the instructor.  3 credit hours.
+<P>
+<h3>Texts</h3>
+<P> 
+  <ul>
+  <li> Main Textbook: 
+  <blockquote>
+  <!WA6><a href="http://www.okstate.edu/elec-engr/faculty/hagan/hagan-mt.html">Martin T. Hagan</a>,
+  <!WA7><a href="http://www.ee.uidaho.edu/ee/digital/hdemuth/hdemuth.html">Howard B. Demuth</a>,
+  and Mark Beale,
+  <!WA8><a href="http://www.thomson.com/pws/ee/nnd.html"><em>Neural Network Design</em></a>,
+  PWS Publishing Company, Boston, 1996, ISBN 0-534-94332-2,
+  </blockquote>
+  which I will call <b>NND</b> below.
+  <p>
+
+  <li> Supplementary references, which will be provided as necessary.
+  <p>
+
+  <li>Related <!WA9><a href="#www_links">WWW links</a> (for self-study and research)
+  appear below.
+  <P>
+  <li>Software, which is installed on muddcs.cs.hmc.edu:
+    <ul>
+    <li> <!WA10><a href="http://www-math.cc.utexas.edu/math/Matlab/Manual/faq.html">MATLAB</a> Neural Network Toolbox</a>, The MathWorks, Inc.
+    <li><!WA11><a href="http://www.cray.com/PUBLIC/APPS/DAS/CODES/MATLAB_Neural_Network.html">Matlab Neural Network Stuff</a>
+    <li><!WA12><a href="http://www.ii.uib.no/~hans/matlab/">Matlab cross referenced</a>
+    <li> <!WA13><a href="http://www.informatik.uni-stuttgart.de/ipvr/bv/projekte/snns/snns.html">SNNS</a>: Stuttgart Neural Network Simulator.
+    </ul>
+  </ul>
+
+<P>
+<DT><h3>Course Requirements</h3>
+<P>
+
+There will be some homework and programming
+assignments, but no exams.  These assignments will constitute about
+50% of the grade.  The other 50% of the grade is from a substantial
+final project involving either a working neural network application or
+a research paper.  The grade on the project will be determined by the
+comprehensiveness and degree to which you explored competing
+approaches.  The projects will be presented orally.  
+<p>
+Optional
+voluntary oral presentations on textbook material
+can also be made during the term.  These
+can act to cushion your grade.  They are very much encouraged, as it
+they really help you learn the material at a higher level than you
+would otherwise.
+Please see me if you are interested in
+making a presentation.
+
+<P>
+<h3>CS 152 Topic Outline</h3>
+  <UL>
+  <li>Week 1 (read NND chapters 1 to 4; you may skip 3-8 to 3-12 for now)
+  <P> Contexts for Neural Networks
+    <ul>
+    <li>        Artificial Intelligence
+    <li>        Biological
+    <li>        Physics 
+    </ul>
+  <P> Artificial Neural Network overview
+    <ul>
+
+    <li> Perceptrons
+    <li> Perceptron learning rule
+    <li> Perceptron convergence theorem
+    </ul>
+
+  <P>
+  <li>Week 2 (read NND chapter 5 to 7)
+  <P>
+    <ul>
+    <li> Linear transformations for neural networks
+    <li> Supervised Hebbian learning
+    <li> Pseudoinverse rule
+    <li> Filtered learning rule
+    <li> Delta rule
+    <li> Unsupervised Hebbian learning
+    </ul>
+  <p>
+  <li>Week 3 (read NND chapters 8 and 9)
+  <p>
+    <ul>
+    <li> Performance surfaces
+    <li> Performance optimization
+      <ul>
+      <li> Steepest descent algorithm
+      <li> Newton's method
+      <li> Conjugate gradient
+      </ul>
+    </ul>
+
+  <p>
+  <li>Week 4 (read NND chapter 10)
+  <p>
+    <ul>
+    <!WA14><a href="http://ee.stanford.edu/ee/faculty/Widrow_Bernard.html">Widrow</a>-Hoff Learning
+      <ul>
+      <li> Adaline
+      <li> LMS rule
+      <li> Adaptive filtering
+      </ul>
+    </ul>
+
+  <p>
+  <li>Week 5 (read NND chapters 11 and 12)
+  <p>
+    <ul>
+    <li> Backpropagation in Multi-Level Perceptrons (MLP)
+    <li> Variations on backpropagation
+      <ul>
+        <li> Batching
+        <li> Momentum
+        <li> Variable learning rate
+        <li> Levenberg-Marquardt (LMBP)
+        <li> Quickprop
+      </ul>
+    </ul>
+
+  <p>
+  <li>Week 6 (supplementary material)
+  <p>
+    <ul>
+    <li>  Radial basis function networks (RBF)
+    </ul>
+
+  <p>
+  <li>Week 7 (read NND chapter 13)
+  <p>
+    <ul>
+    <li> Associative learning
+      <ul>
+      <li> Unsupervised Hebb rule
+      <li> Hebb rule with decay
+      <li> Instar rule
+      <li> Kohonen rule
+      <li> Outstar rule 
+      </ul>
+    </ul>
+  
+  <p>
+  <li>Week 8 (read NND chapter 14)
+  <p>
+    <ul>
+    <li>  Competitive networks
+      <ul>
+      <li> Hamming network
+      <li> Self-Organizing feature maps (SOM)
+      <li> Counterpropagation networks (CPN)
+      <li> Learning vector quanitization (LVQ)
+      </ul>
+    </ul>
+
+  <p>
+  <li>Week 9 (read NND chapters 15 and 16)
+  <p>
+    <ul>
+    <li>  Grossberg networks
+    <li>  Adaptive resonance theory
+      <ul>
+      <li> ART1 networks
+      </ul>
+    </ul>
+
+  <p>
+  <li>Week 10 (read NND chapters 17 and 18)
+  <p>
+    <ul>
+    <li> Hopfield networks
+    <li> Spin-glass model and simulated annealing
+    <li> Boltzman networks
+    <li> Cascade correlation learning
+    <li> Bi-directional associative memory (BAM)
+    </ul>
+
+  <p>
+  <li>Week 11 (supplementary material)
+  <p>
+    <ul>
+    <li> Sequential networks
+      <ul>
+      <li> Time series
+      <li> Backpropagation through time
+      <li> Finite Impulse Response (FIR) MLP
+      <li> Method of temporal differences
+      </ul>
+    </ul>
+<p>
+The following additional, but related topics are assuming the previous
+material hasn't expanded in time significantly.  Whether it does
+remains to be seen.  If so, some of these topics may be compressed or
+eliminated.
+<br><br>
+
+<p>
+<li>Week 12
+<P>
+  <ul>
+  <li> Genetic programming and connection to NNs
+  <li> Other topics related to Alife (Artificial Life)
+  </ul>
+
+<p>
+<li>Week 13
+<P>
+    <ul>
+    <li> Fuzzy logic and its connection to NNs
+    </ul>
+<br>
+</ul>
+<h3><a name = "auxiliary_references">
+Auxiliary References</a> (not required):</h3>
+
+  <ul>
+  <li>Simon Haykin,
+  <em>Neural networks - A comprehensive foundation</em>,
+  Macmillan, 1994.
+  This book was used in the previous offering of the course.
+  It includes topics such as radial basis function networks and temporal
+  approaches which are not present in the main textbook.  However the
+  mathematics is more difficult to follow.
+  <p>
+
+  <li>Mohamad H. Hassoun,
+  <em>Fundamentals of artificial neural networks</em>,
+  MIT Press, 1995.
+  This is another fairly thorough introduction.
+  <p>
+
+  <li>James A. Anderson, 
+  <em>An introduction to neural networks</em>,
+  MIT Press, 1995.
+  This is a more gentle introduction to the topic, by one of the pioneers in the field.
+  <p>
+
+  <li>
+  Irwin B. Levitan and Leonard K. Kaczmarek,
+  <em>The Neuron</em>,
+  Oxford University Press, 1991.
+  This book focuses on the biology and physics of neurons.
+  <p>
+
+  <li>
+  Marvin L. Minsky and Seymour Papert,
+  <em>Perceptrons (expanded addition)</em>,
+  MIT Press, 1988.
+  The historical importance of this book will be discussed in the course.
+  <p>
+
+  <li>
+  Duda and Hart,
+  <em>Pattern classification and scene analysis</em>,
+  Wiley, 1972.
+  This book gives a broad look at pattern classification problems, but is not
+  on neural nets as such.
+  <p>
+
+  <li>
+  Teuvo Kohonen
+  <em>Self-organizing maps</em>,
+  Springer-Verlag, 1995.
+  This is a comprehensive reference by the originator of this concept.
+  <p>
+
+  <li>
+  Bart Kosko,
+  <em>Neural networks and fuzzy systems : a dynamical systems approach to machine intelligence</em>,
+  Prentice Hall, 1992.
+  This book compares fuzzy and neural approaches to control problems.
+  <p>
+
+  <li>
+  Zbigniew Michalewicz,
+  <em>Genetic Algorithms + Data Structures = Evolution Programs</em>,
+  Third Edition,
+  Springer Verlag, 1996.
+  This book describes the evolutionary approach, which in some cases can achieve
+  results similar to neural approaches.
+  <p>
+
+  <li>
+  John R. Koza,
+  <em>Genetic Programming</em>,
+  MIT Press, 1994.
+  This book focuses on the evolutionary approach to producing programs.
+  <p>
+
+  <li>
+  Christopher G. Langton (ed.),
+  <em>Artificial Life</em>,
+  Addison-Wesley, 1989.
+  This is a colllection of articles on the topic.
+  </ul>
+
+<h3><a name = "www_links">
+Worldwide Web Indices:</a> </h3>
+<ul>
+<LI><!WA15><a href="ftp://ftp.sas.com/pub/neural/FAQ.html">NN FAQ</a>
+<LI><!WA16><a href="http://wheat.uwaterloo.ca/bibliography/Neural/index.html">Index to NN Bibliographies</a>
+<LI><!WA17><a href="http://www-server.cs.umr.edu/~mmoganti/neural.html">Top 500 Neural Network Sites</a>
+<LI><!WA18><a href="http://search.yahoo.com/bin/search?p=neural+networks">Yahoo Search</a>
+<LI><!WA19><a href="http://altavista.digital.com/cgi-bin/query?pg=q&what=web&fmt=.&q=neural+networks">Alta Vista Search</a>
+<LI><!WA20><a href="http://www.lycos.com/cgi-bin/pursuit?query=neural+networks">Lycos Search</a>
+<LI><!WA21><a href="http://searcher.mckinley.com/searcher.cgi?query=neural+net&onlyrr=0">Magellan Search</a>
+<LI><!WA22><a href="http://www.lpac.ac.uk/SEL-HPC/Articles/NeuralArchive.html">Neural Networks Archive</a>
+<LI><!WA23><a href="http://www.mcs.com/~drt/bprefs.html">Backpropagation</a>
+<LI><!WA24><a href="http://www.mbfys.kun.nl/SNN/pointers/">SNN Neural Network Pointers</A>
+<LI><!WA25><a href="ftp://ftp.nj.nec.com/pub/kamjim/papers/bibFiles/noise.bib">Noise Biblio</a>
+<LI><!WA26><a href="http://phoenix.som.clarkson.edu/~episcopo/neurofin.html">Financial Markets Biblio</a>
+<LI><!WA27><a href="http://www.cs.tu-bs.de/ibr/fuzzy/papers.html">Neuro-Fuzzy Systems</a>
+<LI><!WA28><a href="http://www.ai.univie.ac.at/oefai/nn/neufodi.html">Neural Networks in Diagnosis and Forecasting Applications</a>
+<li><!WA29><a href="http://www.cogs.susx.ac.uk/users/christ/teachpacks/mlcourse/contents.html">Machine Learning Course</a>
+<li><!WA30><a href="http://www.utica.kaman.com:8001/techs/neural/neural_ToC.html">Neural Networks Survey</a>
+<li><!WA31><a href="http://www.ics.uci.edu/~pazzani/RTF/AAAI.html">Using NN's for web browsing</a>
+<li><!WA32><a href="http://www.research.ibm.com/massdist/tdl.html">Temporal Difference Learning and TD-Gammon</a>
+<li><!WA33><a href="http://www.acsiom.org/nsr/neuro.html">Neuroscience index</a>
+<li><!WA34><a href="ftp://ftp.cs.umass.edu/pub/anw/pub/sutton/sutton-88.ps/">Sutton's Temporal Difference paper</a>
+
+<LI><!WA35><a href="http://vita.mines.colorado.edu:3857/0/lpratt/transfer.html">Neural Net Transfer and Learning to Learn</a>
+<LI><!WA36><a href="http://http2.brunel.ac.uk:8080/~hssrkng/NNcourse/entry.html">Notes on Neural Nets</a>
+<LI><!WA37><a href="http://www.cs.cmu.edu/afs/cs/academic/class/15880b-s95/Web/home.html">Dave Touretzky's Notes</a>
+<LI><!WA38><a href="http://www.msci.memphis.edu/~jagota/HKP_VG/page_index.html">Slides re. Hertz, Krogh, and Palmer </a>
+<LI><!WA39><a href="http://www.is.cs.cmu.edu/">CMU</a>
+<LI><!WA40><a href="http://www.is.cs.cmu.edu/cstar/">Speech Translation Research</a>
+<LI><!WA41><a href="http://www.dcs.shef.ac.uk/research/groups/ainn/neurnet.html">University of Sheffield</a>
+<LI><!WA42><a href="http://www.his.se/ida/~crg/nomad.html">University of University of Skovde</a>
+<LI><!WA43><a href="http://www.mbfys.kun.nl/SNN/groups/nijmegen/">University of Nijmegen</a>
+<LI><!WA44><a href="http://www.loria.fr/exterieur/equipe/rfia/cortex/rap_activite/rap_activite.html">Cortex Project</a>
+<LI><!WA45><a href="http://neural-server.aston.ac.uk/">Aston University</a>
+<LI><!WA46><A HREF="http://dope.caltech.edu/cns185/">Caltech CNS 185: Collective Computation</A>
+<li><!WA47><a href="http://www.icenet.it/icenet/neurality/links/home_uk.html">Neutrality links</a>
+<li><!WA48><a href="http://forum.swarthmore.edu/~jay/learn-game/index.html">Machine Learning in Games</a>
+<li><!WA49><a href="http://pierce.ee.washington.edu/~chiou/simulation.html">Lip Reading</a>
+<li><!WA50><a href="http://liinwww.ira.uka.de/bibliography/Ai/lig.html">Strategic Game-Playing Bibliograhy</a>
+<li><!WA51><a href="http://nevis.stir.ac.uk/~pim/documents/outline1/outline1/outline1.html">Notes on Control</a>
+<li><!WA52><a href="http://www.cs.cmu.edu/Groups/CNBC/PDP++/PDP++.html">PDP++</a>
+<li><!WA53><a href="http://websom.hut.fi/websom/">WEBSOM</a>
+<li><!WA54><a href="http://cns-web.bu.edu/">Boston University Center for Adaptive Systems</a>
+<li><!WA55><a href="http://www.wi.leidenuniv.nl/art/">ART (Adaptive Resonance Theory) FAQ</a>
+<li><!WA56><a href="http://www-isis.ecs.soton.ac.uk/research/nfinfo/neural.html">Neural Net Resources</a>
+<LI><!WA57><a href="http://msia02.msi.se/~lindsey/nnwLinks.html">Neural Net Links</a>
+</ul>
+ 
+
+<h3>Neurocomputing People</h3>
+<ul>
+<li><!WA58><a href="http://www.cs.colostate.edu/~anderson/">Charles W. Anderson</a>
+<li><!WA59><a href="http://envy.cs.umass.edu/People/barto/barto.html">Andrew G. Barto</a>
+<li><!WA60><a href="http://www.fit.qut.edu.au/~joachim/>Joachim (Joe) Diederich</a>
+<li><a href="http://cns-web.bu.edu/Profiles/Grossberg.html">Stephen Grossberg</a>
+<li><!WA61><a href="http://dope.caltech.edu/">John Hopfield</a>
+<li><!WA62><a href="http://www.ai.mit.edu/projects/cbcl/web-pis/jordan/homepage.html">Michael I. Jordan</a>
+<li><!WA63><a href="http://nucleus.hut.fi/nnrc/teuvo.html">Teuvo Kohonen</a>
+<li><!WA64><a href="http://www.cse.ogi.edu/~tleen/">Todd K. Leen</a>
+<li><!WA65><a href="http://www.salk.edu/faculty/sejnowski.html">Terrence J. Sejnowski</a>
+<li><!WA66><a href="http://envy.cs.umass.edu/People/sutton/sutton.html">Richard S. Sutton</a>
+<li><!WA67><a href="http://www.watson.ibm.com:8080/main-cgi-bin/search_paper.pl/authors=tesauro&long_output=on">Gerald Tesauro</a>
+<li><!WA68><a href="http://www.cse.ogi.edu/~ericwan/wan.html">Eric A. Wan</a>
+<li><!WA69><a href="http://ee.stanford.edu/ee/faculty/Widrow_Bernard.html">Bernard Widrow</a>
+</ul>
+
+<h3>Software</h3>
+<ul>
+<li><!WA70><a href="http://www.cns.ed.ac.uk/people/mark.html">RBF networks in MatLab</a>
+</ul>
+
+<h3>Data</h3>
+<ul>
+<li><!WA71><a href="http://legend.gwydion.cs.cmu.edu/neural-bench/benchmarks/nettalk.html">NetTalk</a>
+<li><!WA72><a href="http://www.cogs.susx.ac.uk/users/christ/UCI_repository/molecular-biology/protein-secondary-structure/protein-secondary-structure.train">Protein Structure</a>
+</ul>
+
+<h3>Demos</h3>
+<ul>
+<li><!WA73><a href="http://psybert.uni-bielefeld.de/~mkrause/java/kohonen.html">1D Kohonen map</a>
+<li><!WA74><a href="http://www-ag-mayer.informatik.uni-kl.de/~gurres/kohonen.html">2D Kohonen map</a>
+<li><!WA75><a href="http://www.uni-mainz.de/~peterman/">Another 2D Kohonen map</a>
+<li><!WA76><a href="http://www.neosoft.com/~hav/nnhtml.htm">3D Kohonen map</a>
+<li><!WA77><a href="http://www.isbiel.ch/%7Epatol/java/TSP/index.html">Travelling Salesman Problem using Kohonen map</a>
+<li><!WA78><a href="http://www.neuroinformatik.ruhr-uni-bochum.de/ini/VDM/research/gsn/DemoGNG/GNG.html">Competitive Learning Models</a>
+<li><!WA79><a href="http://www.hh.se/dep/cca/java/charrecog.html">Neural Character Recognition</a>
+<li><!WA80><a href="http://blitz.ec.t.kanazawa-u.ac.jp/~nova/java/nova_applets/vq/index.html">VQ</a>
+<li><!WA81><a href="http://www.simplex.nl/users/rjager/gcmacdem.html">Robot Arm (GCMAC)</a>
+<li><!WA82><a href="http://nuweb.jinr.dubna.su/LNP/NEMO/tspN.html">Elastic Net TSP</a>
+<li><!WA83><a href="http://www.mag.keio.ac.jp/~fujisawa/neuraljava.html">N Queens</a>
+<li><!WA84><a href="http://www.eng.auburn.edu/~brittch/truck/fuztruck.html">Fuzzy Truck Backer</a>
+<li><!WA85><a href="http://www-isis.ecs.soton.ac.uk/computing/neural/laboratory/nn_java.html">Others</a>
+<li><!WA86><a href="http://www.cs.utexas.edu/users/nn/pages/demos/discern/discern.html">DISCERN Neural Natural Language Demo</a>
+</ul>

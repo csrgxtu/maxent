@@ -1,0 +1,73 @@
+Date: Tue, 10 Dec 1996 03:25:49 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+<TITLE>Problem with SkyBlue and Cycles</title>
+</head>
+
+<body>
+
+<H2>Problem with SkyBlue and Cycles</H2>
+
+<p>
+
+This note is to alert users of SkyBlue to a problem regarding its
+handling of cycles of constraints.  SkyBlue is an incremental local
+propagation constraint solvers for constraint hierarchies.  SkyBlue is more
+general than the earlier DeltaBlue algorithm, in that it supports
+multi-output methods and allows cycles in the constraint graph.  SkyBlue
+itself doesn't handle cycles, but does allow external cycle solvers to be
+called to satisfy the constraints in the cycle.
+
+<P>
+
+The problem is that SkyBlue will not always gather enough constraints to
+hand off to the cycle solver.  If the constraints in the immediate cycle
+uniquely specify the values for their variables, all is well.  However, if
+the constraints are redundant or incompatible, then additional constraints
+must be considered as well, and SkyBlue won't necessarily identify these
+needed constraints.  Here is a trivial example.  Suppose we have the
+following collection of constraints, all required.
+
+<pre>
+A = B
+B = A
+B = C
+C = 5
+</pre>
+
+The correct solution is of course A=B=C=5.  However, SkyBlue may select
+just the two constraints A=B and B=A and hand them to the cycle solver.
+They are redundant, and hence don't give unique values for A and B -- so
+the cycle solver really needs the other constraints as well to find the
+correct solution.
+
+<P>
+
+A straightforward solution to the problem would be simply to gather all the
+constraints downstream from the cycle and pass these to the cycle solver.
+However, in general this will result in larger cycles than necessary.
+Another approach would be first to partition the constraint graph into
+cyclic and acyclic regions, based on its topology.  Next we would process
+all the required constraints in all regions (communicating variable values
+between regions as they become known), then all the constraints at the next
+strongest level, and so forth.  (This is the approach taken in the <!WA0><a
+href="http://www.cs.washington.edu/research/projects/weird/www/ultraviolet-cp-95.html"> UltraViolet algorithm</a>; the approach
+could also be adapted for use with SkyBlue.)
+
+<P>
+
+On the positive side, the basic SkyBlue algorithm -- the local propagation
+mechanism, including multi-output constraints -- works fine.  In addition,
+Michael Sannella's dissertation does describe the problem with gathering
+constraints for an external cycle solver (see pages 43-44).  However, we
+more recently realized that at least for some applications, the problem is
+not an obscure one that comes up only in pathological cases, but can arise
+in realistic cases.  So ...if your problem domain calls for local
+propagation only, including multi-output constraints, SkyBlue will serve
+its purpose well.  But it should be modified if it is to be used with
+external cycle solvers.
+
+</body>

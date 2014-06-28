@@ -1,0 +1,109 @@
+Date: Mon, 11 Nov 1996 17:19:26 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 12 Sep 1996 16:55:29 GMT
+Content-length: 3444
+
+<HTML>
+
+<HEAD>
+<TITLE>CS 110 Section 2 Lecture Notes - Week 1</TITLE>
+</HEAD>
+
+<BODY>
+
+<H2><!WA0><!WA0><!WA0><!WA0><!WA0><!WA0><A HREF="http://www.cs.wisc.edu/~tick/cs110.html#text" ><!WA1><!WA1><!WA1><!WA1><!WA1><!WA1><IMG SRC="http://www.cs.wisc.edu/~tick/icons/arrowleft.gif" WIDTH=15 HEIGHT=15></A> Lecture Notes - Week 1</H2>
+
+<HR>
+
+<DL>
+   <DT>Topic:
+   <DD>Introduction to computers and programming.  How to use Microsoft Windows and Microsoft FORTRAN on the Hewlett-Packard Vectra's
+
+   <DT>Text:
+   <DD>Chp. 1.1 - 1.5
+
+   <DT>Notes:
+   <DD>
+
+   <HR>
+
+   <CENTER>
+   <H3>Introduction to FORTRAN-77</H3>
+   </CENTER>
+
+   <H4>Brief History</H4>
+   <UL>
+      <LI>One of the first high-level programming languages (circa 1957).
+      <LI><EM>FOR</EM>ula <EM>TRAN</EM>slator.  Good for engineering and scientific applications.
+      <LI>FORTRAN-77 (1977 revision) is the <EM>standard</EM> and most widespread version.  FORTRAN-90 (1990 revision) has additional functionality but is not as widespread.
+   </UL>
+
+   <H4>Why learn FORTRAN instead of C++/Pascal/BASIC/...</H4>
+   <UL>
+      <LI>Easier to write complex formulas and equations.
+      <LI>Still widely used in engineering.
+      <LI>Lots of existing engineering program libraries are written in FORTRAN.
+      <LI>Easy to learn, similar to BASIC.
+   </UL>
+
+
+
+   <H4>How to use FORTRAN on the PC's</H4>
+Click <!WA2><!WA2><!WA2><!WA2><!WA2><!WA2><A HREF="http://www.cs.wisc.edu/~tick/cs110/Short.html"> here </A>
+
+   <H4>Compiling Steps</H4>
+   <UL>
+     <LI>Source Program (.for) in Fortran sent to compiler
+     <LI>Compiler translates Fortran into "machine language with a couple of holes left",spits out .obj file
+     <LI>A program may be broken into lots of segments, so there may be other obj's around. At any rate, .objs must be linked together plus some other things needed to "fill in those holes" (don't worry about what the holes are). .obj files all read in, spits out .exe file (runnable machine language).
+   </UL>
+  
+   <H4>Inside the Computer</H4>
+   <UL>
+       <LI>Input: Keyboard,Mouse
+       <LI>Output: Monitor,Printer
+       <LI>Inside:
+          <UL>
+                     <LI>CPU: Central Processing Unit. What does computations.
+             <LI>Memory: Where the data is (the program itself and its data)
+             <LI>Removable storage. Can take things off disk onto memory or back. Must put things in memory in order to run it.
+          </UL>
+
+   </UL>
+
+<H4>Machine Language,Assembly,Fortran</H4>
+<UL>
+<LI>Dark Ages(1960): Everything stored as 0's (no charge) and 1's (charge). 
+<LI>Machine code is very hard to read. If you saw code like 1101 0001 0011 0010 1010 1111 1110 ... you'd go nuts.
+<LI>Solution: Assembly language. ADD %r1 %r2 %r3. Every machine lang. statement corresponds to one assembly statement, and vice versa.
+<LI>Problem. Takes a loooong time to write out. You also have to worry about lots of details. Programmers noticed that many times there were sequences of steps that were repeated quite a lot, such as
+<BLOCKQUOTE>
+LOAD TERM %r1<p>
+LOAD TERM2 %r2<p>
+ADD %r1 %r2 %r3<p>
+STORE %r3 SUM<p>
+</BLOCKQUOTE>
+<LI> Instead, it'd be nice to just say SUM = TERM1 + TERM2. This is a Fortran statement which is  translated (compiled) into those assembly instructions you see above.
+</UL>
+</DL>
+
+</BODY>
+
+<HR>
+
+<ADDRESS>
+<H5>Copyright &copy 1996 Modified from<!WA3><!WA3><!WA3><!WA3><!WA3><!WA3><A HREF="http://www.cs.wisc.edu/~tick/tick.html">Jeff Lampert</A> (<!WA4><!WA4><!WA4><!WA4><!WA4><!WA4><A HREF="mailto:tick@cs.wisc.edu">tick@cs.wisc.edu</A>).  Last modified September 11, 1996
+</ADDRESS>
+
+</HTML>
+
+
+
+
+
+
+
+
+
+

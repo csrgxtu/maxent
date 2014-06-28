@@ -1,0 +1,116 @@
+Date: Mon, 02 Dec 1996 15:52:57 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<!-- Generated with CERN WebMaker 1.4 -->
+<HTML>
+<HEAD>
+<TITLE>Cecil Standard Library Reference Manual</TITLE>
+</HEAD>
+<BODY>
+<A HREF="stdlib-man_2.html">[Next] </A><P>
+<H1>Cecil Standard Library Reference Manual</H1>
+<HR>
+<H2> The Cecil Group</H2>
+ Department of Computer Science and Engineering<BR>
+University of Washington<BR>
+Box 352350, Seattle, Washington 98195-2350<BR>
+(206) 685-2094; fax: (206) 543-2969<BR>
+<EM>cecil@cs.washington.edu</EM><P>
+<H2> Vortex 2.0 Beta</H2>
+ The Cecil standard library includes a collection of data structures and control structures upon which Cecil programs are constructed. These data and control structures include things that would be built-in to other languages, like integers and for loops, and consequently some understanding of the basic data structures is important for writing any Cecil program. But unlike other languages with built-in structures, in Cecil it's easy to add new operations to standard data types and to define new kinds of control structures that are just as easy to use as the "standard" ones.<P>
+<!-- FM pgf ignored -->
+<H1>Table of Contents</H1>
+<HR>
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<!-- FM pgf ignored -->
+<DL>
+<DT><A HREF="stdlib-man_2.html#HEADING1"><B>1 </B> - Executive Summary</A><DD>
+<DT><A HREF="stdlib-man_3.html#HEADING2"><B>2 </B> - Basic Data Types and Operations</A><DD>
+<DL>
+<DT><A HREF="stdlib-man_4.html#HEADING3"><B>2.1 </B> - void, any, none, dynamic</A><DD>
+<DT><A HREF="stdlib-man_5.html#HEADING4"><B>2.2 </B> - comparable, partially_ordered, ordered, hashable</A><DD>
+<DT><A HREF="stdlib-man_6.html#HEADING5"><B>2.3 </B> - num, integer, int, big_int, float</A><DD>
+<DT><A HREF="stdlib-man_7.html#HEADING6"><B>2.4 </B> - char</A><DD>
+<DT><A HREF="stdlib-man_8.html#HEADING7"><B>2.5 </B> - pair, triple</A><DD>
+</DL>
+<DT><A HREF="stdlib-man_9.html#HEADING8"><B>3 </B> - Basic Control Structures</A><DD>
+<DL>
+<DT><A HREF="stdlib-man_10.html#HEADING9"><B>3.1 </B> - bool, true, false</A><DD>
+<DT><A HREF="stdlib-man_11.html#HEADING10"><B>3.2 </B> - closure</A><DD>
+</DL>
+<DT><A HREF="stdlib-man_12.html#HEADING11"><B>4 </B> - Basic Collections</A><DD>
+<DL>
+<DT><A HREF="stdlib-man_13.html#HEADING12"><B>4.1 </B> - collection, removable_collection, functionally_extensible_collection, extensible_collection</A><DD>
+<DT><A HREF="stdlib-man_14.html#HEADING13"><B>4.2 </B> - unordered_collection, bag, sets</A><DD>
+<DT><A HREF="stdlib-man_15.html#HEADING14"><B>4.3 </B> - table, assoc_tables, hash_tables</A><DD>
+<DT><A HREF="stdlib-man_16.html#HEADING15"><B>4.4 </B> - ordered_collection, extensible_ordered, sequence, extensible_sequence</A><DD>
+<DT><A HREF="stdlib-man_17.html#HEADING16"><B>4.5 </B> - indexed, vector, array, interval, string, bit_vector</A><DD>
+<DT><A HREF="stdlib-man_18.html#HEADING17"><B>4.6 </B> - lists</A><DD>
+<DT><A HREF="stdlib-man_19.html#HEADING18"><B>4.7 </B> - sorted_collections</A><DD>
+<DT><A HREF="stdlib-man_20.html#HEADING19"><B>4.8 </B> - stack, queue</A><DD>
+</DL>
+<DT><A HREF="stdlib-man_21.html#HEADING20"><B>5 </B> - Advanced Collections</A><DD>
+<DL>
+<DT><A HREF="stdlib-man_22.html#HEADING21"><B>5.1 </B> - keyed_sets</A><DD>
+<DT><A HREF="stdlib-man_23.html#HEADING22"><B>5.2 </B> - collector</A><DD>
+<DT><A HREF="stdlib-man_24.html#HEADING23"><B>5.3 </B> - histogram</A><DD>
+<DT><A HREF="stdlib-man_25.html#HEADING24"><B>5.4 </B> - filtered_views, mapped_views</A><DD>
+</DL>
+<DT><A HREF="stdlib-man_26.html#HEADING25"><B>6 </B> - Streams and I/O</A><DD>
+<DL>
+<DT><A HREF="stdlib-man_27.html#HEADING26"><B>6.1 </B> - stream, removable_stream, insertable_stream, extensible_stream, reversible_stream, positionable_stream</A><DD>
+<DT><A HREF="stdlib-man_28.html#HEADING27"><B>6.2 </B> - stream_views</A><DD>
+<DT><A HREF="stdlib-man_29.html#HEADING28"><B>6.3 </B> - random_stream</A><DD>
+<DT><A HREF="stdlib-man_30.html#HEADING29"><B>6.4 </B> - unix_file</A><DD>
+</DL>
+<DT><A HREF="stdlib-man_31.html#HEADING30"><B>7 </B> - Miscellaneous</A><DD>
+<DL>
+<DT><A HREF="stdlib-man_32.html#HEADING31"><B>7.1 </B> - ask</A><DD>
+<DT><A HREF="stdlib-man_33.html#HEADING32"><B>7.2 </B> - time, date</A><DD>
+<DT><A HREF="stdlib-man_34.html#HEADING33"><B>7.3 </B> - text_lines</A><DD>
+<DT><A HREF="stdlib-man_35.html#HEADING34"><B>7.4 </B> - matrix</A><DD>
+<DT><A HREF="stdlib-man_36.html#HEADING35"><B>7.5 </B> - system operations</A><DD>
+</DL>
+<DT><A HREF="stdlib-man_37.html#HEADING36"><B>8 </B> - Precedence of Binary Operators</A><DD>
+</DL>
+
+<HR>
+<ADDRESS>Cecil Standard Library Reference Manual - 18 FEB 96</ADDRESS>
+<A HREF="stdlib-man_2.html">[Next] </A><P>
+</BODY>
+</HTML>

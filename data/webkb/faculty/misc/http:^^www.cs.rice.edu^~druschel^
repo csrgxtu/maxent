@@ -1,0 +1,101 @@
+Date: Tue, 26 Nov 1996 00:21:33 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Tue, 16 Jul 1996 17:13:22 GMT
+Content-length: 4404
+
+<title> Peter Druschel </title>
+
+<!WA0><img align=middle src="http://www.cs.rice.edu/~druschel/druschel.gif">
+<strong> Peter Druschel, </strong> Assistant Professor
+
+<hr>
+
+<p> Peter's research interests are in operating systems, networks, and
+computer architecture. 
+
+<p> Fundamentally, the role of an operating system is to abstract the
+physical resources of the underlying hardware, and to multiplex these
+resources among multiple application programs and users.  In this role
+as a mediator between application programs and underlying hardware,
+modern operating systems are being challenged on both fronts.  On the
+one hand, operating systems are expected to efficiently support a
+broad range of application programs, including scientific,
+engineering, business, and entertainment applications.  On the other
+hand, a single operating system is expected to efficiently run on a
+wide range of computer systems, ranging from PDAs and personal
+computers to parallel supercomputers, all connnected by networks with
+widely differing performance characteristics.
+
+<p> Peter's long-term research goal is to develop an operating system
+that can be configured to run on radically different distributed
+hardware platforms, and whose services can be dynamically customized
+and extended to efficiently support specific applications. Towards
+this end, his research focuses on two issues:
+
+<dl> 
+<dt> 
+<h3> Communications-oriented OS design </h3> 
+<dd> Current operating systems are well suited for applications that
+spend most of their time operating on data stored in main memory, and
+that perform occasional, coarse-grained I/O operations on slow
+devices. To satisfy modern distributed applications that perform
+frequent, fine-grained I/O on fast devices, operating systems must (1)
+minimize kernel involvement in common case I/O operations, and (2)
+tightly manage system resources to maintain fairness and quality of
+service.
+
+<dt> <h3> Application-specific customization of OS services </h3>
+<dd> Existing operating systems offer applications a fixed set of
+services with black box implementations. This approach fails to
+address the needs of an increasing range of applications that all
+demand performance, but have widely varying service needs and usage
+patterns. We investigate customizable operating system services that
+allow applications to tailor service implementations so that they meet
+precisely their needs in functionality and performance. 
+
+</dl>
+
+
+<H1> Publications </H1>
+
+<!WA1><A HREF="ftp://ftp.cs.arizona.edu/xkernel/Papers/osiris.ps">osiris.ps</A>
+<BR> <cite> Experiences with a High-Speed Network Adaptor: A Software 
+Perspective. </cite> (with Bruce S. Davie and Larry L. Peterson.) In 
+proceedings of the ACM SIGCOMM'94 Symposium, pp. 2-13, London, UK,
+September 1994.
+<p>
+<!WA2><A HREF="http://www.cs.rice.edu/~druschel/thesis-tr.ps">thesis-tr.ps</A>
+<BR> <cite> Operating System Support for High-Speed
+Networking. </cite> (Ph.D. Dissertation.) Technical Report
+94-24. Department of Computer Science, University of Arizona, Tucson,
+AZ, August 1994.
+<p>
+<!WA3><A HREF="ftp://ftp.cs.arizona.edu/xkernel/Papers/fbuf.ps">fbufs.ps</A>
+<BR> <cite> Fbufs: A High-Bandwidth Cross-Domain Transfer Facility. </cite> 
+(with Larry L. Peterson.) In proceedings of the 14th Symposium
+on Operating Systems Principles, pp. 189-202, Asheville, NC,
+December 1993.
+<p>
+<!WA4><A HREF="ftp://ftp.cs.arizona.edu/xkernel/Papers/customization.ps">
+customization.ps</A>
+<BR> <cite> Efficient Support for Incremental Customization of OS Services. 
+</cite> In proceedings of the Third International Workshop on Object 
+Orientation in Operating Systems, pp. 108-111, Asheville, NC,
+December 1993.
+<p>
+<!WA5><A HREF="ftp://ftp.cs.arizona.edu/xkernel/Papers/analysis.ps">analysis.ps</A>
+<BR> <cite> Network Subsystem Design. </cite> (with Mark B. Abbott, 
+Michael A. Pagels and Larry L. Peterson.) IEEE Network (Special Issue on 
+End-System Support for High-Speed Networks), 7(4):8-17, July 1993.
+<p>
+<!WA6><A HREF="ftp://ftp.cs.arizona.edu/xkernel/Papers/lipto.ps">lipto.ps</A>
+<BR> <cite> Beyond Microkernel Design: Decoupling Modularity and Protection 
+in Lipto. </cite> (with Larry L. Peterson and Norman C. Hutchinson.) In 
+proceedings of the 12th International Conference on Distributed Computing 
+Systems, pp. 512-520, Yokohama, Japan, June 1992.
+<p>
+
+<hr>
+
+<address> Phone: (713) 527-4664 / Fax: (713) 285-5930 / E-Mail: druschel@cs.rice.edu </address>

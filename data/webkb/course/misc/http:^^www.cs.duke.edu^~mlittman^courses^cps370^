@@ -1,0 +1,530 @@
+Date: Wed, 20 Nov 1996 22:15:54 GMT
+Server: NCSA/1.5.1
+Last-modified: Thu, 07 Nov 1996 22:14:29 GMT
+Content-type: text/html
+Content-length: 21116
+
+<head>
+<TITLE>CPS 370 - FALL 1996 </TITLE>
+<LINK REV="made" HREF="mailto:mlittman@cs.duke.edu">
+</head>
+<body>
+ 
+<p>
+
+<center>
+
+<TABLE BORDER=10 CELLSPACING=5 >
+ <TR>
+  <TD align=center colspan=4>
+   <!WA0><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/cps-t.gif" alt="CPS370">
+  </TD>
+ </TR>
+ <TR></TR>
+ <TR>
+  <TD></TD>
+  <TD ALIGN=center>
+   <H1>Fall 1996</H1>
+  </TD>
+  <TD align=center></TD>
+  <TD ALIGN=center>
+   <H1>Planning Under Uncertainty</H1>
+  </TD>
+ </TR>
+</TABLE>
+
+</center>
+
+
+<p>
+<center>
+[ <!WA1><A href="#background"> Background </A> |
+<!WA2><A href="#grading"> Grading </A> |
+<!WA3><A href="#outline"> Outline </A> |
+<!WA4><A href="#projects"> Projects </A> ]
+</center> <p>
+<center>
+<!WA5><a href="#now">Jump to current place in outline...</a>
+</center>
+<hr>
+
+<p><!WA6><a href="http://www.cs.duke.edu/~mlittman/courses/cps370/syllabus">Evolving Syllabus...</a> <p>
+
+<a name="background">
+<h2> Background </h2>
+
+This seminar will introduce students to an exciting area of research
+that draws upon results from operations research (Markov decision
+processes), machine learning (reinforcement learning), and traditional
+AI (planning) to attack problems with great scientific and commercial
+potential.  We will read and discuss a handful of recent papers that
+will give students an appreciation for the state of the art.  Students
+will undertake a group research project to solidify their
+understanding of the basic concepts and perhaps to contribute to the
+field. <p>
+
+I will make a number of presentations to introduce students to the
+background material necessary to read the research papers---only
+undergraduate-level computer science knowledge and basic probability
+theory and calculus will be assumed.  I think there are useful
+contributions to be made by researchers in AI, algorithms, complexity,
+numerical methods, and systems, and I think people in all these areas
+would find some useful information in the seminar.  Everyone's welcome!
+
+<h3> Instructor </h3>
+
+<!WA7><A href="http://www.cs.duke.edu/~mlittman">Michael L. Littman</a>
+<ul>
+<li>Office: D209 LSRC
+<li>Phone: 660-6537
+<li>Email: <!WA8><a
+href="mailto:mlittman@cs.duke.edu">mlittman@cs.duke.edu</a>
+<li>Office hours: TBA
+</ul>
+
+<h3> Description </h3>
+
+Research in planning, making a sequence of choices to achieve some
+goal, has been a mainstay of artificial intelligence (AI) for many
+years.  Traditionally, the decision-making models that have been
+studied admit no uncertainty whatsoever---every aspect of the world
+that is relevant to the generation and execution of a plan is known in
+advance.  In contrast, work in operations research (OR) has focussed
+on the uncertainty of actions but uses an impoverished representation
+for specifying planning problems.  <p>
+
+The purpose of this seminar is to explore some middle ground between
+these two well-studied extremes with the hope of understanding how we
+might create systems that can reason efficiently about plans in
+complex, uncertain worlds.  We will review the foundational results
+from AI and OR and read a series of papers written over the last few
+years that have begun to bridge the gap.
+
+
+<h3>Philosophy</h3>
+
+There are basically two or three papers on different approaches to the
+same basic problem that I'd like people to read and understand.  These
+papers are quite recent and represent active areas of research that
+have been maturing quite quickly over the last few years.  As a
+result, to get a deep appreciation for this work, we will need to read
+a number of papers that introduce the necessary background. <p>
+
+My approach to organizing the seminar will be to try to keep the
+assigned reading to a minimum and to ask students to concentrate on
+understanding the state of the field and on identifying the important
+open research questions.
+
+
+<h3>Prerequisites</h3>
+
+The seminar should be accessible to any advanced computer science
+student.  My goal is to introduce critical background material as the
+need arises. <p>
+
+Nonetheless, we need some common ground to begin.  I will assume that
+students are familiar with programming (any language), algorithm
+analysis (big O notation), calculus (derivates of multivariate
+functions), and probability theory (conditional probabilities).
+
+<h3>Postrequisites</h3>
+
+In addition to exploring the question of how to create plans that are
+effective in uncertain environments, there are a number of other
+important topics that students will learn about in this seminar:
+students will be exposed to Markov decision processes, dynamic
+programming, linear programming, temporal difference learning,
+supervised function approximation, gradient descent and neural
+networks, STRIPS rules, and partial order planning.
+
+<hr>
+<h2> <A NAME="grading"> Grading </h2>
+
+The grading policy is designed to stimulate students to think about
+some of the important issues in this area.  Class grade will be based
+on:
+
+<UL>
+<LI> class participation (25%),
+<LI> short homework assignments (25%), and
+<LI> a final project (50%).
+</UL>
+
+<hr>
+
+<A NAME="outline">
+<h2>Outline</h2>
+
+<h3>Organization Meeting</h3>
+
+On Thursday, September 5th (D344, 2:30-3:00), we'll get together to
+discuss the best time to schedule the class.  If you can't make the
+meeting, please send me email (<!WA9><a
+href="mailto:mlittman@cs.duke.edu">mlittman@cs.duke.edu</a>).
+
+
+<h3>Introduction</h3>
+
+What is planning?  What is uncertainty?  What are some applications of
+planning under uncertainty?  I'll lay out the space of issues and
+describe the part of the space we'll explore. <p>
+
+<!WA10><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> Michael Lederman Littman.  Algorithms for
+Sequential Decision Making.  Ph.D. dissertation and Technical Report
+CS-96-09, Brown University, Department of Computer Science,
+Providence, RI, March 1996.  Chapter 1: Introduction.  (<!WA11><a
+href="http://www.cs.duke.edu/~mlittman/courses/cps370/papers/littman-chap1.ps">local postscript</a>, <!WA12><a
+href="http://www.cs.duke.edu/~mlittman/courses/cps370/papers/littman-bib.ps">local bibliography postscript</a>)
+
+
+<h3>Markov Decision Processes</h3>
+
+I'll introduce the MDP model, which is a formal specification for the
+particular problem we will be examining.  I'll describe the
+fundamental concepts (states, actions, transitions, rewards,
+discounting, horizons), results (existence and dominance of optimal
+value function, optimal greedy policies), and the algorithms (value
+iteration, policy iteration, modified policy iteration, linear
+programming). <p>
+
+In a sense, these algorithms completely solve the problem of planning
+under uncertainty.  The rest of the seminar is concerned with solving
+MDPs more efficiently by exploiting additional structure present in
+some instances. <p>
+
+<!WA13><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> Michael L. Littman, Thomas L. Dean, and Leslie Pack
+Kaelbling.  On the complexity of solving Markov decision problems.  In
+<em>Proceedings of the Eleventh Annual Conference on Uncertainty in
+Artificial Intelligence (UAI--95)</em>, Montreal, Quebec, Canada,
+1995. (<!WA14><a
+href="http://www.cs.duke.edu/~mlittman/papers/mdp-complexity.ps">postscript</a>)
+<p>
+
+Homework: Represent a complex domain as an MDP. <p>
+
+Slides: <!WA15><a href="http://www.cs.duke.edu/~mlittman/courses/cps370/slides/lect2.fm.ps">postscript</a> <p>
+
+
+<h3>Accelerating Solutions to MDPs</h3>
+
+One class of algorithms for solving MDPs more quickly restricts
+value-iteration updates to states that are likely to benefit from
+additional computational resources. <p>
+
+Prioritized Sweeping uses a heuristic for measuring when updating the
+value of a state is likely to be important for computing an
+approximately optimal solution quickly. <p>
+
+<!WA16><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> Andrew W. Moore and Christopher G. Atkeson.  Prioritized
+sweeping: Reinforcement learning with less data and less real
+time. <em>Machine Learning</em>, 13:103, 1993.  (<!WA17><a
+href="http://www.cs.cmu.edu/afs/cs/project/reinforcement/papers/moore.prisweep.ps.Z">compressed
+postscript</a>) <p>
+
+Real-time dynamic programming attempts to find a good approximate
+policy quickly by focussing updates on states that are likely to be
+visited.  <p>
+
+<!WA18><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> Andrew G. Barto, S. J. Bradtke and Satinder P. Singh.
+Learning to act using real-time dynamic programming. <em>Artificial
+Intelligence</em>, 72(1):81--138, 1995.  (<!WA19><a
+href="ftp://ftp.cs.umass.edu/pub/anw/pub/barto/realtime-dp.ps.Z">compressed
+postscript</a>) <p>
+
+Another approach is to explicitly produce a good partial policy by
+identifying states that are likely to be visited and solving a smaller
+MDP. <p>
+
+<!WA20><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> Jonathan Tash and Stuart Russell. Control strategies for a
+stochastic planner.  In <em>Proceedings of the 12th National
+Conference on Artificial Intelligence</em>, 1079--1085, 1994.  (<!WA21><a
+href="http://HTTP.CS.Berkeley.EDU/~russell/papers/aaai94-mdp.ps">postscript</a>)
+<p>
+
+Slides: <!WA22><a href="http://www.cs.duke.edu/~mlittman/courses/cps370/slides/lect3.fm.ps">postscript</a> <p>
+
+
+<h3>Value Function Approximation</h3>
+
+The above approaches represent states as being completely unrelated
+objects.  In many domains, states can be described in such a way that
+similar states (from a policy or value standpoint) have similar
+representations.  For example, any attempt to create a transition
+function for the game of backgammon would likely make use of a
+board-based representation of states. <p>
+
+This insight can be exploited by exchanging the classical table-based
+method for representating value functions to one that uses a function
+approximator (for example, a neural net) to map state description
+vectors to values.  A wildly successful example of this is TD-Gammon;
+this work makes use of several important background ideas including
+gradient descent and temporal difference learning that we will need to
+look at as well.  <p>
+
+<!WA23><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> Richard S. Sutton.  Learning to predict by the method of
+temporal differences. <em>Machine Learning</em>, 3(1):9-44, 1988.  (<!WA24><a
+href="ftp://ftp.cs.umass.edu/pub/anw/pub/sutton/sutton-88.ps">postscript</a>)
+<p>
+
+<!WA25><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> Gerald Tesauro. Temporal difference learning and TD-Gammon.
+<em>Communications of the ACM</em>, 38(3):58--68, 1995. (<!WA26><a
+href="http://www.research.ibm.com/massdist/tdl.html">html</a>) <p>
+
+Slides: <!WA27><a href="http://www.cs.duke.edu/~mlittman/courses/cps370/slides/lect4.fm.ps">postscript</a> <p>
+
+Another interesting application of TD lambda and neural networks
+applied to MDP-like problems is Crites and Barto's elevator
+controller. <p>
+
+<!WA28><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> Robert H. Crites and Andrew G. Barto.  Improving
+elevator performance using reinforcement learning.  In
+D. S. Touretzky, M. C. Mozer and M. E. Hasselmo, editors, <em>Advances
+in Neural Information Processing Systems 8</em>, 1996.  The MIT Press.
+(<!WA29><a
+href="http://www-anw.cs.umass.edu./cgi-bin/getfile/pub/anw/pub/crites/nips8.ps.Z">compressed
+postscript</a>) <p>
+
+An even simpler and similarly successful example for cellular phone
+channel assignments is based on TD(0) and a linear function
+approximator. <p>
+
+<!WA30><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> Satinder Singh and Dimitri Bertsekas.
+Reinforcement learning for dynamic channel allocation in cellular
+telephone systems.  To appear in <em>Advances in Neural Information
+Processing Systems 9</em>, 1997.  The MIT Press.  (<!WA31><a
+href="ftp://ftp.cs.colorado.edu/users/baveja/Papers/CellPhone.ps">postscript</a>)
+<p>
+
+Tesauro's work is difficult to generalize because it simultaneously
+addresses many unsolved problems.  More recent work has begun to tease
+apart the effect of using function approximation in dynamic
+programming from the use of the temporal difference algorithm. <p>
+
+<!WA32><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> Justin A. Boyan and Andrew W. Moore. Generalization in
+reinforcement learning: Safely approximating the value function.  In
+G. Tesauro, D. S. Touretzky and T. K. Leen, editors, <em>Advances in
+Neural Information Processing Systems 7</em>, 1995.  The MIT
+Press.  (<!WA33><a
+href="http://www.cs.cmu.edu/afs/cs/project/reinforcement/papers/boyan.funapprox-dp.ps.Z">compressed
+postscript</a>, <!WA34><a
+href="http://www.cs.cmu.edu/afs/cs/project/reinforcement/ml95/index.html">Recent
+workshop on value function approximation</a>) <p>
+
+These results were not convincing to everyone. <p>
+
+<!WA35><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> Richard S. Sutton. Generalization in reinforcement learning:
+Successful examples using sparse coarse coding.  In <em>Advances in
+Neural Information Processing Systems 8</em>, 1996.  The MIT Press.
+(<!WA36><a
+href="ftp://ftp.cs.umass.edu/pub/anw/pub/sutton/sutton-96.ps">postscript</a>)
+<p>
+
+Slides: <!WA37><a href="http://www.cs.duke.edu/~mlittman/courses/cps370/slides/lect6.fm.ps">postscript</a> <p>
+
+Some of the most interesting recent work has concerned theoretical
+results on when function approximation will and will not result in a
+convergent algorithm.  Results exist concerning gradient descent
+methods and averaging methods.  <p>
+
+<!WA38><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> Leemon Baird.  Residual algorithms: Reinforcement
+learning with function approximation.  In Armand Prieditis and Stuart
+Russell, editors, <em>Proceedings of the Twelfth International
+Conference on Machine Learning</em>, 30--37, 1995.  Morgan Kaufmann.
+(<!WA39><a
+href="http://www.cs.cmu.edu/afs/cs.cmu.edu/Web/People/baird/papers/residual.ps.Z">compressed
+postscript</a>, <!WA40><a
+href="http://www.cs.cmu.edu/afs/cs.cmu.edu/Web/People/baird/papers/residual">html</a>) <p>
+
+<!WA41><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> Geoffrey J. Gordon.  Stable function approximation in dynamic
+programming.  In Armand Prieditis and Stuart Russell, editors,
+<em>Proceedings of the Twelfth International Conference on Machine
+Learning</em>, 261--268.  1995.  Morgan Kaufmann. (<!WA42><a 
+href="http://www.cs.cmu.edu/afs/cs.cmu.edu/user/ggordon/www/ml95-stable-dp.ps.Z">compressed
+postscript</a>) <p>
+
+<!WA43><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> John N. Tsitsiklis and Benjamin Van Roy.  Feature-based
+methods for large scale dynamic programming.  </em>Machine
+Learning</em>, 22(1/2/3): 59--94, 1996. (<!WA44><a
+href="http://www.cs.duke.edu/~mlittman/courses/cps370/papers/vanroy-converge.ps">local postscript</a>) <p>
+
+Homework: Propose a research project.
+
+<h3>Stochastic Planning</h3>
+
+The work on function approximation attempts to exploit structure in
+the state space but treats actions as black box tranformations from
+states to distributions over states.  A promising alternative is to
+use symbolic descriptions of the actions to reason about entire
+classes of state-to-state transitions all at once.  This is the
+approach taken in AI planning. <p>
+
+<!WA45><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> David McAllester and David Rosenblitt.  Systematic nonlinear
+planning.  In <em>Proceedings of the 9th National Conference on
+Artificial Intelligence</em>, 1991.  (<!WA46><a
+href="http://www.ai.mit.edu/people/dam/aaai91c.ps">postscript</a>, <!WA47><a
+href="http://www.cse.fau.edu/~matt/cap4630/AIMA-lisp-code/planning/snlp/">LISP
+code</a>) <p>
+
+In the last two years, planning algorithms have been proposed that
+differ substantially from the classic planners.  Although
+unconventional, these planners have been shown empirically to result
+in much shorter running times (up to several orders of magnitude
+faster).  Blum and Furst's algorithm views planning as a type of graph
+search while Kautz and Selman reduce planning to a boolean
+satisfiability problem. <p>
+
+<!WA48><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> Avrim Blum and Merrick Furst.  Fast planning
+through planning graph analysis.  In <em>Proceedings of the 14th
+International Joint Conference on Artificial Intelligence
+(IJCAI)</em>, pages 1636--1642, 1995.  (<!WA49><a
+href="http://www.cs.cmu.edu/People/avrim/Papers/planning.ps.gz">extended
+version in compressed postscript</a>) <p>
+
+<!WA50><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> Henry Kautz and Bart Selman.  Pushing the
+envelope: Planning, propositional logic, and stochastic search.  In
+<em>Proceedings of the 13th National Conference on Artificial
+Intelligence</em>, 1996.  (<!WA51><a
+href="http://www.research.att.com:80/~kautz/papers-ftp/plan.ps">postscript</a>)
+<p>
+
+Slides: <!WA52><a href="http://www.cs.duke.edu/~mlittman/courses/cps370/slides/lect7b.fm.ps">postscript</a> <p>
+
+In spite of recent algorithmic advances, the traditional view of
+planning ignores uncertainty.  Uncertainty can be introduced gently by
+assuming a deterministic domain with some randomness added in. <p>
+
+<!WA53><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> Jim Blythe.  Planning with external events.  In
+<em>Proceedings of the Tenth Conference on Uncertainty in Artificial
+Intelligence</em>, 1994.  (<!WA54><a
+href="http://calvin.prodigy.cs.cmu.edu/papers/uai94.ps">postscript</a>)
+<p>
+
+The Buridan system introduces a more general representation for
+stochastic STRIPS operators and extends partial order planning to
+stochastic domains.  Its representation is equivalent in
+expressiveness to MDPs. <p>
+
+Slides: <!WA55><a href="http://www.cs.duke.edu/~mlittman/courses/cps370/slides/lect8a.fm.ps">postscript</a> <p>
+
+<!WA56><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> Nicholas Kushmerick, Steve Hanks and Daniel S. Weld.  An
+algorithm for probabilistic planning.  <em>Artificial
+Intelligence</em>, 76(1-2): 239--286, 1995. (<!WA57><a
+href="file://cs.washington.edu/tr/1993/06/UW-CSE-93-06-03.PS.Z">compressed
+postscript</a>) <p>
+
+The Buridan system has been expanded so that the plan representation
+is more powerful (though less powerful than a policy-like
+representation). <p>
+
+<!WA58><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> Denise Draper, Steve Hanks and Dan Weld.  Probabilistic
+planning with information gathering and contingent execution.
+Technical Report 93-12-04, University of Washington, Department of
+Computer Science, Seattle, WA, December, 1993. (<!WA59><a
+href="ftp://ftp.cs.washington.edu/tr/1993/12/UW-CSE-93-12-04.PS.Z">compressed
+postscript</a>) <p>
+
+Slides: <!WA60><a href="http://www.cs.duke.edu/~mlittman/courses/cps370/slides/lect8b.fm.ps">postscript</a> <p>
+
+An area of intense interest (but remarkably little work!) is combining
+direct manipulation of STRIPS-type actions with a
+dynamic-programming-based algorithm.  Several papers adopt the view
+that function approximation is a form of ``abstraction,'' the form of
+which can be derived automatically from a propositional representation
+of the planning problem. <p>
+
+<!WA61><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> Richard Dearden and Craig Boutilier.  Abstraction
+and approximate decision theoretic planning.  To appear in
+<em>Artificial Intelligence</em>. (<!WA62><a href="http://www.cs.ubc.ca/spider/cebly/Papers/abstraction.ps">postscript</a>) <p>
+
+<!WA63><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> Craig Boutilier, Richard Dearden and Moises
+Goldszmidt.  Exploiting structure in policy construction.  To appear
+in <em>Proceedings of the International Joint Conference on Artificial
+Intelligence</em>, 1995. (<!WA64><a
+href="http://www.cs.ubc.ca/spider/cebly/Papers/spi.ps">postscript</a>)
+<p>
+
+<!WA65><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> Craig Boutilier and Richard Dearden.  Approximating value
+trees in structured dynamic programming.  To appear in <em>Proceedings
+of the Thirteenth International Conference on Machine Learning</em>,
+1996.  (<!WA66><a
+href="http://www.cs.ubc.ca/spider/cebly/Papers/pruning.ps">postscript</a>)
+
+Slides: <!WA67><a href="http://www.cs.duke.edu/~mlittman/courses/cps370/slides/lect8c.fm.ps">postscript</a> <p>
+
+Summary Slides: <!WA68><a href="http://www.cs.duke.edu/~mlittman/courses/cps370/slides/lect9.fm.ps">postscript</a> <p>
+
+<a name="now">
+
+Next we'll deal with partially observable Markov decision processes
+and how to solve them.
+
+<h3>Advanced Topics</h3>
+
+If we make unexpectedly fast progress through the core topics, there
+are a number of interesting issues we could explore including:
+hierarchical solutions to MDPs, partially observable MDPs, solving
+games. <p>
+
+Here are some papers I've recently found that might be useful to
+discuss.  The first gives a notation for representing multi-player
+games of incomplete information that might be useful in defining a
+similar notation for MDPs.  The second describes how to solve very
+large (and even continuous state) MDPs efficiently using linear
+programming. <p>
+
+<!WA69><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> Daphne Koller and Avi Pfeffer.  Representations
+and solutions for game-theoretic problems.  Preliminary version
+appeared in <em>Proceedings of the 14th International Joint Conference
+on Artificial Intelligence (IJCAI)</em>, Montreal, Canada, August
+1995, pages 1185--1192. (<!WA70><a
+href="http://robotics.Stanford.EDU/~koller/papers/galapaper.ps">postscript</a>)
+<p>
+
+<!WA71><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/book.gif"> Michael Trick and Stanley Zin.  A linear
+programming approach to solving stochastic dynamic programs, 1993.
+(<!WA72><a href="http://mat.gsia.cmu.edu/dyn.ps">postscript</a>) <p>
+
+<hr>
+<h2> <A NAME="projects"><!WA73><img src="http://www.cs.duke.edu/~mlittman/courses/cps370/bulb-t.gif">Project Ideas<A> </h2>
+
+The major thrust of the seminar will be to undertake a group project
+exploring some facet of the problem of planning under uncertainty.
+Some sample project ideas are:
+
+<UL>
+<LI> Are there methods of efficiently evaluating plans in complex
+domains?
+<LI> Do MDP aggregation methods have anything to offer?
+<LI> Can hierarchical methods be applied to propositional state
+spaces? 
+<LI> Can Blum and Furst's <!WA74><a
+href="http://www.cs.cmu.edu/afs/cs.cmu.edu/Web/People/avrim/graphplan.html">Graphplan</a>
+algorithm be extended to stochastic domains?
+<LI> How do the known results concerning the use of function
+approximation in dynamic programming relate to one another?
+<LI> How does Boutilier and Dearden's structured policy iteration
+algorithm perform on some simple structured MDPs?
+</UL>
+
+We're starting to make some progress on a domain for later project
+development.  Stephen Majercik has written up his ideas on a load
+balancing MDP, which are accessible from his <!WA75><a
+href="http://www.cs.duke.edu:80/~majercik/HomePage.html">home
+page</a>. <p>
+
+We've talked about using the <!WA76><a
+href="http://robotics.Stanford.EDU/~koller/gala.html">GALA</a> system
+as a basis for a general declarative language for specifying MDPs.
+Another options is a <!WA77><a
+href="http://envy.cs.umass.edu/People/sutton/RLinterface/RLinterface.html">standard</a>
+proposed by Rich Sutton.
+
+<p>
+
+<hr>
+<address>
+Last modified: Thu Nov  7 14:32:49 EST 1996
+by Michael Littman, mlittman@cs.duke.edu
+</font>
+</body>
+

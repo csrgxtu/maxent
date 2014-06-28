@@ -1,0 +1,247 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 24-Nov-96 22:48:21 GMT
+Content-Type: text/html
+Content-Length: 10203
+Last-Modified: Wednesday, 16-Oct-96 13:58:46 GMT
+
+<HTML>
+<HEAD>
+<TITLE>rdz9</TITLE>
+
+<META NAME="GENERATOR" CONTENT="Internet Assistant for Microsoft Word 2.0z">
+</HEAD>
+<BODY>
+<P>
+<CENTER><B><FONT SIZE=6>CS100<B>B</B></FONT></B></CENTER>
+<P>
+<CENTER><B><FONT SIZE=6>Lecture 9<BR>
+</FONT></B></CENTER>
+<P>
+<FONT SIZE=6>CONCEPTS --- last lecture</FONT>
+<P>
+<FONT SIZE=6>Simple expressions and programs; call/assignment
+statements and their evaluation; examples</FONT>
+<P>
+<FONT SIZE=6>CONCEPTS --- this lecture</FONT>
+<P>
+<FONT SIZE=6>Compound statements and scoping rules; blocks and
+declarations; fun with </FONT><TT><FONT SIZE=6 FACE="Lucida Console">else</FONT></TT><FONT SIZE=6>;
+iteration with </FONT><TT><FONT SIZE=6 FACE="Lucida Console">while</FONT></TT><FONT SIZE=6>
+and </FONT><TT><FONT SIZE=6 FACE="Lucida Console">break; </FONT></TT><FONT SIZE=6>fencepost
+errors<BR>
+</FONT>
+<P>
+<FONT SIZE=6>HANDOUT: Sample Prelim #1 questions<BR>
+</FONT>
+<P>
+<CENTER><B><FONT SIZE=6>Prelim #1 notes</FONT></B></CENTER>
+<UL>
+<LI><FONT SIZE=6>Review session is Sunday at 3:00</FONT>
+<LI><FONT SIZE=6>Prelim is Monday 7:30-9:00 PM</FONT>
+<UL>
+<LI><FONT SIZE=6>Coverage is: everything (but there will be no
+detailed questions on the stack model)</FONT>
+<LI><FONT SIZE=6>Closed book, closed notes, mostly for your benefit.
+ Bring a writing implement.</FONT>
+<LI><FONT SIZE=6>We don't stress memorization</FONT>
+<LI><FONT SIZE=6>We will forgive minor syntactic errors</FONT>
+</UL>
+<LI><FONT SIZE=6>Room assignments: A-L Upson B17, M-Z Phillips
+101</FONT>
+<LI><FONT SIZE=6>Don't miss the prelim!</FONT>
+<UL>
+<LI><FONT SIZE=6>Make up exams are oral, and guaranteed to be
+no easier than the real one</FONT>
+</UL>
+</UL>
+<P>
+<CENTER><B><FONT SIZE=6>Compound statements</FONT></B></CENTER>
+<UL>
+<LI><FONT SIZE=6>Another kind of C statement (we've actually seen
+this already, but hadn't given it a name)</FONT>
+<LI><FONT SIZE=6>This is what the curly braces </FONT><TT><FONT SIZE=6 FACE="Lucida Console">{}</FONT></TT><FONT SIZE=6>
+do, at least so far</FONT>
+<UL>
+<LI><FONT SIZE=6>Sort of like begin and end in PASCAL</FONT>
+</UL>
+<LI><FONT SIZE=6>Syntax: an open curly brace </FONT><TT><FONT SIZE=6 FACE="Lucida Console">{</FONT></TT><FONT SIZE=6>,
+then 0 or more statements, then a closed curly brace </FONT><TT><FONT SIZE=6 FACE="Lucida Console">}</FONT><FONT SIZE=5 FACE="Lucida Console">{</FONT><FONT SIZE=6>x
+= 3;y = square(x);}</FONT></TT>
+<LI><FONT SIZE=6>A compound expression can include declaration
+statements, but they must all appear at the beginning  (i.e.,
+before any statement which is not a declaration statement).</FONT>
+<LI><FONT SIZE=6>Example with declaration:</FONT><FONT SIZE=5 FACE="Lucida Console">{</FONT><FONT SIZE=6>int
+y;y = square(x);}</FONT>
+</UL>
+<P>
+<FONT SIZE=6></FONT>
+<P>
+<CENTER><B><FONT SIZE=6>Scoping rules</FONT></B></CENTER>
+<UL>
+<LI><FONT SIZE=6>Nasty example (don't write code like this)</FONT><FONT SIZE=5 FACE="Lucida Console">void
+main(){</FONT><FONT SIZE=6>int x;x = 3;{int x;x =4;printf(&quot;%d&quot;,x);}}</FONT>
+</UL>
+<P>
+<FONT SIZE=6></FONT>
+<UL>
+<LI><FONT SIZE=6>The rule is simple: to figure out which </FONT><FONT SIZE=6 FACE="Lucida Console">x</FONT><FONT SIZE=6>
+is intended, look outwards from the line you are on until you
+find </FONT><FONT SIZE=6 FACE="Lucida Console">x</FONT><FONT SIZE=6>.</FONT>
+<UL>
+<LI><FONT SIZE=6>You can add this to the stack model, but it's
+a little ugly and we won't do it</FONT>
+<LI><FONT SIZE=6>We won't use this feature in anything very complicated
+in CS100B</FONT>
+</UL>
+</UL>
+<P>
+<CENTER><B><FONT SIZE=6>Where have we seen compound statements?</FONT></B></CENTER>
+<UL>
+<LI><FONT SIZE=6>Conditional statements often involve compound
+statements</FONT><FONT SIZE=5 FACE="Lucida Console">if (test)
+thenstatement else elsestatement</FONT>
+<LI><FONT SIZE=6 FACE="Lucida Console">test</FONT><FONT SIZE=6>
+is an expression, but </FONT><FONT SIZE=6 FACE="Lucida Console">thenstatement</FONT><FONT SIZE=6>
+and </FONT><FONT SIZE=6 FACE="Lucida Console">elsestatement</FONT><FONT SIZE=6>
+can be any statement</FONT>
+<LI><FONT SIZE=6>It is good practice to use compound statements
+with conditional statements - it makes your code much easier to
+read</FONT>
+<LI><FONT SIZE=6>Where else have we seen compound statements?</FONT>
+<UL>
+<LI><FONT SIZE=6>Hint: in this case, they usually involve declarations</FONT>
+</UL>
+</UL>
+<P>
+<CENTER><B><FONT SIZE=6>Fun with else</FONT></B></CENTER>
+<UL>
+<LI><FONT SIZE=6>You don't actually need to use </FONT><FONT SIZE=6 FACE="Lucida Console">else</FONT><FONT SIZE=6>
+with </FONT><FONT SIZE=6 FACE="Lucida Console">if</FONT><FONT SIZE=5 FACE="Lucida Console">if
+(x != 0)  y = 1/x;printf(&quot;%d&quot;,42);</FONT>
+</UL>
+<P>
+<FONT SIZE=5 FACE="Lucida Console"></FONT>
+<UL>
+<LI><FONT SIZE=6>This can lead to totally unreadable code, especially
+if you nest your </FONT><FONT SIZE=6 FACE="Lucida Console">if</FONT><FONT SIZE=6>
+statements.  Don't do this!</FONT><FONT SIZE=5 FACE="Lucida Console">if
+(x != 0) if (y != 0)  z = x/y;else z = -1;</FONT>
+</UL>
+<P>
+<FONT SIZE=5 FACE="Lucida Console"></FONT>
+<UL>
+<LI><FONT SIZE=6>There is a reasonable way of doing multiway conditional
+statements</FONT><FONT SIZE=5 FACE="Lucida Console">if (test1)
+statement1else if (test2) statement2else if (test3) statement3&#133;else
+defaultstatement</FONT>
+<LI><FONT SIZE=6>I don't personally find this incredibly readable,
+but sometimes it's necessary</FONT>
+</UL>
+<P>
+<CENTER><B><FONT SIZE=6>Iteration</FONT></B></CENTER>
+<UL>
+<LI><FONT SIZE=6>Today we'll mostly cover the syntax of iteration
+in C</FONT>
+<UL>
+<LI><FONT SIZE=6>We'll do some examples of its use in section</FONT>
+</UL>
+<LI><FONT SIZE=6>Iteration involves executing some part of your
+program repeatedly (as does recursion!)</FONT>
+<LI><FONT SIZE=6>The easiest way to do iteration is with </FONT><FONT SIZE=6 FACE="Lucida Console">while</FONT><FONT SIZE=5 FACE="Lucida Console">while
+(expression) statement</FONT>
+<LI><FONT SIZE=6>Typically, </FONT><FONT SIZE=6 FACE="Lucida Console">statement</FONT><FONT SIZE=6>
+is a compound statement</FONT>
+<LI><FONT SIZE=6>semantics of </FONT><FONT SIZE=6 FACE="Lucida Console">while</FONT><FONT SIZE=6>:</FONT>
+<UL>
+<LI><FONT SIZE=6>evaluate expression.  </FONT>
+<UL>
+<LI><FONT SIZE=6>If it is false (zero), then we're done with the
+while statement.</FONT>
+<LI><FONT SIZE=6>If it is true (non-zero), then evaluate statement,
+<I>then evaluate the while statement again</I></FONT>
+</UL>
+</UL>
+</UL>
+<P>
+<FONT SIZE=6></FONT>
+<P>
+<CENTER><B><FONT SIZE=6>Example</FONT></B></CENTER><FONT SIZE=5 FACE="Lucida Console">void
+countdown(int count){ while (count &gt; 0)  {</FONT><FONT SIZE=6>printf(&quot;%d&#133;&quot;,count);
+ count = count - 1;} printf(&quot;Blastoff!&quot;);}<BR>
+void main(){ start = 10; countdown(start); printf(&quot;%d&quot;,start);}
+<BR>
+</FONT>
+<UL>
+<LI><FONT SIZE=6>This example also shows off a subtle but important
+property of the stack model</FONT>
+<LI><FONT SIZE=6>Note that if the test expression is never 0,
+your while statement will run forever</FONT>
+<LI><FONT SIZE=6>How do we get out of a </FONT><FONT SIZE=6 FACE="Lucida Console">while</FONT><FONT SIZE=6>
+statement early?</FONT><FONT SIZE=5 FACE="Lucida Console"> while
+(count &gt; 0)  {</FONT><FONT SIZE=6>printf(&quot;%d&#133;&quot;,count);if
+(NASA_goofed()) return;  count = count - 1;}</FONT>
+</UL>
+<P>
+<CENTER><B><FONT SIZE=6>Break statements</FONT></B></CENTER>
+<UL>
+<LI><FONT SIZE=6>Suppose that instead of getting out of the entire
+countdown function we merely want to get out of the while statement</FONT>
+<UL>
+<LI><FONT SIZE=6>NASA didn't goof, the astronauts got impatient
+and decided to blast off before the countdown finished</FONT>
+</UL>
+<LI><FONT SIZE=6>There is a good way and a bad way.  We're only
+going to teach you the good way.</FONT>
+<LI><FONT SIZE=6>The </FONT><FONT SIZE=6 FACE="Lucida Console">break</FONT><FONT SIZE=6>
+statement terminates a </FONT><FONT SIZE=6 FACE="Lucida Console">while</FONT><FONT SIZE=6>
+statement</FONT><FONT SIZE=5 FACE="Lucida Console">void countdown(int
+count){ while (count &gt; 0)  {</FONT><FONT SIZE=6>printf(&quot;%d&#133;&quot;,count);
+ count = count - 1;if (astronauts_bored(count)) break;} printf(&quot;Blastoff!&quot;);}</FONT>
+</UL>
+<P>
+<CENTER><B><FONT SIZE=6>What about nested while statements?</FONT></B></CENTER>
+<UL>
+<LI><FONT SIZE=6>Again, this allows unreadable code to be created</FONT>
+<UL>
+<LI><FONT SIZE=6>The world has enough of this without you folks
+contributing!</FONT>
+</UL>
+<LI><FONT SIZE=6>Small example:</FONT><FONT SIZE=5 FACE="Lucida Console">while(x
+&gt; 0)</FONT><FONT SIZE=6>{  x = x - 1;  while (y &lt; 0)   {
+   if (abs(x-y) &lt; 10) break;   }  if (test(z)) break; }</FONT>
+<LI><FONT SIZE=6>The rule is that a </FONT><FONT SIZE=6 FACE="Lucida Console">break</FONT><FONT SIZE=6>
+statement terminates the smallest </FONT><FONT SIZE=6 FACE="Lucida Console">while</FONT><FONT SIZE=6>
+statement that encloses it</FONT>
+</UL>
+<P>
+<CENTER><B><FONT SIZE=6>Iteration and the stack model</FONT></B></CENTER>
+<UL>
+<LI><FONT SIZE=6>As far as the stack model is concerned, iteration
+primitives aren't much different than conditional statements.</FONT>
+<UL>
+<LI><FONT SIZE=6>They simply manipulate the program counter</FONT>
+<LI><FONT SIZE=6>These primitives are sometimes called Control
+Flow primitives</FONT>
+</UL>
+</UL>
+<P>
+<CENTER><B><FONT SIZE=6>Fencepost errors</FONT></B></CENTER>
+<UL>
+<LI><FONT SIZE=6>With iteration (and also, with recursion) it
+becomes very easy to make fencepost errors</FONT>
+<LI><FONT SIZE=6>Suppose you want to build a 10' fence, and you
+need to install posts which are 1' apart</FONT>
+<UL>
+<LI><FONT SIZE=6>How many fenceposts do you need?</FONT><FONT SIZE=5 FACE="Lucida Console">void
+nastybug(){</FONT><FONT SIZE=6>int count;count = 10;while (count
+&gt; 0) {  count = count - 1;something(1/count); }}</FONT>
+</UL>
+</UL>
+<P>
+<FONT SIZE=6></FONT>
+<UL>
+<LI><FONT SIZE=6>This kind of bug is hard to find, in general</FONT>
+</UL>
+</BODY>
+</HTML>

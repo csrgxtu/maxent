@@ -1,0 +1,78 @@
+Date: Tue, 10 Dec 1996 03:21:33 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+
+<head>
+	<title>The Chaos Router Simulator</title>
+</head>
+
+<body>
+<!WA0><img src=http://www.cs.washington.edu/research/projects/lis/chaos/www/chaos.xbm> <p>
+
+<h1> <a name="top">The Chaos Router Simulator</a><br>
+</h1>
+
+
+<hr> <p>
+<!WA1><a href="http://www.cs.washington.edu/research/projects/lis/chaos/www/sim_mesh.gif"><!WA2><img src=http://www.cs.washington.edu/research/projects/lis/chaos/www/sim_mesh2.gif></a>
+<p>
+
+The Chaos Router Simulator simulates a detailed model of <em>k-ary n-cube</em>
+networks.  These include such common topologies as multi-dimensional mesh
+and torus networks and hypercube networks.  It supports both packet- and wormhole-switched
+networks, and routes packets using either Chaotic adaptive routing or
+dimension-order oblivious routing using a variety of traffic patterns.
+<p>
+In batch mode, the simulator runs until the statistics collected converge.  
+Statistics are reported on throughput, latency, and many other interesting
+aspects of the simulation.  Networks of arbitrary dimension can be simulated.  However,
+because the simulations are detailed, networks of more than 4096 nodes require
+a very long time to simulate.  (There are <!WA3><a href="http://www.cs.washington.edu/research/projects/lis/chaos/www/silly.html"> exceptions</a> to this.)
+<p>
+In animated mode, real-time <!WA4><a href="http://www.cs.washington.edu/research/projects/lis/chaos/www/sim_mesh.gif"> animation </a>  of the progress of the simulation is displayed.
+A graphical user-interface is provided which allows run-time choices of 
+many simulation details.  This can be really interesting to watch, and must be seen to
+be believed!
+<p>
+
+<hr> <p>
+<h2> Getting your own copy </h2>
+
+The Chaos Router Simulator is available via anonymous ftp from
+<!WA5><a href="ftp://shrimp.cs.washington.edu/pub/chaos/simulator">
+shrimp.cs.washington.edu</a>.  To get your own copy, get the
+files <!WA6><a href="ftp://shrimp.cs.washington.edu/pub/chaos/simulator/INSTALL">
+INSTALL </a> and <!WA7><a href="ftp://shrimp.cs.washington.edu/pub/chaos/simulator/chaosSim.tar.Z">
+chaosSim.tar.Z </a>.  Copy both of these to the directory you'd like the simulator to appear
+in, and type "INSTALL."  Move into the "chaosSim" directory and enter "configSim" to create
+a simulator executable.  This will appear in the "bin" directory, and can be executed directly.
+<p>
+
+Sample binaries for 
+<!WA8><a href=
+"ftp://shrimp.cs.washington.edu/pub/chaos/simulator/bin/Alpha/chaos.torus.Z">
+Alpha </a> and 
+<!WA9><a href="ftp://shrimp.cs.washington.edu/pub/chaos/simulator/bin/MIPS/chaos.torus.Z">
+MIPS </a> and <!WA10><a
+href="ftp://shrimp.cs.washington.edu/pub/chaos/simulator/bin/Sparc/chaos.torus.Z">
+Sparc </a> machines are available.
+
+<p>
+
+<em> Requirements: </em> The simulator is known to work under unix-like operating
+systems on DEC AXP (Alpha) workstations, Sun Sparcs, and DECstations (MIPS) using X-windows.
+The graphical interface requires the Motif extensions to X-windows.  The defaults are to
+compile the program using "gcc", but "cc" should work as well.
+
+<hr>
+<!WA11><a href="http://www.cs.washington.edu/research/projects/lis/chaos/www/chaos.html"><!WA12><img src=http://www.cs.washington.edu/research/projects/lis/chaos/www/chaos.xbm></a> Back to the Chaotic Routing Home Page <p>
+
+</body>
+<p>
+<address>
+kwb@cs.washington.edu
+</address>
+
+</html>

@@ -1,0 +1,39 @@
+Date: Tue, 10 Dec 1996 17:48:09 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Thu, 05 Sep 1996 23:57:32 GMT
+Content-length: 1019
+
+<html>
+
+<head>
+	<title>Netscape Configuration Changes </title>
+</head>
+
+<body>
+
+After unpacking the tar file (which contains two executables, MRAViewer.const and
+MRAViewer.linear), place the resulting executables somewhere in your
+path.  Then add the following lines to your personal types file (it's
+usually ~/.mime.types - see Preferences under the Options menu and
+choose "Helper Applications"):<p>
+
+<b>application/x-mramesh   mrh</b><br>
+<b>application/x-mramesh-linear   mrl</b><p>
+
+If you are on a machine that supports texture mapping, add these lines
+to your personal mailcap file (usually ~/.mailcap):<p>
+
+<b>application/x-mramesh;  MRAViewer.const -T %s</b><br>
+<b>application/x-mramesh-linear;  MRAViewer.linear %s</b><p>
+
+Otherwise, add these lines: <p>
+
+<b>application/x-mramesh;  MRAViewer.const %s</b><br>
+<b>application/x-mramesh-linear;  MRAViewer.linear %s</b><p>
+
+You're ready.<p>
+<hr>
+<!WA0><a href="http://www.cs.washington.edu/homes/certain/">Back</a> to Andrew Certain's home page.<br>
+</body>
+</html>

@@ -1,0 +1,121 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Sunday, 01-Dec-96 20:27:08 GMT
+Content-Type: text/html
+Content-Length: 4188
+Last-Modified: Friday, 03-May-96 21:05:01 GMT
+
+<html>
+<head>
+<title>Roll Dice to Solve the Same-Birthday Puzzle</title>
+</head>
+<body>
+
+<h1>Compute Probabilities of Rolling Matching Dice</h1>
+
+<p>
+<!WA0><!WA0><!WA0><!WA0><a href="#foo">[Java applet below]</a>
+</p>
+
+<p>
+A popular puzzle asks, "How many randomly selected people do you need to
+gather in order to have a better than 50 percent chance that two of them
+have the same birthday?"  
+If you make the simplifying (and not really true) assumption that 
+each person's birthday is equally likely to be on any day of the year 
+(but never on February 29)
+independently of any other person's birthday,
+then this puzzle is equivalent to asking how many 365-sided dice you
+must roll in order to have at least a 1/2 chance of rolling a pair
+(two dice showing the same number).
+</p>
+
+<p>
+The answer turns out to be surprisingly low, a lot lower than 183.
+(If you actually found 183 people all with different birthdays, then
+of course the chance that the <em>next person</em> would have the
+same birthday as one of them is greater than 1/2, 
+but in fact chances are that you
+found a match long before you collected that many people.)
+</p>
+
+<p>
+The Java applet below provides a way to find the answer to this puzzle,
+as well as many other related puzzles.
+Given 
+S = the number of sides on each of your ``dice,'' 
+D = the number of dice you will ``roll,'' 
+and M = some limit on the number of dice that
+may show any one number after you roll, 
+you can press the ``recalculate'' button next to the probability
+to see the probability that you will be able to roll
+all D S-sided dice without generating any matching set of more than M dice.
+Alternatively, 
+you can press the ``recalculate'' button next to the number of dice
+to find out how many dice you need to roll in
+order to have a sufficiently low probability of not rolling too 
+many matching numbers.
+For example, to solve the traditional birthday puzzle, select
+365 sides, at most 1 match, and 50 percent probability, and
+recalculate the number of dice.
+The applet will then tell you that if you roll 23 of these dice, you
+have only 49.27% probability of having no more than 1 die showing any
+given number, that is, you have a 50.73% chance to have at least one pair.
+</p>
+
+<p>
+To find out how many people you need to have a 50% or better chance to
+have <em>three</em> people with the same birthday,
+change the ``largest set of matches'' to 2, set the probability to 50%,
+and recalculate the number of dice.
+</p>
+
+<p>
+The text window below the buttons shows some more the results
+of the calculations with slightly greater precision.  
+If you like, you can press 
+``Display Probability Distribution'' to make the applet dump
+its entire internal database counting all the ways you can roll the
+dice without having too many dice the same.
+Remember, all probabilities are given on a scale of 0 to 100 percent.
+</p>
+
+<p>
+Beware: if you set a problem that is much too hard (for example,
+set number of sides to 365, maximum matches to 20, and probability
+to 10%---now you're asking to collect enough people to be 90% sure
+that 21 of them will share a birthday)
+you may find the calculation takes too long or runs out of memory.
+Meanwhile, while it runs, the applet may freeze up your browser.
+</p>
+
+<p>
+Also beware that due to the fact that the number in the ``probability''
+field is rounded off each time it is displayed, sometimes downward,
+and the rounded value is used to figure how many dice you should roll,
+repeated recalculation of the number of dice may result in rolling more
+and more dice to get lower and lower probabilities.
+If the displayed probability is not <em>exactly</em> the number you
+want, enter your desired value, rounding up.
+</p>
+
+<p>
+<a name="foo">
+<APPLET CODE="InteractiveDiceProblem1.class" Height=500 Width=600
+>(If your browser has the Java capability, you should see the
+dice-rolling control panel here instead of this message.)
+</APPLET>
+</a>
+</p>
+
+<p><hr>Last updated
+10 April 1996.
+(The probability calculations now use a slightly faster algorithm.)
+</p>
+
+<p><address><!WA1><!WA1><!WA1><!WA1><a href="http://www.cs.cornell.edu/home/karr/">David A. Karr</a> /
+<!WA2><!WA2><!WA2><!WA2><a href="mailto:karr@cs.cornell.edu">karr@cs.cornell.edu</a></address></p>
+
+</body>
+</html>
+

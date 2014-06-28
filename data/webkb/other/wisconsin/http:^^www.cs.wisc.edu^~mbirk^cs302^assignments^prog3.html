@@ -1,0 +1,423 @@
+Date: Mon, 11 Nov 1996 17:00:47 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 02 Oct 1996 20:28:54 GMT
+Content-length: 12560
+
+<html>
+<head>
+<title> Program 3 </title>
+</head>
+<body>
+<center> <h2> Program 3 </h2> </center>
+<p>
+<ul>
+<li> CS302 Section 12
+<li> TA: Michael Birk
+<li> Assigned: Tue 10/1/96
+<li> Due: Tue 10/8/96
+</ul>
+
+<p>
+
+For program 3, you will write a simple version of the game <b>Hangman</b>. 
+In this game, you try to guess a "secret" word or phrase one letter at a
+time.  If you guess all the letters to the word before making a certain
+number of mistakes, you win.
+
+<h3> What to Do </h3>
+
+For this assignment, you will need to combine the C++ code that you write
+with some C++ code provided by your instructor.  This provided code consists
+of two parts:
+
+<p>
+
+<ol>
+  <li> The <tt>string</tt> class, which allows you to easily create and
+       manipulate string objects.
+  <li> Two <a href="#functions">functions</a>, described below.
+</ol>
+
+<p>
+
+In order to use these provided files, you will <i>link</i> them with your
+source code.  This means that several C++ source code files are combined
+into a single executable.  Even in programs 1 and 2, your source code was
+linked with the standard library, enabling you to, for example, print to the
+screen.
+
+<p>
+
+The exact steps involved in setting up this linking process depend on the
+compiler and environment you are using:
+
+<p>
+
+<ul>
+  <li> <a href="#vectra">The Vectra Lab</a>
+  <li> <a href="#borland">Borland C++ Outside of the Vectra Lab</a>
+  <li> <a href="#gplusplus">Using GNU g++</a>
+  <li> <a href="#other">Any Other Environment</a>
+</ul>
+
+<a name="vectra">
+<h4> The Vectra Lab </h4>
+</a>
+
+If you are doing all of your work in the lab, then use the following steps. 
+Remember to <b>ask a consultant</b> if you have trouble with these
+instructions.
+
+<ol>
+  <li> Run Borland C++
+  <li> Create a "project file" by choosing "Project/New" from the menu.
+       This brings up a window prompting you for the name of the project.
+       Erase whatever is there and type <b>prog3</b> (no "dot" or three-letter
+       extension).  Also, make sure that "EasyWin" (and not "Application") is
+       selected from the list below.  Then, click on the "Advanced" button,
+       which brings up yet another window.  Here, remove the checkmark by
+       the ".rc file" and ".def file" lines.  Then click "OK" twice (once 
+       for the "Advanced" window, and again in the "New Target" window).
+  <li> Add the files for the <tt>string</tt> class and the functions to
+       your project.  To do this, first click on the line "prog3 [.exe]"
+       in the "Project Window."  It should now be highlighted.  Then hit
+       the "Insert" key and type in the file name:
+       "r:\public\mbirk\string.obj".  (Do not enter the quotation marks.)
+       Now, click on the "prog3 [.exe]" line
+       again, hit the "Insert" key, and type:
+       "r:\public\mbirk\prog3fun.obj".  Make sure you type these exactly as
+       shown.  When you are done, the "prog3 [.exe]" line should have three
+       files "hanging" from it: "prog3func [.obj]", "string [.obj]", and
+       "prog3 [.cpp]".
+  <li> Double-click on the "prog3 [.cpp]" line to bring up a blank editor
+       window.  In this window, type in the following <a
+       href="prog3/src/prog3.cpp">test program</a>:
+</ol>
+
+<p>
+
+<pre>
+#include &lt;iostream.h&gt;
+#include "r:\public\mbirk\string.h"
+
+string random_secret_phrase ();
+bool char_in_string (char ch, string string);
+
+int main ()
+{
+   cout &lt;&lt; random_secret_phrase() &lt;&lt; endl;
+   return 0; 
+}
+</pre>
+
+<p>
+
+When you run this program, it should print a single, "random" phrase and
+quit.  You can now use this program as a "shell" or "template" for the
+hangman program.
+
+<p>
+
+<b>Note:</b> The next time you run Borland C++ in order to work on Program 3, you will need
+to a "Project/Open", <i>not</i> a "File/Open."  Then select "prog3.ide" from the file
+selection window.
+
+<a name="borland"> <h4> Borland C++ Outside of the Vectra Lab </h4>
+</a>
+
+If you are using Borland C++ at home or some other site than the Vectra Lab,
+then read the <a href="#vectra">instructions</a> above.  They are correct,
+except that you cannot access the files on the <tt>r:</tt> drive.  Instead,
+you will have to <a href="prog3/src/">download</a> the ".cpp" and ".h" files
+(note that the "Makefile" and "CVS" directory won't be used) and save them
+in your working directory.  (Note that these files are <i>source</i> files
+ending in ".cpp" and ".h" instead of <i>object</i> files ending in ".obj" -
+that's ok.) Then, when creating the project, eliminate the prefix
+"r:\public\mbirk" and replace all of the ".obj" suffixes with ".cpp".
+
+<p>
+
+Note: If you are using Borland C++ 5.0, there is a minor incompatibilty. 
+Edit the "defs.h" file, and remove (or "comment out") all lines with the
+word "bool".  This is because 5.0 has the <tt>bool</tt> type built-in, but
+4.5 does not.
+
+<a name="gplusplus">
+<h4> Using GNU g++ </h4>
+</a>
+
+The process for using g++ is very different.  First, you need to <a
+href="prog3/src/">download</a> the source files.  Download all six files
+(ignore the "CVS" directory).  Then, test these files by typing "make" in
+the directory which contains them.  It should compile the program to an
+executable "prog3". Test it by typing "./prog3" - it will print a single
+"secret phrase" and exit.  Now you can use "prog3.cpp" as a basis for the
+assignment; each time you want to compile it, type "make".
+
+<a name="other">
+<h4> Any Other Environment </h4>
+</a>
+
+If you are using any other environment, such as Microsoft Visual C++ or
+Turbo C++, you may need to do some extra work.  This is because I don't have
+access to these environments, so I can't test them out.  You can try the
+following:  <a href="prog3/src/">download</a> the source files.  Consult
+your instructions on how to set up a projectt, and add the three ".cpp"
+files to this project.  You may need to modify the "defs.h" file.  If you
+can't get it to work, ask me.  If you still can't get it to work, you will
+have to do it in the Vectra Lab.
+
+<h3> Using the <tt>string</tt> Class </h3>
+
+The <tt>string</tt> class allows you to treat strings (sequences of
+characters) like built-in types, even though they're not.  String literal
+constants are in quotes, and you can define string variables, assign one
+string to another, print strings to the screen, etc.  For example:
+
+<p>
+
+<pre>
+      string first_name = "John";
+      string last_name  = "Doe";
+      cout &lt;&lt; "Hello, " &lt;&lt; first_name &lt;&lt; " " &lt;&lt; last_name &lt;&lt; "!\n";
+</pre>
+
+<p>
+
+In addition, you can "add" two strings together with the <tt>+</tt>
+operator.  This is called concatenation:
+
+<p>
+
+<pre>
+      string name = first_name + " " + last_name;
+      cout &lt;&lt; name &lt;&lt; endl;       // prints "John Doe"
+      name += ", Jr.";            // same as name = name + ", Jr."
+      cout &lt;&lt; name &lt;&lt; endl;       // prints "John Doe, Jr."
+</pre>
+
+<p>
+
+To find out how long a string is, use the <tt>length</tt> member function. 
+For example:
+
+<p>
+
+<pre>
+       string name;
+       cout &lt;&lt; "What is your name? ";
+       cin &gt;&gt; name;
+       cout &lt;&lt; "Your name is " &lt;&lt; name.length() &lt;&lt; " characters long!\n";
+</pre>
+
+<p>
+
+You can also access individual characters of the string using the square
+brackets.  Inside the brackets, put an integer expression that evaluates to
+the <i>index</i> of the character you are interested in.  These indices
+start at 0, <i>not</i> 1.  E.g.:
+
+<p>
+
+<pre>
+      string test = "Test";
+      cout &lt;&lt; test [0] &lt;&lt;    // prints "T"
+      char ch = test [2];    // ch = 's'
+</pre>
+
+<p>
+
+To access all of the characters in a string, use the square brackets inside
+of a loop.  For this you need to know how long the string is; use the
+<tt>length</tt> member function for this.  Also, note that you can modifiy
+the characters of a string using the brackets.  For example, to convert a
+string to all uppercase, you could do the following:
+
+<p>
+
+<pre>
+      for (int i = 0; i &lt; some_string.length(); i++)
+         some_string [i] = toupper( some_string[i] );
+</pre>
+
+<a name="functions">
+<h3> Using the Provided Functions </h3>
+</a>
+
+In order to hone your function-calling expertise, I am providing you with
+two functions that you must use for program 3.  These functions are the
+following:
+
+<p>
+
+<ul>
+  <li> <tt>string random_secret_phrase ();</tt> <br>
+       Returns a string that is a"random" secret phrase to use in the
+       hangman game.  Note that his function has no parameters (inputs),
+       just a return value (output).
+  <li> <tt>bool char_in_string (char ch, string string);</tt> <br>
+       Returns <tt>true</tt> if the character <tt>ch</tt> is in the
+       <tt>string</tt>, <tt>false</tt> otherwise.
+</ul>
+
+<p>
+
+For example, <tt>char_in_string ('x', "xyz")</tt> returns <tt>true</tt>,
+which <tt>char_in_string ('h', "Hello!")</tt> returns <tt>false</tt>.
+
+<h3> What To Hand In </h3>
+
+As always, hand in a printed copy of both your source code and the output
+displayed when the program is run.  For the output, you should run the
+program <b>three</b> times and hand in the printed output for all three. 
+At least on run should show you correctly guessing the secret phrase, and
+another should show you running out of chances.
+
+<b>Note:</b> don't forget to have your program print your name and section
+number, so that they show up on all of your printouts!
+
+<h3> Sample Program Output </h3>
+
+Here are some sample program outputs.  Note a few things:
+
+<p>
+
+<ul>
+  <li> Only letters are guessed; spaces and punctuation come "for free."
+  <li> The program checks for errors on input; characters which aren't
+       letters aren't allowed.  Also, you can't guess the same letter twice.
+  <li> You only lose one of your five "chances" if you guess an incorrect
+       letter (that you haven't guessed before).
+  <li> Upper-case and lower-case letters are not distinguished; guessing
+       a capital 'A', for instance, matches all lower-case 'a' letters
+       in the secret phrase.
+  <li> The program plays one game of hangman and then quits.
+  <li> To print a double-quotation mark in your program,
+       precede the double-quote with a backslash inside of a string
+       literal constant.  E.g.: <br>
+          <tt>cout &lt;&lt; "My name is \"mud\"!\n";</tt>
+</ul>
+
+<p>
+
+<pre>
+Welcome to John Q. Doe's Hangman program!
+You have five chances to guess the secret phrase.
+
+Secret phrase: "____"
+
+5 chances left!  Enter a letter: a
+Good guess!
+
+Secret phrase: "_a_a"
+
+5 chances left!  Enter a letter: t
+Sorry, that letter is not in the secret phrase.
+
+Secret phrase: "_a_a"
+
+4 chances left!  Enter a letter: R
+Sorry, that letter is not in the secret phrase.
+
+Secret phrase: "_a_a"
+
+3 chances left!  Enter a letter: s
+Sorry, that letter is not in the secret phrase.
+
+Secret phrase: "_a_a"
+
+2 chances left!  Enter a letter: p
+Sorry, that letter is not in the secret phrase.
+
+Secret phrase: "_a_a"
+
+1 chances left!  Enter a letter: l
+Sorry, that letter is not in the secret phrase.
+
+Secret phrase: "_a_a"
+
+Sorry, you ran out of chances.  The secret phrase was:
+"java"
+
+
+
+Welcome to John Q. Doe's Hangman program!
+You have five chances to guess the secret phrase.
+
+Secret phrase: "_______ ________"
+
+5 chances left!  Enter a letter: a
+Good guess!
+
+Secret phrase: "_a__a__ _a__a___"
+
+5 chances left!  Enter a letter: e
+Sorry, that letter is not in the secret phrase.
+
+Secret phrase: "_a__a__ _a__a___"
+
+4 chances left!  Enter a letter: #
+That is not a letter.  Try again.
+
+4 chances left!  Enter a letter: l
+Sorry, that letter is not in the secret phrase.
+
+Secret phrase: "_a__a__ _a__a___"
+
+3 chances left!  Enter a letter: t
+Good guess!
+
+Secret phrase: "_a_ta__ _a__a___"
+
+3 chances left!  Enter a letter: i
+Good guess!
+
+Secret phrase: "_a_tai_ _a__a___"
+
+3 chances left!  Enter a letter: n
+Good guess!
+
+Secret phrase: "_a_tain _an_a___"
+
+3 chances left!  Enter a letter: c
+Good guess!
+
+Secret phrase: "Ca_tain _an_a___"
+
+3 chances left!  Enter a letter: P
+Good guess!
+
+Secret phrase: "Captain _an_a___"
+
+3 chances left!  Enter a letter: l
+You already guessed that letter.  Try again.
+
+3 chances left!  Enter a letter: k
+Good guess!
+
+Secret phrase: "Captain Kan_a___"
+
+3 chances left!  Enter a letter: g
+Good guess!
+
+Secret phrase: "Captain Kanga___"
+
+3 chances left!  Enter a letter: r
+Good guess!
+
+Secret phrase: "Captain Kangar__"
+
+3 chances left!  Enter a letter: O
+Good guess!
+
+Secret phrase: "Captain Kangaroo"
+
+Congratulations!  You guessed the secret phrase!
+</pre>
+
+<hr>
+<address> <a href="mailto:mbirk@cs.wisc.edu">mbirk@cs.wisc.edu</a> </address>
+
+</body>
+</html>

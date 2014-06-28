@@ -1,0 +1,120 @@
+Date: Tue, 05 Nov 1996 00:32:00 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 04 Sep 1996 16:03:10 GMT
+Content-length: 5101
+
+<html>
+<head>
+<title>Assignment 2</title>
+</head>
+
+<body>
+<center><h1> Assignment 2</h1></center>
+<hr><p><ul>
+<li>Program Due Monday, September 30, before 5pm.
+<li>Homework Due Wednesday, October 2, at the beginning of class.
+</ul>
+<h2>Program</h2>
+<h3>Purpose</h3>
+This program is intended to provide understanding in the area of data representation.<p>
+<h3>Program Statement</h3>
+For a user entering data to a program, any base could be used for either input or output. We often assume that the base is ten, but it would not have to be. Write a SAL program where the user enters 3 base ten integers. The first one will be the base to use for input, the second one will be the base to use for output, and the third will be the integer. The program prints out the user-entered integer in the user-entered base. Write the code such that the user-entered base will be in the range 1 &lt; base &lt= 10.<p>
+<br>Sample program run:<p>
+<code>
+Enter the input base: <b>4</b><br>
+Enter base for printing the integer: <b>6</b><br>
+Enter the integer: <b>23</b><br>
+The integer in base 6 is 15<p>
+</code>
+Another sample program run:<p>
+<code>
+Enter the input base: <b>3</b><br>
+Enter base for printing the integer: <b>10</b><br>
+Enter the integer: <b>1022</b><br>
+The integer in base 10 is 35<p>
+</code>
+<h3>Requirements<p></h3>
+<ol>
+<li>Use procedures (functions) as defined in chapter 2 of the text. There should be one procedure that reads in a user-entered integer, and another that displays an integer in any base.
+<li>All input and output (except for the use of <code>puts</code> for displaying strings) is to be done using character oriented input and output. That means that the operand for <code>put</code> and <code>get</code> instructions may only be of type character (declared as <code>.byte</code>). The easiest way to enforce this requirement is to use the SAL <code>putc</code> and <code>getc</code> instructions instead of <code>put</code> and <code>get</code>.
+<li>If an error in user input is detected, have the program print out an error message and exit. Note that since the program will be doing input and output character by character, there are many user input errors that can be detected. Errors that should be handled include checking that the user-entered bases are in the correct range and detecting user-entered characters that could not be part of an integer.
+<li>Write the program such that it runs once, and then exits. Do not incorporate a loop to execute the program more than once.
+<li>Comment your SAL program appropriately.
+</ul>
+<h3>Handing In the Program<p></h3>
+Turn in your program (the SAL source code)
+only once by running the script<p>
+<code>handin2 program2.s<p></code><p>
+where <code>program2.s</code>
+is the name of the file containing the SAL program.
+The <code>handin2</code> script submits your program for you.
+No printout will be turned in.<p>
+
+
+
+</ul>
+<h2>Homework</h2>
+<ol>
+<li>
+(3 points) Give a base 4 representation of the base 6 value 25.4.  Show your work.
+</p>
+<li>(6 points) Fill in the missing entries in the following table. Use six bits for the binary representations. If the value required does not fit, write `overflow' for the answer.
+<pre>
+--------------------------------------------------------------------------
+|  Decimal  |  Sign Magnitude  |  One's Complement  |  Two's Complement  |
+==========================================================================
+|    23     |                  |                    |                    |
+--------------------------------------------------------------------------
+|           |      101100      |                    |                    |
+--------------------------------------------------------------------------
+|           |                  |       111100       |                    |
+--------------------------------------------------------------------------
+|           |                  |                    |       100000       |
+--------------------------------------------------------------------------
+</pre>
+<li>(4 points) Show all work in giving the IEEE single precision floating point representation for the decimal value -22.85. Truncate the repeating fraction at its least significant end. Express the result in hexadecimal.
+</p>
+<li>(4 points) What decimal value is represented by the IEEE single precision floating point representation (given in hexadecimal) 0xc3834000?
+</p>
+<li>(3 points) The SAL <code>puts</code> instruction is used to print out the string that starts at label <code>string1</code>.  The contents of memory (given in hexadecimal) are given by 
+<pre>
+(address) (contents)
+	  ------
+  string  | 66 |
+	  ------
+          | 75 |
+	  ------
+          | 6e |
+	  ------
+          | 20 |
+	  ------
+  string1 | 73 |
+	  ------
+          | 74 |
+	  ------
+          | 75 |
+	  ------
+          | 66 |
+	  ------
+          | 66 |
+	  ------
+          | 21 |
+	  ------
+          | 00 |
+	  ------
+          | 42 |
+	  ------
+          | 59 |
+	  ------
+          | 45 |
+	  ------
+</pre>
+What is printed by the <code>puts</code> instruction?
+</p>
+
+
+<p><hr>
+
+</body>
+</html>

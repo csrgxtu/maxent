@@ -1,0 +1,188 @@
+Date: Tue, 05 Nov 1996 00:27:24 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 31 Oct 1996 21:38:52 GMT
+Content-length: 7405
+
+<html>
+<head>
+<title>CS 537 - Programming Assignment I</title>
+</head>
+
+<body bgcolor="#ffffff">
+
+<h1>
+CS 537<br>Programming Assignment I
+</h1>
+
+
+<h2> Due:  </h2> September 17 at the <strong>start</strong> of class
+
+
+<hr>
+<h2>Contents</h2>
+<ul>
+<li> <!WA0><a href="#intro">        Introduction</a>
+<li> <!WA1><a href="#suggestions">Suggestions</a>
+<li> <!WA2><a href="#scanning">    Scanning</a>
+<li> <!WA3><a href="#commands">    Commands</a>
+<li> <!WA4><a href="#threads">    Using Threads</a>
+<li> <!WA5><a href="#exceptions">    Exceptions</a>
+<li> <!WA6><a href="#grading">    Grading</a>
+<li> <!WA7><a href="#misc">        Other Stuff</a>
+</ul>
+
+<hr>
+
+<a name="intro"> <h2>    Introduction </h2> </a>
+<p>
+The purpose of this assignment is to introduce you to Java programming.  
+You are to implement a simple shell (command interpreter) that behaves 
+similarly to the UNIX shell. When you type in a command (in response to 
+its prompt), it will create a thread that will execute the command you 
+entered.  Multiple commands can be chained together on a single line,
+separated by `&amp;' (ampersand) characters.  Your shell will create a
+thread for each individual command and prompt for more
+user input when they have all finished.
+<p>
+Unlike the real shell, your program only has to deal with a handful of
+``built-in'' commands:
+<table align=center width="80%">
+<tr>
+    <td> <b>cat</b> <i>file ...</i>
+    <td> Print the contents of the named files to <samp>System.out</samp> one
+    after the other.
+<tr>
+    <td> <b>cmp</b> <i>file1 file2</i>
+    <td> Check whether the two files have identical contents and print an
+    appropriate message to <samp>System.out</samp>.
+<tr>
+    <td> <b>sort</b> <i>file</i>
+    <td> Print the lines of <i>file</i> in sorted (lexicographic) order.
+<tr>
+    <td> <b>exit</b>
+    <td> Terminate the program.  You should also terminate on reaching
+    end-of-file on <samp>System.in</samp>.
+</table>
+You needn't implement 
+pipes or re-direction of standard input and standard output, but you 
+must be able to handle an arbitrary number of commands per line -- 
+each with an arbitrary number of arguments separated by arbitrary 
+amounts of white space (blanks or tabs) (although only <em>cat</em>
+takes more than two arguments).
+
+<a name="suggestions"> <h2> Suggestions </h2> </a>
+
+Your <samp>public static void main()</samp> procedure in your primary class
+will be quite simple.  It will be an infinite loop that prints a prompt, reads
+a line (in other courses, a program with an infinite loop is considered a bad
+thing, but in Operating systems, it's the norm!),
+parses it (breaks it up into its constituent commands),
+starts a new thread to handle each of the different commands,
+and then waits for all the threads to finish before printing the next prompt.
+
+<a name="scanning"> <h2>Scanning </h2> </a>
+
+For scanning, you may find it easier to read the entire line into a String
+object.  The
+<!WA8><a href="http://www.cs.wisc.edu/~cs537-1/java/api/java.lang.System.html#10726">
+<B>System.in</B> </a>
+object is of type
+<!WA9><a href="http://www.cs.wisc.edu/~cs537-1/java/api/java.io.InputStream.html">
+<B>InputStream</B>, </a>
+so it can read either single bytes or arrays of bytes.
+You could represent an input line as an array of bytes, but you will find
+it much easier to use a
+<!WA10><a href="http://www.cs.wisc.edu/~cs537-1/java/api/java.lang.String.html">
+<B>String</B> </a>
+instead.  You may want to look into the class
+<!WA11><a href="http://www.cs.wisc.edu/~cs537-1/java/api/java.io.DataInputStream.html">
+<B>DataInputStream</B> </a>
+to figure out how to read a line into a String.
+Tokenizing a String is made almost trivial using the
+<!WA12><a href="http://www.cs.wisc.edu/~cs537-1/java/api/java.util.StringTokenizer.html">
+<B>StringTokenizer</B> </a>
+class found in
+<!WA13><a href="http://www.cs.wisc.edu/~cs537-1/java/api/javae.htm">
+<I>java.util</I> </a>.
+
+<a name="commands"> <h2>Commands </h2> </a>
+
+For the <B>cat</B> command, you should look at the class <!WA14><a
+href="http://www.cs.wisc.edu/~cs537-1/java/api/java.io.FileInputStream.html"> <B>FileInputStream</B>
+</a> to see how to read data from a file.  <B>cmp</B> will be similar to cat,
+but this time the contents of the two files will be compared.  For <B>sort</B>,
+an efficient sorting algorithm is not required; anything that works is ok.
+You might want to adapt the insertion sort used to introduce Java in
+the discussion sections.
+Some of the classes that might help you here are the <!WA15><a
+href="http://www.cs.wisc.edu/~cs537-1/java/api/java.io.DataInputStream.html"> <B>DataInputStream</B>
+</a> class and the <!WA16><a href="http://www.cs.wisc.edu/~cs537-1/java/api/java.util.Vector.html">
+<B>Vector</B> </a> class.
+
+<a name="threads"> <h2>Using Threads </h2> </a>
+
+Your primary class will read a command from a user and then will create a
+thread to carry out the command.  It will then wait until the thread has
+finished before continuing its own execution.  There are two ways to start
+threads in Java.  The first is to derive your class from the <!WA17><a
+href="http://www.cs.wisc.edu/~cs537-1/java/api/java.lang.Thread.html"> <B>Thread</B> </a> class and
+then override its <samp>run()</samp> function (see pp. 161-162 in <!WA18><a
+href="http://www.cs.wisc.edu/~cs537-1/cs537.html#java-book"> the text</a>).  The second is to use the <!WA19><a
+href="http://www.cs.wisc.edu/~cs537-1/java/api/java.lang.Runnable.html#42925"> <B>Runnable</B> </a>
+interface (pp. 177-178).  Here you create a class that implements this
+interface.  You then pass a reference to this class into the constructor of a
+new thread object.  The former is perhaps easier to understand
+conceptually but the latter is more general.  You may choose
+either method for this assignment.
+
+<a name="exceptions"> <h2>Exceptions </h2> </a>
+
+Java requires you to place within a <B>try</B> block any methods that might
+cause an exception.  Following the try block is a <B>catch</B> clause
+(or catch clauses) that will
+be used to catch any exceptions that have been thrown (see chapter 7 for more
+details on the syntax of these statements).  Your code should deal with
+exceptions in an appropriate manner.  For example, exceptions such as
+attempting to open a file that does not exist should 
+result in a message to the user and the continuation of the program.  
+More serious exceptions may require an error message followed by program 
+termination (using
+<!WA20><a href="http://www.cs.wisc.edu/~cs537-1/java/api/java.lang.System.html#10832">
+<samp>System.exit()</samp></a>).
+
+<a name="grading"> <h2>Grading </h2> </a>
+
+Hand in your source program and a transcript of a terminal session which demonstrates your shell's ability 
+to perform as specified (see <samp>script(1)</samp>).  Be sure that you use test data adequate to exercise 
+your program's capabilities.  You should follow all the principles of software engineering you learned in 
+CS 302 and CS 367, including top-down design, good indentation, meaningful variable names, modularity, 
+and helpful comments.  You will be graded not only on the basis of correctness, but also programming
+style and completeness of test data.
+
+<a name="misc"> <h2>    Other Stuff </h2> </a>
+
+For those of you writing your programs on the Solaris machines, you might consider using
+a makefile to aid in compilation.  Those of you using DOS may want to look into <B>doskey</B>, 
+a little program that provides for easy command manipulation.  Feel free to send any other
+work-saving methods you find to
+<!WA21><A HREF="mailto:mellen@cs.wisc.edu">
+the ta</a>, and he will distribute them to the class.
+
+<hr>
+
+<address>
+<i>
+<!WA22><a HREF="mailto:solomon@cs.wisc.edu">
+solomon@cs.wisc.edu
+</a>
+<br>
+Thu Oct 31 15:38:52 CST 1996
+</i>
+</address>
+<br>
+Copyright &#169; 1996 by Marvin Solomon.  All rights reserved.
+
+</body>
+
+</html>

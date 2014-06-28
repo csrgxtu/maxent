@@ -1,0 +1,126 @@
+Date: Mon, 02 Dec 1996 14:50:09 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+
+<html>
+<head>
+<title>CSE/EE 461, Class messages 1996</title>
+</head>
+
+<body>
+
+<center>
+  <h1>CSE/EE 461: Class Messages<br>Autumn 1996</h1>
+</center>
+
+Message posted the 10th October.<P>
+<ul>
+<li>A solution for problem 14 in the homework is posted in lecture notes for lecture 3 on page 2.
+</ul>
+
+Message posted the 31th October.<P>
+<ul>
+<li>Regarding obtaining the simulator -  see the last paragraph on the assignment description for programming assignment 1.
+</ul>
+Message posted the 28th October.<P>
+<ul>
+<li>Corrected homeworks can be picked up by next to office 306 in EEB. 
+Homeworks older than two weeks will not be kept. Please pick yours up before next week. 
+</ul>
+<P>
+Message posted the 30th October.<P>
+<ul>
+<li>Project 2 is posted October 30th and will be due on November 13th leaving you two weeks to do a good job. Homeworks has been suspended next week as there is a midterm coming up on November 4th. So homework 6 will be posted on November 8th and due on November 15th.  
+</ul>
+<P>
+Message posted the 3th November.<P>
+<ul>
+<li>
+The TA's office hours have been changed to T Th 9:00 - 1:00 pm in order to match Prof. Somani`s office hours so that we cover the hole week. Also allowing a bigger timespand in the day. 
+</ul>
+<P>
+Message posted the 14th November.<P>
+<ul>
+<li>
+I have a question about the distinction between nodes and routers that
+comes up with the homework #6  (problem 1, 3).
+<P> 
+Are source and destination nodes considered routers? Specifically, in
+problem #1 we deal with four hops. That implies 5 nodes from which two are
+source/destination and three are the intermediate routers. As far as the
+problem #4 is concerned, does the source/destination have to keep the
+internal table as the intermediate routers? I think so, since the
+source/destination must know to which neighboring node they must forward
+their own messages if they want to send it to some destination. Also they
+could be used as intermediate routers themselves by some other nodes. Am I
+correct in my assumptions and reasoning? 
+<P> 
+I am little bit confused about this since you said in class that in some
+domains only certain nodes may be designed as routers. That would imply that
+not all source/desination nodes need to have the full tables as routers.
+Which assumption is correct for problem #1?
+<P>
+The similar problem arises in problem #3. What assumption should we  use
+in figuring out the number of routers?
+<P>
+I would appreciate if you could let me know which assumption is correct
+(or "better") and if we can use either assumption, as long as we state it,
+in our homework.
+<P>
+
+Great question.
+
+<P>
+So first a general answer. Nodes can be routers. Routers are nodes.
+Node is a general term used to designate a point where a link ends.
+Source is a node and may be a router or is only a router to one of the 
+network router node. (Every node has to have a way to inject its informations
+in the network.) So a node, that is not acting as a router need not keep
+any routing table except to know where to send the information it has to send
+out. You may call it routing table where only entry is "for all destination
+send informatiom to node x." If they have more than one neighboring node (not
+in the ethernet sense where many nodes are directly connected to the same bus),
+then they are routers, as they take information from one link and
+"route" it to another link.
+<P>
+What I said in the class is correct about have designated nodes as routers for 
+external traffic. Subdomains may have other routers for internal routing only.
+<P>
+Numbers of routers on a path are the number of intermediate nodes.
+Remember a destination for a particular packet may also be a router
+(for other packets) but it is not a router for that packet.
+<P>
+Hope this helps in clarifying the concept.
+<P>
+Arun
+</ul>
+<P>
+Message posted the 18th November.<ul>
+<li>
+Some have asked for reading list in chapter 5. The following sections have been covered. (or will be covered in the next lecture).
+<P>
+5.1
+<P>
+5.2
+<P>
+5.3 (omit 3.3.9)
+<P>
+5.4
+<P>
+5.5 (omit 5.5.5 - 5.5.9)
+<P>
+
+
+
+
+</ul>
+</body>
+
+<hr>
+<address>
+<a href="mailto:jari@cs.washington.edu">jari@cs.washington.edu</a>
+<br>
+<a href="mailto:"></a>
+</address>
+
+</html>

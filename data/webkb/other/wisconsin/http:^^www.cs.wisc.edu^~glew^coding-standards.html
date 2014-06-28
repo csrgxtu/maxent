@@ -1,0 +1,1839 @@
+Date: Tue, 05 Nov 1996 00:16:27 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 12 Sep 1996 23:37:54 GMT
+Content-length: 54366
+
+<HTML>
+$Header: /u/g/l/glew/public/html/RCS/coding-standards.html,v 1.2 1995/06/22 08:43:54 glew Exp $
+
+
+<TITLE>
+P6 C Coding Standards 
+</TITLE>
+<H1>
+P6 C Coding Standards 
+</H1>
+
+<HEAD>
+December 13, 1991
+<BR>
+P6 Architecture Group
+<BR>
+R. Wilkinson
+</HEAD>
+
+<HR>
+<H2>History</H2>
+EARLY DRAFTS - December 19, 1990; January 11, 1991
+<BR>
+FIRST RELEASE - January 29, 1991
+<BR>
+SECOND RELEASE - December 13, 1991
+Rev. 2.0
+<BR>
+Converted to HTML by A. Glew Thu Jun 22 1995
+<HR>
+
+<H2>Introduction</H2>
+
+This document details the standards to be followed when writing <B>C</B> code.
+It is expected to be followed by all <B>C</B> programmers
+in the Workgroup Computing Division - Portland.
+By promulgating these standards,
+we hope to address software issues related to readability and maintainability.
+By conforming to a common layout,
+it will be significantly easier for members within the group
+to navigate within one another's code.
+By not having to adjust to different coding formats,
+we remove a significant impediment to reading the code of others.
+In addition,
+the existence of some elements, such as standard function headers,
+will be an aid to others (and quite possibly the authors)
+in understanding what the program is doing.
+<P>
+
+Since even the simplest programs can take on lives of their own,
+it is recommended that these standards be followed from the earliest point
+of program inception.
+The relatively small overhead incurred initially
+will be more than repaid over the life of the program.
+It should also be noted that code reviews
+are intended to be part of our development methodology,
+and code is expected to conform to these standards to pass review.
+<P>
+
+While it is doubtful that everyone will be in agreement
+with all of the standards presented,
+it is expected that they will be followed nonetheless.
+In all cases,
+good reasons exist for all of the standards in this document.
+The general intent is that within (and beyond) the context of these standards,
+code should be easily <I>readable</I> and <I>understandable</I>
+by any semi-<B>C</B>-literate programmer.
+This pertains not only to the format (and legibility) of <B>C</B> programs,
+but to the existence and helpfulness of comments within the code as well.
+<P>
+
+<H2>Program Order</H2>
+
+The ordering of sections within programs will be as follows:
+<MENU>
+<LI>
+<CODE><Copyright></CODE>	The Intel copyright notice.
+<LI>				
+<CODE><RCS_id></CODE>		The RCS id declaration.
+<LI>				
+<CODE>&ltoverview&gt</CODE>		An overview of the file contents.
+<LI>				
+<CODE>&ltincludes&gt</CODE>		Any file inclusions.  Only definition files
+(".h") should be included.
+<LI>
+<CODE>&ltdefines&gt</CODE>		Macro/constant definitions.
+<LI>				
+<CODE>typedef/struct</CODE>	Any type or structure definitions.
+<LI>				
+<CODE>&ltexterns&gt</CODE>		Any external object definitions.  Use with caution.
+<LI>				
+<CODE>&ltglobals&gt</CODE>		All global variable declarations.
+<LI>				
+<CODE>&ltstatics&gt</CODE>		All static variable declarations.
+<LI>				
+<CODE>&ltforwards&gt</CODE>		All forward function declarations.
+<LI>				
+<CODE>&ltfunctions&gt</CODE>	All function declarations (including "main").
+<LI>				
+<CODE><RCS_log></CODE>		RCS "Log" information.
+</MENU>
+<P>
+These are discussed below.
+
+<DL>
+<DT>&ltCopyright&gt<DD>
+To protect Intel's intellectual property,
+every file should have a copyright notice of the form:
+<PRE>
+/* Copyright Intel Corporation, 1990, 1991. */
+</PRE>
+Each year of development should be represented.
+
+<DT>&ltRCS_id&gt<DD>
+RCS header information should go at the beginning of all files.
+This should be of the form:
+<PRE>
+	#ifndef lint
+	static char	*rcsid = "$Header: /u/g/l/glew/public/html/RCS/coding-standards.html,v 1.2 1995/06/22 08:43:54 glew Exp $";
+	#endif
+</PRE>
+
+
+In the case of header files,
+the form (for a header file called <CODE>chapeau.h</CODE>) should be:
+<PRE>
+	#ifndef lint
+	static char	*rcsid_chapeau_h = "$Header: /u/g/l/glew/public/html/RCS/coding-standards.html,v 1.2 1995/06/22 08:43:54 glew Exp $";
+	#endif
+</PRE>
+
+<DT>&ltoverview&gt<DD>
+This section is a (block) comment
+that should contain a general overview of the file's contents.
+What functionality does the file provide,
+how does it relate to other files (if part of a larger program),
+what are the major entry points, etc.,
+are all appropriate questions to answer here.
+
+<DT>&ltincludes&gt<DD>
+This section contains the "<CODE>#include</CODE>"s
+of any necessary header files.
+
+<DT>&ltdefines&gt<DD>
+This section contains any necessary "<CODE>#define</CODE>"s.
+
+<DT><CODE>typedef/struct</CODE>:<DD>>
+This section contains all <CODE>typedef</CODE>
+and/or <CODE>struct</CODE> definitions specified in the file.
+
+<DT>&ltexterns&gt<DD>>
+This section contains all <CODE>extern</CODE>
+declarations specified in the file.
+
+<DT>&ltglobals&gt<DD>
+This section contains all global variable declarations
+with external visibility.
+
+<DT>&ltstatics&gt<DD>
+This section contains all global variable
+declarations with restricted static (local) visibility.
+
+<DT>&ltforwards&gt<DD>
+This section contains all necessary
+"forward" function/procedure declarations.
+(These are routines which are referenced
+before their actual implementation is specified.)
+
+<DT>&ltfunctions&gt<DD>
+This section contains the "body" of the code.
+All routines (including <CODE>main()</CODE>) are placed here.
+
+<DT>&ltRCS_log&gt<DD>
+RCS log information should be placed
+at the end of all files.
+This should be of the form:
+<PRE>
+	/*
+	 * $Log: coding-standards.html,v $
+	 * Revision 1.2  1995/06/22 08:43:54  glew
+	 * *** empty log message ***
+	 *
+	 */
+</PRE>
+</DL>
+<P>
+
+Particularly in those cases where they are extensive,
+macro, constant, type, and structure definitions
+may be more effectively placed in a separate ".h" file.
+
+<H2>Header Files</H2>
+
+To avoid the potential problems caused by nested header files,
+the body of header files should be designed for conditional inclusion.
+The format of a header file called toupee.h is given below.
+Note the (required) use of the leading and trailing underscores.
+<PRE>
+	#ifndef _TOUPEE_H_
+	#define _TOUPEE_H_
+		:
+	<B>&ltfile body&gt</B>
+		:
+	#endif /* _TOUPEE_H_ */
+</PRE>
+
+Irrespective of the above format,
+header files should <B>not</B> include variable declarations.
+
+The use of the facilities provided in the header file, <CODE>p6system.h</CODE>,
+is strongly encouraged.
+A copy (as of December 13, 1991) has been included in Appendix A.
+The file currently lives in <CODE>~p6/arch/src/util</CODE>.
+
+<H2>Names</H2>
+
+The use of capital letters in names is not a matter of choice.
+All <CODE>#define</CODE>s should have all letters capitalized.
+This includes the definitions of both constants and macros.
+All elements of an enumerated type should have the first letter capitalized
+and all other letters lower case.
+All other names should consist entirely of lower case letters.
+Use of extraneous capital letters outside the bounds specified here
+require very strong justifications.
+<P>
+
+Names should be chosen to be reasonably descriptive.
+Underscores ("_") should be used as separators.
+Names of the form <CODE>GetCacheIndex</CODE> (or <CODE>getcacheindex</CODE>) are <B><STRONG>not</STRONG></B> acceptable.
+If lengthening a name increases clarity and/or understandability,
+the more descriptive name should be chosen.
+If this results in longer names, so be it.
+(Clearly we're assuming some bounds of reason.
+Using "<CODE>i</CODE>", "<CODE>j</CODE>", and "<CODE>k</CODE>",
+for indices in a "for" statement
+is pretty straightforward,
+while using "<CODE>the_five_bits_for_encoding_the_register_or_an_immediate_value</CODE>"
+is obvious insanity.)
+<P>
+
+Names that should be avoided are:
+<UL>
+<LI>
+Names that might conflict with standard library names.
+<LI>
+Names that differ only in case (e.g. <CODE>foo</CODE> and <CODE>Foo</CODE> and <CODE>FOO</CODE>).
+<LI>
+Names that might look like each other (e.g. <CODE>x_1st</CODE> and <CODE>x_lst</CODE> 
+<BR>
+[<CODE>x_"one"st</CODE> and <CODE>x_"el"st</CODE>]).
+<LI>
+Names that override declarations at a higher level.
+</UL>
+
+Procedures names should reflect what they <B>do</B>.
+Function names should reflect what they <B>return</B>.
+For functions returning only <CODE>TRUE</CODE>/<CODE>FALSE</CODE> values,
+a predicate form is recommended (e.g. <CODE>is_queue_empty(ready_queue_ptr)</CODE>,
+<CODE>is_ford(car)</CODE>).
+<P>
+
+Strong encouragement is given to naming variables
+and parameters that are pointers
+in some manner that makes note of this quality.
+Some suggestions are:
+<MENU>
+<LI>
+<CODE>black_table_ptr</CODE>
+<LI>
+<CODE>head_p</CODE>
+<LI>
+<CODE>tailp</CODE>
+<LI>
+<CODE>filepp</CODE>	(pointer to a pointer)
+<LI>
+<CODE>proc_AD</CODE>	(for you 960 freaks - <B>not recommended</B>)
+</MENU>
+
+Types, variables, and routines that stand a good chance of being used
+outside the file in which they are contained (via "include")
+should have their names prefixed with some string
+that will aid in finding them.
+Some examples would be '<CODE>btb_...</CODE>'
+for popular "branch target buffer" entities
+and '<CODE>dfa_...</CODE>' for items from the
+"<B>d</B>ata <B>f</B>low <B>a</B>nalyzer"
+that may experience a wider audience.
+
+<H2>Macros</H2>
+
+Macros provide a convenient mechanism for textual substitution.
+As a result of this, it is easy to introduce subtle bugs
+with the undisciplined use of macros.
+In the interests of avoiding such problems,
+the following restrictions are mandated.
+<P>
+
+Macro routines should have all elements passed explicitly
+and should have parentheses around their usage in the definition.
+The use of local and global variables within macros is discouraged.
+Macros of the form:
+<PRE>
+	#define CALC(i, j)	i + j * k - l
+</PRE>
+are in express violation of this standard.
+The appropriate form should be:
+<PRE>
+	#define CALC(i, j, k, l)	((i) + (j) * (k) - (l))
+</PRE>
+<P>
+
+If a macro consists of multiple statements,
+they should be enclosed in curly brackets ("<CODE>{</CODE>" and "<CODE>}</CODE>")
+and should
+<I>not</I>
+be ended with a semicolon ("<CODE>;</CODE>").
+<P>
+
+In the interests of avoiding potential side effects,
+it is recommended that macros be written in such a way as to evaluate
+their parameters only once.
+
+<H2>Declaration Standard</H2>
+
+This section describes the allowable forms of declarations.
+Unless mentioned in this section,
+other forms of declarations should be avoided.
+(Function declarations are described in a separate section.)
+<P>
+
+For emumerations, the proper forms are:
+<PRE>
+typedef enum { <I><I>first</I></I>, <I>second</I>, <I>third</I> } <I>type_name</I>;
+		/*
+		 * This form is acceptable if it fits easily on a single line
+		 * and the elements are self-explanatory.
+		 */
+
+
+typedef enum {
+	<I>first</I>,	/* Pertinent comment.  (Not required.) */
+	<I>second</I>,	/* Pertinent comment.  (Not required.) */
+	<I>third</I>	/* Pertinent comment.  (Not required.) */
+} <I>type_name</I>;
+		/*
+		 * This form should be used if the definition will not fit on
+		 * a single line or if individual elements require explanation.
+		 */
+
+
+typedef enum {
+	<I>first</I>,	<I>second</I>,	<I>third</I>,	<I>fourth</I>,	<I>fifth</I>,
+	<I>sixth</I>,	<I>seventh</I>,	<I>eighth</I>,	<I>ninth</I>,	<I>tenth</I>,
+	<I>eleventh</I>,	<I>twelfth</I>,	<I>thirteenth</I>
+} <I>type_name</I>;
+		/*
+		 * This form should be used for large numbers of
+		 * self-descriptive elements.
+		 */
+
+
+typedef enum {
+	<I>first</I>  = <I>initializer1</I>,
+	<I>second</I> = <I>initializer2</I>,
+	<I>third</I>  = <I>initializer3</I>
+} <I>type_name</I>;
+
+
+</PRE>
+<BR>
+For structures, the proper forms are:
+<BR>
+<PRE>
+typedef struct {
+	<I>type_name1</I>	<I>field_name1</I>;  /* Purpose/usage */
+	<I>type_name2</I>	<I>field_name2</I>;
+		/*
+		 * Particularly long and detailed explanation of the purpose/usage
+		 * of this field using remarkably long words and referencing dull,
+		 * dry tomes better left buried in the crypt from which they were
+		 * unearthed rather than be forced out into the light of day.
+		 */
+	<I>type_name3</I>	<I>field_name3</I>;  /* Purpose/usage */
+} <I>type_name</I>;
+
+
+typedef struct {
+	unsigned	<I>field_name1</I>	: 16;  /* Purpose/usage */
+	unsigned	<I>field_name2</I>	: 8;   /* Purpose/usage */
+	unsigned				: 2;   /* Why unused? */
+	unsigned	<I>field_name3</I>	: 4;
+		/* Particularly long comment regarding purpose/usage */
+	unsigned	<I>field_name4</I>	: 2;   /* Purpose/usage */
+} <I>type_name</I>;
+
+
+</PRE>
+<BR>
+And, of course, for simple declarations:
+<BR>
+<PRE>
+<I>type_name</I>	<I>id</I>;		/* Purpose/usage */
+
+<I>type_name</I>	<I>id_1</I>,
+		<I>id_2</I>;
+
+<I>type_name</I>	<I>id_1</I> = <I>init</I>,
+		<I>id_2</I> = <I>init</I>;
+</PRE>
+
+In the case of pointer declarations,
+the asterisk should be associated with the variable <I>name</I>,
+not the pointer <I>type</I>.
+To illustrate, the following is <B>wrong</B>:
+<PRE>
+				int*	index_ptr;		/* WRONG */
+</PRE>
+Rather, the <B>proper</B> form is:
+<PRE>
+				int	*index_ptr;		/* RIGHT */
+</PRE>
+
+Whether the asterisk is lined-up at the standard "tab" indentation level
+or unindented by one space is a matter of programmer choice.
+To illustrate, both of the following are acceptable:
+<PRE>
+	bool	is_ready;
+	int  *next_widget;	/* unindented */
+	char	id;
+</PRE>
+<BR>
+and:
+<BR>
+<PRE>
+	bool	is_ready;
+	int	*next_widget;	/* lined-up */
+	char	id;
+</PRE>
+
+At no time should the fact that the compiler assigns enumeration values
+in a particular manner be used in a program.
+Rather than do this,
+explicit values should be associated with the elements in the declaration.
+<P>
+
+The use of bit fields to minimize storage usage
+(as opposed to mapping hardware structures)
+is strongly discouraged.
+<P>
+
+Unless truly obvious,
+comments should be included with each element of a structure.
+<P>
+
+In variable declarations,
+there should be only one identifier on a line.
+Multiple identifiers and/or multiple identifier assignments on a line
+are not acceptable unless they are intimately related,
+and even then they are not encouraged.
+<P>
+
+Numerical constants should not be coded directly.
+Instead the "<CODE>#define</CODE>" facility should be used.
+Constants declared explicitly "<CODE>long</CODE>"
+should use a capital "<CODE>L</CODE>".
+It is too easy to confuse letters and digits if this rule is not followed
+(i.e. <CODE>2l</CODE> [2-el] looks too much like <CODE>21</CODE> [twenty-one]).
+<P>
+
+For external arrays, repeat the array bounds declarations.
+Since (given the preceding paragraph)
+any fixed limit should be "<CODE>#define</CODE>"-ed,
+there should be no problem with maintainability.
+<P>
+
+Never default "<CODE>int</CODE>" declarations, whether functions or parameters.
+<P>
+
+The generous use of the keyword "<CODE>static</CODE>"
+on global functions and variables is encouraged
+to restrict their visibility outside the file.
+Global accessiblity of variables is discouraged without good reasons.
+Conversely,
+the use of local "<CODE>extern</CODE>" declarations
+within functions is actively discouraged without strong justification.
+<P>
+
+In general, it is a poor idea to employ local declarations
+that override declarations at higher levels.
+<P>
+
+Particularly in the case of <CODE>struct</CODE>s,
+types and instances of types should not combined in the same declaration.
+To illustrate, the following is <B>not</B> acceptable.
+
+<PRE>
+	struct windmill {
+		int	num_sails;
+		int	usage;
+		int	style;
+	} don_quixote;				/* WRONG */
+
+
+</PRE>
+<BR>
+Rather, it should be:
+<BR>
+<PRE>
+	struct windmill {
+		int	num_sails;
+		int	usage;
+		int	style;
+	};
+
+	struct windmill	don_quixote;	/* RIGHT */
+</PRE>
+
+<H2>Expressions</H2>
+
+It has been said that there is little one can do about the problems
+caused by side effects in parameters
+except to avoid side effects in expressions.
+These are commendable words and should be adhered to rigorously.
+Remember that the "<CODE>++</CODE>" and "<CODE>--</CODE>" operators are also
+assignment operators and thus <I>do</I> produce side effects.
+<P>
+
+Conditional expressions (<CODE>a ? b : c</CODE>),
+are not intuitive,
+can be confusing (particularly nested conditional expressions),
+and should be avoided.
+Where appropriate, the approved form is:
+<PRE>
+	(<I>condition</I> ? <I>true_return_val</I> : <I>false_return_val</I>)
+</PRE>
+where the parentheses and the spaces around the "<CODE>?</CODE>"
+and "<CODE>:</CODE>" are mandatory.
+In addition,
+if any portion of the expression is other than a simple expression,
+parentheses around the offending section are encouraged.
+<P>
+
+Expressions that span multiple lines should be split before an operator,
+preferably at the lowest-precedence operator near the break.
+<P>
+
+When using negation (!) in conditional expressions,
+it is recommended that the expression to be operated upon
+be enclosed in parentheses
+to improve readability and remove any ambiguities that might arise.
+<P>
+
+The use of left-shift and right-shift operators
+should be reserved for bit operations.
+Their use for multiplication, division,
+and exponentiation is strongly discouraged.
+(Besides, most intelligent compilers will recognize the arithmetic cases
+and produce <I>shift</I> code for them, anyway.)
+<P>
+
+<H2>Assignment Statements and Initializations</H2>
+
+There is a time and place for embedded assignment statements, but rarely.
+In general they should be avoided.
+The primary acceptable instance is in conditional statements
+to check for special conditions.
+The two best examples are:
+<PRE>
+	if ((obj_ptr = malloc(elem_num, elem_size) == NULL) {
+		<I><Handle memory exhaustion condition></I>
+	}
+</PRE>
+<BR>
+and:
+<BR>
+<PRE>
+	while ((c = getchar()) != EOF) {
+		<I><Process character></I>
+	}
+</PRE>
+Remember, an embedded assignment statement is a form of side effect
+(and that "<CODE>x++</CODE>" and "<CODE>x--</CODE>"
+are also assignment statements.)
+<P>
+
+Unless a local variable is going to be used very shortly after it is declared,
+it is recommended its initialization be performed at its point of first use
+rather than where it is declared.
+Global variables should be initialized where declared.
+If this is not convenient (e.g. large arrays),
+they should be initialized in a dedicated initialization routine.
+In the case of dynamic initialization of structure variables,
+initialize the fields in the order in which they are defined.
+To illustrate:
+<PRE>
+	typedef struct {
+		int	maker;
+		int	model;
+		int	year;
+		int	color;
+	} car;
+
+
+	car	my_car;
+
+	my_car.maker = PORSCHE;
+	my_car.model = most_expensive;
+	my_car.year  = this_year;
+	my_car.color = RED;
+</PRE>
+
+Since we live in an imperfect world,
+do not assume that uninitialized variables
+will be set to zero by the compiler.
+While this might be the case,
+resist the temptation to succumb to this assumption.
+If the initial value of a variable makes a difference,
+initialize it explicitly.
+<P>
+
+Along these lines,
+remember that that memory allocated by <CODE>malloc()</CODE>
+will not be zeroed.
+If it is important to have dynamically allocated memory zeroed
+(usually a good idea), <CODE>calloc()</CODE> should be used.
+(With respect to dynamic memory allocations,
+the reader is referred to the "safer" versions of these routines
+discussed in the <B>P6 System Header File</B> appendix.)
+<P>
+
+<H2>Simple Statements</H2>
+
+For the purpose of the ensuing discussions,
+we wish to define what we mean by a "simple" statement.
+A simple statement is one of three possibilities:
+<PRE>
+</PRE>
+<BR>
+It is either a simple assignment:
+<BR>
+<PRE>
+		a = x[i];
+</PRE>
+<BR>
+	or
+<BR>
+<PRE>
+		a = f(x);
+</PRE>
+<BR>
+a simple increment:
+<BR>
+<PRE>
+		i++;
+</PRE>
+<BR>
+	or
+<BR>
+<PRE>
+		m = m + n;
+</PRE>
+<BR>
+or a function call:
+<BR>
+<PRE>
+		f(a, b, c);
+
+</PRE>
+<BR>
+It is doubtful that:
+<BR>
+<PRE>
+		*z[t] = f(x[f1(i)], f2(y[j] + n), k * r(s));
+</PRE>
+<BR>
+could be considered a simple statement.
+<BR>
+<PRE>
+</PRE>
+
+<H2>Conditional Statements</H2>
+
+The form of conditional statements is as follows:
+<PRE>
+	if (<I>condition</I>)
+		<I>simple_then_statement</I>;
+</PRE>
+<BR>
+or (preferable)
+<BR>
+<PRE>
+	if (<I>condition</I>) {
+		<I>then_statements</I>;
+	}
+</PRE>
+<BR>
+With an <CODE> else </CODE> part:
+	if (<I>condition</I>)
+		<I>simple_then_statement</I>;
+	else
+		<I>simple_else_statement</I>;
+</PRE>
+<BR>
+or
+<BR>
+<PRE>
+	if (<I>condition</I>) {
+		<I>then_statement(s)</I>;
+	} else {
+		<I>else_statement(s)</I>;
+	}
+
+
+</PRE>
+<BR>
+For complex conditions:
+<BR>
+<PRE>
+	if (    <I>condition_1</I>
+	    && (<I>condition_2</I> | | <I>condition_3</I>)
+	    &&  <I>condition_4</I>) {
+		<I>then_statements</I>;
+	} else {
+		<I>else_statements</I>;
+	}
+
+
+</PRE>
+<BR>
+For nested if's, the proper form is:
+<BR>
+<PRE>
+	if (<I>condition1</I>) {
+		<I>statements</I>;
+	} else if (<I>condition2</I>) {
+		<I>statements</I>;
+	} else if (<I>condition3</I>) {
+		<I>statements</I>;
+	} else {
+		<I>statements</I>;
+	}
+
+
+</PRE>
+<BR>
+For nested control structures (including nested "if" statements), compound statements are required.
+To illustrate, the following is <B><STRONG>not</STRONG></B> allowed:
+<BR>
+<PRE>
+	if (<I>condition1</I>)
+		while (<I>condition2</I>) {
+			<I>statements</I>;
+		}
+	else
+		<I>else_statement</I>;		/* WRONG */
+
+
+</PRE>
+<BR>
+Rather, the approved form is:
+<BR>
+<PRE>
+	if (<I>condition1</I>) {
+		while (<I>condition2</I>) {
+			<I>statements</I>;
+		}
+	} else {
+		<I>else_statement</I>;		/* RIGHT */
+	}
+
+
+</PRE>
+<BR>
+The use of compound statements is recommended to avoid ambiguity.  The following is <B><STRONG>not</STRONG></B> acceptable:
+<BR>
+<PRE>
+	if (<I>condition1</I>)
+		if (<I>condition2</I>)
+			<I>simple_then_statement</I>;	/* WRONG */
+	else
+		<I>simple_else_statement</I>;
+
+
+</PRE>
+<BR>
+It is better to use either
+<BR>
+<PRE>
+	if (<I>condition1</I>) {
+		if (<I>condition2</I>)
+			<I>simple_then_statement</I>;
+	} else {
+		<I>simple_else_statement</I>;
+	}
+</PRE>
+<BR>
+or<CODE>
+	if (<I>condition1</I>) {
+		if (<I>condition2</I>) {
+			<I>simple_then_statement</I>;
+		} else {
+			<I>simple_else_statement</I>;
+		}
+	}
+</PRE>
+(Depending upon what was intended.)
+<P>
+
+The only time brackets are <B>not</CODE> required on <B>all</B> parts
+of a conditional statement
+is when all parts of the conditional statement are simple statements
+(as defined above in the <B>Simple Statements</B> section).
+In other words,
+if <B>any</B> part of a conditional statement is a compound statement
+(for whatever reason),
+then <B>all</B> parts must be compound.
+<P>
+
+In general, the use of compound statements {}
+is encouraged as an aid to readability and maintainability.
+<P>
+
+<H2>Iterative Statements</H2>
+
+Iterative statements should be of the form:
+<PRE>
+	while (<I>condition</I>) {
+		<I>statements</I>;
+	}
+</PRE>
+<BR>
+or
+<BR>
+<PRE>
+	do {
+		<I>statements</I>;
+	} while (<I>condition</I>);
+</PRE>
+<BR>
+or
+<BR>
+<PRE>
+	for (i = <I>initial</I>; <I>condition</I>; <I>next</I>) {
+		<I>statements</I>;
+	}
+
+
+</PRE>
+<BR>
+For infinite loops, the recommended form is:
+<BR>
+<PRE>
+	while (TRUE) {		/* (If TRUE has been defined nonzero.) */
+		<I>statements</I>;
+	}
+</PRE>
+<BR>
+or
+<BR>
+<PRE>
+	while (1) {
+		<I>statements</I>;
+	}
+</PRE>
+
+If there is only a single, simple statement to be executed,
+the brackets {} are not required but <I>are</I> encouraged.
+In any event,
+the statement to be executed must be on a line of its own.
+<P>
+
+If an iterative statement has a null (empty) body,
+it should use an empty compound statement containing a comment
+verifying its emptiness.
+<PRE>
+	/* Find where strings differ. */
+	while (*str1++ == *str2++) {
+		/* VOID */
+	}
+</PRE>
+
+The use of the "<CODE>continue</CODE>" statement is not encouraged.
+When used, it should be commented explicitly and,
+if possible, used early in the loop body.
+In addition,
+appropriate comments should added to make it easy to determine
+its target.
+<P>
+
+<H2>Compound (Bracketed) Statements</H2>
+
+As mentioned earlier,
+there is no requirement to use brackets {} in iterative statements
+if there is only a single, "simple" statement to be executed.
+The same was said to be true for conditional statements,
+with the added proviso that if <I>any</I> statement in the conditional statement
+was compound,
+then <I>all</I> statements were required to be compound.
+<P>
+
+In these cases,
+although the brackets are not required
+they are strongly recommended as an aid to maintainability.
+To illustrate this, consider the following calculation of Ackermann function values:
+
+<PRE>
+	x[0] = 1;
+	x[1] = 1;
+	for (i = 2 ; i <= LIMIT ; i++)
+		x[i] = ackermann(x, i);
+</PRE>
+
+Should we later decide to sum the values as we go along, we might unwittingly add:
+<PRE>
+	x[0] = 1;
+	x[1] = 1;
+	sum = 2;				/* New code. */
+	for (i = 2 ; i <= LIMIT ; i++)
+		x[i] = ackermann(x, i);
+		sum = sum + x[i];		/* New code. */
+</PRE>
+Here, although the indentation might make it look right,
+<CODE>sum</CODE> is only calculated <I>after</I> the <CODE>for</CODE> loop
+and would end up with the value, <CODE>2 + ackermann(LIMIT)</CODE>.
+While we all know better than to do something stupid like this,
+its occurrence (by others, of course) is all too frequent.
+Thus the recommended form of the initial construct is:
+
+<PRE>
+	x[0] = 1;
+	x[1] = 1;
+	for (i = 2 ; i <= LIMIT ; i++) {
+		x[i] = ackermann(x, i);
+	}
+</PRE>
+This removes any possibility of ambiguity
+and reduces the chance of error with later enhancements/modifications.
+
+<H2>Switch Statements</H2>
+
+Switch statements should have the following form:
+<PRE>
+	switch (<I>selector</I>) {
+	    case <I>first</I>:
+	    case <I>the_second</I>:
+	        <I>statements</I>;
+	        break;
+
+	    case <I>third</I>:
+	        <I>statements</I>;
+	        break;
+
+	    case <I>dont_care_1</I>:
+	    case <I>dont_care_2</I>:
+	        break;
+
+	    default:
+	        fatal("Unexpected selector in '<I>procedure_name</I>'");
+	}
+</PRE>
+Switch statements are the only departure from the "standard" indentation.
+As will be mentioned in the <I>Indentation and Spacing</I> section,
+the standard indentation is 8 spaces (one 8-space tab stop).
+In switch statements,
+the '<CODE>case</CODE>'s are indented 4 spaces from the '<CODE>switch</CODE>'
+and the statements are indented 8 spaces (one tab) from the '<CODE>switch</CODE>'.
+<P>
+
+The last <CODE>case</CODE> of the statement should be followed by an explicit <CODE>break</CODE>,
+even if it <I>is</I> the last choice in the statement.
+This prevents potential oversight problems
+when the switch statement is added to at a later time.
+If the last choice in the switch statement is <CODE>default</CODE>,
+it does not require a <CODE>break</CODE>.
+<P>
+
+In the case of enumerated types,
+each element of the enumeration must have a "<CODE>case</CODE>"
+in the switch statement.
+In addition, a "<CODE>default</CODE>" must exist as the last choice
+and must contain an indication that an error has occurred.
+<P>
+
+If the statements in a particular '<CODE>case</CODE>' do not end with a '<CODE>break</CODE>'
+(thereby continuing control in the following '<CODE>case</CODE>'),
+a bold comment should exist to indicate and explain the situation.
+In addition,
+it is recommended that a 'lint' style comment of the form
+<CODE>/*FALLTHROUGH*/</CODE> be placed where a <CODE>break</CODE> might otherwise be.
+To illustrate:
+<PRE>
+	/* Print numeric value. */
+	switch (num->type) {
+	    case signed_int:
+	        putchar(num->negative ? "-" : "+");	/* Place the sign. */
+	        /*FALLTHROUGH*/
+
+	    case unsigned_int:
+	        printf("%d", num->int_value);		/* Now print the value. */
+	        break;
+
+	    case floating_pt:
+	        printf("%lf", num->fp_value);
+	        break;
+
+	    default:
+	        warning("Unknown num->type encountered.");
+	}
+</PRE>
+
+
+<H2>Function Standard</H2>
+
+The proper form of a function declaration is as follows:
+<PRE>
+/*
+ * <I>function_name</I>
+ *
+ *FUNCTION:
+ * Interface specification.  Purpose of routine.  Expected usage.
+ * Pertinent comments regarding return values.
+ *
+ *PARAMS:
+ * Discussion of parameters.  Assumptions made about parameters, if any.
+ * This section is necessary only if there is something more meaningful to be said
+ * about the parameters that is not contained in their comments.
+ *
+ *LOGIC:
+ * Internal operation and structure.  Algorithm description.
+ *
+ *ASSUMPTIONS:
+ * Assumptions made that affect the correct functioning of the routine.
+ *
+ *NOTE:
+ * Any special caveats, concerns, or special cautions.
+ *
+ *RETURNS:
+ * Information regarding the possible return values.
+ */
+
+<I>return_type</I>
+<I>function_name</I>(<I>param1</I>, <I>param2</I>)
+<I>param_type</I> <I>param1</I>;		/* Purpose.  Expected values. */
+<I>param_type</I> <I>param2</I>;		/* OUT:  (If modified.)  Purpose.  Expected values. */
+{
+	<I>type1</I> <I>variable1</I>,	/* Purpose of variable.  Description of use. */
+	        <I>variable_the_second_of_this_type</I>;
+				/*
+				 * Purpose and description of this second variable.
+				 * As much detail as necessary to make sense to others.
+				 */
+	<I>type2</I> <I>variable_3</I>;	/* Comment as above. */
+
+	<I>CODE BODY</I>;
+
+}/*** end <I>function_name</I>() ***/
+</PRE>
+
+
+While portions of the function's comment header may be omitted
+if they have no meaningful content,
+minimum necessities are the <CODE><I>function_name</I></CODE> and the <CODE>FUNCTION:</CODE> sections.
+<P>
+
+Each function parameter must be declared on a separate line.
+Declarations of multiple parameters of the same type on the same line
+is expressly forbidden, no matter how intimately related the parameters may be.
+<P>
+
+Although <B>C</B> assumes that a function
+without a specified type returns an <CODE>int</CODE>,
+this construct should never be used.
+All functions should have either an explicit return type or <CODE>void</CODE>
+(for "no return value").
+If a function is specified as <CODE>void</CODE>,
+it should never be used as an expression.
+If a function is specified with an explicit return type,
+it should never be used as a statement.
+If the returned value is of no interest,
+it is recommended that it be cast in the form:
+<PRE>
+	(void) f(x);
+</PRE>
+<BR>
+or
+<BR>
+<PRE>
+	dont_care = f(x);
+</PRE>
+
+<H2>Indentation and Spacing</H2>
+
+With the specific exceptions mentioned earlier
+in the section on <I>Switch Statements</I>,
+the standard unit of indentation is an 8-space tab (or 8 spaces).
+Use of tabs is encouraged,
+but tab stops must be, <I>without exception</I>, 8 spaces.
+(Due to the idiosyncrasies of text formatters,
+tabs [or 8 spaces] may not be translated to paper accurately
+for the examples in this document.
+Assume indentation levels of 8 spaces if that appears to be the intent.)
+<P>
+
+Every <I>reasonable</I> effort should be made
+to limit line lengths to 80 characters.
+This improves the readability when looking at listings
+or when viewing on standard (limited) alpha-numeric terminals.
+While program understandability should not be compromised to meet this goal,
+code which consistently breaks the 80 column barrier
+may need to be justified before a higher court.
+<P>
+
+One of the primary purposes of spaces in a program is to enhance readability.
+To this end, the use of horizontal and vertical spacing is encouraged.
+As an aid to the uncertain reader, the following recommendations are provided:
+
+<UL>
+<LI>
+At least three blank lines between routines.
+
+<LI>
+One space after a comma.
+
+<LI>
+Spaces around all assignment operators (<CODE>=</CODE>, <CODE>+=</CODE>, <CODE>-=</CODE>, etc.).
+
+<LI>
+One space on either side of a binary operator
+(except for "<CODE>.</CODE>" and "<CODE>-></CODE>").
+
+<LI>
+No spaces between an identifier and "++" or "--".
+
+<LI>
+No space between a function name and its left paren.
+
+<LI>
+No extraneous spaces at the end of a line.
+</ULy>
+
+<H2>Comments</H2>
+
+Comments are a vital and necessary aid to program understanding.
+As this is one of our expressed goals, they are strongly encouraged.
+It should be noted that this insistence on comments in the code
+is not so much to help the original developer
+(though they may prove useful in that regard),
+as to support others who may become
+involved with the code at some later date.
+Whether next week, next month, or next year,
+someone (potentially less brilliant) will need to understand the code
+without the benefit of the developer's assistance.
+This is the audience towards which comments should be directed.
+<P>
+
+Comments of the form:
+<PRE>
+	/*
+	 * <Comment string>
+	 */
+</PRE>
+are especially encouraged.
+Whenever the closing delimiter (<CODE>*/</CODE>)
+is not on the same line as the opener (<CODE>/*</CODE>),
+it must be lined up with the opener (as above).
+In addition, comments of the form:
+<PRE>
+	/*
+	 * <Comment string> */
+</PRE>
+<BR>
+or
+<BR>
+<PRE>
+	/* <Comment string>
+	 */
+</PRE>
+<BR>
+or
+<BR>
+<PRE>
+	/* <Comment string>
+	 * <More comments>
+	 */
+</PRE>
+are expressly forbidden.
+<P>
+
+Comments that refer to code that follows the comment
+should be at the same indentation level as the code that follows.
+Comments that directly refer to code just preceding the comments
+should be indented one level from the indentation level of the preceding code.
+To illustrate:
+
+<PRE>
+	/* Now get the next free index. */
+	index = get_free_index(x_ptr);
+		/* This returns either a free index or zero if there are none. */
+</PRE>
+
+In addition to the normal "good sense" commenting,
+offensive code should be justified with profuse comments.
+<P>
+
+As aids to readability, comprehension, and organization,
+comment "banners" acceptable by the code review committee are permitted
+(though not required).
+Some popular choices by those attached to this approach include:
+<P>
+
+<PRE>
+/******************************************************************************/
+/**************************** FUNCTION DECLARATIONS ***************************/
+/******************************************************************************/
+
+</PRE>
+<BR>
+or
+<BR>
+<PRE>
+/**************************** VARIABLE DECLARATIONS ***************************/
+
+</PRE>
+<BR>
+or
+<BR>
+<PRE>
+/***********************/
+/******  GLOBALS  ******/
+/***********************/
+</PRE>
+
+A <I>^L</I> (Control-L) can be helpful in formatting output.
+It causes a <I>page-feed</I>,
+so subsequent text starts at the top of a new page.
+If used, the <I>^L</I> should be on a line by itself.
+At no time should it be considered acceptable to substitute
+a <I>^L</I> for blank lines between functions.
+
+<H2>Miscellaneous</H2>
+
+As an aid to promoting good programming practice,
+the use of the notorious "<CODE>goto</CODE>"s, "<CODE>setjmp()</CODE>"s,
+and "<CODE>longjmp()</CODE>"s
+are outlawed.
+In order to employ such a construct,
+it must be conclusively proven that to do otherwise
+results in impossibly convoluted code.
+<P>
+
+Pointer arithmetic is potentially dangerous and should be used with care.
+It goes without saying that <B>C</B> permits a wide latitude in pointer operations.
+However, the fact that the language provides the means to hang oneself
+does not necessarily mean that that is the thing to do.
+Code will be far more readable and maintainable if such constructs are avoided.
+While it is true that usage of the form:
+<PRE>
+	c = char_ptr++;
+</PRE>
+may be reasonable,
+usage of the form:
+<PRE>
+	c = (char1_ptr - char2_ptr);
+</PRE>
+is a bad idea at best.
+Rather than risk needless obfuscation,
+it is recommended that all but the simplest pointer arithmetic
+be avoided if at all possible.
+Where its use is necessary,
+the presence of explanatory comments is very strongly advocated.
+<P>
+
+Pointers should be compared to <CODE>NULL</CODE>
+(from a header file such as <CODE>stdio.h</CODE>) rather than <CODE>0</CODE>.
+<P>
+
+Code that depends upon the order of evaluation of expressions is not acceptable.
+Examples of such things are:
+<PRE>
+	a[i] = b[i++];			/* BAD! */
+</PRE>
+<BR>
+and
+<BR>
+<PRE>
+	x = f(a[i], i++);			/* MORE BAD! */
+</PRE>
+These come under the province of side effects and should be avoided
+(as discussed in the section, <B>Expressions</B>).
+<P>
+
+In all cases,
+code should be written to be as readable and understandable as possible
+to someone with a moderate understanding of <B>C</B> and programming,
+and a reasonable understanding of the program in question.
+Where subtleties of <B>C</B> are necessary,
+they should be commented clearly
+so as to be readily understandable by any <B>C</B> programmer.
+Where particularly involved or complex code is required,
+comments should be copiously strewn about to promote better understanding.
+At no time should code be written whose correct understanding
+depends upon the detailed knowledge of the workings of a particular compiler.
+<P>
+
+Certain character strings have been reserved for use
+under only certain conditions.
+They serve as flags to alert us to circumstances
+that may require special attention.
+These reserved strings are expected to be used in comments
+to indicate particular situations.
+Their description and usage is as follows:
+
+<DL>
+<DT><B>TBD</B><DD> - This "flag" is used to indicate items
+that require later definition.
+It stands for <B>T</B>o <B>B</B>e <B>D</B>efined (or <B>D</B>etermined).
+The ensuing comment should provide more particulars.
+
+<DT><B>NYI</B><DD> - This "flag" is used to indicate items that have been defined
+and are now awaiting implementation.
+It stands for <B>N</B>ot <B>Y</B>et <B>I</B>mplemented.
+The ensuing comment should provide more particulars.
+
+<DT><B>MACHDEP</B><DD> - This "flag" is used to indicate the existence of an explicit
+machine dependency in the code.
+Again, the ensuing comment should provide more particulars.
+
+<DT><B>BUG:</B><DD> - This "flag" is used to indicate the existence of a bug of some form.
+It should be followed immediately in the comment (on the same line)
+with one of the keywords <I>incomplete</I>, <I>untested</I>, or <I>wrong</I>,
+to indicate its type along with a more descriptive comment if appropriate.
+If none of the keywords is applicable,
+some other descriptive word should be used
+along with a more extensive comment.
+</DL>
+
+Machine dependent code should be avoided as much as possible.
+Where absolutely necessary,
+it should be localized in routines in a separate file if at all possible.
+In all cases,
+extensive comments are the order of the day.
+<P>
+
+The use of conditional compilation facilities is discouraged wherever possible.
+When necessary,
+it is recommended that it be localized in
+header files and a separate "machine-dependent" code file.
+<P>
+
+Structure overlays
+(casting one structure pointer type to a different structure pointer type)
+should be avoided at all costs.
+For those rare cases where they are absolutely necessary,
+it is advised that they be localized
+in a separate "machine-dependent" file with copious comments.
+<P>
+
+Avoid the use of unnecessary global variables.
+<P>
+
+The "<CODE>include</CODE>"ing of "<I>name</I>.c" files (code files)
+is strongly discouraged.
+<P>
+
+Where disagreements arise,
+the code review committee will have the final word
+on the extent to which code is readable and understandable.
+The request by a code review member for more (useful) comments
+will be evidence that such comments are necessary.
+Anyone responsible for coding in a manner at odds with these standards
+under the assumption that <I>a)</I> no one will be reading their code,
+or <I>b)</I> it will never go through code review (for whatever reasons),
+or <I>c)</I> they just don't care,
+will be suspended by their toes and shot at dawn.
+<P>
+
+<H3>Use of 'indent'</H3>
+
+It is possible to use the program, <B>indent</B>,
+to provide formatting of a file that
+<I>roughly</I>
+conforms
+to these coding standards (with some incompatible differences).
+To accomplish this, run:
+<PRE>
+<CODE>	indent <I>in_file</I> -npro -nip -nfc1 -cli0.5 -c0 -i8</CODE>
+</PRE>
+This will save the old version of the file in <CODE><I>in_file</I>.BAK</CODE>
+and place the newly-formatted version in <CODE><I>in_file</I></CODE>
+(or you can specify an explicit <CODE><I>out_file</I></CODE> after <CODE><I>in_file</I></CODE>).
+Unfortunately, it does not handle formatting of comments correctly in all cases.
+In specific,
+comments of the form:
+<PRE>
+/* Very boring comment that goes beyond the end of the line (length = 76) */
+</PRE>
+will get reformatted to be:
+<PRE>
+	<CODE>/* Very boring comment that goes beyond the end of the line
+	 * (length = 76) */</CODE>
+</PRE>
+in direct violation of the comment standard.
+What this means is that
+after running <CODE>indent</CODE> on a file,
+it is still necessary to go through the file and edit it
+to ensure that it conforms to the coding standards.
+
+<H3>Use of 'lint'</H3>
+
+It is important to remember that <B>C</B> takes the point of view
+that programmers know what they're doing.
+Luckily for the programmers,
+tools have been developed which aid them in helping ensure
+that what they did was what they intended.
+One of the more useful tools along these lines is <CODE>lint</CODE>.
+The <CODE>lint</CODE> command checks <B>C</B> code for coding and syntax errors,
+and for inefficient or non-portable code.
+This includes such things as detection of unused
+(or potential problems with)
+variables and functions,
+type mismatches,
+possible errors in flow control,
+and legal constructions that may not be what were intended.
+The details of <CODE>lint</CODE>'s operation differ from machine to machine,
+so the reader is referred to the "<CODE>man</CODE>" page for <CODE>lint</CODE>
+for more particulars on this command.
+
+<H2>Example</H2>
+
+The following is an example intended to demonstrate some of the above standards.
+<PRE>
+/*
+ * is_cache_hit
+ *
+ *FUNCTION:
+ * This routine determines whether a memory reference is a cache hit.  If it is,
+ * "*index_p" will be changed to refer to the appropriate element in the cache and
+ * TRUE will be returned.  If not, "*index_p" will be modified to refer to the
+ * element in the cache to be replaced and FALSE will be returned.
+ *
+ *LOGIC:
+ * The appropriate cache is selected.  Based upon the type of the cache, the cache
+ * is searched to determine if the address in question ("mem_addr") is present.
+ * If so, that cache index is the one to return to the caller (via index_p).
+ * If not, the cache index to be returned to the user (for potential modification)
+ * is determined, again, based upon the cache type.
+ *
+ *ASSUMPTIONS:
+ * Assumes the selected cache is configured.
+ *
+ *NOTE:
+ * Special circumstances/cautions.
+ * Only direct-mapped and fully-associative caches are currently supported.
+ * Unspecified results will be returned when an unsupported cache type is specified.
+ *
+ *RETURNS:
+ * TRUE  - element is in the cache.
+ * FALSE - element is not in the cache.
+ */
+
+bool
+is_cache_hit(mem_addr, index_p, selector, knobs)
+mo_addr mem_addr;		/* memory address */
+int     *index_p;		/* OUT - pointer to cache index for hit or replacement */
+int     selector;		/* selects the cache in question (instruction or data) */
+knobs_t knobs;			/* system configuration parameters/constraints (ptr) */
+{
+        int             index;   /* Used for local index computations. */
+        dfa_cache_elem  *cache;  /* Cache pointer. */
+
+        /* Select the cache to be used. */
+        cache = &dfa_cache[selector][0];
+                /*
+                 * We direct our cache pointer at the first element of the desired cache.
+                 * We can now simply reference it using "cache".
+                 */
+
+        /* Determine the cache type and operate accordingly. */
+        switch (knobs->cache_type[selector]) {
+
+            case DIRECT_MAP:
+                index = mem_addr & cache_index_mask[selector];
+                if (    cache[index].valid
+                    && (cache[index].tab == mem_addr)) {
+                        /* This is a HIT! */
+                        *index_p = index;
+                        return TRUE;
+                } else {
+                        /* This is a MISS! */
+                        *index_p = index;
+                        return FALSE;
+                }
+                break;
+
+            case ASSOCIATIVE:
+            case FULLY_ASSOCIATIVE:
+                /* Step through cache looking for match. */
+                for ( index = 0; index <= knobs->cache_size[selector] ; index ++) {
+                        if (    cache[index].valid
+                            && (cache[index].tab == mem_addr)) {
+                                /* This is a HIT! */
+                                *index_p = index;
+                                return TRUE;
+                        }
+                }
+                /* No match found.  We have a MISS!  Find a free index. */
+                *index_p = Get_LRU_index(selector, knobs);
+                return FALSE;
+                break;
+
+            case SET_ASSOCIATIVE:
+            case SET_ASSOCIATIVE_4:
+            case SET_ASSOCIATIVE_8:
+                if (debug > 1)
+                        warning("Unimplemented cache type in 'is_cache_hit()'");
+                break;
+
+            default:
+                fatal("Unexpected default in 'is_cache_hit()'");
+        }
+}/*** end is_cache_hit() ***/
+</PRE>
+
+<H2> APPENDIX: P6 System Header File </H2>
+
+The following is a listing of the <CODE>p6system.h</CODE> header file
+as of December 13, 1991.
+For the most accurate rendition of this file,
+the reader is referred to <CODE>~p6/arch/include</CODE>
+where the most current copy should be available.
+
+<PRE>
+/* Copyright Intel Corporation, 1991. */
+
+#ifndef lint
+static char *rcsid_p6system_h = "$Header: /u/g/l/glew/public/html/RCS/coding-standards.html,v 1.2 1995/06/22 08:43:54 glew Exp $";
+#endif
+
+
+/*
+ * /p6/arch/include/p6system.h
+ *
+ * P6 standard C header file
+ *
+ * This file contains definitions that should be useful in C programming
+ * throughout the P6 project.
+ *
+ * The recommended use of each definition or declaration given below is
+ * documented, and should be respected so as to improve the readability of
+ * your C code.  (i.e. don't use something contained herein in a way that is
+ * not documented, because it will tend to obscure your code from other P6
+ * members.
+ * 
+ */
+
+
+#ifndef _P6SYSTEM_H_
+#define _P6SYSTEM_H_
+
+
+/*
+ * Standard truth values
+ *
+ * Realize that because C declares all non-zero values to be "true", you
+ * should never write code like "if (a == TRUE)".  The recommended code would
+ * instead simply read "if (a)".
+ *
+ * Direct comparison with FALSE is acceptable, though, because
+ * "if (A == FALSE)" both conveys its intended meaning, and doesn't have the
+ * got-yas of the comparisons with TRUE.
+ *
+ * Also try to be conscience of the different between FALSE and NULL.  FALSE
+ * denotes a boolean value, whereas NULL is a pointer value.  Don't compare
+ * pointers with FALSE; use NULL instead.  Similarly, use FALSE if you're
+ * testing a boolean.
+ * 
+ */
+
+#ifndef TRUE
+#define TRUE 1
+#endif
+#ifndef FALSE
+#define FALSE 0
+#endif
+
+
+/*
+ * Standard "boolean" type.
+ *
+ * Although C has little concept of an actual "boolean" type (TRUE/FALSE),
+ * variables that are, in fact, booleans are best indicated as such
+ * by the use of such a type.  To that end, the type is provided here.
+ *
+ */
+
+typedef int	bool;
+
+
+/*
+ * ANSI C compatible function prototyping...
+ *
+ * ANSI C compilers will perform type checking on arguments passed to
+ * functions when a function prototype for that function is provided
+ * (presumably in a header file).  Unfortunately, K&R C compilers (i.e. the
+ * olders ones) consider ANSI function prototypes to be syntax errors.  This
+ * macro is designed to deal with this.
+ *
+ * Currently, C compilers which understand function prototypes are available
+ * on the RS/6000 as xlc and c89, on the suns and vaxes as gcc.
+ *
+ * ANSI C prototypes and a K&R declaration for the libc function strncpy
+ * follow:
+ *
+ *	/ * ANSI C function prototype * /
+ *	extern char *strncpy(char *, char *, unsigned);
+ *
+ *	/ * Alternate ANSI C function prototype * /
+ *	extern char *strncpy(char *dst, char *src, unsigned max_length);
+ *
+ *	/ * K&R function prototype * /
+ *	extern char *strncpy();
+ *
+ * ANSI C compilers will accept any of the above three syntaxes.  The second
+ * is considered to be a more descriptive prototype, and its use is
+ * encouraged.
+ *
+ * The problem is that K&R compilers still exist, and we want to be able to
+ * compile our programs on them.  The macro give below uses the ANSI C declared
+ * preprocessor symbol __STDC__ to detect whether the compiler can understand
+ * function prototypes or not.  If __STDC__ is not declared, then the
+ * prototype is omitted.
+ *
+ * An example of how to use this macro is given below:
+ *
+ *****
+ * USAGE
+ *****
+ *
+ *	/ * Recommended declaration for libc's strncpy * /
+ *	extern char *strncpy ARGS((char *dst, char *src, unsigned max_length));
+ *
+ * Notice the double set of parentheses.  These ARE REQUIRED.
+ *
+ * If __STDC__ is defined (which is done automatically by ANSI C compilers),
+ * then this expands to:
+ *
+ *	extern char *strncpy (char *dst, char *src, unsigned max_length);
+ *
+ * Otherwise, it expands to:
+ *
+ *	extern char *strncpy ();
+ *
+ * This gives us the functionality we want, which is that, given an ANSI C
+ * compiler, we will get argument type checking, but our code will still work
+ * on older K&R compilers.
+ */
+
+#ifndef ARGS
+#ifdef __STDC__
+#define ARGS(x) x
+#else
+#define ARGS(x) ()
+#endif
+#endif ARGS
+
+
+/*
+ * Assertions
+ *
+ * It is common and useful programming practice to add assertions to your
+ * code, so that events which are either unexpected or unhandled by the
+ * current code will be trapped, rather than quietly creating bugs further
+ * along the line.
+ *
+ * P6 code should use the following macro when coding such assertions, thus
+ * allowing for a single, uniform mechanism.  (Unfortunately, nearly every
+ * machine implements its own version of assertions, thus necessitating us to
+ * use own so as to get a uniform interface.)
+ *
+ * P6 assertions are coded as follows:
+ *
+ *****
+ * USAGE
+ *****
+ *
+ *	/ * foo should never be greater than 7 * /
+ *	ASSERT(foo <= 7, ("foo took on unexpected value %d", foo));
+ *
+ * Notice the second set of parentheses.  These ARE REQUIRED.  They surround an
+ * argument list that will effectively be passed to printf (except that it
+ * will print on stderr instead of stdout).
+ *
+ * The first argument to the ASSERT macro is checked for to see if it is true.
+ * This is the expression that we say is being asserted.  The second argument
+ * is really a parenthenized list of arguments to pass to printf in the case
+ * that the assert fails.  It is generally helpful to put an informative
+ * message here, including any variables or values which might help indicate
+ * why the assert failed.
+ *
+ * Assertion failure is always fatal.  A failed assertion never returns.  It
+ * exits with status = 1.
+ *
+ * This macro expands into a function call to the routine _p6_assert, which is
+ * defined in the library /p6/arch/lib/{p6hosttype}/libp6.a.  This library can
+ * be linked with the CC command line arguments "-L/p6/arch/lib/`p6hosttype`"
+ * and "-lp6".
+ *
+ * This can be helpful in a debugger: set a breakpoint in _p6_assert.  Then,
+ * if an assertion is triggered, you will hit the breakpoint before the
+ * program exits, and you can examine program values on the stack and such.
+ *
+ * The omitASSERT macro is purely a syntactic convenience.  It expands to
+ * nothing, providing an easy way to "comment out" an assertion.
+ *
+ * If the preprocessor symbol NOASSERTS is defined, then ASSERT expands to
+ * nothing, as well, providing an easy way to run without assertion checking.
+ */
+
+#ifdef NOASSERTS
+
+#define ASSERT(x, args)
+
+#else /* NODEBUG no set */
+
+extern void _p6_assert_setup ARGS((int debug, char *file, unsigned lineno));
+/*VARARGS1*/
+extern void _p6_assert ARGS((char *format, ...));
+
+#define ASSERT(x, args) { \
+	if (!(x)) { \
+		_p6_assert_setup(0, 0, __FILE__, __LINE__); \
+		_p6_assert args ; \
+	} \
+}
+
+#endif
+
+#define omitASSERT(x, args)
+
+
+/*
+ * The macro DEBUGF prints a debugging message to the stderr (or optionally any
+ * (FILE *) the user specifies).  It also takes printf style arguments, ala:
+ *
+ *****
+ * USAGE
+ *****
+ *
+ * 	/ * print informative debugging message * /
+ *	DEBUGF(("This is the value of foo: %d\n", foo));
+ *
+ * To enable DEBUGF, the user must have #define'd the preprocessor symbol
+ * DEBUG before including this file.  If DEBUG has not been defined, then
+ * DEBUGF expands to nothing (i.e. there is no debugging code in the object
+ * file).
+ *
+ * To redirect the output of DEBUGF, the user can redefine the preprocessor
+ * symbol DEBUGF_OUT.  For example, to redirect to stdout:
+ *
+ *	#include <I>stdio.h</I>
+ *	#define DEBUG
+ *	#include <I>p6system.h</I>
+ *	#undef DEBUGF_OUT
+ *	#define DEBUGF_OUT stdout
+ *
+ * DEBUGF outputs its messages conditional on another preprocessor symbol,
+ * DEBUGF_COND.  To be able to turn debugging messages on and off at runtime:
+ *
+ *	#define DEBUG
+ *	#include <I>p6system.h</I>
+ *	#undef DEBUGF_COND
+ *	int DebugVar = 0;	 / * Defaults to no debugging messages * /
+ *	#define DEBUGF_COND DebugVar
+ *
+ * Then, debugging output is conditional on the variable DebugVar.
+ *
+ * The macro omitDEBUGF is similar to omitASSERT, above.  It expands to
+ * nothing, making it easy to "comment out" a DEBUG message.
+ *
+ * Giving credit where credit is due, nearly all of these ideas are stolen
+ * directly from Andy Glew's standard debug.h file.
+ */
+ 
+#ifdef DEBUG
+
+#define DEBUGF(args) { \
+	if (DEBUGF_COND) { \
+		_p6_assert_setup(1, DEBUGF_OUT, __FILE__, __LINE__); \
+		_p6_assert args ; \
+	} \
+}
+
+#else /* not DEBUG */
+
+#define DEBUGF(args)
+
+#endif /* DEBUG */
+
+#define DEBUGF_OUT 0
+#define DEBUGF_COND 1
+
+#define omitDEBUGF(args)
+
+
+/*
+ * Standard "safe" versions of malloc, realloc, and calloc
+ *
+ * Typically, programmers either clutter their code with checks for a NULL
+ * return value after every call to malloc, or they omit such checks
+ * altogether.  These routines are available in the p6 library, and should be
+ * used as general replacements to malloc and family.  This routines do the
+ * NULL themselves.  They guarantee to return a valid pointer for the amount
+ * of memory requested.  If the underlying malloc() etc actually failed to
+ * return the memory (i.e. returned NULL), these routines exit with a message
+ * to stderr explaining the situation (via an ASSERT, for above), rather than
+ * returning.
+ * 
+ * These functions are defined in /p6/arch/lib/{p6hosttype}/libp6.a.  This
+ * library can be linked with the CC  command line arguments
+ * "-L/p6/arch/lib/`p6hosttype`" and "-lp6".
+ *
+ * Using these routines simply eliminates the error checking from the
+ * programmer's code, thus improving readability.
+ *
+ */
+
+extern char *xmalloc ARGS((unsigned size));
+extern char *xrealloc ARGS((char *pointer, unsigned size));
+extern char *xcalloc ARGS((unsigned nelem, unsigned elsize));
+
+#endif /* ifndef _P6SYSTEM_H_ */
+
+</HTML>

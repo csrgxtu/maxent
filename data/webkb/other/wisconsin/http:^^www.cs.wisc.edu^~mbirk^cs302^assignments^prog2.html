@@ -1,0 +1,126 @@
+Date: Mon, 11 Nov 1996 17:01:01 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Tue, 01 Oct 1996 20:08:44 GMT
+Content-length: 3650
+
+<html>
+<head>
+<title> Program 2 </title>
+</head>
+<body>
+<center> <h2> Program 2 </h2> </center>
+<p>
+<ul>
+<li> CS302 Section 12
+<li> TA: Michael Birk
+<li> Assigned: Tue 9/17/96
+<li> Due: Tue 9/24/96
+</ul>
+
+<p>
+In program 2, you are a computer programmer who has been hired by
+a local restaurant to write a program for a new computer which will
+replace an old cash register.  
+
+<p>
+<h3> What to Do </h3>
+
+The restaurant only has four items on the menu.  You may pick what those
+items are and set prices for them (each item must have a different price).
+You need to keep a running total of what is ordered and loop until
+the cash register operator asks the program to print out the total bill.
+Also, you must keep track of how many of each item are purchased and
+display them in the final bill.  Be creative with the name
+of your restaurant, what sorts of food your restaurant offers, and what
+the prices are (or, if you lack the imagination, you can use the menu
+shown below).
+
+<p>
+Here is an example of what your menu might look like.  The formatting
+does not need to be exactly like this, but all dollar amounts must be
+formatted to 2 decimal places.
+
+<PRE>
+     The Hamburger Shack
+     -------------------------------
+     A.  Hamburger            $1.00
+     B.  Cheeseburger         $1.20
+     C.  Double Cheeseburger  $2.40
+     D.  Bacon Cheeseburger   $2.00
+
+     Q.  Quit adding items, and print the bill
+
+	 Current Subtotal:  $0.00
+	 Enter your selection -->
+</PRE>
+
+<p>
+At this point, the cash register operator might press "A" (or, they
+might press "a".  Your program should do the same thing either way).
+You should add the cost of item A to the running subtotal and
+redisplay the menu with the updated subtotal:
+
+<PRE>
+     Enter your selection --> <B>A</B>
+
+     New subtotal is $1.00
+
+     The Hamburger Shack
+     -------------------------------
+     A.  Hamburger            $1.00
+     B.  Cheeseburger         $1.20
+     C.  Double Cheeseburger  $2.40
+     D.  Bacon Cheeseburger   $2.00
+
+     Q.  Quit adding items, and print the bill
+
+     Current Subtotal: $1.00
+     Enter your selection --> 
+</PRE>
+
+<p>
+When the operator chooses "Q" from the menu, 
+your program should print out an itemized list of what
+was ordered (and the total cost for each item), the subtotal, the
+sales tax (use 5% for sales tax), and the total (subtotal +
+sales tax).  For example:
+
+<PRE>
+     Enter your selection --> <B>q</B>
+
+     Customer Bill
+     -------------
+     1 Hamburger            $1.00
+     2 Cheeseburger         $2.40
+     1 Bacon Cheeseburger   $2.00
+                           ------
+     Subtotal               $5.40
+     Sales Tax              $0.27
+                           ======
+     Amount Due             $5.67
+</PRE>
+
+<p>
+Notice that two cheeseburgers were ordered in this example, so the
+cost is listed as 2 times $1.20, or $2.40.  Also notice that since
+no double cheeseburgers were ordered, they are not mentioned on
+the bill (it does not say "<tt>0 Double Cheeseburger</tt>").  The
+program should stop executing after the final bill is printed.
+
+<p>
+<H3>What To Hand In</H3>
+
+As in program 1, you will hand in a printed copy of both your source
+code and the output displayed when the program is run.
+The printed output should demonstrate all of the features of your program.
+It should show ordering one of some item, ordering more than
+one of another item, and not ordering any of a third item.  Also,
+don't forget to have your program print your name and section number,
+so that they show up on all of your printouts!
+
+<hr>
+<address> <a href="mailto:mbirk@cs.wisc.edu">mbirk@cs.wisc.edu</a> </address>
+
+</body>
+</html>

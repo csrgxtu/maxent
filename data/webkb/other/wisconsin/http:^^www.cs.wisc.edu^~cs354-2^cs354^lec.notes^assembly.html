@@ -1,0 +1,547 @@
+Date: Tue, 05 Nov 1996 00:32:43 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Mon, 28 Oct 1996 17:33:00 GMT
+Content-length: 13422
+
+<html>
+<head>
+<title> Lecture notes - Chapter 10 - Assembly</title>
+</head>
+
+<BODY>
+<h1> Chapter 10 -- The Assembly Process</h1>
+
+<pre>
+
+
+MIPS floating point hardware
+-----------------------------
+
+Floating point arithmetic could be done by hardware, or by software.
+Hardware is fast, and takes up chip real estate.
+Software is slow, but takes up no space (memory for the software --
+  an insignificant amount)
+An assembly language programmer cannot tell which is being used,
+  except if calculations are quite lengthy and then there could
+  be a noticeable time difference.  Software could be 100 to 1000
+  (or more) times slower.
+
+
+The MIPS specifies and offers a HW approach.
+
+All the control HW and integer arithmetic HW is located on 1 VLSI
+chip.  That packs it full.  So, the MIPS architecture is designed
+that other chips can accept instructions and execute them.  These
+other chips are called coprocessors.  The integer one is called
+C0 (coprocessor 0).  One that does fl. pt. arithmetic is called
+C1 (coprocessor 1).
+   Alternative name:  C0 is the R2000
+		      C1 is the R2010
+
+        --------       --------
+	|      |       |      |
+	| C0   |       | C1   |
+	|      |       |      |
+        --------       --------
+	   |              |
+	   |--------------|
+           |
+        --------
+	|      |
+	| MEM  |
+	|      |
+        --------
+
+
+C1 "listens" to the instruction sequence.  It partially decodes
+each instruction.  When it gets one that is meant for it to execute,
+it executes it.   At the same time, C0 ignores the instruction
+meant for C1 (for the correct amount of time) and then fetches
+another instruction.
+
+
+
+Just as there are registers meant for integers, there are registers
+meant for floating pt. values.
+
+  C1 has 32, 32 bit registers.
+  Integer instructions have no access to these registers, just as
+    fl. pt. instructions have no access to the C0 registers.
+
+The fl. pt. registers must be used in restricted ways.  An explanation:
+  to comply with the IEEE standard for fl. pt. arithmetic, the HW
+  must support 2 fl. pt. types,  single precision and double precision.
+  We have only discussed (and will only use) single precision.
+  
+  That means that 1 fl. pt. number fits into 1 fl. pt. register.
+  And, a double precision fl. pt. number requires 2 fl. pt registers,
+  since double precision numbers are 64 bits long.
+
+  So, if a sgl. prec. number is to be stored, it is always placed
+  in the least significant word of a pair of registers.
+
+    bit   31 . . .   0
+	 --------------
+     f0  |            |
+	 +------------+
+     f1  |            |
+	 +------------+
+             .
+	     .
+	     .
+	 +------------+
+    f29  |            |
+	 +------------+
+    f30  |            |
+	 +------------+
+    f31  |            |
+	 --------------
+
+
+
+
+
+  This means that for the purposes of storing fl. pt. values in registers,
+  there are only really 16. . .the even numbered ones.  You must use
+  the number corresponding to which of the 32 registers it is, but only
+  use even numbered ones.
+
+
+Instuctions that the coprocessor has:
+ load/store
+ move
+ fl. pt. operations
+
+
+load/store instructions
+-----------------------
+     lwc1  ft, x(rb)
+	  Address of data is    x + (rb)  -- note that rb is an R2000 register
+	  Read the data, and place it into fl. pt. register ft.
+
+	  Address calculation is the same.  Where the data goes is different.
+
+move instructions
+-----------------
+
+     mtc1  rt, fs
+	  Move contents of R2000 register rt into fl. pt. register fs.
+
+	  This is really a copy operation.  No translation is done.
+	  It is a bit copy.
+
+     mfc1  rt, fs
+	  Move contents fl. pt. register fs into of R2000 register rt.
+
+	  This is really a copy operation.  No translation is done.
+	  It is a bit copy.
+
+floating point arithmetic instructions
+--------------------------------------
+
+add, subtract, multiply, divide -- each specifies 3 fl. pt. registers.
+
+convert --  single precision to double precision
+	    double precision to single precision
+	    2's comp. (called fixed point format) to single precision
+	    etc.
+
+	    These operations convert and move data within the fl. pt.
+	    registers.
+
+	    To do a convert like was given in SAL, must convert then
+	    move, or move (from R2000) then convert.
+
+comparison operation -- set a bit, or a set of bits based on a comparison
+      such that a branch instruction can use the information.
+
+
+
+THE ASSEMBLY PROCESS
+--------------------
+
+ -- a computer understands machine code
+ -- people (and compilers) write assembly language
+
+  assembly     -----------------       machine
+  source  -->  |  assembler    | -->   code
+  code         -----------------
+
+an assembler is a program -- a very deterministic program --
+  it translates each instruction to its machine code.
+
+
+
+  in the past, there was a one-to-one correspondence between
+  assembly language instructions and  machine language instructions.
+
+  this is no longer the case.  Assemblers are now-a-days made more
+  powerful, and can "rework" code.
+
+
+
+MAL --> TAL
+-----------
+
+MAL -- the instructions accepted by the assembler
+TAL -- a subset of MAL.  These are instructions that
+	can be directly turned into machine code.
+
+There are lots of MAL instructions that have no direct TAL
+equivalent.
+
+How to determine whether an instruction is a TAL instruction or not:
+
+   look in appendix C.  If the instruction is there, then
+   it is a TAL instruction.
+
+
+The assembler takes (non MIPS) MAL instructions and synthesizes
+them with 1 or more MIPS instructions.
+
+Some examples:
+    mul $8, $17, $20
+      becomes
+    mult  $17, $20
+    mflo  $8
+
+    why?  because the MIPS architecture has 2 registers that
+    hold results for integer multiplication and division.
+    They are called HI and LO.  Each is a 32 bit register.
+
+    mult places the least significant 32 bits of its result
+    into LO, and the most significant into HI.
+
+    operation of mflo,  mtlo,  mfhi,  mthi
+                 |||                  |||
+                 ||-- register lo     ||- register hi
+                 |--- from            |-- to
+                 ---- move            --- move
+	
+	Data is moved into or out of register HI or LO.
+
+	One operand is needed to tell where the data is coming from
+	or going to.
+
+
+
+
+    addressing modes do not exist in TAL!
+
+    lw  $8, label
+      becomes
+
+    la  $8, label
+    lw $8, 0($8)
+      which becomes
+
+    lui $8, 0xMSpart of label
+    ori $8, $8, 0xLSpart of label
+    lw $8, 0($8)
+
+      or
+    lui $8, 0xMSpart of label
+    lw $8, 0xLSpart of label($8)
+
+
+    instructions with immediates are synthesized with other
+    instructions
+
+    add $sp, $sp, 4
+      becomes
+    addi $sp, $sp, 4
+
+         because an add instruction requires 3 operands in registers.
+	 addi has one operand that is immediate.
+
+	 these instructions are classified as immediate instructions.
+	 On the MIPS, they include:
+	   addi, addiu, andi, lui, ori, xori
+
+
+ add $12, $18  is expanded back out to be
+   add $12, $12, $18
+
+
+
+TAL implementation of I/O instructions:
+
+
+putc $18     becomes
+
+   li $2, 11
+   move $4, $18
+   syscall
+
+   OR     addi $2, $0, 11
+	  add  $4, $18, $0
+	  syscall
+
+
+
+getc $11     becomes
+
+   li $2, 12
+   syscall
+   move $11, $2
+
+   OR     addi $2, $0, 12
+	  syscall
+	  add  $11, $2, $0
+
+
+
+puts $13     becomes
+
+   li $2, 4
+   move $4, $13
+   syscall
+
+   OR     addi $2, $0, 4
+	  add  $4, $13, $0
+	  syscall
+
+
+
+done         becomes
+
+   li  $2, 11
+   syscall
+
+   OR     addi $2, $0, 11
+	  syscall
+
+
+
+
+ASSEMBLY
+---------
+ the assembler's job is to 
+   1. assign addresses
+   2. generate machine code
+
+
+ a modern assembler will
+  -- on the fly, translate (synthesize) from the accepted assembly
+     language to the instructions available in the architecture
+
+  -- assign addresses
+
+  -- generate machine code
+
+  -- it generated an image of what memory must look like for the
+     program to be executed.
+
+
+ a simple assembler will make 2 complete passes over the data
+ to complete this task.  
+    pass 1:  create complete SYMBOL TABLE
+	     generate machine code for instructions other than
+	       branches, jumps, jal, la, etc. (those instructions
+	       that rely on an address for their machine code).
+    pass 2:  complete machine code for instructions that didn't get
+	     finished in pass 1.
+
+assembler starts at the top of the source code program,
+and SCANS.   It looks for
+  -- directives   (.data  .text  .space  .word  .byte  .float )
+  -- instructions
+
+  IMPORTANT:
+  there are separate memory spaces for data and instructions.
+  the assembler allocates them IN SEQENTIAL ORDER as it scans
+  through the source code program.
+
+  the starting addresses are fixed -- ANY program will be assembled
+  to have data and instructions that start at the same address.
+
+
+
+EXAMPLE
+    .data
+a1: .word 3
+a2: .byte '\n'
+a3: .space 5
+
+       address     contents
+     0x00001000    0x00000003
+     0x00001004    0x??????0a
+     0x00001008    0x????????
+     0x0000100c    0x????????  (the 3 MSbytes are not part of the declaration)
+
+  the assembler will align data to word addresses unless you specify
+  otherwise!
+
+
+simple example of machine code generation for simple instruction:
+     assembly language:      addi  $8, $20, 15
+
+                              ^     ^   ^    ^
+			      |     |   |    |
+
+			    opcode rt   rs  immediate
+
+     machine code format
+      31                      15             0
+      -----------------------------------------
+      | opcode |  rs  |  rt  |  immediate     |
+      -----------------------------------------
+
+       opcode is 6 bits -- it is defined to be 001000
+
+       rs is 5 bits,    encoding of 20, 10100
+       rt is 5 bits,    encoding of  8, 01000
+			     
+      so, the 32-bit instruction for addi $8, $20, 15  is
+       001000 10100 01000 0000000000001111
+
+       re-spaced:
+       0010 0010 1000 1000 0000 0000 0000 1111
+	 OR
+     0x  2    2   8    8    0    0    0    f
+
+
+
+
+
+
+AN EXAMPLE:
+
+ .data
+a1: .word 3
+a2: .word 16:4
+a3: .word 5
+
+ .text
+__start: la $6, a2
+loop:    lw $7, 4($6)
+         mult $9, $10
+         b loop
+         done
+
+SOLUTION:
+
+    Symbol table
+    symbol      address
+    ---------------------
+    a1         0040 0000
+    a2         0040 0004
+    a3         0040 0014
+    __start    0080 0000
+    loop       0080 0008
+
+
+
+     memory map of data section
+address     contents
+	    hex          binary
+0040 0000   0000 0003    0000 0000 0000 0000 0000 0000 0000 0011 
+0040 0004   0000 0010    0000 0000 0000 0000 0000 0000 0001 0000
+0040 0008   0000 0010    0000 0000 0000 0000 0000 0000 0001 0000
+0040 000c   0000 0010    0000 0000 0000 0000 0000 0000 0001 0000
+0040 0010   0000 0010    0000 0000 0000 0000 0000 0000 0001 0000
+0040 0014   0000 0005    0000 0000 0000 0000 0000 0000 0000 0101
+
+
+
+     translation to TAL code
+ .text
+__start: lui $6, 0x0040      # la $6, a2
+         ori $6, $6, 0x0004
+loop:    lw $7, 4($6)
+         mult $9, $10
+         beq $0, $0, loop    # b loop
+         ori $2, $0, 10      # done
+         syscall
+
+
+
+     memory map of text section
+address      contents
+	     hex          binary
+0080 0000    3c06 0040    0011 1100 0000 0110 0000 0000 0100 0000 (lui)
+0080 0004    34c6 0004    0011 0100 1100 0110 0000 0000 0000 0100 (ori)
+0080 0008    8cc7 0004    1000 1100 1100 0111 0000 0000 0000 0100 (lw)
+0080 000c    012a 0018    0000 0001 0010 1010 0000 0000 0001 1000 (mult)
+0080 0010    1000 fffd    0001 0000 0000 0000 1111 1111 1111 1101 (beq)
+0080 0014    3402 000a    0011 0100 0000 0010 0000 0000 0000 1010 (ori)
+0080 0018    0000 000c    0000 0000 0000 0000 0000 0000 0000 1100 (syscall)
+
+
+
+
+
+EXPLANATION:
+
+The assembler starts at the beginning of the ASCII source
+code.  It scans for tokens, and takes action based on those
+tokens.
+
+---  .data
+   A directive that tells the assembler that what will come next
+   are to be placed in the data portion of memory.
+---  a1:  
+   A label.  Put it in the symbol table.  Assign an address.
+   Assume that the program data starts at address 0x0080 0000.
+
+
+
+
+
+
+branch offset computation.
+    
+    at execution time (for taken branch):
+     contents of PC + sign extended offset field | 00 --> PC
+
+     PC points to instruction after the beq when offset is added.
+
+    
+    at assembly time:
+
+    byte offset = target addr - ( 4 + beq addr )
+
+		= 00800008 - ( 00000004 + 00800010 )  (hex)
+
+
+
+                    (ordered to give POSITIVE result)
+		 0000 0000 1000 0000 0000 0000 0001 0100
+	      -  0000 0000 1000 0000 0000 0000 0000 1000
+	      ------------------------------------------
+		 0000 0000 0000 0000 0000 0000 0000 1100 (byte offset)
+
+		 1111 1111 1111 1111 1111 1111 1111 0011
+	       +                                       1
+	       -----------------------------------------
+		 1111 1111 1111 1111 1111 1111 1111 0100  (-12)
+
+
+		 we have 16 bit offset field.
+		 throw away least significant 2 bits
+		   (they should always be 0, and they are added
+		    back at execution time)
+
+	 1111 1111 1111 1111 1111 1111 1111 0100 (byte offset)
+	  becomes
+	                  11 1111 1111 1111 01   (offset field)
+
+
+
+jump target computation.
+
+    at execution time:
+     most significant 4 bits of PC || target field | 00 --> PC
+					(26 bits)
+
+
+    at assembly time, to get the target field:
+	 take 32 bit target address,
+	   eliminate least significant 2 bits (word address!)
+	     eliminate most significant 4 bits
+
+	 what remains is 26 bits, and it goes in the target field
+
+</pre>
+

@@ -1,0 +1,283 @@
+Date: Wed, 20 Nov 1996 22:49:37 GMT
+Server: NCSA/1.4.1
+Content-type: text/html
+Last-modified: Thu, 02 May 1996 16:53:18 GMT
+Content-length: 7604
+
+<html>
+
+<head>
+<title> cs368 -- Geometric Algorithms </title>
+</head>
+
+<body>
+
+<center>
+<h1> <hr>cs368: Geometric Algorithms
+<br>
+<font size=+1>Spring 96: Tu/Th, 1:15 - 2:30 (Gates 100)</font>
+<hr> </h1>
+</center>
+
+<blockquote>
+
+This course covers the fundamental techniques for designing and
+analyzing geometric algorithms in two, three, and higher
+dimensions. We will give an in-depth coverage of basic geometric data
+structures, such as convex hulls, arrangements, Voronoi and Delaunay
+diagrams, flat and hierarchical triangulations, partition trees,
+etc. We will also survey several important paradigms of geometric
+algorithm design, including sweep line/plane methods, randomized
+techniques, cuttings and their applications, parametric searching, and
+various geometric optimization methods. We will motivate the material
+with example problems drawn from application areas such as robotics,
+graphics, vision, and geography, and discuss some of the non-trivial
+issues involved in implementing geometric algorithms robustly.
+
+<p> Prerequisite: cs161 (data structures and algorithms)
+
+</blockquote>
+
+<hr>
+
+<menu>
+<li><!WA0><a href="#contact">Contact information</a>
+<li><!WA1><a href="#outline">Course outline</a>
+<li><!WA2><a href="#mechanics">Course mechanics</a>
+<li><!WA3><a href="http://Theory.Stanford.EDU/~jbasch/cs368/biblio.html">Bibliography</a>
+<li><!WA4><a href="#links">Geometric algorithms links</a>
+</menu>
+
+<hr>
+
+<h2>Handouts</h2>
+
+<center>
+<table border=border>
+<tr>  <td> <!WA5><a href=http://Theory.Stanford.EDU/~jbasch/cs368/handouts/ho1-coursefact.ps>Handout 1</a>: Course facts
+      <td> <!WA6><a href=http://Theory.Stanford.EDU/~jbasch/cs368/handouts/ho2-morefacts.ps>Handout 2</a>: More facts
+<tr>  <td> <!WA7><a href=http://Theory.Stanford.EDU/~jbasch/cs368/handouts/hw1.ps>Homework 1</a>: due 4/30/96
+</table>
+</center>
+
+<p>You can also see directly the full <!WA8><a href=http://Theory.Stanford.EDU/~jbasch/cs368/handouts/>Handouts directory</a>.
+
+<hr>
+
+
+<h2><a name="contact">Contact information:</a></h2>
+<DL>
+<DD>
+Instructor: <!WA9><A HREF="http://robotics.stanford.edu/people/guibas/bio.html">
+Leonidas Guibas</A>  
+<DD>
+<DL>
+<dd> E-mail: <!WA10><a href="mailto: guibas@cs.stanford.edu"> 
+             guibas@cs.stanford.edu </a>
+<dd> Office: Gates 3B, Room 374 (723-0304)
+<dd> Office hours: Thursdays, 3:00-5:00 pm
+</dl>
+
+<DD>
+TA: <!WA11><A HREF="http://robotics.stanford.edu/~jbasch/">
+Julien Basch</A>  
+<DD>
+<DL>
+<dd> E-mail: <!WA12><a href="mailto: jbsch@cs.stanford.edu"> 
+             jbasch@cs.stanford.edu </a>
+<dd> Office: Gates 3B, Room 376 (723-1604)
+<dd> Office hours: Wednesdays, 11:00-12:00 and 2:00-3:00 pm
+</dl>
+
+</dl>
+
+<hr>
+
+<h2><a name="outline">Course Outline:</a></h2>
+
+<dl>
+<dd>
+<p>There is now so much material in computational geometry that probably
+a full-year course is needed to cover all the basic techniques.
+Nevertheless, given some algorithmic preparation, we can cover lots
+of ground even in one quarter. Below is a list of topics to be
+covered---but we do not promise to cover them in the order listed.</p>
+
+<dl>
+<dt>
+Geometric fundamentals
+<dd>
+	Computational primitives in two and three dimensions and their
+	implementation; models of computation and lower bounds;
+	geometric duality.
+
+<p><dt>Convexity
+<dd>
+	Algorithms for convex hulls of point sets in two and three
+	dimensions; convex polygons---properties and algorithms.
+
+<p><dt>Arrangements
+<dd>
+	The combinatorics of line arrangements, including the zone
+	theorem. Sweep-line methods for arrangements---topological
+	sweep. Davenport-Schinzel sequences. Many-face problems.
+
+<p><dt>Proximity problems
+<dd>
+	Voronoi Diagrams and Delaunay triangulations; algorithms and
+	applications.
+
+<p><dt>Geometric searching
+<dd>
+	Point-location in planar subdivisions. Fractional cascading
+	and other efficient data-structuring techniques.
+	Three-dimensional analogs.
+
+<p><dt>Partition trees and range searching
+<dd>
+	The ham-sandwich theorem; decimation methods; range-searching
+        problems of various kinds.
+
+<p><dt>Triangulations
+<dd>
+	Triangulating a simple polygon; reductions among geometric
+	problems; decompositions of polyhedra; questions of optimality.
+
+<p><dt>Random sampling techniques
+<dd>
+	Random sampling for partitioning; randomized incremental
+        algorithms; $\epsilon$-nets; making randomized algorithms
+        deterministic. Cuttings and their applications.
+
+<p><dt>Visibility and shortest path problems
+<dd>
+	Visibility graphs and their uses; Euclidean minimum spanning
+	tree and shortest path problems.
+
+<p><dt>Robustness in geometric computation
+<dd>
+	Issues in topological consistency; handling of degeneracies;
+	robust algorithms.
+
+</dl>
+
+</dl>
+
+<hr>
+
+<h2><a name="mechanics">Course mechanics:</a></h2>
+
+<dl><dd>
+
+<dl>
+<dt>
+Class hours:
+<dd>
+Tuesday, Thursday, 1:15 - 2:30 in Gates 100
+
+<p><dt>Text:
+
+<dd> The main text for the course is a reader, comprised
+of a number of survey articles plus lecture notes scribed with the
+help of students in previous years of this class. A second recommended
+reader is a preprint of the forthcoming book <em>Computational
+Geometry by Example</em>, by Mark de Berg, Mark van Kreveld, Mark
+Overmars, and Otfried Schwarzkopf. This book uses examples from
+application areas to motivate all the main structures and techniques
+of computational geometry and may become the main text for this course
+in future years.  These two readers are available at the Stanford
+Bookstore.
+
+<p><dt>
+Homeworks, Exams, Grading, etc:
+
+<dd> The course will have three substantial and mathematically
+challenging homeworks of the "pencil-and-paper" type. There will be no
+final exam, but there will be a midterm whose function will be to test
+breath but not depth.  For the final grade we will count each of the
+homeworks and the midterm as 25% of the grade. <i>Please do the
+homework</i>--there is no other way to learn the material.
+
+<p><df>Homework/midterm schedule:
+<table border=border>
+<thead>
+<td>Homework <td>Handed out <td> Due
+</thead>
+<tbody>
+<tr> <td> <!WA13><a href="http://Theory.Stanford.EDU/~jbasch/cs368/handouts/hw1.ps">HW 1</a> <td> Tuesday, 16 April <td> Tuesday, 30 April
+<tr> <td> HW 2 <td> Tuesday, 30 April <td> Tuesday, 14 May
+<tr> <td> HW 3 <td> Tuesday, 14 May <td> Tuesday, 4 June
+<tr> <td>Midterm <td> in class <td> Tuesday, 21 May
+</tbody>
+</table>
+
+
+</dl>
+
+</dl>
+
+<hr>
+
+<h2><a name=links>Geometric algorithms links</a></h2>
+
+<ul>
+
+<li><!WA14><a
+href="http://www.cs.ruu.nl/usr/cgi-bin/bib-search/cgi-biblook/Geometry+Literature/rene/geombib/geom">On-line
+geometry litterature database</a>, a BibTeX database of computational
+geometry related papers (see <!WA15><a
+href="http://www.cs.berkeley.edu/~jeffe/geombib/geombib_1.html">database
+description</a>),
+
+<li>CRC <!WA16><a href="http://freeabel.geom.umn.edu/docs/reference/CRC-formulas"
+	>Geometry Formulas and Facts</a>,
+
+<li>Jeff Erickson's <!WA17><a href="http://www.cs.berkeley.edu/~jeffe/compgeom.html"
+	>Computational Geometry</a> page,
+
+<li>David Eppstein's <!WA18><a href="http://www.ics.uci.edu/~eppstein/geom.html"
+	>Geometry in Action</a> page,
+
+<li>The Geometry Center's
+    <!WA19><a href="http://www.geom.umn.edu/software/cglist/"
+	>Directory of Computational Geometry Software</a>.
+
+<li><!WA20><a
+href="http://web.cs.ubc.ca/cs/imager/contributions/bobl/videhoc/top.html"
+ 	>VideHoc</a>: a program to visualize duality (runs only on SGI).
+
+</DL>
+
+
+<hr>
+
+<!WA21><A HREF = "http://www.stanford.edu/stanford.html">
+<!WA22><img src="http://Theory.Stanford.EDU/icons/stanford.seal56.gif"
+    alt="Stanford" border=0></A>
+<!WA23><A HREF = "http://www-cs.stanford.edu/">
+<!WA24><img src="http://Theory.Stanford.EDU/icons/logo.csd.gif"
+     alt="CSD" border=0></A>
+<!WA25><A HREF = "http://theory.stanford.edu/">
+<!WA26><img src="http://Theory.Stanford.EDU/icons/logo.theory.gif" alt="CS-Theory" border=0></A>
+
+<HR>
+
+<!WA27><IMG SRC="http://Theory.Stanford.EDU/cgi-bin/nph-count?width=5&link=/~jbasch/cs368/index.html"
+     ALT="Counter" ALIGN=RIGHT>
+
+<!WA28><A HREF ="mailto:jbasch@cs.stanford.edu">
+<ADDRESS>jbasch@cs.stanford.edu</ADDRESS>
+</A>
+(last updated: April 1, 1996)
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+MIME-Version: 1.0
+Server: CERN/3.0
+Date: Tuesday, 07-Jan-97 15:56:04 GMT
+Content-Type: text/html
+Content-Length: 2000
+Last-Modified: Monday, 11-Dec-95 16:42:34 GMT
+
+<title>The ACCEL Abductive Reasoning System</title>
+
+<h1>ACCEL</h1>
+<br>
+ACCEL is a general purpose system that uses abductive reasoning to
+construct explanations for observed intelligent phenomena.  These
+explanations are then used to avoid redundant work in future problem
+solving episodes.  We define an abductive explanation as a consistent
+set of assumptions which when combined with background knowledge,
+logically entails a set of observations. <p>
+
+ACCEL has been constructed as a domain-independent system, in which
+knowledge about a variety of domains has been uniformly encoded as
+first-order Horn-clause axioms.  A general-purpose abduction
+algorithm, AAA, is used to efficiently construct explanations by
+caching partial explanations.  ACCEL has been shown to achieve more
+than an order of magnitude speedup in run time for a variety of
+domains, including plan recognition in text understanding, and
+diagnosis of medical diseases, logic circuits, and dynamic
+systems. <p>
+
+
+Common Lisp source code for the ACCEL system and several diagnosis
+domains is available via <!WA0><!WA0><a href="ftp://ftp.cs.utexas.edu/pub/mooney/accel"> 
+anonymous FTP </a>. <p>
+
+A more detailed description of this system can be found in the
+following publications: <p>
+
+<ol>
+<li>  Hwee Tou Ng and Raymond Mooney, "Abductive Plan Recognition and Diagnosis: 
+  A Comprehensive Empirical Evaluation," <cite>Proceedings of the Third International 
+  Conference on Principles of Knowledge Representation and Reasoning</cite> (KR-92), 
+  pp. 499-508, Cambridge, MA, October 1992. 
+<li>  Hwee Tou Ng and Raymond Mooney, "An Efficient First-Order Horn-Clause Abduction 
+  System Based on the ATMS," <cite>Proceedings of the Ninth National Conference on
+  Artificial Intelligence</cite>, pages 494-499, Anaheim, CA, July 1991. 
+</ol>
+
+Poniters to these and other related papers can be found on our <!WA1><!WA1><a
+href="http://www.cs.utexas.edu/users/ml/abduction.html">Abduction</a> research page.<p>
+
+<hr>
+<address><!WA2><!WA2><a href="http://www.cs.utexas.edu/users/estlin/">estlin@cs.utexas.edu</a></address>

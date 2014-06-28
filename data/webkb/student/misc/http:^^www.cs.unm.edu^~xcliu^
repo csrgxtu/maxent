@@ -1,0 +1,109 @@
+Date: Tue, 26 Nov 1996 17:48:03 GMT
+Server: NCSA/1.4.2
+Content-type: text/html
+Last-modified: Wed, 06 Nov 1996 19:23:51 GMT
+Content-length: 2675
+
+<HTML>
+
+<HEAD>
+<TITLE>Xuechen Liu's Homepage</TITLE>
+
+<SCRIPT LANGUAGE="JavaScript">
+function scrollit_r21(seed)
+{
+   var m1 = "... Thank you for visiting Xuechen liu's Homepage";
+   var m2 = "...";
+
+   var msg=m1+m2
+   var out = " ";
+
+   var c = 1;
+
+   if (seed > 100) {
+      seed--;
+      var cmd="scrollit_r21(" + seed + ")";
+      timerTwo=window.setTimeout(cmd,100);
+   }
+   else if (seed <= 100 && seed > 0) {
+      for (c=0 ; c < seed ; c++) {
+          out+=" ";
+   }
+   out+=msg;
+   seed--;
+   var cmd="scrollit_r21(" + seed + ")";
+      window.status=out;
+   timerTwo=window.setTimeout(cmd,100);
+   }
+   else if (seed <= 0) {
+      if (-seed < msg.length) {
+         out+=msg.substring(-seed, msg.length);
+         seed--;
+         var cmd="scrollit_r21(" + seed + ")";
+         window.status=out;
+         timerTwo=window.setTimeout(cmd, 100);
+      }
+      else {
+          window.status=" ";
+          timerTwo=window.setTimeout("scrollit_r21(100)", 75);
+      }
+   }
+}
+// End of JavaScript Code -->
+</SCRIPT>
+
+</HEAD>
+
+
+<BODY bgcolor=#558888 text=#FFFFFF link=#FFFF00 vlink=#00FFFF onLoad="timerONE=window.setTimeout('scrollit_r21(100)', 500);">
+
+<H2>
+<!img align=left src="image/dove.gif" border=0 alt="">
+  Xuechen Liu
+</H2>
+<UL>
+<LI> <!WA0><a HREF="http://www.cs.unm.edu/Engr_Schl/CS_Dept/subpages/graduates.html">Graduate Student</a> at
+<LI> <!WA1><a HREF="http://www.cs.unm.edu">Department of Computer Science</a>
+<LI> <!WA2><a HREF="http://www.unm.edu">University of New Mexico</a>
+<LI> <!WA3><a HREF="http://www.unm.edu/servers_pages.html">Albuquerque, NM 87131</a>
+<LI> Phone: (505) 246-8744 (H) (505) 277-6676 (O)
+<LI> Email: xcliu@cs.unm.edu
+</UL>
+<p>
+
+</p>
+
+<!WA4><img align=middle src="http://www.cs.unm.edu/~xcliu/image/rainbow.gif" border=0 alt=""><br>
+
+<h4><ul>
+<li>
+<!WA5><img align=middle src="http://www.cs.unm.edu/~xcliu/image/eye2.gif" border=0 alt="">
+<!WA6><a href="http://www.cs.unm.edu/~xcliu/language.html">Programming Language Links</a>
+<li>
+<!WA7><img align=middle src="http://www.cs.unm.edu/~xcliu/image/eye2.gif" border=0 alt="">
+<!WA8><a href="http://www.cs.unm.edu/~xcliu/hotlink.html"> Hot Links</a>
+<li>
+<!WA9><img align=middle src="http://www.cs.unm.edu/~xcliu/image/eye2.gif" border=0 alt="">
+<!WA10><a href="http://www.cs.unm.edu/~xcliu/fall96.html">Courses For FALL96</a>
+<li>
+<!WA11><img align=middle src="http://www.cs.unm.edu/~xcliu/image/eye2.gif" border=0 alt="">
+<!WA12><a HREF = "http://wwwcareer.unm.edu">UNM Career Services<a>
+<li>
+<!WA13><img align=middle src="http://www.cs.unm.edu/~xcliu/image/eye2.gif" border=0 alt="">
+<!WA14><a HREF = "http://www.cis.ohio-state.edu/hypertext/faq/usenet/FAQ-List.html">USENET FAQs<a>
+<li>
+<!WA15><img align=middle src="http://www.cs.unm.edu/~xcliu/image/eye2.gif" border=0 alt="">
+<!WA16><a HREF = "http://bighorn.lanl.gov:5001/htmls/citequery.html"> SEARCH ENGINE<a>
+
+</ul></h4>
+
+
+<!WA17><img align=middle src="http://www.cs.unm.edu/~xcliu/image/rainbow.gif" border=0 alt=""><br>
+
+<h4><!WA18><img align=middle src="http://www.cs.unm.edu/~xcliu/image/construct.gif" border=0 alt="">This page is 
+still under construction.</h4>
+
+</BODY>
+
+</HTML>
+

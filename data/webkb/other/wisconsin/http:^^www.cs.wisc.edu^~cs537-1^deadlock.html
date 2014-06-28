@@ -1,0 +1,459 @@
+Date: Tue, 05 Nov 1996 00:27:39 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Thu, 31 Oct 1996 21:38:53 GMT
+Content-length: 19822
+
+<html>
+<head>
+<title>CS 537 - Processes, Part II (Deadlock) </title>
+
+</head>
+
+<body bgcolor="#ffffff">
+
+<h1>
+CS 537<br>Lecture Notes<br>Processes and Synchronization, Part II<br>
+Deadlock
+</h1>
+
+
+<hr>
+<h2>Contents</h2>
+<ul>
+<li><!WA0><!WA0><!WA0><!WA0><a href="#terminology"> Terminology </a>
+<li><!WA1><!WA1><!WA1><!WA1><a href="#detection"> Deadlock Detection </a>
+<li><!WA2><!WA2><!WA2><!WA2><a href="#recovery"> Deadlock Recovery </a>
+<li><!WA3><!WA3><!WA3><!WA3><a href="#prevention"> Deadlock Prevention </a>
+<li><!WA4><!WA4><!WA4><!WA4><a href="#avoidance"> Deadlock Avoidance </a>
+</ul>
+
+<hr>
+
+<a name="using"> <h2> Using Processes (Continued) </h2> </a>
+<a name="using_deadlock"> <h3> Deadlock </h3> </a>
+<a name="terminology"> <h4> Terminology </h4> </a>
+The Dining Philosophers problem isn't just a silly exercise.
+It is a scale-model example of a very important problem in operating systems:
+<b>resource allocation</b>.
+A ``resource'' can be defined as something that costs money.
+The philosophers represent processes, and the forks represent
+<b>resources</b>.
+<p>
+There are three kinds of resources:
+<ul>
+<li><b>sharable</b>
+<li><b>serially reusable</b>
+<li><b>consumable</b>
+</ul>
+Sharable resources can be used by more than one process at a time.
+A consumable resource can only be used by one process, and the resource
+gets ``used up.''
+A serially reusable resource is in between.
+Only only process can use the resource at a time, but once it's done,
+it can give it back for use by another process.
+Examples are the CPU and memory.
+These are the most interesting type of resource.
+We won't say any more about the other kinds.
+<p>
+A process
+<b>requests</b> a (serially reusable) resource from the OS and
+<b>holds</b> it until it's done with it; then it
+<b>releases</b> the resource.
+The OS may delay responding to a request for a resource.
+The requesting process is <b>blocked</b> until the OS responds.
+Sometimes we say the process is ``blocked on the resource.''
+In actual systems, resources might be represented by semaphores,
+monitors, or condition variables in monitors--anything a process may
+wait for.
+<p>
+A resource might be
+<b>preemptable</b>,
+meaning that the resource can be ``borrowed'' from the process without harm.
+Sometimes a resource can be made preemptable by the OS, at some cost.
+For example, memory can be preempted from a process by suspending the
+process, and copying the contents of the memory to disk.
+Later, the data is copied back to the memory, and the process is allowed
+to continue.
+Essentially, this makes a serially reusable resource look sharable.
+
+<a name="detection"> <h4> Deadlock Detection </h4> </a>
+<p>
+The formal definition of deadlock:
+<ol>
+<em>
+A set of processes is <strong>deadlocked</strong> if each process in the set is
+waiting for an event that only another process in the set can cause.
+</em>
+</ol>
+<p>
+We can show deadlock graphically by building the <em>waits-for</em>
+graph.
+Draw each process as a little circle, and draw an arrow from <em>P</em> to
+<em>Q</em> if <em>P</em> is waiting for <em>Q</em>.
+The picture is called a <em>graph</em>, the little circles are called
+<em>nodes</em>, and the arrows connecting them are called <em>arcs</em>.
+We can find out whether there is a deadlock as follows:
+<pre><font color="0f0fff">
+    for (;;) {
+        find a node n with no arcs coming out of it;
+        if (no such node can be found)
+            break;
+        erase n and all arcs coming into it;
+    }
+    if (any nodes are left)
+        there is a deadlock;
+</font></pre>
+This algorithm simulates a best-case scenario:
+Every runnable process runs and causes all events that are expected from it,
+and no process waits for any new events.
+A node with no outgoing arcs represents a process that isn't waiting for
+anything, so is runnable.
+It causes all events other processes are waiting for (if any), thereby
+erasing all incoming arcs.  Then, since it will never wait for anything,
+it cannot be part of a deadlock, and we can erase it.
+<p>
+Any processes that are left at the end of the algorithm are deadlocked, and
+will wait forever.
+The graph that's left must contain a
+<em>cycle</em> (a path starting and ending at the same node and following
+the arcs).
+It may also contain processes that are not part of the cycle but are waiting
+for processes in the cycle, or for processes waiting for them, etc.
+The algorithm will never erase any of the nodes in a cycle, since each one
+will always have an outgoing arc pointing to the next node in the cycle.
+<p>
+The simplest cycle is an arc from a node to itself.
+This represents a process that is waiting for itself, and usually represents
+a simple programming bug:
+<pre><font color="0f0fff">
+    Semaphore s = 0;
+    ...
+    s.down();
+    s.up();
+</font></pre>
+If no other process can do <samp><font color="0f0fff">s.up()</font></samp>, this process is deadlocked
+with itself.
+<p>
+Usually, processes block waiting for (serially reusable) resources.
+The ``events'' they are waiting for are release of resources.
+In this case, we can put some more detail into the graph.
+Add little boxes representing resources.
+Draw an arc from a process to a resource if the process is waiting for
+the resource, and an arc from the resource to the process if the process
+holds the resource.
+The same algorithm as before will tell whether there is a deadlock.
+(Ignore the algorithm on page 248 of Tanenbaum.  Not only is it
+hard to understand, it is much less efficient than the one presented here.)
+As before, deadlock is associated with cycles:
+If there is no cycle in the original graph, there is no deadlock, and
+the algorithm will erase everything.
+If there is a cycle, the algorithm will never erase any part of it,
+and the final graph will contain only cycles and nodes that have
+paths from them to cycles.
+<h5> Resource Types </h5>
+<p>
+Often, a request from a process is not for a particular resource, but
+for any resource of a given type.
+For example, a process may need a block of memory.
+It doesn't care which block of memory it gets.
+To model this, we will assume there there some number <em>m</em>
+of <em>resource types</em>, and some number <em>E[r]</em> of <em>units</em>
+of resource <em>r</em>, for each <em>r</em> between 1 and <em>m</em>.
+To be very general, we will allow a process to request multiple resources
+at once:
+Each request will tell now many units of each resource the process needs
+to continue.
+The graph gets pretty hard to draw, but essentially the same algorithm
+can be used to determine whether there is a deadlock.
+We will need a few arrays for bookkeeping.
+<pre><font color="0f0fff">
+    E[r] = total number of units of resource r in the system
+    C[p][r] = number of units of r currently allocated to process p
+    A[r] = number of units of r that have not been allocated to any process
+    R[p][r] = number of units of r requested by p but not yet allocated
+</font></pre>
+As before, the algorithm works by simulating a best-case scenario.
+We add an array of <samp><font color="0f0fff">boolean done[n]</font></samp> with one element for each
+process, and initially set all elements to <samp><font color="0f0fff">false</font></samp>.
+<a name="deadlock_alg">
+<pre><font color="0f0fff">
+    for (;;) {
+        find p such that
+            !done[p]
+            &amp;&amp; for all r,
+                R[p][r] &lt;= A[r];
+        if (no such p can be found)
+            break;
+        for each r
+            A[r] += C[p][r];
+        done[p] = true;
+    }
+    if (there is any p such that !done[p])
+        there is a deadlock;
+</font></pre>
+</a>
+The algorithm looks for a process whose request can be satisfied immediately.
+If it finds one, it assumes that the process could be given all the resources
+it wants, would do what ever it wanted with them, and would eventually 
+give them back, as well as all the resources it previously got.
+It can be proved that it doesn't matter what order we consider the
+processes;
+either we succeed in completing them, one at a time, or there is a deadlock.
+
+<a name="recovery"> <h4> Deadlock Recovery </h4> </a>
+<p>
+Once you've discovered that there is a deadlock, what do you do about it?
+One thing to do is simply re-boot.
+A less drastic approach is to yank back a resource from a process to break
+a cycle.
+As we saw, if there are no cycles, there is no deadlock.
+If the resource is not preemptable, snatching it back from a process may
+do irreparable harm to the process.
+It may be necessary to kill the process, under the principle that
+at least that's better than crashing the whole system.
+<p>
+Sometimes, we can do better.
+For example, if we <em>checkpoint</em> a process from time to time,
+we can roll it back to the latest checkpoint, hopefully to a time before
+it grabbed the resource in question.
+Database systems use checkpoints, as well as a
+a technique called <em>logging</em>, allowing
+them to run processes ``backwards,'' undoing everything they have done.
+It works like this:
+Each time the process performs an action, it writes a <em>log record</em>
+containing enough information to undo the action.
+For example, if the action is to assign a value to a variable, the
+log record contains the previous value of the record.
+When a database discovers a deadlock, it picks a victim and rolls it back.
+<p>
+Rolling back processes involved in deadlocks can lead to a form of
+starvation, if we always choose the same victim.
+We can avoid this problem by always choosing the <em>youngest</em>
+process in a cycle.
+After being rolled back enough times, a process will grow old enough
+that it never gets chosen as the victim--at the least by the time it
+is the oldest process in the system.
+If deadlock recovery involves killing a process altogether and restarting
+it, it is important to mark the ``starting time'' of the reincarnated process
+as being that of its ordinal version, so that it will look older that new
+processes started since then.
+<p>
+When should we check for deadlock?
+There is no one best answer to this question; it depends on the situation.
+The most ``eager'' approach is to check whenever we do something that
+might create a deadlock.
+Since a process cannot create a deadlock when releasing resources,
+we only have to check on allocation requests.
+If the OS always grants requests as soon as possible, a successful
+request also cannot create a deadlock.
+Thus the we only have to check for a deadlock when a process becomes
+blocked because it made a request that cannot be immediately granted.
+However, even that may be too frequent.
+The deadlock-detection algorithm can be quite expensive if there
+are a lot of processes and resources, and if deadlock is rare,
+we can waste a lot of time checking for deadlock every time a request
+has to be blocked.
+<p>
+What's the cost of delaying detection of deadlock?
+One possible cost is poor CPU utilization.
+In an extreme case, if all processes are involved in a deadlock,
+the CPU will be completely idle.
+Even if there are some processes that are not deadlocked, they
+may all be blocked for other reasons (e.g. waiting for I/O).
+Thus if CPU utilization drops, that might be a sign that it's time
+to check for deadlock.
+Besides, if the CPU isn't being used for other things, you might
+as well use it to check for deadlock!
+<p>
+On the other hand, there might be a deadlock, but enough non-deadlocked
+processes to keep the system busy.
+Thing's look fine from the point of view of the OS, but from the
+selfish point of view of the deadlocked processes, things are definitely
+<em>not</em> fine.
+If the processes may represent interactive users, who can't understand why
+they are getting no response.
+Worse still, they may represent time-critical processes (missile defense,
+factory control, hospital intensive care monitoring, etc.) where
+something disastrous can happen if the deadlock is not detected and
+corrected quickly.
+Thus another reason to check for deadlock is that a process has been
+blocked on a resource request ``too long.''
+The definition of ``too long'' can vary widely from process to process.
+It depends both on how long the process can reasonably expect to wait
+for the request, and how urgent the response is.
+If an overnight run deadlocks at 11pm and nobody is going to look
+at its output until 9am the next day, it doesn't matter whether the
+deadlock is detected at 11:01pm or 9:59am.
+If all the processes in a system are sufficiently similar, it may
+be adequate simply to check for deadlock at periodic intervals (e.g.,
+one every 5 minutes in a batch system; once every millisecond in
+a real-time control system).
+
+<a name="prevention"> <h4> Deadlock Prevention </h4> </a>
+<p>
+There are four necessary condition for deadlock.
+<ol>
+<li><strong>Mutual Exclusion.</strong>
+Resources are not sharable.
+<li><strong>Non-preemption.</strong>
+Once a resource is given to a process, it cannot be revoked until the
+process voluntarily gives it up.
+<li><strong>Hold/Wait.</strong>
+It is possible for a process that is holding resources to request more.
+<li><strong>Cycles.</strong>
+It is possible for there to be a cyclic pattern of requests.
+</ol>
+It is important to understand that <em>all four</em> conditions are necessary
+for deadlock to occur.
+Thus if we can get rid of deadlock by removing any one of them.
+<p>
+There's not much hope of getting rid of condition (1)--some resources are
+inherently non-sharable--but
+attacking (2) can be thought of as a weak form of attack on (1).
+By borrowing back a resource when another process needs to use it,
+we can make it appear that the two processes are sharing it.
+Unfortunately, not all resources can be preempted at an acceptable cost.
+Deadlock recover, discussed in the previous paragraph, is an extreme form
+of preemption.
+<p>
+We can attack condition (3) either by forcing a process to allocate all
+the resources it will ever need at startup time, or by making it release
+<em>all</em> of its resources before allocating any more.
+The first approach fails if a process needs to do some computing before
+it knows what resources it needs, and even it is practical, it may be
+very inefficient, since a process that grabs resources long before
+it really needs them may prevent other processes from proceeding.
+The second approach (making a process release resources before allocating more)
+is in effect a form of preemption and may be impractical for the same
+reason preemption is impractical.
+<p>
+An attack on the fourth condition is the most practical.
+The algorithm is called <em>hierarchical allocation</em>.
+The first algorithm in
+<!WA5><!WA5><!WA5><!WA5><a href="http://www.cs.wisc.edu/~cs537-1/project2.html">
+Project 2
+</a>
+is an example of this approach.
+If resources are given numbers somehow (it doesn't matter how the numbers
+are assigned), and processes always request resources in increasing order,
+deadlock cannot occur.
+<dl>
+<dt><b>Proof.</b>
+<dd>
+As we have already seen, a cycle in the waits-for graph is necessary
+for there to be deadlock.
+Suppose there is a deadlock, and hence a cycle.
+A cycle consists of alternating resources and processes.
+As we walk around the cycle, following the arrows, we see that each
+process holds the resource preceding it and has requested the one
+following it.
+Since processes are required to request resources in increasing order,
+that means the number of the resources must be increasing as we go
+around the cycle.
+But it is impossible for the number to keep increasing <em>all</em>
+the way around the cycle; somewhen there must be drop.
+Thus we have a contradiction:
+Either some process violated the rule on requesting resources, or
+there is no cycle, and hence no deadlock.
+</dl>
+<p>
+More precisely stated, the hierarchical allocation algorithm is as follows:
+<ol>
+When a process requests resources, the requested resources must all 
+have numbers <em>strictly greater</em> than the number of any resource
+currently held by the process.
+</ol>
+This algorithm will work even if some of the resources are given the
+same number.
+In fact, if they are all given the same number, this rule reduces to
+the ``hold-wait'' condition, so hierarchical allocation can also be
+thought of as a relaxed form of the hold-wait condition.
+
+<a name="avoidance"> <h4> Deadlock Avoidance </h4> </a>
+<p>
+The final approach we will look at is called <em>deadlock avoidance</em>.
+In this approach, the OS may delay granting a resource request, even
+when the resources are available, because doing so will put the
+system in an <em>unsafe</em> state where deadlock may occur later.
+The best-known deadlock avoidance algorithm is called the ``Banker's
+Algorithm,'' invented by the famous E. W. Dijkstra.
+<p>
+This algorithm can be thought of as yet another relaxation of the
+the hold-wait restriction.
+Processes do not have to allocate all their resources at the start,
+but they have to declare an upper bound on the amount of resources
+they will need.
+In effect, each process gets a ``line of credit'' that is can drawn on
+when it needs it (hence the name of the algorithm).
+<p>
+When the OS gets a request, it ``mentally'' grants the request, meaning
+that it updates its data structures to indicate
+it has granted the request, but does not immediately let the requesting
+process proceed.
+First it checks to see whether the resulting state is ``safe''.
+If not, it undoes the allocation and keeps the requester waiting.
+<p>
+To check whether the state is safe, it assumes the <em>worst</em>
+case: that all running processes immediately request all the remaining
+resources that their credit lines allow.
+It then checks for deadlock using the algorithm
+<!WA6><!WA6><!WA6><!WA6><a href="#deadlock_alg">above</a>.
+If deadlock occurs in this situation, the state is unsafe, and the
+resource allocation request that lead to it must be delayed.
+<p>
+In somewhat more detail, we maintain a matrix <samp><font color="0f0fff">M</font></samp> of unmet demand.
+When a process <samp><font color="0f0fff">p</font></samp> starts, <samp><font color="0f0fff">M[p][r]</font></samp> is set to <samp><font color="0f0fff">p</font></samp>'s
+``credit line'' for resource <samp><font color="0f0fff">r</font></samp>.
+Whenever <samp><font color="0f0fff">p</font></samp> is granted some resource, not only is the amount
+deducted from <samp><font color="0f0fff">A</font></samp>, it is also deducted from <samp><font color="0f0fff">M</font></samp>.
+When a new request arrives, instead of running the
+<!WA7><!WA7><!WA7><!WA7><a href="#deadlock_alg">deadlock algorithm</a>, we simply check whether
+<samp><font color="0f0fff">A</font></samp> has enough resources on hand to grant the request immediately.
+If so, we update our data structures to grant it (increase <samp><font color="0f0fff">C</font></samp>
+and decrease <samp><font color="0f0fff">A</font></samp> and <samp><font color="0f0fff">M</font></samp>)
+<pre><font color="0f0fff">
+    for all r
+        C[requester][r] += request[r];
+        M[requester][r] -= request[r];
+        A[r] -= request[r].
+</font></pre>
+We then test for safety.
+To do that, we increase the <samp><font color="0f0fff">R</font></samp> matrix of requests by the entire
+unmet demand <samp><font color="0f0fff">M</font></samp>
+<pre><font color="0f0fff">
+    for all p and r
+        R[p][r] += M[p][r],
+</font></pre>
+run the
+<!WA8><!WA8><!WA8><!WA8><a href="#deadlock_alg">deadlock algorithm</a>,
+and restore <samp><font color="0f0fff">R</font></samp> and <samp><font color="0f0fff">M</font></samp> to their previous values.
+If the deadlock algorithm reported that there was no deadlock, we
+allow the requesting process to proceed--the request is safe.
+Otherwise, we ``take back'' the allocation and add it to our list
+of unmet allocations instead.
+<pre><font color="0f0fff">
+    for all r
+        C[requester][r] -= request[r];
+        M[requester][r] += request[r];
+        A[r] += request[r].
+        R[requester][r] += request[r];
+</font></pre>
+
+<hr>
+
+<address>
+<i>
+<!WA9><!WA9><!WA9><!WA9><a HREF="mailto:solomon@cs.wisc.edu">
+solomon@cs.wisc.edu
+</a>
+<br>
+Thu Oct 31 15:38:53 CST 1996
+</i>
+</address>
+<br>
+Copyright &#169; 1996 by Marvin Solomon.  All rights reserved.
+
+</body>
+
+</html>

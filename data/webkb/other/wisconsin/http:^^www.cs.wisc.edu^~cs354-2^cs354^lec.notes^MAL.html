@@ -1,0 +1,711 @@
+Date: Tue, 05 Nov 1996 00:32:34 GMT
+Server: NCSA/1.5
+Content-type: text/html
+Last-modified: Wed, 30 Aug 1995 21:21:33 GMT
+Content-length: 20490
+
+<html>
+<head>
+<title> Lecture notes - Chapter 8 - MAL and Registers</title>
+</head>
+
+<BODY>
+<h1> Chapter 8 -- MAL and registers</h1>
+
+<pre>
+
+REGISTERS and MAL
+-----------------
+
+An introduction to the subject of registers -- from a motivational
+point of view.
+
+This lecture is an attempt to explain a bit about why computers
+are designed (currently) the way they are.  Try to remember that
+speed of program execution is an important goal.  Desire for increased
+speed drives the design of computer hardware.
+
+
+The impediment to speed (currently):  transfering data to and from
+memory.
+
+look at a SAL instruction:
+    add  x, y, z
+
+    -x, y, and z must all be addresses of data in memory.
+    -each address is 32 bits.
+    -so, this instruction requires more than 96 bits.
+
+    if each read from memory delivers 32 bits of data,
+    then it takes a lot of reads before this instruction can
+    be completed.
+       at least 3 for instruction fetch
+       1 to load x
+       1 to load y
+       1 to store z
+
+       that's 6 transactions with memory for 1 instruction!
+
+
+How bad is the problem?
+  Assume that a 32-bit 2's complement addition takes 1 time unit. 
+  A read/write from/to memory takes about 10 time units.
+
+  So we get
+     fetch instruction:  30 time units
+     decode               1 time unit
+     load x              10 time units
+     load y              10 time units
+     add                  1 time unit
+     store z             10 time units
+     ---------------------------------
+       total time:       62 time units
+
+     60/62 = 96.7 % of the time is spent doing memory operations.
+
+
+
+what do we do to reduce this number?
+  1. transfer more data at one time
+     if we transfer 2 words at one time, then it only takes 2 reads
+     to get the instruction.  There is no savings in loading/storing
+     the operands.  And, an extra word worth of data is transferred
+     for each load, a waste of resources.
+     So, this idea would give a saving of 1 memory transaction.
+  
+  2. modify instructions such that they are smaller.
+     This was common on machines from more than a decade ago.
+     Here's how it works:
+
+     SAL implies what is called a 3-address machine.  Each 
+     arithmetic type instruction contains 3 operands, 2 for sources
+     and 1 for the destination of the result.
+
+     To reduce the number of operands (and thereby reduce the number
+     of reads for the instruction fetch), develop an instruction set
+     that uses 2 operands for arithemtic type instructions.
+     (Called a 2-address machine.)
+
+     Now, instead of       add  x, y, z
+
+     we will have          load x, z      (puts the value of z into x)
+			   add  x, y      ( x <- x + y )
+
+	   so, arithmetic type instructions always use one of the operands
+	   as both a source and a destination.
+
+
+    There's a couple of problems with this approach:
+       - where 1 instruction was executed before, 2 are now executed.
+	 It actually takes more memory transactions to execute this sequence!
+	    at least 2 to fetch each instruction
+	    1 for each of the load/storing of the operands themselves.
+
+	    that is 8 reads/writes for the same sequence.
+
+
+
+  So, allow only 1 operand -- called a 1-address format.
+     
+     now, the instruction     add  x, y, z   will be accomplished
+     by something like
+
+     load  z
+     add   y
+     store x
+
+     to facilitate this, there is an implied word of storage
+     associated with the ALU.  All results of instructions
+     are placed into this word -- called an ACCUMULATOR.
+
+     the operation of the sequence:
+	 load z --  place the contents of address z into the accumulator
+		   (sort of like if you did  move accumulator, z  in SAL)
+	 add  y --  implied operation is to add the contents of the
+		    accumulator with the operand, and place the result
+		    back into the accumulator.
+	 store x--  place the contents of the accumulator into the location
+		    specified by the operand.
+
+     Notice that this 1-address instruction format implies the use
+     of a variable (the accumulator).
+
+     How many memory transactions does it take?
+	2 -- (load) at least 1 for instruction fetch, 1 for read of z
+	2 -- (add) at least 1 for instruction fetch, 1 for read of y
+	2 -- (store) at least 1 for instruction fetch, 1 for write of x
+       ---
+	6   the same as for the 3 address machine -- no savings.
+
+
+  BUT, what if the operation following the add was something like
+	 div x, x, 3
+  then, the value for x is already in the accumulator, and the
+  code on the 1 address machine could be
+    load z
+    add  y
+    div  3
+    store x
+  there is only 1 extra instruction (2 memory transactions) for this
+  whole sequence!  
+     On the 3-address machine:   12 transactions (6 for each instr.)
+     On the 1-address machine:    8 transactions (2 for each instr.)
+
+REMEMBER this:  the 1 address machine uses an extra word of storage
+		that is located in the CPU.
+
+		the example shows a savings in memory transactions
+		when a value is re-used.
+
+
+
+  3.  shorten addresses.  This restricts where variables can be placed.
+      First, make each address be 16 bits (instead of 32).  Then
+	 add  x, y, z
+      requires 2 words for instruction fetch.
+
+      Shorten addresses even more . . . make them each 5 bits long.
+      Problem:  that leaves only 32 words of data for operand storage.
+      So, use extra move instructions that allow moving data from
+      a 32 bit address to one of these special 32 words.
+
+      Then, the add can fit into 1 instruction.
+
+
+NOW, put a couple of these ideas together.
+
+Use of storage in CPU (accumulator) allowed re-use of data.
+Its easy to design -- put a bunch of storage in the CPU --
+call them REGISTERS.  How about 32 of them?  Then, restrict
+arithmetic instructions to only use registers as operands.
+
+   add  x, y, z
+
+   becomes something more like
+
+   load  reg10, y
+   load  reg11, z
+   add   reg12, reg11, reg10
+   store x, reg12
+
+presuming that the values for x, y, and z can/will be used again,
+the load operations take relatively less time.
+
+
+The MIPS R2000 architecture does this.  It has
+  1. 32  32-bit registers.
+  2. Arithmetic/logical instructions use register values as operands.
+
+A set up like this where arith/logical instr. use only registers
+for operands is called a LOAD/STORE architecture.
+
+A computer that allows operands to come from main memory is often
+called a MEMORY TO MEMORY architecture, although that term is not
+universal.
+
+
+Load/store architectures are common today.  They have the advantages
+  1.  instructions can be fixed length (and short)
+  2.  their design allows (easily permits) pipelining, making load/store
+      architectures faster
+      (More about pipelining at the end of the semester)
+
+
+
+
+MAL
+---
+
+
+discussing some of the details of the MIPS architecture, and how
+to write assembly language.
+
+
+MIPS assembly language (or at least MAL) looks a lot like SAL,
+except that operands are now in registers.
+
+To reference a register as an operand, use the syntax
+	 $x,      where x is the number of the register you want.
+
+
+  Some limitations on the use of registers.
+  Due to conventions set by the simulator, certain registers are used
+  for special purposes.  It is wise to avoid the use of those registers.
+
+	   $0     is    0    (use as needed)
+	   $1     is used by the assembler (the simulator in our case)
+		  -- don't use it.
+	   $2-7   are used by the simulator -- don't use them until
+		  you know what they are for and how they are used.
+	   $26-27 Used to implement the mechanism for calling special
+		  procedures that do I/O and take care of other
+		  error conditions (like overflow)
+	   $29    is a stack pointer -- you are automatically allocated
+		  a stack (of words), and the $sp is initialized to
+		  contain the address of the empty word at the top of
+		  the stack at the start of any program.
+
+
+
+On to some MAL instructions.  Here are descriptions and samples
+of only some instructions.  There are far too many to be able to
+go over each one in detail.
+
+Some sample info for all the examples:
+
+   hex address      hex contents    (opt) assembly lang.
+   
+   00002000         0011aaee        c1:  .word  0x0011aaee
+   00002004         ????????        c2:  .space 12
+   00002008         ????????
+   0000200c         ????????
+   00002010         00000016        c4:  .word  22
+   00002014         000000f3        c5:  .word  0x000000f3
+
+
+
+Load/Store
+----------
+
+   la rt, label          # load address
+
+	place the address assigned to label into the register rt.
+
+	example:             la  $9, c1
+
+                  $9 gets the value 0x00002000
+
+
+    lw rt, label         # load word
+	place the word at address       label    into the register rt.
+    lw rt,  (rb)         # load word
+	place the word at address        (rb)    into the register rt.
+    lw rt, x(rb)         # load word
+	place the word at address    X + (rb)    into the register rt.
+
+	example:             lw  $10, c1
+
+	      $10 gets the value 0x0011aaee
+
+
+    lb rt, label         # load byte
+	place the byte at address      label     into the least
+	significant byte of register rt, and sign extend the value
+	to the rest of the register.
+    lb rt,  (rb)         # load byte
+	place the byte at address        (rb)    into the least
+	significant byte of register rt, and sign extend the value
+	to the rest of the register.
+    lb rt, x(rb)         # load byte
+	place the byte at address    X + (rb)    into the least
+	significant byte of register rt, and sign extend the value
+	to the rest of the register.
+
+	example:             lb  $10, c1
+
+	      on a little endian machine:
+	      presuming $9 contains the value 0x00002000,
+	      $10 gets the value 0xffffffee
+
+
+
+    sw rt, label         # store word
+	write the contents of register rt to address       label
+    sw rt,  (rb)         # store word
+	write the contents of register rt to address        (rb)
+    sw rt, x(rb)         # store word
+	write the contents of register rt to address    X + (rb)
+
+	example:           sw  $10, c2
+
+	      the value 0xffffffee is placed into the word of memory
+	      at address 0x00002004
+
+
+Branch
+------
+
+all the branch instructions for MAL look just like the ones from
+SAL! (on purpose).  Just be sure that you use one that exists!
+
+
+The only difference worth mentioning is that the operands are
+required to be in registers.
+		
+	example:       beq     $20, $23, branchtarget
+
+	Compare the values in registers 20 and 23.  If the values are
+	the same, then load the PC with the address branchtarget
+	If not, then do nothing and fetch the next instruction.
+
+
+    j target       # jump target
+	
+	identical in effect to    b target, but the implementation
+	and execution are different (wrt the machine code).
+	A branch specifies an offset to be added to the current value
+	of the PC.  A jump gives as many bits of address as possible,
+	and the remaining ones come from the PC (no addition).
+
+
+
+
+
+Arithmetic/Logical
+------------------
+
+Very much like their SAL equivalents, except that all the operands
+are in registers. (No exceptions!)
+
+       add rd, rs, rt      # rd <-  rs + rt   (2's complement)
+
+       addi rd, rs, immediate      #   rd <- rs + immediate
+
+       example:         addi $13, $5, 8
+
+	    if $5 contains the value 14, then the result in
+	    $13 after execution will be the value 22. 
+
+	    16 bits are available for storing the immediate value.
+	    It is sign extended to 32 bits and then a 2's comp.
+	    add is done.
+		  
+
+
+To think about:
+   what does the instruction   add  $8, $12, $0   do?
+   Answer:  copies the value in $12 into $8.
+
+
+I/O instructions
+----------------
+
+There are 3:  getc, putc and puts
+
+   getc   is just  get  on .byte quantities
+   putc   is just  put  on .byte quantities
+
+   AND, the operand is in a register.
+
+   examples:
+    putc $18     # prints out the character contained in the
+		 # least significant byte of the register
+
+    getc $9      #  gets one character that the user typed, and
+		 #  places it in the least significant byte of
+		 #  the register specified.
+
+   puts can be used one of 2 ways:
+
+    puts str1    # prints the null terminated string labelled str1
+      OR
+    puts $13     # prints the null terminated string that begins at
+		 # the address contained in the register specified.
+
+
+
+
+Here's a sample MAL program.
+
+
+
+
+
+
+#  this simple MAL program reads in 2 characters, figures
+#  out which one is alphabetically first, and prints it out.
+
+
+#  register assignments
+#    8 --  the first character typed by the user
+#    9 --  the second character typed by the user
+#   10 --  temporary
+#   11 --  holds the value of the larger character
+#   13 --  the address of the newline character constant
+#   14 --  newline character (a constant)
+
+
+  .data
+newline:  .byte  '\n'
+
+  .text
+__start:      getc $8                       # get 2 characters
+              getc $9
+
+              la   $13, newline             # print out newline
+              lb   $14, ($13)
+              putc $14
+
+              sub  $10, $9, $8              # figure out which is larger
+              bgez $10, secondlarger
+              add  $11, $8, $0
+              b    printresult
+
+secondlarger: add  $11, $9, $0
+
+printresult:  putc $11
+end:
+              done
+
+
+
+
+
+
+
+What has been ignored so far:
+  how to fit both an opcode and an address in a 32 bit instruction.
+
+  first. . .how many bits are "needed" for the opcode?
+     the number of unique patterns given by n bits is 2 ** n.
+     So, the problem boils down to deciding how many instructions
+     are necessary (and desired) for a computer.
+	   arithmetic ( + - * / ) (how many representations?)
+	   logicals (up to 16)
+	   shifting
+	   branches
+	   loads/stores
+      there are possibly 64 enumerated here, so 6 bits should be enough.
+  That leaves 26 left for a 32 bit address specification.
+
+  Oops!  For a load/store instruction, we need a register specification
+  also (where the data is to come from/go to).  That leaves only 21 bits
+  for an address specification.
+
+
+
+
+a discussion of addressing modes:
+
+The original goal of this discussion was to figure out a way
+to fit 32 bit addresses into less than 32 bits.
+
+The discussion is going to be expanded a bit to talk about the
+different ways that an instruction could specify where its operands
+are.
+
+But first, some way to specify a 32 bit address:
+
+1.  A BAD WAY.  Use more than 1 word to specify an instruction.
+      2 words:  the first contains the opcode and other operands
+		the second contains a 32 bit address
+    This method defeats the whole purpose.
+
+2.  Keep the address needed in a register.  Then use a register
+    specification to tell where the address is.  The operand
+    is reached by using the address within the register.
+
+    Other methods are variations on this one:
+
+2a. specify 2 registers.  The address is obtained by adding
+    the contents of the 2 registers.
+
+2b. specify 1 register plus a small constant.  The address
+    is obtained by adding the contents of the register plus
+    the constant.
+
+3.  (Not mentioned in the text.)  Specify only a constant (offset).
+    The address is calculated by adding the constant to the
+    value of the current PC.
+
+4.  Use whatever bits are available to specify the least significant
+    portion of an address.  The missing most significant bits
+    can be taking from the PC.   
+
+    This implies that the operand (address of) is located in the
+    same portion of memory as the instruction being executed.
+
+
+The MIPS architecture uses  #2b (exclusively) for address
+specification within a load/store instruction.  Address specification
+for branch instructions uses a variation of #3.
+
+
+
+Many computers offer more ways of getting at operands.  These
+methods are called addressing modes.
+
+   load/store architectures usually have a VERY limited set
+   of addressing modes available
+
+   memory to memory architectures often offer LOTS of modes.
+   This flexibility often forces these machines to have
+   variable length instructions.
+
+Here are some addressing modes.  These names have come under
+common usage.  REMEMBER, an addressing mode really gives the
+information of where an operand is (its address).  An instruction
+decides how to use the address.
+
+  Register.   The operand is in the register.
+
+  Immediate.  The operand is contained within the instruction itself.
+
+  Direct.  The address of the operand is contained within the
+	   instruction.  (This means that extra bits will need
+	   to specify a complete address.)
+
+  Register Direct.  The address of the operand is contained within
+	   a register given.  This is #2.
+
+  Base Displacement.  Also called indexed or relative.
+	   The address is the sum of the contents of a register
+	   plus a small constant.  This is #2b.
+
+  Indirect.  Adds a level of indirection to direct mode.  An address
+	   is specified within the instruction.  The contents
+	   of the address are the address of the operand.
+
+	   A variation might be Register Indirect.  The initial
+	   address is located in a register (instead of in the
+	   instruction).
+
+
+
+
+
+
+A second look at some MAL load and store instructions:
+
+
+Load/Store
+----------
+
+
+    lw rt, x(rb)         # load word
+
+	place the word at address    X + (rb)    into the register rt.
+
+	example:             lw  $10, 0($9)
+
+	      presuming $9 contains the value 0x00002000,
+	      $10 gets the value 0x0011aaee
+
+
+    lb rt, x(rb)         # load byte
+
+	place the byte at address    X + (rb)    into the least
+	significant byte of register rt, and sign extend the value
+	to the rest of the register.
+
+	example:             lb  $10, 0($9)
+
+	      on a little endian machine:
+	      presuming $9 contains the value 0x00002000,
+	      $10 gets the value 0xffffffee
+
+
+    sw rt, x(rb)         # store word
+
+	write the contents of register rt to address    X + (rb)
+
+	example:             la  $11, c2
+			     sw  $10, 4($11)
+
+              $11 gets the value 0x00002004, then
+	      the value 0xffffffee is placed into the word of memory
+	      at address 0x00002008
+
+
+
+MAL programming example (SIMULATED)
+-----------------------
+
+# MAL program to print out the alphabet
+
+ .data
+str1:    .asciiz "The alphabet:\n"
+
+# register assignments
+#   $8 -- the ASCII character code to be printed
+#   $9 -- the ASCII code for 'z', the ending character
+
+ .text
+__start:   la $10, str1
+           puts $10
+	   
+           add $8, $0, 97       # $8 gets ASCII code for 'a'
+           add $9, $0, 122      # $9 gets ASCII code for 'z'
+while:     bgt $8, $9, all_done
+           putc $8
+           add $8, $8, 1
+           b while
+
+all_done:  putc '\n'
+           done
+
+
+
+
+
+
+Another MAL programming example  (SIMULATED)
+-------------------------------
+
+# a MAL program to print out the ? of a user-entered integer.
+
+ .data
+# prompts
+str1:       .asciiz   "Enter an integer: "
+str2:       .asciiz   "The result is  "
+str_error:  .asciiz   "\nInput error detected. Quitting.\n"
+newline:    .byte     '\n'
+
+# variables
+int_array:  .word 0:20     # array to hold integer for printing
+
+ .text
+
+__start:   la   $8, str1           # print prompt
+           puts $8
+
+           lb   $10, newline       # read characters and calculate
+           li   $11, 57            #   the integer represented
+           li   $12, 48
+           getc $9
+get_chars: beq  $9, $10, got_int   # newline char terminates loop
+           bgt  $9, $11, int_error
+           blt  $9, $12, int_error
+           sub  $13, $9, 48        # convert char to digit
+           mul  $14, $14, 10       # int = int * 10 + digit
+           add  $14, $14, $13
+           getc $9
+           b    get_chars
+
+int_error: la   $8, str_error
+           puts $8
+           j    end_program
+
+got_int:
+
+#  $14 -- the integer to be printed
+#  $15 -- base address of array holding the integer
+#  $16 -- running address of array element 
+#  $17 -- single digit of the integer
+#  $18 -- single character of the integer
+print_int: la $8, str2
+           puts $8
+
+           la   $15, int_array
+           move $16, $15
+more_digits: rem $17, $14, 10
+           sw  $17, ($16)
+	   add $16, $16, 4
+           div $14, $14, 10
+           bgtz $14, more_digits
+
+           sub $16, $16, 4
+           bge  $16, $15 more_chars   # test for result = 0
+           putc '0'
+           putc $10                   # print newline
+
+more_chars: lw  $18, ($16)
+           add  $18, $18, 48
+           putc $18
+           sub $16, $16, 4
+           bge  $16, $15, more_chars
+
+end_program: putc $10
+           done
+</pre>
+
