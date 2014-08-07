@@ -1,0 +1,21 @@
+CREATE TABLE `goal_keeper_statistics` (
+  `goal_keeper_statistics_id` INT NOT NULL,
+  `player_id` INT NULL,
+  `season` VARCHAR(45) NULL,
+  `start` VARCHAR(255) NULL,
+  `play_time` INT NULL,
+  `lose` INT NULL,
+  `touch` INT NULL,
+  `attack` INT NULL COMMENT ' 	出击',
+  `save` INT NULL,
+  `save_penalty` INT NULL,
+  `save_must_in_goal` INT NULL,
+  `foul` INT NULL,
+  `red_card` INT NULL,
+  `yellow_card` INT NULL,
+  `create_time` DATETIME NULL,
+  `create_by` VARCHAR(255) NULL,
+  `update_time` DATETIME NULL,
+  `update_by` VARCHAR(255) NULL,
+  PRIMARY KEY (`goal_keeper_statistics_id`)
+)

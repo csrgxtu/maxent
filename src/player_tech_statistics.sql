@@ -1,0 +1,21 @@
+CREATE TABLE `player_tech_statistics` (
+  `player_tech_statistics_id` INT NOT NULL,
+  `player_id` INT NULL,
+  `season` VARCHAR(45) NULL,
+  `start` VARCHAR(255) NULL,
+  `play_time` INT NULL,
+  `goal` INT NULL,
+  `assistance` INT NULL,
+  `pass` INT NULL,
+  `pass_enemy` INT NULL,
+  `steal` INT NULL,
+  `offside` INT NULL,
+  `foul` INT NULL,
+  `red_card` INT NULL,
+  `yellow_card` INT NULL,
+  `create_time` DATETIME NULL,
+  `create_by` VARCHAR(255) NULL,
+  `update_time` DATETIME NULL,
+  `update_by` VARCHAR(255) NULL,
+  PRIMARY KEY (`player_tech_statistics_id`)
+)

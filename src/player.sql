@@ -1,0 +1,22 @@
+CREATE TABLE `player` (
+  `player_id` INT NOT NULL,
+  `team_id` INT NOT NULL,
+  `location_id` INT NULL,
+  `player_role_id` INT NULL,
+  `name` VARCHAR(255) NULL,
+  `name_abbreviation` VARCHAR(255) NULL,
+  `name_cn` VARCHAR(255) NULL,
+  `name_abbreviation_cn` VARCHAR(255) NULL,
+  `weight` DECIMAL NULL,
+  `height` DECIMAL NULL,
+  `age` INT NULL,
+  `number` INT NULL,
+  `birthday` DATETIME NULL,
+  `description` TEXT NULL,
+  `award_data` TEXT NULL,
+  `create_time` DATETIME NULL,
+  `create_by` VARCHAR(255) NULL,
+  `update_time` DATETIME NULL,
+  `update_by` VARCHAR(255) NULL,
+  PRIMARY KEY (`player_id`)
+)

@@ -1,0 +1,21 @@
+CREATE TABLE `location` (
+  `location_id` INT NOT NULL,
+  `country` VARCHAR(255) NULL,
+  `country_abbreviation` VARCHAR(255) NULL,
+  `country_cn` VARCHAR(255) NULL,
+  `country_abbreviation_cn` VARCHAR(255) NULL,
+  `state` VARCHAR(255) NULL,
+  `state_abbreviation` VARCHAR(255) NULL,
+  `state_cn` VARCHAR(255) NULL,
+  `state_abbreviation_cn` VARCHAR(255) NULL,
+  `city` VARCHAR(255) NULL,
+  `city_abbreviation` VARCHAR(255) NULL,
+  `city_cn` VARCHAR(255) NULL,
+  `city_abbreviation_cn` VARCHAR(255) NULL,
+  `description` TEXT NULL,
+  `create_time` DATETIME NULL,
+  `create_by` VARCHAR(255) NULL,
+  `update_time` DATETIME NULL,
+  `update_by` VARCHAR(255) NULL,
+  PRIMARY KEY (`location_id`)
+)

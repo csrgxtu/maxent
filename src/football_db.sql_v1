@@ -1,0 +1,372 @@
+-- MySQL dump 10.13  Distrib 5.5.37, for debian-linux-gnu (i686)
+--
+-- Host: localhost    Database: football_db
+-- ------------------------------------------------------
+-- Server version	5.5.37-0ubuntu0.12.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `goal_keeper_statistics`
+--
+
+DROP TABLE IF EXISTS `goal_keeper_statistics`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `goal_keeper_statistics` (
+  `goal_keeper_statistics_id` int(11) NOT NULL,
+  `player_id` int(11) DEFAULT NULL,
+  `season` varchar(45) DEFAULT NULL,
+  `start` varchar(255) DEFAULT NULL,
+  `play_time` int(11) DEFAULT NULL,
+  `lose` int(11) DEFAULT NULL,
+  `touch` int(11) DEFAULT NULL,
+  `attack` int(11) DEFAULT NULL COMMENT ' 	出击',
+  `save` int(11) DEFAULT NULL,
+  `save_penalty` int(11) DEFAULT NULL,
+  `save_must_in_goal` int(11) DEFAULT NULL,
+  `foul` int(11) DEFAULT NULL,
+  `red_card` int(11) DEFAULT NULL,
+  `yellow_card` int(11) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `create_by` varchar(255) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `update_by` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`goal_keeper_statistics_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `goal_keeper_statistics`
+--
+
+LOCK TABLES `goal_keeper_statistics` WRITE;
+/*!40000 ALTER TABLE `goal_keeper_statistics` DISABLE KEYS */;
+/*!40000 ALTER TABLE `goal_keeper_statistics` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `league`
+--
+
+DROP TABLE IF EXISTS `league`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `league` (
+  `league_id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `name_abbreviation` varchar(255) DEFAULT NULL,
+  `name_cn` varchar(255) DEFAULT NULL,
+  `name_abbreviation_cn` varchar(255) DEFAULT NULL,
+  `district` varchar(255) DEFAULT NULL,
+  `logo` varchar(255) DEFAULT NULL,
+  `found_time` year(4) DEFAULT NULL,
+  `team_number` int(11) DEFAULT NULL,
+  `description` text,
+  `location_id` int(11) NOT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `create_by` varchar(255) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `update_by` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`league_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `league`
+--
+
+LOCK TABLES `league` WRITE;
+/*!40000 ALTER TABLE `league` DISABLE KEYS */;
+/*!40000 ALTER TABLE `league` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `location`
+--
+
+DROP TABLE IF EXISTS `location`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `location` (
+  `location_id` int(11) NOT NULL,
+  `country` varchar(255) DEFAULT NULL,
+  `country_abbreviation` varchar(255) DEFAULT NULL,
+  `country_cn` varchar(255) DEFAULT NULL,
+  `country_abbreviation_cn` varchar(255) DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
+  `state_abbreviation` varchar(255) DEFAULT NULL,
+  `state_cn` varchar(255) DEFAULT NULL,
+  `state_abbreviation_cn` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `city_abbreviation` varchar(255) DEFAULT NULL,
+  `city_cn` varchar(255) DEFAULT NULL,
+  `city_abbreviation_cn` varchar(255) DEFAULT NULL,
+  `description` text,
+  `create_time` datetime DEFAULT NULL,
+  `create_by` varchar(255) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `update_by` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`location_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `location`
+--
+
+LOCK TABLES `location` WRITE;
+/*!40000 ALTER TABLE `location` DISABLE KEYS */;
+/*!40000 ALTER TABLE `location` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `player`
+--
+
+DROP TABLE IF EXISTS `player`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `player` (
+  `player_id` int(11) NOT NULL,
+  `team_id` int(11) NOT NULL,
+  `location_id` int(11) DEFAULT NULL,
+  `player_role_id` int(11) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `name_abbreviation` varchar(255) DEFAULT NULL,
+  `name_cn` varchar(255) DEFAULT NULL,
+  `name_abbreviation_cn` varchar(255) DEFAULT NULL,
+  `weight` decimal(10,0) DEFAULT NULL,
+  `height` decimal(10,0) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `number` int(11) DEFAULT NULL,
+  `birthday` datetime DEFAULT NULL,
+  `description` text,
+  `award_data` text,
+  `create_time` datetime DEFAULT NULL,
+  `create_by` varchar(255) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `update_by` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`player_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `player`
+--
+
+LOCK TABLES `player` WRITE;
+/*!40000 ALTER TABLE `player` DISABLE KEYS */;
+/*!40000 ALTER TABLE `player` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `player_role`
+--
+
+DROP TABLE IF EXISTS `player_role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `player_role` (
+  `player_role_id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL COMMENT 'name of the role',
+  `name_cn` varchar(255) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `create_by` varchar(255) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `update_by` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`player_role_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `player_role`
+--
+
+LOCK TABLES `player_role` WRITE;
+/*!40000 ALTER TABLE `player_role` DISABLE KEYS */;
+/*!40000 ALTER TABLE `player_role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `player_tech_statistics`
+--
+
+DROP TABLE IF EXISTS `player_tech_statistics`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `player_tech_statistics` (
+  `player_tech_statistics_id` int(11) NOT NULL,
+  `player_id` int(11) DEFAULT NULL,
+  `season` varchar(45) DEFAULT NULL,
+  `start` varchar(255) DEFAULT NULL,
+  `play_time` int(11) DEFAULT NULL,
+  `goal` int(11) DEFAULT NULL,
+  `assistance` int(11) DEFAULT NULL,
+  `pass` int(11) DEFAULT NULL,
+  `pass_enemy` int(11) DEFAULT NULL,
+  `steal` int(11) DEFAULT NULL,
+  `offside` int(11) DEFAULT NULL,
+  `foul` int(11) DEFAULT NULL,
+  `red_card` int(11) DEFAULT NULL,
+  `yellow_card` int(11) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `create_by` varchar(255) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `update_by` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`player_tech_statistics_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `player_tech_statistics`
+--
+
+LOCK TABLES `player_tech_statistics` WRITE;
+/*!40000 ALTER TABLE `player_tech_statistics` DISABLE KEYS */;
+/*!40000 ALTER TABLE `player_tech_statistics` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `result`
+--
+
+DROP TABLE IF EXISTS `result`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `result` (
+  `result_id` int(11) NOT NULL,
+  `result` int(11) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `create_by` varchar(255) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `update_by` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`result_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `result`
+--
+
+LOCK TABLES `result` WRITE;
+/*!40000 ALTER TABLE `result` DISABLE KEYS */;
+/*!40000 ALTER TABLE `result` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `team`
+--
+
+DROP TABLE IF EXISTS `team`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `team` (
+  `team_id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `name_cn` varchar(255) DEFAULT NULL,
+  `logo` varchar(255) DEFAULT NULL,
+  `location_id` int(11) DEFAULT NULL,
+  `league_id` int(11) DEFAULT NULL,
+  `found_time` year(4) DEFAULT NULL,
+  `home_court` varchar(255) DEFAULT NULL,
+  `home_court_cn` varchar(255) DEFAULT NULL,
+  `current_manager` varchar(255) DEFAULT NULL,
+  `current_manager_cn` varchar(255) DEFAULT NULL,
+  `description` text,
+  `award_data` text,
+  `create_time` datetime DEFAULT NULL,
+  `create_by` varchar(255) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `update_by` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`team_id`),
+  UNIQUE KEY `name` (`name`),
+  UNIQUE KEY `name_cn` (`name_cn`),
+  UNIQUE KEY `logo` (`logo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `team`
+--
+
+LOCK TABLES `team` WRITE;
+/*!40000 ALTER TABLE `team` DISABLE KEYS */;
+/*!40000 ALTER TABLE `team` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `team_tech_statistics`
+--
+
+DROP TABLE IF EXISTS `team_tech_statistics`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `team_tech_statistics` (
+  `team_tech_statistics_id` int(11) NOT NULL,
+  `team_id` int(11) DEFAULT NULL,
+  `competitor_id` int(11) DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
+  `league_id` int(11) DEFAULT NULL,
+  `season` year(4) DEFAULT NULL,
+  `result_id` int(11) DEFAULT NULL,
+  `goal` int(11) DEFAULT NULL,
+  `fumble` int(11) DEFAULT NULL,
+  `assistance` int(11) DEFAULT NULL,
+  `pass` int(11) DEFAULT NULL,
+  `steal` int(11) DEFAULT NULL,
+  `offside` int(11) DEFAULT NULL,
+  `foul` int(11) DEFAULT NULL,
+  `red_card` int(11) DEFAULT NULL,
+  `yellow_card` int(11) DEFAULT NULL,
+  `shoot` int(11) DEFAULT NULL,
+  `shoot_on_goal` int(11) DEFAULT NULL,
+  `shoot_on_goal_rate` int(11) DEFAULT NULL,
+  `success_rate` int(11) DEFAULT NULL,
+  `head_goal` int(11) DEFAULT NULL,
+  `direct_free_goal` int(11) DEFAULT NULL,
+  `penalty_kick_goal` int(11) DEFAULT NULL,
+  `penalty_kick` int(11) DEFAULT NULL,
+  `intercept` int(11) DEFAULT NULL,
+  `rescue` int(11) DEFAULT NULL,
+  `head_rescue` int(11) DEFAULT NULL,
+  `back_field_rescue` int(11) DEFAULT NULL,
+  `success_headers` int(11) DEFAULT NULL,
+  `fail_headers` int(11) DEFAULT NULL,
+  `own_goal` int(11) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `create_by` varchar(255) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `update_by` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`team_tech_statistics_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `team_tech_statistics`
+--
+
+LOCK TABLES `team_tech_statistics` WRITE;
+/*!40000 ALTER TABLE `team_tech_statistics` DISABLE KEYS */;
+/*!40000 ALTER TABLE `team_tech_statistics` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2014-08-04 20:12:39

@@ -1,0 +1,47 @@
+CREATE TABLE `team_tech_statistics` (
+  `team_tech_statistics_id` INT NOT NULL,
+  `team_id` INT NULL COMMENT 'reference to the team table, to indicate which team\'s statistics',
+  `competitor_id` INT NULL COMMENT 'reference to team table to indicate which team compete to',
+  `date` DATETIME NULL COMMENT 'the  time of the game',
+  `league_id` INT NULL COMMENT 'reference to the league id',
+  `season` YEAR NULL COMMENT 'which year the game happens',
+  `result_id` INT NULL COMMENT 'reference to the result table, wining losing or flating of the game',
+  `goal` INT NULL COMMENT 'the number of the goal',
+  `fumble` INT NULL COMMENT 'lose the goal',
+  `assistance` INT NULL COMMENT 'the number of assistance',
+  `pass` INT NULL COMMENT 'the number of the pass ball',
+  `steal` INT NULL COMMENT 'the number of steal operations',
+  `offside` INT NULL,
+  `foul` INT NULL,
+  `red_card` INT NULL,
+  `yellow_card` INT NULL,
+  `shoot` INT NULL,
+  `shoot_on_goal` INT NULL,
+  `shoot_on_goal_rate` INT NULL,
+  `success_rate` INT NULL,
+  `head_goal` INT NULL,
+  `direct_free_goal` INT NULL,
+  `penalty_kick_goal` INT NULL,
+  `penalty_kick` INT NULL,
+  `intercept` INT NULL,
+  `rescue` INT NULL,
+  `head_rescue` INT NULL,
+  `back_field_rescue` INT NULL,
+  `success_headers` INT NULL,
+  `fail_headers` INT NULL,
+  `own_goal` INT NULL,
+  `create_time` DATETIME NULL,
+  `create_by` VARCHAR(255) NULL,
+  `update_time` DATETIME NULL,
+  `update_by` VARCHAR(255) NULL,
+  `result_result_id` INT NOT NULL,
+  PRIMARY KEY (`team_tech_statistics_id`),
+  UNIQUE INDEX `team_tech_statistics_id_UNIQUE` (`team_tech_statistics_id` ASC),
+  INDEX `fk_team_tech_statistics_result1_idx` (`result_result_id` ASC),
+  CONSTRAINT `fk_team_tech_statistics_result1`
+    FOREIGN KEY (`result_result_id`)
+    REFERENCES `mydb`.`result` (`result_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+COMMENT = 'technichal statistics of the team'

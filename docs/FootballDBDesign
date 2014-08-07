@@ -1,0 +1,175 @@
+This file is used to illustrate the designation of the football
+database, since the data from the Internet is a little messy.
+
+Table Name: team
+team_id
+name, the name of the team
+name_cn, the Chinese name of the team
+logo, the logo of the team
+location_id, location information of the team
+league_id, reference to the league table
+found_time, found time, i.e, 1899
+home_court, the court where the host team plays its home games
+home_court_cn, the Chinese name of the home court
+current_manager, current manager of the team
+current_manager_cn, Chinese version of the current manager
+description, description of the team
+award_data, award data of the team
+create_time, create time of this record
+create_by, created by who, i.e archer
+update_time, updated time of this record
+update_by, updated by who, i.e archer
+
+Table Name: league
+league_id
+name, the name of the league
+name_abbreviation, abbreviation of the name
+name_cn, Chinese version of the league name, i.e, 西甲
+name_abbreviation_cn, Chinese abbreviation of the name
+district, the district that league belongs too
+logo, the logo of the league
+found_time, the foundation time of the league
+team_number, the numbers of the teams that belong to this league
+description, the description of the league
+create_time, create time of this record
+create_by, created by who, i.e archer
+update_time, updated time of this record
+update_by, updated by who, i.e archer
+
+Table Name: player
+player_id
+name, name of the player
+name_abbreviation, abbreviation of the player
+name_cn, Chinese version
+name_abbreviation_cn, Chinese version
+location_id, location information of the player
+weight, weight of the player
+height, height of the player
+age, age of the player now
+number, number used for this player
+birthday, i.e. 1987-06-24
+player_role_id, i.e, 前锋
+team_id, i.e which club belongs to
+description
+award_data
+create_time, create time of this record
+create_by, created by who, i.e archer
+update_time, updated time of this record
+update_by, updated by who, i.e archer
+
+Table Name: location
+location_id
+country, like China
+country_abbreviation, like CN
+country_cn, like zhongguo
+country_abbreviation_cn
+state, like HuNan
+state_abbreviation
+state_cn
+state_abbreviation_cn
+city
+city_abbreviation
+city_cn
+city_abbreviation_cn
+description, description of the place
+create_time, create time of this record
+create_by, created by who, i.e archer
+update_time, updated time of this record
+update_by, updated by who, i.e archer
+
+Table Name: player_role
+player_role_id
+name, name of the role
+name_cn, Chinese version
+create_time, create time of this record
+create_by, created by who, i.e archer
+update_time, updated time of this record
+update_by, updated by who, i.e archer
+
+Table Name: team_tech_statistics
+team_tech_statistics_id
+team_id, the team information of this team
+competitor_id, the team that team_id compete
+date, the date of the game
+league_id, what kind of league
+season, which year the league happens
+//win_number, number the team win
+//flat_number
+//lose_number
+result_id, result of the game
+goal, the number of the goal
+fumble, lose the goal
+assistance, the number of assistance
+pass, the number of the pass ball
+steal, the number of steal operations
+offside, the number of offsides
+foul, the number of foul
+red_card, the number of red card
+yellow_card, the number of yellow card
+shoot, number of shoots
+shoot_on_goal, number of shoot on goal
+shoot_on_goal_rate
+success_rate
+head_goal
+direct_free_goal
+penalty_kick_goal
+penalty_kick
+intercept, the number of intercept
+rescue, the  number of rescue
+head_rescue
+back_field_rescue
+success_headers
+fail_headers
+own_goal
+create_time, create time of this record
+create_by, created by who, i.e archer
+update_time, updated time of this record
+update_by, updated by who, i.e archer
+
+
+Table Name: result
+result_id
+result, 0 is flat, 1 is win, 2 is loser
+create_time, create time of this record
+create_by, created by who, i.e archer
+update_time, updated time of this record
+update_by, updated by who, i.e archer
+
+Table Name: player_tech_statistics
+player_tech_statistics_id
+player_id
+season, which season's tech statistics data
+start, i.e 出场/首发 	
+play_time
+goal, the number of goals
+assistance, the number of assistance
+pass, the number of pass balls
+pass_enemy, the number of pass the enemy players
+steal, the number of steal operations
+offside, the number of offsides
+foul, the number of foul
+red_card, the number of red card
+yellow_card, the number of yellow card
+create_time, create time of this record
+create_by, created by who, i.e archer
+update_time, updated time of this record
+update_by, updated by who, i.e archer
+
+Table Name: goal_keeper_statistics
+goal_keeper_statistics_id
+player_id
+start
+play_time
+lose
+touch
+attack
+save
+save_penalty
+save_must_in_goal
+foul, the number of foul
+red_card, the number of red card
+yellow_card, the number of yellow card
+create_time, create time of this record
+create_by, created by who, i.e archer
+update_time, updated time of this record
+update_by, updated by who, i.e archer
