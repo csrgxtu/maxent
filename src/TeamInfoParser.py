@@ -8,8 +8,6 @@
 # Website: http://csrgxtu.blog.com/
 #
 # Produced By CSRGXTU
-from lxml import html as htmlParser
-
 from Parser import Parser
 
 
