@@ -11,6 +11,7 @@
 import requests
 from Download import Download
 from Parser import Parser
+from TeamInfoParser import TeamInfoParser
 
 """
 page = requests.get('http://econpy.pythonanywhere.com/ex/001.html')
@@ -26,7 +27,7 @@ else:
   print "Failed do request"
 
 html = soccer.getSOURCE()
-parser = Parser(html)
+parser = TeamInfoParser(html)
 name = parser.getTeamName()
 print "name:", unicode(name).encode('utf8')
 name_cn = parser.getTeamNameCN()
