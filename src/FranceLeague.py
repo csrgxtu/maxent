@@ -115,9 +115,11 @@ class FranceLeague(object):
     ownGoals = self.toUtf8(parser13.getOwnGoals())
 
     matrice = []
-    matrice.append([self.team, self.team])
+    #matrice.append([self.team, self.team])
+    matrice.append([self.team for i in range(len(leagues))])
     # season 13
-    matrice.append([13, 13])
+    #matrice.append([13, 13])
+    matrice.append([13 for i in range(len(leagues))])
     matrice.append(leagues)
     matrice.append(wins)
     matrice.append(flats)
@@ -202,9 +204,11 @@ class FranceLeague(object):
     ownGoals = self.toUtf8(parser12.getOwnGoals())
 
     matrice = []
-    matrice.append([self.team, self.team])
+    #matrice.append([self.team, self.team])
+    matrice.append([self.team for i in range(len(leagues))])
     # season 13
-    matrice.append([12, 12])
+    #matrice.append([12, 12])
+    matrice.append([12 for i in range(len(leagues))])
     matrice.append(leagues)
     matrice.append(wins)
     matrice.append(flats)
@@ -289,9 +293,11 @@ class FranceLeague(object):
     ownGoals = self.toUtf8(parser11.getOwnGoals())
 
     matrice = []
-    matrice.append([self.team, self.team])
+    #matrice.append([self.team, self.team])
+    matrice.append([self.team for i in range(len(leagues))])
     # season 13
-    matrice.append([11, 11])
+    #matrice.append([11, 11])
+    matrice.append([11 for i in range(len(leagues))])
     matrice.append(leagues)
     matrice.append(wins)
     matrice.append(flats)
@@ -376,9 +382,11 @@ class FranceLeague(object):
     ownGoals = self.toUtf8(parser10.getOwnGoals())
 
     matrice = []
-    matrice.append([self.team, self.team])
+    #matrice.append([self.team, self.team])
+    matrice.append([self.team for i in range(len(leagues))])
     # season 13
-    matrice.append([10, 10])
+    #matrice.append([10, 10])
+    matrice.append([10 for i in range(len(leagues))])
     matrice.append(leagues)
     matrice.append(wins)
     matrice.append(flats)
