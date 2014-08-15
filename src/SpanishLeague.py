@@ -85,6 +85,9 @@ class SpanishLeague(object):
   def teamTechStatistics13(self):
     parser13 = TeamTechStatisticsParser13(self.htmlObj.getSOURCE())
 
+    if parser13.getLeagues() == None:
+      return False
+
     leagues = self.toUtf8(parser13.getLeagues())
     wins = self.toUtf8(parser13.getWins())
     flats = self.toUtf8(parser13.getFlats())
@@ -173,6 +176,9 @@ class SpanishLeague(object):
   # @return true of false
   def teamTechStatistics12(self):
     parser12 = TeamTechStatisticsParser12(self.htmlObj.getSOURCE())
+
+    if parser12.getLeagues() == None:
+      return False
 
     leagues = self.toUtf8(parser12.getLeagues())
     wins = self.toUtf8(parser12.getWins())
@@ -263,6 +269,9 @@ class SpanishLeague(object):
   def teamTechStatistics11(self):
     parser11 = TeamTechStatisticsParser11(self.htmlObj.getSOURCE())
 
+    if parser11.getLeagues() == None:
+      return False
+
     leagues = self.toUtf8(parser11.getLeagues())
     wins = self.toUtf8(parser11.getWins())
     flats = self.toUtf8(parser11.getFlats())
@@ -351,6 +360,9 @@ class SpanishLeague(object):
   # @return true of false
   def teamTechStatistics10(self):
     parser10 = TeamTechStatisticsParser10(self.htmlObj.getSOURCE())
+
+    if parser10.getLeagues() == None:
+      return False
 
     leagues = self.toUtf8(parser10.getLeagues())
     wins = self.toUtf8(parser10.getWins())
@@ -444,6 +456,9 @@ class SpanishLeague(object):
   def teamTechStatistics(self):
     parser = TeamTechStatisticsParser(self.htmlObj.getSOURCE())
 
+    if parser.getLeagues() == None:
+      return False
+
     leagues = self.toUtf8(parser.getLeagues())
     goals = self.toUtf8(parser.getGoals())
     fumbles = self.toUtf8(parser.getFumbles())
@@ -536,6 +551,9 @@ class SpanishLeague(object):
   def playerTechStatistics13League(self):
     parser = PlayerTechStatisticsParser13League(self.htmlObj.getSOURCE())
 
+    if parser.getPlayerNames() == None:
+      return False
+
     names = self.toUtf8(parser.getPlayerNames())
     numbers = self.toUtf8(parser.getNumbers())
     roles = self.toUtf8(parser.getRoles())
@@ -625,6 +643,9 @@ class SpanishLeague(object):
   def playerTechStatistics12League(self):
     parser = PlayerTechStatisticsParser12League(self.htmlObj.getSOURCE())
 
+    if parser.getPlayerNames() == None:
+      return False
+
     names = self.toUtf8(parser.getPlayerNames())
     numbers = self.toUtf8(parser.getNumbers())
     roles = self.toUtf8(parser.getRoles())
@@ -713,6 +734,9 @@ class SpanishLeague(object):
   def playerTechStatistics11League(self):
     parser = PlayerTechStatisticsParser11League(self.htmlObj.getSOURCE())
 
+    if parser.getPlayerNames() == None:
+      return False
+
     names = self.toUtf8(parser.getPlayerNames())
     numbers = self.toUtf8(parser.getNumbers())
     roles = self.toUtf8(parser.getRoles())
@@ -800,6 +824,9 @@ class SpanishLeague(object):
   # @return true or false
   def playerTechStatistics10League(self):
     parser = PlayerTechStatisticsParser10League(self.htmlObj.getSOURCE())
+
+    if parser.getPlayerNames() == None:
+      return False
 
     names = self.toUtf8(parser.getPlayerNames())
     numbers = self.toUtf8(parser.getNumbers())
@@ -980,6 +1007,9 @@ class SpanishLeague(object):
   def playerTechStatistics12Champion(self):
     parser = PlayerTechStatisticsParser12Champion(self.htmlObj.getSOURCE())
 
+    if parser.getPlayerNames() == None:
+      return False
+
     names = self.toUtf8(parser.getPlayerNames())
     numbers = self.toUtf8(parser.getNumbers())
     roles = self.toUtf8(parser.getRoles())
@@ -1067,6 +1097,9 @@ class SpanishLeague(object):
   # @return true or false
   def playerTechStatistics11Champion(self):
     parser = PlayerTechStatisticsParser11Champion(self.htmlObj.getSOURCE())
+
+    if parser.getPlayerNames() == None:
+      return False
 
     names = self.toUtf8(parser.getPlayerNames())
     numbers = self.toUtf8(parser.getNumbers())
@@ -1156,6 +1189,9 @@ class SpanishLeague(object):
   def playerTechStatistics10Champion(self):
     parser = PlayerTechStatisticsParser10Champion(self.htmlObj.getSOURCE())
 
+    if parser.getPlayerNames() == None:
+      return False
+
     names = self.toUtf8(parser.getPlayerNames())
     numbers = self.toUtf8(parser.getNumbers())
     roles = self.toUtf8(parser.getRoles())
@@ -1244,6 +1280,9 @@ class SpanishLeague(object):
   def goalKeeperStatistics13League(self):
     parser = GoalKeeperParser13League(self.htmlObj.getSOURCE())
 
+    if parser.getPlayers() == None:
+      return False
+
     names = self.toUtf8(parser.getPlayers())
     numbers = self.toUtf8(parser.getNumbers())
     starts = self.toUtf8(parser.getStarts())
@@ -1297,6 +1336,9 @@ class SpanishLeague(object):
   def goalKeeperStatistics12League(self):
     parser = GoalKeeperParser12League(self.htmlObj.getSOURCE())
 
+    if parser.getPlayers() == None:
+      return False
+
     names = self.toUtf8(parser.getPlayers())
     numbers = self.toUtf8(parser.getNumbers())
     starts = self.toUtf8(parser.getStarts())
@@ -1349,6 +1391,9 @@ class SpanishLeague(object):
   # @return true or false
   def goalKeeperStatistics11League(self):
     parser = GoalKeeperParser11League(self.htmlObj.getSOURCE())
+
+    if parser.getPlayers() == None:
+      return False
 
     names = self.toUtf8(parser.getPlayers())
     numbers = self.toUtf8(parser.getNumbers())
@@ -1404,6 +1449,9 @@ class SpanishLeague(object):
   def goalKeeperStatistics10League(self):
     parser = GoalKeeperParser10League(self.htmlObj.getSOURCE())
 
+    if parser.getPlayers() == None:
+      return False
+
     names = self.toUtf8(parser.getPlayers())
     numbers = self.toUtf8(parser.getNumbers())
     starts = self.toUtf8(parser.getStarts())
@@ -1458,6 +1506,9 @@ class SpanishLeague(object):
   def goalKeeperStatistics13Champion(self):
     parser = GoalKeeperParser13Champion(self.htmlObj.getSOURCE())
 
+    if parser.getPlayers() == None:
+      return False
+
     names = self.toUtf8(parser.getPlayers())
     numbers = self.toUtf8(parser.getNumbers())
     starts = self.toUtf8(parser.getStarts())
@@ -1510,6 +1561,9 @@ class SpanishLeague(object):
   # @return true or false
   def goalKeeperStatistics12Champion(self):
     parser = GoalKeeperParser12Champion(self.htmlObj.getSOURCE())
+
+    if parser.getPlayers() == None:
+      return False
 
     names = self.toUtf8(parser.getPlayers())
     numbers = self.toUtf8(parser.getNumbers())
@@ -1565,6 +1619,9 @@ class SpanishLeague(object):
   def goalKeeperStatistics11Champion(self):
     parser = GoalKeeperParser11Champion(self.htmlObj.getSOURCE())
 
+    if parser.getPlayers() == None:
+      return False
+
     names = self.toUtf8(parser.getPlayers())
     numbers = self.toUtf8(parser.getNumbers())
     starts = self.toUtf8(parser.getStarts())
@@ -1618,6 +1675,9 @@ class SpanishLeague(object):
   # @return true or false
   def goalKeeperStatistics10Champion(self):
     parser = GoalKeeperParser10Champion(self.htmlObj.getSOURCE())
+
+    if parser.getPlayers() == None:
+      return False
 
     names = self.toUtf8(parser.getPlayers())
     numbers = self.toUtf8(parser.getNumbers())
