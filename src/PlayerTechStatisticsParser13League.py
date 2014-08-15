@@ -32,6 +32,18 @@ class PlayerTechStatisticsParser13League(Parser):
       self.setLength(len(rtvs))
       return rtvs
 
+  # getPlayerLinks
+  # get the links to the player detailed page
+  #
+  # @return rtvs (list(string)) or None
+  def getPlayerLinks(self, exp):
+    xpathExp = '//div[@class="table" and @id="table3_con_0"]/div[2]/div[1]/table/tbody/tr/td[1]/a/@href'
+    rtvs = self.getTree().xpath(xpathExp)
+    if len(rtvs) == 0 or len(rtvs) != self.getLength():
+      return None
+    else:
+      return rtvs
+
   # getNumbers
   # get player numbers
   #
