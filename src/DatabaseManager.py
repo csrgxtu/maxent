@@ -33,7 +33,10 @@ class DatabaseManager(object):
   # @parameter sqlStatement (string)
   # @return void
   def execSql(self, sqlStatement):
-    self.curs.execute(sqlStatement)
+    try:
+      self.curs.execute(sqlStatement)
+    finally:
+      self.commitConn()
 
   # getResults
   # get the execute results
@@ -90,12 +93,21 @@ class DatabaseManager(object):
   def setCurs(self, curs):
     self.curs = curs
 
+  def commitConn(self):
+    self.conn.commit()
+
   def closeCurs(self):
     self.curs.close()
 
   def closeConn(self):
     self.conn.close()
 
+  def close(self):
+    self.commitConn()
+    self.closeCurs()
+    self.closeConn()
+
   def __del__(self):
+    self.conn.commit()
     self.closeCurs()
     self.closeConn()

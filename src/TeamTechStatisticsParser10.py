@@ -10,7 +10,7 @@
 # Produced By CSRGXTU
 from Parser import Parser
 
-class TeamTechStatisticsParser11(Parser):
+class TeamTechStatisticsParser10(Parser):
   
   def __init__(self, html):
     Parser.__init__(self, html)
