@@ -205,7 +205,7 @@ class ItalyLeague(object):
 
     matrice = []
     #matrice.append([self.team, self.team])
-    matrice.append([self.team for in in range(len(leagues))])
+    matrice.append([self.team for i in range(len(leagues))])
     # season 13
     #matrice.append([12, 12])
     matrice.append([12 for i in range(len(leagues))])
@@ -294,7 +294,7 @@ class ItalyLeague(object):
 
     matrice = []
     #matrice.append([self.team, self.team])
-    matrice.append([self.team for in in range(len(leagues))])
+    matrice.append([self.team for i in range(len(leagues))])
     # season 13
     #matrice.append([11, 11])
     matrice.append([11 for i in range(len(leagues))])
@@ -383,7 +383,7 @@ class ItalyLeague(object):
 
     matrice = []
     #matrice.append([self.team, self.team])
-    matrice.append([self.team for in in range(len(leagues))])
+    matrice.append([self.team for i in range(len(leagues))])
     # season 13
     #matrice.append([10, 10])
     matrice.append([10 for i in range(len(leagues))])
@@ -888,6 +888,9 @@ class ItalyLeague(object):
   # @return true or false
   def playerTechStatistics13Champion(self):
     parser = PlayerTechStatisticsParser13Champion(self.htmlObj.getSOURCE())
+
+    if parser.getPlayerNames() == None:
+      return False
 
     names = self.toUtf8(parser.getPlayerNames())
     numbers = self.toUtf8(parser.getNumbers())

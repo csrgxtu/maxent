@@ -889,6 +889,9 @@ class FranceLeague(object):
   def playerTechStatistics13Champion(self):
     parser = PlayerTechStatisticsParser13Champion(self.htmlObj.getSOURCE())
 
+    if parser.getPlayerNames() == None:
+      return False
+
     names = self.toUtf8(parser.getPlayerNames())
     numbers = self.toUtf8(parser.getNumbers())
     roles = self.toUtf8(parser.getRoles())
