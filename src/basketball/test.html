@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<title>NBA Stats</title>
+
+		
+		        
+		            
+		        
+
+		
+			
+				
+			
+
+
+		
+		<script>
+			var IS_MOBILE = false;
+			var IS_TABLET = false;
+			var IS_NOT_DESKTOP = IS_MOBILE || IS_TABLET;
+		</script>
+		
+		
+		<!-- frags/stats-site-global-header-script.html SSI include-->
+         <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+<meta name="description" content="The destination for current and historic NBA statistics."/>
+
+
+
+<style>
+.shotchartOrVideoMenu #videoMenu,
+.shotchartOrVideoMenu .menuSeperator {display:none;}
+</style>
+
+
+
+        <!--do nothing-->
+    
+
+
+
+
+    
+        <meta name="viewport" content="width=1056">
+    
+
+<link href="/css/libs/jquery-ui-1.9.1.custom.min.css" rel="stylesheet" type="text/css">
+<link href="/css/custom/nba-base.css" rel="stylesheet">
+
+    
+      <link href="/css/custom/nba-nav.css" rel="stylesheet">
+    
+
+<link href="/css/custom/nba-footer.css" rel="stylesheet">
+<link href="/css/custom/nba-ads.css" rel="stylesheet">
+<link href="/css/custom/nba-logos.css" rel="stylesheet">
+<link href="/css/custom/nba-loader.css" rel="stylesheet">
+<link href="/css/custom/nba-button.css" rel="stylesheet">
+<link href="/css/custom/nba-dropdown.css" rel="stylesheet">
+
+
+<script src="/js/libs/modernizr.custom.16166.js"></script>
+<script type="text/javascript" src="http://i.cdn.turner.com/nba/nba/.element/js/global/1.0/adspaces.js"></script>
+ 
+    <script src="http://i.cdn.turner.com/nba/nba/.element/js/global/2.0/nba-navigation.js"></script>
+  
+<!--[if lt IE 9]>
+
+<script src="/js/libs/css3-mediaqueries.js"></script>
+<script src="/js/libs/ieArraySupport.js"></script>
+<![endif]-->
+
+
+
+
+
+
+  
+
+      
+
+
+  
+
+<style>
+#nbaTextResizeNav {display: none !important;}
+</style>
+
+
+<!-- Just Need to change this object on Season change -->
+<script>
+//By Default We have these 4 options "Playoffs","Season","Last 10","Yesterday"
+//Remove and Add back according to Season Time
+var hpLeaderRegularOptions =["Season","Yesterday"];
+//var hpLeaderRegularOptions =["Playoffs","Season","Last 10"];
+//var hpLeaderPlayoffsOptions =["Playoffs","Season","Last 10","Yesterday"];
+//var hpLeaderPlayoffsOptions =["Playoffs","Season","Yesterday"];
+
+
+//ORL,IND,CHI,MIA,LAC,LAL,PHI,BKN,CLE,BOS
+//TOR,MIL,NYK,WAS,DET,CHA,HOU,MIN,NOP,ATL
+//DAL,MEM,SAS,OKC,UTA,POR,PHX,DEN,SAC,GSW
+var earlyTeams = ["1610612753","1610612754","1610612741","1610612748","1610612746","1610612747","1610612755","1610612751","1610612739","1610612738",
+"1610612761","1610612749","1610612752","1610612764","1610612765","1610612766","1610612745","1610612750","1610612740","1610612737",
+"1610612742","1610612763","1610612759","1610612760","1610612762","1610612757","1610612756","1610612743","1610612758","1610612744"];
+
+var globalCurrentSeasonInfo = {
+  //Stats site wide Season information
+  Site: { Season: "2013-14", SeasonYear:  2013, SeasonType: "Regular Season", LeagueID: "00", SeasonFrom: "1996-97", SeasonYearFrom:  1996},
+
+  //Homepage Leaders Season Information
+  HPLeaders: { Season: "2014-15", SeasonYear:  2014, SeasonType: "Regular Season", LeagueID: "00", SeasonFrom: "1996-97", SeasonYearFrom:  1996},
+
+  //Leaders Page
+  LeadersCurrent: { Season: "2014-15", SeasonYear:  2014, SeasonType: "Pre Season", LeagueID: "00"},
+  Leaders: { Season: "2013-14", SeasonYear:  2013, SeasonType: "Regular Season", LeagueID: "00", SeasonFrom: "1951-52", SeasonYearFrom:  1951},
+  LeadersPre: { Season: "2014-15", SeasonYear:  2014, SeasonType: "Pre Season", LeagueID: "00", SeasonFrom: "2007-08", SeasonYearFrom:  2007},
+
+
+  //League lineups pages
+  LeagueLineups: { Season: "2013-14", SeasonYear:  2013, SeasonType: "Regular Season", LeagueID: "00", SeasonFrom: "2007-08", SeasonYearFrom:  2007},
+
+  //Player profile page
+  PlayerProfile : { Season: "2013-14", SeasonYear:  2013, SeasonType: "Regular Season", LeagueID: "00"},
+  //Player Stats pages
+  LeaguePlayerStats : { Season: "2013-14", SeasonYear:  2013, SeasonType: "Regular Season", LeagueID: "00", SeasonFrom: "1996-97", SeasonYearFrom:  1996},
+  //Player Stats pages
+  PlayerStats : { Season: "2013-14", SeasonYear:  2013, SeasonType: "Regular Season", LeagueID: "00", SeasonFrom: "1996-97", SeasonYearFrom:  1996},
+  //Player VS Player Stats
+  PlayerVsPlayerStats : { Season: "2013-14", SeasonYear:  2013, SeasonType: "Regular Season", LeagueID: "00", SeasonFrom: "2001-02", SeasonYearFrom:  2001},
+
+
+  //Team profile page
+  earlyTeamProfile : { Season: "2013-14", SeasonYear:  2013, SeasonType: "Regular Season", LeagueID: "00"},
+  //Team Stats pages
+  earlyTeamStats : { Season: "2013-14", SeasonYear:  2013, SeasonType: "Regular Season", LeagueID: "00"},
+  //Team Lineups pages
+  earlyTeamLineups : { Season: "2013-14", SeasonYear:  2013, SeasonType: "Regular Season", LeagueID: "00", SeasonFrom: "2007-08", SeasonYearFrom:  2007},
+
+  //Team Roster page
+  TeamRoster : { Season: "2013-14", SeasonYear:  2013, SeasonType: "Regular Season", LeagueID: "00"},
+  //Team profile page
+  TeamProfile : { Season: "2013-14", SeasonYear:  2013, SeasonType: "Regular Season", LeagueID: "00"},
+  //Team Stats pages
+  LeagueTeamStats : { Season: "2013-15", SeasonYear:  2013, SeasonType: "Regular Season", LeagueID: "00", SeasonFrom: "1996-97", SeasonYearFrom:  1996},
+  //Team Stats pages
+  TeamStats : { Season: "2013-14", SeasonYear:  2013, SeasonType: "Regular Season", LeagueID: "00", SeasonFrom: "1996-97", SeasonYearFrom:  1996},
+  //Team Lineups pages
+  TeamLineups : { Season: "2013-14", SeasonYear:  2013, SeasonType: "Regular Season", LeagueID: "00", SeasonFrom: "2007-08", SeasonYearFrom:  2007},
+  TeamVsPlayerStats : { Season: "2013-14", SeasonYear:  2013, SeasonType: "Regular Season", LeagueID: "00", SeasonFrom: "2007-08", SeasonYearFrom:  2007},
+
+  //Allstar Season Information
+  Allstar : { Season: "2013-14", SeasonYear:  2013, SeasonType: "All Star", LeagueID: "00", SeasonFrom: "1996-97", SeasonYearFrom:  1996},
+  //League Allstar Season Information
+  LeagueAllstar : { Season: "2013-14", SeasonYear:  2013, SeasonType: "All Star", LeagueID: "00", SeasonFrom: "1996-97", SeasonYearFrom:  1996},
+  //Allstar Season Information
+  AllstarRoster : { Season: "2013-14", SeasonYear:  2013, SeasonType: "All Star", LeagueID: "00", SeasonFrom: "1950-51", SeasonYearFrom:  1950},
+
+  //Player Tracking Information
+  PlayerTracking : { Season: "2013-14", SeasonYear:  2013, SeasonType: "Regular Season", LeagueID: "00", SeasonFrom: "2013-14", SeasonYearFrom:  2013},
+
+
+  //Draft Combine Information
+  DraftCombine: { Season: "2014-15", SeasonYear:  2014, LeagueID: "00", SeasonFrom: "2000-01", SeasonYearFrom:  2000, SeasonSpotUpFrom:'2014-15', SeasonYearSpotUpFrom: 2014, 
+SeasonMoveFrom: '2014-15', 
+SeasonYearMoveFrom:2014, SeasonDribbleFrom: '2014-15', SeasonYearDribbleFrom: 2014 }
+
+};
+</script>
+
+		<!--end SSI include /frags/stats-site-global-header-script.html -->
+
+		<link href="/css/custom/team-profile.css" rel="stylesheet" type="text/css">
+		<link href="/css/custom/team-profile-stats-tables.css" rel="stylesheet" type="text/css">
+		<link href="/css/custom/player-compare-module.css" rel="stylesheet" type="text/css">		
+
+		<!-- frags/droplistPluginCSS.html SSI include-->
+				<link href="/css/custom/droplist.css" rel="stylesheet">
+		<link href="/css/custom/nba-tooltips.css" rel="stylesheet">
+		<link href="/css/custom/base.css" rel="stylesheet">
+
+		<!--end SSI include /frags/droplistPluginCSS.html -->
+
+		<!-- frags/jsGridPluginCSS.html SSI include-->
+		 <!-- jsGrid CSS -->
+<link rel="stylesheet" href="css/custom/jsgrid.css">
+
+<!-- Mobile slider scroll-->
+<link href="/css/custom/nouislider.fox.css" rel="stylesheet" type="text/css">
+<link href="/css/custom/nouislider.space.css" rel="stylesheet" type="text/css">
+
+
+		<!--end SSI include /frags/jsGridPluginCSS.html -->
+	</head>
+
+	<body id="page-playerStats">
+
+		<div class="container">
+
+		   
+        		
+        			 <!-- /frags/stats-site-global-top-adspot.html include-->
+                     <div id="site-top-adspot" class="row">
+	<div class="span6">
+		<div class="adSpot728x90">
+		<!-- ADSPACE: stats/top.728x90 -->
+       
+<!-- ADSPACE: players/main/top.728x90 -->
+<div id="ad-15237cfec6a88b0f" align="center" style="padding: 0; margin: 0; border: 0;">
+<script type="text/javascript">cnnad_createAd("15237cfec6a88b0f","http://ads.nba.com/html.ng/site=nba&nba_pos=728x90_top&nba_rollup=players&nba_section=main&params.styles=fs&page.allowcompete=no","90","728");</script>
+</div>
+<!-- ADSPACE-END -->
+        </div>
+	</div>
+</div> <!-- #site-top-adspot -->
+
+
+                    <!--end include /frags/stats-site-global-top-adspot.html-->
+
+                    <!-- /frags/stats-site-global-nav.html include-->
+                     
+
+<div id="site-nav" class="row" xmlns="http://www.w3.org/1999/html">
+ <div id="nbaHeader"></div>
+
+
+<div id="site-top-adspot" class="row">
+	<div class="span6">
+		<div class="adSpot728x90">
+		<!-- ADSPACE: stats/top.728x90 -->
+       
+        <div id="flashContent">
+			<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="728" height="90" id="NBA_728x90" align="middle">
+				<param name="movie" value="/media/NBA_728x90.swf?clickTag=http://blogs.sap.com/innovation/industries/nba-fans-cant-get-enough-just-got-0547481&clickTarget=_blank" />
+				<param name="quality" value="high" />
+				<param name="bgcolor" value="#ffffff" />
+				<param name="play" value="true" />
+				<param name="loop" value="true" />
+				<param name="wmode" value="window" />
+				<param name="scale" value="showall" />
+				<param name="menu" value="true" />
+				<param name="devicefont" value="false" />
+				<param name="salign" value="" />
+				<param name="allowScriptAccess" value="sameDomain" />
+				<!--[if !IE]>-->
+				<object type="application/x-shockwave-flash" data="/media/NBA_728x90.swf?clickTag=http://blogs.sap.com/innovation/industries/nba-fans-cant-get-enough-just-got-0547481&clickTarget=_blank" width="728" height="90">
+					<param name="movie" value="/media/NBA_728x90.swf?clickTag=http://blogs.sap.com/innovation/industries/nba-fans-cant-get-enough-just-got-0547481&clickTarget=_blank" />
+					<param name="quality" value="high" />
+					<param name="bgcolor" value="#ffffff" />
+					<param name="play" value="true" />
+					<param name="loop" value="true" />
+					<param name="wmode" value="window" />
+					<param name="scale" value="showall" />
+					<param name="menu" value="true" />
+					<param name="devicefont" value="false" />
+					<param name="salign" value="" />
+					<param name="allowScriptAccess" value="sameDomain" />
+				<!--<![endif]-->
+					<a href="http://blogs.sap.com/innovation/industries/nba-fans-cant-get-enough-just-got-0547481">
+						<img src="/media/NBA_728x90.jpg"  />
+					</a>
+				<!--[if !IE]>-->
+				</object>
+				<!--<![endif]-->
+			</object>
+		</div>
+        </div>
+	</div>
+</div>
+
+  <div class="row nba-stats-nav">
+    <div class="span6">
+      <ul class="nav">
+        <li><a href="/">Stats Home</a></li>
+        <li id="menu-box-scores-topli" ><a href="/scores.html">Scores</a></li>
+        <li class="navDropDown">
+          <span class="nolink">Official Leaders</span>
+            <ul>
+              <li><a href="/leaders.html">Season Leaders</a></li>
+              <li><a href="/leadersGrid.html?Season=All%20Time&PerMode=Totals&Scope=S&PerMode=PerGame">All-Time Leaders</a></li>
+            </ul>
+        </li>
+        <li class="navDropDown"><span class="nolink">All-Star</span>
+            <ul>
+                <li><a href="/leagueTeamGeneralAllStar.html">All-Star Stats</a></li>
+                <li><a href="/teamProfile.html?TeamID=1610616833&SeasonType=All%20Star">East Team Stats</a></li>
+                <li><a href="/teamProfile.html?TeamID=1610616834&SeasonType=All%20Star">West Team Stats</a></li>
+            </ul>
+        </li>
+        <li class="navDropDown"><span class="nolink">League</span>
+          <ul>
+              <li><a href="/leagueTeamGeneral.html">Stats By Team</a></li>
+              <li><a href="/leaguePlayerGeneral.html">Stats By Player</a></li>
+              <li><a href="/leagueLineups.html">Lineups</a></li>
+          </ul>
+        </li>
+        <li class="nbaTeams navDropDown statsNavTeams"><span class="nolink">Teams</span>
+          <div class="statsNavDropDown">
+            <div class="nbaPrimary">
+              <ul>
+                <li class="nbaNavSubheading"><div>Eastern Conference</div></li>
+                <li>
+                  <ul>
+                    <li><a href="/teamStats.html?TeamID=1610612737" class="nbaTeamATL">Atlanta Hawks</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612738" class="nbaTeamBOS">Boston Celtics</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612751" class="nbaTeamBKN">Brooklyn Nets</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612766" class="nbaTeamCHA">Charlotte Hornets</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612741" class="nbaTeamCHI">Chicago Bulls</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612739" class="nbaTeamCLE">Cleveland Cavaliers</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612765" class="nbaTeamDET">Detroit Pistons</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612754" class="nbaTeamIND">Indiana Pacers</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <ul>
+                    <li><a href="/teamStats.html?TeamID=1610612748" class="nbaTeamMIA">Miami Heat</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612749" class="nbaTeamMIL">Milwaukee Bucks</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612752" class="nbaTeamNYK">New York Knicks</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612753" class="nbaTeamORL">Orlando Magic</a></li>
+                      <li><a href="/teamStats.html?TeamID=1610612755" class="nbaTeamPHI">Philadelphia 76ers</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612761" class="nbaTeamTOR">Toronto Raptors</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612764" class="nbaTeamWAS">Washington Wizards</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <div class="nbaSecondary">
+              <ul>
+                <li class="nbaNavSubheading"><div>Western Conference</div></li>
+                <li>
+                  <ul>
+                    <li><a href="/teamStats.html?TeamID=1610612742" class="nbaTeamDAL">Dallas Mavericks</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612743" class="nbaTeamDEN">Denver Nuggets</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612744" class="nbaTeamGSW">Golden State Warriors</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612745" class="nbaTeamHOU">Houston Rockets</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612746" class="nbaTeamLAC">Los Angeles Clippers</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612747" class="nbaTeamLAL">Los Angeles Lakers</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612763" class="nbaTeamMEM">Memphis Grizzlies</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612750" class="nbaTeamMIN">Minnesota Timberwolves</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <ul>
+                    <li><a href="/teamStats.html?TeamID=1610612740" class="nbaTeamNOP">New Orleans Pelicans</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612760" class="nbaTeamOKC">Oklahoma City Thunder</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612756" class="nbaTeamPHX">Phoenix Suns</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612757" class="nbaTeamPOR">Portland Trail Blazers</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612758" class="nbaTeamSAC">Sacramento Kings</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612759" class="nbaTeamSAS">San Antonio Spurs</a></li>
+                    <li><a href="/teamStats.html?TeamID=1610612762" class="nbaTeamUTA">Utah Jazz</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <li><a href="/players.html">Players</a></li>
+        <li class="navDropDown"><span class="nolink">Player Tracking</span>
+            <ul class="playerTracking">
+            <li><a href="/playerTracking.html">What is Player Tracking?</a></li>
+            <li><a href="/playerTrackingSpeed.html">Speed and Distance</a></li>
+            <li><a href="/playerTrackingTouches.html">Touches/Possession</a></li>
+            <li><a href="/playerTrackingPassing.html">Passing</a></li>
+            <li><a href="/playerTrackingDefense.html">Defensive Impact</a></li>
+            <li><a href="/playerTrackingRebounding.html">Rebounding Opportunities</a></li>
+            <li><a href="/playerTrackingDrives.html">Drives</a></li>
+            <li><a href="/playerTrackingCatchShoot.html">Catch and Shoot</a></li>
+            <li><a href="/playerTrackingPullUp.html">Pull Up</a></li>
+            <li><a href="/playerTrackingShooting.html">Shooting Efficiency</a></li>
+            </ul>
+        </li>
+        <li><a href="/shotcharts.html">Shot Chart</a></li>
+
+
+          <li style="display:none;"><a href="/statsVideo.html">Video</a></li>        
+        
+
+        <li><a href="/history.html">History</a></li>
+        <li><a href="http://hangtime.blogs.nba.com/category/nba-comstats/" target="_blank">Blog</a></li>
+        <li><a href="/featured/top_story_archive.html">Articles</a></li>
+
+
+        <li class="navDropDown"><span class="nolink">Draft Combine</span>
+            <ul class="draftcombine">
+            <li><a href="/draftCombine.html">Draft Combine Summary</a></li>
+            <li><a href="/draftCombineSpotUpShooting.html">Spot Up Shooting</a></li>
+            <li><a href="/draftCombineNonStationaryShooting.html?sortField=ON_MOVE_COLLEGE&sortOrder=DES">On The Move Shooting</a></li>
+            <li><a href="/draftCombineNonStationaryShooting.html?sortField=OFF_DRIB_COLLEGE_BREAK_LEFT&sortOrder=DES">Off Dribble Shooting</a></li>
+            <li><a href="/draftCombineLaneAgilityDrill.html?sortField=LANE_AGILITY_TIME&sortOrder=ASC&pageNo=1&rowsPerPage=100">Lane Agility Drill</a></li>
+            <li><a href="/draftCombineLaneAgilityDrill.html?sortField=MODIFIED_LANE_AGILITY_TIME&sortOrder=ASC&pageNo=1&rowsPerPage=100">Shuttle Run</a></li>
+            <li><a href="/draftCombineLaneAgilityDrill.html?sortField=THREE_QUARTER_SPRINT&sortOrder=ASC&pageNo=1&rowsPerPage=100">Three Quarter Court Sprint</a></li>
+            <li><a href="/draftCombineLaneAgilityDrill.html?sortField=STANDING_VERTICAL_LEAP&sortOrder=DES">Standing Vertical Leap</a></li>
+            <li><a href="/draftCombineLaneAgilityDrill.html?sortField=MAX_VERTICAL_LEAP&sortOrder=DES">Maximum Vertical Leap</a></li>
+            <li><a href="/draftCombineAnthro.html">Anthropometric</a></li>
+            </ul>
+        </li>
+        
+
+        <li class="navDropDown"><span class="nolink">Help</span>
+            <ul>
+                <li><a href="/help.html">Contact Us</a></li>
+                <li><a href="/faq.html">FAQ</a></li>
+                <li><a href="/glossary.html">Glossary</a></li>
+                <li><a href="whatsNew.html">What's New</a></li>
+                <li><a href="videoStatus.html">Video Status</a></li>
+            </ul>
+        </li>
+
+      </ul> <!-- .nav -->
+    </div>
+  </div> <!-- .row -->
+
+</div>
+
+                    <!--end include /frags/stats-site-global-nav.html-->
+        		
+
+            <div id="site-team-branding" class="row">
+
+				<!-- /frags/stats-site-page-team-profile-section-title.html SSI include-->
+				 <div class="team-branding span3">
+
+                        <div class="team-logo">
+                            <div class="logo lg"></div>
+                        </div>
+
+                        <h1 class="team-name"></h1>
+
+                        <div class="breadcrumbs">
+                            <a href="/">NBA.com/Stats</a> <span>></span> Teams <span>></span> <span class="page"></span>
+                        </div>
+
+                        <h2 id="team-win-loss" class="text-shadow"></h2>
+
+                        <div class="team-ranking text-shadow"></div>
+
+                         <div id="social-icons">
+    <ul>
+        <li class="label coolbro">
+            Share Page:
+        </li>
+        <li class="facebook">
+            <a href="http://www.facebook.com/sharer.php?s=100&p[url]={URL}" >Facebook</a>
+        </li>
+        <li class="twitter">
+            <a href="https://twitter.com/intent/tweet?url={URL}">Twitter</a>
+        </li>
+        <li class="google">
+            <a href="https://plus.google.com/share?url={URL}">Google +</a>
+        </li>
+
+    </ul>
+</div>
+
+
+</div> <!-- .team-branding -->
+
+				<!--end SSI include /frags/stats-site-page-team-profile-section-title.html -->
+
+				<!-- /frags/stats-site-page-team-profile-section-title-sponsor.html SSI include-->
+				 <div class="sponsor-branding span3">
+
+                        <table class="quickstats text-shadow" style="display: table;">
+                            <tr class="caption">
+                                <th colspan="4">Current League Rankings</th>
+                            </tr>
+                            <tr class="header text-shadow">
+                                <th>PPG</th>
+                                <th>RPG</th>
+                                <th>APG</th>
+                                <th>OPPG</th>
+                            </tr>
+                            <tr class="stats text-shadow">
+                                <td class="ppg"><sup>th</sup></td>
+                                <td class="rpg"><sup>th</sup></td>
+                                <td class="apg"><sup>th</sup></td>
+                                <td class="oppg"><sup>th</sup></td>
+                            </tr>
+                        </table>
+
+
+                    </div>
+
+				<!--end SSI include /frags/stats-site-page-team-profile-section-title-sponsor.html -->
+
+            </div> <!-- #site-team-branding -->
+
+			
+            <div id="team-profile-pages" class="tabs row shadow">
+
+				<div class="span6">
+					<a href="#" class="currentpageselect">Players</a>						
+					<ul class="nav_main nav">
+						<li><a href="#" id="tab-profile">Team Profile</a></li>
+						<li><a href="#" id="tab-stats">Stats View</a></li>
+						<li><a href="#" id="tab-lineups">Lineups</a></li>
+						<li><a href="#" id="tab-players" class="current">Players</a></li>
+						<li><a href="#" id="tab-History">History</a></li>
+						<li><a href="#" id="tab-shotchart">Shotchart</a></li>	
+					</ul>
+					<a href="#" class="compare-player">Compare to Player</a>
+				</div> <!-- .row -->
+				
+			</div> <!-- #team-profile-pages -->
+				
+			<!-- /frags/stats-site-page-team-compare-dropdown.html SSI include-->
+			 <div id="compare-dropdown" class="span6 shadow">
+    <div class="inner">
+
+        <div class="close">
+            <a href="#">Close</a>
+        </div>  <!-- .close -->
+
+        <div class="compare-header">
+            Type a Player Name below to compare:
+        </div> <!-- .compare-header -->
+
+        <div class="player-select">
+            <div class="player-compare-header text-shadow"><h2>COMPARE WITH A PLAYER</h2></div>
+            <form id="p-search">
+                <input id="searchbox" name="SearchText" type="text" placeholder="Last Name, First Name" />
+                <input type="submit" value="" />
+                <input id="searchbox-id" name="searchplayerid" type="hidden" />
+                <img id="searchbox-icon" name="searchplayerid" type="hidden" style="display:none" />
+            </form>
+        </div> <!-- .player-select -->
+
+        <div class="compare-sap-branding">
+            <img src="/media/insightsbySAP_Hor_drk.png" />
+        </div> <!-- .compare-sap-branding -->
+
+    </div> <!-- .inner -->
+</div> <!-- #compare-dropdown -->
+
+			<!--end SSI include /frags/stats-site-page-team-compare-dropdown.html -->					
+				
+			<div id="require-filter-section" class="row shadow">
+
+				<div id="GroupPage" class="droplist span1">
+					<ul>
+						<li><a href="/teamPlayers.htm" id="tab-OnOffPlayers" value="Players" class="selected">Players</a></li>
+						<li><a href="/teamOnOffSummary.html" id="tab-OnOffSummary" value="On/Off Court Summary">On/Off Court Summary</a></li>
+						<li><a href="/teamOnOffDetails.html" id="tab-OnOffDetails" value="On/Off Court Details">On/Off Court Details</a></li>		
+					</ul>
+				</div>
+
+				<div id="MeasureType" name="MeasureType"  class="droplist span1">
+					<ul>
+						<li><a href="#" value="Base">Basic Columns</a></li>
+						<li><a href="#" value="Advanced">Advanced</a></li>
+						<li><a href="#" value="Misc" >Misc</a></li>
+						<li><a href="#" value="Scoring" >Scoring</a></li>
+						<li><a href="#" value="Usage">Usage</a></li>
+					</ul>
+				</div> <!-- #MeasureType -->
+						
+				<div id="Season" name="Season" class="droplist span1">
+					<ul>
+						<li><a href="#" value="2012-13">2012 - 2013</a></li>
+						<li><a href="#" value="2011-12">2011 - 2012</a></li>
+						<li><a href="#" value="2010-11">2010 - 2011</a></li>
+						<li><a href="#" value="2009-10">2009 - 2010</a></li>
+						<li><a href="#" value="2008-09">2008 - 2009</a></li>
+						<li><a href="#" value="2007-08">2007 - 2008</a></li>
+						<li><a href="#" value="2006-07">2006 - 2007</a></li>
+						<li><a href="#" value="2005-06">2005 - 2006</a></li>
+						<li><a href="#" value="2004-05">2004 - 2005</a></li>
+						<li><a href="#" value="1998-99">1998 - 1999</a></li>
+						<li><a href="#" value="1997-98">1997 - 1998</a></li>
+						<li><a href="#" value="1996-97">1996 - 1997</a></li>
+						<li><a href="#" value="2003-04">2003 - 2004</a></li>
+						<li><a href="#" value="2002-03">2002 - 2003</a></li>
+						<li><a href="#" value="2001-02">2001 - 2002</a></li>
+						<li><a href="#" value="2000-01">2000 - 2001</a></li>
+						<li><a href="#" value="1999-00">1999 - 2000</a></li>
+					</ul>
+				</div> <!-- #Season -->
+
+				<div id="SeasonType" name="SeasonType" class="droplist span1">
+					<ul>
+						<li><a href="#" value="Regular Season">Regular Season</a></li>
+						<li><a href="#" value="Playoffs">Playoffs</a></li>
+						<!--<li><a href="#" value="All Star">All Star</a></li>-->
+					</ul>
+				</div> <!-- #SeasonType -->
+							
+				<div id="PerMode" name="PerMode" class="droplist span1">
+					<ul>
+						<li><a href="#" value="Totals">Totals</a></li>
+						<li><a href="#" value="PerGame">Per Game</a></li>
+						<li><a href="#" value="Per100Possessions">Per 100 Poss</a></li>
+						<li><a href="#" value="Per100Plays">Per 100 Plays</a></li>
+						<li><a href="#" value="Per48">Per 48 Min</a></li>
+						<li><a href="#" value="Per40">Per 40 Min</a></li>
+						<li><a href="#" value="Per36">Per 36 Min</a></li>
+						<li><a href="#" value="PerMinute">Per 1 Min</a></li>
+						<li><a href="#" value="PerPossession">Per 1 Poss</a></li>
+						<li><a href="#" value="PerPlay">Per 1 Play</a></li>
+						<li><a href="#" value="MinutesPer">Minutes Per</a></li>
+					</ul>
+				</div>
+													
+				<!-- Run Filters-->
+				<button type="button" id="run-it">Run It</button>
+				<!-- Run Filters-->
+							
+			</div> <!-- #team-filter-section -->
+
+			<div id="filters" class="row">
+				<div id="filter-selector" class="droplist span1">
+					<ul></ul>
+				</div> <!-- #filter-selector -->
+			</div> <!-- #filters -->				
+
+			
+			<div id="team-profile-content" class="row content_main content shadow">	
+				<div id="stat-grid-section" class="span6">
+						<div id="gridSection"></div>
+						<div class="loader"> <span></span> <span></span> <span></span> <span></span> <span></span> </div>
+                        <div class="sponsor-footer"></div> 
+                        <div id="stat-message" class="row">Advanced stats are not available before the 1996-97 season.</div>
+				</div>
+            </div><!-- #team-profile-content -->
+			
+
+            <!-- /frags/stats-site-global-footer.html SSI include-->
+             <script type="text/javascript">
+var ord = window.ord || Math.floor(Math.random() * 1e16);
+var adTag = '<script type="text/javascript" src="http://ad.doubleclick.net/N2117/adj/nba.dart/stats_320x48;sz=320x48;ord=' + 
+ord + '?"><\/script>';
+</script>
+
+
+  
+
+
+
+
+<!-- nbad site footer -->
+<div id="nbaFooter" class="nbaThird">
+<script src="http://i.cdn.turner.com/nba/nba/.element/js/global/2.0/nba-footer.js"></script>
+</div>
+
+ 
+
+
+
+
+
+
+<style>	.sap-sponser {cursor:pointer;}	</style>
+<div style="display:none;">
+
+        
+    <a id="sapSponserClickThroughURL" href="http://t.mookie1.com/t/v1/clk?migAgencyId=347&migSource=adsrv2&migTrackDataExt=3143259;106063877;278930987;0&migRandom=
+[1413362994]&migTrackFmtExt=client;io;ad;crtv&migUnencodedDest=http://ad.doubleclick.net/clk;278930987;106063877;a;pc=[TPAS_ID]"></a>
+        
+</div>  
+  
+
+
+            <!--end SSI include /frags/stats-site-global-footer.html -->
+            
+   			<!-- /frags/convertToPNG.html SSI include -->
+             <script src="/js/custom/spin.min.js"></script>
+<style>
+.pngDownloadModal .spinner{
+  top: 50%; left:50%;
+}
+.pngDownloadModal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .2);
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.pngDownloadModal{
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .pngDownloadModal{
+    display: block;
+}
+</style>
+
+
+
+<!-- Need to move in frag Start-->
+			<div>
+				<div id="canvasOut" width="100%" style="display:none;">
+					<canvas id="currentCanvas"></canvas>
+				</div>
+
+                        <div id="pngDownloadModal" class="pngDownloadModal"><!-- Place at bottom of page --></div>
+			</div>
+			<!-- Need to move in frag End-->
+
+
+            <!--end SSI include /frags/convertToPNG.html- -->
+
+   			<!-- /frags/shotchartOrVideoDialog.html SSI include -->
+            			<div id="shotchartVideodialog" title="Shotchart or Video Option">
+				<div id="lightBoxContent">
+				</div>
+				<a id="lightBoxByPassLink" href="#" style="display:none;"></a>
+			</div>	
+
+
+
+            <!--end SSI include /frags/shotchartOrVideoDialog.html- -->
+
+		</div> <!-- .container -->
+
+		<!-- frags/stats-site-global-footer-script.html SSI include-->
+         <script src="/js/libs/jquery-1.8.3.min.js"></script>
+<script src="/js/libs/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/js/libs/jquery.tmpl.js"></script>
+<script src="/js/libs/jquery.tools.min.js"></script>
+
+<script src="/js/libs/underscore.js"></script>
+
+<script src="/js/custom/jquery.qp.js"></script>
+<script src="/js/custom/jquery.nbaurlp.js"></script>
+<script src="/js/custom/jquery.statrequest.js"></script>
+<script src="/js/custom/jquery.uidropdown.js"></script>
+<script src="/js/custom/jquery.buttonset.js"></script>
+<script src="/js/custom/jquery.buttonsetCustom.js"></script>
+
+<script src="/js/custom/droplist.js"></script>
+<script src="/js/custom/filter.droplist.js"></script>
+<script src="/js/custom/filter.date.js"></script>
+<script src="/js/custom/filter.custom.js"></script>
+<script src="/js/custom/filter.players.js"></script>
+<script src="/js/custom/filter.controller.js"></script>
+
+<script src="/stats/commonallplayers/?LeagueID=00&Season=2014-15&IsOnlyCurrentSeason=0&callback=playerinfocallback"></script>
+<script src="/stats/commonteamyears?LeagueID=00&callback=teaminfocallback"></script>
+
+<script src="/js/pages/social-icons.js"></script>
+<script src="/js/pages/global-nav.js"></script>
+<script src="/js/pages/global-header-section.js"></script>
+<script src="/js/pages/stat-hierarchy.js"></script>
+
+
+
+
+
+       <div style="position:absolute; left:0px; bottom:0px;">
+       
+
+
+        
+<img style="display:none;" src="http://t.mookie1.com/t/v1/imp?
+migAgencyId=347&migSource=adsrv2&migTrackDataExt=3143259;106063877;278930987;0&migTrackFmtExt=client;io;ad;crtv&migUnencodedDest=http://ad.doubleclick.net/ad/N5072.149455.NBA.C
+OM/B7992919.72;sz=1x1;pc=[TPAS_ID];ord=[1413362994]?" width="1" height="1">
+        
+
+       </div>
+
+
+
+
+
+
+<!-- BEGIN: NBA analytics package snippet. -->
+<!-- Should be as close the the closing "body" tag as possible. -->
+<script id="_nbaScoutAnalytics" src="http://z.cdn.turner.com/nba/tmpl_asset/static/nba-cms3-base/latest/js/pkgAnalyticsScout-min.js"></script>
+<script>
+	initOmniture();
+	_nba.analytics.setOverride("disableAutoPage",true);
+
+	if (_nba && _nba.settings && _nba.settings.global) {
+	   _nba.settings.global.experience="responsive";
+	}
+</script>
+<!-- END: NBA analytics package snippet. -->
+
+		<!--end SSI include /frags/stats-site-global-footer-script.html -->
+		<script src="/js/custom/jquery.uidialog.js"></script>
+
+		<script src="/js/pages/team-profile-common-info.js"></script>
+		<script src="/js/pages/player-profile-compare-dropdown.js"></script>			
+
+		<!-- frags/jsGridPluginScript.html SSI include-->
+				<!-- JS Grid Script Start-->
+		<script src="js/custom/jquery.nouislider.js"></script>
+		<script src="/js/custom/jsgrid.js"></script>
+		<script src="js/custom/formatters.js"></script>
+		<script src="/js/pages/master-grid-config.js"></script>
+		<script src="/js/pages/splitFiltersDefault.js"></script>
+		<!-- JS Grid Script Start-->
+
+
+		<!--end SSI include /frags/pngDownload-script.html -->
+
+		<script src="/js/pages/team-players-nba.js"></script>
+		<script src="/js/pages/team-players.js"></script>
+
+		<!-- frags/pngDownload-script.html SSI include-->
+				<script type="application/ecmascript" src="js/libs/Blob.js"> </script>
+		<script type="application/ecmascript" src="js/libs/canvas-toBlob.js"> </script>
+		<script type="application/ecmascript" src="js/libs/FileSaver.js"> </script>
+		<script type="text/javascript" src="js/libs/htmlToCanvas.js"></script>
+		<script type="text/javascript" src="js/custom/pngDownloader.js"></script>
+
+
+		<!--end SSI include /frags/pngDownload-script.html -->
+	
+    	</body> <!-- #page-index -->
+</html>
