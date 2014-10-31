@@ -60,10 +60,10 @@ def prepareData(spamwords, labels, features):
     
     featureDic = {}
     for j in range(len(spamwords)):
-      featureDic[spamwords[j]] = int(features[i][j])
+      featureDic[spamwords[j]] = float(features[i][j])
     
     # append to results
-    results.append((featureDic, int(labels[i])))
+    results.append((featureDic, float(labels[i])))
   
   return results
 
@@ -76,6 +76,7 @@ def prepareData(spamwords, labels, features):
 def maxent(algorithm, data):
   # check out params
   
+  """
   # use 6 for history, and one for predict
   counter = 0
   i = 0
@@ -114,8 +115,8 @@ def maxent(algorithm, data):
 
   """  
   # divide data into 4 = 3 + 1, 3 for train, 1 for test
-  train = data[0: (len(data) / 4) * 3]
-  test = data[(len(data) / 4) * 3:]
+  train = data[0: (len(data) / 10) * 9]
+  test = data[(len(data) / 10) * 9:]
   
   try:
     print "Training ..."
@@ -144,7 +145,6 @@ def maxent(algorithm, data):
       counter = counter + 1
     
   print "Accuracy: ", float(counter)/len(test), " (", counter, "/", len(test), ")"
-  """
 
 
 # main

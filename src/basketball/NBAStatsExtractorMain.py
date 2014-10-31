@@ -10,10 +10,11 @@ from NBAStatsExtractor import NBAStatsExtractor
 from Utility import appendlst2file
 
 leagueId = "00"
-teamId = "1610612752" # Knicks
+# teamId = "1610612752" # Knicks
+teamId = "1610612747" # Lackers
 # opponentTeamId = "1610612747" # Lackers
 
-dataFile = "../../data/basketball/Knicksdata-28-Oct-2014-v1.0.csv"
+dataFile = "../../data/basketball/Lackersdata-29-Oct-2014-v1.0.csv"
 
 seasonspre = ['1990-91', '1991-92', '1992-93', '1993-94',
   '1994-95', '1995-96']
