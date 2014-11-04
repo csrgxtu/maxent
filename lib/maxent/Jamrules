@@ -1,0 +1,35 @@
+
+CC = /home/archer/Documents/maxent/lib/maxent/ccdv  gcc ;
+CCFLAGS = -g -O2  -Wall -DNDEBUG -DHAVE_CONFIG_H -fPIC -DBOOST_DISABLE_THREADS ; # no need to link pthread lib
+C++ = /home/archer/Documents/maxent/lib/maxent/ccdv  g++ ;
+C++FLAGS = -g -O2  -Wall -DNDEBUG -DHAVE_CONFIG_H -fPIC -DBOOST_DISABLE_THREADS ;
+FORTRAN = /home/archer/Documents/maxent/lib/maxent/ccdv  gfortran ;
+FORTRANFLAGS = -g -O2 -fPIC ;
+HAVE_FORTRAN = gfortran ;
+HAVE_GETOPT_LONG = yes ;
+OPTIM = -O3 ;
+FCLIBS =  -L/usr/lib/gcc/i686-linux-gnu/4.8 -L/usr/lib/gcc/i686-linux-gnu/4.8/../../../i386-linux-gnu -L/usr/lib/gcc/i686-linux-gnu/4.8/../../../../lib -L/lib/i386-linux-gnu -L/lib/../lib -L/usr/lib/i386-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/i686-linux-gnu/4.8/../../.. -lgfortran -lm -lquadmath ;
+LINK = /home/archer/Documents/maxent/lib/maxent/ccdv  g++  ;
+LINKLIBS = -lz -lm  $(FCLIBS) ;
+TARGET_DIR = src/opt ;
+HDRS = $(TOP)  ;
+
+PREFIX = /usr/local ;
+BINDIR      = $(PREFIX)/bin ;
+LIBDIR      = $(PREFIX)/lib ;
+MANDIR      = $(PREFIX)/man ;
+STDHDRS     = $(PREFIX)/include ;
+
+actions Fortran
+{
+	$(FORTRAN) $(FORTRANFLAGS) -c -o $(<) $(>)
+}
+
+HOST_OS = linux-gnu ;
+
+if $(OS) != MINGW && $(HOST_OS) = mingw32 # fix for cross-mingw tool chain
+{
+    AR = "$(AR) cru" ;
+    SUFEXE = .exe ;
+}
+
