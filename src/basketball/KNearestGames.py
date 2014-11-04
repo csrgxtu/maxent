@@ -45,10 +45,12 @@ class KNearestGames(object):
       return None
 
     res = []
-    res.append(lsta[self.k - 1][0])
+    # res.append(lsta[self.k - 1][0])
+    res.extend(lsta[self.k - 1])
     for i in range(len(lsta) - 1):
       res.extend(lsta[i])
 
+    res.extend(lstb[self.k - 1][1:])
     for i in range(len(lstb) - 1):
       res.extend(lstb[i])
 
