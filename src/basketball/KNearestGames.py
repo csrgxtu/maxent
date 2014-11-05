@@ -45,12 +45,12 @@ class KNearestGames(object):
       return None
 
     res = []
-    # res.append(lsta[self.k - 1][0])
-    res.extend(lsta[self.k - 1])
+    res.append(lsta[self.k - 1][0])
+    # res.extend(lsta[self.k - 1])
     for i in range(len(lsta) - 1):
       res.extend(lsta[i])
 
-    res.extend(lstb[self.k - 1][1:])
+    # res.extend(lstb[self.k - 1][1:])
     for i in range(len(lstb) - 1):
       res.extend(lstb[i])
 
@@ -65,11 +65,13 @@ class KNearestGames(object):
       print "Prepare " + str(i) + "th record"
       lsta = self.teamLst[i:i+self.k]
       lstb = self.opponentTeamLst[i:i+self.k]
+      print "Debug: "
+      print lstb
       appendlst2file(self.prepareRecord(lsta, lstb), self.outputFile)
 
 if __name__ == '__main__':
-  teamFile = '/home/archer/Documents/maxent/data/basketball/Knicksdata-28-Oct-2014-v1.0-modified.csv'
-  opponentTeamFile = '/home/archer/Documents/maxent/data/basketball/Lackersdata-29-Oct-2014-v1.0-modified.csv'
+  teamFile = '/home/archer/Documents/maxent/data/basketball/Knicksdata-28-Oct-2014-v2.0.csv'
+  opponentTeamFile = '/home/archer/Documents/maxent/data/basketball/Lackersdata-29-Oct-2014-v2.0.csv'
   outputFile = '../../data/basketball/knearestgames.csv'
   k = KNearestGames(teamFile, opponentTeamFile, outputFile, 4)
   k.prepareRecords()
