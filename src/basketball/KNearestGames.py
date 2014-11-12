@@ -70,8 +70,8 @@ class KNearestGames(object):
       appendlst2file(self.prepareRecord(lsta, lstb), self.outputFile)
 
 if __name__ == '__main__':
-  teamFile = '/home/archer/Documents/maxent/data/basketball/Knicksdata-28-Oct-2014-v2.0.csv'
-  opponentTeamFile = '/home/archer/Documents/maxent/data/basketball/Lackersdata-29-Oct-2014-v2.0.csv'
-  outputFile = '../../data/basketball/knearestgames.csv'
-  k = KNearestGames(teamFile, opponentTeamFile, outputFile, 4)
+  teamFile = '/home/archer/Documents/maxent/data/basketball/knearestgames-NYK-10-Nov-2014-v5.0.csv'
+  opponentTeamFile = '/home/archer/Documents/maxent/data/basketball/knearestgames-LAL-10-Nov-2014-v5.0.csv'
+  outputFile = '../../data/basketball/knearestgames-10-Nov-2014-v5.0.csv'
+  k = KNearestGames(teamFile, opponentTeamFile, outputFile, 7)
   k.prepareRecords()
