@@ -59,12 +59,15 @@ class NBAStatsExtractor(object):
     if ranking == None:
       return None
     else:
-      j = loads(ranking)
-      res['PPG'] = j["resultSets"][1]["rowSet"][0][3]
-      res['RPG'] = j["resultSets"][1]["rowSet"][0][5]
-      res['APG'] = j["resultSets"][1]["rowSet"][0][7]
-      res['OPPG'] = j["resultSets"][1]["rowSet"][0][9]
-      return res
+      try:
+        j = loads(ranking)
+        res['PPG'] = j["resultSets"][1]["rowSet"][0][3]
+        res['RPG'] = j["resultSets"][1]["rowSet"][0][5]
+        res['APG'] = j["resultSets"][1]["rowSet"][0][7]
+        res['OPPG'] = j["resultSets"][1]["rowSet"][0][9]
+        return res
+      except IndexError:
+        return None
 
   # getTechStatsInfo
   # get teach tech stats of the teamid, opponentTeamId, season
@@ -128,9 +131,32 @@ class NBAStatsExtractor(object):
     else:
       j = loads(profile)
       matrix = array(j['resultSets'][0]['rowSet'])
-      res['Height'] = self.avg([self.convertHeight(str(x)) for x in matrix[:,6].tolist()])
-      res['Weight'] = self.avg([int(x) for x in matrix[:,7].tolist()])
-      res['Age'] = self.avg([int(x) for x in matrix[:,9].tolist()])
+
+      # turn '' and None to 0
+      for k in range(len(matrix)):
+        for l in range(len(matrix[0])):
+          if matrix[k][l] == '':
+            matrix[k][l] = 0
+          if matrix[k][l] == 'None':
+            matrix[k][l] = 0
+          if matrix[k][l] == ' ':
+            matrix[k][l] = 0
+      try:
+        res['Height'] = self.avg([self.convertHeight(str(x)) for x in matrix[:,6].tolist()])
+      except IndexError:
+        res['Height'] = 0
+      
+      # print 'Debug Here: '
+      # print matrix[:, 9].tolist()
+      try:
+        res['Weight'] = self.avg([int(x) if x else 0 for x in matrix[:,7].tolist()])
+      except IndexError:
+        res['Weight'] = 0
+      # res['Age'] = self.avg([int(float(x)) for x in matrix[:,9].tolist()])
+      try:
+        res['Age'] = self.avg([int(float(x)) if x != None else 0 for x in matrix[:, 9].tolist()])
+      except IndexError:
+        res['Age'] = 0
       return res
 
   """ Helper Method, should not invoke directly """
@@ -141,6 +167,25 @@ class NBAStatsExtractor(object):
   # @return int
   def convertHeight(self, string):
     lst = string.split("-")
+    """
+    print 'Debug convertHeight: '
+    print lst
+    if len(lst) == 0:
+      return 0
+    if len(lst) == 1:
+      lst.append(0)
+    """
+
+    if len(lst) == 0:
+      return 0
+
+    if len(lst) == 1:
+      lst.append(0)
+
+    for i in range(len(lst)):
+      if lst[i] == 'None':
+        lst[i] = 0
+
     return int(lst[0]) * 12 + int(lst[1])
 
   # avg

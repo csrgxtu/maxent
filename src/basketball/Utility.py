@@ -49,3 +49,29 @@ def readmatricefromfile(inputFile):
 	return loadtxt(open(inputFile, 'r'), delimiter=",").tolist()
 	# with open(inputFile, "r") as myFile:
 	# 	pass
+
+# loadTeamIds
+# load team ids from file
+#
+# @param inputFile
+# @return teamIds in list
+def loadTeamIds(inputFile):
+  teamIds = []
+  with open(inputFile, "r") as myFile:
+    for line in myFile:
+      teamIds.append(line.split(',')[0])
+
+  return teamIds
+
+# loadSeasons
+# load seasons from file
+#
+# @param inputFile
+# @return seasons in list
+def loadSeasons(inputFile):
+  seasons = []
+  with open(inputFile, 'r') as myFile:
+    for line in myFile:
+      seasons.append(line.rstrip())
+
+  return seasons

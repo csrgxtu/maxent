@@ -7,25 +7,25 @@
 #
 # Produced By CSRGXTU
 from NBAStatsExtractor import NBAStatsExtractor
-from Utility import appendlst2file
+from Utility import appendlst2file, loadTeamIds, loadSeasons
 
-leagueId = "00"
+# leagueId = "00"
 # teamId = "1610612752" # Knicks
-teamId = "1610612747" # Lackers
+# teamId = "1610612747" # Lackers
 # opponentTeamId = "1610612747" # Lackers
 
-dataFile = "../../data/basketball/Lackersdata-29-Oct-2014-v1.0.csv"
+# dataFile = "../../data/basketball/Lackersdata-29-Oct-2014-v1.0.csv"
 
-seasonspre = ['1990-91', '1991-92', '1992-93', '1993-94',
-  '1994-95', '1995-96']
-seasons = ['1996-97', '1997-98', '1998-99', '1999-00',
-  '2000-01', '2001-02', '2002-03', '2003-04', '2004-05',
-  '2005-06', '2006-07', '2007-08', '2008-09', '2009-10',
-  '2010-11', '2011-12', '2012-13', '2013-14']
+# seasonspre = ['1990-91', '1991-92', '1992-93', '1993-94',
+#   '1994-95', '1995-96']
+# seasons = ['1996-97', '1997-98', '1998-99', '1999-00',
+#   '2000-01', '2001-02', '2002-03', '2003-04', '2004-05',
+#   '2005-06', '2006-07', '2007-08', '2008-09', '2009-10',
+#   '2010-11', '2011-12', '2012-13', '2013-14']
 
-seasonTypes = ['Regular Season']
+# seasonTypes = ['Regular Season']
 
-def run(season, seasonType, dataFile):
+def run(teamId, season, seasonType, leagueId, dataFile):
   t = NBAStatsExtractor(teamId, season, seasonType, leagueId)
   # print t.getCurrentLeagueRankingInfo()
   # print t.getTeamProfileInfo()
@@ -70,10 +70,30 @@ def run(season, seasonType, dataFile):
     appendlst2file(tmpLst, dataFile)
 
 if __name__ == '__main__':
+  # first, load team id
+  teamIds = loadTeamIds('../../data/basketball/teamidname-18-Nov-2014.csv')
+
+  # second, load seasons
+  seasons = loadSeasons('../../data/basketball/seasons-18-Nov-2014.txt')
+
+  # seasonTypes
+  seasonTypes = ['Regular Season']
+
+  # leagueId
+  leagueId = "00"
+
+  for teamId in teamIds:
+    dataFile = '../../data/basketball/' + teamId + '.csv'
+    for t in seasonTypes:
+      for s in seasons:
+        print "Processing " + teamId + " " + s + " " + t,
+        run(teamId, s, t, leagueId, dataFile)
+        print "  Done"
+  """
   for t in seasonTypes:
     for s in (seasonspre + seasons):
       print "Processing " + s + " " + t,
       run(s, t, dataFile)
       print "  Done"
-
+  """
   #run('2013-14', 'Regular Season', dataFile)
