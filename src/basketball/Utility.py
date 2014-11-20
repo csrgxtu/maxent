@@ -38,6 +38,7 @@ def appendstr2file(string, outFile):
 def appendlst2file(lst, outFile):
   with open(outFile, "a") as myFile:
     myFile.write(",".join(map(lambda x: str(x), lst)) + "\n")
+    myFile.close()
 
 # readmatricefromfile
 # read matrice from file, i.e. 2 dim list
@@ -72,6 +73,7 @@ def saveMatrixToFile(outputFile, matrix):
   with open(outputFile, 'w') as myFile:
     for row in matrix:
       myFile.write(','.join([str(x) for x in row]) + '\n')
+    myFile.close()
 
 # loadTeamIds
 # load team ids from file
