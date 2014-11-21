@@ -7,7 +7,7 @@
 #
 # Produced By CSRGXTU
 from Utility import readmatricefromfile
-from Utility import appendlst2file
+from Utility import appendlst2file, loadMatrixFromFile
 
 class KNearestGames(object):
   # the tech data of the team
@@ -29,8 +29,8 @@ class KNearestGames(object):
     self.opponentTeamFile = opponentteamfile
     self.outputFile = outputfile
 
-    self.teamLst = readmatricefromfile(self.teamFile)
-    self.opponentTeamLst = readmatricefromfile(self.opponentTeamFile)
+    self.teamLst = loadMatrixFromFile(self.teamFile)
+    self.opponentTeamLst = loadMatrixFromFile(self.opponentTeamFile)
 
     self.k = k
 
@@ -48,30 +48,55 @@ class KNearestGames(object):
     res.append(lsta[self.k - 1][0])
     # res.extend(lsta[self.k - 1])
     for i in range(len(lsta) - 1):
-      res.extend(lsta[i])
+      res.extend(lsta[i][1:])
 
     # res.extend(lstb[self.k - 1][1:])
     for i in range(len(lstb) - 1):
-      res.extend(lstb[i])
+      res.extend(lstb[i][1:])
 
     return res
 
   # prepareRecords
   # prepare records
   #
+  # @param teamida
+  # @param teamidb
   # @return matrice 2 dim
-  def prepareRecords(self):
+  def prepareRecords(self, teamida, teamidb):
     for i in range(len(self.teamLst) - self.k + 1):
       print "Prepare " + str(i) + "th record"
       lsta = self.teamLst[i:i+self.k]
       lstb = self.opponentTeamLst[i:i+self.k]
-      print "Debug: "
-      print lstb
-      appendlst2file(self.prepareRecord(lsta, lstb), self.outputFile)
+      lstaa = self.selectColumns(lsta, teamida)
+      lstbb = self.selectColumns(lstb, teamidb)
+      # print "Debug: "
+      # print lstb
+      appendlst2file(self.prepareRecord(lstaa, lstbb), self.outputFile)
+
+  # selectColumns
+  # select columns from matrix
+  #
+  # @param matrix 2d list
+  # @param teamid
+  # @return res 2d list
+  def selectColumns(self, matrix, teamid):
+    DATA_PATH = '/home/archer/Documents/maxent/data/basketball/leaguerank/'
+    TEAMID_FILE = DATA_PATH + 'teamidshortname.csv'
+    TEAMIDS = [x[0] for x in loadMatrixFromFile(TEAMID_FILE)]
+    res = []
+    for i in range(len(matrix)):
+      win = 1 if matrix[i][0] == 'W' else 0
+      # home = 1 if 'vs' in matrix[i][5] else 0
+      points = matrix[i][19]
+      lr = loadMatrixFromFile(DATA_PATH + matrix[i][1] + '.l')[0][TEAMIDS.index(teamid)]
+      res.append([win, home, points, lr])
+      # res.append([matrix[i][0], matrix[i][1], matrix[i][5], matrix[i][19]])
+    return res
 
 if __name__ == '__main__':
-  teamFile = '/home/archer/Documents/maxent/data/basketball/knearestgames-NYK-10-Nov-2014-v5.0.csv'
-  opponentTeamFile = '/home/archer/Documents/maxent/data/basketball/knearestgames-LAL-10-Nov-2014-v5.0.csv'
-  outputFile = '../../data/basketball/knearestgames-10-Nov-2014-v5.0.csv'
+  DATA_PATH = '/home/archer/Documents/maxent/data/basketball/leaguerank/'
+  teamFile = DATA_PATH + '1610612752.csv.sorted'
+  opponentTeamFile = DATA_PATH + '1610612747.csv.sorted'
+  outputFile = DATA_PATH + '7nearestgames-traning-testing-csv'
   k = KNearestGames(teamFile, opponentTeamFile, outputFile, 7)
-  k.prepareRecords()
+  k.prepareRecords('1610612752', '1610612747')
