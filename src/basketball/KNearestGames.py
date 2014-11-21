@@ -89,7 +89,7 @@ class KNearestGames(object):
       # home = 1 if 'vs' in matrix[i][5] else 0
       points = matrix[i][19]
       lr = loadMatrixFromFile(DATA_PATH + matrix[i][1] + '.l')[0][TEAMIDS.index(teamid)]
-      res.append([win, home, points, lr])
+      res.append([win, points, lr])
       # res.append([matrix[i][0], matrix[i][1], matrix[i][5], matrix[i][19]])
     return res
 
