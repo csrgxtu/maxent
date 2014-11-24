@@ -41,6 +41,12 @@ def generateRow(matrix, rowName):
       tmpWinMatrix.append(row)
   # print '   DEBUG:' + str(winsNum)
 
+  # get lose matrix
+  tmpLoseMatrix = []
+  for row in matrix:
+    if row[0] == 'L':
+      tmpLoseMatrix.append(row)
+
   if winsNum == 0:
     for team in sortedNames:
       res.append(0.0)
@@ -53,7 +59,7 @@ def generateRow(matrix, rowName):
       res.append(0.0)
       continue
     else:
-      for row in tmpWinMatrix:
+      for row in tmpLoseMatrix:
         if row[5].endswith(team):
           counter = counter + 1
       res.append(counter/float(winsNum))

@@ -7,6 +7,7 @@
 #
 # Produced By CSRGXTU
 from Utility import loadMatrixFromFile
+import operator
 
 DATA_PATH = '/home/archer/Documents/maxent/data/basketball/leaguerank/'
 
@@ -20,4 +21,29 @@ res = {}
 for i in range(len(names)):
   res[names[i]] = ranks[i]
   # print names[i] + '    ' + ranks[i]
-  print ranks[i] + '    ' + names[i]
+  # print ranks[i] + '    ' + names[i]
+
+sorted_res = sorted(res.items(), key=operator.itemgetter(1))
+print 'INFO: All Teams'
+print("%22s    %-15s" % ('Team', 'LeagueRank'))
+for item in sorted_res:
+  # print item[0], '    ', item[1]
+  print("%22s    %-15s" % (item[0], item[1]))
+
+eastern_res = {}
+for i in range(15):
+  eastern_res[names[i]] = ranks[i]
+sorted_eastern_res = sorted(eastern_res.items(), key=operator.itemgetter(1))
+print 'INFO: Eastern Teams'
+print("%22s    %-15s" % ('Team', 'LeagueRank'))
+for item in sorted_eastern_res:
+  print("%22s    %-15s" % (item[0], item[1]))
+
+weastern_res = {}
+for i in range(15, 30):
+  weastern_res[names[i]] = ranks[i]
+sorted_weatern_res = sorted(weastern_res.items(), key=operator.itemgetter(1))
+print 'INFO: Weastern Teams'
+print("%22s    %-15s" % ('Team', 'LeagueRank'))
+for item in sorted_weatern_res:
+  print("%22s    %-15s" % (item[0], item[1]))
