@@ -95,8 +95,8 @@ class KNearestGames(object):
 
 if __name__ == '__main__':
   DATA_PATH = '/home/archer/Documents/maxent/data/basketball/leaguerank/'
-  teamFile = DATA_PATH + '1610612752.csv.sorted'
+  teamFile = DATA_PATH + '1610612746.csv.sorted'
   opponentTeamFile = DATA_PATH + '1610612747.csv.sorted'
   outputFile = DATA_PATH + '7nearestgames-traning-testing-csv'
   k = KNearestGames(teamFile, opponentTeamFile, outputFile, 7)
-  k.prepareRecords('1610612752', '1610612747')
+  k.prepareRecords('1610612746', '1610612747')
