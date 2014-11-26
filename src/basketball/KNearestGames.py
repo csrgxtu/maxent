@@ -46,14 +46,16 @@ class KNearestGames(object):
 
     res = []
     res.append(lsta[self.k - 1][0])
-    # res.extend(lsta[self.k - 1])
+    #res.extend(lsta[self.k - 1])
     for i in range(len(lsta) - 1):
-      res.extend(lsta[i][1:])
+      # res.extend(lsta[i][1:])
+      res.extend(lsta[i])
 
     # res.extend(lstb[self.k - 1][1:])
     for i in range(len(lstb) - 1):
-      res.extend(lstb[i][1:])
-
+      # res.extend(lstb[i][1:])
+      res.extend(lstb[i])
+    
     return res
 
   # prepareRecords
@@ -96,8 +98,8 @@ class KNearestGames(object):
 
 if __name__ == '__main__':
   DATA_PATH = '/home/archer/Documents/maxent/data/basketball/leaguerank/'
-  teamFile = DATA_PATH + '1610612746.csv.sorted'
-  opponentTeamFile = DATA_PATH + '1610612747.csv.sorted'
+  teamFile = DATA_PATH + '1610612746-1610612747.csv.sorted'
+  opponentTeamFile = DATA_PATH + '1610612747-1610612746.csv.sorted'
   outputFile = DATA_PATH + '7nearestgames-traning-testing-csv'
   k = KNearestGames(teamFile, opponentTeamFile, outputFile, 7)
   k.prepareRecords('1610612746', '1610612747')

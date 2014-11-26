@@ -27,6 +27,7 @@ uname -v = #66-Ubuntu SMP Tue Oct 28 13:31:23 UTC 2014
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
 
+PATH: /home/archer/bin/google_appengine
 PATH: /home/archer/bin/node-v0.10.32-linux-x86/bin
 PATH: /home/archer/bin/sublimetext
 PATH: /home/archer/bin/adt-bundle-linux-x86-20140321/sdk/platform-tools
@@ -41,6 +42,8 @@ PATH: /sbin
 PATH: /bin
 PATH: /usr/games
 PATH: /usr/local/games
+PATH: /usr/bin/bin
+PATH: /home/archer/go/bin
 
 
 ## ----------- ##
@@ -187,7 +190,7 @@ Configured with: ../src/configure -v --with-pkgversion='Ubuntu 4.8.2-19ubuntu1' 
 Thread model: posix
 gcc version 4.8.2 (Ubuntu 4.8.2-19ubuntu1) 
 COLLECT_GCC_OPTIONS='-o' 'conftest' '-g' '-O2' '-v' '-shared-libgcc' '-mtune=generic' '-march=i686'
- /usr/lib/gcc/i686-linux-gnu/4.8/f951 conftest.f -ffixed-form -quiet -dumpbase conftest.f -mtune=generic -march=i686 -auxbase conftest -g -O2 -version -fintrinsic-modules-path /usr/lib/gcc/i686-linux-gnu/4.8/finclude -o /tmp/ccJqnf7l.s
+ /usr/lib/gcc/i686-linux-gnu/4.8/f951 conftest.f -ffixed-form -quiet -dumpbase conftest.f -mtune=generic -march=i686 -auxbase conftest -g -O2 -version -fintrinsic-modules-path /usr/lib/gcc/i686-linux-gnu/4.8/finclude -o /tmp/ccguo7W0.s
 GNU Fortran (Ubuntu 4.8.2-19ubuntu1) version 4.8.2 (i686-linux-gnu)
 	compiled by GNU C version 4.8.2, GMP version 5.1.3, MPFR version 3.1.2-p3, MPC version 1.0.1
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
@@ -195,7 +198,7 @@ GNU Fortran (Ubuntu 4.8.2-19ubuntu1) version 4.8.2 (i686-linux-gnu)
 	compiled by GNU C version 4.8.2, GMP version 5.1.3, MPFR version 3.1.2-p3, MPC version 1.0.1
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 COLLECT_GCC_OPTIONS='-o' 'conftest' '-g' '-O2' '-v' '-shared-libgcc' '-mtune=generic' '-march=i686'
- as -v --32 -o /tmp/ccQ6mUle.o /tmp/ccJqnf7l.s
+ as -v --32 -o /tmp/ccW0Y4FL.o /tmp/ccguo7W0.s
 GNU assembler version 2.24 (i686-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.24
 Reading specs from /usr/lib/gcc/i686-linux-gnu/4.8/libgfortran.spec
 rename spec lib to liborig
@@ -203,7 +206,7 @@ COLLECT_GCC_OPTIONS='-o' 'conftest' '-g' '-O2' '-v' '-shared-libgcc' '-mtune=gen
 COMPILER_PATH=/usr/lib/gcc/i686-linux-gnu/4.8/:/usr/lib/gcc/i686-linux-gnu/4.8/:/usr/lib/gcc/i686-linux-gnu/:/usr/lib/gcc/i686-linux-gnu/4.8/:/usr/lib/gcc/i686-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/i686-linux-gnu/4.8/:/usr/lib/gcc/i686-linux-gnu/4.8/../../../i386-linux-gnu/:/usr/lib/gcc/i686-linux-gnu/4.8/../../../../lib/:/lib/i386-linux-gnu/:/lib/../lib/:/usr/lib/i386-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/i686-linux-gnu/4.8/../../../:/lib/:/usr/lib/
 COLLECT_GCC_OPTIONS='-o' 'conftest' '-g' '-O2' '-v' '-shared-libgcc' '-mtune=generic' '-march=i686'
- /usr/lib/gcc/i686-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_i386 --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux.so.2 -z relro -o conftest /usr/lib/gcc/i686-linux-gnu/4.8/../../../i386-linux-gnu/crt1.o /usr/lib/gcc/i686-linux-gnu/4.8/../../../i386-linux-gnu/crti.o /usr/lib/gcc/i686-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/i686-linux-gnu/4.8 -L/usr/lib/gcc/i686-linux-gnu/4.8/../../../i386-linux-gnu -L/usr/lib/gcc/i686-linux-gnu/4.8/../../../../lib -L/lib/i386-linux-gnu -L/lib/../lib -L/usr/lib/i386-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/i686-linux-gnu/4.8/../../.. /tmp/ccQ6mUle.o -lgfortran -lm -lgcc_s -lgcc -lquadmath -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/i686-linux-gnu/4.8/crtend.o /usr/lib/gcc/i686-linux-gnu/4.8/../../../i386-linux-gnu/crtn.o
+ /usr/lib/gcc/i686-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_i386 --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux.so.2 -z relro -o conftest /usr/lib/gcc/i686-linux-gnu/4.8/../../../i386-linux-gnu/crt1.o /usr/lib/gcc/i686-linux-gnu/4.8/../../../i386-linux-gnu/crti.o /usr/lib/gcc/i686-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/i686-linux-gnu/4.8 -L/usr/lib/gcc/i686-linux-gnu/4.8/../../../i386-linux-gnu -L/usr/lib/gcc/i686-linux-gnu/4.8/../../../../lib -L/lib/i386-linux-gnu -L/lib/../lib -L/usr/lib/i386-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/i686-linux-gnu/4.8/../../.. /tmp/ccW0Y4FL.o -lgfortran -lm -lgcc_s -lgcc -lquadmath -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/i686-linux-gnu/4.8/crtend.o /usr/lib/gcc/i686-linux-gnu/4.8/../../../i386-linux-gnu/crtn.o
 configure:3505: result: -v
 configure:3507: checking for Fortran libraries of gfortran
 configure:3530: gfortran -o conftest -g -O2 -v conftest.f
@@ -215,7 +218,7 @@ Configured with: ../src/configure -v --with-pkgversion='Ubuntu 4.8.2-19ubuntu1' 
 Thread model: posix
 gcc version 4.8.2 (Ubuntu 4.8.2-19ubuntu1) 
 COLLECT_GCC_OPTIONS='-o' 'conftest' '-g' '-O2' '-v' '-shared-libgcc' '-mtune=generic' '-march=i686'
- /usr/lib/gcc/i686-linux-gnu/4.8/f951 conftest.f -ffixed-form -quiet -dumpbase conftest.f -mtune=generic -march=i686 -auxbase conftest -g -O2 -version -fintrinsic-modules-path /usr/lib/gcc/i686-linux-gnu/4.8/finclude -o /tmp/ccOU7lbu.s
+ /usr/lib/gcc/i686-linux-gnu/4.8/f951 conftest.f -ffixed-form -quiet -dumpbase conftest.f -mtune=generic -march=i686 -auxbase conftest -g -O2 -version -fintrinsic-modules-path /usr/lib/gcc/i686-linux-gnu/4.8/finclude -o /tmp/ccxImsH8.s
 GNU Fortran (Ubuntu 4.8.2-19ubuntu1) version 4.8.2 (i686-linux-gnu)
 	compiled by GNU C version 4.8.2, GMP version 5.1.3, MPFR version 3.1.2-p3, MPC version 1.0.1
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
@@ -223,7 +226,7 @@ GNU Fortran (Ubuntu 4.8.2-19ubuntu1) version 4.8.2 (i686-linux-gnu)
 	compiled by GNU C version 4.8.2, GMP version 5.1.3, MPFR version 3.1.2-p3, MPC version 1.0.1
 GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
 COLLECT_GCC_OPTIONS='-o' 'conftest' '-g' '-O2' '-v' '-shared-libgcc' '-mtune=generic' '-march=i686'
- as -v --32 -o /tmp/ccZrCFIm.o /tmp/ccOU7lbu.s
+ as -v --32 -o /tmp/ccG1gKLT.o /tmp/ccxImsH8.s
 GNU assembler version 2.24 (i686-linux-gnu) using BFD version (GNU Binutils for Ubuntu) 2.24
 Reading specs from /usr/lib/gcc/i686-linux-gnu/4.8/libgfortran.spec
 rename spec lib to liborig
@@ -231,7 +234,7 @@ COLLECT_GCC_OPTIONS='-o' 'conftest' '-g' '-O2' '-v' '-shared-libgcc' '-mtune=gen
 COMPILER_PATH=/usr/lib/gcc/i686-linux-gnu/4.8/:/usr/lib/gcc/i686-linux-gnu/4.8/:/usr/lib/gcc/i686-linux-gnu/:/usr/lib/gcc/i686-linux-gnu/4.8/:/usr/lib/gcc/i686-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/i686-linux-gnu/4.8/:/usr/lib/gcc/i686-linux-gnu/4.8/../../../i386-linux-gnu/:/usr/lib/gcc/i686-linux-gnu/4.8/../../../../lib/:/lib/i386-linux-gnu/:/lib/../lib/:/usr/lib/i386-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/i686-linux-gnu/4.8/../../../:/lib/:/usr/lib/
 COLLECT_GCC_OPTIONS='-o' 'conftest' '-g' '-O2' '-v' '-shared-libgcc' '-mtune=generic' '-march=i686'
- /usr/lib/gcc/i686-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_i386 --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux.so.2 -z relro -o conftest /usr/lib/gcc/i686-linux-gnu/4.8/../../../i386-linux-gnu/crt1.o /usr/lib/gcc/i686-linux-gnu/4.8/../../../i386-linux-gnu/crti.o /usr/lib/gcc/i686-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/i686-linux-gnu/4.8 -L/usr/lib/gcc/i686-linux-gnu/4.8/../../../i386-linux-gnu -L/usr/lib/gcc/i686-linux-gnu/4.8/../../../../lib -L/lib/i386-linux-gnu -L/lib/../lib -L/usr/lib/i386-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/i686-linux-gnu/4.8/../../.. /tmp/ccZrCFIm.o -lgfortran -lm -lgcc_s -lgcc -lquadmath -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/i686-linux-gnu/4.8/crtend.o /usr/lib/gcc/i686-linux-gnu/4.8/../../../i386-linux-gnu/crtn.o
+ /usr/lib/gcc/i686-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_i386 --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux.so.2 -z relro -o conftest /usr/lib/gcc/i686-linux-gnu/4.8/../../../i386-linux-gnu/crt1.o /usr/lib/gcc/i686-linux-gnu/4.8/../../../i386-linux-gnu/crti.o /usr/lib/gcc/i686-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/i686-linux-gnu/4.8 -L/usr/lib/gcc/i686-linux-gnu/4.8/../../../i386-linux-gnu -L/usr/lib/gcc/i686-linux-gnu/4.8/../../../../lib -L/lib/i386-linux-gnu -L/lib/../lib -L/usr/lib/i386-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/i686-linux-gnu/4.8/../../.. /tmp/ccG1gKLT.o -lgfortran -lm -lgcc_s -lgcc -lquadmath -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/i686-linux-gnu/4.8/crtend.o /usr/lib/gcc/i686-linux-gnu/4.8/../../../i386-linux-gnu/crtn.o
 configure:3704: result:  -L/usr/lib/gcc/i686-linux-gnu/4.8 -L/usr/lib/gcc/i686-linux-gnu/4.8/../../../i386-linux-gnu -L/usr/lib/gcc/i686-linux-gnu/4.8/../../../../lib -L/lib/i386-linux-gnu -L/lib/../lib -L/usr/lib/i386-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/i686-linux-gnu/4.8/../../.. -lgfortran -lm -lquadmath
 configure:3734: checking how to run the C++ preprocessor
 configure:3770: g++ -E  conftest.cpp
