@@ -18,7 +18,7 @@ dates = loadMatrixFromFile(DATES_FILE)[0]
 
 for d  in dates:
   print 'INFO: generate LeagueRank for ' + d + '.m'
-  o = LeagueRank(L, readmatricefromfile(DATA_PATH + d + '.m'), 0.00000001, 100000)
+  o = LeagueRank(L, readmatricefromfile(DATA_PATH + d + '.m'), 0.0001, 100000)
   # print 'Debug: ',
   # print o.rank()
   appendlst2file(o.rank(), DATA_PATH + d + '.l')

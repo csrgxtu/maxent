@@ -33,11 +33,13 @@ for row in teamidabbrs:
 # @return list
 def generateRow(matrix, rowName):
   res = []
-  winsNum = 0
+  #winsNum = 0
+  loseNum = 0
   tmpWinMatrix = []
   for row in matrix:
-    if row[0] == 'W':
-      winsNum = winsNum + 1
+    if row[0] == 'L':
+      #winsNum = winsNum + 1
+      loseNum = loseNum + 1
       tmpWinMatrix.append(row)
   # print '   DEBUG:' + str(winsNum)
 
@@ -47,7 +49,7 @@ def generateRow(matrix, rowName):
     if row[0] == 'L':
       tmpLoseMatrix.append(row)
 
-  if winsNum == 0:
+  if loseNum == 0:
     for team in sortedNames:
       res.append(0.0)
     return res
@@ -62,7 +64,7 @@ def generateRow(matrix, rowName):
       for row in tmpLoseMatrix:
         if row[5].endswith(team):
           counter = counter + 1
-      res.append(counter/float(winsNum))
+      res.append(counter/float(loseNum))
 
   # print '     INFO: ',
   # print res
