@@ -16,7 +16,7 @@ L = [1/float(30) for e in range(1, 31)]
 
 dates = loadMatrixFromFile(DATES_FILE)[0]
 
-for d  in dates:
+for d  in dates[3633:]:
   print 'INFO: generate LeagueRank for ' + d + '.m'
   #o = LeagueRank(L, readmatricefromfile(DATA_PATH + d + '.m'), 0.00000001, 100000)
   o = LeagueRank(L, readmatricefromfile(DATA_PATH + d + '.m'), 0.001, 10)

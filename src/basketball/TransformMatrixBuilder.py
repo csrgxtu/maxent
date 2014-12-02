@@ -71,7 +71,7 @@ def generateRow(matrix, rowName):
   return res
 
 # tmpMatrixa = []
-for d in dates:
+for d in dates[3633:]:
   print 'INFO: build matrix for ' + d
   tmpMatrixb = []
   for i in range(len(sortedFiles)):
