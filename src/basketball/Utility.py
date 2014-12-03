@@ -100,3 +100,43 @@ def loadSeasons(inputFile):
       seasons.append(line.rstrip())
 
   return seasons
+
+# generateRow
+# generate a row from matrix for transform matrix
+#
+# @param matrix
+# @param rowName
+# @param sortedNames team names
+# @return list
+def generateRow(matrix, rowName, sortedNames):
+  res = []
+  loseNum = 0
+  tmpWinMatrix = []
+  for row in matrix:
+    if row[0] == 'L':
+      loseNum = loseNum + 1
+      tmpWinMatrix.append(row)
+
+  # get lose matrix
+  tmpLoseMatrix = []
+  for row in matrix:
+    if row[0] == 'L':
+      tmpLoseMatrix.append(row)
+
+  if loseNum == 0:
+    for team in sortedNames:
+      res.append(0.0)
+    return res
+
+  for team in sortedNames:
+    counter = 0
+    if team == rowName:
+      res.append(0.0)
+      continue
+    else:
+      for row in tmpLoseMatrix:
+        if row[5].endswith(team):
+          counter = counter + 1
+      res.append(counter/float(loseNum))
+
+  return res
