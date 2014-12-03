@@ -33,11 +33,11 @@ class NBAStatsExtractor(object):
     self.currentLeagueRankingApi += "&SeasonType=" + self.seasonType
     self.currentLeagueRankingApi += "&TeamId=" + self.teamId
 
-    self.techStatsApi += "LeagueId=" + self.leagueId
+    self.techStatsApi += "LeagueID=" + self.leagueId
     self.techStatsApi += "&Season=" + self.season
     self.techStatsApi += "&SeasonType=" + self.seasonType
     self.techStatsApi += "&TeamID=" + self.teamId
-    self.techStatsApi += "&pageNo=1&rowsPerPage=1000"
+    #self.techStatsApi += "&pageNo=1&rowsPerPage=1000"
 
     self.teamProfileApi += "LeagueId=" + self.leagueId
     self.teamProfileApi += "&Season=" + self.season
