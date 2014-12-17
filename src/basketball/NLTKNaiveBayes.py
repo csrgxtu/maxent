@@ -61,11 +61,14 @@ def buildTestingLabels(inputFile):
 def main():
   DIR = '/home/archer/Documents/maxent/data/basketball/leaguerank/'
   seasons = loadSeasons(DIR + 'seasons-18-Nov-2014.txt')
+  countTotal = 0
+  total = 0
 
   for season in seasons:
     train = buildTrainingSets(DIR + season + '-train.csv')
     test = buildTestingSets(DIR + season + '-test.csv')
     labels = buildTestingLabels(DIR + season + '-test.csv')
+    total = total + len(labels)
 
     classifier = NaiveBayesClassifier.train(train)
     res = classifier.batch_classify(test)
@@ -75,7 +78,10 @@ def main():
     for i in range(len(res)):
       if labels[i] == res[i]:
         count = count + 1
+
+    countTotal = countTotal + count
     print 'INFO: Accuracy(', season, ')', count/float(len(res))
+  print 'INFO: Total Accuracy: ', countTotal/float(total)
 
 if __name__ == '__main__':
   main()
