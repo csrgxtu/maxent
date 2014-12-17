@@ -6,7 +6,7 @@
 # Desc: use naive bayes classify
 #
 # Produced By CSRGXTU
-from Utility import loadMatrixFromFile
+from Utility import loadMatrixFromFile, loadSeasons
 from nltk.classify import NaiveBayesClassifier
 
 # buildTrainingSets
@@ -60,19 +60,22 @@ def buildTestingLabels(inputFile):
 
 def main():
   DIR = '/home/archer/Documents/maxent/data/basketball/leaguerank/'
-  train = buildTrainingSets(DIR + '2013-14-train.csv')
-  test = buildTestingSets(DIR + '2013-14-test.csv')
-  labels = buildTestingLabels(DIR + '2013-14-test.csv')
+  seasons = loadSeasons(DIR + 'seasons-18-Nov-2014.txt')
 
-  classifier = NaiveBayesClassifier.train(train)
-  res = classifier.batch_classify(test)
+  for season in seasons:
+    train = buildTrainingSets(DIR + season + '-train.csv')
+    test = buildTestingSets(DIR + season + '-test.csv')
+    labels = buildTestingLabels(DIR + season + '-test.csv')
 
-  # accuracy
-  count = 0
-  for i in range(len(res)):
-    if labels[i] == res[i]:
-      count = count + 1
-  print 'INFO: Accuracy -- ', count/float(len(res))
+    classifier = NaiveBayesClassifier.train(train)
+    res = classifier.batch_classify(test)
+
+    # accuracy
+    count = 0
+    for i in range(len(res)):
+      if labels[i] == res[i]:
+        count = count + 1
+    print 'INFO: Accuracy(', season, ')', count/float(len(res))
 
 if __name__ == '__main__':
   main()
