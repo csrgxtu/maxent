@@ -39,7 +39,8 @@ def generateTrainDataBySeason(season):
       else:
         HOME = 0
 
-      heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + team + '.' + season + '.player.csv.processed.total')[0]
+      #heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + team + '.' + season + '.player.csv.processed.total')[0]
+      heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + team + '.' + season + '.player.csv.processed.avg')[0]
 
       leaguerank = leagueranks[teamNames.index(row[5][0:3])]
 
@@ -91,7 +92,8 @@ def generateTestDataBySeason(season):
       HOME = 0
 
     teamId = teamIds[teamNames.index(row[6][0:3])]
-    heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + teamId + '.' + season + '.player.csv.processed.total')[0]
+    #heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + teamId + '.' + season + '.player.csv.processed.total')[0]
+    heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + teamId + '.' + season + '.player.csv.processed.avg')[0]
 
     leaguerank = leagueranks[teamNames.index(row[6][0:3])]
 
@@ -170,7 +172,8 @@ def generateTrainDataByTeam(teamId):
       HOME = 0
 
     season = row[2]
-    heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + teamId + '.' + season + '.player.csv.processed.total')[0]
+    #heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + teamId + '.' + season + '.player.csv.processed.total')[0]
+    heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + teamId + '.' + season + '.player.csv.processed.avg')[0]
     
     leagueranks = loadMatrixFromFile(DIR + season + '.l')[0]
     leaguerank = leagueranks[teamNames.index(row[5][0:3])]
@@ -226,7 +229,8 @@ def generateTestDataByTeam(teamId):
         HOME = 0
 
       season = row[3]
-      heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + teamId + '.' + season + '.player.csv.processed.total')[0]
+      #heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + teamId + '.' + season + '.player.csv.processed.total')[0]
+      heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + teamId + '.' + season + '.player.csv.processed.avg')[0]
 
       leagueranks = loadMatrixFromFile(DIR + season + '.l')[0]
       leaguerank = leagueranks[teamNames.index(row[6][0:3])]
@@ -287,8 +291,8 @@ def generateTestDataByTeams():
 # main
 # glue function
 def main():
-  #generateTrainDataBySeasons()
-  #generateTestDataBySeasons()
+  generateTrainDataBySeasons()
+  generateTestDataBySeasons()
   generateTrainDataByTeams()
   generateTestDataByTeams()
 
