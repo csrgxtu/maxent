@@ -6,6 +6,7 @@
 # File: CVKNN-V1.0.py
 # Desc: KNN -- K Nearest Neighbours, use KNN classifier
 #       change buildTrain(Test)ingSets to use two leaguearanks
+#       reduce 11 feature to 5
 #
 # Produced By CSRGXTU
 import cv2
@@ -22,7 +23,7 @@ def buildTrainingSets(inputFile):
   res = []
   mat = loadMatrixFromFile(inputFile)
   for row in mat:
-    res.append([row[0], float(row[1]), float(row[2]), float(row[3]), float(row[4]), float(row[5]), float(row[6]), float(row[7]), float(row[8]), float(row[9]), float(row[10])])
+    res.append([row[0], float(row[4]), float(row[5]), float(row[9]), float(row[10])])
 
   return np.array(res).astype(np.float32)
 
@@ -48,7 +49,7 @@ def buildTestingSets(inputFile):
   res = []
   mat = loadMatrixFromFile(inputFile)
   for row in mat:
-    res.append([row[0], float(row[1]), float(row[2]), float(row[3]), float(row[4]), float(row[5]), float(row[6]), float(row[7]), float(row[8]), float(row[9]), float(row[10])])
+    res.append([row[0], float(row[4]), float(row[5]), float(row[9]), float(row[10])])
 
   return np.array(res).astype(np.float32)
 
