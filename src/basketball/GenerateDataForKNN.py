@@ -40,12 +40,15 @@ def generateTrainDataBySeason(season):
         HOME = 0
 
       #heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + team + '.' + season + '.player.csv.processed.total')[0]
-      heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + team + '.' + season + '.player.csv.processed.avg')[0]
+      #heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + team + '.' + season + '.player.csv.processed.avg')[0]
+      heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + team + '.' + season + '.player.csv.processed.norm')[0]
 
       leaguerank = leagueranks[teamNames.index(row[5][0:3])]
 
       vsTeamId = teamIds[teamNames.index(row[5][-3:])]
-      vsHeightTotal, vsWeightTotal, vsAgeTotal, vsExpTotal = loadMatrixFromFile(DIR + vsTeamId + '.' + season + '.player.csv.processed.total')[0]
+      #vsHeightTotal, vsWeightTotal, vsAgeTotal, vsExpTotal = loadMatrixFromFile(DIR + vsTeamId + '.' + season + '.player.csv.processed.total')[0]
+      #vsHeightTotal, vsWeightTotal, vsAgeTotal, vsExpTotal = loadMatrixFromFile(DIR + vsTeamId + '.' + season + '.player.csv.processed.avg')[0]
+      vsHeightTotal, vsWeightTotal, vsAgeTotal, vsExpTotal = loadMatrixFromFile(DIR + vsTeamId + '.' + season + '.player.csv.processed.norm')[0]
       vsLeaguerank = leagueranks[teamIds.index(vsTeamId)]
 
       tmp = []
@@ -93,12 +96,15 @@ def generateTestDataBySeason(season):
 
     teamId = teamIds[teamNames.index(row[6][0:3])]
     #heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + teamId + '.' + season + '.player.csv.processed.total')[0]
-    heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + teamId + '.' + season + '.player.csv.processed.avg')[0]
+    #heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + teamId + '.' + season + '.player.csv.processed.avg')[0]
+    heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + teamId + '.' + season + '.player.csv.processed.norm')[0]
 
     leaguerank = leagueranks[teamNames.index(row[6][0:3])]
 
     vsTeamId = teamIds[teamNames.index(row[6][-3:])]
-    vsHeightTotal, vsWeightTotal, vsAgeTotal, vsExpTotal = loadMatrixFromFile(DIR + vsTeamId + '.' + season + '.player.csv.processed.total')[0]
+    #vsHeightTotal, vsWeightTotal, vsAgeTotal, vsExpTotal = loadMatrixFromFile(DIR + vsTeamId + '.' + season + '.player.csv.processed.total')[0]
+    #vsHeightTotal, vsWeightTotal, vsAgeTotal, vsExpTotal = loadMatrixFromFile(DIR + vsTeamId + '.' + season + '.player.csv.processed.avg')[0]
+    vsHeightTotal, vsWeightTotal, vsAgeTotal, vsExpTotal = loadMatrixFromFile(DIR + vsTeamId + '.' + season + '.player.csv.processed.norm')[0]
     vsLeaguerank = leagueranks[teamIds.index(vsTeamId)]
 
     tmp = []
@@ -173,13 +179,16 @@ def generateTrainDataByTeam(teamId):
 
     season = row[2]
     #heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + teamId + '.' + season + '.player.csv.processed.total')[0]
-    heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + teamId + '.' + season + '.player.csv.processed.avg')[0]
+    #heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + teamId + '.' + season + '.player.csv.processed.avg')[0]
+    heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + teamId + '.' + season + '.player.csv.processed.norm')[0]
     
     leagueranks = loadMatrixFromFile(DIR + season + '.l')[0]
     leaguerank = leagueranks[teamNames.index(row[5][0:3])]
 
     vsTeamId = teamIds[teamNames.index(row[5][-3:])]
-    vsHeightTotal, vsWeightTotal, vsAgeTotal, vsExpTotal = loadMatrixFromFile(DIR + vsTeamId + '.' + season + '.player.csv.processed.total')[0]
+    #vsHeightTotal, vsWeightTotal, vsAgeTotal, vsExpTotal = loadMatrixFromFile(DIR + vsTeamId + '.' + season + '.player.csv.processed.total')[0]
+    #vsHeightTotal, vsWeightTotal, vsAgeTotal, vsExpTotal = loadMatrixFromFile(DIR + vsTeamId + '.' + season + '.player.csv.processed.avg')[0]
+    vsHeightTotal, vsWeightTotal, vsAgeTotal, vsExpTotal = loadMatrixFromFile(DIR + vsTeamId + '.' + season + '.player.csv.processed.norm')[0]
     vsLeaguerank = leagueranks[teamIds.index(vsTeamId)]
 
     tmp = []
@@ -230,13 +239,16 @@ def generateTestDataByTeam(teamId):
 
       season = row[3]
       #heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + teamId + '.' + season + '.player.csv.processed.total')[0]
-      heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + teamId + '.' + season + '.player.csv.processed.avg')[0]
+      #heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + teamId + '.' + season + '.player.csv.processed.avg')[0]
+      heightTotal, weightTotal, ageTotal, expTotal = loadMatrixFromFile(DIR + teamId + '.' + season + '.player.csv.processed.norm')[0]
 
       leagueranks = loadMatrixFromFile(DIR + season + '.l')[0]
       leaguerank = leagueranks[teamNames.index(row[6][0:3])]
 
       vsTeamId = teamIds[teamNames.index(row[6][-3:])]
-      vsHeightTotal, vsWeightTotal, vsAgeTotal, vsExpTotal = loadMatrixFromFile(DIR + vsTeamId + '.' + season + '.player.csv.processed.total')[0]
+      #vsHeightTotal, vsWeightTotal, vsAgeTotal, vsExpTotal = loadMatrixFromFile(DIR + vsTeamId + '.' + season + '.player.csv.processed.total')[0]
+      #vsHeightTotal, vsWeightTotal, vsAgeTotal, vsExpTotal = loadMatrixFromFile(DIR + vsTeamId + '.' + season + '.player.csv.processed.avg')[0]
+      vsHeightTotal, vsWeightTotal, vsAgeTotal, vsExpTotal = loadMatrixFromFile(DIR + vsTeamId + '.' + season + '.player.csv.processed.norm')[0]
       vsLeaguerank = leagueranks[teamIds.index(vsTeamId)]
 
       tmp = []

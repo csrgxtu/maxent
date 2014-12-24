@@ -182,12 +182,25 @@ def normalize(teamId, season):
   ageMin = min(ages)
   expMax = max(exps)
   expMin = min(exps)
+  avgHeight = sum(heights) / float(len(heights))
+  avgWeight = sum(weights) / float(len(weights))
+  avgAge = sum(ages) / float(len(ages))
+  avgExp = sum(exps) / float(len(exps))
+
+  nHeight = (avgHeight - heightMin) / (heightMax - heightMin)
+  nWeight = (avgWeight - weightMin) / (weightMax - weightMin)
+  nAge = (avgAge - ageMin) / (ageMax - ageMin)
+  nExp = (avgExp - expMin) / (expMax - expMin)
 
   res = []
-
-  pass
+  res.append(nHeight)
+  res.append(nWeight)
+  res.append(nAge)
+  res.append(nExp)
+  return res
 
 def main():
+  """
   for team in teamIds:
     for season in seasons:
       outputFile = DIR + team + "." + season + ".player.csv.processed"
@@ -214,6 +227,15 @@ def main():
         continue
       print "INFO: ", outputFile
       saveLstToFile(outputFile, res)
+  """
 
+  for team in teamIds:
+    for season in seasons:
+      outputFile = DIR + team + "." + season + ".player.csv.processed.norm"
+      res = normalize(team, season)
+      if len(res) == 0:
+        continue
+      print 'INFO: ', outputFile
+      saveLstToFile(outputFile, res)
 if __name__ == '__main__':
   main()
