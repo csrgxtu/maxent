@@ -75,6 +75,17 @@ def saveMatrixToFile(outputFile, matrix):
       myFile.write(','.join([str(x) for x in row]) + '\n')
     myFile.close()
 
+# saveLstToFile
+# save an list to file
+#
+# @param outputFile
+# @param list
+# @return noe
+def saveLstToFile(outputFile, lst):
+  with open(outputFile, 'w') as myFile:
+    myFile.write(','.join([str(x) for x in lst]) + '\n')
+  myFile.close()
+
 # loadTeamIds
 # load team ids from file
 #

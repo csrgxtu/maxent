@@ -6,7 +6,7 @@
 # Desc: main, extract the team's player tech stats for each season
 #
 # Produced By CSRGXTU
-from NBAStatsTeamPlayerExtractor import NBAStatsTeamPlayerExtractor
+from NBAStatsTeamPlayerExtractorV1 import NBAStatsTeamPlayerExtractor
 from Utility import loadSeasons, loadTeamIds, saveMatrixToFile
 
 def main():
@@ -18,15 +18,16 @@ def main():
   # return
   for team in teamIds:
     for season in seasons:
-      for seasonType in seasonTypes:
-        n = NBAStatsTeamPlayerExtractor(team, season, seasonType)
-        outputFile = DIR + team + '.' + season + '.' + seasonType + '.csv'
-        print 'INFO: Processing ', outputFile
-        mat = n.getStats()
-        if mat == False:
-          saveMatrixToFile(outputFile, [])
-        else:
-          saveMatrixToFile(outputFile, mat)
+      #for seasonType in seasonTypes:
+      seasonType = 'Regular Season'
+      n = NBAStatsTeamPlayerExtractor(team, season, seasonType)
+      outputFile = DIR + team + '.' + season + '.player.csv'
+      print 'INFO: Processing ', outputFile
+      mat = n.getStats()
+      if mat == False:
+        saveMatrixToFile(outputFile, [])
+      else:
+        saveMatrixToFile(outputFile, mat)
 
 
 if __name__ == '__main__':
