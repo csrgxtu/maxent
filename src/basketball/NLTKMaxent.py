@@ -1,11 +1,17 @@
 #!/usr/bin/env python
-# coding = utf-8
+#
 # Author: Archer Reilly
-# Date: 17/DEC/2014
-# File: NLTKNaiveBayes.py
-# Desc: use naive bayes classify
+# Date: 25/DEC/2014
+# File: NLTKMaxent.py
+# Des: use nltk tookit train and test model
 #
 # Produced By CSRGXTU
+import nltk
+import sys
+import numpy as np
+import scipy
+from datetime import datetime
+
 from Utility import loadMatrixFromFile, loadSeasons, loadTeamIds
 from nltk.classify import NaiveBayesClassifier
 
@@ -72,21 +78,26 @@ def teamMain():
     labels = buildTestingLabels(DIR + team + '-test.csv')
     total = total + len(labels)
     
-    classifier = NaiveBayesClassifier.train(train)
-    res = classifier.batch_classify(test)
-
-    # accuracy
+    # train
+    classifier = nltk.MaxentClassifier.train(train, 'IIS', trace=0, max_iter=1000)
+    
+    # test
     count = 0
-    for i in range(len(res)):
-      if labels[i] == res[i]:
+    for i in range(len(labels)):
+      pdist = classifier.prob_classify(test[i])
+      if pdist.prob('L') >= pdist.prob('W'):
+        flag = 'L'
+      else:
+        flag = 'W'
+      
+      #print 'DEBUG: ', flag, labels[i]
+      if flag == labels[i]:
         count = count + 1
-
-    countTotal = countTotal + count
-    print 'INFO: Accuracy(', teamNames[teamIds.index(team)], ')', count/float(len(res))
-  print 'INFO: Total Accuracy: ', countTotal/float(total)
+        
+    print 'INFO: accuracy ', team, " ", float(count)/len(labels)
 
 # train and test by season
-def main():
+def seasonMain():
   DIR = '/home/archer/Documents/maxent/data/basketball/leaguerank/'
   seasons = loadSeasons(DIR + 'seasons-18-Nov-2014.txt')
   countTotal = 0
@@ -98,20 +109,25 @@ def main():
     labels = buildTestingLabels(DIR + season + '-test.csv')
     total = total + len(labels)
 
-    classifier = NaiveBayesClassifier.train(train)
-    res = classifier.batch_classify(test)
-
-    # accuracy
+    # train
+    classifier = nltk.MaxentClassifier.train(train, 'IIS', trace=0, max_iter=1000)
+    
+    # test
     count = 0
-    for i in range(len(res)):
-      if labels[i] == res[i]:
+    for i in range(len(labels)):
+      pdist = classifier.prob_classify(test[i])
+      if pdist.prob('L') >= pdist.prob('W'):
+        flag = 'L'
+      else:
+        flag = 'W'
+      
+      if flag == labels[i]:
         count = count + 1
-
-    countTotal = countTotal + count
-    print 'INFO: Accuracy(', season, ')', count/float(len(res))
-  print 'INFO: Total Accuracy: ', countTotal/float(total)
-
-if __name__ == '__main__':
+        
+    print 'INFO: accuracy ', season, " ", float(count)/len(labels)
+    
+if __name__ == "__main__":
+  print "--------------teamMain----------------"
   teamMain()
-  print "DEBUG: ;f;dsjf"
-  main()
+  print "--------------seasonMain---------------"
+  seasonMain()

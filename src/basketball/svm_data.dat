@@ -1,0 +1,24 @@
+%YAML:1.0
+my_svm: !!opencv-ml-svm
+   svm_type: C_SVC
+   kernel: { type:LINEAR }
+   C: 2.6699999999999999e+00
+   term_criteria: { epsilon:1.1920928955078125e-07, iterations:1000 }
+   var_all: 5
+   var_count: 5
+   class_count: 2
+   class_labels: !!opencv-matrix
+      rows: 1
+      cols: 2
+      dt: i
+      data: [ 0, 1 ]
+   sv_total: 1
+   support_vectors:
+      - [ -1.65808058e+00, -2.59250194e-01, -1.25103152e+00,
+          1.72568217e-01, 1.27435172e+00 ]
+   decision_functions:
+      -
+         sv_count: 1
+         rho: -9.9163759149075204e-01
+         alpha: [ 1. ]
+         index: [ 0 ]
