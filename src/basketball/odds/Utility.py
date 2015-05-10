@@ -8,6 +8,17 @@
 #
 # Produced By CSRGXTU
 from numpy import loadtxt
+import codecs
+
+# utfstr2file
+# save utf8 str 2 file
+#
+# @param string
+# @param outFile
+# @return nothing
+def utfstr2file(string, outFile):
+  with codecs.open(outFile, 'w', encoding='utf-8') as f:
+    f.write(string)
 
 # str2file
 # save string to file
