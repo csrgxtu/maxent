@@ -21,7 +21,7 @@ class OddsDownloader(object):
         self.PageNumber = pageNumber
 
     def run(self):
-        url = self.BASE_URL + self.SeasonId + self.BASE_URL_PART_3 + str(self.PageNumber) + self.BASE_URL_PART_5
+        url = BASE_URL + SeasonId + BASE_URL_PART_3 + PageNumber + BASE_URL_PART_5
         return url
 
     def getSeasonId(self):
