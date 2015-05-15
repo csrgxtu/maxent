@@ -22,8 +22,15 @@ class OddsDownloader(object):
 
     def run(self):
         url = self.BASE_URL + self.SeasonId + self.BASE_URL_PART_3 + str(self.PageNumber) + self.BASE_URL_PART_5
-        return url
+        d = Download(url)
+        if d.doRequest():
+            # fail
+            print 'ERROR: ' + self.SeasonId + '-' + str(self.PageNumber)
+        else:
+            utfstr2file(d.getSOURCE(), './data/' + self.SeasonId + '-' + str(self.PageNumber) + '.raw')
 
+        return url
+        
     def getSeasonId(self):
         return self.SeasonId
 
