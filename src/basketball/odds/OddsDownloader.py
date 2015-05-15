@@ -30,7 +30,7 @@ class OddsDownloader(object):
             utfstr2file(d.getSOURCE(), './data/' + self.SeasonId + '-' + str(self.PageNumber) + '.raw')
 
         return url
-        
+
     def getSeasonId(self):
         return self.SeasonId
 
