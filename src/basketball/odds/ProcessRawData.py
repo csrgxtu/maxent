@@ -7,19 +7,24 @@
 # json format and others
 #
 # Produced By CSRGXTU
+import json
 
-class ProcessRawData(Object):
+class ProcessRawData(object):
     RAW = None
 
     def __init__(self, raw):
         self.RAW = raw
+        self.rmUnusefulChars()
         pass
 
     def rmUnusefulChars(self):
-        pass
+	self.RAW = self.RAW[85:len(self.RAW) - 2]
 
     def toJson(self):
-        pass
+        return json.loads(self.RAW)['d']['html']
 
     def toCsvMatrix(self):
         pass
+
+    def getRAW(self):
+        return self.RAW

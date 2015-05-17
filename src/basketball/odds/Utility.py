@@ -20,6 +20,30 @@ def utfstr2file(string, outFile):
   with codecs.open(outFile, 'w', encoding='utf-8') as f:
     f.write(string)
 
+# utfreadstrfromfile
+# read utf8 str from file
+#
+# @param inputFile
+# @return string
+def utfreadstrfromfile(inputFile):
+  str = ''
+  with codecs.open(inputFile, 'r', encoding='utf-8') as f:
+    str = f.read()
+
+  return str
+
+# readfromfile
+# read string from file
+#
+# @param inputFile
+# @return string
+def readfromfile(inputFile):
+  str = ''
+  with open(inputFile, 'r') as f:
+    str = f.read()
+
+  return str
+
 # str2file
 # save string to file
 #
