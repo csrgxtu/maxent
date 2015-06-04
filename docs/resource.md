@@ -7,3 +7,5 @@
 [Decorators](http://jfine-python-classes.readthedocs.org/en/latest/decorators.html)
 
 [LearnPython.org Decorators](http://www.learnpython.org/en/Decorators)
+
+[A guide to Python's function decorators](http://thecodeship.com/patterns/guide-to-python-function-decorators/)
