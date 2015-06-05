@@ -12,3 +12,5 @@
 
 [MySQL Python 教程](http://kodango.com/mysql-python-tutorial-part-one)
 [MySQL Python tutorial](http://zetcode.com/db/mysqlpython/)
+
+[Python MySQL Database Access](http://www.tutorialspoint.com/python/python_database_access.htm)
