@@ -9,3 +9,6 @@
 [LearnPython.org Decorators](http://www.learnpython.org/en/Decorators)
 
 [A guide to Python's function decorators](http://thecodeship.com/patterns/guide-to-python-function-decorators/)
+
+[MySQL Python 教程](http://kodango.com/mysql-python-tutorial-part-one)
+[MySQL Python tutorial](http://zetcode.com/db/mysqlpython/)
