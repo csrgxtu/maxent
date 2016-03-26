@@ -15,10 +15,10 @@ matrix = loadMatrixFromFile('/home/archer/Documents/maxent/data/basketball/16106
 print matrix
 """
 
-dirs = listdir('/home/archer/Documents/maxent/data/basketball/')
+dirs = listdir('/home/archer/Documents/Python/maxent/data/basketball/')
 for f in dirs:
   if f.startswith('161'):
     print 'Process file: ' + f
-    matrix = loadMatrixFromFile('/home/archer/Documents/maxent/data/basketball/' + f)
+    matrix = loadMatrixFromFile('/home/archer/Documents/Python/maxent/data/basketball/' + f)
     matrixa = sorted(matrix, key=lambda x: datetime.strptime(x[1], '%b %d:%Y'))
-    saveMatrixToFile('/home/archer/Documents/maxent/data/basketball/' + f + '.sorted', matrixa)
+    saveMatrixToFile('/home/archer/Documents/Python/maxent/data/basketball/' + f + '.sorted', matrixa)
