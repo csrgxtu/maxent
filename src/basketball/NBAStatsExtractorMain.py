@@ -74,7 +74,7 @@ if __name__ == '__main__':
   teamIds = loadTeamIds('../../data/basketball/teamidname-18-Nov-2014.csv')
 
   # second, load seasons
-  seasons = loadSeasons('../../data/basketball/seasons-18-Nov-2014.txt')
+  seasons = loadSeasons('../../data/basketball/seasons.txt')
 
   # seasonTypes
   seasonTypes = ['Regular Season']
@@ -82,13 +82,22 @@ if __name__ == '__main__':
   # leagueId
   leagueId = "00"
 
-  for teamId in teamIds:
+  # for teamId in teamIds:
+  #   dataFile = '../../data/basketball/' + teamId + '.csv'
+  #   for t in seasonTypes:
+  #     for s in seasons:
+  #       print "Processing " + teamId + " " + s + " " + t,
+  #       run(teamId, s, t, leagueId, dataFile)
+  #       print "  Done"
+
+  for teamId in ['1610612757']:
     dataFile = '../../data/basketball/' + teamId + '.csv'
     for t in seasonTypes:
       for s in seasons:
         print "Processing " + teamId + " " + s + " " + t,
         run(teamId, s, t, leagueId, dataFile)
-        print "  Done"
+        print " Done"
+
   """
   for t in seasonTypes:
     for s in (seasonspre + seasons):
