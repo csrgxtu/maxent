@@ -60,7 +60,7 @@ def buildTestingLabels(inputFile):
 
 # train and test by team
 def teamMain():
-  DIR = '/home/archer/Documents/maxent/data/basketball/leaguerank/'
+  DIR = '/home/archer/Documents/Python/maxent/data/basketball/leaguerank/'
   teamIds = loadTeamIds(DIR + 'teamidshortname.csv')
   teamNames = [x[1] for x in loadMatrixFromFile(DIR + 'teamidshortname.csv')]
   countTotal = 0
@@ -87,7 +87,7 @@ def teamMain():
 
 # train and test by season
 def main():
-  DIR = '/home/archer/Documents/maxent/data/basketball/leaguerank/'
+  DIR = '/home/archer/Documents/Python/maxent/data/basketball/leaguerank/'
   seasons = loadSeasons(DIR + 'seasons-18-Nov-2014.txt')
   countTotal = 0
   total = 0

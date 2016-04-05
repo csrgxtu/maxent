@@ -90,10 +90,10 @@ if __name__ == '__main__':
   #       run(teamId, s, t, leagueId, dataFile)
   #       print "  Done"
 
-  for teamId in ['1610612757']:
+  for teamId in ['1610612754']:
     dataFile = '../../data/basketball/' + teamId + '.csv'
     for t in seasonTypes:
-      for s in seasons:
+      for s in ['2014-15']:
         print "Processing " + teamId + " " + s + " " + t,
         run(teamId, s, t, leagueId, dataFile)
         print " Done"
